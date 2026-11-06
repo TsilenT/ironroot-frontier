@@ -131,6 +131,62 @@ export function trainingCoachScroll(rect, fieldRect, viewportHeight) {
   return 0;
 }
 
+/** Native pointer focus precedes click. Do not move its target mid-activation. */
+export function createTrainingCoachAlignment({ align, schedule, cancel }) {
+  let pendingFrame = null, latestPrimary = null, revision = 0;
+  const contacts = new Map();
+  function cancelPending() {
+    revision++;
+    if (pendingFrame !== null) cancel(pendingFrame);
+    pendingFrame = null;
+  }
+  return {
+    reveal(target) {
+      cancelPending();
+      if (contacts.size) return;
+      align(target);
+      const requested = revision;
+      pendingFrame = schedule(() => {
+        pendingFrame = null;
+        if (requested === revision && !contacts.size) align(target);
+      });
+    },
+    beginPointer(event) {
+      const type = event.pointerType || 'mouse', primary = event.isPrimary !== false;
+      // A new gesture supersedes an abandoned compatibility click of its own
+      // device type. Keep every still-held contact, including other devices.
+      if (primary) for (const [id, contact] of contacts)
+        if (contact.released && contact.type === type) contacts.delete(id);
+      const contact = { id:event.pointerId, type, primary, released:false };
+      contacts.set(event.pointerId, contact);
+      if (contact.primary) latestPrimary = contact;
+      cancelPending();
+    },
+    // A touch pointerup is followed by compatibility mousedown/focus/click.
+    // Non-primary contacts have no compatibility activation to retain.
+    releasePointer(event) {
+      const contact = contacts.get(event.pointerId);
+      if (contact?.primary) contact.released = true;
+      else contacts.delete(event.pointerId);
+    },
+    cancelPointer(event) { contacts.delete(event.pointerId); },
+    endActivation(event) {
+      if (event.isTrusted === false || event.detail === 0) return;
+      let contact;
+      if (Number.isFinite(event.pointerId) && event.pointerId >= 0) contact = contacts.get(event.pointerId);
+      else if (event.sourceCapabilities?.firesTouchEvents || event.pointerType) {
+        const type = event.sourceCapabilities?.firesTouchEvents ? 'touch' : event.pointerType;
+        contact = [...contacts.values()].find((item) => item.primary && item.released && item.type === type);
+      } else contact = latestPrimary;
+      if (contact?.released && contacts.get(contact.id) === contact) contacts.delete(contact.id);
+    },
+    keyboard() {
+      for (const [id, contact] of contacts) if (contact.released) contacts.delete(id);
+    },
+    interrupt() { cancelPending(); contacts.clear(); latestPrimary = null; },
+  };
+}
+
 export function trainingClock(time) {
   const seconds = Math.floor(time + 1e-6);
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
@@ -171,15 +227,18 @@ export function bootTraining(doc = document) {
     renderer.clampCamera();
     doc.documentElement.style.setProperty('--training-sticky-height', `${$('fieldPanel').getBoundingClientRect().height}px`);
   }
-  function revealCoachControl(target) {
-    if (!portrait() || !target?.closest('.coach')) return;
-    const align = () => {
-      if (!target.isConnected || !portrait()) return;
+  const coachAlignment = createTrainingCoachAlignment({
+    align(target) {
+      if (!target?.isConnected || !portrait() || !target.closest('.coach')) return;
       const delta = trainingCoachScroll(target.getBoundingClientRect(), $('fieldPanel').getBoundingClientRect(), window.innerHeight);
       if (Math.abs(delta) > 0.5) window.scrollBy(0, delta);
-    };
-    align();
-    requestAnimationFrame(align); // Account for the field entering its sticky position.
+    },
+    schedule: requestAnimationFrame,
+    cancel: cancelAnimationFrame,
+  });
+  function revealCoachControl(target) {
+    if (!portrait() || !target?.closest('.coach')) return;
+    coachAlignment.reveal(target);
   }
   function focusStep() { $('stepTitle').focus({ preventScroll:true }); revealCoachControl($('stepTitle')); }
   function camera(target) {
@@ -335,11 +394,11 @@ export function bootTraining(doc = document) {
     else { choices.reset(); refresh(); }
   }
   const stop = (event) => { event.preventDefault(); event.stopImmediatePropagation(); };
-  doc.addEventListener('pointerdown', (event) => inputScope.pointerDown(event), { capture:true });
-  doc.addEventListener('pointerup', (event) => { if (inputScope.pointerEnd(event)) { resetGesture(); stop(event); } }, { capture:true });
-  doc.addEventListener('pointercancel', (event) => { inputScope.pointerEnd(event, true); resetGesture(); }, { capture:true });
-  doc.addEventListener('click', (event) => { if (inputScope.click(event)) stop(event); }, { capture:true });
-  doc.addEventListener('keydown', (event) => { if (inputScope.keyDown(event)) stop(event); }, { capture:true });
+  doc.addEventListener('pointerdown', (event) => { coachAlignment.beginPointer(event); inputScope.pointerDown(event); }, { capture:true });
+  doc.addEventListener('pointerup', (event) => { coachAlignment.releasePointer(event); if (inputScope.pointerEnd(event)) { resetGesture(); stop(event); } }, { capture:true });
+  doc.addEventListener('pointercancel', (event) => { coachAlignment.cancelPointer(event); inputScope.pointerEnd(event, true); resetGesture(); }, { capture:true });
+  doc.addEventListener('click', (event) => { coachAlignment.endActivation(event); if (inputScope.click(event)) stop(event); }, { capture:true });
+  doc.addEventListener('keydown', (event) => { coachAlignment.keyboard(); if (inputScope.keyDown(event)) stop(event); }, { capture:true });
   doc.addEventListener('keyup', (event) => { if (inputScope.keyUp(event)) stop(event); }, { capture:true });
   $('trainingBattle').addEventListener('pointerdown', (event) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -413,9 +472,12 @@ export function bootTraining(doc = document) {
   $('restartLesson').onclick = () => perform(() => session.retry(), { focus:true });
   $('skipLesson').onclick = () => perform(() => session.skip(), { focus:true });
   $('lessonPicker').onchange = () => perform(() => session.startLesson($('lessonPicker').value), { focus:true });
-  $('returnGame').addEventListener('click', () => { leaving = true; session.exit(); inputScope.setScope('exited'); inputScope.interrupt(); resetGesture(); });
+  $('returnGame').addEventListener('click', () => { leaving = true; session.exit(); coachAlignment.interrupt(); inputScope.setScope('exited'); inputScope.interrupt(); resetGesture(); });
 
   doc.addEventListener('focusin', (event) => revealCoachControl(event.target));
+  // Once click has selected its target, uncover the resulting focused control.
+  // Continue/Retry can intentionally transfer focus to the new step heading.
+  doc.addEventListener('click', () => revealCoachControl(doc.activeElement));
   doc.addEventListener('keydown', (event) => {
     if (event.code === 'Escape') { event.preventDefault(); choices.reset(); feedback = 'Choice cancelled. No gold spent.'; refresh(); return; }
     if (event.altKey || event.ctrlKey || event.metaKey || event.target?.closest('button,a,select,input,textarea,summary,[contenteditable="true"]')) return;
@@ -430,7 +492,7 @@ export function bootTraining(doc = document) {
     else if (event.code === 'Space' && snapshot.status === 'active') { event.preventDefault(); perform(() => session.setPaused(!snapshot.paused)); }
   });
   function interrupt() {
-    inputScope.interrupt(); resetGesture();
+    coachAlignment.interrupt(); inputScope.interrupt(); resetGesture();
     if (snapshot.shouldRun) {
       session.setPaused(true);
       feedback = 'Observation paused while you were away. Resume when ready.';
@@ -439,11 +501,11 @@ export function bootTraining(doc = document) {
   }
   window.addEventListener('blur', interrupt);
   doc.addEventListener('visibilitychange', () => { if (doc.hidden) interrupt(); });
-  window.addEventListener('pagehide', () => { leaving = true; session.exit(); inputScope.interrupt(); resetGesture(); });
+  window.addEventListener('pagehide', () => { leaving = true; session.exit(); coachAlignment.interrupt(); inputScope.interrupt(); resetGesture(); });
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
       leaving = false; session = new TrainingSession(); choices = createTrainingChoices(session);
-      inputScope.interrupt(); inputScope.setScope('restored-page'); stepKey = null; lastFrame = 0; refresh();
+      coachAlignment.interrupt(); inputScope.interrupt(); inputScope.setScope('restored-page'); stepKey = null; lastFrame = 0; refresh();
     }
   });
   const fieldResize = new ResizeObserver(resize);

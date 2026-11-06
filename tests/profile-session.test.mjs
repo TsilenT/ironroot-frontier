@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { createProfileSession, PROFILE_MARKER_KEY as KEY, ProfileSessionError } from '../dist/profile-session.js';
-import { createStorage, createSaveSession, readHistory } from '../dist/persistence.js';
+import { createStorage, createSaveSession, readHistoryState, createHistorySession, createPreferenceSession } from '../dist/persistence.js';
 import { createBackup, parseBackup, restoreBackup, MAX_BACKUP_BYTES, BACKUP_STORAGE_KEYS as K } from '../dist/backup.js';
 import { CAMPAIGN_MISSIONS, createCampaignProgress, getCampaignOverview, readCampaignProgress, mergeCampaignProgress, writeCampaignProgress } from '../dist/campaign.js';
 
@@ -261,7 +261,7 @@ const segment=app.slice(app.indexOf('// Portable backups'),app.indexOf('// Exper
 function element(hidden=false){const cl=new Set(hidden?['hidden']:[]);return {classList:{contains:k=>cl.has(k),add:k=>cl.add(k),remove:k=>cl.delete(k),toggle(k,x){if(x)cl.add(k);else cl.delete(k);}},textContent:'',checked:false,files:[],value:'',disabled:false,click(){}};}
 function uiRaw(){const data=new Map();return{data,getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};}
 function harness(r=uiRaw()){const p=createProfileSession(()=>r,{requiredProtocolVersion:2}),s=createStorage(()=>p.storage),battleSession=createSaveSession(s,K.battle);battleSession.claim();const nodes=new Map();const $=id=>{if(!nodes.has(id))nodes.set(id,element(['backupModal','profileRecovery','backupRecoveryRow'].includes(id)));return nodes.get(id);};
- const c={$,profileSession:p,storage:s,battleSession,readHistory,HISTORY:K.history,SAVE:K.battle,createBackup:(s,o)=>createBackup(s,o&&JSON.parse(JSON.stringify(o))),parseBackup,restoreBackup,MAX_BACKUP_BYTES,CAMPAIGN_MISSIONS,CHALLENGES,getCampaignOverview,timeText:String,localStorage:r,preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},campaignProgress:createCampaignProgress(),trialRecords:{},currentCampaign:null,currentChallenge:null,game:new Game(),started:true,paused:true,objectiveOutcome:null,settingsWasPaused:false,recoveryHold:null,profileGate:null,pendingFinalizeOutcome:null,allowProfileReload:false,importGeneration:0,retainedHistory:null,knownHistory:[],knownHistoryAvailable:true,progressDirty:false,location:{protocol:'https:',reload(){c.reloaded=true;}},showSettings(){c.paused=true;$('settingsModal').classList.remove('hidden');},showTitle(){c.titleShown=true;c.started=false;},pauseControl(){},toast(){},save(){c.saved=(c.saved||0)+1;return true;},setTimeout,URL,Blob,document:{body:{append(){}},createElement(){return{click(){},remove(){}};}}};
+ const c={$,profileSession:p,storage:s,battleSession,readHistoryState,historySession:createHistorySession(s,K.history,{canWrite:()=>p.status().canWrite}),preferenceSession:createPreferenceSession(s,K.settings,{canWrite:()=>p.status().canWrite}),retryHistorySave(){return true;},retryPreferences(){return true;},HISTORY:K.history,SAVE:K.battle,createBackup:(s,o)=>createBackup(s,o&&JSON.parse(JSON.stringify(o))),parseBackup,restoreBackup,MAX_BACKUP_BYTES,CAMPAIGN_MISSIONS,CHALLENGES,getCampaignOverview,timeText:String,localStorage:r,preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},campaignProgress:createCampaignProgress(),trialRecords:{},currentCampaign:null,currentChallenge:null,game:new Game(),started:true,paused:true,objectiveOutcome:null,settingsWasPaused:false,recoveryHold:null,profileGate:null,pendingFinalizeOutcome:null,allowProfileReload:false,importGeneration:0,retainedHistory:null,knownHistory:[],knownHistoryAvailable:true,progressDirty:false,location:{protocol:'https:',reload(){c.reloaded=true;}},showSettings(){c.paused=true;$('settingsModal').classList.remove('hidden');},showTitle(){c.titleShown=true;c.started=false;},pauseControl(){},toast(){},save(){c.saved=(c.saved||0)+1;return true;},setTimeout,URL,Blob,document:{body:{append(){}},createElement(){return{click(){},remove(){}};}}};
  vm.createContext(c);vm.runInContext(segment,c);vm.runInContext(app.slice(app.indexOf('function pause(value)'),app.indexOf("$('pause').onclick = () => pause(!paused);")),c);vm.runInContext(app.slice(app.indexOf('function hideSettings()'),app.indexOf('function syncSettings()')),c);vm.runInContext('downloadBackup = text => { exportedText = text; };',c);return {c,r,p,$};}
 const payload=n=>{const x=JSON.parse(createBackup(uiRaw()));if(n)x.data.campaign.missions.emberwatch={completed:true,stars:n,bestTime:30};return JSON.stringify(x);};
 const deferred=()=>{let resolve,reject;return{promise:new Promise((a,b)=>{resolve=a;reject=b;}),resolve,reject};};
@@ -341,4 +341,22 @@ test('UI: uncertain profile upgrade stays visibly paused while its verification 
   assert.equal(h.$('profileRecovery').classList.contains('hidden'),false);
   denied=false;vm.runInContext('syncProfileSafety()',h.c);
   assert.equal(h.c.profileGate.reloadRequired,true);assert.equal(h.p.status().canWrite,false);assert.equal(h.c.reloaded,undefined);
+});
+
+test('UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results',()=>{
+  const h=harness(),record=n=>({won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:n,kills:0,built:1,date:`2026-11-06T00:00:0${n}.000Z`});
+  h.r.data.set(K.history,JSON.stringify([record(1)]));h.c.knownHistory=[record(1)];h.c.historySession.read();h.c.historySession.retain(record(2));
+  const get=h.r.getItem;h.r.getItem=key=>{if(key===K.history)throw Error('private read payload');return get(key);};
+  h.$('exportBackup').onclick();assert.equal(h.c.exportedText,undefined);
+  assert.match(h.$('backupStatus').textContent,/not a complete saved-profile backup/);
+  h.$('exportRetained').onclick();const exported=parseBackup(h.c.exportedText);
+  assert.deepEqual(exported.data.history,[record(2),record(1)]);assert.match(h.$('backupStatus').textContent,/may omit newer results/);
+  assert.ok(!h.$('backupStatus').textContent.includes('private'));
+});
+test('UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage',()=>{
+  const h=harness(),record={won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:2,kills:0,built:1,date:'2026-11-06T00:00:02.000Z'};
+  h.c.historySession.retain(record);h.c.preferences.volume=.25;h.c.preferenceSession.stage(h.c.preferences);
+  const before=[...h.r.data];h.$('exportBackup').onclick();const exported=parseBackup(h.c.exportedText);
+  assert.deepEqual(exported.data.history,[record]);assert.equal(exported.data.settings.volume,.25);
+  assert.deepEqual([...h.r.data],before);assert.equal(h.c.historySession.pendingCount(),1);assert.equal(h.c.preferenceSession.dirty(),true);
 });

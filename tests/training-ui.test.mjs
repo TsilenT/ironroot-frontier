@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createTrainingGesture, createTrainingChoices, trainingScope, trainingIncome, trainingClock, syncTrainingVisuals, trainingFeedback, trainingActionLine, trainingCoachScroll } from '../dist/training-app.js';
+import { createTrainingGesture, createTrainingChoices, trainingScope, trainingIncome, trainingClock, syncTrainingVisuals, trainingFeedback, trainingActionLine, trainingCoachScroll, createTrainingCoachAlignment } from '../dist/training-app.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 import { TrainingSession } from '../dist/training.js';
 import { BattleVFX } from '../dist/vfx.js';
@@ -237,6 +237,156 @@ test('portrait coach alignment uncovers card/site centers without hiding the can
     assert.ok(rect.bottom-delta<=viewport-8,'control is above viewport bottom');
   }
   assert.equal(trainingCoachScroll({top:400,bottom:474},field,viewport),0,'visible card does not jump');
+});
+
+function coachAlignmentFixture() {
+  const calls = [], frames = new Map(), cancelled = [];
+  let id = 0;
+  const alignment = createTrainingCoachAlignment({
+    align: (target) => calls.push(target),
+    schedule: (callback) => { frames.set(++id,callback); return id; },
+    cancel: (frame) => cancelled.push(frame),
+  });
+  return {alignment,calls,frames,cancelled};
+}
+
+test('native pointer focus cannot scroll between pointerdown and compatibility click', () => {
+  const {alignment,calls,frames} = coachAlignmentFixture(), control = {};
+  alignment.beginPointer(pointer());
+  alignment.reveal(control); // Mouse focus on pointerdown.
+  alignment.releasePointer(pointer());
+  alignment.reveal(control); // Touch focus after pointerup and compatibility mousedown.
+  assert.deepEqual(calls,[],'neither native focus sequence moves the pending tap target');
+  assert.equal(frames.size,0,'focus must not leave a deferred mid-activation scroll');
+  alignment.endActivation(click()); // Click capture, before the actual action handler.
+  alignment.reveal(control); // Ordinary post-click uncovering remains available.
+  assert.deepEqual(calls,[control]);
+  frames.get(1)();
+  assert.deepEqual(calls,[control,control],'sticky position receives its normal second alignment');
+});
+
+test('a fresh pointer cancels the preceding control alignment without a timing window', () => {
+  const {alignment,calls,frames,cancelled} = coachAlignmentFixture(), oldControl = {}, newControl = {};
+  alignment.reveal(oldControl);
+  alignment.beginPointer(pointer());
+  assert.deepEqual(cancelled,[1]);
+  frames.get(1)(); // Even an already-queued stale callback cannot move the page.
+  alignment.reveal(newControl);
+  assert.deepEqual(calls,[oldControl]);
+  alignment.releasePointer(pointer());alignment.endActivation(click());
+  alignment.reveal(newControl);
+  assert.deepEqual(calls,[oldControl,newControl],'the first independent activation needs no debounce');
+});
+
+test('keyboard and programmatic focus retain immediate uncovering and the newest RAF target', () => {
+  const {alignment,calls,frames,cancelled} = coachAlignmentFixture(), heading = {}, control = {};
+  alignment.beginPointer(pointer());alignment.releasePointer(pointer());
+  alignment.keyboard(); // Keyboard input clears a completed activation without a click.
+  alignment.reveal(heading);
+  alignment.reveal(control);
+  assert.deepEqual(calls,[heading,control]);
+  assert.deepEqual(cancelled,[1]);
+  frames.get(1)();frames.get(2)();
+  assert.deepEqual(calls,[heading,control,control],'a previous heading cannot pull focus back');
+  alignment.reveal(heading);
+  alignment.interrupt(); // Window interruption.
+  frames.get(3)();
+  assert.deepEqual(calls,[heading,control,control,heading],'interrupted RAF never scrolls later');
+});
+
+test('native pointer focus suspension extends through pointerup and retains guarded click handling', () => {
+  const source=readFileSync(new URL('../dist/training-app.js',import.meta.url),'utf8');
+  assert.match(source,/addEventListener\('pointerdown',[^\n]*coachAlignment\.beginPointer\(event\)[^\n]*inputScope\.pointerDown\(event\)/);
+  assert.doesNotMatch(source,/addEventListener\('pointerup',[^\n]*coachAlignment\.endActivation/);
+  for(const [event,method] of [['pointerup','releasePointer'],['pointercancel','cancelPointer'],['click','endActivation']])
+    assert.match(source,new RegExp(`addEventListener\\('${event}',[^\\n]*coachAlignment\\.${method}\\(event\\)`));
+  assert.match(source,/addEventListener\('keydown',[^\n]*coachAlignment\.keyboard\(\)/);
+  assert.match(source,/addEventListener\('click',[^\n]*if \(inputScope\.click\(event\)\) stop\(event\)[^\n]*capture:true/);
+  assert.match(source,/addEventListener\('focusin', \(event\) => revealCoachControl\(event\.target\)\)/);
+  assert.match(source,/addEventListener\('click', \(\) => revealCoachControl\(doc\.activeElement\)\)/);
+});
+
+for(const cancelAfterRelease of [false,true])test('cancelling a secondary contact preserves primary focus suspension '+(cancelAfterRelease?'after':'before')+' primary release', () => {
+  const {alignment,calls} = coachAlignmentFixture(), control = {};
+  const primary=pointer(1),secondary={...pointer(2),isPrimary:false};
+  alignment.beginPointer(primary);alignment.beginPointer(secondary);
+  if(cancelAfterRelease)alignment.releasePointer(primary);
+  alignment.cancelPointer(secondary);
+  alignment.reveal(control);
+  if(!cancelAfterRelease)alignment.releasePointer(primary);
+  const laterSecondary={...pointer(3),isPrimary:false};
+  alignment.beginPointer(laterSecondary);alignment.cancelPointer(laterSecondary);
+  alignment.reveal(control);
+  alignment.endActivation(click(2)); // An unrelated contact cannot release the primary.
+  alignment.reveal(control);
+  assert.deepEqual(calls,[],'primary pointerup still waits for its compatibility click');
+  alignment.endActivation(click(1));alignment.reveal(control);
+  assert.deepEqual(calls,[control]);
+});
+
+test('each device activation ends independently and secondary pointerup leaves no abandoned contact', () => {
+  const {alignment,calls} = coachAlignmentFixture(), control = {};
+  const mouse=pointer(1,'mouse'),touch=pointer(2,'touch'),secondary={...pointer(3,'touch'),isPrimary:false};
+  alignment.beginPointer(mouse);alignment.beginPointer(touch);alignment.beginPointer(secondary);
+  alignment.releasePointer(mouse);alignment.releasePointer(touch);alignment.releasePointer(secondary);
+  alignment.endActivation(click(2,'touch'));alignment.reveal(control);
+  assert.deepEqual(calls,[],'touch click cannot clear a released mouse activation');
+  alignment.endActivation(click(1,'mouse'));alignment.reveal(control);
+  assert.deepEqual(calls,[control],'non-primary pointerup needs no compatibility click');
+});
+
+test('keyboard and synthetic clicks do not release a still-held native contact', () => {
+  const {alignment,calls} = coachAlignmentFixture(), control = {};
+  alignment.beginPointer(pointer());alignment.keyboard();
+  alignment.endActivation({...click(),isTrusted:false});
+  alignment.endActivation({...click(),detail:0});
+  alignment.reveal(control);
+  assert.deepEqual(calls,[]);
+  alignment.cancelPointer(pointer());alignment.reveal(control);
+  assert.deepEqual(calls,[control],'cancellation retires only the actual held contact');
+});
+
+test('interruption restores programmatic focus while the input scope still rejects stale input', () => {
+  const {alignment,calls,frames} = coachAlignmentFixture(), oldControl = {}, newControl = {};
+  const guard=createInputScopeGuard('old');
+  alignment.reveal(oldControl);
+  alignment.beginPointer(pointer());guard.pointerDown(pointer());
+  alignment.interrupt();guard.interrupt();guard.setScope('new');
+  frames.get(1)();
+  alignment.reveal(newControl);
+  assert.deepEqual(calls,[oldControl,newControl],'lost terminal events cannot strand portrait focus');
+  alignment.releasePointer(pointer());assert.equal(guard.pointerEnd(pointer()),true);
+  alignment.endActivation(click());assert.equal(guard.click(click()),true);
+  alignment.beginPointer(pointer(2));guard.pointerDown(pointer(2));
+  alignment.cancelPointer(pointer(1));alignment.endActivation(click(1));
+  alignment.reveal(newControl);
+  assert.deepEqual(calls,[oldControl,newControl],'a stale terminal event cannot release fresh held input');
+  alignment.releasePointer(pointer(2));assert.equal(guard.pointerEnd(pointer(2)),false);
+  alignment.endActivation(click(2));assert.equal(guard.click(click(2)),false);
+  alignment.reveal(newControl);
+  assert.deepEqual(calls,[oldControl,newControl,newControl],'first fresh click remains immediately usable');
+});
+
+test('fresh gestures retire abandoned compatibility clicks and legacy clicks retain attribution', () => {
+  const {alignment,calls} = coachAlignmentFixture(), control = {};
+  for(let id=1;id<=100;id++){
+    alignment.beginPointer(pointer(id));alignment.releasePointer(pointer(id));
+  }
+  alignment.endActivation({detail:1,isTrusted:true,sourceCapabilities:{firesTouchEvents:true}});
+  alignment.reveal(control);
+  assert.deepEqual(calls,[control],'completed history is bounded to the latest activation per device type');
+  alignment.beginPointer(pointer(101,'mouse'));alignment.releasePointer(pointer(101,'mouse'));
+  alignment.endActivation({detail:1,isTrusted:true});alignment.reveal(control);
+  assert.deepEqual(calls,[control,control],'legacy MouseEvents use the latest actual primary gesture');
+});
+
+test('blur hidden pagehide and bfcache restoration reset alignment without resetting stale input protection', () => {
+  const source=readFileSync(new URL('../dist/training-app.js',import.meta.url),'utf8');
+  assert.match(source,/function interrupt\(\) \{\s*coachAlignment\.interrupt\(\); inputScope\.interrupt\(\)/);
+  assert.match(source,/addEventListener\('blur', interrupt\)/);
+  assert.match(source,/addEventListener\('visibilitychange', \(\) => \{ if \(doc\.hidden\) interrupt\(\)/);
+  assert.match(source,/addEventListener\('pagehide',[^\n]*coachAlignment\.interrupt\(\); inputScope\.interrupt\(\)/);
+  assert.match(source,/if \(event\.persisted\) \{[\s\S]*?coachAlignment\.interrupt\(\); inputScope\.interrupt\(\); inputScope\.setScope\('restored-page'\)/);
 });
 
 test('portrait field height budget preserves all three lanes and minimum touch controls', () => {

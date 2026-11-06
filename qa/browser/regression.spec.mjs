@@ -162,10 +162,25 @@ for (const outcome of ['VICTORY','DEFEAT','DRAW']) test(`near-end restored match
 });
 
 test('failed save warns the player before leaving the active battle', async ({page}) => {
-  await page.addInitScript(() => {Storage.prototype.setItem = () => {throw new DOMException('Quota full','QuotaExceededError');};});
-  await start(page); await press(page,'#pause'); await press(page,'#saveExit');
+  // This case concerns a write failure during an already initialized battle.
+  // Migration failures before startup are covered by profile-upgrade.spec.mjs.
+  await start(page);
+  const before = await page.evaluate(key=>localStorage.getItem(key),SAVE);
+  expect(before).not.toBeNull();
+  await expect(page.locator('#time')).not.toHaveText('00:00');
+  await page.evaluate(key=>{
+    const original=Storage.prototype.setItem;
+    window.__qaFailedBattleSaves=0;
+    Storage.prototype.setItem=function(name,value){
+      if(this===localStorage&&name===key){window.__qaFailedBattleSaves++;throw new DOMException('Quota full','QuotaExceededError');}
+      return original.call(this,name,value);
+    };
+  },SAVE);
+  await press(page,'#pause'); await press(page,'#saveExit');
   await expect(page.locator('#toast')).toContainText(/unable|failed|storage|could not|not saved/i);
   await expect(page.locator('#welcome')).toBeHidden(); await expect(page.locator('#pauseVeil')).toBeVisible();
+  expect(await page.evaluate(()=>window.__qaFailedBattleSaves)).toBeGreaterThanOrEqual(2);
+  expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(before);
   await press(page,'#resume'); await expect(page.locator('#pauseVeil')).toBeHidden();
 });
 

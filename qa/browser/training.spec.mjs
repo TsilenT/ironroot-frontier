@@ -59,6 +59,63 @@ async function expectMapWithAction(page,selector){
 }
 async function trainingReady(page){await expect(page.locator('#lessonPicker option')).toHaveCount(5);await expect(page.locator('#stepTitle')).not.toHaveText('Preparing your lesson…');}
 
+// A real control can be partly exposed at the bottom of a scrolling phone.
+// These are native pointer events, not DOM click(), focus() or state adapters.
+async function tapVisibleBottomEdge(page,selector){
+  const control=page.locator(selector);await expect(control).toBeVisible();await expect(control).toBeEnabled();
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const point=await control.evaluate(target=>{
+    window.scrollBy(0,target.getBoundingClientRect().top-(innerHeight-6));
+    const rect=target.getBoundingClientRect(),point={x:rect.left+rect.width/2,y:innerHeight-3};
+    const hit=document.elementFromPoint(point.x,point.y);
+    if(rect.top>=point.y||rect.bottom<=point.y||!hit||!(hit===target||target.contains(hit)))throw new Error('Ordinary bottom-edge scroll did not expose the intended native tap target.');
+    window.__qaCoachTapTarget=target;window.__qaCoachTapEvents=[];
+    return point;
+  });
+  await expect(page.locator('#trainingBattle')).toBeInViewport({ratio:1});
+  await tapPoint(page,point); // Exactly one independent native activation.
+  const events=await page.evaluate(()=>window.__qaCoachTapEvents);
+  const down=events.find(event=>event.type==='pointerdown'),clicks=events.filter(event=>event.type==='click');
+  expect(down?.hitsTarget,'native pointerdown hits the exposed real control').toBe(true);
+  expect(clicks,'the first tap produces one native click, without retry').toHaveLength(1);
+  expect(clicks[0].hitsTarget,'focus cannot retarget the native click to the coach background').toBe(true);
+  for(const event of events.slice(0,events.findIndex(event=>event.type==='click')+1))
+    expect(event.scrollY,'no custom focus scroll before click capture: '+event.type).toBe(down.scrollY);
+}
+
+for(const width of [320,390])test('first native bottom-edge taps preserve training controls at '+width+'px',async({page})=>{
+  await page.setViewportSize({width,height:width===320?568:650});
+  await page.addInitScript(()=>{
+    window.__qaCoachTapEvents=[];
+    for(const type of ['pointerdown','mousedown','focusin','mouseup','click'])document.addEventListener(type,event=>{
+      const target=window.__qaCoachTapTarget;
+      if(target)window.__qaCoachTapEvents.push({type,scrollY,hitsTarget:target===event.target||target.contains(event.target)});
+    },{capture:true,passive:true});
+  });
+  await openTraining(page);await selectLesson(page,'siege-the-tower');
+  const initial=await gold(page);
+  await tapVisibleBottomEdge(page,'[data-build="foundry"]');
+  await expect(page.locator('[data-build="foundry"]')).toHaveAttribute('aria-pressed','true');
+  expect(await gold(page)).toBe(initial);await expectMapWithAction(page,'[data-build="foundry"]');
+  await tapVisibleBottomEdge(page,'[data-site-index="0"]');
+  expect(await gold(page)).toBe(initial-BUILDINGS.foundry.cost);
+  await expect(page.locator('#stepKind')).toHaveText('WELL DONE');
+  await tapVisibleBottomEdge(page,'#continueLesson');
+  await expect(page.locator('#continueLesson')).toHaveText('Start observation');
+  await expect(page.locator('#stepTitle')).toBeFocused();
+  await tapVisibleBottomEdge(page,'#continueLesson');
+  await expect(page.locator('#fieldState')).toContainText('TIME RUNNING');
+  await tapVisibleBottomEdge(page,'#pauseLesson');await expectObservationFeedback(page,true);
+  await expectMapWithAction(page,'#pauseLesson');
+  await tapVisibleBottomEdge(page,'#pauseLesson');await expectObservationFeedback(page,false);
+  await tapVisibleBottomEdge(page,'#restartLesson');
+  await expect(page.locator('body')).toHaveAttribute('data-training-status','instruction');
+  expect(await gold(page)).toBe(initial);await expect(page.locator('#stepTitle')).toBeFocused();
+  await tapVisibleBottomEdge(page,'#skipLesson');
+  await expect(page.locator('#lessonPicker')).toHaveValue('answer-the-air');
+  expect(await gold(page)).toBe(350);await expect(page.locator('#stepTitle')).toBeFocused();
+});
+
 // The genuine saved battle is deliberately independent from every lesson. Its
 // synthetic origin is not evidence of a played match or a completed lesson.
 test('title entry and return preserve all five exact profile domains including active battle',async({page})=>{
@@ -152,8 +209,8 @@ const LESSON_CASES=[
   {id:'first-barracks',type:'barracks',start:280,step:'place-barracks',watch:'watch-spawn',minimum:1,maximum:3,proof:/real warrior spawned/i},
   {id:'shield-and-arrow',type:'archery',start:350,step:'place-support',watch:'watch-screen',minimum:8,maximum:11,proof:/arrows hit your warrior screen.*archers fired/i},
   {id:'mine-and-upgrade',type:'mint',start:330,step:'place-mine',watch:'watch-income',minimum:4,maximum:6,proof:/upgraded mine produced real income at 8.75/i},
-  {id:'siege-the-tower',type:'foundry',start:540,step:'place-foundry',watch:'watch-siege',minimum:31,maximum:35,proof:/damaged and destroyed the marked tower/i},
-  {id:'answer-the-air',type:'archery',start:350,step:'place-anti-air',watch:'watch-anti-air',minimum:14,maximum:17,proof:/Archers struck and defeated the tracked gryphon/i},
+  {id:'siege-the-tower',type:'foundry',start:540,step:'place-foundry',watch:'watch-siege',minimum:31,maximum:35,proof:/Your siege engines damaged the marked tower, which was destroyed in actual combat\./i},
+  {id:'answer-the-air',type:'archery',start:350,step:'place-anti-air',watch:'watch-anti-air',minimum:14,maximum:17,proof:/Your archers struck the tracked gryphon, which was defeated\./i},
 ];
 for(const lesson of LESSON_CASES)test('ordinary unmodified '+lesson.id+' lesson pays actual costs and completes its normal-time observation',async({page},testInfo)=>{
   test.setTimeout(90000);

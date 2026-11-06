@@ -599,6 +599,11 @@ button:disabled {
   font-size: 10px;
   padding: 8px 11px;
 }
+#retryPreferences,
+#retryHistory,
+#retryResultHistory {
+  min-height: 44px;
+}
 .selection-actions .gold-button {
   flex: 1;
 }

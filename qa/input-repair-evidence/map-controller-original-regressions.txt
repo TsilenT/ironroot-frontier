@@ -1,0 +1,153 @@
+✖ minimap uses native click, not press-down, for touch targeting and guarded release activation (4.031408ms)
+✖ native minimap edge activation preserves exact geometry for every map width (0.905864ms)
+✖ minimap activation remains suppressible by the shared held-gesture scope guard (0.913896ms)
+✖ dialog controls reject closed-details descendants even when Chromium exposes their rectangles (4.421031ms)
+✖ controller controls reject closed-details descendants even when Chromium exposes their rectangles (1.230152ms)
+✖ Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary (1.97547ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.433276
+
+✖ failing tests:
+
+test at ../../../tmp/baseline-minimap-input-integration.test.mjs:15:1
+✖ minimap uses native click, not press-down, for touch targeting and guarded release activation (4.031408ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'pointerdown'
+  -   'click'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/baseline-minimap-input-integration.test.mjs:16:30)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'pointerdown' ],
+    expected: [ 'click' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/baseline-minimap-input-integration.test.mjs:21:1
+✖ native minimap edge activation preserves exact geometry for every map width (0.905864ms)
+  TypeError [Error]: map.listeners.get(...) is not a function
+      at TestContext.<anonymous> (file:///tmp/baseline-minimap-input-integration.test.mjs:25:33)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at ../../../tmp/baseline-minimap-input-integration.test.mjs:31:1
+✖ minimap activation remains suppressible by the shared held-gesture scope guard (0.913896ms)
+  TypeError [Error]: map.listeners.get(...) is not a function
+      at dispatch (file:///tmp/baseline-minimap-input-integration.test.mjs:35:72)
+      at TestContext.<anonymous> (file:///tmp/baseline-minimap-input-integration.test.mjs:38:101)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at ../../../tmp/baseline-report-ui-integration.test.mjs:110:43
+✖ dialog controls reject closed-details descendants even when Chromium exposes their rectangles (4.421031ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'report-summary',
+      'summary-action',
+  +   'samples-summary',
+  +   'sample-action',
+  +   'download',
+  +   'not-first-summary',
+      'playAgain',
+      'resultMenu',
+      'inspectBattle'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/baseline-report-ui-integration.test.mjs:116:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'report-summary', 'summary-action', 'samples-summary', 'sample-action', 'download', 'not-first-summary', 'playAgain', 'resultMenu', 'inspectBattle' ],
+    expected: [ 'report-summary', 'summary-action', 'playAgain', 'resultMenu', 'inspectBattle' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/baseline-report-ui-integration.test.mjs:110:43
+✖ controller controls reject closed-details descendants even when Chromium exposes their rectangles (1.230152ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'report-summary',
+      'summary-action',
+  +   'samples-summary',
+  +   'sample-action',
+  +   'download',
+  +   'not-first-summary',
+      'playAgain',
+      'resultMenu',
+      'inspectBattle'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/baseline-report-ui-integration.test.mjs:116:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'report-summary', 'summary-action', 'samples-summary', 'sample-action', 'download', 'not-first-summary', 'playAgain', 'resultMenu', 'inspectBattle' ],
+    expected: [ 'report-summary', 'summary-action', 'playAgain', 'resultMenu', 'inspectBattle' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/baseline-report-ui-integration.test.mjs:127:1
+✖ Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary (1.97547ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'playAgain',
+      'resultMenu',
+  +   'resultMenu',
+  +   'resultMenu'
+  -   'inspectBattle',
+  -   'report-summary'
+    ]
+  
+      at TestContext.<anonymous> (file:///tmp/baseline-report-ui-integration.test.mjs:152:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'playAgain', 'resultMenu', 'resultMenu', 'resultMenu' ],
+    expected: [ 'playAgain', 'resultMenu', 'inspectBattle', 'report-summary' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
