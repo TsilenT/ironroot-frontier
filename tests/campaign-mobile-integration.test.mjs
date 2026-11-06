@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { runInContext, createContext } from 'node:vm';
 import { BUILDINGS, buildBounds } from '../dist/engine.js';
 import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission } from '../dist/campaign.js';
-import { campaignBuildChoices, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
+import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 import { visibleViewportRect } from '../dist/mobile-battlefield.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
@@ -37,9 +37,10 @@ function harness() {
   for(const id of ['campaignCoach','coachTitle','coachText','allBuildings','toggleCoach'])$(id).parentElement=$('commandDeck');
   $('compactBuild').rect=box(5,420,55,44);$('home').rect=box(5,470,44,44);$('front').rect=box(270,470,44,44);$('battle').rect=box(0,72,320,250);
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
+  $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,campaignBuildChoices,campaignCoach,guidancePointVisible,visibleViewportRect,
-    game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,
+  c={$,BUILDINGS,buildBounds,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+    game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
     battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),
     document:{body:{},activeElement:null,querySelector:s=>s?.startsWith('[data-type=')?cards.find(n=>n.dataset.type===s.match(/"([^"]+)"/)[1]):s?.startsWith('#')?$(s.slice(1)):null,
@@ -93,11 +94,11 @@ test('paused, hidden-hint and modal flows clear highlights/rings without mutatin
   }
 });
 
-test('scrolled/clipped cards are never highlighted and offscreen suggestions use Home',()=>{
+test('scrolled/clipped cards are never highlighted and offscreen suggestions use the minimap',()=>{
   const h=harness();h.c.setCompactBuildOpen(true);h.$('card-mint').rect=box(400,310,90,90);h.c.updateCampaignDeck();
   assert.deepEqual(h.highlights(),[]);
   h.c.selectBuild('mint');h.c.renderer.camera=2200;h.c.updateCampaignDeck();
-  assert.deepEqual(h.highlights(),['home']);
+  assert.deepEqual(h.highlights(),['minimap']);
   const hint=campaignCoach(h.c.game,'winter-stores',h.c.ui);assert.equal(guidancePointVisible(h.c.renderer,h.c.game,hint.site),false);
   drawCampaignGuidance({...h.c.renderer,c:{save(){throw Error('Offscreen ring must not draw');}}},h.c.game,h.c.ui);
 });
@@ -107,7 +108,7 @@ test('roster policy is isolated/frozen, unknown lesson IDs cannot inherit old th
   for(const roster of Object.values(CAMPAIGN_BUILD_INTRODUCTIONS))assert.ok(Object.isFrozen(roster));
   const game=createCampaignMission('emberwatch');assert.equal(campaignCoach(game,'future-one-road-intro'),null);
   game.state.gold[0]=0;const hint=campaignCoach(game,'emberwatch',{build:'archery'});
-  assert.equal(hint.site,undefined);assert.match(hint.text,/need 175 gold/);assert.doesNotMatch(hint.text,/ring/);
+  assert.equal(hint.site,undefined);assert.match(hint.text,/need 175 gold/);assert.doesNotMatch(hint.text,/gold ring/);
 });
 
 test('Continue/Back and optional replay retain the same authored mission and do not reset campaign records',()=>{

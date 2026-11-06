@@ -39,7 +39,7 @@
             <span>⚑</span><b id="army">0</b><small>ARMY</small>
           </div>
           <div class="clock-block">
-            <b id="time">00:00</b><small>BATTLE TIME</small>
+            <b id="time">00:00</b><small id="battleClockLabel">BATTLE TIME</small>
           </div>
         </div>
       </header>
@@ -182,6 +182,8 @@
           ><button id="cancelBuild" class="hidden">Cancel ×</button>
         </div>
         <div class="deck-tools">
+          <button id="coachResume" class="hidden">Resume battle</button>
+          <button id="coachReplay" class="hidden">Pause to learn</button>
           <button id="toggleCoach" class="hidden" aria-pressed="true">Hide hints</button>
           <button id="allBuildings" class="hidden" aria-expanded="false" aria-controls="buildCards">All buildings</button>
         </div>
@@ -855,6 +857,16 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         ><button id="confirmImport" class="gold-button">
           Replace local saves
         </button>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="coachingModal">
+      <section class="coaching-modal modal" role="dialog" aria-modal="true" aria-labelledby="coachingTitle" aria-describedby="coachingText coachingAgency">
+        <div class="eyebrow">TEACHING PAUSE</div>
+        <h2 id="coachingTitle"></h2>
+        <p id="coachingText"></p>
+        <p id="coachingAgency">Time, troops and income stay stopped while you build. Gold costs still apply. The gold ring is a suggestion; choose any valid site or another building. Selecting a building brings its suggestion into view. Use Resume (▶) whenever you’re ready.</p>
+        <button id="coachingPlan" class="gold-button" data-dialog-focus>Build while paused</button>
+        <button id="coachingPlay" class="secondary-button">Start battle now</button>
       </section>
     </div>
     <script type="module" src="./app.js"></script>

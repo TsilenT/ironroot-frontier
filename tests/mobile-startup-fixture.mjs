@@ -6,7 +6,7 @@ import {ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS as CAMP
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect} from '../dist/mobile-battlefield.js';
-import {campaignBuildChoices,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
+import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
@@ -44,7 +44,7 @@ export function startupHarness({width=320,height=480,source=app}={}) {
  document={body:nodes.get('__body'),activeElement:null,createElement:tag=>new Element(tag),querySelector:()=>null,querySelectorAll:()=>[],addEventListener(){}};
  const fixture=campaignFixture('protected');
  const c={$,document,window:{innerWidth:width,innerHeight:height,addEventListener(){},matchMedia:q=>({matches:q.includes('orientation: landscape')?width>height&&height<=500:width<=height&&width<=700})},
-  campaignBuildChoices,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,
+  campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
@@ -59,7 +59,7 @@ export function startupHarness({width=320,height=480,source=app}={}) {
   getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible'}),
   iconSVG:()=>'',timeText:t=>String(t),setTimeout,requestAnimationFrame(){},pauseControl(){},
  };
- c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
+ c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
  for(const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);

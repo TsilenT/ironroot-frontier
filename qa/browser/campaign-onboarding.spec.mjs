@@ -11,6 +11,10 @@ const test = base.extend({ page: async ({ page }, use) => {
   await use(page);
   expect(errors, 'uncaught browser errors').toEqual([]);
 } });
+async function startRunning(page) {
+  await press(page, '#start');
+  if (await page.locator('#coachingModal').isVisible()) await press(page, '#coachingPlay');
+}
 async function press(page, selector) {
   if (await prepareBuildControl(page, selector)) return;
   const control = page.locator(selector);
@@ -47,7 +51,7 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
   await expect(page.locator('#skirmishConfig')).toBeHidden();
   await press(page, '[data-mode="skirmish"]');
   await expect(page.locator('#skirmishConfig')).toBeVisible();
-  await press(page, '#start');
+  await startRunning(page);
   await expect(page.locator('#matchType')).toHaveText('SOLO SKIRMISH');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
@@ -57,13 +61,14 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
 
 test('opening guidance uses real build cards, normal gold costs, and real battlefield construction', async ({ page }) => {
   await page.goto('/');
-  await press(page, '#start');
+  await startRunning(page);
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(2);
   await expect(page.locator('[data-type="barracks"]')).toHaveClass(/coach-highlight/);
   await expect(page.locator('#coachTitle')).toHaveText('Build a barracks');
   await press(page, '[data-type="barracks"]');
   await placeAt(page, 550, 450);
+  await press(page, '#cancelBuild'); // Repeated placement stays armed until explicitly cancelled.
   await expect(page.locator('#coachTitle')).toHaveText('Add archers');
   await press(page, '[data-type="archery"]');
   await expect(page.locator('#coachText')).toContainText('gold ring');
@@ -80,7 +85,7 @@ test('opening guidance uses real build cards, normal gold costs, and real battle
 });
 
 test('all buildings and hint controls are reversible and do not bypass normal selection', async ({ page }) => {
-  await page.goto('/'); await press(page, '#start');
+  await page.goto('/'); await startRunning(page);
   await press(page, '#allBuildings');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(7);
@@ -119,7 +124,7 @@ test('an existing campaign save keeps its full roster and construction without m
 });
 
 test('save and exit focuses the saved mission and resumes that same battle', async ({ page }) => {
-  await page.goto('/'); await press(page, '#start'); await press(page, '#pause');
+  await page.goto('/'); await startRunning(page); await press(page, '#pause');
   await press(page, '#saveExit');
   await expect(page.locator('#campaignConfig')).toBeVisible();
   await expect(page.locator('#resumeSaved')).toBeFocused();

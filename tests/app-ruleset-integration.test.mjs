@@ -34,7 +34,7 @@ test('real start selects new skirmish rules explicitly but cannot reinterpret a 
 });
 
 function safetyContext(game=openGame()){
- const $=dom(),log={saves:0,interrupts:0},c={$,game,started:true,paused:false,battleSafetyReason:null,objectiveOutcome:null,recoveryHold:null,profileGate:null,
+ const $=dom(),log={saves:0,interrupts:0},c={$,game,started:true,paused:false,battleSafetyReason:null,coachingHold:false,document:{hidden:false},objectiveOutcome:null,recoveryHold:null,profileGate:null,
   viewportPause:{active:false},ui:{build:'barracks',spell:true},setCompactBuildOpen(){},pauseControl(){},syncDialogs(){},
   save(){log.saves++;return true;},interruptMobileInput(){log.interrupts++;},battleSession:{status:()=> 'current'},showRecoverySettings(){},showTitle(){},toast(){}};
  createContext(c);runInContext(part('function holdBattleSafety(','function start('),c);runInContext(part('function pause(value,',"$('pause').onclick ="),c);return {c,$,log};
