@@ -1,0 +1,838 @@
+[
+  {
+    "at": "2026-11-06T21:08:48.214Z",
+    "size": "667x300",
+    "syntheticVisual": "native",
+    "syntheticInsets": "none",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 667,
+      "bottom": 300,
+      "width": 667,
+      "height": 300
+    },
+    "appClass": "app protected-landscape protected-sidebar protected-mobile protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 0,
+      "right": 391,
+      "bottom": 300,
+      "width": 391,
+      "height": 300,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 391,
+        "top": 0,
+        "right": 667,
+        "bottom": 72,
+        "width": 276,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "NORMAL · PROTECT\n          10.0/15 gold/s · 2/2 protected02:30 remaining\n  ",
+        "left": 391,
+        "top": 72,
+        "right": 667,
+        "bottom": 204,
+        "width": 276,
+        "height": 132,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 391,
+        "top": 204,
+        "right": 667,
+        "bottom": 300,
+        "width": 276,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 473,
+        "top": 206,
+        "right": 517,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 521,
+        "top": 206,
+        "right": 565,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 569,
+        "top": 206,
+        "right": 613,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 617,
+        "top": 206,
+        "right": 661,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 397,
+        "top": 254,
+        "right": 441,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 617,
+        "top": 254,
+        "right": 661,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 445,
+        "top": 254,
+        "right": 613,
+        "bottom": 298,
+        "width": 168,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 397,
+        "top": 206,
+        "right": 453,
+        "bottom": 250,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "protected-target",
+        "label": "Focus North gold mine",
+        "left": 397,
+        "top": 108,
+        "right": 526,
+        "bottom": 152,
+        "width": 129,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "protected-target",
+        "label": "Focus South gold mine",
+        "left": 532,
+        "top": 108,
+        "right": 661,
+        "bottom": 152,
+        "width": 129,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:00",
+    "hudText": [
+      {
+        "id": "gold",
+        "text": "522",
+        "rect": {
+          "id": "gold",
+          "label": "522",
+          "left": 414.78125,
+          "top": 2,
+          "right": 443.28125,
+          "bottom": 26,
+          "width": 28.5,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "income",
+        "text": "+10 /s",
+        "rect": {
+          "id": "income",
+          "label": "+10 /s",
+          "left": 450.28125,
+          "top": 4,
+          "right": 471.796875,
+          "bottom": 24,
+          "width": 21.515625,
+          "height": 20,
+          "visible": true
+        }
+      },
+      {
+        "id": "army",
+        "text": "0",
+        "rect": {
+          "id": "army",
+          "label": "0",
+          "left": 551.703125,
+          "top": 2,
+          "right": 561.203125,
+          "bottom": 26,
+          "width": 9.5,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "time",
+        "text": "00:00",
+        "rect": {
+          "id": "time",
+          "label": "00:00",
+          "left": 617.953125,
+          "top": 2,
+          "right": 661,
+          "bottom": 26,
+          "width": 43.046875,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveIdentity",
+        "text": "NORMAL · PROTECT",
+        "rect": {
+          "id": "objectiveIdentity",
+          "label": "NORMAL · PROTECT",
+          "left": 397,
+          "top": 76,
+          "right": 579.515625,
+          "bottom": 90,
+          "width": 182.515625,
+          "height": 14,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveProgress",
+        "text": "10.0/15 gold/s · 2/2 protected",
+        "rect": {
+          "id": "objectiveProgress",
+          "label": "10.0/15 gold/s · 2/2 protected",
+          "left": 397,
+          "top": 92,
+          "right": 661,
+          "bottom": 105,
+          "width": 264,
+          "height": 13,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveTime",
+        "text": "02:30 remaining",
+        "rect": {
+          "id": "objectiveTime",
+          "label": "02:30 remaining",
+          "left": 585.515625,
+          "top": 76,
+          "right": 661,
+          "bottom": 89,
+          "width": 75.484375,
+          "height": 13,
+          "visible": true
+        }
+      },
+      {
+        "id": "yourHpText",
+        "text": "64%",
+        "rect": {
+          "id": "yourHpText",
+          "label": "64%",
+          "left": 474.359375,
+          "top": 38,
+          "right": 494,
+          "bottom": 52,
+          "width": 19.640625,
+          "height": 14,
+          "visible": true
+        }
+      },
+      {
+        "id": "enemyHpText",
+        "text": "100%",
+        "rect": {
+          "id": "enemyHpText",
+          "label": "100%",
+          "left": 632.765625,
+          "top": 38,
+          "right": 656,
+          "bottom": 52,
+          "width": 23.234375,
+          "height": 14,
+          "visible": true
+        }
+      }
+    ],
+    "textNodes": [
+      {
+        "id": "",
+        "label": "YOUR CITADEL",
+        "left": 404,
+        "top": 38,
+        "right": 492,
+        "bottom": 48,
+        "width": 88,
+        "height": 10,
+        "visible": true
+      },
+      {
+        "id": "",
+        "label": "ENEMY CITADEL",
+        "left": 566,
+        "top": 38,
+        "right": 654,
+        "bottom": 48,
+        "width": 88,
+        "height": 10,
+        "visible": true
+      },
+      {
+        "id": "protected-name",
+        "label": "North gold mine",
+        "left": 403,
+        "top": 113.21875,
+        "right": 520,
+        "bottom": 127.609375,
+        "width": 117,
+        "height": 14.390625,
+        "visible": true
+      },
+      {
+        "id": "protected-health-4",
+        "label": "Original structure missing; health unavailable.",
+        "left": 403,
+        "top": 130.609375,
+        "right": 520,
+        "bottom": 143.796875,
+        "width": 117,
+        "height": 13.1875,
+        "visible": true
+      },
+      {
+        "id": "protected-focus-hint",
+        "label": "Focus",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "visible": false
+      },
+      {
+        "id": "protected-name",
+        "label": "South gold mine",
+        "left": 538,
+        "top": 113.21875,
+        "right": 655,
+        "bottom": 127.609375,
+        "width": 117,
+        "height": 14.390625,
+        "visible": true
+      },
+      {
+        "id": "protected-health-5",
+        "label": "Original structure missing; health unavailable.",
+        "left": 538,
+        "top": 130.609375,
+        "right": 655,
+        "bottom": 143.796875,
+        "width": 117,
+        "height": 13.1875,
+        "visible": true
+      },
+      {
+        "id": "protected-focus-hint",
+        "label": "Focus",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "visible": false
+      }
+    ],
+    "scroll": {
+      "width": 667,
+      "height": 300
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true,
+    "syntheticPresentation": "lost"
+  },
+  {
+    "at": "2026-11-06T21:08:51.624Z",
+    "size": "667x300",
+    "syntheticVisual": "native",
+    "syntheticInsets": "none",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 667,
+      "bottom": 300,
+      "width": 667,
+      "height": 300
+    },
+    "appClass": "app protected-landscape protected-sidebar protected-mobile protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 0,
+      "right": 391,
+      "bottom": 300,
+      "width": 391,
+      "height": 300,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 391,
+        "top": 0,
+        "right": 667,
+        "bottom": 72,
+        "width": 276,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "NORMAL · PROTECT\n          10.0/15 gold/s · 2/2 protected02:30 remaining\n  ",
+        "left": 391,
+        "top": 72,
+        "right": 667,
+        "bottom": 204,
+        "width": 276,
+        "height": 132,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 391,
+        "top": 204,
+        "right": 667,
+        "bottom": 300,
+        "width": 276,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 473,
+        "top": 206,
+        "right": 517,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 521,
+        "top": 206,
+        "right": 565,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 569,
+        "top": 206,
+        "right": 613,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 617,
+        "top": 206,
+        "right": 661,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 397,
+        "top": 254,
+        "right": 441,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 617,
+        "top": 254,
+        "right": 661,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 445,
+        "top": 254,
+        "right": 613,
+        "bottom": 298,
+        "width": 168,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 397,
+        "top": 206,
+        "right": 453,
+        "bottom": 250,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "protected-target",
+        "label": "Focus North gold mine",
+        "left": 397,
+        "top": 108,
+        "right": 526,
+        "bottom": 152,
+        "width": 129,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "protected-target",
+        "label": "Focus South gold mine",
+        "left": 532,
+        "top": 108,
+        "right": 661,
+        "bottom": 152,
+        "width": 129,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:00",
+    "hudText": [
+      {
+        "id": "gold",
+        "text": "522",
+        "rect": {
+          "id": "gold",
+          "label": "522",
+          "left": 414.78125,
+          "top": 2,
+          "right": 443.28125,
+          "bottom": 26,
+          "width": 28.5,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "income",
+        "text": "+10 /s",
+        "rect": {
+          "id": "income",
+          "label": "+10 /s",
+          "left": 450.28125,
+          "top": 4,
+          "right": 471.796875,
+          "bottom": 24,
+          "width": 21.515625,
+          "height": 20,
+          "visible": true
+        }
+      },
+      {
+        "id": "army",
+        "text": "0",
+        "rect": {
+          "id": "army",
+          "label": "0",
+          "left": 551.703125,
+          "top": 2,
+          "right": 561.203125,
+          "bottom": 26,
+          "width": 9.5,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "time",
+        "text": "00:00",
+        "rect": {
+          "id": "time",
+          "label": "00:00",
+          "left": 617.953125,
+          "top": 2,
+          "right": 661,
+          "bottom": 26,
+          "width": 43.046875,
+          "height": 24,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveIdentity",
+        "text": "NORMAL · PROTECT",
+        "rect": {
+          "id": "objectiveIdentity",
+          "label": "NORMAL · PROTECT",
+          "left": 397,
+          "top": 76,
+          "right": 579.515625,
+          "bottom": 90,
+          "width": 182.515625,
+          "height": 14,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveProgress",
+        "text": "10.0/15 gold/s · 2/2 protected",
+        "rect": {
+          "id": "objectiveProgress",
+          "label": "10.0/15 gold/s · 2/2 protected",
+          "left": 397,
+          "top": 92,
+          "right": 661,
+          "bottom": 105,
+          "width": 264,
+          "height": 13,
+          "visible": true
+        }
+      },
+      {
+        "id": "objectiveTime",
+        "text": "02:30 remaining",
+        "rect": {
+          "id": "objectiveTime",
+          "label": "02:30 remaining",
+          "left": 585.515625,
+          "top": 76,
+          "right": 661,
+          "bottom": 89,
+          "width": 75.484375,
+          "height": 13,
+          "visible": true
+        }
+      },
+      {
+        "id": "yourHpText",
+        "text": "64%",
+        "rect": {
+          "id": "yourHpText",
+          "label": "64%",
+          "left": 474.359375,
+          "top": 38,
+          "right": 494,
+          "bottom": 52,
+          "width": 19.640625,
+          "height": 14,
+          "visible": true
+        }
+      },
+      {
+        "id": "enemyHpText",
+        "text": "100%",
+        "rect": {
+          "id": "enemyHpText",
+          "label": "100%",
+          "left": 632.765625,
+          "top": 38,
+          "right": 656,
+          "bottom": 52,
+          "width": 23.234375,
+          "height": 14,
+          "visible": true
+        }
+      }
+    ],
+    "textNodes": [
+      {
+        "id": "",
+        "label": "YOUR CITADEL",
+        "left": 404,
+        "top": 38,
+        "right": 492,
+        "bottom": 48,
+        "width": 88,
+        "height": 10,
+        "visible": true
+      },
+      {
+        "id": "",
+        "label": "ENEMY CITADEL",
+        "left": 566,
+        "top": 38,
+        "right": 654,
+        "bottom": 48,
+        "width": 88,
+        "height": 10,
+        "visible": true
+      },
+      {
+        "id": "protected-name",
+        "label": "North gold mine",
+        "left": 403,
+        "top": 113.21875,
+        "right": 520,
+        "bottom": 127.609375,
+        "width": 117,
+        "height": 14.390625,
+        "visible": true
+      },
+      {
+        "id": "protected-health-4",
+        "label": "76 of 380 health. critical.",
+        "left": 403,
+        "top": 130.609375,
+        "right": 520,
+        "bottom": 143.796875,
+        "width": 117,
+        "height": 13.1875,
+        "visible": true
+      },
+      {
+        "id": "protected-focus-hint",
+        "label": "Focus",
+        "left": 506,
+        "top": 114,
+        "right": 520,
+        "bottom": 124,
+        "width": 14,
+        "height": 10,
+        "visible": true
+      },
+      {
+        "id": "protected-name",
+        "label": "South gold mine",
+        "left": 538,
+        "top": 113.21875,
+        "right": 655,
+        "bottom": 127.609375,
+        "width": 117,
+        "height": 14.390625,
+        "visible": true
+      },
+      {
+        "id": "protected-health-5",
+        "label": "76 of 380 health. critical.",
+        "left": 538,
+        "top": 130.609375,
+        "right": 655,
+        "bottom": 143.796875,
+        "width": 117,
+        "height": 13.1875,
+        "visible": true
+      },
+      {
+        "id": "protected-focus-hint",
+        "label": "Focus",
+        "left": 641,
+        "top": 114,
+        "right": 655,
+        "bottom": 124,
+        "width": 14,
+        "height": 10,
+        "visible": true
+      }
+    ],
+    "scroll": {
+      "width": 667,
+      "height": 300
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true,
+    "syntheticPresentation": "critical"
+  }
+]

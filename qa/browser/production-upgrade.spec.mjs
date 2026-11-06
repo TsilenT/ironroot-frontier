@@ -1,4 +1,5 @@
 import {expect} from '@playwright/test';
+import {assertPassiveContinuation} from './passive-continuation.mjs';
 import {Game} from '../../dist/engine.js';
 import {parseBackup} from '../../dist/backup.js';
 import {test,press,pause,selectMap,homePoint,tapPoint,openBackup,downloadBackup,chooseBackup} from './map-browser-helpers.mjs';
@@ -93,13 +94,16 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     await press(modern,'#resumeSaved');const resumed=await pause(modern);
     expect(resumed.version).toBe(2);expect(resumed.campaignId).toBe(historical.campaignId);
     expect(resumed.game.version).toBe(historical.game.version);
-    for(const key of ['mapId','mapRevision','difficulty','ai','seed'])expect(resumed.game[key]).toEqual(historical.game[key]);
+    // RNG and spawned units may advance between Resume and the next Pause.
+    // Preserve exact simulation/seed verification through bounded tick replay.
+    assertPassiveContinuation(historical.game,resumed.game);
     expect(Game.restore(resumed.game).ruleset.id).toBe('frontier-legacy');
     expect(resumed.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level])).toEqual(historical.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level]));
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(historical.game.state.time);
     expect(resumed.game.state.time-historical.game.state.time).toBeLessThan(3);
     await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');const twice=await pause(modern);
     expect(twice.game.version).toBe(historical.game.version);expect(twice.campaignId).toBe(historical.campaignId);
+    assertPassiveContinuation(resumed.game,twice.game);
     await press(modern,'#saveExit');await openBackup(modern);
     const exported=parseBackup(await downloadBackup(modern));
     for(const domain of ['campaign','trials','settings','history'])expect(exported.data[domain]).toEqual(fixture.domains[domain]);

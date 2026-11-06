@@ -8,6 +8,7 @@ import { createObjectiveAlertPolicy } from '../dist/objective-alerts.js';
 import { BUILDINGS, SPELL } from '../dist/engine.js';
 import { campaignBuildChoices } from '../dist/campaign-flow.js';
 import { nativeSpaceTarget } from '../dist/persistence.js';
+import { visibleViewportRect, fitMobileViewport } from '../dist/mobile-battlefield.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
@@ -37,15 +38,15 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
   const dialogLayers = [new Element(),new Element()];
   for(const layer of dialogLayers)layer.classes.add('hidden');
   const context = {
-    campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,updateCampaignDeck(){},
+    visibleViewportRect,fitMobileViewport,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,updateCampaignDeck(){},
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
     canInteract:()=>state.canInteract,updateSelection(){},
     cancel:()=>{state.cancelled++;state.ui={build:null,spell:false,selected:null};context.ui=state.ui;},
-    syncInputScope:()=>state.scopeUpdates++,resetBattleGesture:()=>state.reset++, renderer:{camera:123,clampCamera:()=>state.clamped++},
+    syncInputScope:()=>state.scopeUpdates++,resetBattleGesture:()=>state.reset++, renderer:{camera:123,resize(){},clampCamera:()=>state.clamped++},
     toast:text=>state.toasts.push(text),positionToast:()=>state.layoutUpdates++,
     document:{createElement:tag=>new Element(tag),addEventListener:(name,callback,capture)=>{assert.equal(capture,true);documentListeners[name]=callback;}},
-    window:{addEventListener:(name,callback)=>windowListeners[name]=callback,matchMedia:query=>({matches:query.includes('orientation: portrait')?state.portrait:state.landscape})},
+    window:{get innerWidth(){return state.portrait?320:state.landscape?844:1280;},get innerHeight(){return state.portrait?568:state.landscape?390:900;},addEventListener:(name,callback)=>windowListeners[name]=callback,matchMedia:query=>({matches:query.includes('orientation: portrait')?state.portrait:state.landscape})},
   };
   const api = runInNewContext(source+'\n({beginProtectedObjectives,updateProtectedObjectives,focusProtectedObjective,finishProtectedObjectives,flushProtectedWarnings,syncProtectedLayout,setCompactBuildOpen,updateCompactBuildControl})',context);
   api.beginProtectedObjectives();api.updateProtectedObjectives();

@@ -1,11 +1,13 @@
 // Prepared native hit-testing regression. Requires the authorized browser runner.
 // Resized touch projects are synthetic Chromium touch, not physical devices.
+import {settlePhoneViewport} from './phone-text-evidence.mjs';
 import {expect} from '@playwright/test';
 import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
 import {test,press,tapPoint,seedOnce,saved} from './map-browser-helpers.mjs';
 const SAVE='ironroot.battle.v1';
 async function activateCompact(page,label,open){
+  await settlePhoneViewport(page);
   const button=page.locator('#compactBuild');
   await expect(button).toHaveText(label);await expect(button).toBeEnabled();
   const hit=await button.evaluate(element=>{
@@ -53,7 +55,7 @@ test('compact Build Close and Cancel are native hit targets despite the noninter
   expect(await page.locator('#compactBuild').evaluate(e=>!!e.closest('[inert]'))).toBe(true);
   await press(page,'#settingsDone');await activateCompact(page,'Build',true);await activateCompact(page,'Close',false);
   for(const size of [{width:844,height:390},{width:320,height:480},{width:390,height:500},{width:320,height:568}]){
-    await page.setViewportSize(size);await expect(page.locator('#viewportModal')).toBeHidden();
+    await page.setViewportSize(size);await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
     await activateCompact(page,'Build',true);await activateCompact(page,'Close',false);
   }
   await page.setViewportSize({width:640,height:360});
@@ -69,7 +71,7 @@ test('shared mobile field keeps controls outside the world and holds unsafe resi
   await seedOnce(page,{[SAVE]:JSON.stringify(fixture.envelope),[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});
   await press(page,'#resumeSaved');
   for(const size of [{width:320,height:480},{width:390,height:500},{width:320,height:568},{width:568,height:320},{width:844,height:390}]){
-    await page.setViewportSize(size);await expect(page.locator('#viewportModal')).toBeHidden();
+    await page.setViewportSize(size);await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
     const geometry=await page.evaluate(()=>{
       const field=document.getElementById('battle').getBoundingClientRect();
       const ids=['pause','speed','sound','settings','home','front','compactBuild','minimap'];
@@ -85,13 +87,15 @@ test('shared mobile field keeps controls outside the world and holds unsafe resi
     for(const target of await page.locator('[data-protected-id]').all())await target.scrollIntoViewIfNeeded();
     await activateCompact(page,'Build',true);await activateCompact(page,'Close',false);
   }
-  await press(page,'#settings');await page.setViewportSize({width:568,height:300});
+  // Former 568×300 is newly safe. 568×210 forces genuine grid overflow
+  // below the 272px protected sidebar budget, preserving every hold assertion.
+  await press(page,'#settings');await page.setViewportSize({width:568,height:210});
   await expect(page.locator('#settingsModal')).toBeVisible();
   await page.setViewportSize({width:320,height:480});await press(page,'#settingsDone');
   await expect(page.locator('#viewportModal')).toBeVisible();await expect(page.locator('#viewportResume')).toBeEnabled();
   const held=await saved(page);await page.waitForTimeout(700);expect(await saved(page)).toEqual(held);
   await press(page,'#viewportResume');await expect(page.locator('#viewportModal')).toBeHidden();
-  await page.setViewportSize({width:568,height:300});await expect(page.locator('#viewportResume')).toBeDisabled();
+  await page.setViewportSize({width:568,height:210});await expect(page.locator('#viewportResume')).toBeDisabled();
   await expect(page.locator('#viewportExit')).toBeEnabled();
   const before=await saved(page);await page.waitForTimeout(700);expect(await saved(page)).toEqual(before);
   // The bounded tiny dialog keeps safe actions as initial focus, while its

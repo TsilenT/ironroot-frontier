@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext,createContext} from 'node:vm';
-import {createViewportPause,inspectMobileGeometry,visibleViewportRect} from '../dist/mobile-battlefield.js';
+import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {createCampaignMission,getCampaignTargets,evaluateCampaignMission,CAMPAIGN_MISSIONS} from '../dist/campaign.js';
 import {drawCampaignGuidance} from '../dist/campaign-flow.js';
@@ -10,22 +10,23 @@ import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {layout,box} from './mobile-layout-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 const section=(a,b)=>app.slice(app.indexOf(a),app.indexOf(b,app.indexOf(a)));
-function harness(w=568,h=300){
- let geometry=layout(w,h);const elements=new Map(),log={saves:0,interruptions:0,resets:0,scene:[],advances:[],toasts:[]};
- const $=id=>{if(!elements.has(id)){const classes=new Set(['viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry.nodes[id]??box(0,0,0,0)});}return elements.get(id);};
+function harness(w=568,h=210){
+ let insets={};const geometry=()=>{const style=$('app').style;return layout(w,h,{...insets,root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):w,style.height?parseFloat(style.height):h)});};const elements=new Map(),log={saves:0,interruptions:0,resets:0,scene:[],advances:[],toasts:[]};
+ const $=id=>{if(!elements.has(id)){const classes=new Set(['viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
  $('app').classList.add('protected-mobile');$('app').classList.add('protected-compact');
  const game=createCampaignMission('winter-stores'),inputScope=createInputScopeGuard('compact-battle:landscape');
- const c={battleSafetyReason:null,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,
+ const c={battleSafetyReason:null,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
   protectedControls:new Map([['a',{button:$('target0')}],['b',{button:$('target1')}]]),
   inputScope,controller:{reset(){log.resets++;}},resetBattleGesture(){log.interruptions++;},armedProtectedControl:{},closeSelectionArmed:true,padHud:true,
   recoveryHold:null,profileGate:null,battleSession:{status:()=>c.stale?'stale':'current'},showRecoverySettings(){c.recoveryShown=true;},showTitle(){c.titleShown=true;c.started=false;},
   setCompactBuildOpen(){ $('app').classList.remove('compact-build-open');},cancel(){c.ui.build=null;c.ui.spell=false;c.ui.selected=null;c.setCompactBuildOpen(false);},pauseControl(){},
   save(){log.saves++;return !c.saveFails;},persistProgress:()=>true,progressDirty:false,toast:x=>log.toasts.push(x),
+  getComputedStyle:()=>Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`])),
   window:{innerWidth:w,innerHeight:h,visualViewport:{addEventListener(){}}},document:{},ui:{build:'mint',spell:true,selected:7},
   last:0,lastProfileCheck:0,syncProfileSafety(){},updateController(){assert.equal(c.paused||!c.viewportPause.active,true);},speed:1,follow:false,saveTimer:0,hudTimer:0,toastTimer:0,
   currentCampaign:'winter-stores',currentChallenge:null,CAMPAIGN_MISSIONS,CHALLENGES:[],evaluateCampaignMission,getCampaignTargets,
   advanceObjectiveBattle(...args){log.advances.push(args[1]);return advanceObjectiveBattle(...args);},sampleBattleReport(){},finish(){},
-  renderer:{camera:450,draw(){}},requestAnimationFrame(){},updateHUD(){},
+  renderer:{camera:450,draw(){},resize(){}},syncProtectedLayout(){},requestAnimationFrame(){},updateHUD(){},
   audio:{setScene:x=>log.scene.push(x),setIntensity(){}},heardEffects:new WeakSet(),heardProjectiles:new WeakSet(),sound(){},
   settingsWasPaused:false,helpWasPaused:false,invalidateImportRead(){},updateRecoveryUI(){},
  };
@@ -33,7 +34,7 @@ function harness(w=568,h=300){
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
  for(const source of [section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
- return {c,$,log,resize(width,height,insets){geometry=layout(width,height,insets);c.window.innerWidth=width;c.window.innerHeight=height;c.mobileLayout=width>height?'landscape':'portrait';},frame:now=>c.frame(now),sync:()=>c.syncViewportSafety()};
+ return {c,$,log,resize(width,height,nextInsets={}){w=width;h=height;insets=nextInsets;c.window.innerWidth=width;c.window.innerHeight=height;c.mobileLayout=width>height?'landscape':'portrait';},frame:now=>c.frame(now),sync:()=>c.syncViewportSafety()};
 }
 
 test('real app holds a loaded undersized battle before advancement, saves once, and waits for explicit resume',()=>{
@@ -74,9 +75,9 @@ test('the same guarded title exit is usable while blocked and retains the paused
  assert.equal(h.c.started,true);assert.equal(h.c.paused,true);assert.equal(h.c.titleShown,undefined);assert.match(h.$('viewportSaveStatus').textContent,/Saving failed.*remains paused/);
  h.c.saveFails=false;h.$('viewportExit').onclick();assert.equal(h.c.titleShown,true);assert.equal(h.c.started,false);
 });
-test('visual-viewport clipping is detected with unchanged CSS dimensions, without a 568px portrait minimum',()=>{
+test('a genuinely too-small visual viewport is held even after fitting, without an arbitrary portrait minimum',()=>{
  const h=harness(320,480);h.sync();assert.equal(h.c.viewportPause.active,false);
- h.c.window.visualViewport.height=450;h.sync();assert.equal(h.c.viewportPause.blocked,true);
+ h.c.window.visualViewport.height=390;h.sync();assert.equal(h.c.viewportPause.blocked,true);
  delete h.c.window.visualViewport.height;h.sync();assert.equal(h.c.viewportPause.blocked,false);assert.equal(h.c.paused,true);
 });
 test('actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold',()=>{
