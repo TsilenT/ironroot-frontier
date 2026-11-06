@@ -13,9 +13,9 @@ test('optional introduction can be left for Emberwatch without granting stars or
   const before=await page.evaluate(key=>localStorage.getItem(key),campaignKey);
   await press(page,'#skipIntroduction');await expect(page.locator('#campaignMissionTitle')).toHaveText('Emberwatch');
   expect(await page.evaluate(key=>localStorage.getItem(key),campaignKey)).toBe(before);expect(await saved(page)).toBeNull();
-  await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
+  await press(page,'#campaignStoryNav');await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
   await expect(page.locator('#start')).toBeDisabled();await expect(page.locator('#campaignUnlock')).toContainText('First Watch');
-  await press(page,'[data-mission="first-watch"]');await press(page,'#start');
+  await press(page,'#campaignChapterNav');await press(page,'[data-mission="first-watch"]');await press(page,'#start');
   const first=await pause(page);expect(first).toMatchObject({version:3,scenario:{kind:'campaign',id:'first-watch',revision:1},game:{mapId:'intro-one-road',rulesetId:'frontier-legacy'}});
   expect(Game.restore(first.game).map.lanes).toHaveLength(1);expect(first.game.state.buildings.filter(b=>b.side===0)).toHaveLength(0);
 });

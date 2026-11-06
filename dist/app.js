@@ -58,6 +58,7 @@ import { decodeBattle, encodeBattle, scenarioForBattle, identityOf } from './bat
 import { GameAudio } from './audio.js';
 import { advanceObjectiveBattle } from './objectives.js';
 import { campaignBuildChoices, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
+import { missionBriefing } from './campaign-presentation.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';
 import { createObjectiveAlertPolicy } from './objective-alerts.js';
 import {
@@ -172,6 +173,7 @@ let mode = 'campaign',
   selectedCampaign = CAMPAIGN_MISSIONS[0].id,
   selectedChapter = CAMPAIGN_CHAPTERS[0].id;
 let expandedBuilds = false, resumedBattle = false, coachEnabled = true;
+let campaignPage = 'mission', briefingMission = null;
 const labels = {
   barracks: ['Barracks', 'Shielded warriors', '9s / wave'],
   archery: ['Archery', 'Ranged support', '10s / wave'],
@@ -1255,6 +1257,7 @@ function showTitle({ focusStart = false, focusResume = false } = {}) {
   $('resultModal').classList.add('hidden');
   $('pauseVeil').classList.add('hidden');
   $('welcome').classList.remove('hidden');
+  campaignPage = 'mission';
   setMode(mode);
   updateResume();
   syncDialogs();
@@ -2059,6 +2062,7 @@ function setMode(value) {
     .querySelector('.welcome')
     .classList.toggle('campaign-mode', mode === 'campaign');
   $('start').disabled = false;
+  $('start').classList.remove('hidden');
   $('start').innerHTML =
     mode === 'campaign'
       ? 'BEGIN MISSION <span>→</span>'
@@ -2088,13 +2092,18 @@ for (const button of document.querySelectorAll('[data-mode]'))
     setMode(button.dataset.mode);
     sound('click');
   };
-function revealCampaignChapter() {
-  const strip = $('campaignChapters'), active = strip.querySelector('.active');
-  if (mode !== 'campaign' || !active || strip.clientWidth <= 0) return;
-  const frame = strip.getBoundingClientRect(), item = active.getBoundingClientRect();
-  // Only move this horizontal strip. scrollIntoView also moves the briefing/page.
-  if (item.left < frame.left) strip.scrollLeft += item.left - frame.left;
-  else if (item.right > frame.right) strip.scrollLeft += item.right - frame.right;
+function showCampaignPage(page, focusId) {
+  campaignPage = page;
+  renderCampaign();
+  $('campaignConfig').scrollTop = 0;
+  if (focusId) $(focusId).focus({ preventScroll: true });
+}
+function selectCampaignMission(id) {
+  const mission = CAMPAIGN_MISSIONS.find(m => m.id === id);
+  if (!mission) return;
+  selectedCampaign = id;
+  selectedChapter = mission.chapterId;
+  showCampaignPage('mission', 'campaignMissionTitle');
 }
 function renderCampaign() {
   const overview = getCampaignOverview(campaignProgress),
@@ -2106,6 +2115,32 @@ function renderCampaign() {
     chapter =
       CAMPAIGN_CHAPTERS.find((c) => c.id === selectedChapter) ||
       CAMPAIGN_CHAPTERS[0];
+  const chapterMissions = missions.filter(m => m.chapterId === chapter.id),
+    chapterOverview = chapters.find(c => c.id === chapter.id),
+    position = chapterMissions.findIndex(m => m.id === mission.id),
+    missionIndex = missions.findIndex(m => m.id === mission.id),
+    record = campaignProgress.missions[mission.id];
+  for (const page of ['story', 'chapter', 'mission'])
+    $(`campaign${page[0].toUpperCase() + page.slice(1)}Page`).classList.toggle('hidden', campaignPage !== page);
+  $('campaignStoryNav').toggleAttribute('aria-current', campaignPage === 'story');
+  if (campaignPage === 'story') $('campaignStoryNav').setAttribute('aria-current', 'page');
+  $('campaignChapterNav').classList.toggle('hidden', campaignPage === 'story');
+  $('campaignStoryNav').nextElementSibling.classList.toggle('hidden', campaignPage === 'story');
+  $('campaignChapterNav').textContent = chapter.optional ? chapter.name : `Chapter ${chapter.number} · ${chapter.name}`;
+  $('campaignChapterNav').toggleAttribute('aria-current', campaignPage === 'chapter');
+  if (campaignPage === 'chapter') $('campaignChapterNav').setAttribute('aria-current', 'page');
+  document.querySelectorAll('[data-mission-path]').forEach(el => el.classList.toggle('hidden', campaignPage !== 'mission'));
+  $('campaignMissionPosition').textContent = `Mission ${position + 1} of ${chapterMissions.length}`;
+  $('campaignChapterLabel').textContent = chapter.optional ? 'OPTIONAL OPENING' : `CHAPTER ${chapter.number} · ${chapter.name}`;
+  $('campaignChapterProgress').textContent = `${chapterOverview.cleared}/${chapterOverview.total} missions complete · ${chapterOverview.stars}/${chapterOverview.maxStars} stars`;
+  $('campaignMissionStatus').textContent = record?.completed ? `${'★'.repeat(record.stars)}${'☆'.repeat(3 - record.stars)} · Complete` : isMissionUnlocked(campaignProgress, mission.id) ? 'Ready to play' : 'Locked';
+  for (const [id, offset] of [['campaignPrevious', -1], ['campaignNext', 1]]) {
+    const neighbor = missions[missionIndex + offset];
+    $(id).disabled = !neighbor;
+    $(id).setAttribute('aria-label', neighbor ? `${offset < 0 ? 'Previous' : 'Next'} mission: ${neighbor.name}` : offset < 0 ? 'No previous mission' : 'No next mission');
+    $(id).onclick = () => neighbor && selectCampaignMission(neighbor.id);
+  }
+  $('campaignReturnMission').textContent = `Return to ${mission.name} →`;
   $('campaignProgressText').textContent =
     `${overview.cleared}/${overview.total} missions · ${overview.stars}/${overview.maxStars} stars`;
   $('campaignCount').textContent = String(overview.total);
@@ -2116,15 +2151,15 @@ function renderCampaign() {
     const button = document.createElement('button');
     button.dataset.chapter = c.id;
     button.className = c.id === chapter.id ? 'active' : '';
-    button.innerHTML = `<span>${c.optional ? 'START HERE' : 'CHAPTER ' + c.number} · ${c.stars}/${c.maxStars} ★</span><b>${c.name}</b>`;
+    button.setAttribute('aria-pressed', String(c.id === chapter.id));
+    button.innerHTML = `<span>${c.optional ? 'OPTIONAL OPENING' : 'CHAPTER ' + c.number} · ${c.stars}/${c.maxStars} ★</span><b>${c.name}</b><small>${c.cleared}/${c.total} missions complete</small>`;
     button.onclick = () => {
       selectedChapter = c.id;
       const candidates = missions.filter((m) => m.chapterId === c.id);
       selectedCampaign = (
         candidates.find((m) => m.unlocked && !m.completed) || candidates[0]
       ).id;
-      renderCampaign();
-      $('campaignChapters').querySelector(`[data-chapter="${c.id}"]`)?.focus();
+      showCampaignPage('chapter', 'campaignChapterTitle');
     };
     $('campaignChapters').append(button);
   }
@@ -2135,7 +2170,7 @@ function renderCampaign() {
     ? chapter.epilogue
     : chapter.description;
   $('campaignMissions').textContent = '';
-  for (const m of missions.filter((m) => m.chapterId === chapter.id)) {
+  for (const m of chapterMissions) {
     const button = document.createElement('button');
     button.dataset.mission = m.id;
     button.className = [
@@ -2143,18 +2178,32 @@ function renderCampaign() {
       !m.unlocked ? 'locked' : '',
       m.completed ? 'complete' : '',
     ].join(' ');
+    button.setAttribute('aria-pressed', String(m.id === mission.id));
     button.innerHTML = `<span class="mission-number">${String(m.number).padStart(2, '0')}</span><span><b>${m.name}</b><small>${m.completed ? '★'.repeat(m.record.stars) + '☆'.repeat(3 - m.record.stars) : m.unlocked ? 'READY TO PLAY' : 'LOCKED'}</small></span>`;
     button.onclick = () => {
-      selectedCampaign = m.id;
-      renderCampaign();
-      $('campaignMissions').querySelector(`[data-mission="${m.id}"]`)?.focus();
+      selectCampaignMission(m.id);
     };
     $('campaignMissions').append(button);
   }
   $('campaignMissionTitle').textContent = mission.name;
+  $('campaignMissionSubtitle').textContent = mission.subtitle;
   $('campaignMissionDescription').textContent = mission.description;
   $('campaignSpeaker').textContent = mission.dialogue.speaker;
   $('campaignDialogue').textContent = mission.dialogue.text;
+  const brief = missionBriefing(mission);
+  $('campaignGoal').textContent = brief.goal;
+  $('campaignGoalFacts').replaceChildren(...brief.facts.map(fact => {
+    const li = document.createElement('li');
+    li.textContent = fact;
+    return li;
+  }));
+  $('campaignProtection').textContent = brief.protection;
+  $('campaignProtection').classList.toggle('hidden', !brief.protection);
+  // A newly selected mission always starts with its optional details folded.
+  if (briefingMission !== mission.id) {
+    for (const id of ['campaignRules', 'campaignScout', 'campaignHintDetails']) $(id).open = false;
+    briefingMission = mission.id;
+  }
   $('campaignObjective').textContent = mission.objective;
   $('campaignBriefing').innerHTML = mission.briefing
     .map((t) => `<li>${t}</li>`)
@@ -2174,21 +2223,22 @@ function renderCampaign() {
       ' to unlock.';
   $('campaignUnlock').classList.toggle('locked', !unlocked);
   if (mode === 'campaign') {
+    $('start').classList.toggle('hidden', campaignPage !== 'mission');
     $('start').disabled = !unlocked;
     $('start').innerHTML =
-      (unlocked ? 'BEGIN MISSION' : 'MISSION LOCKED') + ' <span>→</span>';
-    requestAnimationFrame(revealCampaignChapter);
+      (unlocked ? record?.completed ? 'REPLAY MISSION' : 'BEGIN MISSION' : 'MISSION LOCKED') + ' <span>→</span>';
   }
 }
+$('campaignStoryNav').onclick = () => showCampaignPage('story', 'campaignStoryTitle');
+$('campaignChapterNav').onclick = () => showCampaignPage('chapter', 'campaignChapterTitle');
+$('campaignReturnMission').onclick = () => showCampaignPage('mission', 'campaignMissionTitle');
 $('skipIntroduction').onclick = () => {
   const overview = getCampaignOverview(campaignProgress);
   selectedCampaign = overview.nextMissionId || overview.missions[0].id;
   selectedChapter = CAMPAIGN_MISSIONS.find(mission => mission.id === selectedCampaign).chapterId;
-  renderCampaign();
-  $('start').focus();
+  showCampaignPage('mission', 'campaignMissionTitle');
 };
 setMode(mode);
-new ResizeObserver(revealCampaignChapter).observe($('campaignChapters'));
 let settingsWasPaused = false;
 function showSettings() {
   settingsWasPaused = paused;
