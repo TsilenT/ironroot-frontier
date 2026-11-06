@@ -63,16 +63,24 @@ test('portraits require the active roster, reject coerced enum values, and resto
   }
 });
 
-test('accepted legacy renderer commands, geometry, portraits and VFX remain exact', () => {
+test('accepted historical frames remain pinned; calm renderer commands, geometry, portraits and VFX stay exact', () => {
   for (const [name, expected] of Object.entries({
     'render.js': '9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e',
     'vfx.js': '90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393',
     'engine.js': '83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5',
   })) assert.equal(hash(`../qa/fixtures/accepted-clarity/${name}`), expected);
   installCanvas();
-  assert.deepEqual(classicSnapshot(Renderer, drawUnitPortrait), classicSnapshot(AcceptedRenderer, acceptedPortrait));
+  const historical = classicSnapshot(AcceptedRenderer, acceptedPortrait);
+  const current = classicSnapshot(Renderer, drawUnitPortrait);
+  const originalFrames = JSON.parse(readFileSync(new URL('./fixtures/renderer-readability-lab.json', import.meta.url), 'utf8'));
+  assert.deepEqual(historical.frames, originalFrames.frames, 'preserved historical hit/attack command evidence');
+  assert.deepEqual(current.themes, historical.themes);
+  assert.deepEqual(current.portraits, historical.portraits);
+  // Action poses now have their own explicitly labelled snapshot suite.
+  // Inactive units still use the accepted draw commands, not just similar art.
   for (const mapId of Object.keys(MAPS)) for (const [width, height] of viewports) {
     const game = gameFixture(mapId), a = makeRenderer(Renderer, width, height), b = makeRenderer(AcceptedRenderer, width, height);
+    for (const unit of game.state.units) { unit.attack = 0; unit.hit = 0; }
     for (const renderer of [a, b]) {
       renderer.setMap(mapId); renderer.camera = game.map.width / 2;
       renderer.canvas.reset(); renderer.mini.reset();

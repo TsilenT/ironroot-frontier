@@ -9,7 +9,7 @@ import { classicSnapshot, gameFixture, viewports } from './renderer-scenarios.mj
 const close = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} != ${b}`);
 const terrainRects = (renderer, color) => styledCalls(renderer.baseTerrain, 'fillRect').filter(call => call.style === color).map(call => call.args);
 
-test('Classic retains frozen terrain, camera geometry, minimaps and portraits; visual frames have a separate lab fixture', () => {
+test('Classic retains frozen terrain, camera geometry, minimaps and portraits; combat frames have a separately labelled fixture', () => {
   installCanvas();
   const { sourceSHA256, ...fixture } = JSON.parse(readFileSync(new URL('./fixtures/renderer-classic-0.8.json', import.meta.url), 'utf8'));
   assert.equal(sourceSHA256, 'ef5ebcbed466bdd829ab34b12adaddf262d4627d31bd1ddbd4c99dd793701251');
@@ -22,7 +22,7 @@ test('Classic retains frozen terrain, camera geometry, minimaps and portraits; v
     assert.deepEqual(current, geometry, viewport);
     assert.notEqual(after, before, 'intentional renderer increment, not a rewritten historical baseline');
   }
-  const visual = JSON.parse(readFileSync(new URL('./fixtures/renderer-readability-lab.json', import.meta.url), 'utf8'));
+  const visual = JSON.parse(readFileSync(new URL('./fixtures/renderer-combat-feedback.json', import.meta.url), 'utf8'));
   assert.deepEqual(actual.frames, visual.frames);
 });
 

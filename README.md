@@ -4,9 +4,9 @@ A single-player real-time strategy tug-of-war for desktop and mobile browsers. B
 
 ## Status
 
-This checkout is an **unreleased integration**, combining campaign-first navigation with the reviewed mobile/protected-objective interface. It has not replaced production.
+The verified live release is **v0.13**, source commit `76135e7b56077a661f67b0b5eeab7c118ec57844`, at https://ironroot.stevets.ai/. Its exact Chromium matrix passed 841 checks with zero failures and three intentional skips; root tests passed 825 with one optional desktop-dependency skip. Live smoke verified older campaign save migration and introductory mission completion, replay and resume.
 
-The verified live release is **v0.12**, source commit `24edddab2cff33b3f91b396bc855193f87421ba3`, at https://ironroot.stevets.ai/. That release passed 753 browser checks with 3 intentional skips. Those results do not certify this integration. See `docs/INTEGRATION_DECISIONS.md` for current decisions and remaining release gates; earlier measured work remains in `docs/` and the validation records.
+This checkout now contains a **next-batch work in progress** for combat feedback, protected-objective warnings and an intro Resume-label correction. Those changes are not the deployed build. See `docs/ROADMAP.md` and the individual review records for acceptance status and unrun gates. Historical release results do not certify unfinished work.
 
 ## Play
 
@@ -47,16 +47,16 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 - `dist/engine.js`: deterministic combat, maps, AI and engine saves.
 - `dist/campaign.js`, `dist/challenges.js`, `dist/objectives.js`: authored battles, progress and fixed-step objective checks.
 - `dist/campaign-flow.js`: presentation-only build choices and guidance inferred from the real battle.
-- `dist/mobile-battlefield.js`, `dist/protected-objectives.js`: visible-geometry checks, pause latch and original-objective tracking.
+- `dist/mobile-battlefield.js`, `dist/protected-objectives.js`, `dist/objective-alerts.js`: visible-geometry checks, pause latch, original-objective tracking and current-page warning policy.
 - `dist/persistence.js`, `dist/profile-session.js`, `dist/backup.js`: storage safety, profile coordination and portable saves.
 - `dist/app.js`, `dist/index.html`, `dist/styles.css`: controls, menus and integration.
-- `dist/render.js`, `dist/vfx.js`, `dist/audio.js`: original canvas art, effects and procedural sound.
+- `dist/render.js`, `dist/combat-feedback.js`, `dist/vfx.js`, `dist/audio.js`: original canvas art, timer-based poses, effects and procedural sound.
 - `tests/`, `qa/browser/`, `docs/`: checks and measured development records.
 
 Fonts are bundled under OFL 1.1 with notices in `dist/FONTS-NOTICES.txt`. No external font service, game-art downloads, tracking or backend is required.
 
 ## Release boundaries
 
-The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. This integration leaves v0.12 cache/version metadata unchanged until a release candidate is chosen.
+The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. Next-batch source uses the distinct unreleased v0.14 cache/version. This is not a publication claim; live remains v0.13 until a deliberate tested release. Never publish changed assets under the old cache identity.
 
 There is no network PvP, account service or authoritative server. Physical mobile/controller testing, full nonvisual battlefield access and desktop/store certification remain separate work. Automated balance simulations do not establish human difficulty or mobile performance. See `docs/DESKTOP.md` for the optional desktop shell.

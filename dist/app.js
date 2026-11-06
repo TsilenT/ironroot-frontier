@@ -59,6 +59,7 @@ import { GameAudio } from './audio.js';
 import { advanceObjectiveBattle } from './objectives.js';
 import { campaignBuildChoices, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';
+import { createObjectiveAlertPolicy } from './objective-alerts.js';
 import {
   ALL_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,
   ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,
@@ -138,6 +139,7 @@ populateFieldGuide();
 const viewportPause = createViewportPause();
 let mobileLayout = 'ordinary';
 let protectedMonitor = null;
+let protectedAlerts = null;
 const protectedControls = new Map();
 let armedProtectedControl = null;
 let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;
@@ -933,6 +935,9 @@ function beginProtectedObjectives() {
   $('resultProtectedLoss').textContent = '';
   $('resultProtectedLoss').classList.add('hidden');
   const targets = protectedMonitor?.read() || [];
+  protectedAlerts = protectedMonitor && targets.length
+    ? createObjectiveAlertPolicy({battleKey:protectedMonitor,targetIds:targets.map(target=>target.originalId)}) : null;
+  protectedAlerts?.observe(targets,{battleKey:protectedMonitor});
   // Reserve real layout space rather than covering the target being focused.
   // Reparent only at battle start, never while a gesture/focus is active.
   if (targets.length) $('protectedDock').append($('objectiveHUD'));
@@ -1106,11 +1111,27 @@ function updateProtectedObjectives() {
     control.fill.style.width = `${target.percent ?? 0}%`;
     control.button.dataset.state = target.status;
     control.button.disabled = !enabled || target.status === 'lost';
-    if (control.status !== target.status && ['critical', 'lost'].includes(target.status))
-      announcements.push(`${target.label}: ${target.status === 'lost' ? 'original structure lost' : 'critical health'}.`);
+    if (control.status !== target.status && target.status === 'lost')
+      announcements.push(`${target.label}: original structure lost.`);
     control.status = target.status;
   }
   if (announcements.length) $('protectedAlert').textContent = announcements.join(' ');
+}
+function flushProtectedWarnings(now) {
+  if (!protectedAlerts) return;
+  protectedAlerts.observe(protectedMonitor.read(),{battleKey:protectedMonitor});
+  const alert = protectedAlerts.flush({
+    battleKey:protectedMonitor,
+    active:canFocusProtectedObjective() && !document.hidden,
+    ended:!started || game.state.winner !== null || !!objectiveOutcome,
+    stale:battleSession.status() === 'stale',
+    now,
+  });
+  if (!alert) return;
+  // Reuse the named live status and existing red/HP objective controls. Never
+  // steal focus or replace a paid-action toast just to deliver a warning.
+  $('protectedAlert').textContent = alert.message;
+  if (alert.sound) sound(alert.sound,{volume:.65});
 }
 function finishProtectedObjectives() {
   const details = protectedLossDetails(protectedMonitor?.observe() || []);
@@ -1378,7 +1399,7 @@ function updateResume() {
       : cid
         ? `TRIAL · ${CHALLENGES.find((c) => c.id === cid).name.toUpperCase()}`
         : valid.map.id === 'classic' ? 'BATTLE' : valid.map.name.toUpperCase();
-    const ruleLabel = valid.schemaVersion === 3 ? ` · ${valid.ruleset.endgame.name.toUpperCase()}` : '';
+    const ruleLabel = !mid && !cid && valid.schemaVersion === 3 ? ` · ${valid.ruleset.endgame.name.toUpperCase()}` : '';
     button.textContent = `RESUME ${name}${ruleLabel} · ${timeText(valid.state.time)}`;
     button.onclick = () => start(valid, cid, mid);
     if (valid.limitReason) button.textContent = `VIEW PAUSED ${name}${ruleLabel} · ${timeText(valid.state.time)}`;
@@ -1923,7 +1944,8 @@ function frame(now) {
         (g) => {
           // Observe each actual fixed-step evaluation, including the initial
           // state. This does not change the authored outcome or simulation.
-          protectedMonitor?.observe(g);
+          const snapshot = protectedMonitor?.observe(g);
+          if (snapshot) protectedAlerts?.observe(snapshot,{battleKey:protectedMonitor});
           return currentCampaign
             ? evaluateCampaignMission(g, currentCampaign)
             : evaluateChallenge(g, currentChallenge);
@@ -1969,6 +1991,7 @@ function frame(now) {
     updateHUD();
     hudTimer = 0;
   }
+  flushProtectedWarnings(now / 1000);
   if (toastTimer > 0) {
     toastTimer -= dt;
     if (toastTimer <= 0) $('toast').classList.remove('show');
