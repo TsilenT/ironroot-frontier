@@ -39,7 +39,8 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     nodes.home=box(nx+6,navigation.top+50,44,44);nodes.front=box(nx+nw-50,navigation.top+50,44,44);
     nodes.minimap=box(nx+54,navigation.top+50,nw-108,44);
     const targetY=objective.top+(isShort?16:36),w=(objective.width-18)/2;
-    nodes.target0=box(objective.left+6,targetY,w,44);nodes.target1=box(objective.left+12+w,targetY,w,44);
+    const targetHeight=isSidebar?Number(css.match(/\.protected-sidebar \.protected-target \{[^}]*min-height: (\d+)px/)[1]):44;
+    nodes.target0=box(objective.left+6,targetY,w,targetHeight);nodes.target1=box(objective.left+12+w,targetY,w,targetHeight);
   }else{
     for(const[i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(navigation.left+30+(i%2)*48,navigation.top+8+Math.floor(i/2)*48,44,44);
     const ny=navigation.bottom-100;

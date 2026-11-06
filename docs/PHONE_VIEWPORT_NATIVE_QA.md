@@ -156,3 +156,35 @@ Not verified: physical Android/iOS browsers, touch input, real address-bar movem
 ### Subsequent bounded source-review correction
 
 After native cleanup, two explicit short-portrait ordinary-mode grid-column declarations corrected a selector-specificity conflict between objective progress and its countdown. This did not change the protected layouts exercised above. The final stylesheet hash is `20d6b490387b078e2338f95b2a9204bdd5f920ceceb854b7d0034ab1563d8d5a`; this two-line delta was source-reviewed and receives new browser non-overlap assertions, but was not included in the native UI pass. The other three runtime hashes above are unchanged. This distinction is intentional.
+
+## Final integrated repair: bounded native retest
+
+Tested the managed preview of `ironroot-app-controls-integration` (app v0.14.1) on 2026-11-06. This bounded pass checks the two subsequent text defects, one paid short-portrait action, and the inset-aware safety guard. It does not repeat the full earlier matrix. The actual game runs inside a sized native Chrome iframe with in-memory storage. Critical HP and safe-area insets below are explicitly synthetic. No physical-phone or installed-PWA claim is made.
+
+### 320×430 numeric text and paid play
+
+The gold, army and clock Text Ranges span y0–20, entirely inside the viewport. Income's actual text spans y5–15. The header is y0–48 and world is 320×242 at y48–290. The size modal is absent and the geometry check is safe. The decorative diamond and flag have font Range boxes reaching y−1, although their visible pixels appeared intact; the numeric-text defect was corrected without reducing text size. [Exact text measurements](phone-qa/final-portrait-text.json).
+
+In a fresh First Watch run, actual UI selection and canvas placement produced “Barracks raised. First troops in a moment.” The 140-gold Barracks was paid for: starting 420 gold, then 429 at 00:29 after ongoing +5/s income, with one troop. Cancel returned the control to Build. Manual Pause showed the normal pause overlay at 00:29, with no screen-size modal. [Paid-play measurement](phone-qa/final-paid-portrait.json).
+
+### 667×300 Last Light critical text
+
+Started The Last Light through actual campaign controls with a synthetic unlocked profile isolated in memory. Then cloned its rendered DOM, removed all scripts, and applied the synthetic “20% HP · Critical” presentation. This verifies the full, actual two-line North/South watchtower labels, not a live critical-damage transition.
+
+Both target cards are 129×64 at y108–172. North card spans x397–526, South x532–661. Name Text Ranges span y115.015625–145.40625 across two lines. Critical HP spans y146.796875–160.796875. All nonempty name/health text ranges fit inside their controls and the 667×300 viewport. Both lines and critical text are visibly readable. World is 391×300. [Actual and synthetic measurements](phone-qa/final-watchtower-critical.json).
+
+### 568×280 with synthetic 21px bottom inset
+
+The app outer rect is 568×280 and computed bottom padding is 21px, leaving safe content ending at y259. The protected layout requires y272, including the navigation bottom and world bottom. The runtime correctly displays “Battle paused for screen size,” explains that part of the battlefield or controls is outside the visible screen, and disables Resume. Time remains 00:00 on a later observation. [Raw measurement](phone-qa/final-tiny-inset.json), [computed padding and held clock](phone-qa/final-tiny-inset-extra.json).
+
+The historical fixture's geometry field in that raw record says safe because its independent probe still passed the outer 568×280 viewport. This is a probe discrepancy, not a runtime failure: the actual runtime guard used inset content and blocked correctly. After this run, the reusable private fixture was updated to import `insetViewportRect`, record both `viewport` and `safeContent`, and validate against `safeContent` using the app's computed padding. Its module syntax was checked; no additional gameplay run was made solely for that fixture update. Raw evidence was preserved unchanged.
+
+### Final runtime identities and cleanup
+
+SHA-256 of the runtime exercised in this pass:
+- app.js: `8c0c9b2dca28c31d7fdedc858848730cda6a3d0a25a411f2b3577403af737fde`
+- styles.css: `b234bbb871caca5ecb2b72f3e569b03d98f8b7391d465a4cee1bcee25e709b30`
+- mobile-battlefield.js: `3f8c756a8548df12cc32ed24d27d0b68b2e3c425961cb43ddd44ff588ed715e0`
+- index.html: `138fb1d36d504d0ed45e6bfda7e46cb5f32bed5173e5bd8060e73049538e1513`
+
+Shared-profile verification remained exact for all keys. The same five game keys retained SHA-256 `a9c9b81a8ab25736ac9d1117cbcba27443990d65d2111088b2d3d4d801ae1104`; no restoration was necessary. QA tab 47 was closed, leaving only the original two production tabs and the untouched art-study tab. The temporary dist fixture was deleted and the managed preview stopped. Screenshots from this pass remain private. No uploaded user screenshot or captured profile strings were added to the repository. Runtime files were not edited by this QA worker.

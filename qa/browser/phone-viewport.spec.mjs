@@ -9,12 +9,13 @@ import {protectedTargetLabels} from '../../dist/protected-objectives.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
 import {test,press,tapPoint,seedOnce,saved,pause,homePoint} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
+import {inspectPhoneText,settlePhoneViewport,savedClockText} from './phone-text-evidence.mjs';
 import {heldPointer} from './training-browser-helpers.mjs';
 const SAVE='ironroot.battle.v1';
 const sizes=[{width:320,height:430},{width:667,height:300},{width:740,height:320},{width:393,height:659},{width:920,height:420}];
 
 async function geometry(page){
- return page.evaluate(()=>{
+ const geometry=await page.evaluate(()=>{
   const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
   const vv=window.visualViewport,left=Math.max(0,vv?.offsetLeft||0),top=Math.max(0,vv?.offsetTop||0);
   const viewport={left,top,right:Math.min(innerWidth,left+(vv?.width??innerWidth)),bottom:Math.min(innerHeight,top+(vv?.height??innerHeight))};
@@ -23,22 +24,17 @@ async function geometry(page){
   const world=rect(document.getElementById('battle'));
   const elements=[...['pause','speed','sound','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)),...document.querySelectorAll('[data-protected-id]')];
   const controls=elements.map(e=>({id:e.id||e.dataset.protectedId,...rect(e),hit:e.contains(document.elementFromPoint(...[rect(e).left+rect(e).width/2,rect(e).top+rect(e).height/2]))}));
-  // Range line boxes inspect rendered text rather than trusting a button box
-  // whose child could overflow or be clipped. No scrolling repairs the layout.
-  const text=[...document.querySelectorAll('[data-protected-id] .protected-name,[data-protected-id] .protected-health,#gold,#time,#objectiveProgress,#objectiveTime')].map(e=>{
-   const owner=e.closest('[data-protected-id]')||e.closest('#protectedDock')||e.closest('.topbar'),ownerRect=rect(owner),range=document.createRange();range.selectNodeContents(e);
-   const lines=[...range.getClientRects()].filter(r=>r.width&&r.height);
-   return {text:e.textContent,visible:getComputedStyle(e).visibility!=='hidden'&&getComputedStyle(e).display!=='none',font:Number.parseFloat(getComputedStyle(e).fontSize),minimum:e.matches('#objectiveProgress,#objectiveTime')?10:11,lines:lines.length,inside:lines.every(r=>contains(ownerRect,r)&&contains(viewport,r)),overflow:e.scrollWidth>e.clientWidth+1};
-  });
   const root=rect(document.getElementById('app'));
   const objectiveOverlap=overlaps(rect(document.getElementById('objectiveProgress')),rect(document.getElementById('objectiveTime')));
-  return {viewport,root,world,text,controls,objectiveOverlap,regions:['topbar','protectedDock','protectedNavigation'].map(id=>({id,...rect(document.getElementById(id))})),
+  return {viewport,root,world,controls,objectiveOverlap,regions:['topbar','protectedDock','protectedNavigation'].map(id=>({id,...rect(document.getElementById(id))})),
    allInside:controls.every(r=>contains(viewport,r))&&contains(viewport,world),outsideWorld:controls.every(r=>!overlaps(r,world)),
    collisions:controls.flatMap((a,i)=>controls.slice(i+1).filter(b=>overlaps(a,b)).map(b=>[a.id,b.id]))};
  });
+ geometry.text=await page.evaluate(inspectPhoneText,{selector:'[data-protected-id] .protected-name,[data-protected-id] .protected-health,#gold,#time,#objectiveProgress,#objectiveTime'});
+ return geometry;
 }
 async function expectGeometry(page,{protectedCount=0}={}){
- await expect(page.locator('#viewportModal')).toBeHidden();
+ await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
  const g=await geometry(page);
  expect(g.root.left).toBeCloseTo(g.viewport.left,1);expect(g.root.top).toBeCloseTo(g.viewport.top,1);
  expect(g.root.right).toBeCloseTo(g.viewport.right,1);expect(g.root.bottom).toBeCloseTo(g.viewport.bottom,1);
@@ -48,7 +44,7 @@ async function expectGeometry(page,{protectedCount=0}={}){
  for(const c of g.controls){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id+' actual center hit').toBe(true);}
  expect(g.objectiveOverlap,'objective progress and time must occupy separate cells').toBe(false);
  expect(g.text).toHaveLength(protectedCount*2+4);
- for(const t of g.text){expect(t.text.trim()).not.toBe('');expect(t.visible,t.text).toBe(true);expect(t.lines,t.text).toBeGreaterThan(0);expect(t.inside,t.text+' rendered lines remain visible').toBe(true);expect(t.overflow,t.text+' is not horizontally clipped').toBe(false);expect(t.font,t.text).toBeGreaterThanOrEqual(t.minimum);}
+ for(const t of g.text){expect(t.text.trim()).not.toBe('');expect(t.complete,JSON.stringify(t)).toBe(true);expect(t.visibleText,t.text+' full visible text including nested spans').toBe(t.expectedText);expect(t.overflow,t.text+' is not horizontally clipped').toBe(false);}
  return g;
 }
 async function startSkirmish(page){
@@ -68,7 +64,7 @@ for(const size of sizes)test(`phone ${size.width}x${size.height}: clock, paid bu
  expect(state.game.state.time).toBeGreaterThan(0);expect(state.game.state.buildings.filter(b=>b.side===0&&b.type==='wardenLodge')).toHaveLength(1);
  expect(state.game.state.gold[0]).toBeCloseTo(420-210+5*state.game.state.time,1);
  expect(state).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-rootwarden-open'}});
- const stopped=await page.locator('#time').textContent();await page.waitForTimeout(1100);expect(await saved(page)).toEqual(state);await expect(page.locator('#time')).toHaveText(stopped);
+ const stopped=savedClockText(state);await expect(page.locator('#time')).toHaveText(stopped);await page.waitForTimeout(1100);expect(await saved(page)).toEqual(state);await expect(page.locator('#time')).toHaveText(stopped);
  await press(page,'#saveExit');await page.reload();expect(await saved(page)).toEqual(state);
  await press(page,'#resumeSaved');await expectGeometry(page);await waitForClock(page,stopped);const resumed=await pause(page);
  expect(resumed.game.state.time).toBeGreaterThan(state.game.state.time);expect(resumed.scenario).toEqual(state.scenario);
@@ -120,24 +116,24 @@ test('render-only longest protected names and critical/missing labels stay insid
   await frame.evaluate(()=>document.fonts.ready);
   expect(await frame.locator('script').count()).toBe(0);
   for(const status of ['lost','critical']){
-   const labels=await frame.evaluate(({status,names})=>{
-    const contains=(outer,r)=>r.left>=outer.left-.5&&r.top>=outer.top-.5&&r.right<=outer.right+.5&&r.bottom<=outer.bottom+.5;
-    const overlaps=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
-    return [...document.querySelectorAll('[data-protected-id]')].map((button,i)=>{
+   await frame.evaluate(({status,names})=>{
+    for(const [i,button] of [...document.querySelectorAll('[data-protected-id]')].entries()){
      button.dataset.state=status;button.disabled=status==='lost';button.querySelector('.protected-name').textContent=names[i];
-     button.querySelector('.protected-health').textContent=status==='lost'?'Original missing':'20% HP · Critical';
-     const bounds=button.getBoundingClientRect(),viewport={left:0,top:0,right:innerWidth,bottom:innerHeight};
-     const labels=[...button.querySelectorAll('.protected-name,.protected-health')].map(e=>{
-      const range=document.createRange();range.selectNodeContents(e);const lines=[...range.getClientRects()].filter(r=>r.width&&r.height);
-      return {text:e.textContent,lines:lines.map(r=>({left:r.left,right:r.right,top:r.top,bottom:r.bottom})),inside:lines.every(r=>contains(bounds,r)&&contains(viewport,r)),overflow:e.scrollWidth>e.clientWidth+1};
-     });
-     return {disabled:button.disabled,state:button.dataset.state,labels,overlap:labels[0].lines.some(a=>labels[1].lines.some(b=>overlaps(a,b)))};
-    });
+     const health=button.querySelector('.protected-health');health.textContent=status==='lost'?'Original missing':'20% HP · ';
+     if(status==='critical'){const nested=document.createElement('span');nested.style.font='inherit';nested.style.color='inherit';nested.textContent='Critical';health.append(nested);}
+    }
    },{status,names});
-   expect(labels).toHaveLength(2);
-   for(const target of labels){expect(target.disabled).toBe(status==='lost');expect(target.state).toBe(status);expect(target.overlap,'name and status text do not overlap').toBe(false);
-    expect(target.labels[1].text).toBe(status==='lost'?'Original missing':'20% HP · Critical');
-    for(const label of target.labels){expect(label.text.trim()).not.toBe('');expect(label.lines.length).toBeGreaterThan(0);expect(label.inside,`${size.width}x${size.height} ${status}: ${label.text}`).toBe(true);expect(label.overflow,label.text).toBe(false);}}
+   const labels=await frame.evaluate(inspectPhoneText,{selector:'[data-protected-id] .protected-name,[data-protected-id] .protected-health'});
+   expect(labels).toHaveLength(4);
+   for(const [i,label] of labels.entries()){
+    const expected=i%2===0?names[Math.floor(i/2)]:status==='lost'?'Original missing':'20% HP · Critical';
+    expect(label.text).toBe(expected);expect(label.complete,`${size.width}x${size.height} ${status}: ${JSON.stringify(label)}`).toBe(true);
+    expect(label.visibleText).toBe(expected.replace(/\s/gu,''));expect(label.overflow,label.text).toBe(false);
+   }
+   for(let i=0;i<labels.length;i+=2)expect(labels[i].rects.some(a=>labels[i+1].rects.some(b=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5)),'name and complete status text do not overlap').toBe(false);
+   for(const target of await frame.locator('[data-protected-id]').all()){
+    await expect(target).toHaveAttribute('data-state',status);if(status==='lost')await expect(target).toBeDisabled();else await expect(target).toBeEnabled();
+   }
   }
   await page.locator('iframe[data-qa-lost-render]').evaluate(frame=>frame.remove());
  }
@@ -164,20 +160,26 @@ test('synthetic visualViewport: original clip50/offset1, fractional bounds and s
  }
  // A pressed placement cannot be reinterpreted in the new canvas rectangle.
  // Its fresh replacement must work after fractional serialization stabilizes.
- await openBuildControls(page);await press(page,'[data-type="wardenLodge"]');
- const map=Game.restore((await saved(page)).game).map,point=await homePoint(page,map,550,450),held=await heldPointer(page,context,point);
+ const baseline=await pause(page),ownedIds=game=>game.state.buildings.filter(b=>b.side===0).map(b=>b.id).sort((a,b)=>a-b);
+ await press(page,'#resume');await openBuildControls(page);await press(page,'[data-type="wardenLodge"]');
+ const map=Game.restore(baseline.game).map,point=await homePoint(page,map,550,450),held=await heldPointer(page,context,point);
  try{await syntheticViewport(page,{offsetTop:2.111111111});await held.release();}finally{await held.dispose();}
- const unchanged=await pause(page);expect(unchanged.game.state.stats.built[0]).toBe(0);expect(unchanged.game.state.gold[0]).toBeCloseTo(420+5*unchanged.game.state.time,1);
+ const unchanged=await pause(page);expect(unchanged.game.state.stats.built[0]).toBe(baseline.game.state.stats.built[0]);
+ expect(ownedIds(unchanged.game)).toEqual(ownedIds(baseline.game));
+ expect(unchanged.game.state.gold[0]).toBeCloseTo(baseline.game.state.gold[0]+5*(unchanged.game.state.time-baseline.game.state.time),1);
  await press(page,'#resume');await openBuildControls(page);await press(page,'[data-type="wardenLodge"]');
  await tapPoint(page,await homePoint(page,map,550,450));await expect(page.locator('#toast')).toContainText('Warden lodge raised');
- expect((await pause(page)).game.state.stats.built[0]).toBe(1);
+ const placed=await pause(page);expect(placed.game.state.stats.built[0]).toBe(baseline.game.state.stats.built[0]+1);
+ expect(ownedIds(placed.game).filter(id=>!ownedIds(baseline.game).includes(id))).toHaveLength(1);
+ expect(placed.game.state.buildings.filter(b=>b.side===0&&b.type==='wardenLodge')).toHaveLength(baseline.game.state.buildings.filter(b=>b.side===0&&b.type==='wardenLodge').length+1);
+ expect(placed.game.state.gold[0]).toBeCloseTo(unchanged.game.state.gold[0]-210+5*(placed.game.state.time-unchanged.game.state.time),1);
 });
 
 test('synthetic pinch-small viewport still freezes and saves until an explicit safe Resume',async({page})=>{
  test.setTimeout(30000);await page.setViewportSize({width:390,height:650});await installSyntheticVisualViewport(page);await startSkirmish(page);await waitForClock(page);
  await syntheticViewport(page,{width:200,height:300,offsetLeft:90,offsetTop:200,scale:2});
  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');await expect(page.locator('#viewportResume')).toBeDisabled();
- const held=await saved(page),clock=await page.locator('#time').textContent();await page.waitForTimeout(1100);expect(await saved(page)).toEqual(held);await expect(page.locator('#time')).toHaveText(clock);
+ const held=await saved(page),clock=savedClockText(held);await expect(page.locator('#time')).toHaveText(clock);await page.waitForTimeout(1100);expect(await saved(page)).toEqual(held);await expect(page.locator('#time')).toHaveText(clock);
  await syntheticViewport(page,{width:390,height:600,offsetLeft:0,offsetTop:1,scale:1});await expect(page.locator('#viewportTitle')).toHaveText('Battle ready to resume');await expect(page.locator('#viewportResume')).toBeEnabled();
  await page.waitForTimeout(1100);expect(await saved(page)).toEqual(held);await expect(page.locator('#time')).toHaveText(clock);
  await press(page,'#viewportResume');await expectGeometry(page);await waitForClock(page,clock);
@@ -192,4 +194,19 @@ test('synthetic safe-area padding and desktop exit preserve accessible controls 
  await page.setViewportSize({width:1180,height:757});await expect(page.locator('#app')).not.toHaveClass(/protected-mobile/);
  expect(await page.locator('#app').evaluate(e=>['left','top','width','height'].map(k=>e.style[k]))).toEqual(['','','','']);
  const previous=await page.locator('#time').textContent();await waitForClock(page,previous);await page.setViewportSize({width:740,height:320});await expectGeometry(page);
+});
+
+
+test('synthetic bottom safe area blocks protected grid overflow and requires explicit recovery',async({page})=>{
+ test.setTimeout(30000);await page.setViewportSize({width:568,height:300});const fixture=campaignFixture('protected');
+ await seedOnce(page,{[SAVE]:JSON.stringify(fixture.envelope),[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});await press(page,'#resumeSaved');await expectGeometry(page,{protectedCount:2});
+ await page.addStyleTag({content:'.app.protected-mobile { --mobile-inset-bottom: 21px; }'});await page.setViewportSize({width:568,height:280});
+ await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');await expect(page.locator('#viewportResume')).toBeDisabled();
+ const bounds=await page.evaluate(()=>{const app=document.getElementById('app').getBoundingClientRect(),nav=document.getElementById('protectedNavigation').getBoundingClientRect();return {outer:app.bottom,safe:app.bottom-parseFloat(getComputedStyle(document.getElementById('app')).paddingBottom),navigationBottom:nav.bottom};});
+ expect(bounds.navigationBottom).toBeLessThanOrEqual(bounds.outer+.5);expect(bounds.navigationBottom).toBeGreaterThan(bounds.safe+.5);
+ const held=await saved(page),clock=savedClockText(held);await expect(page.locator('#time')).toHaveText(clock);
+ await page.waitForTimeout(1100);expect(await saved(page)).toEqual(held);await expect(page.locator('#time')).toHaveText(clock);
+ await page.setViewportSize({width:568,height:320});await expect(page.locator('#viewportTitle')).toHaveText('Battle ready to resume');await expect(page.locator('#viewportResume')).toBeEnabled();
+ expect(await saved(page)).toEqual(held);await expect(page.locator('#time')).toHaveText(clock);
+ await press(page,'#viewportResume');await expectGeometry(page,{protectedCount:2});await waitForClock(page,clock);
 });

@@ -3626,7 +3626,7 @@ body.gamepad-active a:focus {
    navigation nodes stack beside it; controls and units do not shrink. */
 .app.protected-mobile.protected-sidebar {
   --mobile-header: 72px;
-  --mobile-dock: 84px;
+  --mobile-dock: 104px;
   --mobile-navigation: 96px;
   --mobile-rail: 276px;
   grid-template-columns: minmax(0, 1fr) var(--mobile-rail);
@@ -3649,11 +3649,12 @@ body.gamepad-active a:focus {
   height: var(--mobile-dock); grid-template-columns: minmax(0,1fr) auto;
   grid-template-rows: 14px 14px 44px; gap: 2px 6px; padding: 3px 6px 4px;
 }
+.protected-mobile.protected-sidebar .protected-dock .objective-hud.protect-hud { grid-template-rows: 14px 14px 64px; }
 .protected-mobile.protected-sidebar .objective-identity { grid-column: 1; grid-row: 1; }
 .protected-mobile.protected-sidebar #objectiveTime { grid-column: 2; grid-row: 1; }
 .protected-mobile.protected-sidebar #objectiveProgress { grid-column: 1 / -1; grid-row: 2; white-space: normal; }
 .protected-mobile.protected-sidebar .protected-targets { grid-column: 1 / -1; grid-row: 3; }
-.protected-sidebar .protected-target { min-height: 44px; padding: 5px 5px 8px; align-content: center; }
+.protected-sidebar .protected-target { min-height: 64px; padding: 5px 5px 8px; align-content: center; }
 .protected-sidebar .protected-target[data-state='critical'] .protected-health { grid-column: 1 / -1; }
 .protected-sidebar .protected-target[data-state='critical'] .protected-focus-hint { position: absolute; right: 5px; top: 5px; font-size: 0; }
 .protected-sidebar .protected-target[data-state='critical'] .protected-name { padding-right: 14px; }
@@ -3671,7 +3672,7 @@ body.gamepad-active a:focus {
 .app.protected-mobile.protected-short-portrait.mobile-ordinary { --mobile-dock: 44px; }
 .protected-short-portrait .topbar { grid-template-rows: 20px 26px; gap: 1px; }
 .protected-short-portrait .resources { height: 20px; }
-.protected-short-portrait .resources > div { display: flex; align-items: baseline; gap: 4px; }
+.protected-short-portrait .resources > div { display: flex; align-items: center; gap: 4px; }
 .protected-short-portrait .resources b { font-size: 17px; line-height: 20px; }
 .protected-short-portrait .resources small { font-size: 8px; }
 .protected-short-portrait .battle-top, .protected-short-portrait .base-status { height: 26px; }

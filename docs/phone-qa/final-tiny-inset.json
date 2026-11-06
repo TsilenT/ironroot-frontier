@@ -1,0 +1,999 @@
+{
+  "at": "2026-11-06T21:42:35.732Z",
+  "size": "568x280",
+  "syntheticVisual": "native",
+  "syntheticInsets": "bottom21",
+  "viewport": {
+    "left": 0,
+    "top": 0,
+    "right": 568,
+    "bottom": 280,
+    "width": 568,
+    "height": 280
+  },
+  "appClass": "app protected-landscape protected-sidebar protected-mobile protected-compact",
+  "canvas": {
+    "textRanges": [],
+    "id": "battle",
+    "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag or middle mouse drag to explore. Right-click or Escape cancels placement. Arrow keys pan.",
+    "left": 0,
+    "top": 0,
+    "right": 292,
+    "bottom": 272,
+    "width": 292,
+    "height": 272,
+    "visible": true
+  },
+  "regions": [
+    {
+      "textRanges": [
+        {
+          "text": "◆",
+          "left": 298,
+          "top": 5,
+          "right": 308.78125,
+          "bottom": 23,
+          "width": 10.78125,
+          "height": 18
+        },
+        {
+          "text": "1101",
+          "left": 315.78125,
+          "top": 2,
+          "right": 353.78125,
+          "bottom": 26,
+          "width": 38,
+          "height": 24
+        },
+        {
+          "text": "+5 /s",
+          "left": 360.78125,
+          "top": 9,
+          "right": 379.171875,
+          "bottom": 19,
+          "width": 18.390625,
+          "height": 10
+        },
+        {
+          "text": "⚑",
+          "left": 432.75,
+          "top": 2,
+          "right": 448.890625,
+          "bottom": 26,
+          "width": 16.140625,
+          "height": 24
+        },
+        {
+          "text": "0",
+          "left": 455.890625,
+          "top": 2,
+          "right": 465.390625,
+          "bottom": 26,
+          "width": 9.5,
+          "height": 24
+        },
+        {
+          "text": "00:00",
+          "left": 518.953125,
+          "top": 2,
+          "right": 562,
+          "bottom": 26,
+          "width": 43.046875,
+          "height": 24
+        },
+        {
+          "text": "YOUR CITADEL",
+          "left": 305,
+          "top": 38,
+          "right": 361.15625,
+          "bottom": 48,
+          "width": 56.15625,
+          "height": 10
+        },
+        {
+          "text": "54%",
+          "left": 375.359375,
+          "top": 38,
+          "right": 395,
+          "bottom": 52,
+          "width": 19.640625,
+          "height": 14
+        },
+        {
+          "text": "THE LAST LIGHT",
+          "left": 404.515625,
+          "top": 39.65625,
+          "right": 455.46875,
+          "bottom": 50.65625,
+          "width": 50.953125,
+          "height": 11
+        },
+        {
+          "text": "CAMPAIGN",
+          "left": 409.40625,
+          "top": 51.546875,
+          "right": 450.578125,
+          "bottom": 61.546875,
+          "width": 41.171875,
+          "height": 10
+        },
+        {
+          "text": "ENEMY CITADEL",
+          "left": 467,
+          "top": 38,
+          "right": 529.234375,
+          "bottom": 48,
+          "width": 62.234375,
+          "height": 10
+        },
+        {
+          "text": "100%",
+          "left": 533.765625,
+          "top": 38,
+          "right": 557,
+          "bottom": 52,
+          "width": 23.234375,
+          "height": 14
+        }
+      ],
+      "id": "topbar",
+      "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+      "left": 292,
+      "top": 0,
+      "right": 568,
+      "bottom": 72,
+      "width": 276,
+      "height": 72,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "NORMAL · PROTECT",
+          "left": 298,
+          "top": 76,
+          "right": 403.1875,
+          "bottom": 90,
+          "width": 105.1875,
+          "height": 14
+        },
+        {
+          "text": "0/180s held · 2/2 protected",
+          "left": 298,
+          "top": 92,
+          "right": 431.359375,
+          "bottom": 105,
+          "width": 133.359375,
+          "height": 13
+        },
+        {
+          "text": "03:00 remaining",
+          "left": 485.75,
+          "top": 76,
+          "right": 562,
+          "bottom": 89,
+          "width": 76.25,
+          "height": 13
+        },
+        {
+          "text": "North watchtower",
+          "left": 304,
+          "top": 122.203125,
+          "right": 413.28125,
+          "bottom": 138.203125,
+          "width": 109.28125,
+          "height": 16
+        },
+        {
+          "text": "100% HP",
+          "left": 304,
+          "top": 139.59375,
+          "right": 348.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        },
+        {
+          "text": "Focus",
+          "left": 379.21875,
+          "top": 140.6875,
+          "right": 407,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        },
+        {
+          "text": "South watchtower",
+          "left": 439,
+          "top": 122.203125,
+          "right": 549.078125,
+          "bottom": 138.203125,
+          "width": 110.078125,
+          "height": 16
+        },
+        {
+          "text": "100% HP",
+          "left": 439,
+          "top": 139.59375,
+          "right": 483.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        },
+        {
+          "text": "Focus",
+          "left": 514.21875,
+          "top": 140.6875,
+          "right": 542,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        }
+      ],
+      "id": "protectedDock",
+      "label": "NORMAL · PROTECT\n          0/180s held · 2/2 protected03:00 remaining\n     ",
+      "left": 292,
+      "top": 72,
+      "right": 568,
+      "bottom": 176,
+      "width": 276,
+      "height": 104,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "Build",
+          "left": 307.828125,
+          "top": 189.5,
+          "right": 344.171875,
+          "bottom": 210.5,
+          "width": 36.34375,
+          "height": 21
+        },
+        {
+          "text": "▶",
+          "left": 387.265625,
+          "top": 191.5,
+          "right": 404.734375,
+          "bottom": 208.5,
+          "width": 17.46875,
+          "height": 17
+        },
+        {
+          "text": "1×",
+          "left": 439.34375,
+          "top": 191.5,
+          "right": 448.640625,
+          "bottom": 208.5,
+          "width": 9.296875,
+          "height": 17
+        },
+        {
+          "text": "♫",
+          "left": 486.75,
+          "top": 191.5,
+          "right": 497.25,
+          "bottom": 208.5,
+          "width": 10.5,
+          "height": 17
+        },
+        {
+          "text": "⚙",
+          "left": 531.265625,
+          "top": 191.5,
+          "right": 548.734375,
+          "bottom": 208.5,
+          "width": 17.46875,
+          "height": 17
+        },
+        {
+          "text": "⌂",
+          "left": 314.859375,
+          "top": 237,
+          "right": 325.140625,
+          "bottom": 259,
+          "width": 10.28125,
+          "height": 22
+        },
+        {
+          "text": "⚔",
+          "left": 529.390625,
+          "top": 237,
+          "right": 550.609375,
+          "bottom": 259,
+          "width": 21.21875,
+          "height": 22
+        }
+      ],
+      "id": "protectedNavigation",
+      "label": "Battle controls",
+      "left": 292,
+      "top": 176,
+      "right": 568,
+      "bottom": 272,
+      "width": 276,
+      "height": 96,
+      "visible": true
+    }
+  ],
+  "controls": [
+    {
+      "textRanges": [
+        {
+          "text": "▶",
+          "left": 387.265625,
+          "top": 191.5,
+          "right": 404.734375,
+          "bottom": 208.5,
+          "width": 17.46875,
+          "height": 17
+        }
+      ],
+      "id": "pause",
+      "label": "Resume game",
+      "left": 374,
+      "top": 178,
+      "right": 418,
+      "bottom": 222,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "1×",
+          "left": 439.34375,
+          "top": 191.5,
+          "right": 448.640625,
+          "bottom": 208.5,
+          "width": 9.296875,
+          "height": 17
+        }
+      ],
+      "id": "speed",
+      "label": "Change battle speed",
+      "left": 422,
+      "top": 178,
+      "right": 466,
+      "bottom": 222,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "♫",
+          "left": 486.75,
+          "top": 191.5,
+          "right": 497.25,
+          "bottom": 208.5,
+          "width": 10.5,
+          "height": 17
+        }
+      ],
+      "id": "sound",
+      "label": "Mute audio",
+      "left": 470,
+      "top": 178,
+      "right": 514,
+      "bottom": 222,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "⚙",
+          "left": 531.265625,
+          "top": 191.5,
+          "right": 548.734375,
+          "bottom": 208.5,
+          "width": 17.46875,
+          "height": 17
+        }
+      ],
+      "id": "settings",
+      "label": "Open preferences",
+      "left": 518,
+      "top": 178,
+      "right": 562,
+      "bottom": 222,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "⌂",
+          "left": 314.859375,
+          "top": 237,
+          "right": 325.140625,
+          "bottom": 259,
+          "width": 10.28125,
+          "height": 22
+        }
+      ],
+      "id": "home",
+      "label": "Go to your base",
+      "left": 298,
+      "top": 226,
+      "right": 342,
+      "bottom": 270,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "⚔",
+          "left": 529.390625,
+          "top": 237,
+          "right": 550.609375,
+          "bottom": 259,
+          "width": 21.21875,
+          "height": 22
+        }
+      ],
+      "id": "front",
+      "label": "Follow the frontline",
+      "left": 518,
+      "top": 226,
+      "right": 562,
+      "bottom": 270,
+      "width": 44,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [],
+      "id": "minimap",
+      "label": "Map overview. Tap to move the camera.",
+      "left": 346,
+      "top": 226,
+      "right": 514,
+      "bottom": 270,
+      "width": 168,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "Build",
+          "left": 307.828125,
+          "top": 189.5,
+          "right": 344.171875,
+          "bottom": 210.5,
+          "width": 36.34375,
+          "height": 21
+        }
+      ],
+      "id": "compactBuild",
+      "label": "Open building controls",
+      "left": 298,
+      "top": 178,
+      "right": 354,
+      "bottom": 222,
+      "width": 56,
+      "height": 44,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "North watchtower",
+          "left": 304,
+          "top": 122.203125,
+          "right": 413.28125,
+          "bottom": 138.203125,
+          "width": 109.28125,
+          "height": 16
+        },
+        {
+          "text": "100% HP",
+          "left": 304,
+          "top": 139.59375,
+          "right": 348.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        },
+        {
+          "text": "Focus",
+          "left": 379.21875,
+          "top": 140.6875,
+          "right": 407,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        }
+      ],
+      "id": "protected-target",
+      "label": "Focus North watchtower",
+      "left": 298,
+      "top": 108,
+      "right": 427,
+      "bottom": 172,
+      "width": 129,
+      "height": 64,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "South watchtower",
+          "left": 439,
+          "top": 122.203125,
+          "right": 549.078125,
+          "bottom": 138.203125,
+          "width": 110.078125,
+          "height": 16
+        },
+        {
+          "text": "100% HP",
+          "left": 439,
+          "top": 139.59375,
+          "right": 483.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        },
+        {
+          "text": "Focus",
+          "left": 514.21875,
+          "top": 140.6875,
+          "right": 542,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        }
+      ],
+      "id": "protected-target",
+      "label": "Focus South watchtower",
+      "left": 433,
+      "top": 108,
+      "right": 562,
+      "bottom": 172,
+      "width": 129,
+      "height": 64,
+      "visible": true
+    }
+  ],
+  "geometry": {
+    "safe": true,
+    "reason": ""
+  },
+  "modal": {
+    "visible": true,
+    "title": "Battle paused for screen size",
+    "reason": "Part of the battlefield or its controls is outside the visible screen. Rotate your device or enlarge the window. Your battle stays paused.",
+    "resumeDisabled": true
+  },
+  "time": "00:00",
+  "hudText": [
+    {
+      "id": "gold",
+      "text": "1101",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "1101",
+            "left": 315.78125,
+            "top": 2,
+            "right": 353.78125,
+            "bottom": 26,
+            "width": 38,
+            "height": 24
+          }
+        ],
+        "id": "gold",
+        "label": "1101",
+        "left": 315.78125,
+        "top": 2,
+        "right": 353.78125,
+        "bottom": 26,
+        "width": 38,
+        "height": 24,
+        "visible": true
+      }
+    },
+    {
+      "id": "income",
+      "text": "+5 /s",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "+5 /s",
+            "left": 360.78125,
+            "top": 9,
+            "right": 379.171875,
+            "bottom": 19,
+            "width": 18.390625,
+            "height": 10
+          }
+        ],
+        "id": "income",
+        "label": "+5 /s",
+        "left": 360.78125,
+        "top": 4,
+        "right": 379.171875,
+        "bottom": 24,
+        "width": 18.390625,
+        "height": 20,
+        "visible": true
+      }
+    },
+    {
+      "id": "army",
+      "text": "0",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "0",
+            "left": 455.890625,
+            "top": 2,
+            "right": 465.390625,
+            "bottom": 26,
+            "width": 9.5,
+            "height": 24
+          }
+        ],
+        "id": "army",
+        "label": "0",
+        "left": 455.890625,
+        "top": 2,
+        "right": 465.390625,
+        "bottom": 26,
+        "width": 9.5,
+        "height": 24,
+        "visible": true
+      }
+    },
+    {
+      "id": "time",
+      "text": "00:00",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "00:00",
+            "left": 518.953125,
+            "top": 2,
+            "right": 562,
+            "bottom": 26,
+            "width": 43.046875,
+            "height": 24
+          }
+        ],
+        "id": "time",
+        "label": "00:00",
+        "left": 518.953125,
+        "top": 2,
+        "right": 562,
+        "bottom": 26,
+        "width": 43.046875,
+        "height": 24,
+        "visible": true
+      }
+    },
+    {
+      "id": "objectiveIdentity",
+      "text": "NORMAL · PROTECT",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "NORMAL · PROTECT",
+            "left": 298,
+            "top": 76,
+            "right": 403.1875,
+            "bottom": 90,
+            "width": 105.1875,
+            "height": 14
+          }
+        ],
+        "id": "objectiveIdentity",
+        "label": "NORMAL · PROTECT",
+        "left": 298,
+        "top": 76,
+        "right": 479.75,
+        "bottom": 90,
+        "width": 181.75,
+        "height": 14,
+        "visible": true
+      }
+    },
+    {
+      "id": "objectiveProgress",
+      "text": "0/180s held · 2/2 protected",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "0/180s held · 2/2 protected",
+            "left": 298,
+            "top": 92,
+            "right": 431.359375,
+            "bottom": 105,
+            "width": 133.359375,
+            "height": 13
+          }
+        ],
+        "id": "objectiveProgress",
+        "label": "0/180s held · 2/2 protected",
+        "left": 298,
+        "top": 92,
+        "right": 562,
+        "bottom": 105,
+        "width": 264,
+        "height": 13,
+        "visible": true
+      }
+    },
+    {
+      "id": "objectiveTime",
+      "text": "03:00 remaining",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "03:00 remaining",
+            "left": 485.75,
+            "top": 76,
+            "right": 562,
+            "bottom": 89,
+            "width": 76.25,
+            "height": 13
+          }
+        ],
+        "id": "objectiveTime",
+        "label": "03:00 remaining",
+        "left": 485.75,
+        "top": 76,
+        "right": 562,
+        "bottom": 89,
+        "width": 76.25,
+        "height": 13,
+        "visible": true
+      }
+    },
+    {
+      "id": "yourHpText",
+      "text": "54%",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "54%",
+            "left": 375.359375,
+            "top": 38,
+            "right": 395,
+            "bottom": 52,
+            "width": 19.640625,
+            "height": 14
+          }
+        ],
+        "id": "yourHpText",
+        "label": "54%",
+        "left": 375.359375,
+        "top": 38,
+        "right": 395,
+        "bottom": 52,
+        "width": 19.640625,
+        "height": 14,
+        "visible": true
+      }
+    },
+    {
+      "id": "enemyHpText",
+      "text": "100%",
+      "rect": {
+        "textRanges": [
+          {
+            "text": "100%",
+            "left": 533.765625,
+            "top": 38,
+            "right": 557,
+            "bottom": 52,
+            "width": 23.234375,
+            "height": 14
+          }
+        ],
+        "id": "enemyHpText",
+        "label": "100%",
+        "left": 533.765625,
+        "top": 38,
+        "right": 557,
+        "bottom": 52,
+        "width": 23.234375,
+        "height": 14,
+        "visible": true
+      }
+    }
+  ],
+  "textNodes": [
+    {
+      "textRanges": [
+        {
+          "text": "YOUR CITADEL",
+          "left": 305,
+          "top": 38,
+          "right": 361.15625,
+          "bottom": 48,
+          "width": 56.15625,
+          "height": 10
+        }
+      ],
+      "id": "",
+      "label": "YOUR CITADEL",
+      "left": 305,
+      "top": 38,
+      "right": 393,
+      "bottom": 48,
+      "width": 88,
+      "height": 10,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "ENEMY CITADEL",
+          "left": 467,
+          "top": 38,
+          "right": 529.234375,
+          "bottom": 48,
+          "width": 62.234375,
+          "height": 10
+        }
+      ],
+      "id": "",
+      "label": "ENEMY CITADEL",
+      "left": 467,
+      "top": 38,
+      "right": 555,
+      "bottom": 48,
+      "width": 88,
+      "height": 10,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "North watchtower",
+          "left": 304,
+          "top": 122.203125,
+          "right": 413.28125,
+          "bottom": 138.203125,
+          "width": 109.28125,
+          "height": 16
+        }
+      ],
+      "id": "protected-name",
+      "label": "North watchtower",
+      "left": 304,
+      "top": 123.203125,
+      "right": 421,
+      "bottom": 137.59375,
+      "width": 117,
+      "height": 14.390625,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "100% HP",
+          "left": 304,
+          "top": 139.59375,
+          "right": 348.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        }
+      ],
+      "id": "protected-health-3",
+      "label": "1400 of 1400 health. healthy.",
+      "left": 304,
+      "top": 140.59375,
+      "right": 375.21875,
+      "bottom": 153.78125,
+      "width": 71.21875,
+      "height": 13.1875,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "Focus",
+          "left": 379.21875,
+          "top": 140.6875,
+          "right": 407,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        }
+      ],
+      "id": "protected-focus-hint",
+      "label": "Focus",
+      "left": 379.21875,
+      "top": 140.59375,
+      "right": 421,
+      "bottom": 153.78125,
+      "width": 41.78125,
+      "height": 13.1875,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "South watchtower",
+          "left": 439,
+          "top": 122.203125,
+          "right": 549.078125,
+          "bottom": 138.203125,
+          "width": 110.078125,
+          "height": 16
+        }
+      ],
+      "id": "protected-name",
+      "label": "South watchtower",
+      "left": 439,
+      "top": 123.203125,
+      "right": 556,
+      "bottom": 137.59375,
+      "width": 117,
+      "height": 14.390625,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "100% HP",
+          "left": 439,
+          "top": 139.59375,
+          "right": 483.1875,
+          "bottom": 153.59375,
+          "width": 44.1875,
+          "height": 14
+        }
+      ],
+      "id": "protected-health-4",
+      "label": "1400 of 1400 health. healthy.",
+      "left": 439,
+      "top": 140.59375,
+      "right": 510.21875,
+      "bottom": 153.78125,
+      "width": 71.21875,
+      "height": 13.1875,
+      "visible": true
+    },
+    {
+      "textRanges": [
+        {
+          "text": "Focus",
+          "left": 514.21875,
+          "top": 140.6875,
+          "right": 542,
+          "bottom": 153.6875,
+          "width": 27.78125,
+          "height": 13
+        }
+      ],
+      "id": "protected-focus-hint",
+      "label": "Focus",
+      "left": 514.21875,
+      "top": 140.59375,
+      "right": 556,
+      "bottom": 153.78125,
+      "width": 41.78125,
+      "height": 13.1875,
+      "visible": true
+    }
+  ],
+  "scroll": {
+    "width": 568,
+    "height": 280
+  },
+  "localStorageIsMemory": true,
+  "sharedProfileExact": true
+}

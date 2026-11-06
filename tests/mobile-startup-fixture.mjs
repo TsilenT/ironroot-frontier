@@ -5,7 +5,7 @@ import {Game,BUILDINGS,SPELL,UNITS,upgradeCost} from '../dist/engine.js';
 import {ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,createCampaignMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
-import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport} from '../dist/mobile-battlefield.js';
+import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
@@ -48,7 +48,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
-  createViewportPause,visibleViewportRect,fitMobileViewport,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
+  createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:null,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
@@ -57,7 +57,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   renderer:{width:width,height:height,camera:450,resize(){log.resizes++;},setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){}}},
   populateFieldGuide(){},populateBuildCards(){},renderMapSelection(){},syncProfileSafety(){},showRecoverySettings(){throw Error('unexpected recovery');},beginBattleReport(){},
   battleSession:{claim(){log.claims++;},status:()=> 'current'},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},
-  getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible'}),
+  getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible',...Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`]))}),
   iconSVG:()=>'',timeText:t=>String(t),setTimeout,requestAnimationFrame(){},pauseControl(){},
  };
  c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);

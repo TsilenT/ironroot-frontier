@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {MIN_PROTECTED_WORLD_HEIGHT,fitMobileViewport,visibleViewportRect,inspectMobileGeometry} from '../dist/mobile-battlefield.js';
+import {MIN_PROTECTED_WORLD_HEIGHT,insetViewportRect,fitMobileViewport,visibleViewportRect,inspectMobileGeometry} from '../dist/mobile-battlefield.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 import {box,layout} from './mobile-layout-fixture.mjs';
 
@@ -104,5 +104,29 @@ test('switching back to desktop removes mobile inline fit and re-entry restores 
  assert.ok(h.log.resizes>resizes);assert.deepEqual(h.c.game.serialize(),before);
  h.resize(667,300);assert.equal(h.$('app').classList.contains('protected-sidebar'),true);
  assert.deepEqual(fittedRect(h.$('app').style),box(0,0,667,300));assert.equal(h.c.viewportPause.active,false);
+ assert.deepEqual(h.c.game.serialize(),before);
+});
+
+
+test('safe content rect subtracts finite nonnegative CSS padding once and clamps exhausted space',()=>{
+ const viewport=box(3.25,7.5,390,600);
+ assert.deepEqual(insetViewportRect(viewport,{paddingTop:'20px',paddingRight:'4px',paddingBottom:'34px',paddingLeft:'6.5px'}),box(9.75,27.5,379.5,546));
+ assert.deepEqual(insetViewportRect(viewport),viewport);
+ assert.deepEqual(insetViewportRect(viewport,{paddingTop:'NaN',paddingRight:'-9px',paddingBottom:'Infinity',paddingLeft:'auto'}),viewport);
+ assert.deepEqual(insetViewportRect(viewport,{paddingTop:'900px',paddingRight:'900px',paddingBottom:'900px',paddingLeft:'900px'}),box(viewport.right,viewport.bottom,0,0));
+ assert.deepEqual(viewport,box(3.25,7.5,390,600),'safe content calculation never moves or shrinks the fitted root');
+});
+
+test('protected sidebar overflow into reserved safe area pauses even when it fits the outer viewport',()=>{
+ const h=startupHarness({width:568,height:280,insets:{bottom:21}});h.start();
+ const geometry=h.geometry(),viewport=box(0,0,568,280),safe=insetViewportRect(viewport,{paddingBottom:'21px'});
+ assert.equal(geometry.canvas.height,272,'72px header + 104px objective + 96px navigation');
+ assert.equal(inspectMobileGeometry({...geometry,viewport}).safe,true,'negative old outer-root-only guard misses the reserved area');
+ assert.equal(inspectMobileGeometry({...geometry,viewport:safe}).safe,false);
+ assert.equal(h.c.viewportPause.blocked,true);assert.equal(h.c.paused,true);assert.equal(h.$('viewportResume').disabled,true);
+ assert.deepEqual(fittedRect(h.$('app').style),viewport);assert.deepEqual(fittedRect(h.$('viewportModal').style),viewport,'fallback keeps full visual viewport rather than double-insetting');
+ const before=h.c.game.serialize();h.resize(568,320);
+ assert.equal(h.c.viewportPause.blocked,false);assert.equal(h.c.paused,true);assert.deepEqual(h.c.game.serialize(),before);
+ h.c.pause(false);assert.equal(h.c.paused,true);h.c.pause(false,{explicit:true});assert.equal(h.c.paused,false);
  assert.deepEqual(h.c.game.serialize(),before);
 });
