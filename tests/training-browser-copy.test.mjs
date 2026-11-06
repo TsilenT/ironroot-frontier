@@ -5,13 +5,14 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {TRAINING_LESSONS} from '../dist/training.js';
 
-// Independent approved copy, not expectations derived from runtime successText.
+// Revised approved prose literals, not expectations derived from runtime successText.
+// Combat attribution/evidence is independently checked by training and accepted-copy-parity tests.
 const EXPECTED_FEEDBACK = new Map([
-  ['first-barracks', 'A real warrior spawned from your paid barracks. It will march toward enemy buildings automatically.'],
-  ['shield-and-arrow', 'Enemy arrows hit your warrior screen, and your archers fired from behind it. Both observations came from actual combat.'],
-  ['mine-and-upgrade', 'The upgraded mine produced real income at 8.75 gold per second. Upgrades use existing space but still need gold.'],
-  ['siege-the-tower', 'Your siege engines damaged the marked tower, which was destroyed in actual combat.'],
-  ['answer-the-air', 'Your archers struck the tracked gryphon, which was defeated. Warriors and siege cannot provide this air cover.'],
+  ['first-barracks', 'Your barracks trained its first warrior. It will march toward enemy buildings on its own.'],
+  ['shield-and-arrow', 'Enemy arrows hit your warriors. Your archers fired with a warrior still ahead of them.'],
+  ['mine-and-upgrade', 'With your upgraded mine working, you earned 8.75 gold per second. Upgrades cost gold but need no extra building site.'],
+  ['siege-the-tower', 'Your siege engines hit the marked tower. The tower fell.'],
+  ['answer-the-air', 'Your archers hit the marked gryphon. The gryphon fell. Warriors and siege engines cannot attack flyers.'],
 ]);
 
 const browserSource = readFileSync(new URL('../qa/browser/training.spec.mjs', import.meta.url), 'utf8');
@@ -46,10 +47,10 @@ for (const [id,feedback] of EXPECTED_FEEDBACK) {
 }
 
 for (const [id,partialFeedback] of [
-  ['siege-the-tower', 'Your siege engines damaged the marked tower.'],
-  ['siege-the-tower', 'The marked tower was destroyed in actual combat.'],
-  ['answer-the-air', 'Your archers struck the tracked gryphon.'],
-  ['answer-the-air', 'The tracked gryphon was defeated.'],
+  ['siege-the-tower', 'Your siege engines hit the marked tower.'],
+  ['siege-the-tower', 'The tower fell.'],
+  ['answer-the-air', 'Your archers hit the marked gryphon.'],
+  ['answer-the-air', 'The gryphon fell.'],
 ]) {
   test(`${id}: browser proof rejects incomplete attribution: ${partialFeedback}`, () => {
     assert.doesNotMatch(partialFeedback, browserProofs.get(id));

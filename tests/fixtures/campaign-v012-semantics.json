@@ -1,0 +1,1626 @@
+{
+  "sourceCommit": "24edddab2cff33b3f91b396bc855193f87421ba3",
+  "fields": [
+    "id",
+    "chapterId",
+    "number",
+    "mapId",
+    "difficulty",
+    "seed",
+    "timeLimit",
+    "startingGold",
+    "startingHealth",
+    "enemyGold",
+    "ai",
+    "prerequisites",
+    "playerBuildings",
+    "enemyBuildings",
+    "objectives",
+    "medals"
+  ],
+  "missions": [
+    {
+      "id": "emberwatch",
+      "chapterId": "embers",
+      "number": 1,
+      "mapId": "classic",
+      "difficulty": "easy",
+      "seed": 1101,
+      "timeLimit": 180,
+      "startingGold": 460,
+      "startingHealth": 6000,
+      "ai": false,
+      "prerequisites": [],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2230,
+          1
+        ],
+        [
+          "archery",
+          2650,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "raiders",
+          "type": "destroy",
+          "label": "Destroy the raider barracks",
+          "targets": [
+            {
+              "type": "barracks",
+              "x": 2230,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 1:40 or less",
+          "seconds": 100
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 5,400 citadel HP",
+          "amount": 5400
+        }
+      ]
+    },
+    {
+      "id": "three-roads",
+      "chapterId": "embers",
+      "number": 2,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 1203,
+      "timeLimit": 210,
+      "startingGold": 610,
+      "startingHealth": 5200,
+      "ai": false,
+      "prerequisites": [
+        "emberwatch"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2230,
+          0
+        ],
+        [
+          "barracks",
+          2230,
+          2
+        ],
+        [
+          "archery",
+          2510,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "roads",
+          "type": "destroy",
+          "label": "Clear both roadblocks",
+          "targets": [
+            {
+              "type": "barracks",
+              "x": 2230,
+              "lane": 0
+            },
+            {
+              "type": "barracks",
+              "x": 2230,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 2:30 or less",
+          "seconds": 150
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,000 citadel HP",
+          "amount": 4000
+        }
+      ]
+    },
+    {
+      "id": "winter-stores",
+      "chapterId": "embers",
+      "number": 3,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 1307,
+      "timeLimit": 150,
+      "startingGold": 520,
+      "startingHealth": 3800,
+      "ai": false,
+      "prerequisites": [
+        "three-roads"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2370,
+          0
+        ],
+        [
+          "barracks",
+          2370,
+          2
+        ],
+        [
+          "archery",
+          2650,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "income",
+          "type": "income",
+          "label": "Reach 15 gold/sec at the deadline",
+          "amount": 15
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep both supply mines alive",
+          "targets": [
+            {
+              "type": "mint",
+              "x": 410,
+              "lane": 0
+            },
+            {
+              "type": "mint",
+              "x": 410,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 3,000 citadel HP",
+          "amount": 3000
+        },
+        {
+          "id": "wealth",
+          "type": "income",
+          "label": "Finish with 17.5 gold/sec",
+          "amount": 17.5
+        }
+      ]
+    },
+    {
+      "id": "wings-of-ash",
+      "chapterId": "highpass",
+      "number": 4,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 2101,
+      "timeLimit": 210,
+      "startingGold": 550,
+      "startingHealth": 4200,
+      "ai": false,
+      "prerequisites": [
+        "winter-stores"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          0
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "aerie",
+          1950,
+          0,
+          3
+        ],
+        [
+          "aerie",
+          2230,
+          2,
+          3
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "aeries",
+          "type": "destroy",
+          "label": "Destroy both veteran aeries",
+          "targets": [
+            {
+              "type": "aerie",
+              "x": 1950,
+              "lane": 0
+            },
+            {
+              "type": "aerie",
+              "x": 2230,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 2:00 or less",
+          "seconds": 120
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 3,300 citadel HP",
+          "amount": 3300
+        }
+      ]
+    },
+    {
+      "id": "stonegate",
+      "chapterId": "highpass",
+      "number": 5,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 2203,
+      "timeLimit": 240,
+      "startingGold": 600,
+      "startingHealth": 6000,
+      "ai": false,
+      "prerequisites": [
+        "winter-stores"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "watchtower",
+          1950,
+          1,
+          2
+        ],
+        [
+          "watchtower",
+          2090,
+          1,
+          2
+        ],
+        [
+          "watchtower",
+          2230,
+          1,
+          2
+        ],
+        [
+          "barracks",
+          2510,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "gate",
+          "type": "destroy",
+          "label": "Break the three gate towers",
+          "targets": [
+            {
+              "type": "watchtower",
+              "x": 1950,
+              "lane": 1
+            },
+            {
+              "type": "watchtower",
+              "x": 2090,
+              "lane": 1
+            },
+            {
+              "type": "watchtower",
+              "x": 2230,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 2:15 or less",
+          "seconds": 135
+        },
+        {
+          "id": "veterans",
+          "type": "upgrades",
+          "label": "Finish with 2 living level-2+ buildings",
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "id": "long-vigil",
+      "chapterId": "highpass",
+      "number": 6,
+      "mapId": "classic",
+      "difficulty": "hard",
+      "seed": 2309,
+      "timeLimit": 150,
+      "startingGold": 730,
+      "startingHealth": 2600,
+      "ai": false,
+      "prerequisites": [
+        "wings-of-ash",
+        "stonegate"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ],
+        [
+          "sanctum",
+          970,
+          1,
+          2
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2230,
+          0
+        ],
+        [
+          "barracks",
+          2230,
+          1
+        ],
+        [
+          "barracks",
+          2230,
+          2
+        ],
+        [
+          "archery",
+          2370,
+          1
+        ],
+        [
+          "aerie",
+          2370,
+          0
+        ],
+        [
+          "foundry",
+          2650,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "hold",
+          "type": "survive",
+          "label": "Hold for 2:30",
+          "seconds": 150
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep the signal sanctum alive",
+          "targets": [
+            {
+              "type": "sanctum",
+              "x": 970,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 1,800 citadel HP",
+          "amount": 1800
+        },
+        {
+          "id": "veterans",
+          "type": "upgrades",
+          "label": "Finish with 3 living level-2+ buildings",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "cold-forge",
+      "chapterId": "furnace",
+      "number": 7,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 3101,
+      "timeLimit": 240,
+      "startingGold": 710,
+      "startingHealth": 4800,
+      "ai": false,
+      "prerequisites": [
+        "long-vigil"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          690,
+          1
+        ],
+        [
+          "archery",
+          550,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "foundry",
+          2090,
+          0,
+          2
+        ],
+        [
+          "foundry",
+          2090,
+          2,
+          2
+        ],
+        [
+          "barracks",
+          2370,
+          0
+        ],
+        [
+          "barracks",
+          2370,
+          2
+        ],
+        [
+          "archery",
+          2510,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "forges",
+          "type": "destroy",
+          "label": "Destroy both forward foundries",
+          "targets": [
+            {
+              "type": "foundry",
+              "x": 2090,
+              "lane": 0
+            },
+            {
+              "type": "foundry",
+              "x": 2090,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 2:30 or less",
+          "seconds": 150
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 3,600 citadel HP",
+          "amount": 3600
+        }
+      ]
+    },
+    {
+      "id": "black-ledger",
+      "chapterId": "furnace",
+      "number": 8,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 3203,
+      "timeLimit": 270,
+      "startingGold": 900,
+      "startingHealth": 6000,
+      "enemyGold": 80,
+      "ai": true,
+      "prerequisites": [
+        "long-vigil"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          1,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "mint",
+          2790,
+          0
+        ],
+        [
+          "mint",
+          2790,
+          1
+        ],
+        [
+          "mint",
+          2790,
+          2
+        ],
+        [
+          "barracks",
+          2370,
+          1
+        ],
+        [
+          "watchtower",
+          2510,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "ledger",
+          "type": "destroy",
+          "label": "Destroy the three supply mines",
+          "targets": [
+            {
+              "type": "mint",
+              "x": 2790,
+              "lane": 0
+            },
+            {
+              "type": "mint",
+              "x": 2790,
+              "lane": 1
+            },
+            {
+              "type": "mint",
+              "x": 2790,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 3:30 or less",
+          "seconds": 210
+        },
+        {
+          "id": "wealth",
+          "type": "income",
+          "label": "Finish with 15 gold/sec",
+          "amount": 15
+        }
+      ]
+    },
+    {
+      "id": "furnace-heart",
+      "chapterId": "furnace",
+      "number": 9,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 3307,
+      "timeLimit": 270,
+      "startingGold": 1000,
+      "startingHealth": 5200,
+      "ai": false,
+      "prerequisites": [
+        "cold-forge",
+        "black-ledger"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          1,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "foundry",
+          2510,
+          1,
+          2
+        ],
+        [
+          "sanctum",
+          2650,
+          1,
+          2
+        ],
+        [
+          "barracks",
+          2230,
+          1
+        ],
+        [
+          "archery",
+          2370,
+          1
+        ],
+        [
+          "barracks",
+          2510,
+          0
+        ],
+        [
+          "barracks",
+          2510,
+          2
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "heart",
+          "type": "destroy",
+          "label": "Destroy the two central works",
+          "targets": [
+            {
+              "type": "foundry",
+              "x": 2510,
+              "lane": 1
+            },
+            {
+              "type": "sanctum",
+              "x": 2650,
+              "lane": 1
+            }
+          ]
+        },
+        {
+          "id": "citadel",
+          "type": "health",
+          "label": "Finish with at least 2,000 citadel HP",
+          "amount": 2000
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 3:30 or less",
+          "seconds": 210
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,200 citadel HP",
+          "amount": 4200
+        }
+      ]
+    },
+    {
+      "id": "crown-foothold",
+      "chapterId": "crownworks",
+      "number": 10,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 4101,
+      "timeLimit": 180,
+      "startingGold": 1050,
+      "startingHealth": 4200,
+      "enemyGold": 0,
+      "ai": true,
+      "prerequisites": [
+        "furnace-heart"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          1,
+          2
+        ],
+        [
+          "watchtower",
+          1110,
+          0
+        ],
+        [
+          "watchtower",
+          1110,
+          2
+        ],
+        [
+          "mint",
+          410,
+          0
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2230,
+          0
+        ],
+        [
+          "barracks",
+          2230,
+          1
+        ],
+        [
+          "barracks",
+          2230,
+          2
+        ],
+        [
+          "archery",
+          2510,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "income",
+          "type": "income",
+          "label": "Reach 17.5 gold/sec at the deadline",
+          "amount": 17.5
+        }
+      ],
+      "medals": [
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 3,300 citadel HP",
+          "amount": 3300
+        },
+        {
+          "id": "wealth",
+          "type": "income",
+          "label": "Finish with 20 gold/sec",
+          "amount": 20
+        }
+      ]
+    },
+    {
+      "id": "last-light",
+      "chapterId": "crownworks",
+      "number": 11,
+      "mapId": "classic",
+      "difficulty": "normal",
+      "seed": 4201,
+      "timeLimit": 180,
+      "startingGold": 1100,
+      "startingHealth": 3200,
+      "enemyGold": 0,
+      "ai": true,
+      "prerequisites": [
+        "furnace-heart"
+      ],
+      "playerBuildings": [
+        [
+          "watchtower",
+          970,
+          0,
+          2
+        ],
+        [
+          "watchtower",
+          970,
+          2,
+          2
+        ],
+        [
+          "barracks",
+          830,
+          1
+        ],
+        [
+          "archery",
+          690,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2230,
+          0
+        ],
+        [
+          "barracks",
+          2230,
+          1
+        ],
+        [
+          "barracks",
+          2230,
+          2
+        ],
+        [
+          "foundry",
+          2510,
+          0
+        ],
+        [
+          "aerie",
+          2510,
+          2
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "hold",
+          "type": "survive",
+          "label": "Hold for 3:00",
+          "seconds": 180
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep both signal watchtowers alive",
+          "targets": [
+            {
+              "type": "watchtower",
+              "x": 970,
+              "lane": 0
+            },
+            {
+              "type": "watchtower",
+              "x": 970,
+              "lane": 2
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 2,500 citadel HP",
+          "amount": 2500
+        },
+        {
+          "id": "veterans",
+          "type": "upgrades",
+          "label": "Finish with 6 living level-2+ buildings",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "id": "ironroot",
+      "chapterId": "crownworks",
+      "number": 12,
+      "mapId": "classic",
+      "difficulty": "hard",
+      "seed": 4303,
+      "timeLimit": 300,
+      "startingGold": 1400,
+      "startingHealth": 6000,
+      "enemyGold": 120,
+      "ai": true,
+      "prerequisites": [
+        "crown-foothold",
+        "last-light"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          1,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1,
+          2
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "watchtower",
+          1110,
+          0
+        ],
+        [
+          "watchtower",
+          1110,
+          2
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "watchtower",
+          1950,
+          1,
+          2
+        ],
+        [
+          "barracks",
+          2230,
+          1,
+          2
+        ],
+        [
+          "archery",
+          2370,
+          1,
+          2
+        ],
+        [
+          "barracks",
+          2370,
+          0
+        ],
+        [
+          "barracks",
+          2370,
+          2
+        ],
+        [
+          "aerie",
+          2650,
+          0
+        ],
+        [
+          "sanctum",
+          2650,
+          2
+        ],
+        [
+          "mint",
+          2930,
+          1
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "crown",
+          "type": "citadel",
+          "label": "Destroy the enemy citadel"
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 4:00 or less",
+          "seconds": 240
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,000 citadel HP",
+          "amount": 4000
+        }
+      ]
+    },
+    {
+      "id": "open-horizon",
+      "chapterId": "frontier",
+      "number": 13,
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "seed": 5101,
+      "timeLimit": 240,
+      "startingGold": 1100,
+      "startingHealth": 5200,
+      "ai": false,
+      "prerequisites": [
+        "ironroot"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          1,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "watchtower",
+          2750,
+          1,
+          3
+        ],
+        [
+          "watchtower",
+          2890,
+          1,
+          3
+        ],
+        [
+          "barracks",
+          3170,
+          1,
+          2
+        ],
+        [
+          "aerie",
+          3310,
+          1,
+          3
+        ],
+        [
+          "aerie",
+          3450,
+          1,
+          3
+        ],
+        [
+          "aerie",
+          3030,
+          0,
+          3
+        ],
+        [
+          "aerie",
+          3030,
+          2,
+          3
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "tolls",
+          "type": "destroy",
+          "label": "Break both toll towers",
+          "targets": [
+            {
+              "type": "watchtower",
+              "x": 2750,
+              "lane": 1
+            },
+            {
+              "type": "watchtower",
+              "x": 2890,
+              "lane": 1
+            }
+          ]
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep the relief barracks alive",
+          "targets": [
+            {
+              "type": "barracks",
+              "x": 970,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 3:20 or less",
+          "seconds": 200
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,200 citadel HP",
+          "amount": 4200
+        }
+      ]
+    },
+    {
+      "id": "river-charter",
+      "chapterId": "frontier",
+      "number": 14,
+      "mapId": "twin-span",
+      "difficulty": "normal",
+      "seed": 5203,
+      "timeLimit": 210,
+      "startingGold": 1100,
+      "startingHealth": 3800,
+      "ai": false,
+      "prerequisites": [
+        "open-horizon"
+      ],
+      "playerBuildings": [
+        [
+          "watchtower",
+          970,
+          0,
+          3
+        ],
+        [
+          "watchtower",
+          970,
+          1,
+          3
+        ],
+        [
+          "barracks",
+          830,
+          0
+        ],
+        [
+          "archery",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "foundry",
+          2230,
+          0,
+          3
+        ],
+        [
+          "foundry",
+          2370,
+          0,
+          2
+        ],
+        [
+          "barracks",
+          2510,
+          0,
+          2
+        ],
+        [
+          "aerie",
+          2230,
+          1,
+          3
+        ],
+        [
+          "aerie",
+          2370,
+          1,
+          3
+        ],
+        [
+          "aerie",
+          2510,
+          1,
+          3
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "income",
+          "type": "income",
+          "label": "Reach 17.5 gold/sec at the deadline",
+          "amount": 17.5
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep both bridge watchposts alive",
+          "targets": [
+            {
+              "type": "watchtower",
+              "x": 970,
+              "lane": 0
+            },
+            {
+              "type": "watchtower",
+              "x": 970,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "wealth",
+          "type": "income",
+          "label": "Finish with 20 gold/sec",
+          "amount": 20
+        },
+        {
+          "id": "veterans",
+          "type": "upgrades",
+          "label": "Finish with 6 living level-2+ buildings",
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "id": "far-beacon",
+      "chapterId": "frontier",
+      "number": 15,
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "seed": 5309,
+      "timeLimit": 280,
+      "startingGold": 1350,
+      "startingHealth": 5400,
+      "ai": false,
+      "prerequisites": [
+        "open-horizon"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          0,
+          2
+        ],
+        [
+          "archery",
+          830,
+          0
+        ],
+        [
+          "barracks",
+          970,
+          2,
+          2
+        ],
+        [
+          "archery",
+          830,
+          2
+        ],
+        [
+          "mint",
+          410,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "mint",
+          3590,
+          0
+        ],
+        [
+          "mint",
+          3590,
+          2
+        ],
+        [
+          "aerie",
+          3030,
+          0,
+          3
+        ],
+        [
+          "aerie",
+          3030,
+          2,
+          3
+        ],
+        [
+          "aerie",
+          3310,
+          0,
+          3
+        ],
+        [
+          "aerie",
+          3310,
+          2,
+          3
+        ],
+        [
+          "barracks",
+          3170,
+          0,
+          2
+        ],
+        [
+          "barracks",
+          3170,
+          2,
+          2
+        ],
+        [
+          "foundry",
+          2750,
+          1,
+          3
+        ],
+        [
+          "sanctum",
+          2890,
+          1,
+          3
+        ],
+        [
+          "sanctum",
+          3030,
+          1,
+          3
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "paystations",
+          "type": "destroy",
+          "label": "Close both outer pay stations",
+          "targets": [
+            {
+              "type": "mint",
+              "x": 3590,
+              "lane": 0
+            },
+            {
+              "type": "mint",
+              "x": 3590,
+              "lane": 2
+            }
+          ]
+        },
+        {
+          "id": "hold",
+          "type": "survive",
+          "label": "Hold for 3:10",
+          "seconds": 190
+        },
+        {
+          "id": "citadel",
+          "type": "health",
+          "label": "Finish with at least 2,000 citadel HP",
+          "amount": 2000
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 4:05 or less",
+          "seconds": 245
+        },
+        {
+          "id": "wealth",
+          "type": "income",
+          "label": "Finish with 15 gold/sec",
+          "amount": 15
+        }
+      ]
+    },
+    {
+      "id": "common-ground",
+      "chapterId": "frontier",
+      "number": 16,
+      "mapId": "twin-span",
+      "difficulty": "hard",
+      "seed": 5407,
+      "timeLimit": 300,
+      "startingGold": 1500,
+      "startingHealth": 6000,
+      "enemyGold": 80,
+      "ai": true,
+      "prerequisites": [
+        "river-charter",
+        "far-beacon"
+      ],
+      "playerBuildings": [
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "barracks",
+          970,
+          0,
+          2
+        ],
+        [
+          "archery",
+          830,
+          0
+        ],
+        [
+          "barracks",
+          690,
+          1,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1,
+          2
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "foundry",
+          2650,
+          0,
+          2
+        ],
+        [
+          "sanctum",
+          2650,
+          1,
+          2
+        ],
+        [
+          "barracks",
+          2230,
+          0,
+          2
+        ],
+        [
+          "barracks",
+          2230,
+          1,
+          2
+        ],
+        [
+          "archery",
+          2370,
+          0,
+          2
+        ],
+        [
+          "aerie",
+          2510,
+          1,
+          3
+        ],
+        [
+          "mint",
+          2930,
+          0
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "tollworks",
+          "type": "destroy",
+          "label": "Break the two toll works",
+          "targets": [
+            {
+              "type": "foundry",
+              "x": 2650,
+              "lane": 0
+            },
+            {
+              "type": "sanctum",
+              "x": 2650,
+              "lane": 1
+            }
+          ]
+        },
+        {
+          "id": "protect",
+          "type": "protect",
+          "label": "Keep the council mine and southern barracks alive",
+          "targets": [
+            {
+              "type": "mint",
+              "x": 410,
+              "lane": 0
+            },
+            {
+              "type": "barracks",
+              "x": 690,
+              "lane": 1
+            }
+          ]
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 4:05 or less",
+          "seconds": 245
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,500 citadel HP",
+          "amount": 4500
+        }
+      ]
+    }
+  ]
+}

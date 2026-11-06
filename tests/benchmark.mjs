@@ -5,8 +5,10 @@ import os from 'node:os';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const source=await readFile(new URL('../dist/engine.js',import.meta.url),'utf8');
-const {Game,BUILDINGS}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
-const hash=createHash('sha256').update(source).digest('hex').slice(0,12);
+const {Game,BUILDINGS}=await import(new URL('../dist/engine.js',import.meta.url).href);
+const engineSha256=createHash('sha256').update(source).digest('hex');
+const rulesetsSha256=createHash('sha256').update(await readFile(new URL('../dist/rulesets.js',import.meta.url))).digest('hex');
+const hash=engineSha256.slice(0,12);
 function invariants(g){
   const s=g.state;
   assert.ok(s.units.length<=140&&s.buildings.length<=48&&s.effects.length<=256&&s.projectiles.length<=256);
@@ -57,4 +59,4 @@ for(let seed=1;seed<=50;seed++){
   // Terminal games must not continue to allocate or advance through a long idle session.
   const saved=game.serialize();for(let i=0;i<1000;i++)game.update(1e12);assert.deepEqual(game.serialize(),saved);
 }
-console.log(JSON.stringify({engineSha:hash,node:process.version,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,saturated:{simulatedSeconds:120,steps:elapsed.length,totalMs:+sum.toFixed(2),meanStepMs:+(sum/elapsed.length).toFixed(4),p95StepMs:+p(.95).toFixed(4),p99StepMs:+p(.99).toFixed(4),maxStepMs:+elapsed.at(-1).toFixed(4),peakUnits,minStartUnits,meanStartUnits:+(totalStartUnits/2400).toFixed(1),peakBuildings,peakEffects,peakProjectiles,gcControlled:typeof globalThis.gc==='function',heapDeltaMB:+((afterMemory-beforeMemory)/1048576).toFixed(2)},longRun:{completedMatches:wins,restoreCheckpoints:restores,longestMatchSeconds:+maxDuration.toFixed(1),wallMs:+(performance.now()-longStart).toFixed(1)},note:'CPU-only simulation benchmark, not browser rendering/FPS. Heap delta includes garbage-collector timing; entity limits and repeated terminal no-ops are deterministic checks.'},null,2));
+console.log(JSON.stringify({engineSha:hash,engineSha256,rulesetsSha256,rulesetId:g.ruleset.id,node:process.version,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,saturated:{simulatedSeconds:120,steps:elapsed.length,totalMs:+sum.toFixed(2),meanStepMs:+(sum/elapsed.length).toFixed(4),p95StepMs:+p(.95).toFixed(4),p99StepMs:+p(.99).toFixed(4),maxStepMs:+elapsed.at(-1).toFixed(4),peakUnits,minStartUnits,meanStartUnits:+(totalStartUnits/2400).toFixed(1),peakBuildings,peakEffects,peakProjectiles,gcControlled:typeof globalThis.gc==='function',heapDeltaMB:+((afterMemory-beforeMemory)/1048576).toFixed(2)},longRun:{completedMatches:wins,restoreCheckpoints:restores,longestMatchSeconds:+maxDuration.toFixed(1),wallMs:+(performance.now()-longStart).toFixed(1)},note:'CPU-only simulation benchmark, not browser rendering/FPS. Heap delta includes garbage-collector timing; entity limits and repeated terminal no-ops are deterministic checks.'},null,2));

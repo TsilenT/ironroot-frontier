@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {PRIOR_BUILDS,currentRoot,shellManifest} from './update-fixtures.mjs';
+import {PRIOR_BUILDS,currentRoot,shellManifest,candidateIdentity} from './update-fixtures.mjs';
 import {Game} from '../../dist/engine.js';
 const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 const gitBlob=bytes=>createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
 assert.deepEqual(Object.keys(PRIOR_BUILDS),['0.7.0','0.8.0']);
-const current=await shellManifest(currentRoot);assert.equal(current.version,'ironroot-v0.12.0');
+const current=await candidateIdentity();
 assert.equal(Object.keys(current.hashes).filter(file=>file.endsWith('.woff2')).length,5);
-for(const file of ['battle-report.js','report-view.js','report-view.css','training.html','training-app.js','training.css','training.js'])assert.ok(current.hashes[file],'current 0.12 offline cache includes '+file);
+for(const file of ['battle-report.js','report-view.js','report-view.css','training.html','training-app.js','training.css','training.js'])assert.ok(current.hashes[file],'candidate offline cache includes '+file);
 for(const [version,{root:priorRoot,fileCount}] of Object.entries(PRIOR_BUILDS)){
   const expected=JSON.parse(await readFile(new URL('./fixtures/'+version+'-sha256.json',import.meta.url),'utf8'));
   assert.equal(expected.version,version);assert.equal(Object.keys(expected.files).length,fileCount);
@@ -29,7 +29,7 @@ for(const [version,{root:priorRoot,fileCount}] of Object.entries(PRIOR_BUILDS)){
   }
   const prior=await shellManifest(priorRoot);
   assert.equal(prior.version,'ironroot-v'+version);
-  assert.ok(Object.keys(current.hashes).length>Object.keys(prior.hashes).length);
+  for(const file of Object.keys(prior.hashes))assert.ok(current.hashes[file],'candidate preserves prior offline entry '+file);
   assert.notEqual(prior.hashes['app.js'],current.hashes['app.js']);
   assert.ok(!Object.keys(prior.hashes).some(file=>file.endsWith('.woff2')));
   // The browser creates its own old-version battle through UI input. This
@@ -44,4 +44,4 @@ for(const [version,{root:priorRoot,fileCount}] of Object.entries(PRIOR_BUILDS)){
   assert.equal(restored.state.time,save.state.time);
   console.log('Update fixture '+version+': '+fileCount+' pinned runtime files and complete precache manifest verified.');
 }
-console.log('Production 0.7 commit/package metadata verified; current 0.12 precache includes all five fonts and all three Battle Report modules/styles and all four Guided practice resources.');
+console.log('Production 0.7 commit/package metadata verified; candidate precache includes all five fonts and all three Battle Report modules/styles and all four Guided practice resources.');

@@ -7,15 +7,26 @@ import {CAMPAIGN_CHAPTERS,CAMPAIGN_MISSIONS,CAMPAIGN_VERSION,CAMPAIGN_STORAGE_KE
 import {campaignPolicy,campaignMasteryPolicy,productionPolicy,playCampaign} from './campaign-policies.mjs';
 const legacy=CAMPAIGN_MISSIONS.slice(0,12),expansion=CAMPAIGN_MISSIONS.slice(12);
 const snapshots=JSON.parse(await readFile(new URL('./campaign-legacy-snapshots.json',import.meta.url),'utf8'));
+const approvedCopy=JSON.parse(await readFile(new URL('./fixtures/campaign-copy-approved.json',import.meta.url),'utf8'));
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const victory=id=>{const g=createCampaignMission(id);g.state.bases[1].hp=0;return g;};
 function clearThrough(last){let p=createCampaignProgress();for(const m of CAMPAIGN_MISSIONS){p=recordCampaignResult(p,m.id,victory(m.id));if(m.id===last)break;}return p;}
 
-test('legacy chapter prose, formations, objectives, saves and 40-second simulations match the frozen 0.9 campaign',()=>{
-  assert.equal(hash(CAMPAIGN_CHAPTERS.slice(0,4)),snapshots.chapters);
+function beforeCopy(row,kind) {
+  const original=structuredClone(row);
+  for(const edit of approvedCopy[kind].filter(edit=>edit.id===row.id)) {
+    assert.deepEqual(row[edit.field],edit.after,`${row.id}.${edit.field} matches reviewed prose`);
+    original[edit.field]=edit.before;
+  }
+  return original;
+}
+
+test('reviewed prose changes leave legacy formations, objectives, saves and 40-second simulations exact',()=>{
+  assert.equal(approvedCopy.sourceCommit,'c4ae6842e70794310c6ea878b7dc6c03c46dad2b');
+  assert.equal(hash(CAMPAIGN_CHAPTERS.slice(0,4).map(row=>beforeCopy(row,'chapters'))),snapshots.chapters);
   assert.equal(snapshots.missions.length,12);
   for(const mission of legacy){
-    const expected=snapshots.missions.find(row=>row.id===mission.id),metadata=structuredClone(mission);
+    const expected=snapshots.missions.find(row=>row.id===mission.id),metadata=beforeCopy(mission,'missions');
     delete metadata.mapId;if(mission.id==='ironroot')delete metadata.reward;
     assert.equal(mission.mapId,'classic');assert.equal(hash(metadata),expected.metadata,`${mission.id} metadata`);
     assert.equal(hash(createCampaignMission(mission.id).serialize()),expected.initial,`${mission.id} initial state`);
@@ -68,7 +79,7 @@ test('new mission briefings disclose exact map, funds, AI behavior and every aut
       }).join('; ');
       assert.equal(m.deployment[side],expected);assert.ok(m.briefing.includes(`${side==='player'?'Your':'Enemy'} deployment: ${expected}`));
     }
-    assert.ok(m.ai?m.briefing[4].includes(`${m.enemyGold||0} gold`)&&m.briefing[4].includes('pays for buildings, upgrades and rally strikes'):m.briefing[4].includes('no new enemy buildings, upgrades or rally strikes'));
+    assert.ok(m.ai?m.briefing[4].includes(`${m.enemyGold||0} gold`)&&m.briefing[4].includes('pays for buildings, upgrades and arrow volleys'):m.briefing[4].includes('no new enemy buildings, upgrades or arrow volleys'));
   }
 });
 

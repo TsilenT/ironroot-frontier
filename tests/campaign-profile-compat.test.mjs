@@ -245,7 +245,7 @@ test('explicit old-app recovery is a deliberate replacement, not an absolute cro
 });
 
 test('invalid marker versions, fields and migration options remain fail-closed', () => {
-  for (const value of [null, false, '2', 0, 3, 999, {}, []]) {
+  for (const value of [null, false, '2', 0, 4, 999, {}, []]) {
     const r = raw(); assert.throws(() => expanded(r, { requiredProtocolVersion: value }), TypeError); assert.deepEqual(writes(r), []);
   }
   for (const prior of ['{broken', '{}', 'null', '[]', 'x'.repeat(513), encoded(3), encoded('2'), encoded(2, 'bad epoch'), encoded(2, 'epoch', 'unknown'),

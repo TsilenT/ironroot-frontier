@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { Game } from '../dist/engine.js';
-import { CHALLENGES } from '../dist/challenges.js';
+import { decodeBattle } from '../dist/battle-codec.js';
+import { CHALLENGES, createChallenge } from '../dist/challenges.js';
 import {
   CAMPAIGN_MISSIONS,
   createCampaignProgress,
@@ -20,7 +21,7 @@ function exercise(data, progress = createCampaignProgress()) {
     elements = new Map(),
     starts = [],
     calls = [];
-  for (const id of ['resumeSaved', 'saveStatus', 'start'])
+  for (const id of ['resumeSaved', 'saveStatus', 'start', 'exportUnreadableBattle'])
     elements.set(id, {
       textContent: '',
       classList: {
@@ -44,7 +45,7 @@ function exercise(data, progress = createCampaignProgress()) {
     },
   };
   runInNewContext(fn + '\nupdateResume();', {
-    JSON,
+    JSON, decodeBattle, resumeProblem:null,
     $: (id) => elements.get(id),
     storage,
     SAVE: 'battle',
@@ -170,7 +171,7 @@ test('actual Resume handler admits each unlocked expansion only on its declared 
 
 test('actual Resume handler names saved trials independently from the new-battle menu', () => {
   for (const trial of CHALLENGES) {
-    const game = new Game({ai:false});
+    const game = createChallenge(trial.id);
     const result = exercise({format:'ironroot-save',version:2,campaignId:null,challengeId:trial.id,game:game.serialize()});
     assert.equal(result.button.classList.values.get('hidden'), false);
     assert.ok(result.button.textContent.includes(`RESUME TRIAL · ${trial.name.toUpperCase()} ·`));

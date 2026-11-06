@@ -1,0 +1,8764 @@
+{
+  "mode": "guard",
+  "node": "v24.22.1",
+  "seedCount": 1,
+  "firstSeed": 57,
+  "step": 0.05,
+  "maxSeconds": 600,
+  "versionMeaning": {
+    "current": "supplied baseline AI",
+    "candidate": "working engine AI"
+  },
+  "baselinePath": "/workspace/shared/ironroot-integration/qa/fixtures/production-v012/dist/engine.js",
+  "currentEngineHash": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+  "candidateEngineHash": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+  "identicalDifficultyPairs": 12,
+  "rows": [
+    {
+      "key": "current/easy/rush-burst/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.75,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/easy/rush-center/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 94.57,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/easy/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.9,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/hard/rush-burst/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 117.5,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/hard/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 99.13,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/hard/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 162.23,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/rush-burst/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.75,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/rush-center/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 94.57,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.9,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/rush-burst/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 117.5,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 99.13,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 162.23,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/economy-screen/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/economy-screen/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 106.95,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/screen-save/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 122,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/screen-save/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 121.6,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-first/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-first/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after2/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after2/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after3/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.53,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after3/opening-flip",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.35,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/economy-screen/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/economy-screen/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 106.95,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/screen-save/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 122,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/screen-save/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 121.6,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-first/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-first/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after2/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after2/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after3/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.53,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after3/opening-flip",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.35,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-burst/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-burst/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-center/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-burst/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-burst/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-center/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    }
+  ],
+  "games": [
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 101.75,
+      "gold": [
+        190.75,
+        32.75
+      ],
+      "income": [
+        508.75,
+        508.75
+      ],
+      "spent": [
+        770,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        16,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "a2e80fb365b5545dfb31411f1aa8f73165ebfb0723e999f6251865884954bf75"
+    },
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 101.75,
+      "gold": [
+        32.75,
+        190.75
+      ],
+      "income": [
+        508.75,
+        508.75
+      ],
+      "spent": [
+        952,
+        770
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        16
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "d6f61ee3189bca1b21b06b0e7101805f4171d9b24f5302a188258e52cb34343a"
+    },
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 91.35,
+      "gold": [
+        120.75,
+        108.75
+      ],
+      "income": [
+        456.75,
+        456.75
+      ],
+      "spent": [
+        770,
+        812
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        7,
+        22
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "7904a294887ec32103c56e614a7c90a9d30b694d8d15b7b532fa1cb8c85b1858"
+    },
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 97.8,
+      "gold": [
+        13,
+        153
+      ],
+      "income": [
+        489,
+        489
+      ],
+      "spent": [
+        952,
+        770
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        7
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "d2769d4d87594a4f8157c3d2454bdd202206dea375a2572502c0cdc1ed7bea01"
+    },
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 101.9,
+      "gold": [
+        53.5,
+        26.5
+      ],
+      "income": [
+        509.5,
+        509.5
+      ],
+      "spent": [
+        910,
+        959
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        17,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "3fe284f4bc3c05fc5c7de3a70422d815e6b415dcfd21fda425fc90784df2e8ef"
+    },
+    {
+      "version": "current",
+      "difficulty": "easy",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 101.9,
+      "gold": [
+        26.5,
+        53.5
+      ],
+      "income": [
+        509.5,
+        509.5
+      ],
+      "spent": [
+        959,
+        910
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        17
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "156847f848a311afa314130e89b559046c272e8ffc953b98bf2cccefde04ecb2"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        89.5,
+        60.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        29
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "4175ce59e6c85501ac706ee310581edd2742de42a7fc8596e92fffba477180bc"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 128.1,
+      "gold": [
+        54.5,
+        54.5
+      ],
+      "income": [
+        640.5,
+        640.5
+      ],
+      "spent": [
+        1092,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        43,
+        42
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "b39d1c748f3dfbb519c3fdfa1d0b176511d8129be23d605993f01905255f4314"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 99,
+      "gold": [
+        28,
+        147
+      ],
+      "income": [
+        495,
+        495
+      ],
+      "spent": [
+        925,
+        812
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        19,
+        22
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "5b8b4e3da520536927ec10e0fcb3df814b369fd9e191f67ef21993ea8d62200a"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 99.25,
+      "gold": [
+        150.25,
+        29.25
+      ],
+      "income": [
+        496.25,
+        496.25
+      ],
+      "spent": [
+        812,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        23,
+        19
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7c355d65c4bb8b8391804b14a29f44bef0330e2330efd854f9f663cc1e2a2736"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 148.4,
+      "gold": [
+        114,
+        75
+      ],
+      "income": [
+        742,
+        742
+      ],
+      "spent": [
+        1140,
+        1187
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        46,
+        50
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        5
+      ],
+      "stateHash": "f8355f23b6c594ecc4d0e1b51573a1c0edf93ac5b08e0ee1bf5741270e4557fe"
+    },
+    {
+      "version": "current",
+      "difficulty": "hard",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 176.05,
+      "gold": [
+        45.25,
+        46.25
+      ],
+      "income": [
+        880.25,
+        880.25
+      ],
+      "spent": [
+        1403,
+        1370
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        74,
+        58
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        2,
+        4
+      ],
+      "stateHash": "3b7d68d91c3f9a8c16e6c7dde58e1edf6f4a6e6846d5038a3002e923e5ea970a"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 101.75,
+      "gold": [
+        190.75,
+        32.75
+      ],
+      "income": [
+        508.75,
+        508.75
+      ],
+      "spent": [
+        770,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        16,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "a2e80fb365b5545dfb31411f1aa8f73165ebfb0723e999f6251865884954bf75"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 101.75,
+      "gold": [
+        32.75,
+        190.75
+      ],
+      "income": [
+        508.75,
+        508.75
+      ],
+      "spent": [
+        952,
+        770
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        16
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "d6f61ee3189bca1b21b06b0e7101805f4171d9b24f5302a188258e52cb34343a"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 91.35,
+      "gold": [
+        120.75,
+        108.75
+      ],
+      "income": [
+        456.75,
+        456.75
+      ],
+      "spent": [
+        770,
+        812
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        7,
+        22
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "7904a294887ec32103c56e614a7c90a9d30b694d8d15b7b532fa1cb8c85b1858"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 97.8,
+      "gold": [
+        13,
+        153
+      ],
+      "income": [
+        489,
+        489
+      ],
+      "spent": [
+        952,
+        770
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        7
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "d2769d4d87594a4f8157c3d2454bdd202206dea375a2572502c0cdc1ed7bea01"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 101.9,
+      "gold": [
+        53.5,
+        26.5
+      ],
+      "income": [
+        509.5,
+        509.5
+      ],
+      "spent": [
+        910,
+        959
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        17,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "3fe284f4bc3c05fc5c7de3a70422d815e6b415dcfd21fda425fc90784df2e8ef"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "easy",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 101.9,
+      "gold": [
+        26.5,
+        53.5
+      ],
+      "income": [
+        509.5,
+        509.5
+      ],
+      "spent": [
+        959,
+        910
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        17
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "156847f848a311afa314130e89b559046c272e8ffc953b98bf2cccefde04ecb2"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        89.5,
+        60.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        29
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "4175ce59e6c85501ac706ee310581edd2742de42a7fc8596e92fffba477180bc"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 128.1,
+      "gold": [
+        54.5,
+        54.5
+      ],
+      "income": [
+        640.5,
+        640.5
+      ],
+      "spent": [
+        1092,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        43,
+        42
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "b39d1c748f3dfbb519c3fdfa1d0b176511d8129be23d605993f01905255f4314"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 99,
+      "gold": [
+        28,
+        147
+      ],
+      "income": [
+        495,
+        495
+      ],
+      "spent": [
+        925,
+        812
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        19,
+        22
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "5b8b4e3da520536927ec10e0fcb3df814b369fd9e191f67ef21993ea8d62200a"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 99.25,
+      "gold": [
+        150.25,
+        29.25
+      ],
+      "income": [
+        496.25,
+        496.25
+      ],
+      "spent": [
+        812,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        23,
+        19
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7c355d65c4bb8b8391804b14a29f44bef0330e2330efd854f9f663cc1e2a2736"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 148.4,
+      "gold": [
+        114,
+        75
+      ],
+      "income": [
+        742,
+        742
+      ],
+      "spent": [
+        1140,
+        1187
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        46,
+        50
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        5
+      ],
+      "stateHash": "f8355f23b6c594ecc4d0e1b51573a1c0edf93ac5b08e0ee1bf5741270e4557fe"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "hard",
+      "policy": "screen-fast",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 176.05,
+      "gold": [
+        45.25,
+        46.25
+      ],
+      "income": [
+        880.25,
+        880.25
+      ],
+      "spent": [
+        1403,
+        1370
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        74,
+        58
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        2,
+        4
+      ],
+      "stateHash": "3b7d68d91c3f9a8c16e6c7dde58e1edf6f4a6e6846d5038a3002e923e5ea970a"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        85.5,
+        56.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        27
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "3224d1d1d459d928a40310d5dcab34e23a687ecdacfe05970b7ca68c0d78c2cd"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 111.1,
+      "gold": [
+        79.5,
+        112.5
+      ],
+      "income": [
+        555.5,
+        555.5
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        31
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7715fbd49d634024bf43766cbf9002b5e4dd27e4dc8cb1c52c3b3fb5a4aec35f"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        89.5,
+        56.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        27
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "c0fb05b34b9cfee2891766211c604f7f49ddade72bf6b59c6a921823c7866fb3"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 107,
+      "gold": [
+        57,
+        86
+      ],
+      "income": [
+        535,
+        535
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        27,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "a77fdbf4b841abc0f581d85160d78f36a3cd2c29fdbb09732a9d595f17ec345a"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 121.4,
+      "gold": [
+        40,
+        138.125
+      ],
+      "income": [
+        607,
+        680.125
+      ],
+      "spent": [
+        1065,
+        1030
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        39,
+        34
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "033c1511ad119b1f1de4eb632ee5e58daedbd9913b54ae9fc116a7dbc6717580"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 122.6,
+      "gold": [
+        146.125,
+        46
+      ],
+      "income": [
+        686.125,
+        613
+      ],
+      "spent": [
+        1030,
+        1065
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        35,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "a7fd8ffc81a6bbc29f0936297c514ae2be9f157b34ef01af3f4a9fc80cbf0d6a"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 121.55,
+      "gold": [
+        40.75,
+        138.875
+      ],
+      "income": [
+        607.75,
+        680.875
+      ],
+      "spent": [
+        1065,
+        1030
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        39,
+        34
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "da670ec8aaf5262ea7884804299149ea7f5fbd3ac1386af325ec4dee38e611dd"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 121.65,
+      "gold": [
+        3.375,
+        41.25
+      ],
+      "income": [
+        681.375,
+        608.25
+      ],
+      "spent": [
+        1170,
+        1065
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 7,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "5c686a19577ef02355f5073b8225db0344b5c946339e9f69d89ca8db406a5a55"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 114.85,
+      "gold": [
+        215.25,
+        133.875
+      ],
+      "income": [
+        574.25,
+        774.875
+      ],
+      "spent": [
+        845,
+        1135
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        33,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 5,
+          "invested": 323,
+          "income": 200.63,
+          "baseIncome": 184.25,
+          "destroyedAt": 73.75,
+          "survivedSeconds": 73.7,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "1b0267e9f206e65aa371f07a0492dc1510b014146669e43483d624fee3851cd1"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 114.95,
+      "gold": [
+        132.1875,
+        215.75
+      ],
+      "income": [
+        775.1875,
+        574.75
+      ],
+      "spent": [
+        1135,
+        845
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        33
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 3,
+          "invested": 323,
+          "income": 200.44,
+          "baseIncome": 184.125,
+          "destroyedAt": 73.7,
+          "survivedSeconds": 73.65,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "354066c47d3f058bee7b375b060c213e30311c2d31cfc07d8a8489b3ae6fee09"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 114.85,
+      "gold": [
+        215.25,
+        133.875
+      ],
+      "income": [
+        574.25,
+        774.875
+      ],
+      "spent": [
+        845,
+        1135
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        33,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 3,
+          "invested": 323,
+          "income": 200.63,
+          "baseIncome": 184.25,
+          "destroyedAt": 73.75,
+          "survivedSeconds": 73.7,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "02de86573596becedaa66e9c3584ef176b5bd92f6cbed1c4397320a5a6cc0925"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 114.95,
+      "gold": [
+        132.1875,
+        215.75
+      ],
+      "income": [
+        775.1875,
+        574.75
+      ],
+      "spent": [
+        1135,
+        845
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        33
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 5,
+          "invested": 323,
+          "income": 200.44,
+          "baseIncome": 184.125,
+          "destroyedAt": 73.7,
+          "survivedSeconds": 73.65,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "5c6f4e934de92ca93099eae377233523300172a3d3f988b0c839f59546c0bf7f"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 109.7,
+      "gold": [
+        122.375,
+        44.5
+      ],
+      "income": [
+        582.375,
+        702.5
+      ],
+      "spent": [
+        960,
+        1142
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        40,
+        32
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 270,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "5ae55324348daee5427ea5571fdb15192645b1e514fc27f308af1cb96964004d"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 109.7,
+      "gold": [
+        44.5,
+        122.375
+      ],
+      "income": [
+        702.5,
+        582.375
+      ],
+      "spent": [
+        1142,
+        960
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        32,
+        40
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 2930,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "b1cc4d06e6420c14fb1e4c9c6c8841057fabc5286242f4301bf2dbb44b17ff60"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 109.7,
+      "gold": [
+        122.375,
+        44.5
+      ],
+      "income": [
+        582.375,
+        702.5
+      ],
+      "spent": [
+        960,
+        1142
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        40,
+        32
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 270,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "20409cbedd5cb468378c87e393aeba871e74b6e9e948425f86c23d680f1a797e"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 109.7,
+      "gold": [
+        44.5,
+        122.375
+      ],
+      "income": [
+        702.5,
+        582.375
+      ],
+      "spent": [
+        1142,
+        960
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        32,
+        40
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 2930,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "f1687004f912afeda9a8936e87bbea96464d3379123c920adbf7f7d8a5bccf21"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 144,
+      "gold": [
+        126,
+        56.5
+      ],
+      "income": [
+        720,
+        1051.5
+      ],
+      "spent": [
+        1090,
+        1513
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        38,
+        49
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 323,
+          "income": 331.5,
+          "baseIncome": 271.5,
+          "survivedSeconds": 108.6,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        0
+      ],
+      "stateHash": "7365cf203ebf9fa2a3225223e7e648b9325b8533e3e15b3d5ec8ad2977232f58"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 145.05,
+      "gold": [
+        65.6875,
+        133.25
+      ],
+      "income": [
+        1060.6875,
+        725.25
+      ],
+      "spent": [
+        1513,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        49,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 323,
+          "income": 335.44,
+          "baseIncome": 274.125,
+          "survivedSeconds": 109.65,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "434da5ce9988cbabaf17cda704fd7673e95339c32244663e0ffe3fb78a144e79"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 144.7,
+      "gold": [
+        57.5,
+        70.625
+      ],
+      "income": [
+        723.5,
+        1057.625
+      ],
+      "spent": [
+        1170,
+        1513
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        42,
+        53
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 323,
+          "income": 334.13,
+          "baseIncome": 273.25,
+          "survivedSeconds": 109.3,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 1,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        0
+      ],
+      "stateHash": "6eaea4813c07b8d4124d1b04a08e4d690ebba1198d7271adea149c60231efc7b"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 144,
+      "gold": [
+        56.5,
+        126
+      ],
+      "income": [
+        1051.5,
+        720
+      ],
+      "spent": [
+        1513,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        49,
+        38
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 323,
+          "income": 331.5,
+          "baseIncome": 271.5,
+          "survivedSeconds": 108.6,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "a24f23c0a57c06c8bfafbe6764b05a0ae555611a6d9cc2d10081b2e1e23b3062"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        85.5,
+        56.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        27
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "3224d1d1d459d928a40310d5dcab34e23a687ecdacfe05970b7ca68c0d78c2cd"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 111.1,
+      "gold": [
+        79.5,
+        112.5
+      ],
+      "income": [
+        555.5,
+        555.5
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        31
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7715fbd49d634024bf43766cbf9002b5e4dd27e4dc8cb1c52c3b3fb5a4aec35f"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 106.9,
+      "gold": [
+        89.5,
+        56.5
+      ],
+      "income": [
+        534.5,
+        534.5
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        27
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "c0fb05b34b9cfee2891766211c604f7f49ddade72bf6b59c6a921823c7866fb3"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "economy-screen",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 107,
+      "gold": [
+        57,
+        86
+      ],
+      "income": [
+        535,
+        535
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        27,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "a77fdbf4b841abc0f581d85160d78f36a3cd2c29fdbb09732a9d595f17ec345a"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 121.4,
+      "gold": [
+        40,
+        138.125
+      ],
+      "income": [
+        607,
+        680.125
+      ],
+      "spent": [
+        1065,
+        1030
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        39,
+        34
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "033c1511ad119b1f1de4eb632ee5e58daedbd9913b54ae9fc116a7dbc6717580"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 122.6,
+      "gold": [
+        146.125,
+        46
+      ],
+      "income": [
+        686.125,
+        613
+      ],
+      "spent": [
+        1030,
+        1065
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        35,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "a7fd8ffc81a6bbc29f0936297c514ae2be9f157b34ef01af3f4a9fc80cbf0d6a"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 121.55,
+      "gold": [
+        40.75,
+        138.875
+      ],
+      "income": [
+        607.75,
+        680.875
+      ],
+      "spent": [
+        1065,
+        1030
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        39,
+        34
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "da670ec8aaf5262ea7884804299149ea7f5fbd3ac1386af325ec4dee38e611dd"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "screen-save",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 121.65,
+      "gold": [
+        3.375,
+        41.25
+      ],
+      "income": [
+        681.375,
+        608.25
+      ],
+      "spent": [
+        1170,
+        1065
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 190,
+          "income": 73.13,
+          "baseIncome": 73.125,
+          "destroyedAt": 64.65,
+          "survivedSeconds": 29.25,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 7,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 6,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "5c686a19577ef02355f5073b8225db0344b5c946339e9f69d89ca8db406a5a55"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 114.85,
+      "gold": [
+        215.25,
+        133.875
+      ],
+      "income": [
+        574.25,
+        774.875
+      ],
+      "spent": [
+        845,
+        1135
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        33,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 5,
+          "invested": 323,
+          "income": 200.63,
+          "baseIncome": 184.25,
+          "destroyedAt": 73.75,
+          "survivedSeconds": 73.7,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "1b0267e9f206e65aa371f07a0492dc1510b014146669e43483d624fee3851cd1"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 114.95,
+      "gold": [
+        132.1875,
+        215.75
+      ],
+      "income": [
+        775.1875,
+        574.75
+      ],
+      "spent": [
+        1135,
+        845
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        33
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 3,
+          "invested": 323,
+          "income": 200.44,
+          "baseIncome": 184.125,
+          "destroyedAt": 73.7,
+          "survivedSeconds": 73.65,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "354066c47d3f058bee7b375b060c213e30311c2d31cfc07d8a8489b3ae6fee09"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 114.85,
+      "gold": [
+        215.25,
+        133.875
+      ],
+      "income": [
+        574.25,
+        774.875
+      ],
+      "spent": [
+        845,
+        1135
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        33,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 3,
+          "invested": 323,
+          "income": 200.63,
+          "baseIncome": 184.25,
+          "destroyedAt": 73.75,
+          "survivedSeconds": 73.7,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "02de86573596becedaa66e9c3584ef176b5bd92f6cbed1c4397320a5a6cc0925"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-first",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 114.95,
+      "gold": [
+        132.1875,
+        215.75
+      ],
+      "income": [
+        775.1875,
+        574.75
+      ],
+      "spent": [
+        1135,
+        845
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        36,
+        33
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 5,
+          "invested": 323,
+          "income": 200.44,
+          "baseIncome": 184.125,
+          "destroyedAt": 73.7,
+          "survivedSeconds": 73.65,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "5c6f4e934de92ca93099eae377233523300172a3d3f988b0c839f59546c0bf7f"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 109.7,
+      "gold": [
+        122.375,
+        44.5
+      ],
+      "income": [
+        582.375,
+        702.5
+      ],
+      "spent": [
+        960,
+        1142
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        40,
+        32
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 270,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "5ae55324348daee5427ea5571fdb15192645b1e514fc27f308af1cb96964004d"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 109.7,
+      "gold": [
+        44.5,
+        122.375
+      ],
+      "income": [
+        702.5,
+        582.375
+      ],
+      "spent": [
+        1142,
+        960
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        32,
+        40
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 2930,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "b1cc4d06e6420c14fb1e4c9c6c8841057fabc5286242f4301bf2dbb44b17ff60"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 109.7,
+      "gold": [
+        122.375,
+        44.5
+      ],
+      "income": [
+        582.375,
+        702.5
+      ],
+      "spent": [
+        960,
+        1142
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        40,
+        32
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 270,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "20409cbedd5cb468378c87e393aeba871e74b6e9e948425f86c23d680f1a797e"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after2",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 109.7,
+      "gold": [
+        44.5,
+        122.375
+      ],
+      "income": [
+        702.5,
+        582.375
+      ],
+      "spent": [
+        1142,
+        960
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        32,
+        40
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 15,
+          "invested": 190,
+          "income": 154,
+          "baseIncome": 154,
+          "destroyedAt": 71.75,
+          "survivedSeconds": 61.6,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        },
+        {
+          "t": 96.15,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 2,
+          "x": 2930,
+          "id": 103,
+          "invested": 190,
+          "income": 33.88,
+          "baseIncome": 33.875,
+          "survivedSeconds": 13.55,
+          "fullInvestmentRepaid": false,
+          "baseCostRepaid": false
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        0
+      ],
+      "stateHash": "f1687004f912afeda9a8936e87bbea96464d3379123c920adbf7f7d8a5bccf21"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 144,
+      "gold": [
+        126,
+        56.5
+      ],
+      "income": [
+        720,
+        1051.5
+      ],
+      "spent": [
+        1090,
+        1513
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        38,
+        49
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 323,
+          "income": 331.5,
+          "baseIncome": 271.5,
+          "survivedSeconds": 108.6,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        0
+      ],
+      "stateHash": "7365cf203ebf9fa2a3225223e7e648b9325b8533e3e15b3d5ec8ad2977232f58"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 145.05,
+      "gold": [
+        65.6875,
+        133.25
+      ],
+      "income": [
+        1060.6875,
+        725.25
+      ],
+      "spent": [
+        1513,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        49,
+        39
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 323,
+          "income": 335.44,
+          "baseIncome": 274.125,
+          "survivedSeconds": 109.65,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "434da5ce9988cbabaf17cda704fd7673e95339c32244663e0ffe3fb78a144e79"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 144.7,
+      "gold": [
+        57.5,
+        70.625
+      ],
+      "income": [
+        723.5,
+        1057.625
+      ],
+      "spent": [
+        1170,
+        1513
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        42,
+        53
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 2930,
+          "id": 40,
+          "invested": 323,
+          "income": 334.13,
+          "baseIncome": 273.25,
+          "survivedSeconds": 109.3,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 1,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        4,
+        0
+      ],
+      "stateHash": "6eaea4813c07b8d4124d1b04a08e4d690ebba1198d7271adea149c60231efc7b"
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "mine-after3",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 144,
+      "gold": [
+        56.5,
+        126
+      ],
+      "income": [
+        1051.5,
+        720
+      ],
+      "spent": [
+        1513,
+        1090
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        49,
+        38
+      ],
+      "maxLedgerError": 0,
+      "mines": [
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "build",
+          "cost": 190,
+          "type": "mint",
+          "lane": 1,
+          "x": 270,
+          "id": 40,
+          "invested": 323,
+          "income": 331.5,
+          "baseIncome": 271.5,
+          "survivedSeconds": 108.6,
+          "fullInvestmentRepaid": true,
+          "baseCostRepaid": true
+        }
+      ],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 1,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        4
+      ],
+      "stateHash": "a24f23c0a57c06c8bfafbe6764b05a0ae555611a6d9cc2d10081b2e1e23b3062"
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.35,
+      "gold": [
+        88.75,
+        51.75
+      ],
+      "income": [
+        531.75,
+        531.75
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        31,
+        26
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "7919283fb1619065188b0328016a6b2750d6bff57b6a26fffb415c44fc40527e",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 5.85,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 28,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 45,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 58.95,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 75.8,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 80.85,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 94.4,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 101.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 124.85,
+      "gold": [
+        68.25,
+        89.25
+      ],
+      "income": [
+        624.25,
+        624.25
+      ],
+      "spent": [
+        1050,
+        1015
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        37,
+        30
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7eb3d759636abdff0dec15fee1cebdfbf3bb3009b63831a6388abd49edfee6d2",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 32.1,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 57.65,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 70.25,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 96,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 96.6,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 109.1,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 116.2,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 124.85,
+      "gold": [
+        89.25,
+        68.25
+      ],
+      "income": [
+        624.25,
+        624.25
+      ],
+      "spent": [
+        1015,
+        1050
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "4297bad9bdd064f863667755f0137207976b7c92fbdf0d66438ce20564861fd5",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 32.1,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 57.65,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 70.25,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 96,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 96.6,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 109.1,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 116.2,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 106.35,
+      "gold": [
+        51.75,
+        88.75
+      ],
+      "income": [
+        531.75,
+        531.75
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        26,
+        31
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "b526e10066d97da59dfb36ce6db86e9f86d83d1ddf4aeef33ec25ada146e6aa3",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 5.85,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 28,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 45,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 58.95,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 75.8,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 80.85,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 94.4,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 101.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 103.6,
+      "gold": [
+        109,
+        42
+      ],
+      "income": [
+        518,
+        518
+      ],
+      "spent": [
+        875,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        23,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "8b3fede02ba6a7a120830b6fc1571cd0e3a701424f56c23c81b03bb7b98cb745",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 5.1,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 37.65,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 63.9,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 74.7,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 92.6,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 96,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 149.7,
+      "gold": [
+        36.5,
+        77.5
+      ],
+      "income": [
+        748.5,
+        748.5
+      ],
+      "spent": [
+        1190,
+        1215
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        29,
+        62
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "629034bb2c47a5bc9565d1f07d10e592afed7df73185d66fc9e0a2964c69cbca",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 5.1,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 37.65,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 64.95,
+          "side": 1,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 75.8,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 84.8,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 101.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 109.75,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 116.2,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 136,
+          "side": 1,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 146.5,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 149.7,
+      "gold": [
+        77.5,
+        36.5
+      ],
+      "income": [
+        748.5,
+        748.5
+      ],
+      "spent": [
+        1215,
+        1190
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        62,
+        29
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "6333ac688c53ebd469eb49542cfbe3005341a1f5fbbcad772638d9d9894d0cbe",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 5.1,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 37.65,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 64.95,
+          "side": 0,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 75.8,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 84.8,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 101.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 109.75,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 116.2,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 136,
+          "side": 0,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 146.5,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "current",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 103.6,
+      "gold": [
+        42,
+        109
+      ],
+      "income": [
+        518,
+        518
+      ],
+      "spent": [
+        952,
+        875
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        23
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "5f0d014cfde0c11c81ad55eb77f6093943d7da00723f84f4ad1cec9a2e216a10",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 5.1,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 37.65,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 63.9,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 74.7,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 92.6,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 96,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 106.35,
+      "gold": [
+        88.75,
+        51.75
+      ],
+      "income": [
+        531.75,
+        531.75
+      ],
+      "spent": [
+        925,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        31,
+        26
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "7919283fb1619065188b0328016a6b2750d6bff57b6a26fffb415c44fc40527e",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 5.85,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 28,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 45,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 58.95,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 75.8,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 80.85,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 94.4,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 101.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 124.85,
+      "gold": [
+        68.25,
+        89.25
+      ],
+      "income": [
+        624.25,
+        624.25
+      ],
+      "spent": [
+        1050,
+        1015
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        37,
+        30
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "7eb3d759636abdff0dec15fee1cebdfbf3bb3009b63831a6388abd49edfee6d2",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 32.1,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 57.65,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 70.25,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 96,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 96.6,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 109.1,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 116.2,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 124.85,
+      "gold": [
+        89.25,
+        68.25
+      ],
+      "income": [
+        624.25,
+        624.25
+      ],
+      "spent": [
+        1015,
+        1050
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        30,
+        37
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "4297bad9bdd064f863667755f0137207976b7c92fbdf0d66438ce20564861fd5",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 32.1,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 57.65,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 70.25,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 96,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 96.6,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 109.1,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 116.2,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-burst",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 106.35,
+      "gold": [
+        51.75,
+        88.75
+      ],
+      "income": [
+        531.75,
+        531.75
+      ],
+      "spent": [
+        952,
+        925
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        26,
+        31
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "b526e10066d97da59dfb36ce6db86e9f86d83d1ddf4aeef33ec25ada146e6aa3",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 5.85,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 28,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 45,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 58.95,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 75.8,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 80.85,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 94.4,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 101.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "alternating0",
+      "openingActor": "ai",
+      "winner": 1,
+      "seconds": 103.6,
+      "gold": [
+        109,
+        42
+      ],
+      "income": [
+        518,
+        518
+      ],
+      "spent": [
+        875,
+        952
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        23,
+        28
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        3,
+        0
+      ],
+      "stateHash": "8b3fede02ba6a7a120830b6fc1571cd0e3a701424f56c23c81b03bb7b98cb745",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 5.1,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 35.4,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 37.65,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 63.9,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 74.7,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 92.6,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 96,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "alternating0",
+      "openingActor": "opponent",
+      "winner": 1,
+      "seconds": 149.7,
+      "gold": [
+        36.5,
+        77.5
+      ],
+      "income": [
+        748.5,
+        748.5
+      ],
+      "spent": [
+        1190,
+        1215
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        29,
+        62
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        1
+      ],
+      "stateHash": "629034bb2c47a5bc9565d1f07d10e592afed7df73185d66fc9e0a2964c69cbca",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 5.1,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 37.65,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 64.95,
+          "side": 1,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 75.8,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 84.8,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 101.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 109.75,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1950
+        },
+        {
+          "t": 116.2,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 136,
+          "side": 1,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 0,
+          "x": 2090
+        },
+        {
+          "t": 146.5,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 0,
+      "order": "opening-flip",
+      "openingActor": "opponent",
+      "winner": 0,
+      "seconds": 149.7,
+      "gold": [
+        77.5,
+        36.5
+      ],
+      "income": [
+        748.5,
+        748.5
+      ],
+      "spent": [
+        1215,
+        1190
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        62,
+        29
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 2,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        },
+        {
+          "barracks": 5,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        1,
+        0
+      ],
+      "stateHash": "6333ac688c53ebd469eb49542cfbe3005341a1f5fbbcad772638d9d9894d0cbe",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 5.1,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 10.15,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 18.65,
+          "side": 0,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 20.25,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2790
+        },
+        {
+          "t": 37.65,
+          "side": 0,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 40.45,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 55.6,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 64.95,
+          "side": 0,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 1,
+          "x": 830
+        },
+        {
+          "t": 75.8,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2230
+        },
+        {
+          "t": 84.8,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1250
+        },
+        {
+          "t": 101.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 109.75,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 2,
+          "x": 1250
+        },
+        {
+          "t": 116.2,
+          "side": 1,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 2370
+        },
+        {
+          "t": 136,
+          "side": 0,
+          "name": "build",
+          "cost": 175,
+          "type": "archery",
+          "lane": 0,
+          "x": 1110
+        },
+        {
+          "t": 146.5,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        }
+      ]
+    },
+    {
+      "version": "candidate",
+      "difficulty": "normal",
+      "policy": "rush-center",
+      "seed": 57,
+      "side": 1,
+      "order": "opening-flip",
+      "openingActor": "ai",
+      "winner": 0,
+      "seconds": 103.6,
+      "gold": [
+        42,
+        109
+      ],
+      "income": [
+        518,
+        518
+      ],
+      "spent": [
+        952,
+        875
+      ],
+      "refund": [
+        0,
+        0
+      ],
+      "kills": [
+        28,
+        23
+      ],
+      "maxLedgerError": 0,
+      "mines": [],
+      "builds": [
+        {
+          "barracks": 4,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 0,
+          "aerie": 0
+        },
+        {
+          "barracks": 3,
+          "archery": 0,
+          "foundry": 0,
+          "watchtower": 0,
+          "mint": 0,
+          "sanctum": 1,
+          "aerie": 0
+        }
+      ],
+      "spells": [
+        0,
+        3
+      ],
+      "stateHash": "5f0d014cfde0c11c81ad55eb77f6093943d7da00723f84f4ad1cec9a2e216a10",
+      "actions": [
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 0,
+          "x": 1950
+        },
+        {
+          "t": 0.05,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 5.1,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 10.15,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 18.65,
+          "side": 1,
+          "name": "build",
+          "cost": 230,
+          "type": "sanctum",
+          "lane": 1,
+          "x": 2090
+        },
+        {
+          "t": 20.25,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 410
+        },
+        {
+          "t": 35.4,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1250
+        },
+        {
+          "t": 37.65,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 55.6,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1110
+        },
+        {
+          "t": 63.9,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 70.75,
+          "side": 0,
+          "name": "upgrade",
+          "cost": 98,
+          "type": "barracks",
+          "lane": 1,
+          "x": 970
+        },
+        {
+          "t": 74.7,
+          "side": 1,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 1950
+        },
+        {
+          "t": 92.6,
+          "side": 1,
+          "name": "cast",
+          "cost": 75,
+          "type": null
+        },
+        {
+          "t": 96,
+          "side": 0,
+          "name": "build",
+          "cost": 140,
+          "type": "barracks",
+          "lane": 1,
+          "x": 830
+        }
+      ]
+    }
+  ]
+}

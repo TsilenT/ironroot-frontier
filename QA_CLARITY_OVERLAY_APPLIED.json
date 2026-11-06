@@ -1,0 +1,17 @@
+{
+  "manifestSHA256": "9f5afe7c2a951b952a4cd6fc2e29b2851ccd5f45b49f37c89579d4f9704cd9df",
+  "runtimeOverlay": [
+    "dist/engine.js"
+  ],
+  "files": 42,
+  "protectedUnchanged": {
+    "dist/app.js": "261e61b19a55b21606f637fb2fa7f68eea31082d6dc112ebd05892029cbf9be4",
+    "dist/index.html": "cfff5afdfeb31d771e2bfb0eaa89e67d9be1f444c04c7d9cc4a67b30271ff271",
+    "dist/styles.css": "349ada26081e3ca24267efb8ea4492cd3b135be3ad4ceaf639e95f6ea2f6f102",
+    "dist/render.js": "9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "dist/service-worker.js": "e8b3f436ba3c3b8fc82814f529b3241c63a92c5dfd5d68e87e209bae7fb09884",
+    "dist/protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450"
+  },
+  "status": "Applied after native profile restoration and fixture cleanup; combined checks passed. Browser automation and release readiness remain pending."
+}

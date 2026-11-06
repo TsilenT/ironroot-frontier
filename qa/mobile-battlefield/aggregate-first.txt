@@ -1,0 +1,4302 @@
+TAP version 13
+# Subtest: normal nearby coverage includes 2510 but excludes 2650 and 2790 on both sides
+ok 1 - normal nearby coverage includes 2510 but excludes 2650 and 2790 on both sides
+  ---
+  duration_ms: 3.615035
+  type: 'test'
+  ...
+# Subtest: normal prioritizes the lane whose only production is in the excluded rear row
+ok 2 - normal prioritizes the lane whose only production is in the excluded rear row
+  ---
+  duration_ms: 1.715438
+  type: 'test'
+  ...
+# Subtest: rear-only normal screen still responds to air before purchasing another barracks
+ok 3 - rear-only normal screen still responds to air before purchasing another barracks
+  ---
+  duration_ms: 0.789124
+  type: 'test'
+  ...
+# Subtest: rear-only normal screen still responds to an immediate ground incursion with a tower
+ok 4 - rear-only normal screen still responds to an immediate ground incursion with a tower
+  ---
+  duration_ms: 1.857436
+  type: 'test'
+  ...
+# Subtest: normal saves for a missing nearby screen instead of spending its savings on rear upgrades
+ok 5 - normal saves for a missing nearby screen instead of spending its savings on rear upgrades
+  ---
+  duration_ms: 1.758
+  type: 'test'
+  ...
+# Subtest: normal with a full frontier and only a rear barracks retains affordable upgrade fallback
+ok 6 - normal with a full frontier and only a rear barracks retains affordable upgrade fallback
+  ---
+  duration_ms: 2.000625
+  type: 'test'
+  ...
+# Subtest: AI buys mobile anti-air before a tower when flyers threaten a lane
+ok 7 - AI buys mobile anti-air before a tower when flyers threaten a lane
+  ---
+  duration_ms: 2.980111
+  type: 'test'
+  ...
+# Subtest: AI reinforces production deficits without buying a premature tower
+ok 8 - AI reinforces production deficits without buying a premature tower
+  ---
+  duration_ms: 0.531162
+  type: 'test'
+  ...
+# Subtest: AI still buys a defensive tower for an actual ground incursion
+ok 9 - AI still buys a defensive tower for an actual ground incursion
+  ---
+  duration_ms: 0.503271
+  type: 'test'
+  ...
+# Subtest: AI uses another lane when its preferred frontier is full
+ok 10 - AI uses another lane when its preferred frontier is full
+  ---
+  duration_ms: 0.46779
+  type: 'test'
+  ...
+# Subtest: full-frontier AI selects an affordable upgrade below the former 300-gold gate
+ok 11 - full-frontier AI selects an affordable upgrade below the former 300-gold gate
+  ---
+  duration_ms: 0.992974
+  type: 'test'
+  ...
+# Subtest: AI preserves savings for an unaffordable counter rather than upgrading arbitrarily
+ok 12 - AI preserves savings for an unaffordable counter rather than upgrading arbitrarily
+  ---
+  duration_ms: 0.378768
+  type: 'test'
+  ...
+# Subtest: AI does not buy fresh mines too late to repay before overtime
+ok 13 - AI does not buy fresh mines too late to repay before overtime
+  ---
+  duration_ms: 0.446258
+  type: 'test'
+  ...
+# Subtest: terminal AI invocation cannot spend gold or consume random state
+ok 14 - terminal AI invocation cannot spend gold or consume random state
+  ---
+  duration_ms: 1.208931
+  type: 'test'
+  ...
+# Subtest: AI spends normal spell cost and respects cooldown
+ok 15 - AI spends normal spell cost and respects cooldown
+  ---
+  duration_ms: 2.210567
+  type: 'test'
+  ...
+# Subtest: normal establishes a nearby warrior screen in all lanes before ranged support
+ok 16 - normal establishes a nearby warrior screen in all lanes before ranged support
+  ---
+  duration_ms: 34.530241
+  type: 'test'
+  ...
+# Subtest: normal retains nearer campaign-style barracks coverage instead of rebuilding it
+ok 17 - normal retains nearer campaign-style barracks coverage instead of rebuilding it
+  ---
+  duration_ms: 0.581239
+  type: 'test'
+  ...
+# Subtest: hard retains its three-action forward opening and easy retains its rear opening
+ok 18 - hard retains its three-action forward opening and easy retains its rear opening
+  ---
+  duration_ms: 0.426603
+  type: 'test'
+  ...
+# Subtest: audio is lazy, muted by default, and unavailable Web Audio is harmless
+ok 19 - audio is lazy, muted by default, and unavailable Web Audio is harmless
+  ---
+  duration_ms: 2.376395
+  type: 'test'
+  ...
+# Subtest: successful gesture unlock starts one music scheduler
+ok 20 - successful gesture unlock starts one music scheduler
+  ---
+  duration_ms: 5.563124
+  type: 'test'
+  ...
+# Subtest: repeating the same scene does not restart the track or timer
+ok 21 - repeating the same scene does not restart the track or timer
+  ---
+  duration_ms: 5.459321
+  type: 'test'
+  ...
+# Subtest: master mute, independent music/SFX toggles, and clamped volume work
+ok 22 - master mute, independent music/SFX toggles, and clamped volume work
+  ---
+  duration_ms: 3.120792
+  type: 'test'
+  ...
+# Subtest: all sound cues and legacy aliases create valid bounded graphs
+ok 23 - all sound cues and legacy aliases create valid bounded graphs
+  ---
+  duration_ms: 5.620913
+  type: 'test'
+  ...
+# Subtest: SFX burst limiting prevents combat clipping storms
+ok 24 - SFX burst limiting prevents combat clipping storms
+  ---
+  duration_ms: 1.601651
+  type: 'test'
+  ...
+# Subtest: pause and result scenes stop music; resume creates one scheduler
+ok 25 - pause and result scenes stop music; resume creates one scheduler
+  ---
+  duration_ms: 0.922889
+  type: 'test'
+  ...
+# Subtest: scheduler skips background backlog rather than flooding voices
+ok 26 - scheduler skips background backlog rather than flooding voices
+  ---
+  duration_ms: 0.722987
+  type: 'test'
+  ...
+# Subtest: full 16-bar score cycles with valid envelopes and adaptive layers
+ok 27 - full 16-bar score cycles with valid envelopes and adaptive layers
+  ---
+  duration_ms: 64.572686
+  type: 'test'
+  ...
+# Subtest: destroy closes context and makes repeated cleanup and unlock safe
+ok 28 - destroy closes context and makes repeated cleanup and unlock safe
+  ---
+  duration_ms: 1.402681
+  type: 'test'
+  ...
+# Subtest: important rally and result cues are not lost in crowded combat
+ok 29 - important rally and result cues are not lost in crowded combat
+  ---
+  duration_ms: 1.532661
+  type: 'test'
+  ...
+# Subtest: format, keys and module stay standalone, finite and local-only
+ok 30 - format, keys and module stay standalone, finite and local-only
+  ---
+  duration_ms: 2.633961
+  type: 'test'
+  ...
+# Subtest: empty local data exports a complete valid snapshot without writing anything
+ok 31 - empty local data exports a complete valid snapshot without writing anything
+  ---
+  duration_ms: 3.390376
+  type: 'test'
+  ...
+# Subtest: full campaign, trial, preference, history and battle export round trips independently
+ok 32 - full campaign, trial, preference, history and battle export round trips independently
+  ---
+  duration_ms: 11.06741
+  type: 'test'
+  ...
+# Subtest: all authored campaigns and 5 field trials preserve their mode after active-battle restore
+ok 33 - all authored campaigns and 5 field trials preserve their mode after active-battle restore
+  ---
+  duration_ms: 304.420725
+  type: 'test'
+  ...
+# Subtest: simulation replay remains deterministic after import, including particles and projectiles
+ok 34 - simulation replay remains deterministic after import, including particles and projectiles
+  ---
+  duration_ms: 460.625189
+  type: 'test'
+  ...
+# Subtest: in-memory overrides include unsaved progress without writing or reading replaced domains
+ok 35 - in-memory overrides include unsaved progress without writing or reading replaced domains
+  ---
+  duration_ms: 2.616816
+  type: 'test'
+  ...
+# Subtest: invalid stored bytes survive export attempts, parse failures and excluded battles
+ok 36 - invalid stored bytes survive export attempts, parse failures and excluded battles
+  ---
+  duration_ms: 1.260953
+  type: 'test'
+  ...
+# Subtest: empty import replaces all progress and removes the destination battle but preserves other keys
+ok 37 - empty import replaces all progress and removes the destination battle but preserves other keys
+  ---
+  duration_ms: 0.373887
+  type: 'test'
+  ...
+# Subtest: identical imports avoid unnecessary writes and removals
+ok 38 - identical imports avoid unnecessary writes and removals
+  ---
+  duration_ms: 1.199684
+  type: 'test'
+  ...
+# Subtest: legacy engine and version-1 trial saves migrate without losing identity
+ok 39 - legacy engine and version-1 trial saves migrate without losing identity
+  ---
+  duration_ms: 2.407099
+  type: 'test'
+  ...
+# Subtest: legacy result records gain explicit nullable mode IDs and draw flag
+ok 40 - legacy result records gain explicit nullable mode IDs and draw flag
+  ---
+  duration_ms: 0.871684
+  type: 'test'
+  ...
+# Subtest: corrupt JSON, incomplete backups, foreign formats and all unsupported schema versions fail before reads
+ok 41 - corrupt JSON, incomplete backups, foreign formats and all unsupported schema versions fail before reads
+  ---
+  duration_ms: 13.275439
+  type: 'test'
+  ...
+# Subtest: UTF-8 size limit rejects oversized input before parsing, including multibyte characters
+ok 42 - UTF-8 size limit rejects oversized input before parsing, including multibyte characters
+  ---
+  duration_ms: 84.184153
+  type: 'test'
+  ...
+# Subtest: structured depth, array, string and property bounds reject excessive data safely
+ok 43 - structured depth, array, string and property bounds reject excessive data safely
+  ---
+  duration_ms: 79.760607
+  type: 'test'
+  ...
+# Subtest: prototype pollution, HTML and arbitrary metadata never reach restored domains
+ok 44 - prototype pollution, HTML and arbitrary metadata never reach restored domains
+  ---
+  duration_ms: 8.299003
+  type: 'test'
+  ...
+# Subtest: overrides reject getters, functions, cycles, sparse arrays, symbols and nonplain values without invoking code
+ok 45 - overrides reject getters, functions, cycles, sparse arrays, symbols and nonplain values without invoking code
+  ---
+  duration_ms: 0.661898
+  type: 'test'
+  ...
+# Subtest: campaign normalizer is used without silently dropping invalid or orphaned records
+ok 46 - campaign normalizer is used without silently dropping invalid or orphaned records
+  ---
+  duration_ms: 10.168858
+  type: 'test'
+  ...
+# Subtest: trial validation rejects unknown IDs, invalid completion flags and impossible best times
+ok 47 - trial validation rejects unknown IDs, invalid completion flags and impossible best times
+  ---
+  duration_ms: 2.089775
+  type: 'test'
+  ...
+# Subtest: preferences require known fields and bounded values but retain intentional partial settings
+ok 48 - preferences require known fields and bounded values but retain intentional partial settings
+  ---
+  duration_ms: 3.375064
+  type: 'test'
+  ...
+# Subtest: history requires real timestamps, valid identities and plausible bounded statistics
+ok 49 - history requires real timestamps, valid identities and plausible bounded statistics
+  ---
+  duration_ms: 10.5538
+  type: 'test'
+  ...
+# Subtest: battle identity rejects unknown or combined modes, locked missions and inconsistent mission rules
+ok 50 - battle identity rejects unknown or combined modes, locked missions and inconsistent mission rules
+  ---
+  duration_ms: 9.946473
+  type: 'test'
+  ...
+# Subtest: ended and corrupt battles reject even if objective completion leaves engine winner null
+ok 51 - ended and corrupt battles reject even if objective completion leaves engine winner null
+  ---
+  duration_ms: 9.640024
+  type: 'test'
+  ...
+# Subtest: raw storage reads that throw abort export/import without silently exporting empty progress
+ok 52 - raw storage reads that throw abort export/import without silently exporting empty progress
+  ---
+  duration_ms: 4.77396
+  type: 'test'
+  ...
+# Subtest: strict throwing adapter works and requires explicit true for writes
+ok 53 - strict throwing adapter works and requires explicit true for writes
+  ---
+  duration_ms: 1.791189
+  type: 'test'
+  ...
+# Subtest: quota failure at every write position restores exact corrupt original bytes
+ok 54 - quota failure at every write position restores exact corrupt original bytes
+  ---
+  duration_ms: 2.282688
+  type: 'test'
+  ...
+# Subtest: failed writes that mutate before throwing or returning false are rolled back too
+ok 55 - failed writes that mutate before throwing or returning false are rolled back too
+  ---
+  duration_ms: 1.425334
+  type: 'test'
+  ...
+# Subtest: quota rollback removes newly introduced keys and does not invent previous absent data
+ok 56 - quota rollback removes newly introduced keys and does not invent previous absent data
+  ---
+  duration_ms: 0.471029
+  type: 'test'
+  ...
+# Subtest: failed battle removal rolls back progress and preserves the old corrupt battle
+ok 57 - failed battle removal rolls back progress and preserves the old corrupt battle
+  ---
+  duration_ms: 0.284326
+  type: 'test'
+  ...
+# Subtest: readback catches adapters that claim success but drop or corrupt writes
+ok 58 - readback catches adapters that claim success but drop or corrupt writes
+  ---
+  duration_ms: 0.951291
+  type: 'test'
+  ...
+# Subtest: rollback failure reports exact changed keys and never claims no changes
+ok 59 - rollback failure reports exact changed keys and never claims no changes
+  ---
+  duration_ms: 0.666234
+  type: 'test'
+  ...
+# Subtest: permanent read denial during rollback reports unverified keys separately
+ok 60 - permanent read denial during rollback reports unverified keys separately
+  ---
+  duration_ms: 0.618394
+  type: 'test'
+  ...
+# Subtest: a transient verification read failure can still restore and verify original values
+ok 61 - a transient verification read failure can still restore and verify original values
+  ---
+  duration_ms: 1.136416
+  type: 'test'
+  ...
+# Subtest: rollback verifies actual bytes even if restoration writes return an error afterward
+ok 62 - rollback verifies actual bytes even if restoration writes return an error afterward
+  ---
+  duration_ms: 0.64275
+  type: 'test'
+  ...
+# Subtest: concurrent destination changes are detected and never overwritten on that key
+ok 63 - concurrent destination changes are detected and never overwritten on that key
+  ---
+  duration_ms: 1.196299
+  type: 'test'
+  ...
+# Subtest: validation precedes adapter construction even if storage access itself would throw
+ok 64 - validation precedes adapter construction even if storage access itself would throw
+  ---
+  duration_ms: 0.332366
+  type: 'test'
+  ...
+# Subtest: a real persistent capacity limit rolls back partial replacements, then permits a successful retry
+ok 65 - a real persistent capacity limit rolls back partial replacements, then permits a successful retry
+  ---
+  duration_ms: 2.582205
+  type: 'test'
+  ...
+# Subtest: a removal that deletes the old battle before throwing restores its exact original bytes
+ok 66 - a removal that deletes the old battle before throwing restores its exact original bytes
+  ---
+  duration_ms: 0.420354
+  type: 'test'
+  ...
+# Subtest: final readback verifies unchanged domains too and reports concurrent foreign writes exactly
+ok 67 - final readback verifies unchanged domains too and reports concurrent foreign writes exactly
+  ---
+  duration_ms: 0.422528
+  type: 'test'
+  ...
+# Subtest: observer retains frozen engine rules with only the audited save-type guard
+ok 68 - observer retains frozen engine rules with only the audited save-type guard
+  ---
+  duration_ms: 5.470629
+  type: 'test'
+  ...
+# Subtest: all maps report actual geometry, both armies, finite values and zero-filled known roster
+ok 69 - all maps report actual geometry, both armies, finite values and zero-filled known roster
+  ---
+  duration_ms: 3.308267
+  type: 'test'
+  ...
+# Subtest: authored initial allocations, health and placements are observed, never inferred as spending
+ok 70 - authored initial allocations, health and placements are observed, never inferred as spending
+  ---
+  duration_ms: 15.516735
+  type: 'test'
+  ...
+# Subtest: current income uses alive, upgraded mines even when cached engine income is stale
+ok 71 - current income uses alive, upgraded mines even when cached engine income is stale
+  ---
+  duration_ms: 1.113889
+  type: 'test'
+  ...
+# Subtest: sampling uses simulation time at 1× and 2×, ignores pauses and does not backfill skipped times
+ok 72 - sampling uses simulation time at 1× and 2×, ignores pauses and does not backfill skipped times
+  ---
+  duration_ms: 6.017709
+  type: 'test'
+  ...
+# Subtest: short and same-time terminal changes force a final snapshot without duplicate timestamps
+ok 73 - short and same-time terminal changes force a final snapshot without duplicate timestamps
+  ---
+  duration_ms: 0.761183
+  type: 'test'
+  ...
+# Subtest: thinning is bounded, preserves actual endpoints/timestamps and all captured observed peaks
+ok 74 - thinning is bounded, preserves actual endpoints/timestamps and all captured observed peaks
+  ---
+  duration_ms: 60.829243
+  type: 'test'
+  ...
+# Subtest: unsampled transient peaks are not presented as observations or true maxima
+ok 75 - unsampled transient peaks are not presented as observations or true maxima
+  ---
+  duration_ms: 0.522324
+  type: 'test'
+  ...
+# Subtest: journal identity, monotonic time, terminal requirement and idempotence prevent mixed matches
+ok 76 - journal identity, monotonic time, terminal requirement and idempotence prevent mixed matches
+  ---
+  duration_ms: 1.171763
+  type: 'test'
+  ...
+# Subtest: no engine/objective references escape and deeply frozen sources can be observed
+ok 77 - no engine/objective references escape and deeply frozen sources can be observed
+  ---
+  duration_ms: 2.128672
+  type: 'test'
+  ...
+# Subtest: export is a whitelist of finite JSON and rejects foreign objects without executing toJSON
+ok 78 - export is a whitelist of finite JSON and rejects foreign objects without executing toJSON
+  ---
+  duration_ms: 0.796445
+  type: 'test'
+  ...
+# Subtest: invalid observed data is rejected rather than coerced into plausible finite facts
+ok 79 - invalid observed data is rejected rather than coerced into plausible finite facts
+  ---
+  duration_ms: 1.103133
+  type: 'test'
+  ...
+# Subtest: terminal engine wins, losses and draw remain distinct from objective outcomes
+ok 80 - terminal engine wins, losses and draw remain distinct from objective outcomes
+  ---
+  duration_ms: 0.881689
+  type: 'test'
+  ...
+# Subtest: original protected/destroyed targets come from evaluator identity, not replacement locations
+ok 81 - original protected/destroyed targets come from evaluator identity, not replacement locations
+  ---
+  duration_ms: 13.335677
+  type: 'test'
+  ...
+# Subtest: campaign and trial terminal evaluation supplies objective facts on every authored map
+ok 82 - campaign and trial terminal evaluation supplies objective facts on every authored map
+  ---
+  duration_ms: 10.159513
+  type: 'test'
+  ...
+# Subtest: version-1 and version-2 historical saves resume partial timelines without schema changes
+ok 83 - version-1 and version-2 historical saves resume partial timelines without schema changes
+  ---
+  duration_ms: 13.803125
+  type: 'test'
+  ...
+# Subtest: complete paired simulations remain byte-identical with and without observation on all maps
+ok 84 - complete paired simulations remain byte-identical with and without observation on all maps
+  ---
+  duration_ms: 3375.574419
+  type: 'test'
+  ...
+# Subtest: fixed-step objective termination and resulting report agree at 1× and 2×
+ok 85 - fixed-step objective termination and resulting report agree at 1× and 2×
+  ---
+  duration_ms: 2.137595
+  type: 'test'
+  ...
+# Subtest: sparse engine arrays and inherited indices cannot hide missing observed values
+ok 86 - sparse engine arrays and inherited indices cannot hide missing observed values
+  ---
+  duration_ms: 0.85484
+  type: 'test'
+  ...
+# Subtest: sparse objective, target and counter arrays reject without poisoning later finish
+ok 87 - sparse objective, target and counter arrays reject without poisoning later finish
+  ---
+  duration_ms: 0.963699
+  type: 'test'
+  ...
+# Subtest: history regression targets Recent battles rather than the shared disclosure styling
+ok 88 - history regression targets Recent battles rather than the shared disclosure styling
+  ---
+  duration_ms: 2.142272
+  type: 'test'
+  ...
+# Subtest: active-battle quota regression faults only later battle writes, not profile initialization
+ok 89 - active-battle quota regression faults only later battle writes, not profile initialization
+  ---
+  duration_ms: 0.660225
+  type: 'test'
+  ...
+# Subtest: legacy v0.7-format and v0.9 backups retain exact canonical bytes and all twelve campaign records
+ok 90 - legacy v0.7-format and v0.9 backups retain exact canonical bytes and all twelve campaign records
+  ---
+  duration_ms: 56.636724
+  type: 'test'
+  ...
+# Subtest: progress stays additive v1 and all five data keys and wrapper versions remain unchanged
+ok 91 - progress stays additive v1 and all five data keys and wrapper versions remain unchanged
+  ---
+  duration_ms: 7.428661
+  type: 'test'
+  ...
+# Subtest: each expanded mission exports, restores, re-exports and resumes on its declared battlefield
+ok 92 - each expanded mission exports, restores, re-exports and resumes on its declared battlefield
+  ---
+  duration_ms: 789.087434
+  type: 'test'
+  ...
+# Subtest: valid skirmishes on every wrong map cannot masquerade as an expanded campaign battle
+ok 93 - valid skirmishes on every wrong map cannot masquerade as an expanded campaign battle
+  ---
+  duration_ms: 83.359594
+  type: 'test'
+  ...
+# Subtest: expanded mission history requires a present, exact declared map rather than silently defaulting to Classic
+ok 94 - expanded mission history requires a present, exact declared map rather than silently defaulting to Classic
+  ---
+  duration_ms: 345.991097
+  type: 'test'
+  ...
+# Subtest: first twelve missions and all trials still accept only Classic and preserve missing history map fields
+ok 95 - first twelve missions and all trials still accept only Classic and preserve missing history map fields
+  ---
+  duration_ms: 120.485657
+  type: 'test'
+  ...
+# Subtest: expanded progress rejects unknown, malformed, incomplete prerequisites and impossible records before destination access
+ok 96 - expanded progress rejects unknown, malformed, incomplete prerequisites and impossible records before destination access
+  ---
+  duration_ms: 45.187956
+  type: 'test'
+  ...
+# Subtest: expanded locked battles, mode mismatch and protected-objective failure remain invalid
+ok 97 - expanded locked battles, mode mismatch and protected-objective failure remain invalid
+  ---
+  duration_ms: 175.952401
+  type: 'test'
+  ...
+# Subtest: unknown expansion data in local storage is preserved after failed exports and malformed imports
+ok 98 - unknown expansion data in local storage is preserved after failed exports and malformed imports
+  ---
+  duration_ms: 13.338838
+  type: 'test'
+  ...
+# Subtest: expanded campaign import fences legacy normalization, history and battle overwrites through final reload
+ok 99 - expanded campaign import fences legacy normalization, history and battle overwrites through final reload
+  ---
+  duration_ms: 5.913687
+  type: 'test'
+  ...
+# Subtest: new-map campaign restoration retains verified rollback at every domain write failure
+ok 100 - new-map campaign restoration retains verified rollback at every domain write failure
+  ---
+  duration_ms: 16.112971
+  type: 'test'
+  ...
+# Subtest: archived campaign evidence retains exact compressed bytes, source hashes and failed cases
+ok 101 - archived campaign evidence retains exact compressed bytes, source hashes and failed cases
+  ---
+  duration_ms: 46.928059
+  type: 'test'
+  ...
+# Subtest: legacy chapter prose, formations, objectives, saves and 40-second simulations match the frozen 0.9 campaign
+ok 102 - legacy chapter prose, formations, objectives, saves and 40-second simulations match the frozen 0.9 campaign
+  ---
+  duration_ms: 1579.44615
+  type: 'test'
+  ...
+# Subtest: a four-mission fifth chapter uses both actual frontier maps and expands the campaign to 48 stars
+ok 103 - a four-mission fifth chapter uses both actual frontier maps and expands the campaign to 48 stars
+  ---
+  duration_ms: 25.862471
+  type: 'test'
+  ...
+# Subtest: new mission briefings disclose exact map, funds, AI behavior and every authored force count and level
+ok 104 - new mission briefings disclose exact map, funds, AI behavior and every authored force count and level
+  ---
+  duration_ms: 0.745039
+  type: 'test'
+  ...
+# Subtest: target lookup, evaluation and recording reject the wrong map rather than count absent targets as destroyed
+ok 105 - target lookup, evaluation and recording reject the wrong map rather than count absent targets as destroyed
+  ---
+  duration_ms: 7.070998
+  type: 'test'
+  ...
+# Subtest: new map composite objectives retain protection, hold, economy, health and deadline precedence after restore
+ok 106 - new map composite objectives retain protection, hold, economy, health and deadline precedence after restore
+  ---
+  duration_ms: 2.547264
+  type: 'test'
+  ...
+# Subtest: original 36-star progress remains valid v1, unlocks two new branches, and merges their convergence additively
+ok 107 - original 36-star progress remains valid v1, unlocks two new branches, and merges their convergence additively
+  ---
+  duration_ms: 11.776367
+  type: 'test'
+  ...
+# Subtest: all twelve new stars are achievable with paid mastery routes over four seeds and repeated restores
+ok 108 - all twelve new stars are achievable with paid mastery routes over four seeds and repeated restores
+  ---
+  duration_ms: 5674.010857
+  type: 'test'
+  ...
+# Subtest: frontier clears tolerate a five-second late start and only one paid command every two seconds
+ok 109 - frontier clears tolerate a five-second late start and only one paid command every two seconds
+  ---
+  duration_ms: 3328.550334
+  type: 'test'
+  ...
+# Subtest: idle and all-wizard armies fail the new chapter on the authored openings
+ok 110 - idle and all-wizard armies fail the new chapter on the authored openings
+  ---
+  duration_ms: 714.653936
+  type: 'test'
+  ...
+# Subtest: the v0.9 protocol fixture matches the frozen original source digest
+ok 111 - the v0.9 protocol fixture matches the frozen original source digest
+  ---
+  duration_ms: 2.40776
+  type: 'test'
+  ...
+# Subtest: default protocol retains absent-marker behavior and cannot bind or downgrade version 2
+ok 112 - default protocol retains absent-marker behavior and cannot bind or downgrade version 2
+  ---
+  duration_ms: 16.076431
+  type: 'test'
+  ...
+# Subtest: expanded initialization upgrades only the marker and preserves ready v1 epochs and raw domain bytes
+ok 113 - expanded initialization upgrades only the marker and preserves ready v1 epochs and raw domain bytes
+  ---
+  duration_ms: 1.075332
+  type: 'test'
+  ...
+# Subtest: already-ready v2 is bound without rewriting a marker or invoking the epoch factory
+ok 114 - already-ready v2 is bound without rewriting a marker or invoking the epoch factory
+  ---
+  duration_ms: 0.22617
+  type: 'test'
+  ...
+# Subtest: frozen v0.9 stale tabs and freshly opened old tabs cannot erase expanded data in any domain
+ok 115 - frozen v0.9 stale tabs and freshly opened old tabs cannot erase expanded data in any domain
+  ---
+  duration_ms: 4.825595
+  type: 'test'
+  ...
+# Subtest: failed or dropped upgrade writes leave every profile byte intact and require reload, not recovery bypass
+ok 116 - failed or dropped upgrade writes leave every profile byte intact and require reload, not recovery bypass
+  ---
+  duration_ms: 1.678144
+  type: 'test'
+  ...
+# Subtest: throw-after-write upgrades bind only after exact successful marker readback
+ok 117 - throw-after-write upgrades bind only after exact successful marker readback
+  ---
+  duration_ms: 0.310264
+  type: 'test'
+  ...
+# Subtest: unreadable migration readback remains gated and cannot silently bind after storage returns
+ok 118 - unreadable migration readback remains gated and cannot silently bind after storage returns
+  ---
+  duration_ms: 0.708586
+  type: 'test'
+  ...
+# Subtest: initial denied reads never mean an empty profile and returning access requires a fresh page
+ok 119 - initial denied reads never mean an empty profile and returning access requires a fresh page
+  ---
+  duration_ms: 0.452732
+  type: 'test'
+  ...
+# Subtest: stale pre-migration checks never overwrite a newer ready, restoring, failed or corrupt marker
+ok 120 - stale pre-migration checks never overwrite a newer ready, restoring, failed or corrupt marker
+  ---
+  duration_ms: 0.740773
+  type: 'test'
+  ...
+# Subtest: a competing marker after the upgrade write never grants ownership or gets overwritten on a status retry
+ok 121 - a competing marker after the upgrade write never grants ownership or gets overwritten on a status retry
+  ---
+  duration_ms: 4.126133
+  type: 'test'
+  ...
+# Subtest: restoring and failed v1/v2 markers never auto-upgrade or permit reading partial data
+ok 122 - restoring and failed v1/v2 markers never auto-upgrade or permit reading partial data
+  ---
+  duration_ms: 0.566088
+  type: 'test'
+  ...
+# Subtest: opening the expansion during a legacy import does not take over or silently bind its later ready state
+ok 123 - opening the expansion during a legacy import does not take over or silently bind its later ready state
+  ---
+  duration_ms: 13.94595
+  type: 'test'
+  ...
+# Subtest: explicit recovery from a legacy partial profile stays on v2 and rollback cannot declare it safe
+ok 124 - explicit recovery from a legacy partial profile stays on v2 and rollback cannot declare it safe
+  ---
+  duration_ms: 10.084725
+  type: 'test'
+  ...
+# Subtest: v2 import rollback rebinds only its owner; replacement success requires reload and fences all stale tabs
+ok 125 - v2 import rollback rebinds only its owner; replacement success requires reload and fences all stale tabs
+  ---
+  duration_ms: 1.770188
+  type: 'test'
+  ...
+# Subtest: v2 failed finalization and throw-after-write retain the same-outcome retry rules
+ok 126 - v2 failed finalization and throw-after-write retain the same-outcome retry rules
+  ---
+  duration_ms: 0.554821
+  type: 'test'
+  ...
+# Subtest: v2 ownership loss during restore also prevents rollback from erasing a newer profile
+ok 127 - v2 ownership loss during restore also prevents rollback from erasing a newer profile
+  ---
+  duration_ms: 1.687888
+  type: 'test'
+  ...
+# Subtest: explicit old-app recovery is a deliberate replacement, not an absolute cross-version lock
+ok 128 - explicit old-app recovery is a deliberate replacement, not an absolute cross-version lock
+  ---
+  duration_ms: 0.742556
+  type: 'test'
+  ...
+# Subtest: invalid marker versions, fields and migration options remain fail-closed
+ok 129 - invalid marker versions, fields and migration options remain fail-closed
+  ---
+  duration_ms: 12.022938
+  type: 'test'
+  ...
+# Subtest: actual building details round both HP values without changing upgraded campaign state
+not ok 130 - actual building details round both HP values without changing upgraded campaign state
+  ---
+  duration_ms: 9.751066
+  type: 'test'
+  location: '/workspace/shared/ironroot-mobile-battlefield-lab/tests/campaign-ui-polish.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: '$(...).classList.contains is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    updateSelection (evalmachine.<anonymous>:6:86)
+    evalmachine.<anonymous>:33:1
+    Script.runInContext (node:vm:149:12)
+    Script.runInNewContext (node:vm:154:17)
+    runInNewContext (node:vm:310:38)
+    TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/campaign-ui-polish.test.mjs:18:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: active campaign chapter is revealed horizontally without page scrolling or focus movement
+ok 131 - active campaign chapter is revealed horizontally without page scrolling or focus movement
+  ---
+  duration_ms: 11.681699
+  type: 'test'
+  ...
+# Subtest: chapter reveal does nothing for hidden, noncampaign or unselected strips
+ok 132 - chapter reveal does nothing for hidden, noncampaign or unselected strips
+  ---
+  duration_ms: 7.703413
+  type: 'test'
+  ...
+# Subtest: the four original chapters retain twelve independent deterministic and restorable campaign battles
+ok 133 - the four original chapters retain twelve independent deterministic and restorable campaign battles
+  ---
+  duration_ms: 18.819065
+  type: 'test'
+  ...
+# Subtest: unknown mission IDs reject in all mission-specific APIs
+ok 134 - unknown mission IDs reject in all mission-specific APIs
+  ---
+  duration_ms: 1.011709
+  type: 'test'
+  ...
+# Subtest: target destruction counts originals, never replacement buildings or stale object references
+ok 135 - target destruction counts originals, never replacement buildings or stale object references
+  ---
+  duration_ms: 0.5605
+  type: 'test'
+  ...
+# Subtest: protected original structures fail immediately if destroyed or salvaged, even after replacement
+ok 136 - protected original structures fail immediately if destroyed or salvaged, even after replacement
+  ---
+  duration_ms: 8.587786
+  type: 'test'
+  ...
+# Subtest: deadlines, mandatory citadel health and simultaneous defeat have explicit precedence
+ok 137 - deadlines, mandatory citadel health and simultaneous defeat have explicit precedence
+  ---
+  duration_ms: 4.031614
+  type: 'test'
+  ...
+# Subtest: economy objectives use live mines and upgrades, and never succeed before the deadline
+ok 138 - economy objectives use live mines and upgrades, and never succeed before the deadline
+  ---
+  duration_ms: 0.577253
+  type: 'test'
+  ...
+# Subtest: the original campaign branches and converges before unlocking the frontier
+ok 139 - the original campaign branches and converges before unlocking the frontier
+  ---
+  duration_ms: 1.816786
+  type: 'test'
+  ...
+# Subtest: results are immutable and idempotent, and unsuccessful or locked missions never earn progress
+ok 140 - results are immutable and idempotent, and unsuccessful or locked missions never earn progress
+  ---
+  duration_ms: 3.897579
+  type: 'test'
+  ...
+# Subtest: normalization rejects corrupt, foreign, unsupported and orphaned progress without retaining arbitrary keys
+ok 141 - normalization rejects corrupt, foreign, unsupported and orphaned progress without retaining arbitrary keys
+  ---
+  duration_ms: 0.729937
+  type: 'test'
+  ...
+# Subtest: storage failures are safe, explicit, and never represented as a successful save
+ok 142 - storage failures are safe, explicit, and never represented as a successful save
+  ---
+  duration_ms: 0.767131
+  type: 'test'
+  ...
+# Subtest: every mission is winnable with ordinary paid actions across four seeds and repeated restoration
+ok 143 - every mission is winnable with ordinary paid actions across four seeds and repeated restoration
+  ---
+  duration_ms: 11517.998618
+  type: 'test'
+  ...
+# Subtest: idle play cannot clear any campaign mission
+ok 144 - idle play cannot clear any campaign mission
+  ---
+  duration_ms: 585.686251
+  type: 'test'
+  ...
+# Subtest: mid-battle saves replay identically, including adaptive AI and original protected targets
+ok 145 - mid-battle saves replay identically, including adaptive AI and original protected targets
+  ---
+  duration_ms: 296.694613
+  type: 'test'
+  ...
+# Subtest: all original 36 stars remain achievable through unchanged paid mastery routes, including resumed games
+ok 146 - all original 36 stars remain achievable through unchanged paid mastery routes, including resumed games
+  ---
+  duration_ms: 2140.669904
+  type: 'test'
+  ...
+# Subtest: progress merges preserve newer clears, best stars and best times against stale tabs
+ok 147 - progress merges preserve newer clears, best stars and best times against stale tabs
+  ---
+  duration_ms: 0.792134
+  type: 'test'
+  ...
+# Subtest: independent branch victories merge and unlock their shared finale without fabricating clears
+ok 148 - independent branch victories merge and unlock their shared finale without fabricating clears
+  ---
+  duration_ms: 0.657286
+  type: 'test'
+  ...
+# Subtest: merge rejects corrupt inputs and orphaned victories without losing the other valid snapshot
+ok 149 - merge rejects corrupt inputs and orphaned victories without losing the other valid snapshot
+  ---
+  duration_ms: 0.506215
+  type: 'test'
+  ...
+# Subtest: five authored formations use valid, deterministic, independent game saves
+ok 150 - five authored formations use valid, deterministic, independent game saves
+  ---
+  duration_ms: 9.254301
+  type: 'test'
+  ...
+# Subtest: unknown challenge ids reject clearly without starting an arbitrary battle
+ok 151 - unknown challenge ids reject clearly without starting an arbitrary battle
+  ---
+  duration_ms: 0.783716
+  type: 'test'
+  ...
+# Subtest: target objectives track partial destruction and survive a save roundtrip
+ok 152 - target objectives track partial destruction and survive a save roundtrip
+  ---
+  duration_ms: 1.948999
+  type: 'test'
+  ...
+# Subtest: destroy missions fail at their advertised deadline, not before
+ok 153 - destroy missions fail at their advertised deadline, not before
+  ---
+  duration_ms: 0.534471
+  type: 'test'
+  ...
+# Subtest: Gold Rush checks live income at the deadline and never grants an early economy win
+ok 154 - Gold Rush checks live income at the deadline and never grants an early economy win
+  ---
+  duration_ms: 0.627767
+  type: 'test'
+  ...
+# Subtest: Holdfast requires the full duration and citadel defeat overrides objective success
+ok 155 - Holdfast requires the full duration and citadel defeat overrides objective success
+  ---
+  duration_ms: 0.412353
+  type: 'test'
+  ...
+# Subtest: destroying the opposing citadel is a documented alternate win in every challenge
+ok 156 - destroying the opposing citadel is a documented alternate win in every challenge
+  ---
+  duration_ms: 2.669743
+  type: 'test'
+  ...
+# Subtest: recommended strategies finish every challenge across four combat seeds, including restored play
+ok 157 - recommended strategies finish every challenge across four combat seeds, including restored play
+  ---
+  duration_ms: 2545.503776
+  type: 'test'
+  ...
+# Subtest: idle play loses all five challenges rather than completing automatically
+ok 158 - idle play loses all five challenges rather than completing automatically
+  ---
+  duration_ms: 439.342094
+  type: 'test'
+  ...
+# Subtest: counter lessons distinguish the wrong composition from a winning one
+ok 159 - counter lessons distinguish the wrong composition from a winning one
+  ---
+  duration_ms: 400.612444
+  type: 'test'
+  ...
+# Subtest: ordinary challenge combat resumes without divergence before objective evaluation
+ok 160 - ordinary challenge combat resumes without divergence before objective evaluation
+  ---
+  duration_ms: 232.95154
+  type: 'test'
+  ...
+# Subtest: codex covers the entire original roster and derives exact base and producer data
+ok 161 - codex covers the entire original roster and derives exact base and producer data
+  ---
+  duration_ms: 9.923703
+  type: 'test'
+  ...
+# Subtest: every roster entry agrees with actual spawning, direct attacks, range, cooldown and movement
+ok 162 - every roster entry agrees with actual spawning, direct attacks, range, cooldown and movement
+  ---
+  duration_ms: 6.183911
+  type: 'test'
+  ...
+# Subtest: every producer cost, nominal repeat interval and early first spawn agree with simulation
+ok 163 - every producer cost, nominal repeat interval and early first spawn agree with simulation
+  ---
+  duration_ms: 26.62678
+  type: 'test'
+  ...
+# Subtest: documented direct counter numbers match executed combat, without a universal shield
+ok 164 - documented direct counter numbers match executed combat, without a universal shield
+  ---
+  duration_ms: 1.391815
+  type: 'test'
+  ...
+# Subtest: all advertised air targeting permissions match actual attacks
+ok 165 - all advertised air targeting permissions match actual attacks
+  ---
+  duration_ms: 0.933375
+  type: 'test'
+  ...
+# Subtest: siege and wizard splash have a strict 64-unit radius and affect only other enemy ground troops
+ok 166 - siege and wizard splash have a strict 64-unit radius and affect only other enemy ground troops
+  ---
+  duration_ms: 12.404245
+  type: 'test'
+  ...
+# Subtest: structure bonuses match the codex, while level and overtime bonuses do not inflate splash
+ok 167 - structure bonuses match the codex, while level and overtime bonuses do not inflate splash
+  ---
+  duration_ms: 17.754843
+  type: 'test'
+  ...
+# Subtest: watchtower data, warrior resistance, air defense and siege edge reach match the simulation
+ok 168 - watchtower data, warrior resistance, air defense and siege edge reach match the simulation
+  ---
+  duration_ms: 0.562662
+  type: 'test'
+  ...
+# Subtest: skirmish starting economy is current, symmetric and independent of difficulty
+ok 169 - skirmish starting economy is current, symmetric and independent of difficulty
+  ---
+  duration_ms: 22.774272
+  type: 'test'
+  ...
+# Subtest: mine marginal payback, each upgrade price and all three income levels are exact
+ok 170 - mine marginal payback, each upgrade price and all three income levels are exact
+  ---
+  duration_ms: 1.13542
+  type: 'test'
+  ...
+# Subtest: advertised caps, free ongoing production and unit-only bounty are enforced
+ok 171 - advertised caps, free ongoing production and unit-only bounty are enforced
+  ---
+  duration_ms: 0.987083
+  type: 'test'
+  ...
+# Subtest: upgrade and overtime summaries match executable production, health and damage rules
+ok 172 - upgrade and overtime summaries match executable production, health and damage rules
+  ---
+  duration_ms: 1.12156
+  type: 'test'
+  ...
+# Subtest: codex is recursively immutable without freezing or mutating engine state
+ok 173 - codex is recursively immutable without freezing or mutating engine state
+  ---
+  duration_ms: 6.66834
+  type: 'test'
+  ...
+# Subtest: number formatters keep exact useful decimals and handle invalid values consistently
+ok 174 - number formatters keep exact useful decimals and handle invalid values consistently
+  ---
+  duration_ms: 0.186402
+  type: 'test'
+  ...
+# Subtest: controller: imports and constructs without browser globals
+ok 175 - controller: imports and constructs without browser globals
+  ---
+  duration_ms: 11.04691
+  type: 'test'
+  ...
+# Subtest: controller: missing, denied and malformed providers return an idle frame
+ok 176 - controller: missing, denied and malformed providers return an idle frame
+  ---
+  duration_ms: 0.668888
+  type: 'test'
+  ...
+# Subtest: controller: sparse lists and unsupported mappings do not falsely claim support
+ok 177 - controller: sparse lists and unsupported mappings do not falsely claim support
+  ---
+  duration_ms: 1.581683
+  type: 'test'
+  ...
+# Subtest: controller: explicit nonstandard mapping opt-in permits custom hardware
+ok 178 - controller: explicit nonstandard mapping opt-in permits custom hardware
+  ---
+  duration_ms: 12.507436
+  type: 'test'
+  ...
+# Subtest: controller: active controller ownership survives reordering and ignores a second pad
+ok 179 - controller: active controller ownership survives reordering and ignores a second pad
+  ---
+  duration_ms: 0.801712
+  type: 'test'
+  ...
+# Subtest: controller: disconnect clears motion and replacement controller rearms held controls
+ok 180 - controller: disconnect clears motion and replacement controller rearms held controls
+  ---
+  duration_ms: 0.604164
+  type: 'test'
+  ...
+# Subtest: controller: connect suppresses held buttons and sticks until neutral
+ok 181 - controller: connect suppresses held buttons and sticks until neutral
+  ---
+  duration_ms: 12.892429
+  type: 'test'
+  ...
+# Subtest: controller: confirm is one-shot, releases cleanly, and never repeats
+ok 182 - controller: confirm is one-shot, releases cleanly, and never repeats
+  ---
+  duration_ms: 0.956879
+  type: 'test'
+  ...
+# Subtest: controller: direction repeats obey delay and interval with no backlog after a stall
+ok 183 - controller: direction repeats obey delay and interval with no backlog after a stall
+  ---
+  duration_ms: 11.263938
+  type: 'test'
+  ...
+# Subtest: controller: building card cycling repeats but face actions never do
+ok 184 - controller: building card cycling repeats but face actions never do
+  ---
+  duration_ms: 0.748624
+  type: 'test'
+  ...
+# Subtest: controller: context mode and scope changes prevent held-button click-through
+ok 185 - controller: context mode and scope changes prevent held-button click-through
+  ---
+  duration_ms: 1.0668
+  type: 'test'
+  ...
+# Subtest: controller: reset rearms input and clears frame delta
+ok 186 - controller: reset rearms input and clears frame delta
+  ---
+  duration_ms: 0.429929
+  type: 'test'
+  ...
+# Subtest: controller: reset in an action callback cancels other same-frame actions
+ok 187 - controller: reset in an action callback cancels other same-frame actions
+  ---
+  duration_ms: 0.35526
+  type: 'test'
+  ...
+# Subtest: controller: disabled and unknown contexts suppress commands and continuous movement
+ok 188 - controller: disabled and unknown contexts suppress commands and continuous movement
+  ---
+  duration_ms: 0.625024
+  type: 'test'
+  ...
+# Subtest: controller: backward and invalid timestamps fail safe and never produce negative delta
+ok 189 - controller: backward and invalid timestamps fail safe and never produce negative delta
+  ---
+  duration_ms: 20.29296
+  type: 'test'
+  ...
+# Subtest: controller: analog buttons use hysteresis and numeric or boolean samples are accepted
+ok 190 - controller: analog buttons use hysteresis and numeric or boolean samples are accepted
+  ---
+  duration_ms: 1.805851
+  type: 'test'
+  ...
+# Subtest: controller: menu stick emits one dominant direction and does not move the cursor
+ok 191 - controller: menu stick emits one dominant direction and does not move the cursor
+  ---
+  duration_ms: 0.575582
+  type: 'test'
+  ...
+# Subtest: controller: menu stick hysteresis prevents spurious release around the press threshold
+ok 192 - controller: menu stick hysteresis prevents spurious release around the press threshold
+  ---
+  duration_ms: 0.38984
+  type: 'test'
+  ...
+# Subtest: controller: D-pad takes priority over menu stick and opposite directions cancel
+ok 193 - controller: D-pad takes priority over menu stick and opposite directions cancel
+  ---
+  duration_ms: 0.206903
+  type: 'test'
+  ...
+# Subtest: controller: custom mapping merges defaults and supports disabled or multi-button bindings
+ok 194 - controller: custom mapping merges defaults and supports disabled or multi-button bindings
+  ---
+  duration_ms: 0.390861
+  type: 'test'
+  ...
+# Subtest: controller: precision is continuous, rearms, and emits no action
+ok 195 - controller: precision is continuous, rearms, and emits no action
+  ---
+  duration_ms: 0.230737
+  type: 'test'
+  ...
+# Subtest: controller: malformed samples remain finite and do not invent actions
+ok 196 - controller: malformed samples remain finite and do not invent actions
+  ---
+  duration_ms: 0.291226
+  type: 'test'
+  ...
+# Subtest: controller: callbacks match emitted actions, connection changes, and movement frames
+ok 197 - controller: callbacks match emitted actions, connection changes, and movement frames
+  ---
+  duration_ms: 0.216336
+  type: 'test'
+  ...
+# Subtest: controller: radial deadzone removes drift, rescales range, and clamps diagonal speed
+ok 198 - controller: radial deadzone removes drift, rescales range, and clamps diagonal speed
+  ---
+  duration_ms: 0.129809
+  type: 'test'
+  ...
+# Subtest: controller: cursor movement is frame-rate independent, precision-scaled and bounds-clamped
+ok 199 - controller: cursor movement is frame-rate independent, precision-scaled and bounds-clamped
+  ---
+  duration_ms: 17.775423
+  type: 'test'
+  ...
+# Subtest: controller: cursor numeric safety and diagonal normalization survive malformed inputs
+ok 200 - controller: cursor numeric safety and diagonal normalization survive malformed inputs
+  ---
+  duration_ms: 0.204188
+  type: 'test'
+  ...
+# Subtest: controller: linear focus navigation skips hidden/disabled controls and wraps all eight cards
+ok 201 - controller: linear focus navigation skips hidden/disabled controls and wraps all eight cards
+  ---
+  duration_ms: 0.386315
+  type: 'test'
+  ...
+# Subtest: controller: affordable card cycling skips expensive neighbors and wraps in both directions
+ok 202 - controller: affordable card cycling skips expensive neighbors and wraps in both directions
+  ---
+  duration_ms: 0.25331
+  type: 'test'
+  ...
+# Subtest: controller: affordable cycling never returns the selected card or toggles the only affordable one off
+ok 203 - controller: affordable cycling never returns the selected card or toggles the only affordable one off
+  ---
+  duration_ms: 0.156719
+  type: 'test'
+  ...
+# Subtest: controller: affordable cycling rejects malformed costs and budgets without modifying the input
+ok 204 - controller: affordable cycling rejects malformed costs and budgets without modifying the input
+  ---
+  duration_ms: 0.21189
+  type: 'test'
+  ...
+# Subtest: controller: affordable cycling is bounded to one pass even when every other card is too expensive
+ok 205 - controller: affordable cycling is bounded to one pass even when every other card is too expensive
+  ---
+  duration_ms: 16.207366
+  type: 'test'
+  ...
+# Subtest: controller: spatial focus selects directional neighbors and never crosses an unavailable item
+ok 206 - controller: spatial focus selects directional neighbors and never crosses an unavailable item
+  ---
+  duration_ms: 0.712041
+  type: 'test'
+  ...
+# Subtest: controller: configuration rejects invalid bindings and preserves the shared defaults
+ok 207 - controller: configuration rejects invalid bindings and preserves the shared defaults
+  ---
+  duration_ms: 1.150231
+  type: 'test'
+  ...
+# Subtest: controller: a controller replacement in the same slot triggers disconnect and fresh ownership
+ok 208 - controller: a controller replacement in the same slot triggers disconnect and fresh ownership
+  ---
+  duration_ms: 0.238499
+  type: 'test'
+  ...
+# Subtest: controller: held menu stick on connection cannot navigate until released
+ok 209 - controller: held menu stick on connection cannot navigate until released
+  ---
+  duration_ms: 0.324044
+  type: 'test'
+  ...
+# Subtest: controller: focus helpers handle disabled current items and invalid geometry deterministically
+ok 210 - controller: focus helpers handle disabled current items and invalid geometry deterministically
+  ---
+  duration_ms: 0.583634
+  type: 'test'
+  ...
+# Subtest: controller: seeded mixed polling always produces finite bounded motion and one-shot face actions
+ok 211 - controller: seeded mixed polling always produces finite bounded motion and one-shot face actions
+  ---
+  duration_ms: 181.489237
+  type: 'test'
+  ...
+# Subtest: controller: module import and construction never touch navigator, document or animation scheduling
+ok 212 - controller: module import and construction never touch navigator, document or animation scheduling
+  ---
+  duration_ms: 240.994654
+  type: 'test'
+  ...
+# Subtest: desktop page navigation permits only canonical entry/training URLs and fragments
+ok 213 - desktop page navigation permits only canonical entry/training URLs and fragments
+  ---
+  duration_ms: 9.23367
+  type: 'test'
+  ...
+# Subtest: desktop page navigation rejects foreign origins, credentials, ports, aliases and other paths
+ok 214 - desktop page navigation rejects foreign origins, credentials, ports, aliases and other paths
+  ---
+  duration_ms: 0.782044
+  type: 'test'
+  ...
+# Subtest: actual title/practice/return links survive both top-level navigation listeners
+ok 215 - actual title/practice/return links survive both top-level navigation listeners
+  ---
+  duration_ms: 43.57633
+  type: 'test'
+  ...
+# Subtest: all navigation and redirect listeners apply the same top-level-only allowlist
+ok 216 - all navigation and redirect listeners apply the same top-level-only allowlist
+  ---
+  duration_ms: 5.08252
+  type: 'test'
+  ...
+# Subtest: training navigation leaves isolation, permissions, windows, downloads and request restrictions intact
+ok 217 - training navigation leaves isolation, permissions, windows, downloads and request restrictions intact
+  ---
+  duration_ms: 10.078073
+  type: 'test'
+  ...
+# Subtest: only the fixed offline origin is trusted
+ok 218 - only the fixed offline origin is trusted
+  ---
+  duration_ms: 1.353568
+  type: 'test'
+  ...
+# Subtest: asset resolution rejects traversal, unsupported types, workers and malformed encodings
+ok 219 - asset resolution rejects traversal, unsupported types, workers and malformed encodings
+  ---
+  duration_ms: 0.778679
+  type: 'test'
+  ...
+# Subtest: real asset reads refuse symlink escape, missing files and directories
+ok 220 - real asset reads refuse symlink escape, missing files and directories
+  ---
+  duration_ms: 38.928875
+  type: 'test'
+  ...
+# Subtest: CSP prohibits remote code, network connections, workers and framing
+ok 221 - CSP prohibits remote code, network connections, workers and framing
+  ---
+  duration_ms: 0.980463
+  type: 'test'
+  ...
+# Subtest: desktop backup export fails honestly before creating any download side effect
+ok 222 - desktop backup export fails honestly before creating any download side effect
+  ---
+  duration_ms: 8.999218
+  type: 'test'
+  ...
+# Subtest: desktop isolation and package safety contracts remain explicit
+ok 223 - desktop isolation and package safety contracts remain explicit
+  ---
+  duration_ms: 6.277608
+  type: 'test'
+  ...
+# Subtest: installed desktop tooling preserves the scoped minimatch compatibility contracts
+ok 224 - installed desktop tooling preserves the scoped minimatch compatibility contracts # SKIP Optional desktop build dependencies are not installed; run npm ci in desktop/ to include this check.
+  ---
+  duration_ms: 1.309484
+  type: 'test'
+  ...
+# Subtest: main process wires a sandboxed persistent window and denies privileged actions
+ok 225 - main process wires a sandboxed persistent window and denies privileged actions
+  ---
+  duration_ms: 15.143079
+  type: 'test'
+  ...
+# Subtest: placement and economy are validated without mutating failed requests
+ok 226 - placement and economy are validated without mutating failed requests
+  ---
+  duration_ms: 6.162109
+  type: 'test'
+  ...
+# Subtest: production, ranged attacks, counter modifiers and unit cap
+ok 227 - production, ranged attacks, counter modifiers and unit cap
+  ---
+  duration_ms: 20.405734
+  type: 'test'
+  ...
+# Subtest: upgrades and partial refunds obey ownership and level limits
+ok 228 - upgrades and partial refunds obey ownership and level limits
+  ---
+  duration_ms: 0.618514
+  type: 'test'
+  ...
+# Subtest: spell costs money, damages only enemies, and respects cooldown
+ok 229 - spell costs money, damages only enemies, and respects cooldown
+  ---
+  duration_ms: 6.737901
+  type: 'test'
+  ...
+# Subtest: AI spends real income, builds multiple lanes, and completes a match
+ok 230 - AI spends real income, builds multiple lanes, and completes a match
+  ---
+  duration_ms: 144.281523
+  type: 'test'
+  ...
+# Subtest: deterministic seeds and frame subdivision reproduce state
+ok 231 - deterministic seeds and frame subdivision reproduce state
+  ---
+  duration_ms: 41.116904
+  type: 'test'
+  ...
+# Subtest: base destruction ends simulation and rejects further actions
+ok 232 - base destruction ends simulation and rejects further actions
+  ---
+  duration_ms: 0.29425
+  type: 'test'
+  ...
+# Subtest: invalid deltas cannot contaminate state
+ok 233 - invalid deltas cannot contaminate state
+  ---
+  duration_ms: 0.179131
+  type: 'test'
+  ...
+# Subtest: economy limits prevent unchecked compounding
+ok 234 - economy limits prevent unchecked compounding
+  ---
+  duration_ms: 9.025415
+  type: 'test'
+  ...
+# Subtest: siege can break an isolated tower from outside arrow range
+ok 235 - siege can break an isolated tower from outside arrow range
+  ---
+  duration_ms: 11.94173
+  type: 'test'
+  ...
+# Subtest: versioned save roundtrip is independent and deterministic midcombat
+ok 236 - versioned save roundtrip is independent and deterministic midcombat
+  ---
+  duration_ms: 388.037805
+  type: 'test'
+  ...
+# Subtest: all difficulties restore throughout their full match
+ok 237 - all difficulties restore throughout their full match
+  ---
+  duration_ms: 784.379905
+  type: 'test'
+  ...
+# Subtest: corrupt save structures and unsupported versions are rejected clearly
+ok 238 - corrupt save structures and unsupported versions are rejected clearly
+  ---
+  duration_ms: 16.115311
+  type: 'test'
+  ...
+# Subtest: restoring hostile nesting or excessive arrays is bounded
+ok 239 - restoring hostile nesting or excessive arrays is bounded
+  ---
+  duration_ms: 8.846373
+  type: 'test'
+  ...
+# Subtest: extreme elapsed time is capped and transient visuals have hard limits
+ok 240 - extreme elapsed time is capped and transient visuals have hard limits
+  ---
+  duration_ms: 1.685654
+  type: 'test'
+  ...
+# Subtest: lethal simultaneous attacks allow both soldiers to strike
+ok 241 - lethal simultaneous attacks allow both soldiers to strike
+  ---
+  duration_ms: 0.352235
+  type: 'test'
+  ...
+# Subtest: invalid action inputs do not change state
+ok 242 - invalid action inputs do not change state
+  ---
+  duration_ms: 0.347458
+  type: 'test'
+  ...
+# Subtest: all seven structures are producible, upgradeable, sellable and saveable
+ok 243 - all seven structures are producible, upgradeable, sellable and saveable
+  ---
+  duration_ms: 18.96055
+  type: 'test'
+  ...
+# Subtest: ground melee ignores airborne targets rather than stopping or chasing them
+ok 244 - ground melee ignores airborne targets rather than stopping or chasing them
+  ---
+  duration_ms: 1.622873
+  type: 'test'
+  ...
+# Subtest: mixed air and ground targets do not hide valid targets from melee
+ok 245 - mixed air and ground targets do not hide valid targets from melee
+  ---
+  duration_ms: 0.276455
+  type: 'test'
+  ...
+# Subtest: wizard bypasses shields and splashes ground soldiers without hurting flyers
+ok 246 - wizard bypasses shields and splashes ground soldiers without hurting flyers
+  ---
+  duration_ms: 2.256649
+  type: 'test'
+  ...
+# Subtest: siege splash cannot hit airborne soldiers
+ok 247 - siege splash cannot hit airborne soldiers
+  ---
+  duration_ms: 0.259068
+  type: 'test'
+  ...
+# Subtest: archers and watchtowers can shoot flying units
+ok 248 - archers and watchtowers can shoot flying units
+  ---
+  duration_ms: 0.346647
+  type: 'test'
+  ...
+# Subtest: gryphons attack structures with reduced damage
+ok 249 - gryphons attack structures with reduced damage
+  ---
+  duration_ms: 0.215825
+  type: 'test'
+  ...
+# Subtest: outer-lane warriors must converge before hitting the physical core
+ok 250 - outer-lane warriors must converge before hitting the physical core
+  ---
+  duration_ms: 0.625064
+  type: 'test'
+  ...
+# Subtest: cores retaliate against air and ground attackers
+ok 251 - cores retaliate against air and ground attackers
+  ---
+  duration_ms: 0.18481
+  type: 'test'
+  ...
+# Subtest: wizard and flying combat resumes exactly with new visual types
+ok 252 - wizard and flying combat resumes exactly with new visual types
+  ---
+  duration_ms: 13.202823
+  type: 'test'
+  ...
+# Subtest: simultaneous core destruction is an honest persistent draw
+ok 253 - simultaneous core destruction is an honest persistent draw
+  ---
+  duration_ms: 4.853236
+  type: 'test'
+  ...
+# Subtest: symmetric duels have identical damage and mirrored movement each tick
+ok 254 - symmetric duels have identical damage and mirrored movement each tick
+  ---
+  duration_ms: 28.35736
+  type: 'test'
+  ...
+# Subtest: mirrored forward barracks do not reproduce the former left-side sweep
+ok 255 - mirrored forward barracks do not reproduce the former left-side sweep
+  ---
+  duration_ms: 2646.799678
+  type: 'test'
+  ...
+# Subtest: native side-parametric AI produces mirrored fair-cost opening positions
+ok 256 - native side-parametric AI produces mirrored fair-cost opening positions
+  ---
+  duration_ms: 2.080151
+  type: 'test'
+  ...
+# Subtest: resumed games allocate fresh unique IDs through later building and production
+ok 257 - resumed games allocate fresh unique IDs through later building and production
+  ---
+  duration_ms: 7.571371
+  type: 'test'
+  ...
+# Subtest: projectiles identify airborne sources and destinations for rendering
+ok 258 - projectiles identify airborne sources and destinations for rendering
+  ---
+  duration_ms: 0.629346
+  type: 'test'
+  ...
+# Subtest: siege structure bonuses never inflate nearby troop splash at any level or overtime
+ok 259 - siege structure bonuses never inflate nearby troop splash at any level or overtime
+  ---
+  duration_ms: 0.51641
+  type: 'test'
+  ...
+# Subtest: siege direct troop damage remains unchanged across levels and overtime
+ok 260 - siege direct troop damage remains unchanged across levels and overtime
+  ---
+  duration_ms: 0.391927
+  type: 'test'
+  ...
+# Subtest: wizard overtime structure damage also remains separate from ground splash
+ok 261 - wizard overtime structure damage also remains separate from ground splash
+  ---
+  duration_ms: 0.506175
+  type: 'test'
+  ...
+# Subtest: bundled font and notice bytes exactly match verified official-source artifacts
+ok 262 - bundled font and notice bytes exactly match verified official-source artifacts
+  ---
+  duration_ms: 9.471347
+  type: 'test'
+  ...
+# Subtest: all five local faces and complete notices are cached without a font-service import
+ok 263 - all five local faces and complete notices are cached without a font-service import
+  ---
+  duration_ms: 0.986322
+  type: 'test'
+  ...
+# Subtest: complete licensed font notices are readable in game without external navigation
+ok 264 - complete licensed font notices are readable in game without external navigation
+  ---
+  duration_ms: 15.987695
+  type: 'test'
+  ...
+# Subtest: touch: a held gesture cannot activate a new scope, but the very next press can
+ok 265 - touch: a held gesture cannot activate a new scope, but the very next press can
+  ---
+  duration_ms: 1.414148
+  type: 'test'
+  ...
+# Subtest: mouse: a held gesture cannot activate a new scope, but the very next press can
+ok 266 - mouse: a held gesture cannot activate a new scope, but the very next press can
+  ---
+  duration_ms: 0.160945
+  type: 'test'
+  ...
+# Subtest: pen: a held gesture cannot activate a new scope, but the very next press can
+ok 267 - pen: a held gesture cannot activate a new scope, but the very next press can
+  ---
+  duration_ms: 0.099576
+  type: 'test'
+  ...
+# Subtest: a compatibility MouseEvent is attributed to its touch gesture, not the new modal target
+ok 268 - a compatibility MouseEvent is attributed to its touch gesture, not the new modal target
+  ---
+  duration_ms: 0.221895
+  type: 'test'
+  ...
+# Subtest: legacy mouse clicks without sourceCapabilities keep their originating generation
+ok 269 - legacy mouse clicks without sourceCapabilities keep their originating generation
+  ---
+  duration_ms: 0.195556
+  type: 'test'
+  ...
+# Subtest: touch fallback remains tied to the primary contact when another finger ends
+ok 270 - touch fallback remains tied to the primary contact when another finger ends
+  ---
+  duration_ms: 0.176558
+  type: 'test'
+  ...
+# Subtest: old and fresh simultaneous contacts are independent, regardless of release order
+ok 271 - old and fresh simultaneous contacts are independent, regardless of release order
+  ---
+  duration_ms: 0.156609
+  type: 'test'
+  ...
+# Subtest: lost capture does not erase a held gesture; release/click remain blocked without a timer
+ok 272 - lost capture does not erase a held gesture; release/click remain blocked without a timer
+  ---
+  duration_ms: 0.232299
+  type: 'test'
+  ...
+# Subtest: pointercancel blocks any trailing click but never eats a fresh same-ID press
+ok 273 - pointercancel blocks any trailing click but never eats a fresh same-ID press
+  ---
+  duration_ms: 0.137011
+  type: 'test'
+  ...
+# Subtest: leaving and returning to the same scope does not re-arm a held gesture
+ok 274 - leaving and returning to the same scope does not re-arm a held gesture
+  ---
+  duration_ms: 0.195756
+  type: 'test'
+  ...
+# Subtest: ordinary pointer gestures and native range drags stay untouched within a scope
+ok 275 - ordinary pointer gestures and native range drags stay untouched within a scope
+  ---
+  duration_ms: 0.196277
+  type: 'test'
+  ...
+# Subtest: native zero-detail keyboard/assistive clicks and synthetic controller activation remain allowed
+ok 276 - native zero-detail keyboard/assistive clicks and synthetic controller activation remain allowed
+  ---
+  duration_ms: 0.155066
+  type: 'test'
+  ...
+# Subtest: Enter: a held key cannot cross scopes or activate a different focused control
+ok 277 - Enter: a held key cannot cross scopes or activate a different focused control
+  ---
+  duration_ms: 0.188105
+  type: 'test'
+  ...
+# Subtest: NumpadEnter: a held key cannot cross scopes or activate a different focused control
+ok 278 - NumpadEnter: a held key cannot cross scopes or activate a different focused control
+  ---
+  duration_ms: 0.090593
+  type: 'test'
+  ...
+# Subtest: Space: a held key cannot cross scopes or activate a different focused control
+ok 279 - Space: a held key cannot cross scopes or activate a different focused control
+  ---
+  duration_ms: 2.321705
+  type: 'test'
+  ...
+# Subtest: normal native repeats and Tab/Shift navigation keep browser defaults
+ok 280 - normal native repeats and Tab/Shift navigation keep browser defaults
+  ---
+  duration_ms: 0.262684
+  type: 'test'
+  ...
+# Subtest: window interruption cancels held physical inputs and repeats, not fresh input
+ok 281 - window interruption cancels held physical inputs and repeats, not fresh input
+  ---
+  duration_ms: 0.211058
+  type: 'test'
+  ...
+# Subtest: repeated interruptions retire abandoned IDs into bounded completed history
+ok 282 - repeated interruptions retire abandoned IDs into bounded completed history
+  ---
+  duration_ms: 10.15685
+  type: 'test'
+  ...
+# Subtest: interrupted pointer ID reuse is immediately fresh without reviving other abandoned contacts
+ok 283 - interrupted pointer ID reuse is immediately fresh without reviving other abandoned contacts
+  ---
+  duration_ms: 0.408868
+  type: 'test'
+  ...
+# Subtest: retiring interrupted contacts preserves primary compatibility-click fallback through eviction
+ok 284 - retiring interrupted contacts preserves primary compatibility-click fallback through eviction
+  ---
+  duration_ms: 0.284666
+  type: 'test'
+  ...
+# Subtest: runtime wires capture guards, scope/drag cleanup, and the offline module
+ok 285 - runtime wires capture guards, scope/drag cleanup, and the offline module
+  ---
+  duration_ms: 4.373013
+  type: 'test'
+  ...
+# Subtest: old backup byte shape and canonical output retain frozen 0.8 golden digests
+ok 286 - old backup byte shape and canonical output retain frozen 0.8 golden digests
+  ---
+  duration_ms: 73.901105
+  type: 'test'
+  ...
+# Subtest: all three maps create, parse, restore, re-export and retain unchanged versioned wrappers
+ok 287 - all three maps create, parse, restore, re-export and retain unchanged versioned wrappers
+  ---
+  duration_ms: 19.074157
+  type: 'test'
+  ...
+# Subtest: raw and version-1/version-2 skirmish envelopes preserve separately versioned engines
+ok 288 - raw and version-1/version-2 skirmish envelopes preserve separately versioned engines
+  ---
+  duration_ms: 21.186235
+  type: 'test'
+  ...
+# Subtest: mid-combat imports retain exact partial accumulators and future deterministic continuation
+ok 289 - mid-combat imports retain exact partial accumulators and future deterministic continuation
+  ---
+  duration_ms: 467.939427
+  type: 'test'
+  ...
+# Subtest: missing, false, future and mixed-version map identities fail closed without fallback
+ok 290 - missing, false, future and mixed-version map identities fail closed without fallback
+  ---
+  duration_ms: 159.862392
+  type: 'test'
+  ...
+# Subtest: nonclassic engine data rejects mismatched maps, bases, bounds, sites, lanes and duplicate sites
+ok 291 - nonclassic engine data rejects mismatched maps, bases, bounds, sites, lanes and duplicate sites
+  ---
+  duration_ms: 82.237634
+  type: 'test'
+  ...
+# Subtest: Long March accepts far-right units/effects/projectiles and rejects every endpoint outside its own bounds
+ok 292 - Long March accepts far-right units/effects/projectiles and rejects every endpoint outside its own bounds
+  ---
+  duration_ms: 50.804977
+  type: 'test'
+  ...
+# Subtest: version-aware strict allowlists reject map descriptors, paths and unrelated metadata at every level
+ok 293 - version-aware strict allowlists reject map descriptors, paths and unrelated metadata at every level
+  ---
+  duration_ms: 43.732438
+  type: 'test'
+  ...
+# Subtest: all 12 legacy authored campaigns and all 5 trials require Classic despite otherwise matching difficulty and AI
+ok 294 - all 12 legacy authored campaigns and all 5 trials require Classic despite otherwise matching difficulty and AI
+  ---
+  duration_ms: 223.344564
+  type: 'test'
+  ...
+# Subtest: optional history map IDs round trip without inserting fields into legacy or authored records
+ok 295 - optional history map IDs round trip without inserting fields into legacy or authored records
+  ---
+  duration_ms: 11.147849
+  type: 'test'
+  ...
+# Subtest: unknown history maps and authored nonclassic results fail before any storage reads or writes
+ok 296 - unknown history maps and authored nonclassic results fail before any storage reads or writes
+  ---
+  duration_ms: 52.793815
+  type: 'test'
+  ...
+# Subtest: exports and failed loads retain unknown-map stored bytes, while explicit battle exclusion remains safe
+ok 297 - exports and failed loads retain unknown-map stored bytes, while explicit battle exclusion remains safe
+  ---
+  duration_ms: 11.615968
+  type: 'test'
+  ...
+# Subtest: frozen overrides, parsed copies and restored games never mutate their input snapshots
+ok 298 - frozen overrides, parsed copies and restored games never mutate their input snapshots
+  ---
+  duration_ms: 35.493407
+  type: 'test'
+  ...
+# Subtest: new-map imports preserve quota rollback semantics at all five write positions
+ok 299 - new-map imports preserve quota rollback semantics at all five write positions
+  ---
+  duration_ms: 9.402436
+  type: 'test'
+  ...
+# Subtest: new-map profile imports retain stale-tab barriers and exact-outcome finalization retry
+ok 300 - new-map profile imports retain stale-tab barriers and exact-outcome finalization retry
+  ---
+  duration_ms: 16.759183
+  type: 'test'
+  ...
+# Subtest: ordinary map saves retain exact envelopes and stale-battle guards without adding storage domains
+ok 301 - ordinary map saves retain exact envelopes and stale-battle guards without adding storage domains
+  ---
+  duration_ms: 14.066406
+  type: 'test'
+  ...
+# Subtest: Classic oracle is the exact frozen 0.8 engine, with no descriptor serialization
+ok 302 - Classic oracle is the exact frozen 0.8 engine, with no descriptor serialization
+  ---
+  duration_ms: 15.770453
+  type: 'test'
+  ...
+# Subtest: Classic complete games retain byte-for-byte state, random calls, actions and both AI orientations
+ok 303 - Classic complete games retain byte-for-byte state, random calls, actions and both AI orientations
+  ---
+  duration_ms: 6552.691433
+  type: 'test'
+  ...
+# Subtest: Classic overtime, full-frontier upgrades and simultaneous collapse retain complete state
+ok 304 - Classic overtime, full-frontier upgrades and simultaneous collapse retain complete state
+  ---
+  duration_ms: 24844.619434
+  type: 'test'
+  ...
+# Subtest: Classic historical non-grid placement and restore remain unchanged
+ok 305 - Classic historical non-grid placement and restore remain unchanged
+  ---
+  duration_ms: 1.156511
+  type: 'test'
+  ...
+# Subtest: all 12 campaign factories and five trials retain identities, simulation and deadline outcomes
+ok 306 - all 12 campaign factories and five trials retain identities, simulation and deadline outcomes
+  ---
+  duration_ms: 630.854529
+  type: 'test'
+  ...
+# Subtest: Classic AI retains exact legacy arithmetic at adjacent floating-point threshold values
+ok 307 - Classic AI retains exact legacy arithmetic at adjacent floating-point threshold values
+  ---
+  duration_ms: 16.794293
+  type: 'test'
+  ...
+# Subtest: actual Resume handler identifies every saved map and does not overwrite storage
+ok 308 - actual Resume handler identifies every saved map and does not overwrite storage
+  ---
+  duration_ms: 48.039715
+  type: 'test'
+  ...
+# Subtest: actual Resume handler retains invalid map bytes and refuses authored nonclassic games
+ok 309 - actual Resume handler retains invalid map bytes and refuses authored nonclassic games
+  ---
+  duration_ms: 16.260824
+  type: 'test'
+  ...
+# Subtest: actual Resume handler still admits the original unlocked Classic campaign envelope
+ok 310 - actual Resume handler still admits the original unlocked Classic campaign envelope
+  ---
+  duration_ms: 2.387691
+  type: 'test'
+  ...
+# Subtest: actual Resume handler admits each unlocked expansion only on its declared map
+ok 311 - actual Resume handler admits each unlocked expansion only on its declared map
+  ---
+  duration_ms: 33.287837
+  type: 'test'
+  ...
+# Subtest: actual Resume handler names saved trials independently from the new-battle menu
+ok 312 - actual Resume handler names saved trials independently from the new-battle menu
+  ---
+  duration_ms: 8.11849
+  type: 'test'
+  ...
+# Subtest: classic side 0: normal coverage uses strict home-distance 550 boundary
+ok 313 - classic side 0: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 5.468726
+  type: 'test'
+  ...
+# Subtest: classic side 0: scoring pressure uses strict home-distance 1550 boundary
+ok 314 - classic side 0: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 1.056084
+  type: 'test'
+  ...
+# Subtest: classic side 0: active pressure uses strict home-distance 1450 boundary
+ok 315 - classic side 0: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.878875
+  type: 'test'
+  ...
+# Subtest: classic side 0: emergency tower uses strict home-distance 1250 boundary
+ok 316 - classic side 0: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.503316
+  type: 'test'
+  ...
+# Subtest: classic side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 317 - classic side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.777887
+  type: 'test'
+  ...
+# Subtest: classic side 0: air, siege, shield and ground-incursion counters retain priority
+ok 318 - classic side 0: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.638824
+  type: 'test'
+  ...
+# Subtest: classic side 0: legal candidate preferences and full-lane fallback use actual lane count
+ok 319 - classic side 0: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.684261
+  type: 'test'
+  ...
+# Subtest: classic side 0: normal establishes all available screens and new-map mine randomness stays legal
+ok 320 - classic side 0: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 25.318637
+  type: 'test'
+  ...
+# Subtest: classic side 1: normal coverage uses strict home-distance 550 boundary
+ok 321 - classic side 1: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 0.661798
+  type: 'test'
+  ...
+# Subtest: classic side 1: scoring pressure uses strict home-distance 1550 boundary
+ok 322 - classic side 1: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 1.098316
+  type: 'test'
+  ...
+# Subtest: classic side 1: active pressure uses strict home-distance 1450 boundary
+ok 323 - classic side 1: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.495875
+  type: 'test'
+  ...
+# Subtest: classic side 1: emergency tower uses strict home-distance 1250 boundary
+ok 324 - classic side 1: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.383962
+  type: 'test'
+  ...
+# Subtest: classic side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 325 - classic side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.338625
+  type: 'test'
+  ...
+# Subtest: classic side 1: air, siege, shield and ground-incursion counters retain priority
+ok 326 - classic side 1: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.495965
+  type: 'test'
+  ...
+# Subtest: classic side 1: legal candidate preferences and full-lane fallback use actual lane count
+ok 327 - classic side 1: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.425012
+  type: 'test'
+  ...
+# Subtest: classic side 1: normal establishes all available screens and new-map mine randomness stays legal
+ok 328 - classic side 1: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 10.990468
+  type: 'test'
+  ...
+# Subtest: long-march side 0: normal coverage uses strict home-distance 550 boundary
+ok 329 - long-march side 0: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 0.573449
+  type: 'test'
+  ...
+# Subtest: long-march side 0: scoring pressure uses strict home-distance 1550 boundary
+ok 330 - long-march side 0: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 0.278267
+  type: 'test'
+  ...
+# Subtest: long-march side 0: active pressure uses strict home-distance 1450 boundary
+ok 331 - long-march side 0: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.25325
+  type: 'test'
+  ...
+# Subtest: long-march side 0: emergency tower uses strict home-distance 1250 boundary
+ok 332 - long-march side 0: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.239691
+  type: 'test'
+  ...
+# Subtest: long-march side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 333 - long-march side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.310414
+  type: 'test'
+  ...
+# Subtest: long-march side 0: air, siege, shield and ground-incursion counters retain priority
+ok 334 - long-march side 0: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.297886
+  type: 'test'
+  ...
+# Subtest: long-march side 0: legal candidate preferences and full-lane fallback use actual lane count
+ok 335 - long-march side 0: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.252118
+  type: 'test'
+  ...
+# Subtest: long-march side 0: normal establishes all available screens and new-map mine randomness stays legal
+ok 336 - long-march side 0: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 10.369711
+  type: 'test'
+  ...
+# Subtest: long-march side 1: normal coverage uses strict home-distance 550 boundary
+ok 337 - long-march side 1: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 0.343883
+  type: 'test'
+  ...
+# Subtest: long-march side 1: scoring pressure uses strict home-distance 1550 boundary
+ok 338 - long-march side 1: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 0.277546
+  type: 'test'
+  ...
+# Subtest: long-march side 1: active pressure uses strict home-distance 1450 boundary
+ok 339 - long-march side 1: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.194885
+  type: 'test'
+  ...
+# Subtest: long-march side 1: emergency tower uses strict home-distance 1250 boundary
+ok 340 - long-march side 1: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.247081
+  type: 'test'
+  ...
+# Subtest: long-march side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 341 - long-march side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.353837
+  type: 'test'
+  ...
+# Subtest: long-march side 1: air, siege, shield and ground-incursion counters retain priority
+ok 342 - long-march side 1: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.2397
+  type: 'test'
+  ...
+# Subtest: long-march side 1: legal candidate preferences and full-lane fallback use actual lane count
+ok 343 - long-march side 1: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.272789
+  type: 'test'
+  ...
+# Subtest: long-march side 1: normal establishes all available screens and new-map mine randomness stays legal
+ok 344 - long-march side 1: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 7.504011
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: normal coverage uses strict home-distance 550 boundary
+ok 345 - twin-span side 0: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 0.255784
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: scoring pressure uses strict home-distance 1550 boundary
+ok 346 - twin-span side 0: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 0.244557
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: active pressure uses strict home-distance 1450 boundary
+ok 347 - twin-span side 0: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.17111
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: emergency tower uses strict home-distance 1250 boundary
+ok 348 - twin-span side 0: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.172332
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 349 - twin-span side 0: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.244488
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: air, siege, shield and ground-incursion counters retain priority
+ok 350 - twin-span side 0: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.267271
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: legal candidate preferences and full-lane fallback use actual lane count
+ok 351 - twin-span side 0: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.15718
+  type: 'test'
+  ...
+# Subtest: twin-span side 0: normal establishes all available screens and new-map mine randomness stays legal
+ok 352 - twin-span side 0: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 9.358723
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: normal coverage uses strict home-distance 550 boundary
+ok 353 - twin-span side 1: normal coverage uses strict home-distance 550 boundary
+  ---
+  duration_ms: 0.263826
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: scoring pressure uses strict home-distance 1550 boundary
+ok 354 - twin-span side 1: scoring pressure uses strict home-distance 1550 boundary
+  ---
+  duration_ms: 0.154596
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: active pressure uses strict home-distance 1450 boundary
+ok 355 - twin-span side 1: active pressure uses strict home-distance 1450 boundary
+  ---
+  duration_ms: 0.238238
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: emergency tower uses strict home-distance 1250 boundary
+ok 356 - twin-span side 1: emergency tower uses strict home-distance 1250 boundary
+  ---
+  duration_ms: 0.152273
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+ok 357 - twin-span side 1: rally uses strict home-distance 1650 boundary and honest cooldown/cost
+  ---
+  duration_ms: 0.187664
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: air, siege, shield and ground-incursion counters retain priority
+ok 358 - twin-span side 1: air, siege, shield and ground-incursion counters retain priority
+  ---
+  duration_ms: 0.350693
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: legal candidate preferences and full-lane fallback use actual lane count
+ok 359 - twin-span side 1: legal candidate preferences and full-lane fallback use actual lane count
+  ---
+  duration_ms: 0.153124
+  type: 'test'
+  ...
+# Subtest: twin-span side 1: normal establishes all available screens and new-map mine randomness stays legal
+ok 360 - twin-span side 1: normal establishes all available screens and new-map mine randomness stays legal
+  ---
+  duration_ms: 4.976536
+  type: 'test'
+  ...
+# New-map smoke outcomes (not a balance audit): [{"mapId":"long-march","difficulty":"easy","playerSide":0,"seed":1,"winner":0,"seconds":128.5,"peak":[33,8],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"easy","playerSide":0,"seed":57,"winner":0,"seconds":140.4,"peak":[34,10],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"easy","playerSide":1,"seed":1,"winner":1,"seconds":128.5,"peak":[8,33],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"easy","playerSide":1,"seed":57,"winner":1,"seconds":140.4,"peak":[10,34],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"normal","playerSide":0,"seed":1,"winner":1,"seconds":267.1,"peak":[12,68],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"normal","playerSide":0,"seed":57,"winner":0,"seconds":229.2,"peak":[23,36],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"normal","playerSide":1,"seed":1,"winner":0,"seconds":267.1,"peak":[68,12],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"normal","playerSide":1,"seed":57,"winner":1,"seconds":229.2,"peak":[36,23],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"hard","playerSide":0,"seed":1,"winner":1,"seconds":124.6,"peak":[21,23],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"hard","playerSide":0,"seed":57,"winner":1,"seconds":120,"peak":[21,25],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"hard","playerSide":1,"seed":1,"winner":0,"seconds":124.6,"peak":[23,21],"overtime":false,"collapse":false},{"mapId":"long-march","difficulty":"hard","playerSide":1,"seed":57,"winner":0,"seconds":120,"peak":[25,21],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"easy","playerSide":0,"seed":1,"winner":0,"seconds":101.9,"peak":[39,6],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"easy","playerSide":0,"seed":57,"winner":0,"seconds":132.7,"peak":[31,9],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"easy","playerSide":1,"seed":1,"winner":1,"seconds":101.9,"peak":[6,39],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"easy","playerSide":1,"seed":57,"winner":1,"seconds":132.7,"peak":[9,31],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"normal","playerSide":0,"seed":1,"winner":1,"seconds":109.9,"peak":[10,23],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"normal","playerSide":0,"seed":57,"winner":1,"seconds":111.1,"peak":[6,31],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"normal","playerSide":1,"seed":1,"winner":0,"seconds":109.9,"peak":[23,10],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"normal","playerSide":1,"seed":57,"winner":0,"seconds":111.1,"peak":[31,6],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"hard","playerSide":0,"seed":1,"winner":1,"seconds":109.3,"peak":[6,27],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"hard","playerSide":0,"seed":57,"winner":1,"seconds":110.8,"peak":[6,29],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"hard","playerSide":1,"seed":1,"winner":0,"seconds":109.3,"peak":[27,6],"overtime":false,"collapse":false},{"mapId":"twin-span","difficulty":"hard","playerSide":1,"seed":57,"winner":0,"seconds":110.8,"peak":[29,6],"overtime":false,"collapse":false}]
+# Subtest: 24 complete new-map games terminate with valid saves, legal armies and exact purchase/income ledgers
+ok 361 - 24 complete new-map games terminate with valid saves, legal armies and exact purchase/income ledgers
+  ---
+  duration_ms: 6068.499924
+  type: 'test'
+  ...
+# Subtest: map registry has exact immutable geometry and independent compatibility globals
+ok 362 - map registry has exact immutable geometry and independent compatibility globals
+  ---
+  duration_ms: 21.441538
+  type: 'test'
+  ...
+# Subtest: all seven structures build, upgrade, spawn, sell and restore on every new-map owned site
+ok 363 - all seven structures build, upgrade, spawn, sell and restore on every new-map owned site
+  ---
+  duration_ms: 540.047085
+  type: 'test'
+  ...
+# Subtest: new maps reject non-sites, phantom lanes, occupied taps and opponent territory without side effects
+ok 364 - new maps reject non-sites, phantom lanes, occupied taps and opponent territory without side effects
+  ---
+  duration_ms: 2.051489
+  type: 'test'
+  ...
+# Subtest: map caps and three-mine limits hold; a full 16-site AI spends on affordable upgrades
+ok 365 - map caps and three-mine limits hold; a full 16-site AI spends on affordable upgrades
+  ---
+  duration_ms: 15.962356
+  type: 'test'
+  ...
+# Subtest: spawn and movement use actual lane centers and both physical core edges for ground and air
+ok 366 - spawn and movement use actual lane centers and both physical core edges for ground and air
+  ---
+  duration_ms: 69.459857
+  type: 'test'
+  ...
+# Subtest: base end-zone targeting follows the real right core rather than the old boundary
+ok 367 - base end-zone targeting follows the real right core rather than the old boundary
+  ---
+  duration_ms: 0.988055
+  type: 'test'
+  ...
+# Subtest: Long March combat, effects, rally and projectiles beyond x=3200 roundtrip correctly
+ok 368 - Long March combat, effects, rally and projectiles beyond x=3200 roundtrip correctly
+  ---
+  duration_ms: 5.715867
+  type: 'test'
+  ...
+# Subtest: all new-map saves require exact identity, site, lane, cap, entity and world bounds
+ok 369 - all new-map saves require exact identity, site, lane, cap, entity and world bounds
+  ---
+  duration_ms: 15.166985
+  type: 'test'
+  ...
+# Subtest: new-map projectile endpoints are bounded independently and foreign snapshots are never mutated
+ok 370 - new-map projectile endpoints are bounded independently and foreign snapshots are never mutated
+  ---
+  duration_ms: 12.465354
+  type: 'test'
+  ...
+# Subtest: new-map partial accumulators resume exactly through mixed air/ground combat and AI
+ok 371 - new-map partial accumulators resume exactly through mixed air/ground combat and AI
+  ---
+  duration_ms: 2060.151566
+  type: 'test'
+  ...
+# Subtest: interleaved differently sized games cannot change another game geometry or random sequence
+ok 372 - interleaved differently sized games cannot change another game geometry or random sequence
+  ---
+  duration_ms: 753.637827
+  type: 'test'
+  ...
+# Subtest: new maps keep the 70-unit per-side production cap without extra random draws
+ok 373 - new maps keep the 70-unit per-side production cap without extra random draws
+  ---
+  duration_ms: 1352.827476
+  type: 'test'
+  ...
+# Subtest: new-map idle and empty-board collapse games reach valid terminal states by 600 seconds
+ok 374 - new-map idle and empty-board collapse games reach valid terminal states by 600 seconds
+  ---
+  duration_ms: 122.856077
+  type: 'test'
+  ...
+# Subtest: phone native x observations project the delivered click, not the requested fractional position
+ok 375 - phone native x observations project the delivered click, not the requested fractional position
+  ---
+  duration_ms: 2.48981
+  type: 'test'
+  ...
+# Subtest: passing narrow-phone coordinates preserve exact horizontal projection despite native vertical quantization
+ok 376 - passing narrow-phone coordinates preserve exact horizontal projection despite native vertical quantization
+  ---
+  duration_ms: 0.340237
+  type: 'test'
+  ...
+# Subtest: native fractional click coordinates remain fractional without assuming a rounding algorithm
+ok 377 - native fractional click coordinates remain fractional without assuming a rounding algorithm
+  ---
+  duration_ms: 0.309453
+  type: 'test'
+  ...
+# Subtest: both original one-pixel edge requests retain native targeting and exact delivered projection
+ok 378 - both original one-pixel edge requests retain native targeting and exact delivered projection
+  ---
+  duration_ms: 0.300549
+  type: 'test'
+  ...
+# Subtest: native event sequence still rejects wrong targets, untrusted events and extra or missing clicks
+ok 379 - native event sequence still rejects wrong targets, untrusted events and extra or missing clicks
+  ---
+  duration_ms: 25.601269
+  type: 'test'
+  ...
+# Subtest: pointer coordinates permit only 0.01 CSS-pixel floating-point noise, independently of camera scale
+ok 380 - pointer coordinates permit only 0.01 CSS-pixel floating-point noise, independently of camera scale
+  ---
+  duration_ms: 10.713703
+  type: 'test'
+  ...
+# Subtest: native click stays within one CSS pixel, including combined x/y drift
+ok 381 - native click stays within one CSS pixel, including combined x/y drift
+  ---
+  duration_ms: 0.674497
+  type: 'test'
+  ...
+# Subtest: nonfinite or invalid observations cannot create a misleading camera target
+ok 382 - nonfinite or invalid observations cannot create a misleading camera target
+  ---
+  duration_ms: 0.538928
+  type: 'test'
+  ...
+# Subtest: minimap uses native click, not press-down, for touch targeting and guarded release activation
+ok 383 - minimap uses native click, not press-down, for touch targeting and guarded release activation
+  ---
+  duration_ms: 9.77389
+  type: 'test'
+  ...
+# Subtest: native minimap edge activation preserves exact geometry for every map width
+ok 384 - native minimap edge activation preserves exact geometry for every map width
+  ---
+  duration_ms: 7.890066
+  type: 'test'
+  ...
+# Subtest: minimap activation remains suppressible by the shared held-gesture scope guard
+ok 385 - minimap activation remains suppressible by the shared held-gesture scope guard
+  ---
+  duration_ms: 1.399155
+  type: 'test'
+  ...
+# Subtest: one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+ok 386 - one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+  ---
+  duration_ms: 367.125966
+  type: 'test'
+  ...
+# Subtest: insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+ok 387 - insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+  ---
+  duration_ms: 0.515814
+  type: 'test'
+  ...
+# Subtest: actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+ok 388 - actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+  ---
+  duration_ms: 0.537546
+  type: 'test'
+  ...
+# Subtest: focus feedback chooses a band clear of originals, including Middle-road protected structures
+ok 389 - focus feedback chooses a band clear of originals, including Middle-road protected structures
+  ---
+  duration_ms: 0.417811
+  type: 'test'
+  ...
+# Subtest: fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+ok 390 - fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+  ---
+  duration_ms: 4.88997
+  type: 'test'
+  ...
+# Subtest: real app holds a loaded undersized battle before advancement, saves once, and waits for explicit resume
+ok 391 - real app holds a loaded undersized battle before advancement, saves once, and waits for explicit resume
+  ---
+  duration_ms: 27.408411
+  type: 'test'
+  ...
+# Subtest: real scope transitions cancel old pointer and activation-key releases, including blocked-to-ready
+ok 392 - real scope transitions cancel old pointer and activation-key releases, including blocked-to-ready
+  ---
+  duration_ms: 13.39907
+  type: 'test'
+  ...
+# Subtest: settings/help dismissal cannot automatically resume a viewport-paused battle after recovery
+ok 393 - settings/help dismissal cannot automatically resume a viewport-paused battle after recovery
+  ---
+  duration_ms: 5.365975
+  type: 'test'
+  ...
+# Subtest: recovery and stale-session checks retain precedence over explicit viewport resume
+ok 394 - recovery and stale-session checks retain precedence over explicit viewport resume
+  ---
+  duration_ms: 5.653935
+  type: 'test'
+  ...
+# Subtest: the same guarded title exit is usable while blocked and retains the paused battle when saving fails
+ok 395 - the same guarded title exit is usable while blocked and retains the paused battle when saving fails
+  ---
+  duration_ms: 15.030495
+  type: 'test'
+  ...
+# Subtest: visual-viewport clipping is detected with unchanged CSS dimensions, without a 568px portrait minimum
+ok 396 - visual-viewport clipping is detected with unchanged CSS dimensions, without a 568px portrait minimum
+  ---
+  duration_ms: 1.961087
+  type: 'test'
+  ...
+# Subtest: actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold
+ok 397 - actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold
+  ---
+  duration_ms: 15.7048
+  type: 'test'
+  ...
+# Subtest: first objective completion stops later combat in a fast frame
+ok 398 - first objective completion stops later combat in a fast frame
+  ---
+  duration_ms: 1.100679
+  type: 'test'
+  ...
+# Subtest: deadline is evaluated without simulating post-deadline damage
+ok 399 - deadline is evaluated without simulating post-deadline damage
+  ---
+  duration_ms: 0.304175
+  type: 'test'
+  ...
+# Subtest: invalid deltas do not advance simulation and existing outcomes resolve
+ok 400 - invalid deltas do not advance simulation and existing outcomes resolve
+  ---
+  duration_ms: 0.188756
+  type: 'test'
+  ...
+# Subtest: real Holdfast completion is independent of 1x versus 2x render subdivision
+ok 401 - real Holdfast completion is independent of 1x versus 2x render subdivision
+  ---
+  duration_ms: 2.193016
+  type: 'test'
+  ...
+# Subtest: history absence, backend failure and malformed existing bytes have distinct states
+ok 402 - history absence, backend failure and malformed existing bytes have distinct states
+  ---
+  duration_ms: 5.313339
+  type: 'test'
+  ...
+# Subtest: transient history read failure never overwrites existing history, and later retry merges both
+ok 403 - transient history read failure never overwrites existing history, and later retry merges both
+  ---
+  duration_ms: 0.771105
+  type: 'test'
+  ...
+# Subtest: unavailable initial history is not an empty cache and recovery reads the real current history
+ok 404 - unavailable initial history is not an empty cache and recovery reads the real current history
+  ---
+  duration_ms: 0.433157
+  type: 'test'
+  ...
+# Subtest: failed history write retains an immutable result and repeated retries never append duplicates
+ok 405 - failed history write retains an immutable result and repeated retries never append duplicates
+  ---
+  duration_ms: 0.575517
+  type: 'test'
+  ...
+# Subtest: throw-after-write and unreadable readback remain recoverable without writing a second copy
+ok 406 - throw-after-write and unreadable readback remain recoverable without writing a second copy
+  ---
+  duration_ms: 0.964319
+  type: 'test'
+  ...
+# Subtest: newer history between snapshot and write aborts without damage, then merges a fresh retry
+ok 407 - newer history between snapshot and write aborts without damage, then merges a fresh retry
+  ---
+  duration_ms: 0.56415
+  type: 'test'
+  ...
+# Subtest: a racing history write after set is detected and is never rolled back over the winner
+ok 408 - a racing history write after set is detected and is never rolled back over the winner
+  ---
+  duration_ms: 0.501187
+  type: 'test'
+  ...
+# Subtest: history dedupe survives backup field ordering and existing optional defaults
+ok 409 - history dedupe survives backup field ordering and existing optional defaults
+  ---
+  duration_ms: 0.326731
+  type: 'test'
+  ...
+# Subtest: pending history honors the existing latest-30 limit and exports in the existing schema
+ok 410 - pending history honors the existing latest-30 limit and exports in the existing schema
+  ---
+  duration_ms: 9.781634
+  type: 'test'
+  ...
+# Subtest: retained results and preferences never commit to a replaced, restoring or failed profile
+ok 411 - retained results and preferences never commit to a replaced, restoring or failed profile
+  ---
+  duration_ms: 1.026761
+  type: 'test'
+  ...
+# Subtest: profile changes during the last history read prevent write even without a storage event
+ok 412 - profile changes during the last history read prevent write even without a storage event
+  ---
+  duration_ms: 5.576096
+  type: 'test'
+  ...
+# Subtest: failed preferences are retained, replaced by the newest local choice, and verified on retry
+ok 413 - failed preferences are retained, replaced by the newest local choice, and verified on retry
+  ---
+  duration_ms: 0.387981
+  type: 'test'
+  ...
+# Subtest: preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+ok 414 - preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+  ---
+  duration_ms: 0.382653
+  type: 'test'
+  ...
+# Subtest: preferences throw-after-write and transient readback denial verify without rewriting
+ok 415 - preferences throw-after-write and transient readback denial verify without rewriting
+  ---
+  duration_ms: 0.322024
+  type: 'test'
+  ...
+# Subtest: actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+ok 416 - actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+  ---
+  duration_ms: 3.437218
+  type: 'test'
+  ...
+# Subtest: actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+ok 417 - actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+  ---
+  duration_ms: 4.066885
+  type: 'test'
+  ...
+# Subtest: actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+ok 418 - actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+  ---
+  duration_ms: 1.765057
+  type: 'test'
+  ...
+# Subtest: actual retries stay blocked after profile change and still expose retained result for export
+ok 419 - actual retries stay blocked after profile change and still expose retained result for export
+  ---
+  duration_ms: 1.744858
+  type: 'test'
+  ...
+# Subtest: captured completion remains eligible after a new same-profile battle without deleting its save
+ok 420 - captured completion remains eligible after a new same-profile battle without deleting its save
+  ---
+  duration_ms: 0.662865
+  type: 'test'
+  ...
+# Subtest: stale completion never acquires a newer battle or blocks a later valid result from saving
+ok 421 - stale completion never acquires a newer battle or blocks a later valid result from saving
+  ---
+  duration_ms: 0.348012
+  type: 'test'
+  ...
+# Subtest: completion with unavailable ownership only recovers if its original battle can still be verified
+ok 422 - completion with unavailable ownership only recovers if its original battle can still be verified
+  ---
+  duration_ms: 0.640813
+  type: 'test'
+  ...
+# Subtest: actual finish captures stale battle ownership and keeps the result unsaved/exportable
+ok 423 - actual finish captures stale battle ownership and keeps the result unsaved/exportable
+  ---
+  duration_ms: 1.355755
+  type: 'test'
+  ...
+# Subtest: a captured valid completion still cannot cross a later imported profile boundary
+ok 424 - a captured valid completion still cannot cross a later imported profile boundary
+  ---
+  duration_ms: 0.245161
+  type: 'test'
+  ...
+# Subtest: profile recovery views never replace retained old-profile history with imported records
+ok 425 - profile recovery views never replace retained old-profile history with imported records
+  ---
+  duration_ms: 0.199073
+  type: 'test'
+  ...
+# Subtest: save success requires a completed storage write and preserves its envelope
+ok 426 - save success requires a completed storage write and preserves its envelope
+  ---
+  duration_ms: 7.960304
+  type: 'test'
+  ...
+# Subtest: quota, denied storage access and serialization failure return false rather than false success
+ok 427 - quota, denied storage access and serialization failure return false rather than false success
+  ---
+  duration_ms: 0.461278
+  type: 'test'
+  ...
+# Subtest: malformed history cannot freeze result processing and valid history is bounded
+ok 428 - malformed history cannot freeze result processing and valid history is bounded
+  ---
+  duration_ms: 0.50951
+  type: 'test'
+  ...
+# Subtest: Space belongs to focused native controls, not the global pause shortcut
+ok 429 - Space belongs to focused native controls, not the global pause shortcut
+  ---
+  duration_ms: 0.232142
+  type: 'test'
+  ...
+# Subtest: campaign saves keep mission identity outside the deterministic engine state
+ok 430 - campaign saves keep mission identity outside the deterministic engine state
+  ---
+  duration_ms: 0.352408
+  type: 'test'
+  ...
+# Subtest: save sessions never overwrite a newer tab and skip unchanged writes
+ok 431 - save sessions never overwrite a newer tab and skip unchanged writes
+  ---
+  duration_ms: 0.658168
+  type: 'test'
+  ...
+# Subtest: save session never claims a failed write as persisted
+ok 432 - save session never claims a failed write as persisted
+  ---
+  duration_ms: 0.339009
+  type: 'test'
+  ...
+# Subtest: unavailable reads are not mistaken for a newer saved battle
+ok 433 - unavailable reads are not mistaken for a newer saved battle
+  ---
+  duration_ms: 0.368703
+  type: 'test'
+  ...
+# Subtest: storage-denied fresh game recovers only into an empty save slot
+ok 434 - storage-denied fresh game recovers only into an empty save slot
+  ---
+  duration_ms: 0.359199
+  type: 'test'
+  ...
+# Subtest: all five original unit models render static portrait draw commands with balanced transforms
+ok 435 - all five original unit models render static portrait draw commands with balanced transforms
+  ---
+  duration_ms: 2.510124
+  type: 'test'
+  ...
+# Subtest: portraits reject unknown units and unavailable canvas contexts safely
+ok 436 - portraits reject unknown units and unavailable canvas contexts safely
+  ---
+  duration_ms: 0.242778
+  type: 'test'
+  ...
+# Subtest: absent marker is a legacy-ready profile; guarded storage works without writing a marker
+ok 437 - absent marker is a legacy-ready profile; guarded storage works without writing a marker
+  ---
+  duration_ms: 2.503765
+  type: 'test'
+  ...
+# Subtest: begin publishes a verified restoring marker before permitting import reads or writes
+ok 438 - begin publishes a verified restoring marker before permitting import reads or writes
+  ---
+  duration_ms: 1.302207
+  type: 'test'
+  ...
+# Subtest: all ordinary save writes and removes are blocked in stale tabs throughout restoration
+ok 439 - all ordinary save writes and removes are blocked in stale tabs throughout restoration
+  ---
+  duration_ms: 0.601074
+  type: 'test'
+  ...
+# Subtest: restored marker makes every old tab read-only and requires reload, including its owner
+ok 440 - restored marker makes every old tab read-only and requires reload, including its owner
+  ---
+  duration_ms: 3.570624
+  type: 'test'
+  ...
+# Subtest: verified rollback to an originally ready profile rebinds only its owning tab
+ok 441 - verified rollback to an originally ready profile rebinds only its owning tab
+  ---
+  duration_ms: 0.457944
+  type: 'test'
+  ...
+# Subtest: incomplete rollback publishes failed barrier and requires explicit recovery
+ok 442 - incomplete rollback publishes failed barrier and requires explicit recovery
+  ---
+  duration_ms: 1.135861
+  type: 'test'
+  ...
+# Subtest: rollback during recovery of a partial or abandoned profile never publishes ready
+ok 443 - rollback during recovery of a partial or abandoned profile never publishes ready
+  ---
+  duration_ms: 0.386368
+  type: 'test'
+  ...
+# Subtest: invalid or incompatible markers block play writes and can be replaced only by explicit recovery
+ok 444 - invalid or incompatible markers block play writes and can be replaced only by explicit recovery
+  ---
+  duration_ms: 1.158665
+  type: 'test'
+  ...
+# Subtest: initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+ok 445 - initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+  ---
+  duration_ms: 0.53741
+  type: 'test'
+  ...
+# Subtest: read failures and invalid raw read return values cannot be interpreted as an absent marker
+ok 446 - read failures and invalid raw read return values cannot be interpreted as an absent marker
+  ---
+  duration_ms: 0.596137
+  type: 'test'
+  ...
+# Subtest: marker begin quota failure leaves original game bytes intact and denies the import adapter
+ok 447 - marker begin quota failure leaves original game bytes intact and denies the import adapter
+  ---
+  duration_ms: 0.322475
+  type: 'test'
+  ...
+# Subtest: marker writes that throw after taking effect are accepted only after exact readback
+ok 448 - marker writes that throw after taking effect are accepted only after exact readback
+  ---
+  duration_ms: 0.234435
+  type: 'test'
+  ...
+# Subtest: an unverified begin can be resumed only after the same owned restoring marker becomes readable
+ok 449 - an unverified begin can be resumed only after the same owned restoring marker becomes readable
+  ---
+  duration_ms: 0.417835
+  type: 'test'
+  ...
+# Subtest: failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+ok 450 - failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+  ---
+  duration_ms: 9.419322
+  type: 'test'
+  ...
+# Subtest: ready marker written before a failed read can be verified by idempotent finalization retry
+ok 451 - ready marker written before a failed read can be verified by idempotent finalization retry
+  ---
+  duration_ms: 0.684868
+  type: 'test'
+  ...
+# Subtest: failure marker publication can be retried without falsely opening partial data
+ok 452 - failure marker publication can be retried without falsely opening partial data
+  ---
+  duration_ms: 0.37364
+  type: 'test'
+  ...
+# Subtest: unexpected marker corruption after a write never grants import ownership
+ok 453 - unexpected marker corruption after a write never grants import ownership
+  ---
+  duration_ms: 0.292941
+  type: 'test'
+  ...
+# Subtest: a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+ok 454 - a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+  ---
+  duration_ms: 0.633622
+  type: 'test'
+  ...
+# Subtest: import ownership loss mid-restore prevents rollback from undoing a newer completed import
+ok 455 - import ownership loss mid-restore prevents rollback from undoing a newer completed import
+  ---
+  duration_ms: 2.587578
+  type: 'test'
+  ...
+# Subtest: stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+ok 456 - stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+  ---
+  duration_ms: 0.946162
+  type: 'test'
+  ...
+# Subtest: beforeunload-style stale history, settings and battle writes are also blocked after replacement
+ok 457 - beforeunload-style stale history, settings and battle writes are also blocked after replacement
+  ---
+  duration_ms: 0.749242
+  type: 'test'
+  ...
+# Subtest: ordinary facades reserve the marker; import facade is limited to the five game domains
+ok 458 - ordinary facades reserve the marker; import facade is limited to the five game domains
+  ---
+  duration_ms: 0.425646
+  type: 'test'
+  ...
+# Subtest: session checks marker before every operation, not merely before the first of five writes
+ok 459 - session checks marker before every operation, not merely before the first of five writes
+  ---
+  duration_ms: 0.254704
+  type: 'test'
+  ...
+# Subtest: marker factory failures, invalid options and invalid outcomes cannot mutate game state
+ok 460 - marker factory failures, invalid options and invalid outcomes cannot mutate game state
+  ---
+  duration_ms: 0.322936
+  type: 'test'
+  ...
+# Subtest: a denied marker read after initially ready play blocks saving without deleting any bytes
+ok 461 - a denied marker read after initially ready play blocks saving without deleting any bytes
+  ---
+  duration_ms: 0.205463
+  type: 'test'
+  ...
+# Subtest: fresh page opened during restoring or failed phase cannot read partial profile domains
+ok 462 - fresh page opened during restoring or failed phase cannot read partial profile domains
+  ---
+  duration_ms: 0.469671
+  type: 'test'
+  ...
+# Subtest: UI: late older successful file read cannot replace the newer confirmed import
+ok 463 - UI: late older successful file read cannot replace the newer confirmed import
+  ---
+  duration_ms: 5.885791
+  type: 'test'
+  ...
+# Subtest: UI: late older file failure cannot invalidate a newer parsed backup
+ok 464 - UI: late older file failure cannot invalidate a newer parsed backup
+  ---
+  duration_ms: 2.280096
+  type: 'test'
+  ...
+# Subtest: UI: dismissing Settings invalidates an outstanding file read across reopen
+ok 465 - UI: dismissing Settings invalidates an outstanding file read across reopen
+  ---
+  duration_ms: 1.778397
+  type: 'test'
+  ...
+# Subtest: UI: incomplete rollback preserves the paused session and warning after cancellation
+ok 466 - UI: incomplete rollback preserves the paused session and warning after cancellation
+  ---
+  duration_ms: 2.326293
+  type: 'test'
+  ...
+# Subtest: UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+ok 467 - UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+  ---
+  duration_ms: 2.514701
+  type: 'test'
+  ...
+# Subtest: UI: normal export is blocked during recovery while retained-game export remains available
+ok 468 - UI: normal export is blocked during recovery while retained-game export remains available
+  ---
+  duration_ms: 4.88575
+  type: 'test'
+  ...
+# Subtest: UI: blocked result persistence marks newly earned progress dirty
+ok 469 - UI: blocked result persistence marks newly earned progress dirty
+  ---
+  duration_ms: 1.691139
+  type: 'test'
+  ...
+# Subtest: UI: storage-unavailable autosave warns once without discarding the active game
+ok 470 - UI: storage-unavailable autosave warns once without discarding the active game
+  ---
+  duration_ms: 1.638471
+  type: 'test'
+  ...
+# Subtest: UI: beforeunload during recovery warns without saving old in-memory data
+ok 471 - UI: beforeunload during recovery warns without saving old in-memory data
+  ---
+  duration_ms: 1.575368
+  type: 'test'
+  ...
+# Subtest: UI: actual application startup protects expanded progress before constructing ordinary storage
+ok 472 - UI: actual application startup protects expanded progress before constructing ordinary storage
+  ---
+  duration_ms: 1.160528
+  type: 'test'
+  ...
+# Subtest: UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+ok 473 - UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+  ---
+  duration_ms: 1.779398
+  type: 'test'
+  ...
+# Subtest: UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+ok 474 - UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+  ---
+  duration_ms: 3.643583
+  type: 'test'
+  ...
+# Subtest: UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+ok 475 - UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+  ---
+  duration_ms: 14.520087
+  type: 'test'
+  ...
+# Subtest: UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+ok 476 - UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+  ---
+  duration_ms: 1.869862
+  type: 'test'
+  ...
+# Subtest: the measured old 568x320 field reproduces clipped originals and Front/Pause overlap
+ok 477 - the measured old 568x320 field reproduces clipped originals and Front/Pause overlap
+  ---
+  duration_ms: 32.398358
+  type: 'test'
+  ...
+# Subtest: CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas
+ok 478 - CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas
+  ---
+  duration_ms: 166.339225
+  type: 'test'
+  ...
+# Subtest: all six rail buttons retain 44px hit targets, remain separate and never cover the canvas
+ok 479 - all six rail buttons retain 44px hit targets, remain separate and never cover the canvas
+  ---
+  duration_ms: 0.76797
+  type: 'test'
+  ...
+# Subtest: native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail
+ok 480 - native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail
+  ---
+  duration_ms: 6.406428
+  type: 'test'
+  ...
+# Subtest: build overlay is anchored to the whole grid rather than the 60px objective row
+ok 481 - build overlay is anchored to the whole grid rather than the 60px objective row
+  ---
+  duration_ms: 0.32594
+  type: 'test'
+  ...
+# Subtest: actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels
+ok 482 - actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels
+  ---
+  duration_ms: 145.259188
+  type: 'test'
+  ...
+# Subtest: removing the pointer override reproduces the native failure despite a visible enabled button
+ok 483 - removing the pointer override reproduces the native failure despite a visible enabled button
+  ---
+  duration_ms: 3.771901
+  type: 'test'
+  ...
+# Subtest: Build remains outside hit testing in ordinary desktop layouts
+ok 484 - Build remains outside hit testing in ordinary desktop layouts
+  ---
+  duration_ms: 6.062772
+  type: 'test'
+  ...
+# Subtest: real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start
+ok 485 - real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start
+  ---
+  duration_ms: 7.239644
+  type: 'test'
+  ...
+# Subtest: fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus
+ok 486 - fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus
+  ---
+  duration_ms: 2.341676
+  type: 'test'
+  ...
+# Subtest: a held battlefield touch or different pointer cannot activate a target appearing under its release
+ok 487 - a held battlefield touch or different pointer cannot activate a target appearing under its release
+  ---
+  duration_ms: 2.095174
+  type: 'test'
+  ...
+# Subtest: native keyboard/assistive clicks work and remain subject to existing held-key scope guards
+ok 488 - native keyboard/assistive clicks work and remain subject to existing held-key scope guards
+  ---
+  duration_ms: 1.670398
+  type: 'test'
+  ...
+# Subtest: pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up
+ok 489 - pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up
+  ---
+  duration_ms: 5.553363
+  type: 'test'
+  ...
+# Subtest: original loss cannot focus a replacement and result clarity names both lost originals
+ok 490 - original loss cannot focus a replacement and result clarity names both lost originals
+  ---
+  duration_ms: 1.899686
+  type: 'test'
+  ...
+# Subtest: changing to a mission without protect targets removes the dock and stale loss text
+ok 491 - changing to a mission without protect targets removes the dock and stale loss text
+  ---
+  duration_ms: 1.402284
+  type: 'test'
+  ...
+# Subtest: semantic HTML and responsive CSS reserve a real dock without reducing build-button targets
+ok 492 - semantic HTML and responsive CSS reserve a real dock without reducing build-button targets
+  ---
+  duration_ms: 0.886315
+  type: 'test'
+  ...
+# Subtest: already-missing app state names the original and explicitly marks historical loss time unknown
+ok 493 - already-missing app state names the original and explicitly marks historical loss time unknown
+  ---
+  duration_ms: 2.305713
+  type: 'test'
+  ...
+# Subtest: portrait protected battles declare a two-row 44px toolbelt without shrinking controls
+ok 494 - portrait protected battles declare a two-row 44px toolbelt without shrinking controls
+  ---
+  duration_ms: 0.623397
+  type: 'test'
+  ...
+# Subtest: retry creates fresh controls and clears prior loss, critical alerts and armed presses
+ok 495 - retry creates fresh controls and clears prior loss, critical alerts and armed presses
+  ---
+  duration_ms: 2.363878
+  type: 'test'
+  ...
+# Subtest: switching from protected campaign to skirmish removes every stale target and identity
+ok 496 - switching from protected campaign to skirmish removes every stale target and identity
+  ---
+  duration_ms: 1.173727
+  type: 'test'
+  ...
+# Subtest: real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press
+ok 497 - real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press
+  ---
+  duration_ms: 3.643331
+  type: 'test'
+  ...
+# Subtest: real held Space guard preserves native activation only for a fresh press in the current scope
+ok 498 - real held Space guard preserves native activation only for a fresh press in the current scope
+  ---
+  duration_ms: 1.341054
+  type: 'test'
+  ...
+# Subtest: short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls
+ok 499 - short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls
+  ---
+  duration_ms: 14.912576
+  type: 'test'
+  ...
+# Subtest: leaving a protected battle restores the ordinary header and battlefield layout
+ok 500 - leaving a protected battle restores the ordinary header and battlefield layout
+  ---
+  duration_ms: 1.992201
+  type: 'test'
+  ...
+# Subtest: shared mobile grid reserves world, navigation and dock with no renderer scaling
+ok 501 - shared mobile grid reserves world, navigation and dock with no renderer scaling
+  ---
+  duration_ms: 0.323856
+  type: 'test'
+  ...
+# Subtest: focus direction mark is CSS-drawn even when critical portrait hides the word Focus
+ok 502 - focus direction mark is CSS-drawn even when critical portrait hides the word Focus
+  ---
+  duration_ms: 2.501832
+  type: 'test'
+  ...
+# Subtest: very short landscape exposes explicit build controls and closes them when focusing an original
+ok 503 - very short landscape exposes explicit build controls and closes them when focusing an original
+  ---
+  duration_ms: 1.294735
+  type: 'test'
+  ...
+# Subtest: drawer closure returns keyboard focus only when it would otherwise hide the active build control
+ok 504 - drawer closure returns keyboard focus only when it would otherwise hide the active build control
+  ---
+  duration_ms: 1.395594
+  type: 'test'
+  ...
+# Subtest: rotation to portrait closes the shared drawer without rebuilding protected controls
+ok 505 - rotation to portrait closes the shared drawer without rebuilding protected controls
+  ---
+  duration_ms: 1.218473
+  type: 'test'
+  ...
+# Subtest: drawer transitions use a distinct held-input scope and reject battlefield spending until closed
+ok 506 - drawer transitions use a distinct held-input scope and reject battlefield spending until closed
+  ---
+  duration_ms: 0.328553
+  type: 'test'
+  ...
+# Subtest: actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control
+ok 507 - actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control
+  ---
+  duration_ms: 2.12672
+  type: 'test'
+  ...
+# Subtest: actual storage-conflict auto-pause closes the drawer before showing the pause veil
+ok 508 - actual storage-conflict auto-pause closes the drawer before showing the pause veil
+  ---
+  duration_ms: 1.541618
+  type: 'test'
+  ...
+# Subtest: actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay
+ok 509 - actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay
+  ---
+  duration_ms: 1.978722
+  type: 'test'
+  ...
+# Subtest: all authored protected structures have stable, unique names and immutable read-only health views
+ok 510 - all authored protected structures have stable, unique names and immutable read-only health views
+  ---
+  duration_ms: 10.565879
+  type: 'test'
+  ...
+# Subtest: Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+ok 511 - Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+  ---
+  duration_ms: 1.992352
+  type: 'test'
+  ...
+# Subtest: critical health uses actual ratio and never claims an attacker; upgrades display current max health
+ok 512 - critical health uses actual ratio and never claims an attacker; upgrades display current max health
+  ---
+  duration_ms: 0.725628
+  type: 'test'
+  ...
+# Subtest: first missing observation binds the original ID and current tick, never a later replacement
+ok 513 - first missing observation binds the original ID and current tick, never a later replacement
+  ---
+  duration_ms: 1.389725
+  type: 'test'
+  ...
+# Subtest: already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+ok 514 - already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+  ---
+  duration_ms: 3.125279
+  type: 'test'
+  ...
+# Subtest: new observations after a healthy resume record a transition without inventing pre-resume history
+ok 515 - new observations after a healthy resume record a transition without inventing pre-resume history
+  ---
+  duration_ms: 0.865334
+  type: 'test'
+  ...
+# Subtest: simultaneous protected losses both appear, with no inference about the cause
+ok 516 - simultaneous protected losses both appear, with no inference about the cause
+  ---
+  duration_ms: 0.499665
+  type: 'test'
+  ...
+# Subtest: observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+ok 517 - observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+  ---
+  duration_ms: 726.106811
+  type: 'test'
+  ...
+# Subtest: fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+ok 518 - fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+  ---
+  duration_ms: 1.218403
+  type: 'test'
+  ...
+# Subtest: observed time formatting handles tick rounding and explicitly unknown data
+ok 519 - observed time formatting handles tick rounding and explicitly unknown data
+  ---
+  duration_ms: 0.240564
+  type: 'test'
+  ...
+# Subtest: campaign/combat/objective/save modules retain frozen rules with only the audited save-type guard
+ok 520 - campaign/combat/objective/save modules retain frozen rules with only the audited save-type guard
+  ---
+  duration_ms: 3.568521
+  type: 'test'
+  ...
+# Subtest: objective integration preserves corrected persistence and training modules byte-for-byte
+ok 521 - objective integration preserves corrected persistence and training modules byte-for-byte
+  ---
+  duration_ms: 2.752
+  type: 'test'
+  ...
+# Subtest: synthetic baseline has exact pinned provenance with only the documented two import substitutions
+ok 522 - synthetic baseline has exact pinned provenance with only the documented two import substitutions
+  ---
+  duration_ms: 3.565166
+  type: 'test'
+  ...
+# Subtest: integrated renderer and VFX remain identical to the independently reviewed visual lab
+ok 523 - integrated renderer and VFX remain identical to the independently reviewed visual lab
+  ---
+  duration_ms: 0.742763
+  type: 'test'
+  ...
+# Subtest: every synthetic scene is deterministic, bounded, both-team and labelled as non-played evidence
+ok 524 - every synthetic scene is deterministic, bounded, both-team and labelled as non-played evidence
+  ---
+  duration_ms: 11.814306
+  type: 'test'
+  ...
+# Subtest: comparison feeds both renderers identical immutable scenes, sizes, cameras and effect settings
+ok 525 - comparison feeds both renderers identical immutable scenes, sizes, cameras and effect settings
+  ---
+  duration_ms: 1307.897583
+  type: 'test'
+  ...
+# Subtest: visual magnification is continuous, bounded and based on CSS field scale, not device pixels
+ok 526 - visual magnification is continuous, bounded and based on CSS field scale, not device pixels
+  ---
+  duration_ms: 6.154467
+  type: 'test'
+  ...
+# Subtest: all five damaged unit bars stay >=18x2.5 CSS pixels and fill left to right on either team
+ok 527 - all five damaged unit bars stay >=18x2.5 CSS pixels and fill left to right on either team
+  ---
+  duration_ms: 38.329536
+  type: 'test'
+  ...
+# Subtest: team markers differ in shape without color and stay at the true ground anchor
+ok 528 - team markers differ in shape without color and stay at the true ground anchor
+  ---
+  duration_ms: 23.227246
+  type: 'test'
+  ...
+# Subtest: renderer-only changes preserve engine state, RNG, camera transforms and paid placement sites
+ok 529 - renderer-only changes preserve engine state, RNG, camera transforms and paid placement sites
+  ---
+  duration_ms: 782.115475
+  type: 'test'
+  ...
+# Subtest: impact effects precede bodies and mission badges follow every body and projectile
+ok 530 - impact effects precede bodies and mission badges follow every body and projectile
+  ---
+  duration_ms: 18.40505
+  type: 'test'
+  ...
+# Subtest: small-field terrain suppression leaves cached art untouched and essential labels have a 10px floor
+ok 531 - small-field terrain suppression leaves cached art untouched and essential labels have a 10px floor
+  ---
+  duration_ms: 64.312513
+  type: 'test'
+  ...
+# Subtest: compact and low-quality effects suppress decoration without modifying particle state
+ok 532 - compact and low-quality effects suppress decoration without modifying particle state
+  ---
+  duration_ms: 2.996049
+  type: 'test'
+  ...
+# Subtest: reduced-motion base effects keep geometry stationary while fading; low quality shortens volleys
+ok 533 - reduced-motion base effects keep geometry stationary while fading; low quality shortens volleys
+  ---
+  duration_ms: 5.780456
+  type: 'test'
+  ...
+# Subtest: placement outlines are visible in CSS pixels without expanding their exact world-site bounds
+ok 534 - placement outlines are visible in CSS pixels without expanding their exact world-site bounds
+  ---
+  duration_ms: 24.366688
+  type: 'test'
+  ...
+# Subtest: Classic retains frozen terrain, camera geometry, minimaps and portraits; visual frames have a separate lab fixture
+ok 535 - Classic retains frozen terrain, camera geometry, minimaps and portraits; visual frames have a separate lab fixture
+  ---
+  duration_ms: 102.159268
+  type: 'test'
+  ...
+# Subtest: setMap accepts registered IDs/descriptors, rejects foreign geometry, and preserves theme
+ok 536 - setMap accepts registered IDs/descriptors, rejects foreign geometry, and preserves theme
+  ---
+  duration_ms: 85.918018
+  type: 'test'
+  ...
+# Subtest: terrain draws exact lane counts, full world width, midpoint rivers and bridges
+ok 537 - terrain draws exact lane counts, full world width, midpoint rivers and bridges
+  ---
+  duration_ms: 34.840211
+  type: 'test'
+  ...
+# Subtest: Long March frontier markers and side tints stay attached to owned territory
+ok 538 - Long March frontier markers and side tints stay attached to owned territory
+  ---
+  duration_ms: 49.346549
+  type: 'test'
+  ...
+# Subtest: all viewports clamp both map ends, whole-world views center, and screen transforms round-trip
+ok 539 - all viewports clamp both map ends, whole-world views center, and screen transforms round-trip
+  ---
+  duration_ms: 24.009712
+  type: 'test'
+  ...
+# Subtest: Classic snap matches original math across boundaries, exact ties and dense finite inputs
+ok 540 - Classic snap matches original math across boundaries, exact ties and dense finite inputs
+  ---
+  duration_ms: 38.105577
+  type: 'test'
+  ...
+# Subtest: snap uses only map sites, mirrors right-side columns and never relocates occupied placements
+ok 541 - snap uses only map sites, mirrors right-side columns and never relocates occupied placements
+  ---
+  duration_ms: 30.948484
+  type: 'test'
+  ...
+# Subtest: build grid and ghost validate exactly the same snapped sites as player input
+ok 542 - build grid and ghost validate exactly the same snapped sites as player input
+  ---
+  duration_ms: 36.805128
+  type: 'test'
+  ...
+# Subtest: minimap projects extended entities, bases, actual roads and camera window using map dimensions
+ok 543 - minimap projects extended entities, bases, actual roads and camera window using map dimensions
+  ---
+  duration_ms: 39.162973
+  type: 'test'
+  ...
+# Subtest: terrain cache retains at most current base and theme, including repeated same-theme map switches
+ok 544 - terrain cache retains at most current base and theme, including repeated same-theme map switches
+  ---
+  duration_ms: 590.50893
+  type: 'test'
+  ...
+# Subtest: simultaneous renderers retain independent geometry, cameras, themes and global compatibility constants
+ok 545 - simultaneous renderers retain independent geometry, cameras, themes and global compatibility constants
+  ---
+  duration_ms: 53.3584
+  type: 'test'
+  ...
+# Subtest: citadel overlays draw only real map lanes and cover Long March beyond the old boundary
+ok 546 - citadel overlays draw only real map lanes and cover Long March beyond the old boundary
+  ---
+  duration_ms: 22.792144
+  type: 'test'
+  ...
+# Subtest: new-map complete frames and bases remain finite across responsive views
+ok 547 - new-map complete frames and bases remain finite across responsive views
+  ---
+  duration_ms: 130.908814
+  type: 'test'
+  ...
+# Subtest: dialog controls exclude zero-size, inert/hidden and invisible controls but retain the report summary
+ok 548 - dialog controls exclude zero-size, inert/hidden and invisible controls but retain the report summary
+  ---
+  duration_ms: 3.633928
+  type: 'test'
+  ...
+# Subtest: modal fallback never selects a hidden preferred control
+ok 549 - modal fallback never selects a hidden preferred control
+  ---
+  duration_ms: 1.414862
+  type: 'test'
+  ...
+# Subtest: opening a report aligns only the outer result scroller without stealing disclosure focus
+ok 550 - opening a report aligns only the outer result scroller without stealing disclosure focus
+  ---
+  duration_ms: 1.512105
+  type: 'test'
+  ...
+# Subtest: explicit reopening focuses summary without page scrolling and clamps the result scroll area
+ok 551 - explicit reopening focuses summary without page scrolling and clamps the result scroll area
+  ---
+  duration_ms: 1.214848
+  type: 'test'
+  ...
+# Subtest: deferred report alignment ignores a closed, replaced or hidden result
+ok 552 - deferred report alignment ignores a closed, replaced or hidden result
+  ---
+  duration_ms: 8.289269
+  type: 'test'
+  ...
+# Subtest: report download creates local JSON and claims only a started download, then cleans resources
+ok 553 - report download creates local JSON and claims only a started download, then cleans resources
+  ---
+  duration_ms: 3.05826
+  type: 'test'
+  ...
+# Subtest: report export and URL failures never claim a started download
+ok 554 - report export and URL failures never claim a started download
+  ---
+  duration_ms: 14.71213
+  type: 'test'
+  ...
+# Subtest: failed anchor activation cleans its URL and leaves a truthful error; absent report does nothing
+ok 555 - failed anchor activation cleans its URL and leaves a truthful error; absent report does nothing
+  ---
+  duration_ms: 2.117316
+  type: 'test'
+  ...
+# Subtest: engine rules and unchanged profile/backup/objective modules retain the frozen0.10 oracle
+ok 556 - engine rules and unchanged profile/backup/objective modules retain the frozen0.10 oracle
+  ---
+  duration_ms: 3.915642
+  type: 'test'
+  ...
+# Subtest: dialog controls reject closed-details descendants even when Chromium exposes their rectangles
+ok 557 - dialog controls reject closed-details descendants even when Chromium exposes their rectangles
+  ---
+  duration_ms: 5.169528
+  type: 'test'
+  ...
+# Subtest: controller controls reject closed-details descendants even when Chromium exposes their rectangles
+ok 558 - controller controls reject closed-details descendants even when Chromium exposes their rectangles
+  ---
+  duration_ms: 3.81867
+  type: 'test'
+  ...
+# Subtest: Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary
+ok 559 - Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary
+  ---
+  duration_ms: 1.937932
+  type: 'test'
+  ...
+# Subtest: all battlefields render the correct name, both sides, four histories and final roster
+ok 560 - all battlefields render the correct name, both sides, four histories and final roster
+  ---
+  duration_ms: 21.726773
+  type: 'test'
+  ...
+# Subtest: every authored campaign and trial report handles objective endings without guessing medals
+ok 561 - every authored campaign and trial report handles objective endings without guessing medals
+  ---
+  duration_ms: 98.72245
+  type: 'test'
+  ...
+# Subtest: native disclosure is collapsed; region, chart and table semantics support nonvisual reading
+ok 562 - native disclosure is collapsed; region, chart and table semantics support nonvisual reading
+  ---
+  duration_ms: 18.26582
+  type: 'test'
+  ...
+# Subtest: zero-time single-point draws keep finite coordinates and explicit outcome
+ok 563 - zero-time single-point draws keep finite coordinates and explicit outcome
+  ---
+  duration_ms: 9.372802
+  type: 'test'
+  ...
+# Subtest: resume coverage is explicit while engine counters include earlier play
+ok 564 - resume coverage is explicit while engine counters include earlier play
+  ---
+  duration_ms: 5.083571
+  type: 'test'
+  ...
+# Subtest: both-side battle totals lead the debrief, with visible coverage before every chart
+ok 565 - both-side battle totals lead the debrief, with visible coverage before every chart
+  ---
+  duration_ms: 13.226354
+  type: 'test'
+  ...
+# Subtest: fixed-step deadline labels agree across the header, coverage, axes, roster and retained data
+ok 566 - fixed-step deadline labels agree across the header, coverage, axes, roster and retained data
+  ---
+  duration_ms: 6.402743
+  type: 'test'
+  ...
+# Subtest: whole-second labels use only a tiny tolerance, including the hour boundary
+ok 567 - whole-second labels use only a tiny tolerance, including the hour boundary
+  ---
+  duration_ms: 69.235136
+  type: 'test'
+  ...
+# Subtest: late recording without Resume does not claim a new battle started on this page
+ok 568 - late recording without Resume does not claim a new battle started on this page
+  ---
+  duration_ms: 4.213441
+  type: 'test'
+  ...
+# Subtest: long thinned timelines retain honest bounded plots and full retained tables
+ok 569 - long thinned timelines retain honest bounded plots and full retained tables
+  ---
+  duration_ms: 57.641004
+  type: 'test'
+  ...
+# Subtest: labels do not claim profit, lifetime recruits, losses, or territory causation
+ok 570 - labels do not claim profit, lifetime recruits, losses, or territory causation
+  ---
+  duration_ms: 3.769707
+  type: 'test'
+  ...
+# Subtest: hostile names, objectives, target names, limitations and Unicode stay escaped text
+ok 571 - hostile names, objectives, target names, limitations and Unicode stay escaped text
+  ---
+  duration_ms: 7.163482
+  type: 'test'
+  ...
+# Subtest: oversized labels are visibly truncated and output remains bounded
+ok 572 - oversized labels are visibly truncated and output remains bounded
+  ---
+  duration_ms: 3.879278
+  type: 'test'
+  ...
+# Subtest: invalid, sparse, nonfinite or oversized data is rejected rather than fabricated
+ok 573 - invalid, sparse, nonfinite or oversized data is rejected rather than fabricated
+  ---
+  duration_ms: 19.644038
+  type: 'test'
+  ...
+# Subtest: rendering is repeatable and does not mutate immutable reports, game or export data
+ok 574 - rendering is repeatable and does not mutate immutable reports, game or export data
+  ---
+  duration_ms: 9.473241
+  type: 'test'
+  ...
+# Subtest: layout CSS leaves vertical scrolling to the result body and preserves horizontal table access
+ok 575 - layout CSS leaves vertical scrolling to the result body and preserves horizontal table access
+  ---
+  duration_ms: 0.661794
+  type: 'test'
+  ...
+# Subtest: side names stay whole in narrow tables while numeric cells can wrap inside fixed columns
+ok 576 - side names stay whole in narrow tables while numeric cells can wrap inside fixed columns
+  ---
+  duration_ms: 4.44476
+  type: 'test'
+  ...
+# Subtest: release preflight hashes only the exact complete precached source runtime
+ok 577 - release preflight hashes only the exact complete precached source runtime
+  ---
+  duration_ms: 2.880369
+  type: 'test'
+  ...
+# Subtest: release preflight rejects stray backup and QA files instead of publishing them
+ok 578 - release preflight rejects stray backup and QA files instead of publishing them
+  ---
+  duration_ms: 1.73944
+  type: 'test'
+  ...
+# Subtest: release preflight rejects missing and uncached imports and symlink entries
+ok 579 - release preflight rejects missing and uncached imports and symlink entries
+  ---
+  duration_ms: 1.138516
+  type: 'test'
+  ...
+# Subtest: source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits
+ok 580 - source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits
+  ---
+  duration_ms: 3.326847
+  type: 'test'
+  ...
+# Subtest: frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota
+ok 581 - frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota
+  ---
+  duration_ms: 20.696006
+  type: 'test'
+  ...
+# Subtest: original backup import accepted and wrote malformed entities; the patch rejects before any destination access
+ok 582 - original backup import accepted and wrote malformed entities; the patch rejects before any destination access
+  ---
+  duration_ms: 13.530271
+  type: 'test'
+  ...
+# Subtest: every building and unit identifier rejects all coercible and wrong-type JSON values on every map
+ok 583 - every building and unit identifier rejects all coercible and wrong-type JSON values on every map
+  ---
+  duration_ms: 1703.781569
+  type: 'test'
+  ...
+# Subtest: in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access
+ok 584 - in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access
+  ---
+  duration_ms: 10.945421
+  type: 'test'
+  ...
+# Subtest: map, base, difficulty, effect and projectile enums use primitive strict comparisons
+ok 585 - map, base, difficulty, effect and projectile enums use primitive strict comparisons
+  ---
+  duration_ms: 221.694255
+  type: 'test'
+  ...
+# Subtest: version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped
+ok 586 - version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped
+  ---
+  duration_ms: 114.677666
+  type: 'test'
+  ...
+# Subtest: backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing
+ok 587 - backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing
+  ---
+  duration_ms: 92.280382
+  type: 'test'
+  ...
+# Subtest: all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged
+ok 588 - all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged
+  ---
+  duration_ms: 60.295227
+  type: 'test'
+  ...
+# Subtest: raw saves and both historical envelope versions retain the unchanged nullable identity migration
+ok 589 - raw saves and both historical envelope versions retain the unchanged nullable identity migration
+  ---
+  duration_ms: 11.397513
+  type: 'test'
+  ...
+# Subtest: invalid stored battles cannot be re-exported or erase existing domains
+ok 590 - invalid stored battles cannot be re-exported or erase existing domains
+  ---
+  duration_ms: 1.807219
+  type: 'test'
+  ...
+# Subtest: actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA)
+ok 591 - actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA)
+  ---
+  duration_ms: 5.338173
+  type: 'test'
+  ...
+# Subtest: actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA)
+ok 592 - actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA)
+  ---
+  duration_ms: 2.85191
+  type: 'test'
+  ...
+# Subtest: exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps
+ok 593 - exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps
+  ---
+  duration_ms: 6357.611784
+  type: 'test'
+  ...
+# Subtest: map reports use real dimensions, lane centers and per-side building limits
+ok 594 - map reports use real dimensions, lane centers and per-side building limits
+  ---
+  duration_ms: 7.008521
+  type: 'test'
+  ...
+# Subtest: SVG projects authored x positions and lanes without normalizing maps to Classic
+ok 595 - SVG projects authored x positions and lanes without normalizing maps to Classic
+  ---
+  duration_ms: 19.864343
+  type: 'test'
+  ...
+# Subtest: army names, counts and mixed levels derive from all seven known building types
+ok 596 - army names, counts and mixed levels derive from all seven known building types
+  ---
+  duration_ms: 0.869755
+  type: 'test'
+  ...
+# Subtest: protection and destruction have distinct kinds, shapes and readable road details
+ok 597 - protection and destruction have distinct kinds, shapes and readable road details
+  ---
+  duration_ms: 1.645602
+  type: 'test'
+  ...
+# Subtest: markup supplies accessible static map semantics and readable deployment text
+ok 598 - markup supplies accessible static map semantics and readable deployment text
+  ---
+  duration_ms: 0.859359
+  type: 'test'
+  ...
+# Subtest: all mission strings are escaped in SVG attributes and HTML text
+ok 599 - all mission strings are escaped in SVG attributes and HTML text
+  ---
+  duration_ms: 1.121965
+  type: 'test'
+  ...
+# Subtest: malformed mission, map, deployment and objective data fails without guessing
+ok 600 - malformed mission, map, deployment and objective data fails without guessing
+  ---
+  duration_ms: 1.787079
+  type: 'test'
+  ...
+# Subtest: repeated output is deterministic, input order is canonical and nothing mutates
+ok 601 - repeated output is deterministic, input order is canonical and nothing mutates
+  ---
+  duration_ms: 7.990621
+  type: 'test'
+  ...
+# Subtest: empty authored deployments stay empty and do not imply default skirmish buildings
+ok 602 - empty authored deployments stay empty and do not imply default skirmish buildings
+  ---
+  duration_ms: 0.76379
+  type: 'test'
+  ...
+# Subtest: all original and new campaign reports agree with actual authored mission starts
+ok 603 - all original and new campaign reports agree with actual authored mission starts
+  ---
+  duration_ms: 41.342159
+  type: 'test'
+  ...
+# Subtest: Black Ledger watchtower stays level 1 in aggregate, road and SVG text
+ok 604 - Black Ledger watchtower stays level 1 in aggregate, road and SVG text
+  ---
+  duration_ms: 1.042608
+  type: 'test'
+  ...
+# Subtest: every campaign aggregate, road and SVG level label matches actual factory buildings
+ok 605 - every campaign aggregate, road and SVG level label matches actual factory buildings
+  ---
+  duration_ms: 36.517619
+  type: 'test'
+  ...
+# Verified 132 actual starting buildings across 16 missions against aggregate, road and positioned SVG text.
+# Subtest: confirmation toast sits below actual objective height on every tested layout
+ok 606 - confirmation toast sits below actual objective height on every tested layout
+  ---
+  duration_ms: 14.836213
+  type: 'test'
+  ...
+# Subtest: skirmish toast returns to responsive CSS placement when objective is absent
+ok 607 - skirmish toast returns to responsive CSS placement when objective is absent
+  ---
+  duration_ms: 1.267027
+  type: 'test'
+  ...
+# Subtest: docked protected objectives do not push a battlefield toast beyond the map
+ok 608 - docked protected objectives do not push a battlefield toast beyond the map
+  ---
+  duration_ms: 1.033705
+  type: 'test'
+  ...
+# Subtest: short protected-landscape toast is measured inside the field and above the minimap
+ok 609 - short protected-landscape toast is measured inside the field and above the minimap
+  ---
+  duration_ms: 10.643659
+  type: 'test'
+  ...
+# Subtest: battle-first toast uses canvas bounds rather than the side-rail minimap top
+ok 610 - battle-first toast uses canvas bounds rather than the side-rail minimap top
+  ---
+  duration_ms: 1.523473
+  type: 'test'
+  ...
+# Subtest: browser feedback contracts cover all five authored lessons exactly once
+ok 611 - browser feedback contracts cover all five authored lessons exactly once
+  ---
+  duration_ms: 2.392627
+  type: 'test'
+  ...
+# Subtest: first-barracks: final authored success copy matches its independent contract
+ok 612 - first-barracks: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.242305
+  type: 'test'
+  ...
+# Subtest: first-barracks: browser proof accepts its success copy and rejects unrelated feedback
+ok 613 - first-barracks: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 1.257343
+  type: 'test'
+  ...
+# Subtest: shield-and-arrow: final authored success copy matches its independent contract
+ok 614 - shield-and-arrow: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.742258
+  type: 'test'
+  ...
+# Subtest: shield-and-arrow: browser proof accepts its success copy and rejects unrelated feedback
+ok 615 - shield-and-arrow: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.274212
+  type: 'test'
+  ...
+# Subtest: mine-and-upgrade: final authored success copy matches its independent contract
+ok 616 - mine-and-upgrade: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.181186
+  type: 'test'
+  ...
+# Subtest: mine-and-upgrade: browser proof accepts its success copy and rejects unrelated feedback
+ok 617 - mine-and-upgrade: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.277747
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: final authored success copy matches its independent contract
+ok 618 - siege-the-tower: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.174486
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof accepts its success copy and rejects unrelated feedback
+ok 619 - siege-the-tower: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.492542
+  type: 'test'
+  ...
+# Subtest: answer-the-air: final authored success copy matches its independent contract
+ok 620 - answer-the-air: final authored success copy matches its independent contract
+  ---
+  duration_ms: 1.58962
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof accepts its success copy and rejects unrelated feedback
+ok 621 - answer-the-air: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.246591
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof rejects incomplete attribution: Your siege engines damaged the marked tower.
+ok 622 - siege-the-tower: browser proof rejects incomplete attribution: Your siege engines damaged the marked tower.
+  ---
+  duration_ms: 0.180294
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof rejects incomplete attribution: The marked tower was destroyed in actual combat.
+ok 623 - siege-the-tower: browser proof rejects incomplete attribution: The marked tower was destroyed in actual combat.
+  ---
+  duration_ms: 0.114688
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof rejects incomplete attribution: Your archers struck the tracked gryphon.
+ok 624 - answer-the-air: browser proof rejects incomplete attribution: Your archers struck the tracked gryphon.
+  ---
+  duration_ms: 0.074379
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof rejects incomplete attribution: The tracked gryphon was defeated.
+ok 625 - answer-the-air: browser proof rejects incomplete attribution: The tracked gryphon was defeated.
+  ---
+  duration_ms: 0.068991
+  type: 'test'
+  ...
+# Subtest: offline navigation serves training only for its exact deployment-relative route
+ok 626 - offline navigation serves training only for its exact deployment-relative route
+  ---
+  duration_ms: 13.160327
+  type: 'test'
+  ...
+# Subtest: offline route selection retains network fallback, asset requests and cross-origin/method limits
+ok 627 - offline route selection retains network fallback, asset requests and cross-origin/method limits
+  ---
+  duration_ms: 6.71385
+  type: 'test'
+  ...
+# Subtest: practice entry is an explicit title link rather than an automatic forced redirect
+ok 628 - practice entry is an explicit title link rather than an automatic forced redirect
+  ---
+  duration_ms: 0.726124
+  type: 'test'
+  ...
+# Subtest: clarity increment preserves frozen rules, reports and profile/backup protocols
+ok 629 - clarity increment preserves frozen rules, reports and profile/backup protocols
+  ---
+  duration_ms: 3.954646
+  type: 'test'
+  ...
+# Subtest: choosing a build and cancelling are never paid placements
+ok 630 - choosing a build and cancelling are never paid placements
+  ---
+  duration_ms: 10.961935
+  type: 'test'
+  ...
+# Subtest: explicit chosen-site placement spends real gold once and clears the build choice
+ok 631 - explicit chosen-site placement spends real gold once and clears the build choice
+  ---
+  duration_ms: 0.799692
+  type: 'test'
+  ...
+# Subtest: unavailable cards and wrong sites cannot pay or complete a lesson
+ok 632 - unavailable cards and wrong sites cannot pay or complete a lesson
+  ---
+  duration_ms: 0.425503
+  type: 'test'
+  ...
+# Subtest: upgrade requires explicit owned-building selection and real payment
+ok 633 - upgrade requires explicit owned-building selection and real payment
+  ---
+  duration_ms: 3.338252
+  type: 'test'
+  ...
+# Subtest: still: threshold controls tap versus pan without time heuristics
+ok 634 - still: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.362722
+  type: 'test'
+  ...
+# Subtest: 8 pixels: threshold controls tap versus pan without time heuristics
+ok 635 - 8 pixels: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.132644
+  type: 'test'
+  ...
+# Subtest: over 8 pixels: threshold controls tap versus pan without time heuristics
+ok 636 - over 8 pixels: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.134597
+  type: 'test'
+  ...
+# Subtest: vertical drag: threshold controls tap versus pan without time heuristics
+ok 637 - vertical drag: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.201515
+  type: 'test'
+  ...
+# Subtest: diagonal drag: threshold controls tap versus pan without time heuristics
+ok 638 - diagonal drag: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.163499
+  type: 'test'
+  ...
+# Subtest: drag away and back never turns into a tap; release-only movement is checked
+ok 639 - drag away and back never turns into a tap; release-only movement is checked
+  ---
+  duration_ms: 0.275865
+  type: 'test'
+  ...
+# Subtest: multiple contacts and lost capture do not place, while a fresh press works
+ok 640 - multiple contacts and lost capture do not place, while a fresh press works
+  ---
+  duration_ms: 0.363803
+  type: 'test'
+  ...
+# Subtest: mouse: result, retry, skip and pause scopes reject held release and trailing click
+ok 641 - mouse: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 4.434499
+  type: 'test'
+  ...
+# Subtest: touch: result, retry, skip and pause scopes reject held release and trailing click
+ok 642 - touch: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 0.46355
+  type: 'test'
+  ...
+# Subtest: pen: result, retry, skip and pause scopes reject held release and trailing click
+ok 643 - pen: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 0.385965
+  type: 'test'
+  ...
+# Subtest: same lesson and step on replay still has a new attempt input scope
+ok 644 - same lesson and step on replay still has a new attempt input scope
+  ---
+  duration_ms: 0.258669
+  type: 'test'
+  ...
+# Subtest: lesson runtime has no save/profile/report dependencies, storage access or network calls
+ok 645 - lesson runtime has no save/profile/report dependencies, storage access or network calls
+  ---
+  duration_ms: 1.035668
+  type: 'test'
+  ...
+# Subtest: document wires capture guards, interruptions and bfcache reset
+ok 646 - document wires capture guards, interruptions and bfcache reset
+  ---
+  duration_ms: 0.549866
+  type: 'test'
+  ...
+# Subtest: review does not turn skipped lessons into completion claims
+ok 647 - review does not turn skipped lessons into completion claims
+  ---
+  duration_ms: 0.583735
+  type: 'test'
+  ...
+# Subtest: displayed mine income updates during paused build and upgrade instructions
+ok 648 - displayed mine income updates during paused build and upgrade instructions
+  ---
+  duration_ms: 0.863605
+  type: 'test'
+  ...
+# Subtest: display clock tolerates exact fixed-step boundaries without changing ordinary times
+ok 649 - display clock tolerates exact fixed-step boundaries without changing ordinary times
+  ---
+  duration_ms: 0.180404
+  type: 'test'
+  ...
+# Subtest: new Game identity resets paused VFX; steps and pause on the same Game retain effects
+ok 650 - new Game identity resets paused VFX; steps and pause on the same Game retain effects
+  ---
+  duration_ms: 6.829039
+  type: 'test'
+  ...
+# Subtest: bfcache-style fresh session clears VFX even when attemptId is reused
+ok 651 - bfcache-style fresh session clears VFX even when attemptId is reused
+  ---
+  duration_ms: 0.422589
+  type: 'test'
+  ...
+# Subtest: manual observation feedback is derived from pause state, not stale session text
+ok 652 - manual observation feedback is derived from pause state, not stale session text
+  ---
+  duration_ms: 0.312298
+  type: 'test'
+  ...
+# Subtest: completed observation feedback supersedes a stale interaction error
+ok 653 - completed observation feedback supersedes a stale interaction error
+  ---
+  duration_ms: 0.103551
+  type: 'test'
+  ...
+# Subtest: portrait action line distinguishes choosing, selected paid placement, watch and pause
+ok 654 - portrait action line distinguishes choosing, selected paid placement, watch and pause
+  ---
+  duration_ms: 3.092702
+  type: 'test'
+  ...
+# Subtest: portrait coach alignment uncovers card/site centers without hiding the canvas
+ok 655 - portrait coach alignment uncovers card/site centers without hiding the canvas
+  ---
+  duration_ms: 0.237397
+  type: 'test'
+  ...
+# Subtest: native pointer focus cannot scroll between pointerdown and compatibility click
+ok 656 - native pointer focus cannot scroll between pointerdown and compatibility click
+  ---
+  duration_ms: 0.535555
+  type: 'test'
+  ...
+# Subtest: a fresh pointer cancels the preceding control alignment without a timing window
+ok 657 - a fresh pointer cancels the preceding control alignment without a timing window
+  ---
+  duration_ms: 0.357114
+  type: 'test'
+  ...
+# Subtest: keyboard and programmatic focus retain immediate uncovering and the newest RAF target
+ok 658 - keyboard and programmatic focus retain immediate uncovering and the newest RAF target
+  ---
+  duration_ms: 5.617327
+  type: 'test'
+  ...
+# Subtest: native pointer focus suspension extends through pointerup and retains guarded click handling
+ok 659 - native pointer focus suspension extends through pointerup and retains guarded click handling
+  ---
+  duration_ms: 1.037651
+  type: 'test'
+  ...
+# Subtest: cancelling a secondary contact preserves primary focus suspension before primary release
+ok 660 - cancelling a secondary contact preserves primary focus suspension before primary release
+  ---
+  duration_ms: 0.506502
+  type: 'test'
+  ...
+# Subtest: cancelling a secondary contact preserves primary focus suspension after primary release
+ok 661 - cancelling a secondary contact preserves primary focus suspension after primary release
+  ---
+  duration_ms: 0.228885
+  type: 'test'
+  ...
+# Subtest: each device activation ends independently and secondary pointerup leaves no abandoned contact
+ok 662 - each device activation ends independently and secondary pointerup leaves no abandoned contact
+  ---
+  duration_ms: 0.273851
+  type: 'test'
+  ...
+# Subtest: keyboard and synthetic clicks do not release a still-held native contact
+ok 663 - keyboard and synthetic clicks do not release a still-held native contact
+  ---
+  duration_ms: 0.186233
+  type: 'test'
+  ...
+# Subtest: interruption restores programmatic focus while the input scope still rejects stale input
+ok 664 - interruption restores programmatic focus while the input scope still rejects stale input
+  ---
+  duration_ms: 0.398014
+  type: 'test'
+  ...
+# Subtest: fresh gestures retire abandoned compatibility clicks and legacy clicks retain attribution
+ok 665 - fresh gestures retire abandoned compatibility clicks and legacy clicks retain attribution
+  ---
+  duration_ms: 0.577597
+  type: 'test'
+  ...
+# Subtest: blur hidden pagehide and bfcache restoration reset alignment without resetting stale input protection
+ok 666 - blur hidden pagehide and bfcache restoration reset alignment without resetting stale input protection
+  ---
+  duration_ms: 12.981445
+  type: 'test'
+  ...
+# Subtest: portrait field height budget preserves all three lanes and minimum touch controls
+ok 667 - portrait field height budget preserves all three lanes and minimum touch controls
+  ---
+  duration_ms: 0.759382
+  type: 'test'
+  ...
+# Subtest: training metadata and setup are explicit, bounded and deeply immutable
+ok 668 - training metadata and setup are explicit, bounded and deeply immutable
+  ---
+  duration_ms: 4.002536
+  type: 'test'
+  ...
+# Subtest: invalid IDs and seeds are rejected; snapshots cannot mutate metadata or session state
+ok 669 - invalid IDs and seeds are rejected; snapshots cannot mutate metadata or session state
+  ---
+  duration_ms: 5.794052
+  type: 'test'
+  ...
+# Subtest: instructions and completed steps freeze time, reject premature, off-site and duplicate actions
+ok 670 - instructions and completed steps freeze time, reject premature, off-site and duplicate actions
+  ---
+  duration_ms: 2.616705
+  type: 'test'
+  ...
+# Subtest: all five lessons complete through actual paid actions across seven seeds
+ok 671 - all five lessons complete through actual paid actions across seven seeds
+  ---
+  duration_ms: 334.569046
+  type: 'test'
+  ...
+# Subtest: per-instance read-only observation leaves complete serialized engine states identical
+ok 672 - per-instance read-only observation leaves complete serialized engine states identical
+  ---
+  duration_ms: 578.095932
+  type: 'test'
+  ...
+# Subtest: observed methods retain original returns, exceptions, receiver and one-call effects
+ok 673 - observed methods retain original returns, exceptions, receiver and one-call effects
+  ---
+  duration_ms: 1.1875
+  type: 'test'
+  ...
+# Subtest: an unrelated or preexisting allied warrior cannot satisfy the paid barracks spawn
+ok 674 - an unrelated or preexisting allied warrior cannot satisfy the paid barracks spawn
+  ---
+  duration_ms: 8.445717
+  type: 'test'
+  ...
+# Subtest: kill totals, target disappearance and unrelated unit spawns do not fabricate combat proof
+ok 675 - kill totals, target disappearance and unrelated unit spawns do not fabricate combat proof
+  ---
+  duration_ms: 3.202583
+  type: 'test'
+  ...
+# Subtest: a queued archer projectile with zero actual credited damage cannot satisfy anti-air
+ok 676 - a queued archer projectile with zero actual credited damage cannot satisfy anti-air
+  ---
+  duration_ms: 1.017351
+  type: 'test'
+  ...
+# Subtest: a queued siege shot with zero credited damage cannot satisfy siege
+ok 677 - a queued siege shot with zero credited damage cannot satisfy siege
+  ---
+  duration_ms: 0.749428
+  type: 'test'
+  ...
+# Subtest: a different producer cannot claim the paid foundry or archery range evidence
+ok 678 - a different producer cannot claim the paid foundry or archery range evidence
+  ---
+  duration_ms: 1.248059
+  type: 'test'
+  ...
+# Subtest: pause/resume and invalid elapsed time never spend, advance or speed up practice
+ok 679 - pause/resume and invalid elapsed time never spend, advance or speed up practice
+  ---
+  duration_ms: 0.535175
+  type: 'test'
+  ...
+# Subtest: retry/skip/jump reset actual games, gold, observations, timers and stale old-game events
+ok 680 - retry/skip/jump reset actual games, gold, observations, timers and stale old-game events
+  ---
+  duration_ms: 3.275
+  type: 'test'
+  ...
+# Subtest: mine instruction requires its own paid mine, correct level, actual spend and real income ticks
+ok 681 - mine instruction requires its own paid mine, correct level, actual spend and real income ticks
+  ---
+  duration_ms: 1.547408
+  type: 'test'
+  ...
+# Subtest: gold recovery uses only real income, pauses when affordable, and does not auto-spend or advance
+ok 682 - gold recovery uses only real income, pauses when affordable, and does not auto-spend or advance
+  ---
+  duration_ms: 94.93347
+  type: 'test'
+  ...
+# Subtest: a recovery that changes the enemy field can always retry with disclosed grants
+ok 683 - a recovery that changes the enemy field can always retry with disclosed grants
+  ---
+  duration_ms: 18.438953
+  type: 'test'
+  ...
+# Subtest: every watch has a strict finite attempt limit and timeout stays recoverable by retry
+ok 684 - every watch has a strict finite attempt limit and timeout stays recoverable by retry
+  ---
+  duration_ms: 1.451598
+  type: 'test'
+  ...
+# Subtest: real engine win, loss and draw cannot silently count as lesson success
+ok 685 - real engine win, loss and draw cannot silently count as lesson success
+  ---
+  duration_ms: 0.795967
+  type: 'test'
+  ...
+# Subtest: final summary distinguishes skipped, failed, untried and completed; exit is inert
+ok 686 - final summary distinguishes skipped, failed, untried and completed; exit is inert
+  ---
+  duration_ms: 1.088375
+  type: 'test'
+  ...
+# Subtest: isolated practice cannot overwrite an existing game and uses no persistence API
+ok 687 - isolated practice cannot overwrite an existing game and uses no persistence API
+  ---
+  duration_ms: 2.407098
+  type: 'test'
+  ...
+# Subtest: all effect families draw finite, balanced canvas operations without engine mutation
+ok 688 - all effect families draw finite, balanced canvas operations without engine mutation
+  ---
+  duration_ms: 9.099035
+  type: 'test'
+  ...
+# Subtest: WeakSet identity tracking prevents repeated or returning effect spawns
+ok 689 - WeakSet identity tracking prevents repeated or returning effect spawns
+  ---
+  duration_ms: 0.629272
+  type: 'test'
+  ...
+# Subtest: heavy prolonged combat respects global and rubble caps
+ok 690 - heavy prolonged combat respects global and rubble caps
+  ---
+  duration_ms: 69.412754
+  type: 'test'
+  ...
+# Subtest: pause freezes visuals and defers unseen effects until resumed
+ok 691 - pause freezes visuals and defers unseen effects until resumed
+  ---
+  duration_ms: 3.260448
+  type: 'test'
+  ...
+# Subtest: negative and nonfinite delta do not reverse or poison existing particles
+ok 692 - negative and nonfinite delta do not reverse or poison existing particles
+  ---
+  duration_ms: 1.741082
+  type: 'test'
+  ...
+# Subtest: reduced motion uses only stationary fading particles and no shake
+ok 693 - reduced motion uses only stationary fading particles and no shake
+  ---
+  duration_ms: 0.681078
+  type: 'test'
+  ...
+# Subtest: live preference changes reduce budgets and immediately cancel shake
+ok 694 - live preference changes reduce budgets and immediately cancel shake
+  ---
+  duration_ms: 2.723662
+  type: 'test'
+  ...
+# Subtest: reset clears counters, particles and identity history reproducibly
+ok 695 - reset clears counters, particles and identity history reproducibly
+  ---
+  duration_ms: 1.039934
+  type: 'test'
+  ...
+# Subtest: invalid effects are ignored and view culling avoids draw work
+ok 696 - invalid effects are ignored and view culling avoids draw work
+  ---
+  duration_ms: 0.254383
+  type: 'test'
+  ...
+# Subtest: HTML has unique IDs and all static UI bindings exist
+ok 697 - HTML has unique IDs and all static UI bindings exist
+  ---
+  duration_ms: 2.85244
+  type: 'test'
+  ...
+# Subtest: local scripts, styles, icon and manifest references resolve
+ok 698 - local scripts, styles, icon and manifest references resolve
+  ---
+  duration_ms: 2.144994
+  type: 'test'
+  ...
+# Subtest: offline shell is complete and deployment-relative
+ok 699 - offline shell is complete and deployment-relative
+  ---
+  duration_ms: 0.829696
+  type: 'test'
+  ...
+# Subtest: critical dialogs and battlefield expose accessible descriptions
+not ok 700 - critical dialogs and battlefield expose accessible descriptions
+  ---
+  duration_ms: 1.374134
+  type: 'test'
+  location: '/workspace/shared/ironroot-mobile-battlefield-lab/tests/web.test.mjs:40:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    6 !== 5
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 5
+  actual: 6
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/web.test.mjs:42:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: portable backup controls require a preview and explicit replacement action
+ok 701 - portable backup controls require a preview and explicit replacement action
+  ---
+  duration_ms: 0.75041
+  type: 'test'
+  ...
+# Subtest: controller uses the shared legal placement path and runtime assets are cached
+ok 702 - controller uses the shared legal placement path and runtime assets are cached
+  ---
+  duration_ms: 0.57316
+  type: 'test'
+  ...
+# Subtest: field reference uses original portraits, engine-derived data and cached assets
+ok 703 - field reference uses original portraits, engine-derived data and cached assets
+  ---
+  duration_ms: 0.739985
+  type: 'test'
+  ...
+# Subtest: browser release metadata and offline cache versions remain aligned
+ok 704 - browser release metadata and offline cache versions remain aligned
+  ---
+  duration_ms: 0.588743
+  type: 'test'
+  ...
+# Subtest: slow browser update creates no premature claim deadline or rejected promise
+ok 705 - slow browser update creates no premature claim deadline or rejected promise
+  ---
+  duration_ms: 3.122105
+  type: 'test'
+  ...
+# Subtest: claim deadline begins after update and waits for activation of a different controller
+ok 706 - claim deadline begins after update and waits for activation of a different controller
+  ---
+  duration_ms: 1.440702
+  type: 'test'
+  ...
+# Subtest: a real update rejection does not leave an orphan activation timer
+ok 707 - a real update rejection does not leave an orphan activation timer
+  ---
+  duration_ms: 1.55589
+  type: 'test'
+  ...
+# Subtest: unchanged controller still fails the bounded post-update claim gate
+ok 708 - unchanged controller still fails the bounded post-update claim gate
+  ---
+  duration_ms: 1.395134
+  type: 'test'
+  ...
+# Subtest: missing prior registration or control cannot be called a successful update
+ok 709 - missing prior registration or control cannot be called a successful update
+  ---
+  duration_ms: 1.781561
+  type: 'test'
+  ...
+1..709
+# tests 709
+# suites 0
+# pass 706
+# fail 2
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 34196.748667

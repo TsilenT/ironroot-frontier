@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base,expect} from '@playwright/test';
 import {UNIT_CODEX,STRUCTURE_CODEX,ECONOMY_GUIDE,formatNumber,formatSeconds} from '../../dist/codex.js';
 const SAVE='ironroot.battle.v1';
@@ -6,6 +7,7 @@ const test=base.extend({page:async ({page},use)=>{
   await use(page);expect(errors,'uncaught browser errors').toEqual([]);
 }});
 async function press(page,selector){
+  if (await prepareBuildControl(page, selector)) return;
   const target=page.locator(selector);
   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await target.tap();
   else await target.click();

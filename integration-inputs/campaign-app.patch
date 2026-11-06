@@ -1,0 +1,207 @@
+--- integration-inputs/release/dist/app.js	2026-11-06 10:46:41.047468460 -0500
++++ integration-inputs/proposal/dist/app.js	2026-11-06 10:46:35.203534074 -0500
+@@ -51,6 +51,7 @@
+ } from './persistence.js';
+ import { GameAudio } from './audio.js';
+ import { advanceObjectiveBattle } from './objectives.js';
++import { campaignBuildChoices, campaignCoach, drawCampaignGuidance } from './campaign-flow.js';
+ import {
+   CAMPAIGN_CHAPTERS,
+   CAMPAIGN_MISSIONS,
+@@ -145,13 +146,14 @@
+   pointer: null,
+   dragging: false,
+ };
+-let mode = 'skirmish',
++let mode = 'campaign',
+   selectedChallenge = CHALLENGES[0].id,
+   currentChallenge = null,
+   currentCampaign = null,
+   objectiveOutcome = null,
+   selectedCampaign = CAMPAIGN_MISSIONS[0].id,
+   selectedChapter = CAMPAIGN_CHAPTERS[0].id;
++let expandedBuilds = false, resumedBattle = false, coachEnabled = true;
+ const labels = {
+   barracks: ['Barracks', 'Shielded warriors', '9s / wave'],
+   archery: ['Archery', 'Ranged support', '10s / wave'],
+@@ -359,6 +361,10 @@
+ }
+ function selectBuild(type) {
+   if (!canInteract()) return;
++  if (!campaignBuildChoices(currentCampaign, { expanded: expandedBuilds, resumed: resumedBattle }).includes(type)) {
++    toast('Choose All buildings in the build bar to use this building.');
++    return;
++  }
+   if (game.state.gold[0] < BUILDINGS[type].cost) {
+     toast(`Need ${BUILDINGS[type].cost} gold for ${BUILDINGS[type].name}.`);
+     sound('error');
+@@ -381,6 +387,7 @@
+   syncChoice();
+ }
+ function syncChoice() {
++  updateCampaignDeck();
+   document
+     .querySelectorAll('.build-card')
+     .forEach((b) => b.classList.toggle('active', b.dataset.type === ui.build));
+@@ -400,6 +407,40 @@
+         ? 'Scroll for more buildings. Choose one, then tap a green slot.'
+         : 'Choose a building, then place it in your territory.';
+ }
++function updateCampaignDeck() {
++  const choices = campaignBuildChoices(currentCampaign, { expanded: expandedBuilds, resumed: resumedBattle });
++  const canSimplify = started && !resumedBattle && campaignBuildChoices(currentCampaign).length < Object.keys(BUILDINGS).length;
++  $('allBuildings').classList.toggle('hidden', !canSimplify);
++  $('allBuildings').textContent = expandedBuilds ? 'Fewer buildings' : 'All buildings';
++  $('allBuildings').setAttribute('aria-expanded', String(expandedBuilds));
++  for (const card of document.querySelectorAll('.build-card'))
++    card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
++  const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
++  const show = coachEnabled && !!hint;
++  $('campaignCoach').classList.toggle('hidden', !show);
++  $('toggleCoach').classList.toggle('hidden', !hint);
++  $('toggleCoach').textContent = coachEnabled ? 'Hide hints' : 'Show hints';
++  $('toggleCoach').setAttribute('aria-pressed', String(coachEnabled));
++  const highlighted = show ? document.querySelector(hint.control) : null;
++  for (const element of document.querySelectorAll('.coach-highlight'))
++    if (element !== highlighted) element.classList.remove('coach-highlight');
++  ui.coachSite = show ? hint.site : null;
++  ui.coachBuilding = show ? hint.buildingId : null;
++  if (show) {
++    if ($('coachTitle').textContent !== hint.title) $('coachTitle').textContent = hint.title;
++    if ($('coachText').textContent !== hint.text) $('coachText').textContent = hint.text;
++    highlighted?.classList.add('coach-highlight');
++  }
++}
++$('allBuildings').onclick = () => {
++  expandedBuilds = !expandedBuilds;
++  // Collapsing the roster cancels a selection before it becomes hidden.
++  cancel();
++};
++$('toggleCoach').onclick = () => {
++  coachEnabled = !coachEnabled;
++  updateCampaignDeck();
++};
+ function updateSelection() {
+   const b = game.state.buildings.find(
+     (x) => x.id === ui.selected && x.side === 0,
+@@ -548,7 +589,7 @@
+     );
+     return;
+   }
+-  showTitle();
++  showTitle({ focusResume: true });
+ };
+ $('speed').onclick = () => {
+   speed = speed === 1 ? 1.5 : speed === 1.5 ? 2 : 1;
+@@ -654,6 +695,9 @@
+     return;
+   }
+   currentCampaign = cid;
++  expandedBuilds = !!campaignProgress.missions[cid]?.completed;
++  resumedBattle = !!restored;
++  coachEnabled = !campaignProgress.missions[cid]?.completed;
+   currentChallenge = restored
+     ? restoredChallenge
+     : mode === 'challenges'
+@@ -730,7 +774,8 @@
+   renderer.clampCamera();
+   initAudio();
+   sound('build');
+-  toast(
++  $('toast').classList.remove('show');
++  if (!mission || !coachEnabled || !campaignCoach(game, mission.id, ui)) toast(
+     restored
+       ? 'Battle resumed. Your frontier awaits.'
+       : mission
+@@ -837,7 +882,7 @@
+   }
+ });
+ $('start').onclick = () => start();
+-function showTitle() {
++function showTitle({ focusStart = false, focusResume = false } = {}) {
+   if (recoveryHold || profileGate) {
+     showRecoverySettings();
+     return;
+@@ -852,6 +897,11 @@
+   $('welcome').classList.remove('hidden');
+   setMode(mode);
+   updateResume();
++  syncDialogs();
++  if (focusStart || focusResume) requestAnimationFrame(() => {
++    const resume = $('resumeSaved');
++    (focusResume && !resume.classList.contains('hidden') ? resume : $('start')).focus();
++  });
+ }
+ $('playAgain').onclick = () => {
+   if (currentCampaign && objectiveOutcome?.failed) {
+@@ -875,7 +925,13 @@
+     ).chapterId;
+   } else if (currentChallenge) mode = 'challenges';
+   battleSession.remove();
+-  showTitle();
++  showTitle({ focusStart: !!currentCampaign });
++};
++$('replayMission').onclick = () => {
++  if (!currentCampaign || !objectiveOutcome?.completed || objectiveOutcome.stars >= 3) return;
++  mode = 'campaign';
++  selectedCampaign = currentCampaign;
++  start();
+ };
+ $('resultMenu').onclick = showTitle;
+ $('inspectBattle').onclick = () => {
+@@ -1075,6 +1131,8 @@
+     : trial
+       ? (won ? 'MORE FIELD TRIALS' : 'RETRY FIELD TRIAL') + ' <span>→</span>'
+       : 'FIGHT ANOTHER DAY <span>→</span>';
++  $('replayMission').classList.toggle('hidden', !mission || !won || objectiveOutcome.stars >= 3);
++  $('resultMenu').textContent = mission ? 'Campaign missions' : 'Return to title';
+   $('resultModal').classList.remove('hidden');
+   const completion = battleSession.captureResult();
+   completion.remove();
+@@ -1442,6 +1500,7 @@
+       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
+   }
+   updateSelection();
++  updateCampaignDeck();
+ }
+ let heardEffects = new WeakSet(),
+   heardProjectiles = new WeakSet();
+@@ -1551,6 +1610,7 @@
+     .filter((t) => t.kind === 'protect' && t.building)
+     .map((t) => t.building.id);
+   renderer.draw(game, ui, dt);
++  if (started && !paused && !objectiveOutcome) drawCampaignGuidance(renderer, game, ui);
+   hudTimer += dt;
+   if (hudTimer > 0.1) {
+     updateHUD();
+@@ -1608,7 +1668,10 @@
+   mode = value;
+   document
+     .querySelectorAll('[data-mode]')
+-    .forEach((b) => b.classList.toggle('active', b.dataset.mode === mode));
++    .forEach((b) => {
++      b.classList.toggle('active', b.dataset.mode === mode);
++      b.setAttribute('aria-pressed', String(b.dataset.mode === mode));
++    });
+   $('skirmishConfig').classList.toggle('hidden', mode !== 'skirmish');
+   $('challengeConfig').classList.toggle('hidden', mode !== 'challenges');
+   $('campaignConfig').classList.toggle('hidden', mode !== 'campaign');
+@@ -1721,8 +1784,7 @@
+     requestAnimationFrame(revealCampaignChapter);
+   }
+ }
+-renderChallenge();
+-renderCampaign();
++setMode(mode);
+ new ResizeObserver(revealCampaignChapter).observe($('campaignChapters'));
+ let settingsWasPaused = false;
+ function showSettings() {
+@@ -2461,7 +2523,7 @@
+     else if (action === 'home') $('home').click();
+     else if (action === 'frontline') $('front').click();
+     else if (action === 'previousCard' || action === 'nextCard') {
+-      const types = Object.keys(BUILDINGS),
++      const types = campaignBuildChoices(currentCampaign, { expanded: expandedBuilds, resumed: resumedBattle }),
+         index = types.indexOf(ui.build);
+       const next = nextAffordableIndex(
+         types.map((type) => BUILDINGS[type]),

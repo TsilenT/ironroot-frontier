@@ -113,8 +113,8 @@ test('lesson runtime has no save/profile/report dependencies, storage access or 
   assert.doesNotMatch(source,/from ['"].*(persistence|profile-session|backup|battle-report|app\.js)/);
   assert.doesNotMatch(source,/navigator\.serviceWorker|register\(/);
   assert.match(html,/href="\.\/" id="returnGame"/);
-  assert.match(html,/No saves or rewards/);
-  assert.match(html,/saved battle, campaign and records stay untouched/);
+  assert.match(html,/Practice saves no progress, history or rewards/);
+  assert.match(html,/saved battle and progress stay untouched/);
   assert.doesNotMatch(html,/<script[^>]+src="\.\/app\.js"/);
 });
 
@@ -130,7 +130,7 @@ test('document wires capture guards, interruptions and bfcache reset', () => {
 test('review does not turn skipped lessons into completion claims', () => {
   const source=readFileSync(new URL('../dist/training-app.js',import.meta.url),'utf8');
   assert.match(source,/snapshot\.summary\.completed/);
-  assert.match(source,/Skipped lessons are not completions/);
+  assert.match(source,/Skipped lessons do not count as completed/);
   assert.match(source,/result\?\.outcome \|\| 'not attempted'/);
   assert.doesNotMatch(source,/You have practiced paid placement/);
 });
@@ -204,7 +204,7 @@ test('manual observation feedback is derived from pause state, not stale session
   assert.equal(trainingFeedback({...active,feedback:'Observation paused. Resume when ready.'}),'Observation running at normal speed.');
   assert.equal(trainingFeedback({...active,paused:true},'Observation paused while you were away. Resume when ready.'),'Observation paused while you were away. Resume when ready.');
   assert.equal(trainingFeedback({...active,recovering:true,paused:true}),'Income wait paused. Resume when ready.');
-  assert.match(trainingFeedback({...active,recovering:true}),/^Waiting for real income\./);
+  assert.match(trainingFeedback({...active,recovering:true}),/^Waiting for gold\./);
   assert.equal(trainingFeedback(active,'Choose an available building.'),'Choose an available building.');
 });
 

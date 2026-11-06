@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+ok 1 - one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+  ---
+  duration_ms: 111.029616
+  type: 'test'
+  ...
+# Subtest: insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+ok 2 - insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+  ---
+  duration_ms: 0.522096
+  type: 'test'
+  ...
+# Subtest: actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+ok 3 - actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+  ---
+  duration_ms: 0.723222
+  type: 'test'
+  ...
+# Subtest: focus feedback chooses a band clear of originals, including Middle-road protected structures
+ok 4 - focus feedback chooses a band clear of originals, including Middle-road protected structures
+  ---
+  duration_ms: 0.314722
+  type: 'test'
+  ...
+# Subtest: fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+ok 5 - fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+  ---
+  duration_ms: 0.738314
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.552605

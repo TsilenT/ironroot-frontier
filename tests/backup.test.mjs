@@ -161,7 +161,7 @@ test('legacy result records gain explicit nullable mode IDs and draw flag', () =
 test('corrupt JSON, incomplete backups, foreign formats and all unsupported schema versions fail before reads', () => {
   for (const value of ['', 'null', 'false', '[]', '{}', '{bad', '"hello"', 4]) invalid(typeof value === 'number' ? JSON.stringify(value) : value);
   for (const mutate of [
-    b => { b.format = 'foreign'; }, b => { b.version = 2; }, b => { b.version = '1'; },
+    b => { b.format = 'foreign'; }, b => { b.version = 99; }, b => { b.version = '1'; },
     b => { delete b.createdAt; }, b => { delete b.data.trials; }, b => { b.data.extra = {}; },
     b => { b.data.campaign.version = 2; }, b => { b.data.battle.version = 3; },
     b => { b.data.battle.game.version = 2; },

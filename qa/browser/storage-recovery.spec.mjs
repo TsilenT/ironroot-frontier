@@ -24,21 +24,20 @@ async function seedProfile(page,{terminal=true}={}){
   const fixture=trainingProfileFixture(),result=reportFixture('skirmish-victory');
   const values={...fixture.values,[SETTINGS]:JSON.stringify(initialPreferences),
     ...(terminal?{[SAVE]:JSON.stringify(result.envelope)}:{})};
-  // Report fixtures are legal engine resumes with a terminal condition awaiting
-  // its next simulation tick, not importable unfinished-battle backup fixtures.
-  // Validate every other profile domain through the existing backup contract.
+  // Every result fixture is an admitted active battle. A real next simulation
+  // tick decides the result. Keep the other four domain validation independent.
   const backup=parseBackup(createBackup({getItem:key=>values[key]??null},{battle:null}));
   expect(Game.restore(JSON.parse(values[SAVE]).game).state.winner).toBeNull();
   await seedOnce(page,values);
   await expect(page.locator('#welcome')).toBeVisible();
   await expect(page.locator('#resumeSaved')).toBeVisible();
   await expect(page.locator('#profileRecovery')).toBeHidden();
-  expect(JSON.parse((await rawProfile(page))[PROFILE_MARKER])).toMatchObject({version:2,phase:'ready'});
+  expect(JSON.parse((await rawProfile(page))[PROFILE_MARKER])).toMatchObject({version:3,phase:'ready'});
   expect(await rawProfile(page)).toEqual(values);
   return {values,oldHistory:backup.data.history,result};
 }
 async function installFaults(page,{read=[],write=[]}={}){
-  // Install only AFTER app initialization and ready-v2 verification. The real
+  // Install only AFTER app initialization and ready-v3 verification. The real
   // Storage backend, profile facade, engine, event loop and UI keep running.
   await page.evaluate(({read,write})=>{
     const get=Storage.prototype.getItem,set=Storage.prototype.setItem,remove=Storage.prototype.removeItem;
@@ -238,7 +237,7 @@ test('preference quota failure applies choices immediately but warns until verif
   await expect(page.locator('#sound')).toHaveAttribute('aria-label','Enable audio');
   await page.locator('#reduceMotion').uncheck();await page.locator('#effectQuality').selectOption('high');
   const expected={...initialPreferences,sound:false,reducedMotion:false,quality:'high'};
-  await expect(page.locator('#preferenceSaveWarning')).toContainText('apply only to this page and are not verified saved');
+  await expect(page.locator('#preferenceSaveWarning')).toContainText('apply only to this page. Saving could not be confirmed.');
   await expectRetryReachable(page,'#retryPreferences');
   expect(await rawProfile(page)).toEqual(fixture.values);
   await press(page,'#retryPreferences');await expect(page.locator('#preferenceSaveWarning')).toBeVisible();
@@ -296,7 +295,7 @@ test('a real backup replacement fences both retained history and preference retr
     await expect(other.locator('#welcome')).toBeVisible();
     const durable=await rawProfile(other);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))expect(JSON.parse(durable[key])).toEqual(expected.data[domain]);
-    expect(JSON.parse(durable[PROFILE_MARKER])).toMatchObject({version:2,phase:'ready'});
+    expect(JSON.parse(durable[PROFILE_MARKER])).toMatchObject({version:3,phase:'ready'});
     expect(durable[PROFILE_MARKER]).not.toBe(replacement.values[PROFILE_MARKER]);
     await page.bringToFront();await expect(page.locator('#profileRecovery')).toBeVisible();
     await expect(page.locator('#profileRecoveryMessage')).toContainText(/replaced|reload/i);

@@ -32,7 +32,7 @@ async function bootWithProtocol(page,{raw=readyMarker(),fault='none',values={}}=
       if(fault==='silent-drop')return;
       const result=set.call(this,name,value);
       if(fault==='readback')pendingReadFailure=true;
-      if(fault==='competing')set.call(this,name,JSON.stringify({format:'ironroot-profile',version:2,epoch:'other-tab-profile',phase:'ready'}));
+      if(fault==='competing')set.call(this,name,JSON.stringify({format:'ironroot-profile',version:3,epoch:'other-tab-profile',phase:'ready'}));
       if(fault==='throw-after')throw new DOMException('QA adapter threw after writing','QuotaExceededError');
       return result;
     };
@@ -41,9 +41,9 @@ async function bootWithProtocol(page,{raw=readyMarker(),fault='none',values={}}=
   await page.goto('/');
 }
 
-for(const absent of [false,true])test((absent?'absent':'ready v1')+' profile marker upgrades once to verified v2 while keeping all legacy mission records',async ({page})=>{
+for(const absent of [false,true])test((absent?'absent':'ready v1')+' profile marker upgrades once to verified v3 while keeping all legacy mission records',async ({page})=>{
   const bytes=JSON.stringify(progressThrough());await bootWithProtocol(page,{raw:absent?null:readyMarker(),values:{[CAMPAIGN_STORAGE_KEY]:bytes}});
-  const current=await marker(page);expect(current).toMatchObject({format:'ironroot-profile',version:2,phase:'ready'});
+  const current=await marker(page);expect(current).toMatchObject({format:'ironroot-profile',version:3,phase:'ready'});
   if(!absent)expect(current.epoch).toBe('qa-legacy-profile');else expect(current.epoch).toMatch(/^[a-zA-Z0-9-]{1,80}$/);
   expect(await page.evaluate(()=>window.__qaProtocol.attempts.length)).toBe(1);await expect(page.locator('#profileRecovery')).toBeHidden();
   await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/16 missions · 36/48 stars');
@@ -66,7 +66,7 @@ for(const fault of ['deny','silent-drop','readback','competing'])test('profile m
   // Restored access does not silently authorize this unverified tab to write.
   await page.keyboard.press('Escape');await expect(page.locator('#settingsModal')).toBeVisible();await expect(page.locator('#closeSettings')).toBeDisabled();
   await Promise.all([page.waitForEvent('load'),press(page,'#profileReload')]);
-  expect((await marker(page)).version).toBe(2);await expect(page.locator('#profileRecovery')).toBeHidden();
+  expect((await marker(page)).version).toBe(3);await expect(page.locator('#profileRecovery')).toBeHidden();
   await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/16 missions · 36/48 stars');
   expect((await dataBytes(page))[CAMPAIGN_STORAGE_KEY]).toBe(bytes);
 });
@@ -76,13 +76,13 @@ test('absent marker migration denied before write cannot create an unprotected p
   await expect(page.locator('#profileRecovery')).toBeVisible();expect(await marker(page)).toBeNull();
   expect(await page.evaluate(()=>window.__qaProtocol.dataWrites)).toEqual([]);await expect(page.locator('#closeSettings')).toBeDisabled();
   await page.evaluate(()=>window.__qaProtocol.disable());await Promise.all([page.waitForEvent('load'),press(page,'#profileReload')]);
-  expect((await marker(page)).version).toBe(2);await expect(page.locator('#profileRecovery')).toBeHidden();
+  expect((await marker(page)).version).toBe(3);await expect(page.locator('#profileRecovery')).toBeHidden();
 });
 
-test('marker write that throws after persisting succeeds only because readback verifies the exact v2 bytes',async ({page})=>{
+test('marker write that throws after persisting succeeds only because readback verifies the exact v3 bytes',async ({page})=>{
   await bootWithProtocol(page,{fault:'throw-after',values:{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(progressThrough())}});
-  expect(await marker(page)).toEqual(JSON.parse(readyMarker(2)));await expect(page.locator('#profileRecovery')).toBeHidden();
-  expect(await page.evaluate(()=>window.__qaProtocol.attempts)).toEqual([readyMarker(2)]);
+  expect(await marker(page)).toEqual(JSON.parse(readyMarker(3)));await expect(page.locator('#profileRecovery')).toBeHidden();
+  expect(await page.evaluate(()=>window.__qaProtocol.attempts)).toEqual([readyMarker(3)]);
   await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/16 missions · 36/48 stars');
 });
 
@@ -94,7 +94,7 @@ for(const phase of ['restoring','failed'])test('v1 '+phase+' marker is not upgra
   expect(await page.evaluate(()=>window.__qaProtocol.dataWrites)).toEqual([]);expect((await dataBytes(page))[CAMPAIGN_STORAGE_KEY]).toBe(bytes);
 });
 
-for(const [kind,raw] of [['malformed','{bad'],['future',readyMarker(3)]])test(kind+' profile marker remains byte-for-byte untouched with recovery required',async ({page})=>{
+for(const [kind,raw] of [['malformed','{bad'],['future',readyMarker(4)]])test(kind+' profile marker remains byte-for-byte untouched with recovery required',async ({page})=>{
   await bootWithProtocol(page,{raw,values:{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(progressThrough())}});
   await expect(page.locator('#profileRecovery')).toBeVisible();await expect(page.locator('#profileReload')).toBeDisabled();
   expect(await page.evaluate(key=>localStorage.getItem(key),PROFILE_MARKER)).toBe(raw);expect(await page.evaluate(()=>window.__qaProtocol.attempts)).toEqual([]);
@@ -108,7 +108,7 @@ test('real frozen QA-baseline 0.9 open tab is fenced before it can erase chapter
   await page.reload();await press(page,'#start');await pause(page);
   const current=await context.newPage(),errors=[];current.on('pageerror',error=>errors.push(error.message));
   try{
-    await current.goto('/');expect((await marker(current)).version).toBe(2);
+    await current.goto('/');expect((await marker(current)).version).toBe(3);
     await expect(page.locator('#profileRecovery')).toBeVisible();await expect(page.locator('#profileReload')).toBeDisabled();
     await openBackup(current);const expanded=expandedBackup('common-ground');await chooseBackup(current,expanded.text);
     await Promise.all([current.waitForEvent('load'),press(current,'#confirmImport')]);
@@ -129,8 +129,8 @@ test('native backup exported by the real frozen 0.9 QA app remains importable af
   await page.goto(LEGACY_QA_PATH);await page.evaluate(({key,raw,campaign,progress})=>{localStorage.setItem(key,raw);localStorage.setItem(campaign,JSON.stringify(progress));},{key:PROFILE_MARKER,raw:readyMarker(),campaign:CAMPAIGN_STORAGE_KEY,progress:progressThrough()});
   await page.reload();await press(page,'#start');const old=await pause(page);await press(page,'#saveExit');await openBackup(page);
   const text=await downloadBackup(page);expect(parseBackup(text).data.campaign).toEqual(progressThrough());
-  await page.goto('/');expect((await marker(page)).version).toBe(2);await openBackup(page);await chooseBackup(page,text);
-  await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);expect((await marker(page)).version).toBe(2);
+  await page.goto('/');expect((await marker(page)).version).toBe(3);await openBackup(page);await chooseBackup(page,text);
+  await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);expect((await marker(page)).version).toBe(3);
   expect(JSON.parse((await dataBytes(page))[CAMPAIGN_STORAGE_KEY])).toEqual(progressThrough());
   await press(page,'#resumeSaved');const resumed=await pause(page);expect(resumed.game.version).toBe(1);expect(resumed.game.state.buildings.map(b=>[b.id,b.side,b.type,b.x,b.y,b.level])).toEqual(old.game.state.buildings.map(b=>[b.id,b.side,b.type,b.x,b.y,b.level]));
   expect(resumed.game.state.time).toBeGreaterThanOrEqual(old.game.state.time);

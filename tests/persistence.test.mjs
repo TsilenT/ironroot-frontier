@@ -7,6 +7,8 @@ import {
   nativeSpaceTarget,
 } from '../dist/persistence.js';
 import { Game } from '../dist/engine.js';
+import { createChallenge } from '../dist/challenges.js';
+import { createCampaignMission } from '../dist/campaign.js';
 const fixture = () => {
   const data = new Map();
   return {
@@ -20,7 +22,7 @@ const fixture = () => {
 };
 test('save success requires a completed storage write and preserves its envelope', () => {
   const { data, storage } = fixture(),
-    game = new Game();
+    game = createChallenge('shieldbreaker');
   assert.equal(writeBattle(storage, 'save', game, 'shieldbreaker'), true);
   const saved = JSON.parse(data.get('save'));
   assert.equal(saved.challengeId, 'shieldbreaker');
@@ -82,7 +84,7 @@ test('Space belongs to focused native controls, not the global pause shortcut', 
 });
 test('campaign saves keep mission identity outside the deterministic engine state', () => {
   const { data, storage } = fixture(),
-    game = new Game();
+    game = createCampaignMission('emberwatch');
   assert.equal(writeBattle(storage, 'save', game, null, 'emberwatch'), true);
   const saved = JSON.parse(data.get('save'));
   assert.equal(saved.version, 2);

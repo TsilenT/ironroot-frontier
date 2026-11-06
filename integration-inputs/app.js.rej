@@ -1,0 +1,76 @@
+--- dist/app.js
++++ dist/app.js
+@@ -51,6 +51,7 @@
+ } from './persistence.js';
+ import { GameAudio } from './audio.js';
+ import { advanceObjectiveBattle } from './objectives.js';
++import { campaignBuildChoices, campaignCoach, drawCampaignGuidance } from './campaign-flow.js';
+ import {
+   CAMPAIGN_CHAPTERS,
+   CAMPAIGN_MISSIONS,
+@@ -386,6 +392,7 @@
+   syncChoice();
+ }
+ function syncChoice() {
++  updateCampaignDeck();
+   document
+     .querySelectorAll('.build-card')
+     .forEach((b) => b.classList.toggle('active', b.dataset.type === ui.build));
+@@ -405,6 +412,40 @@
+         ? 'Scroll for more buildings. Choose one, then tap a green slot.'
+         : 'Choose a building, then place it in your territory.';
+ }
++function updateCampaignDeck() {
++  const choices = campaignBuildChoices(currentCampaign, { expanded: expandedBuilds, resumed: resumedBattle });
++  const canSimplify = started && !resumedBattle && campaignBuildChoices(currentCampaign).length < Object.keys(BUILDINGS).length;
++  $('allBuildings').classList.toggle('hidden', !canSimplify);
++  $('allBuildings').textContent = expandedBuilds ? 'Fewer buildings' : 'All buildings';
++  $('allBuildings').setAttribute('aria-expanded', String(expandedBuilds));
++  for (const card of document.querySelectorAll('.build-card'))
++    card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
++  const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
++  const show = coachEnabled && !!hint;
++  $('campaignCoach').classList.toggle('hidden', !show);
++  $('toggleCoach').classList.toggle('hidden', !hint);
++  $('toggleCoach').textContent = coachEnabled ? 'Hide hints' : 'Show hints';
++  $('toggleCoach').setAttribute('aria-pressed', String(coachEnabled));
++  const highlighted = show ? document.querySelector(hint.control) : null;
++  for (const element of document.querySelectorAll('.coach-highlight'))
++    if (element !== highlighted) element.classList.remove('coach-highlight');
++  ui.coachSite = show ? hint.site : null;
++  ui.coachBuilding = show ? hint.buildingId : null;
++  if (show) {
++    if ($('coachTitle').textContent !== hint.title) $('coachTitle').textContent = hint.title;
++    if ($('coachText').textContent !== hint.text) $('coachText').textContent = hint.text;
++    highlighted?.classList.add('coach-highlight');
++  }
++}
++$('allBuildings').onclick = () => {
++  expandedBuilds = !expandedBuilds;
++  // Collapsing the roster cancels a selection before it becomes hidden.
++  cancel();
++};
++$('toggleCoach').onclick = () => {
++  coachEnabled = !coachEnabled;
++  updateCampaignDeck();
++};
+ function updateSelection() {
+   const b = game.state.buildings.find(
+     (x) => x.id === ui.selected && x.side === 0,
+@@ -553,7 +594,7 @@
+     );
+     return;
+   }
+-  showTitle();
++  showTitle({ focusResume: true });
+ };
+ $('speed').onclick = () => {
+   speed = speed === 1 ? 1.5 : speed === 1.5 ? 2 : 1;
+@@ -1464,6 +1522,7 @@
+       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
+   }
+   updateSelection();
++  updateCampaignDeck();
+ }
+ let heardEffects = new WeakSet(),
+   heardProjectiles = new WeakSet();

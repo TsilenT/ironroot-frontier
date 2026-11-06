@@ -1,0 +1,10 @@
+No concrete defect found in the reviewed rebase.
+
+- Passed: 42 focused tests, zero failures/skips.
+- Passed: only runtime change is the exact enum guard; engine SHA-256 matches required 83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5.
+- Passed: frozen-engine reconstruction, mutation rejection, copied candidate3 artifacts, narrow feature-test merges, preserved renderer/VFX and historical hashes.
+- Passed source review: browser repairs retain native targeting, original taps and camera tolerance; history recovery tests exercise download, explicit confirmation, reload and duplicate prevention.
+- Unrun by independent reviewer: browser execution and full suite. The rebase author separately completed the full suite; see node.txt.
+- Caveat: copied candidate3 manifests/logs are historical evidence, not validation of this combined feature rebase. Separate rebase provenance/results distinguish them.
+
+Independent read-only review; no files changed. Not release approval.

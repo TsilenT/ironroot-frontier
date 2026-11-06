@@ -1,0 +1,10 @@
+--- dist/service-worker.js
++++ dist/service-worker.js
+@@ -27,6 +27,7 @@
+   './codex.js',
+   './challenges.js',
+   './campaign.js',
++  './campaign-flow.js',
+   './scouting.js',
+   './objectives.js',
+   './persistence.js',

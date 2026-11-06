@@ -23,7 +23,7 @@ export function trainingProfileFixture(){
     [BACKUP_STORAGE_KEYS.settings]:bytes({sound:false,music:false,sfx:false,volume:.3,reducedMotion:true,quality:'low'}),
     [BACKUP_STORAGE_KEYS.history]:bytes([{won:true,draw:false,challengeId:null,campaignId:null,difficulty:'normal',time:95,kills:7,built:3,date:'2026-11-06T00:00:00.000Z',mapId:'twin-span'}]),
     [BACKUP_STORAGE_KEYS.battle]:bytes({format:'ironroot-save',version:2,challengeId:null,campaignId:null,game:game.serialize()}),
-    [PROFILE_MARKER]:JSON.stringify({format:'ironroot-profile',version:2,epoch:'qa-training-isolation',phase:'ready'}),
+    [PROFILE_MARKER]:JSON.stringify({format:'ironroot-profile',version:3,epoch:'qa-training-isolation',phase:'ready'}),
   };
   const backup=parseBackup(createBackup({getItem:key=>values[key]??null},{createdAt:'2026-11-06T00:00:00.000Z'}));
   assert.equal(backup.data.battle.game.state.winner,null);

@@ -1,7 +1,7 @@
 // 0.12 integration gates. Run only in the separately authorized browser runner.
 import {expect} from '@playwright/test';
 import {Game,MAPS} from '../../dist/engine.js';
-import {CAMPAIGN_STORAGE_KEY,CAMPAIGN_MISSIONS,getCampaignTargets,recordCampaignResult} from '../../dist/campaign.js';
+import {CAMPAIGN_STORAGE_KEY,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,getCampaignTargets,recordCampaignResult} from '../../dist/campaign.js';
 import {getMissionScouting} from '../../dist/scouting.js';
 import {BACKUP_STORAGE_KEYS,parseBackup} from '../../dist/backup.js';
 import {test,press,tapPoint,seedOnce,saved,pause,openBackup,chooseBackup,downloadBackup} from './map-browser-helpers.mjs';
@@ -60,7 +60,7 @@ test('existing twelve missions and 36 stars remain version 1 and unlock chapter 
   // Re-entering the mode is another render while Chapter 5 stays selected.
   await press(page,'[data-mode="skirmish"]');await press(page,'[data-mode="campaign"]');
   await expectSelectedChapterVisible(page);await expect(page.locator('#campaignMissionTitle')).toHaveText('Open Horizon');
-  await expect(page.locator('[data-chapter]')).toHaveCount(5);
+  await expect(page.locator('[data-chapter]')).toHaveCount(6);
   await expect(page.locator('[data-mission]')).toHaveCount(4);
   await expect(page.locator('#campaignProgressText')).toHaveText('12/16 missions · 36/48 stars');
   await expect(page.locator('#start')).toBeEnabled();
@@ -80,7 +80,7 @@ test('frontier unlock branches after Open Horizon then converges only after both
   for(const id of FRONTIER_IDS){
     const fixture=expandedFixture(id,'success');fixture.progress=current;
     await seedMission(page,fixture);await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
-    current=recordCampaignResult(current,id,Game.restore(fixture.envelope.game));
+    current=recordCampaignResult(current,id,Game.restore(fixture.finalGame));
     expect(await progress(page)).toEqual(current);
     for(const legacyId of LEGACY_IDS)expect(current.missions[legacyId]).toEqual({completed:true,stars:3,bestTime:10});
     await press(page,'#playAgain');await expect(page.locator('#welcome')).toBeVisible();
@@ -94,7 +94,7 @@ test('frontier unlock branches after Open Horizon then converges only after both
       await press(page,'[data-mission="common-ground"]');await expect(page.locator('#start')).toBeEnabled();
     }else{
       await expect(page.locator('#campaignProgressText')).toContainText('16/16 missions');
-      await expect(page.locator('#campaignChapterStory')).toContainText('No banner claims the two bridges');
+      await expect(page.locator('#campaignChapterStory')).toContainText(CAMPAIGN_CHAPTERS.find(chapter=>chapter.id==='frontier').epilogue);
     }
   }
 });

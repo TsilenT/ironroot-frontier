@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 import {Game} from '../../dist/engine.js';
@@ -8,6 +9,7 @@ const test=base.extend({page:async ({page},use)=>{
   await use(page);expect(errors,'uncaught browser errors').toEqual([]);
 }});
 async function press(page,selector){
+  if (await prepareBuildControl(page, selector)) return;
   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.locator(selector).tap();
   else await page.locator(selector).click();
 }
@@ -51,18 +53,18 @@ test('real service-worker cache supports offline nonclassic play save resume fie
     expect(normalizeNotice(notice.text)).toBe(normalizeNotice(await readFile(new URL('../../dist/FONTS-NOTICES.txt',import.meta.url),'utf8')));
     await expect.poll(()=>fromWorker.has('/FONTS-NOTICES.txt')).toBe(true);
 
-    await press(page,'#mapPickerToggle');await press(page,'#mapChoices [data-map="long-march"]');
+    await press(page,'[data-mode="skirmish"]');await press(page,'#mapPickerToggle');await press(page,'#mapChoices [data-map="long-march"]');
     await press(page,'#start');await expect(page.locator('#welcome')).toBeHidden();
     await expect(page.locator('#time')).not.toHaveText('00:00');
     await press(page,'#pause');await expect(page.locator('#pauseVeil')).toBeVisible();
     const saved=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
-    expect(saved).toMatchObject({format:'ironroot-save',version:2,campaignId:null,challengeId:null});
-    expect(saved.game).toMatchObject({version:2,mapId:'long-march',mapRevision:1});
+    expect(saved).toMatchObject({format:'ironroot-save',version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
+    expect(saved.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-rootwarden-open',rulesetRevision:1});
     expect(Game.restore(saved.game).map.width).toBe(4000);
     await press(page,'#help');
     await press(page,'#rosterGuideToggle');
     await expect(page.locator('#rosterGuide')).toHaveJSProperty('open',true);
-    await expect(page.locator('[data-codex-unit]')).toHaveCount(5);
+    await expect(page.locator('[data-codex-unit]')).toHaveCount(6);
     await press(page,'[data-codex-structure="mint"] > summary');
     await expect(page.locator('[data-codex-structure="mint"]')).toContainText('159.2 s');
     await press(page,'#guideDone');await expect(page.locator('#pauseVeil')).toBeVisible();
@@ -71,7 +73,7 @@ test('real service-worker cache supports offline nonclassic play save resume fie
     expect(again?.fromServiceWorker()).toBe(true);
     await press(page,'#resumeSaved');await press(page,'#pause');
     const resumed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
-    expect(resumed.game).toMatchObject({version:2,mapId:'long-march',mapRevision:1});
+    expect(resumed.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-rootwarden-open',rulesetRevision:1});
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(saved.game.state.time);
     expect(resumed.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]))
       .toEqual(saved.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]));

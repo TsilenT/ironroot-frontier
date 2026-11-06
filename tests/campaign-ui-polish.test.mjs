@@ -14,7 +14,7 @@ test('actual building details round both HP values without changing upgraded cam
     const game=createCampaignMission(mission.id),before=JSON.stringify(game.serialize());
     for(const b of game.state.buildings.filter(b=>b.side===0&&b.level>1)){
       const elements=new Map();
-      const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,classList:{toggle(){}}});return elements.get(id);};
+      const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,classList:{toggle(){},contains(){return false;}}});return elements.get(id);};
       runInNewContext(selection+'\nupdateSelection();',{$,game,ui:{selected:b.id,protectedTargets:[]},BUILDINGS,UNITS,upgradeCost,paused:false,iconSVG:()=>''});
       assert.ok($('selectionStats').innerHTML.startsWith(`<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span>`),mission.id+'/'+b.type);
       assert.ok(!/\d\.\d{5,}/.test($('selectionStats').innerHTML));

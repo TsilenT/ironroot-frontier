@@ -8,12 +8,18 @@ import {installPad,padButton,steerTo} from './map-controller-helpers.mjs';
 import {minimapActivationTarget} from './minimap-input-contract.mjs';
 
 function assertMap(envelope,id){
-  expect(envelope).toMatchObject({format:'ironroot-save',version:2,challengeId:null,campaignId:null});
+  // This helper is only used for newly launched skirmishes. Legacy persisted
+  // v1/v2 restoration is covered separately, without rewriting its identity.
+  expect(envelope).toMatchObject({format:'ironroot-save',version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
+  expect(envelope).not.toHaveProperty('campaignId');
+  expect(envelope.game).toMatchObject({version:3,mapId:id,mapRevision:1,rulesetId:'frontier-rootwarden-open',rulesetRevision:1});
   expect(Game.restore(envelope.game).map.id).toBe(id);
-  if(id==='classic'){
-    expect(envelope.game.version).toBe(1);
-    expect(envelope.game).not.toHaveProperty('mapId');expect(envelope.game).not.toHaveProperty('mapRevision');
-  }else expect(envelope.game).toMatchObject({version:2,mapId:id,mapRevision:1});
+}
+
+function assertLegacyMap(envelope,id){
+  expect(envelope).toMatchObject({format:'ironroot-save',version:2,challengeId:null,campaignId:null});
+  expect(envelope.game).toMatchObject({version:2,mapId:id,mapRevision:1});
+  expect(Game.restore(envelope.game).ruleset.id).toBe('frontier-legacy');
 }
 const ownBuildings=envelope=>envelope.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]);
 async function storageBytes(page){
@@ -61,7 +67,7 @@ async function tapMinimap(page,point,map,testInfo,label){
 
 test('map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens',async ({page})=>{
   test.setTimeout(35000);
-  await page.goto('/');await expect(page.locator('#mapPicker')).toHaveJSProperty('open',false);
+  await page.goto('/');await press(page,'[data-mode="skirmish"]');await expect(page.locator('#mapPicker')).toHaveJSProperty('open',false);
   await expect(page.locator('#mapChoices')).toBeHidden();
   await page.locator('#mapPickerToggle').focus();await page.keyboard.press('Space');
   await expect(page.locator('#mapPicker')).toHaveJSProperty('open',true);
@@ -97,7 +103,7 @@ test('map picker uses native disclosure keyboard semantics and remains reachable
 for(const id of MAP_IDS){
   const map=MAPS[id];
   test(map.name+' selection start save reload resume and switching preserve independent difficulty',async ({page})=>{
-    await observeCanvas(page);await page.goto('/');await press(page,'[data-difficulty="hard"]');await selectMap(page,id);
+    await observeCanvas(page);await page.goto('/');await press(page,'[data-mode="skirmish"]');await press(page,'[data-difficulty="hard"]');await selectMap(page,id);
     await expect(page.locator('[data-difficulty="hard"]')).toHaveClass(/active/);
     await press(page,'#start');await expect(page.locator('#welcome')).toBeHidden();
     const before=await pause(page);assertMap(before,id);expect(before.game.difficulty).toBe('hard');
@@ -178,6 +184,7 @@ test('Twin Span center-gap pointer snaps to a real road with sixteen sites and n
 for(const mode of ['campaign','challenges'])test(mode+' initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice',async ({page})=>{
   await observeCanvas(page);await page.goto('/');await selectMap(page,'long-march');await press(page,'#start');await pause(page);await press(page,'#saveExit');
   await press(page,'[data-mode="'+mode+'"]');await expect(page.locator('#mapPicker')).toBeHidden();
+  if(mode==='campaign')await press(page,'#skipIntroduction');
   await press(page,'#start');const envelope=await pause(page);
   expect(Game.restore(envelope.game).map.id).toBe('classic');expect(envelope.game.version).toBe(1);
   expect(envelope[mode==='campaign'?'campaignId':'challengeId']).toBeTruthy();
@@ -249,7 +256,7 @@ for(const id of NEW_MAP_IDS){
     expect(bytes['qa.unrelated']).toBe('keep me');
     await openBackup(page);expect(parseBackup(await downloadBackup(page)).data).toEqual(parsed.data);
     await press(page,'#settingsDone');await press(page,'#resumeSaved');const resumed=await pause(page);
-    assertMap(resumed,id);expect(ownBuildings(resumed)).toEqual(ownBuildings(parsed.data.battle));
+    assertLegacyMap(resumed,id);expect(ownBuildings(resumed)).toEqual(ownBuildings(parsed.data.battle));
   });
   for(const mode of ['campaign','challenges'])test(MAPS[id].name+' portable backup rejects an authored '+mode+' identity without changing storage',async ({page})=>{
     await seedOnce(page,{[SAVE]:JSON.stringify(mapFixture('classic')),'qa.unrelated':'keep me'});await openBackup(page);

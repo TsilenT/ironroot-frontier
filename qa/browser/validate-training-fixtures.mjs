@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {trainingProfileFixture,PROFILE_DOMAINS,PROFILE_KEYS,TRAINING_FILES} from './training-fixtures.mjs';
-import {shellManifest,currentRoot} from './update-fixtures.mjs';
+import {shellManifest,currentRoot,candidateIdentity} from './update-fixtures.mjs';
 const fixture=trainingProfileFixture();
 assert.equal(PROFILE_DOMAINS.length,5);assert.equal(PROFILE_KEYS.length,6);
 assert.deepEqual(Object.keys(fixture.values).sort(),[...PROFILE_KEYS].sort());
 for(const key of PROFILE_DOMAINS){assert.match(fixture.values[key],/^ \n/);assert.match(fixture.values[key],/\n $/);}
-const current=await shellManifest(currentRoot);assert.equal(current.version,'ironroot-v0.12.0');
+const current=await candidateIdentity();
 for(const file of TRAINING_FILES)assert.ok(current.hashes[file],'offline shell includes '+file);
 const html=await readFile(new URL('../../dist/training.html',import.meta.url),'utf8');
 assert.match(html,/<script type="module" src="\.\/training-app\.js"><\/script>/);

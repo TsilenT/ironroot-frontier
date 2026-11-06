@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base,expect} from '@playwright/test';
 import {SAVE} from './map-fixtures.mjs';
 export const test=base.extend({page:async ({page},use)=>{
@@ -5,6 +6,7 @@ export const test=base.extend({page:async ({page},use)=>{
   await use(page);expect(errors,'uncaught browser errors').toEqual([]);
 }});
 export async function press(page,selector){
+  if (await prepareBuildControl(page, selector)) return;
   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.locator(selector).tap();
   else await page.locator(selector).click();
 }
@@ -13,6 +15,7 @@ export async function tapPoint(page,point){
   else await page.mouse.click(point.x,point.y);
 }
 export async function selectMap(page,id){
+  if (!await page.locator('#skirmishConfig').isVisible()) await press(page,'[data-mode="skirmish"]');
   if(!await page.locator('#mapPicker').evaluate(element=>element.open))await press(page,'#mapPickerToggle');
   await press(page,'#mapChoices [data-map="'+id+'"]');
   await expect(page.locator('#mapChoices [data-map="'+id+'"]')).toHaveAttribute('aria-pressed','true');

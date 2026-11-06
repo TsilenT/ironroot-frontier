@@ -103,9 +103,9 @@ test('documented direct counter numbers match executed combat, without a univers
   assert.match(entry('warrior').mechanics.join(' '), /45% less.*9\.35.*35% extra.*28\.35.*28% less/);
   assert.match(entry('archer').mechanics.join(' '), /50% extra.*25\.5.*55%.*9\.35/);
   assert.match(entry('wizard').mechanics.join(' '), /full 24 damage/);
-  assert.match(entry('wizard').cautions, /Archers have longer range.*not a guaranteed archer counter/);
+  assert.match(entry('wizard').cautions, /Archers outrange it.*can kill it/);
   assert.ok(entry('archer').baseStats.range > entry('wizard').baseStats.range);
-  assert.match(ECONOMY_GUIDE.counterCaveat, /not guaranteed wins/);
+  assert.match(ECONOMY_GUIDE.counterCaveat, /Army size, range, position, upgrades and support can still decide/);
 });
 
 test('all advertised air targeting permissions match actual attacks', () => {
@@ -218,7 +218,7 @@ test('mine marginal payback, each upgrade price and all three income levels are 
   assert.equal(refund, Math.floor((190 + 133 + 199) * 0.5));
   game.update(0.05); close(game.state.income[0], ECONOMY_GUIDE.baseIncome);
   assert.match(info.mechanics.join(' '), /76 s.*106\.4 s.*159\.2 s/);
-  assert.match(info.mechanics.join(' '), /mathematical best case.*uninterrupted income.*ignores defense costs, destruction, lost tempo and salvage.*does not guarantee/);
+  assert.match(info.mechanics.join(' '), /payback times assume the mine keeps working.*exclude defense costs, destruction and salvage.*need troops sooner/);
 });
 
 test('advertised caps, free ongoing production and unit-only bounty are enforced', () => {
@@ -266,13 +266,14 @@ test('upgrade and overtime summaries match executable production, health and dam
   }
 });
 
-test('codex is recursively immutable without freezing or mutating engine state', () => {
+test('codex is recursively immutable while engine state stays mutable and registered definitions stay frozen', () => {
   for (const value of [UNIT_CODEX, STRUCTURE_CODEX, ECONOMY_GUIDE]) assertFrozen(value);
   assert.throws(() => { UNIT_CODEX[0].baseStats.hp = 1; }, TypeError);
   assert.throws(() => { structure('mint').levels.push({}); }, TypeError);
-  assert.ok(!Object.isFrozen(UNITS.warrior));
-  assert.ok(!Object.isFrozen(BUILDINGS.barracks));
-  assert.ok(!Object.isFrozen(SPELL));
+  assert.ok(Object.isFrozen(UNITS.warrior));
+  assert.ok(Object.isFrozen(BUILDINGS.barracks));
+  assert.ok(Object.isFrozen(SPELL));
+  assert.ok(!Object.isFrozen(new Game({ ai: false }).state));
   assert.notEqual(ECONOMY_GUIDE.rallyStrike, SPELL);
 });
 

@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, LANES} from '../../dist/engine.js';
 import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
@@ -9,12 +10,13 @@ const test = base.extend({page:async ({page},use)=>{
   await use(page); expect(errors,'uncaught browser errors').toEqual([]);
 }});
 async function press(page,selector) {
+  if (await prepareBuildControl(page, selector)) return;
   const control=page.locator(selector);
   if (await page.evaluate(()=>navigator.maxTouchPoints>0)) await control.tap();
   else await control.click();
 }
 async function openCampaign(page) {
-  await page.goto('/'); await press(page,'[data-mode="campaign"]');
+  await page.goto('/'); await press(page,'[data-mode="campaign"]'); await press(page,'[data-chapter="embers"]');
   await expect(page.locator('#campaignConfig')).toBeVisible();
 }
 async function snapshot(page) {
@@ -181,9 +183,10 @@ test('closing a stale paused campaign tab preserves the newer shared-context ski
   try {
     await newer.goto('/');
     await expect(newer.locator('#resumeSaved')).toContainText('RESUME MISSION');
+    await press(newer,'[data-mode="skirmish"]');
     await press(newer,'[data-difficulty="hard"]'); await press(newer,'#start');
     const newerSave=await pause(newer);
-    expect(newerSave).toMatchObject({campaignId:null,challengeId:null});
+    expect(newerSave).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
     expect(newerSave.game.difficulty).toBe('hard');
     const durable=await newer.evaluate(key=>localStorage.getItem(key),SAVE);
 
@@ -196,7 +199,7 @@ test('closing a stale paused campaign tab preserves the newer shared-context ski
       page.close({runBeforeUnload:true}),
     ]);
     expect(await newer.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(durable);
-    expect(await snapshot(newer)).toMatchObject({campaignId:null,challengeId:null});
+    expect(await snapshot(newer)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
     expect(errors,'uncaught errors in the newer tab').toEqual([]);
   } finally {
     await newer.close();

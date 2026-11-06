@@ -1,0 +1,658 @@
+TAP version 13
+# Subtest: synthetic baseline has exact pinned provenance with only the documented two import substitutions
+ok 1 - synthetic baseline has exact pinned provenance with only the documented two import substitutions
+  ---
+  duration_ms: 6.656972
+  type: 'test'
+  ...
+# Subtest: accepted historical clarity renderer and VFX retain their reviewed byte pins
+ok 2 - accepted historical clarity renderer and VFX retain their reviewed byte pins
+  ---
+  duration_ms: 0.932733
+  type: 'test'
+  ...
+# Subtest: every synthetic scene is deterministic, bounded, both-team and labelled as non-played evidence
+ok 3 - every synthetic scene is deterministic, bounded, both-team and labelled as non-played evidence
+  ---
+  duration_ms: 13.380096
+  type: 'test'
+  ...
+# Subtest: comparison feeds both renderers identical immutable scenes, sizes, cameras and effect settings
+ok 4 - comparison feeds both renderers identical immutable scenes, sizes, cameras and effect settings
+  ---
+  duration_ms: 837.679585
+  type: 'test'
+  ...
+# Subtest: browser feedback contracts cover all five authored lessons exactly once
+ok 5 - browser feedback contracts cover all five authored lessons exactly once
+  ---
+  duration_ms: 2.403921
+  type: 'test'
+  ...
+# Subtest: first-barracks: final authored success copy matches its independent contract
+ok 6 - first-barracks: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.240319
+  type: 'test'
+  ...
+# Subtest: first-barracks: browser proof accepts its success copy and rejects unrelated feedback
+ok 7 - first-barracks: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.453216
+  type: 'test'
+  ...
+# Subtest: shield-and-arrow: final authored success copy matches its independent contract
+ok 8 - shield-and-arrow: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.164712
+  type: 'test'
+  ...
+# Subtest: shield-and-arrow: browser proof accepts its success copy and rejects unrelated feedback
+ok 9 - shield-and-arrow: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.219997
+  type: 'test'
+  ...
+# Subtest: mine-and-upgrade: final authored success copy matches its independent contract
+ok 10 - mine-and-upgrade: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.11764
+  type: 'test'
+  ...
+# Subtest: mine-and-upgrade: browser proof accepts its success copy and rejects unrelated feedback
+ok 11 - mine-and-upgrade: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.212516
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: final authored success copy matches its independent contract
+ok 12 - siege-the-tower: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.164052
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof accepts its success copy and rejects unrelated feedback
+ok 13 - siege-the-tower: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.257285
+  type: 'test'
+  ...
+# Subtest: answer-the-air: final authored success copy matches its independent contract
+ok 14 - answer-the-air: final authored success copy matches its independent contract
+  ---
+  duration_ms: 0.305919
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof accepts its success copy and rejects unrelated feedback
+ok 15 - answer-the-air: browser proof accepts its success copy and rejects unrelated feedback
+  ---
+  duration_ms: 0.273169
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof rejects incomplete attribution: Your siege engines hit the marked tower.
+ok 16 - siege-the-tower: browser proof rejects incomplete attribution: Your siege engines hit the marked tower.
+  ---
+  duration_ms: 0.12381
+  type: 'test'
+  ...
+# Subtest: siege-the-tower: browser proof rejects incomplete attribution: The tower fell.
+ok 17 - siege-the-tower: browser proof rejects incomplete attribution: The tower fell.
+  ---
+  duration_ms: 0.105142
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof rejects incomplete attribution: Your archers hit the marked gryphon.
+ok 18 - answer-the-air: browser proof rejects incomplete attribution: Your archers hit the marked gryphon.
+  ---
+  duration_ms: 0.063257
+  type: 'test'
+  ...
+# Subtest: answer-the-air: browser proof rejects incomplete attribution: The gryphon fell.
+ok 19 - answer-the-air: browser proof rejects incomplete attribution: The gryphon fell.
+  ---
+  duration_ms: 0.047583
+  type: 'test'
+  ...
+# Subtest: choosing a build and cancelling are never paid placements
+ok 20 - choosing a build and cancelling are never paid placements
+  ---
+  duration_ms: 2.564808
+  type: 'test'
+  ...
+# Subtest: explicit chosen-site placement spends real gold once and clears the build choice
+ok 21 - explicit chosen-site placement spends real gold once and clears the build choice
+  ---
+  duration_ms: 0.709199
+  type: 'test'
+  ...
+# Subtest: unavailable cards and wrong sites cannot pay or complete a lesson
+ok 22 - unavailable cards and wrong sites cannot pay or complete a lesson
+  ---
+  duration_ms: 0.422029
+  type: 'test'
+  ...
+# Subtest: upgrade requires explicit owned-building selection and real payment
+ok 23 - upgrade requires explicit owned-building selection and real payment
+  ---
+  duration_ms: 2.654526
+  type: 'test'
+  ...
+# Subtest: still: threshold controls tap versus pan without time heuristics
+ok 24 - still: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.267651
+  type: 'test'
+  ...
+# Subtest: 8 pixels: threshold controls tap versus pan without time heuristics
+ok 25 - 8 pixels: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.107856
+  type: 'test'
+  ...
+# Subtest: over 8 pixels: threshold controls tap versus pan without time heuristics
+ok 26 - over 8 pixels: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.295684
+  type: 'test'
+  ...
+# Subtest: vertical drag: threshold controls tap versus pan without time heuristics
+ok 27 - vertical drag: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.135578
+  type: 'test'
+  ...
+# Subtest: diagonal drag: threshold controls tap versus pan without time heuristics
+ok 28 - diagonal drag: threshold controls tap versus pan without time heuristics
+  ---
+  duration_ms: 0.235742
+  type: 'test'
+  ...
+# Subtest: drag away and back never turns into a tap; release-only movement is checked
+ok 29 - drag away and back never turns into a tap; release-only movement is checked
+  ---
+  duration_ms: 0.367815
+  type: 'test'
+  ...
+# Subtest: multiple contacts and lost capture do not place, while a fresh press works
+ok 30 - multiple contacts and lost capture do not place, while a fresh press works
+  ---
+  duration_ms: 0.285608
+  type: 'test'
+  ...
+# Subtest: mouse: result, retry, skip and pause scopes reject held release and trailing click
+ok 31 - mouse: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 1.749407
+  type: 'test'
+  ...
+# Subtest: touch: result, retry, skip and pause scopes reject held release and trailing click
+ok 32 - touch: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 0.67723
+  type: 'test'
+  ...
+# Subtest: pen: result, retry, skip and pause scopes reject held release and trailing click
+ok 33 - pen: result, retry, skip and pause scopes reject held release and trailing click
+  ---
+  duration_ms: 0.427216
+  type: 'test'
+  ...
+# Subtest: same lesson and step on replay still has a new attempt input scope
+ok 34 - same lesson and step on replay still has a new attempt input scope
+  ---
+  duration_ms: 0.372713
+  type: 'test'
+  ...
+# Subtest: lesson runtime has no save/profile/report dependencies, storage access or network calls
+not ok 35 - lesson runtime has no save/profile/report dependencies, storage access or network calls
+  ---
+  duration_ms: 4.023818
+  type: 'test'
+  location: '/workspace/shared/ironroot-integration/tests/training-ui.test.mjs:109:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /saved battle, campaign and records stay untouched/. Input:
+    
+    '<!doctype html>\n' +
+      '<html lang="en">\n' +
+      '  <head>\n' +
+      '    <meta charset="utf-8" />\n' +
+      '    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />\n' +
+      '    <meta name="theme-color" content="#121d1b" />\n' +
+      '    <meta name="description" content="Learn to play Ironroot Frontier in five short practice lessons. Your saved game stays untouched." />\n' +
+      '    <title>Guided practice · Ironroot Frontier</title>\n' +
+      '    <link rel="icon" href="./icon.svg" type="image/svg+xml" />\n' +
+      '    <link rel="stylesheet" href="./training.css" />\n' +
+      '  </head>\n' +
+      '  <body>\n' +
+      '    <header class="training-header">\n' +
+      '      <a href="./" id="returnGame" class="return-link" aria-label="Return to game: Ironroot Frontier">← Return to game</a>\n' +
+      '      <span class="training-brand">IRONROOT <b>FIELD SCHOOL</b></span>\n' +
+      '    </header>\n' +
+      '    <p class="safe-notice"><strong>Practice only.</strong> Your saved battle and progress stay untouched. Practice resets when you leave and earns no rewards.</p>\n' +
+      '    <main class="training-workspace">\n' +
+      '      <section class="field-panel" id="fieldPanel" aria-label="Practice battlefield">\n' +
+      '        <div class="field-heading">\n' +
+      '          <span id="fieldState">INSTRUCTIONS · TIME STOPPED</span>\n' +
+      '          <span><b id="gold">0</b> gold <small id="income">+5/s</small></span>\n' +
+      '          <span id="battleTime">0:00</span>\n' +
+      '        </div>\n' +
+      '        <p id="fieldAction" class="field-action">Follow the current lesson below.</p>\n' +
+      '        <div class="canvas-wrap" id="canvasWrap">\n' +
+      '          <canvas id="trainingBattle" tabindex="0" aria-label="Practice battlefield. Choose a building, then tap a highlighted site. Drag to pan. You can also use the named site buttons in the lesson panel." aria-describedby="fieldHelp fieldAction"></canvas>\n' +
+      '          <span class="map-note" aria-hidden="true">YOUR FRONTIER →</span>\n' +
+      '        </div>\n' +
+      '        <nav class="map-controls" aria-label="Battlefield navigation">\n' +
+      '          <button type="button" id="homeCamera" title="Home camera (H)">⌂ Home</button>\n' +
+      '          <canvas id="trainingMinimap" tabindex="0" role="slider" aria-label="Battlefield minimap position" aria-valuemin="0" aria-valuemax="3200" aria-valuenow="700" aria-valuetext="Your frontier"></canvas>\n' +
+      '          <button type="button" id="frontCamera" title="Front camera (F)">Front →</button>\n' +
+      '        </nav>\n' +
+      '        <p id="fieldHelp" class="field-help">Drag to pan · tap minimap to travel · H home · F front · ← → pan</p>\n' +
+      '      </section>\n' +
+      '      <aside class="coach" aria-label="Guided practice lesson">\n' +
+      '        <div class="lesson-switcher">\n' +
+      '          <label for="lessonPicker">Replay a lesson</label>\n' +
+      '          <select id="lessonPicker"></select>\n' +
+      '        </div>\n' +
+      '        <div class="lesson-heading"><span id="lessonNumber" class="eyebrow">LESSON 1 / 5</span><span id="stepCount" class="step-count"></span></div>\n' +
+      '        <h1 id="lessonName">Guided practice</h1>\n' +
+      '        <p id="lessonSubtitle" class="lesson-subtitle"></p>\n' +
+      '        <details class="setup-disclosure"><summary id="setupSummary">Practice setup</summary><ul id="setupBriefing"></ul></details>\n' +
+      '        <section class="instruction" aria-labelledby="stepTitle">\n' +
+      '          <span id="stepKind" class="step-kind">YOUR TURN</span>\n' +
+      '          <h2 id="stepTitle" tabindex="-1">Preparing your lesson…</h2>\n' +
+      '          <p id="stepPrompt"></p>\n' +
+      '          <p id="objective" class="objective"></p>\n' +
+      '          <ul id="reviewResults" class="review-results" hidden></ul>\n' +
+      '          <div class="status-message" id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>\n' +
+      '          <div class="lesson-actions">\n' +
+      '            <button type="button" id="continueLesson" class="primary" hidden>Continue</button>\n' +
+      '            <button type="button" id="pauseLesson" hidden>Pause observation</button>\n' +
+      '            <button type="button" id="recoverGold" hidden>Wait for income</button>\n' +
+      '          </div>\n' +
+      '        </section>\n' +
+      '        <section class="command-panel" aria-label="Available lesson actions">\n' +
+      '          <div class="command-heading"><h2>Build deck</h2><button type="button" id="cancelChoice" class="quiet" disabled>Cancel</button></div>\n' +
+      '          <p id="choiceHint" class="choice-hint">Choose a building, then a marked site.</p>\n' +
+      '          <div id="buildDeck" class="build-deck"></div>\n' +
+      '          <div id="siteActions" class="site-actions" aria-label="Marked practice sites"></div>\n' +
+      '          <div id="buildingActions" class="site-actions" aria-label="Your highlighted buildings"></div>\n' +
+      '          <div id="selectionPanel" class="selection-panel" hidden>\n' +
+      '            <span id="selectionName"></span>\n' +
+      '            <button type="button" id="upgradeBuilding">Upgrade</button>\n' +
+      '          </div>\n' +
+      '        </section>\n' +
+      '        <div class="session-actions"><button type="button" id="restartLesson">↻ Restart lesson</button><button type="button" id="skipLesson">Skip lesson →</button></div>\n' +
+      '        <details class="controls-help">\n' +
+      '          <summary>Controls &amp; practice rules</summary>\n' +
+      '          <p>Touch, mouse and keyboard. Choose a build card, then tap the gold highlighted site. Drag more than 8 pixels to pan without spending gold. Select Cancel before choosing a building already on the field.</p>\n' +
+      '          <p>1–7 choose the matching available building. Escape cancels. H / F move home / front; arrow keys pan. Space pauses or resumes an observation. Tab moves between controls; Enter or Space activates a focused button. The named site buttons are an alternative to tapping the map.</p>\n' +
+      '          <p>Buildings and upgrades cost gold. Each step highlights the actions you can take. Time stops for instructions and runs for observations. Leaving this tab pauses the lesson. Select Resume observation when you return.</p>\n' +
+      '          <p>Each lesson has its own starting army and gold. Practice saves no progress, history or rewards and leaves your backups untouched. Replay any lesson. Controllers are not supported here.</p>\n' +
+      '        </details>\n' +
+      '      </aside>\n' +
+      '    </main>\n' +
+      '    <noscript><p class="load-error">Practice needs JavaScript. <a href="./">Return to the game.</a></p></noscript>\n' +
+      '    <script type="module" src="./training-app.js"></script>\n' +
+      '  </body>\n' +
+      '</html>\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#121d1b" />
+        <meta name="description" content="Learn to play Ironroot Frontier in five short practice lessons. Your saved game stays untouched." />
+        <title>Guided practice · Ironroot Frontier</title>
+        <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="./training.css" />
+      </head>
+      <body>
+        <header class="training-header">
+          <a href="./" id="returnGame" class="return-link" aria-label="Return to game: Ironroot Frontier">← Return to game</a>
+          <span class="training-brand">IRONROOT <b>FIELD SCHOOL</b></span>
+        </header>
+        <p class="safe-notice"><strong>Practice only.</strong> Your saved battle and progress stay untouched. Practice resets when you leave and earns no rewards.</p>
+        <main class="training-workspace">
+          <section class="field-panel" id="fieldPanel" aria-label="Practice battlefield">
+            <div class="field-heading">
+              <span id="fieldState">INSTRUCTIONS · TIME STOPPED</span>
+              <span><b id="gold">0</b> gold <small id="income">+5/s</small></span>
+              <span id="battleTime">0:00</span>
+            </div>
+            <p id="fieldAction" class="field-action">Follow the current lesson below.</p>
+            <div class="canvas-wrap" id="canvasWrap">
+              <canvas id="trainingBattle" tabindex="0" aria-label="Practice battlefield. Choose a building, then tap a highlighted site. Drag to pan. You can also use the named site buttons in the lesson panel." aria-describedby="fieldHelp fieldAction"></canvas>
+              <span class="map-note" aria-hidden="true">YOUR FRONTIER →</span>
+            </div>
+            <nav class="map-controls" aria-label="Battlefield navigation">
+              <button type="button" id="homeCamera" title="Home camera (H)">⌂ Home</button>
+              <canvas id="trainingMinimap" tabindex="0" role="slider" aria-label="Battlefield minimap position" aria-valuemin="0" aria-valuemax="3200" aria-valuenow="700" aria-valuetext="Your frontier"></canvas>
+              <button type="button" id="frontCamera" title="Front camera (F)">Front →</button>
+            </nav>
+            <p id="fieldHelp" class="field-help">Drag to pan · tap minimap to travel · H home · F front · ← → pan</p>
+          </section>
+          <aside class="coach" aria-label="Guided practice lesson">
+            <div class="lesson-switcher">
+              <label for="lessonPicker">Replay a lesson</label>
+              <select id="lessonPicker"></select>
+            </div>
+            <div class="lesson-heading"><span id="lessonNumber" class="eyebrow">LESSON 1 / 5</span><span id="stepCount" class="step-count"></span></div>
+            <h1 id="lessonName">Guided practice</h1>
+            <p id="lessonSubtitle" class="lesson-subtitle"></p>
+            <details class="setup-disclosure"><summary id="setupSummary">Practice setup</summary><ul id="setupBriefing"></ul></details>
+            <section class="instruction" aria-labelledby="stepTitle">
+              <span id="stepKind" class="step-kind">YOUR TURN</span>
+              <h2 id="stepTitle" tabindex="-1">Preparing your lesson…</h2>
+              <p id="stepPrompt"></p>
+              <p id="objective" class="objective"></p>
+              <ul id="reviewResults" class="review-results" hidden></ul>
+              <div class="status-message" id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+              <div class="lesson-actions">
+                <button type="button" id="continueLesson" class="primary" hidden>Continue</button>
+                <button type="button" id="pauseLesson" hidden>Pause observation</button>
+                <button type="button" id="recoverGold" hidden>Wait for income</button>
+              </div>
+            </section>
+            <section class="command-panel" aria-label="Available lesson actions">
+              <div class="command-heading"><h2>Build deck</h2><button type="button" id="cancelChoice" class="quiet" disabled>Cancel</button></div>
+              <p id="choiceHint" class="choice-hint">Choose a building, then a marked site.</p>
+              <div id="buildDeck" class="build-deck"></div>
+              <div id="siteActions" class="site-actions" aria-label="Marked practice sites"></div>
+              <div id="buildingActions" class="site-actions" aria-label="Your highlighted buildings"></div>
+              <div id="selectionPanel" class="selection-panel" hidden>
+                <span id="selectionName"></span>
+                <button type="button" id="upgradeBuilding">Upgrade</button>
+              </div>
+            </section>
+            <div class="session-actions"><button type="button" id="restartLesson">↻ Restart lesson</button><button type="button" id="skipLesson">Skip lesson →</button></div>
+            <details class="controls-help">
+              <summary>Controls &amp; practice rules</summary>
+              <p>Touch, mouse and keyboard. Choose a build card, then tap the gold highlighted site. Drag more than 8 pixels to pan without spending gold. Select Cancel before choosing a building already on the field.</p>
+              <p>1–7 choose the matching available building. Escape cancels. H / F move home / front; arrow keys pan. Space pauses or resumes an observation. Tab moves between controls; Enter or Space activates a focused button. The named site buttons are an alternative to tapping the map.</p>
+              <p>Buildings and upgrades cost gold. Each step highlights the actions you can take. Time stops for instructions and runs for observations. Leaving this tab pauses the lesson. Select Resume observation when you return.</p>
+              <p>Each lesson has its own starting army and gold. Practice saves no progress, history or rewards and leaves your backups untouched. Replay any lesson. Controllers are not supported here.</p>
+            </details>
+          </aside>
+        </main>
+        <noscript><p class="load-error">Practice needs JavaScript. <a href="./">Return to the game.</a></p></noscript>
+        <script type="module" src="./training-app.js"></script>
+      </body>
+    </html>
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/shared/ironroot-integration/tests/training-ui.test.mjs:117:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: document wires capture guards, interruptions and bfcache reset
+ok 36 - document wires capture guards, interruptions and bfcache reset
+  ---
+  duration_ms: 0.434187
+  type: 'test'
+  ...
+# Subtest: review does not turn skipped lessons into completion claims
+ok 37 - review does not turn skipped lessons into completion claims
+  ---
+  duration_ms: 0.254771
+  type: 'test'
+  ...
+# Subtest: displayed mine income updates during paused build and upgrade instructions
+ok 38 - displayed mine income updates during paused build and upgrade instructions
+  ---
+  duration_ms: 0.688477
+  type: 'test'
+  ...
+# Subtest: display clock tolerates exact fixed-step boundaries without changing ordinary times
+ok 39 - display clock tolerates exact fixed-step boundaries without changing ordinary times
+  ---
+  duration_ms: 0.101586
+  type: 'test'
+  ...
+# Subtest: new Game identity resets paused VFX; steps and pause on the same Game retain effects
+ok 40 - new Game identity resets paused VFX; steps and pause on the same Game retain effects
+  ---
+  duration_ms: 2.068796
+  type: 'test'
+  ...
+# Subtest: bfcache-style fresh session clears VFX even when attemptId is reused
+ok 41 - bfcache-style fresh session clears VFX even when attemptId is reused
+  ---
+  duration_ms: 0.33229
+  type: 'test'
+  ...
+# Subtest: manual observation feedback is derived from pause state, not stale session text
+ok 42 - manual observation feedback is derived from pause state, not stale session text
+  ---
+  duration_ms: 0.550445
+  type: 'test'
+  ...
+# Subtest: completed observation feedback supersedes a stale interaction error
+ok 43 - completed observation feedback supersedes a stale interaction error
+  ---
+  duration_ms: 0.16274
+  type: 'test'
+  ...
+# Subtest: portrait action line distinguishes choosing, selected paid placement, watch and pause
+ok 44 - portrait action line distinguishes choosing, selected paid placement, watch and pause
+  ---
+  duration_ms: 0.728459
+  type: 'test'
+  ...
+# Subtest: portrait coach alignment uncovers card/site centers without hiding the canvas
+ok 45 - portrait coach alignment uncovers card/site centers without hiding the canvas
+  ---
+  duration_ms: 0.232216
+  type: 'test'
+  ...
+# Subtest: native pointer focus cannot scroll between pointerdown and compatibility click
+ok 46 - native pointer focus cannot scroll between pointerdown and compatibility click
+  ---
+  duration_ms: 0.486447
+  type: 'test'
+  ...
+# Subtest: a fresh pointer cancels the preceding control alignment without a timing window
+ok 47 - a fresh pointer cancels the preceding control alignment without a timing window
+  ---
+  duration_ms: 0.189401
+  type: 'test'
+  ...
+# Subtest: keyboard and programmatic focus retain immediate uncovering and the newest RAF target
+ok 48 - keyboard and programmatic focus retain immediate uncovering and the newest RAF target
+  ---
+  duration_ms: 0.258737
+  type: 'test'
+  ...
+# Subtest: native pointer focus suspension extends through pointerup and retains guarded click handling
+ok 49 - native pointer focus suspension extends through pointerup and retains guarded click handling
+  ---
+  duration_ms: 0.698803
+  type: 'test'
+  ...
+# Subtest: cancelling a secondary contact preserves primary focus suspension before primary release
+ok 50 - cancelling a secondary contact preserves primary focus suspension before primary release
+  ---
+  duration_ms: 0.245126
+  type: 'test'
+  ...
+# Subtest: cancelling a secondary contact preserves primary focus suspension after primary release
+ok 51 - cancelling a secondary contact preserves primary focus suspension after primary release
+  ---
+  duration_ms: 0.103549
+  type: 'test'
+  ...
+# Subtest: each device activation ends independently and secondary pointerup leaves no abandoned contact
+ok 52 - each device activation ends independently and secondary pointerup leaves no abandoned contact
+  ---
+  duration_ms: 0.18897
+  type: 'test'
+  ...
+# Subtest: keyboard and synthetic clicks do not release a still-held native contact
+ok 53 - keyboard and synthetic clicks do not release a still-held native contact
+  ---
+  duration_ms: 0.190302
+  type: 'test'
+  ...
+# Subtest: interruption restores programmatic focus while the input scope still rejects stale input
+ok 54 - interruption restores programmatic focus while the input scope still rejects stale input
+  ---
+  duration_ms: 0.407105
+  type: 'test'
+  ...
+# Subtest: fresh gestures retire abandoned compatibility clicks and legacy clicks retain attribution
+ok 55 - fresh gestures retire abandoned compatibility clicks and legacy clicks retain attribution
+  ---
+  duration_ms: 0.337708
+  type: 'test'
+  ...
+# Subtest: blur hidden pagehide and bfcache restoration reset alignment without resetting stale input protection
+ok 56 - blur hidden pagehide and bfcache restoration reset alignment without resetting stale input protection
+  ---
+  duration_ms: 0.44308
+  type: 'test'
+  ...
+# Subtest: portrait field height budget preserves all three lanes and minimum touch controls
+ok 57 - portrait field height budget preserves all three lanes and minimum touch controls
+  ---
+  duration_ms: 0.398421
+  type: 'test'
+  ...
+# Subtest: training metadata and setup are explicit, bounded and deeply immutable
+ok 58 - training metadata and setup are explicit, bounded and deeply immutable
+  ---
+  duration_ms: 3.547347
+  type: 'test'
+  ...
+# Subtest: invalid IDs and seeds are rejected; snapshots cannot mutate metadata or session state
+ok 59 - invalid IDs and seeds are rejected; snapshots cannot mutate metadata or session state
+  ---
+  duration_ms: 3.64025
+  type: 'test'
+  ...
+# Subtest: instructions and completed steps freeze time, reject premature, off-site and duplicate actions
+ok 60 - instructions and completed steps freeze time, reject premature, off-site and duplicate actions
+  ---
+  duration_ms: 1.554998
+  type: 'test'
+  ...
+# Subtest: all five lessons complete through actual paid actions across seven seeds
+ok 61 - all five lessons complete through actual paid actions across seven seeds
+  ---
+  duration_ms: 278.749866
+  type: 'test'
+  ...
+# Subtest: per-instance read-only observation leaves complete serialized engine states identical
+ok 62 - per-instance read-only observation leaves complete serialized engine states identical
+  ---
+  duration_ms: 771.515895
+  type: 'test'
+  ...
+# Subtest: observed methods retain original returns, exceptions, receiver and one-call effects
+ok 63 - observed methods retain original returns, exceptions, receiver and one-call effects
+  ---
+  duration_ms: 1.016146
+  type: 'test'
+  ...
+# Subtest: an unrelated or preexisting allied warrior cannot satisfy the paid barracks spawn
+ok 64 - an unrelated or preexisting allied warrior cannot satisfy the paid barracks spawn
+  ---
+  duration_ms: 5.817814
+  type: 'test'
+  ...
+# Subtest: kill totals, target disappearance and unrelated unit spawns do not fabricate combat proof
+ok 65 - kill totals, target disappearance and unrelated unit spawns do not fabricate combat proof
+  ---
+  duration_ms: 3.669852
+  type: 'test'
+  ...
+# Subtest: a queued archer projectile with zero actual credited damage cannot satisfy anti-air
+ok 66 - a queued archer projectile with zero actual credited damage cannot satisfy anti-air
+  ---
+  duration_ms: 1.118126
+  type: 'test'
+  ...
+# Subtest: a queued siege shot with zero credited damage cannot satisfy siege
+ok 67 - a queued siege shot with zero credited damage cannot satisfy siege
+  ---
+  duration_ms: 1.015505
+  type: 'test'
+  ...
+# Subtest: a different producer cannot claim the paid foundry or archery range evidence
+ok 68 - a different producer cannot claim the paid foundry or archery range evidence
+  ---
+  duration_ms: 1.218474
+  type: 'test'
+  ...
+# Subtest: pause/resume and invalid elapsed time never spend, advance or speed up practice
+ok 69 - pause/resume and invalid elapsed time never spend, advance or speed up practice
+  ---
+  duration_ms: 0.615636
+  type: 'test'
+  ...
+# Subtest: retry/skip/jump reset actual games, gold, observations, timers and stale old-game events
+ok 70 - retry/skip/jump reset actual games, gold, observations, timers and stale old-game events
+  ---
+  duration_ms: 5.990889
+  type: 'test'
+  ...
+# Subtest: mine instruction requires its own paid mine, correct level, actual spend and real income ticks
+ok 71 - mine instruction requires its own paid mine, correct level, actual spend and real income ticks
+  ---
+  duration_ms: 1.604912
+  type: 'test'
+  ...
+# Subtest: gold recovery uses only real income, pauses when affordable, and does not auto-spend or advance
+ok 72 - gold recovery uses only real income, pauses when affordable, and does not auto-spend or advance
+  ---
+  duration_ms: 79.978946
+  type: 'test'
+  ...
+# Subtest: a recovery that changes the enemy field can always retry with disclosed grants
+ok 73 - a recovery that changes the enemy field can always retry with disclosed grants
+  ---
+  duration_ms: 15.212738
+  type: 'test'
+  ...
+# Subtest: every watch has a strict finite attempt limit and timeout stays recoverable by retry
+ok 74 - every watch has a strict finite attempt limit and timeout stays recoverable by retry
+  ---
+  duration_ms: 1.694644
+  type: 'test'
+  ...
+# Subtest: real engine win, loss and draw cannot silently count as lesson success
+ok 75 - real engine win, loss and draw cannot silently count as lesson success
+  ---
+  duration_ms: 0.790464
+  type: 'test'
+  ...
+# Subtest: final summary distinguishes skipped, failed, untried and completed; exit is inert
+ok 76 - final summary distinguishes skipped, failed, untried and completed; exit is inert
+  ---
+  duration_ms: 1.136303
+  type: 'test'
+  ...
+# Subtest: isolated practice cannot overwrite an existing game and uses no persistence API
+ok 77 - isolated practice cannot overwrite an existing game and uses no persistence API
+  ---
+  duration_ms: 2.825359
+  type: 'test'
+  ...
+1..77
+# tests 77
+# suites 0
+# pass 76
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1371.853232

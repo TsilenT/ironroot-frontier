@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Synthetic readability comparison · developer fixture</title>
+<style>
+@font-face{font-family:'DM Sans';src:url('../dm-sans-latin-400-700.woff2') format('woff2');font-weight:400 700}
+*{box-sizing:border-box}body{margin:0;padding:12px;background:#14231c;color:#f2ead6;font:14px 'DM Sans',sans-serif}h1{font-size:20px;margin:0 0 8px}p{max-width:900px;line-height:1.5}fieldset{display:flex;flex-wrap:wrap;gap:12px;border:1px solid #83957e;padding:10px;margin-bottom:12px}label{display:grid;gap:4px}button,select,input{min-height:44px;font:inherit;background:#243b2d;color:#fff3cf;border:1px solid #90a38a;padding:6px}input[type=checkbox]{width:24px;vertical-align:middle}label:has([type=checkbox]){display:flex;align-items:center}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffdc99}section{margin:16px 0}h2{font-size:16px}.board{width:max-content;max-width:none;border:1px solid #a7b29b}canvas{display:block}.mini{width:240px;height:50px;margin:6px 0}.grey .board{filter:grayscale(1)}output{display:block;max-width:900px;line-height:1.5}#error{color:#ffd2a4}details{max-width:900px}summary{min-height:44px;padding:10px 0;cursor:pointer}.strip{overflow:auto;max-width:100%}
+</style>
+<h1>Synthetic readability comparison</h1>
+<p>Developer-only poses, not played outcomes. Both versions receive the same engine state, camera, field size, effect age and preferences. This fixture does not test real touch or controller input, save data, balance, or performance on a physical phone.</p>
+<fieldset><legend>Match both renderers</legend>
+<label>Scene<select id="scene"><option value="roster">All five units · both teams</option><option value="dense">140 troops · effects · objectives</option><option value="placement">Valid placement · selected tower</option><option value="occupied">Occupied placement · invalid ghost</option></select></label>
+<label>Canvas CSS size (not device viewport)<select id="size"><option value="320,220">320 × 220 compact field</option><option value="390,302">390 × 302 portrait field</option><option value="844,240">844 × 240 landscape field</option><option value="1180,757">1180 × 757 desktop field</option><option value="534,190">534 × 190 practice landscape</option></select></label>
+<label>Theme<select id="theme"><option>woodland</option><option>highland</option><option>ashlands</option><option>citadel</option></select></label>
+<label>Quality<select id="quality"><option value="high">High</option><option value="low">Low</option></select></label>
+<label>Effect age<select id="phase"><option value=".2">20%</option><option value=".45" selected>45%</option><option value=".7">70%</option></select></label>
+<label><input id="motion" type="checkbox" checked>Reduced motion</label>
+<label><input id="practice" type="checkbox">Practice landscape scale</label>
+<label><input id="grey" type="checkbox">Grayscale comparison</label>
+</fieldset>
+<output id="status" aria-live="polite">Preparing comparison…</output><p id="error" role="alert"></p>
+<p id="rosterLabels">Columns, left to right: warrior, archer, siege, wizard, gryphon. Allied row above, enemy row below.</p>
+<section><h2>Frozen 0.12 renderer</h2><div class="strip"><div class="board"><canvas id="before" aria-label="Synthetic frozen renderer scene"></canvas></div></div><canvas id="beforeMini" class="mini" aria-label="Frozen renderer minimap"></canvas></section>
+<section><h2>Readability candidate</h2><div class="strip"><div class="board"><canvas id="after" aria-label="Synthetic candidate renderer scene"></canvas></div></div><canvas id="afterMini" class="mini" aria-label="Candidate renderer minimap"></canvas></section>
+<details><summary>Limits and marker key</summary><p>Allied troops use circle ground marks, enemies use diamonds. Artwork is enlarged at small scales by at most 1.65×; real positions, attack ranges and collision are unchanged. Short practice fields may still have very small units. Deliberate dense overlap is a stress case, not proof every troop is separately readable. Native gameplay and device review remain required.</p></details>
+<script type="module" src="./fixture.js"></script>
+</html>

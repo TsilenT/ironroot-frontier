@@ -4,6 +4,8 @@
  * fixed policies, with both map sides. Does not alter prices or grant resources.
  */
 import {execFileSync} from 'node:child_process';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -12,7 +14,7 @@ const ref=process.argv[2]||'db685c64ca1f7f399826348f09270fbdc5e63e86';
 const seeds=Number(process.argv[3]||10),firstSeed=Number(process.argv[4]||1);
 assert.ok(Number.isInteger(seeds)&&seeds>0&&Number.isInteger(firstSeed)&&firstSeed>=0);
 const baselineSource=ref.startsWith('file:')?await readFile(ref.slice(5),'utf8'):execFileSync('git',['show',`${ref}:dist/engine.js`],{encoding:'utf8'});
-const {Game:Baseline}=await import('data:text/javascript;base64,'+Buffer.from(baselineSource).toString('base64'));
+const {Game:Baseline}=await import(ref.startsWith('file:')?pathToFileURL(resolve(ref.slice(5))).href:'data:text/javascript;base64,'+Buffer.from(baselineSource).toString('base64'));
 const workingSource=await readFile(new URL('../dist/engine.js',import.meta.url),'utf8');
 const hash=s=>createHash('sha256').update(s).digest('hex');
 function scripted(g,side,policy){

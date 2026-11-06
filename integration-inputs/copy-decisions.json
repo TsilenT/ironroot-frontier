@@ -1,0 +1,353 @@
+{
+  "commit": "c4ae6842e70794310c6ea878b7dc6c03c46dad2b",
+  "changes": [
+    {
+      "file": "dist/app.js",
+      "old": "        ['Repeat spawn', formatSeconds(u.production.spawnTime)],",
+      "new": "        ['Training interval', formatSeconds(u.production.spawnTime)],",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;",
+      "new": "    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Upgrades</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>Overtime</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    ? 'These preferences apply only to this page and are not verified saved. ' +",
+      "new": "    ? 'These preferences apply to this page. Saving could not be confirmed. ' +",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    d.unit ? 'Auto-spawning troops' : 'Frontier building',",
+      "new": "    d.unit ? 'Trains troops automatically' : 'Frontier building',",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      ? 'RALLY STRIKE \u00b7 TAP ENEMY TROOPS'",
+      "new": "      ? 'ARROW VOLLEY \u00b7 TAP ENEMY TROOPS'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      ? 'Deals damage to enemies in a wide area.'",
+      "new": "      ? 'Damages enemy troops in a wide area.'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      'Keep this objective alive. ' + d.description;",
+      "new": "      'Keep this building standing. ' + d.description;",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      `Rally strike ready in ${Math.ceil(game.state.spellCooldown[0])} seconds.`,",
+      "new": "      `Arrow volley ready in ${Math.ceil(game.state.spellCooldown[0])} seconds.`,",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    'Three roads, 24 building sites per side. The original frontier, used by every campaign mission and field trial.',",
+      "new": "    'Three roads, 24 building sites per side. Used by campaign chapters 1\u20134 and all field trials.',",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    'Two roads, 16 building sites per side. Fewer fronts and less construction space concentrate the battle. Troop and income rules are unchanged.',",
+      "new": "    'Two roads, 16 building sites per side. Each side has less room to build. Troop and income rules are unchanged.',",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      ? 'Battle resumed. Your frontier awaits.'",
+      "new": "      ? 'Battle resumed.'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "          : 'Choose a building, then tap a green slot to raise it.',",
+      "new": "          : 'Choose a building, then tap a green slot to place it.',",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "  toast('Battle ended. Open the field guide or return to the menu.');",
+      "new": "  toast('Battle ended. Open the field guide or return to title.');",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      ? 'A WATCHFIRE BURNS BRIGHTER'\n      : 'THE ROAD IS NOT LOST'",
+      "new": "      ? 'MISSION WON'\n      : 'TRY THE MISSION AGAIN'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "        : 'ADAPT AND TRY AGAIN'",
+      "new": "        : 'TRY THE TRIAL AGAIN'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "          ? 'THE FRONTIER IS YOURS'\n          : 'EVERY DEFEAT IS A LESSON';",
+      "new": "          ? 'BATTLE WON'\n          : 'TRY ANOTHER STRATEGY';",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "          : 'Your citadel has fallen. Rebuild, adapt, return.';",
+      "new": "          : 'Your citadel fell. Try a different army or defend another lane.';",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      : 'FIGHT ANOTHER DAY <span>\u2192</span>';",
+      "new": "      : 'NEW SKIRMISH <span>\u2192</span>';",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      toast('Build within your own frontier. Drag back toward your citadel.');",
+      "new": "      toast('Build in your territory. Drag back toward your citadel.');",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "      toast('Rally strike unleashed.');",
+      "new": "      toast('Arrow volley fired.');",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "        ? 'OVERTIME<small>FASTER WAVES \u00b7 STRONGER SIEGE</small>'",
+      "new": "        ? 'OVERTIME<small>FASTER WAVES \u00b7 MORE STRUCTURE DAMAGE</small>'",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "        : 'ENTER THE FRONTIER <span>\u2192</span>';",
+      "new": "        : 'BEGIN SKIRMISH <span>\u2192</span>';",
+      "action": "applied"
+    },
+    {
+      "file": "dist/app.js",
+      "old": "    p.textContent = history.ok ? 'Your completed battles will appear here.' : 'No previously verified history is available in this tab.';",
+      "new": "    p.textContent = history.ok ? 'Completed battles appear here.' : 'No previously verified history is available in this tab.';",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "      content=\"Build your frontier. Raise an army. Turn the tide. A playable strategy tug-of-war.\"",
+      "new": "      content=\"Build an army, defend your citadel and fight across the frontier in this real-time strategy game.\"",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          <span>PAUSED</span><small>Take a breath. Plan your next move.</small",
+      "new": "          <span>PAUSED</span><small>Resume when you\u2019re ready.</small",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            ><button id=\"help\" class=\"text-button\" aria-label=\"How to play\">",
+      "new": "            ><button id=\"help\" class=\"text-button\" aria-label=\"Open field guide\">",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <span class=\"rally-icon\">\u2726</span><b>Rally strike</b\n            ><small>Break an enemy push</small",
+      "new": "            <span class=\"rally-icon\">\u2726</span><b>Arrow volley</b\n            ><small>Area damage to troops</small",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          Build your line. Raise an army.<br />Turn the tide.",
+      "new": "          Build your army and break through<br />to the enemy citadel.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          ENTER THE FRONTIER <span>\u2192</span>",
+      "new": "          BEGIN SKIRMISH <span>\u2192</span>",
+      "action": "skipped: changed context or no unique literal"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          <a class=\"text-button training-link\" id=\"welcomeTraining\" href=\"./training.html\" aria-label=\"Guided practice. Learn without changing your saved battle\">New commander? Guided practice \u2192</a>",
+      "new": "          <a class=\"text-button training-link\" id=\"welcomeTraining\" href=\"./training.html\" aria-label=\"Learn to play with guided practice. Your saved battle stays untouched\">Learn to play \u2192</a>",
+      "action": "skipped: changed context or no unique literal"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            Read the field guide</button",
+      "new": "            Field guide</button",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            Preferences & sound",
+      "new": "            Preferences",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "        <h2 id=\"guideTitle\">Win the ground war.</h2>",
+      "new": "        <h2 id=\"guideTitle\">How to play</h2>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          Destroy the enemy citadel. Your buildings raise troops automatically,\n          so your job is the plan.",
+      "new": "          Destroy the enemy citadel. Build and upgrade your army\u2019s buildings;\n          your troops march and fight automatically.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <h3>Build the engine</h3>",
+      "new": "            <h3>Build your army</h3>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <h3>Make a mixed army</h3>",
+      "new": "            <h3>Combine troop types</h3>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "              Stack producers behind a push or spread out to divide the enemy.",
+      "new": "              Build several troop buildings in one lane, or spread them across lanes.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <h3>Turn the tide</h3>",
+      "new": "            <h3>Support your troops</h3>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "              invest in Gold mines, or use a Rally strike to thin enemy troops.",
+      "new": "              invest in gold mines, or use a arrow volley to thin enemy troops.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          1\u20137 buildings \u00b7 R strike \u00b7 Space pause \u00b7 Esc cancel \u00b7 Arrow keys pan",
+      "new": "          1\u20137 buildings \u00b7 R volley \u00b7 Space pause \u00b7 Esc cancel \u00b7 Arrow keys pan",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          HUD focus, Y arms Rally, Start pauses. D-pad navigates controls. LT",
+      "new": "          HUD focus, Y arms Arrow volley, Start pauses. D-pad navigates controls. LT",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            ><small>Know your army. Know the tradeoffs.</small>",
+      "new": "            ><small>Stats, counters and costs</small>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "              statistics and income rules stay the same. Campaign and field\n              trials use Classic.",
+      "new": "              statistics and income rules stay the same. Chapters 1\u20134 and field trials use Classic. Chapter 5 also uses\n              Long March and Twin Span.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <h3 class=\"codex-heading\">The fighting force</h3>",
+      "new": "            <h3 class=\"codex-heading\">Troops</h3>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            <h3 class=\"codex-heading\">Hold the ground. Fund the war.</h3>",
+      "new": "            <h3 class=\"codex-heading\">Towers &amp; mines</h3>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "        <button id=\"guideDone\" class=\"gold-button\">Ready to command</button>",
+      "new": "        <button id=\"guideDone\" class=\"gold-button\">Close field guide</button>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "        <div class=\"eyebrow\">MAKE THE FRONTIER YOURS</div>",
+      "new": "        <div class=\"eyebrow\">GAME SETTINGS</div>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            ><span>Music<small>Original adaptive frontier score</small></span",
+      "new": "            ><span>Music<small>Music that follows the battle</small></span",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            ><span>Reduced motion<small>No shake or flying debris</small></span",
+      "new": "            ><span>Reduced motion<small>Disable screen shake and flying debris</small></span",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            ><span>Effect detail<small>Lower on slower devices</small></span",
+      "new": "            ><span>Effect detail<small>Choose Low for slower devices</small></span",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            X: HUD focus \u00b7 Y: rally \u00b7 LB/RB: buildings \u00b7 D-pad: navigate",
+      "new": "            X: HUD focus \u00b7 Y: arrow volley \u00b7 LB/RB: buildings \u00b7 D-pad: navigate",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            In menus, use the stick or D-pad to focus and A to activate.",
+      "new": "            In menus, use the stick or D-pad to select a control, then press A.",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "            Ironroot Frontier uses original code-authored 2D battlefield art and\n            an original procedural score. Barlow Condensed and DM Sans are",
+      "new": "            Ironroot Frontier\u2019s original 2D art and music are generated by code. Barlow Condensed and DM Sans are",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          Back to the frontier",
+      "new": "          Close preferences",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "        <div class=\"eyebrow\" id=\"resultEyebrow\">THE FRONTIER IS YOURS</div>",
+      "new": "        <div class=\"eyebrow\" id=\"resultEyebrow\">BATTLE WON</div>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          FIGHT ANOTHER DAY <span>\u2192</span></button",
+      "new": "          NEW SKIRMISH <span>\u2192</span></button",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "        <div class=\"eyebrow\">A NEW CHAPTER FROM YOUR FILE</div>",
+      "new": "        <div class=\"eyebrow\">SAVE BACKUP</div>",
+      "action": "applied"
+    },
+    {
+      "file": "dist/index.html",
+      "old": "          This replaces all campaign stars, trial records, preferences, battle\n          history and the saved battle on this browser. Your current battle will\n          be replaced. Export a backup first if you want to keep it.",
+      "new": "          This replaces this browser\u2019s campaign stars, trial records, preferences,\n          battle history and saved battle, including your current battle.\n          Export a backup first to keep your current progress.",
+      "action": "applied"
+    }
+  ]
+}

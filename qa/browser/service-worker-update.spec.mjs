@@ -4,7 +4,7 @@ import {createCampaignProgress} from '../../dist/campaign.js';
 import {BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
 import {test,press,tapPoint,selectMap,homePoint,pause} from './map-browser-helpers.mjs';
 import {FONT_FILES,loadFontFaces,normalizeNotice} from './font-browser-helpers.mjs';
-import {PRIOR_BUILDS,currentRoot,shellManifest} from './update-fixtures.mjs';
+import {PRIOR_BUILDS,currentRoot,shellManifest,candidateIdentity,requireDistinctUpgrade} from './update-fixtures.mjs';
 import {updateAndAwaitController} from './worker-update-helpers.mjs';
 
 async function profileBytes(page){
@@ -23,11 +23,11 @@ async function fetchShellHashes(page,basePath,hashes){
   },{basePath,files:Object.keys(hashes)});
 }
 
-for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+from+' to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline',async ({page,context,request},testInfo)=>{
+for(const [from,{root:priorRoot,label}] of Object.entries(PRIOR_BUILDS))test('real '+label+' to candidate service-worker update preserves Classic progress then plays a new map with fonts offline',async ({page,context,request},testInfo)=>{
   // A measured Chromium update job took ~62s before resolving. Keep that
   // browser-controlled scheduling separate from the bounded claim phase.
   test.setTimeout(150000);
-  const prior=await shellManifest(priorRoot),current=await shellManifest(currentRoot);
+  const prior=await shellManifest(priorRoot),current=await candidateIdentity();requireDistinctUpgrade(prior,current);
   // Both prior builds reference Google Fonts. Block only those external services;
   // both application shells and worker installs use the real loopback server.
   await context.route(/^https:\/\/fonts\.(?:googleapis|gstatic)\.com\//,route=>route.abort());
@@ -60,7 +60,7 @@ for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+f
     expect(await profileBytes(page)).toEqual(before);
     await context.setOffline(true);fromWorker.clear();
     const updated=await page.reload({waitUntil:'load'});expect(updated?.fromServiceWorker()).toBe(true);
-    await expect(page.locator('#mapPicker')).toBeVisible();await expect(page.locator('#resumeSaved')).toContainText('RESUME BATTLE');
+    await expect(page.locator('#campaignConfig')).toBeVisible();await expect(page.locator('#resumeSaved')).toContainText('RESUME BATTLE');
     expect(await profileBytes(page)).toEqual(before);
     // SHA-256 every installed shell entry through the active worker while
     // offline. This catches missing or old app/engine/render/CSS/font bytes,
@@ -74,7 +74,7 @@ for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+f
     expect(resumed.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level])).toEqual(classic.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]));
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(classic.game.state.time);
     await press(page,'#saveExit');await selectMap(page,'twin-span');await press(page,'#start');
-    const fresh=await pause(page);expect(fresh.game).toMatchObject({version:2,mapId:'twin-span',mapRevision:1});
+    const fresh=await pause(page);expect(fresh.game).toMatchObject({version:3,mapId:'twin-span',mapRevision:1,rulesetId:'frontier-rootwarden-open',rulesetRevision:1});
     await press(page,'#saveExit');await page.reload();await expect(page.locator('#resumeSaved')).toContainText('TWIN SPAN');
     await press(page,'#resumeSaved');expect((await pause(page)).game.mapId).toBe('twin-span');await press(page,'#saveExit');
     const after=await profileBytes(page);
