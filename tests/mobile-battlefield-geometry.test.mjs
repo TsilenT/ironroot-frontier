@@ -9,7 +9,7 @@ import {layout,css,portrait,token,box} from './mobile-layout-fixture.mjs';
 
 test('one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world',()=>{
   assert.deepEqual(['header','dock','navigation'].map(k=>token(portrait,k)),[72,84,96]);
-  for(const [w,h,insets]of [[320,480,{}],[390,500,{}],[320,568,{}],[390,500,{bottom:34}],[568,320,{}],[640,360,{}],[844,390,{}]]){
+  for(const [w,h,insets]of [[320,430,{}],[667,300,{}],[740,320,{}],[393,659,{}],[920,420,{}],[320,480,{}],[390,500,{}],[320,568,{}],[390,500,{bottom:34}],[568,320,{}],[640,360,{}],[844,390,{}]]){
     const g=layout(w,h,insets);assert.deepEqual(inspectMobileGeometry(g),{safe:true,reason:''},`${w}x${h} ${JSON.stringify(insets)}`);
     installCanvas();const r=makeRenderer(Renderer,g.canvas.width,g.canvas.height);
     for(const mission of CAMPAIGN_MISSIONS.filter(m=>m.protectedTargets.length)){
@@ -25,8 +25,10 @@ test('one source-derived budget supports short portrait and reviewed landscape w
     }
   }
 });
+// Former 568×300 and 320×440 holds now fit by reclaiming HUD space.
+// These negatives retain the same guard with actual undersized world/overflow.
 test('insufficient geometry pauses instead of imposing an arbitrary portrait height rule',()=>{
-  for(const [w,h,insets]of [[568,300,{}],[568,280,{}],[320,440,{}],[320,480,{bottom:34}],[320,200,{}],[320,160,{}]])assert.equal(inspectMobileGeometry(layout(w,h,insets)).safe,false,`${w}x${h}`);
+  for(const [w,h,insets]of [[568,240,{}],[568,210,{}],[320,400,{}],[320,430,{bottom:34}],[320,200,{}],[320,160,{}]])assert.equal(inspectMobileGeometry(layout(w,h,insets)).safe,false,`${w}x${h}`);
   assert.equal(inspectMobileGeometry(layout(320,480)).safe,true);
   assert.equal(inspectMobileGeometry(layout(390,500,{bottom:34})).safe,true);
 });

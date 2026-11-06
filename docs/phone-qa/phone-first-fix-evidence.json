@@ -1,0 +1,1004 @@
+[
+  {
+    "at": "2026-11-06T21:02:40.076Z",
+    "size": "390x650",
+    "syntheticVisual": "native",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 390,
+      "bottom": 650,
+      "width": 390,
+      "height": 650
+    },
+    "appClass": "app protected-portrait protected-mobile mobile-ordinary protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 72,
+      "right": 390,
+      "bottom": 498,
+      "width": 390,
+      "height": 426,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 72,
+        "width": 390,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets03:00 remaining",
+        "left": 0,
+        "top": 498,
+        "right": 390,
+        "bottom": 554,
+        "width": 390,
+        "height": 56,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 0,
+        "top": 554,
+        "right": 390,
+        "bottom": 650,
+        "width": 390,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 196,
+        "top": 556,
+        "right": 240,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 244,
+        "top": 556,
+        "right": 288,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 292,
+        "top": 556,
+        "right": 336,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 340,
+        "top": 556,
+        "right": 384,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 6,
+        "top": 604,
+        "right": 50,
+        "bottom": 648,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 340,
+        "top": 604,
+        "right": 384,
+        "bottom": 648,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 54,
+        "top": 604,
+        "right": 336,
+        "bottom": 648,
+        "width": 282,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 6,
+        "top": 556,
+        "right": 62,
+        "bottom": 600,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:00",
+    "scroll": {
+      "width": 390,
+      "height": 650
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  },
+  {
+    "at": "2026-11-06T21:02:40.658Z",
+    "size": "390x650",
+    "syntheticVisual": "clip",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 390,
+      "bottom": 600,
+      "width": 390,
+      "height": 600
+    },
+    "appClass": "app protected-portrait protected-mobile mobile-ordinary protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 72,
+      "right": 390,
+      "bottom": 448,
+      "width": 390,
+      "height": 376,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 72,
+        "width": 390,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets02:59 remaining",
+        "left": 0,
+        "top": 448,
+        "right": 390,
+        "bottom": 504,
+        "width": 390,
+        "height": 56,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 0,
+        "top": 504,
+        "right": 390,
+        "bottom": 600,
+        "width": 390,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 196,
+        "top": 506,
+        "right": 240,
+        "bottom": 550,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 244,
+        "top": 506,
+        "right": 288,
+        "bottom": 550,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 292,
+        "top": 506,
+        "right": 336,
+        "bottom": 550,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 340,
+        "top": 506,
+        "right": 384,
+        "bottom": 550,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 6,
+        "top": 554,
+        "right": 50,
+        "bottom": 598,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 340,
+        "top": 554,
+        "right": 384,
+        "bottom": 598,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 54,
+        "top": 554,
+        "right": 336,
+        "bottom": 598,
+        "width": 282,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 6,
+        "top": 506,
+        "right": 62,
+        "bottom": 550,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:01",
+    "scroll": {
+      "width": 390,
+      "height": 650
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  },
+  {
+    "at": "2026-11-06T21:02:41.307Z",
+    "size": "390x650",
+    "syntheticVisual": "offset",
+    "viewport": {
+      "left": 0,
+      "top": 1,
+      "right": 390,
+      "bottom": 650,
+      "width": 390,
+      "height": 649
+    },
+    "appClass": "app protected-portrait protected-mobile mobile-ordinary protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 73,
+      "right": 390,
+      "bottom": 498,
+      "width": 390,
+      "height": 425,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 0,
+        "top": 1,
+        "right": 390,
+        "bottom": 73,
+        "width": 390,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets02:59 remaining",
+        "left": 0,
+        "top": 498,
+        "right": 390,
+        "bottom": 554,
+        "width": 390,
+        "height": 56,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 0,
+        "top": 554,
+        "right": 390,
+        "bottom": 650,
+        "width": 390,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 196,
+        "top": 556,
+        "right": 240,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 244,
+        "top": 556,
+        "right": 288,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 292,
+        "top": 556,
+        "right": 336,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 340,
+        "top": 556,
+        "right": 384,
+        "bottom": 600,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 6,
+        "top": 604,
+        "right": 50,
+        "bottom": 648,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 340,
+        "top": 604,
+        "right": 384,
+        "bottom": 648,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 54,
+        "top": 604,
+        "right": 336,
+        "bottom": 648,
+        "width": 282,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 6,
+        "top": 556,
+        "right": 62,
+        "bottom": 600,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:01",
+    "scroll": {
+      "width": 390,
+      "height": 650
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  },
+  {
+    "at": "2026-11-06T21:02:41.891Z",
+    "size": "390x650",
+    "syntheticVisual": "both",
+    "viewport": {
+      "left": 0,
+      "top": 10,
+      "right": 390,
+      "bottom": 610,
+      "width": 390,
+      "height": 600
+    },
+    "appClass": "app protected-portrait protected-mobile mobile-ordinary protected-compact",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 82,
+      "right": 390,
+      "bottom": 458,
+      "width": 390,
+      "height": 376,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 0,
+        "top": 10,
+        "right": 390,
+        "bottom": 82,
+        "width": 390,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets02:58 remaining",
+        "left": 0,
+        "top": 458,
+        "right": 390,
+        "bottom": 514,
+        "width": 390,
+        "height": 56,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 0,
+        "top": 514,
+        "right": 390,
+        "bottom": 610,
+        "width": 390,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 196,
+        "top": 516,
+        "right": 240,
+        "bottom": 560,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 244,
+        "top": 516,
+        "right": 288,
+        "bottom": 560,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 292,
+        "top": 516,
+        "right": 336,
+        "bottom": 560,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 340,
+        "top": 516,
+        "right": 384,
+        "bottom": 560,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 6,
+        "top": 564,
+        "right": 50,
+        "bottom": 608,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 340,
+        "top": 564,
+        "right": 384,
+        "bottom": 608,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 54,
+        "top": 564,
+        "right": 336,
+        "bottom": 608,
+        "width": 282,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 6,
+        "top": 516,
+        "right": 62,
+        "bottom": 560,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:02",
+    "scroll": {
+      "width": 390,
+      "height": 650
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  },
+  {
+    "at": "2026-11-06T21:03:01.074Z",
+    "size": "667x300",
+    "syntheticVisual": "native",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 667,
+      "bottom": 300,
+      "width": 667,
+      "height": 300
+    },
+    "appClass": "app protected-mobile mobile-ordinary protected-compact protected-landscape protected-sidebar",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 0,
+      "right": 391,
+      "bottom": 300,
+      "width": 391,
+      "height": 300,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 391,
+        "top": 0,
+        "right": 667,
+        "bottom": 72,
+        "width": 276,
+        "height": 72,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets02:39 remaining",
+        "left": 391,
+        "top": 72,
+        "right": 667,
+        "bottom": 204,
+        "width": 276,
+        "height": 132,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 391,
+        "top": 204,
+        "right": 667,
+        "bottom": 300,
+        "width": 276,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 473,
+        "top": 206,
+        "right": 517,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 521,
+        "top": 206,
+        "right": 565,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 569,
+        "top": 206,
+        "right": 613,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 617,
+        "top": 206,
+        "right": 661,
+        "bottom": 250,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 397,
+        "top": 254,
+        "right": 441,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 617,
+        "top": 254,
+        "right": 661,
+        "bottom": 298,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 445,
+        "top": 254,
+        "right": 613,
+        "bottom": 298,
+        "width": 168,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 397,
+        "top": 206,
+        "right": 453,
+        "bottom": 250,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:21",
+    "scroll": {
+      "width": 667,
+      "height": 300
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  },
+  {
+    "at": "2026-11-06T21:03:01.727Z",
+    "size": "390x430",
+    "syntheticVisual": "native",
+    "viewport": {
+      "left": 0,
+      "top": 0,
+      "right": 390,
+      "bottom": 430,
+      "width": 390,
+      "height": 430
+    },
+    "appClass": "app protected-mobile mobile-ordinary protected-compact protected-portrait protected-short-portrait",
+    "canvas": {
+      "id": "battle",
+      "label": "Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore.",
+      "left": 0,
+      "top": 48,
+      "right": 390,
+      "bottom": 290,
+      "width": 390,
+      "height": 242,
+      "visible": true
+    },
+    "regions": [
+      {
+        "id": "topbar",
+        "label": "♜IRONROOTF R O N T I E R\n        \n          \n          CAMPAIGN\n          /",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 48,
+        "width": 390,
+        "height": 48,
+        "visible": true
+      },
+      {
+        "id": "protectedDock",
+        "label": "EASY · MISSION\n          0/1 targets02:38 remaining",
+        "left": 0,
+        "top": 290,
+        "right": 390,
+        "bottom": 334,
+        "width": 390,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "protectedNavigation",
+        "label": "Battle controls",
+        "left": 0,
+        "top": 334,
+        "right": 390,
+        "bottom": 430,
+        "width": 390,
+        "height": 96,
+        "visible": true
+      }
+    ],
+    "controls": [
+      {
+        "id": "pause",
+        "label": "Pause game",
+        "left": 196,
+        "top": 336,
+        "right": 240,
+        "bottom": 380,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "speed",
+        "label": "Change battle speed",
+        "left": 244,
+        "top": 336,
+        "right": 288,
+        "bottom": 380,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "sound",
+        "label": "Mute audio",
+        "left": 292,
+        "top": 336,
+        "right": 336,
+        "bottom": 380,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "settings",
+        "label": "Open preferences",
+        "left": 340,
+        "top": 336,
+        "right": 384,
+        "bottom": 380,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "home",
+        "label": "Go to your base",
+        "left": 6,
+        "top": 384,
+        "right": 50,
+        "bottom": 428,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "front",
+        "label": "Follow the frontline",
+        "left": 340,
+        "top": 384,
+        "right": 384,
+        "bottom": 428,
+        "width": 44,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "minimap",
+        "label": "Map overview. Tap to move the camera.",
+        "left": 54,
+        "top": 384,
+        "right": 336,
+        "bottom": 428,
+        "width": 282,
+        "height": 44,
+        "visible": true
+      },
+      {
+        "id": "compactBuild",
+        "label": "Open building controls",
+        "left": 6,
+        "top": 336,
+        "right": 62,
+        "bottom": 380,
+        "width": 56,
+        "height": 44,
+        "visible": true
+      }
+    ],
+    "geometry": {
+      "safe": true,
+      "reason": ""
+    },
+    "modal": {
+      "visible": false,
+      "title": "Battle paused for screen size",
+      "reason": "Rotate your device or enlarge the window. Your battle stays paused.",
+      "resumeDisabled": true
+    },
+    "time": "00:22",
+    "scroll": {
+      "width": 390,
+      "height": 430
+    },
+    "localStorageIsMemory": true,
+    "sharedProfileExact": true
+  }
+]

@@ -1,4 +1,4 @@
-import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from './mobile-battlefield.js';
+import { createViewportPause, inspectMobileGeometry, visibleViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
 import {
@@ -994,16 +994,22 @@ function syncProtectedLayout() {
   const protect = protectedControls.size > 0;
   const landscape = !!window.matchMedia?.('(max-height: 500px) and (orientation: landscape)').matches;
   const portrait = !!window.matchMedia?.('(max-width: 700px) and (orientation: portrait)').matches;
-  const next = landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary';
+  const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
+  const sidebar = landscape && viewport.height < 360;
+  const shortPortrait = portrait && viewport.height < 560;
+  const next = sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary';
+  const fitted = fitMobileViewport($('app'), viewport, landscape || portrait);
   const changed = mobileLayout !== next;
   const focused = document.activeElement;
-  if (changed) {
+  if (changed || fitted) {
     interruptMobileInput();
     setCompactBuildOpen(false);
   }
   mobileLayout = next;
   $('app').classList.toggle('protected-landscape', landscape);
   $('app').classList.toggle('protected-portrait', portrait);
+  $('app').classList.toggle('protected-sidebar', sidebar);
+  $('app').classList.toggle('protected-short-portrait', shortPortrait);
   $('app').classList.toggle('protected-mobile', landscape || portrait);
   $('app').classList.toggle('mobile-ordinary', !protect);
   $('app').classList.toggle('protected-compact', landscape || portrait);
@@ -1020,13 +1026,14 @@ function syncProtectedLayout() {
   move('battleTop', landscape || portrait ? 'topbar' : 'battlefield');
   move('battleTools', landscape || portrait ? 'protectedNavigation' : 'battlefield');
   move('mapControls', landscape || portrait ? 'protectedNavigation' : 'battlefield');
-  const buildParent = portrait ? $('protectedNavigation') : $('objectiveHUD');
-  const buildNext = portrait ? $('battleTools') : $('protectedTargets');
+  const buildParent = portrait || sidebar ? $('protectedNavigation') : $('objectiveHUD');
+  const buildNext = portrait || sidebar ? $('battleTools') : $('protectedTargets');
   if ($('compactBuild').parentNode !== buildParent || $('compactBuild').nextSibling !== buildNext)
     buildParent.insertBefore($('compactBuild'), buildNext);
   move('selectionPanel', landscape || portrait ? 'commandDeck' : 'battlefield');
   updateCompactBuildControl();
-  if (changed) {
+  if (changed || fitted) {
+    renderer.resize();
     syncInputScope();
     if (focused?.isConnected && !focused.closest('.hidden,[inert]') && focused.getClientRects().length) focused.focus({preventScroll:true});
   }
@@ -2486,6 +2493,13 @@ function syncViewportSafety() {
   if (!relevant) return;
   const mobile = $('app').classList.contains('protected-mobile');
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
+  // Fit before measuring. A safe viewport move still invalidates held gestures:
+  // their old canvas-local coordinates must never place or pan in the new rect.
+  if (fitMobileViewport($('app'), viewport, mobile)) {
+    interruptMobileInput();
+    syncProtectedLayout();
+    renderer.resize();
+  }
   const panel = $('viewportModal');
   panel.style.left = `${viewport.left}px`; panel.style.top = `${viewport.top}px`;
   panel.style.width = `${viewport.width}px`; panel.style.height = `${viewport.height}px`;
