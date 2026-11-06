@@ -1,5 +1,6 @@
 // Real DOM/input/persistence checks. Only the standard Gamepad API is mocked.
 import {expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
 import {Game} from '../../dist/engine.js';
 import {test,press,selectMap,saved,seedOnce,homePoint,tapPoint} from './map-browser-helpers.mjs';
 import {installPad,padButton} from './map-controller-helpers.mjs';
@@ -144,4 +145,47 @@ test('viewport interruption closes restart and keeps its resume latch and checkp
   await page.setViewportSize(size);await expect(page.locator('#viewportResume')).toBeEnabled();
   await page.keyboard.press('Escape');await expect(page.locator('#viewportModal')).toBeVisible();expect(await raw(page)).toEqual(before);
   await press(page,'#viewportResume');await expect(page.locator('#pauseVeil')).toBeHidden();
+});
+
+for(const close of ['Done','Escape'])test(`direct Options opened during play returns focus to settings via ${close}`,async({page})=>{
+  await start(page);await press(page,'#settings');await expect(page.locator('#settingsDone')).toHaveText('Resume battle');
+  if(close==='Done')await press(page,'#settingsDone');else await page.keyboard.press('Escape');
+  await expect(page.locator('#settingsModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#settings')).toBeFocused();
+  await page.keyboard.press('Space');await expect(page.locator('#settingsModal')).toBeVisible();
+  await page.keyboard.press('Escape');await expect(page.locator('#settings')).toBeFocused();
+});
+
+for(const boundary of ['after verified checkpoint','after ownership recheck'])test(`restart preserves a newer checkpoint injected ${boundary}`,async({page,context})=>{
+  await start(page);await page.waitForTimeout(1100);await pause(page);await press(page,'#restartBattle');
+  const before=await raw(page),time=await page.locator('#time').textContent();
+  const newer=JSON.stringify(encodeBattle(new Game({mapId:'long-march',seed:912,ai:false}),scenarioForBattle(null,null)));
+  const client=await context.newCDPSession(page);await client.send('Debugger.enable');
+  const source=await readFile(new URL('../../dist/app.js',import.meta.url),'utf8');
+  const line=source.split('\n').findIndex(text=>boundary==='after verified checkpoint'
+    ? text.includes('start(candidate, currentChallenge, currentCampaign, { fresh: true })') : text.includes('beginBattleReport(!!restored && !fresh)'));
+  expect(line).toBeGreaterThan(0);
+  const {breakpointId}=await client.send('Debugger.setBreakpointByUrl',{url:new URL('app.js',page.url()).href,lineNumber:line});
+  const stopped=new Promise(resolve=>client.once('Debugger.paused',resolve));const activation=press(page,'#confirmRestart');
+  try {
+    const event=await stopped;
+    // Pause production code after writeBattle succeeds. A CDP storage write
+    // supplies the precise interleaving of another tab's write; app state,
+    // ownership handlers and the production module are unchanged.
+    const result=await client.send('Debugger.evaluateOnCallFrame',{callFrameId:event.callFrames[0].callFrameId,returnByValue:true,
+      expression:`(() => { const checkpoint=localStorage.getItem(${JSON.stringify(SAVE)}); localStorage.setItem(${JSON.stringify(SAVE)},${JSON.stringify(newer)}); return checkpoint; })()`,
+    });
+    const verified=JSON.parse(result.result.value);expect(verified.game.state.time).toBe(0);
+    expect(verified.game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);expect(result.result.value).not.toBe(before[SAVE]);
+  } finally {await client.send('Debugger.removeBreakpoint',{breakpointId});await client.send('Debugger.resume');}
+  await activation;await client.detach();expect((await raw(page))[SAVE]).toBe(newer);
+  expect(await domains(page)).toEqual(Object.fromEntries(DOMAINS.map(key=>[key,before[key]])));
+  if(boundary==='after verified checkpoint'){
+    await expect(page.locator('#restartModal')).toBeVisible();await expect(page.locator('#restartStatus')).toContainText('checkpoint changed');
+    await expect(page.locator('#time')).toHaveText(time);await press(page,'#cancelRestart');
+  } else {
+    // Another tab's native storage event is queued behind synchronous start.
+    await page.evaluate(key=>window.dispatchEvent(new StorageEvent('storage',{key})),SAVE);await expect(page.locator('#pauseVeil')).toBeVisible();
+  }
+  await page.waitForTimeout(160);expect((await raw(page))[SAVE]).toBe(newer);await expect(page.locator('#restartBattle')).toBeDisabled();
+  await press(page,'#saveExit');await expect(page.locator('#resumeSaved')).toContainText('LONG MARCH');expect((await raw(page))[SAVE]).toBe(newer);
 });
