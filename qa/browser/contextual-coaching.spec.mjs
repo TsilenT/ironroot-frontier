@@ -102,13 +102,10 @@ test('a fresh suggested army earns a real win and Continue opens the next teachi
   test.skip(testInfo.project.name!=='desktop','One complete real-time route; touch paid construction is covered separately.');
   test.setTimeout(110000);
   await fresh(page);await press(page,'#coachingPlan');
-  // Public controls only. Bring each recommended site to the center and tap it.
-  for(const type of ['barracks','archery']){
-    await press(page,`[data-type="${type}"]`);
-    const r=await page.locator('#battle').boundingBox(),scale=Math.max(.32,r.height/900);
-    await page.mouse.click(r.x+r.width/2,r.y+r.height/2+18*scale);
-    await expect(page.locator('#toast')).toContainText('raised');
-  }
+  // The documented renderer transform includes camera clamping on wide views.
+  // These are the independently verified opening suggestions, paid through UI.
+  await place(page,'barracks',970);
+  await place(page,'archery',830);
   await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Follow your army');
   await press(page,'#coachResume');await press(page,'#speed');await press(page,'#speed');
   await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE',{timeout:95000});
@@ -117,9 +114,15 @@ test('a fresh suggested army earns a real win and Continue opens the next teachi
   await press(page,'#playAgain');await expect(page.locator('#campaignMissionTitle')).toHaveText('Forked Road');
   await press(page,'#start');await expect(page.locator('#coachingTitle')).toHaveText('Plan for both roads');
   expect((await saved(page)).game.state.time).toBe(0);
+  await press(page,'#coachingPlan');
+  await place(page,'barracks',970,340);await press(page,'#cancelBuild');
+  await place(page,'barracks',970,560);await press(page,'#cancelBuild');
+  await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Build a gold mine');
+  await expect(page.locator('#gold')).toHaveText('330');
+  await expect(page.locator('#time')).toHaveText('00:00');
 });
 
-test('teaching dialog, real controls and a centered suggestion are visible at the current viewport',async({page},testInfo)=>{
+test('teaching dialog, real controls and a suggestion are visible at the current viewport',async({page},testInfo)=>{
   await fresh(page);
   const dialog=page.locator('#coachingModal [role="dialog"]');
   const r=await dialog.boundingBox(),v=page.viewportSize();expect(r.x).toBeGreaterThanOrEqual(0);expect(r.y).toBeGreaterThanOrEqual(0);expect(r.y+r.height).toBeLessThanOrEqual(v.height);

@@ -122,65 +122,69 @@ export function campaignCoach(game, id, choice = {}) {
   const build = (type, title, text, preferredLane = null) => {
     const recommendation = recommendCampaignSite(game, type, preferredLane);
     const selected = choice.build === type;
-    return { key: `build-${type}`, buildType: type, title,
+    return { key: `build-${type}`, buildType: type, preferredLane, title,
       text: selected ? (recommendation.site
         ? `The gold ring suggests ${recommendation.road}. ${recommendation.explanation} Other green sites remain available.`
         : recommendation.reason) : text,
       control: `[data-type="${type}"]`, site: selected ? recommendation.site : null };
   };
-  // Respect a different composition: explain the selected tool without forcing
-  // the suggested purchase, site, sequence, or a tutorial completion flag.
-  if (choice.build && Object.hasOwn(definitions, choice.build)) {
-    const result = build(choice.build, `Place ${definitions[choice.build].name}`, '');
-    return result;
-  }
-  if (id === 'first-watch') {
-    if (!own.some(b => b.type === 'barracks'))
-      return build('barracks', 'Build a barracks', 'Choose Barracks, then a green site. Warriors will march out on their own.');
-    if (!own.some(b => b.type === 'archery'))
-      return build('archery', 'Add archers', 'Choose Archery and place it behind your barracks. Archers fire from behind your warriors.');
-    return { key: 'front', title: 'Follow your army', text: 'Use Front to follow your troops. Clear the marked enemy barracks to win.', control: '#front' };
-  }
-  if (id === 'forked-road') {
-    const uncovered = game.map.lanes.findIndex((_, lane) => !own.some(b => b.lane === lane && definitions[b.type]?.unit));
-    if (uncovered >= 0)
-      return build('barracks', uncovered === 0 ? 'Cover the first road' : 'Cover the other road',
-        'Build troops on both roads. A barracks is a good start; archers can support it.', uncovered);
-    if (!own.some(b => b.type === 'mint'))
-      return build('mint', 'Build a gold mine', 'A mine adds 2.5 gold per second. Place it behind your troops.');
-    if (!own.some(b => b.type === 'watchtower'))
-      return build('watchtower', 'Hold a road', 'A watchtower fires at nearby enemies. Put it ahead of production; it cannot clear a distant camp on its own.');
-    return { key: 'roads', title: 'Watch both roads', text: 'Use the minimap to check each road. Keep troops moving toward both marked barracks.', control: '#front' };
-  }
-  if (id === 'emberwatch') {
-    if (!own.some(b => b.type === 'barracks'))
-      return build('barracks', 'Raise a barracks', 'Choose Barracks below, then a green site. Warriors spawn and march on their own.');
-    if (!own.some(b => b.type === 'archery'))
-      return build('archery', 'Add ranged support', 'Your barracks already sends warriors. Choose Archery below, then place it behind the barracks.');
-    return { key: 'front', title: 'Follow your army', text: 'Troops march and fight on their own. Use Front to follow them toward the gold-marked target. Keep building while they advance.', control: '#front' };
-  }
-  if (id === 'three-roads') {
-    if (!own.some(b => b.type === 'watchtower'))
-      return build('watchtower', 'A new option: watchtower', 'A watchtower holds nearby ground. Choose it below to try one, then send troops down both outer roads.');
-    return { key: 'roads', title: 'Check both roadblocks', text: 'Drag the battlefield or tap the minimap to look ahead. Build troops on each outer road to reach both marked barracks.', control: '#front' };
-  }
-  if (id === 'winter-stores') {
-    if (own.filter(b => b.type === 'mint').length < 3)
-      return build('mint', 'A new option: gold mine', 'Two marked mines are already working. Add a third mine, then upgrade mines to reach 15 gold/sec. Keep the marked mines alive.');
-    if (currentIncome(game) < 15) {
-      const mine = own.filter(b => b.type === 'mint' && b.level < 3).sort((a,b) => a.level - b.level)[0];
-      if (mine) return { key: `upgrade-${mine.id}`, title: 'Grow your income', text: choice.selected === mine.id
-        ? 'Choose Upgrade in the building details. It costs the displayed gold and increases this mine’s income.'
-        : 'Tap the gold-ringed mine, then choose Upgrade. Aim for 15 gold/sec before the deadline.', control: choice.selected === mine.id ? '#upgrade' : '#battle', buildingId: mine.id };
+  const goal = () => {
+    if (id === 'first-watch') {
+      if (!own.some(b => b.type === 'barracks'))
+        return build('barracks', 'Build a barracks', 'Choose Barracks, then a green site. Warriors will march out on their own.');
+      if (!own.some(b => b.type === 'archery'))
+        return build('archery', 'Add archers', 'Choose Archery and place it behind your barracks. Archers fire from behind your warriors.');
+      return { key: 'front', title: 'Follow your army', text: 'Use Front to follow your troops. Clear the marked enemy barracks to win.', control: '#front' };
     }
-    return { key: 'protect', title: 'Keep the supply mines alive', text: 'Your income is ready. Defend both marked starting mines until the clock runs out.', control: '#front' };
+    if (id === 'forked-road') {
+      const uncovered = game.map.lanes.findIndex((_, lane) => !own.some(b => b.lane === lane && definitions[b.type]?.unit));
+      if (uncovered >= 0)
+        return build('barracks', uncovered === 0 ? 'Cover the first road' : 'Cover the other road',
+          'Build troops on both roads. A barracks is a good start; archers can support it.', uncovered);
+      if (!own.some(b => b.type === 'mint'))
+        return build('mint', 'Build a gold mine', 'A mine adds 2.5 gold per second. Place it behind your troops.');
+      if (!own.some(b => b.type === 'watchtower'))
+        return build('watchtower', 'Hold a road', 'A watchtower fires at nearby enemies. Put it ahead of production; it cannot clear a distant camp on its own.');
+      return { key: 'roads', title: 'Watch both roads', text: 'Use the minimap to check each road. Keep troops moving toward both marked barracks.', control: '#front' };
+    }
+    if (id === 'emberwatch') {
+      if (!own.some(b => b.type === 'barracks'))
+        return build('barracks', 'Raise a barracks', 'Choose Barracks below, then a green site. Warriors spawn and march on their own.');
+      if (!own.some(b => b.type === 'archery'))
+        return build('archery', 'Add ranged support', 'Your barracks already sends warriors. Choose Archery below, then place it behind the barracks.');
+      return { key: 'front', title: 'Follow your army', text: 'Troops march and fight on their own. Use Front to follow them toward the gold-marked target. Keep building while they advance.', control: '#front' };
+    }
+    if (id === 'three-roads') {
+      if (!own.some(b => b.type === 'watchtower'))
+        return build('watchtower', 'A new option: watchtower', 'A watchtower holds nearby ground. Choose it below to try one, then send troops down both outer roads.');
+      return { key: 'roads', title: 'Check both roadblocks', text: 'Drag the battlefield or tap the minimap to look ahead. Build troops on each outer road to reach both marked barracks.', control: '#front' };
+    }
+    if (id === 'winter-stores') {
+      if (own.filter(b => b.type === 'mint').length < 3)
+        return build('mint', 'A new option: gold mine', 'Two marked mines are already working. Add a third mine, then upgrade mines to reach 15 gold/sec. Keep the marked mines alive.');
+      if (currentIncome(game) < 15) {
+        const mine = own.filter(b => b.type === 'mint' && b.level < 3).sort((a,b) => a.level - b.level)[0];
+        if (mine) return { key: `upgrade-${mine.id}`, title: 'Grow your income', text: choice.selected === mine.id
+          ? 'Choose Upgrade in the building details. It costs the displayed gold and increases this mine’s income.'
+          : 'Tap the gold-ringed mine, then choose Upgrade. Aim for 15 gold/sec before the deadline.', control: choice.selected === mine.id ? '#upgrade' : '#battle', buildingId: mine.id };
+      }
+      return { key: 'protect', title: 'Keep the supply mines alive', text: 'Your income is ready. Defend both marked starting mines until the clock runs out.', control: '#front' };
+    }
+    if (id === 'wings-of-ash') {
+      const lane = [0, game.map.lanes.length - 1].find(lane => !own.some(b => b.lane === lane && (game.units || {})[definitions[b.type]?.unit]?.canAttackAir));
+      if (lane !== undefined) return build('archery', 'Answer the flyers', 'Archers can hit gryphons. Cover both outer roads; ground-only troops cannot stop the air attack.', lane);
+    }
+    if (id === 'stonegate' && !own.some(b => b.type === 'foundry'))
+      return build('foundry', 'A new option: foundry', 'Siege engines outrange towers. Choose Foundry below and keep warriors ahead of its engines.');
+    return null;
+  };
+  const hint = goal();
+  // The current lesson retains its chosen road when its tool is selected.
+  // Another troop producer can cover that road too; all choices remain optional.
+  if (choice.build && Object.hasOwn(definitions, choice.build) && hint?.buildType !== choice.build) {
+    const lane = definitions[choice.build].unit && definitions[hint?.buildType]?.unit ? hint?.preferredLane : null;
+    return build(choice.build, `Place ${definitions[choice.build].name}`, '', lane);
   }
-  if (id === 'wings-of-ash') {
-    const lane = [0, game.map.lanes.length - 1].find(lane => !own.some(b => b.lane === lane && (game.units || {})[definitions[b.type]?.unit]?.canAttackAir));
-    if (lane !== undefined) return build('archery', 'Answer the flyers', 'Archers can hit gryphons. Cover both outer roads; ground-only troops cannot stop the air attack.', lane);
-  }
-  if (id === 'stonegate' && !own.some(b => b.type === 'foundry'))
-    return build('foundry', 'A new option: foundry', 'Siege engines outrange towers. Choose Foundry below and keep warriors ahead of its engines.');
-  return null;
+  return hint;
 }
 
