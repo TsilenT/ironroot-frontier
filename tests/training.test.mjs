@@ -1,7 +1,7 @@
+import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
-import {createHash} from 'node:crypto';
 import {Game,BUILDINGS,UNITS,upgradeCost} from '../dist/engine.js';
 import {TrainingSession,TRAINING_LESSONS} from '../dist/training.js';
 
@@ -209,5 +209,5 @@ test('isolated practice cannot overwrite an existing game and uses no persistenc
   assert.deepEqual([...source.matchAll(/^import .* from ['"]([^'"]+)/gm)].map(m=>m[1]),['./engine.js']);
   for(const name of ['localStorage','sessionStorage','indexedDB','fetch(','writeCampaign','recordCampaign','recordResult','saveGame','profile-session','persistence.js'])assert.equal(source.includes(name),false,name);
   assert.equal(typeof t.serialize,'undefined');assert.equal(typeof TrainingSession.restore,'undefined');
-  const hash=createHash('sha256').update(readFileSync(new URL('../dist/engine.js',import.meta.url))).digest('hex');assert.equal(hash,'e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7');
+  assertFrozenEngineExceptEnumValidation(readFileSync(new URL('../dist/engine.js',import.meta.url)));
 });

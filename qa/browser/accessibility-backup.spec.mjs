@@ -4,6 +4,7 @@ import {Game} from '../../dist/engine.js';
 import {createBackup, parseBackup, BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
 import {createCampaignProgress} from '../../dist/campaign.js';
 import {CHALLENGES} from '../../dist/challenges.js';
+import {PROFILE_MARKER_KEY} from '../../dist/profile-session.js';
 const SAVE=BACKUP_STORAGE_KEYS.battle, KEYS=Object.values(BACKUP_STORAGE_KEYS);
 const test=base.extend({page:async ({page},use)=>{
   const errors=[]; page.on('pageerror',error=>errors.push(error.message));
@@ -78,6 +79,50 @@ test('invalid backup file is refused without changing local data',async ({page})
   await expect(page.locator('#backupStatus')).toContainText(/invalid|not valid|could not|failed/i);
   await expect(page.locator('#backupModal')).toBeHidden();
   expect(await raw(page)).toEqual(before);
+});
+
+test('array-valued entity enums are refused before backup confirmation without any storage writes',async ({page})=>{
+  await openSettings(page);
+  const before=await raw(page),marker=await page.evaluate(key=>localStorage.getItem(key),PROFILE_MARKER_KEY);
+  await page.evaluate(()=>{
+    const set=Storage.prototype.setItem,remove=Storage.prototype.removeItem;
+    window.__qaEnumImportWrites=[];
+    Storage.prototype.setItem=function(key,value){
+      if(this===localStorage)window.__qaEnumImportWrites.push({method:'set',key});
+      return set.call(this,key,value);
+    };
+    Storage.prototype.removeItem=function(key){
+      if(this===localStorage)window.__qaEnumImportWrites.push({method:'remove',key});
+      return remove.call(this,key);
+    };
+  });
+  // Build a genuinely engine-valid ordinary position with both entity kinds,
+  // then alter only the primitive enum type. This is malformed-input QA, not
+  // synthetic campaign progress or a played victory.
+  const valid=structuredClone(fixture().backup),game=Game.restore(valid.data.battle.game);
+  for(let i=0;i<120;i++)game.update(1/30);
+  valid.data.battle.game=game.serialize();
+  expect(parseBackup(JSON.stringify(valid)).data.battle.game.state.units.length).toBeGreaterThan(0);
+  for(const [collection,kind] of [['buildings','building'],['units','unit']]){
+    const invalid=structuredClone(valid),entity=invalid.data.battle.game.state[collection][0];
+    expect(typeof entity.type).toBe('string');entity.type=[entity.type];
+    await chooseFile(page,JSON.stringify(invalid));
+    await expect(page.locator('#backupStatus')).toContainText('Saved battle contains invalid or incompatible engine data.');
+    await expect(page.locator('#backupModal')).toBeHidden();
+    expect(await raw(page)).toEqual(before);
+    expect(await page.evaluate(key=>localStorage.getItem(key),PROFILE_MARKER_KEY)).toBe(marker);
+    expect(await page.evaluate(()=>window.__qaEnumImportWrites)).toEqual([]);
+  }
+  // A rejected file must not strand the chooser or block a subsequent valid
+  // preview. Cancel still leaves all saved domains and the profile marker alone.
+  await chooseFile(page,JSON.stringify(valid));
+  await expect(page.locator('#backupModal')).toBeVisible();
+  await expect(page.locator('#confirmImport')).toBeEnabled();
+  await press(page,'#cancelImport');
+  await expect(page.locator('#backupModal')).toBeHidden();
+  expect(await raw(page)).toEqual(before);
+  expect(await page.evaluate(key=>localStorage.getItem(key),PROFILE_MARKER_KEY)).toBe(marker);
+  expect(await page.evaluate(()=>window.__qaEnumImportWrites)).toEqual([]);
 });
 
 test('backup preview and cancel leave every existing storage domain unchanged',async ({page})=>{

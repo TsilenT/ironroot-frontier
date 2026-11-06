@@ -1,3 +1,4 @@
+import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -69,13 +70,15 @@ test('failed anchor activation cleans its URL and leaves a truthful error; absen
   const blocked=download({clickError:true});assert.equal(blocked.removed,1);assert.deepEqual(blocked.revoked,['blob:local-report']);assert.equal(blocked.status.textContent,'Download blocked');
   const absent=download({report:null});assert.equal(absent.created,0);assert.equal(absent.status.textContent,'');
 });
-test('engine and unchanged profile/backup/objective modules are byte-identical to frozen0.10',()=>{
+test('engine rules and unchanged profile/backup/objective modules retain the frozen0.10 oracle',()=>{
   const baseline=JSON.parse(readFileSync(new URL('../BASELINE_0_10.json',import.meta.url)));
+  // The engine allows only the explicit primitive-string save validation delta.
   // Exact comparison uses the independently frozen copy's hashes, not a new oracle.
   // persistence.js intentionally changes for audited data-loss repairs; executable
   // persistence-recovery tests cover those changes without resetting this baseline.
   return import('node:crypto').then(({createHash})=>{
-    for(const file of ['dist/engine.js','dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js'])
+    assertFrozenEngineExceptEnumValidation(readFileSync(new URL('../dist/engine.js',import.meta.url)));
+    for(const file of ['dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js'])
       assert.equal(createHash('sha256').update(readFileSync(new URL('../'+file,import.meta.url))).digest('hex'),baseline.files[file],file);
   });
 });

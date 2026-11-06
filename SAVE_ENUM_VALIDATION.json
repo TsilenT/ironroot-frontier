@@ -1,0 +1,82 @@
+{
+  "scope": "Isolated local save-enum validation repair; not publication approval",
+  "base": "corrected frozen 0.12 QA candidate",
+  "productionDelta": "validateSave building/unit types now require typeof e.type === 'string' before Object.hasOwn",
+  "changedExistingFiles": [
+    "dist/engine.js",
+    "qa/browser/accessibility-backup.spec.mjs",
+    "tests/battle-report.test.mjs",
+    "tests/report-ui-integration.test.mjs",
+    "tests/training-integration.test.mjs",
+    "tests/training.test.mjs"
+  ],
+  "runtimeChangedFiles": [
+    "dist/engine.js"
+  ],
+  "runtimeFiles": 33,
+  "runtimeBytes": 668075,
+  "schemaVersionsChanged": false,
+  "historicalBaselinesOrFixturesChanged": false,
+  "originalEngineSha256": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7",
+  "fileSha256": {
+    "dist/engine.js": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+    "tests/engine-validation-source.mjs": "5b467e14198d032c7c68eac053e8b204c5f0eea3a66736df48c2cfe35aae3427",
+    "tests/save-enum-validation.test.mjs": "935b1d598e2f1e3815bff989b99c7ef2768230dd7c118d3075a16b87360343ff",
+    "tests/battle-report.test.mjs": "bbd78707fd91432079e72ca6d029af5d6b6e086f21646c778c30f90e59221a11",
+    "tests/report-ui-integration.test.mjs": "e1a9edf4a2fb1b899853cefd8fd595b56d174abc8cba33494526e212bf705d0e",
+    "tests/training-integration.test.mjs": "8a7801b71ad09b37bccb87b3842e10ebfbad59444e8af5c69f3beb069f943e1e",
+    "tests/training.test.mjs": "b11d55184b90dd34f72c6ca2a9e57bd6110c6f62316ca5078950291ec97fb566",
+    "qa/browser/accessibility-backup.spec.mjs": "41ac43fbf056aca57cec74614fd28ec3c78c0a5ff82c00dfeecc2addf5cb8c21",
+    "dist/backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+    "docs/SAVE_ENUM_VALIDATION.md": "4439e9ab449f869cab19e090fc0c2dd1e7a6a6a8a2e55f7cfa142d35d138c191",
+    "qa/local-validation/save-enum/repair.patch": "19a0033c0c6c708814e06ebf8d6f8ba35938b0a112cac783259bbd26a8ace598"
+  },
+  "checks": {
+    "focusedAdversarial": {
+      "discovered": 14,
+      "passed": 14,
+      "failed": 0
+    },
+    "fullNode": {
+      "discovered": 628,
+      "passed": 627,
+      "failed": 0,
+      "skipped": 1,
+      "skipReason": "optional installed desktop tooling dependencies are absent"
+    },
+    "independentReview": {
+      "focusedPassed": 199,
+      "separateOriginalAndPatchedEnginesCompared": true
+    },
+    "runtimeSyntax": "passed",
+    "testsScriptsDesktopSyntax": "passed",
+    "strictRuntimeInventory": "passed",
+    "browserSourceAndFixtureValidators": "passed",
+    "exactFrozenSeededParity": {
+      "scenarios": 18,
+      "maps": 3,
+      "difficulties": 3,
+      "seedsPerCombination": 2,
+      "stateRngActionsRestoreAndTerminalEquality": "passed"
+    },
+    "malformedBackupNoStorageReadsOrWrites": "passed",
+    "actualResumeAndFileSelectionHandlers": "passed in Node VM; not browser execution",
+    "legacyCurrentBackupAndProfileCompatibility": "passed",
+    "newBrowserCase": {
+      "logicalTestsAdded": 1,
+      "profileCasesAdded": 4,
+      "expectedFullDiscovery": 756,
+      "executed": false,
+      "locallyDiscovered": false,
+      "sha256": "41ac43fbf056aca57cec74614fd28ec3c78c0a5ff82c00dfeecc2addf5cb8c21"
+    }
+  },
+  "remainingGates": [
+    "Integrate repair before calling the corrected frozen candidate repaired",
+    "Exact-final-source cloud/browser QA, including new four-profile malformed-import regression",
+    "Separate desktop runtime/bridge validation",
+    "Source commit review and explicit publication approval"
+  ],
+  "prohibitedOperationsPerformed": false,
+  "evidenceDirectory": "qa/local-validation/save-enum/"
+}
