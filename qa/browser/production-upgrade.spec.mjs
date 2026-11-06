@@ -49,7 +49,7 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     // Replace the seeded battle by actually starting the historical UI. The
     // other four domains came from real historical validators, not candidate code.
     if(scenario==='far-beacon'){
-      await press(page,'[data-mode="campaign"]');await press(page,'#campaignStoryNav');await press(page,'[data-chapter="frontier"]');await press(page,'[data-mission="far-beacon"]');
+      await press(page,'[data-mode="campaign"]');await press(page,'[data-chapter="frontier"]');await press(page,'[data-mission="far-beacon"]');
     }else await selectMap(page,scenario);
     await press(page,'#start');
     if(scenario!=='far-beacon'){
@@ -90,10 +90,18 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     for(const face of await loadFontFaces(modern)){expect(face.loaded).toHaveLength(1);expect(face.loaded[0].status).toBe('loaded');}
     for(const file of FONT_FILES)expect(served.has(basePath+file)).toBe(true);
     await expect(modern.locator('#campaignProgressText')).toContainText(scenario==='far-beacon'?'13/16 missions · 39/48 stars':'16/16 missions · 48/48 stars');
+    // Compare the entire restored state before RAF can spawn troops or run AI.
+    // The serialized seed is live RNG state, so it can legitimately advance
+    // between Resume and Pause along with the simulation time checked below.
+    const beforeTick=await modern.evaluate(async({basePath,save})=>{
+      const {Game}=await import(basePath+'engine.js');
+      return Game.restore(JSON.parse(localStorage.getItem(save)).game).serialize();
+    },{basePath,save:SAVE});
+    expect(beforeTick).toEqual(historical.game);
     await press(modern,'#resumeSaved');const resumed=await pause(modern);
     expect(resumed.version).toBe(2);expect(resumed.campaignId).toBe(historical.campaignId);
     expect(resumed.game.version).toBe(historical.game.version);
-    for(const key of ['mapId','mapRevision','difficulty','ai','seed'])expect(resumed.game[key]).toEqual(historical.game[key]);
+    for(const key of ['mapId','mapRevision','difficulty','ai'])expect(resumed.game[key]).toEqual(historical.game[key]);
     expect(Game.restore(resumed.game).ruleset.id).toBe('frontier-legacy');
     expect(resumed.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level])).toEqual(historical.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level]));
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(historical.game.state.time);

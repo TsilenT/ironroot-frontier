@@ -1,0 +1,21 @@
+✔ desktop page navigation permits only canonical entry/training URLs and fragments (2.79458ms)
+✔ desktop page navigation rejects foreign origins, credentials, ports, aliases and other paths (0.620961ms)
+✔ actual title/practice/return links survive both top-level navigation listeners (43.934756ms)
+✔ all navigation and redirect listeners apply the same top-level-only allowlist (3.777502ms)
+✔ training navigation leaves isolation, permissions, windows, downloads and request restrictions intact (3.011968ms)
+✔ only the fixed offline origin is trusted (4.063631ms)
+✔ asset resolution rejects traversal, unsupported types, workers and malformed encodings (0.676493ms)
+✔ real asset reads refuse symlink escape, missing files and directories (15.308784ms)
+✔ CSP prohibits remote code, network connections, workers and framing (0.492032ms)
+✔ desktop backup export fails honestly before creating any download side effect (6.862989ms)
+✔ desktop isolation and package safety contracts remain explicit (12.286885ms)
+﹣ installed desktop tooling preserves the scoped minimatch compatibility contracts (0.969933ms) # Optional desktop build dependencies are not installed; run npm ci in desktop/ to include this check.
+✔ main process wires a sandboxed persistent window and denies privileged actions (47.875497ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 193.008924
