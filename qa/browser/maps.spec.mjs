@@ -5,6 +5,7 @@ import {parseBackup,BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
 import {MAP_IDS,NEW_MAP_IDS,SAVE,HISTORY,mapFixture,mapBackup,authoredMap,invalidMapFixtures} from './map-fixtures.mjs';
 import {test,press,tapPoint,selectMap,saved,pause,seedOnce,homePoint,chooseBackup,openBackup,downloadBackup,observeCanvas,canvasFrame,expectCamera,dragPoint} from './map-browser-helpers.mjs';
 import {installPad,padButton,steerTo} from './map-controller-helpers.mjs';
+import {minimapActivationTarget} from './minimap-input-contract.mjs';
 
 function assertMap(envelope,id){
   expect(envelope).toMatchObject({format:'ironroot-save',version:2,challengeId:null,campaignId:null});
@@ -19,26 +20,43 @@ async function storageBytes(page){
   return page.evaluate(keys=>Object.fromEntries(keys.map(key=>[key,localStorage.getItem(key)])),[...Object.values(BACKUP_STORAGE_KEYS),'qa.unrelated']);
 }
 
-async function tapMinimap(page,point){
-  // Observe native targeting without modifying propagation/defaults. A camera
-  // jump alone must not hide Chromium redirecting an edge touch to Home/Front.
+async function tapMinimap(page,point,map,testInfo,label){
+  // Passive native observations only: no retries, rounding or re-centering.
+  // A native compatibility click may have different subpixel precision from
+  // pointerdown/up, so verify its delivered coordinate rather than inventing it.
   await page.evaluate(point=>{
     window.__qaMinimapInput=[];
     window.__qaMinimapGeometricTarget=document.elementFromPoint(point.x,point.y)?.id;
     window.__qaMinimapInputAbort?.abort();
     const abort=new AbortController();window.__qaMinimapInputAbort=abort;
     for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event=>{
-      window.__qaMinimapInput.push({type,target:event.target.id,trusted:event.isTrusted});
-    },{capture:true,signal:abort.signal});
+      const rect=document.getElementById('minimap').getBoundingClientRect();
+      window.__qaMinimapInput.push({type,target:event.target.id,trusted:event.isTrusted,
+        clientX:event.clientX,clientY:event.clientY,defaultPreventedAtCapture:event.defaultPrevented,
+        rect:{left:rect.left,top:rect.top,width:rect.width,height:rect.height}});
+    },{capture:true,passive:true,signal:abort.signal});
   },point);
-  expect(await page.evaluate(()=>window.__qaMinimapGeometricTarget),'requested pixel belongs to the minimap').toBe('minimap');
-  await tapPoint(page,point);
-  await expect.poll(()=>page.evaluate(()=>window.__qaMinimapInput)).toEqual([
-    {type:'pointerdown',target:'minimap',trusted:true},
-    {type:'pointerup',target:'minimap',trusted:true},
-    {type:'click',target:'minimap',trusted:true},
-  ]);
-  await page.evaluate(()=>window.__qaMinimapInputAbort.abort());
+  let telemetry;
+  try{
+    expect(await page.evaluate(()=>window.__qaMinimapGeometricTarget),'requested pixel belongs to the minimap').toBe('minimap');
+    await tapPoint(page,point);
+    await expect.poll(()=>page.evaluate(()=>window.__qaMinimapInput.map(({type,target,trusted})=>({type,target,trusted})))).toEqual([
+      {type:'pointerdown',target:'minimap',trusted:true},
+      {type:'pointerup',target:'minimap',trusted:true},
+      {type:'click',target:'minimap',trusted:true},
+    ]);
+    const events=await page.evaluate(()=>window.__qaMinimapInput);
+    telemetry={requested:point,rect:events[2].rect,events,mapWidth:map.width};
+    const target=minimapActivationTarget(telemetry);
+    telemetry.projectedActivationWorldX=target;
+    return target;
+  }finally{
+    const observed=await page.evaluate(()=>({geometricTarget:window.__qaMinimapGeometricTarget,events:window.__qaMinimapInput}));
+    await testInfo.attach(map.id+'-minimap-'+label+'-native-input',{body:Buffer.from(JSON.stringify({
+      requested:point,mapWidth:map.width,...observed,...telemetry,
+    },null,2)),contentType:'application/json'});
+    await page.evaluate(()=>window.__qaMinimapInputAbort.abort());
+  }
 }
 
 test('map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens',async ({page})=>{
@@ -122,8 +140,9 @@ for(const id of MAP_IDS){
     const mini=await page.locator('#minimap').boundingBox();
     const lines=(await canvasFrame(page)).mini.lines;
     lines.forEach((line,index)=>expect(line[0][1]/mini.height*900).toBeCloseTo(map.lanes[index],5));
-    await tapMinimap(page,{x:mini.x+mini.width*.73,y:mini.y+mini.height/2});await expectCamera(page,map,map.width*.73);
-    await tapMinimap(page,{x:mini.x+mini.width-1,y:mini.y+mini.height/2});await expectCamera(page,map,map.width);
+    const activation=await tapMinimap(page,{x:mini.x+mini.width*.73,y:mini.y+mini.height/2},map,testInfo,'73-percent');
+    await expectCamera(page,map,activation);
+    await tapMinimap(page,{x:mini.x+mini.width-1,y:mini.y+mini.height/2},map,testInfo,'right-edge');await expectCamera(page,map,map.width);
     if(id!=='classic'){
       const frame=(await canvasFrame(page)).mini;
       const base=frame.fills.find(fill=>fill.color==='#e5a281'&&fill.args[2]===4&&fill.args[3]===6);
@@ -131,7 +150,7 @@ for(const id of MAP_IDS){
       expect(base.args[0]+2).toBeCloseTo((map.width-110)/map.width*mini.width,3);
     }
     await testInfo.attach(id+'-far-right',{body:await page.screenshot(),contentType:'image/png'});
-    await tapMinimap(page,{x:mini.x+1,y:mini.y+mini.height/2});await expectCamera(page,map,0);
+    await tapMinimap(page,{x:mini.x+1,y:mini.y+mini.height/2},map,testInfo,'left-edge');await expectCamera(page,map,0);
     await press(page,'#home');await expectCamera(page,map,450);
     const state=await pause(page);await press(page,'#resume');await press(page,'#front');
     await expectCamera(page,map,state.game.state.frontline,30);

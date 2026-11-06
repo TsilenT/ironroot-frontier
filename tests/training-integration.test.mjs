@@ -1,3 +1,4 @@
+import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -45,10 +46,12 @@ test('practice entry is an explicit title link rather than an automatic forced r
 test('QA repairs preserve frozen rules, rendering, reports and profile/backup protocols',()=>{
   const baseline=JSON.parse(read('BASELINE_0_11.json'));
   // app.js input visibility and persistence.js write recovery are deliberately
-  // repaired after the exact-candidate browser audit. Their new executable
-  // regression tests replace equality for those two files only. Never rewrite
+  // repaired after the exact-candidate browser audit. The engine now permits
+  // only its explicit primitive-string save validation delta. Executable
+  // regressions cover the two QA repairs. Never rewrite
   // the historical baseline or relax the unchanged systems below.
-  for(const file of ['dist/engine.js','dist/render.js','dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js','dist/battle-report.js','dist/report-view.js','dist/report-view.css','dist/input-scope.js']){
+  assertFrozenEngineExceptEnumValidation(readFileSync(new URL('../dist/engine.js',import.meta.url)));
+  for(const file of ['dist/render.js','dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js','dist/battle-report.js','dist/report-view.js','dist/report-view.css','dist/input-scope.js']){
     assert.equal(createHash('sha256').update(readFileSync(new URL('../'+file,import.meta.url))).digest('hex'),baseline.files[file],file);
   }
 });

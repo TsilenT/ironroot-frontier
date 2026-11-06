@@ -1,0 +1,45 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ironroot-frontier@0.12.0 check:release
+> node scripts/verify-runtime.mjs
+
+{
+  "scope": "local source-dist validation only, not publication approval",
+  "runtimeFiles": 33,
+  "totalBytes": 668075,
+  "files": {
+    "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "app.js": "6870ae50bc6dce23e92c31b4d5978ddff510fb94b961c6c3c05ac985bdae492f",
+    "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+    "backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+    "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "battle-report.js": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+    "campaign.js": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781",
+    "challenges.js": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08",
+    "codex.js": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "engine.js": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+    "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "index.html": "3c37a27c7492ed7e038d2ee13025b6c2869e6edbee64e0a3dada0003d5b47157",
+    "input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+    "manifest.webmanifest": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e",
+    "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "persistence.js": "306d34d124df98265cee4c6bbd65a6413588c3f6d7d98ea2a8bed7f7659a4e89",
+    "profile-session.js": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d",
+    "render.js": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106",
+    "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "report-view.js": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+    "scouting.js": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04",
+    "service-worker.js": "9a79237a4fa6925cc0db86d588287eb1758355bcee20714a9bc803745ce9f88c",
+    "styles.css": "cb3451fee2369344ec40b85d8bfc8555c4801b39fc24748c6f020704af32f312",
+    "training-app.js": "956b4773d3195c911b99fa1873f7541ccdc182a97ccdf9c94b9db28c7f27f235",
+    "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "training.html": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108",
+    "training.js": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770",
+    "vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+  }
+}

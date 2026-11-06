@@ -1,7 +1,7 @@
+import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { createHash } from 'node:crypto';
 import { Game, BUILDINGS, UNITS, MAPS, worldX } from '../dist/engine.js';
 import { CAMPAIGN_MISSIONS, createCampaignMission, evaluateCampaignMission, getCampaignTargets, currentIncome } from '../dist/campaign.js';
 import { CHALLENGES, createChallenge, evaluateChallenge, getChallengeTargets } from '../dist/challenges.js';
@@ -24,9 +24,9 @@ const assertFiniteJSON = value => {
 };
 const bytes = game => JSON.stringify(game.serialize());
 
-test('observer retains the exact engine source and imports no persistence or DOM layer', () => {
+test('observer retains frozen engine rules with only the audited save-type guard', () => {
   const source = readFileSync(new URL('../dist/engine.js', import.meta.url));
-  assert.equal(createHash('sha256').update(source).digest('hex'), 'e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7');
+  assertFrozenEngineExceptEnumValidation(source);
   const observer = readFileSync(new URL('../dist/battle-report.js', import.meta.url), 'utf8');
   assert.doesNotMatch(observer, /\b(localStorage|sessionStorage|document|window|fetch|Date|Math\.random)\b/);
   assert.doesNotMatch(observer, /game\.(update|_step|random|build|sell|upgrade|cast|serialize)\s*\(/);

@@ -1,0 +1,288 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { runInNewContext } from 'node:vm';
+import { Game, BUILDINGS, UNITS, MAPS, buildSites } from '../dist/engine.js';
+import { BACKUP_FORMAT, BACKUP_VERSION, BACKUP_STORAGE_KEYS as K, BackupError, createBackup, parseBackup, restoreBackup } from '../dist/backup.js';
+import { CAMPAIGN_MISSIONS, createCampaignProgress } from '../dist/campaign.js';
+import { CHALLENGES } from '../dist/challenges.js';
+import { PROFILE_MARKER_KEY } from '../dist/profile-session.js';
+import { assertFrozenEngineExceptEnumValidation, ORIGINAL_ENUM_GUARD, HARDENED_ENUM_GUARD } from './engine-validation-source.mjs';
+
+const date = '2026-11-06T00:00:00.000Z', clone = value => JSON.parse(JSON.stringify(value));
+const source = readFileSync(new URL('../dist/engine.js', import.meta.url), 'utf8');
+const frozenSource = assertFrozenEngineExceptEnumValidation(source);
+const moduleURL = source => 'data:text/javascript;base64,' + Buffer.from(source).toString('base64');
+const frozenURL = moduleURL(frozenSource);
+const { Game: FrozenGame } = await import(frozenURL);
+// backup.js is byte-pinned by the existing integration checks. Only its engine
+// import changes for the independently hash-verified original behavior oracle.
+const frozenBackupSource = readFileSync(new URL('../dist/backup.js', import.meta.url), 'utf8')
+  .replace("from './engine.js'", `from '${frozenURL}'`)
+  .replace("from './campaign.js'", `from '${new URL('../dist/campaign.js', import.meta.url).href}'`)
+  .replace("from './challenges.js'", `from '${new URL('../dist/challenges.js', import.meta.url).href}'`);
+const { restoreBackup: frozenRestoreBackup } = await import(moduleURL(frozenBackupSource));
+const effects = ['build', 'upgrade', 'sell', 'spawn', 'death', 'hit', 'blast', 'magic', 'volley'];
+const projectiles = ['archer', 'siege', 'wizard', 'gryphon', 'tower'];
+const envelope = save => ({ format: 'ironroot-save', version: 2, challengeId: null, campaignId: null, game: save });
+function backup(save = new Game({ ai: false }).serialize()) {
+  return { format: BACKUP_FORMAT, version: BACKUP_VERSION, createdAt: date, data: {
+    campaign: createCampaignProgress(), trials: {}, settings: { quality: 'high' },
+    history: [{ won: false, difficulty: 'normal', time: 10, kills: 0, built: 2, date, mapId: 'classic' }], battle: envelope(save),
+  } };
+}
+function storage() {
+  const data = new Map([...Object.values(K), PROFILE_MARKER_KEY, 'unrelated'].map((key, i) => [key, ` original bytes ${i}\n`])), operations = [];
+  return { data, operations,
+    getItem(key) { operations.push(['get', key]); return data.get(key) ?? null; },
+    setItem(key, value) { operations.push(['set', key]); data.set(key, value); },
+    removeItem(key) { operations.push(['remove', key]); data.delete(key); },
+  };
+}
+function rejectBackup(value, label) {
+  const text = JSON.stringify(value), local = storage(), before = [...local.data];
+  assert.throws(() => parseBackup(text), BackupError, label);
+  const result = restoreBackup(local, text);
+  assert.equal(result.ok, false, label); assert.equal(result.code, 'invalid-backup', label);
+  assert.equal(result.rollback.attempted, false); assert.deepEqual(result.changedKeys, []);
+  assert.deepEqual(local.operations, [], 'reject before reading storage or writing a profile marker');
+  assert.deepEqual([...local.data], before, 'all original bytes, including corrupt data and the profile marker, survive');
+  assert.equal(JSON.stringify(value), text, 'validation does not mutate input');
+}
+function rejectSave(save, label) {
+  const before = JSON.stringify(save);
+  assert.throws(() => Game.restore(save), /Invalid saved game:/, label);
+  assert.equal(JSON.stringify(save), before);
+  rejectBackup(backup(save), label);
+}
+// Plain JSON adversaries. Boxed values and prototypes are covered separately,
+// because JSON.stringify legitimately turns a boxed string into a string.
+const invalidStrings = valid => [[valid], [[valid]], [], [valid, valid], { value: valid }, { 0: valid, length: 1 }, {}, null,
+  0, 1, true, false, '', 'unknown-enum', '__proto__', 'prototype', 'constructor', 'toString', 'valueOf', 'hasOwnProperty'];
+function rosterSave(mapId, level = 1) {
+  const game = new Game({ ai: false, mapId, seed: 987 });
+  game.state.buildings = []; game.state.units = []; game.state.effects = [];
+  for (const side of [0, 1]) {
+    for (const [index, type] of Object.keys(BUILDINGS).entries()) {
+      const site = buildSites(game.map, side)[index], building = game._place(type, site.x, site.y, side);
+      game.state.gold[side] = 100000;
+      while (building.level < level) assert.equal(game.upgrade(building.id, side).ok, true);
+      if (BUILDINGS[type].unit) game._spawn(building);
+    }
+  }
+  game.state.effects = effects.map(type => ({ type, side: 0, x: 200, y: 260, life: .1, maxLife: .2, radius: 30 }));
+  game.state.projectiles = projectiles.map(type => ({ type, side: 1, x: 400, y: 260, sx: 400, sy: 260, tx: 300, ty: 260, life: .1, maxLife: .28 }));
+  return game.serialize();
+}
+
+test('source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits', () => {
+  assert.equal(assertFrozenEngineExceptEnumValidation(source), frozenSource);
+  for (const bad of [frozenSource, source + '\n' + HARDENED_ENUM_GUARD, source + '\n', source.replace('damage:21', 'damage:22'), source + ORIGINAL_ENUM_GUARD])
+    assert.throws(() => assertFrozenEngineExceptEnumValidation(bad));
+});
+
+test('frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota', () => {
+  for (const [collection, type] of [['buildings', 'barracks'], ['units', 'warrior']]) {
+    const save = rosterSave('classic'), entity = save.state[collection].find(e => e.type === type);
+    entity.type = [[type]];
+    assert.doesNotThrow(() => FrozenGame.restore(save), 'the independent frozen oracle confirms the original defect');
+    rejectSave(save, collection);
+  }
+  const game = new Game({ ai: false }); game.state.buildings = [];
+  for (const site of buildSites(game.map, 0).slice(0, 4)) game._place('mint', site.x, site.y, 0);
+  const save = game.serialize(); save.state.buildings.forEach(e => { e.type = ['mint']; });
+  assert.doesNotThrow(() => FrozenGame.restore(save)); rejectSave(save, 'wrapped fourth mine');
+});
+
+test('original backup import accepted and wrote malformed entities; the patch rejects before any destination access', () => {
+  for (const collection of ['buildings', 'units']) {
+    const save = rosterSave('classic'); save.state[collection][0].type = [save.state[collection][0].type];
+    const value = backup(save), local = storage(), text = JSON.stringify(value);
+    assert.equal(frozenRestoreBackup(local, text).ok, true, 'old import incorrectly reports success');
+    assert.ok(local.operations.some(([kind]) => kind === 'set'), 'old import replaces existing profile data');
+    assert.ok(Array.isArray(JSON.parse(local.data.get(K.battle)).game.state[collection][0].type));
+    rejectBackup(value, 'fixed import');
+  }
+});
+
+test('every building and unit identifier rejects all coercible and wrong-type JSON values on every map', () => {
+  for (const mapId of Object.keys(MAPS)) for (const [collection, definitions] of [['buildings', BUILDINGS], ['units', UNITS]]) {
+    const valid = rosterSave(mapId);
+    for (const type of Object.keys(definitions)) for (const bad of invalidStrings(type)) {
+      const save = clone(valid); save.state[collection].find(e => e.type === type).type = bad;
+      rejectSave(save, `${mapId}/${collection}/${type}/${JSON.stringify(bad)}`);
+    }
+  }
+});
+
+test('in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access', () => {
+  let calls = 0;
+  for (const collection of ['buildings', 'units']) {
+    const valid = collection === 'buildings' ? 'barracks' : 'warrior';
+    const coercion = { toString() { calls++; return valid; }, valueOf() { calls++; return valid; } };
+    for (const bad of [new String(valid), Object(valid), new Number(1), Object.prototype, Array.prototype, String.prototype,
+      Object.create(null), Object.create({ type: valid }), coercion]) {
+      const save = rosterSave('classic'); save.state[collection][0].type = bad;
+      assert.throws(() => Game.restore(save), /Invalid saved game:/);
+      const local = storage(), before = [...local.data];
+      assert.throws(() => createBackup(local, { ...backup(save).data, createdAt: date }), BackupError);
+      assert.deepEqual(local.operations, [], 'full in-memory overrides never read or write local data');
+      assert.deepEqual([...local.data], before);
+    }
+  }
+  assert.equal(calls, 0);
+});
+
+test('map, base, difficulty, effect and projectile enums use primitive strict comparisons', () => {
+  const paths = [
+    ['mapId', 'long-march', s => s, 'mapId'], ['difficulty', 'normal', s => s, 'difficulty'],
+    ['base type', 'base', s => s.state.bases[0], 'type'], ['base id', 'base0', s => s.state.bases[0], 'id'],
+    ['effect type', 'build', s => s.state.effects[0], 'type'], ['projectile type', 'archer', s => s.state.projectiles[0], 'type'],
+  ];
+  for (const [label, valid, owner, key] of paths) for (const bad of invalidStrings(valid)) {
+    const save = rosterSave('long-march'); owner(save)[key] = bad; rejectSave(save, `${label}/${JSON.stringify(bad)}`);
+  }
+  for (const bad of [['draw'], ['0'], {}, false, '', 'constructor', 'unknown', 2]) {
+    const save = rosterSave('classic'); save.state.winner = bad; rejectSave(save, 'winner');
+  }
+});
+
+test('version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped', () => {
+  for (const mutate of [
+    (s, v) => { s.version = v; }, (s, v) => { s.mapRevision = v; },
+    (s, v) => { s.state.buildings[0].level = v; }, (s, v) => { s.state.units[0].level = v; },
+    (s, v) => { s.state.buildings[0].side = v; }, (s, v) => { s.state.units[0].lane = v; },
+    ...['kills', 'built', 'damage'].map(key => (s, v) => { s.state.stats[key][0] = v; }),
+  ]) for (const bad of [[1], {}, null, '1', '', true, -1, 1.5]) {
+    // damage is intentionally fractional, unlike entity levels and count statistics.
+    const save = rosterSave('long-march'); mutate(save, bad);
+    if (bad === 1.5 && save.state.stats.damage[0] === 1.5) continue;
+    rejectSave(save, 'numeric schema');
+  }
+  for (const key of ['kills', 'built', 'damage']) for (const bad of [null, {}, '0,0', [0], [0, 0, 0]]) {
+    const save = rosterSave('classic'); save.state.stats[key] = bad; rejectSave(save, key);
+  }
+});
+
+test('backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing', () => {
+  for (const [label, valid, owner, key, nullable] of [
+    ['backup format', BACKUP_FORMAT, b => b, 'format'],
+    ['campaign format', 'ironroot-campaign', b => b.data.campaign, 'format'],
+    ['envelope format', 'ironroot-save', b => b.data.battle, 'format'],
+    ['quality', 'high', b => b.data.settings, 'quality'],
+    ['history difficulty', 'normal', b => b.data.history[0], 'difficulty'],
+    ['history map', 'classic', b => b.data.history[0], 'mapId'],
+    ...['battle', 'history'].flatMap(domain => ['campaignId', 'challengeId'].map(key => [
+      `${domain} ${key}`, key === 'campaignId' ? CAMPAIGN_MISSIONS[0].id : CHALLENGES[0].id,
+      b => domain === 'battle' ? b.data.battle : b.data.history[0], key, true,
+    ])),
+  ]) for (const bad of invalidStrings(valid).filter(value => !nullable || value !== null)) {
+    const value = backup(); owner(value)[key] = bad; rejectBackup(value, label);
+  }
+  for (const [domain, id] of [['campaign', CAMPAIGN_MISSIONS[0].id], ['trials', CHALLENGES[0].id]]) {
+    for (const bad of [[], ['completed'], null, 0, '', 'constructor']) {
+      const value = backup(), records = domain === 'campaign' ? value.data.campaign.missions : value.data.trials;
+      records[id] = bad; rejectBackup(value, `${domain} record`);
+    }
+  }
+  for (const field of ['kind', 'context', 'mode', 'statType']) {
+    const value = backup(); value.data.battle.game.state[field] = ['campaign']; rejectBackup(value, 'unknown non-schema kind');
+  }
+});
+
+test('all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged', () => {
+  for (const mapId of Object.keys(MAPS)) for (const level of [1, 2, 3]) for (const flags of [false, true]) {
+    const save = rosterSave(mapId, level);
+    if (flags) save.state.projectiles.forEach(p => { p.sourceAir = false; p.targetAir = true; });
+    assert.equal(save.version, mapId === 'classic' ? 1 : 2);
+    assert.deepEqual(Game.restore(save).serialize(), save);
+    assert.deepEqual(FrozenGame.restore(save).serialize(), save);
+    assert.deepEqual(parseBackup(JSON.stringify(backup(save))).data.battle.game, save);
+    const local = storage();
+    assert.equal(restoreBackup(local, JSON.stringify(backup(save))).ok, true);
+    assert.deepEqual(JSON.parse(local.data.get(K.battle)).game, save);
+    assert.equal(local.data.get(PROFILE_MARKER_KEY), ' original bytes 5\n');
+  }
+});
+
+test('raw saves and both historical envelope versions retain the unchanged nullable identity migration', () => {
+  for (const mapId of Object.keys(MAPS)) for (const outer of [0, 1, 2]) {
+    const save = rosterSave(mapId), value = backup(save);
+    value.data.battle = outer ? { format: 'ironroot-save', version: outer, game: save } : save;
+    assert.deepEqual(parseBackup(JSON.stringify(value)).data.battle, envelope(save));
+  }
+});
+
+test('invalid stored battles cannot be re-exported or erase existing domains', () => {
+  const save = rosterSave('classic'); save.state.units[0].type = ['warrior'];
+  const value = backup(save), local = storage();
+  for (const [domain, key] of Object.entries(K)) local.data.set(key, JSON.stringify(value.data[domain]));
+  const before = [...local.data];
+  assert.throws(() => createBackup(local, { createdAt: date }), BackupError);
+  assert.deepEqual([...local.data], before);
+  assert.ok(local.operations.every(([kind]) => kind === 'get'));
+});
+
+const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
+function element() {
+  const classes = new Set();
+  return { files: [], value: 'selected', textContent: '', checked: false, onclick: null,
+    classList: { contains: value => classes.has(value), add: value => classes.add(value), remove: value => classes.delete(value),
+      toggle(value, on) { if (on) classes.add(value); else classes.delete(value); } } };
+}
+test('actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA)', async () => {
+  const handler = app.slice(app.indexOf("$('backupFile').onchange = async () =>"), app.indexOf('function finishProfileImport('));
+  for (const collection of ['buildings', 'units']) {
+    const save = rosterSave('classic'); save.state[collection][0].type = [save.state[collection][0].type];
+    const text = JSON.stringify(backup(save)), nodes = new Map(), writes = [];
+    const $ = id => { if (!nodes.has(id)) nodes.set(id, element()); return nodes.get(id); };
+    $('backupFile').files = [{ size: text.length, text: async () => text }];
+    $('backupModal').classList.add('hidden');
+    const context = { $, parseBackup, MAX_BACKUP_BYTES: 1024 * 1024, importGeneration: 0, pendingBackupText: null,
+      getCampaignOverview: () => { throw Error('invalid input reached preview'); }, updateRecoveryUI: () => writes.push('preview'),
+      profileSession: { beginImport: () => writes.push('marker'), importStorage: storage() } };
+    runInNewContext(handler, context); await $('backupFile').onchange();
+    assert.equal(context.pendingBackupText, null); assert.equal($('backupFile').value, '');
+    assert.match($('backupStatus').textContent, /invalid or incompatible engine data/);
+    assert.equal($('backupModal').classList.contains('hidden'), true);
+    assert.deepEqual(writes, []); assert.deepEqual(context.profileSession.importStorage.operations, []);
+  }
+});
+
+test('actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA)', () => {
+  const handler = app.slice(app.indexOf('function updateResume()'), app.indexOf('\nupdateResume();', app.indexOf('function updateResume()')));
+  const save = rosterSave('classic'); save.state.buildings[0].type = ['barracks'];
+  for (const value of [save, envelope(save)]) {
+    const text = JSON.stringify(value), local = storage(), nodes = new Map();
+    local.data.set(K.battle, text); const before = [...local.data];
+    const $ = id => { if (!nodes.has(id)) nodes.set(id, element()); return nodes.get(id); };
+    runInNewContext(handler + '\nupdateResume();', { $, Game, JSON, storage: { get: key => local.getItem(key), set: (...args) => local.setItem(...args), remove: key => local.removeItem(key) }, SAVE: K.battle,
+      CHALLENGES, CAMPAIGN_MISSIONS, campaignProgress: createCampaignProgress() });
+    assert.equal($('resumeSaved').classList.contains('hidden'), true); assert.equal($('resumeSaved').onclick, null);
+    assert.match($('saveStatus').textContent, /could not be loaded/); assert.deepEqual([...local.data], before);
+    assert.deepEqual(local.operations, [['get', K.battle]]);
+  }
+});
+
+test('exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps', () => {
+  const state = game => JSON.stringify(game.serialize());
+  for (const mapId of Object.keys(MAPS)) for (const difficulty of ['easy', 'normal', 'hard']) for (const seed of [1, 987]) {
+    let current = new Game({ mapId, difficulty, seed }), frozen = new FrozenGame({ mapId, difficulty, seed });
+    for (let frame = 0; frame < 12000 && current.state.winner === null; frame++) {
+      if (frame % 100 === 0) for (const game of [current, frozen]) {
+        const type = Object.keys(BUILDINGS)[frame / 100 % 7];
+        for (const side of [0, 1]) {
+          for (const site of buildSites(game.map, side)) if (game.build(type, site.x, site.y, side).ok) break;
+          const candidate = game.state.buildings.find(b => b.side === side && b.level < 3);
+          if (candidate) game.upgrade(candidate.id, side);
+          const target = game.state.units.find(u => u.side !== side); if (target) game.cast(target.x, target.y, side);
+        }
+      }
+      const dt = frame % 13 === 0 ? .017 : frame % 13 === 1 ? .083 : .05;
+      current.update(dt); frozen.update(dt);
+      if (frame % 100 === 0) assert.equal(state(current), state(frozen), `${mapId}/${difficulty}/${seed}/${frame}`);
+      if (frame % 997 === 0) { current = Game.restore(current.serialize()); frozen = FrozenGame.restore(frozen.serialize()); }
+    }
+    assert.notEqual(current.state.winner, null); assert.equal(state(current), state(frozen));
+  }
+});

@@ -1,0 +1,22 @@
+✔ source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits (2.882941ms)
+✔ frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota (16.630863ms)
+✔ original backup import accepted and wrote malformed entities; the patch rejects before any destination access (10.62563ms)
+✔ every building and unit identifier rejects all coercible and wrong-type JSON values on every map (1135.881742ms)
+✔ in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access (10.159945ms)
+✔ map, base, difficulty, effect and projectile enums use primitive strict comparisons (225.301972ms)
+✔ version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped (145.002949ms)
+✔ backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing (93.446132ms)
+✔ all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged (54.044816ms)
+✔ raw saves and both historical envelope versions retain the unchanged nullable identity migration (9.836008ms)
+✔ invalid stored battles cannot be re-exported or erase existing domains (1.422262ms)
+✔ actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA) (4.662358ms)
+✔ actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA) (2.220952ms)
+✔ exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps (6269.609297ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8155.392342
