@@ -1,0 +1,33 @@
+{
+  "engineSha": "2e0ab46d9623",
+  "engineSha256": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+  "rulesetsSha256": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da",
+  "rulesetId": "frontier-legacy",
+  "node": "v24.22.1",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "logicalCpus": 9,
+  "saturated": {
+    "simulatedSeconds": 120,
+    "steps": 2400,
+    "totalMs": 1186.84,
+    "meanStepMs": 0.4945,
+    "p95StepMs": 1.7846,
+    "p99StepMs": 3.38,
+    "maxStepMs": 14.973,
+    "peakUnits": 140,
+    "minStartUnits": 140,
+    "meanStartUnits": 140,
+    "peakBuildings": 48,
+    "peakEffects": 256,
+    "peakProjectiles": 127,
+    "gcControlled": true,
+    "heapDeltaMB": 0.38
+  },
+  "longRun": {
+    "completedMatches": 50,
+    "restoreCheckpoints": 116,
+    "longestMatchSeconds": 122.8,
+    "wallMs": 1815.7
+  },
+  "note": "CPU-only simulation benchmark, not browser rendering/FPS. Heap delta includes garbage-collector timing; entity limits and repeated terminal no-ops are deterministic checks."
+}

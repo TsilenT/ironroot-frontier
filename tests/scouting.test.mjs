@@ -104,7 +104,7 @@ test('markup supplies accessible static map semantics and readable deployment te
   assert.match(html, /Your army · left/); assert.match(html, /Enemy army · right/);
   assert.match(html, /North road/); assert.match(html, /Middle road/); assert.match(html, /South road/);
   assert.match(html, /No starting buildings\./);
-  assert.match(html, /Starting buildings only/);
+  assert.match(html, /Shows starting buildings/);
   assert.ok(!/<(?:script|image|foreignObject|animate|animateTransform|set)\b|\bon\w+=|\b(?:href|src)=/i.test(html));
   assert.ok(!/<(?:details|button|input)\b/.test(html), 'parent owns the disclosure and CTA');
   assert.ok(!/\sid=/.test(html), 'multiple previews do not create duplicate IDs');

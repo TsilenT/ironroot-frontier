@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, BUILDINGS} from '../../dist/engine.js';
 import {BACKUP_STORAGE_KEYS,createBackup,parseBackup} from '../../dist/backup.js';
@@ -10,11 +11,12 @@ const test = base.extend({page: async ({page}, use) => {
   await use(page); expect(errors, 'uncaught browser errors').toEqual([]);
 }});
 async function press(page, selector) {
+  if (await prepareBuildControl(page, selector)) return;
   const target = page.locator(selector);
   if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await target.tap();
   else await target.click();
 }
-async function open(page) {await page.goto('/'); await expect(page.locator('#start')).toBeVisible();}
+async function open(page) {await page.goto('/'); await press(page,'[data-mode="skirmish"]'); await expect(page.locator('#start')).toBeVisible();}
 async function start(page) {await open(page); await press(page, '#start'); await expect(page.locator('#welcome')).toBeHidden();}
 async function saved(page) {return page.evaluate(key => {const data=JSON.parse(localStorage.getItem(key)); return data?.format === 'ironroot-save' ? data.game : data;}, SAVE);}
 async function pause(page) {await press(page, '#pause'); await expect(page.locator('#pauseVeil')).toBeVisible(); return saved(page);}
@@ -77,6 +79,7 @@ test('controls fit the viewport and survive orientation changes', async ({page})
   for (const size of [page.viewportSize(), {width:844,height:390}, {width:320,height:568}, {width:390,height:650}]) {
     await page.setViewportSize(size);
     await expect.poll(() => page.locator('#battle').evaluate(e => e.width)).toBe(Math.round(size.width * Math.min(await page.evaluate(() => devicePixelRatio),2)));
+    await openBuildControls(page);
     for (const selector of ['#battle','#pause','#speed','#sound','#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
     await press(page,'#pause'); await fits(page,'#help');
     await press(page,'#help'); await expect(page.locator('#helpModal')).toBeVisible(); await press(page,'#guideDone');
@@ -112,14 +115,19 @@ test('save, title, reload and resume preserve buildings, gold, time and difficul
   await press(page,'#resume'); await expect(page.locator('#pause')).toHaveAttribute('aria-label','Pause game');
 });
 
-for (const invalid of ['{broken', JSON.stringify({version:999})]) test(`invalid save recovers: ${invalid}`, async ({page}) => {
-  await page.addInitScript(({key,value})=>localStorage.setItem(key,value),{key:SAVE,value:invalid});
-  await open(page); await expect(page.locator('#resumeSaved')).toBeHidden();
+for (const invalid of ['{broken', JSON.stringify({version:999})]) test(`invalid save is retained until explicit backup recovery: ${invalid}`, async ({page}) => {
+  await seedOnce(page,{[SAVE]:invalid});await press(page,'[data-mode="skirmish"]'); await expect(page.locator('#resumeSaved')).toBeHidden();
   await expect(page.locator('#saveStatus')).toBeVisible();
   await expect(page.locator('#saveStatus')).toContainText('could not be loaded');
   expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(invalid);
-  await press(page,'#start'); await expect(page.locator('#pause')).toBeVisible();
-  const replacement = await saved(page); expect(replacement.version).toBe(1); Game.restore(replacement);
+  await press(page,'#start');await expect(page.locator('#settingsModal')).toBeVisible();
+  expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(invalid);
+  await expect(page.locator('#backupStatus')).toContainText('original saved battle is unchanged');
+  if(!await page.locator('.backup-details').evaluate(e=>e.open))await press(page,'.backup-details > summary');
+  const clean=createBackup({getItem:()=>null},{createdAt:'2026-11-06T00:00:00.000Z'});
+  await chooseBackup(page,clean);await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);
+  await press(page,'[data-mode="skirmish"]');await press(page,'#start');await expect(page.locator('#pause')).toBeVisible();
+  const replacement = await saved(page); expect(replacement.version).toBe(3); Game.restore(replacement);
 });
 
 test('denied storage keeps unsaved battle open without crashing settings or pause', async ({page}) => {
@@ -131,7 +139,7 @@ test('denied storage keeps unsaved battle open without crashing settings or paus
 
 test('welcome and guide trap keyboard focus and restore playable focus', async ({page}) => {
   await open(page); await page.locator('#welcomeSettings').focus(); await page.keyboard.press('Tab');
-  await expect(page.locator('[data-mode="skirmish"]')).toBeFocused();
+  await expect(page.locator('[data-mode="campaign"]')).toBeFocused();
   await page.keyboard.press('Shift+Tab'); await expect(page.locator('#welcomeSettings')).toBeFocused();
   await page.locator('#welcomeHelp').focus();
   await page.keyboard.press('Enter'); await expect(page.locator('#closeHelp')).toBeFocused();
@@ -305,7 +313,7 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
     const restored=await historyRecoveryBytes(page);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))
       expect(JSON.parse(restored[key])).toEqual(retained.backup.data[domain]);
-    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:2,phase:'ready'});
+    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:3,phase:'ready'});
     expect(JSON.parse(restored[PROFILE_MARKER]).epoch).not.toBe(JSON.parse(values[PROFILE_MARKER]).epoch);
     expect(parseBackup(createBackup({getItem:key=>restored[key]??null})).data).toEqual(retained.backup.data);
     await press(page,'#welcomeSettings');await press(page,recent+' > summary');

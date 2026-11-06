@@ -1,0 +1,375 @@
+{
+  "sourceCommit": "c4ae6842e70794310c6ea878b7dc6c03c46dad2b",
+  "chapters": [
+    {
+      "id": "embers",
+      "field": "subtitle",
+      "before": "Raise a frontier from the ashes",
+      "after": "Rally the valley villages"
+    },
+    {
+      "id": "furnace",
+      "field": "subtitle",
+      "before": "Break the machinery of conquest",
+      "after": "Cut the marshal’s reinforcements"
+    },
+    {
+      "id": "furnace",
+      "field": "description",
+      "before": "Vey’s engineers replace every fallen regiment. Cut their foundries and supply lines before their moving front reaches the valley.",
+      "after": "Vey’s foundries keep his army supplied. Destroy them and cut his supply lines before the army reaches the valley."
+    },
+    {
+      "id": "crownworks",
+      "field": "epilogue",
+      "before": "The iron crown is lowered. Rowan leaves no throne behind, only three open roads and a watchfire that belongs to every village.",
+      "after": "The iron crown is lowered. Rowan opens all three roads, and the villages take turns keeping watch."
+    },
+    {
+      "id": "frontier",
+      "field": "subtitle",
+      "before": "Build a peace that can hold",
+      "after": "Reopen the roads and river crossings"
+    },
+    {
+      "id": "frontier",
+      "field": "description",
+      "before": "The crown is gone, but its abandoned toll forts still divide the frontier. Rowan, Sera and Iona must reopen a long road, settle the river crossings, and give the scattered settlements a common home.",
+      "after": "Toll forts still block the frontier after the crown’s fall. Rowan, Sera and Iona set out to reopen the long road and river crossings so the settlements can trade again."
+    },
+    {
+      "id": "frontier",
+      "field": "epilogue",
+      "before": "No banner claims the two bridges. The river charter belongs to every settlement, the distant beacons answer, and the frontier keeps its own watch.",
+      "after": "The settlements share the bridges under the river charter. The distant beacons answer, and each village takes its turn on watch."
+    }
+  ],
+  "missions": [
+    {
+      "id": "emberwatch",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "A barracks is a promise: hold this ground, and someone will stand beside you."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "Build a barracks near the crossing. We need warriors there before the next raid."
+      }
+    },
+    {
+      "id": "emberwatch",
+      "field": "hint",
+      "before": "Put warriors in front and ranged support behind. Production keeps paying off as long as the building survives.",
+      "after": "Put warriors in front and ranged support behind. Keep your troop buildings alive so they can send reinforcements."
+    },
+    {
+      "id": "three-roads",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Scout Sera",
+        "text": "The loudest fight is not always the most important. Look north. Then look south."
+      },
+      "after": {
+        "speaker": "Scout Sera",
+        "text": "They’re coming around both sides of the village. Watch the north and south roads."
+      }
+    },
+    {
+      "id": "winter-stores",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Quartermaster Iona",
+        "text": "Gold in a vault feeds no one. Spend enough to keep the mines working, and save the roads they pay for."
+      },
+      "after": {
+        "speaker": "Quartermaster Iona",
+        "text": "The relief wagons need an escort. Keep those mines working so we can pay for one."
+      }
+    },
+    {
+      "id": "wings-of-ash",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Scout Sera",
+        "text": "A shield cannot stop a shadow. Give our archers a clear line to the sky."
+      },
+      "after": {
+        "speaker": "Scout Sera",
+        "text": "Gryphons over both roads. Get archers up here before we move through the pass."
+      }
+    },
+    {
+      "id": "wings-of-ash",
+      "field": "victoryText",
+      "before": "The aeries empty. Sera’s signal rises over the pass without a single shadow circling it.",
+      "after": "The aeries fall. Sera signals the army to enter the pass."
+    },
+    {
+      "id": "stonegate",
+      "field": "description",
+      "before": "Stonegate has turned back armies for a century. Its three towers were built to stop soldiers, not an engineer with time to aim.",
+      "after": "Three towers guard Stonegate’s middle road. Bram needs siege engines and enough cover to bring them into range."
+    },
+    {
+      "id": "stonegate",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Engineer Bram",
+        "text": "There is no unbreakable wall. Only a wall we have not reached with the right machine."
+      },
+      "after": {
+        "speaker": "Engineer Bram",
+        "text": "My engines can reach those towers. Keep their infantry off us while we work."
+      }
+    },
+    {
+      "id": "stonegate",
+      "field": "victoryText",
+      "before": "Bram’s engines open a path through the gate. The garrison abandons the stones it thought would last forever.",
+      "after": "Bram’s engines break through the gate. The garrison retreats, leaving the road open."
+    },
+    {
+      "id": "cold-forge",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Engineer Bram",
+        "text": "Their machines are excellent. Their crews still need something in front of them."
+      },
+      "after": {
+        "speaker": "Engineer Bram",
+        "text": "Those foundries are sending engines toward the pass. Hit them before they get their infantry into place."
+      }
+    },
+    {
+      "id": "black-ledger",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Quartermaster Iona",
+        "text": "Every army has a heartbeat. This one is the sound of coin."
+      },
+      "after": {
+        "speaker": "Quartermaster Iona",
+        "text": "Those three mines pay for Vey’s reinforcements. Hit them to slow his reinforcements."
+      }
+    },
+    {
+      "id": "black-ledger",
+      "field": "victoryText",
+      "before": "The ledger closes. For the first time, the marshal’s quartermasters cannot promise another regiment.",
+      "after": "The mines fall. Vey’s quartermasters can no longer afford the reinforcements he needs."
+    },
+    {
+      "id": "furnace-heart",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "We did not come this far to trade one ruin for another. Break the works. Bring our people home."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "Take out the siege works. Keep our troops covered on the way in."
+      }
+    },
+    {
+      "id": "crown-foothold",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Quartermaster Iona",
+        "text": "One last camp. Make it strong enough that the next commander will not need to rebuild it."
+      },
+      "after": {
+        "speaker": "Quartermaster Iona",
+        "text": "We’ll need food and reinforcements for the siege. Get the mines working before Rowan attacks."
+      }
+    },
+    {
+      "id": "ironroot",
+      "field": "description",
+      "before": "The gates of the Crownworks open. The marshal offers no surrender, only one last army between the valley and its future.",
+      "after": "Vey has gathered his last army at the Crownworks. Break through and destroy his citadel."
+    },
+    {
+      "id": "ironroot",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "No crowns. No conquered ground. We finish this so the roads can belong to everyone."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "Vey is behind those walls. Once his citadel falls, we can open the roads for good."
+      }
+    },
+    {
+      "id": "ironroot",
+      "field": "objective",
+      "before": "Destroy the enemy citadel within 5:00. The marshal builds, upgrades and uses rally strikes. Your citadel must survive.",
+      "after": "Destroy the enemy citadel within 5:00. The marshal builds, upgrades and uses arrow volleys. Your citadel must survive."
+    },
+    {
+      "id": "open-horizon",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "Ending a war opens a gate. Keeping it open is the work that comes after."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "The war is over, but the relief wagons still can’t get through. Clear those toll towers."
+      }
+    },
+    {
+      "id": "open-horizon",
+      "field": "victoryText",
+      "before": "The toll towers fall and the relief column reaches the horizon. Sera turns toward the beacons while Iona follows the river.",
+      "after": "The toll towers fall and the relief column takes the long road. Sera turns toward the beacons while Iona follows the river."
+    },
+    {
+      "id": "open-horizon",
+      "field": "briefing",
+      "before": [
+        "Long March: 4,000-unit battlefield, 3 lanes, 24 building sites per side",
+        "1,100 starting gold; your citadel starts at 5,200 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: no starting buildings; Middle: 1 × level-2 Barracks, 1 × level-1 Archery range, 1 × level-1 Gold mine; South: no starting buildings",
+        "Enemy deployment: North: 1 × level-3 Gryphon aerie; Middle: 2 × level-3 Watchtower, 1 × level-2 Barracks, 2 × level-3 Gryphon aerie; South: 1 × level-3 Gryphon aerie",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or rally strikes",
+        "Losing or salvaging the marked relief barracks fails immediately; the enemy citadel is an alternative victory only while it survives"
+      ],
+      "after": [
+        "Long March: 4,000-unit battlefield, 3 lanes, 24 building sites per side",
+        "1,100 starting gold; your citadel starts at 5,200 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: no starting buildings; Middle: 1 × level-2 Barracks, 1 × level-1 Archery range, 1 × level-1 Gold mine; South: no starting buildings",
+        "Enemy deployment: North: 1 × level-3 Gryphon aerie; Middle: 2 × level-3 Watchtower, 1 × level-2 Barracks, 2 × level-3 Gryphon aerie; South: 1 × level-3 Gryphon aerie",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or arrow volleys",
+        "Losing or salvaging the marked relief barracks fails immediately; the enemy citadel is an alternative victory only while it survives"
+      ]
+    },
+    {
+      "id": "river-charter",
+      "field": "subtitle",
+      "before": "Make room for a living frontier",
+      "after": "Fund the river settlements"
+    },
+    {
+      "id": "river-charter",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Quartermaster Iona",
+        "text": "Sixteen sites. Two bridges. Leave room for the people who will live here when the soldiers leave."
+      },
+      "after": {
+        "speaker": "Quartermaster Iona",
+        "text": "Keep both bridge watchposts standing. We need room for mines as well as troops."
+      }
+    },
+    {
+      "id": "river-charter",
+      "field": "victoryText",
+      "before": "The watchposts stand and the granary is funded. The river settlements sign a charter that makes neither bank a border.",
+      "after": "The watchposts hold and the granary is funded. Both banks sign the river charter and agree to share the crossings."
+    },
+    {
+      "id": "river-charter",
+      "field": "briefing",
+      "before": [
+        "Twin Span: 3,200-unit battlefield, 2 lanes, 16 building sites per side",
+        "1,100 starting gold; your citadel starts at 3,800 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-3 Watchtower, 1 × level-1 Barracks, 1 × level-1 Gold mine; South: 1 × level-3 Watchtower, 1 × level-1 Archery range",
+        "Enemy deployment: North: 1 × level-3 Siege foundry, 1 × level-2 Siege foundry, 1 × level-2 Barracks; South: 3 × level-3 Gryphon aerie",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or rally strikes",
+        "Income is checked at 3:30; losing or salvaging either marked watchpost fails immediately; an enemy-citadel victory can finish early"
+      ],
+      "after": [
+        "Twin Span: 3,200-unit battlefield, 2 lanes, 16 building sites per side",
+        "1,100 starting gold; your citadel starts at 3,800 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-3 Watchtower, 1 × level-1 Barracks, 1 × level-1 Gold mine; South: 1 × level-3 Watchtower, 1 × level-1 Archery range",
+        "Enemy deployment: North: 1 × level-3 Siege foundry, 1 × level-2 Siege foundry, 1 × level-2 Barracks; South: 3 × level-3 Gryphon aerie",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or arrow volleys",
+        "Income is checked at 3:30; losing or salvaging either marked watchpost fails immediately; an enemy-citadel victory can finish early"
+      ]
+    },
+    {
+      "id": "far-beacon",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Scout Sera",
+        "text": "Do not mistake a distant light for an empty road. Reach both beacons, then give them time to answer."
+      },
+      "after": {
+        "speaker": "Scout Sera",
+        "text": "The old crown still pays the companies out there. Cut off their pay stations and hold until the beacons answer."
+      }
+    },
+    {
+      "id": "far-beacon",
+      "field": "hint",
+      "before": "Attack both outer supply lines with ranged support against flyers. A central defense buys the long journey time; expand income before committing all your gold to the road.",
+      "after": "Attack both outer supply lines with ranged support against flyers. Defend the middle while your troops make the long journey. Build income before spending all your gold on the attack."
+    },
+    {
+      "id": "far-beacon",
+      "field": "briefing",
+      "before": [
+        "Long March: 4,000-unit battlefield, 3 lanes, 24 building sites per side",
+        "1,350 starting gold; your citadel starts at 5,400 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-2 Barracks, 1 × level-1 Archery range; Middle: 1 × level-1 Gold mine; South: 1 × level-2 Barracks, 1 × level-1 Archery range",
+        "Enemy deployment: North: 1 × level-1 Gold mine, 2 × level-3 Gryphon aerie, 1 × level-2 Barracks; Middle: 1 × level-3 Siege foundry, 2 × level-3 Arcane sanctum; South: 1 × level-1 Gold mine, 2 × level-3 Gryphon aerie, 1 × level-2 Barracks",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or rally strikes",
+        "Both pay stations must fall and the road must hold until 3:10, unless the enemy citadel falls first; falling below 2,000 citadel HP fails immediately"
+      ],
+      "after": [
+        "Long March: 4,000-unit battlefield, 3 lanes, 24 building sites per side",
+        "1,350 starting gold; your citadel starts at 5,400 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-2 Barracks, 1 × level-1 Archery range; Middle: 1 × level-1 Gold mine; South: 1 × level-2 Barracks, 1 × level-1 Archery range",
+        "Enemy deployment: North: 1 × level-1 Gold mine, 2 × level-3 Gryphon aerie, 1 × level-2 Barracks; Middle: 1 × level-3 Siege foundry, 2 × level-3 Arcane sanctum; South: 1 × level-1 Gold mine, 2 × level-3 Gryphon aerie, 1 × level-2 Barracks",
+        "Fixed enemy deployment; no new enemy buildings, upgrades or arrow volleys",
+        "Both pay stations must fall and the road must hold until 3:10, unless the enemy citadel falls first; falling below 2,000 citadel HP fails immediately"
+      ]
+    },
+    {
+      "id": "common-ground",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "We are not here to choose a new ruler. We are here so no one can close these roads again."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "Hold the camp. Iona and Sera are bringing the delegates here, and they need both bridges open."
+      }
+    },
+    {
+      "id": "common-ground",
+      "field": "victoryText",
+      "before": "The last toll works fall. River and beacon delegates meet on common ground, with no throne and no conquered bank between them.",
+      "after": "The last toll works fall. The river and beacon delegates meet at the camp to agree on how to keep the roads open."
+    },
+    {
+      "id": "common-ground",
+      "field": "hint",
+      "before": "The commander pays for every reinforcement and reacts to your army. Protect the northern mine with a ground screen, retain archers against southern flyers, then upgrade a balanced force instead of exhausting all sixteen sites.",
+      "after": "The commander pays for every reinforcement and reacts to your army. Keep ground troops ahead of the northern mine and archers against the southern flyers. Upgrade your army before using all sixteen sites."
+    },
+    {
+      "id": "common-ground",
+      "field": "briefing",
+      "before": [
+        "Twin Span: 3,200-unit battlefield, 2 lanes, 16 building sites per side",
+        "1,500 starting gold; your citadel starts at 6,000 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-1 Gold mine, 1 × level-2 Barracks, 1 × level-1 Archery range; South: 1 × level-2 Barracks, 1 × level-2 Archery range",
+        "Enemy deployment: North: 1 × level-2 Siege foundry, 1 × level-2 Barracks, 1 × level-2 Archery range, 1 × level-1 Gold mine; South: 1 × level-2 Arcane sanctum, 1 × level-2 Barracks, 1 × level-3 Gryphon aerie",
+        "Hard adaptive enemy starts with 80 gold and ordinary income; it pays for buildings, upgrades and rally strikes",
+        "Losing or salvaging the marked council mine or southern barracks fails immediately; both toll works or the enemy citadel must fall by 5:00"
+      ],
+      "after": [
+        "Twin Span: 3,200-unit battlefield, 2 lanes, 16 building sites per side",
+        "1,500 starting gold; your citadel starts at 6,000 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-1 Gold mine, 1 × level-2 Barracks, 1 × level-1 Archery range; South: 1 × level-2 Barracks, 1 × level-2 Archery range",
+        "Enemy deployment: North: 1 × level-2 Siege foundry, 1 × level-2 Barracks, 1 × level-2 Archery range, 1 × level-1 Gold mine; South: 1 × level-2 Arcane sanctum, 1 × level-2 Barracks, 1 × level-3 Gryphon aerie",
+        "Hard adaptive enemy starts with 80 gold and ordinary income; it pays for buildings, upgrades and arrow volleys",
+        "Losing or salvaging the marked council mine or southern barracks fails immediately; both toll works or the enemy citadel must fall by 5:00"
+      ]
+    }
+  ]
+}

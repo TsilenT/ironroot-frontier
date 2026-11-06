@@ -7,7 +7,7 @@ import {BACKUP_STORAGE_KEYS,parseBackup} from '../../dist/backup.js';
 import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
 import {test,press,tapPoint,homePoint,pause,saved,seedOnce,selectMap,openBackup,downloadBackup} from './map-browser-helpers.mjs';
 import {installPad,padButton} from './map-controller-helpers.mjs';
-import {REPORT_CASES,reportFixture} from './battle-report-fixtures.mjs';
+import {REPORT_CASES,reportFixture,imminentSkirmishFixture} from './battle-report-fixtures.mjs';
 import {REPORT_LEGACY_PATH} from './battle-report-legacy-fixtures.mjs';
 const SAVE=BACKUP_STORAGE_KEYS.battle,HISTORY=BACKUP_STORAGE_KEYS.history;
 const reportSelector='#resultReport details.battle-report';
@@ -42,9 +42,10 @@ async function downloadReport(page){
   return data;
 }
 function expectScope(report,fixture){
-  expect(report).toMatchObject({format:'ironroot-battle-report',version:1,context:fixture.expected.context,outcome:{result:fixture.expected.result},scope:{resumed:true,startedAt:fixture.envelope.game.state.time,missingBefore:fixture.envelope.game.state.time,fullTimeline:false,counters:'full-match-engine'}});
+  expect(report).toMatchObject({format:'ironroot-battle-report',version:2,identity:fixture.identity,context:fixture.expected.context,outcome:{result:fixture.expected.result},scope:{resumed:true,startedAt:fixture.envelope.game.state.time,missingBefore:fixture.envelope.game.state.time,fullTimeline:false,counters:'full-match-engine'}});
   expect(report.map.id).toBe(Game.restore(fixture.envelope.game).map.id);
   expect(report.timeline[0]).toEqual(report.initial);expect(report.timeline.at(-1)).toEqual(report.final);
+  expect(report.final.time).toBe(fixture.expected.time);expect(report.outcome.engineWinner).toBe(fixture.expected.winner);
   expect(report.final.time).toBe(report.scope.endedAt);expect(report.scope.observedDuration).toBeCloseTo(report.scope.endedAt-report.scope.startedAt,8);
   expect(report.timeline.length).toBeGreaterThan(0);expect(report.timeline.length).toBeLessThanOrEqual(256);
   expect(report.sampling).toMatchObject({maximumPoints:256,retainedPoints:report.timeline.length,interpolated:false});
@@ -82,16 +83,17 @@ for(const kind of REPORT_CASES)test('synthetic persisted '+kind+' produces genui
   expect(await page.locator('#resultKills').textContent()).toBe(String(report.cumulativeStats[0].kills));
   expect(await page.locator('#resultBuilt').textContent()).toBe(String(report.cumulativeStats[0].built));
   if(kind==='campaign-primary-zero'){
-    expect(report.final.time).toBe(0);expect(report.scope.observedDuration).toBe(0);
-    expect(report.timeline).toHaveLength(1);expect(report.outcome.engineWinner).toBeNull();
+    expect(report.scope.startedAt).toBe(0);expect(report.final.time).toBe(.05);expect(report.scope.observedDuration).toBe(.05);
+    expect(report.timeline.map(sample=>sample.time)).toEqual([0,.05]);expect(report.outcome.engineWinner).toBeNull();
     await expect(page.locator('#resultTime')).toHaveText('00:00');
   }
   if(kind==='trial-primary'){
     expect(report.final.time).toBe(40-1e-10); // Export is full precision, never presentation-rounded.
     await expect(page.locator('#resultTime')).toHaveText('00:40');
     await expect(page.locator('.report-header > p')).toContainText('0:40 battle time');
-    await expect(page.locator('.report-scope')).toContainText('at 0:40. Recording ends at 0:40.');
-    await expect(page.locator('.report-x-axis')).toHaveText(Array(4).fill('0:40 · one moment recorded'));
+    await expect(page.locator('.report-scope')).toContainText('at 0:39. Recording ends at 0:40.');
+    await expect(page.locator('.report-x-axis')).toHaveText(Array(4).fill('0:390:40'));
+    expect(report.timeline.map(sample=>sample.time)).toEqual([fixture.envelope.game.state.time,40-1e-10]);
   }
   if(kind.includes('primary')||kind.includes('alternate')||kind.includes('failure'))expect(report.outcome.source).toBe('objective');
   if(kind.endsWith('alternate')){
@@ -323,16 +325,15 @@ test('real frozen 0.10 QA UI save continues in 0.12 with unchanged persistence c
   expect(layout(resumed)).toEqual(layout(oldSave));
   expect(resumed.game.state.stats).toEqual(oldSave.game.state.stats);expect(resumed.game.state.time).toBeGreaterThanOrEqual(oldSave.game.state.time);
   expect(JSON.stringify(resumed)).not.toContain('ironroot-battle-report');await press(page,'#saveExit');
-  // Continue the actual old save above first. The following terminal transform
-  // is explicitly synthetic so old-save report completion needs no long battle.
-  const terminal=structuredClone(resumed);terminal.game.state.bases[1].hp=0;terminal.game.state.units=[];terminal.game.state.projectiles=[];
-  Game.restore(terminal.game);
+  // Continue the actual old save first. A disclosed synthetic living attacker
+  // then earns the result by normal next-tick damage; no terminal save is seeded.
+  const completion=imminentSkirmishFixture(resumed),terminal=completion.envelope;
   await page.evaluate(({key,value})=>localStorage.setItem(key,value),{key:SAVE,value:JSON.stringify(terminal)});
   await page.reload();await press(page,'#resumeSaved');await expect(page.locator('#resultModal')).toBeVisible();
   const report=await downloadReport(page);
   expect(report.map.id).toBe('twin-span');expect(report.scope.resumed).toBe(true);expect(report.scope.fullTimeline).toBe(false);
   expect(report.scope.startedAt).toBe(terminal.game.state.time);expect(report.cumulativeStats[0].built).toBe(terminal.game.state.stats.built[0]);
-  test.info().annotations.push({type:'fixture',description:'Actual frozen 0.10 QA runtime UI save continued in 0.12. Only the final enemy-base-zero transform is synthetic. Frozen QA baseline is not labeled production.'});
+  test.info().annotations.push({type:'fixture',description:'Actual frozen 0.10 QA runtime UI save continued in 0.12. Only the final imminent attacker/one-HP living-base setup is synthetic; ordinary combat earns the result. Frozen QA baseline is not labeled production.'});
 });
 
 test('offline report modules load from actual service-worker cache and finish/download a resumed synthetic result',async({page,context})=>{

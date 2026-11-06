@@ -1,0 +1,98 @@
+TAP version 13
+# Subtest: one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+ok 1 - one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world
+  ---
+  duration_ms: 125.936809
+  type: 'test'
+  ...
+# Subtest: insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+ok 2 - insufficient geometry pauses instead of imposing an arbitrary portrait height rule
+  ---
+  duration_ms: 0.464112
+  type: 'test'
+  ...
+# Subtest: actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+ok 3 - actual clipped, overlapping or undersized controls are rejected even with enough nominal height
+  ---
+  duration_ms: 0.63842
+  type: 'test'
+  ...
+# Subtest: focus feedback chooses a band clear of originals, including Middle-road protected structures
+ok 4 - focus feedback chooses a band clear of originals, including Middle-road protected structures
+  ---
+  duration_ms: 0.368192
+  type: 'test'
+  ...
+# Subtest: fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+ok 5 - fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module
+  ---
+  duration_ms: 0.723705
+  type: 'test'
+  ...
+# Subtest: real app holds a loaded undersized battle before advancement, saves once, and waits for explicit resume
+not ok 6 - real app holds a loaded undersized battle before advancement, saves once, and waits for explicit resume
+  ---
+  duration_ms: 8.597401
+  type: 'test'
+  location: '/workspace/shared/ironroot-mobile-battlefield-lab/tests/mobile-battlefield-pause.test.mjs:38:1'
+  failureType: 'testCodeFailure'
+  error: 'protectedMonitor?.observe is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:21:29
+    advanceObjectiveBattle (file:///workspace/shared/ironroot-mobile-battlefield-lab/dist/objectives.js:8:17)
+    advanceObjectiveBattle (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/mobile-battlefield-pause.test.mjs:26:69)
+    Object.frame (evalmachine.<anonymous>:15:23)
+    Object.frame (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/mobile-battlefield-pause.test.mjs:35:203)
+    TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/mobile-battlefield-pause.test.mjs:47:4)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: real scope transitions cancel old pointer and activation-key releases, including blocked-to-ready
+ok 7 - real scope transitions cancel old pointer and activation-key releases, including blocked-to-ready
+  ---
+  duration_ms: 5.255363
+  type: 'test'
+  ...
+# Subtest: settings/help dismissal cannot automatically resume a viewport-paused battle after recovery
+ok 8 - settings/help dismissal cannot automatically resume a viewport-paused battle after recovery
+  ---
+  duration_ms: 3.508903
+  type: 'test'
+  ...
+# Subtest: recovery and stale-session checks retain precedence over explicit viewport resume
+ok 9 - recovery and stale-session checks retain precedence over explicit viewport resume
+  ---
+  duration_ms: 1.582208
+  type: 'test'
+  ...
+# Subtest: the same guarded title exit is usable while blocked and retains the paused battle when saving fails
+ok 10 - the same guarded title exit is usable while blocked and retains the paused battle when saving fails
+  ---
+  duration_ms: 2.834951
+  type: 'test'
+  ...
+# Subtest: visual-viewport clipping is detected with unchanged CSS dimensions, without a 568px portrait minimum
+ok 11 - visual-viewport clipping is detected with unchanged CSS dimensions, without a 568px portrait minimum
+  ---
+  duration_ms: 1.321765
+  type: 'test'
+  ...
+# Subtest: actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold
+ok 12 - actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold
+  ---
+  duration_ms: 0.413769
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 254.602146

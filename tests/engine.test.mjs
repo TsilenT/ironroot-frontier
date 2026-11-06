@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 const source=await readFile(new URL('../dist/engine.js',import.meta.url),'utf8');
-const {Game,BUILDINGS,UNITS}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const {Game,BUILDINGS,UNITS}=await import(new URL('../dist/engine.js',import.meta.url).href);
 function tick(g,seconds){for(let i=0;i<seconds*20;i++)g.update(.05);}
 test('placement and economy are validated without mutating failed requests',()=>{const g=new Game({ai:false});assert.equal(g.state.gold[0],420);assert.equal(g.build('mint',1600,260).ok,false);assert.equal(g.build('mint',410,450).ok,false);assert.equal(g.build('mint',NaN,450).ok,false);assert.equal(g.build('bogus',270,260).ok,false);assert.equal(g.build('toString',270,260).ok,false);assert.equal(g.build('foundry',270,260).ok,true);assert.equal(g.build('foundry',270,640).ok,false);assert.equal(g.state.gold[0],150);});
 test('production, ranged attacks, counter modifiers and unit cap',()=>{const g=new Game({ai:false});tick(g,10);assert.equal(g.state.units.length,2);const a=g.state.units[0],b=g.state.units[1];a.x=1500;a.y=450;a.type='archer';a.cooldown=0;b.x=1650;b.y=450;b.cooldown=100;const hp=b.hp;g.update(.05);assert.ok(b.hp<hp);assert.ok(Math.abs(hp-b.hp-UNITS.archer.damage*.55)<.001);assert.equal(g.state.projectiles.length,1);const c=g.state.buildings[0];for(let i=0;i<200;i++)g._spawn(c);assert.equal(g.state.units.filter(u=>u.side===0).length,70);});

@@ -1,3 +1,4 @@
+import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 // v0.7 UI integration regressions. Browser execution requires an authorized cloud runner.
 import {test as base, expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
@@ -11,6 +12,7 @@ const test=base.extend({page:async ({page},use)=>{
   await use(page); expect(errors,'uncaught browser errors').toEqual([]);
 }});
 async function press(page,selector) {
+  if (await prepareBuildControl(page, selector)) return;
   const element=page.locator(selector);
   if (await page.evaluate(()=>navigator.maxTouchPoints>0)) await element.tap();
   else await element.click();
@@ -107,7 +109,7 @@ test('array-valued entity enums are refused before backup confirmation without a
     const invalid=structuredClone(valid),entity=invalid.data.battle.game.state[collection][0];
     expect(typeof entity.type).toBe('string');entity.type=[entity.type];
     await chooseFile(page,JSON.stringify(invalid));
-    await expect(page.locator('#backupStatus')).toContainText('Saved battle contains invalid or incompatible engine data.');
+    await expect(page.locator('#backupStatus')).toContainText('Saved battle contains invalid or incompatible engine data:');
     await expect(page.locator('#backupModal')).toBeHidden();
     expect(await raw(page)).toEqual(before);
     expect(await page.evaluate(key=>localStorage.getItem(key),PROFILE_MARKER_KEY)).toBe(marker);
@@ -202,7 +204,7 @@ async function installPad(page) {
         axes:p.axes,buttons:p.buttons.map(pressed=>({pressed,touched:pressed,value:pressed?1:0}))}]:[];
     }});
   });
-  await page.goto('/');
+  await page.goto('/');await press(page,'[data-mode="skirmish"]');
   await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls)).toBeGreaterThanOrEqual(3);
 }
 async function neutralPad(page) {

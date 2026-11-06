@@ -81,7 +81,7 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
   assert.ok(Number.isInteger(seeds)&&seeds>0&&Number.isInteger(firstSeed)&&firstSeed>=0,'Invalid seed range');
   assert.ok(process.argv[5]&&process.argv[6],'Pass an explicit baseline engine path and output directory');
   const baselinePath=resolve(process.argv[5]),outDir=resolve(process.argv[6]),baselineSource=readFileSync(baselinePath,'utf8');
-  ({Game:Baseline}=await import('data:text/javascript;base64,'+Buffer.from(baselineSource).toString('base64')));
+  ({Game:Baseline}=await import(pathToFileURL(baselinePath).href));
   mkdirSync(outDir,{recursive:true});
   const metadata={mode,node:process.version,seedCount:seeds,firstSeed,step:.05,maxSeconds:600,versionMeaning:{current:'supplied baseline AI',candidate:'working engine AI'},baselinePath,currentEngineHash:hash(baselineSource),candidateEngineHash:hash(workingSource)};
   if(mode==='campaign'){

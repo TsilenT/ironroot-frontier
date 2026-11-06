@@ -3,9 +3,11 @@ import {readFile} from 'node:fs/promises';
 import {resolve, extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {randomUUID} from 'node:crypto';
-import {PRIOR_BUILDS} from './update-fixtures.mjs';
+import {UPDATE_BUILDS} from './update-fixtures.mjs';
 import {LEGACY_QA_ROOT,LEGACY_QA_PATH} from './legacy-profile-fixtures.mjs';
 import {REPORT_LEGACY_ROOT,REPORT_LEGACY_PATH} from './battle-report-legacy-fixtures.mjs';
+import {PRODUCTION_V012_ROOT,PRODUCTION_V012_PATH,validateProductionV012} from './production-v012-fixtures.mjs';
+await validateProductionV012(); // Fail closed before serving immutable historical bytes.
 const root = fileURLToPath(new URL('../../dist', import.meta.url));
 // QA-only, loopback-only update sessions. Each case gets an unguessable path
 // and its own browser context. There is no shared current-version switch.
@@ -16,7 +18,7 @@ createServer(async (req, res) => {
   let pathname = url.pathname, selectedRoot = root;
   if (pathname === '/__qa_update/sessions' && req.method === 'POST') {
     const from = url.searchParams.get('from');
-    if (!Object.hasOwn(PRIOR_BUILDS, from) || url.searchParams.getAll('from').length !== 1) {res.writeHead(400).end();return;}
+    if (!Object.hasOwn(UPDATE_BUILDS, from) || url.searchParams.getAll('from').length !== 1) {res.writeHead(400).end();return;}
     const id = randomUUID(); updates.set(id, {from,phase:'prior'});
     res.writeHead(201, {'Content-Type': 'application/json', 'Cache-Control': 'no-store'});
     res.end(JSON.stringify({id,from,basePath:'/__qa_update/'+id+'/'})); return;
@@ -31,7 +33,7 @@ createServer(async (req, res) => {
     }
     if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405).end();return;}
     const session = updates.get(id);
-    selectedRoot = session.phase === 'prior' ? resolve(fileURLToPath(PRIOR_BUILDS[session.from].root)) : root; pathname = suffix;
+    selectedRoot = session.phase === 'prior' ? resolve(fileURLToPath(UPDATE_BUILDS[session.from].root)) : root; pathname = suffix;
   }
   // Fixed QA-only baseline path shares browser-origin storage with current app.
   if(pathname.startsWith(LEGACY_QA_PATH)){
@@ -43,6 +45,11 @@ createServer(async (req, res) => {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}
     selectedRoot=fileURLToPath(REPORT_LEGACY_ROOT).replace(/\/$/,'');
     pathname='/'+pathname.slice(REPORT_LEGACY_PATH.length);
+  }
+  if(pathname.startsWith(PRODUCTION_V012_PATH)){
+    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}
+    selectedRoot=fileURLToPath(PRODUCTION_V012_ROOT).replace(/\/$/,'');
+    pathname='/'+pathname.slice(PRODUCTION_V012_PATH.length);
   }
   const path = resolve(selectedRoot, '.' + pathname.replace(/\/$/, '/index.html'));
   if (!path.startsWith(selectedRoot + '/')) {res.writeHead(403).end(); return;}

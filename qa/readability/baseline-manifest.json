@@ -1,0 +1,25 @@
+{
+  "scope": "Developer-only synthetic comparison. Never ship in dist or precache.",
+  "privateCommit": "181c859e8c47a2497e190ee39874ff3fedda4b98",
+  "source": {
+    "dist/render.js": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106",
+    "dist/vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95",
+    "dist/engine.js": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7"
+  },
+  "fixture": {
+    "baseline-render.js": "a18de2bb15cd11dc72a51712c7aa799c831b13051204c68936444a20a6f8f39d",
+    "baseline-vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+  },
+  "substitutions": [
+    {
+      "file": "baseline-render.js",
+      "from": "from './vfx.js'",
+      "to": "from './baseline-vfx.js'"
+    },
+    {
+      "file": "baseline-render.js",
+      "from": "from './engine.js'",
+      "to": "from '../engine.js'"
+    }
+  ]
+}

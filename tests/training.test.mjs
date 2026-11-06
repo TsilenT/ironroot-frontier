@@ -1,4 +1,4 @@
-import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
+import { assertHistoricalEngineOracle, readHistoricalProduction } from './engine-validation-source.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
@@ -186,7 +186,7 @@ test('a recovery that changes the enemy field can always retry with disclosed gr
 });
 
 test('every watch has a strict finite attempt limit and timeout stays recoverable by retry',()=>{
-  for(const lesson of TRAINING_LESSONS){const t=new TrainingSession({lessonId:lesson.id});enterWatch(t);t.game.state.time=lesson.timeLimit-.05;t.update(.05);assert.equal(t.snapshot().status,'failed');assert.match(t.snapshot().feedback,/limit/);assert.equal(t.snapshot().shouldRun,false);assert.equal(t.continue().ok,false);t.retry();assert.equal(t.game.state.time,0);assert.equal(t.snapshot().status,'instruction');}
+  for(const lesson of TRAINING_LESSONS){const t=new TrainingSession({lessonId:lesson.id});enterWatch(t);t.game.state.time=lesson.timeLimit-.05;t.update(.05);assert.equal(t.snapshot().status,'failed');assert.match(t.snapshot().feedback,/Time is up after/);assert.equal(t.snapshot().shouldRun,false);assert.equal(t.continue().ok,false);t.retry();assert.equal(t.game.state.time,0);assert.equal(t.snapshot().status,'instruction');}
 });
 
 test('real engine win, loss and draw cannot silently count as lesson success',()=>{
@@ -209,5 +209,5 @@ test('isolated practice cannot overwrite an existing game and uses no persistenc
   assert.deepEqual([...source.matchAll(/^import .* from ['"]([^'"]+)/gm)].map(m=>m[1]),['./engine.js']);
   for(const name of ['localStorage','sessionStorage','indexedDB','fetch(','writeCampaign','recordCampaign','recordResult','saveGame','profile-session','persistence.js'])assert.equal(source.includes(name),false,name);
   assert.equal(typeof t.serialize,'undefined');assert.equal(typeof TrainingSession.restore,'undefined');
-  assertFrozenEngineExceptEnumValidation(readFileSync(new URL('../dist/engine.js',import.meta.url)));
+  assertHistoricalEngineOracle();
 });

@@ -9,11 +9,21 @@ import { classicSnapshot, gameFixture, viewports } from './renderer-scenarios.mj
 const close = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} != ${b}`);
 const terrainRects = (renderer, color) => styledCalls(renderer.baseTerrain, 'fillRect').filter(call => call.style === color).map(call => call.args);
 
-test('Classic matches frozen 0.8 terrain, five viewport frames, minimaps, and all portraits', () => {
+test('Classic retains frozen terrain, camera geometry, minimaps and portraits; visual frames have a separate lab fixture', () => {
   installCanvas();
   const { sourceSHA256, ...fixture } = JSON.parse(readFileSync(new URL('./fixtures/renderer-classic-0.8.json', import.meta.url), 'utf8'));
   assert.equal(sourceSHA256, 'ef5ebcbed466bdd829ab34b12adaddf262d4627d31bd1ddbd4c99dd793701251');
-  assert.deepEqual(classicSnapshot(Renderer, drawUnitPortrait), fixture);
+  const actual = classicSnapshot(Renderer, drawUnitPortrait);
+  assert.deepEqual(actual.themes, fixture.themes);
+  assert.deepEqual(actual.portraits, fixture.portraits);
+  for (const [viewport, frame] of Object.entries(actual.frames)) {
+    const { main: before, ...geometry } = fixture.frames[viewport];
+    const { main: after, ...current } = frame;
+    assert.deepEqual(current, geometry, viewport);
+    assert.notEqual(after, before, 'intentional renderer increment, not a rewritten historical baseline');
+  }
+  const visual = JSON.parse(readFileSync(new URL('./fixtures/renderer-readability-lab.json', import.meta.url), 'utf8'));
+  assert.deepEqual(actual.frames, visual.frames);
 });
 
 test('setMap accepts registered IDs/descriptors, rejects foreign geometry, and preserves theme', () => {

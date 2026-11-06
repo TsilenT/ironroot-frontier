@@ -1,0 +1,121 @@
+{
+  "scope": "Isolated next-feature source integration on frozen corrected v0.12; not a release or native UI approval. No browser/server/hosting/commit/upload/publication performed by this integration.",
+  "acceptedSource": "ironroot-objectives-lab",
+  "correctedBaselineManifestSha256": "96dc472716940109ba8c2eb00b914e26f28cc9695d7183c4f2a320bbb994ab00",
+  "runtimeFrozenForNativeReview": true,
+  "presentationModuleMatchesAcceptedSource": true,
+  "focusedTests": {
+    "total": 167,
+    "passed": 167,
+    "failed": 0,
+    "skipped": 0
+  },
+  "syntax": "passed",
+  "runtimePreflight": "passed",
+  "runtimeFiles": 34,
+  "unchangedVsCorrected012": {
+    "engine.js": true,
+    "campaign.js": true,
+    "objectives.js": true,
+    "challenges.js": true,
+    "persistence.js": true,
+    "backup.js": true,
+    "profile-session.js": true,
+    "input-scope.js": true,
+    "audio.js": true,
+    "battle-report.js": true,
+    "report-view.js": true,
+    "report-view.css": true,
+    "training-app.js": true,
+    "training.js": true,
+    "training.html": true,
+    "training.css": true
+  },
+  "versionAndCacheBump": false,
+  "ownedRuntimeHashes": {
+    "app.js": "261e61b19a55b21606f637fb2fa7f68eea31082d6dc112ebd05892029cbf9be4",
+    "index.html": "cfff5afdfeb31d771e2bfb0eaa89e67d9be1f444c04c7d9cc4a67b30271ff271",
+    "styles.css": "349ada26081e3ca24267efb8ea4492cd3b135be3ad4ceaf639e95f6ea2f6f102",
+    "protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
+    "service-worker.js": "e8b3f436ba3c3b8fc82814f529b3241c63a92c5dfd5d68e87e209bae7fb09884"
+  },
+  "checks": {
+    "focused": "node --test tests/protected-objectives*.test.mjs tests/toast-layout.test.mjs tests/persistence-recovery.test.mjs tests/minimap-input-integration.test.mjs tests/report-ui-integration.test.mjs tests/profile-session.test.mjs tests/training-ui.test.mjs",
+    "aggregate": "npm test",
+    "syntax": "npm run check",
+    "runtimePreflight": "node scripts/verify-runtime.mjs"
+  },
+  "evidenceDirectory": "qa/protected-objectives-integration (pointer-* files are the latest one-line hit-testing repair checks)",
+  "pending": [
+    "Bounded native battle-first retest at 568x320 plus 844x390, portrait and orientation/reset regressions",
+    "Physical touch, native keyboard/focus and screen-reader checks",
+    "Separate release version/cache choice and publication approval",
+    "Fallback for browser-chrome-shortened viewports below 320px; 568x300 source overlap remains unresolved"
+  ],
+  "aggregateTests": {
+    "total": 672,
+    "passed": 671,
+    "failed": 0,
+    "skipped": 1
+  },
+  "aggregateIncludes": "Accepted renderer/VFX integration present in next-clarity, along with protected-objective integration and corrected-v0.12 regression tests.",
+  "initialIntegrationFeatureDeltasMatchedAcceptedSource": {
+    "app.js": true,
+    "index.html": true,
+    "styles.css": true,
+    "service-worker.js": true
+  },
+  "nativeReviewRepair": {
+    "firstPass": "Native review found north target/HUD obstruction, badge clipping and toast/minimap overlap at 844x390 Winter Stores, plus a missing focus-arrow glyph.",
+    "changes": [
+      "Protected short-landscape dock shares the lower row with the scrolling build deck",
+      "Same citadel HP DOM nodes move into header and restore on orientation/non-protect transition",
+      "Protected-landscape toast measures field/minimap bounds",
+      "CSS-drawn font-independent focus icon"
+    ],
+    "rendererAndVfxUnchanged": true,
+    "nativeRetest": "844x390, portrait indicators/toast and same-page resets accepted; 568x320 remained blocked and led to the battle-first source repair."
+  },
+  "previousLandscapeRepairRuntimeHashes": {
+    "app.js": "0ff7046672bce0753c2bf56de9e7774b86ffbdda3fbb0f7ac874da285143402d",
+    "index.html": "5ab7d4f7fcb9eaf4a6520fda4b89135e718e32d8a94dca6295178efcea35d261",
+    "styles.css": "81fe0eb496f5d2a909482224f2473794eebf6a9d7ec14ac62eae01988306325f",
+    "protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
+    "service-worker.js": "e8b3f436ba3c3b8fc82814f529b3241c63a92c5dfd5d68e87e209bae7fb09884"
+  },
+  "veryShortLandscapeRepair": {
+    "scope": "Protected landscape at <=360px height only",
+    "sourceBudget568x320": {
+      "header": 48,
+      "canvasWidth": 416,
+      "canvasHeight": 212,
+      "railWidth": 152,
+      "objectiveDock": 60,
+      "minimumButton": 44,
+      "rendererScale": 0.32
+    },
+    "changes": [
+      "Explicit Build/Close/Cancel drawer; closing on build/rally choice, Pause and original focus",
+      "All six navigation/tool buttons and minimap in a reserved side rail",
+      "Actual canvas resize observation and existing canvas-local coordinates",
+      "Held-input scope boundaries and covered-canvas spending guard"
+    ],
+    "geometryTests": "Actual unchanged Renderer projects every authored original and conservative model/badge bounds at 568x320, 640x320, 640x360 and 844x320; checks overlay exclusion, 44px controls, old-failure reproduction and input round-trip",
+    "rendererAndVfxUnchanged": true,
+    "nativeRetest": "pending",
+    "sourceReviewCorrections": [
+      "Controller focus-toggle now closes drawer before returning to gameplay",
+      "Every direct paused=true path closes drawer before showing paused/recovery UI",
+      "Executable actual-handler regressions cover controller X and SAVE-conflict auto-pause"
+    ]
+  },
+  "aggregateAfterPointerRepair": "Pending native QA fixture cleanup; recorded aggregateTests describes the preceding clean candidate.",
+  "pointerActivationRepair": {
+    "runtimeChange": "One-line pointer-events: auto on .compact-build; app/HTML/render/VFX unchanged",
+    "rootCause": "Inherited pointer-events: none from the deliberately noninteractive objective HUD",
+    "sourceRegression": "Actual HTML ancestry and active stylesheet cascade/inheritance; removing the override reproduces the defect",
+    "browserRegression": "qa/browser/protected-objectives-pointer.spec.mjs; computed styles, elementFromPoint and trusted ordinary touch/mouse activation of Build/Close/Cancel with actual drawer state transitions",
+    "browserRegressionStatus": "syntax passed; browser execution pending",
+    "nativeRetest": "pending"
+  }
+}

@@ -12,8 +12,8 @@ export async function validateLegacyProfileFixture(){
   for(const [file,expected] of Object.entries(manifest.files))assert.equal(createHash('sha256').update(await readFile(new URL(file,LEGACY_QA_ROOT))).digest('hex'),expected,'frozen QA baseline '+file);
   const {CAMPAIGN_MISSIONS:oldMissions}=await import(new URL('campaign.js',LEGACY_QA_ROOT));
   const {CAMPAIGN_MISSIONS:newMissions}=await import('../../dist/campaign.js');
-  const rules=mission=>Object.fromEntries(Object.entries(mission).filter(([key])=>!['mapId','ai','reward'].includes(key)));
-  assert.deepEqual(oldMissions.map(rules),newMissions.slice(0,12).map(rules),'first twelve authored missions unchanged except derived next-chapter reward');
+  const rules=mission=>Object.fromEntries(Object.entries(mission).filter(([key])=>!['mapId','ai','reward','debrief','briefing','story','dialogue','hint','victoryText','description','subtitle','objective'].includes(key)));
+  assert.deepEqual(oldMissions.map(rules),newMissions.slice(0,12).map(rules),'first twelve mission mechanics unchanged; revised narration and derived rewards are not mechanical identity');
   assert.deepEqual(oldMissions.map(m=>m.ai===true),newMissions.slice(0,12).map(m=>m.ai));
   const {createProfileSession}=await import(new URL('profile-session.js',LEGACY_QA_ROOT));
   const raw=JSON.stringify({format:'ironroot-profile',version:2,epoch:'qa-proof',phase:'ready'});

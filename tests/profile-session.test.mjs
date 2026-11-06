@@ -8,6 +8,8 @@ import { createBackup, parseBackup, restoreBackup, MAX_BACKUP_BYTES, BACKUP_STOR
 import { CAMPAIGN_MISSIONS, createCampaignProgress, getCampaignOverview, readCampaignProgress, mergeCampaignProgress, writeCampaignProgress } from '../dist/campaign.js';
 
 import { Game } from '../dist/engine.js';
+import { encodeBattle, decodeBattle, scenarioForBattle } from '../dist/battle-codec.js';
+import { getBattleWriteFailure } from '../dist/persistence.js';
 import { CHALLENGES } from '../dist/challenges.js';
 
 const keys = Object.values(K);
@@ -93,14 +95,19 @@ test('rollback during recovery of a partial or abandoned profile never publishes
   }
 });
 
-test('invalid or incompatible markers block play writes and can be replaced only by explicit recovery', () => {
+test('invalid markers require explicit recovery; future protocol markers cannot be downgraded', () => {
   for (const value of ['{broken', '{}', 'null', '[]', 'x'.repeat(513), encoded('bad epoch', 'ready'), encoded('ok', 'unknown'),
     JSON.stringify({ format: 'ironroot-profile', version: 99, epoch: 'future', phase: 'ready' }),
     JSON.stringify({ format: 'ironroot-profile', version: 1, epoch: 'extra', phase: 'ready', extra: true })]) {
     const r = raw([[KEY, value]]), p = session(r);
     assert.equal(p.status().phase, 'invalid'); bad(() => p.storage.setItem(K.settings, '{}'));
     assert.equal(p.beginImport().ok, false); assert.equal(r.data.get(KEY), value);
-    assert.equal(p.beginImport({ recover: true }).ok, true); assert.equal(p.finishImport({ outcome: 'rolled-back' }).phase, 'failed');
+    if (value.includes('\"version\":99')) {
+      const result = p.beginImport({ recover: true });
+      assert.equal(result.ok, false); assert.equal(result.code, 'unsupported-protocol'); assert.equal(r.data.get(KEY), value);
+    } else {
+      assert.equal(p.beginImport({ recover: true }).ok, true); assert.equal(p.finishImport({ outcome: 'rolled-back' }).phase, 'failed');
+    }
   }
 });
 
@@ -261,8 +268,8 @@ const segment=app.slice(app.indexOf('// Portable backups'),app.indexOf('// Exper
 function element(hidden=false){const cl=new Set(hidden?['hidden']:[]);return {classList:{contains:k=>cl.has(k),add:k=>cl.add(k),remove:k=>cl.delete(k),toggle(k,x){if(x)cl.add(k);else cl.delete(k);}},textContent:'',checked:false,files:[],value:'',disabled:false,click(){}};}
 function uiRaw(){const data=new Map();return{data,getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};}
 function harness(r=uiRaw()){const p=createProfileSession(()=>r,{requiredProtocolVersion:2}),s=createStorage(()=>p.storage),battleSession=createSaveSession(s,K.battle);battleSession.claim();const nodes=new Map();const $=id=>{if(!nodes.has(id))nodes.set(id,element(['backupModal','profileRecovery','backupRecoveryRow'].includes(id)));return nodes.get(id);};
- const c={$,profileSession:p,storage:s,battleSession,readHistoryState,historySession:createHistorySession(s,K.history,{canWrite:()=>p.status().canWrite}),preferenceSession:createPreferenceSession(s,K.settings,{canWrite:()=>p.status().canWrite}),retryHistorySave(){return true;},retryPreferences(){return true;},HISTORY:K.history,SAVE:K.battle,createBackup:(s,o)=>createBackup(s,o&&JSON.parse(JSON.stringify(o))),parseBackup,restoreBackup,MAX_BACKUP_BYTES,CAMPAIGN_MISSIONS,CHALLENGES,getCampaignOverview,timeText:String,localStorage:r,preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},campaignProgress:createCampaignProgress(),trialRecords:{},currentCampaign:null,currentChallenge:null,game:new Game(),started:true,paused:true,objectiveOutcome:null,settingsWasPaused:false,recoveryHold:null,profileGate:null,pendingFinalizeOutcome:null,allowProfileReload:false,importGeneration:0,retainedHistory:null,knownHistory:[],knownHistoryAvailable:true,progressDirty:false,location:{protocol:'https:',reload(){c.reloaded=true;}},showSettings(){c.paused=true;$('settingsModal').classList.remove('hidden');},showTitle(){c.titleShown=true;c.started=false;},pauseControl(){},toast(){},save(){c.saved=(c.saved||0)+1;return true;},setTimeout,URL,Blob,document:{body:{append(){}},createElement(){return{click(){},remove(){}};}}};
- vm.createContext(c);vm.runInContext(segment,c);vm.runInContext(app.slice(app.indexOf('function pause(value)'),app.indexOf("$('pause').onclick = () => pause(!paused);")),c);vm.runInContext(app.slice(app.indexOf('function hideSettings()'),app.indexOf('function syncSettings()')),c);vm.runInContext('downloadBackup = text => { exportedText = text; };',c);return {c,r,p,$};}
+ const c={encodeBattle,decodeBattle,scenarioForBattle,getBattleWriteFailure,battleSafetyReason:null,$,profileSession:p,storage:s,battleSession,readHistoryState,historySession:createHistorySession(s,K.history,{canWrite:()=>p.status().canWrite}),preferenceSession:createPreferenceSession(s,K.settings,{canWrite:()=>p.status().canWrite}),retryHistorySave(){return true;},retryPreferences(){return true;},HISTORY:K.history,SAVE:K.battle,createBackup:(s,o)=>createBackup(s,o&&JSON.parse(JSON.stringify(o))),parseBackup,restoreBackup,MAX_BACKUP_BYTES,CAMPAIGN_MISSIONS,CHALLENGES,getCampaignOverview,timeText:String,localStorage:r,preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},campaignProgress:createCampaignProgress(),trialRecords:{},currentCampaign:null,currentChallenge:null,game:new Game(),started:true,paused:true,objectiveOutcome:null,settingsWasPaused:false,recoveryHold:null,profileGate:null,pendingFinalizeOutcome:null,allowProfileReload:false,importGeneration:0,retainedHistory:null,knownHistory:[],knownHistoryAvailable:true,progressDirty:false,location:{protocol:'https:',reload(){c.reloaded=true;}},showSettings(){c.paused=true;$('settingsModal').classList.remove('hidden');},showTitle(){c.titleShown=true;c.started=false;},pauseControl(){},viewportPause:{active:false},syncDialogs(){},setCompactBuildOpen(){},toast(){},save(){c.saved=(c.saved||0)+1;return true;},setTimeout,URL,Blob,document:{body:{append(){}},createElement(){return{click(){},remove(){}};}}};
+ vm.createContext(c);vm.runInContext(segment,c);vm.runInContext(app.slice(app.indexOf('function pause(value,'),app.indexOf("$('pause').onclick =")),c);vm.runInContext(app.slice(app.indexOf('function hideSettings()'),app.indexOf('function syncSettings()')),c);vm.runInContext('downloadBackup = text => { exportedText = text; };',c);return {c,r,p,$};}
 const payload=n=>{const x=JSON.parse(createBackup(uiRaw()));if(n)x.data.campaign.missions.emberwatch={completed:true,stars:n,bestTime:30};return JSON.stringify(x);};
 const deferred=()=>{let resolve,reject;return{promise:new Promise((a,b)=>{resolve=a;reject=b;}),resolve,reject};};
 async function choose(h,text){h.$('backupFile').files=[{size:text.length,text:async()=>text}];await h.$('backupFile').onchange();}
@@ -318,7 +325,7 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 test('UI: actual application startup protects expanded progress before constructing ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(JSON.parse(r.data.get(KEY)).version,2);
+  assert.equal(JSON.parse(r.data.get(KEY)).version,3);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });
 

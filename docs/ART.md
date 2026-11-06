@@ -18,4 +18,4 @@ These are original 2D vector/canvas models, not 3D meshes.
 
 The same physical three-lane battlefield supports four visual treatments: woodland, snowy highland, ashlands and stone-paved citadel approaches. Themes alter appearance only. They do not secretly change movement, range, income or combat geometry. Terrain is prepared on a separate canvas once per theme transition; at most the base and active terrain canvases are retained.
 
-The UI requests Barlow Condensed and DM Sans through Google Fonts with system fallbacks. Font files are not redistributed in the current package; desktop/offline play uses fallback fonts when network access is blocked. A fully self-contained licensed font bundle remains a polish task.
+Barlow Condensed and DM Sans are bundled locally as WOFF2 files under the SIL Open Font License 1.1. The full notices are in `dist/FONTS-NOTICES.txt` and linked from Preferences. The UI makes no Google Fonts request; desktop/offline play can use the bundled fonts, with system fallbacks for unavailable glyphs. Earlier reviews that observed remote fonts describe historical builds, not this candidate.

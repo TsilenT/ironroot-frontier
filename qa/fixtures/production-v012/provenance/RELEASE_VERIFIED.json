@@ -1,0 +1,201 @@
+{
+  "verified_at_utc": "2026-11-06T14:26:20.864339+00:00",
+  "url": "https://ironroot.stevets.ai/",
+  "source_commit": "24edddab2cff33b3f91b396bc855193f87421ba3",
+  "public_commit": "acb366c33898fabff885118cead7158fbe837c87",
+  "public_tree": "e93d2be7b43e956ce27d92097e6f24568f99134c",
+  "pages_run": "https://github.com/TsilenT/ironroot-frontier-play/actions/runs/42232222143",
+  "pages_result": "success",
+  "cloud_exact_candidate": {
+    "passed": 753,
+    "failed": 0,
+    "intentional_skips": 3
+  },
+  "local_tests": {
+    "passed": 635,
+    "optional_tooling_skips": 1
+  },
+  "runtime_files": [
+    {
+      "path": "FONTS-NOTICES.txt",
+      "bytes": 10269,
+      "sha256": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30"
+    },
+    {
+      "path": "app.js",
+      "bytes": 89979,
+      "sha256": "6870ae50bc6dce23e92c31b4d5978ddff510fb94b961c6c3c05ac985bdae492f"
+    },
+    {
+      "path": "audio.js",
+      "bytes": 18809,
+      "sha256": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9"
+    },
+    {
+      "path": "backup.js",
+      "bytes": 19933,
+      "sha256": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331"
+    },
+    {
+      "path": "barlow-condensed-latin-500.woff2",
+      "bytes": 24624,
+      "sha256": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4"
+    },
+    {
+      "path": "barlow-condensed-latin-600.woff2",
+      "bytes": 25604,
+      "sha256": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c"
+    },
+    {
+      "path": "barlow-condensed-latin-700.woff2",
+      "bytes": 25704,
+      "sha256": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25"
+    },
+    {
+      "path": "barlow-condensed-latin-800.woff2",
+      "bytes": 25844,
+      "sha256": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb"
+    },
+    {
+      "path": "battle-report.js",
+      "bytes": 14303,
+      "sha256": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d"
+    },
+    {
+      "path": "campaign.js",
+      "bytes": 39425,
+      "sha256": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781"
+    },
+    {
+      "path": "challenges.js",
+      "bytes": 7817,
+      "sha256": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08"
+    },
+    {
+      "path": "codex.js",
+      "bytes": 12490,
+      "sha256": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d"
+    },
+    {
+      "path": "controller.js",
+      "bytes": 16651,
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763"
+    },
+    {
+      "path": "dm-sans-latin-400-700.woff2",
+      "bytes": 26560,
+      "sha256": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40"
+    },
+    {
+      "path": "engine.js",
+      "bytes": 26520,
+      "sha256": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 263,
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 35211,
+      "sha256": "3c37a27c7492ed7e038d2ee13025b6c2869e6edbee64e0a3dada0003d5b47157"
+    },
+    {
+      "path": "input-scope.js",
+      "bytes": 3651,
+      "sha256": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 462,
+      "sha256": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e"
+    },
+    {
+      "path": "objectives.js",
+      "bytes": 737,
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4"
+    },
+    {
+      "path": "persistence.js",
+      "bytes": 10652,
+      "sha256": "306d34d124df98265cee4c6bbd65a6413588c3f6d7d98ea2a8bed7f7659a4e89"
+    },
+    {
+      "path": "profile-session.js",
+      "bytes": 13786,
+      "sha256": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d"
+    },
+    {
+      "path": "render.js",
+      "bytes": 40135,
+      "sha256": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106"
+    },
+    {
+      "path": "report-view.css",
+      "bytes": 9765,
+      "sha256": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35"
+    },
+    {
+      "path": "report-view.js",
+      "bytes": 17790,
+      "sha256": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e"
+    },
+    {
+      "path": "scouting.js",
+      "bytes": 11576,
+      "sha256": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04"
+    },
+    {
+      "path": "service-worker.js",
+      "bytes": 2120,
+      "sha256": "9a79237a4fa6925cc0db86d588287eb1758355bcee20714a9bc803745ce9f88c"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 56975,
+      "sha256": "cb3451fee2369344ec40b85d8bfc8555c4801b39fc24748c6f020704af32f312"
+    },
+    {
+      "path": "training-app.js",
+      "bytes": 30767,
+      "sha256": "956b4773d3195c911b99fa1873f7541ccdc182a97ccdf9c94b9db28c7f27f235"
+    },
+    {
+      "path": "training.css",
+      "bytes": 10984,
+      "sha256": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb"
+    },
+    {
+      "path": "training.html",
+      "bytes": 6171,
+      "sha256": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108"
+    },
+    {
+      "path": "training.js",
+      "bytes": 23539,
+      "sha256": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770"
+    },
+    {
+      "path": "vfx.js",
+      "bytes": 8959,
+      "sha256": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    }
+  ],
+  "runtime_bytes": 668075,
+  "live_ui_checks": [
+    "v0.12 title, 16-mission campaign, five field trials visible",
+    "Existing synthetic v0.7 Emberwatch 00:35 save survived normal service-worker update and resumed",
+    "Paid 140-gold barracks placement, live warrior production, and 98-gold level-2 upgrade succeeded",
+    "Save and return recorded Emberwatch 00:54; browser reload and resume preserved mission, timer, gold and objective",
+    "Guided practice loaded, paid exactly 140 gold, spawned real warrior and completed lesson 1 observation",
+    "Returning from isolated practice retained Emberwatch 00:54 save",
+    "No game-origin warning or error seen; only cloud browser extension metadata errors"
+  ],
+  "limitations": [
+    "Smoke used cloud Chromium, not real mobile/controller or packaged desktop",
+    "AI center-rush balance weakness remains documented",
+    "Profile protocol 2 means rollback to v0.7 is not established save-compatible; prefer forward fixes"
+  ],
+  "screenshot": "live-smoke.png"
+}

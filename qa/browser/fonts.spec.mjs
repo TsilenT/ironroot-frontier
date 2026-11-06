@@ -8,7 +8,7 @@ test('all five local WOFF2 assets load and actual DOM text uses bundled faces wi
   const requests=[],responses=[];
   page.on('request',request=>requests.push({url:request.url(),type:request.resourceType()}));
   page.on('response',response=>{if(new URL(response.url()).pathname.endsWith('.woff2'))responses.push(response);});
-  await observeCanvas(page);await page.goto('/');await press(page,'#mapPickerToggle');
+  await observeCanvas(page);await page.goto('/');await press(page,'[data-mode="skirmish"]');await press(page,'#mapPickerToggle');
   const faces=await loadFontFaces(page);expect(faces).toHaveLength(8);
   for(const face of faces){
     expect(face.loaded,'FontFaceSet.load matched '+face.family+' '+face.weight).toHaveLength(1);

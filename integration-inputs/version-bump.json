@@ -1,0 +1,26 @@
+{
+  "version": "0.13.0",
+  "scope": "Metadata/display/cache identity only; unpublished candidate",
+  "files": {
+    "package.json": {
+      "before": "892b0acefb0a63ddfad41a465cf1b98325c7cb97c071b8db1c3a9b20c5001f8d",
+      "after": "0281e87bf35b5d1f77b0d60d504ebb3d727852d2975957b31ef14a0eed65760a"
+    },
+    "desktop/package.json": {
+      "before": "ae5f64ac0a1c6fa20128f59cd88e13bfa8958956041e51c37103de0cb89f95b1",
+      "after": "95e9103d3bb7de778187dcc613b898ce5401e1d6311a16e6b46b06121ac479a3"
+    },
+    "desktop/package-lock.json": {
+      "before": "6812b35df32534857cb0971cfeacc14200e7b2cc9bc2f03907c1f1d16aa9415f",
+      "after": "cae113be2b9e5862e115858221932db98fbc5df5f10829e710599d2fe7905845"
+    },
+    "dist/index.html": {
+      "before": "02db087aa3894b5825d8621b093fdd3a1856bd2cf8e29238a0267cd896b85376",
+      "after": "573188dfc7ed3efb267898c2d6865df2b74246402f6f3293b7baebcca45ab4e2"
+    },
+    "dist/service-worker.js": {
+      "before": "4e41477509bd727e71e79ba40562e6800018406c748cfb9a878b49c3405a1212",
+      "after": "2b731502cd099ce954f2a38ebfc980579f5ee21e79836b566d8eb1305aaf7a81"
+    }
+  }
+}

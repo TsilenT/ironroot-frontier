@@ -1,0 +1,74 @@
+{
+  "scope": "Local minimal validation rebase into a snapshot of the future clarity feature, not the repaired release candidate and not release approval",
+  "createdAt": "2026-11-06T14:08:58.597013+00:00",
+  "engineSHA256": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+  "candidate3HistoricalProof": {
+    "commit": "24edddab2cff33b3f91b396bc855193f87421ba3",
+    "manifest": "QA_CANDIDATE3_VALIDATION.json",
+    "sha256": "0a48463351561c672c3cdf18e07f3d6e64ec80e47acd766eccfb3880e0e2fa68",
+    "interpretation": "Unmodified historical exact-candidate3 evidence only. Its 636 test count and 33-file runtime do not describe this future combined feature."
+  },
+  "node": {
+    "status": "passed",
+    "command": "npm test",
+    "discovered": 694,
+    "passed": 693,
+    "failed": 0,
+    "skipped": 1,
+    "cancelled": 0,
+    "todo": 0,
+    "skip": "Optional installed desktop build tooling is absent; no install attempted."
+  },
+  "focused": {
+    "status": "passed",
+    "command": "node --test tests/save-enum-validation.test.mjs tests/minimap-input-contract.test.mjs tests/readability-fixture.test.mjs tests/protected-objectives.test.mjs tests/training-integration.test.mjs",
+    "discovered": 42,
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "runtimeSyntax": "passed",
+    "allSourceSyntax": {
+      "status": "passed",
+      "files": 194,
+      "command": "node --check on every .js, .mjs and .cjs source file"
+    },
+    "browserSourceAndFixtures": {
+      "status": "passed",
+      "command": "npm --prefix qa/browser run check"
+    },
+    "runtimeInventory": {
+      "status": "passed",
+      "command": "npm run check:release",
+      "files": 34,
+      "bytes": 697981
+    },
+    "independentSourceReview": "passed; no concrete defect found",
+    "sourceProvenance": "passed",
+    "nativeBrowserExecution": "unrun",
+    "browserDiscovery": "unrun",
+    "liveFeatureOverlayApplication": "unrun",
+    "installedDesktopTooling": "skipped",
+    "physicalDeviceAudioControllerAndSteamReadiness": "unrun"
+  },
+  "actionsNotPerformed": [
+    "live feature edits",
+    "server/browser launch",
+    "dependency installation",
+    "source upload",
+    "commit",
+    "publication",
+    "permission changes"
+  ],
+  "logs": {
+    "qa/clarity-validation-rebase/all-source-syntax.txt": "8f2ff0ff7f8d328e6ca8e3af6977da09705fd21eb871be0f184ce13450e366cd",
+    "qa/clarity-validation-rebase/browser-fixtures.txt": "b06d881c3222b911ed7b180c75b797c973b14f8f8ffe061cf39b66afb44359d6",
+    "qa/clarity-validation-rebase/focused.txt": "d4f1961af892e97141c885c4f7da64b57b90cbe0ddcf7d56fc5a5ab41c2ecbf3",
+    "qa/clarity-validation-rebase/independent-review.txt": "4d5940e424bc40c91948da24ab2c22298e0a6e97677f1db564d85f709b572575",
+    "qa/clarity-validation-rebase/node.txt": "dcdb86910ae92786a83eb7369d6f271b8fbf55aeb332d276530e41be27a3488d",
+    "qa/clarity-validation-rebase/runtime.txt": "3a1cc26d730ce331feb5c54753e84c57cd578f74d48c8c1439f5c2aca4d5e40a",
+    "qa/clarity-validation-rebase/source-audit.json": "d877fb26e06a50b268065c6ee6083dbaa079473f38a32cf19fc57272b6bd5327",
+    "qa/clarity-validation-rebase/syntax.txt": "35632cb80f0f2da8877da65ccf90170ed47fa3811ecb84cd85147fedca83e44d"
+  }
+}

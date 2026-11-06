@@ -1,0 +1,178 @@
+{
+  "scope": "Separate local protected-mobile prototype. Not published, not version-bumped, not browser/native approval.",
+  "baseline": {
+    "workspace": "/workspace/shared/ironroot-next-clarity",
+    "preservedFiles": 438,
+    "sourceUnchanged": true,
+    "priorNode": {
+      "total": 697,
+      "passed": 696,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "runtimeFrozen": true,
+  "runtime": {
+    "scope": "local source-dist validation only, not publication approval",
+    "runtimeFiles": 35,
+    "totalBytes": 716280,
+    "files": {
+      "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "app.js": "50130fab265b3acd83cbd37f132a9548bbc4866ad34f748d22d9f9ea0908f8ad",
+      "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+      "backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+      "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "battle-report.js": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+      "campaign.js": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781",
+      "challenges.js": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08",
+      "codex.js": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d",
+      "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "engine.js": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+      "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "index.html": "5a20d1890b7eb95bfeac703b430b46ea9450f2960d9fec1f2692032e7baf789d",
+      "input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+      "manifest.webmanifest": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e",
+      "mobile-battlefield.js": "7344944d0203bfa7f22e669fb36e7f7bb31dc8440d695d08d75f9530b1f31f65",
+      "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "persistence.js": "306d34d124df98265cee4c6bbd65a6413588c3f6d7d98ea2a8bed7f7659a4e89",
+      "profile-session.js": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d",
+      "protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
+      "render.js": "9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e",
+      "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "report-view.js": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+      "scouting.js": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04",
+      "service-worker.js": "b12e6a574f4393c557ee0d74bc12f2da70be534b3cec32cdeec65da3b4897639",
+      "styles.css": "07585ad8eee08d0f2633198d6c23282fcdcfeb2e5a80563bd3b9729c179a3dde",
+      "training-app.js": "956b4773d3195c911b99fa1873f7541ccdc182a97ccdf9c94b9db28c7f27f235",
+      "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "training.html": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108",
+      "training.js": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770",
+      "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+    }
+  },
+  "node": {
+    "total": 717,
+    "passed": 716,
+    "failed": 0,
+    "skipped": 1
+  },
+  "focused": {
+    "total": 145,
+    "passed": 145,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "runtimeSyntax": "passed",
+    "allJavaScriptSourceSyntax": "passed",
+    "browserSourceAndFixtures": "passed",
+    "strictOfflineInventory": "passed",
+    "browserExecution": "not run"
+  },
+  "unchangedRuntime": {
+    "dist/training.css": true,
+    "dist/training.html": true,
+    "dist/dm-sans-latin-400-700.woff2": true,
+    "dist/vfx.js": true,
+    "dist/icon.svg": true,
+    "dist/input-scope.js": true,
+    "dist/FONTS-NOTICES.txt": true,
+    "dist/codex.js": true,
+    "dist/barlow-condensed-latin-800.woff2": true,
+    "dist/protected-objectives.js": true,
+    "dist/backup.js": true,
+    "dist/training.js": true,
+    "dist/challenges.js": true,
+    "dist/manifest.webmanifest": true,
+    "dist/audio.js": true,
+    "dist/engine.js": true,
+    "dist/training-app.js": true,
+    "dist/scouting.js": true,
+    "dist/profile-session.js": true,
+    "dist/persistence.js": true,
+    "dist/report-view.js": true,
+    "dist/report-view.css": true,
+    "dist/render.js": true,
+    "dist/barlow-condensed-latin-500.woff2": true,
+    "dist/controller.js": true,
+    "dist/barlow-condensed-latin-600.woff2": true,
+    "dist/campaign.js": true,
+    "dist/barlow-condensed-latin-700.woff2": true,
+    "dist/objectives.js": true,
+    "dist/battle-report.js": true
+  },
+  "changedInheritedFiles": [
+    "tests/toast-layout.test.mjs",
+    "tests/profile-session.test.mjs",
+    "tests/web.test.mjs",
+    "tests/protected-objectives-pointer.test.mjs",
+    "tests/protected-objectives-ui.test.mjs",
+    "tests/campaign-ui-polish.test.mjs",
+    "tests/protected-objectives-layout.test.mjs",
+    "dist/index.html",
+    "dist/service-worker.js",
+    "dist/styles.css",
+    "dist/app.js",
+    "qa/browser/protected-objectives-pointer.spec.mjs"
+  ],
+  "newRuntimeModule": "dist/mobile-battlefield.js",
+  "layout": {
+    "portrait": {
+      "header": 72,
+      "dock": 84,
+      "navigation": 96,
+      "worldAt320x480": 228,
+      "worldAt390x500": 248,
+      "worldAt320x568": 316
+    },
+    "landscape": {
+      "header": 48,
+      "dock": 60,
+      "rail": 152,
+      "worldAt568x320": 212
+    },
+    "minimumVisibleWorldHeight": 212,
+    "predicate": "Actual visible canvas/control/region rectangles, safe-area layout and visual viewport; no fixed 568px portrait minimum",
+    "controlMinimum": 44
+  },
+  "knownTradeoff": "390x500 with a 34px bottom inset fits the source model; 320x480 with that inset does not and remains paused until sufficient space or guarded title exit.",
+  "evidence": "qa/mobile-battlefield/",
+  "pending": [
+    "Independent source review of frozen candidate",
+    "One bounded native gate: short portrait, landscape, protected focus/critical HP, drawer/prices/inspection, hit targets, modal/safety pause and explicit recovery",
+    "Physical-device, physical-controller and screen-reader evidence",
+    "Any publication or version change requires a separate decision"
+  ],
+  "independentReviewCorrection": {
+    "findings": [
+      "First protected start/restore measured initially hidden target controls before HUD initialization",
+      "Fallback dialog did not reserve safe-area insets"
+    ],
+    "changes": [
+      "Synchronous updateHUD before the first startup geometry check",
+      "Fallback padding reserves 8px plus all four safe-area insets",
+      "Focusable labelled scroll region in the existing dialog trap; safe title action remains initial focus"
+    ],
+    "newRegressions": [
+      "tests/mobile-battlefield-startup.test.mjs",
+      "tests/mobile-startup-fixture.mjs",
+      "tests/mobile-fallback-safe-area.test.mjs"
+    ],
+    "negativeControls": [
+      "Removing startup update reproduces false holds from actual hidden HTML ancestors",
+      "Old8px padding reproduces26px of a44px title target in a34px unsafe bottom area"
+    ],
+    "evidenceLimit": "Actual extracted handlers and narrow DOM/source geometry models. Not native browser layout or physical safe-area evidence.",
+    "fallbackFloor": {
+      "usableHeightAfterInsets": 160,
+      "bottomInset34RequiredTotalHeight": 194,
+      "messageHeightAtFloor": 40,
+      "actionHeight": 44
+    },
+    "recheck": "pending narrow independent re-review and bounded native gate"
+  }
+}

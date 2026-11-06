@@ -1,0 +1,70 @@
+{
+  "scope": "Isolated source-only visual lab; no publication, browser or native screenshot approval.",
+  "baselineCommit": "181c859e8c47a2497e190ee39874ff3fedda4b98",
+  "baselineManifestSHA256": "5c8eeb27e0f1f55bded7808e9af6f54b06e5488b90c88eb2cecd107ab27c403f",
+  "runtime": {
+    "scope": "local source-dist validation only, not publication approval",
+    "runtimeFiles": 33,
+    "totalBytes": 655226,
+    "files": {
+      "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "app.js": "fc93f44b556bff11b758308a0a38abaadb41106a3d821cee517d99c8a096662c",
+      "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+      "backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+      "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "battle-report.js": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+      "campaign.js": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781",
+      "challenges.js": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08",
+      "codex.js": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d",
+      "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "engine.js": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7",
+      "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "index.html": "042b8136f701354f8f219acf9030bea9250162f90a20db5fee04d2e7e1f3c9c2",
+      "input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+      "manifest.webmanifest": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e",
+      "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "persistence.js": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512",
+      "profile-session.js": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d",
+      "render.js": "9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e",
+      "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "report-view.js": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+      "scouting.js": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04",
+      "service-worker.js": "9a79237a4fa6925cc0db86d588287eb1758355bcee20714a9bc803745ce9f88c",
+      "styles.css": "7f54f1d7dd6c04c9f6ac6faa8954f44e7761d6e0b4caf9745d475e5681e043c5",
+      "training-app.js": "dd5dd95c045d3cfa5fdea15ecaeeded05042f83bd5cd56d2c6f851704274782a",
+      "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "training.html": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108",
+      "training.js": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770",
+      "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+    }
+  },
+  "changed": {
+    "tests/renderer-maps.test.mjs": "580540e616f49f06136fb70c5e41a9c619c97764d2b46ef7ac32dfd088960cd0",
+    "tests/training-integration.test.mjs": "47d46518ef062535e7ea2458ee1982a84272542bf102b8c5c98841284739fa20",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "dist/render.js": "9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e",
+    "docs/ART.md": "22acdf9e117292433d3485e0c28994f7d9bc8ece1854b8370584695de07dd146"
+  },
+  "added": {
+    "tests/fixtures/renderer-readability-lab.json": "18929dc571b01f831a43cae59dbcf374ea61c766d12f0a37c6d77b0aedc4bc11",
+    "tests/readability-fixture.test.mjs": "b3ed453765aca36075f912887e80f5a32570dd3cbeefaa26c3c9fabd85c2b38d",
+    "tests/readability.test.mjs": "e07bd9fbc5482daf8266f9be0a5aeb54c095a107b04e5050c2feb5e59bc2e5e7",
+    "docs/READABILITY_LAB.md": "a1325bc726fa1ec7335321a3034983bfe6aabc62db6b65c81602eaed55b2fdeb",
+    "qa/readability/baseline-manifest.json": "1db6e86214e7fb942b0cc713c3f27ec7c3deb6e84e1133479db1e38aa45a5ad7",
+    "qa/readability/baseline-render.js": "a18de2bb15cd11dc72a51712c7aa799c831b13051204c68936444a20a6f8f39d",
+    "qa/readability/baseline-vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95",
+    "qa/readability/fixture.js": "6feed5a3f034fdadd9e9cff978e02aa10fee37ce7f8f61c44418694192ea0807",
+    "qa/readability/index.html": "0054efff96799e20643e13ffa0f57f3421f42f62225012e476d09492d44824c4",
+    "qa/readability/scenes.js": "838f9ef944a7aed9450c1438dd687ce408cf7a2c8e937bcf134b4f6412c2ffec"
+  },
+  "checks": {
+    "fullTestsLog": "qa/readability-full-tests.log",
+    "syntax": "npm run check",
+    "runtimePreflight": "qa/readability-runtime-preflight.json",
+    "nativeBrowser": "Not run by implementer; separate reviewer and parent-coordinated preview pending."
+  }
+}

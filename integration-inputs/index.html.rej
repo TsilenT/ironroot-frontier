@@ -1,0 +1,21 @@
+--- dist/index.html
++++ dist/index.html
+@@ -165,11 +165,18 @@
+         </div>
+       </main>
+       <section class="command-deck">
++        <div id="campaignCoach" class="campaign-coach hidden" role="status" aria-live="polite">
++          <b id="coachTitle"></b><span id="coachText"></span>
++        </div>
+         <div class="deck-heading">
+           <span id="buildPrompt">BUILD YOUR FRONTIER</span
+           ><small id="buildHelp"
+             >Choose a building, then place it in your territory.</small
+           ><button id="cancelBuild" class="hidden">Cancel ×</button>
++        </div>
++        <div class="deck-tools">
++          <button id="toggleCoach" class="hidden" aria-pressed="true">Hide hints</button>
++          <button id="allBuildings" class="hidden" aria-expanded="false" aria-controls="buildCards">All buildings</button>
+         </div>
+         <div class="deck-body">
+           <div class="build-cards" id="buildCards"></div>

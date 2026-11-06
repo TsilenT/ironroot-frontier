@@ -1,0 +1,1099 @@
+50/80
+{
+  "mode": "guard",
+  "node": "v24.22.1",
+  "seedCount": 1,
+  "firstSeed": 57,
+  "step": 0.05,
+  "maxSeconds": 600,
+  "versionMeaning": {
+    "current": "supplied baseline AI",
+    "candidate": "working engine AI"
+  },
+  "baselinePath": "/workspace/shared/ironroot-integration/qa/fixtures/production-v012/dist/engine.js",
+  "currentEngineHash": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+  "candidateEngineHash": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+  "identicalDifficultyPairs": 12,
+  "rows": [
+    {
+      "key": "current/easy/rush-burst/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.75,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/easy/rush-center/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 94.57,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/easy/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.9,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/hard/rush-burst/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 117.5,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/hard/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 99.13,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/hard/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 162.23,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/rush-burst/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.75,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/rush-center/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 94.57,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/easy/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 101.9,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 0,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 2,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/rush-burst/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 117.5,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 99.13,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/hard/screen-fast/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 162.23,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/economy-screen/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/economy-screen/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 106.95,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/screen-save/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 122,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/screen-save/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 121.6,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-first/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-first/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after2/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after2/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after3/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.53,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/mine-after3/opening-flip",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.35,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/economy-screen/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/economy-screen/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 106.95,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/screen-save/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 122,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/screen-save/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 121.6,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-first/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-first/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 114.9,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after2/alternating0",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after2/opening-flip",
+      "games": 2,
+      "wins": 2,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 109.7,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 2,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after3/alternating0",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.53,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/mine-after3/opening-flip",
+      "games": 2,
+      "wins": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 144.35,
+      "opponentMines": 2,
+      "opponentMinesRepaid": 2,
+      "opponentMinesBaseRepaid": 2,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-burst/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-burst/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "current/normal/rush-center/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-burst/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-burst/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 115.6,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 1
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 0
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-center/alternating0",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    },
+    {
+      "key": "candidate/normal/rush-center/opening-flip",
+      "games": 2,
+      "wins": 1,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "draws": 0,
+      "timeouts": 0,
+      "meanSeconds": 126.65,
+      "opponentMines": 0,
+      "opponentMinesRepaid": 0,
+      "opponentMinesBaseRepaid": 0,
+      "aiMines": 0,
+      "maxLedgerError": 0,
+      "winsByOpeningActor": {
+        "ai": {
+          "games": 1,
+          "wins": 0
+        },
+        "opponent": {
+          "games": 1,
+          "wins": 1
+        }
+      }
+    }
+  ]
+}

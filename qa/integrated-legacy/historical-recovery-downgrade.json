@@ -1,0 +1,67 @@
+{
+  "scope": "In-memory historical-client negative control only; no real profile or browser",
+  "before": {
+    "marker": {
+      "format": "ironroot-profile",
+      "version": 3,
+      "epoch": "historical",
+      "phase": "ready"
+    },
+    "campaign": "{\"newIntroProgress\":\"preserve\"}",
+    "battle": "new v3 battle bytes",
+    "oldCanWrite": false,
+    "newCanWrite": true
+  },
+  "recovery": {
+    "ok": true,
+    "code": "import-started"
+  },
+  "restore": {
+    "ok": true
+  },
+  "after": {
+    "marker": {
+      "format": "ironroot-profile",
+      "version": 2,
+      "epoch": "historical",
+      "phase": "restoring"
+    },
+    "campaign": "{\"format\":\"ironroot-campaign\",\"version\":1,\"missions\":{}}",
+    "battle": null,
+    "newCanWrite": false
+  },
+  "ops": [
+    [
+      "set",
+      "ironroot.profile.v1"
+    ],
+    [
+      "set",
+      "ironroot.profile.v1"
+    ],
+    [
+      "set",
+      "ironroot.profile.v1"
+    ],
+    [
+      "set",
+      "ironroot.campaign.v1"
+    ],
+    [
+      "set",
+      "ironroot.trials.v1"
+    ],
+    [
+      "set",
+      "ironroot.settings.v1"
+    ],
+    [
+      "set",
+      "ironroot.history.v1"
+    ],
+    [
+      "remove",
+      "ironroot.battle.v1"
+    ]
+  ]
+}

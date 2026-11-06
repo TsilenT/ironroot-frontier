@@ -1,0 +1,1809 @@
+✔ history absence, backend failure and malformed existing bytes have distinct states (5.560038ms)
+✔ transient history read failure never overwrites existing history, and later retry merges both (1.254347ms)
+✔ unavailable initial history is not an empty cache and recovery reads the real current history (0.495019ms)
+✔ failed history write retains an immutable result and repeated retries never append duplicates (0.610529ms)
+✔ throw-after-write and unreadable readback remain recoverable without writing a second copy (0.73964ms)
+✔ newer history between snapshot and write aborts without damage, then merges a fresh retry (0.500217ms)
+✔ a racing history write after set is detected and is never rolled back over the winner (0.509089ms)
+✔ history dedupe survives backup field ordering and existing optional defaults (0.467038ms)
+✔ pending history honors the existing latest-30 limit and exports in the existing schema (15.149192ms)
+✔ retained results and preferences never commit to a replaced, restoring or failed profile (3.954914ms)
+✔ profile changes during the last history read prevent write even without a storage event (0.401722ms)
+✔ failed preferences are retained, replaced by the newest local choice, and verified on retry (0.412638ms)
+✔ preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data (0.34645ms)
+✔ preferences throw-after-write and transient readback denial verify without rewriting (0.300782ms)
+✔ actual finish warns on a history read failure, retains result after battle removal and recovers exactly once (8.850334ms)
+✔ actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds (2.976894ms)
+✔ actual preference handler applies in memory but visibly reports unsaved until explicit verified retry (2.52565ms)
+✔ actual retries stay blocked after profile change and still expose retained result for export (1.681015ms)
+✔ captured completion remains eligible after a new same-profile battle without deleting its save (1.074192ms)
+✔ stale completion never acquires a newer battle or blocks a later valid result from saving (0.21738ms)
+✔ completion with unavailable ownership only recovers if its original battle can still be verified (0.469671ms)
+✔ actual finish captures stale battle ownership and keeps the result unsaved/exportable (2.550091ms)
+✔ a captured valid completion still cannot cross a later imported profile boundary (0.317948ms)
+✔ profile recovery views never replace retained old-profile history with imported records (0.23782ms)
+✔ absent marker is a legacy-ready profile; guarded storage works without writing a marker (2.112982ms)
+✔ begin publishes a verified restoring marker before permitting import reads or writes (0.971131ms)
+✔ all ordinary save writes and removes are blocked in stale tabs throughout restoration (0.520516ms)
+✔ restored marker makes every old tab read-only and requires reload, including its owner (3.674382ms)
+✔ verified rollback to an originally ready profile rebinds only its owning tab (0.359079ms)
+✔ incomplete rollback publishes failed barrier and requires explicit recovery (1.223052ms)
+✔ rollback during recovery of a partial or abandoned profile never publishes ready (0.306581ms)
+✔ invalid or incompatible markers block play writes and can be replaced only by explicit recovery (1.882453ms)
+✔ initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import (0.336766ms)
+✔ read failures and invalid raw read return values cannot be interpreted as an absent marker (0.471425ms)
+✔ marker begin quota failure leaves original game bytes intact and denies the import adapter (0.307012ms)
+✔ marker writes that throw after taking effect are accepted only after exact readback (0.205452ms)
+✔ an unverified begin can be resumed only after the same owned restoring marker becomes readable (0.38025ms)
+✔ failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry (0.811866ms)
+✔ ready marker written before a failed read can be verified by idempotent finalization retry (0.676256ms)
+✔ failure marker publication can be retried without falsely opening partial data (0.20371ms)
+✔ unexpected marker corruption after a write never grants import ownership (0.179375ms)
+✔ a superseded importer cannot read, write, remove, finalize or roll back over the newer owner (0.410875ms)
+✔ import ownership loss mid-restore prevents rollback from undoing a newer completed import (2.849947ms)
+✔ stale dirty campaign and trial bests cannot be reintroduced after a successful empty import (1.10664ms)
+✔ beforeunload-style stale history, settings and battle writes are also blocked after replacement (0.880687ms)
+✔ ordinary facades reserve the marker; import facade is limited to the five game domains (0.261516ms)
+✔ session checks marker before every operation, not merely before the first of five writes (0.526425ms)
+✔ marker factory failures, invalid options and invalid outcomes cannot mutate game state (0.351187ms)
+✔ a denied marker read after initially ready play blocks saving without deleting any bytes (0.160697ms)
+✔ fresh page opened during restoring or failed phase cannot read partial profile domains (0.724567ms)
+✔ UI: late older successful file read cannot replace the newer confirmed import (5.224815ms)
+✔ UI: late older file failure cannot invalidate a newer parsed backup (2.091881ms)
+✖ UI: dismissing Settings invalidates an outstanding file read across reopen (1.770798ms)
+✔ UI: incomplete rollback preserves the paused session and warning after cancellation (2.087515ms)
+✔ UI: failed marker finalization blocks reload until the same-outcome retry succeeds (2.0772ms)
+✔ UI: normal export is blocked during recovery while retained-game export remains available (5.242822ms)
+✔ UI: blocked result persistence marks newly earned progress dirty (1.657101ms)
+✔ UI: storage-unavailable autosave warns once without discarding the active game (1.38499ms)
+✔ UI: beforeunload during recovery warns without saving old in-memory data (1.205916ms)
+✔ UI: actual application startup protects expanded progress before constructing ordinary storage (0.985121ms)
+✔ UI: failed profile upgrade pauses play and cannot bypass protection through import recovery (1.696949ms)
+✔ UI: uncertain profile upgrade stays visibly paused while its verification read is denied (1.305423ms)
+✔ UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results (3.359578ms)
+✔ UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage (1.659754ms)
+✔ the measured old 568x320 field reproduces clipped originals and Front/Pause overlap (15.130244ms)
+✔ CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas (117.820355ms)
+✔ all six rail buttons retain 44px hit targets, remain separate and never cover the canvas (0.761812ms)
+✖ native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail (8.223411ms)
+✔ build overlay is anchored to the whole grid rather than the 60px objective row (0.262596ms)
+✔ actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels (42.424803ms)
+✔ removing the pointer override reproduces the native failure despite a visible enabled button (8.66407ms)
+✔ Build remains outside hit testing when hidden in accepted larger landscape and portrait layouts (11.824435ms)
+✖ real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start (16.527572ms)
+✖ fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus (2.107914ms)
+✖ a held battlefield touch or different pointer cannot activate a target appearing under its release (1.417307ms)
+✖ native keyboard/assistive clicks work and remain subject to existing held-key scope guards (1.123966ms)
+✖ pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up (0.876621ms)
+✖ original loss cannot focus a replacement and result clarity names both lost originals (2.385794ms)
+✖ changing to a mission without protect targets removes the dock and stale loss text (0.799408ms)
+✖ semantic HTML and responsive CSS reserve a real dock without reducing build-button targets (3.376217ms)
+✖ already-missing app state names the original and explicitly marks historical loss time unknown (1.290761ms)
+✔ portrait protected battles declare a two-row 44px toolbelt without shrinking controls (0.503121ms)
+✖ retry creates fresh controls and clears prior loss, critical alerts and armed presses (1.354025ms)
+✖ switching from protected campaign to skirmish removes every stale target and identity (1.904615ms)
+✖ real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press (2.714908ms)
+✖ real held Space guard preserves native activation only for a fresh press in the current scope (1.231284ms)
+✖ short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls (1.070527ms)
+✖ leaving a protected battle restores the ordinary header and battlefield layout (1.740123ms)
+✖ landscape dock and scrolling build deck share one row without changing renderer scale or target size (2.031652ms)
+✖ focus direction mark is CSS-drawn even when critical portrait hides the word Focus (2.017021ms)
+✖ very short landscape exposes explicit build controls and closes them when focusing an original (4.986595ms)
+✖ drawer closure returns keyboard focus only when it would otherwise hide the active build control (2.455276ms)
+✖ portrait and normal landscape clear the compact drawer without rebuilding protected controls (1.239285ms)
+✖ drawer transitions use a distinct held-input scope and reject battlefield spending until closed (1.700074ms)
+✖ actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control (1.082043ms)
+✖ actual storage-conflict auto-pause closes the drawer before showing the pause veil (1.217553ms)
+✖ actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay (0.963519ms)
+✔ all authored protected structures have stable, unique names and immutable read-only health views (12.819561ms)
+✔ Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore (3.776302ms)
+✔ critical health uses actual ratio and never claims an attacker; upgrades display current max health (0.598572ms)
+✔ first missing observation binds the original ID and current tick, never a later replacement (1.013062ms)
+✔ already-invalid resumed states preserve unknown historical timing and never manufacture zero HP (4.311159ms)
+✔ new observations after a healthy resume record a transition without inventing pre-resume history (0.662196ms)
+✔ simultaneous protected losses both appear, with no inference about the cause (1.167008ms)
+✔ observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions (365.770995ms)
+✔ fixed-step observation timestamps match the current failed tick, not the frame start or batch end (0.879746ms)
+✔ observed time formatting handles tick rounding and explicitly unknown data (0.300082ms)
+✔ campaign/combat/objective/save modules retain frozen rules with only the audited save-type guard (1.75235ms)
+✔ objective integration preserves corrected persistence and training modules byte-for-byte (0.721713ms)
+✔ confirmation toast sits below actual objective height on every tested layout (4.855121ms)
+✔ skirmish toast returns to responsive CSS placement when objective is absent (0.99823ms)
+✔ docked protected objectives do not push a battlefield toast beyond the map (0.864794ms)
+✖ short protected-landscape toast is measured inside the field and above the minimap (4.276899ms)
+✖ battle-first toast uses canvas bounds rather than the side-rail minimap top (0.982857ms)
+ℹ tests 114
+ℹ suites 0
+ℹ pass 86
+ℹ fail 28
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 565.662233
+
+✖ failing tests:
+
+test at tests/profile-session.test.mjs:278:1
+✖ UI: dismissing Settings invalidates an outstanding file read across reopen (1.770798ms)
+  evalmachine.<anonymous>:9
+      pause(settingsWasPaused);
+      ^
+  
+  ReferenceError: pause is not defined
+      at hideSettings (evalmachine.<anonymous>:9:5)
+      at evalmachine.<anonymous>:1:1
+      at Script.runInContext (node:vm:149:12)
+      at Object.runInContext (node:vm:301:6)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/profile-session.test.mjs:279:136)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+
+test at tests/protected-objectives-layout.test.mjs:85:1
+✖ native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail (8.223411ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /new ResizeObserver\(\(\) => \{ renderer\.resize\(\); positionToast\(\); \}\)\.observe\(\$\('battle'\)\)/. Input:
+  
+  "import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from './mobile-battlefield.js';\n" +
+    "import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';\n" +
+    "import { createInputScopeGuard } from './input-scope.js';\n" +
+    'import {\n' +
+    '  GamepadInput,\n' +
+    '  moveCursor,\n' +
+    '  nextFocusIndex,\n' +
+    '  spatialFocusIndex,\n' +
+    '  nextAffordableIndex,\n' +
+    "} from './controller.js';\n" +
+    'import {\n' +
+    '  createBackup,\n' +
+    '  parseBackup,\n' +
+    '  restoreBackup,\n' +
+    '  MAX_BACKUP_BYTES,\n' +
+    "} from './backup.js';\n" +
+    'import {\n' +
+    '  Game,\n' +
+    '  BUILDINGS,\n' +
+    '  UNITS,\n' +
+    '  MAPS,\n' +
+    '  getMap,\n' +
+    '  buildBounds,\n' +
+    '  SPELL,\n' +
+    '  upgradeCost,\n' +
+    "} from './engine.js';\n" +
+    "import { Renderer, iconSVG, drawUnitPortrait } from './render.js';\n" +
+    "import { renderMissionScouting } from './scouting.js';\n" +
+    "import { createBattleJournal, exportBattleReport } from './battle-report.js';\n" +
+    "import { renderBattleReport } from './report-view.js';\n" +
+    'import {\n' +
+    '  UNIT_CODEX,\n' +
+    '  STRUCTURE_CODEX,\n' +
+    '  ECONOMY_GUIDE,\n' +
+    '  formatNumber,\n' +
+    '  formatSeconds,\n' +
+    "} from './codex.js';\n" +
+    'import {\n' +
+    '  CHALLENGES,\n' +
+    '  createChallenge,\n' +
+    '  getChallengeTargets,\n' +
+    '  evaluateChallenge,\n' +
+    "} from './challenges.js';\n" +
+    'import {\n' +
+    '  createStorage,\n' +
+    '  createSaveSession,\n' +
+    '  readHistoryState,\n' +
+    '  createHistorySession,\n' +
+    '  createPreferenceSession,\n' +
+    '  writeBattle,\n' +
+    '  nativeSpaceTarget,\n' +
+    "} from './persistence.js';\n" +
+    "import { GameAudio } from './audio.js';\n" +
+    "import { advanceObjectiveBattle } from './objectives.js';\n" +
+    "import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';\n" +
+    'import {\n' +
+    '  CAMPAIGN_CHAPTERS,\n' +
+    '  CAMPAIGN_MISSIONS,\n' +
+    '  createCampaignMission,\n' +
+    '  evaluateCampaignMission,\n' +
+    '  getCampaignTargets,\n' +
+    '  readCampaignProgress,\n' +
+    '  mergeCampaignProgress,\n' +
+    '  writeCampaignProgress,\n' +
+    '  recordCampaignResult,\n' +
+    '  getCampaignOverview,\n' +
+    '  isMissionUnlocked,\n' +
+    "} from './campaign.js';\n" +
+    'const $ = (id) => document.getElementById(id);\n' +
+    "const renderer = new Renderer($('battle'), $('minimap'));\n" +
+    '\n' +
+    '// Read-only field reference. Text is authored data; escape it before markup.\n' +
+    'function populateFieldGuide() {\n' +
+    '  const esc = (value) =>\n' +
+    '    String(value).replace(\n' +
+    `      /[&<>"']/g,\n` +
+    '      (c) =>\n' +
+    '        ({\n' +
+    "          '&': '&amp;',\n" +
+    "          '<': '&lt;',\n" +
+    "          '>': '&gt;',\n" +
+    `          '"': '&quot;',\n` +
+    `          "'": '&#39;',\n` +
+    '        })[c],\n' +
+    '    );\n' +
+    '  const n = formatNumber;\n' +
+    '  const list = (items) =>\n' +
+    "    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join('')}</ul>`;\n" +
+    '  const stats = (values) =>\n' +
+    '    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n' +
+    "  $('codexScope').textContent = ECONOMY_GUIDE.scope;\n" +
+    "  $('codexCaveat').textContent = ECONOMY_GUIDE.counterCaveat;\n" +
+    "  $('unitCodex').innerHTML = UNIT_CODEX.map(\n" +
+    '    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n' +
+    '    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body">\n' +
+    '      ${stats([\n' +
+    "        ['Health', n(u.baseStats.hp)],\n" +
+    "        ['Hit', n(u.baseStats.damage)],\n" +
+    "        ['Cooldown', formatSeconds(u.baseStats.attackTime)],\n" +
+    "        ['Range', n(u.baseStats.range)],\n" +
+    "        ['Speed', `${n(u.baseStats.speed)} /s`],\n" +
+    "        ['Repeat spawn', formatSeconds(u.production.spawnTime)],\n" +
+    '      ])}\n' +
+    "      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(' / ')} gold</p>\n" +
+    '      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n' +
+    '      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n' +
+    '      ${list(u.mechanics)}\n' +
+    '    </div></details>`,\n' +
+    "  ).join('');\n" +
+    "  for (const canvas of $('unitCodex').querySelectorAll('[data-portrait]'))\n" +
+    '    drawUnitPortrait(canvas, canvas.dataset.portrait);\n' +
+    "  $('structureCodex').innerHTML = STRUCTURE_CODEX.map(\n" +
+    '    (\n' +
+    '      b,\n' +
+    '    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n' +
+    '    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n' +
+    "  ).join('');\n" +
+    "  $('economyCodex').innerHTML = `${stats([\n" +
+    "    ['Starting gold', n(ECONOMY_GUIDE.startingGold)],\n" +
+    "    ['Base income', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n" +
+    "    ['Citadel health', n(ECONOMY_GUIDE.citadelHp)],\n" +
+    "    ['Mine cap', n(ECONOMY_GUIDE.mineCap)],\n" +
+    '  ])}\n' +
+    '    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n' +
+    '}\n' +
+    'populateFieldGuide();\n' +
+    '\n' +
+    'const viewportPause = createViewportPause();\n' +
+    "let mobileLayout = 'ordinary';\n" +
+    'let protectedMonitor = null;\n' +
+    'const protectedControls = new Map();\n' +
+    'let armedProtectedControl = null;\n' +
+    'let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\n' +
+    "let selectedMap = 'classic';\n" +
+    "let difficulty = 'easy',\n" +
+    '  game = new Game({ difficulty }),\n' +
+    '  started = false,\n' +
+    '  paused = false,\n' +
+    '  speed = 1,\n' +
+    '  last = performance.now(),\n' +
+    '  saveTimer = 0,\n' +
+    '  toastTimer = 0,\n' +
+    '  resultShown = false,\n' +
+    '  follow = false,\n' +
+    '  helpWasPaused = false;\n' +
+    'const ui = {\n' +
+    '  build: null,\n' +
+    '  spell: false,\n' +
+    '  selected: null,\n' +
+    '  pointer: null,\n' +
+    '  dragging: false,\n' +
+    '};\n' +
+    "let mode = 'skirmish',\n" +
+    '  selectedChallenge = CHALLENGES[0].id,\n' +
+    '  currentChallenge = null,\n' +
+    '  currentCampaign = null,\n' +
+    '  objectiveOutcome = null,\n' +
+    '  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n' +
+    '  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\n' +
+    'const labels = {\n' +
+    "  barracks: ['Barracks', 'Shielded warriors', '9s / wave'],\n" +
+    "  archery: ['Archery', 'Ranged support', '10s / wave'],\n" +
+    "  foundry: ['Foundry', 'Structure breaker', '17s / wave'],\n" +
+    "  watchtower: ['Watchtower', 'Hold the line', 'Ranged defense'],\n" +
+    "  mint: ['Gold mine', 'Grow your economy', '+2.5 gold /s'],\n" +
+    "  sanctum: ['Sanctum', 'Magic & splash', '14s / wave'],\n" +
+    "  aerie: ['Aerie', 'Flying raiders', '15s / wave'],\n" +
+    '};\n' +
+    'const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\n' +
+    'const storage = createStorage(() => profileSession.storage);\n' +
+    'let recoveryHold = null,\n' +
+    '  profileGate = null,\n' +
+    '  pendingFinalizeOutcome = null,\n' +
+    '  allowProfileReload = false,\n' +
+    '  importGeneration = 0,\n' +
+    '  retainedHistory = null;\n' +
+    'let saveWarning = false;\n' +
+    "const SETTINGS = 'ironroot.settings.v1',\n" +
+    "  SAVE = 'ironroot.battle.v1',\n" +
+    "  HISTORY = 'ironroot.history.v1',\n" +
+    "  TRIALS = 'ironroot.trials.v1';\n" +
+    'const battleSession = createSaveSession(storage, SAVE);\n' +
+    'const canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\n' +
+    'const historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\n' +
+    'const preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\n' +
+    'let knownHistory = historySession.snapshot().rows,\n' +
+    '  knownHistoryAvailable = historySession.snapshot().ok;\n' +
+    'let campaignProgress = readCampaignProgress(storage),\n' +
+    '  progressDirty = false;\n' +
+    'const nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\n' +
+    'if (nextCampaign) {\n' +
+    '  selectedCampaign = nextCampaign;\n' +
+    '  selectedChapter = CAMPAIGN_MISSIONS.find(\n' +
+    '    (m) => m.id === nextCampaign,\n' +
+    '  ).chapterId;\n' +
+    '}\n' +
+    'let trialRecords = {};\n' +
+    'try {\n' +
+    "  const value = JSON.parse(storage.get(TRIALS) || '{}');\n" +
+    "  if (value && typeof value === 'object' && !Array.isArray(value))\n" +
+    '    trialRecords = Object.fromEntries(\n' +
+    '      Object.entries(value).filter(\n' +
+    '        ([id, r]) =>\n' +
+    '          CHALLENGES.some((c) => c.id === id) &&\n' +
+    '          r &&\n' +
+    '          r.completed === true &&\n' +
+    '          Number.isFinite(r.bestTime) &&\n' +
+    '          r.bestTime > 0,\n' +
+    '      ),\n' +
+    '    );\n' +
+    '} catch {}\n' +
+    'const preferences = {\n' +
+    '  sound: true,\n' +
+    '  music: true,\n' +
+    '  sfx: true,\n' +
+    '  volume: 0.5,\n' +
+    '  reducedMotion: renderer.reducedMotion,\n' +
+    "  quality: 'high',\n" +
+    '};\n' +
+    'try {\n' +
+    "  const saved = JSON.parse(preferenceSession.initial().value || '{}');\n" +
+    "  if (saved && typeof saved === 'object') {\n" +
+    "    for (const key of ['sound', 'music', 'sfx', 'reducedMotion'])\n" +
+    "      if (typeof saved[key] === 'boolean') preferences[key] = saved[key];\n" +
+    '    if (Number.isFinite(saved.volume))\n' +
+    '      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n' +
+    "    if (['high', 'low'].includes(saved.quality))\n" +
+    '      preferences.quality = saved.quality;\n' +
+    '  }\n' +
+    '} catch {}\n' +
+    'let soundOn = preferences.sound;\n' +
+    'const audio = new GameAudio({\n' +
+    '  muted: !soundOn,\n' +
+    '  volume: preferences.volume,\n' +
+    '  musicEnabled: preferences.music,\n' +
+    '  sfxEnabled: preferences.sfx,\n' +
+    '});\n' +
+    'renderer.reducedMotion = preferences.reducedMotion;\n' +
+    'renderer.vfx.setPreferences({\n' +
+    '  reducedMotion: preferences.reducedMotion,\n' +
+    '  quality: preferences.quality,\n' +
+    '});\n' +
+    'function initAudio() {\n' +
+    '  audio.unlock().then((ok) => {\n' +
+    '    if (!ok && soundOn)\n' +
+    "      toast('Audio is unavailable in this browser. You can keep playing.');\n" +
+    '  });\n' +
+    '}\n' +
+    'function sound(name, options) {\n' +
+    '  audio.play(name, options);\n' +
+    '}\n' +
+    'function updatePreferenceSaveStatus() {\n' +
+    '  const dirty = preferenceSession.dirty();\n' +
+    "  $('preferenceSaveWarning').classList.toggle('hidden', !dirty);\n" +
+    "  $('retryPreferences').classList.toggle('hidden', !dirty);\n" +
+    "  $('preferenceSaveWarning').textContent = dirty\n" +
+    "    ? 'These preferences apply only to this page and are not verified saved. ' +\n" +
+    "      (['changed', 'initial-unavailable', 'blocked'].includes(preferenceSession.reason())\n" +
+    "        ? 'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.'\n" +
+    "        : 'Keep this page open, restore storage access or space, then retry saving.')\n" +
+    "    : '';\n" +
+    '}\n' +
+    'function retryPreferences(notify = false) {\n' +
+    '  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n' +
+    '  '... 95542 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-layout.test.mjs:98:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from \'./mobile-battlefield.js\';\nimport { createProfileSession, PROFILE_MARKER_KEY } from \'./profile-session.js\';\nimport { createInputScopeGuard } from \'./input-scope.js\';\nimport {\n  GamepadInput,\n  moveCursor,\n  nextFocusIndex,\n  spatialFocusIndex,\n  nextAffordableIndex,\n} from \'./controller.js\';\nimport {\n  createBackup,\n  parseBackup,\n  restoreBackup,\n  MAX_BACKUP_BYTES,\n} from \'./backup.js\';\nimport {\n  Game,\n  BUILDINGS,\n  UNITS,\n  MAPS,\n  getMap,\n  buildBounds,\n  SPELL,\n  upgradeCost,\n} from \'./engine.js\';\nimport { Renderer, iconSVG, drawUnitPortrait } from \'./render.js\';\nimport { renderMissionScouting } from \'./scouting.js\';\nimport { createBattleJournal, exportBattleReport } from \'./battle-report.js\';\nimport { renderBattleReport } from \'./report-view.js\';\nimport {\n  UNIT_CODEX,\n  STRUCTURE_CODEX,\n  ECONOMY_GUIDE,\n  formatNumber,\n  formatSeconds,\n} from \'./codex.js\';\nimport {\n  CHALLENGES,\n  createChallenge,\n  getChallengeTargets,\n  evaluateChallenge,\n} from \'./challenges.js\';\nimport {\n  createStorage,\n  createSaveSession,\n  readHistoryState,\n  createHistorySession,\n  createPreferenceSession,\n  writeBattle,\n  nativeSpaceTarget,\n} from \'./persistence.js\';\nimport { GameAudio } from \'./audio.js\';\nimport { advanceObjectiveBattle } from \'./objectives.js\';\nimport { createProtectedObjectiveMonitor, protectedLossDetails } from \'./protected-objectives.js\';\nimport {\n  CAMPAIGN_CHAPTERS,\n  CAMPAIGN_MISSIONS,\n  createCampaignMission,\n  evaluateCampaignMission,\n  getCampaignTargets,\n  readCampaignProgress,\n  mergeCampaignProgress,\n  writeCampaignProgress,\n  recordCampaignResult,\n  getCampaignOverview,\n  isMissionUnlocked,\n} from \'./campaign.js\';\nconst $ = (id) => document.getElementById(id);\nconst renderer = new Renderer($(\'battle\'), $(\'minimap\'));\n\n// Read-only field reference. Text is authored data; escape it before markup.\nfunction populateFieldGuide() {\n  const esc = (value) =>\n    String(value).replace(\n      /[&<>"\']/g,\n      (c) =>\n        ({\n          \'&\': \'&amp;\',\n          \'<\': \'&lt;\',\n          \'>\': \'&gt;\',\n          \'"\': \'&quot;\',\n          "\'": \'&#39;\',\n        })[c],\n    );\n  const n = formatNumber;\n  const list = (items) =>\n    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join(\'\')}</ul>`;\n  const stats = (values) =>\n    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n  $(\'codexScope\').textContent = ECONOMY_GUIDE.scope;\n  $(\'codexCaveat\').textContent = ECONOMY_GUIDE.counterCaveat;\n  $(\'unitCodex\').innerHTML = UNIT_CODEX.map(\n    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body">\n      ${stats([\n        [\'Health\', n(u.baseStats.hp)],\n        [\'Hit\', n(u.baseStats.damage)],\n        [\'Cooldown\', formatSeconds(u.baseStats.attackTime)],\n        [\'Range\', n(u.baseStats.range)],\n        [\'Speed\', `${n(u.baseStats.speed)} /s`],\n        [\'Repeat spawn\', formatSeconds(u.production.spawnTime)],\n      ])}\n      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(\' / \')} gold</p>\n      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n      ${list(u.mechanics)}\n    </div></details>`,\n  ).join(\'\');\n  for (const canvas of $(\'unitCodex\').querySelectorAll(\'[data-portrait]\'))\n    drawUnitPortrait(canvas, canvas.dataset.portrait);\n  $(\'structureCodex\').innerHTML = STRUCTURE_CODEX.map(\n    (\n      b,\n    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n  ).join(\'\');\n  $(\'economyCodex\').innerHTML = `${stats([\n    [\'Starting gold\', n(ECONOMY_GUIDE.startingGold)],\n    [\'Base income\', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n    [\'Citadel health\', n(ECONOMY_GUIDE.citadelHp)],\n    [\'Mine cap\', n(ECONOMY_GUIDE.mineCap)],\n  ])}\n    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n}\npopulateFieldGuide();\n\nconst viewportPause = createViewportPause();\nlet mobileLayout = \'ordinary\';\nlet protectedMonitor = null;\nconst protectedControls = new Map();\nlet armedProtectedControl = null;\nlet battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\nlet selectedMap = \'classic\';\nlet difficulty = \'easy\',\n  game = new Game({ difficulty }),\n  started = false,\n  paused = false,\n  speed = 1,\n  last = performance.now(),\n  saveTimer = 0,\n  toastTimer = 0,\n  resultShown = false,\n  follow = false,\n  helpWasPaused = false;\nconst ui = {\n  build: null,\n  spell: false,\n  selected: null,\n  pointer: null,\n  dragging: false,\n};\nlet mode = \'skirmish\',\n  selectedChallenge = CHALLENGES[0].id,\n  currentChallenge = null,\n  currentCampaign = null,\n  objectiveOutcome = null,\n  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\nconst labels = {\n  barracks: [\'Barracks\', \'Shielded warriors\', \'9s / wave\'],\n  archery: [\'Archery\', \'Ranged support\', \'10s / wave\'],\n  foundry: [\'Foundry\', \'Structure breaker\', \'17s / wave\'],\n  watchtower: [\'Watchtower\', \'Hold the line\', \'Ranged defense\'],\n  mint: [\'Gold mine\', \'Grow your economy\', \'+2.5 gold /s\'],\n  sanctum: [\'Sanctum\', \'Magic & splash\', \'14s / wave\'],\n  aerie: [\'Aerie\', \'Flying raiders\', \'15s / wave\'],\n};\nconst profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\nconst storage = createStorage(() => profileSession.storage);\nlet recoveryHold = null,\n  profileGate = null,\n  pendingFinalizeOutcome = null,\n  allowProfileReload = false,\n  importGeneration = 0,\n  retainedHistory = null;\nlet saveWarning = false;\nconst SETTINGS = \'ironroot.settings.v1\',\n  SAVE = \'ironroot.battle.v1\',\n  HISTORY = \'ironroot.history.v1\',\n  TRIALS = \'ironroot.trials.v1\';\nconst battleSession = createSaveSession(storage, SAVE);\nconst canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\nconst historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\nconst preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\nlet knownHistory = historySession.snapshot().rows,\n  knownHistoryAvailable = historySession.snapshot().ok;\nlet campaignProgress = readCampaignProgress(storage),\n  progressDirty = false;\nconst nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\nif (nextCampaign) {\n  selectedCampaign = nextCampaign;\n  selectedChapter = CAMPAIGN_MISSIONS.find(\n    (m) => m.id === nextCampaign,\n  ).chapterId;\n}\nlet trialRecords = {};\ntry {\n  const value = JSON.parse(storage.get(TRIALS) || \'{}\');\n  if (value && typeof value === \'object\' && !Array.isArray(value))\n    trialRecords = Object.fromEntries(\n      Object.entries(value).filter(\n        ([id, r]) =>\n          CHALLENGES.some((c) => c.id === id) &&\n          r &&\n          r.completed === true &&\n          Number.isFinite(r.bestTime) &&\n          r.bestTime > 0,\n      ),\n    );\n} catch {}\nconst preferences = {\n  sound: true,\n  music: true,\n  sfx: true,\n  volume: 0.5,\n  reducedMotion: renderer.reducedMotion,\n  quality: \'high\',\n};\ntry {\n  const saved = JSON.parse(preferenceSession.initial().value || \'{}\');\n  if (saved && typeof saved === \'object\') {\n    for (const key of [\'sound\', \'music\', \'sfx\', \'reducedMotion\'])\n      if (typeof saved[key] === \'boolean\') preferences[key] = saved[key];\n    if (Number.isFinite(saved.volume))\n      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n    if ([\'high\', \'low\'].includes(saved.quality))\n      preferences.quality = saved.quality;\n  }\n} catch {}\nlet soundOn = preferences.sound;\nconst audio = new GameAudio({\n  muted: !soundOn,\n  volume: preferences.volume,\n  musicEnabled: preferences.music,\n  sfxEnabled: preferences.sfx,\n});\nrenderer.reducedMotion = preferences.reducedMotion;\nrenderer.vfx.setPreferences({\n  reducedMotion: preferences.reducedMotion,\n  quality: preferences.quality,\n});\nfunction initAudio() {\n  audio.unlock().then((ok) => {\n    if (!ok && soundOn)\n      toast(\'Audio is unavailable in this browser. You can keep playing.\');\n  });\n}\nfunction sound(name, options) {\n  audio.play(name, options);\n}\nfunction updatePreferenceSaveStatus() {\n  const dirty = preferenceSession.dirty();\n  $(\'preferenceSaveWarning\').classList.toggle(\'hidden\', !dirty);\n  $(\'retryPreferences\').classList.toggle(\'hidden\', !dirty);\n  $(\'preferenceSaveWarning\').textContent = dirty\n    ? \'These preferences apply only to this page and are not verified saved. \' +\n      ([\'changed\', \'initial-unavailable\', \'blocked\'].includes(preferenceSession.reason())\n        ? \'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.\'\n        : \'Keep this page open, restore storage access or space, then retry saving.\')\n    : \'\';\n}\nfunction retryPreferences(notify = false) {\n  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n  '... 95542 more characters,
+    expected: /new ResizeObserver\(\(\) => \{ renderer\.resize\(\); positionToast\(\); \}\)\.observe\(\$\('battle'\)\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/protected-objectives-ui.test.mjs:53:1
+✖ real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start (16.527572ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:54:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/protected-objectives-ui.test.mjs:69:1
+✖ fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus (2.107914ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:70:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/protected-objectives-ui.test.mjs:81:1
+✖ a held battlefield touch or different pointer cannot activate a target appearing under its release (1.417307ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:82:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:90:1
+✖ native keyboard/assistive clicks work and remain subject to existing held-key scope guards (1.123966ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:91:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:100:1
+✖ pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up (0.876621ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:102:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:107:1
+✖ original loss cannot focus a replacement and result clarity names both lost originals (2.385794ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:108:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:119:1
+✖ changing to a mission without protect targets removes the dock and stale loss text (0.799408ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:120:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:130:1
+✖ semantic HTML and responsive CSS reserve a real dock without reducing build-button targets (3.376217ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /<div id="protectedDock" class="protected-dock hidden"><\/div>\s*<section class="command-deck"[^>]*>/. Input:
+  
+  '<!doctype html>\n' +
+    '<html lang="en">\n' +
+    '  <head>\n' +
+    '    <meta charset="UTF-8" />\n' +
+    '    <meta\n' +
+    '      name="viewport"\n' +
+    '      content="width=device-width, initial-scale=1, viewport-fit=cover"\n' +
+    '    />\n' +
+    '    <meta name="theme-color" content="#121d1b" />\n' +
+    '    <meta\n' +
+    '      name="description"\n' +
+    '      content="Build your frontier. Raise an army. Turn the tide. A playable strategy tug-of-war."\n' +
+    '    />\n' +
+    '    <title>Ironroot Frontier · RTS</title>\n' +
+    '    <link rel="manifest" href="./manifest.webmanifest" />\n' +
+    '    <link rel="icon" href="./icon.svg" type="image/svg+xml" />\n' +
+    '    <link rel="stylesheet" href="./styles.css" />\n' +
+    '    <link rel="stylesheet" href="./report-view.css" />\n' +
+    '  </head>\n' +
+    '  <body>\n' +
+    '    <div class="app" id="app">\n' +
+    '      <header class="topbar" id="topbar">\n' +
+    '        <a class="brand" href="./" aria-label="Ironroot Frontier home"\n' +
+    '          ><span class="brand-mark">♜</span\n' +
+    '          ><span>IRONROOT<small>F R O N T I E R</small></span></a\n' +
+    '        >\n' +
+    '        <div class="match-label">\n' +
+    '          <span class="live-dot"></span>\n' +
+    '          <span id="matchType">SOLO SKIRMISH</span>\n' +
+    '          <span class="separator">/</span>\n' +
+    '          <span id="opponentLabel">THE IRON MARSHAL</span>\n' +
+    '        </div>\n' +
+    '        <div class="resources">\n' +
+    '          <div class="gold-block">\n' +
+    '            <span class="coin">◆</span><b id="gold">420</b\n' +
+    '            ><small id="income">+10 /s</small>\n' +
+    '          </div>\n' +
+    '          <div class="army-block">\n' +
+    '            <span>⚑</span><b id="army">0</b><small>ARMY</small>\n' +
+    '          </div>\n' +
+    '          <div class="clock-block">\n' +
+    '            <b id="time">00:00</b><small>BATTLE TIME</small>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </header>\n' +
+    '      <main class="battlefield" id="battlefield">\n' +
+    '        <canvas\n' +
+    '          id="battle"\n' +
+    '          aria-label="Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore."\n' +
+    '          tabindex="0"\n' +
+    '        ></canvas>\n' +
+    '        <div class="battle-top" id="battleTop">\n' +
+    '          <div class="base-status yours">\n' +
+    '            <span>YOUR CITADEL</span>\n' +
+    '            <div class="hp-track"><i id="yourHp"></i></div>\n' +
+    '            <b id="yourHpText">100%</b>\n' +
+    '          </div>\n' +
+    '          <div class="phase" id="phase">\n' +
+    '            THE LONG REACH <small>THREE LANES · ONE FRONTIER</small>\n' +
+    '          </div>\n' +
+    '          <div class="base-status enemy">\n' +
+    '            <span>ENEMY CITADEL</span>\n' +
+    '            <div class="hp-track"><i id="enemyHp"></i></div>\n' +
+    '            <b id="enemyHpText">100%</b>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div id="objectiveHUD" class="objective-hud hidden" role="region" aria-label="Mission objectives">\n' +
+    '          <span id="objectiveIdentity" class="objective-identity hidden"></span>\n' +
+    '          <b id="objectiveProgress"></b><span id="objectiveTime"></span>\n' +
+    '          <div id="protectedTargets" class="protected-targets hidden" role="group" aria-label="Protected original structures; activate to focus camera"></div>\n' +
+    '          <button id="compactBuild" class="compact-build" type="button" aria-controls="commandDeck" aria-expanded="false" aria-label="Open building controls">Build</button>\n' +
+    '        </div>\n' +
+    '        <div id="protectedAlert" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>\n' +
+    '        <div class="toolbelt" id="battleTools">\n' +
+    '          <button\n' +
+    '            id="pause"\n' +
+    '            class="icon-button"\n' +
+    '            title="Pause (Space)"\n' +
+    '            aria-label="Pause game"\n' +
+    '          >\n' +
+    '            Ⅱ</button\n' +
+    '          ><button\n' +
+    '            id="speed"\n' +
+    '            class="icon-button"\n' +
+    '            title="Battle speed"\n' +
+    '            aria-label="Change battle speed"\n' +
+    '          >\n' +
+    '            1×</button\n' +
+    '          ><button\n' +
+    '            id="sound"\n' +
+    '            class="icon-button muted"\n' +
+    '            title="Sound effects"\n' +
+    '            aria-label="Enable sound effects"\n' +
+    '          >\n' +
+    '            ♪</button\n' +
+    '          ><button\n' +
+    '            id="settings"\n' +
+    '            class="icon-button"\n' +
+    '            title="Preferences"\n' +
+    '            aria-label="Open preferences"\n' +
+    '          >\n' +
+    '            ⚙\n' +
+    '          </button>\n' +
+    '        </div>\n' +
+    '        <div class="map-note" id="mapNote">\n' +
+    '          <span class="key">DRAG</span> to explore\n' +
+    '          <span class="note-dot">·</span> <span class="key">TAP</span> a\n' +
+    '          building to manage it\n' +
+    '        </div>\n' +
+    '        <div id="toast" class="toast" role="status"></div>\n' +
+    '        <div class="selection-panel hidden" id="selectionPanel">\n' +
+    '          <div class="selection-heading">\n' +
+    '            <span id="selectionIcon"></span>\n' +
+    '            <div>\n' +
+    '              <h3 id="selectionTitle"></h3>\n' +
+    '              <p id="selectionDetail"></p>\n' +
+    '            </div>\n' +
+    '            <button id="closeSelection" aria-label="Close building details">\n' +
+    '              ×\n' +
+    '            </button>\n' +
+    '          </div>\n' +
+    '          <div class="selection-stats" id="selectionStats"></div>\n' +
+    '          <p class="selection-description" id="selectionDescription"></p>\n' +
+    '          <div class="selection-actions">\n' +
+    '            <button id="upgrade" class="gold-button">Upgrade</button\n' +
+    '            ><button id="sell" class="secondary-button">Salvage</button>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '        <div class="bottom-map" id="mapControls">\n' +
+    '          <button\n' +
+    '            id="home"\n' +
+    '            class="map-jump"\n' +
+    '            title="Your base"\n' +
+    '            aria-label="Go to your base"\n' +
+    '          >\n' +
+    '            ⌂</button\n' +
+    '          ><canvas\n' +
+    '            id="minimap"\n' +
+    '            aria-label="Map overview. Tap to move the camera."\n' +
+    '          ></canvas\n' +
+    '          ><button\n' +
+    '            id="front"\n' +
+    '            class="map-jump"\n' +
+    '            title="Follow frontline"\n' +
+    '            aria-label="Follow the frontline"\n' +
+    '          >\n' +
+    '            ⚔\n' +
+    '          </button>\n' +
+    '        </div>\n' +
+    '        <div\n' +
+    '          id="controllerCursor"\n' +
+    '          class="controller-cursor hidden"\n' +
+    '          aria-hidden="true"\n' +
+    '        >\n' +
+    '          <span>A</span>\n' +
+    '        </div>\n' +
+    '        <div class="pause-veil hidden" id="pauseVeil">\n' +
+    '          <span>PAUSED</span><small>Take a breath. Plan your next move.</small\n' +
+    '          ><button id="resume" class="gold-button">Resume battle</button\n' +
+    '          ><button id="saveExit" class="secondary-button">\n' +
+    '            Save & return to title\n' +
+    '          </button>\n' +
+    '          <div class="pause-links">\n' +
+    '            <button id="pauseSettings" class="text-button">Preferences</button\n' +
+    '            ><button id="help" class="text-button" aria-label="How to play">\n' +
+    '              Field guide\n' +
+    '            </button>\n' +
+    '          </div>\n' +
+    '        </div>\n' +
+    '      </main>\n' +
+    '      <div id="protectedDock" class="protected-dock hidden"></div>\n' +
+    '      <nav id="protectedNavigation" class="protected-navigation hidden" aria-label="Battle controls"></nav>\n' +
+    '      <section class="command-deck" id="commandDeck" aria-label="Building controls">\n' +
+    '        <div class="deck-heading">\n' +
+    '          <span id="buildPrompt">BUILD YOUR FRONTIER</span\n' +
+    '          ><small id="buildHelp"\n' +
+    '            >Choose a building, then place it in your territory.</small\n' +
+    '          ><button id="cancelBuild" class="hidden">Cancel ×</button>\n' +
+    '        </div>\n' +
+    '        <div class="deck-body">\n' +
+    '          <div class="build-cards" id="buildCards"></div>\n' +
+    '          <button id="rally" class="rally-card">\n' +
+    '            <span class="rally-icon">✦</span><b>Rally strike</b\n' +
+    '            ><small>Break an enemy push</small\n' +
+    '            ><span class="rally-cost" id="rallyCost"\n' +
+    '              >◆ 75 <em>25s cooldown</em></span\n' +
+    '            >\n' +
+    '          </button>\n' +
+    '        </div>\n' +
+    '      </section>\n' +
+    '    </div>\n' +
+    '    <div class="viewport-pause hidden" id="viewportModal">\n' +
+    '      <section role="dialog" aria-modal="true" aria-labelledby="viewportTitle" aria-describedby="viewportReason" aria-hidden="true">\n' +
+    '        <div class="viewport-message"><h2 id="viewportTitle">Battle paused for screen size</h2><p id="viewportReason">Rotate your device or enlarge the window. Your battle stays paused.</p><p id="viewportSaveStatus" role="status"></p></div>\n' +
+    '        <div class="viewport-actions"><button id="viewportResume" class="gold-button" disabled>Resume battle</button><button id="viewportExit" class="secondary-button" data-dialog-focus>Save &amp; return to title</button></div>\n' +
+    '      </section>\n' +
+    '    </div>\n' +
+    '    <div class="modal-backdrop" id="welcome">\n' +
+    '      <section\n' +
+    '        class="welcome modal"\n' +
+    '        role="dialog"\n' +
+    '        aria-modal="true"\n' +
+    '        aria-labelledby="welcomeTitle"\n' +
+    '      >\n' +
+    '        <div class="eyebrow">A REAL-TIME TUG OF WAR</div>\n' +
+    '        <div class="welcome-sigil">♜</div>\n' +
+    '        <h1 id="welcomeTitle">IRONROOT<span>FRONTIER</span></h1>\n' +
+    '        <p class="welcome-copy">\n' +
+    '          Build your line. Raise an army.<br />Turn the tide.\n' +
+    '        </p>\n' +
+    '        <div class="welcome-rule"></div>\n' +
+    '        <div class="mode-tabs">\n' +
+    '          <button class="active" data-mode="skirmish">SKIRMISH</button\n' +
+    '          ><button data-mode="campaign">CAMPAIGN <span id="campaignCount">16</span></button\n' +
+    '          ><button data-mode="challenges">FIELD TRIALS <span>5</span></button>\n' +
+    '        </div>\n' +
+    '        <div id="skirmishConfig">\n' +
+    '          <div class="mode-label">CHOOSE YOUR OPPONENT</div>\n' +
+    '          <div class="difficulty-choices">\n' +
+    '            <button class="active" data-difficulty="easy">\n' +
+    '              <b>The Outrider</b><small>A gentler first battle</small></button\n' +
+    '            ><button data-difficulty="normal">\n' +
+    '              <b>The Marshal</b><small>A balanced challenge</small></button\n' +
+    '            ><button data-difficulty="hard">\n' +
+    '              <b>The Warlord</b><small>No ground given</small>\n' +
+    '            </button>\n' +
+    '          </div>\n' +
+    '          <details class="map-picker" id="mapPicker">\n' +
+    '            <summary id="mapPickerToggle">\n' +
+    '              Battlefield <b id="selectedMapName">Classic</b>\n' +
+    '            </summary>\n' +
+    '            <div\n' +
+    '              class="map-choices"\n' +
+    '              id="mapChoices"\n' +
+    '              aria-label="Choose battlefield"\n' +
+    '            ></div>\n' +
+    '            <p class="map-description" id="mapDescription"></p>\n' +
+    '          </details>\n' +
+    '        </div>\n' +
+    '        <div id="campaignConfig" class="hidden">\n' +
+    '          <div class="campaign-overview">\n' +
+    '            <span>THE IRONROOT CAMPAIGN</span><b id="campaignProgressText"></b>\n' +
+    '          </div>\n' +
+    '          <div clas'... 26796 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:131:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <meta\n      name="viewport"\n      content="width=device-width, initial-scale=1, viewport-fit=cover"\n    />\n    <meta name="theme-color" content="#121d1b" />\n    <meta\n      name="description"\n      content="Build your frontier. Raise an army. Turn the tide. A playable strategy tug-of-war."\n    />\n    <title>Ironroot Frontier · RTS</title>\n    <link rel="manifest" href="./manifest.webmanifest" />\n    <link rel="icon" href="./icon.svg" type="image/svg+xml" />\n    <link rel="stylesheet" href="./styles.css" />\n    <link rel="stylesheet" href="./report-view.css" />\n  </head>\n  <body>\n    <div class="app" id="app">\n      <header class="topbar" id="topbar">\n        <a class="brand" href="./" aria-label="Ironroot Frontier home"\n          ><span class="brand-mark">♜</span\n          ><span>IRONROOT<small>F R O N T I E R</small></span></a\n        >\n        <div class="match-label">\n          <span class="live-dot"></span>\n          <span id="matchType">SOLO SKIRMISH</span>\n          <span class="separator">/</span>\n          <span id="opponentLabel">THE IRON MARSHAL</span>\n        </div>\n        <div class="resources">\n          <div class="gold-block">\n            <span class="coin">◆</span><b id="gold">420</b\n            ><small id="income">+10 /s</small>\n          </div>\n          <div class="army-block">\n            <span>⚑</span><b id="army">0</b><small>ARMY</small>\n          </div>\n          <div class="clock-block">\n            <b id="time">00:00</b><small>BATTLE TIME</small>\n          </div>\n        </div>\n      </header>\n      <main class="battlefield" id="battlefield">\n        <canvas\n          id="battle"\n          aria-label="Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore."\n          tabindex="0"\n        ></canvas>\n        <div class="battle-top" id="battleTop">\n          <div class="base-status yours">\n            <span>YOUR CITADEL</span>\n            <div class="hp-track"><i id="yourHp"></i></div>\n            <b id="yourHpText">100%</b>\n          </div>\n          <div class="phase" id="phase">\n            THE LONG REACH <small>THREE LANES · ONE FRONTIER</small>\n          </div>\n          <div class="base-status enemy">\n            <span>ENEMY CITADEL</span>\n            <div class="hp-track"><i id="enemyHp"></i></div>\n            <b id="enemyHpText">100%</b>\n          </div>\n        </div>\n        <div id="objectiveHUD" class="objective-hud hidden" role="region" aria-label="Mission objectives">\n          <span id="objectiveIdentity" class="objective-identity hidden"></span>\n          <b id="objectiveProgress"></b><span id="objectiveTime"></span>\n          <div id="protectedTargets" class="protected-targets hidden" role="group" aria-label="Protected original structures; activate to focus camera"></div>\n          <button id="compactBuild" class="compact-build" type="button" aria-controls="commandDeck" aria-expanded="false" aria-label="Open building controls">Build</button>\n        </div>\n        <div id="protectedAlert" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>\n        <div class="toolbelt" id="battleTools">\n          <button\n            id="pause"\n            class="icon-button"\n            title="Pause (Space)"\n            aria-label="Pause game"\n          >\n            Ⅱ</button\n          ><button\n            id="speed"\n            class="icon-button"\n            title="Battle speed"\n            aria-label="Change battle speed"\n          >\n            1×</button\n          ><button\n            id="sound"\n            class="icon-button muted"\n            title="Sound effects"\n            aria-label="Enable sound effects"\n          >\n            ♪</button\n          ><button\n            id="settings"\n            class="icon-button"\n            title="Preferences"\n            aria-label="Open preferences"\n          >\n            ⚙\n          </button>\n        </div>\n        <div class="map-note" id="mapNote">\n          <span class="key">DRAG</span> to explore\n          <span class="note-dot">·</span> <span class="key">TAP</span> a\n          building to manage it\n        </div>\n        <div id="toast" class="toast" role="status"></div>\n        <div class="selection-panel hidden" id="selectionPanel">\n          <div class="selection-heading">\n            <span id="selectionIcon"></span>\n            <div>\n              <h3 id="selectionTitle"></h3>\n              <p id="selectionDetail"></p>\n            </div>\n            <button id="closeSelection" aria-label="Close building details">\n              ×\n            </button>\n          </div>\n          <div class="selection-stats" id="selectionStats"></div>\n          <p class="selection-description" id="selectionDescription"></p>\n          <div class="selection-actions">\n            <button id="upgrade" class="gold-button">Upgrade</button\n            ><button id="sell" class="secondary-button">Salvage</button>\n          </div>\n        </div>\n        <div class="bottom-map" id="mapControls">\n          <button\n            id="home"\n            class="map-jump"\n            title="Your base"\n            aria-label="Go to your base"\n          >\n            ⌂</button\n          ><canvas\n            id="minimap"\n            aria-label="Map overview. Tap to move the camera."\n          ></canvas\n          ><button\n            id="front"\n            class="map-jump"\n            title="Follow frontline"\n            aria-label="Follow the frontline"\n          >\n            ⚔\n          </button>\n        </div>\n        <div\n          id="controllerCursor"\n          class="controller-cursor hidden"\n          aria-hidden="true"\n        >\n          <span>A</span>\n        </div>\n        <div class="pause-veil hidden" id="pauseVeil">\n          <span>PAUSED</span><small>Take a breath. Plan your next move.</small\n          ><button id="resume" class="gold-button">Resume battle</button\n          ><button id="saveExit" class="secondary-button">\n            Save & return to title\n          </button>\n          <div class="pause-links">\n            <button id="pauseSettings" class="text-button">Preferences</button\n            ><button id="help" class="text-button" aria-label="How to play">\n              Field guide\n            </button>\n          </div>\n        </div>\n      </main>\n      <div id="protectedDock" class="protected-dock hidden"></div>\n      <nav id="protectedNavigation" class="protected-navigation hidden" aria-label="Battle controls"></nav>\n      <section class="command-deck" id="commandDeck" aria-label="Building controls">\n        <div class="deck-heading">\n          <span id="buildPrompt">BUILD YOUR FRONTIER</span\n          ><small id="buildHelp"\n            >Choose a building, then place it in your territory.</small\n          ><button id="cancelBuild" class="hidden">Cancel ×</button>\n        </div>\n        <div class="deck-body">\n          <div class="build-cards" id="buildCards"></div>\n          <button id="rally" class="rally-card">\n            <span class="rally-icon">✦</span><b>Rally strike</b\n            ><small>Break an enemy push</small\n            ><span class="rally-cost" id="rallyCost"\n              >◆ 75 <em>25s cooldown</em></span\n            >\n          </button>\n        </div>\n      </section>\n    </div>\n    <div class="viewport-pause hidden" id="viewportModal">\n      <section role="dialog" aria-modal="true" aria-labelledby="viewportTitle" aria-describedby="viewportReason" aria-hidden="true">\n        <div class="viewport-message"><h2 id="viewportTitle">Battle paused for screen size</h2><p id="viewportReason">Rotate your device or enlarge the window. Your battle stays paused.</p><p id="viewportSaveStatus" role="status"></p></div>\n        <div class="viewport-actions"><button id="viewportResume" class="gold-button" disabled>Resume battle</button><button id="viewportExit" class="secondary-button" data-dialog-focus>Save &amp; return to title</button></div>\n      </section>\n    </div>\n    <div class="modal-backdrop" id="welcome">\n      <section\n        class="welcome modal"\n        role="dialog"\n        aria-modal="true"\n        aria-labelledby="welcomeTitle"\n      >\n        <div class="eyebrow">A REAL-TIME TUG OF WAR</div>\n        <div class="welcome-sigil">♜</div>\n        <h1 id="welcomeTitle">IRONROOT<span>FRONTIER</span></h1>\n        <p class="welcome-copy">\n          Build your line. Raise an army.<br />Turn the tide.\n        </p>\n        <div class="welcome-rule"></div>\n        <div class="mode-tabs">\n          <button class="active" data-mode="skirmish">SKIRMISH</button\n          ><button data-mode="campaign">CAMPAIGN <span id="campaignCount">16</span></button\n          ><button data-mode="challenges">FIELD TRIALS <span>5</span></button>\n        </div>\n        <div id="skirmishConfig">\n          <div class="mode-label">CHOOSE YOUR OPPONENT</div>\n          <div class="difficulty-choices">\n            <button class="active" data-difficulty="easy">\n              <b>The Outrider</b><small>A gentler first battle</small></button\n            ><button data-difficulty="normal">\n              <b>The Marshal</b><small>A balanced challenge</small></button\n            ><button data-difficulty="hard">\n              <b>The Warlord</b><small>No ground given</small>\n            </button>\n          </div>\n          <details class="map-picker" id="mapPicker">\n            <summary id="mapPickerToggle">\n              Battlefield <b id="selectedMapName">Classic</b>\n            </summary>\n            <div\n              class="map-choices"\n              id="mapChoices"\n              aria-label="Choose battlefield"\n            ></div>\n            <p class="map-description" id="mapDescription"></p>\n          </details>\n        </div>\n        <div id="campaignConfig" class="hidden">\n          <div class="campaign-overview">\n            <span>THE IRONROOT CAMPAIGN</span><b id="campaignProgressText"></b>\n          </div>\n          <div clas'... 26796 more characters,
+    expected: /<div id="protectedDock" class="protected-dock hidden"><\/div>\s*<section class="command-deck"[^>]*>/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/protected-objectives-ui.test.mjs:145:1
+✖ already-missing app state names the original and explicitly marks historical loss time unknown (1.290761ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:146:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:160:1
+✖ retry creates fresh controls and clears prior loss, critical alerts and armed presses (1.354025ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:161:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:176:1
+✖ switching from protected campaign to skirmish removes every stale target and identity (1.904615ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:177:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:187:1
+✖ real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press (2.714908ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:189:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:201:1
+✖ real held Space guard preserves native activation only for a fresh press in the current scope (1.231284ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:202:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:212:1
+✖ short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls (1.070527ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:213:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:226:1
+✖ leaving a protected battle restores the ordinary header and battlefield layout (1.740123ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:227:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:233:1
+✖ landscape dock and scrolling build deck share one row without changing renderer scale or target size (2.031652ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /\.base-status[^}]*display: none|font-size:|transform: scale/. Input:
+  
+  '/* A protected landscape battle has two full-size lower panels on one row.\n' +
+    "   This recovers the dock's vertical cost instead of scaling down the world. */\n" +
+    '@media (max-height: 500px) and (orientation: landscape) {\n' +
+    '  .app.protected-landscape {\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: minmax(220px, 1fr) minmax(248px, 36vw);\n' +
+    '    grid-template-rows: 48px minmax(100px, 1fr) auto;\n' +
+    '  }\n' +
+    '  .protected-landscape .topbar { grid-column: 1 / -1; grid-row: 1; gap: 12px; }\n' +
+    '  .protected-landscape .battlefield { grid-column: 1 / -1; grid-row: 2; }\n' +
+    '  .protected-landscape .command-deck { grid-column: 1; grid-row: 3; min-width: 0; }\n' +
+    '  .protected-landscape .protected-dock { grid-column: 2; grid-row: 3; min-width: 0; border-left: 1px solid #81997b; }\n' +
+    '  .protected-landscape .battle-top {\n' +
+    '    position: static;\n' +
+    '    order: 1;\n' +
+    '    flex: 1;\n' +
+    '    min-width: 0;\n' +
+    '    gap: 10px;\n' +
+    '  }\n' +
+    '  .protected-landscape .base-status { width: 112px; max-width: none; flex: 1 0 112px; padding: 8px; box-shadow: none; }\n' +
+    '  .protected-landscape .base-status b { right: 8px; }\n' +
+    '  .protected-landscape .phase { flex: 1; min-width: 0; letter-spacing: .5px; }\n' +
+    '  .protected-landscape .resources { order: 2; flex-shrink: 0; gap: 14px; }\n' +
+    '  .protected-landscape .army-block { padding: 0 14px; }\n' +
+    '  .protected-landscape .match-label { display: none; }\n' +
+    '  .protected-landscape .protected-dock .objective-hud.protect-hud {\n' +
+    '    height: 100%;\n' +
+    '    grid-template-columns: minmax(0, 1fr) auto;\n' +
+    '    grid-template-rows: auto auto 1fr;\n' +
+    '    gap: 5px 8px;\n' +
+    '    padding: 8px;\n' +
+    '  }\n' +
+    '  .protected-landscape .objective-identity { grid-column: 1; grid-row: 1; }\n' +
+    '  .protected-landscape #objectiveTime { grid-column: 2; grid-row: 1; }\n' +
+    '  .protected-landscape #objectiveProgress { grid-column: 1 / -1; grid-row: 2; }\n' +
+    '  .protected-landscape .protected-targets { grid-column: 1 / -1; grid-row: 3; align-self: stretch; }\n' +
+    '  .protected-landscape .protected-target { min-height: 44px; align-content: center; }\n' +
+    '  .protected-landscape .toast { padding: 8px 12px; max-width: 60%; }\n' +
+    '}\n' +
+    '@media (max-height: 500px) and (orientation: landscape) and (max-width: 760px) {\n' +
+    '  /* Keep both real citadel HP readouts and resources; only decorative branding\n' +
+    '     gives way when the header is narrow. */\n' +
+    '  .protected-landscape .brand { display: none; }\n' +
+    '  .protected-landscape .topbar { padding-inline: 8px; gap: 8px; }\n' +
+    '  .protected-landscape .battle-top { gap: 6px; }\n' +
+    '  .protected-landscape .base-status { flex-basis: 104px; width: 104px; }\n' +
+    '  .protected-landscape .resources { gap: 8px; }\n' +
+    '  .protected-landscape .army-block { padding-inline: 8px; }\n' +
+    '}\n' +
+    '\n' +
+    '\n' +
+    '.compact-build { display: none; pointer-events: auto; }\n' +
+    '/* Very short protected landscape is battle-first. Building controls open on\n' +
+    '   request; a fixed rail keeps every navigation/control off all three roads. */\n' +
+    '@media (max-height: 360px) and (orientation: landscape) {\n' +
+    '  .app.protected-compact {\n' +
+    '    --compact-header: 48px;\n' +
+    '    --compact-dock: 60px;\n' +
+    '    --compact-rail: 152px;\n' +
+    '    --compact-control: 44px;\n' +
+    '    --compact-gap: 4px;\n' +
+    '    --compact-inset: 8px;\n' +
+    '    position: relative;\n' +
+    '    grid-template-columns: minmax(0, 1fr);\n' +
+    '    grid-template-rows: var(--compact-header) minmax(100px, 1fr) var(--compact-dock);\n' +
+    '  }\n' +
+    '  .protected-compact .battlefield {\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: minmax(0, 1fr) var(--compact-rail);\n' +
+    '    grid-template-rows: minmax(0, 1fr);\n' +
+    '    background: #14251e;\n' +
+    '  }\n' +
+    '  .protected-compact #battle { grid-column: 1; grid-row: 1; min-width: 0; min-height: 0; }\n' +
+    '  .protected-compact .protected-dock { grid-column: 1; grid-row: 3; border-left: 0; }\n' +
+    '  .protected-compact .protected-dock .objective-hud.protect-hud {\n' +
+    '    height: 100%;\n' +
+    '    grid-template-columns: minmax(168px, 1fr) 52px minmax(0, 2fr);\n' +
+    '    grid-template-rows: repeat(3, minmax(0, 1fr));\n' +
+    '    padding: 6px;\n' +
+    '    gap: 0 6px;\n' +
+    '  }\n' +
+    '  .protected-compact .objective-identity { grid-column: 1; grid-row: 1; }\n' +
+    '  .protected-compact #objectiveProgress { grid-column: 1; grid-row: 2; white-space: nowrap; }\n' +
+    '  .protected-compact #objectiveTime { grid-column: 1; grid-row: 3; }\n' +
+    '  .protected-compact .protected-targets { grid-column: 3; grid-row: 1 / 4; }\n' +
+    '  .protected-compact .protected-target { align-content: center; min-height: var(--compact-control); }\n' +
+    '  .protected-compact .compact-build {\n' +
+    '    display: block;\n' +
+    '    grid-column: 2;\n' +
+    '    grid-row: 1 / 4;\n' +
+    '    align-self: center;\n' +
+    '    min-height: var(--compact-control);\n' +
+    '    min-width: var(--compact-control);\n' +
+    '    padding: 4px;\n' +
+    '    border: 1px solid #b8ae74;\n' +
+    '    background: #243c30;\n' +
+    '    color: #f1e6be;\n' +
+    '  }\n' +
+    '  .protected-compact .toolbelt {\n' +
+    '    position: static;\n' +
+    '    grid-column: 2;\n' +
+    '    grid-row: 1;\n' +
+    '    align-self: start;\n' +
+    '    justify-self: center;\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: repeat(2, var(--compact-control));\n' +
+    '    gap: var(--compact-gap);\n' +
+    '    margin-top: var(--compact-inset);\n' +
+    '  }\n' +
+    '  .protected-compact .icon-button,\n' +
+    '  .protected-compact .map-jump { width: var(--compact-control); height: var(--compact-control); }\n' +
+    '  .protected-compact .bottom-map {\n' +
+    '    position: static;\n' +
+    '    grid-column: 2;\n' +
+    '    grid-row: 1;\n' +
+    '    align-self: end;\n' +
+    '    justify-self: center;\n' +
+    '    width: calc(var(--compact-rail) - 2 * var(--compact-inset));\n' +
+    '    transform: none;\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: 1fr 1fr;\n' +
+    '    grid-template-rows: repeat(2, var(--compact-control));\n' +
+    '    gap: var(--compact-gap);\n' +
+    '    justify-items: center;\n' +
+    '    margin-bottom: var(--compact-inset);\n' +
+    '  }\n' +
+    '  .protected-compact #home { grid-column: 1; grid-row: 1; }\n' +
+    '  .protected-compact #front { grid-column: 2; grid-row: 1; }\n' +
+    '  .protected-compact #minimap { grid-column: 1 / -1; grid-row: 2; width: 100%; height: var(--compact-control); }\n' +
+    '  .protected-compact .command-deck {\n' +
+    '    display: none;\n' +
+    '    position: absolute;\n' +
+    '    grid-area: 1 / 1 / -1 / -1;\n' +
+    '    z-index: 4;\n' +
+    '    left: 0;\n' +
+    '    right: var(--compact-rail);\n' +
+    '    bottom: var(--compact-dock);\n' +
+    '    max-height: calc(100% - var(--compact-header) - var(--compact-dock));\n' +
+    '    overflow-y: auto;\n' +
+    '  }\n' +
+    '  .protected-compact.compact-build-open .command-deck { display: block; }\n' +
+    '  .protected-compact .deck-heading > small,\n' +
+    '  .protected-compact .build-card .role,\n' +
+    '  .protected-compact .rally-card > small { display: none; }\n' +
+    '  .protected-compact .toast {\n' +
+    '    left: calc((100% - var(--compact-rail)) / 2);\n' +
+    '    max-width: calc(100% - var(--compact-rail) - 16px);\n' +
+    '  }\n' +
+    '  .protected-compact .pause-veil .gold-button,\n' +
+    '  .protected-compact .pause-veil .secondary-button { min-height: var(--compact-control); }\n' +
+    '}\n' +
+    '\n' +
+    '/* One protected mobile battlefield: persistent HUD/navigation never cover\n' +
+    '   the world. The same controls and drawer are reflowed, not duplicated. */\n' +
+    '.app.protected-mobile {\n' +
+    '  --mobile-header: 48px;\n' +
+    '  --mobile-dock: 60px;\n' +
+    '  --mobile-navigation: 0px;\n' +
+    '  --mobile-rail: 152px;\n' +
+    '  --mobile-inset-top: env(safe-area-inset-top, 0px);\n' +
+    '  --mobile-inset-bottom: env(safe-area-inset-bottom, 0px);\n' +
+    '  --mobile-inset-left: env(safe-area-inset-left, 0px);\n' +
+    '  --mobile-inset-right: env(safe-area-inset-right, 0px);\n' +
+    '  position: relative;\n' +
+    '  min-height: 0;\n' +
+    '  display: grid;\n' +
+    '  grid-template-columns: minmax(0, 1fr) var(--mobile-rail);\n' +
+    '  grid-template-rows: var(--mobile-header) minmax(0, 1fr) var(--mobile-dock);\n' +
+    '  padding: var(--mobile-inset-top) var(--mobile-inset-right) var(--mobile-inset-bottom) var(--mobile-inset-left);\n' +
+    '  overflow: hidden;\n' +
+    '}\n' +
+    '.protected-mobile .brand, .protected-mobile .match-label { display: none; }\n' +
+    '.protected-mobile .topbar { grid-column: 1 / -1; grid-row: 1; min-width: 0; }\n' +
+    '.protected-mobile .battlefield { grid-column: 1; grid-row: 2; display: block; min-height: 0; min-width: 0; }\n' +
+    '.protected-mobile .protected-dock { grid-column: 1 / -1; grid-row: 3; min-width: 0; border-left: 0; }\n' +
+    '.protected-navigation { background: #14251e; min-width: 0; min-height: 0; }\n' +
+    '.protected-mobile .protected-navigation { grid-column: 2; grid-row: 2; position: relative; }\n' +
+    '.protected-mobile .protected-navigation .toolbelt {\n' +
+    '  position: absolute; top: 8px; left: 50%; right: auto; margin: 0;\n' +
+    '  transform: translateX(-50%); display: grid; grid-template-columns: repeat(2, 44px); gap: 4px;\n' +
+    '}\n' +
+    '.protected-mobile .icon-button, .protected-mobile .map-jump { width: 44px; height: 44px; }\n' +
+    '.protected-mobile .protected-navigation .bottom-map {\n' +
+    '  position: absolute; left: 8px; right: 8px; bottom: 8px; top: auto;\n' +
+    '  width: auto; margin: 0; transform: none; display: grid;\n' +
+    '  grid-template-columns: 1fr 1fr; grid-template-rows: 44px 44px;\n' +
+    '  gap: 4px; justify-items: center;\n' +
+    '}\n' +
+    '.protected-mobile #home { grid-column: 1; grid-row: 1; }\n' +
+    '.protected-mobile #front { grid-column: 2; grid-row: 1; }\n' +
+    '.protected-mobile #minimap { grid-column: 1 / -1; grid-row: 2; width: 100%; height: 44px; }\n' +
+    '.protected-mobile .compact-build {\n' +
+    '  display: block; pointer-events: auto; min-width: 44px; min-height: 44px;\n' +
+    '  padding: 4px; border: 1px solid #b8ae74; background: #243c30; color: #f1e6be;\n' +
+    '}\n' +
+    '.protected-mobile.protected-landscape .protected-dock .objective-hud.protect-hud {\n' +
+    '  height: 100%; grid-template-columns: minmax(168px, 1fr) 52px minmax(0, 2fr);\n' +
+    '  grid-template-rows: repeat(3, minmax(0, 1fr)); padding: 6px; gap: 0 6px;\n' +
+    '}\n' +
+    '.protected-mobile.protected-landscape .objective-identity { grid-column: 1; grid-row: 1; }\n' +
+    '.protected-mobile.protected-landscape #objectiveProgress { grid-column: 1; grid-row: 2; white-space: nowrap; }\n' +
+    '.protected-mobile.protected-landscape #objectiveTime { grid-column: 1; grid-row: 3; }\n' +
+    '.protected-mobile.protected-landscape .protected-targets { grid-column: 3; grid-row: 1 / 4; }\n' +
+    '.protected-mobile.protected-landscape .compact-build { grid-column: 2; grid-row: 1 / 4; align-self: center; }\n' +
+    '.protected-mobile .command-deck {\n' +
+    '  display: none; position: absolute; grid-area: 1 / 1 / -1 / -1; z-index: 4;\n' +
+    '  left: var(--mobile-inset-left); right: calc(var(--mobile-rail) + var(--mobile-inset-right));\n' +
+    '  bottom: calc(var(--mobile-dock) + var(--mobile-navigation) + var(--mobile-inset-bottom));\n' +
+    '  max-height: calc(100% - var(--mobile-header) - var(--mobile-dock) - var(--mobile-navigation) - var(--mobile-inset-top) - var(--mobile-inset-bottom));\n' +
+    '  overflow-y: auto; overscroll-behavior: contain;\n' +
+    '}\n' +
+    '.protected-mobi'... 4415 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:240:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "/* A protected landscape battle has two full-size lower panels on one row.\n   This recovers the dock's vertical cost instead of scaling down the world. */\n@media (max-height: 500px) and (orientation: landscape) {\n  .app.protected-landscape {\n    display: grid;\n    grid-template-columns: minmax(220px, 1fr) minmax(248px, 36vw);\n    grid-template-rows: 48px minmax(100px, 1fr) auto;\n  }\n  .protected-landscape .topbar { grid-column: 1 / -1; grid-row: 1; gap: 12px; }\n  .protected-landscape .battlefield { grid-column: 1 / -1; grid-row: 2; }\n  .protected-landscape .command-deck { grid-column: 1; grid-row: 3; min-width: 0; }\n  .protected-landscape .protected-dock { grid-column: 2; grid-row: 3; min-width: 0; border-left: 1px solid #81997b; }\n  .protected-landscape .battle-top {\n    position: static;\n    order: 1;\n    flex: 1;\n    min-width: 0;\n    gap: 10px;\n  }\n  .protected-landscape .base-status { width: 112px; max-width: none; flex: 1 0 112px; padding: 8px; box-shadow: none; }\n  .protected-landscape .base-status b { right: 8px; }\n  .protected-landscape .phase { flex: 1; min-width: 0; letter-spacing: .5px; }\n  .protected-landscape .resources { order: 2; flex-shrink: 0; gap: 14px; }\n  .protected-landscape .army-block { padding: 0 14px; }\n  .protected-landscape .match-label { display: none; }\n  .protected-landscape .protected-dock .objective-hud.protect-hud {\n    height: 100%;\n    grid-template-columns: minmax(0, 1fr) auto;\n    grid-template-rows: auto auto 1fr;\n    gap: 5px 8px;\n    padding: 8px;\n  }\n  .protected-landscape .objective-identity { grid-column: 1; grid-row: 1; }\n  .protected-landscape #objectiveTime { grid-column: 2; grid-row: 1; }\n  .protected-landscape #objectiveProgress { grid-column: 1 / -1; grid-row: 2; }\n  .protected-landscape .protected-targets { grid-column: 1 / -1; grid-row: 3; align-self: stretch; }\n  .protected-landscape .protected-target { min-height: 44px; align-content: center; }\n  .protected-landscape .toast { padding: 8px 12px; max-width: 60%; }\n}\n@media (max-height: 500px) and (orientation: landscape) and (max-width: 760px) {\n  /* Keep both real citadel HP readouts and resources; only decorative branding\n     gives way when the header is narrow. */\n  .protected-landscape .brand { display: none; }\n  .protected-landscape .topbar { padding-inline: 8px; gap: 8px; }\n  .protected-landscape .battle-top { gap: 6px; }\n  .protected-landscape .base-status { flex-basis: 104px; width: 104px; }\n  .protected-landscape .resources { gap: 8px; }\n  .protected-landscape .army-block { padding-inline: 8px; }\n}\n\n\n.compact-build { display: none; pointer-events: auto; }\n/* Very short protected landscape is battle-first. Building controls open on\n   request; a fixed rail keeps every navigation/control off all three roads. */\n@media (max-height: 360px) and (orientation: landscape) {\n  .app.protected-compact {\n    --compact-header: 48px;\n    --compact-dock: 60px;\n    --compact-rail: 152px;\n    --compact-control: 44px;\n    --compact-gap: 4px;\n    --compact-inset: 8px;\n    position: relative;\n    grid-template-columns: minmax(0, 1fr);\n    grid-template-rows: var(--compact-header) minmax(100px, 1fr) var(--compact-dock);\n  }\n  .protected-compact .battlefield {\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) var(--compact-rail);\n    grid-template-rows: minmax(0, 1fr);\n    background: #14251e;\n  }\n  .protected-compact #battle { grid-column: 1; grid-row: 1; min-width: 0; min-height: 0; }\n  .protected-compact .protected-dock { grid-column: 1; grid-row: 3; border-left: 0; }\n  .protected-compact .protected-dock .objective-hud.protect-hud {\n    height: 100%;\n    grid-template-columns: minmax(168px, 1fr) 52px minmax(0, 2fr);\n    grid-template-rows: repeat(3, minmax(0, 1fr));\n    padding: 6px;\n    gap: 0 6px;\n  }\n  .protected-compact .objective-identity { grid-column: 1; grid-row: 1; }\n  .protected-compact #objectiveProgress { grid-column: 1; grid-row: 2; white-space: nowrap; }\n  .protected-compact #objectiveTime { grid-column: 1; grid-row: 3; }\n  .protected-compact .protected-targets { grid-column: 3; grid-row: 1 / 4; }\n  .protected-compact .protected-target { align-content: center; min-height: var(--compact-control); }\n  .protected-compact .compact-build {\n    display: block;\n    grid-column: 2;\n    grid-row: 1 / 4;\n    align-self: center;\n    min-height: var(--compact-control);\n    min-width: var(--compact-control);\n    padding: 4px;\n    border: 1px solid #b8ae74;\n    background: #243c30;\n    color: #f1e6be;\n  }\n  .protected-compact .toolbelt {\n    position: static;\n    grid-column: 2;\n    grid-row: 1;\n    align-self: start;\n    justify-self: center;\n    display: grid;\n    grid-template-columns: repeat(2, var(--compact-control));\n    gap: var(--compact-gap);\n    margin-top: var(--compact-inset);\n  }\n  .protected-compact .icon-button,\n  .protected-compact .map-jump { width: var(--compact-control); height: var(--compact-control); }\n  .protected-compact .bottom-map {\n    position: static;\n    grid-column: 2;\n    grid-row: 1;\n    align-self: end;\n    justify-self: center;\n    width: calc(var(--compact-rail) - 2 * var(--compact-inset));\n    transform: none;\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: repeat(2, var(--compact-control));\n    gap: var(--compact-gap);\n    justify-items: center;\n    margin-bottom: var(--compact-inset);\n  }\n  .protected-compact #home { grid-column: 1; grid-row: 1; }\n  .protected-compact #front { grid-column: 2; grid-row: 1; }\n  .protected-compact #minimap { grid-column: 1 / -1; grid-row: 2; width: 100%; height: var(--compact-control); }\n  .protected-compact .command-deck {\n    display: none;\n    position: absolute;\n    grid-area: 1 / 1 / -1 / -1;\n    z-index: 4;\n    left: 0;\n    right: var(--compact-rail);\n    bottom: var(--compact-dock);\n    max-height: calc(100% - var(--compact-header) - var(--compact-dock));\n    overflow-y: auto;\n  }\n  .protected-compact.compact-build-open .command-deck { display: block; }\n  .protected-compact .deck-heading > small,\n  .protected-compact .build-card .role,\n  .protected-compact .rally-card > small { display: none; }\n  .protected-compact .toast {\n    left: calc((100% - var(--compact-rail)) / 2);\n    max-width: calc(100% - var(--compact-rail) - 16px);\n  }\n  .protected-compact .pause-veil .gold-button,\n  .protected-compact .pause-veil .secondary-button { min-height: var(--compact-control); }\n}\n\n/* One protected mobile battlefield: persistent HUD/navigation never cover\n   the world. The same controls and drawer are reflowed, not duplicated. */\n.app.protected-mobile {\n  --mobile-header: 48px;\n  --mobile-dock: 60px;\n  --mobile-navigation: 0px;\n  --mobile-rail: 152px;\n  --mobile-inset-top: env(safe-area-inset-top, 0px);\n  --mobile-inset-bottom: env(safe-area-inset-bottom, 0px);\n  --mobile-inset-left: env(safe-area-inset-left, 0px);\n  --mobile-inset-right: env(safe-area-inset-right, 0px);\n  position: relative;\n  min-height: 0;\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) var(--mobile-rail);\n  grid-template-rows: var(--mobile-header) minmax(0, 1fr) var(--mobile-dock);\n  padding: var(--mobile-inset-top) var(--mobile-inset-right) var(--mobile-inset-bottom) var(--mobile-inset-left);\n  overflow: hidden;\n}\n.protected-mobile .brand, .protected-mobile .match-label { display: none; }\n.protected-mobile .topbar { grid-column: 1 / -1; grid-row: 1; min-width: 0; }\n.protected-mobile .battlefield { grid-column: 1; grid-row: 2; display: block; min-height: 0; min-width: 0; }\n.protected-mobile .protected-dock { grid-column: 1 / -1; grid-row: 3; min-width: 0; border-left: 0; }\n.protected-navigation { background: #14251e; min-width: 0; min-height: 0; }\n.protected-mobile .protected-navigation { grid-column: 2; grid-row: 2; position: relative; }\n.protected-mobile .protected-navigation .toolbelt {\n  position: absolute; top: 8px; left: 50%; right: auto; margin: 0;\n  transform: translateX(-50%); display: grid; grid-template-columns: repeat(2, 44px); gap: 4px;\n}\n.protected-mobile .icon-button, .protected-mobile .map-jump { width: 44px; height: 44px; }\n.protected-mobile .protected-navigation .bottom-map {\n  position: absolute; left: 8px; right: 8px; bottom: 8px; top: auto;\n  width: auto; margin: 0; transform: none; display: grid;\n  grid-template-columns: 1fr 1fr; grid-template-rows: 44px 44px;\n  gap: 4px; justify-items: center;\n}\n.protected-mobile #home { grid-column: 1; grid-row: 1; }\n.protected-mobile #front { grid-column: 2; grid-row: 1; }\n.protected-mobile #minimap { grid-column: 1 / -1; grid-row: 2; width: 100%; height: 44px; }\n.protected-mobile .compact-build {\n  display: block; pointer-events: auto; min-width: 44px; min-height: 44px;\n  padding: 4px; border: 1px solid #b8ae74; background: #243c30; color: #f1e6be;\n}\n.protected-mobile.protected-landscape .protected-dock .objective-hud.protect-hud {\n  height: 100%; grid-template-columns: minmax(168px, 1fr) 52px minmax(0, 2fr);\n  grid-template-rows: repeat(3, minmax(0, 1fr)); padding: 6px; gap: 0 6px;\n}\n.protected-mobile.protected-landscape .objective-identity { grid-column: 1; grid-row: 1; }\n.protected-mobile.protected-landscape #objectiveProgress { grid-column: 1; grid-row: 2; white-space: nowrap; }\n.protected-mobile.protected-landscape #objectiveTime { grid-column: 1; grid-row: 3; }\n.protected-mobile.protected-landscape .protected-targets { grid-column: 3; grid-row: 1 / 4; }\n.protected-mobile.protected-landscape .compact-build { grid-column: 2; grid-row: 1 / 4; align-self: center; }\n.protected-mobile .command-deck {\n  display: none; position: absolute; grid-area: 1 / 1 / -1 / -1; z-index: 4;\n  left: var(--mobile-inset-left); right: calc(var(--mobile-rail) + var(--mobile-inset-right));\n  bottom: calc(var(--mobile-dock) + var(--mobile-navigation) + var(--mobile-inset-bottom));\n  max-height: calc(100% - var(--mobile-header) - var(--mobile-dock) - var(--mobile-navigation) - var(--mobile-inset-top) - var(--mobile-inset-bottom));\n  overflow-y: auto; overscroll-behavior: contain;\n}\n.protected-mobi"... 4415 more characters,
+    expected: /\.base-status[^}]*display: none|font-size:|transform: scale/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tests/protected-objectives-ui.test.mjs:246:1
+✖ focus direction mark is CSS-drawn even when critical portrait hides the word Focus (2.017021ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:247:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:259:1
+✖ very short landscape exposes explicit build controls and closes them when focusing an original (4.986595ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:260:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:275:1
+✖ drawer closure returns keyboard focus only when it would otherwise hide the active build control (2.455276ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:276:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:285:1
+✖ portrait and normal landscape clear the compact drawer without rebuilding protected controls (1.239285ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:286:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:294:1
+✖ drawer transitions use a distinct held-input scope and reject battlefield spending until closed (1.700074ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /classList\.contains\('protected-compact'\) \? 'compact-battle'/. Input:
+  
+  "import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from './mobile-battlefield.js';\n" +
+    "import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';\n" +
+    "import { createInputScopeGuard } from './input-scope.js';\n" +
+    'import {\n' +
+    '  GamepadInput,\n' +
+    '  moveCursor,\n' +
+    '  nextFocusIndex,\n' +
+    '  spatialFocusIndex,\n' +
+    '  nextAffordableIndex,\n' +
+    "} from './controller.js';\n" +
+    'import {\n' +
+    '  createBackup,\n' +
+    '  parseBackup,\n' +
+    '  restoreBackup,\n' +
+    '  MAX_BACKUP_BYTES,\n' +
+    "} from './backup.js';\n" +
+    'import {\n' +
+    '  Game,\n' +
+    '  BUILDINGS,\n' +
+    '  UNITS,\n' +
+    '  MAPS,\n' +
+    '  getMap,\n' +
+    '  buildBounds,\n' +
+    '  SPELL,\n' +
+    '  upgradeCost,\n' +
+    "} from './engine.js';\n" +
+    "import { Renderer, iconSVG, drawUnitPortrait } from './render.js';\n" +
+    "import { renderMissionScouting } from './scouting.js';\n" +
+    "import { createBattleJournal, exportBattleReport } from './battle-report.js';\n" +
+    "import { renderBattleReport } from './report-view.js';\n" +
+    'import {\n' +
+    '  UNIT_CODEX,\n' +
+    '  STRUCTURE_CODEX,\n' +
+    '  ECONOMY_GUIDE,\n' +
+    '  formatNumber,\n' +
+    '  formatSeconds,\n' +
+    "} from './codex.js';\n" +
+    'import {\n' +
+    '  CHALLENGES,\n' +
+    '  createChallenge,\n' +
+    '  getChallengeTargets,\n' +
+    '  evaluateChallenge,\n' +
+    "} from './challenges.js';\n" +
+    'import {\n' +
+    '  createStorage,\n' +
+    '  createSaveSession,\n' +
+    '  readHistoryState,\n' +
+    '  createHistorySession,\n' +
+    '  createPreferenceSession,\n' +
+    '  writeBattle,\n' +
+    '  nativeSpaceTarget,\n' +
+    "} from './persistence.js';\n" +
+    "import { GameAudio } from './audio.js';\n" +
+    "import { advanceObjectiveBattle } from './objectives.js';\n" +
+    "import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';\n" +
+    'import {\n' +
+    '  CAMPAIGN_CHAPTERS,\n' +
+    '  CAMPAIGN_MISSIONS,\n' +
+    '  createCampaignMission,\n' +
+    '  evaluateCampaignMission,\n' +
+    '  getCampaignTargets,\n' +
+    '  readCampaignProgress,\n' +
+    '  mergeCampaignProgress,\n' +
+    '  writeCampaignProgress,\n' +
+    '  recordCampaignResult,\n' +
+    '  getCampaignOverview,\n' +
+    '  isMissionUnlocked,\n' +
+    "} from './campaign.js';\n" +
+    'const $ = (id) => document.getElementById(id);\n' +
+    "const renderer = new Renderer($('battle'), $('minimap'));\n" +
+    '\n' +
+    '// Read-only field reference. Text is authored data; escape it before markup.\n' +
+    'function populateFieldGuide() {\n' +
+    '  const esc = (value) =>\n' +
+    '    String(value).replace(\n' +
+    `      /[&<>"']/g,\n` +
+    '      (c) =>\n' +
+    '        ({\n' +
+    "          '&': '&amp;',\n" +
+    "          '<': '&lt;',\n" +
+    "          '>': '&gt;',\n" +
+    `          '"': '&quot;',\n` +
+    `          "'": '&#39;',\n` +
+    '        })[c],\n' +
+    '    );\n' +
+    '  const n = formatNumber;\n' +
+    '  const list = (items) =>\n' +
+    "    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join('')}</ul>`;\n" +
+    '  const stats = (values) =>\n' +
+    '    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n' +
+    "  $('codexScope').textContent = ECONOMY_GUIDE.scope;\n" +
+    "  $('codexCaveat').textContent = ECONOMY_GUIDE.counterCaveat;\n" +
+    "  $('unitCodex').innerHTML = UNIT_CODEX.map(\n" +
+    '    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n' +
+    '    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body">\n' +
+    '      ${stats([\n' +
+    "        ['Health', n(u.baseStats.hp)],\n" +
+    "        ['Hit', n(u.baseStats.damage)],\n" +
+    "        ['Cooldown', formatSeconds(u.baseStats.attackTime)],\n" +
+    "        ['Range', n(u.baseStats.range)],\n" +
+    "        ['Speed', `${n(u.baseStats.speed)} /s`],\n" +
+    "        ['Repeat spawn', formatSeconds(u.production.spawnTime)],\n" +
+    '      ])}\n' +
+    "      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(' / ')} gold</p>\n" +
+    '      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n' +
+    '      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n' +
+    '      ${list(u.mechanics)}\n' +
+    '    </div></details>`,\n' +
+    "  ).join('');\n" +
+    "  for (const canvas of $('unitCodex').querySelectorAll('[data-portrait]'))\n" +
+    '    drawUnitPortrait(canvas, canvas.dataset.portrait);\n' +
+    "  $('structureCodex').innerHTML = STRUCTURE_CODEX.map(\n" +
+    '    (\n' +
+    '      b,\n' +
+    '    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n' +
+    '    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n' +
+    "  ).join('');\n" +
+    "  $('economyCodex').innerHTML = `${stats([\n" +
+    "    ['Starting gold', n(ECONOMY_GUIDE.startingGold)],\n" +
+    "    ['Base income', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n" +
+    "    ['Citadel health', n(ECONOMY_GUIDE.citadelHp)],\n" +
+    "    ['Mine cap', n(ECONOMY_GUIDE.mineCap)],\n" +
+    '  ])}\n' +
+    '    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n' +
+    '}\n' +
+    'populateFieldGuide();\n' +
+    '\n' +
+    'const viewportPause = createViewportPause();\n' +
+    "let mobileLayout = 'ordinary';\n" +
+    'let protectedMonitor = null;\n' +
+    'const protectedControls = new Map();\n' +
+    'let armedProtectedControl = null;\n' +
+    'let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\n' +
+    "let selectedMap = 'classic';\n" +
+    "let difficulty = 'easy',\n" +
+    '  game = new Game({ difficulty }),\n' +
+    '  started = false,\n' +
+    '  paused = false,\n' +
+    '  speed = 1,\n' +
+    '  last = performance.now(),\n' +
+    '  saveTimer = 0,\n' +
+    '  toastTimer = 0,\n' +
+    '  resultShown = false,\n' +
+    '  follow = false,\n' +
+    '  helpWasPaused = false;\n' +
+    'const ui = {\n' +
+    '  build: null,\n' +
+    '  spell: false,\n' +
+    '  selected: null,\n' +
+    '  pointer: null,\n' +
+    '  dragging: false,\n' +
+    '};\n' +
+    "let mode = 'skirmish',\n" +
+    '  selectedChallenge = CHALLENGES[0].id,\n' +
+    '  currentChallenge = null,\n' +
+    '  currentCampaign = null,\n' +
+    '  objectiveOutcome = null,\n' +
+    '  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n' +
+    '  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\n' +
+    'const labels = {\n' +
+    "  barracks: ['Barracks', 'Shielded warriors', '9s / wave'],\n" +
+    "  archery: ['Archery', 'Ranged support', '10s / wave'],\n" +
+    "  foundry: ['Foundry', 'Structure breaker', '17s / wave'],\n" +
+    "  watchtower: ['Watchtower', 'Hold the line', 'Ranged defense'],\n" +
+    "  mint: ['Gold mine', 'Grow your economy', '+2.5 gold /s'],\n" +
+    "  sanctum: ['Sanctum', 'Magic & splash', '14s / wave'],\n" +
+    "  aerie: ['Aerie', 'Flying raiders', '15s / wave'],\n" +
+    '};\n' +
+    'const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\n' +
+    'const storage = createStorage(() => profileSession.storage);\n' +
+    'let recoveryHold = null,\n' +
+    '  profileGate = null,\n' +
+    '  pendingFinalizeOutcome = null,\n' +
+    '  allowProfileReload = false,\n' +
+    '  importGeneration = 0,\n' +
+    '  retainedHistory = null;\n' +
+    'let saveWarning = false;\n' +
+    "const SETTINGS = 'ironroot.settings.v1',\n" +
+    "  SAVE = 'ironroot.battle.v1',\n" +
+    "  HISTORY = 'ironroot.history.v1',\n" +
+    "  TRIALS = 'ironroot.trials.v1';\n" +
+    'const battleSession = createSaveSession(storage, SAVE);\n' +
+    'const canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\n' +
+    'const historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\n' +
+    'const preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\n' +
+    'let knownHistory = historySession.snapshot().rows,\n' +
+    '  knownHistoryAvailable = historySession.snapshot().ok;\n' +
+    'let campaignProgress = readCampaignProgress(storage),\n' +
+    '  progressDirty = false;\n' +
+    'const nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\n' +
+    'if (nextCampaign) {\n' +
+    '  selectedCampaign = nextCampaign;\n' +
+    '  selectedChapter = CAMPAIGN_MISSIONS.find(\n' +
+    '    (m) => m.id === nextCampaign,\n' +
+    '  ).chapterId;\n' +
+    '}\n' +
+    'let trialRecords = {};\n' +
+    'try {\n' +
+    "  const value = JSON.parse(storage.get(TRIALS) || '{}');\n" +
+    "  if (value && typeof value === 'object' && !Array.isArray(value))\n" +
+    '    trialRecords = Object.fromEntries(\n' +
+    '      Object.entries(value).filter(\n' +
+    '        ([id, r]) =>\n' +
+    '          CHALLENGES.some((c) => c.id === id) &&\n' +
+    '          r &&\n' +
+    '          r.completed === true &&\n' +
+    '          Number.isFinite(r.bestTime) &&\n' +
+    '          r.bestTime > 0,\n' +
+    '      ),\n' +
+    '    );\n' +
+    '} catch {}\n' +
+    'const preferences = {\n' +
+    '  sound: true,\n' +
+    '  music: true,\n' +
+    '  sfx: true,\n' +
+    '  volume: 0.5,\n' +
+    '  reducedMotion: renderer.reducedMotion,\n' +
+    "  quality: 'high',\n" +
+    '};\n' +
+    'try {\n' +
+    "  const saved = JSON.parse(preferenceSession.initial().value || '{}');\n" +
+    "  if (saved && typeof saved === 'object') {\n" +
+    "    for (const key of ['sound', 'music', 'sfx', 'reducedMotion'])\n" +
+    "      if (typeof saved[key] === 'boolean') preferences[key] = saved[key];\n" +
+    '    if (Number.isFinite(saved.volume))\n' +
+    '      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n' +
+    "    if (['high', 'low'].includes(saved.quality))\n" +
+    '      preferences.quality = saved.quality;\n' +
+    '  }\n' +
+    '} catch {}\n' +
+    'let soundOn = preferences.sound;\n' +
+    'const audio = new GameAudio({\n' +
+    '  muted: !soundOn,\n' +
+    '  volume: preferences.volume,\n' +
+    '  musicEnabled: preferences.music,\n' +
+    '  sfxEnabled: preferences.sfx,\n' +
+    '});\n' +
+    'renderer.reducedMotion = preferences.reducedMotion;\n' +
+    'renderer.vfx.setPreferences({\n' +
+    '  reducedMotion: preferences.reducedMotion,\n' +
+    '  quality: preferences.quality,\n' +
+    '});\n' +
+    'function initAudio() {\n' +
+    '  audio.unlock().then((ok) => {\n' +
+    '    if (!ok && soundOn)\n' +
+    "      toast('Audio is unavailable in this browser. You can keep playing.');\n" +
+    '  });\n' +
+    '}\n' +
+    'function sound(name, options) {\n' +
+    '  audio.play(name, options);\n' +
+    '}\n' +
+    'function updatePreferenceSaveStatus() {\n' +
+    '  const dirty = preferenceSession.dirty();\n' +
+    "  $('preferenceSaveWarning').classList.toggle('hidden', !dirty);\n" +
+    "  $('retryPreferences').classList.toggle('hidden', !dirty);\n" +
+    "  $('preferenceSaveWarning').textContent = dirty\n" +
+    "    ? 'These preferences apply only to this page and are not verified saved. ' +\n" +
+    "      (['changed', 'initial-unavailable', 'blocked'].includes(preferenceSession.reason())\n" +
+    "        ? 'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.'\n" +
+    "        : 'Keep this page open, restore storage access or space, then retry saving.')\n" +
+    "    : '';\n" +
+    '}\n' +
+    'function retryPreferences(notify = false) {\n' +
+    '  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n' +
+    '  '... 95542 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:296:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from \'./mobile-battlefield.js\';\nimport { createProfileSession, PROFILE_MARKER_KEY } from \'./profile-session.js\';\nimport { createInputScopeGuard } from \'./input-scope.js\';\nimport {\n  GamepadInput,\n  moveCursor,\n  nextFocusIndex,\n  spatialFocusIndex,\n  nextAffordableIndex,\n} from \'./controller.js\';\nimport {\n  createBackup,\n  parseBackup,\n  restoreBackup,\n  MAX_BACKUP_BYTES,\n} from \'./backup.js\';\nimport {\n  Game,\n  BUILDINGS,\n  UNITS,\n  MAPS,\n  getMap,\n  buildBounds,\n  SPELL,\n  upgradeCost,\n} from \'./engine.js\';\nimport { Renderer, iconSVG, drawUnitPortrait } from \'./render.js\';\nimport { renderMissionScouting } from \'./scouting.js\';\nimport { createBattleJournal, exportBattleReport } from \'./battle-report.js\';\nimport { renderBattleReport } from \'./report-view.js\';\nimport {\n  UNIT_CODEX,\n  STRUCTURE_CODEX,\n  ECONOMY_GUIDE,\n  formatNumber,\n  formatSeconds,\n} from \'./codex.js\';\nimport {\n  CHALLENGES,\n  createChallenge,\n  getChallengeTargets,\n  evaluateChallenge,\n} from \'./challenges.js\';\nimport {\n  createStorage,\n  createSaveSession,\n  readHistoryState,\n  createHistorySession,\n  createPreferenceSession,\n  writeBattle,\n  nativeSpaceTarget,\n} from \'./persistence.js\';\nimport { GameAudio } from \'./audio.js\';\nimport { advanceObjectiveBattle } from \'./objectives.js\';\nimport { createProtectedObjectiveMonitor, protectedLossDetails } from \'./protected-objectives.js\';\nimport {\n  CAMPAIGN_CHAPTERS,\n  CAMPAIGN_MISSIONS,\n  createCampaignMission,\n  evaluateCampaignMission,\n  getCampaignTargets,\n  readCampaignProgress,\n  mergeCampaignProgress,\n  writeCampaignProgress,\n  recordCampaignResult,\n  getCampaignOverview,\n  isMissionUnlocked,\n} from \'./campaign.js\';\nconst $ = (id) => document.getElementById(id);\nconst renderer = new Renderer($(\'battle\'), $(\'minimap\'));\n\n// Read-only field reference. Text is authored data; escape it before markup.\nfunction populateFieldGuide() {\n  const esc = (value) =>\n    String(value).replace(\n      /[&<>"\']/g,\n      (c) =>\n        ({\n          \'&\': \'&amp;\',\n          \'<\': \'&lt;\',\n          \'>\': \'&gt;\',\n          \'"\': \'&quot;\',\n          "\'": \'&#39;\',\n        })[c],\n    );\n  const n = formatNumber;\n  const list = (items) =>\n    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join(\'\')}</ul>`;\n  const stats = (values) =>\n    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n  $(\'codexScope\').textContent = ECONOMY_GUIDE.scope;\n  $(\'codexCaveat\').textContent = ECONOMY_GUIDE.counterCaveat;\n  $(\'unitCodex\').innerHTML = UNIT_CODEX.map(\n    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body">\n      ${stats([\n        [\'Health\', n(u.baseStats.hp)],\n        [\'Hit\', n(u.baseStats.damage)],\n        [\'Cooldown\', formatSeconds(u.baseStats.attackTime)],\n        [\'Range\', n(u.baseStats.range)],\n        [\'Speed\', `${n(u.baseStats.speed)} /s`],\n        [\'Repeat spawn\', formatSeconds(u.production.spawnTime)],\n      ])}\n      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(\' / \')} gold</p>\n      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n      ${list(u.mechanics)}\n    </div></details>`,\n  ).join(\'\');\n  for (const canvas of $(\'unitCodex\').querySelectorAll(\'[data-portrait]\'))\n    drawUnitPortrait(canvas, canvas.dataset.portrait);\n  $(\'structureCodex\').innerHTML = STRUCTURE_CODEX.map(\n    (\n      b,\n    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n  ).join(\'\');\n  $(\'economyCodex\').innerHTML = `${stats([\n    [\'Starting gold\', n(ECONOMY_GUIDE.startingGold)],\n    [\'Base income\', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n    [\'Citadel health\', n(ECONOMY_GUIDE.citadelHp)],\n    [\'Mine cap\', n(ECONOMY_GUIDE.mineCap)],\n  ])}\n    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n}\npopulateFieldGuide();\n\nconst viewportPause = createViewportPause();\nlet mobileLayout = \'ordinary\';\nlet protectedMonitor = null;\nconst protectedControls = new Map();\nlet armedProtectedControl = null;\nlet battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\nlet selectedMap = \'classic\';\nlet difficulty = \'easy\',\n  game = new Game({ difficulty }),\n  started = false,\n  paused = false,\n  speed = 1,\n  last = performance.now(),\n  saveTimer = 0,\n  toastTimer = 0,\n  resultShown = false,\n  follow = false,\n  helpWasPaused = false;\nconst ui = {\n  build: null,\n  spell: false,\n  selected: null,\n  pointer: null,\n  dragging: false,\n};\nlet mode = \'skirmish\',\n  selectedChallenge = CHALLENGES[0].id,\n  currentChallenge = null,\n  currentCampaign = null,\n  objectiveOutcome = null,\n  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\nconst labels = {\n  barracks: [\'Barracks\', \'Shielded warriors\', \'9s / wave\'],\n  archery: [\'Archery\', \'Ranged support\', \'10s / wave\'],\n  foundry: [\'Foundry\', \'Structure breaker\', \'17s / wave\'],\n  watchtower: [\'Watchtower\', \'Hold the line\', \'Ranged defense\'],\n  mint: [\'Gold mine\', \'Grow your economy\', \'+2.5 gold /s\'],\n  sanctum: [\'Sanctum\', \'Magic & splash\', \'14s / wave\'],\n  aerie: [\'Aerie\', \'Flying raiders\', \'15s / wave\'],\n};\nconst profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\nconst storage = createStorage(() => profileSession.storage);\nlet recoveryHold = null,\n  profileGate = null,\n  pendingFinalizeOutcome = null,\n  allowProfileReload = false,\n  importGeneration = 0,\n  retainedHistory = null;\nlet saveWarning = false;\nconst SETTINGS = \'ironroot.settings.v1\',\n  SAVE = \'ironroot.battle.v1\',\n  HISTORY = \'ironroot.history.v1\',\n  TRIALS = \'ironroot.trials.v1\';\nconst battleSession = createSaveSession(storage, SAVE);\nconst canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\nconst historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\nconst preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\nlet knownHistory = historySession.snapshot().rows,\n  knownHistoryAvailable = historySession.snapshot().ok;\nlet campaignProgress = readCampaignProgress(storage),\n  progressDirty = false;\nconst nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\nif (nextCampaign) {\n  selectedCampaign = nextCampaign;\n  selectedChapter = CAMPAIGN_MISSIONS.find(\n    (m) => m.id === nextCampaign,\n  ).chapterId;\n}\nlet trialRecords = {};\ntry {\n  const value = JSON.parse(storage.get(TRIALS) || \'{}\');\n  if (value && typeof value === \'object\' && !Array.isArray(value))\n    trialRecords = Object.fromEntries(\n      Object.entries(value).filter(\n        ([id, r]) =>\n          CHALLENGES.some((c) => c.id === id) &&\n          r &&\n          r.completed === true &&\n          Number.isFinite(r.bestTime) &&\n          r.bestTime > 0,\n      ),\n    );\n} catch {}\nconst preferences = {\n  sound: true,\n  music: true,\n  sfx: true,\n  volume: 0.5,\n  reducedMotion: renderer.reducedMotion,\n  quality: \'high\',\n};\ntry {\n  const saved = JSON.parse(preferenceSession.initial().value || \'{}\');\n  if (saved && typeof saved === \'object\') {\n    for (const key of [\'sound\', \'music\', \'sfx\', \'reducedMotion\'])\n      if (typeof saved[key] === \'boolean\') preferences[key] = saved[key];\n    if (Number.isFinite(saved.volume))\n      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n    if ([\'high\', \'low\'].includes(saved.quality))\n      preferences.quality = saved.quality;\n  }\n} catch {}\nlet soundOn = preferences.sound;\nconst audio = new GameAudio({\n  muted: !soundOn,\n  volume: preferences.volume,\n  musicEnabled: preferences.music,\n  sfxEnabled: preferences.sfx,\n});\nrenderer.reducedMotion = preferences.reducedMotion;\nrenderer.vfx.setPreferences({\n  reducedMotion: preferences.reducedMotion,\n  quality: preferences.quality,\n});\nfunction initAudio() {\n  audio.unlock().then((ok) => {\n    if (!ok && soundOn)\n      toast(\'Audio is unavailable in this browser. You can keep playing.\');\n  });\n}\nfunction sound(name, options) {\n  audio.play(name, options);\n}\nfunction updatePreferenceSaveStatus() {\n  const dirty = preferenceSession.dirty();\n  $(\'preferenceSaveWarning\').classList.toggle(\'hidden\', !dirty);\n  $(\'retryPreferences\').classList.toggle(\'hidden\', !dirty);\n  $(\'preferenceSaveWarning\').textContent = dirty\n    ? \'These preferences apply only to this page and are not verified saved. \' +\n      ([\'changed\', \'initial-unavailable\', \'blocked\'].includes(preferenceSession.reason())\n        ? \'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.\'\n        : \'Keep this page open, restore storage access or space, then retry saving.\')\n    : \'\';\n}\nfunction retryPreferences(notify = false) {\n  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n  '... 95542 more characters,
+    expected: /classList\.contains\('protected-compact'\) \? 'compact-battle'/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/protected-objectives-ui.test.mjs:307:1
+✖ actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control (1.082043ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:308:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:328:1
+✖ actual storage-conflict auto-pause closes the drawer before showing the pause veil (1.217553ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:329:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/protected-objectives-ui.test.mjs:342:1
+✖ actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay (0.963519ms)
+  ReferenceError [Error]: mobileLayout is not defined
+      at syncProtectedLayout (evalmachine.<anonymous>:68:19)
+      at Object.beginProtectedObjectives (evalmachine.<anonymous>:61:3)
+      at harness (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:46:7)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/protected-objectives-ui.test.mjs:343:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/toast-layout.test.mjs:28:1
+✖ short protected-landscape toast is measured inside the field and above the minimap (4.276899ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /new ResizeObserver\(\(\) => \{ renderer\.resize\(\); positionToast\(\); \}\)\.observe\(\$\('battle'\)\)/. Input:
+  
+  "import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from './mobile-battlefield.js';\n" +
+    "import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';\n" +
+    "import { createInputScopeGuard } from './input-scope.js';\n" +
+    'import {\n' +
+    '  GamepadInput,\n' +
+    '  moveCursor,\n' +
+    '  nextFocusIndex,\n' +
+    '  spatialFocusIndex,\n' +
+    '  nextAffordableIndex,\n' +
+    "} from './controller.js';\n" +
+    'import {\n' +
+    '  createBackup,\n' +
+    '  parseBackup,\n' +
+    '  restoreBackup,\n' +
+    '  MAX_BACKUP_BYTES,\n' +
+    "} from './backup.js';\n" +
+    'import {\n' +
+    '  Game,\n' +
+    '  BUILDINGS,\n' +
+    '  UNITS,\n' +
+    '  MAPS,\n' +
+    '  getMap,\n' +
+    '  buildBounds,\n' +
+    '  SPELL,\n' +
+    '  upgradeCost,\n' +
+    "} from './engine.js';\n" +
+    "import { Renderer, iconSVG, drawUnitPortrait } from './render.js';\n" +
+    "import { renderMissionScouting } from './scouting.js';\n" +
+    "import { createBattleJournal, exportBattleReport } from './battle-report.js';\n" +
+    "import { renderBattleReport } from './report-view.js';\n" +
+    'import {\n' +
+    '  UNIT_CODEX,\n' +
+    '  STRUCTURE_CODEX,\n' +
+    '  ECONOMY_GUIDE,\n' +
+    '  formatNumber,\n' +
+    '  formatSeconds,\n' +
+    "} from './codex.js';\n" +
+    'import {\n' +
+    '  CHALLENGES,\n' +
+    '  createChallenge,\n' +
+    '  getChallengeTargets,\n' +
+    '  evaluateChallenge,\n' +
+    "} from './challenges.js';\n" +
+    'import {\n' +
+    '  createStorage,\n' +
+    '  createSaveSession,\n' +
+    '  readHistoryState,\n' +
+    '  createHistorySession,\n' +
+    '  createPreferenceSession,\n' +
+    '  writeBattle,\n' +
+    '  nativeSpaceTarget,\n' +
+    "} from './persistence.js';\n" +
+    "import { GameAudio } from './audio.js';\n" +
+    "import { advanceObjectiveBattle } from './objectives.js';\n" +
+    "import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';\n" +
+    'import {\n' +
+    '  CAMPAIGN_CHAPTERS,\n' +
+    '  CAMPAIGN_MISSIONS,\n' +
+    '  createCampaignMission,\n' +
+    '  evaluateCampaignMission,\n' +
+    '  getCampaignTargets,\n' +
+    '  readCampaignProgress,\n' +
+    '  mergeCampaignProgress,\n' +
+    '  writeCampaignProgress,\n' +
+    '  recordCampaignResult,\n' +
+    '  getCampaignOverview,\n' +
+    '  isMissionUnlocked,\n' +
+    "} from './campaign.js';\n" +
+    'const $ = (id) => document.getElementById(id);\n' +
+    "const renderer = new Renderer($('battle'), $('minimap'));\n" +
+    '\n' +
+    '// Read-only field reference. Text is authored data; escape it before markup.\n' +
+    'function populateFieldGuide() {\n' +
+    '  const esc = (value) =>\n' +
+    '    String(value).replace(\n' +
+    `      /[&<>"']/g,\n` +
+    '      (c) =>\n' +
+    '        ({\n' +
+    "          '&': '&amp;',\n" +
+    "          '<': '&lt;',\n" +
+    "          '>': '&gt;',\n" +
+    `          '"': '&quot;',\n` +
+    `          "'": '&#39;',\n` +
+    '        })[c],\n' +
+    '    );\n' +
+    '  const n = formatNumber;\n' +
+    '  const list = (items) =>\n' +
+    "    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join('')}</ul>`;\n" +
+    '  const stats = (values) =>\n' +
+    '    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n' +
+    "  $('codexScope').textContent = ECONOMY_GUIDE.scope;\n" +
+    "  $('codexCaveat').textContent = ECONOMY_GUIDE.counterCaveat;\n" +
+    "  $('unitCodex').innerHTML = UNIT_CODEX.map(\n" +
+    '    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n' +
+    '    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body">\n' +
+    '      ${stats([\n' +
+    "        ['Health', n(u.baseStats.hp)],\n" +
+    "        ['Hit', n(u.baseStats.damage)],\n" +
+    "        ['Cooldown', formatSeconds(u.baseStats.attackTime)],\n" +
+    "        ['Range', n(u.baseStats.range)],\n" +
+    "        ['Speed', `${n(u.baseStats.speed)} /s`],\n" +
+    "        ['Repeat spawn', formatSeconds(u.production.spawnTime)],\n" +
+    '      ])}\n' +
+    "      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(' / ')} gold</p>\n" +
+    '      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n' +
+    '      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n' +
+    '      ${list(u.mechanics)}\n' +
+    '    </div></details>`,\n' +
+    "  ).join('');\n" +
+    "  for (const canvas of $('unitCodex').querySelectorAll('[data-portrait]'))\n" +
+    '    drawUnitPortrait(canvas, canvas.dataset.portrait);\n' +
+    "  $('structureCodex').innerHTML = STRUCTURE_CODEX.map(\n" +
+    '    (\n' +
+    '      b,\n' +
+    '    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n' +
+    '    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n' +
+    '    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n' +
+    "  ).join('');\n" +
+    "  $('economyCodex').innerHTML = `${stats([\n" +
+    "    ['Starting gold', n(ECONOMY_GUIDE.startingGold)],\n" +
+    "    ['Base income', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n" +
+    "    ['Citadel health', n(ECONOMY_GUIDE.citadelHp)],\n" +
+    "    ['Mine cap', n(ECONOMY_GUIDE.mineCap)],\n" +
+    '  ])}\n' +
+    '    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n' +
+    '}\n' +
+    'populateFieldGuide();\n' +
+    '\n' +
+    'const viewportPause = createViewportPause();\n' +
+    "let mobileLayout = 'ordinary';\n" +
+    'let protectedMonitor = null;\n' +
+    'const protectedControls = new Map();\n' +
+    'let armedProtectedControl = null;\n' +
+    'let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\n' +
+    "let selectedMap = 'classic';\n" +
+    "let difficulty = 'easy',\n" +
+    '  game = new Game({ difficulty }),\n' +
+    '  started = false,\n' +
+    '  paused = false,\n' +
+    '  speed = 1,\n' +
+    '  last = performance.now(),\n' +
+    '  saveTimer = 0,\n' +
+    '  toastTimer = 0,\n' +
+    '  resultShown = false,\n' +
+    '  follow = false,\n' +
+    '  helpWasPaused = false;\n' +
+    'const ui = {\n' +
+    '  build: null,\n' +
+    '  spell: false,\n' +
+    '  selected: null,\n' +
+    '  pointer: null,\n' +
+    '  dragging: false,\n' +
+    '};\n' +
+    "let mode = 'skirmish',\n" +
+    '  selectedChallenge = CHALLENGES[0].id,\n' +
+    '  currentChallenge = null,\n' +
+    '  currentCampaign = null,\n' +
+    '  objectiveOutcome = null,\n' +
+    '  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n' +
+    '  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\n' +
+    'const labels = {\n' +
+    "  barracks: ['Barracks', 'Shielded warriors', '9s / wave'],\n" +
+    "  archery: ['Archery', 'Ranged support', '10s / wave'],\n" +
+    "  foundry: ['Foundry', 'Structure breaker', '17s / wave'],\n" +
+    "  watchtower: ['Watchtower', 'Hold the line', 'Ranged defense'],\n" +
+    "  mint: ['Gold mine', 'Grow your economy', '+2.5 gold /s'],\n" +
+    "  sanctum: ['Sanctum', 'Magic & splash', '14s / wave'],\n" +
+    "  aerie: ['Aerie', 'Flying raiders', '15s / wave'],\n" +
+    '};\n' +
+    'const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\n' +
+    'const storage = createStorage(() => profileSession.storage);\n' +
+    'let recoveryHold = null,\n' +
+    '  profileGate = null,\n' +
+    '  pendingFinalizeOutcome = null,\n' +
+    '  allowProfileReload = false,\n' +
+    '  importGeneration = 0,\n' +
+    '  retainedHistory = null;\n' +
+    'let saveWarning = false;\n' +
+    "const SETTINGS = 'ironroot.settings.v1',\n" +
+    "  SAVE = 'ironroot.battle.v1',\n" +
+    "  HISTORY = 'ironroot.history.v1',\n" +
+    "  TRIALS = 'ironroot.trials.v1';\n" +
+    'const battleSession = createSaveSession(storage, SAVE);\n' +
+    'const canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\n' +
+    'const historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\n' +
+    'const preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\n' +
+    'let knownHistory = historySession.snapshot().rows,\n' +
+    '  knownHistoryAvailable = historySession.snapshot().ok;\n' +
+    'let campaignProgress = readCampaignProgress(storage),\n' +
+    '  progressDirty = false;\n' +
+    'const nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\n' +
+    'if (nextCampaign) {\n' +
+    '  selectedCampaign = nextCampaign;\n' +
+    '  selectedChapter = CAMPAIGN_MISSIONS.find(\n' +
+    '    (m) => m.id === nextCampaign,\n' +
+    '  ).chapterId;\n' +
+    '}\n' +
+    'let trialRecords = {};\n' +
+    'try {\n' +
+    "  const value = JSON.parse(storage.get(TRIALS) || '{}');\n" +
+    "  if (value && typeof value === 'object' && !Array.isArray(value))\n" +
+    '    trialRecords = Object.fromEntries(\n' +
+    '      Object.entries(value).filter(\n' +
+    '        ([id, r]) =>\n' +
+    '          CHALLENGES.some((c) => c.id === id) &&\n' +
+    '          r &&\n' +
+    '          r.completed === true &&\n' +
+    '          Number.isFinite(r.bestTime) &&\n' +
+    '          r.bestTime > 0,\n' +
+    '      ),\n' +
+    '    );\n' +
+    '} catch {}\n' +
+    'const preferences = {\n' +
+    '  sound: true,\n' +
+    '  music: true,\n' +
+    '  sfx: true,\n' +
+    '  volume: 0.5,\n' +
+    '  reducedMotion: renderer.reducedMotion,\n' +
+    "  quality: 'high',\n" +
+    '};\n' +
+    'try {\n' +
+    "  const saved = JSON.parse(preferenceSession.initial().value || '{}');\n" +
+    "  if (saved && typeof saved === 'object') {\n" +
+    "    for (const key of ['sound', 'music', 'sfx', 'reducedMotion'])\n" +
+    "      if (typeof saved[key] === 'boolean') preferences[key] = saved[key];\n" +
+    '    if (Number.isFinite(saved.volume))\n' +
+    '      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n' +
+    "    if (['high', 'low'].includes(saved.quality))\n" +
+    '      preferences.quality = saved.quality;\n' +
+    '  }\n' +
+    '} catch {}\n' +
+    'let soundOn = preferences.sound;\n' +
+    'const audio = new GameAudio({\n' +
+    '  muted: !soundOn,\n' +
+    '  volume: preferences.volume,\n' +
+    '  musicEnabled: preferences.music,\n' +
+    '  sfxEnabled: preferences.sfx,\n' +
+    '});\n' +
+    'renderer.reducedMotion = preferences.reducedMotion;\n' +
+    'renderer.vfx.setPreferences({\n' +
+    '  reducedMotion: preferences.reducedMotion,\n' +
+    '  quality: preferences.quality,\n' +
+    '});\n' +
+    'function initAudio() {\n' +
+    '  audio.unlock().then((ok) => {\n' +
+    '    if (!ok && soundOn)\n' +
+    "      toast('Audio is unavailable in this browser. You can keep playing.');\n" +
+    '  });\n' +
+    '}\n' +
+    'function sound(name, options) {\n' +
+    '  audio.play(name, options);\n' +
+    '}\n' +
+    'function updatePreferenceSaveStatus() {\n' +
+    '  const dirty = preferenceSession.dirty();\n' +
+    "  $('preferenceSaveWarning').classList.toggle('hidden', !dirty);\n" +
+    "  $('retryPreferences').classList.toggle('hidden', !dirty);\n" +
+    "  $('preferenceSaveWarning').textContent = dirty\n" +
+    "    ? 'These preferences apply only to this page and are not verified saved. ' +\n" +
+    "      (['changed', 'initial-unavailable', 'blocked'].includes(preferenceSession.reason())\n" +
+    "        ? 'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.'\n" +
+    "        : 'Keep this page open, restore storage access or space, then retry saving.')\n" +
+    "    : '';\n" +
+    '}\n' +
+    'function retryPreferences(notify = false) {\n' +
+    '  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n' +
+    '  '... 95542 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/toast-layout.test.mjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'import { createViewportPause, inspectMobileGeometry, visibleViewportRect, protectedToastTop } from \'./mobile-battlefield.js\';\nimport { createProfileSession, PROFILE_MARKER_KEY } from \'./profile-session.js\';\nimport { createInputScopeGuard } from \'./input-scope.js\';\nimport {\n  GamepadInput,\n  moveCursor,\n  nextFocusIndex,\n  spatialFocusIndex,\n  nextAffordableIndex,\n} from \'./controller.js\';\nimport {\n  createBackup,\n  parseBackup,\n  restoreBackup,\n  MAX_BACKUP_BYTES,\n} from \'./backup.js\';\nimport {\n  Game,\n  BUILDINGS,\n  UNITS,\n  MAPS,\n  getMap,\n  buildBounds,\n  SPELL,\n  upgradeCost,\n} from \'./engine.js\';\nimport { Renderer, iconSVG, drawUnitPortrait } from \'./render.js\';\nimport { renderMissionScouting } from \'./scouting.js\';\nimport { createBattleJournal, exportBattleReport } from \'./battle-report.js\';\nimport { renderBattleReport } from \'./report-view.js\';\nimport {\n  UNIT_CODEX,\n  STRUCTURE_CODEX,\n  ECONOMY_GUIDE,\n  formatNumber,\n  formatSeconds,\n} from \'./codex.js\';\nimport {\n  CHALLENGES,\n  createChallenge,\n  getChallengeTargets,\n  evaluateChallenge,\n} from \'./challenges.js\';\nimport {\n  createStorage,\n  createSaveSession,\n  readHistoryState,\n  createHistorySession,\n  createPreferenceSession,\n  writeBattle,\n  nativeSpaceTarget,\n} from \'./persistence.js\';\nimport { GameAudio } from \'./audio.js\';\nimport { advanceObjectiveBattle } from \'./objectives.js\';\nimport { createProtectedObjectiveMonitor, protectedLossDetails } from \'./protected-objectives.js\';\nimport {\n  CAMPAIGN_CHAPTERS,\n  CAMPAIGN_MISSIONS,\n  createCampaignMission,\n  evaluateCampaignMission,\n  getCampaignTargets,\n  readCampaignProgress,\n  mergeCampaignProgress,\n  writeCampaignProgress,\n  recordCampaignResult,\n  getCampaignOverview,\n  isMissionUnlocked,\n} from \'./campaign.js\';\nconst $ = (id) => document.getElementById(id);\nconst renderer = new Renderer($(\'battle\'), $(\'minimap\'));\n\n// Read-only field reference. Text is authored data; escape it before markup.\nfunction populateFieldGuide() {\n  const esc = (value) =>\n    String(value).replace(\n      /[&<>"\']/g,\n      (c) =>\n        ({\n          \'&\': \'&amp;\',\n          \'<\': \'&lt;\',\n          \'>\': \'&gt;\',\n          \'"\': \'&quot;\',\n          "\'": \'&#39;\',\n        })[c],\n    );\n  const n = formatNumber;\n  const list = (items) =>\n    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join(\'\')}</ul>`;\n  const stats = (values) =>\n    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join(\'\')}</dl>`;\n  $(\'codexScope\').textContent = ECONOMY_GUIDE.scope;\n  $(\'codexCaveat\').textContent = ECONOMY_GUIDE.counterCaveat;\n  $(\'unitCodex\').innerHTML = UNIT_CODEX.map(\n    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">\n    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? \'GROUND + AIR\' : \'GROUND TARGETS\'}${u.baseStats.flying ? \' · FLYING\' : \'\'}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body">\n      ${stats([\n        [\'Health\', n(u.baseStats.hp)],\n        [\'Hit\', n(u.baseStats.damage)],\n        [\'Cooldown\', formatSeconds(u.baseStats.attackTime)],\n        [\'Range\', n(u.baseStats.range)],\n        [\'Speed\', `${n(u.baseStats.speed)} /s`],\n        [\'Repeat spawn\', formatSeconds(u.production.spawnTime)],\n      ])}\n      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(\' / \')} gold</p>\n      <p><b>Use it for:</b> ${esc(u.advantages)}</p>\n      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>\n      ${list(u.mechanics)}\n    </div></details>`,\n  ).join(\'\');\n  for (const canvas of $(\'unitCodex\').querySelectorAll(\'[data-portrait]\'))\n    drawUnitPortrait(canvas, canvas.dataset.portrait);\n  $(\'structureCodex\').innerHTML = STRUCTURE_CODEX.map(\n    (\n      b,\n    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">\n    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>\n    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(\' / \')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,\n  ).join(\'\');\n  $(\'economyCodex\').innerHTML = `${stats([\n    [\'Starting gold\', n(ECONOMY_GUIDE.startingGold)],\n    [\'Base income\', `${n(ECONOMY_GUIDE.baseIncome)} /s`],\n    [\'Citadel health\', n(ECONOMY_GUIDE.citadelHp)],\n    [\'Mine cap\', n(ECONOMY_GUIDE.mineCap)],\n  ])}\n    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;\n}\npopulateFieldGuide();\n\nconst viewportPause = createViewportPause();\nlet mobileLayout = \'ordinary\';\nlet protectedMonitor = null;\nconst protectedControls = new Map();\nlet armedProtectedControl = null;\nlet battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;\nlet selectedMap = \'classic\';\nlet difficulty = \'easy\',\n  game = new Game({ difficulty }),\n  started = false,\n  paused = false,\n  speed = 1,\n  last = performance.now(),\n  saveTimer = 0,\n  toastTimer = 0,\n  resultShown = false,\n  follow = false,\n  helpWasPaused = false;\nconst ui = {\n  build: null,\n  spell: false,\n  selected: null,\n  pointer: null,\n  dragging: false,\n};\nlet mode = \'skirmish\',\n  selectedChallenge = CHALLENGES[0].id,\n  currentChallenge = null,\n  currentCampaign = null,\n  objectiveOutcome = null,\n  selectedCampaign = CAMPAIGN_MISSIONS[0].id,\n  selectedChapter = CAMPAIGN_CHAPTERS[0].id;\nconst labels = {\n  barracks: [\'Barracks\', \'Shielded warriors\', \'9s / wave\'],\n  archery: [\'Archery\', \'Ranged support\', \'10s / wave\'],\n  foundry: [\'Foundry\', \'Structure breaker\', \'17s / wave\'],\n  watchtower: [\'Watchtower\', \'Hold the line\', \'Ranged defense\'],\n  mint: [\'Gold mine\', \'Grow your economy\', \'+2.5 gold /s\'],\n  sanctum: [\'Sanctum\', \'Magic & splash\', \'14s / wave\'],\n  aerie: [\'Aerie\', \'Flying raiders\', \'15s / wave\'],\n};\nconst profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });\nconst storage = createStorage(() => profileSession.storage);\nlet recoveryHold = null,\n  profileGate = null,\n  pendingFinalizeOutcome = null,\n  allowProfileReload = false,\n  importGeneration = 0,\n  retainedHistory = null;\nlet saveWarning = false;\nconst SETTINGS = \'ironroot.settings.v1\',\n  SAVE = \'ironroot.battle.v1\',\n  HISTORY = \'ironroot.history.v1\',\n  TRIALS = \'ironroot.trials.v1\';\nconst battleSession = createSaveSession(storage, SAVE);\nconst canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;\nconst historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });\nconst preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });\nlet knownHistory = historySession.snapshot().rows,\n  knownHistoryAvailable = historySession.snapshot().ok;\nlet campaignProgress = readCampaignProgress(storage),\n  progressDirty = false;\nconst nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;\nif (nextCampaign) {\n  selectedCampaign = nextCampaign;\n  selectedChapter = CAMPAIGN_MISSIONS.find(\n    (m) => m.id === nextCampaign,\n  ).chapterId;\n}\nlet trialRecords = {};\ntry {\n  const value = JSON.parse(storage.get(TRIALS) || \'{}\');\n  if (value && typeof value === \'object\' && !Array.isArray(value))\n    trialRecords = Object.fromEntries(\n      Object.entries(value).filter(\n        ([id, r]) =>\n          CHALLENGES.some((c) => c.id === id) &&\n          r &&\n          r.completed === true &&\n          Number.isFinite(r.bestTime) &&\n          r.bestTime > 0,\n      ),\n    );\n} catch {}\nconst preferences = {\n  sound: true,\n  music: true,\n  sfx: true,\n  volume: 0.5,\n  reducedMotion: renderer.reducedMotion,\n  quality: \'high\',\n};\ntry {\n  const saved = JSON.parse(preferenceSession.initial().value || \'{}\');\n  if (saved && typeof saved === \'object\') {\n    for (const key of [\'sound\', \'music\', \'sfx\', \'reducedMotion\'])\n      if (typeof saved[key] === \'boolean\') preferences[key] = saved[key];\n    if (Number.isFinite(saved.volume))\n      preferences.volume = Math.max(0, Math.min(1, saved.volume));\n    if ([\'high\', \'low\'].includes(saved.quality))\n      preferences.quality = saved.quality;\n  }\n} catch {}\nlet soundOn = preferences.sound;\nconst audio = new GameAudio({\n  muted: !soundOn,\n  volume: preferences.volume,\n  musicEnabled: preferences.music,\n  sfxEnabled: preferences.sfx,\n});\nrenderer.reducedMotion = preferences.reducedMotion;\nrenderer.vfx.setPreferences({\n  reducedMotion: preferences.reducedMotion,\n  quality: preferences.quality,\n});\nfunction initAudio() {\n  audio.unlock().then((ok) => {\n    if (!ok && soundOn)\n      toast(\'Audio is unavailable in this browser. You can keep playing.\');\n  });\n}\nfunction sound(name, options) {\n  audio.play(name, options);\n}\nfunction updatePreferenceSaveStatus() {\n  const dirty = preferenceSession.dirty();\n  $(\'preferenceSaveWarning\').classList.toggle(\'hidden\', !dirty);\n  $(\'retryPreferences\').classList.toggle(\'hidden\', !dirty);\n  $(\'preferenceSaveWarning\').textContent = dirty\n    ? \'These preferences apply only to this page and are not verified saved. \' +\n      ([\'changed\', \'initial-unavailable\', \'blocked\'].includes(preferenceSession.reason())\n        ? \'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.\'\n        : \'Keep this page open, restore storage access or space, then retry saving.\')\n    : \'\';\n}\nfunction retryPreferences(notify = false) {\n  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();\n  '... 95542 more characters,
+    expected: /new ResizeObserver\(\(\) => \{ renderer\.resize\(\); positionToast\(\); \}\)\.observe\(\$\('battle'\)\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/toast-layout.test.mjs:44:1
+✖ battle-first toast uses canvas bounds rather than the side-rail minimap top (0.982857ms)
+  evalmachine.<anonymous>:5
+      const obstacles = (protectedMonitor?.read() || []).filter(t => t.status !== 'lost').map(t => {
+                        ^
+  
+  ReferenceError: protectedMonitor is not defined
+      at positionToast (evalmachine.<anonymous>:5:23)
+      at evalmachine.<anonymous>:26:1
+      at Script.runInContext (node:vm:149:12)
+      at Script.runInNewContext (node:vm:154:17)
+      at runInNewContext (node:vm:310:38)
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-mobile-battlefield-lab/tests/toast-layout.test.mjs:48:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)

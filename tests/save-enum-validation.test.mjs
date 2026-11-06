@@ -7,20 +7,20 @@ import { BACKUP_FORMAT, BACKUP_VERSION, BACKUP_STORAGE_KEYS as K, BackupError, c
 import { CAMPAIGN_MISSIONS, createCampaignProgress } from '../dist/campaign.js';
 import { CHALLENGES } from '../dist/challenges.js';
 import { PROFILE_MARKER_KEY } from '../dist/profile-session.js';
-import { assertFrozenEngineExceptEnumValidation, ORIGINAL_ENUM_GUARD, HARDENED_ENUM_GUARD } from './engine-validation-source.mjs';
+import { assertHistoricalEngineExceptEnumValidation, readHistoricalProduction, ORIGINAL_ENUM_GUARD, HARDENED_ENUM_GUARD } from './engine-validation-source.mjs';
 
 const date = '2026-11-06T00:00:00.000Z', clone = value => JSON.parse(JSON.stringify(value));
-const source = readFileSync(new URL('../dist/engine.js', import.meta.url), 'utf8');
-const frozenSource = assertFrozenEngineExceptEnumValidation(source);
+const source = String(readHistoricalProduction());
+const frozenSource = assertHistoricalEngineExceptEnumValidation(source);
 const moduleURL = source => 'data:text/javascript;base64,' + Buffer.from(source).toString('base64');
 const frozenURL = moduleURL(frozenSource);
 const { Game: FrozenGame } = await import(frozenURL);
-// backup.js is byte-pinned by the existing integration checks. Only its engine
-// import changes for the independently hash-verified original behavior oracle.
-const frozenBackupSource = readFileSync(new URL('../dist/backup.js', import.meta.url), 'utf8')
+// Reconstruct the vulnerable historical importer from pinned production sources.
+// Current backup/codec modules are exercised independently below.
+const frozenBackupSource = String(readHistoricalProduction('backup.js'))
   .replace("from './engine.js'", `from '${frozenURL}'`)
-  .replace("from './campaign.js'", `from '${new URL('../dist/campaign.js', import.meta.url).href}'`)
-  .replace("from './challenges.js'", `from '${new URL('../dist/challenges.js', import.meta.url).href}'`);
+  .replace("from './campaign.js'", `from '${new URL('../qa/fixtures/production-v012/dist/campaign.js', import.meta.url).href}'`)
+  .replace("from './challenges.js'", `from '${new URL('../qa/fixtures/production-v012/dist/challenges.js', import.meta.url).href}'`);
 const { restoreBackup: frozenRestoreBackup } = await import(moduleURL(frozenBackupSource));
 const effects = ['build', 'upgrade', 'sell', 'spawn', 'death', 'hit', 'blast', 'magic', 'volley'];
 const projectiles = ['archer', 'siege', 'wizard', 'gryphon', 'tower'];
@@ -75,10 +75,10 @@ function rosterSave(mapId, level = 1) {
   return game.serialize();
 }
 
-test('source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits', () => {
-  assert.equal(assertFrozenEngineExceptEnumValidation(source), frozenSource);
+test('historical source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits', () => {
+  assert.equal(assertHistoricalEngineExceptEnumValidation(source), frozenSource);
   for (const bad of [frozenSource, source + '\n' + HARDENED_ENUM_GUARD, source + '\n', source.replace('damage:21', 'damage:22'), source + ORIGINAL_ENUM_GUARD])
-    assert.throws(() => assertFrozenEngineExceptEnumValidation(bad));
+    assert.throws(() => assertHistoricalEngineExceptEnumValidation(bad));
 });
 
 test('frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota', () => {

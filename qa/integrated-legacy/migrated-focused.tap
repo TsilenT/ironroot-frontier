@@ -1,0 +1,621 @@
+TAP version 13
+# Subtest: historical engine oracle stays pinned and current observer remains side-effect free
+ok 1 - historical engine oracle stays pinned and current observer remains side-effect free
+  ---
+  duration_ms: 3.110846
+  type: 'test'
+  ...
+# Subtest: all maps report actual geometry, both armies, finite values and zero-filled known roster
+ok 2 - all maps report actual geometry, both armies, finite values and zero-filled known roster
+  ---
+  duration_ms: 4.98898
+  type: 'test'
+  ...
+# Subtest: authored initial allocations, health and placements are observed, never inferred as spending
+ok 3 - authored initial allocations, health and placements are observed, never inferred as spending
+  ---
+  duration_ms: 15.051894
+  type: 'test'
+  ...
+# Subtest: current income uses alive, upgraded mines even when cached engine income is stale
+ok 4 - current income uses alive, upgraded mines even when cached engine income is stale
+  ---
+  duration_ms: 1.274515
+  type: 'test'
+  ...
+# Subtest: sampling uses simulation time at 1× and 2×, ignores pauses and does not backfill skipped times
+ok 5 - sampling uses simulation time at 1× and 2×, ignores pauses and does not backfill skipped times
+  ---
+  duration_ms: 4.828724
+  type: 'test'
+  ...
+# Subtest: short and same-time terminal changes force a final snapshot without duplicate timestamps
+ok 6 - short and same-time terminal changes force a final snapshot without duplicate timestamps
+  ---
+  duration_ms: 1.139036
+  type: 'test'
+  ...
+# Subtest: thinning is bounded, preserves actual endpoints/timestamps and all captured observed peaks
+ok 7 - thinning is bounded, preserves actual endpoints/timestamps and all captured observed peaks
+  ---
+  duration_ms: 26.451015
+  type: 'test'
+  ...
+# Subtest: unsampled transient peaks are not presented as observations or true maxima
+ok 8 - unsampled transient peaks are not presented as observations or true maxima
+  ---
+  duration_ms: 0.824263
+  type: 'test'
+  ...
+# Subtest: journal identity, monotonic time, terminal requirement and idempotence prevent mixed matches
+ok 9 - journal identity, monotonic time, terminal requirement and idempotence prevent mixed matches
+  ---
+  duration_ms: 1.166937
+  type: 'test'
+  ...
+# Subtest: no engine/objective references escape and deeply frozen sources can be observed
+ok 10 - no engine/objective references escape and deeply frozen sources can be observed
+  ---
+  duration_ms: 1.605973
+  type: 'test'
+  ...
+# Subtest: export is a whitelist of finite JSON and rejects foreign objects without executing toJSON
+ok 11 - export is a whitelist of finite JSON and rejects foreign objects without executing toJSON
+  ---
+  duration_ms: 1.169972
+  type: 'test'
+  ...
+# Subtest: invalid observed data is rejected rather than coerced into plausible finite facts
+ok 12 - invalid observed data is rejected rather than coerced into plausible finite facts
+  ---
+  duration_ms: 1.272803
+  type: 'test'
+  ...
+# Subtest: terminal engine wins, losses and draw remain distinct from objective outcomes
+ok 13 - terminal engine wins, losses and draw remain distinct from objective outcomes
+  ---
+  duration_ms: 0.695373
+  type: 'test'
+  ...
+# Subtest: original protected/destroyed targets come from evaluator identity, not replacement locations
+ok 14 - original protected/destroyed targets come from evaluator identity, not replacement locations
+  ---
+  duration_ms: 6.252319
+  type: 'test'
+  ...
+# Subtest: campaign and trial terminal evaluation supplies objective facts on every authored map
+ok 15 - campaign and trial terminal evaluation supplies objective facts on every authored map
+  ---
+  duration_ms: 8.262195
+  type: 'test'
+  ...
+# Subtest: version-1 and version-2 historical saves resume partial timelines without schema changes
+ok 16 - version-1 and version-2 historical saves resume partial timelines without schema changes
+  ---
+  duration_ms: 11.677931
+  type: 'test'
+  ...
+# Subtest: complete paired simulations remain byte-identical with and without observation on all maps
+ok 17 - complete paired simulations remain byte-identical with and without observation on all maps
+  ---
+  duration_ms: 1662.406385
+  type: 'test'
+  ...
+# Subtest: fixed-step objective termination and resulting report agree at 1× and 2×
+ok 18 - fixed-step objective termination and resulting report agree at 1× and 2×
+  ---
+  duration_ms: 1.512465
+  type: 'test'
+  ...
+# Subtest: sparse engine arrays and inherited indices cannot hide missing observed values
+ok 19 - sparse engine arrays and inherited indices cannot hide missing observed values
+  ---
+  duration_ms: 0.91814
+  type: 'test'
+  ...
+# Subtest: sparse objective, target and counter arrays reject without poisoning later finish
+ok 20 - sparse objective, target and counter arrays reject without poisoning later finish
+  ---
+  duration_ms: 1.170793
+  type: 'test'
+  ...
+# Subtest: placement and economy are validated without mutating failed requests
+ok 21 - placement and economy are validated without mutating failed requests
+  ---
+  duration_ms: 2.618803
+  type: 'test'
+  ...
+# Subtest: production, ranged attacks, counter modifiers and unit cap
+ok 22 - production, ranged attacks, counter modifiers and unit cap
+  ---
+  duration_ms: 9.27103
+  type: 'test'
+  ...
+# Subtest: upgrades and partial refunds obey ownership and level limits
+ok 23 - upgrades and partial refunds obey ownership and level limits
+  ---
+  duration_ms: 0.569959
+  type: 'test'
+  ...
+# Subtest: spell costs money, damages only enemies, and respects cooldown
+ok 24 - spell costs money, damages only enemies, and respects cooldown
+  ---
+  duration_ms: 2.514479
+  type: 'test'
+  ...
+# Subtest: AI spends real income, builds multiple lanes, and completes a match
+ok 25 - AI spends real income, builds multiple lanes, and completes a match
+  ---
+  duration_ms: 114.773867
+  type: 'test'
+  ...
+# Subtest: deterministic seeds and frame subdivision reproduce state
+ok 26 - deterministic seeds and frame subdivision reproduce state
+  ---
+  duration_ms: 47.24005
+  type: 'test'
+  ...
+# Subtest: base destruction ends simulation and rejects further actions
+ok 27 - base destruction ends simulation and rejects further actions
+  ---
+  duration_ms: 0.432235
+  type: 'test'
+  ...
+# Subtest: invalid deltas cannot contaminate state
+ok 28 - invalid deltas cannot contaminate state
+  ---
+  duration_ms: 0.234715
+  type: 'test'
+  ...
+# Subtest: economy limits prevent unchecked compounding
+ok 29 - economy limits prevent unchecked compounding
+  ---
+  duration_ms: 0.45508
+  type: 'test'
+  ...
+# Subtest: siege can break an isolated tower from outside arrow range
+ok 30 - siege can break an isolated tower from outside arrow range
+  ---
+  duration_ms: 4.79209
+  type: 'test'
+  ...
+# Subtest: versioned save roundtrip is independent and deterministic midcombat
+ok 31 - versioned save roundtrip is independent and deterministic midcombat
+  ---
+  duration_ms: 222.000715
+  type: 'test'
+  ...
+# Subtest: all difficulties restore throughout their full match
+ok 32 - all difficulties restore throughout their full match
+  ---
+  duration_ms: 306.76615
+  type: 'test'
+  ...
+# Subtest: corrupt save structures and unsupported versions are rejected clearly
+ok 33 - corrupt save structures and unsupported versions are rejected clearly
+  ---
+  duration_ms: 8.962015
+  type: 'test'
+  ...
+# Subtest: restoring hostile nesting or excessive arrays is bounded
+ok 34 - restoring hostile nesting or excessive arrays is bounded
+  ---
+  duration_ms: 1.367361
+  type: 'test'
+  ...
+# Subtest: extreme elapsed time is capped and transient visuals have hard limits
+ok 35 - extreme elapsed time is capped and transient visuals have hard limits
+  ---
+  duration_ms: 3.640321
+  type: 'test'
+  ...
+# Subtest: lethal simultaneous attacks allow both soldiers to strike
+ok 36 - lethal simultaneous attacks allow both soldiers to strike
+  ---
+  duration_ms: 0.859274
+  type: 'test'
+  ...
+# Subtest: invalid action inputs do not change state
+ok 37 - invalid action inputs do not change state
+  ---
+  duration_ms: 0.621394
+  type: 'test'
+  ...
+# Subtest: all seven structures are producible, upgradeable, sellable and saveable
+ok 38 - all seven structures are producible, upgradeable, sellable and saveable
+  ---
+  duration_ms: 7.68786
+  type: 'test'
+  ...
+# Subtest: ground melee ignores airborne targets rather than stopping or chasing them
+ok 39 - ground melee ignores airborne targets rather than stopping or chasing them
+  ---
+  duration_ms: 0.603929
+  type: 'test'
+  ...
+# Subtest: mixed air and ground targets do not hide valid targets from melee
+ok 40 - mixed air and ground targets do not hide valid targets from melee
+  ---
+  duration_ms: 0.200105
+  type: 'test'
+  ...
+# Subtest: wizard bypasses shields and splashes ground soldiers without hurting flyers
+ok 41 - wizard bypasses shields and splashes ground soldiers without hurting flyers
+  ---
+  duration_ms: 0.328232
+  type: 'test'
+  ...
+# Subtest: siege splash cannot hit airborne soldiers
+ok 42 - siege splash cannot hit airborne soldiers
+  ---
+  duration_ms: 0.273151
+  type: 'test'
+  ...
+# Subtest: archers and watchtowers can shoot flying units
+ok 43 - archers and watchtowers can shoot flying units
+  ---
+  duration_ms: 0.230139
+  type: 'test'
+  ...
+# Subtest: gryphons attack structures with reduced damage
+ok 44 - gryphons attack structures with reduced damage
+  ---
+  duration_ms: 0.139465
+  type: 'test'
+  ...
+# Subtest: outer-lane warriors must converge before hitting the physical core
+ok 45 - outer-lane warriors must converge before hitting the physical core
+  ---
+  duration_ms: 0.596598
+  type: 'test'
+  ...
+# Subtest: cores retaliate against air and ground attackers
+ok 46 - cores retaliate against air and ground attackers
+  ---
+  duration_ms: 0.170782
+  type: 'test'
+  ...
+# Subtest: wizard and flying combat resumes exactly with new visual types
+ok 47 - wizard and flying combat resumes exactly with new visual types
+  ---
+  duration_ms: 5.44389
+  type: 'test'
+  ...
+# Subtest: simultaneous core destruction is an honest persistent draw
+ok 48 - simultaneous core destruction is an honest persistent draw
+  ---
+  duration_ms: 0.898442
+  type: 'test'
+  ...
+# Subtest: symmetric duels have identical damage and mirrored movement each tick
+ok 49 - symmetric duels have identical damage and mirrored movement each tick
+  ---
+  duration_ms: 8.066307
+  type: 'test'
+  ...
+# Subtest: mirrored forward barracks do not reproduce the former left-side sweep
+ok 50 - mirrored forward barracks do not reproduce the former left-side sweep
+  ---
+  duration_ms: 1887.386307
+  type: 'test'
+  ...
+# Subtest: native side-parametric AI produces mirrored fair-cost opening positions
+ok 51 - native side-parametric AI produces mirrored fair-cost opening positions
+  ---
+  duration_ms: 0.848158
+  type: 'test'
+  ...
+# Subtest: resumed games allocate fresh unique IDs through later building and production
+ok 52 - resumed games allocate fresh unique IDs through later building and production
+  ---
+  duration_ms: 5.211528
+  type: 'test'
+  ...
+# Subtest: projectiles identify airborne sources and destinations for rendering
+ok 53 - projectiles identify airborne sources and destinations for rendering
+  ---
+  duration_ms: 0.757014
+  type: 'test'
+  ...
+# Subtest: siege structure bonuses never inflate nearby troop splash at any level or overtime
+ok 54 - siege structure bonuses never inflate nearby troop splash at any level or overtime
+  ---
+  duration_ms: 0.540335
+  type: 'test'
+  ...
+# Subtest: siege direct troop damage remains unchanged across levels and overtime
+ok 55 - siege direct troop damage remains unchanged across levels and overtime
+  ---
+  duration_ms: 0.402603
+  type: 'test'
+  ...
+# Subtest: wizard overtime structure damage also remains separate from ground splash
+ok 56 - wizard overtime structure damage also remains separate from ground splash
+  ---
+  duration_ms: 0.214085
+  type: 'test'
+  ...
+# Subtest: all authored protected structures have stable, unique names and immutable read-only health views
+ok 57 - all authored protected structures have stable, unique names and immutable read-only health views
+  ---
+  duration_ms: 8.808309
+  type: 'test'
+  ...
+# Subtest: Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+ok 58 - Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+  ---
+  duration_ms: 1.695815
+  type: 'test'
+  ...
+# Subtest: critical health uses actual ratio and never claims an attacker; upgrades display current max health
+ok 59 - critical health uses actual ratio and never claims an attacker; upgrades display current max health
+  ---
+  duration_ms: 1.249138
+  type: 'test'
+  ...
+# Subtest: first missing observation binds the original ID and current tick, never a later replacement
+ok 60 - first missing observation binds the original ID and current tick, never a later replacement
+  ---
+  duration_ms: 1.186236
+  type: 'test'
+  ...
+# Subtest: already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+ok 61 - already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+  ---
+  duration_ms: 4.919237
+  type: 'test'
+  ...
+# Subtest: new observations after a healthy resume record a transition without inventing pre-resume history
+ok 62 - new observations after a healthy resume record a transition without inventing pre-resume history
+  ---
+  duration_ms: 0.896619
+  type: 'test'
+  ...
+# Subtest: simultaneous protected losses both appear, with no inference about the cause
+ok 63 - simultaneous protected losses both appear, with no inference about the cause
+  ---
+  duration_ms: 0.426557
+  type: 'test'
+  ...
+# Subtest: observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+ok 64 - observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+  ---
+  duration_ms: 596.848181
+  type: 'test'
+  ...
+# Subtest: fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+ok 65 - fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+  ---
+  duration_ms: 2.289989
+  type: 'test'
+  ...
+# Subtest: observed time formatting handles tick rounding and explicitly unknown data
+ok 66 - observed time formatting handles tick rounding and explicitly unknown data
+  ---
+  duration_ms: 0.36741
+  type: 'test'
+  ...
+# Subtest: historical campaign/combat/objective/save oracle retains its original source pins
+ok 67 - historical campaign/combat/objective/save oracle retains its original source pins
+  ---
+  duration_ms: 3.147842
+  type: 'test'
+  ...
+# Subtest: historical production fixture preserves the corrected persistence and training source oracle
+ok 68 - historical production fixture preserves the corrected persistence and training source oracle
+  ---
+  duration_ms: 1.100118
+  type: 'test'
+  ...
+# Subtest: dialog controls exclude zero-size, inert/hidden and invisible controls but retain the report summary
+ok 69 - dialog controls exclude zero-size, inert/hidden and invisible controls but retain the report summary
+  ---
+  duration_ms: 4.092161
+  type: 'test'
+  ...
+# Subtest: modal fallback never selects a hidden preferred control
+ok 70 - modal fallback never selects a hidden preferred control
+  ---
+  duration_ms: 1.501539
+  type: 'test'
+  ...
+# Subtest: opening a report aligns only the outer result scroller without stealing disclosure focus
+ok 71 - opening a report aligns only the outer result scroller without stealing disclosure focus
+  ---
+  duration_ms: 1.308976
+  type: 'test'
+  ...
+# Subtest: explicit reopening focuses summary without page scrolling and clamps the result scroll area
+ok 72 - explicit reopening focuses summary without page scrolling and clamps the result scroll area
+  ---
+  duration_ms: 0.934134
+  type: 'test'
+  ...
+# Subtest: deferred report alignment ignores a closed, replaced or hidden result
+ok 73 - deferred report alignment ignores a closed, replaced or hidden result
+  ---
+  duration_ms: 2.574708
+  type: 'test'
+  ...
+# Subtest: report download creates local JSON and claims only a started download, then cleans resources
+ok 74 - report download creates local JSON and claims only a started download, then cleans resources
+  ---
+  duration_ms: 2.70502
+  type: 'test'
+  ...
+# Subtest: report export and URL failures never claim a started download
+ok 75 - report export and URL failures never claim a started download
+  ---
+  duration_ms: 4.654137
+  type: 'test'
+  ...
+# Subtest: failed anchor activation cleans its URL and leaves a truthful error; absent report does nothing
+ok 76 - failed anchor activation cleans its URL and leaves a truthful error; absent report does nothing
+  ---
+  duration_ms: 2.006732
+  type: 'test'
+  ...
+# Subtest: historical engine/profile/backup/objective sources retain the frozen 0.10 oracle
+ok 77 - historical engine/profile/backup/objective sources retain the frozen 0.10 oracle
+  ---
+  duration_ms: 3.620336
+  type: 'test'
+  ...
+# Subtest: dialog controls reject closed-details descendants even when Chromium exposes their rectangles
+ok 78 - dialog controls reject closed-details descendants even when Chromium exposes their rectangles
+  ---
+  duration_ms: 5.130638
+  type: 'test'
+  ...
+# Subtest: controller controls reject closed-details descendants even when Chromium exposes their rectangles
+ok 79 - controller controls reject closed-details descendants even when Chromium exposes their rectangles
+  ---
+  duration_ms: 3.656279
+  type: 'test'
+  ...
+# Subtest: Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary
+ok 80 - Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary
+  ---
+  duration_ms: 2.959744
+  type: 'test'
+  ...
+# Subtest: historical source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits
+ok 81 - historical source guard permits exactly the single validation delta, never missing, duplicated or unrelated edits
+  ---
+  duration_ms: 3.240187
+  type: 'test'
+  ...
+# Subtest: frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota
+ok 82 - frozen reproducer accepted array-wrapped entity keys and bypassed the mine quota
+  ---
+  duration_ms: 29.183029
+  type: 'test'
+  ...
+# Subtest: original backup import accepted and wrote malformed entities; the patch rejects before any destination access
+ok 83 - original backup import accepted and wrote malformed entities; the patch rejects before any destination access
+  ---
+  duration_ms: 17.92417
+  type: 'test'
+  ...
+# Subtest: every building and unit identifier rejects all coercible and wrong-type JSON values on every map
+ok 84 - every building and unit identifier rejects all coercible and wrong-type JSON values on every map
+  ---
+  duration_ms: 2017.428127
+  type: 'test'
+  ...
+# Subtest: in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access
+ok 85 - in-process boxed, prototype, custom-coercion and null-prototype values fail before enum coercion or storage access
+  ---
+  duration_ms: 10.165025
+  type: 'test'
+  ...
+# Subtest: map, base, difficulty, effect and projectile enums use primitive strict comparisons
+ok 86 - map, base, difficulty, effect and projectile enums use primitive strict comparisons
+  ---
+  duration_ms: 335.949539
+  type: 'test'
+  ...
+# Subtest: version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped
+ok 87 - version, revision, entity levels/sides/lanes and statistics remain strictly numeric and correctly shaped
+  ---
+  duration_ms: 203.851619
+  type: 'test'
+  ...
+# Subtest: backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing
+not ok 88 - backup/envelope formats, mode identities, history and preferences reject wrong enum types without writing
+  ---
+  duration_ms: 15.31382
+  type: 'test'
+  location: '/workspace/shared/ironroot-integration/tests/save-enum-validation.test.mjs:167:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    envelope format
+    + actual - expected
+    
+    + 'unsupported-version'
+    - 'invalid-backup'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'invalid-backup'
+  actual: 'unsupported-version'
+  operator: 'strictEqual'
+  stack: |-
+    rejectBackup (file:///workspace/shared/ironroot-integration/tests/save-enum-validation.test.mjs:46:49)
+    TestContext.<anonymous> (file:///workspace/shared/ironroot-integration/tests/save-enum-validation.test.mjs:180:54)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged
+ok 89 - all maps, both sides, all roster types and levels, every effect/projectile and legacy flight flags round-trip unchanged
+  ---
+  duration_ms: 102.598865
+  type: 'test'
+  ...
+# Subtest: raw saves and both historical envelope versions retain the unchanged nullable identity migration
+ok 90 - raw saves and both historical envelope versions retain the unchanged nullable identity migration
+  ---
+  duration_ms: 16.563869
+  type: 'test'
+  ...
+# Subtest: invalid stored battles cannot be re-exported or erase existing domains
+ok 91 - invalid stored battles cannot be re-exported or erase existing domains
+  ---
+  duration_ms: 1.555478
+  type: 'test'
+  ...
+# Subtest: actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA)
+ok 92 - actual file-selection handler rejects malformed enums before preview, confirmation or profile access (Node VM, not browser QA)
+  ---
+  duration_ms: 6.372786
+  type: 'test'
+  ...
+# Subtest: actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA)
+ok 93 - actual resume handler leaves malformed saved bytes untouched and hides Resume (Node VM, not browser QA)
+  ---
+  duration_ms: 2.321375
+  type: 'test'
+  ...
+# Subtest: exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps
+ok 94 - exact frozen seeded simulations, paid actions, RNG, restores and outcomes stay unchanged on all maps
+  ---
+  duration_ms: 6088.214018
+  type: 'test'
+  ...
+# Subtest: offline navigation serves training only for its exact deployment-relative route
+ok 95 - offline navigation serves training only for its exact deployment-relative route
+  ---
+  duration_ms: 4.854472
+  type: 'test'
+  ...
+# Subtest: offline route selection retains network fallback, asset requests and cross-origin/method limits
+ok 96 - offline route selection retains network fallback, asset requests and cross-origin/method limits
+  ---
+  duration_ms: 7.978127
+  type: 'test'
+  ...
+# Subtest: practice entry is an explicit title link rather than an automatic forced redirect
+ok 97 - practice entry is an explicit title link rather than an automatic forced redirect
+  ---
+  duration_ms: 0.810212
+  type: 'test'
+  ...
+# Subtest: historical clarity sources retain frozen rule/report/profile/backup pins; current behavior uses executable compatibility tests
+ok 98 - historical clarity sources retain frozen rule/report/profile/backup pins; current behavior uses executable compatibility tests
+  ---
+  duration_ms: 8.164151
+  type: 'test'
+  ...
+1..98
+# tests 98
+# suites 0
+# pass 97
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9114.75806

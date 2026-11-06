@@ -1,0 +1,612 @@
+{
+  "baselineRef": "file:qa/fixtures/production-v012/dist/engine.js",
+  "baselineEngineSha256": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+  "workingEngineSha256": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+  "node": "v24.22.1",
+  "seeds": 1,
+  "firstSeed": 57,
+  "step": 0.05,
+  "maxSeconds": 600,
+  "rows": [
+    {
+      "version": "baseline",
+      "difficulty": "easy",
+      "policy": "rush",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "meanSeconds": 108.4,
+      "meanEndGold": 86,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "easy",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 134.9,
+      "meanEndGold": 32.88,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "easy",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 134.2,
+      "meanEndGold": 192,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "easy",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 148.25,
+      "meanEndGold": 136.75,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "easy",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "meanSeconds": 164.05,
+      "meanEndGold": 162.69,
+      "meanIncome120": 6.25,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "normal",
+      "policy": "rush",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 109,
+      "meanEndGold": 99,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 3
+    },
+    {
+      "version": "baseline",
+      "difficulty": "normal",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 94.8,
+      "meanEndGold": 160,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "normal",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 95.65,
+      "meanEndGold": 150.25,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "normal",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 97.57,
+      "meanEndGold": 179.88,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "normal",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "meanSeconds": 405,
+      "meanEndGold": 161.19,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 2,
+      "meanSpells": 8.5
+    },
+    {
+      "version": "baseline",
+      "difficulty": "hard",
+      "policy": "rush",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 108.15,
+      "meanEndGold": 119.25,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 2
+    },
+    {
+      "version": "baseline",
+      "difficulty": "hard",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 85.85,
+      "meanEndGold": 83.75,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "hard",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 91.47,
+      "meanEndGold": 130.38,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "hard",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 91.7,
+      "meanEndGold": 110,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "baseline",
+      "difficulty": "hard",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "meanSeconds": 160.35,
+      "meanEndGold": 90.13,
+      "meanIncome120": 7.5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1.5,
+      "meanSpells": 2.5
+    },
+    {
+      "version": "working",
+      "difficulty": "easy",
+      "policy": "rush",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        0,
+        0
+      ],
+      "meanSeconds": 108.4,
+      "meanEndGold": 86,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "easy",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 134.9,
+      "meanEndGold": 32.88,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "easy",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 134.2,
+      "meanEndGold": 192,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "easy",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 148.25,
+      "meanEndGold": 136.75,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "easy",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "meanSeconds": 164.05,
+      "meanEndGold": 162.69,
+      "meanIncome120": 6.25,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "normal",
+      "policy": "rush",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 109,
+      "meanEndGold": 99,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 3
+    },
+    {
+      "version": "working",
+      "difficulty": "normal",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 94.8,
+      "meanEndGold": 160,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "normal",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 95.65,
+      "meanEndGold": 150.25,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "normal",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 97.57,
+      "meanEndGold": 179.88,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "normal",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        0
+      ],
+      "meanSeconds": 405,
+      "meanEndGold": 161.19,
+      "meanIncome120": 5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 2,
+      "meanSpells": 8.5
+    },
+    {
+      "version": "working",
+      "difficulty": "hard",
+      "policy": "rush",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 108.15,
+      "meanEndGold": 119.25,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 2
+    },
+    {
+      "version": "working",
+      "difficulty": "hard",
+      "policy": "mixed",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 85.85,
+      "meanEndGold": 83.75,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "hard",
+      "policy": "economy",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 91.47,
+      "meanEndGold": 130.38,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "hard",
+      "policy": "air",
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        1,
+        1
+      ],
+      "meanSeconds": 91.7,
+      "meanEndGold": 110,
+      "meanIncome120": null,
+      "income120Samples": 0,
+      "meanMinesBuilt": 0,
+      "meanSpells": 0
+    },
+    {
+      "version": "working",
+      "difficulty": "hard",
+      "policy": "baseline",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0,
+      "timeouts": 0,
+      "winsBySide": [
+        0,
+        1
+      ],
+      "meanSeconds": 160.35,
+      "meanEndGold": 90.13,
+      "meanIncome120": 7.5,
+      "income120Samples": 2,
+      "meanMinesBuilt": 1.5,
+      "meanSpells": 2.5
+    }
+  ]
+}

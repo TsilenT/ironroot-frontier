@@ -1,0 +1,921 @@
+{
+  "scope": "Local integrated engine, 12 short scripted cases. Every successful command uses ordinary paid actions. Authored initial formations are not player-earned progress.",
+  "restore": "Game.restore every 10 simulated seconds; starting funds and all successful action costs recorded.",
+  "limits": "No human, browser, mobile, input, audio or subjective difficulty certification. Extra seed 999 is an explicit slow-start limitation case.",
+  "results": [
+    {
+      "id": "first-watch",
+      "route": "reference",
+      "seed": 1001,
+      "startDelay": 10,
+      "time": 58.1,
+      "completed": true,
+      "failed": false,
+      "stars": 3,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "first-barracks",
+          "label": "Finish with a barracks standing",
+          "earned": true
+        },
+        {
+          "id": "ranged-support",
+          "label": "Finish with an archery range standing",
+          "earned": true
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            450
+          ],
+          "time": 10,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            450
+          ],
+          "time": 15,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            1110,
+            450
+          ],
+          "time": 20,
+          "cost": 140
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            5
+          ],
+          "time": 30,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "first-watch",
+      "route": "late-start",
+      "seed": 1001,
+      "startDelay": 30,
+      "time": 78.5,
+      "completed": true,
+      "failed": false,
+      "stars": 3,
+      "citadelHP": 5937,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "first-barracks",
+          "label": "Finish with a barracks standing",
+          "earned": true
+        },
+        {
+          "id": "ranged-support",
+          "label": "Finish with an archery range standing",
+          "earned": true
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            450
+          ],
+          "time": 30,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            450
+          ],
+          "time": 35,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            1110,
+            450
+          ],
+          "time": 40,
+          "cost": 140
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            8
+          ],
+          "time": 45,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "first-watch",
+      "route": "warriors-only",
+      "seed": 1001,
+      "startDelay": 10,
+      "time": 57.35,
+      "completed": true,
+      "failed": false,
+      "stars": 2,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "first-barracks",
+          "label": "Finish with a barracks standing",
+          "earned": true
+        },
+        {
+          "id": "ranged-support",
+          "label": "Finish with an archery range standing",
+          "earned": false
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            450
+          ],
+          "time": 10,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            830,
+            450
+          ],
+          "time": 15,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            1110,
+            450
+          ],
+          "time": 20,
+          "cost": 140
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            5
+          ],
+          "time": 25,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "first-watch",
+      "route": "idle",
+      "seed": 1001,
+      "startDelay": 10,
+      "time": 180,
+      "completed": false,
+      "failed": true,
+      "stars": 0,
+      "citadelHP": 4950,
+      "label": "0/1 targets destroyed · Time expired.",
+      "medals": [
+        {
+          "id": "first-barracks",
+          "label": "Finish with a barracks standing",
+          "earned": false
+        },
+        {
+          "id": "ranged-support",
+          "label": "Finish with an archery range standing",
+          "earned": false
+        }
+      ],
+      "actions": []
+    },
+    {
+      "id": "first-watch",
+      "route": "mines-only",
+      "seed": 1001,
+      "startDelay": 10,
+      "time": 180,
+      "completed": false,
+      "failed": true,
+      "stars": 0,
+      "citadelHP": 2157,
+      "label": "0/1 targets destroyed · Time expired.",
+      "medals": [
+        {
+          "id": "first-barracks",
+          "label": "Finish with a barracks standing",
+          "earned": false
+        },
+        {
+          "id": "ranged-support",
+          "label": "Finish with an archery range standing",
+          "earned": false
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            450
+          ],
+          "time": 10,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            450
+          ],
+          "time": 15,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            550,
+            450
+          ],
+          "time": 25,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            550,
+            450
+          ],
+          "time": 45,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            450
+          ],
+          "time": 55,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            450
+          ],
+          "time": 80,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            450
+          ],
+          "time": 115,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            450
+          ],
+          "time": 145,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            450
+          ],
+          "time": 175,
+          "cost": 190
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "reference",
+      "seed": 1003,
+      "startDelay": 10,
+      "time": 97.9,
+      "completed": true,
+      "failed": false,
+      "stars": 3,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": true
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": true
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            340
+          ],
+          "time": 10,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            560
+          ],
+          "time": 15,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 20,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            340
+          ],
+          "time": 25,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            560
+          ],
+          "time": 35,
+          "cost": 175
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            7
+          ],
+          "time": 50,
+          "cost": 98
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            11
+          ],
+          "time": 60,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "late-start",
+      "seed": 1003,
+      "startDelay": 30,
+      "time": 112.4,
+      "completed": true,
+      "failed": false,
+      "stars": 3,
+      "citadelHP": 5622,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": true
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": true
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            340
+          ],
+          "time": 30,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            560
+          ],
+          "time": 35,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 40,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            340
+          ],
+          "time": 45,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            560
+          ],
+          "time": 50,
+          "cost": 175
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            13
+          ],
+          "time": 55,
+          "cost": 98
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            15
+          ],
+          "time": 65,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "tower-alternative",
+      "seed": 1003,
+      "startDelay": 10,
+      "time": 132.6,
+      "completed": true,
+      "failed": false,
+      "stars": 3,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": true
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": true
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            340
+          ],
+          "time": 10,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            560
+          ],
+          "time": 15,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 20,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            340
+          ],
+          "time": 25,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "watchtower",
+            1110,
+            560
+          ],
+          "time": 40,
+          "cost": 220
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            7
+          ],
+          "time": 55,
+          "cost": 98
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            11
+          ],
+          "time": 65,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "no-mine",
+      "seed": 1003,
+      "startDelay": 10,
+      "time": 87.8,
+      "completed": true,
+      "failed": false,
+      "stars": 2,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": true
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": false
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            340
+          ],
+          "time": 10,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            560
+          ],
+          "time": 15,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            340
+          ],
+          "time": 20,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            560
+          ],
+          "time": 25,
+          "cost": 175
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            7
+          ],
+          "time": 30,
+          "cost": 98
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            11
+          ],
+          "time": 45,
+          "cost": 98
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "idle",
+      "seed": 1003,
+      "startDelay": 10,
+      "time": 108.3,
+      "completed": false,
+      "failed": true,
+      "stars": 0,
+      "citadelHP": 0,
+      "label": "Your citadel fell.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": false
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": false
+        }
+      ],
+      "actions": []
+    },
+    {
+      "id": "forked-road",
+      "route": "mines-only",
+      "seed": 1003,
+      "startDelay": 10,
+      "time": 120,
+      "completed": false,
+      "failed": true,
+      "stars": 0,
+      "citadelHP": 0,
+      "label": "Your citadel fell.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": false
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": false
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            340
+          ],
+          "time": 10,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 15,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            550,
+            340
+          ],
+          "time": 20,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            550,
+            340
+          ],
+          "time": 45,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 55,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            550,
+            340
+          ],
+          "time": 60,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 70,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            270,
+            340
+          ],
+          "time": 105,
+          "cost": 190
+        }
+      ]
+    },
+    {
+      "id": "forked-road",
+      "route": "late-off-seed-recovery",
+      "seed": 999,
+      "startDelay": 30,
+      "time": 165.45,
+      "completed": true,
+      "failed": false,
+      "stars": 1,
+      "citadelHP": 2073,
+      "label": "Enemy citadel destroyed.",
+      "medals": [
+        {
+          "id": "both-roads",
+          "label": "Finish with a troop-producing building on each road",
+          "earned": false
+        },
+        {
+          "id": "working-mine",
+          "label": "Finish with at least 7.5 gold/sec",
+          "earned": false
+        }
+      ],
+      "actions": [
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            340
+          ],
+          "time": 30,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "barracks",
+            970,
+            560
+          ],
+          "time": 35,
+          "cost": 140
+        },
+        {
+          "action": "build",
+          "args": [
+            "mint",
+            410,
+            340
+          ],
+          "time": 40,
+          "cost": 190
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            340
+          ],
+          "time": 45,
+          "cost": 175
+        },
+        {
+          "action": "build",
+          "args": [
+            "archery",
+            830,
+            560
+          ],
+          "time": 50,
+          "cost": 175
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            13
+          ],
+          "time": 55,
+          "cost": 98
+        },
+        {
+          "action": "upgrade",
+          "args": [
+            15
+          ],
+          "time": 70,
+          "cost": 98
+        }
+      ]
+    }
+  ]
+}

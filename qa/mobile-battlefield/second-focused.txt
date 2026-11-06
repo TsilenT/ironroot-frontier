@@ -1,0 +1,694 @@
+TAP version 13
+# Subtest: history absence, backend failure and malformed existing bytes have distinct states
+ok 1 - history absence, backend failure and malformed existing bytes have distinct states
+  ---
+  duration_ms: 5.600986
+  type: 'test'
+  ...
+# Subtest: transient history read failure never overwrites existing history, and later retry merges both
+ok 2 - transient history read failure never overwrites existing history, and later retry merges both
+  ---
+  duration_ms: 1.587574
+  type: 'test'
+  ...
+# Subtest: unavailable initial history is not an empty cache and recovery reads the real current history
+ok 3 - unavailable initial history is not an empty cache and recovery reads the real current history
+  ---
+  duration_ms: 0.522248
+  type: 'test'
+  ...
+# Subtest: failed history write retains an immutable result and repeated retries never append duplicates
+ok 4 - failed history write retains an immutable result and repeated retries never append duplicates
+  ---
+  duration_ms: 0.776021
+  type: 'test'
+  ...
+# Subtest: throw-after-write and unreadable readback remain recoverable without writing a second copy
+ok 5 - throw-after-write and unreadable readback remain recoverable without writing a second copy
+  ---
+  duration_ms: 0.833886
+  type: 'test'
+  ...
+# Subtest: newer history between snapshot and write aborts without damage, then merges a fresh retry
+ok 6 - newer history between snapshot and write aborts without damage, then merges a fresh retry
+  ---
+  duration_ms: 0.752346
+  type: 'test'
+  ...
+# Subtest: a racing history write after set is detected and is never rolled back over the winner
+ok 7 - a racing history write after set is detected and is never rolled back over the winner
+  ---
+  duration_ms: 1.406198
+  type: 'test'
+  ...
+# Subtest: history dedupe survives backup field ordering and existing optional defaults
+ok 8 - history dedupe survives backup field ordering and existing optional defaults
+  ---
+  duration_ms: 1.810171
+  type: 'test'
+  ...
+# Subtest: pending history honors the existing latest-30 limit and exports in the existing schema
+ok 9 - pending history honors the existing latest-30 limit and exports in the existing schema
+  ---
+  duration_ms: 10.082805
+  type: 'test'
+  ...
+# Subtest: retained results and preferences never commit to a replaced, restoring or failed profile
+ok 10 - retained results and preferences never commit to a replaced, restoring or failed profile
+  ---
+  duration_ms: 2.728332
+  type: 'test'
+  ...
+# Subtest: profile changes during the last history read prevent write even without a storage event
+ok 11 - profile changes during the last history read prevent write even without a storage event
+  ---
+  duration_ms: 0.309235
+  type: 'test'
+  ...
+# Subtest: failed preferences are retained, replaced by the newest local choice, and verified on retry
+ok 12 - failed preferences are retained, replaced by the newest local choice, and verified on retry
+  ---
+  duration_ms: 0.288465
+  type: 'test'
+  ...
+# Subtest: preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+ok 13 - preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+  ---
+  duration_ms: 0.282184
+  type: 'test'
+  ...
+# Subtest: preferences throw-after-write and transient readback denial verify without rewriting
+ok 14 - preferences throw-after-write and transient readback denial verify without rewriting
+  ---
+  duration_ms: 0.193675
+  type: 'test'
+  ...
+# Subtest: actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+ok 15 - actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+  ---
+  duration_ms: 5.484605
+  type: 'test'
+  ...
+# Subtest: actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+ok 16 - actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+  ---
+  duration_ms: 12.816926
+  type: 'test'
+  ...
+# Subtest: actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+ok 17 - actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+  ---
+  duration_ms: 1.764815
+  type: 'test'
+  ...
+# Subtest: actual retries stay blocked after profile change and still expose retained result for export
+ok 18 - actual retries stay blocked after profile change and still expose retained result for export
+  ---
+  duration_ms: 4.247074
+  type: 'test'
+  ...
+# Subtest: captured completion remains eligible after a new same-profile battle without deleting its save
+ok 19 - captured completion remains eligible after a new same-profile battle without deleting its save
+  ---
+  duration_ms: 0.987732
+  type: 'test'
+  ...
+# Subtest: stale completion never acquires a newer battle or blocks a later valid result from saving
+ok 20 - stale completion never acquires a newer battle or blocks a later valid result from saving
+  ---
+  duration_ms: 0.310056
+  type: 'test'
+  ...
+# Subtest: completion with unavailable ownership only recovers if its original battle can still be verified
+ok 21 - completion with unavailable ownership only recovers if its original battle can still be verified
+  ---
+  duration_ms: 7.353893
+  type: 'test'
+  ...
+# Subtest: actual finish captures stale battle ownership and keeps the result unsaved/exportable
+ok 22 - actual finish captures stale battle ownership and keeps the result unsaved/exportable
+  ---
+  duration_ms: 1.511763
+  type: 'test'
+  ...
+# Subtest: a captured valid completion still cannot cross a later imported profile boundary
+ok 23 - a captured valid completion still cannot cross a later imported profile boundary
+  ---
+  duration_ms: 0.281965
+  type: 'test'
+  ...
+# Subtest: profile recovery views never replace retained old-profile history with imported records
+ok 24 - profile recovery views never replace retained old-profile history with imported records
+  ---
+  duration_ms: 0.241465
+  type: 'test'
+  ...
+# Subtest: absent marker is a legacy-ready profile; guarded storage works without writing a marker
+ok 25 - absent marker is a legacy-ready profile; guarded storage works without writing a marker
+  ---
+  duration_ms: 2.502449
+  type: 'test'
+  ...
+# Subtest: begin publishes a verified restoring marker before permitting import reads or writes
+ok 26 - begin publishes a verified restoring marker before permitting import reads or writes
+  ---
+  duration_ms: 1.294314
+  type: 'test'
+  ...
+# Subtest: all ordinary save writes and removes are blocked in stale tabs throughout restoration
+ok 27 - all ordinary save writes and removes are blocked in stale tabs throughout restoration
+  ---
+  duration_ms: 0.539714
+  type: 'test'
+  ...
+# Subtest: restored marker makes every old tab read-only and requires reload, including its owner
+ok 28 - restored marker makes every old tab read-only and requires reload, including its owner
+  ---
+  duration_ms: 3.498123
+  type: 'test'
+  ...
+# Subtest: verified rollback to an originally ready profile rebinds only its owning tab
+ok 29 - verified rollback to an originally ready profile rebinds only its owning tab
+  ---
+  duration_ms: 0.432907
+  type: 'test'
+  ...
+# Subtest: incomplete rollback publishes failed barrier and requires explicit recovery
+ok 30 - incomplete rollback publishes failed barrier and requires explicit recovery
+  ---
+  duration_ms: 0.988794
+  type: 'test'
+  ...
+# Subtest: rollback during recovery of a partial or abandoned profile never publishes ready
+ok 31 - rollback during recovery of a partial or abandoned profile never publishes ready
+  ---
+  duration_ms: 0.376974
+  type: 'test'
+  ...
+# Subtest: invalid or incompatible markers block play writes and can be replaced only by explicit recovery
+ok 32 - invalid or incompatible markers block play writes and can be replaced only by explicit recovery
+  ---
+  duration_ms: 1.146636
+  type: 'test'
+  ...
+# Subtest: initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+ok 33 - initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+  ---
+  duration_ms: 0.393458
+  type: 'test'
+  ...
+# Subtest: read failures and invalid raw read return values cannot be interpreted as an absent marker
+ok 34 - read failures and invalid raw read return values cannot be interpreted as an absent marker
+  ---
+  duration_ms: 1.075381
+  type: 'test'
+  ...
+# Subtest: marker begin quota failure leaves original game bytes intact and denies the import adapter
+ok 35 - marker begin quota failure leaves original game bytes intact and denies the import adapter
+  ---
+  duration_ms: 0.333891
+  type: 'test'
+  ...
+# Subtest: marker writes that throw after taking effect are accepted only after exact readback
+ok 36 - marker writes that throw after taking effect are accepted only after exact readback
+  ---
+  duration_ms: 0.274304
+  type: 'test'
+  ...
+# Subtest: an unverified begin can be resumed only after the same owned restoring marker becomes readable
+ok 37 - an unverified begin can be resumed only after the same owned restoring marker becomes readable
+  ---
+  duration_ms: 0.36035
+  type: 'test'
+  ...
+# Subtest: failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+ok 38 - failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+  ---
+  duration_ms: 0.542117
+  type: 'test'
+  ...
+# Subtest: ready marker written before a failed read can be verified by idempotent finalization retry
+ok 39 - ready marker written before a failed read can be verified by idempotent finalization retry
+  ---
+  duration_ms: 0.246473
+  type: 'test'
+  ...
+# Subtest: failure marker publication can be retried without falsely opening partial data
+ok 40 - failure marker publication can be retried without falsely opening partial data
+  ---
+  duration_ms: 0.261384
+  type: 'test'
+  ...
+# Subtest: unexpected marker corruption after a write never grants import ownership
+ok 41 - unexpected marker corruption after a write never grants import ownership
+  ---
+  duration_ms: 0.234064
+  type: 'test'
+  ...
+# Subtest: a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+ok 42 - a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+  ---
+  duration_ms: 0.425966
+  type: 'test'
+  ...
+# Subtest: import ownership loss mid-restore prevents rollback from undoing a newer completed import
+ok 43 - import ownership loss mid-restore prevents rollback from undoing a newer completed import
+  ---
+  duration_ms: 2.497031
+  type: 'test'
+  ...
+# Subtest: stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+ok 44 - stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+  ---
+  duration_ms: 0.833496
+  type: 'test'
+  ...
+# Subtest: beforeunload-style stale history, settings and battle writes are also blocked after replacement
+ok 45 - beforeunload-style stale history, settings and battle writes are also blocked after replacement
+  ---
+  duration_ms: 0.617388
+  type: 'test'
+  ...
+# Subtest: ordinary facades reserve the marker; import facade is limited to the five game domains
+ok 46 - ordinary facades reserve the marker; import facade is limited to the five game domains
+  ---
+  duration_ms: 0.426478
+  type: 'test'
+  ...
+# Subtest: session checks marker before every operation, not merely before the first of five writes
+ok 47 - session checks marker before every operation, not merely before the first of five writes
+  ---
+  duration_ms: 0.241275
+  type: 'test'
+  ...
+# Subtest: marker factory failures, invalid options and invalid outcomes cannot mutate game state
+ok 48 - marker factory failures, invalid options and invalid outcomes cannot mutate game state
+  ---
+  duration_ms: 0.381391
+  type: 'test'
+  ...
+# Subtest: a denied marker read after initially ready play blocks saving without deleting any bytes
+ok 49 - a denied marker read after initially ready play blocks saving without deleting any bytes
+  ---
+  duration_ms: 0.217981
+  type: 'test'
+  ...
+# Subtest: fresh page opened during restoring or failed phase cannot read partial profile domains
+ok 50 - fresh page opened during restoring or failed phase cannot read partial profile domains
+  ---
+  duration_ms: 0.398686
+  type: 'test'
+  ...
+# Subtest: UI: late older successful file read cannot replace the newer confirmed import
+ok 51 - UI: late older successful file read cannot replace the newer confirmed import
+  ---
+  duration_ms: 5.707402
+  type: 'test'
+  ...
+# Subtest: UI: late older file failure cannot invalidate a newer parsed backup
+ok 52 - UI: late older file failure cannot invalidate a newer parsed backup
+  ---
+  duration_ms: 2.294694
+  type: 'test'
+  ...
+# Subtest: UI: dismissing Settings invalidates an outstanding file read across reopen
+ok 53 - UI: dismissing Settings invalidates an outstanding file read across reopen
+  ---
+  duration_ms: 2.65256
+  type: 'test'
+  ...
+# Subtest: UI: incomplete rollback preserves the paused session and warning after cancellation
+ok 54 - UI: incomplete rollback preserves the paused session and warning after cancellation
+  ---
+  duration_ms: 3.379369
+  type: 'test'
+  ...
+# Subtest: UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+ok 55 - UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+  ---
+  duration_ms: 5.260846
+  type: 'test'
+  ...
+# Subtest: UI: normal export is blocked during recovery while retained-game export remains available
+ok 56 - UI: normal export is blocked during recovery while retained-game export remains available
+  ---
+  duration_ms: 4.807198
+  type: 'test'
+  ...
+# Subtest: UI: blocked result persistence marks newly earned progress dirty
+ok 57 - UI: blocked result persistence marks newly earned progress dirty
+  ---
+  duration_ms: 1.426848
+  type: 'test'
+  ...
+# Subtest: UI: storage-unavailable autosave warns once without discarding the active game
+ok 58 - UI: storage-unavailable autosave warns once without discarding the active game
+  ---
+  duration_ms: 1.347551
+  type: 'test'
+  ...
+# Subtest: UI: beforeunload during recovery warns without saving old in-memory data
+ok 59 - UI: beforeunload during recovery warns without saving old in-memory data
+  ---
+  duration_ms: 1.196289
+  type: 'test'
+  ...
+# Subtest: UI: actual application startup protects expanded progress before constructing ordinary storage
+ok 60 - UI: actual application startup protects expanded progress before constructing ordinary storage
+  ---
+  duration_ms: 0.757234
+  type: 'test'
+  ...
+# Subtest: UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+ok 61 - UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+  ---
+  duration_ms: 1.302796
+  type: 'test'
+  ...
+# Subtest: UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+ok 62 - UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+  ---
+  duration_ms: 1.26531
+  type: 'test'
+  ...
+# Subtest: UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+ok 63 - UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+  ---
+  duration_ms: 3.086528
+  type: 'test'
+  ...
+# Subtest: UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+ok 64 - UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+  ---
+  duration_ms: 2.324377
+  type: 'test'
+  ...
+# Subtest: the measured old 568x320 field reproduces clipped originals and Front/Pause overlap
+ok 65 - the measured old 568x320 field reproduces clipped originals and Front/Pause overlap
+  ---
+  duration_ms: 22.260424
+  type: 'test'
+  ...
+# Subtest: CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas
+ok 66 - CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas
+  ---
+  duration_ms: 116.519198
+  type: 'test'
+  ...
+# Subtest: all six rail buttons retain 44px hit targets, remain separate and never cover the canvas
+ok 67 - all six rail buttons retain 44px hit targets, remain separate and never cover the canvas
+  ---
+  duration_ms: 0.705557
+  type: 'test'
+  ...
+# Subtest: native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail
+ok 68 - native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail
+  ---
+  duration_ms: 5.869401
+  type: 'test'
+  ...
+# Subtest: build overlay is anchored to the whole grid rather than the 60px objective row
+ok 69 - build overlay is anchored to the whole grid rather than the 60px objective row
+  ---
+  duration_ms: 0.261284
+  type: 'test'
+  ...
+# Subtest: actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels
+ok 70 - actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels
+  ---
+  duration_ms: 80.488395
+  type: 'test'
+  ...
+# Subtest: removing the pointer override reproduces the native failure despite a visible enabled button
+ok 71 - removing the pointer override reproduces the native failure despite a visible enabled button
+  ---
+  duration_ms: 6.876832
+  type: 'test'
+  ...
+# Subtest: Build remains outside hit testing in ordinary desktop layouts
+ok 72 - Build remains outside hit testing in ordinary desktop layouts
+  ---
+  duration_ms: 5.080089
+  type: 'test'
+  ...
+# Subtest: real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start
+ok 73 - real app mounts stable focus controls, preserves HARD/PROTECT and moves the HUD only at battle start
+  ---
+  duration_ms: 6.901117
+  type: 'test'
+  ...
+# Subtest: fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus
+ok 74 - fresh pointer press focuses the exact original target and cancels all spending gestures without stealing focus
+  ---
+  duration_ms: 2.363224
+  type: 'test'
+  ...
+# Subtest: a held battlefield touch or different pointer cannot activate a target appearing under its release
+ok 75 - a held battlefield touch or different pointer cannot activate a target appearing under its release
+  ---
+  duration_ms: 1.68664
+  type: 'test'
+  ...
+# Subtest: native keyboard/assistive clicks work and remain subject to existing held-key scope guards
+ok 76 - native keyboard/assistive clicks work and remain subject to existing held-key scope guards
+  ---
+  duration_ms: 2.118905
+  type: 'test'
+  ...
+# Subtest: pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up
+ok 77 - pause/end/profile guards and visible dialogs reject target focus even before disabled state catches up
+  ---
+  duration_ms: 9.003218
+  type: 'test'
+  ...
+# Subtest: original loss cannot focus a replacement and result clarity names both lost originals
+ok 78 - original loss cannot focus a replacement and result clarity names both lost originals
+  ---
+  duration_ms: 1.843361
+  type: 'test'
+  ...
+# Subtest: changing to a mission without protect targets removes the dock and stale loss text
+ok 79 - changing to a mission without protect targets removes the dock and stale loss text
+  ---
+  duration_ms: 1.59852
+  type: 'test'
+  ...
+# Subtest: semantic HTML and responsive CSS reserve a real dock without reducing build-button targets
+ok 80 - semantic HTML and responsive CSS reserve a real dock without reducing build-button targets
+  ---
+  duration_ms: 0.883058
+  type: 'test'
+  ...
+# Subtest: already-missing app state names the original and explicitly marks historical loss time unknown
+ok 81 - already-missing app state names the original and explicitly marks historical loss time unknown
+  ---
+  duration_ms: 1.928135
+  type: 'test'
+  ...
+# Subtest: portrait protected battles declare a two-row 44px toolbelt without shrinking controls
+ok 82 - portrait protected battles declare a two-row 44px toolbelt without shrinking controls
+  ---
+  duration_ms: 0.338137
+  type: 'test'
+  ...
+# Subtest: retry creates fresh controls and clears prior loss, critical alerts and armed presses
+ok 83 - retry creates fresh controls and clears prior loss, critical alerts and armed presses
+  ---
+  duration_ms: 8.129113
+  type: 'test'
+  ...
+# Subtest: switching from protected campaign to skirmish removes every stale target and identity
+ok 84 - switching from protected campaign to skirmish removes every stale target and identity
+  ---
+  duration_ms: 1.958519
+  type: 'test'
+  ...
+# Subtest: real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press
+ok 85 - real scope guard blocks a protected press spanning pause, modal or result and permits the next fresh press
+  ---
+  duration_ms: 4.152776
+  type: 'test'
+  ...
+# Subtest: real held Space guard preserves native activation only for a fresh press in the current scope
+ok 86 - real held Space guard preserves native activation only for a fresh press in the current scope
+  ---
+  duration_ms: 2.122901
+  type: 'test'
+  ...
+# Subtest: short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls
+ok 87 - short landscape moves the existing citadel HUD into the header without cloning HP or rebuilding focus controls
+  ---
+  duration_ms: 1.466887
+  type: 'test'
+  ...
+# Subtest: leaving a protected battle restores the ordinary header and battlefield layout
+ok 88 - leaving a protected battle restores the ordinary header and battlefield layout
+  ---
+  duration_ms: 1.274964
+  type: 'test'
+  ...
+# Subtest: shared mobile grid reserves world, navigation and dock with no renderer scaling
+ok 89 - shared mobile grid reserves world, navigation and dock with no renderer scaling
+  ---
+  duration_ms: 0.289776
+  type: 'test'
+  ...
+# Subtest: focus direction mark is CSS-drawn even when critical portrait hides the word Focus
+ok 90 - focus direction mark is CSS-drawn even when critical portrait hides the word Focus
+  ---
+  duration_ms: 1.236959
+  type: 'test'
+  ...
+# Subtest: very short landscape exposes explicit build controls and closes them when focusing an original
+ok 91 - very short landscape exposes explicit build controls and closes them when focusing an original
+  ---
+  duration_ms: 1.253833
+  type: 'test'
+  ...
+# Subtest: drawer closure returns keyboard focus only when it would otherwise hide the active build control
+ok 92 - drawer closure returns keyboard focus only when it would otherwise hide the active build control
+  ---
+  duration_ms: 1.516049
+  type: 'test'
+  ...
+# Subtest: rotation to portrait closes the shared drawer without rebuilding protected controls
+ok 93 - rotation to portrait closes the shared drawer without rebuilding protected controls
+  ---
+  duration_ms: 1.23087
+  type: 'test'
+  ...
+# Subtest: drawer transitions use a distinct held-input scope and reject battlefield spending until closed
+ok 94 - drawer transitions use a distinct held-input scope and reject battlefield spending until closed
+  ---
+  duration_ms: 0.360049
+  type: 'test'
+  ...
+# Subtest: actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control
+ok 95 - actual build/rally selection closes the drawer without spending and Cancel restores the battle-first control
+  ---
+  duration_ms: 2.542829
+  type: 'test'
+  ...
+# Subtest: actual storage-conflict auto-pause closes the drawer before showing the pause veil
+ok 96 - actual storage-conflict auto-pause closes the drawer before showing the pause veil
+  ---
+  duration_ms: 1.547695
+  type: 'test'
+  ...
+# Subtest: actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay
+ok 97 - actual controller focus-toggle closes the drawer and returns from HUD to battlefield gameplay
+  ---
+  duration_ms: 3.326246
+  type: 'test'
+  ...
+# Subtest: all authored protected structures have stable, unique names and immutable read-only health views
+ok 98 - all authored protected structures have stable, unique names and immutable read-only health views
+  ---
+  duration_ms: 9.598633
+  type: 'test'
+  ...
+# Subtest: Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+ok 99 - Twin Span labels the second road South; Classic has Middle; duplicate sites are distinct without invented lore
+  ---
+  duration_ms: 1.282385
+  type: 'test'
+  ...
+# Subtest: critical health uses actual ratio and never claims an attacker; upgrades display current max health
+ok 100 - critical health uses actual ratio and never claims an attacker; upgrades display current max health
+  ---
+  duration_ms: 0.706639
+  type: 'test'
+  ...
+# Subtest: first missing observation binds the original ID and current tick, never a later replacement
+ok 101 - first missing observation binds the original ID and current tick, never a later replacement
+  ---
+  duration_ms: 1.147277
+  type: 'test'
+  ...
+# Subtest: already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+ok 102 - already-invalid resumed states preserve unknown historical timing and never manufacture zero HP
+  ---
+  duration_ms: 2.371958
+  type: 'test'
+  ...
+# Subtest: new observations after a healthy resume record a transition without inventing pre-resume history
+ok 103 - new observations after a healthy resume record a transition without inventing pre-resume history
+  ---
+  duration_ms: 3.01997
+  type: 'test'
+  ...
+# Subtest: simultaneous protected losses both appear, with no inference about the cause
+ok 104 - simultaneous protected losses both appear, with no inference about the cause
+  ---
+  duration_ms: 0.485984
+  type: 'test'
+  ...
+# Subtest: observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+ok 105 - observations do not change the engine, RNG or campaign outcome at 1x/2x subdivisions
+  ---
+  duration_ms: 389.874425
+  type: 'test'
+  ...
+# Subtest: fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+ok 106 - fixed-step observation timestamps match the current failed tick, not the frame start or batch end
+  ---
+  duration_ms: 0.893964
+  type: 'test'
+  ...
+# Subtest: observed time formatting handles tick rounding and explicitly unknown data
+ok 107 - observed time formatting handles tick rounding and explicitly unknown data
+  ---
+  duration_ms: 0.350194
+  type: 'test'
+  ...
+# Subtest: campaign/combat/objective/save modules retain frozen rules with only the audited save-type guard
+ok 108 - campaign/combat/objective/save modules retain frozen rules with only the audited save-type guard
+  ---
+  duration_ms: 1.834207
+  type: 'test'
+  ...
+# Subtest: objective integration preserves corrected persistence and training modules byte-for-byte
+ok 109 - objective integration preserves corrected persistence and training modules byte-for-byte
+  ---
+  duration_ms: 0.639069
+  type: 'test'
+  ...
+# Subtest: confirmation toast sits below actual objective height on every tested layout
+ok 110 - confirmation toast sits below actual objective height on every tested layout
+  ---
+  duration_ms: 8.182241
+  type: 'test'
+  ...
+# Subtest: skirmish toast returns to responsive CSS placement when objective is absent
+ok 111 - skirmish toast returns to responsive CSS placement when objective is absent
+  ---
+  duration_ms: 3.000031
+  type: 'test'
+  ...
+# Subtest: docked protected objectives do not push a battlefield toast beyond the map
+ok 112 - docked protected objectives do not push a battlefield toast beyond the map
+  ---
+  duration_ms: 1.127628
+  type: 'test'
+  ...
+# Subtest: short protected-landscape toast is measured inside the field and above the minimap
+ok 113 - short protected-landscape toast is measured inside the field and above the minimap
+  ---
+  duration_ms: 7.281917
+  type: 'test'
+  ...
+# Subtest: battle-first toast uses canvas bounds rather than the side-rail minimap top
+ok 114 - battle-first toast uses canvas bounds rather than the side-rail minimap top
+  ---
+  duration_ms: 1.338678
+  type: 'test'
+  ...
+1..114
+# tests 114
+# suites 0
+# pass 114
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 582.530208

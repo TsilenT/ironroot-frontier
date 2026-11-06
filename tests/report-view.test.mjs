@@ -32,7 +32,7 @@ test('all battlefields render the correct name, both sides, four histories and f
     assert.ok(html.includes(MAPS[mapId].name));
     assert.equal(count(html, /<figure class="report-chart">/g), 4);
     assert.equal(count(html, /<svg\b/g), 4);
-    for (const label of ['Gold on hand', 'Income rate', 'Living army', 'Citadel health', 'You', 'Enemy', 'Objective outcomes', 'At the final bell']) assert.ok(html.includes(label), `${mapId}: ${label}`);
+    for (const label of ['Gold on hand', 'Income rate', 'Living army', 'Citadel health', 'You', 'Enemy', 'Objective outcomes', 'At battle’s end']) assert.ok(html.includes(label), `${mapId}: ${label}`);
     for (const unit of Object.values(UNITS)) assert.ok(html.includes(unit.name));
     assert.match(html, /Living unit roster at 0:12 · not total production/);
     assert.ok(!html.includes('undefined'));
@@ -194,11 +194,11 @@ test('long thinned timelines retain honest bounded plots and full retained table
   const report = journal.finish(game), html = renderBattleReport(report);
   assert.equal(report.sampling.thinned, true);
   assert.ok(report.timeline.length <= 256);
-  assert.match(html, /journal was thinned to/);
+  assert.match(html, /charts keep [\d,]+ of [\d,]+ recorded samples/);
   assert.match(html, /Short peaks and changes may not appear/);
   assert.match(html, /11:06:40/);
   assert.match(html, /h:mm:ss/);
-  assert.match(html, /retained-sample range/);
+  assert.match(html, /sampled range/);
   assert.match(html, /JSON keeps full precision/);
   assert.ok(html.length < 220000, `output length ${html.length}`);
   assert.equal(count(html, /<svg\b/g), 4);
@@ -207,12 +207,12 @@ test('long thinned timelines retain honest bounded plots and full retained table
 
 test('labels do not claim profit, lifetime recruits, losses, or territory causation', () => {
   const html = renderBattleReport(completed().report);
-  for (const phrase of ['not gold earned or net profit', 'not total income earned', 'does not measure units recruited or losses', 'Buildings placed includes buildings each side started with', 'Upgrades do not count as new placements', 'Health that citadels lose automatically during overtime is not counted for either side']) {
+  for (const phrase of ['does not show total earnings or profit', 'not total income earned', 'Total recruitment and losses are not shown', 'Buildings placed includes buildings each side started with', 'Upgrades do not count as new placements', 'Health that citadels lose automatically during overtime is not counted for either side']) {
     assert.ok(html.includes(phrase), phrase);
   }
   assert.ok(!/(Return on investment|Net profit:|Units recruited:|Units lost:|Territory gained:|You lost because)/.test(html));
   assert.match(html, /Available in this tab until a new battle or page reload/);
-  assert.match(html, /A local data record, not a playable replay/);
+  assert.match(html, /Contains report data. It cannot replay the battle/);
 });
 
 test('hostile names, objectives, target names, limitations and Unicode stay escaped text', () => {

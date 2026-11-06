@@ -39,8 +39,9 @@ test('offline shell is complete and deployment-relative', () => {
 });
 test('critical dialogs and battlefield expose accessible descriptions', () => {
   const html = read('index.html');
-  assert.equal([...html.matchAll(/role="dialog"/g)].length, 5);
-  assert.equal([...html.matchAll(/aria-modal="true"/g)].length, 5);
+  assert.equal([...html.matchAll(/role="dialog"/g)].length, 6);
+  assert.equal([...html.matchAll(/aria-modal="true"/g)].length, 6);
+  assert.match(html, /aria-labelledby="viewportTitle" aria-describedby="viewportReason"/);
   assert.match(html, /<canvas\s+id="battle"[^>]+aria-label=/);
   assert.match(html, /id="toast"[^>]+role="status"/);
   assert.match(read('app.js'), /document\.querySelector\('\.app'\)\.inert/);
@@ -99,7 +100,7 @@ test('field reference uses original portraits, engine-derived data and cached as
   ])
     assert.match(html, new RegExp(`id="${id}"`));
   assert.match(app, /UNIT_CODEX,?\s*STRUCTURE_CODEX/);
-  assert.match(app, /drawUnitPortrait\(canvas, canvas.dataset.portrait\)/);
+  assert.match(app, /drawUnitPortrait\(canvas, canvas.dataset.portrait, 0, context\)/);
   assert.match(app, /data-codex-unit/);
   assert.ok(sw.includes("'./codex.js'"));
 });

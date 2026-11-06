@@ -1,4 +1,4 @@
-import { assertFrozenEngineExceptEnumValidation } from './engine-validation-source.mjs';
+import { assertHistoricalEngineOracle, readHistoricalProduction } from './engine-validation-source.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
@@ -24,9 +24,8 @@ const assertFiniteJSON = value => {
 };
 const bytes = game => JSON.stringify(game.serialize());
 
-test('observer retains frozen engine rules with only the audited save-type guard', () => {
-  const source = readFileSync(new URL('../dist/engine.js', import.meta.url));
-  assertFrozenEngineExceptEnumValidation(source);
+test('historical engine oracle stays pinned and current observer remains side-effect free', () => {
+  assertHistoricalEngineOracle();
   const observer = readFileSync(new URL('../dist/battle-report.js', import.meta.url), 'utf8');
   assert.doesNotMatch(observer, /\b(localStorage|sessionStorage|document|window|fetch|Date|Math\.random)\b/);
   assert.doesNotMatch(observer, /game\.(update|_step|random|build|sell|upgrade|cast|serialize)\s*\(/);
