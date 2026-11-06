@@ -18,15 +18,15 @@ The sixteen original missions, forty-eight stars, old map identities, legacy bat
 
 ## Validation
 
-- Final dependency-free suite: **818 passed, zero failed, one existing optional desktop-dependency skip**.
+- Final dependency-free suite: **825 passed, zero failed, one existing optional desktop-dependency skip**.
 - Syntax and public-runtime preflight pass: **41 files, 788,320 bytes**.
 - Independent legacy comparison covers 27 complete paid skirmishes, restore checkpoints, timed boundaries, all sixteen old missions and progress, and genuine historical backups/profile code.
 - An additional integration check matches twelve timed Rootwarden scenarios and 336 state/RNG checkpoints to the frozen playtest implementation. This is equivalence evidence, not new balance statistics.
 - Bounded native review found no blocker. It completed both intros with honest two-star wins, activated Replay and Continue, exercised paid mobile building/inspection, protected targets, undersize pause, trial failure/Retry, and a Rootwarden skirmish whose timed identity survived menu changes and reload. Original local storage was restored byte-for-byte.
 - The native review used the final gameplay bytes before the version-only bump. Only the footer/cache identity and package metadata changed afterward; hashes are recorded in `integration-inputs/version-bump.json`.
-- Browser harness/fixtures and strict real-v0.12-to-v0.13 upgrade preflight pass. The first exact private commit `0823cb6776df37e2aa309e20fa329c565ca0a356` completed **844 entries: 715 passed, 126 failed, 3 intentional skips**. Its full failure mapping and narrow harness repair are recorded in `GATE_REPAIR_0_13.md`. The repaired exact candidate requires a new full cloud gate; it is not a pass yet.
+- Browser harness/fixtures and strict real-v0.12-to-v0.13 upgrade preflight pass. The first exact private commit `0823cb6776df37e2aa309e20fa329c565ca0a356` completed **844 entries: 715 passed, 126 failed, 3 intentional skips**. Its full failure mapping and narrow harness repair are recorded in `GATE_REPAIR_0_13.md`. The second candidate `cfc7c87242473aad0c4b9ac0515c1aabf1b27eb2` then completed **829 passed, 12 failed, 3 intentional skips**. Its twelve remaining failures share one toast-ordering assertion; measured geometry and the strict repair are recorded in `TOAST_GATE_0_13.md`. The current exact candidate requires affected-case and full cloud reruns; it is not a browser pass yet.
 
-The test-only repair adds twelve actual-handler regressions and eight separate browser-harness contract checks. All eight harness checks pass. The forty-one playable runtime files remain byte-identical to the first v0.13 candidate. This does not substitute for the repaired full browser rerun.
+The test-only repair adds twelve actual-handler regressions and eight separate browser-harness contract checks. All eight harness checks pass. Seven additional toast-geometry checks cover active visibility, finite bounds, clipping and objective clearance. The forty-one playable runtime files remain byte-identical to the first v0.13 candidate. This does not substitute for the repaired full browser rerun.
 
 ## Known limits
 

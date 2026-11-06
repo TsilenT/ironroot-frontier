@@ -1,5 +1,6 @@
 // 0.12 integration gates. Run only in the separately authorized browser runner.
 import {expect} from '@playwright/test';
+import {measureToastGeometry,toastGeometryIsSafe} from './toast-geometry.mjs';
 import {Game,MAPS} from '../../dist/engine.js';
 import {CAMPAIGN_STORAGE_KEY,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,getCampaignTargets,recordCampaignResult} from '../../dist/campaign.js';
 import {getMissionScouting} from '../../dist/scouting.js';
@@ -209,11 +210,14 @@ for(const mission of FRONTIER_MISSIONS){
       await tapPoint(page,await buildingPoint(page,map,ordinary));await expectWholeSelectionHealth(page,ordinary);
       await expect(page.locator('#sell')).toBeEnabled();await press(page,'#sell');await expect(page.locator('#toast')).toContainText('Building salvaged');
       await expect(page.locator('#toast')).toHaveClass(/show/);
-      await expect.poll(()=>page.evaluate(()=>{
-        const objective=document.querySelector('#objectiveHUD').getBoundingClientRect();
-        const toast=document.querySelector('#toast').getBoundingClientRect();
-        return toast.top>=objective.bottom+7&&toast.bottom<=innerHeight;
-      }),{message:'Confirmation must settle below, not obscure, the live objective'}).toBe(true);
+      // Protected objectives live in a separate bottom dock. Preserve actual
+      // visibility, containment and clearance rather than assuming HUD ordering.
+      let toastGeometry;
+      await expect.poll(async()=>{
+        toastGeometry=await page.evaluate(measureToastGeometry);
+        return toastGeometryIsSafe(toastGeometry);
+      },{message:'Visible confirmation stays inside the field and viewport, clear of objective and navigation controls'}).toBe(true);
+      await test.info().attach('salvage-toast-geometry',{body:JSON.stringify(toastGeometry,null,2),contentType:'application/json'});
       const save=await pause(page);expect(save.game.state.buildings.some(b=>b.id===ordinary.id)).toBe(false);
       for(const id of protectedIds)expect(save.game.state.buildings.some(b=>b.id===id&&b.hp>0)).toBe(true);
       expect(await progress(page)).toEqual(fixture.progress);
