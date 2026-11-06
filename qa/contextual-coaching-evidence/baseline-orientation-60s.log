@@ -1,0 +1,50 @@
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:42] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:23295) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /styles.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /report-view.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /app.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /dm-sans-latin-400-700.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /barlow-condensed-latin-500.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /barlow-condensed-latin-600.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /mobile-battlefield.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /barlow-condensed-latin-700.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /profile-session.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /controller.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /render.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /engine.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /backup.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /report-view.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /input-scope.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /scouting.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /battle-report.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /codex.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /challenges.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /persistence.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /audio.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /battle-codec.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /objectives.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /campaign-flow.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /campaign.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /protected-objectives.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /objective-alerts.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /rootwarden-art.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /combat-feedback.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /vfx.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /history-codec.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /rulesets.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /training.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /intro-campaign.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 22:03:43] "GET /icon.svg HTTP/1.1" 200 -
+  ✓  1 regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (4.8s)
+
+  1 passed (5.8s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

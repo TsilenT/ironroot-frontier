@@ -1,0 +1,69 @@
+[WebServer] (node:26385) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 40 tests using 2 workers
+
+(node:26418) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26419) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [phone] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (10.4s)
+  ✓   1 [phone] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (15.6s)
+  ✓   3 [phone] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (12.6s)
+  ✓   4 [phone] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (14.4s)
+  ✓   5 [phone] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (8.2s)
+  -   7 [phone] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓   6 [phone] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (6.1s)
+  ✓   8 [phone] › contextual-coaching.spec.mjs:125:1 › teaching dialog, real controls and a suggestion are visible at the current viewport (6.5s)
+  ✓   9 [phone] › contextual-coaching.spec.mjs:136:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (5.4s)
+(node:27327) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [narrow-phone] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (14.7s)
+  ✓  12 [narrow-phone] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (8.6s)
+  ✓  10 [phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (29.1s)
+(node:27764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 [narrow-phone] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (9.2s)
+  ✓  14 [narrow-phone] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (9.1s)
+  ✓  15 [narrow-phone] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (4.8s)
+  -  17 [narrow-phone] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓  16 [narrow-phone] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (3.7s)
+  ✓  18 [narrow-phone] › contextual-coaching.spec.mjs:125:1 › teaching dialog, real controls and a suggestion are visible at the current viewport (2.3s)
+  ✓  19 [narrow-phone] › contextual-coaching.spec.mjs:136:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (3.3s)
+(node:28161) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 [narrow-phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (9.7s)
+(node:28306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  21 [landscape] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (9.4s)
+  ✓  22 [landscape] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (5.7s)
+  ✓  23 [landscape] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (8.6s)
+  ✓  24 [landscape] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (8.5s)
+  ✓  25 [landscape] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (5.1s)
+  -  27 [landscape] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓  26 [landscape] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (4.3s)
+  ✓  28 [landscape] › contextual-coaching.spec.mjs:125:1 › teaching dialog, real controls and a suggestion are visible at the current viewport (2.7s)
+  ✓  29 [landscape] › contextual-coaching.spec.mjs:136:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (3.5s)
+(node:28790) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 [desktop] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (8.2s)
+  ✓  30 [landscape] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (12.6s)
+(node:28974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  32 [desktop] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (4.5s)
+  ✓  33 [desktop] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (7.1s)
+  ✓  34 [desktop] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (7.7s)
+  ✓  35 [desktop] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (5.1s)
+  ✓  36 [desktop] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (4.0s)
+  ✓  38 [desktop] › contextual-coaching.spec.mjs:125:1 › teaching dialog, real controls and a suggestion are visible at the current viewport (2.5s)
+  ✓  39 [desktop] › contextual-coaching.spec.mjs:136:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (3.0s)
+  ✓  40 [desktop] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (8.1s)
+  ✓  37 [desktop] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission (35.7s)
+
+  3 skipped
+  37 passed (2.9m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
