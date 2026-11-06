@@ -1,0 +1,51 @@
+{
+  "scope": "Local validation and review evidence only. No merge, publication or deployment.",
+  "baseCommit": "b8b2e6d1b200b9550803f5cb16b8d96ccc28f222",
+  "node": {
+    "passed": 883,
+    "failed": 0,
+    "skipped": 1
+  },
+  "browser": {
+    "mainFlowsPassed": 128,
+    "compatibilityPassed": 52,
+    "projects": [
+      "phone",
+      "narrow-phone",
+      "landscape",
+      "desktop"
+    ],
+    "browser": "Chromium 155.0.8059.79",
+    "physicalDevices": false,
+    "nativeElectronLaunched": false
+  },
+  "preservedRuntimeSHA256": {
+    "dist/campaign.js": "855482bc51f64a30012d23758bfd9f66a5692e31f19b709c34770af36fc7fe5a",
+    "dist/intro-campaign.js": "62f2aab85ebd4683132621c504a825ede25cdc2767621f9f017b69a6424eddcd",
+    "dist/campaign-flow.js": "8cdd7e1215d15f8d47b2d9389cd4f19118f48b4befa166014df152303dbbd47e",
+    "dist/engine.js": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+    "dist/persistence.js": "5129eebcd651c1aab38a810148e6100851751e4901b9483fe23dad66ea8964af",
+    "dist/profile-session.js": "a74cc512340c902105e9026719e2d6a1e427443179a9e0d0a95c20737d708f89",
+    "dist/battle-codec.js": "c32c04cea84844b46ca6ffffd534fe89cb45a8b28308eae06ad3cc1fde35f522",
+    "dist/training.js": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79",
+    "dist/training-app.js": "37c745d3226651a85b3e634210e0c3a0c6485f73c47a44c4d3ef749f8ab2c775",
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda"
+  },
+  "evidenceSHA256": {
+    "README.md": "51e92eade6c488d1772925a3b09e70ccae3710fb967d891c644e86295a98a028",
+    "browser-compatibility.log": "19deda3c0e7d238c42c586f87f62dd4c3331adb6b5148c1243bbdbb2f9dd09bf",
+    "browser-flows.log": "d9546188ec565e7c50ee42d8bb264f129dc31fec474cdaa3554358819e4b4494",
+    "browser-harness.log": "6989c21bff9c0b17896256f35f83ff6a0bedc2cd3052619d493b0beb97f71200",
+    "desktop-checks.log": "e9b99966c06aa4d731106c2362d76bf24b603dc7bd06e88b1c3b315ebbb7b3e2",
+    "desktop-protected-briefing.png": "1ad0fd387b5231ee291aa3f787367e977a3476663c6c0fc5c16c942a631ad3eb",
+    "geometry.json": "45ed4e63d12f860b15fbce9b6250fae41f355e6e186986c5a24ba8e215433568",
+    "landscape-saved-briefing.png": "1873d06aa37003dc44d740a00310f8659d0f1dabd1bbb6e597f01c242000e5d6",
+    "node-tests.log": "252bbe2a1b96fdc8e667ac6e1d72341ff6d7705ae3c923c236bf609774ef2de0",
+    "phone-briefing.png": "ef440e3088ff33769ab4815005ee1fc65de7d2976a8ea5babd3f9360c7772123",
+    "phone-chapter.png": "5db2899077ae142827aca4d1ad9f63b5d5608d411e3d9f0d01190467986b4248",
+    "phone-story.png": "7f1874543747889202db71076dc4b9f7a9a9b00ccda10da38b0911ca574567dd",
+    "runtime.json": "4408aecbfdff51c28752704d0de320c3f9886602884df1dde8e2641b73f092ef",
+    "syntax.log": "681ef9d76b396aea3479b485e889e0ba781c37adb6a00dbae996e32ffba7433c",
+    "worker-contract.log": "2b37a2b36ae11008844ffee0cce2f294e89cffd3b62d0a01c037a6919b077eda"
+  }
+}

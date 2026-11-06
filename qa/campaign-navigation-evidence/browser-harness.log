@@ -1,0 +1,15 @@
+✔ history regression targets Recent battles rather than the shared disclosure styling (3.083162ms)
+✔ active-battle quota regression faults only later battle writes, not profile initialization (0.541825ms)
+✔ slow browser update creates no premature claim deadline or rejected promise (3.127177ms)
+✔ claim deadline begins after update and waits for activation of a different controller (1.355369ms)
+✔ a real update rejection does not leave an orphan activation timer (1.436176ms)
+✔ unchanged controller still fails the bounded post-update claim gate (1.096188ms)
+✔ missing prior registration or control cannot be called a successful update (1.589441ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 98.795315
