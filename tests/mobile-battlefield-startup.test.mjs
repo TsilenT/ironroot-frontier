@@ -5,7 +5,7 @@ import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 
 test('actual first protected launch and restore reveal and populate HUD before geometry measurement',()=>{
- for(const restored of [false,true])for(const [width,height]of [[320,480],[390,500],[320,568],[568,320],[844,390]]){
+ for(const restored of [false,true])for(const [width,height]of [[320,430],[667,300],[740,320],[393,659],[920,420],[320,480],[390,500],[320,568],[568,320],[844,390]]){
   const h=startupHarness({width,height});
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),true,'actual markup starts with a hidden HUD');
   const original=h.start(restored);
@@ -33,11 +33,13 @@ test('removing synchronous HUD initialization reproduces hidden-control false ho
   const h=startupHarness({width,height,source:before});h.start(restored);
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),true);
   assert.equal(h.c.paused,true);assert.equal(h.c.viewportPause.active,true);
-  assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,width>height?3:2);
+  assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,width>height&&height>=360?3:2);
  }
 });
+// 568×300 / 320×440 are newly safe. Retain real-space negatives below
+// the sidebar track and short-portrait world budgets instead.
 test('real first launch and restore still hold insufficient geometry after HUD initialization',()=>{
- for(const restored of [false,true])for(const [width,height]of [[568,300],[320,440]]){
+ for(const restored of [false,true])for(const [width,height]of [[568,240],[320,400]]){
   const h=startupHarness({width,height});h.start(restored);
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),false);
   assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,0,'hold is genuine space shortage, not hidden HUD');
