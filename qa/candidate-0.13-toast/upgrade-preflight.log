@@ -1,0 +1,7 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ironroot-browser-regressions@0.12.0 check:upgrade
+> node validate-production-upgrade.mjs --require-candidate
+
+Production 0.12 fixture: 33 files / 668075 bytes; four historical five-domain profiles accepted unchanged; same-identity rejection verified.
+Candidate ironroot-v0.13.0: distinct identity; browser takeover still UNRUN.

@@ -1,0 +1,15 @@
+✔ measured phone, landscape and desktop vertical bounds clear bottom dock without requiring below ordering (1.373601ms)
+✔ every required visibility signal rejects hidden, fading or expired feedback (0.272851ms)
+✔ viewport, canvas and ancestor clipping independently reject escaped feedback (0.929208ms)
+✔ objective and each target/navigation control retain at least seven CSS pixels separation (0.335724ms)
+✔ all four separation directions work without removing viewport/field checks (0.272941ms)
+✔ nonfinite, inverted, absent and inconsistent rectangles cannot pass (0.336716ms)
+✔ sampler measures the inner overflow clip, not its outside border (3.747723ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124.732442
