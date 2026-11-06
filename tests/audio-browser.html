@@ -1,5 +1,6 @@
 <!doctype html><title>Ironroot audio compatibility</title><h1>Ironroot audio compatibility</h1><button id="unlock">Unlock and start</button><button id="musicOff">Music off</button><button id="musicOn">Music on</button><button id="sfxOff">SFX off</button><button id="sfxOn">SFX on</button><button id="mute">Mute all</button><button id="unmute">Unmute all</button><button id="zero">Volume zero</button><button id="max">Volume max</button><button id="pause">Pause</button><button id="resume">Resume</button><button id="render">Render offline tests</button><button id="destroy">Destroy</button><pre id="state"></pre><pre id="results"></pre><script type="module">
-import {GameAudio,SOUND_NAMES} from '../dist/audio.js';
+import {GameAudio} from '../dist/audio.js';
+import {renderScenario} from '../qa/audio/render.mjs';
 const out=document.getElementById('state'),results=document.getElementById('results');
 const audio=new GameAudio({muted:false});
 const report=()=>out.textContent=JSON.stringify(audio.getState(),null,2);
@@ -11,21 +12,10 @@ button('mute',()=>audio.setMuted(true));button('unmute',()=>audio.setMuted(false
 button('zero',()=>audio.setVolume(0));button('max',()=>audio.setVolume(1));
 button('pause',()=>audio.setScene('paused'));button('resume',()=>audio.setScene('battle'));
 button('destroy',()=>audio.destroy());
-const metric=buffer=>{let peak=0,sum=0,clipped=0;for(let channel=0;channel<buffer.numberOfChannels;channel++){for(const value of buffer.getChannelData(channel)){peak=Math.max(peak,Math.abs(value));sum+=value*value;if(Math.abs(value)>=1)clipped++;}}return {peak:+peak.toFixed(6),rms:+Math.sqrt(sum/(buffer.length*buffer.numberOfChannels)).toFixed(6),clipped};};
 async function render(kind){
-  const sampleRate=24000,seconds=kind==='sfx'?SOUND_NAMES.length*3:kind==='muted'?3:38;
-  const context=new OfflineAudioContext(2,sampleRate*seconds,sampleRate);let time=0;
-  const wrapper=new Proxy(context,{get(target,key){if(key==='state')return 'running';if(key==='currentTime')return time;const value=Reflect.get(target,key,target);return typeof value==='function'?value.bind(target):value;}});
-  const a=new GameAudio({muted:kind==='muted',volume:kind==='mix'?1:.65});
-  a.context=wrapper;a.scene='battle';a.intensity=1;a._createGraph();
-  // Offline tests schedule the entire score in one pass. Live polyphony caps are
-  // covered separately; do not mistake future scheduled notes for live voices.
-  a._track=(source,gain,nodes,type,stopAt)=>{source.stop(stopAt);source.onended=()=>nodes.forEach(node=>node.disconnect());};
-  if(kind==='sfx'){for(const [i,name] of SOUND_NAMES.entries()){time=i*3; a.play(name,{pan:i%2?-.3:.3});}}
-  else {for(let i=0;i<(kind==='muted'?8:128);i++)a._musicStep(i,.02+i*60/108/2);if(kind==='mix'){for(let i=0;i<34;i++){time=i+.05;for(const name of ['sword','arrow','siege','magic','gryphon','collapse'])a.play(name);if(i%5===0)a.play('strike');}}}
-  const buffer=await context.startRendering();const result=metric(buffer);
-  if(kind==='sfx')result.cues=SOUND_NAMES.map((name,i)=>{const part=buffer.getChannelData(0).subarray(i*3*sampleRate,(i+1)*3*sampleRate);let sum=0;for(const n of part)sum+=n*n;return {name,rms:+Math.sqrt(sum/part.length).toFixed(6)};});
-  return result;
+  const scenario={music:'battle',sfx:'cues',mix:'stress',muted:'muted'}[kind];
+  const result=await renderScenario(scenario,{sampleRate:24000});
+  return {...result.metrics,...(result.cues?{cues:result.cues}:{})};
 }
 button('render',async()=>{results.textContent='Rendering original score and every cue...';const data={browser:navigator.userAgent,music:await render('music'),sfx:await render('sfx'),stressMix:await render('mix'),muted:await render('muted')};data.pass=data.music.rms>0&&data.sfx.cues.every(c=>c.rms>0)&&data.stressMix.clipped===0&&data.muted.peak===0;results.textContent=JSON.stringify(data,null,2);});
 report();setInterval(report,250);

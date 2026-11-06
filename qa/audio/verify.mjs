@@ -1,0 +1,81 @@
+import assert from 'node:assert/strict';
+import {createServer} from 'node:http';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,extname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {chromium} from '../browser/node_modules/playwright/index.mjs';
+const root=fileURLToPath(new URL('../../',import.meta.url));
+const evidence=resolve(root,'qa/audio/evidence');await mkdir(evidence,{recursive:true});
+const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.woff2':'font/woff2'};
+const server=createServer(async(req,res)=>{const pathname=new URL(req.url,'http://localhost').pathname;const file=resolve(root,'.'+pathname.replace(/\/$/,'/index.html'));if(!file.startsWith(root)){res.writeHead(403).end();return;}try{const body=await readFile(file);res.writeHead(200,{'Content-Type':mime[extname(file)]||'application/octet-stream','Cache-Control':'no-store'});res.end(body);}catch{res.writeHead(404).end();}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH||'/usr/bin/chromium',headless:true,args:['--autoplay-policy=document-user-activation-required']});
+const errors=[];const results={base:'24edddab2cff33b3f91b396bc855193f87421ba3',sourceSha256:createHash('sha256').update(await readFile(resolve(root,'dist/audio.js'))).digest('hex'),browser:browser.version(),subjectiveListening:false,scenarios:[],live:{},errors};
+try{
+ const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(url+'/qa/audio/index.html');await page.waitForFunction(()=>window.audioLab);
+ const state=()=>page.evaluate(()=>audioLab.audio.getState());
+ assert.equal(await page.evaluate(()=>audioLab.audio.context),null);assert.equal((await state()).scheduling,false);
+ results.live.lazyBeforeGesture=true;
+ await page.click('#unlock');await page.waitForFunction(()=>audioLab.audio.getState().unlocked);
+ // Inspect the actual post-compressor PCM stream in a running AudioContext.
+ await page.evaluate(()=>{const a=audioLab.audio;window.meter=a.context.createAnalyser();meter.fftSize=2048;a.limiter.disconnect();a.limiter.connect(meter);meter.connect(a.context.destination);window.readPeak=()=>{const samples=new Float32Array(meter.fftSize);meter.getFloatTimeDomainData(samples);return Math.max(...samples.map(Math.abs));};});
+ await page.waitForTimeout(650);results.live.audiblePeak=await page.evaluate(()=>readPeak());assert.ok(results.live.audiblePeak>0);
+ await page.click('#battle');await page.waitForFunction(()=>audioLab.audio.getState().musicScene==='battle');results.live.transition=await state();
+ await page.click('#mute');await page.waitForTimeout(650);assert.equal(await page.evaluate(()=>readPeak()),0);assert.equal((await state()).scheduling,false);assert.equal((await state()).activeVoices,0);results.live.muteExactSilence=true;
+ await page.click('#unmute');await page.waitForTimeout(500);
+ await page.locator('#volume').evaluate(e=>{e.value='0';e.dispatchEvent(new Event('input'));});await page.waitForTimeout(300);assert.equal(await page.evaluate(()=>readPeak()),0);results.live.zeroExactSilence=true;
+ await page.locator('#volume').evaluate(e=>{e.value='.5';e.dispatchEvent(new Event('input'));});
+ await page.locator('#music').uncheck();await page.waitForTimeout(700);assert.equal((await state()).scheduling,false);assert.equal(await page.evaluate(()=>readPeak()),0);assert.equal(await page.evaluate(()=>audioLab.audio.play('strike')),true);await page.waitForTimeout(100);assert.ok(await page.evaluate(()=>readPeak())>0);results.live.musicOffKeepsSfx=true;
+ await page.locator('#sfx').uncheck();assert.equal(await page.evaluate(()=>audioLab.audio.play('strike')),false);await page.waitForTimeout(300);assert.equal(await page.evaluate(()=>readPeak()),0);results.live.bothOffSilence=true;
+ await page.locator('#music').check();await page.waitForTimeout(650);assert.ok(await page.evaluate(()=>readPeak())>0);assert.equal(await page.evaluate(()=>audioLab.audio.play('warning')),false);results.live.sfxOffKeepsMusic=true;
+ await page.click('#pause');await page.waitForTimeout(650);assert.equal(await page.evaluate(()=>readPeak()),0);assert.equal((await state()).scheduling,false);results.live.pauseExactSilence=true;
+ await page.click('#battle');await page.locator('#intensity').evaluate(e=>{e.value='1';e.dispatchEvent(new Event('input'));});await page.locator('#sfx').check();
+ results.live.performance=await page.evaluate(async()=>{
+   const a=audioLab.audio,callbacks=[],frames=[];let maxVoices=0,last=performance.now(),notes=a.stats.musicNotes;
+   const frame=now=>{frames.push(now-last);last=now;raf=requestAnimationFrame(frame);};let raf=requestAnimationFrame(frame);
+   const interval=setInterval(()=>{const start=performance.now();a.setIntensity(.85);for(const name of ['sword','arrow','siege','magic','gryphon','collapse','strike'])a.play(name);callbacks.push(performance.now()-start);maxVoices=Math.max(maxVoices,a.voices.size);},100);
+   await new Promise(r=>setTimeout(r,6000));clearInterval(interval);cancelAnimationFrame(raf);
+   const percentile=(values,p)=>values.sort((x,y)=>x-y)[Math.min(values.length-1,Math.floor(values.length*p))];
+   return {durationSeconds:6,maxVoices,peakVoices:a.stats.peakVoices,sfxBatchP95Ms:percentile(callbacks,.95),frameP95Ms:percentile(frames,.95),musicNotes:a.stats.musicNotes-notes,callbacks:callbacks.length};
+ });assert.ok(results.live.performance.maxVoices<=80);
+ await page.click('#destroy');assert.equal((await state()).activeVoices,0);assert.equal((await state()).scheduling,false);results.live.destroyClean=true;
+ const autoplay=await browser.newPage();autoplay.on('pageerror',e=>errors.push(e.message));await autoplay.goto(url+'/qa/audio/index.html?autoplay=probe');await autoplay.waitForTimeout(500);
+ results.live.autoplay=await autoplay.evaluate(()=>({state:audioLab.audio.context?.state,notes:audioLab.audio.stats.musicNotes,timer:audioLab.audio.timer!==null,resolved:window.autoplayResult??null}));
+ assert.equal(results.live.autoplay.state,'suspended');assert.equal(results.live.autoplay.notes,0);assert.equal(results.live.autoplay.timer,false);
+ await autoplay.click('#unlock');await autoplay.waitForFunction(()=>audioLab.audio.getState().unlocked);await autoplay.close();
+ const game=await browser.newPage();game.on('pageerror',e=>errors.push(e.message));
+ await game.addInitScript(()=>{
+   const Native=window.AudioContext;window.qaAudioContexts=[];
+   window.AudioContext=class extends Native{constructor(...args){super(...args);qaAudioContexts.push(this);const create=this.createDynamicsCompressor.bind(this);this.createDynamicsCompressor=()=>{const node=create();this.qaCompressor=node;return node;};}};
+ });
+ await game.goto(url+'/dist/');await game.locator('#start').waitFor();assert.equal(await game.evaluate(()=>qaAudioContexts.length),0);
+ await game.click('#start');await game.waitForFunction(()=>qaAudioContexts[0]?.state==='running');
+ await game.evaluate(()=>{const c=qaAudioContexts[0];window.gameMeter=c.createAnalyser();gameMeter.fftSize=2048;c.qaCompressor.disconnect();c.qaCompressor.connect(gameMeter);gameMeter.connect(c.destination);});
+ await game.waitForTimeout(650);
+ const productionPeak=()=>game.evaluate(()=>{const samples=new Float32Array(gameMeter.fftSize);gameMeter.getFloatTimeDomainData(samples);return Math.max(...samples.map(Math.abs));});
+ assert.ok(await productionPeak()>0);
+ await game.click('#pause');await game.waitForTimeout(650);assert.equal(await productionPeak(),0);
+ await game.click('#resume');await game.waitForTimeout(650);assert.ok(await productionPeak()>0);
+ await game.click('#settings');await game.locator('#musicEnabled').focus();await game.keyboard.press('Space');assert.equal(await game.locator('#musicEnabled').isChecked(),false);
+ await game.locator('#sfxEnabled').uncheck();await game.locator('#masterVolume').evaluate(e=>{e.value='25';e.dispatchEvent(new Event('input'));});
+ await game.click('#settingsDone');await game.reload();await game.click('#welcomeSettings');
+ assert.equal(await game.locator('#musicEnabled').isChecked(),false);assert.equal(await game.locator('#sfxEnabled').isChecked(),false);assert.equal(await game.locator('#masterVolume').inputValue(),'25');
+ results.live.production={lazy:true,startProducesPCM:true,pauseSilence:true,resumeProducesPCM:true,keyboardMusicToggle:true,independentTogglesAndVolumePersist:true};await game.close();
+ for(const kind of ['journey','battle','menu','stress','cues','controls','muted','zero','musicOnly','sfxOnly','bothOff']){
+   console.log('Rendering '+kind);
+   const exportWav=['journey','stress'].includes(kind);
+   const download=exportWav?page.waitForEvent('download'):null;
+   const result=await page.evaluate(({kind,exportWav})=>audioLab.renderScenario(kind,{sampleRate:48000,exportWav}),{kind,exportWav});
+   if(download)await(await download).saveAs(resolve(evidence,'ironroot-'+kind+'.wav'));
+   results.scenarios.push(result);
+   assert.equal(result.metrics.clipped,0,kind+' clipping');assert.equal(result.metrics.nonfinite,0,kind+' finite PCM');assert.ok(result.maxVoices<=80,kind+' bounded voices');
+   if(['muted','zero','bothOff'].includes(kind))assert.equal(result.metrics.peak,0,kind+' silent');else assert.ok(result.metrics.rms>0,kind+' nonempty');
+   if(kind==='controls')for(const window of result.silenceWindows)assert.equal(window.peak,0,'control mute tail');
+   if(kind==='cues')for(const cue of result.cues)assert.ok(cue.rms>0,cue.name+' produces PCM');
+   await writeFile(resolve(evidence,'signal.json'),JSON.stringify(results,null,2)+'\n');
+ }
+ assert.deepEqual(errors,[]);results.pass=true;
+}catch(error){results.failure=error.stack;throw error;}finally{await writeFile(resolve(evidence,'signal.json'),JSON.stringify(results,null,2)+'\n');await browser.close();await new Promise(r=>server.close(r));}
+console.log('Audio signal and live controls passed. Evidence: qa/audio/evidence/signal.json');
