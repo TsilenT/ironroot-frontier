@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "scope": "Private draft PR validation. No merge, export or deployment.",
+  "createdUtc": "2026-11-06T22:12:09.864045+00:00",
+  "baseCommit": "b8b2e6d1b200b9550803f5cb16b8d96ccc28f222",
+  "runtimeSourceCommit": "e7cfa9122fff4cf2c017f203bb3be614f63822ce",
+  "runtime": {
+    "scope": "local source-dist validation only, not publication approval",
+    "runtimeFiles": 43,
+    "totalBytes": 808036,
+    "files": {
+      "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "app.js": "3341419147b0f0a0f07554106f6e5a6a272da7315f6424bcc26cf2420e8f08b7",
+      "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+      "backup.js": "9aaceb8b034aab0d6aa3fd04ba70b55f4c92cfc66981b01d4519381c89277d67",
+      "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "battle-codec.js": "c32c04cea84844b46ca6ffffd534fe89cb45a8b28308eae06ad3cc1fde35f522",
+      "battle-report.js": "5e0ac51d0acfa7560770d6ae99b8df780efd29824e883c0c771f4d4fbc6ef4c7",
+      "campaign-flow.js": "085c55a07ac25560c508e95c2f83cd24db1509c917931b46ceb27663be939142",
+      "campaign.js": "855482bc51f64a30012d23758bfd9f66a5692e31f19b709c34770af36fc7fe5a",
+      "challenges.js": "d071e8eb6b63b633b59705452e02ed090469c0f70fcc60c5da87fe1fb4c47c66",
+      "codex.js": "21d7b1c0269d8f47e6f6ab02698f9f1b14d12d046c3ff8af0959c3354ff4c7a5",
+      "combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+      "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "engine.js": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+      "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+      "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "index.html": "841035cf4f656f5d76889c8ec8964a5eef3b49044236bac6c7daac6e900aa53e",
+      "input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+      "intro-campaign.js": "62f2aab85ebd4683132621c504a825ede25cdc2767621f9f017b69a6424eddcd",
+      "manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+      "mobile-battlefield.js": "7344944d0203bfa7f22e669fb36e7f7bb31dc8440d695d08d75f9530b1f31f65",
+      "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+      "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "persistence.js": "5129eebcd651c1aab38a810148e6100851751e4901b9483fe23dad66ea8964af",
+      "profile-session.js": "a74cc512340c902105e9026719e2d6a1e427443179a9e0d0a95c20737d708f89",
+      "protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
+      "render.js": "fb26e8abede80e760fc3f88eec47d2e63a47b29ba371d15f19f6b9c1dbf41878",
+      "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "report-view.js": "1fb6831f3e3410511c4c424ac6fb5a3359e4ae1376aa6ce8b4a9883cbb04fb10",
+      "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+      "rulesets.js": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da",
+      "scouting.js": "cd90a6bea61db53aab9f2f2795ab978d3ddfec5c494bb953f166dfe1d7ee15e6",
+      "service-worker.js": "063642fdda050343553c4a8fc5fe264066bfc724a33b88e950f1e8c366f4f013",
+      "styles.css": "8d7318689d07ae76b908d79fc9157f392a4d929a4cb99864f9c0f5ba62752154",
+      "training-app.js": "37c745d3226651a85b3e634210e0c3a0c6485f73c47a44c4d3ef749f8ab2c775",
+      "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+      "training.js": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79",
+      "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+    }
+  },
+  "runtimeMatchesSourceCommit": true,
+  "environment": {
+    "node": "v24.22.1",
+    "playwright": "1.65.0",
+    "browser": "Chromium 155.0.8059.79 on Debian 13",
+    "profiles": {
+      "phone": [
+        390,
+        650
+      ],
+      "narrow-phone": [
+        320,
+        568
+      ],
+      "landscape": [
+        844,
+        390
+      ],
+      "desktop": [
+        1180,
+        757
+      ]
+    },
+    "mobileEvidence": "Chromium mobile/touch emulation, DPR 2. Not physical devices."
+  },
+  "rootTests": {
+    "total": 888,
+    "passed": 887,
+    "failed": 0,
+    "skipped": 1,
+    "command": "npm test",
+    "log": "root-tests.log"
+  },
+  "confirmationBrowser": {
+    "stats": {
+      "startTime": "2026-11-06T22:08:05.805Z",
+      "duration": 176881.979,
+      "expected": 37,
+      "skipped": 3,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test '(^|/)(contextual-coaching|regression)\\.spec\\.mjs$' -g 'reading and paid|another composition|start now, manual|saved planning|visibility interruption|keyboard focus stays|fresh suggested army|teaching dialog, real|viewport safety covers|controls fit the viewport' --timeout=60000 --workers=2",
+    "cases": [
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "reading and paid construction stop both armies, clocks and income until explicit Resume",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 15623
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "reading and paid construction stop both armies, clocks and income until explicit Resume",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 14654
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "reading and paid construction stop both armies, clocks and income until explicit Resume",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 9396
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "reading and paid construction stop both armies, clocks and income until explicit Resume",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8152
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "another composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 10392
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "another composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 8576
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "another composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 5731
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "another composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4490
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "start now, manual pause, preferences and optional teaching replay require deliberate transitions",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 12629
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "start now, manual pause, preferences and optional teaching replay require deliberate transitions",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 9209
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "start now, manual pause, preferences and optional teaching replay require deliberate transitions",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 8626
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "start now, manual pause, preferences and optional teaching replay require deliberate transitions",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7095
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "saved planning construction resumes normally and completed replay skips the automatic hold",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 14416
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "saved planning construction resumes normally and completed replay skips the automatic hold",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 9082
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "saved planning construction resumes normally and completed replay skips the automatic hold",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 8462
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "saved planning construction resumes normally and completed replay skips the automatic hold",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 7650
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "visibility interruption while planning requires explicit resume and cannot buy with a held gesture",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 8177
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "visibility interruption while planning requires explicit resume and cannot buy with a held gesture",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 4832
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "visibility interruption while planning requires explicit resume and cannot buy with a held gesture",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 5111
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "visibility interruption while planning requires explicit resume and cannot buy with a held gesture",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 5086
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 6081
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 3712
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 4254
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 4036
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+        "project": "phone",
+        "status": "skipped",
+        "durationMs": 580
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+        "project": "narrow-phone",
+        "status": "skipped",
+        "durationMs": 211
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+        "project": "landscape",
+        "status": "skipped",
+        "durationMs": 249
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 35724
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "teaching dialog, real controls and a suggestion are visible at the current viewport",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 6469
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "teaching dialog, real controls and a suggestion are visible at the current viewport",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 2284
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "teaching dialog, real controls and a suggestion are visible at the current viewport",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 2724
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "teaching dialog, real controls and a suggestion are visible at the current viewport",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 2489
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "viewport safety covers the reading dialog and remains usable until an explicit safe Resume",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 5379
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "viewport safety covers the reading dialog and remains usable until an explicit safe Resume",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 3259
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "viewport safety covers the reading dialog and remains usable until an explicit safe Resume",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 3522
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "title": "viewport safety covers the reading dialog and remains usable until an explicit safe Resume",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 3037
+      },
+      {
+        "file": "regression.spec.mjs",
+        "title": "controls fit the viewport and survive orientation changes",
+        "project": "phone",
+        "status": "expected",
+        "durationMs": 29144
+      },
+      {
+        "file": "regression.spec.mjs",
+        "title": "controls fit the viewport and survive orientation changes",
+        "project": "narrow-phone",
+        "status": "expected",
+        "durationMs": 9705
+      },
+      {
+        "file": "regression.spec.mjs",
+        "title": "controls fit the viewport and survive orientation changes",
+        "project": "landscape",
+        "status": "expected",
+        "durationMs": 12603
+      },
+      {
+        "file": "regression.spec.mjs",
+        "title": "controls fit the viewport and survive orientation changes",
+        "project": "desktop",
+        "status": "expected",
+        "durationMs": 8066
+      }
+    ]
+  },
+  "broadBrowser": {
+    "stats": {
+      "startTime": "2026-11-06T21:53:46.683Z",
+      "duration": 583768.529,
+      "expected": 189,
+      "skipped": 6,
+      "unexpected": 5,
+      "flaky": 0
+    },
+    "note": "The 200-case batch is not a clean pass: four 20-second whole-test orientation timeouts and one incorrect wide-camera coordinate assumption in the new desktop test. The test transform was corrected through public controls; the full teaching matrix and all four orientation cases passed in the final confirmation. That broad batch ran on ancestor 2457372. The final confirmation also includes the subsequent fix preserving the mission\u2019s uncovered road when a production tool is selected; the complete broad batch was not repeated after it. Six broad skips are three deliberate exclusions of the full real-time route from touch profiles and three existing coordinate-specific touch-details exclusions."
+  },
+  "orientationBaseline": {
+    "commit": "b8b2e6d1b200b9550803f5cb16b8d96ccc28f222",
+    "testFileUnchangedFromMain": true,
+    "default20Seconds": "Timed out on untouched main while the batch was running.",
+    "bounded60Seconds": "Passed unchanged assertions with one worker in 4.8 seconds after contention subsided.",
+    "limits": "This isolates a whole-test timing issue; no phone performance repair is claimed."
+  },
+  "unchangedContracts": {
+    "dist/engine.js": {
+      "unchanged_from_main": true,
+      "sha256": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60"
+    },
+    "dist/campaign.js": {
+      "unchanged_from_main": true,
+      "sha256": "855482bc51f64a30012d23758bfd9f66a5692e31f19b709c34770af36fc7fe5a"
+    },
+    "dist/intro-campaign.js": {
+      "unchanged_from_main": true,
+      "sha256": "62f2aab85ebd4683132621c504a825ede25cdc2767621f9f017b69a6424eddcd"
+    },
+    "dist/rulesets.js": {
+      "unchanged_from_main": true,
+      "sha256": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da"
+    },
+    "dist/battle-codec.js": {
+      "unchanged_from_main": true,
+      "sha256": "c32c04cea84844b46ca6ffffd534fe89cb45a8b28308eae06ad3cc1fde35f522"
+    },
+    "dist/profile-session.js": {
+      "unchanged_from_main": true,
+      "sha256": "a74cc512340c902105e9026719e2d6a1e427443179a9e0d0a95c20737d708f89"
+    },
+    "dist/persistence.js": {
+      "unchanged_from_main": true,
+      "sha256": "5129eebcd651c1aab38a810148e6100851751e4901b9483fe23dad66ea8964af"
+    },
+    "dist/training.js": {
+      "unchanged_from_main": true,
+      "sha256": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79"
+    },
+    "dist/training-app.js": {
+      "unchanged_from_main": true,
+      "sha256": "37c745d3226651a85b3e634210e0c3a0c6485f73c47a44c4d3ef749f8ab2c775"
+    }
+  },
+  "supportingChecks": {
+    "runtimePrecacheInventory": true,
+    "runtimeSyntax": true,
+    "browserSyntaxAndImmutableFixtures": true,
+    "whitespace": true
+  },
+  "qaFollowup": "The pinned runtime commit includes the corrected browser transform and a regression for preserving uncovered-road guidance. No runtime or test changes were made while confirming it.",
+  "limitations": [
+    "The complete 200-case batch was not rerun clean; report its original failures alongside the bounded confirmation.",
+    "Fresh First Watch real-combat clear/Continue is desktop only; touch profiles exercise real paid construction, planning, resume and guided steps.",
+    "Visibility is a document.hidden event adapter combined with native mouse/touch release.",
+    "Physical Android/iOS, installed PWA, Safari/WebKit, Firefox, packaged desktop shell and controller hardware are unverified.",
+    "The pending 2-to-5-to-8 campaign progression/Rootwarden introduction, phone/fullscreen fixes, campaign navigation and pause/options branches are not integrated; combined QA remains required.",
+    "Opening site choices are practical heuristics, not optimal-play, guaranteed-safety or human-balance certification."
+  ],
+  "sourceHashes": {
+    "qa/browser/contextual-coaching.spec.mjs": "7c6227b408e1991e44c216462c3e8ea5bce8a8676d0df215dbac6c8ff5942dde",
+    "qa/browser/campaign.spec.mjs": "5e997267a4215101c505e13eb9dd6523b9fcdb477394ea6ff06d06b4cfc7e298",
+    "qa/browser/campaign-onboarding.spec.mjs": "e27fdf7fcb62b571c503b853211f99f74163d7564de7a99a32c056143651b73d",
+    "tests/campaign-flow.test.mjs": "ea3a86dbe98ba0cd17f6c27f7e0be50b988bc805eeb536590992c62e69289f04"
+  },
+  "artifactHashes": {
+    "README.md": "8ea5dfac0e2a0129d0f1d437c7c94e5f75f2d3be64dfd9ec0f5e25316a6832b0",
+    "baseline-orientation-20s.log": "4f2989ff780aa8c444bba210802ae56b3a3507938136a6f70399549f1c15a453",
+    "baseline-orientation-60s.log": "ab452295e853fea3a693561f70fe0cf77f755d7a05ecb190e5c125f2b11964fd",
+    "baseline-orientation.config.mjs.txt": "f66f0c8aba8a174eb654a2334ba12d2f880d2d79da8f842da47d0625d6fc8a29",
+    "browser-batch.json": "09c66c27346a308c16525a57c9b9f1ca394f47dd81119f7830b0a4de81975d6f",
+    "browser-batch.log": "294c23bb74ad5a4987df7bd8fd7286e3d2452fdce555973d7ccdd727159a1d54",
+    "browser-confirmation.json": "49a3bf8713fb94c3746b138e51e44ed2e34a10b52766239fde06f79b567f74b7",
+    "browser-confirmation.log": "7082c334d710a44ca83d4235ccf5c8b0d05282eefe3cece77f2dc1cabae70d47",
+    "browser-fixtures.log": "249ae90dac49449c22956da88dce67bcf1587040f74beffc7e1c3c979c16dd42",
+    "desktop-suggested-site.png": "02dabbfad763de715ceb0a27c8a70da3d27437c012b572030163f82537b44975",
+    "desktop-teaching-dialog.png": "5e972d18a75dafecf2e23c0dd6cd7706044b3c0ee32baad95f1f795fd1248e44",
+    "landscape-suggested-site.png": "e0c9be4c287857e9eab7412f422e0d382b45af39cd8d954280dda8d2934ee7bf",
+    "landscape-teaching-dialog.png": "ce26962b0121c6f51ff3a4219900d84d5b5e9dcca4da419843c5a0bc5519b79f",
+    "narrow-phone-suggested-site.png": "56d4af1cfa47adb0b61823ee0f930fe1d540ac22f18c40b49bfb7564e27e7ae1",
+    "narrow-phone-teaching-dialog.png": "28ce25bbc9eb318f10490df6744b94458535e728c1509930d1a7fb013c5e2c33",
+    "phone-suggested-site.png": "6a73f75e7068414d9c61502ea453380bfcb37398e73c796c1017d15fd81cdf41",
+    "phone-teaching-dialog.png": "497b05400a9574de5d42926bc3bf6d702db9e8619289e10f8cd49db83f979191",
+    "root-tests.log": "828d9557a5924263e4177f9c31e88848de2d2ec8907d114ead567e9b7515e92a",
+    "runtime-preflight.log": "f9067b6c45f4c8de56ab6bd797d9ce6532fd8ede340546bee83e8496ea0edcb6",
+    "syntax.log": "64f87c13ab3832f87948bedd108b2c8c4b0b08d65038554e96ea103c81ce79c0",
+    "unchanged-contracts.json": "35d78f39fdf6ab0b029d2962037b177fe022ad19929abfa86648da606a2f94db"
+  }
+}

@@ -1,0 +1,442 @@
+[WebServer] (node:11136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 200 tests using 4 workers
+
+(node:11175) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11167) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    4 [phone] › campaign-onboarding.spec.mjs:46:1 › campaign is the entry screen and skirmish is an explicit optional route (6.0s)
+  ✓    2 [phone] › campaign-onboarding.spec.mjs:110:1 › an existing campaign save keeps its full roster and construction without migration (6.3s)
+  ✓    6 [phone] › campaign-onboarding.spec.mjs:137:1 › a worse replay attempt keeps the existing best stars and best time (4.6s)
+  ✓    3 [phone] › campaign-onboarding.spec.mjs:62:1 › opening guidance uses real build cards, normal gold costs, and real battlefield construction (12.5s)
+  ✓    1 [phone] › campaign-onboarding.spec.mjs:87:1 › all buildings and hint controls are reversible and do not bypass normal selection (12.7s)
+  ✓    5 [phone] › campaign-onboarding.spec.mjs:126:1 › save and exit focuses the saved mission and resumes that same battle (7.2s)
+  ✓    7 [phone] › campaign-onboarding.spec.mjs:147:32 › 1-star result offers the correct optional replay and preserves records (7.0s)
+  ✓    9 [phone] › campaign-onboarding.spec.mjs:147:32 › 3-star result offers the correct optional replay and preserves records (5.6s)
+  ✓    8 [phone] › campaign-onboarding.spec.mjs:147:32 › 2-star result offers the correct optional replay and preserves records (6.0s)
+  ✓   10 [phone] › campaign.spec.mjs:56:1 › campaign locked mission cannot launch and an unlocked mission can (9.0s)
+  ✓   11 [phone] › campaign.spec.mjs:69:1 › campaign chapter and mission choices retain keyboard focus after rerender (6.0s)
+  ✓   13 [phone] › campaign.spec.mjs:104:1 › campaign victory awards stars once and Continue unlocks the next mission (8.5s)
+  ✓   14 [phone] › campaign.spec.mjs:127:1 › campaign deadline failure focuses Retry and restarts without granting progress (5.6s)
+  ✓   12 [phone] › campaign.spec.mjs:83:1 › campaign UI-created version 2 save reloads the same mission and construction (12.7s)
+  ✓   15 [phone] › campaign.spec.mjs:148:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable (7.4s)
+  ✓   17 [phone] › campaign.spec.mjs:182:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save (10.1s)
+  ✓   18 [phone] › campaign.spec.mjs:214:1 › landscape campaign content keeps more than 120px usable height with a saved mission (8.2s)
+  ✓   16 [phone] › campaign.spec.mjs:163:1 › campaign briefing and launch remain reachable across viewport changes (12.3s)
+  ✓   21 [phone] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (10.1s)
+  ✓   20 [phone] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (14.9s)
+  ✓   22 [phone] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (13.4s)
+  ✓   19 [phone] › campaign.spec.mjs:260:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action (25.2s)
+  -   26 [phone] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓   25 [phone] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (7.0s)
+  ✓   24 [phone] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (9.3s)
+  ✓   27 [phone] › contextual-coaching.spec.mjs:122:1 › teaching dialog, real controls and a centered suggestion are visible at the current viewport (6.5s)
+  ✓   23 [phone] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (15.1s)
+  ✓   28 [phone] › contextual-coaching.spec.mjs:133:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (4.9s)
+  ✓   31 [phone] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (8.4s)
+  ✓   30 [phone] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (11.3s)
+  ✓   29 [phone] › offline-shell.spec.mjs:17:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts (17.8s)
+  ✓   34 [phone] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (11.2s)
+  ✓   33 [phone] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (14.4s)
+  ✓   35 [phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (9.6s)
+  ✘   32 [phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (23.9s)
+(node:13246) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   36 [phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (9.4s)
+  ✓   38 [phone] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (7.0s)
+  ✓   37 [phone] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (9.5s)
+  ✓   39 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (9.1s)
+  ✓   40 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (8.6s)
+  ✓   42 [phone] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (7.4s)
+  ✓   41 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (7.6s)
+  ✓   43 [phone] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (5.3s)
+  ✓   44 [phone] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open (10.6s)
+  ✓   45 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (22.2s)
+  ✓   46 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (23.4s)
+  ✓   47 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (26.1s)
+(node:14058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   50 [phone] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (9.4s)
+(node:14236) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   49 [phone] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (12.9s)
+(node:14427) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   48 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (26.4s)
+(node:14623) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   51 [narrow-phone] › campaign-onboarding.spec.mjs:46:1 › campaign is the entry screen and skirmish is an explicit optional route (6.8s)
+  ✓   54 [narrow-phone] › campaign-onboarding.spec.mjs:110:1 › an existing campaign save keeps its full roster and construction without migration (6.3s)
+  ✓   55 [narrow-phone] › campaign-onboarding.spec.mjs:126:1 › save and exit focuses the saved mission and resumes that same battle (6.4s)
+  ✓   52 [narrow-phone] › campaign-onboarding.spec.mjs:62:1 › opening guidance uses real build cards, normal gold costs, and real battlefield construction (12.4s)
+  ✓   56 [narrow-phone] › campaign-onboarding.spec.mjs:137:1 › a worse replay attempt keeps the existing best stars and best time (3.9s)
+  ✓   53 [narrow-phone] › campaign-onboarding.spec.mjs:87:1 › all buildings and hint controls are reversible and do not bypass normal selection (12.1s)
+  ✓   57 [narrow-phone] › campaign-onboarding.spec.mjs:147:32 › 1-star result offers the correct optional replay and preserves records (5.1s)
+  ✓   58 [narrow-phone] › campaign-onboarding.spec.mjs:147:32 › 2-star result offers the correct optional replay and preserves records (6.0s)
+  ✓   59 [narrow-phone] › campaign-onboarding.spec.mjs:147:32 › 3-star result offers the correct optional replay and preserves records (6.0s)
+  ✓   61 [narrow-phone] › campaign.spec.mjs:69:1 › campaign chapter and mission choices retain keyboard focus after rerender (5.3s)
+  ✓   60 [narrow-phone] › campaign.spec.mjs:56:1 › campaign locked mission cannot launch and an unlocked mission can (7.2s)
+  ✓   64 [narrow-phone] › campaign.spec.mjs:127:1 › campaign deadline failure focuses Retry and restarts without granting progress (5.4s)
+  ✓   63 [narrow-phone] › campaign.spec.mjs:104:1 › campaign victory awards stars once and Continue unlocks the next mission (6.9s)
+  ✓   65 [narrow-phone] › campaign.spec.mjs:148:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable (7.0s)
+  ✓   62 [narrow-phone] › campaign.spec.mjs:83:1 › campaign UI-created version 2 save reloads the same mission and construction (11.0s)
+  ✓   68 [narrow-phone] › campaign.spec.mjs:214:1 › landscape campaign content keeps more than 120px usable height with a saved mission (7.3s)
+  ✓   66 [narrow-phone] › campaign.spec.mjs:182:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save (9.7s)
+  ✓   67 [narrow-phone] › campaign.spec.mjs:163:1 › campaign briefing and launch remain reachable across viewport changes (11.3s)
+  ✓   71 [narrow-phone] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (8.2s)
+  ✓   70 [narrow-phone] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (12.8s)
+  ✓   72 [narrow-phone] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (11.8s)
+  ✓   69 [narrow-phone] › campaign.spec.mjs:260:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action (22.7s)
+  -   76 [narrow-phone] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓   75 [narrow-phone] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (5.9s)
+  ✓   74 [narrow-phone] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (7.1s)
+  ✓   73 [narrow-phone] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (11.8s)
+  ✓   77 [narrow-phone] › contextual-coaching.spec.mjs:122:1 › teaching dialog, real controls and a centered suggestion are visible at the current viewport (5.7s)
+  ✓   78 [narrow-phone] › contextual-coaching.spec.mjs:133:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (5.9s)
+  ✓   81 [narrow-phone] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (8.0s)
+  ✓   80 [narrow-phone] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (11.3s)
+  ✓   79 [narrow-phone] › offline-shell.spec.mjs:17:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts (16.8s)
+  ✓   84 [narrow-phone] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (10.7s)
+  ✓   85 [narrow-phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (8.3s)
+  ✓   83 [narrow-phone] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (14.1s)
+  ✓   87 [narrow-phone] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (5.5s)
+  ✓   86 [narrow-phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (8.9s)
+  ✘   82 [narrow-phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (23.9s)
+  ✓   88 [narrow-phone] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (8.1s)
+(node:16451) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   89 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (8.1s)
+  ✓   90 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (8.6s)
+  -   94 [narrow-phone] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓   91 [narrow-phone] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (8.7s)
+  ✓   92 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (9.9s)
+  ✓   93 [narrow-phone] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (5.6s)
+  ✓   96 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (19.6s)
+  ✓   95 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (21.5s)
+  ✓   97 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (20.0s)
+  ✓   98 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (21.1s)
+(node:17032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17053) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  100 [narrow-phone] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (6.3s)
+(node:17307) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   99 [narrow-phone] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (9.9s)
+(node:17485) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  101 [landscape] › campaign-onboarding.spec.mjs:46:1 › campaign is the entry screen and skirmish is an explicit optional route (7.6s)
+  ✓  104 [landscape] › campaign-onboarding.spec.mjs:110:1 › an existing campaign save keeps its full roster and construction without migration (7.1s)
+  ✓  105 [landscape] › campaign-onboarding.spec.mjs:126:1 › save and exit focuses the saved mission and resumes that same battle (9.0s)
+  ✓  102 [landscape] › campaign-onboarding.spec.mjs:62:1 › opening guidance uses real build cards, normal gold costs, and real battlefield construction (17.0s)
+  ✓  106 [landscape] › campaign-onboarding.spec.mjs:137:1 › a worse replay attempt keeps the existing best stars and best time (4.4s)
+  ✓  103 [landscape] › campaign-onboarding.spec.mjs:87:1 › all buildings and hint controls are reversible and do not bypass normal selection (18.9s)
+  ✓  107 [landscape] › campaign-onboarding.spec.mjs:147:32 › 1-star result offers the correct optional replay and preserves records (7.6s)
+  ✓  109 [landscape] › campaign-onboarding.spec.mjs:147:32 › 3-star result offers the correct optional replay and preserves records (6.9s)
+  ✓  108 [landscape] › campaign-onboarding.spec.mjs:147:32 › 2-star result offers the correct optional replay and preserves records (9.0s)
+  ✓  111 [landscape] › campaign.spec.mjs:69:1 › campaign chapter and mission choices retain keyboard focus after rerender (6.9s)
+  ✓  110 [landscape] › campaign.spec.mjs:56:1 › campaign locked mission cannot launch and an unlocked mission can (11.3s)
+  ✓  113 [landscape] › campaign.spec.mjs:104:1 › campaign victory awards stars once and Continue unlocks the next mission (10.3s)
+  ✓  114 [landscape] › campaign.spec.mjs:127:1 › campaign deadline failure focuses Retry and restarts without granting progress (7.8s)
+  ✓  112 [landscape] › campaign.spec.mjs:83:1 › campaign UI-created version 2 save reloads the same mission and construction (15.8s)
+  ✓  115 [landscape] › campaign.spec.mjs:148:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable (9.7s)
+  ✓  117 [landscape] › campaign.spec.mjs:182:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save (10.3s)
+  ✓  116 [landscape] › campaign.spec.mjs:163:1 › campaign briefing and launch remain reachable across viewport changes (12.5s)
+  ✓  118 [landscape] › campaign.spec.mjs:214:1 › landscape campaign content keeps more than 120px usable height with a saved mission (7.8s)
+  ✓  121 [landscape] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (11.1s)
+  ✓  120 [landscape] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (15.3s)
+  ✓  122 [landscape] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (15.5s)
+  ✓  119 [landscape] › campaign.spec.mjs:260:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action (26.5s)
+  -  126 [landscape] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+  ✓  125 [landscape] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (6.7s)
+  ✓  124 [landscape] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (9.3s)
+  ✓  123 [landscape] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (16.5s)
+  ✓  128 [landscape] › contextual-coaching.spec.mjs:133:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (6.3s)
+  ✓  127 [landscape] › contextual-coaching.spec.mjs:122:1 › teaching dialog, real controls and a centered suggestion are visible at the current viewport (8.2s)
+  ✓  131 [landscape] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (9.4s)
+  ✓  130 [landscape] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (12.9s)
+  ✓  129 [landscape] › offline-shell.spec.mjs:17:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts (18.6s)
+  ✓  135 [landscape] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (9.9s)
+  ✓  133 [landscape] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (14.0s)
+  ✓  134 [landscape] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (14.2s)
+  ✘  132 [landscape] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (24.7s)
+(node:19316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  138 [landscape] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (7.6s)
+  ✓  137 [landscape] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (10.1s)
+  ✓  136 [landscape] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (12.3s)
+  ✓  139 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (11.3s)
+  ✓  141 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (9.1s)
+  ✓  140 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (9.6s)
+  -  144 [landscape] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓  142 [landscape] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (9.2s)
+  ✓  143 [landscape] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (5.9s)
+  ✓  146 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (22.5s)
+  ✓  145 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (22.8s)
+  ✓  147 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (21.8s)
+(node:19907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  148 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (26.9s)
+  ✓  150 [landscape] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (10.8s)
+  ✓  151 [desktop] › campaign-onboarding.spec.mjs:46:1 › campaign is the entry screen and skirmish is an explicit optional route (7.9s)
+(node:20187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:20226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  152 [desktop] › campaign-onboarding.spec.mjs:110:1 › an existing campaign save keeps its full roster and construction without migration (5.9s)
+  ✓  149 [landscape] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (17.7s)
+(node:20584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  155 [desktop] › campaign-onboarding.spec.mjs:126:1 › save and exit focuses the saved mission and resumes that same battle (11.1s)
+  ✓  156 [desktop] › campaign-onboarding.spec.mjs:137:1 › a worse replay attempt keeps the existing best stars and best time (8.9s)
+  ✓  153 [desktop] › campaign-onboarding.spec.mjs:62:1 › opening guidance uses real build cards, normal gold costs, and real battlefield construction (17.8s)
+  ✓  154 [desktop] › campaign-onboarding.spec.mjs:87:1 › all buildings and hint controls are reversible and do not bypass normal selection (16.8s)
+  ✓  157 [desktop] › campaign-onboarding.spec.mjs:147:32 › 1-star result offers the correct optional replay and preserves records (7.9s)
+  ✓  158 [desktop] › campaign-onboarding.spec.mjs:147:32 › 2-star result offers the correct optional replay and preserves records (7.5s)
+  ✓  159 [desktop] › campaign-onboarding.spec.mjs:147:32 › 3-star result offers the correct optional replay and preserves records (8.0s)
+  ✓  161 [desktop] › campaign.spec.mjs:69:1 › campaign chapter and mission choices retain keyboard focus after rerender (6.4s)
+  ✓  160 [desktop] › campaign.spec.mjs:56:1 › campaign locked mission cannot launch and an unlocked mission can (10.9s)
+  ✓  163 [desktop] › campaign.spec.mjs:104:1 › campaign victory awards stars once and Continue unlocks the next mission (10.4s)
+  ✓  164 [desktop] › campaign.spec.mjs:127:1 › campaign deadline failure focuses Retry and restarts without granting progress (9.6s)
+  ✓  162 [desktop] › campaign.spec.mjs:83:1 › campaign UI-created version 2 save reloads the same mission and construction (14.9s)
+  ✓  165 [desktop] › campaign.spec.mjs:148:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable (10.5s)
+  ✓  166 [desktop] › campaign.spec.mjs:163:1 › campaign briefing and launch remain reachable across viewport changes (12.4s)
+  ✓  168 [desktop] › campaign.spec.mjs:214:1 › landscape campaign content keeps more than 120px usable height with a saved mission (10.0s)
+  ✓  167 [desktop] › campaign.spec.mjs:182:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save (16.6s)
+  ✓  171 [desktop] › contextual-coaching.spec.mjs:40:1 › another composition, legal unmarked sites and hiding hints preserve player agency (13.4s)
+  ✓  170 [desktop] › contextual-coaching.spec.mjs:23:1 › reading and paid construction stop both armies, clocks and income until explicit Resume (15.3s)
+  ✓  169 [desktop] › campaign.spec.mjs:260:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action (29.9s)
+  ✓  172 [desktop] › contextual-coaching.spec.mjs:52:1 › start now, manual pause, preferences and optional teaching replay require deliberate transitions (15.5s)
+  ✓  174 [desktop] › contextual-coaching.spec.mjs:79:1 › visibility interruption while planning requires explicit resume and cannot buy with a held gesture (9.6s)
+  ✓  175 [desktop] › contextual-coaching.spec.mjs:93:1 › keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle (7.0s)
+  ✓  177 [desktop] › contextual-coaching.spec.mjs:122:1 › teaching dialog, real controls and a centered suggestion are visible at the current viewport (7.7s)
+  ✓  173 [desktop] › contextual-coaching.spec.mjs:65:1 › saved planning construction resumes normally and completed replay skips the automatic hold (19.9s)
+  ✓  178 [desktop] › contextual-coaching.spec.mjs:133:1 › viewport safety covers the reading dialog and remains usable until an explicit safe Resume (8.2s)
+  ✘  176 [desktop] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission (13.6s)
+(node:22103) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  181 [desktop] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (9.7s)
+  ✓  180 [desktop] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (14.7s)
+  ✓  179 [desktop] › offline-shell.spec.mjs:17:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts (22.2s)
+  ✓  183 [desktop] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (18.4s)
+  ✓  184 [desktop] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (15.8s)
+  ✘  182 [desktop] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (24.2s)
+  ✓  185 [desktop] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (13.8s)
+(node:22552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  187 [desktop] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (10.7s)
+  ✓  186 [desktop] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (12.7s)
+  ✓  188 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (9.9s)
+  ✓  189 [desktop] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (9.1s)
+  ✓  190 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (8.9s)
+  -  194 [desktop] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓  193 [desktop] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (5.2s)
+  ✓  191 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (8.5s)
+  ✓  192 [desktop] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (7.8s)
+  ✓  195 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (20.3s)
+  ✓  197 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (19.7s)
+  ✓  196 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (20.5s)
+  ✓  198 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (20.3s)
+  ✓  200 [desktop] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (3.9s)
+  ✓  199 [desktop] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (4.8s)
+
+
+  1) [phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+
+    Error: Test timeout of 20000ms exceeded
+
+      94 |         backingMatches:canvas.width===Math.round(rect.width*dpr)&&canvas.height===Math.round(rect.height*dpr),
+      95 |       };
+    > 96 |     })).toEqual({viewport:[size.width,size.height],width:size.width-(size.height<=500&&size.width>size.height?152:0),expectedWidth:size.width-(size.height<=500&&size.width>size.height?152:0),startsAtLeft:true,rightEdgeMatches:true,railFits:true,backingMatches:true});
+         |         ^
+      97 |     await openBuildControls(page);
+      98 |     for (const selector of ['#battle','#pause','#speed','#sound','#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
+      99 |     await press(page,'#pause'); await fits(page,'#help');
+        at /workspace/ironroot-coaching/qa/browser/regression.spec.mjs:96:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [narrow-phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+
+    Test timeout of 20000ms exceeded.
+
+    Error: locator.tap: Test timeout of 20000ms exceeded.
+    Call log:
+      - waiting for locator('#home')
+        - locator resolved to <button id="home" class="map-jump" title="Your base" aria-label="Go to your base">↵            ⌂</button>
+      - attempting tap action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+
+
+      14 |   if (await prepareBuildControl(page, selector)) return;
+      15 |   const target = page.locator(selector);
+    > 16 |   if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await target.tap();
+         |                                                                             ^
+      17 |   else await target.click();
+      18 | }
+      19 | async function open(page) {await page.goto('/'); await press(page,'[data-mode="skirmish"]'); await expect(page.locator('#start')).toBeVisible();}
+        at press (/workspace/ironroot-coaching/qa/browser/regression.spec.mjs:16:77)
+        at slot (/workspace/ironroot-coaching/qa/browser/regression.spec.mjs:30:3)
+        at /workspace/ironroot-coaching/qa/browser/regression.spec.mjs:103:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-narrow-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-narrow-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-narrow-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-narrow-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [landscape] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+
+    Test timeout of 20000ms exceeded.
+
+    Error: locator.tap: Test timeout of 20000ms exceeded.
+    Call log:
+      - waiting for locator('#help')
+        - locator resolved to <button id="help" class="text-button" aria-label="Open field guide">↵              Field guide↵            </button>
+      - attempting tap action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+
+
+      14 |   if (await prepareBuildControl(page, selector)) return;
+      15 |   const target = page.locator(selector);
+    > 16 |   if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await target.tap();
+         |                                                                             ^
+      17 |   else await target.click();
+      18 | }
+      19 | async function open(page) {await page.goto('/'); await press(page,'[data-mode="skirmish"]'); await expect(page.locator('#start')).toBeVisible();}
+        at press (/workspace/ironroot-coaching/qa/browser/regression.spec.mjs:16:77)
+        at /workspace/ironroot-coaching/qa/browser/regression.spec.mjs:100:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#toast')
+    Expected substring: "raised"
+    Received string:    "Too close to another building."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('#toast') with timeout 5000ms
+      - waiting for locator('#toast')
+        9 × locator resolved to <div id="toast" role="status" class="toast show">Too close to another building.</div>
+          - unexpected value "Too close to another building."
+        4 × locator resolved to <div id="toast" class="toast" role="status">Too close to another building.</div>
+          - unexpected value "Too close to another building."
+
+
+      108 |     const r=await page.locator('#battle').boundingBox(),scale=Math.max(.32,r.height/900);
+      109 |     await page.mouse.click(r.x+r.width/2,r.y+r.height/2+18*scale);
+    > 110 |     await expect(page.locator('#toast')).toContainText('raised');
+          |                                          ^
+      111 |   }
+      112 |   await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Follow your army');
+      113 |   await press(page,'#coachResume');await press(page,'#speed');await press(page,'#speed');
+        at /workspace/ironroot-coaching/qa/browser/contextual-coaching.spec.mjs:110:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/contextual-coaching-a-fres-86bdd-s-the-next-teaching-mission-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/contextual-coaching-a-fres-86bdd-s-the-next-teaching-mission-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/contextual-coaching-a-fres-86bdd-s-the-next-teaching-mission-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/contextual-coaching-a-fres-86bdd-s-the-next-teaching-mission-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [desktop] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+
+    Test timeout of 20000ms exceeded.
+
+    Error: locator.boundingBox: Test timeout of 20000ms exceeded.
+    Call log:
+      - waiting for locator('#home')
+        - locator resolved to visible <button id="home" class="map-jump" title="Your base" aria-label="Go to your base">↵            ⌂</button>
+
+
+      38 | }
+      39 | async function fits(page, selector) {
+    > 40 |   const r = await page.locator(selector).boundingBox(), v = page.viewportSize();
+         |                                          ^
+      41 |   expect(r, selector).not.toBeNull(); expect(r.width).toBeGreaterThan(0); expect(r.height).toBeGreaterThan(0);
+      42 |   expect(r.x, selector).toBeGreaterThanOrEqual(-1); expect(r.y, selector).toBeGreaterThanOrEqual(-1);
+      43 |   expect(r.x + r.width, selector).toBeLessThanOrEqual(v.width + 1); expect(r.y + r.height, selector).toBeLessThanOrEqual(v.height + 1);
+        at fits (/workspace/ironroot-coaching/qa/browser/regression.spec.mjs:40:42)
+        at /workspace/ironroot-coaching/qa/browser/regression.spec.mjs:98:128
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5 failed
+    [phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes ─
+    [narrow-phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+    [landscape] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+    [desktop] › contextual-coaching.spec.mjs:101:1 › a fresh suggested army earns a real win and Continue opens the next teaching mission
+    [desktop] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes
+  6 skipped
+  189 passed (9.7m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

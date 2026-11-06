@@ -1,0 +1,74 @@
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:19] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:17691) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:23] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:23] "GET /styles.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:23] "GET /app.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:23] "GET /report-view.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /barlow-condensed-latin-700.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /barlow-condensed-latin-600.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /dm-sans-latin-400-700.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /barlow-condensed-latin-500.woff2 HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /mobile-battlefield.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /input-scope.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /profile-session.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /controller.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /backup.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /engine.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /render.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /challenges.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /report-view.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /battle-report.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /scouting.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /persistence.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /codex.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /battle-codec.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /audio.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /objectives.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /campaign-flow.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /protected-objectives.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /objective-alerts.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /campaign.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /rootwarden-art.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /vfx.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /rulesets.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /combat-feedback.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /history-codec.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /training.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:24] "GET /intro-campaign.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [06/Nov/2026 21:58:25] "GET /icon.svg HTTP/1.1" 200 -
+  ✘  1 regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (20.2s)
+
+
+  1) regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes ──────────
+
+    Test timeout of 20000ms exceeded.
+
+    Error: locator.boundingBox: Test timeout of 20000ms exceeded.
+    Call log:
+      - waiting for locator('#battle')
+        - locator resolved to visible <canvas id="battle" width="780" tabindex="0" height="852" aria-label="Battlefield. Select a building below, then tap a green build slot to place it. Drag to explore."></canvas>
+
+
+      38 | }
+      39 | async function fits(page, selector) {
+    > 40 |   const r = await page.locator(selector).boundingBox(), v = page.viewportSize();
+         |                                          ^
+      41 |   expect(r, selector).not.toBeNull(); expect(r.width).toBeGreaterThan(0); expect(r.height).toBeGreaterThan(0);
+      42 |   expect(r.x, selector).toBeGreaterThanOrEqual(-1); expect(r.y, selector).toBeGreaterThanOrEqual(-1);
+      43 |   expect(r.x + r.width, selector).toBeLessThanOrEqual(v.width + 1); expect(r.y + r.height, selector).toBeLessThanOrEqual(v.height + 1);
+        at fits (/tmp/ironroot-coaching-baseline/qa/browser/regression.spec.mjs:40:42)
+        at /tmp/ironroot-coaching-baseline/qa/browser/regression.spec.mjs:98:128
+
+    Error Context: test-results/regression-controls-fit-th-b0e9b-survive-orientation-changes/error-context.md
+
+  1 failed
+    regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes ───────────
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
