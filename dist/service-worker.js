@@ -6,6 +6,7 @@ const FILES = [
   './styles.css',
   './app.js',
   './backup.js',
+  './profile-session.js',
   './controller.js',
   './engine.js',
   './render.js',

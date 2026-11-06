@@ -2682,3 +2682,35 @@ button:disabled {
     margin-right: 0;
   }
 }
+body.gamepad-active button:focus,
+body.gamepad-active summary:focus,
+body.gamepad-active input:focus,
+body.gamepad-active select:focus,
+body.gamepad-active a:focus {
+  outline: 3px solid #f1d494 !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #162c22bb;
+}
+.profile-recovery {
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid #bb8951;
+  background: #49382455;
+  text-align: left;
+}
+.profile-recovery h3 {
+  font: 600 22px var(--display);
+  margin: 0 0 10px;
+  color: #e6c48a;
+}
+.profile-recovery p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #e0c8a0;
+}
+.profile-recovery button {
+  min-height: 44px;
+  margin: 4px 5px 4px 0;
+  padding: 9px 12px;
+  font-size: 10px;
+}

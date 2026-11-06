@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { GamepadInput, radialDeadzone, moveCursor, nextFocusIndex, spatialFocusIndex } from '../dist/controller.js';
+import { GamepadInput, radialDeadzone, moveCursor, nextFocusIndex, nextAffordableIndex, spatialFocusIndex } from '../dist/controller.js';
 const check = (name, fn) => test(`controller: ${name}`, fn);
 const pad = (overrides = {}) => ({
   id: 'Fixture pad', index: 0, mapping: 'standard', connected: true,
@@ -354,6 +354,46 @@ check('linear focus navigation skips hidden/disabled controls and wraps all eigh
   assert.equal(nextFocusIndex([], 0, 1), -1);
   assert.equal(nextFocusIndex([{ disabled: true }], 0, 1), -1);
   assert.equal(nextFocusIndex(cards, 7, 1, { wrap: false }), 7);
+});
+check('affordable card cycling skips expensive neighbors and wraps in both directions', () => {
+  const cards = [140, 175, 270, 220, 190, 230, 250].map((cost) => ({ cost }));
+  assert.equal(nextAffordableIndex(cards, 1, 1, 200), 4, 'Archery must skip Foundry and Watchtower to Gold mine');
+  assert.equal(nextAffordableIndex(cards, 1, -1, 200), 0);
+  assert.equal(nextAffordableIndex(cards, 4, 1, 200), 0);
+  assert.equal(nextAffordableIndex(cards, 0, -1, 200), 4);
+  assert.equal(nextAffordableIndex(cards, -1, 1, 200), 0);
+  assert.equal(nextAffordableIndex(cards, -1, -1, 200), 4);
+  assert.equal(nextAffordableIndex(cards, 1, 1, 270), 2, 'Exact affordability is sufficient');
+  assert.equal(nextAffordableIndex(cards, 0, -10, 200), 4, 'Direction magnitude does not skip entries');
+});
+check('affordable cycling never returns the selected card or toggles the only affordable one off', () => {
+  const cards = [140, 175, 270, 220, 190, 230, 250].map((cost) => ({ cost }));
+  for (const direction of [-1, 1]) {
+    assert.equal(nextAffordableIndex(cards, 0, direction, 150), -1);
+    assert.equal(nextAffordableIndex(cards, -1, direction, 139), -1);
+    assert.equal(nextAffordableIndex([{ cost: 0 }], 0, direction, 0), -1);
+    assert.equal(nextAffordableIndex([{ cost: 0 }], -1, direction, 0), 0);
+  }
+});
+check('affordable cycling rejects malformed costs and budgets without modifying the input', () => {
+  const cards = Object.freeze([null, {}, { cost: -1 }, { cost: NaN },
+    { cost: Infinity }, { cost: '10' }, Object.freeze({ cost: 10 })]);
+  assert.equal(nextAffordableIndex(cards, -1, 1, 10), 6);
+  assert.equal(nextAffordableIndex(cards, 999, -1, 10), 6);
+  assert.equal(nextAffordableIndex(cards, 1.5, 1, 10), 6);
+  for (const gold of [-1, NaN, Infinity, undefined, '100'])
+    assert.equal(nextAffordableIndex(cards, -1, 1, gold), -1);
+  for (const list of [[], null, undefined, {}])
+    assert.equal(nextAffordableIndex(list, -1, 1, 10), -1);
+});
+check('affordable cycling is bounded to one pass even when every other card is too expensive', () => {
+  let reads = 0;
+  const cards = Array.from({ length: 1000 }, () => ({ get cost() { reads++; return 100; } }));
+  assert.equal(nextAffordableIndex(cards, 100, 1, 0), -1);
+  assert.equal(reads, 999);
+  reads = 0;
+  assert.equal(nextAffordableIndex(cards, -1, -1, 0), -1);
+  assert.equal(reads, 1000);
 });
 check('spatial focus selects directional neighbors and never crosses an unavailable item', () => {
   const items = [

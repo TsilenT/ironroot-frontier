@@ -7,11 +7,22 @@ API polling and deterministic tests. It owns input state only, not DOM elements,
 game rules, rendering, storage, or animation frames. App integration and real
 hardware validation are separate from module unit tests.
 
-The isolated module is implemented in `dist/controller.js`, with deterministic
-unit coverage in `tests/controller.test.mjs`. It is intentionally not imported by
-the app or included in the public 0.6 release. The app adapter is planned for 0.7.
-Do not advertise controller support until integration and the hardware checks
-below are complete. Unit tests are not evidence of controller-only playability.
+The module in `dist/controller.js` is now integrated by `dist/app.js` in the
+experimental 0.7 candidate. The app shares battlefield activation with touch,
+shows a virtual cursor, and routes controller input through menus and HUD focus.
+The public 0.6 release did not include this feature. Deterministic module tests
+are separate from adapter/browser review and real-device validation. Physical
+hardware is not available in this environment, and controller-only playability,
+Steam Input compatibility, and Steam Deck support are not certified.
+
+The adapter audit reproduced an unaffordable-card cycling stall and a hidden
+cursor takeover purchase. Both now pass the same synthetic callback checks:
+cycling advances to an affordable different card, and the first takeover A
+leaves gold and buildings unchanged. The adapter also clamps before actions,
+uses an explicit gamepad focus class, handles Back after inspecting an ended
+battle, and resets HUD mode at title/new-battle transitions. These are code and
+synthetic checks. Actual browser navigation and physical-device validation
+remain separate release gates.
 
 ## Standard mapping
 
@@ -25,7 +36,7 @@ configuration rather than silently assuming Xbox positions.
 | B / right face | Cancel build, rally, or selection | Back / close the topmost dialog |
 | X / left face | Enter HUD focus | Return to battlefield, where appropriate |
 | Y / top face | Arm rally strike; A still required to cast | No battlefield action |
-| LB / RB | Previous / next of seven building cards | Previous / next focus group, if available |
+| LB / RB | Previous / next affordable building card | Previous / next available control |
 | Left stick | Move virtual cursor | Directional focus navigation |
 | D-pad | Enter / navigate HUD focus | Directional focus navigation |
 | Right stick | Pan camera | No camera movement behind menus |
@@ -233,3 +244,48 @@ The module deliberately does not vibrate controllers, use persistence, claim
 Steam Input support, acquire exclusive device access, or create trusted browser
 user-activation events. Hardware glyphs and device remapping UI remain adapter
 and product work.
+
+
+## Adapter audit regression cases
+
+The initial adapter review used unmodified extracted app functions with a stub
+DOM and the real simulation in a temporary Node VM. This established callback
+behavior, not actual browser focus behavior or physical-controller support.
+
+- With 200 gold and Archery armed, repeated RB presses must move past the
+  unaffordable Foundry to an affordable different card. Search must wrap at most
+  once. When only the current card is affordable, retain it without toggling
+  it off. When none is affordable, leave selection unchanged. X/HUD navigation
+  still exposes every card and its cost.
+- Select a building or rally with pointer input, then press controller A with
+  the controller cursor hidden. The first takeover must reveal/reposition the
+  cursor without purchasing or casting at an unseen stale position. A fresh
+  subsequent press may activate the visible, clamped cursor.
+- Shrink or rotate the viewport, including while menus are open. Clamp the
+  virtual cursor before any confirm, not only afterward during movement.
+- Enter HUD focus, pause, save/exit, and launch another battle. Preserve the
+  existing `start()` reset of HUD mode and cursor placement and the explicit
+  HUD reset in `showTitle()`.
+- Use mouse/touch, then enter controller HUD focus. A visible outline must follow
+  the focused card/button/summary/checkbox even when the browser's native
+  `:focus-visible` keyboard heuristic does not activate for programmatic focus.
+- Result → Inspect battlefield → B must return to the title.
+- Pause, preferences, guide, result and backup dialogs must stop held input from
+  acting on a newly exposed screen. Confirm/cancel in the same sampled frame
+  must not perform an additional action after the scope changes.
+- Disconnect in live battle and in HUD focus. The active battle must pause;
+  reconnection must require neutral before accepting held inputs. Keyboard and
+  touch recovery must remain possible.
+
+`nextAffordableIndex(cards, currentIndex, direction, gold)` is implemented and
+unit-tested. It returns an index or -1 after one bounded, wrapping search,
+excludes the current card, and accepts only finite nonnegative costs and a
+finite nonnegative budget. A missing or invalid current index starts from the
+first/last card according to direction. Invalid costs are skipped. An exact
+budget is affordable. The input array is never modified.
+
+For building selection, pass `Object.values(BUILDINGS)` and the corresponding
+index from `Object.keys(BUILDINGS)`. Call `selectBuild` only when the result is
+nonnegative. A -1 result means keep the existing selection unchanged, which
+prevents the existing toggle-style selection handler from clearing the sole
+affordable card. HUD focus navigation still exposes all cards and prices.

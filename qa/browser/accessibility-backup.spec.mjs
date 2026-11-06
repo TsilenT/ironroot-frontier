@@ -122,7 +122,7 @@ test('backup import refuses a denied raw storage read without changing data',asy
     Storage.prototype.getItem=()=>{throw new DOMException('Denied','SecurityError');};
   });
   await press(page,'#confirmImport');
-  await expect(page.locator('#backupImportStatus')).toContainText(/could not|failed|unavailable|denied/i);
+  await expect(page.locator('#backupImportStatus')).toContainText(/could not|cannot|failed|unavailable|denied|blocked/i);
   await page.evaluate(()=>{Storage.prototype.getItem=window.__qaGetItem;delete window.__qaGetItem;});
   expect(await raw(page)).toEqual(before);
 });
@@ -160,11 +160,27 @@ async function installPad(page) {
   await page.goto('/');
   await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls)).toBeGreaterThanOrEqual(3);
 }
+async function neutralPad(page) {
+  const baseline=await page.evaluate(()=>{
+    window.__qaPad.buttons.fill(false);
+    window.__qaPad.axes=[0,0,0,0];
+    return window.__qaPadPolls;
+  });
+  // A pointer-triggered context reset needs a sampled neutral baseline before
+  // the next edge. Elapsed time alone does not prove that polling ran.
+  await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls),
+    {intervals:[20,40,80]}).toBeGreaterThanOrEqual(baseline+3);
+}
 async function padButton(page,index,hold=100) {
-  await page.evaluate(index=>{window.__qaPad.buttons[index]=true;},index);
-  await page.waitForTimeout(hold);
-  await page.evaluate(index=>{window.__qaPad.buttons[index]=false;},index);
-  await page.waitForTimeout(100);
+  await neutralPad(page);
+  const baseline=await page.evaluate(index=>{
+    window.__qaPad.buttons[index]=true;
+    return window.__qaPadPolls;
+  },index);
+  await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls),
+    {intervals:[20,40,80]}).toBeGreaterThanOrEqual(baseline+2);
+  if(hold>0)await page.waitForTimeout(hold);
+  await neutralPad(page);
 }
 async function gameSave(page) {
   return page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
@@ -234,4 +250,161 @@ test('controller disconnect clears cursor and leaves pointer controls usable',as
   await expect(page.locator('#controllerStatus')).toContainText(/disconnect|not connected|no.*controller/i);
   await press(page,'#settingsDone');await press(page,'#pause');await press(page,'#help');
   await expect(page.locator('#controllerHelp')).toBeVisible();
+});
+// Audited integration regressions, activated after the corresponding fixes.
+test('controller bumpers skip unaffordable cards to reach a later affordable card',async ({page})=>{
+  const game=new Game({seed:919,ai:false});game.state.gold[0]=190;
+  Game.restore(game.serialize());
+  const envelope={format:'ironroot-save',version:2,challengeId:null,campaignId:null,game:game.serialize()};
+  await page.addInitScript(({key,envelope})=>localStorage.setItem(key,JSON.stringify(envelope)),{key:SAVE,envelope});
+  await installPad(page);await press(page,'#resumeSaved');
+  await padButton(page,5);await expect(page.locator('[data-type="barracks"]')).toHaveClass(/active/);
+  await padButton(page,5);await expect(page.locator('[data-type="archery"]')).toHaveClass(/active/);
+  await padButton(page,5);await expect(page.locator('[data-type="mint"]')).toHaveClass(/active/);
+  await padButton(page,4);await expect(page.locator('[data-type="archery"]')).toHaveClass(/active/);
+  await padButton(page,9);const save=await gameSave(page);
+  expect(save.game.state.gold[0]).toBeLessThan(220); // Fixture must still exclude Watchtower.
+  expect(save.game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);
+});
+
+test('first controller confirm after pointer build selection reveals cursor without spending',async ({page})=>{
+  await installPad(page);await press(page,'#start');
+  await press(page,'[data-type="archery"]');
+  await expect(page.locator('#controllerCursor')).toBeHidden();
+  await padButton(page,0);
+  await expect(page.locator('#controllerCursor')).toBeVisible();
+  await expect(page.locator('[data-type="archery"]')).toHaveClass(/active/);
+  await padButton(page,9);
+  const save=await gameSave(page);
+  expect(save.game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);
+  expect(save.game.state.gold[0]).toBeGreaterThanOrEqual(420);
+});
+
+async function delayFileReads(page) {
+  await page.evaluate(()=>{
+    const original=File.prototype.text;
+    window.__qaFileReads=[];
+    File.prototype.text=function(){
+      const text=original.call(this);
+      return new Promise((resolve,reject)=>{
+        window.__qaFileReads.push({release:()=>text.then(resolve,reject)});
+      });
+    };
+  });
+}
+async function releaseRead(page,index) {
+  await page.evaluate(index=>window.__qaFileReads[index].release(),index);
+}
+
+test('late first backup read cannot replace a newer selected file preview',async ({page})=>{
+  await openSettings(page);await delayFileReads(page);
+  await chooseFile(page,fixture(false).text);
+  await expect.poll(()=>page.evaluate(()=>window.__qaFileReads.length)).toBe(1);
+  await chooseFile(page,fixture(true).text);
+  await expect.poll(()=>page.evaluate(()=>window.__qaFileReads.length)).toBe(2);
+  await releaseRead(page,1);
+  await expect(page.locator('#backupSummary')).toContainText('1/12 campaign missions');
+  await releaseRead(page,0);
+  await page.waitForTimeout(150);
+  await expect(page.locator('#backupSummary')).toContainText('1/12 campaign missions');
+  await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);
+  const actual=await raw(page);
+  expect(JSON.parse(actual[BACKUP_STORAGE_KEYS.campaign])).toEqual(fixture(true).backup.data.campaign);
+});
+
+test('leaving backup settings invalidates an unfinished file read',async ({page})=>{
+  await openSettings(page);const before=await raw(page);await delayFileReads(page);
+  await chooseFile(page,fixture(true).text);
+  await expect.poll(()=>page.evaluate(()=>window.__qaFileReads.length)).toBe(1);
+  await press(page,'#settingsDone');await expect(page.locator('#welcome')).toBeVisible();
+  await releaseRead(page,0);await page.waitForTimeout(150);
+  await expect(page.locator('#backupModal')).toBeHidden();
+  expect(await raw(page)).toEqual(before);
+});
+
+test('incomplete backup rollback holds the retained session and requires explicit recovery consent',async ({page})=>{
+  await openSettings(page);await press(page,'#settingsDone');await press(page,'#resumeSaved');
+  await press(page,'#settings');
+  if(!await page.locator('.backup-details').evaluate(element=>element.open))await press(page,'.backup-details > summary');
+  const before=await raw(page);await preview(page);
+  await page.evaluate(({settings,campaign,oldCampaign})=>{
+    const original=Storage.prototype.setItem;window.__qaSetItem=original;let failed=false;
+    Storage.prototype.setItem=function(key,value){
+      if(key===settings&&!failed){failed=true;throw new DOMException('Full','QuotaExceededError');}
+      if(failed&&key===campaign&&value===oldCampaign)throw new DOMException('Rollback blocked','QuotaExceededError');
+      return original.call(this,key,value);
+    };
+  },{settings:BACKUP_STORAGE_KEYS.settings,campaign:BACKUP_STORAGE_KEYS.campaign,oldCampaign:before[BACKUP_STORAGE_KEYS.campaign]});
+  await press(page,'#confirmImport');
+  await expect(page.locator('#backupImportStatus')).toContainText(/could not be fully restored/i);
+  const partial=await raw(page);expect(partial).not.toEqual(before);
+  await press(page,'#cancelImport');
+  await expect(page.locator('#profileRecovery')).toBeVisible();
+  await expect(page.locator('#profileRecoveryMessage')).not.toBeEmpty();
+  await expect(page.locator('#settingsDone')).toBeDisabled();
+  await expect(page.locator('#closeSettings')).toBeDisabled();
+  await expect(page.locator('#profileReload')).toBeDisabled();
+  await page.keyboard.press('Escape');await expect(page.locator('#settingsModal')).toBeVisible();
+  expect(await raw(page)).toEqual(partial);
+
+  const downloadEvent=page.waitForEvent('download');await press(page,'#exportRecovery');
+  const file=await downloadEvent,stream=await file.createReadStream(),chunks=[];
+  for await(const chunk of stream)chunks.push(chunk);
+  const retained=parseBackup(Buffer.concat(chunks).toString('utf8'));
+  expect(retained.data.campaign).toEqual(JSON.parse(before[BACKUP_STORAGE_KEYS.campaign]));
+  expect(retained.data.trials).toEqual(JSON.parse(before[BACKUP_STORAGE_KEYS.trials]));
+  expect(retained.data.settings).toEqual(JSON.parse(before[BACKUP_STORAGE_KEYS.settings]));
+  expect(retained.data.battle.game.difficulty).toBe('easy');
+  expect(await raw(page)).toEqual(partial);
+
+  await page.evaluate(()=>{Storage.prototype.setItem=window.__qaSetItem;delete window.__qaSetItem;});
+  await chooseFile(page,fixture(true).text);
+  await expect(page.locator('#backupModal')).toBeVisible();
+  await expect(page.locator('#backupRecoveryConsent')).toBeVisible();
+  await expect(page.locator('#backupRecoveryConsent')).not.toBeChecked();
+  await expect(page.locator('#confirmImport')).toBeDisabled();
+  await page.locator('#backupRecoveryConsent').check(); // Only this test tab exists.
+  await expect(page.locator('#confirmImport')).toBeEnabled();
+  await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);
+  await expect(page.locator('#welcome')).toBeVisible();
+  const restored=await raw(page),expected=fixture(true).backup.data;
+  for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))expect(JSON.parse(restored[key])).toEqual(expected[domain]);
+});
+
+for(const mode of ['campaign','challenges'])test('stale '+mode+' tab cannot resurrect medals or settings after an empty-profile import',async ({page,context})=>{
+  await openSettings(page);
+  // Establish both kinds of old medals before loading the stale app session.
+  await page.evaluate(({key,campaign})=>localStorage.setItem(key,JSON.stringify(campaign)),
+    {key:BACKUP_STORAGE_KEYS.campaign,campaign:fixture(true).backup.data.campaign});
+  await page.reload();await press(page,'[data-mode="'+mode+'"]');await press(page,'#start');
+  await press(page,'#pause');await expect(page.locator('#pauseVeil')).toBeVisible();
+  const newer=await context.newPage(),errors=[];
+  newer.on('pageerror',error=>errors.push(error.message));
+  try{
+    await newer.goto('/');await press(newer,'#welcomeSettings');await press(newer,'.backup-details > summary');
+    const empty=createBackup({getItem:()=>null},{createdAt:'2026-11-06T12:00:00.000Z'});
+    await chooseFile(newer,empty);await expect(newer.locator('#backupModal')).toBeVisible();
+    await Promise.all([newer.waitForEvent('load'),press(newer,'#confirmImport')]);
+    const expected=await raw(newer);
+    expect(JSON.parse(expected[BACKUP_STORAGE_KEYS.campaign]).missions).toEqual({});
+    expect(JSON.parse(expected[BACKUP_STORAGE_KEYS.trials])).toEqual({});
+    expect(JSON.parse(expected[BACKUP_STORAGE_KEYS.settings])).toEqual({});
+    expect(expected[SAVE]).toBeNull();
+
+    await page.bringToFront();
+    await expect(page.locator('#profileRecovery')).toBeVisible();
+    await expect(page.locator('#settingsDone')).toBeDisabled();
+    await expect(page.locator('#closeSettings')).toBeDisabled();
+    await page.keyboard.press('Escape');await expect(page.locator('#settingsModal')).toBeVisible();
+    // Controls may be disabled entirely; otherwise even an attempted preference
+    // change must not write this tab's old profile back over the replacement.
+    if(await page.locator('#reduceMotion').isEnabled())await press(page,'#reduceMotion');
+    expect(await raw(newer)).toEqual(expected);
+    await expect(page.locator('#profileReload')).toBeEnabled();
+    await Promise.all([page.waitForEvent('load'),press(page,'#profileReload')]);
+    await expect(page.locator('#welcome')).toBeVisible();
+    await expect(page.locator('#resumeSaved')).toBeHidden();
+    expect(await raw(page)).toEqual(expected);
+    expect(errors,'uncaught errors in importing tab').toEqual([]);
+  }finally{await newer.close();}
 });
