@@ -90,7 +90,7 @@ still apply. The adaptation changes these obsolete assumptions:
 
 The original/adapted regression file has 21 logical cases (84 profile instances).
 The campaign file adds nine cases (36 instances), and the controller/backup file
-adds ten cases (40 instances), for an expected total of 160 profile instances,
+adds seventeen cases (68 instances), for an expected total of 188 profile instances,
 including three intentional skips. This is an expected
 discovery count, not a pass claim. The historical 81-pass run covers only the
 previous 84-instance matrix.
@@ -301,3 +301,55 @@ claim that the entire corrected 120-instance matrix was rerun, and not results
 for the newer 160-instance v0.7 controller/backup matrix. Local work here only
 patched the test and performed syntax/fixture checks; no local browser run
 was performed.
+
+## Initial v0.7 candidate cloud result and controller synchronization
+
+The parent reported the older v0.7 candidate matrix as **155 passed, 2 failed,
+3 skipped** (160 instances). Backup checks passed **28/28**. The two failures
+were intermittent controller tests: a press could arrive before the app had
+sampled released buttons after pointer input reset the controller context.
+
+The harness now explicitly clears buttons/axes and waits for three observed
+navigator.getGamepads polls before each new press, then waits for the pressed
+input to be sampled and for released controls to be sampled afterward. Fixed
+durations control button hold length only; sleeps alone no longer establish
+a released-input baseline.
+
+The cloud worker reported **36/36 repeated controller checks passed** with
+neutral-poll synchronization. This is focused evidence, not a full corrected
+160-instance rerun. The local helper change passed syntax checks; no browser
+was run locally. New audited scenarios for bumper cycling, first-confirm
+cursor activation, file-read races, incomplete rollback and stale-profile
+imports are being prepared separately pending production fixes/contracts.
+
+## Activated audited regressions after profile-recovery integration
+
+Seven additional controller/backup cases are now active (28 profile instances).
+The combined expected matrix is 188 instances, including the existing three
+coordinate-specific skips. This is a discovery expectation, not a browser pass.
+
+- Low-gold shoulder cycling reaches an affordable mine beyond unaffordable
+  foundry/watchtower cards, and cycles backward without constructing anything.
+- First A after pointer construction selection reveals the virtual cursor
+  without spending gold or constructing at an unseen position.
+- Controlled File.text promises resolve out of order; the earlier file cannot
+  overwrite the newer preview or the data confirmed for import.
+- Dismissing settings during a pending read prevents a late preview reopening.
+- A settings-write failure plus blocked campaign rollback produces a persistent
+  recovery hold. Cancel returns to settings; close/done/reload remain disabled
+  and Escape cannot resume. Retained-session export preserves in-memory progress,
+  trials, settings and battle independently of partial stored data. After storage
+  repair, takeover restore requires checking the explicit other-tabs-closed
+  consent before replacing and reloading.
+- Separate active campaign and field-trial tabs are held after another tab imports
+  an empty profile. Old medals/preferences cannot return through preference input
+  or the explicit reload/beforeunload path. The newer saved battle remains absent.
+
+The marker barrier is exercised through normal UI operations; tests do not write
+or invent marker tokens. Existing quota rollback still targets the settings key
+after earlier domain writes, permitting the actual marker transition/finalization.
+Read-denial feedback accepts the new profile-marker refusal message.
+
+All added JavaScript syntax and existing campaign fixtures pass local checks.
+The new browser assertions remain unrun here. Exact marker-finalization retry
+and every storage-recovery/resume variant are not exhaustively covered.

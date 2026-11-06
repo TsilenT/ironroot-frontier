@@ -82,6 +82,22 @@ export function nextFocusIndex(items, currentIndex, delta = 1, { wrap = true } =
   return indices[wrap ? ((next % indices.length) + indices.length) % indices.length : clamp(next, 0, indices.length - 1)];
 }
 
+/** Find a different affordable card in at most one pass, or leave it unchanged (-1). */
+export function nextAffordableIndex(cards, currentIndex, direction, gold) {
+  if (!Array.isArray(cards) || !cards.length || !Number.isFinite(gold) || gold < 0) return -1;
+  const count = cards.length;
+  const step = finite(direction, 1) < 0 ? -1 : 1;
+  const validCurrent = Number.isInteger(currentIndex) && currentIndex >= 0 && currentIndex < count;
+  const start = validCurrent ? currentIndex : step > 0 ? -1 : count;
+  for (let offset = 1; offset <= count; offset++) {
+    const index = ((start + step * offset) % count + count) % count;
+    if (validCurrent && index === currentIndex) continue;
+    const cost = cards[index]?.cost;
+    if (Number.isFinite(cost) && cost >= 0 && cost <= gold) return index;
+  }
+  return -1;
+}
+
 function rectOf(item) {
   const rect = item?.rect || item;
   if (!rect || ![rect.x, rect.y, rect.width, rect.height].every(Number.isFinite) || rect.width < 0 || rect.height < 0) return null;

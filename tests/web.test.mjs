@@ -47,20 +47,39 @@ test('critical dialogs and battlefield expose accessible descriptions', () => {
 });
 
 test('portable backup controls require a preview and explicit replacement action', () => {
-  const html = read('index.html'), app = read('app.js');
-  for (const id of ['backupModal','backupSummary','confirmImport','cancelImport','backupImportStatus','backupStatus','backupIncludeBattle','backupFile']) assert.match(html,new RegExp(`id="${id}"`));
+  const html = read('index.html'),
+    app = read('app.js');
+  for (const id of [
+    'backupModal',
+    'backupSummary',
+    'confirmImport',
+    'cancelImport',
+    'backupImportStatus',
+    'backupStatus',
+    'backupIncludeBattle',
+    'backupFile',
+  ])
+    assert.match(html, new RegExp(`id="${id}"`));
   assert.match(html, /Replace local saves/);
   assert.match(html, /type="file"/);
-  assert.match(app, /restoreBackup\(localStorage, pendingBackupText\)/);
+  assert.match(
+    app,
+    /restoreBackup\(profileSession\.importStorage, pendingBackupText\)/,
+  );
   assert.match(app, /createBackup\(localStorage, options\)/);
-  assert.match(app, /started = false;\s+progressDirty = false;\s+paused = true;\s+pendingBackupText = null;\s+location\.reload\(\)/);
+  assert.match(
+    app,
+    /allowProfileReload = true;[\s\S]*?started = false;[\s\S]*?progressDirty = false;[\s\S]*?location\.reload\(\)/,
+  );
 });
 
 test('controller uses the shared legal placement path and runtime assets are cached', () => {
-  const app=read('app.js'),sw=read('service-worker.js');
-  assert.match(app,/function activateBattlePoint\(w\)/);
-  assert.match(app,/activateBattlePoint\(ui\.pointer\)/);
-  assert.match(app,/activateBattlePoint\(w\)/);
-  for(const file of ['backup.js','controller.js'])assert.ok(sw.includes(`'./${file}'`));
-  assert.match(read('index.html'),/id="controllerHelp"/);
+  const app = read('app.js'),
+    sw = read('service-worker.js');
+  assert.match(app, /function activateBattlePoint\(w\)/);
+  assert.match(app, /activateBattlePoint\(ui\.pointer\)/);
+  assert.match(app, /activateBattlePoint\(w\)/);
+  for (const file of ['backup.js', 'controller.js'])
+    assert.ok(sw.includes(`'./${file}'`));
+  assert.match(read('index.html'), /id="controllerHelp"/);
 });

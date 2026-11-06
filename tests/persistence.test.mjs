@@ -146,3 +146,57 @@ test('save session never claims a failed write as persisted', async () => {
   assert.equal(session.remove(), false);
   assert.equal(values.get('save'), 'data');
 });
+
+test('unavailable reads are not mistaken for a newer saved battle', async () => {
+  const { createSaveSession } = await import('../dist/persistence.js');
+  let denied = false,
+    value = 'existing';
+  const storage = createStorage(() => ({
+    getItem() {
+      if (denied) throw Error('Denied');
+      return value;
+    },
+    setItem(k, v) {
+      value = v;
+    },
+    removeItem() {
+      value = null;
+    },
+  }));
+  const session = createSaveSession(storage, 'save');
+  session.claim();
+  denied = true;
+  assert.equal(storage.read('save').ok, false);
+  assert.equal(session.status(), 'unavailable');
+  assert.equal(session.set('save', 'unsafe'), false);
+  denied = false;
+  assert.equal(session.status(), 'current');
+  value = 'newer';
+  assert.equal(session.status(), 'stale');
+});
+
+test('storage-denied fresh game recovers only into an empty save slot', async () => {
+  const { createSaveSession } = await import('../dist/persistence.js');
+  let denied = true,
+    value = null;
+  const storage = createStorage(() => ({
+    getItem() {
+      if (denied) throw Error('Denied');
+      return value;
+    },
+    setItem(k, v) {
+      value = v;
+    },
+  }));
+  const session = createSaveSession(storage, 'save');
+  assert.equal(session.claim(), false);
+  denied = false;
+  assert.equal(session.status(), 'current');
+  assert.equal(session.set('save', 'game'), true);
+  denied = true;
+  const other = createSaveSession(storage, 'save');
+  other.claim();
+  denied = false;
+  assert.equal(other.status(), 'stale');
+  assert.equal(other.set('save', 'overwrite'), false);
+});

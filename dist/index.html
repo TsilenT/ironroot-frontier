@@ -410,6 +410,32 @@
             available. Physical controller testing is ongoing.
           </p>
         </details>
+        <section
+          id="profileRecovery"
+          class="profile-recovery hidden"
+          aria-label="Profile recovery"
+        >
+          <h3>Keep this session safe</h3>
+          <p id="profileRecoveryMessage" role="alert"></p>
+          <p>
+            This tab will not write over a changed or partially restored
+            profile. Keep it open while recovering. Reload replaces this tab’s
+            retained battle with the verified saved profile. You can export the
+            in-memory session first.
+          </p>
+          <button id="exportRecovery" class="secondary-button">
+            Export in-memory session
+          </button>
+          <button id="retryProfileFinish" class="secondary-button hidden">
+            Retry finalization
+          </button>
+          <button id="resumeRecovery" class="secondary-button hidden">
+            Keep retained session
+          </button>
+          <button id="profileReload" class="gold-button">
+            Reload saved profile
+          </button>
+        </section>
         <details class="history-details backup-details">
           <summary>Save backups</summary>
           <p>
@@ -494,6 +520,12 @@
           history and the saved battle on this browser. Your current battle will
           be replaced. Export a backup first if you want to keep it.
         </p>
+        <p>Close other Ironroot tabs before restoring a backup.</p>
+        <label id="backupRecoveryRow" class="backup-check hidden"
+          ><input id="backupRecoveryConsent" type="checkbox" /> Other Ironroot
+          tabs are closed. Replace the unfinished restoration with this
+          backup.</label
+        >
         <p id="backupImportStatus" role="alert"></p>
         <button id="cancelImport" class="secondary-button">Cancel</button
         ><button id="confirmImport" class="gold-button">
