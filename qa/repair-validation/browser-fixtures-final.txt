@@ -1,0 +1,24 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ironroot-browser-regressions@0.12.0 check
+> node --check regression.spec.mjs && node --check accessibility-backup.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs && node --check field-reference.spec.mjs && node validate-codex-fixtures.mjs && node --check offline-shell.spec.mjs && node --check maps.spec.mjs && node --check map-fixtures.mjs && node --check map-browser-helpers.mjs && node --check map-controller-helpers.mjs && node validate-map-fixtures.mjs && node --check fonts.spec.mjs && node --check font-browser-helpers.mjs && node --check service-worker-update.spec.mjs && node --check update-fixtures.mjs && node validate-update-fixtures.mjs && node --check expanded-campaign.spec.mjs && node --check expanded-campaign-fixtures.mjs && node validate-expanded-campaign-fixtures.mjs && node --check profile-upgrade.spec.mjs && node --check legacy-profile-fixtures.mjs && node validate-legacy-profile-fixtures.mjs && node --check battle-report.spec.mjs && node --check battle-report-fixtures.mjs && node --check battle-report-legacy-fixtures.mjs && node validate-battle-report-fixtures.mjs && node --check training.spec.mjs && node --check training-fixtures.mjs && node --check training-browser-helpers.mjs && node validate-training-fixtures.mjs && node --check worker-update-helpers.mjs && node --check storage-recovery.spec.mjs
+
+Validated campaign fixture: victory
+Validated campaign fixture: failure
+Validated campaign fixture: protected
+Validated field-reference roster and marginal mine payback fixtures.
+Map fixtures: 3 geometry/save/backup/victory fixtures, 6 corruptions, 4 authored-map rejections passed.
+Update fixture 0.7.0: 17 pinned runtime files and complete precache manifest verified.
+Update fixture 0.8.0: 18 pinned runtime files and complete precache manifest verified.
+Production 0.7 commit/package metadata verified; current 0.12 precache includes all five fonts and all three Battle Report modules/styles and all four Guided practice resources.
+open-horizon: start / success / exact deadline 240s / scouting / backup / wrong-map rejection verified.
+river-charter: start / success / exact deadline 210s / scouting / backup / wrong-map rejection verified.
+far-beacon: start / success / exact deadline 280s / scouting / backup / wrong-map rejection verified.
+common-ground: start / success / exact deadline 300s / scouting / backup / wrong-map rejection verified.
+Expanded fixtures: 13 start/success/deadline/health variants, 3 protected losses, 4 backup roundtrips, 4 valid-engine wrong-map rejections; legacy 12/36 preserved in 16/48 total.
+Frozen 0.9 QA baseline: 24 exact runtime SHA-256 hashes; unchanged first 12 mission rules; real protocol-1 rejects version-2 marker. Not a production release fixture.
+Battle report fixtures: 10 explicitly synthetic terminal positions verified, read-only report/export and honest resumed scopes verified.
+Frozen 0.10 QA baseline: 26 exact runtime SHA-256 hashes verified; no production/released provenance claimed.
+Training fixture: all five synthetic persisted profile domains plus ready marker validated; active Twin Span save is engine/backup-valid. Exact whitespace bytes retained.
+Training shell: independent HTML/module/style route and four precached resources verified; no browser, natural lesson, gesture or offline execution claimed.
+Training import graph: 6 modules, real engine/renderer, and no profile/storage/persistence/reward module dependency verified.

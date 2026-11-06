@@ -1,0 +1,14 @@
+✔ minimap uses native click, not press-down, for touch targeting and guarded release activation (3.013589ms)
+✔ native minimap edge activation preserves exact geometry for every map width (2.192559ms)
+✔ minimap activation remains suppressible by the shared held-gesture scope guard (0.997079ms)
+✔ dialog controls reject closed-details descendants even when Chromium exposes their rectangles (6.386296ms)
+✔ controller controls reject closed-details descendants even when Chromium exposes their rectangles (3.870531ms)
+✔ Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary (3.043623ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125.222155

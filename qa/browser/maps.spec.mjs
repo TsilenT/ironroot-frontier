@@ -19,6 +19,28 @@ async function storageBytes(page){
   return page.evaluate(keys=>Object.fromEntries(keys.map(key=>[key,localStorage.getItem(key)])),[...Object.values(BACKUP_STORAGE_KEYS),'qa.unrelated']);
 }
 
+async function tapMinimap(page,point){
+  // Observe native targeting without modifying propagation/defaults. A camera
+  // jump alone must not hide Chromium redirecting an edge touch to Home/Front.
+  await page.evaluate(point=>{
+    window.__qaMinimapInput=[];
+    window.__qaMinimapGeometricTarget=document.elementFromPoint(point.x,point.y)?.id;
+    window.__qaMinimapInputAbort?.abort();
+    const abort=new AbortController();window.__qaMinimapInputAbort=abort;
+    for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event=>{
+      window.__qaMinimapInput.push({type,target:event.target.id,trusted:event.isTrusted});
+    },{capture:true,signal:abort.signal});
+  },point);
+  expect(await page.evaluate(()=>window.__qaMinimapGeometricTarget),'requested pixel belongs to the minimap').toBe('minimap');
+  await tapPoint(page,point);
+  await expect.poll(()=>page.evaluate(()=>window.__qaMinimapInput)).toEqual([
+    {type:'pointerdown',target:'minimap',trusted:true},
+    {type:'pointerup',target:'minimap',trusted:true},
+    {type:'click',target:'minimap',trusted:true},
+  ]);
+  await page.evaluate(()=>window.__qaMinimapInputAbort.abort());
+}
+
 test('map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens',async ({page})=>{
   test.setTimeout(35000);
   await page.goto('/');await expect(page.locator('#mapPicker')).toHaveJSProperty('open',false);
@@ -100,8 +122,8 @@ for(const id of MAP_IDS){
     const mini=await page.locator('#minimap').boundingBox();
     const lines=(await canvasFrame(page)).mini.lines;
     lines.forEach((line,index)=>expect(line[0][1]/mini.height*900).toBeCloseTo(map.lanes[index],5));
-    await tapPoint(page,{x:mini.x+mini.width*.73,y:mini.y+mini.height/2});await expectCamera(page,map,map.width*.73);
-    await tapPoint(page,{x:mini.x+mini.width-1,y:mini.y+mini.height/2});await expectCamera(page,map,map.width);
+    await tapMinimap(page,{x:mini.x+mini.width*.73,y:mini.y+mini.height/2});await expectCamera(page,map,map.width*.73);
+    await tapMinimap(page,{x:mini.x+mini.width-1,y:mini.y+mini.height/2});await expectCamera(page,map,map.width);
     if(id!=='classic'){
       const frame=(await canvasFrame(page)).mini;
       const base=frame.fills.find(fill=>fill.color==='#e5a281'&&fill.args[2]===4&&fill.args[3]===6);
@@ -109,7 +131,7 @@ for(const id of MAP_IDS){
       expect(base.args[0]+2).toBeCloseTo((map.width-110)/map.width*mini.width,3);
     }
     await testInfo.attach(id+'-far-right',{body:await page.screenshot(),contentType:'image/png'});
-    await tapPoint(page,{x:mini.x+1,y:mini.y+mini.height/2});await expectCamera(page,map,0);
+    await tapMinimap(page,{x:mini.x+1,y:mini.y+mini.height/2});await expectCamera(page,map,0);
     await press(page,'#home');await expectCamera(page,map,450);
     const state=await pause(page);await press(page,'#resume');await press(page,'#front');
     await expectCamera(page,map,state.game.state.frontline,30);
@@ -151,7 +173,7 @@ for(const id of NEW_MAP_IDS)test(MAPS[id].name+' engine-driven victory names the
   const history=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),HISTORY);
   expect(history).toHaveLength(1);expect(history[0]).toMatchObject({mapId:id,won:true,campaignId:null,challengeId:null});
   await press(page,'#playAgain');await press(page,'#welcomeSettings');
-  await press(page,'.history-details:not(.credits-details):not(.backup-details) > summary');
+  await press(page,'details:has(> #battleHistory) > summary');
   await expect(page.locator('#battleHistory')).toContainText('Skirmish · '+MAPS[id].name);
   await press(page,'#settingsDone');await expect(page.locator('#selectedMapName')).toHaveText(MAPS[id].name);
   await press(page,'#start');assertMap(await pause(page),id);

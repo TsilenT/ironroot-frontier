@@ -439,6 +439,8 @@
             </select></label
           >
         </div>
+        <p id="preferenceSaveWarning" class="save-warning hidden" role="status"></p>
+        <button id="retryPreferences" class="secondary-button hidden">Retry saving preferences</button>
         <details class="history-details" id="controllerSettings">
           <summary>Controller controls · experimental</summary>
           <p id="controllerStatus">
@@ -494,6 +496,7 @@
             saved battle</label
           >
           <div class="backup-actions">
+            <button id="exportRetained" class="secondary-button">Export in-memory session</button>
             <button id="exportBackup" class="secondary-button">
               Export backup</button
             ><button id="importBackup" class="secondary-button">
@@ -511,6 +514,8 @@
         </details>
         <details class="history-details">
           <summary>Recent battles</summary>
+          <p id="historySaveWarning" class="save-warning hidden" role="status"></p>
+          <button id="retryHistory" class="secondary-button hidden">Retry saving history</button>
           <div id="battleHistory"></div>
         </details>
         <p class="settings-note">
@@ -777,6 +782,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <div><b id="resultKills"></b><span>ENEMIES FELLED</span></div>
           <div><b id="resultBuilt"></b><span>BUILDINGS RAISED</span></div>
         </div>
+        <p id="resultHistoryWarning" class="save-warning hidden" role="status"></p>
+        <button id="retryResultHistory" class="secondary-button hidden">Retry saving history</button>
         <div id="resultReport" class="hidden"></div>
         <p id="resultReportIssue" class="save-warning hidden" role="status"></p>
         </div>

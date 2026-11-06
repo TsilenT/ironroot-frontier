@@ -5,6 +5,7 @@ import {BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
 import {test,press,tapPoint,selectMap,homePoint,pause} from './map-browser-helpers.mjs';
 import {FONT_FILES,loadFontFaces,normalizeNotice} from './font-browser-helpers.mjs';
 import {PRIOR_BUILDS,currentRoot,shellManifest} from './update-fixtures.mjs';
+import {updateAndAwaitController} from './worker-update-helpers.mjs';
 
 async function profileBytes(page){
   return page.evaluate(keys=>Object.fromEntries(keys.map(key=>[key,localStorage.getItem(key)])),Object.values(BACKUP_STORAGE_KEYS));
@@ -22,8 +23,10 @@ async function fetchShellHashes(page,basePath,hashes){
   },{basePath,files:Object.keys(hashes)});
 }
 
-for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+from+' to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline',async ({page,context,request})=>{
-  test.setTimeout(75000);
+for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+from+' to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline',async ({page,context,request},testInfo)=>{
+  // A measured Chromium update job took ~62s before resolving. Keep that
+  // browser-controlled scheduling separate from the bounded claim phase.
+  test.setTimeout(150000);
   const prior=await shellManifest(priorRoot),current=await shellManifest(currentRoot);
   // Both prior builds reference Google Fonts. Block only those external services;
   // both application shells and worker installs use the real loopback server.
@@ -51,15 +54,8 @@ for(const [from,{root:priorRoot}] of Object.entries(PRIOR_BUILDS))test('real '+f
     // The active old document remains open. Only this test's server session is
     // advanced; registration.update fetches the real changed worker script.
     expect((await request.post(basePath+'advance')).status()).toBe(204);
-    await page.evaluate(async basePath=>{
-      const registration=await navigator.serviceWorker.getRegistration(basePath),old=navigator.serviceWorker.controller;
-      const changed=new Promise((resolve,reject)=>{
-        const timeout=setTimeout(()=>reject(new Error('Updated worker did not claim the old tab')),15000);
-        navigator.serviceWorker.addEventListener('controllerchange',()=>{clearTimeout(timeout);resolve();},{once:true});
-      });
-      await registration.update();
-      if(navigator.serviceWorker.controller===old)await changed;
-    },basePath);
+    const updateTiming=await page.evaluate(updateAndAwaitController,{basePath,claimTimeoutMs:30000});
+    await testInfo.attach('service-worker-update-timing',{body:Buffer.from(JSON.stringify(updateTiming,null,2)),contentType:'application/json'});
     await expect.poll(()=>page.evaluate(()=>caches.keys()),{timeout:15000}).toEqual([current.version]);
     expect(await profileBytes(page)).toEqual(before);
     await context.setOffline(true);fromWorker.clear();

@@ -2,12 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
+import {nextFocusIndex,spatialFocusIndex} from '../dist/controller.js';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
-const focusSource=app.slice(app.indexOf('function dialogControls('),app.indexOf('function syncDialogs()'));
+const focusSource=app.slice(app.indexOf('function controlIsVisible('),app.indexOf('function syncDialogs()'));
 const downloadSource=app.slice(app.indexOf("$('resultReport').addEventListener('click'"),app.indexOf("$('start').onclick",app.indexOf("$('resultReport').addEventListener('click'")));
 const revealSource=app.slice(app.indexOf('function revealBattleReport('),app.indexOf("$('lastResult').onclick"));
 function control({hidden=false,rect=true,visibility='visible'}={}){return {closest:()=>hidden, getClientRects:()=>rect?[{}]:[], visibility};}
-test('dialog controls exclude closed details, inert/hidden and invisible controls but retain the report summary',()=>{
+test('dialog controls exclude zero-size, inert/hidden and invisible controls but retain the report summary',()=>{
   const summary=control(),download=control({rect:false}),inert=control({hidden:true}),invisible=control({visibility:'hidden'}),primary=control(),inspect=control();
   const layer={querySelectorAll:()=>[summary,download,inert,invisible,primary,inspect],querySelector:()=>primary};
   const result=runInNewContext(focusSource+'\n({controls:dialogControls(layer),preferred:dialogDefaultFocus(layer)})',{layer,getComputedStyle:e=>({visibility:e.visibility})});
@@ -68,11 +69,87 @@ test('failed anchor activation cleans its URL and leaves a truthful error; absen
   const blocked=download({clickError:true});assert.equal(blocked.removed,1);assert.deepEqual(blocked.revoked,['blob:local-report']);assert.equal(blocked.status.textContent,'Download blocked');
   const absent=download({report:null});assert.equal(absent.created,0);assert.equal(absent.status.textContent,'');
 });
-test('engine and existing save/profile/backup/objective modules are byte-identical to frozen0.10',()=>{
+test('engine and unchanged profile/backup/objective modules are byte-identical to frozen0.10',()=>{
   const baseline=JSON.parse(readFileSync(new URL('../BASELINE_0_10.json',import.meta.url)));
   // Exact comparison uses the independently frozen copy's hashes, not a new oracle.
+  // persistence.js intentionally changes for audited data-loss repairs; executable
+  // persistence-recovery tests cover those changes without resetting this baseline.
   return import('node:crypto').then(({createHash})=>{
-    for(const file of ['dist/engine.js','dist/persistence.js','dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js'])
+    for(const file of ['dist/engine.js','dist/backup.js','dist/profile-session.js','dist/objectives.js','dist/campaign.js','dist/challenges.js'])
       assert.equal(createHash('sha256').update(readFileSync(new URL('../'+file,import.meta.url))).digest('hex'),baseline.files[file],file);
   });
+});
+
+// The original Chromium failure exposes nonempty rectangles even while a
+// closed disclosure makes its descendants unfocusable. Keep those rectangles
+// in this model instead of assuming the browser reports zero size.
+function disclosureControls(){
+  const make=(tag,id,parent=null,options={})=>{
+    const element={tag,id,parentElement:parent,children:[],open:false,visibility:'visible',...options,
+      closest(selector){
+        for(let node=this;node;node=node.parentElement){
+          if(selector==='details:not([open])'&&node.tag==='DETAILS'&&!node.open)return node;
+          if(selector==='.hidden,[inert]'&&(node.hidden||node.inert))return node;
+        }
+        return null;
+      },
+      querySelector(selector){assert.equal(selector,':scope > summary');return this.children.find(child=>child.tag==='SUMMARY')||null;},
+      contains(other){for(let node=other;node;node=node.parentElement)if(node===this)return true;return false;},
+      getClientRects:()=>[{}],
+    };
+    parent?.children.push(element);return element;
+  };
+  const outer=make('DETAILS','report'),summary=make('SUMMARY','report-summary',outer),summaryChild=make('BUTTON','summary-action',summary);
+  const content=make('DIV','report-body',outer),nested=make('DETAILS','samples',content);
+  const nestedSummary=make('SUMMARY','samples-summary',nested),sample=make('BUTTON','sample-action',nested);
+  const download=make('BUTTON','download',content),extraSummary=make('SUMMARY','not-first-summary',outer);
+  const primary=make('BUTTON','playAgain'),menu=make('BUTTON','resultMenu'),inspect=make('BUTTON','inspectBattle');
+  const candidates=[summary,summaryChild,nestedSummary,sample,download,extraSummary,primary,menu,inspect];
+  const layer={querySelectorAll:()=>candidates,querySelector:()=>primary};
+  return {outer,summary,summaryChild,nested,nestedSummary,sample,download,extraSummary,primary,menu,inspect,candidates,layer};
+}
+const padControlsSource=app.slice(app.indexOf('function padControls('),app.indexOf('function focusPadControl('));
+for(const kind of ['dialog','controller'])test(`${kind} controls reject closed-details descendants even when Chromium exposes their rectangles`,()=>{
+  const f=disclosureControls();
+  const read=()=>[...runInNewContext(focusSource+'\n'+padControlsSource+'\n'+(kind==='dialog'?'dialogControls(layer)':'padControls({element:layer})'),{
+    layer:f.layer,getComputedStyle:element=>({visibility:element.visibility}),
+  })].map(element=>element.id);
+  const footer=['playAgain','resultMenu','inspectBattle'];
+  assert.deepEqual(read(),['report-summary','summary-action',...footer]);
+  f.nested.open=true;
+  assert.deepEqual(read(),['report-summary','summary-action',...footer],'an open inner disclosure is still hidden by a closed ancestor');
+  f.outer.open=true;f.nested.open=false;
+  assert.deepEqual(read(),['report-summary','summary-action','samples-summary','download','not-first-summary',...footer]);
+  f.nested.open=true;
+  assert.deepEqual(read(),f.candidates.map(element=>element.id));
+  f.outer.open=false;
+  assert.deepEqual(read(),['report-summary','summary-action',...footer],'closing an ancestor immediately removes its formerly visible descendants');
+});
+
+test('Down navigation crosses result footer controls and reaches the visible report instead of a hidden summary',()=>{
+  const f=disclosureControls(),document={activeElement:f.primary};
+  const candidates=[f.summary,f.nestedSummary,f.download,f.primary,f.menu,f.inspect];
+  f.layer.querySelectorAll=()=>candidates;
+  const rects=[{x:0,y:100,width:200,height:60},{x:0,y:1200,width:200,height:40},
+    {x:0,y:1300,width:200,height:44},{x:0,y:200,width:200,height:44},
+    {x:0,y:260,width:90,height:44},{x:110,y:260,width:90,height:44}];
+  for(const [index,element] of candidates.entries()){
+    element.getBoundingClientRect=()=>rects[index];element.matches=()=>false;element.scrollIntoView=()=>{};
+    element.focus=()=>{
+      // Model native focus refusal independently from the production filter.
+      for(let ancestor=element.parentElement;ancestor;ancestor=ancestor.parentElement){
+        if(ancestor.tag==='DETAILS'&&!ancestor.open&&ancestor.children[0]!==element)return;
+      }
+      document.activeElement=element;
+    };
+  }
+  const navigation=app.slice(app.indexOf('function padControls('),app.indexOf('function controllerBack('));
+  const navigate=runInNewContext(focusSource+'\n'+navigation+'\ncontrollerNavigate',{
+    document,getComputedStyle:element=>({visibility:element.visibility}),nextFocusIndex,spatialFocusIndex,
+  });
+  const seen=[document.activeElement.id];
+  for(let step=0;step<3;step++){
+    navigate('down',{element:f.layer});seen.push(document.activeElement.id);
+  }
+  assert.deepEqual(seen,['playAgain','resultMenu','inspectBattle','report-summary']);
 });

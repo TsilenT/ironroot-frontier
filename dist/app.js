@@ -43,7 +43,9 @@ import {
 import {
   createStorage,
   createSaveSession,
-  readHistory,
+  readHistoryState,
+  createHistorySession,
+  createPreferenceSession,
   writeBattle,
   nativeSpaceTarget,
 } from './persistence.js';
@@ -173,8 +175,11 @@ const SETTINGS = 'ironroot.settings.v1',
   HISTORY = 'ironroot.history.v1',
   TRIALS = 'ironroot.trials.v1';
 const battleSession = createSaveSession(storage, SAVE);
-let knownHistory = readHistory(storage, HISTORY),
-  knownHistoryAvailable = storage.read(HISTORY).ok;
+const canPersistRetained = () => !recoveryHold && !profileGate && profileSession.status().canWrite;
+const historySession = createHistorySession(storage, HISTORY, { canWrite: canPersistRetained });
+const preferenceSession = createPreferenceSession(storage, SETTINGS, { canWrite: canPersistRetained });
+let knownHistory = historySession.snapshot().rows,
+  knownHistoryAvailable = historySession.snapshot().ok;
 let campaignProgress = readCampaignProgress(storage),
   progressDirty = false;
 const nextCampaign = getCampaignOverview(campaignProgress).nextMissionId;
@@ -208,7 +213,7 @@ const preferences = {
   quality: 'high',
 };
 try {
-  const saved = JSON.parse(storage.get(SETTINGS) || '{}');
+  const saved = JSON.parse(preferenceSession.initial().value || '{}');
   if (saved && typeof saved === 'object') {
     for (const key of ['sound', 'music', 'sfx', 'reducedMotion'])
       if (typeof saved[key] === 'boolean') preferences[key] = saved[key];
@@ -239,11 +244,61 @@ function initAudio() {
 function sound(name, options) {
   audio.play(name, options);
 }
-function savePreferences() {
-  if (recoveryHold || profileGate) return false;
-  preferences.sound = soundOn;
-  storage.set(SETTINGS, JSON.stringify(preferences));
+function updatePreferenceSaveStatus() {
+  const dirty = preferenceSession.dirty();
+  $('preferenceSaveWarning').classList.toggle('hidden', !dirty);
+  $('retryPreferences').classList.toggle('hidden', !dirty);
+  $('preferenceSaveWarning').textContent = dirty
+    ? 'These preferences apply only to this page and are not verified saved. ' +
+      (['changed', 'initial-unavailable', 'blocked'].includes(preferenceSession.reason())
+        ? 'The saved profile or preferences cannot be safely replaced by this tab. Export this session before reloading.'
+        : 'Keep this page open, restore storage access or space, then retry saving.')
+    : '';
 }
+function retryPreferences(notify = false) {
+  const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();
+  updatePreferenceSaveStatus();
+  if (notify && dirty && ok) toast('Preferences saved.');
+  return ok;
+}
+function savePreferences() {
+  preferences.sound = soundOn;
+  preferenceSession.stage(preferences);
+  const ok = retryPreferences();
+  if (!ok) toast('Preferences apply to this page only. Open Preferences to retry saving.');
+  return ok;
+}
+function updateHistorySaveStatus(read = null) {
+  const pending = historySession.pendingCount(), reason = pending ? historySession.reason() : read?.reason;
+  const issue = pending || (read && !read.ok);
+  const message = pending
+    ? `${pending} completed battle result${pending === 1 ? '' : 's'} not verified saved. Keep this page open. ` +
+      (reason === 'malformed'
+        ? 'Existing history is unreadable and has not been replaced. Export the retained session before restoring a backup.'
+        : ['blocked', 'battle-stale'].includes(reason)
+          ? 'This profile or battle save changed. Export the retained session before reloading; this result will not replace it.'
+          : 'Restore storage access or space, then retry. Existing history will be checked again.')
+    : read && !read.ok
+      ? (reason === 'malformed' ? 'Stored battle history is unreadable and has not been changed.' : 'Stored battle history is unavailable. Keep this page open and try again.')
+      : '';
+  $('historySaveWarning').classList.toggle('hidden', !issue);
+  $('historySaveWarning').textContent = message;
+  $('retryHistory').classList.toggle('hidden', !pending);
+  $('resultHistoryWarning').classList.toggle('hidden', !pending);
+  $('resultHistoryWarning').textContent = pending ? message : '';
+  $('retryResultHistory').classList.toggle('hidden', !pending);
+}
+function retryHistorySave(notify = false) {
+  const pending = historySession.pendingCount(), ok = historySession.retry();
+  const snapshot = historySession.snapshot();
+  if (snapshot.ok) { knownHistory = snapshot.rows; knownHistoryAvailable = true; }
+  updateHistorySaveStatus();
+  if (notify && pending && ok) toast('Battle history saved.');
+  return ok;
+}
+$('retryPreferences').onclick = () => retryPreferences(true);
+$('retryHistory').onclick = () => { retryHistorySave(true); syncSettings(); };
+$('retryResultHistory').onclick = () => retryHistorySave(true);
 function timeText(t) {
   const sec = Math.floor(t + 1e-6);
   return `${Math.floor(sec / 60)
@@ -750,6 +805,7 @@ $('resultReport').addEventListener('toggle', (event) => {
 }, true);
 $('lastResult').onclick = () => {
   if (!hasLastResult || recoveryHold || profileGate) return;
+  retryHistorySave();
   $('welcome').classList.add('hidden');
   $('resultModal').classList.remove('hidden');
   const report = $('resultReport').querySelector('details');
@@ -1020,10 +1076,10 @@ function finish() {
       ? (won ? 'MORE FIELD TRIALS' : 'RETRY FIELD TRIAL') + ' <span>→</span>'
       : 'FIGHT ANOTHER DAY <span>→</span>';
   $('resultModal').classList.remove('hidden');
-  battleSession.remove();
+  const completion = battleSession.captureResult();
+  completion.remove();
   sound(won ? 'win' : 'lose');
-  const history = readHistory(storage, HISTORY);
-  history.unshift({
+  historySession.retain({
     won,
     draw,
     challengeId: currentChallenge,
@@ -1034,10 +1090,8 @@ function finish() {
     kills: game.state.stats.kills[0],
     built: game.state.stats.built[0],
     date: new Date().toISOString(),
-  });
-  knownHistory = history.slice(0, 30);
-  knownHistoryAvailable = true;
-  storage.set(HISTORY, JSON.stringify(knownHistory));
+  }, { ownership: completion.status, onSaved: completion.remove });
+  retryHistorySave();
   if (trial && won) {
     const old = trialRecords[currentChallenge];
     trialRecords[currentChallenge] = {
@@ -1196,7 +1250,10 @@ $('battle').addEventListener(
   },
   { passive: false },
 );
-$('minimap').addEventListener('pointerdown', (e) => {
+// Native click makes the whole canvas a touch-adjustment target, including
+// its edges beside Home/Front. Release activation also passes through the
+// document's scope guard, so a held touch cannot cross into a new dialog.
+$('minimap').addEventListener('click', (e) => {
   const r = $('minimap').getBoundingClientRect();
   renderer.camera = ((e.clientX - r.left) / r.width) * game.map.width;
   renderer.clampCamera();
@@ -1244,6 +1301,7 @@ window.addEventListener('keydown', (e) => {
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) audio.setScene('paused');
+  else { retryHistorySave(); retryPreferences(); }
   if (document.hidden && started && !paused && game.state.winner === null)
     pause(true);
   last = performance.now();
@@ -1262,7 +1320,10 @@ window.addEventListener('beforeunload', (e) => {
     return;
   }
   if (progressDirty) persistProgress();
+  retryHistorySave();
+  retryPreferences();
   if (
+    historySession.pendingCount() || preferenceSession.dirty() ||
     progressDirty ||
     (started &&
       game.state.winner === null &&
@@ -1691,12 +1752,21 @@ function syncSettings() {
   $('volumeValue').textContent = Math.round(preferences.volume * 100) + '%';
   $('reduceMotion').checked = preferences.reducedMotion;
   $('effectQuality').value = preferences.quality;
-  const rows = readHistory(storage, HISTORY).slice(0, 5);
+  updatePreferenceSaveStatus();
+  const history = historySession.read();
+  if (history.ok) { knownHistory = history.rows; knownHistoryAvailable = true; }
+  updateHistorySaveStatus(history);
+  const rows = historySession.view(history.ok ? history.rows : knownHistory).slice(0, 5);
   $('battleHistory').textContent = '';
   if (!rows.length) {
     const p = document.createElement('p');
-    p.textContent = 'Your completed battles will appear here.';
+    p.textContent = history.ok ? 'Your completed battles will appear here.' : 'No previously verified history is available in this tab.';
     $('battleHistory').append(p);
+  }
+  if (!history.ok && rows.length) {
+    const notice = document.createElement('p');
+    notice.textContent = 'Showing this tab’s retained results; stored history could not be checked.';
+    $('battleHistory').append(notice);
   }
   for (const row of rows) {
     const p = document.createElement('p');
@@ -1822,9 +1892,22 @@ new MutationObserver(syncInputScope).observe($('pauseVeil'), {
   attributes: true,
   attributeFilter: ['class'],
 });
+function controlIsVisible(element) {
+  if (element.closest('.hidden,[inert]') || !element.getClientRects().length ||
+      getComputedStyle(element).visibility === 'hidden') return false;
+  // Chromium can return layout rectangles for closed-details descendants.
+  // Only the first summary remains interactive, including through every
+  // closed ancestor when disclosures are nested.
+  for (let details = element.closest('details:not([open])'); details;
+       details = details.parentElement?.closest('details:not([open])')) {
+    const summary = details.querySelector(':scope > summary');
+    if (!summary?.contains(element)) return false;
+  }
+  return true;
+}
 function dialogControls(layer) {
   return [...layer.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),summary,[tabindex="0"]')]
-    .filter((element) => !element.closest('.hidden,[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+    .filter(controlIsVisible);
 }
 function dialogDefaultFocus(layer) {
   const controls = dialogControls(layer), preferred = layer.querySelector('[data-dialog-focus]');
@@ -2033,22 +2116,23 @@ $('exportRecovery').onclick = () => {
         campaign: campaignProgress,
         trials: trialRecords,
         settings: preferences,
-        history: retainedHistory || knownHistory,
+        history: historySession.view(retainedHistory || knownHistory),
         battle,
       },
     );
     downloadBackup(text, '-retained-session');
     $('backupStatus').textContent =
-      'Retained-session download started. It contains this tab’s known progress, settings and unfinished battle. ' +
+      'Retained-session download started. It contains this tab’s known progress, settings, retained results and unfinished battle. ' +
       (knownHistoryAvailable
         ? 'History includes records available in this tab, which may omit newer results from other tabs.'
-        : 'History was unavailable and is omitted.');
+        : 'Stored history was unavailable; only this tab’s retained results are included.');
   } catch (error) {
     $('backupStatus').textContent =
       error.message ||
       'The retained session could not be exported. Keep this page open.';
   }
 };
+$('exportRetained').onclick = () => $('exportRecovery').onclick();
 function hideBackup() {
   invalidateImportRead();
   $('backupModal').classList.add('hidden');
@@ -2069,6 +2153,12 @@ $('exportBackup').onclick = () => {
       );
     const includeBattle = $('backupIncludeBattle').checked,
       options = { includeBattle };
+    if (preferenceSession.dirty()) options.settings = preferences;
+    if (historySession.pendingCount()) {
+      const history = readHistoryState(storage, HISTORY);
+      if (!history.ok) throw new Error('Stored history cannot be read safely. Use Export in-memory session to retain this tab’s known results; it is not a complete saved-profile backup.');
+      options.history = historySession.view(history.rows);
+    }
     if (progressDirty) {
       options.campaign = campaignProgress;
       options.trials = trialRecords;
@@ -2183,8 +2273,8 @@ $('confirmImport').onclick = () => {
     recover = ['restoring', 'failed', 'invalid'].includes(state.phase);
   if (recover && !$('backupRecoveryConsent').checked) return;
   if (state.canWrite && !recoveryHold) {
-    retainedHistory = readHistory(storage, HISTORY);
-    knownHistoryAvailable = storage.read(HISTORY).ok;
+    const history = readHistoryState(storage, HISTORY);
+    if (history.ok) { retainedHistory = history.rows; knownHistoryAvailable = true; }
   }
   backupWriteAttempted = true;
   const begin = profileSession.beginImport({ recover });
@@ -2239,12 +2329,7 @@ function padControls(scope) {
     ...(scope.element?.querySelectorAll(
       'button:not([disabled]),a[href],input:not([type="file"]):not([disabled]),select:not([disabled]),summary',
     ) || []),
-  ].filter(
-    (el) =>
-      !el.closest('.hidden,[inert]') &&
-      el.getClientRects().length &&
-      getComputedStyle(el).visibility !== 'hidden',
-  );
+  ].filter(controlIsVisible);
 }
 function focusPadControl(control) {
   if (!control) return;
