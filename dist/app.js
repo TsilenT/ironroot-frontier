@@ -683,6 +683,8 @@ $('saveExit').onclick = () => {
   }
   if (!save() || (progressDirty && !persistProgress())) {
     if (viewportPause.active || battleSafetyReason) $('viewportSaveStatus').textContent = 'Saving failed. This battle remains paused on this page. Keep it open and try again.';
+    $('pauseSaveStatus').textContent = 'Could not save. This battle stays paused here. Keep this page open, free some storage and try again.';
+    $('pauseSaveStatus').classList.add('save-warning');
     toast(
       'Could not save on this browser. Keep this battle open or free some storage, then try again.',
     );
@@ -716,13 +718,9 @@ $('front').onclick = () => {
 };
 function showHelp() {
   helpWasPaused = paused;
-  if (started && game.state.winner === null) {
-    setCompactBuildOpen(false);
-    paused = true;
-    $('pauseVeil').classList.add('hidden');
-  }
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
   $('helpModal').classList.remove('hidden');
-  $('closeHelp').focus();
+  syncDialogs();
 }
 function hideHelp() {
   $('helpModal').classList.add('hidden');
@@ -800,6 +798,7 @@ function start(
   restored = null,
   restoredChallenge = null,
   restoredCampaign = null,
+  { fresh = false } = {},
 ) {
   syncProfileSafety();
   if (recoveryHold || profileGate) {
@@ -825,7 +824,7 @@ function start(
   $('resume').disabled = false;
   currentCampaign = cid;
   expandedBuilds = !!campaignProgress.missions[cid]?.completed;
-  resumedBattle = !!restored;
+  resumedBattle = !!restored && !fresh;
   coachEnabled = !campaignProgress.missions[cid]?.completed;
   currentChallenge = restored
     ? restoredChallenge
@@ -854,7 +853,7 @@ function start(
   viewportPause.clear();
   $('viewportModal').classList.add('hidden');
   beginProtectedObjectives();
-  beginBattleReport(!!restored);
+  beginBattleReport(!!restored && !fresh);
   battleSession.claim();
   padHud = false;
   padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
@@ -869,6 +868,7 @@ function start(
   renderer.vfx?.reset();
   cancel();
   $('welcome').classList.add('hidden');
+  $('restartModal').classList.add('hidden');
   $('resultModal').classList.add('hidden');
   $('pauseVeil').classList.add('hidden');
   const mission =
@@ -904,13 +904,13 @@ function start(
   $('speed').textContent = '1×';
   pauseControl();
   $('pause').onclick = () => pause(!paused, { explicit: true });
-  renderer.camera = restored ? game.state.frontline : 450;
+  renderer.camera = restored && !fresh ? game.state.frontline : 450;
   renderer.clampCamera();
   initAudio();
   sound('build');
   $('toast').classList.remove('show');
   if (!mission || !coachEnabled || !campaignCoach(game, mission.id, ui)) toast(
-    restored
+    restored && !fresh
       ? 'Battle resumed.'
       : mission
         ? mission.objective
@@ -1253,6 +1253,7 @@ function showTitle({ focusStart = false, focusResume = false } = {}) {
   cancel();
   renderer.vfx?.reset();
   $('resultModal').classList.add('hidden');
+  $('restartModal').classList.add('hidden');
   $('pauseVeil').classList.add('hidden');
   $('welcome').classList.remove('hidden');
   setMode(mode);
@@ -1677,17 +1678,24 @@ $('minimap').addEventListener('click', (e) => {
 window.addEventListener('keydown', (e) => {
   if (e.repeat && e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return;
   if (e.code === 'Escape') {
-    if (!$('backupModal').classList.contains('hidden')) hideBackup();
+    e.preventDefault();
+    if (!$('restartModal').classList.contains('hidden')) hideRestart();
+    else if (!$('backupModal').classList.contains('hidden')) hideBackup();
     else if (!$('settingsModal').classList.contains('hidden')) hideSettings();
     else if (!$('helpModal').classList.contains('hidden')) hideHelp();
     else if (!$('resultModal').classList.contains('hidden') && $('resultReport').querySelector('details')?.open) {
       const report = $('resultReport').querySelector('details');
       report.open = false;
       report.querySelector('summary').focus();
-    } else cancel();
+    } else if (!$('viewportModal').classList.contains('hidden')) return;
+    else if (!$('pauseVeil').classList.contains('hidden')) pause(false, { explicit: true });
+    else if (started && game.state.winner === null && !objectiveOutcome && !ui.build && !ui.spell && !ui.selected) pause(true);
+    else cancel();
+    return;
   }
   if (
     !started ||
+    !$('restartModal').classList.contains('hidden') ||
     !$('backupModal').classList.contains('hidden') ||
     !$('settingsModal').classList.contains('hidden') ||
     !$('helpModal').classList.contains('hidden') ||
@@ -1699,6 +1707,7 @@ window.addEventListener('keydown', (e) => {
     e.preventDefault();
     pause(!paused, { explicit: true });
   }
+  if (paused) return;
   if (e.code === 'ArrowLeft') {
     e.preventDefault();
     renderer.pan(75);
@@ -2189,14 +2198,79 @@ $('skipIntroduction').onclick = () => {
 };
 setMode(mode);
 new ResizeObserver(revealCampaignChapter).observe($('campaignChapters'));
+// The pause menu is a top-level dialog, independent of battlefield sizing.
+function syncPauseMenu() {
+  const mission = currentCampaign && CAMPAIGN_MISSIONS.find(m => m.id === currentCampaign);
+  const trial = currentChallenge && CHALLENGES.find(c => c.id === currentChallenge);
+  const noun = mission ? 'mission' : trial ? 'field trial' : 'battle';
+  $('pauseBattleName').textContent = mission?.name || trial?.name || game.map.name;
+  $('pauseContext').textContent = `${mission ? 'Campaign' : trial ? 'Field trial' : 'Skirmish'} · ${timeText(game.state.time)} · ${speed}× speed`;
+  $('pauseObjective').textContent = mission?.objective || trial?.objective || 'Destroy the enemy citadel.';
+  $('restartBattle').textContent = `Restart ${noun}…`;
+  $('restartTitle').textContent = `Restart ${noun}?`;
+  $('confirmRestart').textContent = `Restart ${noun}`;
+  const status = battleSession.status();
+  const unsafe = !!(battleSafetyReason || game.limitReason || viewportPause.active);
+  $('restartBattle').disabled = status !== 'current' || unsafe || !!(recoveryHold || profileGate);
+  const text = status === 'stale'
+    ? 'A newer battle is saved in another tab. Return to title to resume it.'
+    : status !== 'current' || saveWarning
+      ? 'Saving unavailable. Keep this page open. Your battle remains here until it can be saved.'
+      : 'Checkpoint saved on this device. You can return to this battle from the title screen.';
+  // Avoid repeatedly announcing an unchanged status when other dialogs change.
+  if ($('pauseSaveStatus').textContent !== text) $('pauseSaveStatus').textContent = text;
+  $('pauseSaveStatus').classList.toggle('save-warning', status !== 'current' || saveWarning);
+}
+function hideRestart() {
+  $('restartModal').classList.add('hidden');
+  syncDialogs();
+}
+$('restartBattle').onclick = () => {
+  syncProfileSafety();
+  if (recoveryHold || profileGate) { showRecoverySettings(); return; }
+  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+      battleSafetyReason || game.limitReason || viewportPause.active || battleSession.status() !== 'current') return;
+  $('restartStatus').textContent = '';
+  $('restartModal').classList.remove('hidden');
+  syncDialogs();
+};
+$('cancelRestart').onclick = hideRestart;
+$('confirmRestart').onclick = () => {
+  syncProfileSafety();
+  if (recoveryHold || profileGate) { hideRestart(); showRecoverySettings(); return; }
+  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+      battleSafetyReason || game.limitReason || viewportPause.active) return;
+  if (battleSession.status() !== 'current') {
+    $('restartStatus').textContent = 'The checkpoint changed or storage is unavailable. Keep this battle open. Return to the pause menu to continue safely.';
+    return;
+  }
+  try {
+    const candidate = currentCampaign ? createCampaignMission(currentCampaign)
+      : currentChallenge ? createChallenge(currentChallenge)
+        : new Game({ difficulty: game.difficulty, ai: game.ai, seed: Date.now() >>> 0,
+          mapId: game.map.id, mapRevision: game.map.revision,
+          ...(game.schemaVersion === 3 ? {rulesetId: game.ruleset.id, rulesetRevision: game.ruleset.revision} : {}) });
+    // Use the existing profile/ownership boundary. Never discard the retained
+    // battle until a fresh attempt has a verified checkpoint. No progress reward
+    // or completed-history row is produced by abandoning an unfinished battle.
+    if ((progressDirty && !persistProgress()) ||
+        !writeBattle(battleSession, SAVE, candidate, currentChallenge, currentCampaign, { campaignProgress })) {
+      $('restartStatus').textContent = 'Restart could not be saved or verified. Your current battle stays paused on this page. Keep it open and try again when storage is available.';
+      return;
+    }
+    start(candidate, currentChallenge, currentCampaign, { fresh: true });
+  } catch {
+    $('restartStatus').textContent = 'Restart is unavailable. Your current battle stays paused on this page.';
+  }
+};
 let settingsWasPaused = false;
 function showSettings() {
   settingsWasPaused = paused;
-  if (started && game.state.winner === null && !objectiveOutcome) {
-    setCompactBuildOpen(false);
-    paused = true;
-    $('pauseVeil').classList.add('hidden');
-  }
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+  $('settingsContext').textContent = started && !objectiveOutcome && game.state.winner === null
+    ? 'Battle paused. Changes apply immediately.' : 'Changes apply immediately.';
+  $('settingsDone').textContent = started && !objectiveOutcome && game.state.winner === null
+    ? settingsWasPaused ? 'Back to pause menu' : 'Resume battle' : 'Done';
   syncSettings();
   $('settingsModal').classList.remove('hidden');
 }
@@ -2304,12 +2378,14 @@ $('effectQuality').onchange = () => {
 };
 // Dialog focus never escapes into a live battlefield behind the overlay.
 const dialogLayers = [
+  $('pauseVeil'),
   $('viewportModal'),
   $('welcome'),
   $('helpModal'),
   $('settingsModal'),
   $('resultModal'),
   $('backupModal'),
+  $('restartModal'),
 ];
 let activeDialog = null;
 const dialogFocus = new WeakMap();
@@ -2389,7 +2465,12 @@ function dialogDefaultFocus(layer) {
   return controls.includes(preferred) ? preferred : controls[0];
 }
 function syncDialogs() {
+  // A safety/recovery interruption takes precedence over a destructive prompt.
+  if (!$('restartModal').classList.contains('hidden') &&
+      (recoveryHold || profileGate || viewportPause.active || battleSafetyReason))
+    $('restartModal').classList.add('hidden');
   syncInputScope();
+  if (!$('pauseVeil').classList.contains('hidden')) syncPauseMenu();
   const visible = dialogLayers.filter((x) => !x.classList.contains('hidden')),
     next = visible.at(-1) || null;
   document.querySelector('.app').inert = !!next;
@@ -2403,12 +2484,15 @@ function syncDialogs() {
   const previous = activeDialog;
   activeDialog = next;
   if (next) {
-    dialogFocus.set(next, document.activeElement);
-    const target = dialogDefaultFocus(next);
-    target?.focus();
+    const returning = previous && dialogFocus.get(previous);
+    const target = returning && next.contains(returning) && !returning.disabled && controlIsVisible(returning)
+      ? returning : null;
+    if (!target) dialogFocus.set(next, document.activeElement);
+    (target || dialogDefaultFocus(next))?.focus();
   } else {
     const target = previous && dialogFocus.get(previous);
-    if (target?.isConnected && !target.closest('.hidden')) target.focus();
+    if (target?.isConnected && target !== document.body && target !== document.documentElement &&
+        !target.closest('.hidden,[inert]')) target.focus();
     else $('battle').focus();
   }
 }
@@ -2887,6 +2971,13 @@ function controllerNavigate(direction, scope) {
     active.dispatchEvent(new Event('change', { bubbles: true }));
     return;
   }
+  // These compact menus have a deliberate reading order. Spatial navigation
+  // would jump from the centered Resume button past both utility buttons.
+  if (scope.key === 'pauseVeil' || scope.key === 'restartModal') {
+    focusPadControl(controls[nextFocusIndex(controls, current,
+      ['left', 'up'].includes(direction) ? -1 : 1)]);
+    return;
+  }
   const items = controls.map((el) => ({ rect: el.getBoundingClientRect() }));
   let next = spatialFocusIndex(items, current, direction);
   if (next === current)
@@ -2901,7 +2992,8 @@ function controllerBack(scope) {
   if (scope.key === 'backupModal') hideBackup();
   else if (scope.key === 'settingsModal') hideSettings();
   else if (scope.key === 'helpModal') hideHelp();
-  else if (scope.key === 'pause') pause(false, { explicit: true });
+  else if (scope.key === 'restartModal') hideRestart();
+  else if (scope.key === 'pauseVeil' || scope.key === 'pause') pause(false, { explicit: true });
   else if (scope.key === 'resultModal' || scope.key === 'ended') showTitle();
   else if (scope.key === 'hud') {
     padHud = false;
@@ -2928,7 +3020,7 @@ function handleControllerAction({ action }) {
     return;
   }
   if (action === 'pause') {
-    if (scope.key === 'pause') pause(false, { explicit: true });
+    if (scope.key === 'pauseVeil' || scope.key === 'pause') pause(false, { explicit: true });
     else if (scope.key === 'battle' || scope.key === 'hud') pause(true);
   } else if (action === 'cancel') controllerBack(scope);
   else if (action === 'focus') {

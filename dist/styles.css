@@ -3620,3 +3620,102 @@ body.gamepad-active a:focus {
 .skirmish-rules-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; }
 .skirmish-rules-label select { min-height: 44px; padding: 8px; max-width: 100%; background: #172a20; color: var(--ink); border: 1px solid #677754; font: inherit; }
 .rules-description { color: var(--muted); font-size: 12px; line-height: 1.4; margin: 6px 0 10px; }
+
+/* Pause/options dialogs live outside .app so compact battlefield rails never
+   constrain their size. Keep these rules scoped when integrating phone fixes. */
+.pause-veil.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  gap: 0;
+  background: #081611c9;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+.pause-menu, .menu-confirm {
+  width: min(100%, 440px);
+  padding: 28px;
+  border-radius: 14px;
+  max-height: 100%;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.menu-heading h2, .menu-confirm h2 {
+  font: 600 38px/1.1 var(--display);
+  margin: 8px 0;
+  color: #f3e8c8;
+}
+.menu-heading p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b9c7b0;
+  margin: 0;
+}
+.pause-briefing {
+  padding: 16px 0;
+  margin: 16px 0;
+  border-block: 1px solid #506344;
+}
+.pause-briefing h3 {font: 600 23px/1.2 var(--display); margin: 0 0 6px;}
+.pause-briefing p {font-size: 12px; line-height: 1.6; color: #d1d8be; margin: 0;}
+.pause-menu #resume {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+}
+.pause-utilities {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0;}
+.pause-menu .secondary-button {font-size: 13px; text-transform: none; letter-spacing: 0;}
+.pause-utilities .secondary-button {text-align: left; padding: 12px;}
+.pause-utilities small {display: block; font-size: 10px; color: #bccbad; line-height: 1.4; margin-top: 4px; font-weight: 400;}
+.menu-status {font-size: 11px; line-height: 1.6; color: #afc7a0; margin: 14px 0;}
+.menu-status.save-warning {color: #f4c7a5;}
+.pause-exit-actions {display: grid; gap: 8px;}
+.pause-exit-actions .text-button {color: #d8bc9f; font-size: 12px; margin: 0;}
+.pause-veil .pause-menu button, .menu-confirm button {min-height: 44px; padding: 10px 14px;}
+.menu-confirm > p {font-size: 13px; line-height: 1.7; color: #d1d8be;}
+.menu-confirm-actions {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px;}
+.menu-confirm #confirmRestart {border-color: #ae8060; color: #f3c9ac;}
+.pause-menu button:focus-visible, .menu-confirm button:focus-visible,
+.settings-modal :is(button, input, select, summary):focus-visible {outline: 2px solid #f4d68d; outline-offset: 3px;}
+.settings-modal {border-radius: 14px; display: flex; flex-direction: column; padding: 0; overflow: hidden;}
+.settings-content {min-height: 0; overflow: auto; padding: 0 32px 20px; overscroll-behavior: contain; scrollbar-gutter: stable; scroll-padding-block: 12px;}
+.settings-modal .menu-heading {padding: 26px 64px 18px 32px; margin: 0; flex-shrink: 0;}
+.settings-modal .menu-heading h2 {margin: 8px 0;}
+.settings-modal .setting-row {min-height: 60px; font-size: 13px;}
+.settings-modal .setting-row small {font-size: 11px; line-height: 1.4;}
+.settings-modal .setting-row select {min-height: 44px;}
+.settings-modal input[type='range'] {min-height: 36px;}
+.settings-modal .history-details summary {font-size: 12px; min-height: 24px; line-height: 1.5;}
+.settings-modal .history-details p, .settings-modal .settings-note {font-size: 11px;}
+.settings-modal .settings-footer {flex-shrink: 0; margin: 0; padding: 14px 32px 20px; background: #17271f; border-top: 1px solid #4b5e41;}
+.settings-footer .gold-button {width: 100%; min-height: 44px;}
+@media (max-width: 700px) {
+  .pause-menu, .menu-confirm {padding: 22px;}
+  .settings-content {padding: 0 23px 20px;}
+  .settings-modal .menu-heading {padding: 24px 60px 16px 23px;}
+  .settings-modal .settings-footer {padding: 12px 23px 20px;}
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .pause-menu {width: min(100%, 620px); padding: 18px 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 24px; align-items: start;}
+  .pause-menu .menu-heading, .pause-menu .pause-briefing {grid-column: 1;}
+  .pause-menu .pause-briefing {grid-row: 2 / 5; margin: 12px 0 0; padding: 12px 0;}
+  .pause-menu #resume {grid-column: 2; grid-row: 1;}
+  .pause-menu .pause-utilities {grid-column: 2; grid-row: 2; margin: 10px 0;}
+  .pause-menu .pause-utilities .secondary-button {padding: 8px; font-size: 12px;}
+  .pause-menu .pause-utilities small {display: none;}
+  .pause-menu .menu-status {grid-column: 2; grid-row: 3; margin: 0 0 10px;}
+  .pause-menu .battle-limit-warning {grid-column: 1 / -1;}
+  .pause-menu .pause-exit-actions {grid-column: 2; grid-row: 4; gap: 4px;}
+  .pause-menu .menu-heading h2 {font-size: 32px;}
+  .menu-confirm {padding: 20px 24px;}
+  .settings-modal .menu-heading {padding: 14px 60px 12px 24px;}
+  .settings-modal .menu-heading h2 {font-size: 28px; margin-block: 6px;}
+  .settings-content {padding: 0 24px 16px;}
+  .settings-modal .settings-footer {padding: 10px 24px 12px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .pause-menu *, .menu-confirm *, .settings-modal * {scroll-behavior: auto;}
+}
+
+.settings-modal .modal-close {min-width: 44px; min-height: 44px;}

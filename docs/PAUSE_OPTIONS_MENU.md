@@ -1,0 +1,29 @@
+# Pause and options menu review
+
+Draft implementation based on `main` at `b8b2e6d1b200b9550803f5cb16b8d96ccc28f222`.
+No merge, release-version change, or deployment is included.
+
+## Behavior
+
+- Pause is a top-level modal with battle/mission identity, objective, simulation time, speed, and checkpoint feedback. Resume, Options, Field guide, Save & return to title, and Restart have separate actions. All pause/confirmation controls have a minimum 44px touch height.
+- Pause traps keyboard focus, makes the game behind it inert, and restores focus when closed. Space keeps native button/checkbox behavior. Escape cancels a selected placement first, opens pause from an idle battle, and resumes from the pause menu. It backs out of a restart prompt or Options/Field guide one level at a time. Viewport safety still requires its explicit resume action.
+- Options and Field guide keep the battle frozen. Opened from pause, they return focus to the originating menu button. Opened directly from play, they retain the prior return-to-play behavior. The Options footer names its destination; the header and footer frame a separate scrolling content area so neither covers recovery controls. Existing backup, history, controller, and font-license disclosures remain available by scrolling.
+- Controller D-pad/stick navigation follows reading order within pause and restart dialogs. A confirms, B goes back, and Start pauses/resumes. A held confirmation cannot activate the next dialog. Controller sliders and choices retain their existing left/right adjustment behavior.
+- Save & return only leaves after the checkpoint and dirty progress have been saved; a failed save keeps the retained battle open with an inline message. A stale tab returns to title without overwriting the newer checkpoint.
+- Restart first asks for confirmation, with Cancel focused. It creates and verifies a fresh checkpoint through the existing profile/ownership facade before replacing the retained game. A failed write, stale checkpoint, profile recovery hold, or safety hold cannot silently discard the retained game. Restart retains the scenario, map, ruleset, difficulty, and legacy game schema. It resets speed to 1× and does not grant medals/progress or add a completed-history row.
+
+There are no new persistence keys or save/profile schema changes. This branch does not change campaign progression, authored unit availability, tutorial placement guidance, combat balance, or phone battlefield geometry.
+
+## Integration boundaries
+
+1. **Phone layout / visible viewport:** `pauseVeil` moved from inside `#battlefield` to a sibling of `.app`. Preserve that placement; the pause dialog must not inherit the compact battlefield's remaining height or rail width. Existing `.protected-mobile .pause-veil` rules no longer apply; new styles are scoped to `.pause-menu`, `.menu-confirm`, and `.settings-modal`. Preserve the phone branch's `visibleViewportRect`, geometry checks, viewport latch, safe-area rules, and layout changes. The modal priority is pause → viewport hold → title/help/options/result/backup → restart confirmation; the active layer alone owns focus. Restart is blocked while the viewport latch is active. A new safety or profile-recovery interruption dismisses an open restart prompt before showing its own controls.
+2. **Fullscreen / mouse:** retain the other branch's canvas pointer capture, secondary/middle button handling, and fullscreen feature detection. Its fullscreen root must remain `document.documentElement`, which includes the sibling pause and Options dialogs. Preserve its `data-fullscreen`, `settingsFullscreen`, `fullscreenStatus`, and any Option row it adds. This branch does not implement fullscreen or change canvas pointer handling.
+3. **Shared input/dialog code:** keep `pauseVeil` and `restartModal` in `dialogLayers`; controller Back/Start recognizes `pauseVeil` as well as the old fallback `pause` key. Preserve the generic input-scope guard and reset on scope change. If resolving `app.js` conflicts, retain both the new Escape/menu boundary and the other branch's pointer interruption/gesture fixes.
+4. **Campaign/tutorial branches:** restart calls `createCampaignMission(currentCampaign)` or `createChallenge(currentChallenge)` and passes a fourth `{fresh:true}` argument to `start` for a verified fresh candidate. Keep the existing three arguments for all other callers. Fresh candidates use a complete battle journal and fresh coach/placement behavior rather than the resumed-battle path. If the tutorial branch adds ephemeral lesson state in `start`, reset it on restart too; do not persist menu or lesson state in battle saves. A future campaign revision intentionally replaces the attempt with that revision's authored opening; this branch does not define the 2→5→8 rollout or Rootwarden availability.
+5. **Release owner:** bump the service-worker/public version once after combining release changes. This review branch keeps the version unchanged and uses existing cached files only. Re-run the new browser file and the phone/fullscreen branch suites against the combined candidate. Physical phone/PWA and real controller validation remains a release/integration task.
+
+## Validation and evidence
+
+`qa/browser/pause-menu.spec.mjs` runs on Chromium desktop 1180×757, touch phone 390×650, narrow phone 320×568, and touch landscape 844×390. It uses real menu inputs and persisted checkpoints as its oracle. Only Gamepad API polling and explicit storage-failure cases are simulated. Legacy/profile fixtures are synthetic compatibility positions, not human play or balance evidence.
+
+Screenshots and button hit-test geometry are in [pause-options-evidence](pause-options-evidence/). They show the same game behind the modal on desktop, portrait, and landscape, plus Options with its persistent return button. Automated results and exact commands are recorded in [validation.json](pause-options-evidence/validation.json).
