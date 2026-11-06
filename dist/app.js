@@ -1529,28 +1529,62 @@ function finish() {
 let pointer = null;
 const activePointers = new Set();
 let multiTouch = false;
+function cancelBattlePlacement() {
+  // A secondary press may arrive while the primary button is still held.
+  // Retire that gesture too, so its later release cannot select or buy.
+  resetBattleGesture();
+  if (canInteract() && (ui.build || ui.spell)) cancel();
+}
 function localPoint(e) {
   const r = $('battle').getBoundingClientRect();
   return { x: e.clientX - r.left, y: e.clientY - r.top };
 }
 $('battle').addEventListener('pointerdown', (e) => {
-  if (e.button !== 0 && e.pointerType === 'mouse') return;
+  const panOnly = e.pointerType === 'mouse' && e.button === 1;
+  if (e.pointerType === 'mouse' && e.button !== 0 && !panOnly) return;
+  if (panOnly) e.preventDefault();
   activePointers.add(e.pointerId);
   if (activePointers.size > 1) {
     multiTouch = true;
     pointer = null;
     ui.dragging = false;
+    $('battle').classList.remove('dragging');
     return;
   }
   const p = localPoint(e);
-  pointer = { id: e.pointerId, x: p.x, y: p.y, lastX: p.x, moved: false };
+  pointer = { id: e.pointerId, x: p.x, y: p.y, lastX: p.x, moved: false,
+    button: e.button, panOnly };
   $('battle').setPointerCapture(e.pointerId);
   ui.pointer = renderer.screenToWorld(p.x, p.y);
+  if (panOnly) {
+    ui.dragging = true;
+    $('battle').classList.add('dragging');
+  }
+});
+// Mouse button chords do not produce another pointerdown. Handle the native
+// secondary mousedown as well as contextmenu (including macOS Control-click).
+$('battle').addEventListener('mousedown', (e) => {
+  if (e.button === 1) e.preventDefault(); // No native middle-button autoscroll.
+  if (e.button === 2) {
+    e.preventDefault();
+    cancelBattlePlacement();
+  } else if (pointer && e.button !== pointer.button) resetBattleGesture();
+});
+$('battle').addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  if (e.pointerType !== 'touch') cancelBattlePlacement();
+});
+$('battle').addEventListener('auxclick', (e) => {
+  if (e.button === 1) e.preventDefault();
 });
 $('battle').addEventListener('pointermove', (e) => {
   const p = localPoint(e);
   ui.pointer = renderer.screenToWorld(p.x, p.y);
   if (!pointer || pointer.id !== e.pointerId) return;
+  if (e.pointerType === 'mouse' && e.buttons !== (pointer.panOnly ? 4 : 1)) {
+    resetBattleGesture();
+    return;
+  }
   if (Math.hypot(p.x - pointer.x, p.y - pointer.y) > 8) pointer.moved = true;
   if (pointer.moved) {
     renderer.pan(p.x - pointer.lastX);
@@ -1572,12 +1606,16 @@ $('battle').addEventListener('pointerup', (e) => {
   if (!pointer || pointer.id !== e.pointerId) return;
   const p = localPoint(e),
     w = renderer.screenToWorld(p.x, p.y);
-  const moved = pointer.moved;
+  const moved = pointer.moved, panOnly = pointer.panOnly;
   pointer = null;
   ui.dragging = false;
   $('battle').classList.remove('dragging');
-  if (moved || !canInteract()) return;
+  if (panOnly || moved || !canInteract()) return;
   activateBattlePoint(w);
+});
+$('battle').addEventListener('mouseup', (e) => {
+  // pointerup only fires after the final button in a chord is released.
+  if (pointer?.button === e.button) resetBattleGesture();
 });
 function activateBattlePoint(w) {
   if (!canInteract() || $('app').classList.contains('compact-build-open')) return;
@@ -1635,11 +1673,14 @@ function activateBattlePoint(w) {
   }
 }
 function resetBattleGesture() {
+  const captured = pointer?.id;
   activePointers.clear();
   multiTouch = false;
   pointer = null;
   ui.dragging = false;
   $('battle').classList.remove('dragging');
+  if (captured !== undefined && $('battle').hasPointerCapture(captured))
+    $('battle').releasePointerCapture(captured);
 }
 $('battle').addEventListener('pointercancel', (e) => {
   activePointers.delete(e.pointerId);
@@ -2258,6 +2299,77 @@ $('welcomeSettings').onclick = showSettings;
 $('pauseSettings').onclick = showSettings;
 $('closeSettings').onclick = hideSettings;
 $('settingsDone').onclick = hideSettings;
+// Fullscreen must start synchronously inside the button's user gesture. Target
+// the document root so sibling dialogs, pause controls and status remain visible.
+const fullscreenRoot = document.documentElement;
+const fullscreenButtons = [...document.querySelectorAll('[data-fullscreen]')];
+let fullscreenPending = false;
+function fullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement;
+}
+function fullscreenAPI() {
+  if (typeof fullscreenRoot.requestFullscreen === 'function') return {
+    enabled: document.fullscreenEnabled === true,
+    enter: () => fullscreenRoot.requestFullscreen(),
+    exit: () => document.exitFullscreen(),
+  };
+  if (typeof fullscreenRoot.webkitRequestFullscreen === 'function') return {
+    enabled: document.webkitFullscreenEnabled === true,
+    enter: () => fullscreenRoot.webkitRequestFullscreen(),
+    exit: () => document.webkitExitFullscreen(),
+  };
+  return { enabled: false };
+}
+function syncFullscreenControls() {
+  const active = !!fullscreenElement(), available = fullscreenAPI().enabled;
+  const label = active ? 'Exit fullscreen' : 'Enter fullscreen';
+  for (const button of fullscreenButtons) {
+    // Keep keyboard focus during an asynchronous request. Native disabled
+    // would blur the button and let dialog focus restoration choose another.
+    button.disabled = !available;
+    button.setAttribute('aria-disabled', String(fullscreenPending || !available));
+    button.setAttribute('aria-pressed', String(active));
+    button.setAttribute('aria-label', label);
+    button.title = label;
+    if (button === $('settingsFullscreen')) button.textContent = label;
+  }
+  if (!available) $('fullscreenStatus').textContent =
+    'Fullscreen is unavailable in this browser or embedded view. Keep playing in this window, or use your browser’s fullscreen option if available.';
+}
+function fullscreenFailed() {
+  const message = fullscreenElement()
+    ? 'Could not leave fullscreen. Use your browser’s exit fullscreen control.'
+    : 'Could not enter fullscreen. Try again or keep playing in this window.';
+  $('fullscreenStatus').textContent = message;
+  if ($('settingsModal').classList.contains('hidden')) toast(message);
+}
+for (const button of fullscreenButtons) button.addEventListener('click', async () => {
+  const api = fullscreenAPI();
+  if (fullscreenPending || !api.enabled) return;
+  fullscreenPending = true;
+  syncFullscreenControls();
+  try {
+    // No await before the API call: transient user activation must survive.
+    await (fullscreenElement() ? api.exit() : api.enter());
+    $('fullscreenStatus').textContent = fullscreenElement()
+      ? 'Fullscreen is on. Esc or Exit fullscreen returns to the window.'
+      : 'Fullscreen is off. You can keep playing in this window.';
+  } catch {
+    fullscreenFailed();
+  } finally {
+    fullscreenPending = false;
+    syncFullscreenControls();
+  }
+});
+for (const name of ['fullscreenchange', 'webkitfullscreenchange']) document.addEventListener(name, () => {
+  resetBattleGesture();
+  syncFullscreenControls();
+  $('fullscreenStatus').textContent = fullscreenElement()
+    ? 'Fullscreen is on. Esc or Exit fullscreen returns to the window.'
+    : 'Fullscreen is off. You can keep playing in this window.';
+});
+for (const name of ['fullscreenerror', 'webkitfullscreenerror']) document.addEventListener(name, fullscreenFailed);
+syncFullscreenControls();
 $('audioEnabled').onchange = () => {
   soundOn = $('audioEnabled').checked;
   if (soundOn) initAudio();

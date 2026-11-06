@@ -34,7 +34,8 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 ## Controls and saves
 
 - Choose a building, then a legal site. Troops spawn and fight automatically.
-- Drag the field or use Home, Front and the minimap to navigate.
+- Drag the field with touch, left mouse or middle mouse, or use Home, Front and the minimap to navigate. Middle mouse only pans; right-click on the battlefield cancels building or volley placement. Escape and the visible Cancel button remain available.
+- Fullscreen is in Preferences, available from the title screen or pause menu. Activate the button with a click, tap, Enter or Space; browser/device support and permissions apply. If unavailable, keep playing in the window. Ordinary browser and installed-app play do not require fullscreen; screen-size pause rules still apply.
 - Select an owned building to upgrade or salvage it. Original protected structures cannot be salvaged from the UI.
 - Keys 1–7 (legacy) or 1–8 (Rootwarden) select visible building options, R selects Arrow volley, Space pauses, Escape cancels and arrows move the camera. Expand **All buildings** for the full shortcut set.
 - Battles autosave every five seconds and on pause. One active battle slot is shared across modes. A failed Save & return keeps the battle on the page.
