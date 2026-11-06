@@ -9,7 +9,7 @@
   "scripts": {
     "test": "playwright test",
     "list": "playwright test --list",
-    "check": "node --check regression.spec.mjs && node --check playwright.config.mjs && node --check server.mjs"
+    "check": "node --check regression.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0"

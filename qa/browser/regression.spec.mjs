@@ -74,8 +74,10 @@ test('controls fit the viewport and survive orientation changes', async ({page})
   for (const size of [page.viewportSize(), {width:844,height:390}, {width:320,height:568}, {width:390,height:650}]) {
     await page.setViewportSize(size);
     await expect.poll(() => page.locator('#battle').evaluate(e => e.width)).toBe(Math.round(size.width * Math.min(await page.evaluate(() => devicePixelRatio),2)));
-    for (const selector of ['#battle','#pause','#speed','#sound','#settings','#help','#home','#front','#rally','.command-deck']) await fits(page,selector);
+    for (const selector of ['#battle','#pause','#speed','#sound','#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
+    await press(page,'#pause'); await fits(page,'#help');
     await press(page,'#help'); await expect(page.locator('#helpModal')).toBeVisible(); await press(page,'#guideDone');
+    await expect(page.locator('#pauseVeil')).toBeVisible(); await press(page,'#resume');
   }
   const p = await slot(page); await press(page,'[data-type="archery"]'); await tapPoint(page,p);
   await expect(page.locator('#toast')).toContainText('Archery range raised');
@@ -87,9 +89,11 @@ test('pause and field guide freeze time; resume advances it', async ({page}) => 
   await page.waitForTimeout(1200); await expect(page.locator('#time')).toHaveText(time);
   await page.keyboard.press('Digit2'); await expect(page.locator('#cancelBuild')).toBeHidden();
   await press(page,'#resume'); await expect(page.locator('#time')).not.toHaveText(time);
-  await press(page,'#help'); const helpTime = await page.locator('#time').innerText();
+  await press(page,'#pause'); await press(page,'#help'); const helpTime = await page.locator('#time').innerText();
   await page.waitForTimeout(1200); await expect(page.locator('#time')).toHaveText(helpTime);
-  await press(page,'#guideDone'); await expect(page.locator('#time')).not.toHaveText(helpTime);
+  await press(page,'#guideDone'); await expect(page.locator('#pauseVeil')).toBeVisible();
+  await expect(page.locator('#time')).toHaveText(helpTime);
+  await press(page,'#resume'); await expect(page.locator('#time')).not.toHaveText(helpTime);
   expect((await pause(page)).state.time).toBeGreaterThan(s.state.time);
 });
 
@@ -107,8 +111,12 @@ test('save, title, reload and resume preserve buildings, gold, time and difficul
 
 for (const invalid of ['{broken', JSON.stringify({version:999})]) test(`invalid save recovers: ${invalid}`, async ({page}) => {
   await page.addInitScript(({key,value})=>localStorage.setItem(key,value),{key:SAVE,value:invalid});
-  await open(page); await expect(page.locator('#resumeSaved')).toBeHidden(); expect(await saved(page)).toBeNull();
+  await open(page); await expect(page.locator('#resumeSaved')).toBeHidden();
+  await expect(page.locator('#saveStatus')).toBeVisible();
+  await expect(page.locator('#saveStatus')).toContainText('could not be loaded');
+  expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(invalid);
   await press(page,'#start'); await expect(page.locator('#pause')).toBeVisible();
+  const replacement = await saved(page); expect(replacement.version).toBe(1); Game.restore(replacement);
 });
 
 test('denied storage keeps unsaved battle open without crashing settings or pause', async ({page}) => {
