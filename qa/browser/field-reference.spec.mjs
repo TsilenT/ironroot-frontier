@@ -46,7 +46,7 @@ test('field reference disclosures show every unit structure and exact counter ec
     for(const [label,value] of [
       ['Health',formatNumber(unit.baseStats.hp)],['Hit',formatNumber(unit.baseStats.damage)],
       ['Cooldown',formatSeconds(unit.baseStats.attackTime)],['Range',formatNumber(unit.baseStats.range)],
-      ['Speed',formatNumber(unit.baseStats.speed)+' /s'],['Repeat spawn',formatSeconds(unit.production.spawnTime)],
+      ['Speed',formatNumber(unit.baseStats.speed)+' /s'],['Training interval',formatSeconds(unit.production.spawnTime)],
     ])await stat(card,label,value);
     await expect(card.locator('.codex-body')).toContainText(unit.production.name);
     await expect(card.locator('.codex-body')).toContainText(unit.production.cost+' gold');

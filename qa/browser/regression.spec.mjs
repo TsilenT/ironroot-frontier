@@ -78,7 +78,22 @@ test('controls fit the viewport and survive orientation changes', async ({page})
   await start(page);
   for (const size of [page.viewportSize(), {width:844,height:390}, {width:320,height:568}, {width:390,height:650}]) {
     await page.setViewportSize(size);
-    await expect.poll(() => page.locator('#battle').evaluate(e => e.width)).toBe(Math.round(size.width * Math.min(await page.evaluate(() => devicePixelRatio),2)));
+    // Landscape reserves an actual 152px control rail. The battlefield still
+    // fills every remaining CSS pixel; backing dimensions must match that
+    // independently checked layout, not the entire browser viewport.
+    await expect.poll(() => page.locator('#battle').evaluate(canvas => {
+      const rect=canvas.getBoundingClientRect(),rail=document.getElementById('protectedNavigation').getBoundingClientRect();
+      const landscape=matchMedia('(max-height: 500px) and (orientation: landscape)').matches;
+      const dpr=Math.min(devicePixelRatio||1,2);
+      return {
+        viewport:[innerWidth,innerHeight],width:rect.width,
+        expectedWidth:innerWidth-(landscape?152:0),
+        startsAtLeft:rect.left===0,
+        rightEdgeMatches:rect.right===(landscape?rail.left:innerWidth),
+        railFits:!landscape||(rail.width===152&&rail.right===innerWidth),
+        backingMatches:canvas.width===Math.round(rect.width*dpr)&&canvas.height===Math.round(rect.height*dpr),
+      };
+    })).toEqual({viewport:[size.width,size.height],width:size.width-(size.height<=500&&size.width>size.height?152:0),expectedWidth:size.width-(size.height<=500&&size.width>size.height?152:0),startsAtLeft:true,rightEdgeMatches:true,railFits:true,backingMatches:true});
     await openBuildControls(page);
     for (const selector of ['#battle','#pause','#speed','#sound','#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
     await press(page,'#pause'); await fits(page,'#help');
@@ -300,7 +315,7 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
     await chooseBackup(page,retained.text);
     await expect(page.locator('#backupModal')).toBeVisible();
     await expect(page.locator('#backupSummary')).toContainText('No battle in this file');
-    await expect(page.locator('#backupModal .backup-warning')).toContainText('This replaces all campaign stars, trial records, preferences, battle history');
+    await expect(page.locator('#backupModal .backup-warning')).toHaveText('This replaces this browser’s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.');
     await expect(page.locator('#confirmImport')).toHaveText('Replace local saves');
     await expect(page.locator('#confirmImport')).toBeEnabled();
     expect(await historyRecoveryBytes(page)).toEqual(completed);

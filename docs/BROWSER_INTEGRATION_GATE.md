@@ -1,6 +1,12 @@
 # Combined browser integration gate
 
-## Status and candidate boundary
+## Latest execution and repair status
+
+The first exact 0.13.0 cloud gate at commit `0823cb6776df37e2aa309e20fa329c565ca0a356` finished **715 passed / 126 failed / 3 skipped**. All 126 failures are mapped in `qa/browser/evidence/0.13-harness-failure-map.json`; the harness-only corrections and preserved contracts are documented in [BROWSER_013_HARNESS_REPAIR.md](BROWSER_013_HARNESS_REPAIR.md). The corrected matrix is **UNRUN**. Its syntax, fixture/upgrade checks and 8 dependency-free harness contracts pass, but a fresh exact-checkout browser run is required.
+
+The sections below record the original preparation handoff, before that first cloud run. Their UNRUN statements describe that handoff rather than erasing the later failed gate.
+
+## Original preparation status and candidate boundary
 
 **Prepared, not browser-executed.** This handoff changes only `qa/browser/` and this document. No browser or HTTP server was started, no dependencies were installed, and no fixture/runtime bytes were changed by this gate work.
 

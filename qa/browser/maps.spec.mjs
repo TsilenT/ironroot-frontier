@@ -214,7 +214,31 @@ for(const {name,envelope} of corruptions)test('corrupt map save preserves origin
   await press(page,'#exportBackup');await expect(page.locator('#backupStatus')).toContainText(/invalid|unknown|could not|must|unsupported|requires|match|range|site|field/i);
   expect(await storageBytes(page)).toEqual(before);await page.waitForTimeout(100);expect(downloads).toHaveLength(0);
   await press(page,'#settingsDone');await page.reload();expect(await storageBytes(page)).toEqual(before);
-  await selectMap(page,'twin-span');await press(page,'#start');assertMap(await pause(page),'twin-span');
+  await selectMap(page,'twin-span');await press(page,'#start');
+  // A refused save is protected evidence, not implicit permission to overwrite.
+  await expect(page.locator('#settingsModal')).toBeVisible();
+  await expect(page.locator('#backupStatus')).toHaveText('The original saved battle is unchanged. Download it from the title screen, or restore a compatible backup before starting a new battle.');
+  expect(await page.locator('#pause').evaluate(button=>!!button.closest('[inert]'))).toBe(true);
+  await expect(page.locator('#pauseVeil')).toBeHidden();expect(await storageBytes(page)).toEqual(before);
+  if(!await page.locator('.backup-details').evaluate(element=>element.open))await press(page,'.backup-details > summary');
+  const recovery=mapBackup('long-march');
+  await chooseBackup(page,recovery.text);
+  await expect(page.locator('#backupModal')).toBeVisible();
+  await expect(page.locator('#backupSummary')).toContainText('Saved battle: Skirmish · Long March');
+  await expect(page.locator('#backupModal .backup-warning')).toHaveText('This replaces this browser’s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.');
+  await expect(page.locator('#confirmImport')).toHaveText('Replace local saves');
+  expect(await storageBytes(page)).toEqual(before);
+  await press(page,'#cancelImport');await expect(page.locator('#backupModal')).toBeHidden();expect(await storageBytes(page)).toEqual(before);
+  await chooseBackup(page,recovery.text);expect(await storageBytes(page)).toEqual(before);
+  await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);
+  const restored=await storageBytes(page);
+  for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))expect(JSON.parse(restored[key])).toEqual(recovery.backup.data[domain]);
+  expect(restored['qa.unrelated']).toBe('keep me');
+  await expect(page.locator('#resumeSaved')).toContainText('LONG MARCH');
+  await press(page,'#resumeSaved');const resumed=await pause(page);assertLegacyMap(resumed,'long-march');
+  expect(ownBuildings(resumed)).toEqual(ownBuildings(recovery.backup.data.battle));
+  await press(page,'#saveExit');await selectMap(page,'twin-span');await press(page,'#start');assertMap(await pause(page),'twin-span');
+  expect((await storageBytes(page))['qa.unrelated']).toBe('keep me');
 });
 
 for(const id of NEW_MAP_IDS){

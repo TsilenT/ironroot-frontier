@@ -1,0 +1,16 @@
+✔ scale-aware observer recognizes only site geometry/styles and preserves actual draw calls (4.528419ms)
+✔ actual candidate renderer draws every registered map site and the placement ghost is excluded (282.10713ms)
+✔ minimap observation retains exact supplied paths and viewport coordinates (0.625336ms)
+✔ tap helper model waits through pending HUD enable then Cancel and Build expose the command (0.693357ms)
+✔ click helper model waits through pending HUD enable then Cancel and Build expose the command (0.302895ms)
+✔ permanently disabled Build remains blocked, without forced actions or app-state changes (1.030151ms)
+✔ desktop or historical pages without a visible mobile drawer require no synthetic action (0.270566ms)
+✔ renderer converts supplied field rectangles to backing pixels on both axes and after resize (34.637441ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 449.209677

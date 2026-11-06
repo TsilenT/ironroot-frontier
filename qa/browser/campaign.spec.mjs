@@ -146,7 +146,7 @@ test('campaign protected mine has disabled salvage while normal buildings remain
   await expect(page.locator('#selectionPanel')).toBeVisible();
   await expect(page.locator('#sell')).toBeDisabled();
   await expect(page.locator('#sell')).toHaveText('Protected objective');
-  await expect(page.locator('#selectionDescription')).toContainText('Keep this objective alive');
+  await expect(page.locator('#selectionDescription')).toContainText('Keep this building standing.');
   await press(page,'#closeSelection');
   await tapPoint(page,await worldPoint(page,690,450));
   await expect(page.locator('#selectionPanel')).toBeVisible();
