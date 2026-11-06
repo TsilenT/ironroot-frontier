@@ -57,7 +57,7 @@ import {
 import { decodeBattle, encodeBattle, scenarioForBattle, identityOf } from './battle-codec.js';
 import { GameAudio } from './audio.js';
 import { advanceObjectiveBattle } from './objectives.js';
-import { campaignBuildChoices, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
+import { campaignBuildChoices, campaignTeaching, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';
 import { createObjectiveAlertPolicy } from './objective-alerts.js';
 import {
@@ -172,6 +172,9 @@ let mode = 'campaign',
   selectedCampaign = CAMPAIGN_MISSIONS[0].id,
   selectedChapter = CAMPAIGN_CHAPTERS[0].id;
 let expandedBuilds = false, resumedBattle = false, coachEnabled = true;
+// A teaching hold stops simulation, while ordinary battle commands remain available.
+// Manual, visibility, viewport and storage pauses keep their existing guards.
+let coachingHold = false;
 const labels = {
   barracks: ['Barracks', 'Shielded warriors', '9s / wave'],
   archery: ['Archery', 'Ranged support', '10s / wave'],
@@ -397,6 +400,8 @@ function canInteract() {
   return (
     started &&
     !paused &&
+    !document.hidden &&
+    $('coachingModal').classList.contains('hidden') &&
     !recoveryHold &&
     !profileGate &&
     !battleSafetyReason &&
@@ -412,7 +417,7 @@ function selectBuild(type) {
     return;
   }
   if (game.state.gold[0] < (game.buildings || BUILDINGS)[type].cost) {
-    toast(`Need ${(game.buildings || BUILDINGS)[type].cost} gold for ${(game.buildings || BUILDINGS)[type].name}.`);
+    toast(`Need ${(game.buildings || BUILDINGS)[type].cost} gold for ${(game.buildings || BUILDINGS)[type].name}.${coachingHold ? ' Resume battle to earn more gold.' : ''}`);
     sound('error');
     return;
   }
@@ -422,6 +427,10 @@ function selectBuild(type) {
   follow = false;
   updateSelection();
   syncChoice();
+  if (coachingHold && coachEnabled && ui.build) {
+    const site = campaignCoach(game, currentCampaign, ui)?.site;
+    if (site) { renderer.camera = site.x; renderer.clampCamera(); }
+  }
   setCompactBuildOpen(false);
   sound('click');
 }
@@ -464,6 +473,8 @@ function updateCampaignDeck() {
   $('allBuildings').setAttribute('aria-expanded', String(expandedBuilds));
   for (const card of document.querySelectorAll('.build-card'))
     card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
+  $('coachResume').classList.toggle('hidden', !coachingHold || !canInteract());
+  $('coachReplay').classList.toggle('hidden', coachingHold || !canInteract() || !campaignTeaching(currentCampaign));
   const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
   const show = coachEnabled && !!hint && canInteract() && !dialogLayers.some(layer => !layer.classList.contains('hidden'));
   const compact = $('app').classList.contains('protected-compact');
@@ -480,8 +491,8 @@ function updateCampaignDeck() {
   }
   const point = hint?.site || game.state.buildings.find(b => b.id === hint?.buildingId && b.hp > 0);
   if (show && point && !guidancePointVisible(renderer, game, point) && !open) {
-    highlighted = $('home');
-    text = 'Use Home to return to your buildings. ' + text;
+    highlighted = $('minimap');
+    text = 'Pan along the road or use the minimap to bring the suggested site into view. ' + text;
   }
   if (!coachControlVisible(highlighted)) highlighted = null;
   for (const element of document.querySelectorAll('.coach-highlight'))
@@ -507,8 +518,47 @@ $('allBuildings').onclick = () => {
 $('toggleCoach').onclick = () => {
   if (!canInteract()) return;
   coachEnabled = !coachEnabled;
+  if (!coachEnabled && coachingHold) pause(false, { explicit: true });
   updateCampaignDeck();
 };
+function beginCampaignCoaching({ manual = false } = {}) {
+  const lesson = campaignTeaching(currentCampaign, manual ? {} : {
+    resumed: resumedBattle,
+    completed: !!campaignProgress.missions[currentCampaign]?.completed,
+    learnedBasics: !!campaignProgress.missions['first-watch']?.completed,
+  });
+  if (!lesson || !canInteract() || viewportPause.active) return;
+  coachingHold = true;
+  coachEnabled = true;
+  inputScope.interrupt();
+  resetBattleGesture();
+  $('coachingTitle').textContent = lesson.title;
+  $('coachingText').textContent = lesson.text;
+  $('coachingModal').classList.remove('hidden');
+  pauseControl('resume');
+  updateHUD();
+  syncDialogs();
+  if (manual) save();
+}
+function planWithCoaching() {
+  inputScope.interrupt();
+  $('coachingModal').classList.add('hidden');
+  syncDialogs();
+  if (paused || viewportPause.active || recoveryHold || profileGate) return;
+  setCompactBuildOpen(true);
+  updateHUD();
+  const hint = campaignCoach(game, currentCampaign, ui);
+  const target = hint && document.querySelector(hint.control);
+  if (coachControlVisible(target)) target.focus({ preventScroll: true });
+  else $('battle').focus();
+}
+$('coachingPlan').onclick = planWithCoaching;
+$('coachingPlay').onclick = () => pause(false, { explicit: true });
+$('coachResume').onclick = () => pause(false, { explicit: true });
+$('coachReplay').onclick = () => beginCampaignCoaching({ manual: true });
+function toggleBattlePause() {
+  pause(coachingHold && !paused ? false : !paused, { explicit: true });
+}
 function coachControlVisible(element) {
   if (!element || !controlIsVisible(element)) return false;
   const rect = element.getBoundingClientRect();
@@ -614,7 +664,7 @@ $('rally').onclick = () => {
   setCompactBuildOpen(false);
   sound('click');
 };
-function pauseControl(mode = 'pause') {
+function pauseControl(mode = coachingHold ? 'resume' : 'pause') {
   const b = $('pause');
   b.innerHTML =
     mode === 'pause'
@@ -639,6 +689,7 @@ function pauseControl(mode = 'pause') {
 }
 pauseControl();
 function pause(value, { explicit = false } = {}) {
+  if (!value && document.hidden) return;
   if (!value && (recoveryHold || profileGate)) {
     showRecoverySettings();
     return;
@@ -660,14 +711,21 @@ function pause(value, { explicit = false } = {}) {
     $('viewportModal').classList.add('hidden');
     interruptMobileInput();
   }
+  if (!value && explicit && coachingHold) {
+    coachingHold = false;
+    $('coachingModal').classList.add('hidden');
+    inputScope.interrupt();
+    resetBattleGesture();
+    setCompactBuildOpen(false);
+  }
   if (value) setCompactBuildOpen(false);
   paused = value;
   $('pauseVeil').classList.toggle('hidden', !paused);
-  pauseControl(paused ? 'resume' : 'pause');
+  pauseControl(paused || coachingHold ? 'resume' : 'pause');
   if (paused) save();
   syncDialogs();
 }
-$('pause').onclick = () => pause(!paused, { explicit: true });
+$('pause').onclick = toggleBattlePause;
 $('resume').onclick = () => pause(false, { explicit: true });
 $('saveExit').onclick = () => {
   if (recoveryHold || profileGate) {
@@ -823,6 +881,8 @@ function start(
   battleSafetyReason = null;
   $('battleLimitWarning').classList.add('hidden');
   $('resume').disabled = false;
+  coachingHold = false;
+  $('coachingModal').classList.add('hidden');
   currentCampaign = cid;
   expandedBuilds = !!campaignProgress.missions[cid]?.completed;
   resumedBattle = !!restored;
@@ -903,7 +963,7 @@ function start(
   );
   $('speed').textContent = '1×';
   pauseControl();
-  $('pause').onclick = () => pause(!paused, { explicit: true });
+  $('pause').onclick = toggleBattlePause;
   renderer.camera = restored ? game.state.frontline : 450;
   renderer.clampCamera();
   initAudio();
@@ -923,6 +983,7 @@ function start(
   updateHUD();
   syncViewportSafety();
   if (game.limitReason) holdBattleSafety(game.limitReason);
+  beginCampaignCoaching();
   save();
 }
 function beginProtectedObjectives() {
@@ -1250,6 +1311,8 @@ function showTitle({ focusStart = false, focusResume = false } = {}) {
   padHud = false;
   started = false;
   paused = false;
+  coachingHold = false;
+  $('coachingModal').classList.add('hidden');
   cancel();
   renderer.vfx?.reset();
   $('resultModal').classList.add('hidden');
@@ -1677,7 +1740,8 @@ $('minimap').addEventListener('click', (e) => {
 window.addEventListener('keydown', (e) => {
   if (e.repeat && e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return;
   if (e.code === 'Escape') {
-    if (!$('backupModal').classList.contains('hidden')) hideBackup();
+    if (!$('coachingModal').classList.contains('hidden')) planWithCoaching();
+    else if (!$('backupModal').classList.contains('hidden')) hideBackup();
     else if (!$('settingsModal').classList.contains('hidden')) hideSettings();
     else if (!$('helpModal').classList.contains('hidden')) hideHelp();
     else if (!$('resultModal').classList.contains('hidden') && $('resultReport').querySelector('details')?.open) {
@@ -1688,6 +1752,7 @@ window.addEventListener('keydown', (e) => {
   }
   if (
     !started ||
+    !$('coachingModal').classList.contains('hidden') ||
     !$('backupModal').classList.contains('hidden') ||
     !$('settingsModal').classList.contains('hidden') ||
     !$('helpModal').classList.contains('hidden') ||
@@ -1697,7 +1762,7 @@ window.addEventListener('keydown', (e) => {
     return;
   if (e.code === 'Space' && !nativeSpaceTarget(e.target)) {
     e.preventDefault();
-    pause(!paused, { explicit: true });
+    toggleBattlePause();
   }
   if (e.code === 'ArrowLeft') {
     e.preventDefault();
@@ -1793,6 +1858,7 @@ function updateHUD() {
   $('army').textContent = army >= 70 ? '70/70' : army;
   $('army').title = `${army} / 70 army capacity`;
   $('time').textContent = timeText(s.time);
+  $('battleClockLabel').textContent = coachingHold ? 'TEACHING PAUSE' : 'BATTLE TIME';
   for (const [i, prefix] of [
     [0, 'your'],
     [1, 'enemy'],
@@ -1872,7 +1938,7 @@ let heardEffects = new WeakSet(),
 function updateAudio() {
   const ended = game.state.winner !== null || objectiveOutcome;
   audio.setScene(
-    document.hidden || paused
+    document.hidden || paused || coachingHold
       ? 'paused'
       : !started
         ? 'menu'
@@ -1882,7 +1948,7 @@ function updateAudio() {
             : 'defeat'
           : 'battle',
   );
-  if (!started || paused || ended) return;
+  if (!started || paused || coachingHold || ended) return;
   const s = game.state;
   audio.setIntensity(
     Math.min(
@@ -1933,7 +1999,7 @@ function frame(now) {
   updateController(now);
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
-  if (started && !paused && game.state.winner === null && !objectiveOutcome) {
+  if (started && !paused && !coachingHold && game.state.winner === null && !objectiveOutcome) {
     if (currentCampaign || currentChallenge) {
       const authored = currentCampaign
         ? CAMPAIGN_MISSIONS.find((m) => m.id === currentCampaign)
@@ -1970,7 +2036,7 @@ function frame(now) {
   }
   updateAudio();
   ui.paused =
-    paused || !started || game.state.winner !== null || !!objectiveOutcome;
+    paused || coachingHold || !started || game.state.winner !== null || !!objectiveOutcome;
   const missionTargets = currentCampaign
     ? getCampaignTargets(game, currentCampaign)
     : [];
@@ -2304,6 +2370,7 @@ $('effectQuality').onchange = () => {
 };
 // Dialog focus never escapes into a live battlefield behind the overlay.
 const dialogLayers = [
+  $('coachingModal'),
   $('viewportModal'),
   $('welcome'),
   $('helpModal'),
@@ -2898,7 +2965,8 @@ function controllerNavigate(direction, scope) {
   focusPadControl(controls[next]);
 }
 function controllerBack(scope) {
-  if (scope.key === 'backupModal') hideBackup();
+  if (scope.key === 'coachingModal') planWithCoaching();
+  else if (scope.key === 'backupModal') hideBackup();
   else if (scope.key === 'settingsModal') hideSettings();
   else if (scope.key === 'helpModal') hideHelp();
   else if (scope.key === 'pause') pause(false, { explicit: true });
@@ -2929,7 +2997,7 @@ function handleControllerAction({ action }) {
   }
   if (action === 'pause') {
     if (scope.key === 'pause') pause(false, { explicit: true });
-    else if (scope.key === 'battle' || scope.key === 'hud') pause(true);
+    else if (scope.key === 'battle' || scope.key === 'hud') toggleBattlePause();
   } else if (action === 'cancel') controllerBack(scope);
   else if (action === 'focus') {
     if (scope.key === 'battle') {

@@ -41,22 +41,99 @@ export function drawCampaignGuidance(renderer, game, ui) {
   c.restore();
 }
 
+/** Fresh openings pause for reading and planning, never for a mid-battle hint.
+ * UI-only state: restored saves and completed replays run normally. */
+export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false } = {}) {
+  if (resumed || completed) return null;
+  const lessons = {
+    'first-watch': ['Build your first army', 'Choose Barracks, then a green site on the road. Warriors march and fight on their own. Add an archery range behind them for support.'],
+    'forked-road': ['Plan for both roads', 'Each road needs troops. Mines fund later reinforcements; towers defend nearby ground but cannot march to the enemy camps.'],
+    'emberwatch': ['Add ranged support', 'Your barracks is already built. An archery range behind it adds support while warriors advance.'],
+    'three-roads': ['Defense and attack', 'A tower can hold nearby ground. Place it ahead of your troop buildings, and send troops down both outer roads to clear the marked camps.'],
+    'winter-stores': ['Fund the relief', 'Keep both marked mines standing. Add income and upgrade mines to reach the goal; leave gold for troops to defend them.'],
+  };
+  if (!Object.hasOwn(lessons, id) || (id === 'emberwatch' && learnedBasics)) return null;
+  return { title: lessons[id][0], text: lessons[id][1] };
+}
+
+/** Paid, engine-valid suggestions. A tower needs forward coverage; if that is
+ * unavailable, explain it instead of silently highlighting a rear site. */
+export function recommendCampaignSite(game, type, preferredLane = null) {
+  const definitions = game.buildings || BUILDINGS;
+  if (!Object.hasOwn(definitions, type)) return { reason: 'This building is unavailable in this battle.' };
+  const own = game.state.buildings.filter(b => b.side === 0 && b.hp > 0);
+  const enemies = game.state.buildings.filter(b => b.side === 1 && b.hp > 0);
+  const middle = Math.floor(game.map.lanes.length / 2);
+  const lanes = game.map.lanes.map((_, lane) => {
+    const producers = own.filter(b => b.lane === lane && definitions[b.type]?.unit);
+    const front = Math.max(0, ...producers.map(b => b.x));
+    const pressure = game.state.units.filter(u => u.side === 1 && u.hp > 0 && u.lane === lane)
+      .reduce((n, u) => n + Math.max(0, 2 - u.x / 1320), 0);
+    const threat = enemies.filter(b => b.lane === lane && definitions[b.type]?.unit).length;
+    return { lane, front, pressure, threat, producers };
+  });
+  const laneOrder = [...lanes].sort((a, b) =>
+    preferredLane !== null ? Math.abs(a.lane - preferredLane) - Math.abs(b.lane - preferredLane) :
+    type === 'watchtower' ? b.pressure - a.pressure || b.threat - a.threat || b.producers.length - a.producers.length || Math.abs(a.lane-middle)-Math.abs(b.lane-middle) :
+    type === 'mint' ? b.producers.length - a.producers.length || a.pressure - b.pressure || Math.abs(a.lane-middle)-Math.abs(b.lane-middle) :
+    Math.abs(a.lane-middle)-Math.abs(b.lane-middle));
+  const legal = buildSites(game.map, 0).filter(p => game.canBuild(type, p.x, p.y).ok);
+  if (!legal.length) return { reason: game.state.gold[0] < definitions[type].cost
+    ? `You need ${definitions[type].cost} gold. Resume to earn income; time and income are stopped during a teaching pause.`
+    : 'No legal site is available for this building. Check the mine/building limit, upgrade, or choose another type.' };
+  for (const lane of laneOrder) {
+    let sites = legal.filter(p => p.lane === lane.lane);
+    const support = ['archery', 'foundry', 'sanctum'].includes(type);
+    const anchor = lane.producers.filter(b => b.type === 'barracks' || b.type === 'wardenLodge')
+      .sort((a,b) => b.x-a.x)[0];
+    let preferredX = 970, explanation = 'A forward troop building shortens the march; leave room ahead for defense.';
+    if (type === 'watchtower') {
+      sites = sites.filter(p => p.x > lane.front && p.x >= (lane.front ? lane.front + 108 : 970));
+      preferredX = Math.max(970, lane.front + 140);
+      explanation = lane.front ? 'Ahead of your troop buildings, this tower can intercept enemies before they reach production.'
+        : 'This forward tower defends nearby ground. Add troops on this road to push toward the enemy.';
+    } else if (type === 'mint') {
+      preferredX = 270;
+      explanation = 'A rear mine leaves forward sites for troops and defense. It still needs protection.';
+    } else if (support && anchor) {
+      sites = sites.filter(p => p.x < anchor.x);
+      preferredX = anchor.x - 140;
+      explanation = 'Behind your frontline producer, reinforcements have a chance to form up behind its troops.';
+    }
+    if (!sites.length) continue;
+    const danger = p => game.state.units.filter(u => u.side === 1 && u.hp > 0 && u.lane === p.lane && Math.abs(u.x-p.x) < 240).length;
+    sites.sort((a,b) => danger(a)-danger(b) || Math.abs(a.x-preferredX)-Math.abs(b.x-preferredX) || a.x-b.x);
+    const site = sites[0];
+    const road = game.map.lanes.length === 1 ? 'the road' : `${['first', 'second', 'third'][site.lane]} road`;
+    if (preferredLane !== null && site.lane !== preferredLane) explanation = `The requested road has no suitable free site. This is on the ${road}. ` + explanation;
+    if (danger(site)) explanation += ' Enemies are already close: this placement is exposed.';
+    return { site, explanation, road };
+  }
+  return { reason: type === 'watchtower'
+    ? 'No free forward tower site remains. A rear tower only guards a fallback line; choose one yourself, upgrade, or use troops instead.'
+    : 'No free site remains behind your frontline producer. Choose another road or place support yourself, accepting a more exposed position.' };
+}
+
 /** Infer hints from the real battle, including after a reload. Never mutate it. */
 export function campaignCoach(game, id, choice = {}) {
+  if (!['first-watch','forked-road','emberwatch','three-roads','winter-stores','wings-of-ash','stonegate'].includes(id)) return null;
   const definitions = game.buildings || BUILDINGS;
   const own = game.state.buildings.filter(b => b.side === 0 && b.hp > 0);
   const build = (type, title, text, preferredLane = null) => {
-    const middle = preferredLane ?? Math.floor(game.map.lanes.length / 2);
-    const anchor = own.find(b => b.type === 'barracks' && b.lane === middle);
-    const preferredX = (anchor?.x ?? game.map.siteColumns[3]) - 140;
-    const site = buildSites(game.map, 0).filter(p => game.canBuild(type, p.x, p.y).ok)
-      .sort((a, b) => Math.abs(a.lane - middle) - Math.abs(b.lane - middle) || Math.abs(a.x - preferredX) - Math.abs(b.x - preferredX))[0];
-    return { key: `build-${type}`, title, text: choice.build === type
-      ? site ? 'Choose a green site. The gold ring marks a free spot.'
-        : game.state.gold[0] < definitions[type].cost ? `You need ${definitions[type].cost} gold to build this.`
-          : 'No free site is available. Upgrade a building or choose another type.'
-      : text, control: `[data-type="${type}"]`, site: choice.build === type ? site : null };
+    const recommendation = recommendCampaignSite(game, type, preferredLane);
+    const selected = choice.build === type;
+    return { key: `build-${type}`, buildType: type, title,
+      text: selected ? (recommendation.site
+        ? `The gold ring suggests ${recommendation.road}. ${recommendation.explanation} Other green sites remain available.`
+        : recommendation.reason) : text,
+      control: `[data-type="${type}"]`, site: selected ? recommendation.site : null };
   };
+  // Respect a different composition: explain the selected tool without forcing
+  // the suggested purchase, site, sequence, or a tutorial completion flag.
+  if (choice.build && Object.hasOwn(definitions, choice.build)) {
+    const result = build(choice.build, `Place ${definitions[choice.build].name}`, '');
+    return result;
+  }
   if (id === 'first-watch') {
     if (!own.some(b => b.type === 'barracks'))
       return build('barracks', 'Build a barracks', 'Choose Barracks, then a green site. Warriors will march out on their own.');
@@ -72,7 +149,7 @@ export function campaignCoach(game, id, choice = {}) {
     if (!own.some(b => b.type === 'mint'))
       return build('mint', 'Build a gold mine', 'A mine adds 2.5 gold per second. Place it behind your troops.');
     if (!own.some(b => b.type === 'watchtower'))
-      return build('watchtower', 'Hold a road', 'A watchtower fires at nearby enemies. Place one where your troops need support.');
+      return build('watchtower', 'Hold a road', 'A watchtower fires at nearby enemies. Put it ahead of production; it cannot clear a distant camp on its own.');
     return { key: 'roads', title: 'Watch both roads', text: 'Use the minimap to check each road. Keep troops moving toward both marked barracks.', control: '#front' };
   }
   if (id === 'emberwatch') {
@@ -97,6 +174,10 @@ export function campaignCoach(game, id, choice = {}) {
         : 'Tap the gold-ringed mine, then choose Upgrade. Aim for 15 gold/sec before the deadline.', control: choice.selected === mine.id ? '#upgrade' : '#battle', buildingId: mine.id };
     }
     return { key: 'protect', title: 'Keep the supply mines alive', text: 'Your income is ready. Defend both marked starting mines until the clock runs out.', control: '#front' };
+  }
+  if (id === 'wings-of-ash') {
+    const lane = [0, game.map.lanes.length - 1].find(lane => !own.some(b => b.lane === lane && (game.units || {})[definitions[b.type]?.unit]?.canAttackAir));
+    if (lane !== undefined) return build('archery', 'Answer the flyers', 'Archers can hit gryphons. Cover both outer roads; ground-only troops cannot stop the air attack.', lane);
   }
   if (id === 'stonegate' && !own.some(b => b.type === 'foundry'))
     return build('foundry', 'A new option: foundry', 'Siege engines outrange towers. Choose Foundry below and keep warriors ahead of its engines.');
