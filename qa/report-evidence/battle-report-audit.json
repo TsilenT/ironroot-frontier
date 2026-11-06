@@ -1,0 +1,1320 @@
+{
+  "scope": "Local Node audit only. Synthetic boundary fixtures are not playability evidence. Paired games use public paid actions and normal endpoints. No browser, server, external transfer or publication.",
+  "node": "v24.22.1",
+  "engineSha256": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7",
+  "moduleSha256": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+  "viewSha256": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+  "appSha256": "fc93f44b556bff11b758308a0a38abaadb41106a3d821cee517d99c8a096662c",
+  "harnessSha256": "a5b6249c2ddd0c6f00082e9b7d97893240979bb42b82bcdaa2ecc679ef6cafeb",
+  "passed": 52,
+  "failed": 0,
+  "simulationPairs": 31,
+  "simulations": 62,
+  "checks": [
+    {
+      "name": "Frozen engine, objective, save, and backup modules match the 0.10 baseline",
+      "passed": true
+    },
+    {
+      "name": "Creation, observation, finalization and export read a deeply frozen Game without mutation",
+      "passed": true
+    },
+    {
+      "name": "Live-mine income ignores stale HUD rate after paid build, upgrade, sale and destruction",
+      "passed": true
+    },
+    {
+      "name": "Free starting allocations are cumulative placements, not paid spending or lifetime production",
+      "passed": true
+    },
+    {
+      "name": "Zero-time, single-point, subinterval and same-time final snapshots remain truthful",
+      "passed": true
+    },
+    {
+      "name": "Sampling is based on simulated time, rejects backwards time, and never interpolates",
+      "passed": true
+    },
+    {
+      "name": "One-game identity holds before and after finish; same-game finish is immutable/idempotent",
+      "passed": true
+    },
+    {
+      "name": "Resume and late observation disclose missing timeline but retain whole-match engine counters",
+      "passed": true
+    },
+    {
+      "name": "Synthetic long timeline stays <=256, preserves actual endpoints and discarded-sample peaks",
+      "passed": true
+    },
+    {
+      "name": "Mandatory original protection and health outrank a simultaneous enemy-citadel win",
+      "passed": true
+    },
+    {
+      "name": "Objective win, alternate citadel win, pure draw and authored draw have truthful sources",
+      "passed": true
+    },
+    {
+      "name": "Invalid/nonterminal input cannot poison the journal or leak nonfinite/arbitrary export fields",
+      "passed": true
+    },
+    {
+      "name": "Actual finish and result re-open paths award history/progress exactly once",
+      "passed": true
+    },
+    {
+      "name": "Actual new/Resume journal initialization clears old results and fails closed",
+      "passed": true
+    },
+    {
+      "name": "Actual report failure preserves valid battle result and does not interrupt its one-time reward",
+      "passed": true
+    },
+    {
+      "name": "Actual sample fault is isolated, stops observation, and preserves engine/result behavior",
+      "passed": true
+    },
+    {
+      "name": "Actual save function keeps the existing envelope and never includes a report",
+      "passed": true
+    },
+    {
+      "name": "Polished display times match main-result tolerance without changing observed timestamps",
+      "passed": true
+    },
+    {
+      "name": "Polished totals lead the report while Resume, allocation and sampled-history caveats remain truthful",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"classic\",\"seed\":733,\"difficulty\":\"easy\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"classic\",\"seed\":91237,\"difficulty\":\"normal\",\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"classic\",\"seed\":7281901,\"difficulty\":\"hard\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"long-march\",\"seed\":733,\"difficulty\":\"easy\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"long-march\",\"seed\":91237,\"difficulty\":\"normal\",\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"long-march\",\"seed\":7281901,\"difficulty\":\"hard\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"twin-span\",\"seed\":733,\"difficulty\":\"easy\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"twin-span\",\"seed\":91237,\"difficulty\":\"normal\",\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"twin-span\",\"seed\":7281901,\"difficulty\":\"hard\",\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"skirmish\",\"mapId\":\"classic\",\"seed\":3940101199,\"difficulty\":\"normal\",\"idle\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"emberwatch\",\"seed\":1101,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"three-roads\",\"seed\":1203,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"winter-stores\",\"seed\":1307,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"wings-of-ash\",\"seed\":2101,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"stonegate\",\"seed\":2203,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"long-vigil\",\"seed\":2309,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"cold-forge\",\"seed\":3101,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"black-ledger\",\"seed\":3203,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"furnace-heart\",\"seed\":3307,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"crown-foothold\",\"seed\":4101,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"last-light\",\"seed\":4201,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"ironroot\",\"seed\":4303,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"open-horizon\",\"seed\":5101,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"river-charter\",\"seed\":5203,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"far-beacon\",\"seed\":5309,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"campaign\",\"id\":\"common-ground\",\"seed\":5407,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"challenge\",\"id\":\"shieldbreaker\",\"seed\":117,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"challenge\",\"id\":\"skyguard\",\"seed\":231,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"challenge\",\"id\":\"siegecraft\",\"seed\":349,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"challenge\",\"id\":\"goldrush\",\"seed\":463,\"restore\":false}",
+      "passed": true
+    },
+    {
+      "name": "Paired paid full-endpoint simulation {\"mode\":\"challenge\",\"id\":\"holdfast\",\"seed\":587,\"restore\":true}",
+      "passed": true
+    },
+    {
+      "name": "Every map, five unit types and seven buildings are covered in normal paid simulations",
+      "passed": true
+    },
+    {
+      "name": "Protected runtime hashes remain unchanged after audit",
+      "passed": true
+    }
+  ],
+  "runs": [
+    {
+      "mode": "skirmish",
+      "mapId": "classic",
+      "seed": 733,
+      "difficulty": "easy",
+      "restore": false,
+      "time": 100.29999999999644,
+      "winner": 0,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 18,
+      "successfulActions": 7,
+      "saveSha256": "1170ac3796171df104aceee25b9099171a2adfb86bb1822ebe6819b6a9f1b849",
+      "actionsSha256": "05f0de4d0e28245ea01247207bbf9105106bffb3d40aeb25379f6455d5db49e1",
+      "retainedPoints": 52,
+      "observations": 52,
+      "exportBytes": 201617,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 25,
+          "built": 3,
+          "damage": 12850.960000000106
+        },
+        {
+          "side": 1,
+          "kills": 11,
+          "built": 6,
+          "damage": 3214.7499999999986
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "classic",
+      "seed": 91237,
+      "difficulty": "normal",
+      "restore": true,
+      "time": 155.15000000000103,
+      "winner": 1,
+      "result": "defeat",
+      "restored": true,
+      "actionCount": 20,
+      "successfulActions": 12,
+      "saveSha256": "737fabf9a346768fe9b95cecdce7f2c8224ff2928c5e15d6cdafc474e200b88b",
+      "actionsSha256": "c91d355252eb48ca044182c91cc15121449902df2d2cf6dd2d3ccae55f0d8c13",
+      "retainedPoints": 49,
+      "observations": 49,
+      "exportBytes": 190995,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 46,
+          "built": 4,
+          "damage": 8688.08
+        },
+        {
+          "side": 1,
+          "kills": 38,
+          "built": 8,
+          "damage": 16219.600000000011
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "classic",
+      "seed": 7281901,
+      "difficulty": "hard",
+      "restore": false,
+      "time": 94.29999999999679,
+      "winner": 1,
+      "result": "defeat",
+      "restored": false,
+      "actionCount": 10,
+      "successfulActions": 8,
+      "saveSha256": "9985472ffdda3f44dae4363904ac505736cb1b36d6a8ad252cfdbf8d12a9f3aa",
+      "actionsSha256": "22c1866e4fd8c0ed02d082176ff94955e8e7f7ef748d8b01264dc9d477cb447c",
+      "retainedPoints": 49,
+      "observations": 49,
+      "exportBytes": 190622,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 20,
+          "built": 3,
+          "damage": 7756.200000000038
+        },
+        {
+          "side": 1,
+          "kills": 16,
+          "built": 5,
+          "damage": 9304.440000000004
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "long-march",
+      "seed": 733,
+      "difficulty": "easy",
+      "restore": false,
+      "time": 137.54999999999703,
+      "winner": 0,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 9,
+      "successfulActions": 9,
+      "saveSha256": "09c95cac4aab00a7000e70d103ce8b41eeaa0eda4b4c9446340a804a048881eb",
+      "actionsSha256": "81f9f8860ab9cde8289c2a5e74cdcb51534791de3e1e9072abfb5b8d4c75963a",
+      "retainedPoints": 70,
+      "observations": 70,
+      "exportBytes": 268054,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 45,
+          "built": 4,
+          "damage": 16608.080000000173
+        },
+        {
+          "side": 1,
+          "kills": 19,
+          "built": 8,
+          "damage": 4696.2999999999965
+        }
+      ],
+      "finalIncome": [
+        7.5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "long-march",
+      "seed": 91237,
+      "difficulty": "normal",
+      "restore": true,
+      "time": 186.15000000000808,
+      "winner": 1,
+      "result": "defeat",
+      "restored": true,
+      "actionCount": 20,
+      "successfulActions": 13,
+      "saveSha256": "def77606690f10fb6a2aed58e7451248a02228f4fe5810e7c54077704d168e5f",
+      "actionsSha256": "beb39fcc7189db7c3e2c279584473b45af4d46fac7fcdf693f72bd0ec1003f6b",
+      "retainedPoints": 65,
+      "observations": 65,
+      "exportBytes": 250112,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 61,
+          "built": 5,
+          "damage": 10467.04
+        },
+        {
+          "side": 1,
+          "kills": 54,
+          "built": 8,
+          "damage": 20152.60000000002
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "long-march",
+      "seed": 7281901,
+      "difficulty": "hard",
+      "restore": false,
+      "time": 110.99999999999584,
+      "winner": 1,
+      "result": "defeat",
+      "restored": false,
+      "actionCount": 13,
+      "successfulActions": 8,
+      "saveSha256": "1fc00e0e58e4b04801fdab4339880bb040fcb56339ab423aa4bc24753358ce98",
+      "actionsSha256": "b8284b1f88d54caff7d55714aa18587c8409664d33cad42a057947bb84141573",
+      "retainedPoints": 57,
+      "observations": 57,
+      "exportBytes": 220126,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 25,
+          "built": 3,
+          "damage": 10147.44000000008
+        },
+        {
+          "side": 1,
+          "kills": 14,
+          "built": 6,
+          "damage": 9472.200000000004
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "twin-span",
+      "seed": 733,
+      "difficulty": "easy",
+      "restore": false,
+      "time": 121.29999999999525,
+      "winner": 0,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 7,
+      "successfulActions": 7,
+      "saveSha256": "7d94dbe84ec7c4628fbe637da3ef36d950f4cb1dde599e3a096dcd013c0687b0",
+      "actionsSha256": "27bea3c224ac869f5a018adcc39bfd25b4e4b25dd98ee089f0cf330f560f9f86",
+      "retainedPoints": 62,
+      "observations": 62,
+      "exportBytes": 238606,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 39,
+          "built": 3,
+          "damage": 16080.000000000202
+        },
+        {
+          "side": 1,
+          "kills": 16,
+          "built": 7,
+          "damage": 4146.649999999995
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "twin-span",
+      "seed": 91237,
+      "difficulty": "normal",
+      "restore": true,
+      "time": 116.8499999999955,
+      "winner": 1,
+      "result": "defeat",
+      "restored": true,
+      "actionCount": 13,
+      "successfulActions": 9,
+      "saveSha256": "0e58556d53422da6c29d70900b9b37e2f6c30535c25ac06a47990390b5cf90be",
+      "actionsSha256": "c52706b9daf2efc7a5aa9f50b3bf81dad06b61a9add795f7d0f6a3b30472188f",
+      "retainedPoints": 30,
+      "observations": 30,
+      "exportBytes": 120816,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 29,
+          "built": 3,
+          "damage": 6014.12
+        },
+        {
+          "side": 1,
+          "kills": 27,
+          "built": 8,
+          "damage": 13563.600000000037
+        }
+      ],
+      "finalIncome": [
+        5,
+        10
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "twin-span",
+      "seed": 7281901,
+      "difficulty": "hard",
+      "restore": false,
+      "time": 121.64999999999523,
+      "winner": 1,
+      "result": "defeat",
+      "restored": false,
+      "actionCount": 24,
+      "successfulActions": 9,
+      "saveSha256": "20178452193915af2e182741b17208374732aebb1d9b1eede16e34491abb6de3",
+      "actionsSha256": "940f714d64bdbb8401d0f91c82a7fd130999eab8d0db6d59a3aaa74243a3008e",
+      "retainedPoints": 62,
+      "observations": 62,
+      "exportBytes": 238305,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 36,
+          "built": 3,
+          "damage": 6968.199999999999
+        },
+        {
+          "side": 1,
+          "kills": 27,
+          "built": 7,
+          "damage": 13671.600000000026
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "skirmish",
+      "mapId": "classic",
+      "seed": 3940101199,
+      "difficulty": "normal",
+      "idle": true,
+      "time": 428.00000000006304,
+      "winner": 1,
+      "result": "defeat",
+      "restored": false,
+      "actionCount": 0,
+      "successfulActions": 0,
+      "saveSha256": "788f9d71f763e6dfa0be5d0399c4f84554860198acea16fc3ae7f789a957fec9",
+      "actionsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retainedPoints": 215,
+      "observations": 215,
+      "exportBytes": 802812,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 41,
+          "built": 1,
+          "damage": 8082
+        },
+        {
+          "side": 1,
+          "kills": 52,
+          "built": 1,
+          "damage": 15890.45999999985
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "emberwatch",
+      "seed": 1101,
+      "restore": false,
+      "time": 37.200000000000024,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 282,
+      "successfulActions": 4,
+      "saveSha256": "2128040b95bb75fcd45125f54d80c709d79c9a79a5c48cfb7a94bc08bb984321",
+      "actionsSha256": "153cd0376827551f8904cd7d7833f6c6c513fc05f93579c1b7674f07adfbbc7b",
+      "retainedPoints": 20,
+      "observations": 20,
+      "exportBytes": 83932,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 7,
+          "built": 5,
+          "damage": 1615.0000000000005
+        },
+        {
+          "side": 1,
+          "kills": 2,
+          "built": 2,
+          "damage": 556.2000000000004
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "three-roads",
+      "seed": 1203,
+      "restore": false,
+      "time": 93.9499999999968,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 722,
+      "successfulActions": 6,
+      "saveSha256": "0aebcf067382abc2adf95b6b0c10c3b4fa8bc25c3e56516fd667d70555f44812",
+      "actionsSha256": "b60fcf211d46e6f6ef44f3c64f26b3916343850f73e7fb027de24ead8ec0f27e",
+      "retainedPoints": 48,
+      "observations": 48,
+      "exportBytes": 187359,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 24,
+          "built": 7,
+          "damage": 8900.000000000011
+        },
+        {
+          "side": 1,
+          "kills": 17,
+          "built": 3,
+          "damage": 3333.3499999999995
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "winter-stores",
+      "seed": 1307,
+      "restore": true,
+      "time": 149.99999999999986,
+      "winner": null,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 137,
+      "successfulActions": 15,
+      "saveSha256": "02ff092b1b8d36c722aac562eff046d51f2a1c083173aecc3dd1d990e35ab3b9",
+      "actionsSha256": "c34c2bb426b5358ebd7535e7db519bca82a5350dabf7388a2e0efbbd3f2da393",
+      "retainedPoints": 46,
+      "observations": 46,
+      "exportBytes": 181217,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 36,
+          "built": 6,
+          "damage": 8957.240000000033
+        },
+        {
+          "side": 1,
+          "kills": 13,
+          "built": 3,
+          "damage": 4391.4
+        }
+      ],
+      "finalIncome": [
+        20,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "wings-of-ash",
+      "seed": 2101,
+      "restore": false,
+      "time": 71.74999999999807,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 545,
+      "successfulActions": 5,
+      "saveSha256": "584f54ef785c79bc09ded261695b52ef03765288c38689a59be78bdd4c4fc63f",
+      "actionsSha256": "5701e4e3018893a93c7b913813396ef1150653be8f8e0e6ae883d446421a482d",
+      "retainedPoints": 37,
+      "observations": 37,
+      "exportBytes": 146783,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 11,
+          "built": 6,
+          "damage": 6042
+        },
+        {
+          "side": 1,
+          "kills": 9,
+          "built": 2,
+          "damage": 1161.32
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "stonegate",
+      "seed": 2203,
+      "restore": false,
+      "time": 73.14999999999799,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 570,
+      "successfulActions": 4,
+      "saveSha256": "3767b69ed0d38bc9719956e75d506d44eddca9093f3d2f1222740ef7236aca03",
+      "actionsSha256": "66ef80153d5b0cdffa92780e6a6aaf267cc0c91d518325f47bd29ba8eed61d92",
+      "retainedPoints": 38,
+      "observations": 38,
+      "exportBytes": 150644,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 8,
+          "built": 5,
+          "damage": 5640
+        },
+        {
+          "side": 1,
+          "kills": 16,
+          "built": 4,
+          "damage": 3066.095999999994
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "long-vigil",
+      "seed": 2309,
+      "restore": true,
+      "time": 149.99999999999986,
+      "winner": null,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 1167,
+      "successfulActions": 9,
+      "saveSha256": "5fff84061952fdb95a421ad0bd895b3e172518dd1a0f902e594ad41234beb664",
+      "actionsSha256": "7c62c7db4fbc51b760f72d4b8424fd0aa78814fa792c0bcbc87c1354d46fe005",
+      "retainedPoints": 46,
+      "observations": 46,
+      "exportBytes": 180646,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 74,
+          "built": 11,
+          "damage": 12000.581999999984
+        },
+        {
+          "side": 1,
+          "kills": 53,
+          "built": 6,
+          "damage": 9944.900000000032
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "cold-forge",
+      "seed": 3101,
+      "restore": false,
+      "time": 98.49999999999655,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 756,
+      "successfulActions": 6,
+      "saveSha256": "3d1e6b35d87f25b2e498ccb7ad9d1ad052dcb9ab7b709895333df5ba68060b34",
+      "actionsSha256": "c3629e279793b18d37b49108e2a65d483a08a7dcb4ce7ad6631920a7fb485cf7",
+      "retainedPoints": 51,
+      "observations": 51,
+      "exportBytes": 198461,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 40,
+          "built": 8,
+          "damage": 14457.400000000092
+        },
+        {
+          "side": 1,
+          "kills": 23,
+          "built": 5,
+          "damage": 4852.719999999998
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "black-ledger",
+      "seed": 3203,
+      "restore": false,
+      "time": 120.19999999999531,
+      "winner": 0,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 562,
+      "successfulActions": 13,
+      "saveSha256": "84430e305251e560674ba75e287a9a74d7a75578b9ff83df7861f899c5b256ee",
+      "actionsSha256": "ba1a3bac635fe8b3131da9c4abded365f8116d48d47cd35e54e42392df1351b5",
+      "retainedPoints": 62,
+      "observations": 62,
+      "exportBytes": 240100,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 16,
+          "built": 16,
+          "damage": 14791.26000000007
+        },
+        {
+          "side": 1,
+          "kills": 26,
+          "built": 12,
+          "damage": 4788.600000000001
+        }
+      ],
+      "finalIncome": [
+        12.5,
+        7.5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "furnace-heart",
+      "seed": 3307,
+      "restore": true,
+      "time": 163.25000000000287,
+      "winner": null,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 966,
+      "successfulActions": 16,
+      "saveSha256": "4d63b43bb71f2e91cfedb06e190cadee40344692b559a9e509521718169a1a28",
+      "actionsSha256": "1c007fd2f7561596dde7871650ba18ebfcf23e67077d10d1b3b5e2c6f570d0fe",
+      "retainedPoints": 53,
+      "observations": 53,
+      "exportBytes": 207175,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 96,
+          "built": 19,
+          "damage": 19134.600000000075
+        },
+        {
+          "side": 1,
+          "kills": 77,
+          "built": 6,
+          "damage": 14054.192000000046
+        }
+      ],
+      "finalIncome": [
+        12.5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "crown-foothold",
+      "seed": 4101,
+      "restore": false,
+      "time": 180.00000000000668,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 151,
+      "successfulActions": 22,
+      "saveSha256": "950e16e666a0b5452a826465758822dc9c2533b1bee36f665e25027150da3009",
+      "actionsSha256": "c4de3946fe0ced9b81573a6f351a39c8505de6f85f63394a309371b4c55fd976",
+      "retainedPoints": 91,
+      "observations": 91,
+      "exportBytes": 345991,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 85,
+          "built": 9,
+          "damage": 13865.79999999997
+        },
+        {
+          "side": 1,
+          "kills": 57,
+          "built": 8,
+          "damage": 8277.000000000056
+        }
+      ],
+      "finalIncome": [
+        20,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "last-light",
+      "seed": 4201,
+      "restore": false,
+      "time": 180.00000000000668,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 1083,
+      "successfulActions": 18,
+      "saveSha256": "a5637417141190d4de8ed3aa4dddfb9f2562b011d534d4d03f7ed97533b3808a",
+      "actionsSha256": "dfcc15f04c3133a48209b7e5a795c6df181592d06ffe06c31ff89c24ce51b17d",
+      "retainedPoints": 91,
+      "observations": 91,
+      "exportBytes": 346707,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 80,
+          "built": 20,
+          "damage": 20471.000000000033
+        },
+        {
+          "side": 1,
+          "kills": 79,
+          "built": 8,
+          "damage": 12516.799999999992
+        }
+      ],
+      "finalIncome": [
+        12.5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "ironroot",
+      "seed": 4303,
+      "restore": true,
+      "time": 119.39999999999536,
+      "winner": 0,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 956,
+      "successfulActions": 15,
+      "saveSha256": "f25917b3ed577f9349e9a29c0b19d65c296773c655ab87e984e305c4d64a5c0f",
+      "actionsSha256": "73eced897b6f07bdacfc11f56eccbb7bfa0ee4e04f6eb232ff1342bc486960a8",
+      "retainedPoints": 31,
+      "observations": 31,
+      "exportBytes": 125317,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 72,
+          "built": 19,
+          "damage": 24310.400000000085
+        },
+        {
+          "side": 1,
+          "kills": 72,
+          "built": 12,
+          "damage": 12696.199999999999
+        }
+      ],
+      "finalIncome": [
+        12.5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "open-horizon",
+      "seed": 5101,
+      "restore": false,
+      "time": 87.0999999999972,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 695,
+      "successfulActions": 9,
+      "saveSha256": "68d38d816d3fd7c7fd69df0fe882fbef564952635fd589c499cdad317da309ff",
+      "actionsSha256": "d922fb7f4da5b39797ac3b79962fe35b2b7fbe6862d4f9215b6c81465a9d3993",
+      "retainedPoints": 45,
+      "observations": 45,
+      "exportBytes": 177052,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 42,
+          "built": 12,
+          "damage": 11211.200000000028
+        },
+        {
+          "side": 1,
+          "kills": 44,
+          "built": 7,
+          "damage": 6715.336
+        }
+      ],
+      "finalIncome": [
+        7.5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "river-charter",
+      "seed": 5203,
+      "restore": false,
+      "time": 114.84999999999562,
+      "winner": 0,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 127,
+      "successfulActions": 17,
+      "saveSha256": "040f08b3b7acbb8aa164521b658898f28b14692bedbf03cd09e476012a44880d",
+      "actionsSha256": "42d1369337866e35c237172b25ca93f9ca8fb9db53a648d7dc5f0e97ba781f58",
+      "retainedPoints": 59,
+      "observations": 59,
+      "exportBytes": 228800,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 55,
+          "built": 11,
+          "damage": 21890.784000000083
+        },
+        {
+          "side": 1,
+          "kills": 23,
+          "built": 6,
+          "damage": 3697.9599999999964
+        }
+      ],
+      "finalIncome": [
+        17.5,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "far-beacon",
+      "seed": 5309,
+      "restore": true,
+      "time": 111.14999999999583,
+      "winner": 0,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 1215,
+      "successfulActions": 16,
+      "saveSha256": "39d1cca5eaab92923963695944728aae80aa527b0362182ed1396a9757dfc39f",
+      "actionsSha256": "cf2c1c5f8b8ffbb3340f98ff358020e1fa5a167ddf4af5ae79fe90aa109e08e3",
+      "retainedPoints": 27,
+      "observations": 27,
+      "exportBytes": 111204,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 91,
+          "built": 19,
+          "damage": 30100.600000000217
+        },
+        {
+          "side": 1,
+          "kills": 15,
+          "built": 11,
+          "damage": 3439.679999999996
+        }
+      ],
+      "finalIncome": [
+        15,
+        5
+      ]
+    },
+    {
+      "mode": "campaign",
+      "id": "common-ground",
+      "seed": 5407,
+      "restore": false,
+      "time": 105.94999999999612,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 3231,
+      "successfulActions": 17,
+      "saveSha256": "28f88a0e14fb40e3ef78edfaab07de01ebb61fa23cc6d29304dc47101462419c",
+      "actionsSha256": "a953bb03b5e7a279a7aa182f8b44808e959f7ff50ab2b980254a9ce31952afd6",
+      "retainedPoints": 54,
+      "observations": 54,
+      "exportBytes": 210987,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 60,
+          "built": 16,
+          "damage": 20947.760000000137
+        },
+        {
+          "side": 1,
+          "kills": 68,
+          "built": 11,
+          "damage": 10166.760000000015
+        }
+      ],
+      "finalIncome": [
+        12.5,
+        7.5
+      ]
+    },
+    {
+      "mode": "challenge",
+      "id": "shieldbreaker",
+      "seed": 117,
+      "restore": false,
+      "time": 65.7999999999984,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 506,
+      "successfulActions": 4,
+      "saveSha256": "fb6ea8bf08bef8c146536092e41b1c3b25ebb825adce55cdcd23ecb41a5fd76e",
+      "actionsSha256": "9c302377bdf7de14d9830aa2631b40393542c5d4008a555dd61ffa65ef2035b0",
+      "retainedPoints": 34,
+      "observations": 34,
+      "exportBytes": 135588,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 21,
+          "built": 5,
+          "damage": 5880
+        },
+        {
+          "side": 1,
+          "kills": 4,
+          "built": 3,
+          "damage": 1266
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "challenge",
+      "id": "skyguard",
+      "seed": 231,
+      "restore": false,
+      "time": 75.34999999999786,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 577,
+      "successfulActions": 5,
+      "saveSha256": "33af444a0abaf8354f37cedb203823a15b6986416636fb387f3a991706b12e34",
+      "actionsSha256": "5a16b4eff645085a8cb64478e47289fc51d4f1d4795389e392d24e064d421814",
+      "retainedPoints": 39,
+      "observations": 39,
+      "exportBytes": 153879,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 12,
+          "built": 6,
+          "damage": 6678
+        },
+        {
+          "side": 1,
+          "kills": 9,
+          "built": 2,
+          "damage": 1299.4799999999996
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "challenge",
+      "id": "siegecraft",
+      "seed": 349,
+      "restore": false,
+      "time": 83.5499999999974,
+      "winner": null,
+      "result": "victory",
+      "restored": false,
+      "actionCount": 650,
+      "successfulActions": 4,
+      "saveSha256": "5694aba639ae212685aeb3252460c0439eea90457d3b370604113dff9a39303e",
+      "actionsSha256": "3bacaba8712f000cc6e268b0976d7d2e2a8e4eada93a51f10d0b771d46e8e74f",
+      "retainedPoints": 43,
+      "observations": 43,
+      "exportBytes": 168782,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 9,
+          "built": 5,
+          "damage": 5820
+        },
+        {
+          "side": 1,
+          "kills": 20,
+          "built": 4,
+          "damage": 3735.71999999999
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    },
+    {
+      "mode": "challenge",
+      "id": "goldrush",
+      "seed": 463,
+      "restore": false,
+      "time": 149.99999999999986,
+      "winner": null,
+      "result": "defeat",
+      "restored": false,
+      "actionCount": 159,
+      "successfulActions": 13,
+      "saveSha256": "f270a4096da638c7fb573980f4bde355b95af9d13bb80ed66f265e2d7a0bd308",
+      "actionsSha256": "b20e4cac27d4737230e118fd5eea79fa05673c589d36e1387e79bb248b1a09ea",
+      "retainedPoints": 76,
+      "observations": 76,
+      "exportBytes": 290290,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 32,
+          "built": 6,
+          "damage": 7965.1600000000235
+        },
+        {
+          "side": 1,
+          "kills": 13,
+          "built": 3,
+          "damage": 5006
+        }
+      ],
+      "finalIncome": [
+        13.75,
+        5
+      ]
+    },
+    {
+      "mode": "challenge",
+      "id": "holdfast",
+      "seed": 587,
+      "restore": true,
+      "time": 139.99999999999758,
+      "winner": null,
+      "result": "victory",
+      "restored": true,
+      "actionCount": 1077,
+      "successfulActions": 8,
+      "saveSha256": "a41c0e76e78091b026bdc1fbb2a8ad9f79da29a69b3b7d7f20e66c798cdeb054",
+      "actionsSha256": "6df5bc0511189ac5c39baedb499132464751669c29b31fe7594e8bed4ed055a8",
+      "retainedPoints": 41,
+      "observations": 41,
+      "exportBytes": 161396,
+      "stats": [
+        {
+          "side": 0,
+          "kills": 63,
+          "built": 9,
+          "damage": 10851.000000000027
+        },
+        {
+          "side": 1,
+          "kills": 21,
+          "built": 5,
+          "damage": 5321.249999999995
+        }
+      ],
+      "finalIncome": [
+        5,
+        5
+      ]
+    }
+  ]
+}

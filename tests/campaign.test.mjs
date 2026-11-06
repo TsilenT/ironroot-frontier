@@ -1,17 +1,20 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {Game,LANES} from '../dist/engine.js';
+import {Game} from '../dist/engine.js';
 import {CAMPAIGN_CHAPTERS,CAMPAIGN_MISSIONS,CAMPAIGN_VERSION,createCampaignMission,evaluateCampaignMission,getCampaignTargets,currentIncome,createCampaignProgress,normalizeCampaignProgress,mergeCampaignProgress,recordCampaignResult,isMissionUnlocked,getCampaignOverview,readCampaignProgress,writeCampaignProgress} from '../dist/campaign.js';
 import {playCampaign} from './campaign-policies.mjs';
+
+const LEGACY_MISSIONS=CAMPAIGN_MISSIONS.slice(0,12);
+const LEGACY_CHAPTERS=CAMPAIGN_CHAPTERS.slice(0,4);
 
 const complete=(id)=>{const game=createCampaignMission(id);game.state.bases[1].hp=0;return game;};
 function clearThrough(last) {let progress=createCampaignProgress();for(const mission of CAMPAIGN_MISSIONS){progress=recordCampaignResult(progress,mission.id,complete(mission.id));if(mission.id===last)break;}return progress;}
 
-test('four chapters contain twelve independent deterministic and restorable campaign battles',()=>{
-  assert.equal(CAMPAIGN_CHAPTERS.length,4);assert.equal(CAMPAIGN_MISSIONS.length,12);
-  assert.equal(new Set(CAMPAIGN_MISSIONS.map(m=>m.id)).size,12);
-  for(const chapter of CAMPAIGN_CHAPTERS)assert.equal(CAMPAIGN_MISSIONS.filter(m=>m.chapterId===chapter.id).length,3);
-  for(const mission of CAMPAIGN_MISSIONS) {
+test('the four original chapters retain twelve independent deterministic and restorable campaign battles',()=>{
+  assert.equal(LEGACY_CHAPTERS.length,4);assert.equal(LEGACY_MISSIONS.length,12);
+  assert.equal(new Set(LEGACY_MISSIONS.map(m=>m.id)).size,12);
+  for(const chapter of LEGACY_CHAPTERS)assert.equal(LEGACY_MISSIONS.filter(m=>m.chapterId===chapter.id).length,3);
+  for(const mission of LEGACY_MISSIONS) {
     const a=createCampaignMission(mission.id),b=createCampaignMission(mission.id);
     assert.deepEqual(a.serialize(),b.serialize());assert.equal(a.ai,mission.ai);
     assert.equal(a.state.gold[0],mission.startingGold);assert.equal(a.state.bases[0].hp,mission.startingHealth);
@@ -32,7 +35,7 @@ test('unknown mission IDs reject in all mission-specific APIs',()=>{
 test('target destruction counts originals, never replacement buildings or stale object references',()=>{
   const mission=CAMPAIGN_MISSIONS.find(m=>m.id==='black-ledger');let game=createCampaignMission(mission.id);
   const target=getCampaignTargets(game,mission.id)[0];game.state.buildings=game.state.buildings.filter(b=>b.id!==target.originalId);game.state.gold[1]=1000;
-  const replacement=game.build(target.type,target.x,LANES[target.lane],1);assert.equal(replacement.ok,true);assert.notEqual(replacement.building.id,target.originalId);
+  const replacement=game.build(target.type,target.x,game.map.lanes[target.lane],1);assert.equal(replacement.ok,true);assert.notEqual(replacement.building.id,target.originalId);
   game=Game.restore(game.serialize());
   assert.equal(getCampaignTargets(game,mission.id)[0].building,null);assert.equal(evaluateCampaignMission(game,mission.id).progress,1/3);
   for(const t of getCampaignTargets(game,mission.id))if(t.building)t.building.hp=0;
@@ -44,7 +47,7 @@ test('protected original structures fail immediately if destroyed or salvaged, e
     const game=createCampaignMission(mission.id),target=getCampaignTargets(game,mission.id).find(t=>t.kind==='protect');
     if(operation==='sell')assert.equal(game.sell(target.originalId).ok,true);else target.building.hp=0;
     game.state.buildings=game.state.buildings.filter(b=>b.id!==target.originalId);game.state.gold[0]=1000;
-    assert.equal(game.build(target.type,target.x,LANES[target.lane]).ok,true);
+    assert.equal(game.build(target.type,target.x,game.map.lanes[target.lane]).ok,true);
     const result=evaluateCampaignMission(Game.restore(game.serialize()),mission.id);assert.equal(result.failed,true);assert.equal(result.completed,false);assert.match(result.label,/failed/);
     game.state.bases[1].hp=0;assert.equal(evaluateCampaignMission(game,mission.id).completed,false,'a core victory must not waive protection');
   }
@@ -71,7 +74,7 @@ test('economy objectives use live mines and upgrades, and never succeed before t
     const mission=CAMPAIGN_MISSIONS.find(m=>m.id===id),game=createCampaignMission(id);game.state.gold[0]=10000;
     for(const lane of [0,1,2]) {
       let mine=game.state.buildings.find(b=>b.side===0&&b.type==='mint'&&b.lane===lane);
-      if(!mine)mine=game.build('mint',410,LANES[lane]).building;
+      if(!mine)mine=game.build('mint',410,game.map.lanes[lane]).building;
       while(mine.level<3)assert.equal(game.upgrade(mine.id).ok,true);
     }
     assert.equal(currentIncome(game),20);assert.equal(evaluateCampaignMission(game,id).completed,false);
@@ -81,15 +84,15 @@ test('economy objectives use live mines and upgrades, and never succeed before t
   }
 });
 
-test('the campaign branches, converges and unlocks the ending only after all missions',()=>{
+test('the original campaign branches and converges before unlocking the frontier',()=>{
   const fresh=createCampaignProgress();let overview=getCampaignOverview(fresh);
-  assert.equal(overview.nextMissionId,'emberwatch');assert.equal(overview.missions.filter(m=>m.unlocked).length,1);assert.equal(overview.maxStars,36);
+  assert.equal(overview.nextMissionId,'emberwatch');assert.equal(overview.missions.filter(m=>m.unlocked).length,1);assert.equal(overview.maxStars,48);assert.equal(overview.chapters.slice(0,4).reduce((sum,c)=>sum+c.maxStars,0),36);
   let progress=clearThrough('winter-stores');overview=getCampaignOverview(progress);
   assert.equal(isMissionUnlocked(progress,'wings-of-ash'),true);assert.equal(isMissionUnlocked(progress,'stonegate'),true);assert.equal(isMissionUnlocked(progress,'long-vigil'),false);
   assert.equal(overview.chapters[0].completed,true);assert.equal(overview.chapters[1].unlocked,true);
   progress=recordCampaignResult(progress,'stonegate',complete('stonegate'));assert.equal(isMissionUnlocked(progress,'long-vigil'),false);
   progress=recordCampaignResult(progress,'wings-of-ash',complete('wings-of-ash'));assert.equal(isMissionUnlocked(progress,'long-vigil'),true);
-  overview=getCampaignOverview(clearThrough('ironroot'));assert.equal(overview.cleared,12);assert.equal(overview.completed,true);assert.equal(overview.nextMissionId,null);assert.ok(overview.chapters.every(c=>c.completed));
+  overview=getCampaignOverview(clearThrough('ironroot'));assert.equal(overview.cleared,12);assert.equal(overview.completed,false);assert.equal(overview.nextMissionId,'open-horizon');assert.ok(overview.chapters.slice(0,4).every(c=>c.completed));assert.equal(overview.chapters[4].completed,false);
 });
 
 test('results are immutable and idempotent, and unsuccessful or locked missions never earn progress',()=>{
@@ -150,8 +153,8 @@ test('mid-battle saves replay identically, including adaptive AI and original pr
 });
 
 
-test('all 36 stars are achievable through paid mastery routes, including resumed games',()=>{
-  for(const mission of CAMPAIGN_MISSIONS)for(const seed of [mission.seed,999]) {
+test('all original 36 stars remain achievable through unchanged paid mastery routes, including resumed games',()=>{
+  for(const mission of LEGACY_MISSIONS)for(const seed of [mission.seed,999]) {
     const {game,outcome}=playCampaign(createCampaignMission,evaluateCampaignMission,mission,{seed,mastery:true,restore:seed===999?data=>Game.restore(data):null});
     assert.equal(outcome.completed,true,`${mission.id}, seed ${seed}: ${outcome.label}`);
     assert.equal(outcome.stars,3,`${mission.id}, seed ${seed}: ${outcome.medals.filter(m=>!m.earned).map(m=>m.label).join('; ')}`);

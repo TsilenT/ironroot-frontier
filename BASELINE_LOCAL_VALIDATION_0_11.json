@@ -1,0 +1,88 @@
+{
+  "version": "0.11.0",
+  "status": "local validation complete; not released or approved for source transfer",
+  "sourceDirectory": "/workspace/shared/ironroot-v011",
+  "preview": "http://127.0.0.1:4173/",
+  "lastVerifiedLiveVersion": "0.7",
+  "runtimeFiles": 29,
+  "runtimeBytes": 582481,
+  "node": {
+    "passed": 492,
+    "failed": 0,
+    "skipped": 1,
+    "discovered": 493,
+    "skipReason": "optional installed desktop tooling",
+    "evidence": "qa/report-evidence/battle-report-npm-test.log"
+  },
+  "syntax": "passed",
+  "sourceDistPreflight": "passed",
+  "independentAudit": {
+    "passed": 52,
+    "failed": 0,
+    "simulationPairs": 31,
+    "completeSimulations": 62,
+    "restoredContinuations": 9,
+    "exactSaveRngActionParity": true,
+    "evidence": "qa/report-evidence/battle-report-audit.json"
+  },
+  "nativeUi": {
+    "status": "bounded initial and targeted polish reviews passed",
+    "freshAndActualResumedDefeat": true,
+    "initialViewports": [
+      "1100x720",
+      "320x568",
+      "390x650",
+      "844x390"
+    ],
+    "polishViewports": [
+      "desktop",
+      "320x568",
+      "844x390"
+    ],
+    "originalFiveProfileDomains": "restored and visibly byte-verified",
+    "temporaryFixtures": "removed",
+    "download": "native browser showed Done; file bytes not inspected",
+    "report": "docs/BATTLE_REPORT_UI_QA.md"
+  },
+  "browser": {
+    "executed": false,
+    "discoveredInstances": 648,
+    "logicalCases": 162,
+    "specFiles": 11,
+    "newReportInstances": 96,
+    "newReportLogicalCases": 24,
+    "intentionalInheritedSkips": 3,
+    "newSkips": 0,
+    "fixtureChecks": "passed",
+    "discoveryOnlyVersion": "1.57.0",
+    "pinnedVersion": "1.65.0",
+    "note": "Automated four-profile execution pending separately authorized cloud runner"
+  },
+  "frozen010": {
+    "scope": "Frozen 0.10 preservation after isolated 0.11 work",
+    "source": "/workspace/shared/ironroot-v010",
+    "checkedFiles": 248,
+    "changedFiles": []
+  },
+  "publicationAuthorized": false,
+  "externalActions": "No source transfer, commit, ref mutation, publication or external hosting change attempted",
+  "blockedAction": "Corrected candidate GitHub commit/ref operations remain stopped pending user-authored approval; no alternate transfer or publication route permitted",
+  "reports": [
+    "docs/RELEASE_0_11.md",
+    "docs/BATTLE_REPORT_DATA.md",
+    "docs/BATTLE_REPORT_VIEW.md",
+    "docs/BATTLE_REPORT_ACCURACY_REVIEW.md",
+    "docs/BATTLE_REPORT_UI_QA.md",
+    "docs/BATTLE_REPORT_BROWSER_QA.md"
+  ],
+  "knownLimits": [
+    "Reports are current-page observations, not replay/save/durable history",
+    "Report timeline before Resume is unavailable and disclosed",
+    "Long March Hard advanced scripted-rush weakness unchanged",
+    "Exact corrected held-touch result-action cloud regression unrun",
+    "Physical touch/controller, non-Chromium and low-powered hardware performance unverified",
+    "Subjective audio, screen-reader gameplay and packaged desktop interaction unverified",
+    "No PvP or Steam integration"
+  ],
+  "runtimeManifest": "qa/local-validation/0.11-runtime-sha256.json"
+}

@@ -1,0 +1,386 @@
+{
+  "scope": "Engine geometry/compatibility smoke gates; not balance or browser certification",
+  "date": "2026-11-06",
+  "engineSha256": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7",
+  "classicBaselineSha256": "0e94556092df4c5b74f6002bfb8e70fe8477b9e66363e17485b6c083373bd889",
+  "smokeGames": [
+    {
+      "mapId": "long-march",
+      "difficulty": "easy",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 128.5,
+      "peak": [
+        33,
+        8
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "easy",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 140.4,
+      "peak": [
+        34,
+        10
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "easy",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 128.5,
+      "peak": [
+        8,
+        33
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "easy",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 140.4,
+      "peak": [
+        10,
+        34
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 267.1,
+      "peak": [
+        12,
+        68
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 229.2,
+      "peak": [
+        23,
+        36
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 267.1,
+      "peak": [
+        68,
+        12
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "normal",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 229.2,
+      "peak": [
+        36,
+        23
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "hard",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 124.6,
+      "peak": [
+        21,
+        23
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "hard",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 120,
+      "peak": [
+        21,
+        25
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "hard",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 124.6,
+      "peak": [
+        23,
+        21
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "long-march",
+      "difficulty": "hard",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 120,
+      "peak": [
+        25,
+        21
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "easy",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 101.9,
+      "peak": [
+        39,
+        6
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "easy",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 132.7,
+      "peak": [
+        31,
+        9
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "easy",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 101.9,
+      "peak": [
+        6,
+        39
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "easy",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 132.7,
+      "peak": [
+        9,
+        31
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "normal",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 109.9,
+      "peak": [
+        10,
+        23
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "normal",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 111.1,
+      "peak": [
+        6,
+        31
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "normal",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 109.9,
+      "peak": [
+        23,
+        10
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "normal",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 111.1,
+      "peak": [
+        31,
+        6
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "hard",
+      "playerSide": 0,
+      "seed": 1,
+      "winner": 1,
+      "seconds": 109.3,
+      "peak": [
+        6,
+        27
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "hard",
+      "playerSide": 0,
+      "seed": 57,
+      "winner": 1,
+      "seconds": 110.8,
+      "peak": [
+        6,
+        29
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "hard",
+      "playerSide": 1,
+      "seed": 1,
+      "winner": 0,
+      "seconds": 109.3,
+      "peak": [
+        27,
+        6
+      ],
+      "overtime": false,
+      "collapse": false
+    },
+    {
+      "mapId": "twin-span",
+      "difficulty": "hard",
+      "playerSide": 1,
+      "seed": 57,
+      "winner": 0,
+      "seconds": 110.8,
+      "peak": [
+        29,
+        6
+      ],
+      "overtime": false,
+      "collapse": false
+    }
+  ],
+  "cpuBenchmark": {
+    "engineSha": "e47a168c099c",
+    "node": "v24.22.1",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 9,
+    "saturated": {
+      "simulatedSeconds": 120,
+      "steps": 2400,
+      "totalMs": 996.09,
+      "meanStepMs": 0.415,
+      "p95StepMs": 1.3234,
+      "p99StepMs": 2.878,
+      "maxStepMs": 5.4374,
+      "peakUnits": 140,
+      "minStartUnits": 140,
+      "meanStartUnits": 140,
+      "peakBuildings": 48,
+      "peakEffects": 256,
+      "peakProjectiles": 127,
+      "gcControlled": true,
+      "heapDeltaMB": 0.72
+    },
+    "longRun": {
+      "completedMatches": 50,
+      "restoreCheckpoints": 116,
+      "longestMatchSeconds": 122.8,
+      "wallMs": 1343.1
+    },
+    "note": "CPU-only simulation benchmark, not browser rendering/FPS. Heap delta includes garbage-collector timing; entity limits and repeated terminal no-ops are deterministic checks."
+  },
+  "dedicatedEngineTests": {
+    "tests": 68,
+    "pass": 68,
+    "fail": 0
+  },
+  "integratedAggregate": {
+    "tests": 355,
+    "pass": 354,
+    "fail": 1,
+    "unrelatedFailure": "tests/codex.test.mjs:195: Level-1 regex versus Classic level-1 field-guide copy; release-owner follow-up required",
+    "parse": "passed"
+  }
+}

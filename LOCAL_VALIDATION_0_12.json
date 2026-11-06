@@ -1,0 +1,120 @@
+{
+  "version": "0.12.0",
+  "status": "local validation complete; not released or approved for source transfer",
+  "sourceDirectory": "/workspace/shared/ironroot-v012",
+  "preview": "http://127.0.0.1:4173/",
+  "lastVerifiedLiveVersion": "0.7",
+  "feature": "Five isolated real-engine guided practice lessons",
+  "runtimeFiles": 33,
+  "runtimeBytes": 651493,
+  "node": {
+    "passed": 548,
+    "failed": 0,
+    "skipped": 1,
+    "discovered": 549,
+    "skipReason": "optional installed desktop tooling",
+    "evidence": "qa/local-validation/0.12-node-tests.txt"
+  },
+  "syntax": "passed, including desktop main/security modules",
+  "sourceDistPreflight": "passed",
+  "independentAudit": {
+    "passed": 63,
+    "failed": 0,
+    "paidLessonRuns": 30,
+    "seeds": [
+      0,
+      1,
+      7,
+      42,
+      12012,
+      4294967295
+    ],
+    "pairedFixedTicks": 7142,
+    "irregularFrameInnerCalls": 1315,
+    "scope": "Exact parity for actual inner engine calls; credited damage/producer identity and controller isolation",
+    "evidence": "qa/training-evidence/training-audit.json"
+  },
+  "nativeUi": {
+    "status": "initial and targeted polish reviews passed",
+    "allFiveLessons": "completed through ordinary paid actions and real simulation",
+    "initialViewports": [
+      "desktop",
+      "320x568",
+      "390x650",
+      "844x390"
+    ],
+    "polishViewports": [
+      "320x568",
+      "390x650",
+      "844x390"
+    ],
+    "profileIsolation": "five original domains visibly byte-identical before restoration in both passes",
+    "restoration": "original five domains restored and byte-verified",
+    "temporaryFixtures": "removed; no active training run",
+    "limits": "Responsive pointer/keyboard review, not physical touch/controller, screen-reader certification or audio audition",
+    "report": "docs/TRAINING_UI_QA.md"
+  },
+  "browser": {
+    "executed": false,
+    "discoveredInstances": 720,
+    "logicalCases": 180,
+    "specFiles": 12,
+    "newTrainingInstances": 72,
+    "newTrainingLogicalCases": 18,
+    "intentionalInheritedSkips": 3,
+    "newSkips": 0,
+    "fixtureChecks": "passed",
+    "discoveryOnlyVersion": "1.57.0",
+    "pinnedVersion": "1.65.0",
+    "targetedGate": "HOLD pending authorized cloud runner and source-action gate"
+  },
+  "desktopPolicy": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 1,
+    "method": "Real main.cjs with mocked Electron; official event signatures checked",
+    "allowedPages": [
+      "ironroot://game/",
+      "ironroot://game/index.html",
+      "ironroot://game/training.html"
+    ],
+    "packagedRuntime": "not run",
+    "evidence": "qa/local-validation/0.12-desktop-tests.txt"
+  },
+  "preservedBaselines": [
+    {
+      "version": "0.10.0",
+      "source": "/workspace/shared/ironroot-v010",
+      "checkedFiles": 248,
+      "changedFiles": []
+    },
+    {
+      "version": "0.11.0",
+      "source": "/workspace/shared/ironroot-v011",
+      "checkedFiles": 304,
+      "changedFiles": []
+    }
+  ],
+  "publicationAuthorized": false,
+  "externalActions": "No source transfer, commit/ref operation, publication or external hosting action attempted",
+  "blockedAction": "Corrected candidate GitHub commit/ref paths remain stopped pending user-authored approval. No alternate route used.",
+  "reports": [
+    "docs/RELEASE_0_12.md",
+    "docs/TRAINING_SYSTEM.md",
+    "docs/TRAINING_UI.md",
+    "docs/TRAINING_ACCURACY_REVIEW.md",
+    "docs/TRAINING_UI_QA.md",
+    "docs/TRAINING_BROWSER_QA.md",
+    "docs/TRAINING_DESKTOP_ROUTE.md"
+  ],
+  "knownLimits": [
+    "Practice is temporary with no save/progress/rewards; no physical-controller support claimed for this page",
+    "Injected zero-gold composition recovery can time out; Retry restores disclosed setup",
+    "Training completion is not human learning/balance certification",
+    "Long March Hard scripted-rush weakness remains unchanged",
+    "Exact corrected held-touch cloud matrix and full browser execution unrun",
+    "Physical devices, non-Chromium, subjective audio, full accessibility and packaged desktop gameplay remain unverified",
+    "No PvP or Steam integration"
+  ],
+  "runtimeManifest": "qa/local-validation/0.12-runtime-sha256.json"
+}

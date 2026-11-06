@@ -1,6 +1,6 @@
 {
   "name": "ironroot-browser-regressions",
-  "version": "0.7.0",
+  "version": "0.12.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "playwright test",
     "list": "playwright test --list",
-    "check": "node --check regression.spec.mjs && node --check accessibility-backup.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs"
+    "check": "node --check regression.spec.mjs && node --check accessibility-backup.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs && node --check field-reference.spec.mjs && node validate-codex-fixtures.mjs && node --check offline-shell.spec.mjs && node --check maps.spec.mjs && node --check map-fixtures.mjs && node --check map-browser-helpers.mjs && node --check map-controller-helpers.mjs && node validate-map-fixtures.mjs && node --check fonts.spec.mjs && node --check font-browser-helpers.mjs && node --check service-worker-update.spec.mjs && node --check update-fixtures.mjs && node validate-update-fixtures.mjs && node --check expanded-campaign.spec.mjs && node --check expanded-campaign-fixtures.mjs && node validate-expanded-campaign-fixtures.mjs && node --check profile-upgrade.spec.mjs && node --check legacy-profile-fixtures.mjs && node validate-legacy-profile-fixtures.mjs && node --check battle-report.spec.mjs && node --check battle-report-fixtures.mjs && node --check battle-report-legacy-fixtures.mjs && node validate-battle-report-fixtures.mjs && node --check training.spec.mjs && node --check training-fixtures.mjs && node --check training-browser-helpers.mjs && node validate-training-fixtures.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0"

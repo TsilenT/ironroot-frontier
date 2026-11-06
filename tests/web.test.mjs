@@ -83,3 +83,35 @@ test('controller uses the shared legal placement path and runtime assets are cac
     assert.ok(sw.includes(`'./${file}'`));
   assert.match(read('index.html'), /id="controllerHelp"/);
 });
+
+test('field reference uses original portraits, engine-derived data and cached assets', () => {
+  const html = read('index.html'),
+    app = read('app.js'),
+    sw = read('service-worker.js');
+  for (const id of [
+    'rosterGuide',
+    'rosterGuideToggle',
+    'unitCodex',
+    'structureCodex',
+    'economyCodex',
+    'codexScope',
+    'codexCaveat',
+  ])
+    assert.match(html, new RegExp(`id="${id}"`));
+  assert.match(app, /UNIT_CODEX,?\s*STRUCTURE_CODEX/);
+  assert.match(app, /drawUnitPortrait\(canvas, canvas.dataset.portrait\)/);
+  assert.match(app, /data-codex-unit/);
+  assert.ok(sw.includes("'./codex.js'"));
+});
+
+test('browser release metadata and offline cache versions remain aligned', () => {
+  const pkg = JSON.parse(
+    readFileSync(join(root, '..', 'package.json'), 'utf8'),
+  );
+  assert.ok(read('service-worker.js').includes(`ironroot-v${pkg.version}`));
+  assert.ok(
+    read('index.html').includes(
+      `v${pkg.version.split('.').slice(0, 2).join('.')}`,
+    ),
+  );
+});

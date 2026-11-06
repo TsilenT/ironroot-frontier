@@ -54,3 +54,37 @@ test('AI spends normal spell cost and respects cooldown',()=>{
   g.state.gold[1]=SPELL.cost;g._ai(1);assert.equal(g.state.gold[1],SPELL.cost);
 });
 
+
+test('normal establishes a nearby warrior screen in all lanes before ranged support',()=>{
+  for(const side of [0,1]){
+    const g=new Game({ai:false,difficulty:'normal',seed:42});g._ai(side);
+    assert.equal(g.state.gold[side],140,'opening uses two ordinary 140-gold builds');
+    for(let i=0;i<120;i++)g.update(.05);
+    g._ai(side);
+    const forward=g.state.buildings.filter(b=>b.side===side&&(side?b.x:3200-b.x)<2650);
+    assert.deepEqual(forward.map(b=>b.lane).sort(),[0,1,2]);
+    assert.ok(forward.every(b=>b.type==='barracks'));
+    assert.equal(g.state.gold[side],30,'third barracks spends accumulated income without a grant');
+    const resumed=Game.restore(g.serialize());
+    for(let i=0;i<140;i++){g.update(.05);resumed.update(.05);}
+    g._ai(side);resumed._ai(side);assert.deepEqual(g.serialize(),resumed.serialize());
+  }
+});
+test('normal retains nearer campaign-style barracks coverage instead of rebuilding it',()=>{
+  for(const x of [2230,2370,2510]){
+    const g=empty();for(const lane of [0,1,2])place(g,'barracks',1,lane,x);
+    place(g,'barracks',0,0);g.state.gold[1]=175;g._ai(1);
+    assert.ok(g.state.buildings.some(b=>b.side===1&&b.type==='archery'&&b.lane===0));
+    assert.equal(g.state.gold[1],0);
+  }
+});
+test('hard retains its three-action forward opening and easy retains its rear opening',()=>{
+  for(const side of [0,1]){
+    const hard=new Game({ai:false,difficulty:'hard'});hard._ai(side);
+    const troops=hard.state.buildings.filter(b=>b.side===side&&(side?b.x:3200-b.x)===1950);
+    assert.deepEqual(troops.map(b=>b.lane),[0,2,1]);assert.equal(hard.state.gold[side],0);
+    const easy=new Game({ai:false,difficulty:'easy'});easy._ai(side);
+    const built=easy.state.buildings.at(-1);assert.equal(built.type,'barracks');
+    assert.equal(side?built.x:3200-built.x,2510);assert.equal(easy.state.gold[side],280);
+  }
+});

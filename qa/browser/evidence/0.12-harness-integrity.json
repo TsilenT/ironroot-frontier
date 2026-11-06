@@ -1,0 +1,123 @@
+{
+  "generatedAt": "2026-11-06T10:07:07.875388+00:00",
+  "targetVersion": "0.12.0",
+  "targetedBrowserGate": "HOLD until separately authorized execution",
+  "browserExecution": {
+    "executedInstances": 0,
+    "status": "NOT RUN; no browser/server launched for harness work; native UI review is separate"
+  },
+  "fixtureCheck": "passed",
+  "discovery": {
+    "runnerVersion": "1.57.0",
+    "instances": 720,
+    "logicalCases": 180,
+    "specFiles": 12,
+    "newTrainingInstances": 72,
+    "newTrainingLogicalCases": 18,
+    "profiles": {
+      "phone": 180,
+      "narrow-phone": 180,
+      "landscape": 180,
+      "desktop": 180
+    },
+    "intentionalInheritedRuntimeSkips": 3,
+    "newSkips": 0,
+    "expectedCleanRunOnly": {
+      "passed": 717,
+      "skipped": 3,
+      "failed": 0
+    }
+  },
+  "pinnedPlaywright": "1.65.0",
+  "temporaryImportShimRemoved": true,
+  "originalFrozenTrees": {
+    "0.10": {
+      "root": "/workspace/shared/ironroot-v010",
+      "checkedFiles": 248,
+      "differences": []
+    },
+    "0.11": {
+      "root": "/workspace/shared/ironroot-v011",
+      "checkedFiles": 304,
+      "differences": []
+    }
+  },
+  "priorFixtureFilesAndManifests": {
+    "checkedFiles": 90,
+    "byteIdentical": true
+  },
+  "heldGestureRegression": {
+    "entireCampaignSpecByteIdentical": true,
+    "byteIdentical": true,
+    "sha256": "da0d728fd540cb9d12376c6a8794a5e3a4adb62d2f177a7123510b459018bba1"
+  },
+  "existingAssertionPreservation": {
+    "onlyTargetVersionTextChanged": {
+      "battle-report.spec.mjs": true,
+      "expanded-campaign.spec.mjs": true,
+      "service-worker-update.spec.mjs": true
+    }
+  },
+  "files": {
+    "qa/browser/training.spec.mjs": "f3be62a4cabd8b2b5cc120c34e9322768b4c620877029ab17eeaab20dd663500",
+    "qa/browser/training-fixtures.mjs": "fa4940b4f9e98c5a11b719b022390b1aee06540aa9e1b8c68b7a81dfa7aa4305",
+    "qa/browser/training-browser-helpers.mjs": "225fa153e52425891fd471ea933a59cea819c82dddc86a3a27c8db2f6a19b3fc",
+    "qa/browser/validate-training-fixtures.mjs": "9d379700e743569f9178d7e809398698d03169e9063db6c6b286f51c08797585",
+    "qa/browser/package.json": "c845c7d3bf54e215ac1224d196aadcb4544533a52071a5cf121a8a6dddb5bcef",
+    "qa/browser/package-lock.json": "9ab3a302ad8eb137ffc8fe10334a71a8fccbc635f635fed7dd399c72cc208828",
+    "qa/browser/validate-update-fixtures.mjs": "cb992c3ae89819d35cc8fc27e0ff3343a934023d3f6621a05ef4e1f3968488e2",
+    "qa/browser/service-worker-update.spec.mjs": "76ac9250e463dbf45d3dd65bd2c67bbd3ee4342fcafc00ffb4dfdda7a9c1f9a6",
+    "qa/browser/battle-report.spec.mjs": "dcb73f43daf688e89610e8427e879fcabcd367bfa3d5b21446e43d5e72fd3ebf",
+    "qa/browser/expanded-campaign.spec.mjs": "29f536b8e58c8014ef8ecd9a3a04a4a8ee6d45b46e104cc29db994d96b0cf092",
+    "qa/browser/campaign.spec.mjs": "68382b87edbbb6f363bc3735dfa30fbf724ec8cbb950343fd97a1140c50717c8",
+    "qa/browser/playwright.config.mjs": "fb95c258cb74a6b07ac284a6e9cd282709ab19c5d8f3001cf8d737dd69c83900",
+    "qa/browser/server.mjs": "ceb8a637e8856baeb3eb16848447818292bacfb04a15e5114552f5b31c07d570",
+    "qa/browser/evidence/0.12-fixture-validation.txt": "2d958a9ded01018236f4c34e5db84629994ac1bdb7d91424252807cccf62d9c9",
+    "qa/browser/evidence/0.12-discovery-playwright-1.57.txt": "72fa67c4105aa13403ddb7e6d5c1581a16675ce83755feb26bba87c5eed60a8e",
+    "docs/TRAINING_BROWSER_QA.md": "fd73227795bad9b798b352fab8fcb484ccaf22228401088047308431b5d3670b"
+  },
+  "currentRuntimeManifest": {
+    "source": "dist/service-worker.js precache plus the service worker itself; temporary native review fixtures excluded",
+    "version": "ironroot-v0.12.0",
+    "files": {
+      "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "app.js": "fc93f44b556bff11b758308a0a38abaadb41106a3d821cee517d99c8a096662c",
+      "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+      "backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+      "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "battle-report.js": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+      "campaign.js": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781",
+      "challenges.js": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08",
+      "codex.js": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d",
+      "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "engine.js": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7",
+      "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "index.html": "042b8136f701354f8f219acf9030bea9250162f90a20db5fee04d2e7e1f3c9c2",
+      "input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+      "manifest.webmanifest": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e",
+      "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "persistence.js": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512",
+      "profile-session.js": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d",
+      "render.js": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106",
+      "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "report-view.js": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+      "scouting.js": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04",
+      "service-worker.js": "9a79237a4fa6925cc0db86d588287eb1758355bcee20714a9bc803745ce9f88c",
+      "styles.css": "7f54f1d7dd6c04c9f6ac6faa8954f44e7761d6e0b4caf9745d475e5681e043c5",
+      "training-app.js": "dd5dd95c045d3cfa5fdea15ecaeeded05042f83bd5cd56d2c6f851704274782a",
+      "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "training.html": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108",
+      "training.js": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770",
+      "vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    }
+  },
+  "coverageRefinements": [
+    "Existing pause/keyboard cases require truthful paused and resumed feedback.",
+    "Existing 320px case requires the complete battlefield and selected card simultaneously visible and hit-testable after ordinary native selection; site action remains usable beside the sticky field.",
+    "Geometry waits for actual scheduled layout alignment; no fixed coordinates, private state hooks or relaxed held-gesture hit targets."
+  ]
+}

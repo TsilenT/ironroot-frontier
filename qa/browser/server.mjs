@@ -2,11 +2,50 @@ import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {resolve, extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {randomUUID} from 'node:crypto';
+import {PRIOR_BUILDS} from './update-fixtures.mjs';
+import {LEGACY_QA_ROOT,LEGACY_QA_PATH} from './legacy-profile-fixtures.mjs';
+import {REPORT_LEGACY_ROOT,REPORT_LEGACY_PATH} from './battle-report-legacy-fixtures.mjs';
 const root = fileURLToPath(new URL('../../dist', import.meta.url));
-const mime = {'.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json'};
+// QA-only, loopback-only update sessions. Each case gets an unguessable path
+// and its own browser context. There is no shared current-version switch.
+const updates = new Map();
+const mime = {'.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8'};
 createServer(async (req, res) => {
-  const path = resolve(root, '.' + new URL(req.url, 'http://localhost').pathname.replace(/\/$/, '/index.html'));
-  if (!path.startsWith(root + '/')) {res.writeHead(403).end(); return;}
+  const url = new URL(req.url, 'http://localhost');
+  let pathname = url.pathname, selectedRoot = root;
+  if (pathname === '/__qa_update/sessions' && req.method === 'POST') {
+    const from = url.searchParams.get('from');
+    if (!Object.hasOwn(PRIOR_BUILDS, from) || url.searchParams.getAll('from').length !== 1) {res.writeHead(400).end();return;}
+    const id = randomUUID(); updates.set(id, {from,phase:'prior'});
+    res.writeHead(201, {'Content-Type': 'application/json', 'Cache-Control': 'no-store'});
+    res.end(JSON.stringify({id,from,basePath:'/__qa_update/'+id+'/'})); return;
+  }
+  if (pathname.startsWith('/__qa_update/')) {
+    const match = pathname.match(/^\/__qa_update\/([a-f0-9-]{36})(\/.*)?$/);
+    if (!match || !updates.has(match[1])) {res.writeHead(404).end(); return;}
+    const [,id,suffix='/'] = match;
+    if (req.method === 'DELETE' && suffix === '/') {updates.delete(id);res.writeHead(204).end();return;}
+    if (req.method === 'POST' && suffix === '/advance') {
+      updates.get(id).phase = 'current';res.writeHead(204).end();return;
+    }
+    if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405).end();return;}
+    const session = updates.get(id);
+    selectedRoot = session.phase === 'prior' ? resolve(fileURLToPath(PRIOR_BUILDS[session.from].root)) : root; pathname = suffix;
+  }
+  // Fixed QA-only baseline path shares browser-origin storage with current app.
+  if(pathname.startsWith(LEGACY_QA_PATH)){
+    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}
+    selectedRoot=fileURLToPath(LEGACY_QA_ROOT).replace(/\/$/,'');
+    pathname='/'+pathname.slice(LEGACY_QA_PATH.length);
+  }
+  if(pathname.startsWith(REPORT_LEGACY_PATH)){
+    if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}
+    selectedRoot=fileURLToPath(REPORT_LEGACY_ROOT).replace(/\/$/,'');
+    pathname='/'+pathname.slice(REPORT_LEGACY_PATH.length);
+  }
+  const path = resolve(selectedRoot, '.' + pathname.replace(/\/$/, '/index.html'));
+  if (!path.startsWith(selectedRoot + '/')) {res.writeHead(403).end(); return;}
   try {res.writeHead(200, {'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': 'no-store'}); res.end(await readFile(path));}
   catch {res.writeHead(404).end();}
 }).listen(4187, '127.0.0.1');

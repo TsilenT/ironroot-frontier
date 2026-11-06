@@ -112,7 +112,7 @@ test('campaign victory awards stars once and Continue unlocks the next mission',
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('[data-mission="three-roads"]')).toHaveClass(/active/);
   await expect(page.locator('#start')).toBeEnabled();
-  await expect(page.locator('#campaignProgressText')).toContainText('1/12 missions');
+  await expect(page.locator('#campaignProgressText')).toContainText('1/16 missions');
   await press(page,'#start'); const save=await pause(page);
   expect(save.campaignId).toBe('three-roads');
 });
@@ -126,7 +126,9 @@ test('campaign deadline failure focuses Retry and restarts without granting prog
   expect(await snapshot(page)).toBeNull();
   const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),CAMPAIGN_STORAGE_KEY);
   expect(progress.missions).toEqual({});
+  await page.keyboard.press('Shift+Tab'); await expect(page.locator('#resultReport details.battle-report > summary')).toBeFocused();
   await page.keyboard.press('Shift+Tab'); await expect(page.locator('#inspectBattle')).toBeFocused();
+  await page.keyboard.press('Tab'); await expect(page.locator('#resultReport details.battle-report > summary')).toBeFocused();
   await page.keyboard.press('Tab'); await expect(page.locator('#playAgain')).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#resultModal')).toBeHidden();
@@ -213,4 +215,144 @@ test('landscape campaign content keeps more than 120px usable height with a save
     const r=element.getBoundingClientRect();
     return Math.min(element.clientHeight,Math.min(r.bottom,innerHeight)-Math.max(r.top,0));
   }),{message:'Landscape mission content must not collapse to a roughly 10px scroll strip'}).toBeGreaterThan(120);
+});
+
+async function resultGestureOverlap(context, viewport) {
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',error=>errors.push(error.message));
+  try {
+    await page.setViewportSize(viewport);
+    await seed(page,'failure');
+    await expect(page.locator('#resultTitle')).toHaveText('MISSION FAILED');
+    await page.evaluate(()=>document.fonts.ready);
+    const candidates=await page.evaluate(()=>{
+      const points=[];
+      for(const action of ['playAgain','inspectBattle','resultMenu']){
+        const r=document.getElementById(action).getBoundingClientRect();
+        for(const fx of [.5,.25,.75,.1,.9])for(const fy of [.5,.25,.75]){
+          const x=r.left+r.width*fx,y=r.top+r.height*fy;
+          if(document.elementFromPoint(x,y)?.closest('button')?.id===action)
+            points.push({x,y,action});
+        }
+      }
+      return points;
+    });
+    await press(page,'#inspectBattle');
+    await expect(page.locator('#resultModal')).toBeHidden();
+    const points=await page.evaluate(candidates=>candidates.filter(p=>{
+      const hit=document.elementFromPoint(p.x,p.y);
+      return hit?.id==='battle'||hit?.id==='minimap'||hit?.closest('.app button');
+    }),candidates);
+    const history=await page.evaluate(key=>JSON.parse(localStorage.getItem(key))||[],HISTORY);
+    expect(errors,'calibration page errors').toEqual([]);
+    return {points,historyCount:history.length};
+  } finally {await page.close();}
+}
+
+test('a gameplay gesture held across mission end cannot activate the newly appearing result action',async ({page,context},testInfo)=>{
+  test.setTimeout(60000);
+  const nativeViewport=page.viewportSize();
+  let viewport=nativeViewport,calibration=await resultGestureOverlap(context,viewport);
+  if(!calibration.points.length){
+    // A no-overlap layout is not a safety pass. Keep this profile's real input
+    // mode and deliberately constrain the viewport to the reproduced layout.
+    viewport={width:844,height:390};
+    calibration=await resultGestureOverlap(context,viewport);
+    testInfo.annotations.push({type:'constrained-viewport',description:
+      `${nativeViewport.width}×${nativeViewport.height} had no playable overlap; exercising real overlapping controls at 844×390 with the same input mode.`});
+  }
+  expect(calibration.points.length,'A real visible result action must overlap a playable surface/control; no blank-area pass or skip').toBeGreaterThan(0);
+  await page.setViewportSize(viewport);
+
+  const fixture=campaignFixture('failure');
+  fixture.envelope.game.state.time=175; // Genuine objective deadline five seconds after resume.
+  Game.restore(fixture.envelope.game);
+  await page.addInitScript(({fixture,save,progress})=>{
+    localStorage.setItem(save,JSON.stringify(fixture.envelope));
+    localStorage.setItem(progress,JSON.stringify(fixture.progress));
+  },{fixture,save:SAVE,progress:CAMPAIGN_STORAGE_KEY});
+  await page.goto('/');await page.evaluate(()=>document.fonts.ready);
+  await press(page,'#resumeSaved');
+  await expect(page.locator('#resultModal')).toBeHidden();
+  const point=await page.evaluate(points=>{
+    for(const p of points){
+      const hit=document.elementFromPoint(p.x,p.y),button=hit?.closest('.app button:not(:disabled)');
+      if(hit?.id==='battle'||hit?.id==='minimap'||button)
+        return {...p,downTarget:hit.id||button.id||button.dataset.type};
+    }
+    return null;
+  },calibration.points);
+  expect(point,'The held gesture must begin on an actual playable surface or enabled control').not.toBeNull();
+
+  const touch=await page.evaluate(()=>navigator.maxTouchPoints>0);
+  const cdp=touch?await context.newCDPSession(page):null;
+  let held=false;
+  try{
+    if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{id:0,x:point.x,y:point.y}]});
+    else {await page.mouse.move(point.x,point.y);await page.mouse.down();}
+    held=true;
+    await expect(page.locator('#resultTitle')).toHaveText('MISSION FAILED',{timeout:10000});
+    await expect(page.locator('#resultModal')).toBeVisible();
+    const releaseTarget=await page.evaluate(p=>document.elementFromPoint(p.x,p.y)?.closest('button')?.id,point);
+    expect(releaseTarget,'The new actionable overlay must genuinely occupy the held coordinate').toBe(point.action);
+    testInfo.annotations.push({type:'gesture',description:(touch?'touch':'mouse')+' down on '+point.downTarget+' at '+point.x.toFixed(1)+','+point.y.toFixed(1)+' in '+viewport.width+'×'+viewport.height+'; release over '+releaseTarget});
+    if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    else await page.mouse.up();
+    held=false;
+    await page.waitForTimeout(350); // Observe any browser compatibility click; not a runtime debounce.
+    await expect(page.locator('#resultModal')).toBeVisible();
+    await expect(page.locator('#resultTitle')).toHaveText('MISSION FAILED');
+    await expect(page.locator('#welcome')).toBeHidden();
+    expect(await snapshot(page)).toBeNull();
+    const history=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),HISTORY);
+    expect(history).toHaveLength(calibration.historyCount+1);
+
+    // A first independent press must still work after observing the old click.
+    await press(page,'#playAgain');
+    await expect(page.locator('#resultModal')).toBeHidden();
+    await expect(page.locator('#welcome')).toBeHidden();
+    const retry=await pause(page);
+    expect(retry.campaignId).toBe('emberwatch');
+    expect(retry.game.state.time).toBeLessThan(5);
+
+    // Repeat the genuine deadline crossing, this time with NO observation
+    // delay between release and the independent press. A blanket next-click
+    // shield or debounce would consume this fresh press and fail the test.
+    await page.reload();await press(page,'#resumeSaved');
+    await expect(page.locator('#resultModal')).toBeHidden();
+    const playable=await page.evaluate(p=>{
+      const hit=document.elementFromPoint(p.x,p.y);
+      return hit?.id==='battle'||hit?.id==='minimap'||!!hit?.closest('.app button:not(:disabled)');
+    },point);
+    expect(playable,'Immediate recovery run also starts on real gameplay').toBe(true);
+    if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{id:0,x:point.x,y:point.y}]});
+    else {await page.mouse.move(point.x,point.y);await page.mouse.down();}
+    held=true;
+    await expect(page.locator('#resultTitle')).toHaveText('MISSION FAILED',{timeout:10000});
+    expect(await page.evaluate(p=>document.elementFromPoint(p.x,p.y)?.closest('button')?.id,point)).toBe(point.action);
+    const retryBounds=await page.locator('#playAgain').boundingBox();
+    const freshPoint={x:retryBounds.x+retryBounds.width/2,y:retryBounds.y+retryBounds.height/2};
+    expect(await page.evaluate(p=>document.elementFromPoint(p.x,p.y)?.closest('button')?.id,freshPoint)).toBe('playAgain');
+    if(touch){
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      held=false;
+      await page.touchscreen.tap(freshPoint.x,freshPoint.y);
+    }else{
+      await page.mouse.up();
+      held=false;
+      await page.mouse.click(freshPoint.x,freshPoint.y);
+    }
+    await expect(page.locator('#resultModal')).toBeHidden();
+    await expect(page.locator('#welcome')).toBeHidden();
+    const immediateRetry=await pause(page);
+    expect(immediateRetry.campaignId).toBe('emberwatch');
+    expect(immediateRetry.game.state.time).toBeLessThan(5);
+    expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)).length,HISTORY)).toBe(calibration.historyCount+2);
+  }finally{
+    if(held){
+      if(touch)await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
+      else await page.mouse.up();
+    }
+    if(cdp)await cdp.detach();
+  }
 });
