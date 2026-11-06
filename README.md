@@ -41,6 +41,8 @@ The isolated browser regression project is in `qa/browser/`. See `docs/BROWSER_R
 - Campaign stars, trial records, preferences and battle history remain on that browser/device. Clearing browser data removes them.
 - Switching away pauses the battle. Failed writes show warnings; Save & return stays in the battle if saving fails.
 - Preferences include independent music/effects, volume, reduced motion and visual quality. Audio starts only after a user gesture.
+- Version 0.7 source candidate adds local JSON export/import in Preferences → Save backups. Import previews the contents and requires explicit replacement confirmation. Browser files never leave the device.
+- Experimental standard-controller input uses a visible virtual cursor, shared placement rules and menu focus. Mapping is in the field guide/preferences; physical hardware validation remains pending.
 
 ## Roster
 
@@ -62,6 +64,7 @@ The isolated browser regression project is in `qa/browser/`. See `docs/BROWSER_R
 - `dist/objectives.js`: fixed-step objective evaluation and exact deadline handling.
 - `dist/persistence.js`: safe storage operations, battle envelopes, history normalization and native-control keyboard handling.
 - `dist/audio.js`: original procedural score and synthesized effects.
+- `dist/controller.js`, `dist/backup.js`: isolated controller state and validated portable saves.
 - `dist/app.js`: input, camera, menus, HUD, settings, saves and integration.
 - `dist/styles.css`, `dist/index.html`: responsive shell and accessible controls.
 - `tests/`, `qa/browser/`, `docs/`: deterministic tests, browser regressions and measured development records.
@@ -79,4 +82,4 @@ The private source repository contains source, tests and development records. Th
 - Balance is iterated from deterministic simulations and browser reviews, not competitively certified. Normal AI remains vulnerable to some forward-infantry rush policies.
 - No physical iOS/Android device testing or subjective music-listening review yet. Cloud desktop tests do not establish mobile performance.
 - Canvas battlefield has textual controls and shortcuts, but full nonvisual battlefield accessibility remains unfinished.
-- Controller support, verified desktop runtime, Steamworks, localization, store assets and platform certification remain release gates.
+- Controller hardware validation, verified desktop runtime, Steamworks, localization, store assets and platform certification remain release gates. The desktop shell does not yet permit portable file export.

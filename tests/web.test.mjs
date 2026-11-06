@@ -39,9 +39,28 @@ test('offline shell is complete and deployment-relative', () => {
 });
 test('critical dialogs and battlefield expose accessible descriptions', () => {
   const html = read('index.html');
-  assert.equal([...html.matchAll(/role="dialog"/g)].length, 4);
-  assert.equal([...html.matchAll(/aria-modal="true"/g)].length, 4);
+  assert.equal([...html.matchAll(/role="dialog"/g)].length, 5);
+  assert.equal([...html.matchAll(/aria-modal="true"/g)].length, 5);
   assert.match(html, /<canvas\s+id="battle"[^>]+aria-label=/);
   assert.match(html, /id="toast"[^>]+role="status"/);
   assert.match(read('app.js'), /document\.querySelector\('\.app'\)\.inert/);
+});
+
+test('portable backup controls require a preview and explicit replacement action', () => {
+  const html = read('index.html'), app = read('app.js');
+  for (const id of ['backupModal','backupSummary','confirmImport','cancelImport','backupImportStatus','backupStatus','backupIncludeBattle','backupFile']) assert.match(html,new RegExp(`id="${id}"`));
+  assert.match(html, /Replace local saves/);
+  assert.match(html, /type="file"/);
+  assert.match(app, /restoreBackup\(localStorage, pendingBackupText\)/);
+  assert.match(app, /createBackup\(localStorage, options\)/);
+  assert.match(app, /started = false;\s+progressDirty = false;\s+paused = true;\s+pendingBackupText = null;\s+location\.reload\(\)/);
+});
+
+test('controller uses the shared legal placement path and runtime assets are cached', () => {
+  const app=read('app.js'),sw=read('service-worker.js');
+  assert.match(app,/function activateBattlePoint\(w\)/);
+  assert.match(app,/activateBattlePoint\(ui\.pointer\)/);
+  assert.match(app,/activateBattlePoint\(w\)/);
+  for(const file of ['backup.js','controller.js'])assert.ok(sw.includes(`'./${file}'`));
+  assert.match(read('index.html'),/id="controllerHelp"/);
 });

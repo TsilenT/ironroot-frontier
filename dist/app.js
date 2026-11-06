@@ -1,3 +1,15 @@
+import {
+  GamepadInput,
+  moveCursor,
+  nextFocusIndex,
+  spatialFocusIndex,
+} from './controller.js';
+import {
+  createBackup,
+  parseBackup,
+  restoreBackup,
+  MAX_BACKUP_BYTES,
+} from './backup.js';
 import { Game, BUILDINGS, UNITS, LANES, SPELL, upgradeCost } from './engine.js';
 import { Renderer, iconSVG } from './render.js';
 import {
@@ -451,6 +463,8 @@ function start(
       );
   }
   battleSession.claim();
+  padHud = false;
+  padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
   started = true;
   paused = false;
   speed = 1;
@@ -822,6 +836,10 @@ $('battle').addEventListener('pointerup', (e) => {
   ui.dragging = false;
   $('battle').classList.remove('dragging');
   if (moved || !canInteract()) return;
+  activateBattlePoint(w);
+});
+function activateBattlePoint(w) {
+  if (!canInteract()) return;
   if (ui.build) {
     if (w.x < 180 || w.x > 1390 || w.y < 165 || w.y > 740) {
       toast('Build within your own frontier. Drag back toward your citadel.');
@@ -865,7 +883,7 @@ $('battle').addEventListener('pointerup', (e) => {
     requestAnimationFrame(updateSelection);
     if (ui.selected) sound('click');
   }
-});
+}
 $('battle').addEventListener('pointercancel', (e) => {
   activePointers.delete(e.pointerId);
   if (activePointers.size === 0) multiTouch = false;
@@ -896,12 +914,14 @@ $('minimap').addEventListener('pointerdown', (e) => {
 window.addEventListener('keydown', (e) => {
   if (e.repeat && e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return;
   if (e.code === 'Escape') {
-    if (!$('settingsModal').classList.contains('hidden')) hideSettings();
+    if (!$('backupModal').classList.contains('hidden')) hideBackup();
+    else if (!$('settingsModal').classList.contains('hidden')) hideSettings();
     else if (!$('helpModal').classList.contains('hidden')) hideHelp();
     else cancel();
   }
   if (
     !started ||
+    !$('backupModal').classList.contains('hidden') ||
     !$('settingsModal').classList.contains('hidden') ||
     !$('helpModal').classList.contains('hidden') ||
     !$('resultModal').classList.contains('hidden')
@@ -949,10 +969,10 @@ window.addEventListener('beforeunload', (e) => {
 });
 window.addEventListener('storage', (event) => {
   if (event.key === 'ironroot.campaign.v1') {
-    campaignProgress = mergeCampaignProgress(
-      campaignProgress,
-      readCampaignProgress(storage),
-    );
+    const latest = readCampaignProgress(storage);
+    campaignProgress = progressDirty
+      ? mergeCampaignProgress(campaignProgress, latest)
+      : latest;
     if (!started) renderCampaign();
     return;
   }
@@ -1107,6 +1127,7 @@ function updateAudio() {
 }
 
 function frame(now) {
+  updateController(now);
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
   if (started && !paused && game.state.winner === null && !objectiveOutcome) {
@@ -1410,6 +1431,7 @@ const dialogLayers = [
   $('helpModal'),
   $('settingsModal'),
   $('resultModal'),
+  $('backupModal'),
 ];
 let activeDialog = null;
 const dialogFocus = new WeakMap();
@@ -1498,3 +1520,362 @@ document.addEventListener('keydown', (e) => {
 });
 syncDialogs();
 syncChoice();
+
+// Portable backups stay on the player's device. Nothing is uploaded.
+let pendingBackupText = null;
+let backupWriteAttempted = false;
+function hideBackup() {
+  $('backupModal').classList.add('hidden');
+  pendingBackupText = null;
+  $('backupFile').value = '';
+  if (!backupWriteAttempted)
+    $('backupStatus').textContent =
+      'Import cancelled. Local saves were not changed.';
+}
+$('cancelImport').onclick = hideBackup;
+$('exportBackup').onclick = () => {
+  try {
+    if (location.protocol === 'ironroot:')
+      throw new Error(
+        'File export is not yet enabled in the desktop shell. Use the browser edition for portable backups.',
+      );
+    const includeBattle = $('backupIncludeBattle').checked;
+    const options = { includeBattle };
+    if (progressDirty) {
+      options.campaign = campaignProgress;
+      options.trials = trialRecords;
+    }
+    if (
+      includeBattle &&
+      started &&
+      game.state.winner === null &&
+      !objectiveOutcome &&
+      battleSession.isCurrent()
+    ) {
+      options.battle = {
+        format: 'ironroot-save',
+        version: 2,
+        campaignId: currentCampaign,
+        challengeId: currentChallenge,
+        game: game.serialize(),
+      };
+    }
+    const text = createBackup(localStorage, options);
+    const url = URL.createObjectURL(
+      new Blob([text], { type: 'application/json' }),
+    );
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `ironroot-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    $('backupStatus').textContent =
+      'Backup download started. Keep the file somewhere safe.';
+  } catch (error) {
+    $('backupStatus').textContent =
+      error.message ||
+      'Backup could not be created. Your saves were not changed.';
+  }
+};
+$('importBackup').onclick = () => {
+  $('backupFile').value = '';
+  $('backupFile').click();
+};
+$('backupFile').onchange = async () => {
+  const file = $('backupFile').files?.[0];
+  if (!file) return;
+  try {
+    if (file.size > MAX_BACKUP_BYTES)
+      throw new Error(
+        'This file is too large. Choose an Ironroot backup smaller than 1 MiB.',
+      );
+    const text = await file.text(),
+      parsed = parseBackup(text),
+      overview = getCampaignOverview(parsed.data.campaign);
+    if ($('settingsModal').classList.contains('hidden')) return;
+    pendingBackupText = text;
+    backupWriteAttempted = false;
+    const battle = parsed.data.battle;
+    const battleName = battle
+      ? battle.campaignId
+        ? CAMPAIGN_MISSIONS.find((m) => m.id === battle.campaignId).name
+        : battle.challengeId
+          ? CHALLENGES.find((c) => c.id === battle.challengeId).name
+          : 'Skirmish'
+      : null;
+    $('backupSummary').textContent =
+      `${overview.cleared}/12 campaign missions · ${overview.stars}/36 stars · ${Object.keys(parsed.data.trials).length}/5 trial records. ${battle ? `Saved battle: ${battleName} at ${timeText(battle.game.state.time)}.` : 'No battle in this file. Your current saved battle will be removed.'}`;
+    $('backupImportStatus').textContent = '';
+    $('backupModal').classList.remove('hidden');
+  } catch (error) {
+    pendingBackupText = null;
+    $('backupStatus').textContent =
+      error.message ||
+      'This backup could not be read. Your saves were not changed.';
+    $('backupFile').value = '';
+  }
+};
+$('confirmImport').onclick = () => {
+  if (!pendingBackupText) return;
+  backupWriteAttempted = true;
+  let result;
+  try {
+    result = restoreBackup(localStorage, pendingBackupText);
+  } catch (error) {
+    result = {
+      ok: false,
+      message:
+        error.message ||
+        'Local storage is unavailable. No import was completed.',
+    };
+  }
+  if (!result.ok) {
+    $('backupImportStatus').textContent = result.message;
+    return;
+  }
+  // Do not let beforeunload save an old in-memory session over the confirmed import.
+  started = false;
+  progressDirty = false;
+  paused = true;
+  pendingBackupText = null;
+  location.reload();
+};
+
+// Experimental standard-controller adapter. Gameplay uses the same actions as touch.
+let padHud = false,
+  padActive = false,
+  padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
+function controllerScope() {
+  if (document.hidden || !document.hasFocus())
+    return { mode: 'disabled', key: 'inactive', element: null };
+  const dialog = [...dialogLayers]
+    .reverse()
+    .find((layer) => !layer.classList.contains('hidden'));
+  if (dialog) return { mode: 'menu', key: dialog.id, element: dialog };
+  if (paused) return { mode: 'menu', key: 'pause', element: $('pauseVeil') };
+  if (padHud)
+    return {
+      mode: 'menu',
+      key: 'hud',
+      element: document.querySelector('.app'),
+    };
+  return {
+    mode: canInteract() ? 'gameplay' : 'menu',
+    key: canInteract() ? 'battle' : 'ended',
+    element: document.querySelector('.app'),
+  };
+}
+function padControls(scope) {
+  return [
+    ...(scope.element?.querySelectorAll(
+      'button:not([disabled]),a[href],input:not([type="file"]):not([disabled]),select:not([disabled]),summary',
+    ) || []),
+  ].filter(
+    (el) =>
+      !el.closest('.hidden,[inert]') &&
+      el.getClientRects().length &&
+      getComputedStyle(el).visibility !== 'hidden',
+  );
+}
+function focusPadControl(control) {
+  if (!control) return;
+  control.focus();
+  control.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+function controllerNavigate(direction, scope) {
+  const controls = padControls(scope),
+    active = document.activeElement,
+    current = controls.indexOf(active);
+  if (
+    ['left', 'right'].includes(direction) &&
+    active?.matches('input[type="range"]')
+  ) {
+    active.value = Math.max(
+      Number(active.min),
+      Math.min(
+        Number(active.max),
+        Number(active.value) +
+          (direction === 'right' ? 1 : -1) * Number(active.step || 1),
+      ),
+    );
+    active.dispatchEvent(new Event('input', { bubbles: true }));
+    active.dispatchEvent(new Event('change', { bubbles: true }));
+    return;
+  }
+  if (['left', 'right'].includes(direction) && active?.matches('select')) {
+    active.selectedIndex = Math.max(
+      0,
+      Math.min(
+        active.options.length - 1,
+        active.selectedIndex + (direction === 'right' ? 1 : -1),
+      ),
+    );
+    active.dispatchEvent(new Event('change', { bubbles: true }));
+    return;
+  }
+  const items = controls.map((el) => ({ rect: el.getBoundingClientRect() }));
+  let next = spatialFocusIndex(items, current, direction);
+  if (next === current)
+    next = nextFocusIndex(
+      items,
+      current,
+      ['left', 'up'].includes(direction) ? -1 : 1,
+    );
+  focusPadControl(controls[next]);
+}
+function controllerBack(scope) {
+  if (scope.key === 'backupModal') hideBackup();
+  else if (scope.key === 'settingsModal') hideSettings();
+  else if (scope.key === 'helpModal') hideHelp();
+  else if (scope.key === 'pause') pause(false);
+  else if (scope.key === 'resultModal') showTitle();
+  else if (scope.key === 'hud') {
+    padHud = false;
+    cancel();
+    $('battle').focus();
+  } else if (scope.mode === 'gameplay') cancel();
+}
+function handleControllerAction({ action }) {
+  const scope = controllerScope();
+  if (scope.mode === 'disabled') return;
+  padActive = true;
+  if (action === 'pause') {
+    if (scope.key === 'pause') pause(false);
+    else if (scope.key === 'battle' || scope.key === 'hud') pause(true);
+  } else if (action === 'cancel') controllerBack(scope);
+  else if (action === 'focus') {
+    if (scope.key === 'battle') {
+      padHud = true;
+      focusPadControl(document.querySelector('.build-card'));
+    } else if (scope.key === 'hud') {
+      padHud = false;
+      $('battle').focus();
+    }
+  } else if (['up', 'down', 'left', 'right'].includes(action)) {
+    if (scope.mode === 'gameplay') {
+      padHud = true;
+      focusPadControl(document.querySelector('.build-card'));
+    } else controllerNavigate(action, scope);
+  } else if (action === 'confirm') {
+    if (scope.mode === 'gameplay') {
+      ui.pointer = renderer.screenToWorld(padPoint.x, padPoint.y);
+      activateBattlePoint(ui.pointer);
+      if (ui.selected) {
+        updateSelection();
+        padHud = true;
+        focusPadControl(
+          $('upgrade').disabled ? $('closeSelection') : $('upgrade'),
+        );
+      }
+    } else {
+      const controls = padControls(scope);
+      if (!controls.includes(document.activeElement))
+        focusPadControl(controls[0]);
+      else {
+        const target = document.activeElement;
+        if (target.matches('select')) {
+          target.selectedIndex =
+            (target.selectedIndex + 1) % target.options.length;
+          target.dispatchEvent(new Event('change', { bubbles: true }));
+        } else target.click();
+        if (
+          scope.key === 'hud' &&
+          (target.dataset.type || target.id === 'rally') &&
+          (ui.build || ui.spell)
+        ) {
+          padHud = false;
+          $('battle').focus();
+        }
+      }
+    }
+  } else if (scope.mode === 'gameplay') {
+    if (action === 'rally') $('rally').click();
+    else if (action === 'home') $('home').click();
+    else if (action === 'frontline') $('front').click();
+    else if (action === 'previousCard' || action === 'nextCard') {
+      const types = Object.keys(BUILDINGS),
+        index = types.indexOf(ui.build);
+      const next =
+        index < 0
+          ? action === 'nextCard'
+            ? 0
+            : types.length - 1
+          : (index + (action === 'nextCard' ? 1 : -1) + types.length) %
+            types.length;
+      selectBuild(types[next]);
+    }
+  } else if (action === 'previousCard' || action === 'nextCard') {
+    const controls = padControls(scope),
+      i = controls.indexOf(document.activeElement);
+    focusPadControl(
+      controls[nextFocusIndex(controls, i, action === 'nextCard' ? 1 : -1)],
+    );
+  }
+  if (controllerScope().key !== scope.key) controller.reset();
+}
+const controller = new GamepadInput({
+  onAction: handleControllerAction,
+  onConnection: ({ connected }) => {
+    if (connected)
+      toast('Controller connected. A confirms, B goes back, Start pauses.');
+    else {
+      padActive = false;
+      padHud = false;
+      if (canInteract()) {
+        pause(true);
+        toast('Controller disconnected. Battle paused.');
+      }
+    }
+  },
+});
+function updateController(now) {
+  const scope = controllerScope(),
+    frame = controller.update(now, scope);
+  $('controllerStatus').textContent = frame.connected
+    ? 'Standard controller connected. Input support is experimental; physical device validation is ongoing.'
+    : frame.unsupported.length
+      ? 'This controller uses a nonstandard mapping. Use keyboard/touch or a standard-mapped controller.'
+      : 'No controller connected. Connect a standard controller and press a button. Keyboard and touch always remain available.';
+  if (scope.mode === 'gameplay' && frame.connected) {
+    if (
+      Math.hypot(frame.cursor.x, frame.cursor.y) ||
+      Math.hypot(frame.camera.x, frame.camera.y)
+    )
+      padActive = true;
+    padPoint = moveCursor(
+      padPoint,
+      frame.cursor,
+      frame.dt,
+      { width: renderer.width, height: renderer.height },
+      { speed: 570, precision: frame.precision, padding: 20 },
+    );
+    if (frame.camera.x) {
+      renderer.pan(-frame.camera.x * 850 * frame.dt);
+      follow = false;
+    }
+    if (padActive) ui.pointer = renderer.screenToWorld(padPoint.x, padPoint.y);
+  }
+  const visible =
+    padActive && frame.connected && controllerScope().mode === 'gameplay';
+  $('controllerCursor').classList.toggle('hidden', !visible);
+  if (visible) {
+    $('controllerCursor').style.left = padPoint.x + 'px';
+    $('controllerCursor').style.top = padPoint.y + 'px';
+  }
+}
+document.addEventListener(
+  'pointerdown',
+  () => {
+    padActive = false;
+    padHud = false;
+    controller.reset();
+  },
+  true,
+);
+document.addEventListener('keydown', () => {
+  padActive = false;
+  padHud = false;
+  controller.reset();
+});

@@ -89,8 +89,9 @@ still apply. The adaptation changes these obsolete assumptions:
 - Preferences reload persistence and native Space on a checkbox are covered.
 
 The original/adapted regression file has 21 logical cases (84 profile instances).
-The campaign file adds nine cases (36 instances), for an expected total of
-120 profile instances, including three intentional skips. This is an expected
+The campaign file adds nine cases (36 instances), and the controller/backup file
+adds ten cases (40 instances), for an expected total of 160 profile instances,
+including three intentional skips. This is an expected
 discovery count, not a pass claim. The historical 81-pass run covers only the
 previous 84-instance matrix.
 
@@ -149,12 +150,13 @@ explicit regressions, described below; cloud failures must be investigated, not
 automatically skipped. Campaign audio, all twelve missions, every branch, progression-write
 failure and complete campaign accessibility still need separate coverage.
 
-## Independent-review defects: regression assertions pending fixes
+## Independent-review defects: retained regression assertions
 
-Two additional campaign-file tests encode desired behavior and are expected to
+Two additional campaign-file tests encode desired behavior and were expected to
 fail against the reviewed pre-fix implementation. They are not skipped or marked
-`test.fail`: once production fixes land, they must pass normally. Their current
-local execution status is syntax-checked, browser-unrun.
+`test.fail`. The later parent-reported 36/36 campaign cloud pass includes these
+checks; the exact v0.6 result is recorded below. Local execution here remains
+syntax-checked, browser-unrun.
 
 - **Stale multi-tab save ownership.** Page A starts and pauses Emberwatch through
   the UI. Page B, in the same browser context and origin, starts and pauses a new
@@ -208,3 +210,94 @@ upgrade behavior, memory stability or long-match frame rates. Campaign and field
 suite; the 81-pass historical cloud result predates the local v0.6 integration. Near-end fixtures
 test actual engine-triggered UI transitions, not human-played full matches.
 Screenshots, CUA reviews, unit tests and balance simulations remain separate gates.
+
+## v0.7 controller and backup regressions (browser execution pending)
+
+The v0.6 snapshot was captured before adding accessibility-backup.spec.mjs.
+The integration contract confirms standard controller mappings, center-of-canvas
+initial cursor, RB selecting Barracks from no selection, and the planned backup
+controls. Export/file-validation errors use #backupStatus; confirmed restore
+errors use #backupImportStatus inside the topmost preview modal. Successful
+replacement stops the session and reloads. Syntax checks and backup-fixture
+validation have passed. No browser run
+has been performed, and none of these checks counts as a product pass.
+
+Ten tests add 40 profile instances:
+- Standard-controller held confirm activates the focused Start button once,
+  does not select/build behind the dismissed menu, pauses, and resumes safely.
+- Shoulder buttons change the selected construction card; left-stick steering,
+  precision mode and confirm place an Archery range through the virtual cursor.
+- Disconnect removes the cursor and leaves pointer controls usable, while the
+  preferences status and guide communicate controller availability/help.
+- Export creates a downloadable JSON file validated by the production parser;
+  excluding the battle leaves progress intact and excludes only that domain.
+- Invalid JSON is refused without modifying any existing storage domain.
+- Import preview/cancel leaves all five game domains and unrelated data intact.
+- Explicit replacement reloads, restores the replacement battle/preferences/
+  progress, removes absent trial/history records and preserves unrelated data.
+- A raw Storage read denial makes export fail visibly rather than downloading
+  empty progress.
+- A raw Storage read denial during confirmed import leaves existing data intact.
+- A one-time quota failure at the preferences write, after earlier writes, rolls
+  back the previous raw bytes and does not reload.
+
+Backup fixtures come from createBackup/parseBackup with valid Game.serialize
+data. Original and replacement fixtures differ in every game storage domain.
+Only this test game's localStorage and the five documented keys are touched;
+an unrelated sentinel checks that import does not clear all origin storage.
+
+Controller tests replace navigator.getGamepads with a deterministic standard
+pad provider before app initialization. Buttons and axes are the inputs; tests
+never access private app state or call gameplay callbacks. Virtual cursor
+movement uses its rendered geometry and the normal left-stick input. These are
+integration tests of input routing, not physical-controller pairing, browser
+permission policy, firmware mappings, haptics or console/Steam certification.
+
+Run in an authorized cloud coding environment:
+
+```sh
+cd qa/browser
+node --check accessibility-backup.spec.mjs
+npm test -- accessibility-backup.spec.mjs
+# Then rerun the complete matrix:
+npm test
+```
+
+Physical-controller tests and real download/import usability reviews remain
+separate gates. No skip/expected-failure marker conceals integration failures.
+
+### v0.7 markup alignment before cloud execution
+
+Backup tests open the actual “Save backups” details summary before operating
+its controls. The controller-disconnect test sends View/Home (button 8) after
+pointer Start, because connection alone does not activate the virtual cursor
+and pointer input intentionally returns control to the mouse. Guide help uses
+#controllerHelp; preferences controller details use #controllerSettings.
+
+The isolated harness package is version 0.7.0, with matching lockfile root/package
+versions. Its aggregate syntax check includes accessibility-backup.spec.mjs.
+Production dependencies and production files are unchanged by these adaptations.
+These changes have passed local syntax/fixture checks, not browser execution.
+
+## Exact v0.6 cloud result and dirty-save harness correction
+
+The parent reported the exact v0.6 cloud matrix as **113 passed, 4 failed,
+3 skipped** (120 instances). All four failures were the same stale harness
+assumption in “failed save retains the previous durable snapshot and can
+recover”: it injected write failure while the battle remained paused with an
+unchanged, already-durable snapshot. Production now intentionally treats that
+identical save as a no-op, so no write should be attempted or reported failed.
+
+The current regression now pauses and reads the prior durable bytes, resumes
+for 350 ms (below the five-second autosave interval), injects a quota failure,
+and pauses again to attempt a dirty save. Save & return must then retain the
+paused battle and the prior bytes. Restoring writes allows exit and resume.
+The change strengthens the intended failed-write test without penalizing the
+deliberate identical-save optimization.
+
+The parent additionally reported **12/12 corrected recovery checks passed**
+and **36/36 campaign checks passed** in cloud. These are scoped results, not a
+claim that the entire corrected 120-instance matrix was rerun, and not results
+for the newer 160-instance v0.7 controller/backup matrix. Local work here only
+patched the test and performed syntax/fixture checks; no local browser run
+was performed.
