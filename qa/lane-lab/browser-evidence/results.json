@@ -1,0 +1,49 @@
+{
+  "browser": "Headless system Chromium",
+  "scope": "Desktop and narrow viewport smoke, not physical-device or production-renderer QA",
+  "hashes": {
+    "./app.js": "48c3a799d18bba1b0c802dcb31b67acb9bc91e19b80258be52cae1a0bc64e8d4",
+    "./styles.css": "a6fb4d707a1b89e2a85c2cf4d141a7a7e55e46b9726c0615b4223b57863b5ea0",
+    "./index.html": "c5452366f20481c4dca16768b45fd07e915506d87b5cc8a7e9967705256c94fa",
+    "./engine.js": "9eeced24ff2926969920c2075025c56ec28d9d92417bc6ee2d9f1867e71ce481",
+    "./campaign.js": "3b4872a5d428796140b2b6add3b8f307be60c065a93f3d195d58303080229c1b"
+  },
+  "rows": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "transit": "Now: approach 0 · warning 0 · crossing 4 · landed 0",
+      "landed": "Now: approach 0 · warning 0 · crossing 0 · landed 4",
+      "pilots": [
+        1,
+        2,
+        3
+      ],
+      "protectedMineFailureStops": true,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "storagePreserved": true,
+      "pageOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "transit": "Now: approach 0 · warning 0 · crossing 4 · landed 0",
+      "landed": "Now: approach 0 · warning 0 · crossing 2 · landed 2",
+      "pilots": [
+        1,
+        2,
+        3
+      ],
+      "protectedMineFailureStops": true,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "storagePreserved": true,
+      "pageOverflow": false
+    }
+  ]
+}

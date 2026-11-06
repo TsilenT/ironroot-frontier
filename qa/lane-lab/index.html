@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121e1d">
+  <title>Ironroot · Lane lab</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div><p class="eyebrow">Ironroot Frontier / Playtest workbench</p><h1>One road. Then a frontier.</h1><p class="intro">Explore fewer opening fronts and predictable gryphon crossings.</p></div>
+      <span class="lab-badge">QA experiment · local only</span>
+    </header>
+    <section class="setup panel" aria-label="Battle setup">
+      <label>Scene<select id="scenario"><option value="standard">Standard battle</option></select></label>
+      <label>Battlefield<select id="map"></select></label>
+      <label>Opponent<select id="difficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option></select></label>
+      <label>Seed<input id="seed" type="number" min="0" max="4294967295" step="1" value="42" inputmode="numeric"></label>
+      <button id="reset" class="primary">Start selected scene</button>
+      <button id="demo">Route demo</button>
+    </section>
+    <p id="scene" class="scene">Standard rules: 420 gold, one barracks per side, ordinary income and an adaptive opponent. Choose a battlefield, then start.</p>
+    <p id="objective" class="scene" role="status" aria-live="polite"></p>
+    <section class="battle panel" aria-label="Battlefield">
+      <div class="battle-toolbar">
+        <div class="battle-title"><strong id="mapName"></strong><span id="mapDetail"></span></div>
+        <div class="transport"><button id="pause" aria-pressed="true">Resume</button><button id="speed" aria-pressed="false">Speed 1×</button><button id="home">Your frontier</button><button id="gates">Crossing gates</button></div>
+      </div>
+      <div class="scoreboard"><span><i class="friendly"></i>You <strong id="ownHp">6,000 HP</strong></span><span id="clock">0:00 · Paused</span><span><i class="enemy"></i>Enemy <strong id="enemyHp">6,000 HP</strong></span></div>
+      <div class="battle-scroll" id="battleScroll"><canvas id="field" aria-label="Battlefield diagram. Use the site controls below for keyboard placement." role="img"></canvas></div>
+      <div class="map-footer"><span><i class="friendly"></i>Teal + circles: your army</span><span><i class="enemy"></i>Coral + diamonds: enemy army</span><span>Scroll sideways to inspect the whole field →</span></div>
+    </section>
+    <div class="workspace">
+      <section class="panel command-panel" aria-labelledby="commandTitle">
+        <div class="section-heading"><h2 id="commandTitle">Build your line</h2><strong id="gold">420 gold · +5/sec</strong></div>
+        <p class="muted">Choose a building, then tap an outlined site on your left frontier. Or choose a site below.</p>
+        <div id="buildings" class="buildings"></div>
+        <div class="site-controls"><label>Road<select id="road"></select></label><label>Site<select id="site"></select></label><button id="place">Build at site</button></div>
+        <p id="message" role="status" aria-live="polite">Battle paused. Start when ready.</p>
+        <div class="structure-controls"><label>Your structures<select id="owned"><option value="">Choose a structure</option></select></label><button id="upgrade">Upgrade</button><button id="sell">Salvage</button></div>
+        <p id="selection" class="muted">Select one of your structures to see its health, range and upgrade cost.</p>
+        <div class="rally"><button id="rally">Aim rally · 75 gold</button><button id="rallyGate">Rally enemy gate on chosen road</button><span id="rallyStatus">Ready · 25 sec cooldown</span></div>
+      </section>
+      <aside class="panel route-panel" aria-labelledby="routesTitle">
+        <p class="eyebrow">Watch the wind</p><h2 id="routesTitle">An announced crossing</h2>
+        <p id="rules"></p>
+        <ol class="route-legend"><li><b>Approach</b><span>A dashed line shows the fixed destination.</span></li><li><b>Wait 2 seconds</b><span>A gold countdown ring marks the exposed gryphon.</span></li><li><b>Cross, then advance</b><span>The gryphon moves sideways at normal speed, then resumes its advance. It remains airborne on the landing road.</span></li></ol>
+        <p id="routes" class="route-status" aria-live="off"></p>
+        <p id="routeHistory" class="muted"></p>
+        <div class="counter-note"><strong>Keep a counter ready.</strong><p>Archers can hit flyers during transit from either connected road, within their normal range. Towers use physical distance. Rally strikes also hit flyers. Gryphons cannot attack while waiting or crossing.</p></div>
+      </aside>
+    </div>
+    <footer>No storage, rewards, campaign progress, production saves, or backend connection. Route demo is an authored diagnostic scene, not a balance result. These five maps are individual experiments; roads never open mid-battle.</footer>
+  </main>
+</body>
+</html>
