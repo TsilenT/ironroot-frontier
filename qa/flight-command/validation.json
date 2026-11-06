@@ -1,0 +1,87 @@
+{
+  "scope": "QA-only flight-command prototype; no production/campaign/profile edits, merge, or deployment.",
+  "baseCommit": "24edddab2cff33b3f91b396bc855193f87421ba3",
+  "priorExperimentCommit": "7e76e79c2097f33406e272ad7e7eaf19db40388b",
+  "branch": "explore/progressive-lanes-and-air-crossings",
+  "branchTests": {
+    "tests": 660,
+    "pass": 659,
+    "fail": 0,
+    "skipped": 1
+  },
+  "dedicatedCommandAndLabTests": {
+    "tests": 24,
+    "pass": 24,
+    "fail": 0,
+    "skipped": 0
+  },
+  "mainOverlay": {
+    "commit": "b8b2e6d1b200b9550803f5cb16b8d96ccc28f222",
+    "method": "Detached main worktree plus only QA/test files; no merge or production edits.",
+    "tests": {
+      "tests": 907,
+      "pass": 906,
+      "fail": 0,
+      "skipped": 1
+    }
+  },
+  "checks": {
+    "npm run check": "pass",
+    "npm run check:release": "pass",
+    "optional command modules parse": "pass",
+    "git diff --check": "pass",
+    "productionFilesUnchanged": true,
+    "campaignLabFactoryUnchanged": true
+  },
+  "tacticalEvidence": {
+    "branches": 720,
+    "seeds": [
+      51001,
+      3052302604,
+      4010181097,
+      2367780941
+    ],
+    "continuationChecks": 2640,
+    "horizonSeconds": 110,
+    "reportSha256": "ff91f61e92ceab0de3e9f8cbd889b127fde9155d5b8e9ca525e474d589e62f41",
+    "sourceHashes": {
+      "engine": "52f5475ff3506ecc991797390a893b5bf4fceef6fdc486fb104f8eb5c6598d42",
+      "scenarios": "eeaf371b6d0a301d52dad081109baf3d7491b4bc55337ec262b2e789b673f5d4",
+      "evaluation": "8ad9ff0aab7d856f88ede0b3502ad5006a1ab7969d2cdd9394e4d6a958bfc0c5"
+    }
+  },
+  "browser": {
+    "profiles": [
+      {
+        "width": 1280,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "touchAt390": true,
+    "committedFlightsPreserved": true,
+    "laterWavesUseNewOrder": true,
+    "legalPaidConstruction": true,
+    "grossRallySpendingVerified": true,
+    "storagePreserved": true,
+    "pageErrors": 0,
+    "externalRequests": 0,
+    "pageOverflow": false,
+    "reportSha256": "68d6e8b35fad7c9a29b31a4a5004a1eea8e08e721da539db3bf5be1c844710b8"
+  },
+  "testSha256": {
+    "tests/flight-command.test.mjs": "0d946e7875305464c45beb323f44fad6c8a6894594b0eeb94008cc7723710fc4",
+    "tests/lane-lab.test.mjs": "c722a87e8d8660338f9541f31086ac1ae5f8f6957067c84a6d15c77b46137cae",
+    "tests/fixtures/lane-lab-v1.js": "9eeced24ff2926969920c2075025c56ec28d9d92417bc6ee2d9f1867e71ce481"
+  },
+  "limitations": [
+    "Pinned legacy QA combat fork; no current-production ruleset integration.",
+    "Four-seed authored short situations and simple responders are not human or competitive balance evidence.",
+    "Observed unit/phase telemetry can miss a birth and death within one fixed step.",
+    "No physical-device, controller, performance, audio or complete-accessibility certification.",
+    "Production integration must preserve existing mission IDs/semantics and fence older cached tabs before new saves."
+  ]
+}

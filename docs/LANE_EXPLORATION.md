@@ -1,5 +1,9 @@
 # Progressive roads and crossing flyers: isolated playtest prototype
 
+Historical fixed-route results below were captured at `7e76e79`. The follow-up
+[player flight command trial](FLIGHT_COMMANDS.md) adds a separate optional mode
+and current evidence; it does not reinterpret the old fixed-route map identities.
+
 Exploration based on `24eddda` (v0.12 candidate 3), on branch
 `explore/progressive-lanes-and-air-crossings`, in `/workspace/ironroot-lane-lab`.
 No merge, push, deployment, production runtime edit, or campaign-onboarding edit.

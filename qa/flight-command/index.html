@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#14201e">
+  <title>Ironroot · Flight command</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+<main>
+  <header class="masthead"><div><p class="eyebrow">Ironroot Frontier / Command experiment</p><h1>Choose the next flight.</h1><p class="intro">Hold the contested road, or spend time crossing toward another target.</p></div><span class="badge">Local QA · no campaign changes</span></header>
+  <section class="setup panel" aria-label="Scene setup">
+    <label>Situation<select id="scenario"></select></label>
+    <label>Roads<select id="map"></select></label>
+    <label>Enemy response<select id="response"></select></label>
+    <label>Seed<input id="seed" type="number" inputmode="numeric" min="0" max="4294967295" step="1" value="51001"></label>
+    <button id="reset" class="primary">Reset scene</button>
+  </section>
+  <p id="scene" class="scene"></p>
+  <div class="decision-layout">
+    <section class="orders panel" aria-labelledby="ordersTitle">
+      <div class="section-heading"><div><p class="eyebrow">Your decision</p><h2 id="ordersTitle">Orders for future launches</h2></div><label>Aerie<select id="aerie"></select></label></div>
+      <p id="launch" class="launch"></p>
+      <div id="orders" class="order-grid" aria-label="Compare and choose next flight destination"></div>
+      <p id="orderNotice" class="order-notice" role="status" aria-live="polite">Orders are free. Already airborne gryphons retain their launch orders.</p>
+      <p class="muted">Times assume open travel. Combat and the army cap can delay a flight. Waiting and crossing gryphons cannot attack; they remain airborne and vulnerable.</p>
+    </section>
+    <aside class="counter-panel panel" aria-labelledby="counterTitle">
+      <p class="eyebrow">The response matters</p><h2 id="counterTitle">Read the counterplay</h2>
+      <p id="responseDescription"></p>
+      <details><summary>Compare counter costs and coverage</summary><dl class="counter-comparison"><dt>No new response</dt><dd>Existing forces still fight; the opponent buys nothing.</dd><dt>Destination archers · 175 gold</dt><dd>Anti-air troops follow the landing road. Normal range 205; 1.5× damage against air.</dd><dt>Destination tower · 220 gold</dt><dd>Stationary cover within physical range 240, including connected roads nearby.</dd><dt>Origin archers · 175 gold</dt><dd>Contest the launch road, retaining pressure if your next wave holds.</dd><dt>Rally strike · 75 gold</dt><dd>Radius 170 and 25-second cooldown. A warning creates an opportunity to aim.</dd></dl></details>
+      <p class="counter-footnote">The scripted responder observes launched flights at one-second decision intervals, pays ordinary costs, and has no access to your unlaunched order.</p>
+    </aside>
+  </div>
+  <section class="battle panel" aria-label="Battlefield and observations">
+    <div class="battle-toolbar"><div><strong id="mapName"></strong><span id="clock"></span></div><div class="transport"><button id="pause" aria-pressed="true">Launch / Resume</button><button id="speed" aria-pressed="false">Speed 1×</button><button id="home">Your aeries</button><button id="gates">Crossing gates</button></div></div>
+    <div class="metrics" aria-label="Current observations"><span>Your citadel <b id="ownHp"></b></span><span>Original ground screen <b id="screenHp"></b></span><span>Marked target damage <b id="targetDamage"></b></span><span>Your paid spending <b id="spend"></b></span><span>Enemy response spending <b id="enemySpend"></b></span></div>
+    <div id="battleScroll" class="battle-scroll"><canvas id="field" role="img" aria-label="Battlefield diagram. Orders, flight details and road observations are also available as text below."></canvas></div>
+    <div class="legend"><span><i class="friendly"></i>Teal circles: you</span><span><i class="enemy"></i>Coral diamonds: enemy</span><span>Gold rings: warning or marked target</span><span>Scroll sideways to inspect →</span></div>
+    <div id="roadObservations" class="road-observations"></div>
+  </section>
+  <div class="workspace">
+    <section class="panel support" aria-labelledby="supportTitle"><div class="section-heading"><h2 id="supportTitle">Support the flight</h2><strong id="gold"></strong></div><p class="muted">Purchases use your treasury. Select an empty site or tap an outline on your frontier.</p><div id="buildings" class="buildings"></div><div class="site-controls"><label>Road<select id="road"></select></label><label>Site<select id="site"></select></label><button id="place">Build at site</button></div><p id="message" role="status" aria-live="polite"></p><div class="structure-controls"><label>Your structures<select id="owned"></select></label><button id="upgrade">Upgrade</button><button id="sell">Salvage</button></div><p id="selection" class="muted"></p><div class="rally"><button id="rally">Aim rally · 75 gold</button><button id="rallyGate">Strike enemy gate on chosen road</button><span id="rallyStatus"></span></div></section>
+    <section class="panel flights" aria-labelledby="flightsTitle"><div class="section-heading"><h2 id="flightsTitle">Already airborne</h2><span id="flightCount"></span></div><p class="muted">Changing an aerie order never retasks a flight in this list. Each routed gryphon crosses only once.</p><div class="table-scroll"><table><thead><tr><th>Flight</th><th>Launch → destination</th><th>Current phase</th></tr></thead><tbody id="flights"></tbody></table></div><p id="routeCounts" class="route-counts"></p><p id="outcome" role="status" aria-live="polite"></p></section>
+  </div>
+  <footer>Authored test formations are free at reset and explicitly described above. All later construction, upgrades and strikes pay ordinary prices. This is a focused decision probe, not a campaign mission or a claim of balanced human difficulty. No saves, storage, rewards, backend requests or service worker.</footer>
+</main>
+</body>
+</html>
