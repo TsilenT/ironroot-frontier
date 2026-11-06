@@ -1,0 +1,722 @@
+Listing tests:
+  [phone] › accessibility-backup.spec.mjs:127:1 › backup export downloads a validated file and honors include battle
+  [phone] › accessibility-backup.spec.mjs:140:1 › invalid backup file is refused without changing local data
+  [phone] › accessibility-backup.spec.mjs:150:1 › backup preview and cancel leave every existing storage domain unchanged
+  [phone] › accessibility-backup.spec.mjs:161:1 › explicit backup replacement reloads and restores all five domains
+  [phone] › accessibility-backup.spec.mjs:177:1 › backup export reports raw storage denial instead of downloading empty progress
+  [phone] › accessibility-backup.spec.mjs:200:1 › backup import refuses a denied raw storage read without changing data
+  [phone] › accessibility-backup.spec.mjs:220:1 › backup quota failure rolls back earlier domain writes without reloading
+  [phone] › accessibility-backup.spec.mjs:343:1 › controller held confirm starts once without click-through and pause remains usable
+  [phone] › accessibility-backup.spec.mjs:360:1 › controller shoulders select build cards and virtual cursor confirm places one building
+  [phone] › accessibility-backup.spec.mjs:386:1 › controller disconnect clears cursor and leaves pointer controls usable
+  [phone] › accessibility-backup.spec.mjs:410:1 › controller bumpers skip unaffordable cards to reach a later affordable card
+  [phone] › accessibility-backup.spec.mjs:448:1 › first controller confirm after pointer build selection reveals cursor without spending
+  [phone] › accessibility-backup.spec.mjs:480:1 › late first backup read cannot replace a newer selected file preview
+  [phone] › accessibility-backup.spec.mjs:498:1 › leaving backup settings invalidates an unfinished file read
+  [phone] › accessibility-backup.spec.mjs:513:1 › incomplete backup rollback holds the retained session and requires explicit recovery consent
+  [phone] › accessibility-backup.spec.mjs:586:48 › stale campaign tab cannot resurrect medals or settings after an empty-profile import
+  [phone] › accessibility-backup.spec.mjs:586:48 › stale challenges tab cannot resurrect medals or settings after an empty-profile import
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-primary-zero produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-failure produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-protected-failure produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-primary produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-failure produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-victory produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-defeat produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-draw produces genuine scoped report JSON without replacing cumulative counters
+  [phone] › battle-report.spec.mjs:158:1 › fresh observed Holdfast start ordinary build upgrade and native 2x play reach a natural terminal report
+  [phone] › battle-report.spec.mjs:217:1 › reopening completed result preserves report bytes rewards history and all profile storage writes
+  [phone] › battle-report.spec.mjs:251:1 › starting another battle clears last-result access rather than reopening stale report
+  [phone] › battle-report.spec.mjs:265:1 › reload clears ephemeral completed report without putting it in save history or backup
+  [phone] › battle-report.spec.mjs:283:1 › collapsed report keeps Continue first and native Enter Space disclosure and Tab focus stay inside result
+  [phone] › battle-report.spec.mjs:317:1 › controller focuses report disclosure and toggles it while Continue and Inspect remain reachable
+  [phone] › battle-report.spec.mjs:360:5 › expanded report at 320px uses one result scroller and fixed visible actions without focus theft
+  [phone] › battle-report.spec.mjs:360:5 › expanded report at 844px uses one result scroller and fixed visible actions without focus theft
+  [phone] › battle-report.spec.mjs:469:1 › browser-denied report download never claims the file was saved or successfully delivered
+  [phone] › battle-report.spec.mjs:497:1 › unavailable local object URL reports failed download without false success or storage changes
+  [phone] › battle-report.spec.mjs:518:62 › initial observation failure leaves genuine result title and engine final stats intact
+  [phone] › battle-report.spec.mjs:518:62 › later sample failure leaves genuine result title and engine final stats intact
+  [phone] › battle-report.spec.mjs:545:1 › real frozen 0.10 QA UI save continues in 0.12 with unchanged persistence contracts and partial report coverage
+  [phone] › battle-report.spec.mjs:598:1 › offline report modules load from actual service-worker cache and finish/download a resumed synthetic result
+  [phone] › campaign.spec.mjs:67:1 › campaign locked mission cannot launch and an unlocked mission can
+  [phone] › campaign.spec.mjs:86:1 › campaign chapter and mission choices retain keyboard focus after rerender
+  [phone] › campaign.spec.mjs:105:1 › campaign UI-created version 2 save reloads the same mission and construction
+  [phone] › campaign.spec.mjs:137:1 › campaign victory awards stars once and Continue unlocks the next mission
+  [phone] › campaign.spec.mjs:169:1 › campaign deadline failure focuses Retry and restarts without granting progress
+  [phone] › campaign.spec.mjs:196:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable
+  [phone] › campaign.spec.mjs:212:1 › campaign briefing and launch remain reachable across viewport changes
+  [phone] › campaign.spec.mjs:245:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save
+  [phone] › campaign.spec.mjs:285:1 › landscape campaign content keeps more than 120px usable height with a saved mission
+  [phone] › campaign.spec.mjs:348:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action
+  [phone] › expanded-campaign.spec.mjs:66:1 › existing twelve missions and 36 stars remain version 1 and unlock chapter five without clearing records
+  [phone] › expanded-campaign.spec.mjs:125:1 › frontier unlock branches after Open Horizon then converges only after both river and beacon victories
+  [phone] › expanded-campaign.spec.mjs:176:3 › open-horizon UI start save reload and resume keep the authored map formation and old progress
+  [phone] › expanded-campaign.spec.mjs:214:3 › open-horizon objective success records correct stars and map history exactly once
+  [phone] › expanded-campaign.spec.mjs:242:3 › open-horizon exact 240 second deadline fails and Retry starts the same map without progress
+  [phone] › expanded-campaign.spec.mjs:269:3 › open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [phone] › expanded-campaign.spec.mjs:330:3 › open-horizon native backup export import replacement and reload retain new map campaign identity
+  [phone] › expanded-campaign.spec.mjs:350:3 › open-horizon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [phone] › expanded-campaign.spec.mjs:374:5 › open-horizon every protected starting structure disables salvage while an ordinary structure can be sold
+  [phone] › expanded-campaign.spec.mjs:419:5 › open-horizon loss of an original protected target fails immediately before its deadline
+  [phone] › expanded-campaign.spec.mjs:176:3 › river-charter UI start save reload and resume keep the authored map formation and old progress
+  [phone] › expanded-campaign.spec.mjs:214:3 › river-charter objective success records correct stars and map history exactly once
+  [phone] › expanded-campaign.spec.mjs:242:3 › river-charter exact 210 second deadline fails and Retry starts the same map without progress
+  [phone] › expanded-campaign.spec.mjs:269:3 › river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [phone] › expanded-campaign.spec.mjs:330:3 › river-charter native backup export import replacement and reload retain new map campaign identity
+  [phone] › expanded-campaign.spec.mjs:350:3 › river-charter valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [phone] › expanded-campaign.spec.mjs:374:5 › river-charter every protected starting structure disables salvage while an ordinary structure can be sold
+  [phone] › expanded-campaign.spec.mjs:419:5 › river-charter loss of an original protected target fails immediately before its deadline
+  [phone] › expanded-campaign.spec.mjs:176:3 › far-beacon UI start save reload and resume keep the authored map formation and old progress
+  [phone] › expanded-campaign.spec.mjs:214:3 › far-beacon objective success records correct stars and map history exactly once
+  [phone] › expanded-campaign.spec.mjs:242:3 › far-beacon exact 280 second deadline fails and Retry starts the same map without progress
+  [phone] › expanded-campaign.spec.mjs:269:3 › far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [phone] › expanded-campaign.spec.mjs:330:3 › far-beacon native backup export import replacement and reload retain new map campaign identity
+  [phone] › expanded-campaign.spec.mjs:350:3 › far-beacon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [phone] › expanded-campaign.spec.mjs:176:3 › common-ground UI start save reload and resume keep the authored map formation and old progress
+  [phone] › expanded-campaign.spec.mjs:214:3 › common-ground objective success records correct stars and map history exactly once
+  [phone] › expanded-campaign.spec.mjs:242:3 › common-ground exact 300 second deadline fails and Retry starts the same map without progress
+  [phone] › expanded-campaign.spec.mjs:269:3 › common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [phone] › expanded-campaign.spec.mjs:330:3 › common-ground native backup export import replacement and reload retain new map campaign identity
+  [phone] › expanded-campaign.spec.mjs:350:3 › common-ground valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [phone] › expanded-campaign.spec.mjs:374:5 › common-ground every protected starting structure disables salvage while an ordinary structure can be sold
+  [phone] › expanded-campaign.spec.mjs:419:5 › common-ground loss of an original protected target fails immediately before its deadline
+  [phone] › expanded-campaign.spec.mjs:433:1 › Far Beacons minimum citadel health fails immediately even before the hold and deadline
+  [phone] › expanded-campaign.spec.mjs:442:1 › scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield
+  [phone] › field-reference.spec.mjs:37:1 › field reference disclosures show every unit structure and exact counter economics
+  [phone] › field-reference.spec.mjs:98:1 › field reference native Space and focus keep a paused battle read-only
+  [phone] › field-reference.spec.mjs:134:1 › field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens
+  [phone] › field-reference.spec.mjs:166:1 › field reference renders five distinct nonempty original portrait canvases
+  [phone] › fonts.spec.mjs:6:1 › all five local WOFF2 assets load and actual DOM text uses bundled faces with painted canvas labels
+  [phone] › fonts.spec.mjs:82:1 › complete font notices remain keyboard accessible and wrap at narrow and landscape sizes
+  [phone] › maps.spec.mjs:30:1 › map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens
+  [phone] › maps.spec.mjs:83:3 › Classic selection start save reload resume and switching preserve independent difficulty
+  [phone] › maps.spec.mjs:119:3 › Classic actual pointer placement rejects occupied sites and dragging never buys
+  [phone] › maps.spec.mjs:154:3 › Classic minimap ends home front and whole-world viewport use the real map width
+  [phone] › maps.spec.mjs:83:3 › Long March selection start save reload resume and switching preserve independent difficulty
+  [phone] › maps.spec.mjs:119:3 › Long March actual pointer placement rejects occupied sites and dragging never buys
+  [phone] › maps.spec.mjs:154:3 › Long March minimap ends home front and whole-world viewport use the real map width
+  [phone] › maps.spec.mjs:83:3 › Twin Span selection start save reload resume and switching preserve independent difficulty
+  [phone] › maps.spec.mjs:119:3 › Twin Span actual pointer placement rejects occupied sites and dragging never buys
+  [phone] › maps.spec.mjs:154:3 › Twin Span minimap ends home front and whole-world viewport use the real map width
+  [phone] › maps.spec.mjs:210:1 › Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane
+  [phone] › maps.spec.mjs:231:48 › campaign initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [phone] › maps.spec.mjs:231:48 › challenges initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [phone] › maps.spec.mjs:254:31 › Long March engine-driven victory names the history map and supports a fresh replay
+  [phone] › maps.spec.mjs:254:31 › Twin Span engine-driven victory names the history map and supports a fresh replay
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: unknown map
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: future revision
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: missing map identity
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Long March wrong right base
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span phantom third lane
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span off-site building
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as campaign
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as challenges
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as campaign
+  [phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as challenges
+  [phone] › maps.spec.mjs:316:3 › Long March controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [phone] › maps.spec.mjs:358:3 › Long March portable export import preview reload and resume round trip keeps all domains
+  [phone] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored campaign identity without changing storage
+  [phone] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored challenges identity without changing storage
+  [phone] › maps.spec.mjs:316:3 › Twin Span controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [phone] › maps.spec.mjs:358:3 › Twin Span portable export import preview reload and resume round trip keeps all domains
+  [phone] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored campaign identity without changing storage
+  [phone] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored challenges identity without changing storage
+  [phone] › offline-shell.spec.mjs:19:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts
+  [phone] › profile-upgrade.spec.mjs:93:37 › ready v1 profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [phone] › profile-upgrade.spec.mjs:93:37 › absent profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [phone] › profile-upgrade.spec.mjs:119:71 › profile migration deny blocks writes and requires reload before expanded progress is usable
+  [phone] › profile-upgrade.spec.mjs:119:71 › profile migration silent-drop blocks writes and requires reload before expanded progress is usable
+  [phone] › profile-upgrade.spec.mjs:119:71 › profile migration readback blocks writes and requires reload before expanded progress is usable
+  [phone] › profile-upgrade.spec.mjs:119:71 › profile migration competing blocks writes and requires reload before expanded progress is usable
+  [phone] › profile-upgrade.spec.mjs:161:1 › absent marker migration denied before write cannot create an unprotected playable profile
+  [phone] › profile-upgrade.spec.mjs:180:1 › marker write that throws after persisting succeeds only because readback verifies the exact v2 bytes
+  [phone] › profile-upgrade.spec.mjs:195:46 › v1 restoring marker is not upgraded or mistaken for a completed recovery
+  [phone] › profile-upgrade.spec.mjs:195:46 › v1 failed marker is not upgraded or mistaken for a completed recovery
+  [phone] › profile-upgrade.spec.mjs:216:80 › malformed profile marker remains byte-for-byte untouched with recovery required
+  [phone] › profile-upgrade.spec.mjs:216:80 › future profile marker remains byte-for-byte untouched with recovery required
+  [phone] › profile-upgrade.spec.mjs:231:1 › real frozen QA-baseline 0.9 open tab is fenced before it can erase chapter five progress or overwrite the current battle
+  [phone] › profile-upgrade.spec.mjs:289:1 › native backup exported by the real frozen 0.9 QA app remains importable after protocol migration
+  [phone] › regression.spec.mjs:78:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages
+  [phone] › regression.spec.mjs:101:1 › drag in placement mode does not build or spend gold
+  [phone] › regression.spec.mjs:142:1 › controls fit the viewport and survive orientation changes
+  [phone] › regression.spec.mjs:172:1 › pause and field guide freeze time; resume advances it
+  [phone] › regression.spec.mjs:197:1 › save, title, reload and resume preserve buildings, gold, time and difficulty
+  [phone] › regression.spec.mjs:222:6 › invalid save recovers: {broken
+  [phone] › regression.spec.mjs:222:6 › invalid save recovers: {"version":999}
+  [phone] › regression.spec.mjs:243:1 › denied storage keeps unsaved battle open without crashing settings or pause
+  [phone] › regression.spec.mjs:266:1 › welcome and guide trap keyboard focus and restore playable focus
+  [phone] › regression.spec.mjs:295:54 › near-end restored match reaches VICTORY, clears save and supports replay
+  [phone] › regression.spec.mjs:295:54 › near-end restored match reaches DEFEAT, clears save and supports replay
+  [phone] › regression.spec.mjs:295:54 › near-end restored match reaches DRAW, clears save and supports replay
+  [phone] › regression.spec.mjs:329:1 › failed save warns the player before leaving the active battle
+  [phone] › regression.spec.mjs:346:1 › Space activates the focused Save and return button
+  [phone] › regression.spec.mjs:357:1 › a touch selecting a building keeps its details panel open
+  [phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {broken
+  [phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: null
+  [phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {"not":"an array"}
+  [phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: [null,4,"bad",[]]
+  [phone] › regression.spec.mjs:405:1 › failed save retains the previous durable snapshot and can recover
+  [phone] › regression.spec.mjs:437:1 › preferences persist after reload and Space activates a focused checkbox
+  [phone] › service-worker-update.spec.mjs:31:37 › real 0.7.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [phone] › service-worker-update.spec.mjs:31:37 › real 0.8.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [phone] › training.spec.mjs:97:1 › title entry and return preserve all five exact profile domains including active battle
+  [phone] › training.spec.mjs:135:5 › initial 320px training layout keeps every primary control reachable with ordinary page scrolling
+  [phone] › training.spec.mjs:135:5 › initial 844px training layout keeps every primary control reachable with ordinary page scrolling
+  [phone] › training.spec.mjs:165:38 › empty first-visit storage supports practice without even attempting a profile write
+  [phone] › training.spec.mjs:165:38 › blocked local and session storage supports practice without even attempting a profile write
+  [phone] › training.spec.mjs:193:1 › offline direct training navigation loads the actual separate lesson shell and returns to the normal game
+  [phone] › training.spec.mjs:235:1 › repeated interrupted navigation retry and lesson jumps never award or mutate a retained profile
+  [phone] › training.spec.mjs:310:36 › ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation
+  [phone] › training.spec.mjs:310:36 › ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation
+  [phone] › training.spec.mjs:310:36 › ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation
+  [phone] › training.spec.mjs:310:36 › ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation
+  [phone] › training.spec.mjs:310:36 › ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation
+  [phone] › training.spec.mjs:398:1 › unavailable action cancel off-site tap and greater-than-eight-pixel drag never spend practice gold
+  [phone] › training.spec.mjs:431:1 › explicit pause blur and hidden lifecycle interruptions freeze observation until an explicit resume
+  [phone] › training.spec.mjs:486:1 › keyboard can choose place pause navigate and reach every practice control without focus loss
+  [phone] › training.spec.mjs:533:1 › retry jump and skip produce an honest temporary review without completions or profile rewards
+  [phone] › training.spec.mjs:572:5 › old held pointer across natural step-complete cannot leave or retry the newer step and fresh input works
+  [phone] › training.spec.mjs:572:5 › old held pointer across natural lesson-complete cannot leave or retry the newer step and fresh input works
+  [narrow-phone] › accessibility-backup.spec.mjs:127:1 › backup export downloads a validated file and honors include battle
+  [narrow-phone] › accessibility-backup.spec.mjs:140:1 › invalid backup file is refused without changing local data
+  [narrow-phone] › accessibility-backup.spec.mjs:150:1 › backup preview and cancel leave every existing storage domain unchanged
+  [narrow-phone] › accessibility-backup.spec.mjs:161:1 › explicit backup replacement reloads and restores all five domains
+  [narrow-phone] › accessibility-backup.spec.mjs:177:1 › backup export reports raw storage denial instead of downloading empty progress
+  [narrow-phone] › accessibility-backup.spec.mjs:200:1 › backup import refuses a denied raw storage read without changing data
+  [narrow-phone] › accessibility-backup.spec.mjs:220:1 › backup quota failure rolls back earlier domain writes without reloading
+  [narrow-phone] › accessibility-backup.spec.mjs:343:1 › controller held confirm starts once without click-through and pause remains usable
+  [narrow-phone] › accessibility-backup.spec.mjs:360:1 › controller shoulders select build cards and virtual cursor confirm places one building
+  [narrow-phone] › accessibility-backup.spec.mjs:386:1 › controller disconnect clears cursor and leaves pointer controls usable
+  [narrow-phone] › accessibility-backup.spec.mjs:410:1 › controller bumpers skip unaffordable cards to reach a later affordable card
+  [narrow-phone] › accessibility-backup.spec.mjs:448:1 › first controller confirm after pointer build selection reveals cursor without spending
+  [narrow-phone] › accessibility-backup.spec.mjs:480:1 › late first backup read cannot replace a newer selected file preview
+  [narrow-phone] › accessibility-backup.spec.mjs:498:1 › leaving backup settings invalidates an unfinished file read
+  [narrow-phone] › accessibility-backup.spec.mjs:513:1 › incomplete backup rollback holds the retained session and requires explicit recovery consent
+  [narrow-phone] › accessibility-backup.spec.mjs:586:48 › stale campaign tab cannot resurrect medals or settings after an empty-profile import
+  [narrow-phone] › accessibility-backup.spec.mjs:586:48 › stale challenges tab cannot resurrect medals or settings after an empty-profile import
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-primary-zero produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-failure produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-protected-failure produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-primary produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted trial-failure produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-victory produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-defeat produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-draw produces genuine scoped report JSON without replacing cumulative counters
+  [narrow-phone] › battle-report.spec.mjs:158:1 › fresh observed Holdfast start ordinary build upgrade and native 2x play reach a natural terminal report
+  [narrow-phone] › battle-report.spec.mjs:217:1 › reopening completed result preserves report bytes rewards history and all profile storage writes
+  [narrow-phone] › battle-report.spec.mjs:251:1 › starting another battle clears last-result access rather than reopening stale report
+  [narrow-phone] › battle-report.spec.mjs:265:1 › reload clears ephemeral completed report without putting it in save history or backup
+  [narrow-phone] › battle-report.spec.mjs:283:1 › collapsed report keeps Continue first and native Enter Space disclosure and Tab focus stay inside result
+  [narrow-phone] › battle-report.spec.mjs:317:1 › controller focuses report disclosure and toggles it while Continue and Inspect remain reachable
+  [narrow-phone] › battle-report.spec.mjs:360:5 › expanded report at 320px uses one result scroller and fixed visible actions without focus theft
+  [narrow-phone] › battle-report.spec.mjs:360:5 › expanded report at 844px uses one result scroller and fixed visible actions without focus theft
+  [narrow-phone] › battle-report.spec.mjs:469:1 › browser-denied report download never claims the file was saved or successfully delivered
+  [narrow-phone] › battle-report.spec.mjs:497:1 › unavailable local object URL reports failed download without false success or storage changes
+  [narrow-phone] › battle-report.spec.mjs:518:62 › initial observation failure leaves genuine result title and engine final stats intact
+  [narrow-phone] › battle-report.spec.mjs:518:62 › later sample failure leaves genuine result title and engine final stats intact
+  [narrow-phone] › battle-report.spec.mjs:545:1 › real frozen 0.10 QA UI save continues in 0.12 with unchanged persistence contracts and partial report coverage
+  [narrow-phone] › battle-report.spec.mjs:598:1 › offline report modules load from actual service-worker cache and finish/download a resumed synthetic result
+  [narrow-phone] › campaign.spec.mjs:67:1 › campaign locked mission cannot launch and an unlocked mission can
+  [narrow-phone] › campaign.spec.mjs:86:1 › campaign chapter and mission choices retain keyboard focus after rerender
+  [narrow-phone] › campaign.spec.mjs:105:1 › campaign UI-created version 2 save reloads the same mission and construction
+  [narrow-phone] › campaign.spec.mjs:137:1 › campaign victory awards stars once and Continue unlocks the next mission
+  [narrow-phone] › campaign.spec.mjs:169:1 › campaign deadline failure focuses Retry and restarts without granting progress
+  [narrow-phone] › campaign.spec.mjs:196:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable
+  [narrow-phone] › campaign.spec.mjs:212:1 › campaign briefing and launch remain reachable across viewport changes
+  [narrow-phone] › campaign.spec.mjs:245:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save
+  [narrow-phone] › campaign.spec.mjs:285:1 › landscape campaign content keeps more than 120px usable height with a saved mission
+  [narrow-phone] › campaign.spec.mjs:348:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action
+  [narrow-phone] › expanded-campaign.spec.mjs:66:1 › existing twelve missions and 36 stars remain version 1 and unlock chapter five without clearing records
+  [narrow-phone] › expanded-campaign.spec.mjs:125:1 › frontier unlock branches after Open Horizon then converges only after both river and beacon victories
+  [narrow-phone] › expanded-campaign.spec.mjs:176:3 › open-horizon UI start save reload and resume keep the authored map formation and old progress
+  [narrow-phone] › expanded-campaign.spec.mjs:214:3 › open-horizon objective success records correct stars and map history exactly once
+  [narrow-phone] › expanded-campaign.spec.mjs:242:3 › open-horizon exact 240 second deadline fails and Retry starts the same map without progress
+  [narrow-phone] › expanded-campaign.spec.mjs:269:3 › open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [narrow-phone] › expanded-campaign.spec.mjs:330:3 › open-horizon native backup export import replacement and reload retain new map campaign identity
+  [narrow-phone] › expanded-campaign.spec.mjs:350:3 › open-horizon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [narrow-phone] › expanded-campaign.spec.mjs:374:5 › open-horizon every protected starting structure disables salvage while an ordinary structure can be sold
+  [narrow-phone] › expanded-campaign.spec.mjs:419:5 › open-horizon loss of an original protected target fails immediately before its deadline
+  [narrow-phone] › expanded-campaign.spec.mjs:176:3 › river-charter UI start save reload and resume keep the authored map formation and old progress
+  [narrow-phone] › expanded-campaign.spec.mjs:214:3 › river-charter objective success records correct stars and map history exactly once
+  [narrow-phone] › expanded-campaign.spec.mjs:242:3 › river-charter exact 210 second deadline fails and Retry starts the same map without progress
+  [narrow-phone] › expanded-campaign.spec.mjs:269:3 › river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [narrow-phone] › expanded-campaign.spec.mjs:330:3 › river-charter native backup export import replacement and reload retain new map campaign identity
+  [narrow-phone] › expanded-campaign.spec.mjs:350:3 › river-charter valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [narrow-phone] › expanded-campaign.spec.mjs:374:5 › river-charter every protected starting structure disables salvage while an ordinary structure can be sold
+  [narrow-phone] › expanded-campaign.spec.mjs:419:5 › river-charter loss of an original protected target fails immediately before its deadline
+  [narrow-phone] › expanded-campaign.spec.mjs:176:3 › far-beacon UI start save reload and resume keep the authored map formation and old progress
+  [narrow-phone] › expanded-campaign.spec.mjs:214:3 › far-beacon objective success records correct stars and map history exactly once
+  [narrow-phone] › expanded-campaign.spec.mjs:242:3 › far-beacon exact 280 second deadline fails and Retry starts the same map without progress
+  [narrow-phone] › expanded-campaign.spec.mjs:269:3 › far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [narrow-phone] › expanded-campaign.spec.mjs:330:3 › far-beacon native backup export import replacement and reload retain new map campaign identity
+  [narrow-phone] › expanded-campaign.spec.mjs:350:3 › far-beacon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [narrow-phone] › expanded-campaign.spec.mjs:176:3 › common-ground UI start save reload and resume keep the authored map formation and old progress
+  [narrow-phone] › expanded-campaign.spec.mjs:214:3 › common-ground objective success records correct stars and map history exactly once
+  [narrow-phone] › expanded-campaign.spec.mjs:242:3 › common-ground exact 300 second deadline fails and Retry starts the same map without progress
+  [narrow-phone] › expanded-campaign.spec.mjs:269:3 › common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [narrow-phone] › expanded-campaign.spec.mjs:330:3 › common-ground native backup export import replacement and reload retain new map campaign identity
+  [narrow-phone] › expanded-campaign.spec.mjs:350:3 › common-ground valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [narrow-phone] › expanded-campaign.spec.mjs:374:5 › common-ground every protected starting structure disables salvage while an ordinary structure can be sold
+  [narrow-phone] › expanded-campaign.spec.mjs:419:5 › common-ground loss of an original protected target fails immediately before its deadline
+  [narrow-phone] › expanded-campaign.spec.mjs:433:1 › Far Beacons minimum citadel health fails immediately even before the hold and deadline
+  [narrow-phone] › expanded-campaign.spec.mjs:442:1 › scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield
+  [narrow-phone] › field-reference.spec.mjs:37:1 › field reference disclosures show every unit structure and exact counter economics
+  [narrow-phone] › field-reference.spec.mjs:98:1 › field reference native Space and focus keep a paused battle read-only
+  [narrow-phone] › field-reference.spec.mjs:134:1 › field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens
+  [narrow-phone] › field-reference.spec.mjs:166:1 › field reference renders five distinct nonempty original portrait canvases
+  [narrow-phone] › fonts.spec.mjs:6:1 › all five local WOFF2 assets load and actual DOM text uses bundled faces with painted canvas labels
+  [narrow-phone] › fonts.spec.mjs:82:1 › complete font notices remain keyboard accessible and wrap at narrow and landscape sizes
+  [narrow-phone] › maps.spec.mjs:30:1 › map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens
+  [narrow-phone] › maps.spec.mjs:83:3 › Classic selection start save reload resume and switching preserve independent difficulty
+  [narrow-phone] › maps.spec.mjs:119:3 › Classic actual pointer placement rejects occupied sites and dragging never buys
+  [narrow-phone] › maps.spec.mjs:154:3 › Classic minimap ends home front and whole-world viewport use the real map width
+  [narrow-phone] › maps.spec.mjs:83:3 › Long March selection start save reload resume and switching preserve independent difficulty
+  [narrow-phone] › maps.spec.mjs:119:3 › Long March actual pointer placement rejects occupied sites and dragging never buys
+  [narrow-phone] › maps.spec.mjs:154:3 › Long March minimap ends home front and whole-world viewport use the real map width
+  [narrow-phone] › maps.spec.mjs:83:3 › Twin Span selection start save reload resume and switching preserve independent difficulty
+  [narrow-phone] › maps.spec.mjs:119:3 › Twin Span actual pointer placement rejects occupied sites and dragging never buys
+  [narrow-phone] › maps.spec.mjs:154:3 › Twin Span minimap ends home front and whole-world viewport use the real map width
+  [narrow-phone] › maps.spec.mjs:210:1 › Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane
+  [narrow-phone] › maps.spec.mjs:231:48 › campaign initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [narrow-phone] › maps.spec.mjs:231:48 › challenges initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [narrow-phone] › maps.spec.mjs:254:31 › Long March engine-driven victory names the history map and supports a fresh replay
+  [narrow-phone] › maps.spec.mjs:254:31 › Twin Span engine-driven victory names the history map and supports a fresh replay
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: unknown map
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: future revision
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: missing map identity
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Long March wrong right base
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span phantom third lane
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span off-site building
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as campaign
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as challenges
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as campaign
+  [narrow-phone] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as challenges
+  [narrow-phone] › maps.spec.mjs:316:3 › Long March controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [narrow-phone] › maps.spec.mjs:358:3 › Long March portable export import preview reload and resume round trip keeps all domains
+  [narrow-phone] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored campaign identity without changing storage
+  [narrow-phone] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored challenges identity without changing storage
+  [narrow-phone] › maps.spec.mjs:316:3 › Twin Span controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [narrow-phone] › maps.spec.mjs:358:3 › Twin Span portable export import preview reload and resume round trip keeps all domains
+  [narrow-phone] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored campaign identity without changing storage
+  [narrow-phone] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored challenges identity without changing storage
+  [narrow-phone] › offline-shell.spec.mjs:19:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts
+  [narrow-phone] › profile-upgrade.spec.mjs:93:37 › ready v1 profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [narrow-phone] › profile-upgrade.spec.mjs:93:37 › absent profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [narrow-phone] › profile-upgrade.spec.mjs:119:71 › profile migration deny blocks writes and requires reload before expanded progress is usable
+  [narrow-phone] › profile-upgrade.spec.mjs:119:71 › profile migration silent-drop blocks writes and requires reload before expanded progress is usable
+  [narrow-phone] › profile-upgrade.spec.mjs:119:71 › profile migration readback blocks writes and requires reload before expanded progress is usable
+  [narrow-phone] › profile-upgrade.spec.mjs:119:71 › profile migration competing blocks writes and requires reload before expanded progress is usable
+  [narrow-phone] › profile-upgrade.spec.mjs:161:1 › absent marker migration denied before write cannot create an unprotected playable profile
+  [narrow-phone] › profile-upgrade.spec.mjs:180:1 › marker write that throws after persisting succeeds only because readback verifies the exact v2 bytes
+  [narrow-phone] › profile-upgrade.spec.mjs:195:46 › v1 restoring marker is not upgraded or mistaken for a completed recovery
+  [narrow-phone] › profile-upgrade.spec.mjs:195:46 › v1 failed marker is not upgraded or mistaken for a completed recovery
+  [narrow-phone] › profile-upgrade.spec.mjs:216:80 › malformed profile marker remains byte-for-byte untouched with recovery required
+  [narrow-phone] › profile-upgrade.spec.mjs:216:80 › future profile marker remains byte-for-byte untouched with recovery required
+  [narrow-phone] › profile-upgrade.spec.mjs:231:1 › real frozen QA-baseline 0.9 open tab is fenced before it can erase chapter five progress or overwrite the current battle
+  [narrow-phone] › profile-upgrade.spec.mjs:289:1 › native backup exported by the real frozen 0.9 QA app remains importable after protocol migration
+  [narrow-phone] › regression.spec.mjs:78:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages
+  [narrow-phone] › regression.spec.mjs:101:1 › drag in placement mode does not build or spend gold
+  [narrow-phone] › regression.spec.mjs:142:1 › controls fit the viewport and survive orientation changes
+  [narrow-phone] › regression.spec.mjs:172:1 › pause and field guide freeze time; resume advances it
+  [narrow-phone] › regression.spec.mjs:197:1 › save, title, reload and resume preserve buildings, gold, time and difficulty
+  [narrow-phone] › regression.spec.mjs:222:6 › invalid save recovers: {broken
+  [narrow-phone] › regression.spec.mjs:222:6 › invalid save recovers: {"version":999}
+  [narrow-phone] › regression.spec.mjs:243:1 › denied storage keeps unsaved battle open without crashing settings or pause
+  [narrow-phone] › regression.spec.mjs:266:1 › welcome and guide trap keyboard focus and restore playable focus
+  [narrow-phone] › regression.spec.mjs:295:54 › near-end restored match reaches VICTORY, clears save and supports replay
+  [narrow-phone] › regression.spec.mjs:295:54 › near-end restored match reaches DEFEAT, clears save and supports replay
+  [narrow-phone] › regression.spec.mjs:295:54 › near-end restored match reaches DRAW, clears save and supports replay
+  [narrow-phone] › regression.spec.mjs:329:1 › failed save warns the player before leaving the active battle
+  [narrow-phone] › regression.spec.mjs:346:1 › Space activates the focused Save and return button
+  [narrow-phone] › regression.spec.mjs:357:1 › a touch selecting a building keeps its details panel open
+  [narrow-phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {broken
+  [narrow-phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: null
+  [narrow-phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {"not":"an array"}
+  [narrow-phone] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: [null,4,"bad",[]]
+  [narrow-phone] › regression.spec.mjs:405:1 › failed save retains the previous durable snapshot and can recover
+  [narrow-phone] › regression.spec.mjs:437:1 › preferences persist after reload and Space activates a focused checkbox
+  [narrow-phone] › service-worker-update.spec.mjs:31:37 › real 0.7.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [narrow-phone] › service-worker-update.spec.mjs:31:37 › real 0.8.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [narrow-phone] › training.spec.mjs:97:1 › title entry and return preserve all five exact profile domains including active battle
+  [narrow-phone] › training.spec.mjs:135:5 › initial 320px training layout keeps every primary control reachable with ordinary page scrolling
+  [narrow-phone] › training.spec.mjs:135:5 › initial 844px training layout keeps every primary control reachable with ordinary page scrolling
+  [narrow-phone] › training.spec.mjs:165:38 › empty first-visit storage supports practice without even attempting a profile write
+  [narrow-phone] › training.spec.mjs:165:38 › blocked local and session storage supports practice without even attempting a profile write
+  [narrow-phone] › training.spec.mjs:193:1 › offline direct training navigation loads the actual separate lesson shell and returns to the normal game
+  [narrow-phone] › training.spec.mjs:235:1 › repeated interrupted navigation retry and lesson jumps never award or mutate a retained profile
+  [narrow-phone] › training.spec.mjs:310:36 › ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation
+  [narrow-phone] › training.spec.mjs:310:36 › ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation
+  [narrow-phone] › training.spec.mjs:310:36 › ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation
+  [narrow-phone] › training.spec.mjs:310:36 › ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation
+  [narrow-phone] › training.spec.mjs:310:36 › ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation
+  [narrow-phone] › training.spec.mjs:398:1 › unavailable action cancel off-site tap and greater-than-eight-pixel drag never spend practice gold
+  [narrow-phone] › training.spec.mjs:431:1 › explicit pause blur and hidden lifecycle interruptions freeze observation until an explicit resume
+  [narrow-phone] › training.spec.mjs:486:1 › keyboard can choose place pause navigate and reach every practice control without focus loss
+  [narrow-phone] › training.spec.mjs:533:1 › retry jump and skip produce an honest temporary review without completions or profile rewards
+  [narrow-phone] › training.spec.mjs:572:5 › old held pointer across natural step-complete cannot leave or retry the newer step and fresh input works
+  [narrow-phone] › training.spec.mjs:572:5 › old held pointer across natural lesson-complete cannot leave or retry the newer step and fresh input works
+  [landscape] › accessibility-backup.spec.mjs:127:1 › backup export downloads a validated file and honors include battle
+  [landscape] › accessibility-backup.spec.mjs:140:1 › invalid backup file is refused without changing local data
+  [landscape] › accessibility-backup.spec.mjs:150:1 › backup preview and cancel leave every existing storage domain unchanged
+  [landscape] › accessibility-backup.spec.mjs:161:1 › explicit backup replacement reloads and restores all five domains
+  [landscape] › accessibility-backup.spec.mjs:177:1 › backup export reports raw storage denial instead of downloading empty progress
+  [landscape] › accessibility-backup.spec.mjs:200:1 › backup import refuses a denied raw storage read without changing data
+  [landscape] › accessibility-backup.spec.mjs:220:1 › backup quota failure rolls back earlier domain writes without reloading
+  [landscape] › accessibility-backup.spec.mjs:343:1 › controller held confirm starts once without click-through and pause remains usable
+  [landscape] › accessibility-backup.spec.mjs:360:1 › controller shoulders select build cards and virtual cursor confirm places one building
+  [landscape] › accessibility-backup.spec.mjs:386:1 › controller disconnect clears cursor and leaves pointer controls usable
+  [landscape] › accessibility-backup.spec.mjs:410:1 › controller bumpers skip unaffordable cards to reach a later affordable card
+  [landscape] › accessibility-backup.spec.mjs:448:1 › first controller confirm after pointer build selection reveals cursor without spending
+  [landscape] › accessibility-backup.spec.mjs:480:1 › late first backup read cannot replace a newer selected file preview
+  [landscape] › accessibility-backup.spec.mjs:498:1 › leaving backup settings invalidates an unfinished file read
+  [landscape] › accessibility-backup.spec.mjs:513:1 › incomplete backup rollback holds the retained session and requires explicit recovery consent
+  [landscape] › accessibility-backup.spec.mjs:586:48 › stale campaign tab cannot resurrect medals or settings after an empty-profile import
+  [landscape] › accessibility-backup.spec.mjs:586:48 › stale challenges tab cannot resurrect medals or settings after an empty-profile import
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-primary-zero produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-failure produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-protected-failure produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted trial-primary produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted trial-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted trial-failure produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-victory produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-defeat produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-draw produces genuine scoped report JSON without replacing cumulative counters
+  [landscape] › battle-report.spec.mjs:158:1 › fresh observed Holdfast start ordinary build upgrade and native 2x play reach a natural terminal report
+  [landscape] › battle-report.spec.mjs:217:1 › reopening completed result preserves report bytes rewards history and all profile storage writes
+  [landscape] › battle-report.spec.mjs:251:1 › starting another battle clears last-result access rather than reopening stale report
+  [landscape] › battle-report.spec.mjs:265:1 › reload clears ephemeral completed report without putting it in save history or backup
+  [landscape] › battle-report.spec.mjs:283:1 › collapsed report keeps Continue first and native Enter Space disclosure and Tab focus stay inside result
+  [landscape] › battle-report.spec.mjs:317:1 › controller focuses report disclosure and toggles it while Continue and Inspect remain reachable
+  [landscape] › battle-report.spec.mjs:360:5 › expanded report at 320px uses one result scroller and fixed visible actions without focus theft
+  [landscape] › battle-report.spec.mjs:360:5 › expanded report at 844px uses one result scroller and fixed visible actions without focus theft
+  [landscape] › battle-report.spec.mjs:469:1 › browser-denied report download never claims the file was saved or successfully delivered
+  [landscape] › battle-report.spec.mjs:497:1 › unavailable local object URL reports failed download without false success or storage changes
+  [landscape] › battle-report.spec.mjs:518:62 › initial observation failure leaves genuine result title and engine final stats intact
+  [landscape] › battle-report.spec.mjs:518:62 › later sample failure leaves genuine result title and engine final stats intact
+  [landscape] › battle-report.spec.mjs:545:1 › real frozen 0.10 QA UI save continues in 0.12 with unchanged persistence contracts and partial report coverage
+  [landscape] › battle-report.spec.mjs:598:1 › offline report modules load from actual service-worker cache and finish/download a resumed synthetic result
+  [landscape] › campaign.spec.mjs:67:1 › campaign locked mission cannot launch and an unlocked mission can
+  [landscape] › campaign.spec.mjs:86:1 › campaign chapter and mission choices retain keyboard focus after rerender
+  [landscape] › campaign.spec.mjs:105:1 › campaign UI-created version 2 save reloads the same mission and construction
+  [landscape] › campaign.spec.mjs:137:1 › campaign victory awards stars once and Continue unlocks the next mission
+  [landscape] › campaign.spec.mjs:169:1 › campaign deadline failure focuses Retry and restarts without granting progress
+  [landscape] › campaign.spec.mjs:196:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable
+  [landscape] › campaign.spec.mjs:212:1 › campaign briefing and launch remain reachable across viewport changes
+  [landscape] › campaign.spec.mjs:245:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save
+  [landscape] › campaign.spec.mjs:285:1 › landscape campaign content keeps more than 120px usable height with a saved mission
+  [landscape] › campaign.spec.mjs:348:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action
+  [landscape] › expanded-campaign.spec.mjs:66:1 › existing twelve missions and 36 stars remain version 1 and unlock chapter five without clearing records
+  [landscape] › expanded-campaign.spec.mjs:125:1 › frontier unlock branches after Open Horizon then converges only after both river and beacon victories
+  [landscape] › expanded-campaign.spec.mjs:176:3 › open-horizon UI start save reload and resume keep the authored map formation and old progress
+  [landscape] › expanded-campaign.spec.mjs:214:3 › open-horizon objective success records correct stars and map history exactly once
+  [landscape] › expanded-campaign.spec.mjs:242:3 › open-horizon exact 240 second deadline fails and Retry starts the same map without progress
+  [landscape] › expanded-campaign.spec.mjs:269:3 › open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [landscape] › expanded-campaign.spec.mjs:330:3 › open-horizon native backup export import replacement and reload retain new map campaign identity
+  [landscape] › expanded-campaign.spec.mjs:350:3 › open-horizon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [landscape] › expanded-campaign.spec.mjs:374:5 › open-horizon every protected starting structure disables salvage while an ordinary structure can be sold
+  [landscape] › expanded-campaign.spec.mjs:419:5 › open-horizon loss of an original protected target fails immediately before its deadline
+  [landscape] › expanded-campaign.spec.mjs:176:3 › river-charter UI start save reload and resume keep the authored map formation and old progress
+  [landscape] › expanded-campaign.spec.mjs:214:3 › river-charter objective success records correct stars and map history exactly once
+  [landscape] › expanded-campaign.spec.mjs:242:3 › river-charter exact 210 second deadline fails and Retry starts the same map without progress
+  [landscape] › expanded-campaign.spec.mjs:269:3 › river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [landscape] › expanded-campaign.spec.mjs:330:3 › river-charter native backup export import replacement and reload retain new map campaign identity
+  [landscape] › expanded-campaign.spec.mjs:350:3 › river-charter valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [landscape] › expanded-campaign.spec.mjs:374:5 › river-charter every protected starting structure disables salvage while an ordinary structure can be sold
+  [landscape] › expanded-campaign.spec.mjs:419:5 › river-charter loss of an original protected target fails immediately before its deadline
+  [landscape] › expanded-campaign.spec.mjs:176:3 › far-beacon UI start save reload and resume keep the authored map formation and old progress
+  [landscape] › expanded-campaign.spec.mjs:214:3 › far-beacon objective success records correct stars and map history exactly once
+  [landscape] › expanded-campaign.spec.mjs:242:3 › far-beacon exact 280 second deadline fails and Retry starts the same map without progress
+  [landscape] › expanded-campaign.spec.mjs:269:3 › far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [landscape] › expanded-campaign.spec.mjs:330:3 › far-beacon native backup export import replacement and reload retain new map campaign identity
+  [landscape] › expanded-campaign.spec.mjs:350:3 › far-beacon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [landscape] › expanded-campaign.spec.mjs:176:3 › common-ground UI start save reload and resume keep the authored map formation and old progress
+  [landscape] › expanded-campaign.spec.mjs:214:3 › common-ground objective success records correct stars and map history exactly once
+  [landscape] › expanded-campaign.spec.mjs:242:3 › common-ground exact 300 second deadline fails and Retry starts the same map without progress
+  [landscape] › expanded-campaign.spec.mjs:269:3 › common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [landscape] › expanded-campaign.spec.mjs:330:3 › common-ground native backup export import replacement and reload retain new map campaign identity
+  [landscape] › expanded-campaign.spec.mjs:350:3 › common-ground valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [landscape] › expanded-campaign.spec.mjs:374:5 › common-ground every protected starting structure disables salvage while an ordinary structure can be sold
+  [landscape] › expanded-campaign.spec.mjs:419:5 › common-ground loss of an original protected target fails immediately before its deadline
+  [landscape] › expanded-campaign.spec.mjs:433:1 › Far Beacons minimum citadel health fails immediately even before the hold and deadline
+  [landscape] › expanded-campaign.spec.mjs:442:1 › scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield
+  [landscape] › field-reference.spec.mjs:37:1 › field reference disclosures show every unit structure and exact counter economics
+  [landscape] › field-reference.spec.mjs:98:1 › field reference native Space and focus keep a paused battle read-only
+  [landscape] › field-reference.spec.mjs:134:1 › field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens
+  [landscape] › field-reference.spec.mjs:166:1 › field reference renders five distinct nonempty original portrait canvases
+  [landscape] › fonts.spec.mjs:6:1 › all five local WOFF2 assets load and actual DOM text uses bundled faces with painted canvas labels
+  [landscape] › fonts.spec.mjs:82:1 › complete font notices remain keyboard accessible and wrap at narrow and landscape sizes
+  [landscape] › maps.spec.mjs:30:1 › map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens
+  [landscape] › maps.spec.mjs:83:3 › Classic selection start save reload resume and switching preserve independent difficulty
+  [landscape] › maps.spec.mjs:119:3 › Classic actual pointer placement rejects occupied sites and dragging never buys
+  [landscape] › maps.spec.mjs:154:3 › Classic minimap ends home front and whole-world viewport use the real map width
+  [landscape] › maps.spec.mjs:83:3 › Long March selection start save reload resume and switching preserve independent difficulty
+  [landscape] › maps.spec.mjs:119:3 › Long March actual pointer placement rejects occupied sites and dragging never buys
+  [landscape] › maps.spec.mjs:154:3 › Long March minimap ends home front and whole-world viewport use the real map width
+  [landscape] › maps.spec.mjs:83:3 › Twin Span selection start save reload resume and switching preserve independent difficulty
+  [landscape] › maps.spec.mjs:119:3 › Twin Span actual pointer placement rejects occupied sites and dragging never buys
+  [landscape] › maps.spec.mjs:154:3 › Twin Span minimap ends home front and whole-world viewport use the real map width
+  [landscape] › maps.spec.mjs:210:1 › Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane
+  [landscape] › maps.spec.mjs:231:48 › campaign initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [landscape] › maps.spec.mjs:231:48 › challenges initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [landscape] › maps.spec.mjs:254:31 › Long March engine-driven victory names the history map and supports a fresh replay
+  [landscape] › maps.spec.mjs:254:31 › Twin Span engine-driven victory names the history map and supports a fresh replay
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: unknown map
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: future revision
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: missing map identity
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Long March wrong right base
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span phantom third lane
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span off-site building
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as campaign
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as challenges
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as campaign
+  [landscape] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as challenges
+  [landscape] › maps.spec.mjs:316:3 › Long March controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [landscape] › maps.spec.mjs:358:3 › Long March portable export import preview reload and resume round trip keeps all domains
+  [landscape] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored campaign identity without changing storage
+  [landscape] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored challenges identity without changing storage
+  [landscape] › maps.spec.mjs:316:3 › Twin Span controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [landscape] › maps.spec.mjs:358:3 › Twin Span portable export import preview reload and resume round trip keeps all domains
+  [landscape] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored campaign identity without changing storage
+  [landscape] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored challenges identity without changing storage
+  [landscape] › offline-shell.spec.mjs:19:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts
+  [landscape] › profile-upgrade.spec.mjs:93:37 › ready v1 profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [landscape] › profile-upgrade.spec.mjs:93:37 › absent profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [landscape] › profile-upgrade.spec.mjs:119:71 › profile migration deny blocks writes and requires reload before expanded progress is usable
+  [landscape] › profile-upgrade.spec.mjs:119:71 › profile migration silent-drop blocks writes and requires reload before expanded progress is usable
+  [landscape] › profile-upgrade.spec.mjs:119:71 › profile migration readback blocks writes and requires reload before expanded progress is usable
+  [landscape] › profile-upgrade.spec.mjs:119:71 › profile migration competing blocks writes and requires reload before expanded progress is usable
+  [landscape] › profile-upgrade.spec.mjs:161:1 › absent marker migration denied before write cannot create an unprotected playable profile
+  [landscape] › profile-upgrade.spec.mjs:180:1 › marker write that throws after persisting succeeds only because readback verifies the exact v2 bytes
+  [landscape] › profile-upgrade.spec.mjs:195:46 › v1 restoring marker is not upgraded or mistaken for a completed recovery
+  [landscape] › profile-upgrade.spec.mjs:195:46 › v1 failed marker is not upgraded or mistaken for a completed recovery
+  [landscape] › profile-upgrade.spec.mjs:216:80 › malformed profile marker remains byte-for-byte untouched with recovery required
+  [landscape] › profile-upgrade.spec.mjs:216:80 › future profile marker remains byte-for-byte untouched with recovery required
+  [landscape] › profile-upgrade.spec.mjs:231:1 › real frozen QA-baseline 0.9 open tab is fenced before it can erase chapter five progress or overwrite the current battle
+  [landscape] › profile-upgrade.spec.mjs:289:1 › native backup exported by the real frozen 0.9 QA app remains importable after protocol migration
+  [landscape] › regression.spec.mjs:78:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages
+  [landscape] › regression.spec.mjs:101:1 › drag in placement mode does not build or spend gold
+  [landscape] › regression.spec.mjs:142:1 › controls fit the viewport and survive orientation changes
+  [landscape] › regression.spec.mjs:172:1 › pause and field guide freeze time; resume advances it
+  [landscape] › regression.spec.mjs:197:1 › save, title, reload and resume preserve buildings, gold, time and difficulty
+  [landscape] › regression.spec.mjs:222:6 › invalid save recovers: {broken
+  [landscape] › regression.spec.mjs:222:6 › invalid save recovers: {"version":999}
+  [landscape] › regression.spec.mjs:243:1 › denied storage keeps unsaved battle open without crashing settings or pause
+  [landscape] › regression.spec.mjs:266:1 › welcome and guide trap keyboard focus and restore playable focus
+  [landscape] › regression.spec.mjs:295:54 › near-end restored match reaches VICTORY, clears save and supports replay
+  [landscape] › regression.spec.mjs:295:54 › near-end restored match reaches DEFEAT, clears save and supports replay
+  [landscape] › regression.spec.mjs:295:54 › near-end restored match reaches DRAW, clears save and supports replay
+  [landscape] › regression.spec.mjs:329:1 › failed save warns the player before leaving the active battle
+  [landscape] › regression.spec.mjs:346:1 › Space activates the focused Save and return button
+  [landscape] › regression.spec.mjs:357:1 › a touch selecting a building keeps its details panel open
+  [landscape] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {broken
+  [landscape] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: null
+  [landscape] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {"not":"an array"}
+  [landscape] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: [null,4,"bad",[]]
+  [landscape] › regression.spec.mjs:405:1 › failed save retains the previous durable snapshot and can recover
+  [landscape] › regression.spec.mjs:437:1 › preferences persist after reload and Space activates a focused checkbox
+  [landscape] › service-worker-update.spec.mjs:31:37 › real 0.7.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [landscape] › service-worker-update.spec.mjs:31:37 › real 0.8.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [landscape] › training.spec.mjs:97:1 › title entry and return preserve all five exact profile domains including active battle
+  [landscape] › training.spec.mjs:135:5 › initial 320px training layout keeps every primary control reachable with ordinary page scrolling
+  [landscape] › training.spec.mjs:135:5 › initial 844px training layout keeps every primary control reachable with ordinary page scrolling
+  [landscape] › training.spec.mjs:165:38 › empty first-visit storage supports practice without even attempting a profile write
+  [landscape] › training.spec.mjs:165:38 › blocked local and session storage supports practice without even attempting a profile write
+  [landscape] › training.spec.mjs:193:1 › offline direct training navigation loads the actual separate lesson shell and returns to the normal game
+  [landscape] › training.spec.mjs:235:1 › repeated interrupted navigation retry and lesson jumps never award or mutate a retained profile
+  [landscape] › training.spec.mjs:310:36 › ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation
+  [landscape] › training.spec.mjs:310:36 › ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation
+  [landscape] › training.spec.mjs:310:36 › ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation
+  [landscape] › training.spec.mjs:310:36 › ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation
+  [landscape] › training.spec.mjs:310:36 › ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation
+  [landscape] › training.spec.mjs:398:1 › unavailable action cancel off-site tap and greater-than-eight-pixel drag never spend practice gold
+  [landscape] › training.spec.mjs:431:1 › explicit pause blur and hidden lifecycle interruptions freeze observation until an explicit resume
+  [landscape] › training.spec.mjs:486:1 › keyboard can choose place pause navigate and reach every practice control without focus loss
+  [landscape] › training.spec.mjs:533:1 › retry jump and skip produce an honest temporary review without completions or profile rewards
+  [landscape] › training.spec.mjs:572:5 › old held pointer across natural step-complete cannot leave or retry the newer step and fresh input works
+  [landscape] › training.spec.mjs:572:5 › old held pointer across natural lesson-complete cannot leave or retry the newer step and fresh input works
+  [desktop] › accessibility-backup.spec.mjs:127:1 › backup export downloads a validated file and honors include battle
+  [desktop] › accessibility-backup.spec.mjs:140:1 › invalid backup file is refused without changing local data
+  [desktop] › accessibility-backup.spec.mjs:150:1 › backup preview and cancel leave every existing storage domain unchanged
+  [desktop] › accessibility-backup.spec.mjs:161:1 › explicit backup replacement reloads and restores all five domains
+  [desktop] › accessibility-backup.spec.mjs:177:1 › backup export reports raw storage denial instead of downloading empty progress
+  [desktop] › accessibility-backup.spec.mjs:200:1 › backup import refuses a denied raw storage read without changing data
+  [desktop] › accessibility-backup.spec.mjs:220:1 › backup quota failure rolls back earlier domain writes without reloading
+  [desktop] › accessibility-backup.spec.mjs:343:1 › controller held confirm starts once without click-through and pause remains usable
+  [desktop] › accessibility-backup.spec.mjs:360:1 › controller shoulders select build cards and virtual cursor confirm places one building
+  [desktop] › accessibility-backup.spec.mjs:386:1 › controller disconnect clears cursor and leaves pointer controls usable
+  [desktop] › accessibility-backup.spec.mjs:410:1 › controller bumpers skip unaffordable cards to reach a later affordable card
+  [desktop] › accessibility-backup.spec.mjs:448:1 › first controller confirm after pointer build selection reveals cursor without spending
+  [desktop] › accessibility-backup.spec.mjs:480:1 › late first backup read cannot replace a newer selected file preview
+  [desktop] › accessibility-backup.spec.mjs:498:1 › leaving backup settings invalidates an unfinished file read
+  [desktop] › accessibility-backup.spec.mjs:513:1 › incomplete backup rollback holds the retained session and requires explicit recovery consent
+  [desktop] › accessibility-backup.spec.mjs:586:48 › stale campaign tab cannot resurrect medals or settings after an empty-profile import
+  [desktop] › accessibility-backup.spec.mjs:586:48 › stale challenges tab cannot resurrect medals or settings after an empty-profile import
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-primary-zero produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-failure produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted campaign-protected-failure produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted trial-primary produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted trial-alternate produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted trial-failure produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-victory produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-defeat produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:104:34 › synthetic persisted skirmish-draw produces genuine scoped report JSON without replacing cumulative counters
+  [desktop] › battle-report.spec.mjs:158:1 › fresh observed Holdfast start ordinary build upgrade and native 2x play reach a natural terminal report
+  [desktop] › battle-report.spec.mjs:217:1 › reopening completed result preserves report bytes rewards history and all profile storage writes
+  [desktop] › battle-report.spec.mjs:251:1 › starting another battle clears last-result access rather than reopening stale report
+  [desktop] › battle-report.spec.mjs:265:1 › reload clears ephemeral completed report without putting it in save history or backup
+  [desktop] › battle-report.spec.mjs:283:1 › collapsed report keeps Continue first and native Enter Space disclosure and Tab focus stay inside result
+  [desktop] › battle-report.spec.mjs:317:1 › controller focuses report disclosure and toggles it while Continue and Inspect remain reachable
+  [desktop] › battle-report.spec.mjs:360:5 › expanded report at 320px uses one result scroller and fixed visible actions without focus theft
+  [desktop] › battle-report.spec.mjs:360:5 › expanded report at 844px uses one result scroller and fixed visible actions without focus theft
+  [desktop] › battle-report.spec.mjs:469:1 › browser-denied report download never claims the file was saved or successfully delivered
+  [desktop] › battle-report.spec.mjs:497:1 › unavailable local object URL reports failed download without false success or storage changes
+  [desktop] › battle-report.spec.mjs:518:62 › initial observation failure leaves genuine result title and engine final stats intact
+  [desktop] › battle-report.spec.mjs:518:62 › later sample failure leaves genuine result title and engine final stats intact
+  [desktop] › battle-report.spec.mjs:545:1 › real frozen 0.10 QA UI save continues in 0.12 with unchanged persistence contracts and partial report coverage
+  [desktop] › battle-report.spec.mjs:598:1 › offline report modules load from actual service-worker cache and finish/download a resumed synthetic result
+  [desktop] › campaign.spec.mjs:67:1 › campaign locked mission cannot launch and an unlocked mission can
+  [desktop] › campaign.spec.mjs:86:1 › campaign chapter and mission choices retain keyboard focus after rerender
+  [desktop] › campaign.spec.mjs:105:1 › campaign UI-created version 2 save reloads the same mission and construction
+  [desktop] › campaign.spec.mjs:137:1 › campaign victory awards stars once and Continue unlocks the next mission
+  [desktop] › campaign.spec.mjs:169:1 › campaign deadline failure focuses Retry and restarts without granting progress
+  [desktop] › campaign.spec.mjs:196:1 › campaign protected mine has disabled salvage while normal buildings remain salvageable
+  [desktop] › campaign.spec.mjs:212:1 › campaign briefing and launch remain reachable across viewport changes
+  [desktop] › campaign.spec.mjs:245:1 › closing a stale paused campaign tab preserves the newer shared-context skirmish save
+  [desktop] › campaign.spec.mjs:285:1 › landscape campaign content keeps more than 120px usable height with a saved mission
+  [desktop] › campaign.spec.mjs:348:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action
+  [desktop] › expanded-campaign.spec.mjs:66:1 › existing twelve missions and 36 stars remain version 1 and unlock chapter five without clearing records
+  [desktop] › expanded-campaign.spec.mjs:125:1 › frontier unlock branches after Open Horizon then converges only after both river and beacon victories
+  [desktop] › expanded-campaign.spec.mjs:176:3 › open-horizon UI start save reload and resume keep the authored map formation and old progress
+  [desktop] › expanded-campaign.spec.mjs:214:3 › open-horizon objective success records correct stars and map history exactly once
+  [desktop] › expanded-campaign.spec.mjs:242:3 › open-horizon exact 240 second deadline fails and Retry starts the same map without progress
+  [desktop] › expanded-campaign.spec.mjs:269:3 › open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [desktop] › expanded-campaign.spec.mjs:330:3 › open-horizon native backup export import replacement and reload retain new map campaign identity
+  [desktop] › expanded-campaign.spec.mjs:350:3 › open-horizon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [desktop] › expanded-campaign.spec.mjs:374:5 › open-horizon every protected starting structure disables salvage while an ordinary structure can be sold
+  [desktop] › expanded-campaign.spec.mjs:419:5 › open-horizon loss of an original protected target fails immediately before its deadline
+  [desktop] › expanded-campaign.spec.mjs:176:3 › river-charter UI start save reload and resume keep the authored map formation and old progress
+  [desktop] › expanded-campaign.spec.mjs:214:3 › river-charter objective success records correct stars and map history exactly once
+  [desktop] › expanded-campaign.spec.mjs:242:3 › river-charter exact 210 second deadline fails and Retry starts the same map without progress
+  [desktop] › expanded-campaign.spec.mjs:269:3 › river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [desktop] › expanded-campaign.spec.mjs:330:3 › river-charter native backup export import replacement and reload retain new map campaign identity
+  [desktop] › expanded-campaign.spec.mjs:350:3 › river-charter valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [desktop] › expanded-campaign.spec.mjs:374:5 › river-charter every protected starting structure disables salvage while an ordinary structure can be sold
+  [desktop] › expanded-campaign.spec.mjs:419:5 › river-charter loss of an original protected target fails immediately before its deadline
+  [desktop] › expanded-campaign.spec.mjs:176:3 › far-beacon UI start save reload and resume keep the authored map formation and old progress
+  [desktop] › expanded-campaign.spec.mjs:214:3 › far-beacon objective success records correct stars and map history exactly once
+  [desktop] › expanded-campaign.spec.mjs:242:3 › far-beacon exact 280 second deadline fails and Retry starts the same map without progress
+  [desktop] › expanded-campaign.spec.mjs:269:3 › far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [desktop] › expanded-campaign.spec.mjs:330:3 › far-beacon native backup export import replacement and reload retain new map campaign identity
+  [desktop] › expanded-campaign.spec.mjs:350:3 › far-beacon valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [desktop] › expanded-campaign.spec.mjs:176:3 › common-ground UI start save reload and resume keep the authored map formation and old progress
+  [desktop] › expanded-campaign.spec.mjs:214:3 › common-ground objective success records correct stars and map history exactly once
+  [desktop] › expanded-campaign.spec.mjs:242:3 › common-ground exact 300 second deadline fails and Retry starts the same map without progress
+  [desktop] › expanded-campaign.spec.mjs:269:3 › common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives
+  [desktop] › expanded-campaign.spec.mjs:330:3 › common-ground native backup export import replacement and reload retain new map campaign identity
+  [desktop] › expanded-campaign.spec.mjs:350:3 › common-ground valid Classic engine data is rejected as wrong-map campaign save and backup without overwriting bytes
+  [desktop] › expanded-campaign.spec.mjs:374:5 › common-ground every protected starting structure disables salvage while an ordinary structure can be sold
+  [desktop] › expanded-campaign.spec.mjs:419:5 › common-ground loss of an original protected target fails immediately before its deadline
+  [desktop] › expanded-campaign.spec.mjs:433:1 › Far Beacons minimum citadel health fails immediately even before the hold and deadline
+  [desktop] › expanded-campaign.spec.mjs:442:1 › scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield
+  [desktop] › field-reference.spec.mjs:37:1 › field reference disclosures show every unit structure and exact counter economics
+  [desktop] › field-reference.spec.mjs:98:1 › field reference native Space and focus keep a paused battle read-only
+  [desktop] › field-reference.spec.mjs:134:1 › field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens
+  [desktop] › field-reference.spec.mjs:166:1 › field reference renders five distinct nonempty original portrait canvases
+  [desktop] › fonts.spec.mjs:6:1 › all five local WOFF2 assets load and actual DOM text uses bundled faces with painted canvas labels
+  [desktop] › fonts.spec.mjs:82:1 › complete font notices remain keyboard accessible and wrap at narrow and landscape sizes
+  [desktop] › maps.spec.mjs:30:1 › map picker uses native disclosure keyboard semantics and remains reachable on narrow and landscape screens
+  [desktop] › maps.spec.mjs:83:3 › Classic selection start save reload resume and switching preserve independent difficulty
+  [desktop] › maps.spec.mjs:119:3 › Classic actual pointer placement rejects occupied sites and dragging never buys
+  [desktop] › maps.spec.mjs:154:3 › Classic minimap ends home front and whole-world viewport use the real map width
+  [desktop] › maps.spec.mjs:83:3 › Long March selection start save reload resume and switching preserve independent difficulty
+  [desktop] › maps.spec.mjs:119:3 › Long March actual pointer placement rejects occupied sites and dragging never buys
+  [desktop] › maps.spec.mjs:154:3 › Long March minimap ends home front and whole-world viewport use the real map width
+  [desktop] › maps.spec.mjs:83:3 › Twin Span selection start save reload resume and switching preserve independent difficulty
+  [desktop] › maps.spec.mjs:119:3 › Twin Span actual pointer placement rejects occupied sites and dragging never buys
+  [desktop] › maps.spec.mjs:154:3 › Twin Span minimap ends home front and whole-world viewport use the real map width
+  [desktop] › maps.spec.mjs:210:1 › Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane
+  [desktop] › maps.spec.mjs:231:48 › campaign initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [desktop] › maps.spec.mjs:231:48 › challenges initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice
+  [desktop] › maps.spec.mjs:254:31 › Long March engine-driven victory names the history map and supports a fresh replay
+  [desktop] › maps.spec.mjs:254:31 › Twin Span engine-driven victory names the history map and supports a fresh replay
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: unknown map
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: future revision
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: missing map identity
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Long March wrong right base
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span phantom third lane
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: Twin Span off-site building
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as campaign
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: long-march masquerading as challenges
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as campaign
+  [desktop] › maps.spec.mjs:289:19 › corrupt map save preserves original bytes: twin-span masquerading as challenges
+  [desktop] › maps.spec.mjs:316:3 › Long March controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [desktop] › maps.spec.mjs:358:3 › Long March portable export import preview reload and resume round trip keeps all domains
+  [desktop] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored campaign identity without changing storage
+  [desktop] › maps.spec.mjs:393:50 › Long March portable backup rejects an authored challenges identity without changing storage
+  [desktop] › maps.spec.mjs:316:3 › Twin Span controller and pointer use the same sites and occupied confirm never chooses a neighbor
+  [desktop] › maps.spec.mjs:358:3 › Twin Span portable export import preview reload and resume round trip keeps all domains
+  [desktop] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored campaign identity without changing storage
+  [desktop] › maps.spec.mjs:393:50 › Twin Span portable backup rejects an authored challenges identity without changing storage
+  [desktop] › offline-shell.spec.mjs:19:1 › real service-worker cache supports offline nonclassic play save resume field reference and bundled fonts
+  [desktop] › profile-upgrade.spec.mjs:93:37 › ready v1 profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [desktop] › profile-upgrade.spec.mjs:93:37 › absent profile marker upgrades once to verified v2 while keeping all legacy mission records
+  [desktop] › profile-upgrade.spec.mjs:119:71 › profile migration deny blocks writes and requires reload before expanded progress is usable
+  [desktop] › profile-upgrade.spec.mjs:119:71 › profile migration silent-drop blocks writes and requires reload before expanded progress is usable
+  [desktop] › profile-upgrade.spec.mjs:119:71 › profile migration readback blocks writes and requires reload before expanded progress is usable
+  [desktop] › profile-upgrade.spec.mjs:119:71 › profile migration competing blocks writes and requires reload before expanded progress is usable
+  [desktop] › profile-upgrade.spec.mjs:161:1 › absent marker migration denied before write cannot create an unprotected playable profile
+  [desktop] › profile-upgrade.spec.mjs:180:1 › marker write that throws after persisting succeeds only because readback verifies the exact v2 bytes
+  [desktop] › profile-upgrade.spec.mjs:195:46 › v1 restoring marker is not upgraded or mistaken for a completed recovery
+  [desktop] › profile-upgrade.spec.mjs:195:46 › v1 failed marker is not upgraded or mistaken for a completed recovery
+  [desktop] › profile-upgrade.spec.mjs:216:80 › malformed profile marker remains byte-for-byte untouched with recovery required
+  [desktop] › profile-upgrade.spec.mjs:216:80 › future profile marker remains byte-for-byte untouched with recovery required
+  [desktop] › profile-upgrade.spec.mjs:231:1 › real frozen QA-baseline 0.9 open tab is fenced before it can erase chapter five progress or overwrite the current battle
+  [desktop] › profile-upgrade.spec.mjs:289:1 › native backup exported by the real frozen 0.9 QA app remains importable after protocol migration
+  [desktop] › regression.spec.mjs:78:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages
+  [desktop] › regression.spec.mjs:101:1 › drag in placement mode does not build or spend gold
+  [desktop] › regression.spec.mjs:142:1 › controls fit the viewport and survive orientation changes
+  [desktop] › regression.spec.mjs:172:1 › pause and field guide freeze time; resume advances it
+  [desktop] › regression.spec.mjs:197:1 › save, title, reload and resume preserve buildings, gold, time and difficulty
+  [desktop] › regression.spec.mjs:222:6 › invalid save recovers: {broken
+  [desktop] › regression.spec.mjs:222:6 › invalid save recovers: {"version":999}
+  [desktop] › regression.spec.mjs:243:1 › denied storage keeps unsaved battle open without crashing settings or pause
+  [desktop] › regression.spec.mjs:266:1 › welcome and guide trap keyboard focus and restore playable focus
+  [desktop] › regression.spec.mjs:295:54 › near-end restored match reaches VICTORY, clears save and supports replay
+  [desktop] › regression.spec.mjs:295:54 › near-end restored match reaches DEFEAT, clears save and supports replay
+  [desktop] › regression.spec.mjs:295:54 › near-end restored match reaches DRAW, clears save and supports replay
+  [desktop] › regression.spec.mjs:329:1 › failed save warns the player before leaving the active battle
+  [desktop] › regression.spec.mjs:346:1 › Space activates the focused Save and return button
+  [desktop] › regression.spec.mjs:357:1 › a touch selecting a building keeps its details panel open
+  [desktop] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {broken
+  [desktop] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: null
+  [desktop] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: {"not":"an array"}
+  [desktop] › regression.spec.mjs:376:3 › malformed history recovers during settings and match end: [null,4,"bad",[]]
+  [desktop] › regression.spec.mjs:405:1 › failed save retains the previous durable snapshot and can recover
+  [desktop] › regression.spec.mjs:437:1 › preferences persist after reload and Space activates a focused checkbox
+  [desktop] › service-worker-update.spec.mjs:31:37 › real 0.7.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [desktop] › service-worker-update.spec.mjs:31:37 › real 0.8.0 to 0.12 service-worker update preserves Classic progress then plays a new map with fonts offline
+  [desktop] › training.spec.mjs:97:1 › title entry and return preserve all five exact profile domains including active battle
+  [desktop] › training.spec.mjs:135:5 › initial 320px training layout keeps every primary control reachable with ordinary page scrolling
+  [desktop] › training.spec.mjs:135:5 › initial 844px training layout keeps every primary control reachable with ordinary page scrolling
+  [desktop] › training.spec.mjs:165:38 › empty first-visit storage supports practice without even attempting a profile write
+  [desktop] › training.spec.mjs:165:38 › blocked local and session storage supports practice without even attempting a profile write
+  [desktop] › training.spec.mjs:193:1 › offline direct training navigation loads the actual separate lesson shell and returns to the normal game
+  [desktop] › training.spec.mjs:235:1 › repeated interrupted navigation retry and lesson jumps never award or mutate a retained profile
+  [desktop] › training.spec.mjs:310:36 › ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation
+  [desktop] › training.spec.mjs:310:36 › ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation
+  [desktop] › training.spec.mjs:310:36 › ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation
+  [desktop] › training.spec.mjs:310:36 › ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation
+  [desktop] › training.spec.mjs:310:36 › ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation
+  [desktop] › training.spec.mjs:398:1 › unavailable action cancel off-site tap and greater-than-eight-pixel drag never spend practice gold
+  [desktop] › training.spec.mjs:431:1 › explicit pause blur and hidden lifecycle interruptions freeze observation until an explicit resume
+  [desktop] › training.spec.mjs:486:1 › keyboard can choose place pause navigate and reach every practice control without focus loss
+  [desktop] › training.spec.mjs:533:1 › retry jump and skip produce an honest temporary review without completions or profile rewards
+  [desktop] › training.spec.mjs:572:5 › old held pointer across natural step-complete cannot leave or retry the newer step and fresh input works
+  [desktop] › training.spec.mjs:572:5 › old held pointer across natural lesson-complete cannot leave or retry the newer step and fresh input works
+Total: 720 tests in 12 files

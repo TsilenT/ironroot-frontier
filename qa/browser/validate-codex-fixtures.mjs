@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {UNIT_CODEX,STRUCTURE_CODEX,ECONOMY_GUIDE} from '../../dist/codex.js';
+assert.deepEqual(UNIT_CODEX.map(unit=>unit.id),['warrior','archer','siege','wizard','gryphon']);
+assert.deepEqual(STRUCTURE_CODEX.map(structure=>structure.id),['watchtower','mint']);
+const mine=STRUCTURE_CODEX.find(structure=>structure.id==='mint');
+assert.equal(mine.levels[1].cost,133);
+assert.equal(mine.levels[1].bestCasePaybackSeconds,106.4);
+assert.equal(mine.levels[2].cost,199);
+assert.equal(mine.levels[2].marginalIncome,1.25);
+assert.equal(mine.levels[2].bestCasePaybackSeconds,159.2);
+assert.equal(ECONOMY_GUIDE.startingGold,420);
+assert.equal(ECONOMY_GUIDE.baseIncome,5);
+assert.equal(ECONOMY_GUIDE.mineCap,3);
+console.log('Validated field-reference roster and marginal mine payback fixtures.');

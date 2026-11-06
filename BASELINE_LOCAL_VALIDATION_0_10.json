@@ -1,0 +1,44 @@
+{
+  "version": "0.10.0",
+  "status": "local validation complete; not released or approved for source transfer",
+  "sourceDirectory": "/workspace/shared/ironroot-v010",
+  "preview": "http://127.0.0.1:4173/",
+  "liveVersion": "0.7",
+  "runtimeFiles": 26,
+  "runtimeBytes": 533210,
+  "node": {
+    "passed": 446,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "optional installed desktop tooling",
+    "discovered": 447
+  },
+  "syntax": "passed",
+  "sourceDistPreflight": "passed",
+  "nativeUi": "bounded review and all five clarity retests passed; original profile restored and temporary fixtures removed",
+  "browser": {
+    "executed": false,
+    "discoveredInstances": 552,
+    "logicalCases": 138,
+    "intentionalSkips": 3,
+    "note": "Discovery preceded final assertion-only toast addition; pinned full four-profile run remains pending"
+  },
+  "publicationAuthorized": false,
+  "blockedAction": "Corrected candidate GitHub commit/ref operations stopped pending user-authored approval. No alternate transfer/publication route permitted.",
+  "reports": [
+    "docs/RELEASE_0_10.md",
+    "docs/FRONTIER_CAMPAIGN_UI_QA.md",
+    "docs/CAMPAIGN_EXPANSION_BALANCE_REVIEW.md",
+    "docs/CAMPAIGN_PRIMARY_ROUTES.md",
+    "docs/CAMPAIGN_EXPANSION_BROWSER_QA.md",
+    "docs/CAMPAIGN_SAVE_COMPAT.md"
+  ],
+  "knownLimits": [
+    "Long March Hard advanced scripted-rush weakness remains",
+    "Exact corrected held-touch result-action cloud regression unrun",
+    "Physical touch/controller and non-Chromium unverified",
+    "Subjective audio and packaged desktop gameplay unverified",
+    "No PvP or Steam integration"
+  ],
+  "runtimeManifest": "qa/local-validation/0.10-runtime-sha256.json"
+}

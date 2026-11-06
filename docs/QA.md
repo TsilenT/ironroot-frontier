@@ -58,8 +58,13 @@ Required fixes were implemented: short-landscape campaign content now reserves a
 
 The reviewer also completed Winter Stores through normal paid UI actions, earned three stars, verified branching High Pass unlocks and visually checked the snowy/rocky chapter treatment. See `CAMPAIGN_UI_QA.md` for exact scenarios and remaining limits. The final suite has 186 passing tests, 0 skipped/TODO. This includes private, unintegrated controller/backup foundations intended for the next release; no controller hardware or backup UI support is claimed for 0.6.
 
-## Iteration 0.7 candidate
+## Iteration 0.7
 
 Controller and portable-backup UI were integrated, then independently audited before public release. Audits reproduced and fixed unaffordable bumper dead ends, spending before the takeover cursor appeared, async file-preview races, incomplete-rollback session loss, stale-tab reintroduction of intentionally replaced records, and lost dirty-progress warnings when storage was unreadable. A guarded profile session now distinguishes ready/restoring/failed markers and preserves recovery state. See `BACKUPS.md`, `CONTROLLER.md` and `BACKUP_CONTROLLER_UI_QA.md` for exact behavior and coverage.
 
-Final local candidate: 229 tests passed, no skips/TODO, syntax green. Responsive normal UI and real export passed; manual import was interrupted by a browser chooser timeout and is not counted as verified. The expanded 188-instance cloud browser matrix is pending on the corrected candidate. Public remains 0.6 until that gate is reviewed.
+Final local candidate: 229 tests passed, no skips/TODO, syntax green. Responsive normal UI and real export passed; manual import was interrupted by a browser chooser timeout and is not counted as verified. The exact corrected candidate `758452b` passed the cloud browser matrix: 185 passed, 0 failed and 3 intentional skips. It was published as 0.7, and the live site smoke verified old campaign-save resume, save/reload, preferences and new controls with no game errors. Manual import remains unverified by the native review; cloud replacement/recovery tests passed.
+
+
+## Iteration 0.8 candidate
+
+The field guide integrates engine-derived roster/economy reference, static enlarged portraits of the original battlefield models and exact counter/upgrade disclosures. Normal AI receives only the independently audited early-pressure decisions; Easy and Hard remain unchanged. See `AI_RUSH_BALANCE.md`, `CODEX.md` and `RELEASE_0_8.md` for measured coverage and limitations. Current local tests: 258 passing with optional desktop dependencies installed. Native guide checks passed desktop, 390px portrait and 844px landscape; a narrow stat-label wrap is queued for correction. Actual Normal play and the 212-instance cloud browser matrix are still underway/pending.

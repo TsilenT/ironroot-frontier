@@ -83,11 +83,12 @@ test('full campaign, trial, preference, history and battle export round trips in
   for (const domain of Object.keys(K)) assert.deepEqual(JSON.parse(restored.data.get(K[domain])), original.data[domain]);
 });
 
-test('all 12 campaigns and 5 field trials preserve their mode after active-battle restore', () => {
+test('all authored campaigns and 5 field trials preserve their mode after active-battle restore', () => {
   for (const [list, create, domain] of [[CAMPAIGN_MISSIONS, createCampaignMission, 'campaignId'], [CHALLENGES, createChallenge, 'challengeId']]) {
     for (const mission of list) {
       const game = create(mission.id); for (let i = 0; i < 240; i++) game.update(.05);
-      const b = fixture(); b.data.battle = envelope(game, domain === 'challengeId' ? mission.id : null, domain === 'campaignId' ? mission.id : null);
+      const b = fixture(); if (domain === 'campaignId') b.data.campaign = progressThrough(mission.id);
+      b.data.battle = envelope(game, domain === 'challengeId' ? mission.id : null, domain === 'campaignId' ? mission.id : null);
       const parsed = parseBackup(JSON.stringify(b));
       assert.equal(parsed.data.battle[domain], mission.id);
       assert.deepEqual(Game.restore(parsed.data.battle.game).serialize(), game.serialize());

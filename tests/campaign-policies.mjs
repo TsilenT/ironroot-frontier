@@ -1,5 +1,4 @@
 /** Reference playtest policies use only ordinary paid build/upgrade/cast actions. */
-import {LANES} from '../dist/engine.js';
 export function productionPolicy(types,lanes) {
   let cursor=0;
   return game=>{
@@ -7,7 +6,7 @@ export function productionPolicy(types,lanes) {
       const type=types[Math.floor(cursor/lanes.length)%types.length],lane=lanes[cursor%lanes.length];
       let needsGold=false;
       for(const x of [1250,1110,970,830,690,550,410,270]) {
-        const result=game.build(type,x,LANES[lane]);
+        const result=game.build(type,x,game.map.lanes[lane]);
         if(result.ok){cursor++;return;}
         if(result.reason.startsWith('Need '))needsGold=true;
       }
@@ -23,7 +22,7 @@ function sequenceThen(steps,next) {
     while(cursor<steps.length) {
       const [type,x,lane,level=1]=steps[cursor];
       let building=g.state.buildings.find(b=>b.side===0&&b.type===type&&b.x===x&&b.lane===lane&&b.hp>0);
-      if(!building) {const result=g.build(type,x,LANES[lane]);if(!result.ok)return;building=result.building;}
+      if(!building) {const result=g.build(type,x,g.map.lanes[lane]);if(!result.ok)return;building=result.building;}
       while(building.level<level)if(!g.upgrade(building.id).ok)return;
       cursor++;
     }
@@ -40,7 +39,23 @@ function strike(g) {
   for(const u of enemies) {const count=enemies.filter(e=>Math.hypot(e.x-u.x,e.y-u.y)<170).length;if(count>best){best=count;target=u;}}
   if(target)g.cast(target.x,target.y);
 }
+function riverCharterPolicy(mastery=false) {
+  const opening=[['aerie',1250,0],['archery',1250,1],['archery',1110,1],['aerie',1110,0],['mint',410,1],['mint',270,0],['mint',410,0,2],['mint',410,1,2],['mint',270,0,2],['mint',410,0,3]];
+  const finish=mastery?[['mint',410,1,3],['mint',270,0,3],['barracks',830,0,2]]:[['barracks',830,0,2],['archery',830,1,2]];
+  // The reference route stops at the required 17.5/sec; mastery funds 20/sec.
+  return sequenceThen([...opening,...finish],g=>{
+    const target=g.state.buildings.filter(b=>b.side===0&&b.type!=='mint'&&b.level<3).sort((a,b)=>a.level-b.level||b.x-a.x)[0];
+    if(target)g.upgrade(target.id);
+  });
+}
 export function campaignPolicy(id) {
+  if(id==='open-horizon')return sequenceThen([['archery',1250,0],['archery',1250,2],['barracks',1250,1],['archery',1110,1],['foundry',690,1]],productionPolicy(['barracks','foundry','archery'],[1,0,2]));
+  if(id==='river-charter')return riverCharterPolicy();
+  if(id==='far-beacon')return sequenceThen([['aerie',1250,1],['aerie',1110,1],['mint',410,0],['mint',410,2],['archery',1250,0],['archery',1250,2],['mint',410,1,2],['mint',410,0,2]],productionPolicy(['archery','barracks','foundry'],[0,2]));
+  if(id==='common-ground') {
+    const build=sequenceThen([['barracks',1250,0],['barracks',1250,1],['archery',1110,1],['foundry',1110,0],['archery',970,1],['mint',410,1],['mint',270,0],['sanctum',690,0]],productionPolicy(['archery','foundry','barracks'],[0,1]));
+    return g=>{strike(g);build(g);};
+  }
   if(id==='emberwatch')return productionPolicy(['barracks','archery'],[1]);
   if(id==='three-roads')return sequenceThen([['watchtower',1110,1]],productionPolicy(['barracks','archery','sanctum'],[0,2]));
   if(id==='winter-stores')return sequenceThen([['watchtower',1110,0],['watchtower',1110,2],['mint',410,1],['mint',410,0,2],['mint',410,2,2],['mint',410,1,3]],improve);
@@ -53,12 +68,21 @@ export function campaignPolicy(id) {
   const build=sequenceThen([['mint',410,0],['mint',410,1],['mint',410,2],['watchtower',1110,0],['watchtower',1110,2],['barracks',1250,1],['foundry',1110,1],['sanctum',690,1],['archery',550,1]],productionPolicy(['barracks','archery','foundry','sanctum'],[1,0,2]));
   return g=>{strike(g);build(g);};
 }
-export function playCampaign(create,evaluate,mission,{seed=mission.seed,restore=null,idle=false,mastery=false}={}) {
+export function playCampaign(create,evaluate,mission,{seed=mission.seed,restore=null,idle=false,mastery=false,policy:customPolicy=null,actionEvery=1,startDelay=0,maxActionsPerDecision=Infinity,onAction=null}={}) {
   let game=create(mission.id);game.seed=seed;
-  const policy=idle?()=>{}:mastery?campaignMasteryPolicy(mission.id):campaignPolicy(mission.id);
+  const policy=customPolicy||(idle?()=>{}:mastery?campaignMasteryPolicy(mission.id):campaignPolicy(mission.id));
   let outcome;
   for(let tick=0;tick<(mission.timeLimit+1)*20;tick++) {
-    if(tick%20===0)policy(game);
+    if(game.state.time+1e-7>=startDelay&&tick%Math.max(1,Math.round(actionEvery*20))===0) {
+      let remaining=maxActionsPerDecision;
+      const originals=Object.fromEntries(['build','upgrade','cast'].map(name=>[name,game[name]]));
+      for(const [name,original] of Object.entries(originals))game[name]=(...args)=>{
+        if(remaining<=0)return {ok:false,reason:'Need another action window.'};
+        const before=game.state.gold[0];
+        const result=original.apply(game,args);if(result.ok){remaining--;onAction?.({name,args,cost:before-game.state.gold[0],time:game.state.time,game});}return result;
+      };
+      try{policy(game);}finally{for(const name of Object.keys(originals))delete game[name];}
+    }
     game.update(.05);
     if(restore&&tick%200===0)game=restore(game.serialize());
     outcome=evaluate(game,mission.id);
@@ -69,6 +93,7 @@ export function playCampaign(create,evaluate,mission,{seed=mission.seed,restore=
 
 /** Optional mastery routes trade immediate production for advertised upgrade medals. */
 export function campaignMasteryPolicy(id) {
+  if(id==='river-charter')return riverCharterPolicy(true);
   const main=campaignPolicy(id);
   const targets={stonegate:2,'long-vigil':3,'black-ledger':0,'last-light':6};
   if(id==='black-ledger')return sequenceThen([['mint',410,0,2],['mint',410,1,2],['mint',410,2]],main);

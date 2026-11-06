@@ -152,7 +152,9 @@ for (const outcome of ['VICTORY','DEFEAT','DRAW']) test(`near-end restored match
   await expect(page.locator('#resultModal')).toBeVisible(); expect(await saved(page)).toBeNull();
   const history = await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),HISTORY);
   expect(history).toHaveLength(1); expect(history[0].won).toBe(outcome==='VICTORY'); expect(history[0].draw).toBe(outcome==='DRAW');
-  await expect(page.locator('#playAgain')).toBeFocused(); await page.keyboard.press('Shift+Tab'); await expect(page.locator('#inspectBattle')).toBeFocused();
+  await expect(page.locator('#playAgain')).toBeFocused();
+  await page.keyboard.press('Shift+Tab'); await expect(page.locator('#resultReport details.battle-report > summary')).toBeFocused();
+  await page.keyboard.press('Shift+Tab'); await expect(page.locator('#inspectBattle')).toBeFocused();
   await press(page,'#inspectBattle'); await expect(page.locator('#pause')).toHaveAttribute('aria-label','Return to title');
   await press(page,'#pause'); await expect(page.locator('#resumeSaved')).toBeHidden();
   await press(page,'#start'); await expect(page.locator('#pause')).toHaveAttribute('aria-label','Pause game');

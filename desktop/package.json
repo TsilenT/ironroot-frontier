@@ -1,7 +1,7 @@
 {
   "name": "ironroot-frontier-desktop",
   "productName": "Ironroot Frontier",
-  "version": "0.4.0",
+  "version": "0.12.0",
   "private": true,
   "description": "Offline desktop shell for Ironroot Frontier",
   "main": "main.cjs",
@@ -15,17 +15,54 @@
     "package:mac": "npm run stage && electron-builder --mac zip --publish never",
     "package:linux": "npm run stage && electron-builder --linux tar.gz --publish never"
   },
-  "devDependencies": { "electron": "45.2.3", "electron-builder": "26.18.0" },
+  "devDependencies": {
+    "electron": "45.2.3",
+    "electron-builder": "26.18.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "overrides": {
+    "app-builder-lib@26.18.1": {
+      "minimatch@10.2.6": "11.0.5"
+    },
+    "@electron/universal@2.0.3": {
+      "minimatch@9.0.9": "11.0.5"
+    }
+  },
   "build": {
     "appId": "games.ironroot.frontier",
     "productName": "Ironroot Frontier",
     "asar": true,
-    "directories": { "output": "release" },
-    "files": ["main.cjs", "security.cjs", "game/**/*", "package.json"],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "security.cjs",
+      "game/**/*",
+      "package.json"
+    ],
     "artifactName": "Ironroot-Frontier-${version}-${os}-${arch}.${ext}",
-    "win": { "target": ["zip"], "signAndEditExecutable": false },
-    "mac": { "target": ["zip"], "category": "public.app-category.strategy-games", "identity": null },
-    "linux": { "target": ["tar.gz"], "category": "Game" },
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        "zip"
+      ],
+      "category": "public.app-category.strategy-games",
+      "identity": null
+    },
+    "linux": {
+      "target": [
+        "tar.gz"
+      ],
+      "category": "Game"
+    },
     "publish": null
   }
 }

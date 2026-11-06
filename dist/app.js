@@ -1,4 +1,5 @@
 import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
+import { createInputScopeGuard } from './input-scope.js';
 import {
   GamepadInput,
   moveCursor,
@@ -12,8 +13,27 @@ import {
   restoreBackup,
   MAX_BACKUP_BYTES,
 } from './backup.js';
-import { Game, BUILDINGS, UNITS, LANES, SPELL, upgradeCost } from './engine.js';
-import { Renderer, iconSVG } from './render.js';
+import {
+  Game,
+  BUILDINGS,
+  UNITS,
+  MAPS,
+  getMap,
+  buildBounds,
+  SPELL,
+  upgradeCost,
+} from './engine.js';
+import { Renderer, iconSVG, drawUnitPortrait } from './render.js';
+import { renderMissionScouting } from './scouting.js';
+import { createBattleJournal, exportBattleReport } from './battle-report.js';
+import { renderBattleReport } from './report-view.js';
+import {
+  UNIT_CODEX,
+  STRUCTURE_CODEX,
+  ECONOMY_GUIDE,
+  formatNumber,
+  formatSeconds,
+} from './codex.js';
 import {
   CHALLENGES,
   createChallenge,
@@ -44,6 +64,67 @@ import {
 } from './campaign.js';
 const $ = (id) => document.getElementById(id);
 const renderer = new Renderer($('battle'), $('minimap'));
+
+// Read-only field reference. Text is authored data; escape it before markup.
+function populateFieldGuide() {
+  const esc = (value) =>
+    String(value).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        })[c],
+    );
+  const n = formatNumber;
+  const list = (items) =>
+    `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join('')}</ul>`;
+  const stats = (values) =>
+    `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
+  $('codexScope').textContent = ECONOMY_GUIDE.scope;
+  $('codexCaveat').textContent = ECONOMY_GUIDE.counterCaveat;
+  $('unitCodex').innerHTML = UNIT_CODEX.map(
+    (u) => `<details class="codex-card" data-codex-unit="${esc(u.id)}">
+    <summary><canvas data-portrait="${esc(u.portraitId)}" width="224" height="200" aria-hidden="true"></canvas><span><strong>${esc(u.name)}</strong><small>${esc(u.role)}</small><em>${u.baseStats.canAttackAir ? 'GROUND + AIR' : 'GROUND TARGETS'}${u.baseStats.flying ? ' · FLYING' : ''}</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>
+    <div class="codex-body">
+      ${stats([
+        ['Health', n(u.baseStats.hp)],
+        ['Hit', n(u.baseStats.damage)],
+        ['Cooldown', formatSeconds(u.baseStats.attackTime)],
+        ['Range', n(u.baseStats.range)],
+        ['Speed', `${n(u.baseStats.speed)} /s`],
+        ['Repeat spawn', formatSeconds(u.production.spawnTime)],
+      ])}
+      <p><b>${esc(u.production.name)}</b> · ${n(u.production.cost)} gold<br>Upgrades: ${u.production.upgradeCosts.map(n).join(' / ')} gold</p>
+      <p><b>Use it for:</b> ${esc(u.advantages)}</p>
+      <p><b>Watch out for:</b> ${esc(u.cautions)}</p>
+      ${list(u.mechanics)}
+    </div></details>`,
+  ).join('');
+  for (const canvas of $('unitCodex').querySelectorAll('[data-portrait]'))
+    drawUnitPortrait(canvas, canvas.dataset.portrait);
+  $('structureCodex').innerHTML = STRUCTURE_CODEX.map(
+    (
+      b,
+    ) => `<details class="codex-card codex-structure" data-codex-structure="${esc(b.id)}">
+    <summary><span class="codex-building" aria-hidden="true">${iconSVG(b.id)}</span><span><strong>${esc(b.name)}</strong><small>${esc(b.role)}</small><em>${n(b.cost)} GOLD · ${n(b.hp)} HEALTH</em></span><span class="codex-expand" aria-hidden="true">+</span></summary>
+    <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(' / ')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,
+  ).join('');
+  $('economyCodex').innerHTML = `${stats([
+    ['Starting gold', n(ECONOMY_GUIDE.startingGold)],
+    ['Base income', `${n(ECONOMY_GUIDE.baseIncome)} /s`],
+    ['Citadel health', n(ECONOMY_GUIDE.citadelHp)],
+    ['Mine cap', n(ECONOMY_GUIDE.mineCap)],
+  ])}
+    <h3>Build an economy you can defend</h3>${list(ECONOMY_GUIDE.notes)}<h3>Invest in survivors</h3>${list(ECONOMY_GUIDE.upgrades)}<h3>When the war runs long</h3><p>${esc(ECONOMY_GUIDE.overtime.description)}</p>`;
+}
+populateFieldGuide();
+
+let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;
+let selectedMap = 'classic';
 let difficulty = 'easy',
   game = new Game({ difficulty }),
   started = false,
@@ -78,7 +159,7 @@ const labels = {
   sanctum: ['Sanctum', 'Magic & splash', '14s / wave'],
   aerie: ['Aerie', 'Flying raiders', '15s / wave'],
 };
-const profileSession = createProfileSession(() => localStorage);
+const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 2 });
 const storage = createStorage(() => profileSession.storage);
 let recoveryHold = null,
   profileGate = null,
@@ -169,8 +250,15 @@ function timeText(t) {
     .toString()
     .padStart(2, '0')}:${(sec % 60).toString().padStart(2, '0')}`;
 }
+function positionToast() {
+  const objective = $('objectiveHUD');
+  $('toast').style.top = objective.classList.contains('hidden')
+    ? ''
+    : `${objective.offsetTop + objective.offsetHeight + 8}px`;
+}
 function toast(text) {
   $('toast').textContent = text;
+  positionToast();
   $('toast').classList.add('show');
   toastTimer = 3;
 }
@@ -253,8 +341,8 @@ function syncChoice() {
     ? BUILDINGS[ui.build].description
     : ui.spell
       ? 'Deals damage to enemies in a wide area.'
-      : innerWidth < 701
-        ? 'Swipe for more buildings. Choose one, then tap a green slot.'
+      : $('buildCards').scrollWidth > $('buildCards').clientWidth + 2
+        ? 'Scroll for more buildings. Choose one, then tap a green slot.'
         : 'Choose a building, then place it in your territory.';
 }
 function updateSelection() {
@@ -269,7 +357,7 @@ function updateSelection() {
   $('selectionDetail').textContent =
     `Level ${b.level} · ${d.unit ? UNITS[d.unit].name + ' production' : d.range ? 'Defensive structure' : 'Economy'}`;
   $('selectionStats').innerHTML =
-    `<span>♥ ${Math.ceil(b.hp)} / ${b.maxHp}</span><span>${d.unit ? `${(d.spawnTime / (1 + 0.22 * (b.level - 1)) / (game.state.overtime ? 1.65 : 1)).toFixed(1)}s / wave` : d.range ? `Range ${d.range}` : `+${(2.5 * (1 + 0.5 * (b.level - 1))).toFixed(1)} gold /s`}</span>`;
+    `<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span><span>${d.unit ? `${(d.spawnTime / (1 + 0.22 * (b.level - 1)) / (game.state.overtime ? 1.65 : 1)).toFixed(1)}s / wave` : d.range ? `Range ${d.range}` : `+${(2.5 * (1 + 0.5 * (b.level - 1))).toFixed(1)} gold /s`}</span>`;
   $('selectionDescription').textContent = d.description;
   const cost = upgradeCost(b);
   $('upgrade').textContent = b.level < 3 ? `Upgrade · ◆ ${cost}` : 'Max level';
@@ -446,6 +534,43 @@ $('help').onclick = showHelp;
 $('welcomeHelp').onclick = showHelp;
 $('closeHelp').onclick = hideHelp;
 $('guideDone').onclick = hideHelp;
+
+const mapDescriptions = {
+  classic:
+    'Three roads, 24 building sites per side. The original frontier, used by every campaign mission and field trial.',
+  'long-march':
+    'Three roads with a longer neutral crossing, 24 sites per side. Reinforcements take longer to arrive. Troop and income rules are unchanged.',
+  'twin-span':
+    'Two roads, 16 building sites per side. Fewer fronts and less construction space concentrate the battle. Troop and income rules are unchanged.',
+};
+function renderMapSelection() {
+  $('selectedMapName').textContent = getMap(selectedMap).name;
+  $('mapDescription').textContent = mapDescriptions[selectedMap];
+  for (const button of $('mapChoices').querySelectorAll('[data-map]')) {
+    const active = button.dataset.map === selectedMap;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  }
+}
+for (const map of Object.values(MAPS)) {
+  const button = document.createElement('button');
+  button.dataset.map = map.id;
+  const sx = 320 / map.width;
+  const roads = map.lanes
+    .map(
+      (y) => `<path d="M11 ${y / 10}H309" stroke="#b5aa77" stroke-width="5"/>`,
+    )
+    .join('');
+  button.innerHTML = `<svg viewBox="0 0 320 90" aria-hidden="true"><rect width="320" height="90" rx="7" fill="#253e2c"/><rect x="${200 * sx}" y="18" width="${1120 * sx}" height="54" fill="#679d8555"/><rect x="${(map.width - 1320) * sx}" y="18" width="${1120 * sx}" height="54" fill="#c1816b55"/>${roads}<circle cx="${110 * sx}" cy="45" r="7" fill="#b7dbad"/><circle cx="${(map.width - 110) * sx}" cy="45" r="7" fill="#e5ac89"/></svg><b>${map.name}</b><small>${map.lanes.length} roads · ${map.buildLimit} sites</small>`;
+  button.onclick = () => {
+    selectedMap = map.id;
+    renderMapSelection();
+    sound('click');
+  };
+  $('mapChoices').append(button);
+}
+renderMapSelection();
+
 for (const btn of document.querySelectorAll('[data-difficulty]'))
   btn.onclick = () => {
     difficulty = btn.dataset.difficulty;
@@ -485,8 +610,10 @@ function start(
       ? createCampaignMission(currentCampaign)
       : currentChallenge
         ? createChallenge(currentChallenge)
-        : new Game({ difficulty, seed: Date.now() >>> 0 }));
+        : new Game({ difficulty, seed: Date.now() >>> 0, mapId: selectedMap }));
   if (!currentChallenge && !currentCampaign) {
+    selectedMap = game.map.id;
+    renderMapSelection();
     difficulty = game.difficulty;
     document
       .querySelectorAll('[data-difficulty]')
@@ -494,6 +621,7 @@ function start(
         b.classList.toggle('active', b.dataset.difficulty === difficulty),
       );
   }
+  beginBattleReport(!!restored);
   battleSession.claim();
   padHud = false;
   padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
@@ -534,6 +662,7 @@ function start(
           normal: 'THE IRON MARSHAL',
           hard: 'THE WARLORD',
         }[difficulty];
+  renderer.setMap(game.map);
   renderer.setTheme?.(
     mission
       ? CAMPAIGN_CHAPTERS.find((c) => c.id === mission.chapterId).theme
@@ -558,6 +687,99 @@ function start(
   $('battle').focus();
   save();
 }
+function beginBattleReport(resumed) {
+  battleJournal = null;
+  lastBattleReport = null;
+  hasLastResult = false;
+  reportFault = false;
+  $('lastResult').classList.add('hidden');
+  $('resultReport').classList.add('hidden');
+  $('resultReport').textContent = '';
+  $('resultReportIssue').classList.add('hidden');
+  const authored = currentCampaign
+    ? CAMPAIGN_MISSIONS.find((m) => m.id === currentCampaign)
+    : currentChallenge ? CHALLENGES.find((c) => c.id === currentChallenge) : null;
+  try {
+    battleJournal = createBattleJournal(game, {
+      resumed,
+      mode: currentCampaign ? 'campaign' : currentChallenge ? 'challenge' : 'skirmish',
+      id: currentCampaign || currentChallenge,
+      name: authored?.name || `${game.map.name} skirmish`,
+    });
+  } catch { reportFault = true; }
+}
+function sampleBattleReport() {
+  if (!battleJournal) return;
+  try { battleJournal.sample(game); }
+  catch { battleJournal = null; reportFault = true; }
+}
+function finishBattleReport() {
+  hasLastResult = true;
+  $('lastResult').classList.remove('hidden');
+  try {
+    if (!battleJournal || reportFault) throw new Error('Report observation unavailable');
+    const targets = currentCampaign ? getCampaignTargets(game, currentCampaign)
+      : currentChallenge ? getChallengeTargets(game, currentChallenge).map((target) => ({...target,kind:'destroy',side:1})) : [];
+    const report = battleJournal.finish(game, {objectiveOutcome, targets});
+    const markup = renderBattleReport(report);
+    lastBattleReport = report;
+    $('resultReport').innerHTML = markup;
+    $('resultReport').classList.remove('hidden');
+  } catch {
+    lastBattleReport = null;
+    $('resultReport').classList.add('hidden');
+    $('resultReportIssue').textContent = 'The detailed report is unavailable. Your battle result is still valid.';
+    $('resultReportIssue').classList.remove('hidden');
+  }
+  $('resultBody').scrollTop = 0;
+}
+function revealBattleReport(report, focus = false) {
+  requestAnimationFrame(() => {
+    if (!report?.open || report !== $('resultReport').querySelector('details.battle-report') || $('resultModal').classList.contains('hidden')) return;
+    const body = $('resultBody'), summary = report.querySelector('summary');
+    if (!summary) return;
+    // Keep the action footer fixed and move only the result's single scroll area.
+    // A native disclosure click retains its focus; explicit reopening may focus it.
+    const offset = summary.getBoundingClientRect().top - body.getBoundingClientRect().top;
+    body.scrollTop = Math.max(0, Math.min(body.scrollHeight - body.clientHeight, body.scrollTop + offset));
+    if (focus) summary.focus({preventScroll:true});
+  });
+}
+$('resultReport').addEventListener('toggle', (event) => {
+  if (event.target.matches('details.battle-report') && event.target.open) revealBattleReport(event.target);
+}, true);
+$('lastResult').onclick = () => {
+  if (!hasLastResult || recoveryHold || profileGate) return;
+  $('welcome').classList.add('hidden');
+  $('resultModal').classList.remove('hidden');
+  const report = $('resultReport').querySelector('details');
+  if (report) {
+    report.open = true;
+    revealBattleReport(report, true);
+  }
+};
+$('resultReport').addEventListener('click', (event) => {
+  if (!event.target.closest('[data-report-download]') || !lastBattleReport) return;
+  const status = $('resultReport').querySelector('[data-report-status]');
+  let url, anchor;
+  try {
+    if (location.protocol === 'ironroot:') throw new Error('Report downloads are not enabled in the desktop shell yet. Use the browser edition.');
+    const text = exportBattleReport(lastBattleReport);
+    url = URL.createObjectURL(new Blob([text], {type:'application/json'}));
+    anchor = document.createElement('a');
+    anchor.href = url;
+    const name = (lastBattleReport.context.id || lastBattleReport.context.mode).replace(/[^a-z0-9-]/gi,'-').slice(0,40);
+    anchor.download = `ironroot-report-${name}-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.append(anchor);
+    anchor.click();
+    status.textContent = 'Report download started. Check your browser’s downloads to keep it.';
+  } catch (error) {
+    status.textContent = error.message || 'The report download could not start. The report remains available on this page.';
+  } finally {
+    anchor?.remove();
+    if (url) setTimeout(() => URL.revokeObjectURL(url), 10000);
+  }
+});
 $('start').onclick = () => start();
 function showTitle() {
   if (recoveryHold || profileGate) {
@@ -692,6 +914,11 @@ function updateResume() {
           throw Error('Invalid mission');
         valid = Game.restore(data.game);
       } else valid = Game.restore(data);
+      const authored = mid
+        ? CAMPAIGN_MISSIONS.find((m) => m.id === mid)
+        : cid ? CHALLENGES.find((c) => c.id === cid) : null;
+      if (authored && valid.map.id !== (authored.mapId || 'classic'))
+        throw Error('Saved mission battlefield does not match its briefing');
       if (valid.state.winner !== null) throw Error('Battle ended');
     }
   } catch {
@@ -704,7 +931,12 @@ function updateResume() {
     : '';
   button.classList.toggle('hidden', !valid);
   if (valid) {
-    button.textContent = `RESUME ${mid ? 'MISSION' : cid ? 'TRIAL' : 'BATTLE'} · ${timeText(valid.state.time)}`;
+    const name = mid
+      ? `MISSION · ${CAMPAIGN_MISSIONS.find((m) => m.id === mid).name.toUpperCase()}`
+      : cid
+        ? `TRIAL · ${CHALLENGES.find((c) => c.id === cid).name.toUpperCase()}`
+        : valid.map.id === 'classic' ? 'BATTLE' : valid.map.name.toUpperCase();
+    button.textContent = `RESUME ${name} · ${timeText(valid.state.time)}`;
     button.onclick = () => start(valid, cid, mid);
   }
 }
@@ -766,6 +998,7 @@ function finish() {
   $('resultTime').textContent = timeText(game.state.time);
   $('resultKills').textContent = game.state.stats.kills[0];
   $('resultBuilt').textContent = game.state.stats.built[0];
+  finishBattleReport();
   $('resultObjectives').classList.toggle('hidden', !mission);
   $('resultObjectives').textContent = '';
   if (mission) {
@@ -796,6 +1029,7 @@ function finish() {
     challengeId: currentChallenge,
     campaignId: currentCampaign,
     difficulty: game.difficulty,
+    ...(game.map.id !== 'classic' ? { mapId: game.map.id } : {}),
     time: game.state.time,
     kills: game.state.stats.kills[0],
     built: game.state.stats.built[0],
@@ -882,7 +1116,13 @@ $('battle').addEventListener('pointerup', (e) => {
 function activateBattlePoint(w) {
   if (!canInteract()) return;
   if (ui.build) {
-    if (w.x < 180 || w.x > 1390 || w.y < 165 || w.y > 740) {
+    const bounds = buildBounds(game.map, 0);
+    if (
+      w.x < bounds.minX - 20 ||
+      w.x > bounds.maxX + 70 ||
+      w.y < bounds.minY - 15 ||
+      w.y > bounds.maxY + 20
+    ) {
       toast('Build within your own frontier. Drag back toward your citadel.');
       sound('error');
       return;
@@ -925,12 +1165,22 @@ function activateBattlePoint(w) {
     if (ui.selected) sound('click');
   }
 }
+function resetBattleGesture() {
+  activePointers.clear();
+  multiTouch = false;
+  pointer = null;
+  ui.dragging = false;
+  $('battle').classList.remove('dragging');
+}
 $('battle').addEventListener('pointercancel', (e) => {
   activePointers.delete(e.pointerId);
   if (activePointers.size === 0) multiTouch = false;
   pointer = null;
   ui.dragging = false;
   $('battle').classList.remove('dragging');
+});
+$('battle').addEventListener('lostpointercapture', (e) => {
+  if (pointer?.id === e.pointerId) resetBattleGesture();
 });
 $('battle').addEventListener('pointerleave', () => {
   if (!pointer) ui.pointer = null;
@@ -948,7 +1198,7 @@ $('battle').addEventListener(
 );
 $('minimap').addEventListener('pointerdown', (e) => {
   const r = $('minimap').getBoundingClientRect();
-  renderer.camera = ((e.clientX - r.left) / r.width) * 3200;
+  renderer.camera = ((e.clientX - r.left) / r.width) * game.map.width;
   renderer.clampCamera();
   follow = false;
 });
@@ -958,7 +1208,11 @@ window.addEventListener('keydown', (e) => {
     if (!$('backupModal').classList.contains('hidden')) hideBackup();
     else if (!$('settingsModal').classList.contains('hidden')) hideSettings();
     else if (!$('helpModal').classList.contains('hidden')) hideHelp();
-    else cancel();
+    else if (!$('resultModal').classList.contains('hidden') && $('resultReport').querySelector('details')?.open) {
+      const report = $('resultReport').querySelector('details');
+      report.open = false;
+      report.querySelector('summary').focus();
+    } else cancel();
   }
   if (
     !started ||
@@ -1048,6 +1302,8 @@ window.addEventListener('storage', (event) => {
   if (!started) updateResume();
 });
 new ResizeObserver(() => renderer.resize()).observe($('battlefield'));
+new ResizeObserver(positionToast).observe($('objectiveHUD'));
+new ResizeObserver(() => syncChoice()).observe($('buildCards'));
 let hudTimer = 0,
   lastProfileCheck = 0;
 function updateHUD() {
@@ -1072,7 +1328,7 @@ function updateHUD() {
       ? 'CITADELS CRUMBLING<small>BREAK THE ENEMY FIRST</small>'
       : s.overtime
         ? 'OVERTIME<small>FASTER WAVES · STRONGER SIEGE</small>'
-        : 'THE LONG REACH<small>THREE LANES · ONE FRONTIER</small>';
+        : `${game.map.id === 'classic' ? 'THE LONG REACH' : game.map.name.toUpperCase()}<small>${game.map.lanes.length === 2 ? 'TWO' : 'THREE'} LANES · ${game.map.buildLimit} SITES</small>`;
   document
     .querySelectorAll('.build-card')
     .forEach((b) =>
@@ -1206,6 +1462,7 @@ function frame(now) {
       );
       if (outcome.completed || outcome.failed) objectiveOutcome = outcome;
     } else game.update(dt * speed);
+    sampleBattleReport();
     if (follow)
       renderer.camera +=
         (game.state.frontline - renderer.camera) * Math.min(1, dt * 3);
@@ -1315,6 +1572,14 @@ for (const button of document.querySelectorAll('[data-mode]'))
     setMode(button.dataset.mode);
     sound('click');
   };
+function revealCampaignChapter() {
+  const strip = $('campaignChapters'), active = strip.querySelector('.active');
+  if (mode !== 'campaign' || !active || strip.clientWidth <= 0) return;
+  const frame = strip.getBoundingClientRect(), item = active.getBoundingClientRect();
+  // Only move this horizontal strip. scrollIntoView also moves the briefing/page.
+  if (item.left < frame.left) strip.scrollLeft += item.left - frame.left;
+  else if (item.right > frame.right) strip.scrollLeft += item.right - frame.right;
+}
 function renderCampaign() {
   const overview = getCampaignOverview(campaignProgress),
     mission =
@@ -1324,7 +1589,8 @@ function renderCampaign() {
       CAMPAIGN_CHAPTERS.find((c) => c.id === selectedChapter) ||
       CAMPAIGN_CHAPTERS[0];
   $('campaignProgressText').textContent =
-    `${overview.cleared}/12 missions · ${overview.stars}/36 stars`;
+    `${overview.cleared}/${overview.total} missions · ${overview.stars}/${overview.maxStars} stars`;
+  $('campaignCount').textContent = String(overview.total);
   $('campaignChapters').textContent = '';
   for (const c of overview.chapters) {
     const button = document.createElement('button');
@@ -1374,6 +1640,8 @@ function renderCampaign() {
     .map((t) => `<li>${t}</li>`)
     .join('');
   $('campaignHint').textContent = mission.hint;
+  $('campaignScoutToggle').textContent = `Scout battlefield · ${getMap(mission.mapId || 'classic').name}`;
+  $('campaignScoutReport').innerHTML = renderMissionScouting(mission);
   $('campaignMedals').textContent =
     'Bonus stars: ' + mission.medals.map((m) => m.label).join(' · ');
   const unlocked = isMissionUnlocked(campaignProgress, mission.id);
@@ -1389,10 +1657,12 @@ function renderCampaign() {
     $('start').disabled = !unlocked;
     $('start').innerHTML =
       (unlocked ? 'BEGIN MISSION' : 'MISSION LOCKED') + ' <span>→</span>';
+    requestAnimationFrame(revealCampaignChapter);
   }
 }
 renderChallenge();
 renderCampaign();
+new ResizeObserver(revealCampaignChapter).observe($('campaignChapters'));
 let settingsWasPaused = false;
 function showSettings() {
   settingsWasPaused = paused;
@@ -1436,7 +1706,9 @@ function syncSettings() {
       : row.challengeId
         ? CHALLENGES.find((c) => c.id === row.challengeId)?.name ||
           'Field trial'
-        : 'Skirmish';
+        : typeof row.mapId === 'string' && Object.hasOwn(MAPS, row.mapId)
+          ? `Skirmish · ${MAPS[row.mapId].name}`
+          : 'Skirmish';
     p.textContent = `${row.draw ? 'DRAW' : row.won ? 'VICTORY' : 'DEFEAT'} · ${label} · ${timeText(Number.isFinite(row.time) ? row.time : 0)}`;
     $('battleHistory').append(p);
   }
@@ -1500,7 +1772,66 @@ const dialogLayers = [
 ];
 let activeDialog = null;
 const dialogFocus = new WeakMap();
+const inputScope = createInputScopeGuard();
+function syncInputScope() {
+  const dialog = dialogLayers.findLast((layer) => !layer.classList.contains('hidden'));
+  const next = dialog || (!$('pauseVeil').classList.contains('hidden')
+    ? 'pause'
+    : game.state.winner !== null || objectiveOutcome ? 'ended' : 'battle');
+  if (inputScope.setScope(next)) resetBattleGesture();
+}
+function guardInput(event, check) {
+  // Read the DOM too: a scope can change during the same event turn, before
+  // the MutationObserver has restored focus/inert state.
+  syncInputScope();
+  if (!check()) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+}
+document.addEventListener('pointerdown', (event) => {
+  syncInputScope();
+  inputScope.pointerDown(event);
+}, true);
+document.addEventListener('pointerup', (event) => {
+  guardInput(event, () => inputScope.pointerEnd(event));
+}, true);
+document.addEventListener('pointercancel', (event) => {
+  // Let the original target clean up its own drag/multi-touch state.
+  inputScope.pointerEnd(event, true);
+}, true);
+document.addEventListener('click', (event) => {
+  guardInput(event, () => inputScope.click(event));
+}, true);
+document.addEventListener('keydown', (event) => {
+  guardInput(event, () => inputScope.keyDown(event));
+}, true);
+document.addEventListener('keyup', (event) => {
+  guardInput(event, () => inputScope.keyUp(event));
+}, true);
+window.addEventListener('blur', () => {
+  inputScope.interrupt();
+  resetBattleGesture();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    inputScope.interrupt();
+    resetBattleGesture();
+  }
+});
+new MutationObserver(syncInputScope).observe($('pauseVeil'), {
+  attributes: true,
+  attributeFilter: ['class'],
+});
+function dialogControls(layer) {
+  return [...layer.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),summary,[tabindex="0"]')]
+    .filter((element) => !element.closest('.hidden,[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+}
+function dialogDefaultFocus(layer) {
+  const controls = dialogControls(layer), preferred = layer.querySelector('[data-dialog-focus]');
+  return controls.includes(preferred) ? preferred : controls[0];
+}
 function syncDialogs() {
+  syncInputScope();
   const visible = dialogLayers.filter((x) => !x.classList.contains('hidden')),
     next = visible.at(-1) || null;
   document.querySelector('.app').inert = !!next;
@@ -1515,7 +1846,7 @@ function syncDialogs() {
   activeDialog = next;
   if (next) {
     dialogFocus.set(next, document.activeElement);
-    const target = next.querySelector('button:not([disabled])');
+    const target = dialogDefaultFocus(next);
     target?.focus();
   } else {
     const target = previous && dialogFocus.get(previous);
@@ -1530,7 +1861,7 @@ function keepDialogFocus() {
     activeDialog.contains(document.activeElement)
   )
     return;
-  activeDialog.querySelector('button:not([disabled])')?.focus();
+  dialogDefaultFocus(activeDialog)?.focus();
 }
 for (const event of ['focusin', 'focusout', 'click']) {
   document.addEventListener(event, () => {
@@ -1556,11 +1887,7 @@ for (const layer of dialogLayers)
   });
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Tab' || !activeDialog) return;
-  const items = [
-    ...activeDialog.querySelectorAll(
-      'button:not([disabled]),a[href],input,select,summary,[tabindex="0"]',
-    ),
-  ].filter((x) => !x.closest('.hidden'));
+  const items = dialogControls(activeDialog);
   if (!items.length) {
     e.preventDefault();
     return;
@@ -1799,10 +2126,12 @@ $('backupFile').onchange = async () => {
           ? CAMPAIGN_MISSIONS.find((m) => m.id === battle.campaignId).name
           : battle.challengeId
             ? CHALLENGES.find((c) => c.id === battle.challengeId).name
-            : 'Skirmish'
+            : battle.game.mapId
+              ? `Skirmish · ${getMap(battle.game.mapId).name}`
+              : 'Skirmish'
         : null;
     $('backupSummary').textContent =
-      `${overview.cleared}/12 campaign missions · ${overview.stars}/36 stars · ${Object.keys(parsed.data.trials).length}/5 trial records. ${battle ? `Saved battle: ${battleName} at ${timeText(battle.game.state.time)}.` : 'No battle in this file. Your current saved battle will be removed.'}`;
+      `${overview.cleared}/${overview.total} campaign missions · ${overview.stars}/${overview.maxStars} stars · ${Object.keys(parsed.data.trials).length}/5 trial records. ${battle ? `Saved battle: ${battleName} at ${timeText(battle.game.state.time)}.` : 'No battle in this file. Your current saved battle will be removed.'}`;
     $('backupImportStatus').textContent = '';
     $('backupRecoveryConsent').checked = false;
     updateRecoveryUI();

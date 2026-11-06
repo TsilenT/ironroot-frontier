@@ -9,7 +9,7 @@ const count=Number(process.argv[2]||12);
 if(!Number.isInteger(count)||count<1||count>100)throw Error('Sample count must be an integer from 1 to 100.');
 const results=[];
 for(const mission of CAMPAIGN_MISSIONS) {
-  const row={mission:mission.id,samples:count,clears:0,masteryClears:0,threeStars:0,minSeconds:Infinity,maxSeconds:0,minCitadelHP:6000,failures:[],missedMedals:[]};
+  const row={mission:mission.id,mapId:mission.mapId,chapter:mission.chapterId,samples:count,clears:0,masteryClears:0,threeStars:0,minSeconds:Infinity,maxSeconds:0,minCitadelHP:6000,failures:[],missedMedals:[]};
   for(let index=0;index<count;index++)for(const mastery of [false,true]) {
     const seed=index===0?mission.seed:(Math.imul(index,2654435761)>>>0);
     const {game,outcome}=playCampaign(createCampaignMission,evaluateCampaignMission,mission,{seed,mastery,restore:index%4===3?data=>Game.restore(data):null});
@@ -23,4 +23,4 @@ for(const mission of CAMPAIGN_MISSIONS) {
   row.maxSeconds=+row.maxSeconds.toFixed(2);row.minCitadelHP=Math.round(row.minCitadelHP);
   results.push(row);
 }
-console.log(JSON.stringify({engineSha,note:'Reference-policy outcomes, not human difficulty or proof that every strategy is viable. Only the initial combat seed varies; paid action rules are unchanged.',results},null,2));
+console.log(JSON.stringify({engineSha,legacyMissions:12,legacyStars:36,totalMissions:CAMPAIGN_MISSIONS.length,totalStars:CAMPAIGN_MISSIONS.length*3,note:'Reference-policy outcomes, not human difficulty or proof that every strategy is viable. Only the initial combat seed varies; paid action rules are unchanged.',results},null,2));
