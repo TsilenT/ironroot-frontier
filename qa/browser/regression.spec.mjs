@@ -203,11 +203,16 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
 test('failed save retains the previous durable snapshot and can recover', async ({page}) => {
   await start(page); await pause(page);
   const prior = await page.evaluate(key=>localStorage.getItem(key),SAVE);
+  // Identical paused snapshots deliberately skip writes. Advance the real
+  // simulation below the five-second autosave interval before testing failure.
+  await press(page,'#resume'); await page.waitForTimeout(350);
   await page.evaluate(() => {
     window.originalSetItem=Storage.prototype.setItem;
     Storage.prototype.setItem=()=>{throw new DOMException('Quota full','QuotaExceededError');};
   });
+  await press(page,'#pause'); await expect(page.locator('#pauseVeil')).toBeVisible();
   await press(page,'#saveExit'); await expect(page.locator('#pauseVeil')).toBeVisible();
+  await expect(page.locator('#welcome')).toBeHidden();
   expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBe(prior);
   await page.evaluate(() => {Storage.prototype.setItem=window.originalSetItem; delete window.originalSetItem;});
   await press(page,'#saveExit'); await expect(page.locator('#welcome')).toBeVisible();

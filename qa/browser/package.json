@@ -1,6 +1,6 @@
 {
   "name": "ironroot-browser-regressions",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "playwright test",
     "list": "playwright test --list",
-    "check": "node --check regression.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs"
+    "check": "node --check regression.spec.mjs && node --check accessibility-backup.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0"
