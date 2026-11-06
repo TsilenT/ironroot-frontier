@@ -1,0 +1,17 @@
+{
+  "name": "ironroot-browser-regressions",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "list": "playwright test --list",
+    "check": "node --check regression.spec.mjs && node --check playwright.config.mjs && node --check server.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0"
+  }
+}
