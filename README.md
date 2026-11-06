@@ -27,7 +27,7 @@ npm run check
 - Drag the map or tap its minimap to navigate.
 - Tap an owned building to upgrade or salvage it.
 - 1–7: choose building. R: rally strike. Space: pause. Escape: cancel. Arrow keys: camera.
-- Battles autosave in the browser every five seconds and on pause. Resume from the title screen. Saves remain on that browser/device.
+- Battles and trials autosave in the browser every five seconds and on pause. Resume from the title screen. Saves remain on that browser/device.
 - Switching away from the page pauses the battle.
 
 ## Roster
@@ -46,6 +46,7 @@ npm run check
 
 - `dist/engine.js`: seeded DOM-free fixed-step simulation, economy, targeting, combat, AI, persistence.
 - `dist/render.js`: original procedural canvas terrain and original 2D models, animation and effects.
+- `dist/challenges.js`: five authored missions, briefings, deterministic setups and objective evaluation.
 - `dist/app.js`: input, camera coordination, menus, HUD, local saves and audio.
 - `dist/styles.css`, `dist/index.html`: responsive shell and accessible controls.
 - `tests/`: deterministic engine regression tests.
@@ -59,9 +60,9 @@ The private source repository contains source, tests and development records. Th
 
 ## Known limitations
 
-- Solo skirmishes only; no network PvP, matchmaking, account services or authoritative server.
-- One battlefield layout; difficulty varies AI decisions, not faction content.
+- Solo skirmishes and five authored field trials; no network PvP, matchmaking, account services or authoritative server.
+- One battlefield layout, three skirmish difficulties and five fixed-formation challenges; no full campaign or faction roster yet.
 - Local saves only. Clearing browser data removes progress.
 - Balance is being iterated from deterministic simulations plus browser reviews, not claimed to be competitively solved.
 - Canvas battlefield has keyboard shortcuts and textual controls, but full nonvisual battlefield accessibility remains unfinished.
-- No Steam packaging, controller mapping, platform achievements, localization, store assets or certification.
+- Desktop packaging is being prepared separately; controller mapping, Steamworks/platform achievements, localization, store assets and certification remain unfinished.
