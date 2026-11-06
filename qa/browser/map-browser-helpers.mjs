@@ -1,3 +1,4 @@
+import {installCanvasObservation} from './canvas-observation.mjs';
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base,expect} from '@playwright/test';
 import {SAVE} from './map-fixtures.mjs';
@@ -53,34 +54,7 @@ export async function downloadBackup(page){
 // Pass-through observations of native Canvas2D calls, not a mock canvas or app
 // state hook. Actual drawing still runs unchanged in Chromium. Retain one frame.
 export async function observeCanvas(page){
-  await page.addInitScript(()=>{
-    const proto=CanvasRenderingContext2D.prototype;
-    window.__qaCanvas={mini:null,battle:null};
-    let mini=null,battle=null,path=[];
-    for(const method of ['setTransform','moveTo','lineTo','stroke','fillRect','strokeRect','drawImage','fillText']){
-      const original=proto[method];
-      proto[method]=function(...args){
-        const id=this.canvas.id;
-        if(id==='minimap'){
-          if(method==='setTransform'){mini={lines:[],fills:[],viewport:null};path=[];}
-          if(method==='moveTo')path=[args];
-          if(method==='lineTo')path.push(args);
-          if(method==='stroke'&&mini)mini.lines.push(path.map(point=>[...point]));
-          if(method==='fillRect'&&mini)mini.fills.push({args:[...args],color:this.fillStyle});
-          if(method==='strokeRect'&&mini){mini.viewport=[...args];window.__qaCanvas.mini=mini;}
-        }
-        if(id==='battle'){
-          if(method==='setTransform'){battle={slots:[],text:[],terrain:null};window.__qaCanvas.battle=battle;}
-          if(method==='strokeRect'&&battle&&args[2]===110&&args[3]===110&&this.lineWidth===1.5)
-            battle.slots.push([args[0]+55,args[1]+55]);
-          if(method==='drawImage'&&battle&&!battle.terrain&&args[0] instanceof HTMLCanvasElement&&args.length===3)
-            battle.terrain={width:args[0].width,height:args[0].height};
-          if(method==='fillText'&&battle)battle.text.push({text:String(args[0]),font:this.font});
-        }
-        return original.apply(this,args);
-      };
-    }
-  });
+  await page.addInitScript(installCanvasObservation);
 }
 export async function canvasFrame(page){return page.evaluate(()=>window.__qaCanvas);}
 export async function expectCamera(page,map,target,tolerance=3){

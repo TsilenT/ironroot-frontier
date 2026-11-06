@@ -149,7 +149,7 @@ for(const mission of FRONTIER_MISSIONS){
     await toggle.focus();await page.keyboard.press('Enter');await expect(disclosure).toHaveJSProperty('open',true);await expect(toggle).toBeFocused();
     await expect(toggle).toContainText(map.name);await expect(svg).toHaveAttribute('viewBox',`0 0 ${map.width} ${map.height}`);
     await expect(svg).toHaveAttribute('role','img');await expect(svg).toHaveAttribute('aria-label',new RegExp(mission.name));
-    await expect(svg).toHaveAttribute('aria-label',/Full building names, levels and roads follow the map/);
+    await expect(svg).toHaveAttribute('aria-label',/Building names, levels and roads are listed below the map\./);
     await expect(page.locator('.scouting-map-facts')).toHaveText(report.map.summary+'.');await expect(page.locator('.scouting-objectives')).toHaveText(report.objectives.summary);
     await expect(page.locator('.scouting-road')).toHaveCount(map.lanes.length);await expect(page.locator('.scouting-protect')).toHaveCount(report.objectives.protectedCount);await expect(page.locator('.scouting-destroy')).toHaveCount(report.objectives.markedCount);
     for(const army of report.armies){
@@ -202,7 +202,7 @@ for(const mission of FRONTIER_MISSIONS){
           expect(Math.ceil(target.building.maxHp)).toBe(980);
           await expect(page.locator('#selectionStats > span').first()).toHaveText(/^♥ \d+ \/ 980$/);
         }
-        await expect(page.locator('#sell')).toBeDisabled();await expect(page.locator('#sell')).toHaveText('Protected objective');await expect(page.locator('#selectionDescription')).toContainText('Keep this objective alive');
+        await expect(page.locator('#sell')).toBeDisabled();await expect(page.locator('#sell')).toHaveText('Protected objective');await expect(page.locator('#selectionDescription')).toContainText('Keep this building standing.');
         await press(page,'#closeSelection');
       }
       const protectedIds=targets.map(t=>t.originalId),ordinary=game.state.buildings.find(b=>b.side===0&&!protectedIds.includes(b.id));expect(ordinary).toBeTruthy();

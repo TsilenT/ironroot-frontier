@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Game } from '../dist/engine.js';
+import {runInContext} from 'node:vm';
+import { Game, buildBounds, SPELL } from '../dist/engine.js';
 import { createCampaignMission } from '../dist/campaign.js';
 import { CHALLENGES, createChallenge } from '../dist/challenges.js';
 import { inspectMobileGeometry } from '../dist/mobile-battlefield.js';
@@ -69,5 +70,32 @@ test('same-page transitions preserve node identity across campaign, protected mi
   assert.equal(h.$('compactBuild').parentNode,h.$('objectiveHUD'));
   h.resize(320,480);assert.equal(h.$('compactBuild').parentNode,h.$('protectedNavigation'));
   assert.deepEqual(ids.map(h.$),nodes);
+ }
+});
+
+// Real production handlers, ordinary paid commands and HUD refresh. This is
+// source/Node evidence; click/touch actionability is separately browser-gated.
+for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed'])test(`${rulesetId} armed placement survives help and the next HUD refresh enables real Cancel, Build and Volley`,()=>{
+ for(const [width,height] of [[390,650],[320,568],[844,390]]){
+  const h=startupHarness({width,height}),source=h.source;
+  h.c.mode='skirmish';h.c.selectedRuleset=rulesetId;h.c.start();
+  for(const [from,to]of [['function selectBuild(','function cancel()'],["$('rally').onclick =",'function pauseControl('],['function showHelp()','const mapDescriptions ='],['function activateBattlePoint(','function resetBattleGesture()']])
+    runInContext(source.slice(source.indexOf(from),source.indexOf(to,source.indexOf(from))),h.c);
+  h.c.buildBounds=buildBounds;h.c.renderer.snap=point=>point;h.c.selectBuild('wardenLodge');h.c.activateBattlePoint({x:550,y:450});
+  assert.equal(h.c.ui.build,'wardenLodge','normal remaining gold keeps placement armed');
+  assert.equal(h.c.game.state.gold[0],210);assert.equal(h.c.game.state.buildings.filter(b=>b.type==='wardenLodge').length,1);
+  for(let tick=0;tick<26;tick++)h.c.game.update(.05);
+  h.c.pause(true);h.c.updateHUD();h.$('help').onclick();
+  const before=h.c.game.serialize();h.$('rally').onclick();assert.deepEqual(h.c.game.serialize(),before,'paused help cannot spend');
+  h.$('guideDone').onclick();assert.equal(h.c.paused,true);h.c.pause(false,{explicit:true});assert.equal(h.c.paused,false);
+  // Native actions wait for the app's normal enabled refresh rather than
+  // abandoning the requested drawer open after one disabled observation.
+  h.c.updateHUD();assert.equal(h.$('compactBuild').disabled,false);
+  h.$('compactBuild').onclick();assert.equal(h.c.ui.build,null);assert.equal(h.$('app').classList.contains('compact-build-open'),false);
+  h.$('compactBuild').onclick();assert.equal(h.$('app').classList.contains('compact-build-open'),true);
+  h.c.updateHUD();assert.equal(h.$('app').classList.contains('compact-build-open'),true,'HUD does not spontaneously close an open drawer');
+  h.$('rally').onclick();assert.equal(h.c.ui.spell,true);assert.equal(h.$('app').classList.contains('compact-build-open'),false);
+  const gold=h.c.game.state.gold[0];h.c.activateBattlePoint({x:690,y:450});
+  assert.equal(h.c.game.state.gold[0],gold-SPELL.cost);assert.equal(h.c.game.state.spellCooldown[0],SPELL.cooldown);assert.equal(h.c.ui.spell,false);
  }
 });

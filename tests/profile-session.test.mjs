@@ -11,6 +11,8 @@ import { Game } from '../dist/engine.js';
 import { encodeBattle, decodeBattle, scenarioForBattle } from '../dist/battle-codec.js';
 import { getBattleWriteFailure } from '../dist/persistence.js';
 import { CHALLENGES } from '../dist/challenges.js';
+import {startupHarness} from './mobile-startup-fixture.mjs';
+import {invalidMapFixtures,NEW_MAP_IDS,authoredMap} from '../qa/browser/map-fixtures.mjs';
 
 const keys = Object.values(K);
 const encoded = (epoch, phase) => JSON.stringify({ format: 'ironroot-profile', version: 1, epoch, phase });
@@ -267,7 +269,7 @@ const app=readFileSync(new URL('../dist/app.js', import.meta.url),'utf8');
 const segment=app.slice(app.indexOf('// Portable backups'),app.indexOf('// Experimental standard-controller'));
 function element(hidden=false){const cl=new Set(hidden?['hidden']:[]);return {classList:{contains:k=>cl.has(k),add:k=>cl.add(k),remove:k=>cl.delete(k),toggle(k,x){if(x)cl.add(k);else cl.delete(k);}},textContent:'',checked:false,files:[],value:'',disabled:false,click(){}};}
 function uiRaw(){const data=new Map();return{data,getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};}
-function harness(r=uiRaw()){const p=createProfileSession(()=>r,{requiredProtocolVersion:2}),s=createStorage(()=>p.storage),battleSession=createSaveSession(s,K.battle);battleSession.claim();const nodes=new Map();const $=id=>{if(!nodes.has(id))nodes.set(id,element(['backupModal','profileRecovery','backupRecoveryRow'].includes(id)));return nodes.get(id);};
+function harness(r=uiRaw(),protocol=2){const p=createProfileSession(()=>r,{requiredProtocolVersion:protocol}),s=createStorage(()=>p.storage),battleSession=createSaveSession(s,K.battle);battleSession.claim();const nodes=new Map();const $=id=>{if(!nodes.has(id))nodes.set(id,element(['backupModal','profileRecovery','backupRecoveryRow'].includes(id)));return nodes.get(id);};
  const c={encodeBattle,decodeBattle,scenarioForBattle,getBattleWriteFailure,battleSafetyReason:null,$,profileSession:p,storage:s,battleSession,readHistoryState,historySession:createHistorySession(s,K.history,{canWrite:()=>p.status().canWrite}),preferenceSession:createPreferenceSession(s,K.settings,{canWrite:()=>p.status().canWrite}),retryHistorySave(){return true;},retryPreferences(){return true;},HISTORY:K.history,SAVE:K.battle,createBackup:(s,o)=>createBackup(s,o&&JSON.parse(JSON.stringify(o))),parseBackup,restoreBackup,MAX_BACKUP_BYTES,CAMPAIGN_MISSIONS,CHALLENGES,getCampaignOverview,timeText:String,localStorage:r,preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},campaignProgress:createCampaignProgress(),trialRecords:{},currentCampaign:null,currentChallenge:null,game:new Game(),started:true,paused:true,objectiveOutcome:null,settingsWasPaused:false,recoveryHold:null,profileGate:null,pendingFinalizeOutcome:null,allowProfileReload:false,importGeneration:0,retainedHistory:null,knownHistory:[],knownHistoryAvailable:true,progressDirty:false,location:{protocol:'https:',reload(){c.reloaded=true;}},showSettings(){c.paused=true;$('settingsModal').classList.remove('hidden');},showTitle(){c.titleShown=true;c.started=false;},pauseControl(){},viewportPause:{active:false},syncDialogs(){},setCompactBuildOpen(){},toast(){},save(){c.saved=(c.saved||0)+1;return true;},setTimeout,URL,Blob,document:{body:{append(){}},createElement(){return{click(){},remove(){}};}}};
  vm.createContext(c);vm.runInContext(segment,c);vm.runInContext(app.slice(app.indexOf('function pause(value,'),app.indexOf("$('pause').onclick =")),c);vm.runInContext(app.slice(app.indexOf('function hideSettings()'),app.indexOf('function syncSettings()')),c);vm.runInContext('downloadBackup = text => { exportedText = text; };',c);return {c,r,p,$};}
 const payload=n=>{const x=JSON.parse(createBackup(uiRaw()));if(n)x.data.campaign.missions.emberwatch={completed:true,stars:n,bestTime:30};return JSON.stringify(x);};
@@ -366,4 +368,45 @@ test('UI: pending results and unsaved preferences are included in a readable ful
   const before=[...h.r.data];h.$('exportBackup').onclick();const exported=parseBackup(h.c.exportedText);
   assert.deepEqual(exported.data.history,[record]);assert.equal(exported.data.settings.volume,.25);
   assert.deepEqual([...h.r.data],before);assert.equal(h.c.historySession.pendingCount(),1);assert.equal(h.c.preferenceSession.dirty(),true);
+});
+
+// These ten variants are the same malformed/mismatched-map families in the
+// browser gate. Actual runtime handlers run here; DOM focus/layout is adapted,
+// so this is not native browser or physical-input evidence.
+const corruptMaps=[...invalidMapFixtures(),...NEW_MAP_IDS.flatMap(id=>['campaign','challenges'].map(mode=>({name:id+' masquerading as '+mode,envelope:authoredMap(id,mode)})))];
+for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start with modal isolation until explicit backup replacement',async()=>{
+  const r=uiRaw(),bytes=JSON.stringify(envelope);r.data.set(K.battle,bytes);r.data.set('qa.unrelated','keep me');
+  const h=harness(r,3),{$,c}=h;
+  c.started=false;c.paused=false;c.resumeProblem=null;c.activeDialog=null;c.dialogFocus=new WeakMap();c.syncInputScope=()=>{};c.syncSettings=()=>{};
+  c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
+  for(const layer of c.dialogLayers){
+    layer.classList.add('hidden');layer.inert=false;layer.aria={};
+    layer.querySelector=()=>({setAttribute:(key,value)=>layer.aria[key]=value});
+  }
+  $('welcome').classList.remove('hidden');$('battle').focus=()=>{};
+  const appNode={inert:false};c.document.querySelector=selector=>{assert.equal(selector,'.app');return appNode;};c.document.activeElement=null;c.dialogDefaultFocus=()=>null;
+  for(const [from,to]of [['function updateResume()','\nupdateResume();'],['function start(','function beginProtectedObjectives()'],['function showSettings()','function hideSettings()'],['function syncDialogs()','function keepDialogFocus()']])vm.runInContext(app.slice(app.indexOf(from),app.indexOf(to,app.indexOf(from))),c);
+  c.updateResume();assert.ok(c.resumeProblem);assert.equal($('resumeSaved').classList.contains('hidden'),true);
+  const before=[...r.data],game=c.game;
+  for(let attempt=0;attempt<2;attempt++){
+    c.start();c.syncDialogs();
+    assert.equal(c.started,false);assert.equal(c.game,game);assert.equal(appNode.inert,true);
+    assert.equal($('settingsModal').classList.contains('hidden'),false);assert.equal($('settingsModal').inert,false);
+    assert.equal($('settingsModal').aria['aria-hidden'],'false');assert.equal($('welcome').inert,true);
+    assert.match($('backupStatus').textContent,/original saved battle is unchanged/);assert.deepEqual([...r.data],before);
+    c.hideSettings();c.syncDialogs();assert.equal($('settingsModal').classList.contains('hidden'),true);
+  }
+  c.start();c.syncDialogs();$('confirmImport').onclick();assert.deepEqual([...r.data],before,'no chosen preview cannot authorize replacement');
+  const clean=payload(0);await choose(h,clean);c.syncDialogs();
+  assert.equal($('backupModal').inert,false);assert.equal($('settingsModal').inert,true);assert.deepEqual([...r.data],before,'preview is read-only');
+  $('cancelImport').onclick();c.syncDialogs();assert.equal($('settingsModal').inert,false);assert.deepEqual([...r.data],before,'Cancel is read-only');
+  await choose(h,clean);$('confirmImport').onclick();
+  assert.equal(c.reloaded,true);assert.equal(r.data.has(K.battle),false);assert.equal(r.data.get('qa.unrelated'),'keep me');
+  assert.deepEqual(JSON.parse(r.data.get(KEY)).version,3);assert.equal(JSON.parse(r.data.get(KEY)).phase,'ready');
+  // A new page, not the stale importing page, is admitted to normal play.
+  const fresh=startupHarness(),baseDollar=fresh.c.$;fresh.c.$=id=>id==='resumeSaved'?$('resumeSaved'):baseDollar(id);
+  const profile=createProfileSession(()=>r,{requiredProtocolVersion:3});Object.assign(fresh.c,{decodeBattle,storage:createStorage(()=>profile.storage),SAVE:K.battle,downloadBackup(){},mode:'skirmish',selectedMap:'twin-span'});
+  vm.runInContext(app.slice(app.indexOf('function updateResume()'),app.indexOf('\nupdateResume();')),fresh.c);fresh.c.updateResume();
+  assert.equal(fresh.c.resumeProblem,null);fresh.c.start();assert.equal(fresh.c.started,true);assert.equal(fresh.c.paused,false);
+  assert.equal(fresh.c.game.map.id,'twin-span');assert.equal(fresh.c.game.ruleset.id,'frontier-rootwarden-open');assert.equal(fresh.log.claims,1);
 });

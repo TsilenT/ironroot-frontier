@@ -1,0 +1,1319 @@
+{
+  "sourceCommit": "0823cb6776df37e2aa309e20fa329c565ca0a356",
+  "sourceThread": "01a1af09-12e4-75f9-9b43-88065838102b",
+  "sourceOutcome": {
+    "passed": 715,
+    "failed": 126,
+    "skipped": 3
+  },
+  "repairExecution": "UNRUN in browser; static/Node validation only",
+  "categories": [
+    {
+      "id": "protected-description",
+      "count": 16
+    },
+    {
+      "id": "scouting-accessibility",
+      "count": 16
+    },
+    {
+      "id": "training-interval-label",
+      "count": 4
+    },
+    {
+      "id": "backup-warning",
+      "count": 16
+    },
+    {
+      "id": "empty-history",
+      "count": 4
+    },
+    {
+      "id": "mine-upgrade-feedback",
+      "count": 4
+    },
+    {
+      "id": "training-review",
+      "count": 4
+    },
+    {
+      "id": "protected-corrupt-save",
+      "count": 40
+    },
+    {
+      "id": "build-slot-observer",
+      "count": 16
+    },
+    {
+      "id": "orientation-geometry",
+      "count": 4
+    },
+    {
+      "id": "rootwarden-drawer-wait",
+      "count": 2
+    }
+  ],
+  "instances": [
+    {
+      "project": "phone",
+      "file": "campaign.spec.mjs",
+      "title": "campaign protected mine has disabled salvage while normal buildings remain salvageable",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "campaign.spec.mjs",
+      "title": "campaign protected mine has disabled salvage while normal buildings remain salvageable",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "landscape",
+      "file": "campaign.spec.mjs",
+      "title": "campaign protected mine has disabled salvage while normal buildings remain salvageable",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "desktop",
+      "file": "campaign.spec.mjs",
+      "title": "campaign protected mine has disabled salvage while normal buildings remain salvageable",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground every protected starting structure disables salvage while an ordinary structure can be sold",
+      "category": "protected-description",
+      "expected": "Keep this objective alive",
+      "observed": "Keep this building standing. [unchanged building description]",
+      "source": "dist/app.js:updateSelection",
+      "repair": "Keep full protected meaning and disabled salvage; use exact current prefix."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "expanded-campaign.spec.mjs",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "category": "scouting-accessibility",
+      "expected": "Full building names, levels and roads follow the map",
+      "observed": "Building names, levels and roads are listed below the map.",
+      "source": "dist/scouting.js:svgFor",
+      "repair": "Require current accessibility sentence; retain mission/geometry/road/target assertions."
+    },
+    {
+      "project": "phone",
+      "file": "field-reference.spec.mjs",
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "category": "training-interval-label",
+      "expected": "Repeat spawn: 9 s",
+      "observed": "Training interval: 9 s",
+      "source": "dist/app.js:populateFieldGuide",
+      "repair": "Change exact dt locator; retain every exact dd stat and all counter economics."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "field-reference.spec.mjs",
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "category": "training-interval-label",
+      "expected": "Repeat spawn: 9 s",
+      "observed": "Training interval: 9 s",
+      "source": "dist/app.js:populateFieldGuide",
+      "repair": "Change exact dt locator; retain every exact dd stat and all counter economics."
+    },
+    {
+      "project": "landscape",
+      "file": "field-reference.spec.mjs",
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "category": "training-interval-label",
+      "expected": "Repeat spawn: 9 s",
+      "observed": "Training interval: 9 s",
+      "source": "dist/app.js:populateFieldGuide",
+      "repair": "Change exact dt locator; retain every exact dd stat and all counter economics."
+    },
+    {
+      "project": "desktop",
+      "file": "field-reference.spec.mjs",
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "category": "training-interval-label",
+      "expected": "Repeat spawn: 9 s",
+      "observed": "Training interval: 9 s",
+      "source": "dist/app.js:populateFieldGuide",
+      "repair": "Change exact dt locator; retain every exact dd stat and all counter economics."
+    },
+    {
+      "project": "phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {broken",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {broken",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "landscape",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {broken",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "desktop",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {broken",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: null",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: null",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "landscape",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: null",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "desktop",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: null",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {\"not\":\"an array\"}",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {\"not\":\"an array\"}",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "landscape",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {\"not\":\"an array\"}",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "desktop",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: {\"not\":\"an array\"}",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: [null,4,\"bad\",[]]",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: [null,4,\"bad\",[]]",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "landscape",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: [null,4,\"bad\",[]]",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "desktop",
+      "file": "regression.spec.mjs",
+      "title": "malformed history recovers through explicit retained-backup replacement: [null,4,\"bad\",[]]",
+      "category": "backup-warning",
+      "expected": "This replaces all campaign stars, trial records, preferences, battle history",
+      "observed": "This replaces this browser\u2019s campaign stars, trial records, preferences, battle history and saved battle, including your current battle. Export a backup first to keep your current progress.",
+      "source": "dist/index.html:#backupModal .backup-warning",
+      "repair": "Require complete actual warning and retain all replacement/recovery/storage checks."
+    },
+    {
+      "project": "phone",
+      "file": "storage-recovery.spec.mjs",
+      "title": "a real backup replacement fences both retained history and preference retries in the stale tab",
+      "category": "empty-history",
+      "expected": "Your completed battles will appear here.",
+      "observed": "Completed battles appear here.",
+      "source": "dist/app.js:renderHistory",
+      "repair": "Update exact empty message; retain stale-tab fences and persisted-domain equality."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "storage-recovery.spec.mjs",
+      "title": "a real backup replacement fences both retained history and preference retries in the stale tab",
+      "category": "empty-history",
+      "expected": "Your completed battles will appear here.",
+      "observed": "Completed battles appear here.",
+      "source": "dist/app.js:renderHistory",
+      "repair": "Update exact empty message; retain stale-tab fences and persisted-domain equality."
+    },
+    {
+      "project": "landscape",
+      "file": "storage-recovery.spec.mjs",
+      "title": "a real backup replacement fences both retained history and preference retries in the stale tab",
+      "category": "empty-history",
+      "expected": "Your completed battles will appear here.",
+      "observed": "Completed battles appear here.",
+      "source": "dist/app.js:renderHistory",
+      "repair": "Update exact empty message; retain stale-tab fences and persisted-domain equality."
+    },
+    {
+      "project": "desktop",
+      "file": "storage-recovery.spec.mjs",
+      "title": "a real backup replacement fences both retained history and preference retries in the stale tab",
+      "category": "empty-history",
+      "expected": "Your completed battles will appear here.",
+      "observed": "Completed battles appear here.",
+      "source": "dist/app.js:renderHistory",
+      "repair": "Update exact empty message; retain stale-tab fences and persisted-domain equality."
+    },
+    {
+      "project": "phone",
+      "file": "training.spec.mjs",
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "category": "mine-upgrade-feedback",
+      "expected": "now level 2",
+      "observed": "Upgrade paid. Your level-2 mine has more health and earns more gold.",
+      "source": "dist/training.js:upgrade-mine.successText",
+      "repair": "Require complete actual success text; retain 133-gold, no-time and upgraded-income assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "training.spec.mjs",
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "category": "mine-upgrade-feedback",
+      "expected": "now level 2",
+      "observed": "Upgrade paid. Your level-2 mine has more health and earns more gold.",
+      "source": "dist/training.js:upgrade-mine.successText",
+      "repair": "Require complete actual success text; retain 133-gold, no-time and upgraded-income assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "training.spec.mjs",
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "category": "mine-upgrade-feedback",
+      "expected": "now level 2",
+      "observed": "Upgrade paid. Your level-2 mine has more health and earns more gold.",
+      "source": "dist/training.js:upgrade-mine.successText",
+      "repair": "Require complete actual success text; retain 133-gold, no-time and upgraded-income assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "training.spec.mjs",
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "category": "mine-upgrade-feedback",
+      "expected": "now level 2",
+      "observed": "Upgrade paid. Your level-2 mine has more health and earns more gold.",
+      "source": "dist/training.js:upgrade-mine.successText",
+      "repair": "Require complete actual success text; retain 133-gold, no-time and upgraded-income assertions."
+    },
+    {
+      "project": "phone",
+      "file": "training.spec.mjs",
+      "title": "retry jump and skip produce an honest temporary review without completions or profile rewards",
+      "category": "training-review",
+      "expected": "Skipped lessons are not completions",
+      "observed": "These results cover this practice session. Skipped lessons do not count as completed. Choose a lesson to replay, or return to your game. No rewards or progress were saved.",
+      "source": "dist/training-app.js:finished stepPrompt",
+      "repair": "Require complete current review; retain 0-completed, 5-skipped and no-storage-write assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "training.spec.mjs",
+      "title": "retry jump and skip produce an honest temporary review without completions or profile rewards",
+      "category": "training-review",
+      "expected": "Skipped lessons are not completions",
+      "observed": "These results cover this practice session. Skipped lessons do not count as completed. Choose a lesson to replay, or return to your game. No rewards or progress were saved.",
+      "source": "dist/training-app.js:finished stepPrompt",
+      "repair": "Require complete current review; retain 0-completed, 5-skipped and no-storage-write assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "training.spec.mjs",
+      "title": "retry jump and skip produce an honest temporary review without completions or profile rewards",
+      "category": "training-review",
+      "expected": "Skipped lessons are not completions",
+      "observed": "These results cover this practice session. Skipped lessons do not count as completed. Choose a lesson to replay, or return to your game. No rewards or progress were saved.",
+      "source": "dist/training-app.js:finished stepPrompt",
+      "repair": "Require complete current review; retain 0-completed, 5-skipped and no-storage-write assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "training.spec.mjs",
+      "title": "retry jump and skip produce an honest temporary review without completions or profile rewards",
+      "category": "training-review",
+      "expected": "Skipped lessons are not completions",
+      "observed": "These results cover this practice session. Skipped lessons do not count as completed. Choose a lesson to replay, or return to your game. No rewards or progress were saved.",
+      "source": "dist/training-app.js:finished stepPrompt",
+      "repair": "Require complete current review; retain 0-completed, 5-skipped and no-storage-write assertions."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: future revision",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: future revision",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: future revision",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: future revision",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: missing map identity",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: missing map identity",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: missing map identity",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: missing map identity",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Long March wrong right base",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Long March wrong right base",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Long March wrong right base",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Long March wrong right base",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span phantom third lane",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span phantom third lane",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span phantom third lane",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span phantom third lane",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as campaign",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "corrupt map save preserves original bytes: twin-span masquerading as challenges",
+      "category": "protected-corrupt-save",
+      "expected": "Start silently replaces invalid save, then #pause accepts input",
+      "observed": "Preferences opens; #pause is inert; original rejected bytes are retained.",
+      "source": "dist/app.js:start resumeProblem guard and syncDialogs",
+      "repair": "Assert refusal/inert/raw retention, preview+Cancel, full replacement warning, explicit restore+reload, all domains/unrelated key, legacy resume then fresh v3 Twin Span."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "Classic actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "Classic actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "Classic actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "Classic actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "Long March actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "Long March actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "Long March actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "Long March actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span actual pointer placement rejects occupied sites and dragging never buys",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "phone",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "landscape",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "desktop",
+      "file": "maps.spec.mjs",
+      "title": "Twin Span center-gap pointer snaps to a real road with sixteen sites and no phantom middle lane",
+      "category": "build-slot-observer",
+      "expected": "lineWidth===1.5",
+      "observed": "lineWidth=Math.max(1.5,1/scale), so old observer counts0",
+      "source": "dist/render.js:Renderer.draw buildSites",
+      "repair": "Observe exact 110-pixel square, normalized site color, positive uniform native transform and CSS stroke within 1e-6 px; retain all coordinate/count/input/cost assertions."
+    },
+    {
+      "project": "phone",
+      "file": "regression.spec.mjs",
+      "title": "controls fit the viewport and survive orientation changes",
+      "category": "orientation-geometry",
+      "expected": "Old oracle: viewport width 844 CSS px \u00d7 configured DPR 2 = 1688 backing px.",
+      "observed": "Source-derived explanation: 152 CSS px landscape rail leaves a 692 CSS px field; configured DPR 2 gives 1384 backing px. The cloud report identifies this width mismatch.",
+      "source": "dist/styles.css:.app.protected-mobile; dist/render.js:Renderer.resize",
+      "repair": "Pin the 152px rail and remaining field edges independently; match both backing axes to CSS rect \u00d7 DPR; retain fit, guide, pause and post-rotation build."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "regression.spec.mjs",
+      "title": "controls fit the viewport and survive orientation changes",
+      "category": "orientation-geometry",
+      "expected": "Old oracle: viewport width 844 CSS px \u00d7 configured DPR 2 = 1688 backing px.",
+      "observed": "Source-derived explanation: 152 CSS px landscape rail leaves a 692 CSS px field; configured DPR 2 gives 1384 backing px. The cloud report identifies this width mismatch.",
+      "source": "dist/styles.css:.app.protected-mobile; dist/render.js:Renderer.resize",
+      "repair": "Pin the 152px rail and remaining field edges independently; match both backing axes to CSS rect \u00d7 DPR; retain fit, guide, pause and post-rotation build."
+    },
+    {
+      "project": "landscape",
+      "file": "regression.spec.mjs",
+      "title": "controls fit the viewport and survive orientation changes",
+      "category": "orientation-geometry",
+      "expected": "Old oracle: viewport width 844 CSS px \u00d7 configured DPR 2 = 1688 backing px.",
+      "observed": "Source-derived explanation: 152 CSS px landscape rail leaves a 692 CSS px field; configured DPR 2 gives 1384 backing px. The cloud report identifies this width mismatch.",
+      "source": "dist/styles.css:.app.protected-mobile; dist/render.js:Renderer.resize",
+      "repair": "Pin the 152px rail and remaining field edges independently; match both backing axes to CSS rect \u00d7 DPR; retain fit, guide, pause and post-rotation build."
+    },
+    {
+      "project": "desktop",
+      "file": "regression.spec.mjs",
+      "title": "controls fit the viewport and survive orientation changes",
+      "category": "orientation-geometry",
+      "expected": "Old oracle: viewport width 844 CSS px \u00d7 configured DPR 1 = 844 backing px.",
+      "observed": "Source-derived explanation: 152 CSS px landscape rail leaves a 692 CSS px field; configured DPR 1 gives 692 backing px. The cloud report identifies this width mismatch.",
+      "source": "dist/styles.css:.app.protected-mobile; dist/render.js:Renderer.resize",
+      "repair": "Pin the 152px rail and remaining field edges independently; match both backing axes to CSS rect \u00d7 DPR; retain fit, guide, pause and post-rotation build."
+    },
+    {
+      "project": "phone",
+      "file": "integrated-flow.spec.mjs",
+      "title": "frontier-rootwarden-open binds active roster paid controls resume and backup identity",
+      "category": "rootwarden-drawer-wait",
+      "expected": "helper returns early on disabled compactBuild and then taps hidden #rally",
+      "observed": "immediate Resume state: hidden #rally, visible disabled compactBuild; no native drawer tap follows",
+      "source": "qa/browser/shared-build-controls.mjs; dist/app.js:pause/updateHUD",
+      "repair": "Use normal native tap/click enabled auto-wait; no forced action, hidden activation, or scope bypass."
+    },
+    {
+      "project": "narrow-phone",
+      "file": "integrated-flow.spec.mjs",
+      "title": "frontier-rootwarden-timed binds active roster paid controls resume and backup identity",
+      "category": "rootwarden-drawer-wait",
+      "expected": "helper returns early on disabled compactBuild and then taps hidden #rally",
+      "observed": "immediate Resume state: hidden #rally, visible disabled compactBuild; no native drawer tap follows",
+      "source": "qa/browser/shared-build-controls.mjs; dist/app.js:pause/updateHUD",
+      "repair": "Use normal native tap/click enabled auto-wait; no forced action, hidden activation, or scope bypass."
+    }
+  ],
+  "mappingMethod": "Exact failed test titles and category totals from the cloud report, expanded against the frozen original test registrations. Per-profile orientation pixel values below are source-derived from configured DPR, not a claim to quote every trace."
+}

@@ -3,7 +3,10 @@
 // Legacy frozen pages without this drawer retain their original controls.
 export async function openBuildControls(page) {
   const button = page.locator('#compactBuild');
-  if (!await button.count() || !await button.isVisible() || !await button.isEnabled()) return;
+  if (!await button.count() || !await button.isVisible()) return;
+  // After Resume the visible button may retain disabled=true until the next
+  // HUD frame. Native tap/click waits for enabled; an early return strands the
+  // requested command behind the closed drawer. Never force or click hidden UI.
   const press = async () => {
     if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await button.tap();
     else await button.click();

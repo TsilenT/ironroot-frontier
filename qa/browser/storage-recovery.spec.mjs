@@ -311,7 +311,7 @@ test('a real backup replacement fences both retained history and preference retr
     await expect(page.locator('#profileRecovery')).toBeHidden();expect(await rawProfile(page)).toEqual(durable);
     await press(page,'#welcomeSettings');await openRecentHistory(page);
     await expect(page.locator('#preferenceSaveWarning')).toBeHidden();await expect(page.locator('#historySaveWarning')).toBeHidden();
-    await expect(page.locator('#battleHistory')).toHaveText('Your completed battles will appear here.');
+    await expect(page.locator('#battleHistory')).toHaveText('Completed battles appear here.');
     await expect(page.locator('#audioEnabled')).toBeChecked();await expect(page.locator('#masterVolume')).toHaveValue('65');
     expect(errors).toEqual([]);
   }finally{await other.close();}

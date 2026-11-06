@@ -238,7 +238,7 @@ for(const lesson of LESSON_CASES)test('ordinary unmodified '+lesson.id+' lesson 
     const goldBefore=await gold(page),timeBefore=await page.locator('#battleTime').textContent();
     await press(page,'#upgradeBuilding');expect(await gold(page)).toBe(goldBefore-133);
     await expect(page.locator('#battleTime')).toHaveText(timeBefore);
-    await expect(page.locator('#feedback')).toContainText('now level 2');
+    await expect(page.locator('#feedback')).toHaveText('Upgrade paid. Your level-2 mine has more health and earns more gold.');
     await continueStep(page);await expect(page.locator('body')).toHaveAttribute('data-step-id','watch-upgraded-income');
     await continueStep(page);
   }
@@ -337,7 +337,7 @@ test('retry jump and skip produce an honest temporary review without completions
   await expect(page.locator('#lessonSubtitle')).toContainText('0 completed');
   await expect(page.locator('#reviewResults')).toContainText('not attempted');
   await expect(page.locator('#reviewResults')).toContainText(/skipped/i);
-  await expect(page.locator('#stepPrompt')).toContainText('Skipped lessons are not completions');
+  await expect(page.locator('#stepPrompt')).toHaveText('These results cover this practice session. Skipped lessons do not count as completed. Choose a lesson to replay, or return to your game. No rewards or progress were saved.');
   for(const id of await lessonIds(page)){await selectLesson(page,id);await press(page,'#skipLesson');}
   await expect(page.locator('#lessonSubtitle')).toContainText('0 completed');
   await expect(page.locator('#lessonSubtitle')).toContainText('5 skipped');
