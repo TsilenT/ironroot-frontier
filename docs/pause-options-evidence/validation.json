@@ -1,0 +1,109 @@
+{
+  "scope": "Isolated pause/options branch; Chromium emulation and synthetic compatibility fixtures, not physical phone/PWA/controller, campaign balance, or integrated release validation.",
+  "baseCommit": "b8b2e6d1b200b9550803f5cb16b8d96ccc28f222",
+  "testedSourceCommit": "292190814ce299cc9c43c0d091bc726faacf37b7",
+  "runtimeSha256": {
+    "dist/app.js": "76fffeb6738400f980f6509ddc6ca0f40c1a105aea3b55a26182c6575b074c10",
+    "dist/index.html": "274be82035b763a6cd3b5bdac33cbfa136e0f544388c9a7f22d0a4dace7ddc3c",
+    "dist/styles.css": "5784c1bb3774715da8999f168f775290fe773c882b193fe6ace7bac6499ac226"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "playwright": "1.65.0",
+    "browser": "Chromium 155.0.8059.79 (system binary, headless)"
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "tests": 883,
+      "passed": 882,
+      "failed": 0,
+      "skipped": 1,
+      "log": "node-tests.log"
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:release",
+      "exitCode": 0,
+      "scope": "Source-dist validation only; not publication approval"
+    },
+    {
+      "command": "npm run check --prefix qa/browser",
+      "exitCode": 0,
+      "log": "browser-harness-check.log"
+    },
+    {
+      "cwd": "qa/browser",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test pause-menu.spec.mjs regression.spec.mjs field-reference.spec.mjs accessibility-backup.spec.mjs storage-recovery.spec.mjs --grep 'pause|keyboard|Space|preferences persist|denied storage|failed save|explicit backup replacement|incomplete backup rollback|preference quota|retained preference retry' --reporter=list",
+      "exitCode": 0,
+      "passed": 100,
+      "failed": 0,
+      "menuTests": 48,
+      "existingRegressions": 52,
+      "log": "browser-regressions.log"
+    },
+    {
+      "cwd": "qa/browser",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test pause-menu.spec.mjs --grep 'viewport interruption' --reporter=list",
+      "exitCode": 0,
+      "passed": 4,
+      "failed": 0,
+      "purpose": "Final verification of safety prompt dismissal and explicit resume latch after scope-sync ordering refinement",
+      "log": "safety-final.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "viewports": {
+    "phone": [
+      390,
+      650
+    ],
+    "narrow-phone": [
+      320,
+      568
+    ],
+    "landscape": [
+      844,
+      390
+    ],
+    "desktop": [
+      1180,
+      757
+    ]
+  },
+  "coverage": [
+    "Pause dialog focus trap and inert background",
+    "Native Space/Enter, Escape and blocked battlefield hotkeys",
+    "Options/guide focus restoration and frozen checkpoint bytes",
+    "Save/title/reload/resume with paid construction and map/ruleset identity",
+    "Restart confirmation and lossless cancellation",
+    "Verified checkpoint before replacing retained battle",
+    "Quota denial and recovery retry",
+    "Newer-tab checkpoint cannot be overwritten by open restart prompt",
+    "Authored campaign/trial restart without progress/history rewards",
+    "Legacy Classic v1 and Long March v2 restart preserving nonempty profile domains",
+    "Controller navigation, B/Start, and held-confirm scope isolation",
+    "Viewport interruption supersedes restart and preserves explicit safety resume",
+    "Existing backup replacement, partial rollback, preference retries and stale-tab barriers"
+  ],
+  "persistence": "No new storage keys or save/profile schema changes. Fixtures are generated engine-valid compatibility positions and real UI-created skirmish checkpoints.",
+  "integrationPreview": "integration-preview.json",
+  "remainingValidation": [
+    "Resolve the recorded integration conflicts and run menu/phone/fullscreen suites together",
+    "Physical phone/installed PWA and real controller checks"
+  ],
+  "release": {
+    "draftOnly": true,
+    "merged": false,
+    "deployed": false,
+    "versionChanged": false,
+    "serviceWorkerChanged": false
+  }
+}

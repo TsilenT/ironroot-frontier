@@ -1,0 +1,24 @@
+[WebServer] (node:23042) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 2 workers
+
+(node:23054) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23055) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [phone] › pause-menu.spec.mjs:140:1 › viewport interruption closes restart and keeps its resume latch and checkpoint intact (2.9s)
+  ✓  2 [narrow-phone] › pause-menu.spec.mjs:140:1 › viewport interruption closes restart and keeps its resume latch and checkpoint intact (2.8s)
+(node:23343) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23350) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [desktop] › pause-menu.spec.mjs:140:1 › viewport interruption closes restart and keeps its resume latch and checkpoint intact (3.2s)
+  ✓  3 [landscape] › pause-menu.spec.mjs:140:1 › viewport interruption closes restart and keeps its resume latch and checkpoint intact (3.6s)
+
+  4 passed (8.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
