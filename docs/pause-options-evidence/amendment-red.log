@@ -1,0 +1,167 @@
+[WebServer] (node:23876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 2 workers
+
+(node:23888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23889) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Escape (7.6s)
+(node:24177) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Done (8.1s)
+(node:24205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after verified checkpoint (4.1s)
+  ✘  4 [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after ownership recheck (4.0s)
+
+
+  1) [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Done
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  locator('#settings')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" locator('#settings') with timeout 5000ms
+      - waiting for locator('#settings')
+        14 × locator resolved to <button id="settings" title="Options" class="icon-button" aria-label="Open options">↵            ⚙↵          </button>
+           - unexpected value "inactive"
+
+
+      151 |   await start(page);await press(page,'#settings');await expect(page.locator('#settingsDone')).toHaveText('Resume battle');
+      152 |   if(close==='Done')await press(page,'#settingsDone');else await page.keyboard.press('Escape');
+    > 153 |   await expect(page.locator('#settingsModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#settings')).toBeFocused();
+          |                                                                                                                                                           ^
+      154 |   await page.keyboard.press('Space');await expect(page.locator('#settingsModal')).toBeVisible();
+      155 |   await page.keyboard.press('Escape');await expect(page.locator('#settings')).toBeFocused();
+      156 | });
+        at /workspace/ironroot-frontier/qa/browser/pause-menu.spec.mjs:153:155
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pause-menu-direct-Options--57570--focus-to-settings-via-Done-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pause-menu-direct-Options--57570--focus-to-settings-via-Done-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/pause-menu-direct-Options--57570--focus-to-settings-via-Done-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/pause-menu-direct-Options--57570--focus-to-settings-via-Done-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Escape
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  locator('#settings')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" locator('#settings') with timeout 5000ms
+      - waiting for locator('#settings')
+        14 × locator resolved to <button id="settings" title="Options" class="icon-button" aria-label="Open options">↵            ⚙↵          </button>
+           - unexpected value "inactive"
+
+
+      151 |   await start(page);await press(page,'#settings');await expect(page.locator('#settingsDone')).toHaveText('Resume battle');
+      152 |   if(close==='Done')await press(page,'#settingsDone');else await page.keyboard.press('Escape');
+    > 153 |   await expect(page.locator('#settingsModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#settings')).toBeFocused();
+          |                                                                                                                                                           ^
+      154 |   await page.keyboard.press('Space');await expect(page.locator('#settingsModal')).toBeVisible();
+      155 |   await page.keyboard.press('Escape');await expect(page.locator('#settings')).toBeFocused();
+      156 | });
+        at /workspace/ironroot-frontier/qa/browser/pause-menu.spec.mjs:153:155
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pause-menu-direct-Options--7a7f6-ocus-to-settings-via-Escape-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pause-menu-direct-Options--7a7f6-ocus-to-settings-via-Escape-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/pause-menu-direct-Options--7a7f6-ocus-to-settings-via-Escape-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/pause-menu-direct-Options--7a7f6-ocus-to-settings-via-Escape-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after verified checkpoint
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "{\"format\":\"ironroot-save\",\"version\":2,\"challengeId\":null,\"campaignId\":null,\"game\":{\"version\":2,\"mapId\":\"long-march\",\"mapRevision\":1,\"difficulty\":\"normal\",\"seed\":912,\"ai\":false,\"nextId\":3,\"aiTimer\":0,\"accumulator\":0,\"tick\":0,\"state\":{\"time\":0,\"gold\":[420,420],\"income\":[5,5],\"bases\":[{\"id\":\"base0\",\"type\":\"base\",\"side\":0,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":110,\"y\":450},{\"id\":\"base1\",\"type\":\"base\",\"side\":1,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":3890,\"y\":450}],\"buildings\":[{\"id\":1,\"type\":\"barracks\",\"side\":0,\"x\":410,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140},{\"id\":2,\"type\":\"barracks\",\"side\":1,\"x\":3590,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140}],\"units\":[],\"projectiles\":[],\"effects\":[{\"x\":410,\"y\":450,\"type\":\"build\",\"side\":0,\"life\":0.7,\"maxLife\":0.7,\"radius\":30},{\"x\":3590,\"y\":450,\"type\":\"build\",\"side\":1,\"life\":0.7,\"maxLife\":0.7,\"radius\":30}],\"frontline\":2000,\"winner\":null,\"spellCooldown\":[0,0],\"overtime\":false,\"stats\":{\"kills\":[0,0],\"built\":[1,1],\"damage\":[0,0]}}}}"
+    Received: "{\"format\":\"ironroot-save\",\"version\":3,\"scenario\":{\"kind\":\"skirmish\",\"id\":\"standard\",\"revision\":1},\"game\":{\"version\":3,\"rulesetId\":\"frontier-rootwarden-open\",\"rulesetRevision\":1,\"mapId\":\"classic\",\"mapRevision\":1,\"difficulty\":\"easy\",\"seed\":3001764265,\"ai\":true,\"nextId\":3,\"aiTimer\":7,\"accumulator\":0,\"tick\":0,\"state\":{\"time\":0,\"gold\":[420,420],\"income\":[5,5],\"bases\":[{\"id\":\"base0\",\"type\":\"base\",\"side\":0,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":110,\"y\":450},{\"id\":\"base1\",\"type\":\"base\",\"side\":1,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":3090,\"y\":450}],\"buildings\":[{\"id\":1,\"type\":\"barracks\",\"side\":0,\"x\":410,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140},{\"id\":2,\"type\":\"barracks\",\"side\":1,\"x\":2790,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140}],\"units\":[],\"projectiles\":[],\"effects\":[{\"x\":410,\"y\":450,\"type\":\"build\",\"side\":0,\"life\":0.7,\"maxLife\":0.7,\"radius\":30},{\"x\":2790,\"y\":450,\"type\":\"build\",\"side\":1,\"life\":0.7,\"maxLife\":0.7,\"radius\":30}],\"frontline\":1600,\"winner\":null,\"spellCooldown\":[0,0],\"overtime\":false,\"stats\":{\"kills\":[0,0],\"built\":[1,1],\"damage\":[0,0]}}}}"
+
+      178 |     expect(verified.game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);expect(result.result.value).not.toBe(before[SAVE]);
+      179 |   } finally {await client.send('Debugger.removeBreakpoint',{breakpointId});await client.send('Debugger.resume');}
+    > 180 |   await activation;await client.detach();expect((await raw(page))[SAVE]).toBe(newer);
+          |                                                                          ^
+      181 |   expect(await domains(page)).toEqual(Object.fromEntries(DOMAINS.map(key=>[key,before[key]])));
+      182 |   if(boundary==='after verified checkpoint'){
+      183 |     await expect(page.locator('#restartModal')).toBeVisible();await expect(page.locator('#restartStatus')).toContainText('checkpoint changed');
+        at /workspace/ironroot-frontier/qa/browser/pause-menu.spec.mjs:180:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pause-menu-restart-preserv-dbb4f-d-after-verified-checkpoint-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pause-menu-restart-preserv-dbb4f-d-after-verified-checkpoint-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/pause-menu-restart-preserv-dbb4f-d-after-verified-checkpoint-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/pause-menu-restart-preserv-dbb4f-d-after-verified-checkpoint-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after ownership recheck
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "{\"format\":\"ironroot-save\",\"version\":2,\"challengeId\":null,\"campaignId\":null,\"game\":{\"version\":2,\"mapId\":\"long-march\",\"mapRevision\":1,\"difficulty\":\"normal\",\"seed\":912,\"ai\":false,\"nextId\":3,\"aiTimer\":0,\"accumulator\":0,\"tick\":0,\"state\":{\"time\":0,\"gold\":[420,420],\"income\":[5,5],\"bases\":[{\"id\":\"base0\",\"type\":\"base\",\"side\":0,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":110,\"y\":450},{\"id\":\"base1\",\"type\":\"base\",\"side\":1,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":3890,\"y\":450}],\"buildings\":[{\"id\":1,\"type\":\"barracks\",\"side\":0,\"x\":410,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140},{\"id\":2,\"type\":\"barracks\",\"side\":1,\"x\":3590,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140}],\"units\":[],\"projectiles\":[],\"effects\":[{\"x\":410,\"y\":450,\"type\":\"build\",\"side\":0,\"life\":0.7,\"maxLife\":0.7,\"radius\":30},{\"x\":3590,\"y\":450,\"type\":\"build\",\"side\":1,\"life\":0.7,\"maxLife\":0.7,\"radius\":30}],\"frontline\":2000,\"winner\":null,\"spellCooldown\":[0,0],\"overtime\":false,\"stats\":{\"kills\":[0,0],\"built\":[1,1],\"damage\":[0,0]}}}}"
+    Received: "{\"format\":\"ironroot-save\",\"version\":3,\"scenario\":{\"kind\":\"skirmish\",\"id\":\"standard\",\"revision\":1},\"game\":{\"version\":3,\"rulesetId\":\"frontier-rootwarden-open\",\"rulesetRevision\":1,\"mapId\":\"classic\",\"mapRevision\":1,\"difficulty\":\"easy\",\"seed\":3001764942,\"ai\":true,\"nextId\":3,\"aiTimer\":7,\"accumulator\":0,\"tick\":0,\"state\":{\"time\":0,\"gold\":[420,420],\"income\":[5,5],\"bases\":[{\"id\":\"base0\",\"type\":\"base\",\"side\":0,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":110,\"y\":450},{\"id\":\"base1\",\"type\":\"base\",\"side\":1,\"hp\":6000,\"maxHp\":6000,\"cooldown\":0,\"x\":3090,\"y\":450}],\"buildings\":[{\"id\":1,\"type\":\"barracks\",\"side\":0,\"x\":410,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140},{\"id\":2,\"type\":\"barracks\",\"side\":1,\"x\":2790,\"y\":450,\"lane\":1,\"hp\":700,\"maxHp\":700,\"level\":1,\"progress\":0.8666666666666667,\"cooldown\":0,\"invested\":140}],\"units\":[],\"projectiles\":[],\"effects\":[{\"x\":410,\"y\":450,\"type\":\"build\",\"side\":0,\"life\":0.7,\"maxLife\":0.7,\"radius\":30},{\"x\":2790,\"y\":450,\"type\":\"build\",\"side\":1,\"life\":0.7,\"maxLife\":0.7,\"radius\":30}],\"frontline\":1600,\"winner\":null,\"spellCooldown\":[0,0],\"overtime\":false,\"stats\":{\"kills\":[0,0],\"built\":[1,1],\"damage\":[0,0]}}}}"
+
+      178 |     expect(verified.game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);expect(result.result.value).not.toBe(before[SAVE]);
+      179 |   } finally {await client.send('Debugger.removeBreakpoint',{breakpointId});await client.send('Debugger.resume');}
+    > 180 |   await activation;await client.detach();expect((await raw(page))[SAVE]).toBe(newer);
+          |                                                                          ^
+      181 |   expect(await domains(page)).toEqual(Object.fromEntries(DOMAINS.map(key=>[key,before[key]])));
+      182 |   if(boundary==='after verified checkpoint'){
+      183 |     await expect(page.locator('#restartModal')).toBeVisible();await expect(page.locator('#restartStatus')).toContainText('checkpoint changed');
+        at /workspace/ironroot-frontier/qa/browser/pause-menu.spec.mjs:180:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pause-menu-restart-preserv-97088-ted-after-ownership-recheck-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pause-menu-restart-preserv-97088-ted-after-ownership-recheck-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/pause-menu-restart-preserv-97088-ted-after-ownership-recheck-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/pause-menu-restart-preserv-97088-ted-after-ownership-recheck-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Done
+    [desktop] › pause-menu.spec.mjs:150:38 › direct Options opened during play returns focus to settings via Escape
+    [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after verified checkpoint
+    [desktop] › pause-menu.spec.mjs:158:79 › restart preserves a newer checkpoint injected after ownership recheck
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

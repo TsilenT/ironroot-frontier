@@ -1,28 +1,42 @@
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, LANES} from '../../dist/engine.js';
-import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
+import {CAMPAIGN_STORAGE_KEY,createCampaignMission} from '../../dist/campaign.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
+import {progressionProfile} from './campaign-progression-fixtures.mjs';
 
 const SAVE='ironroot.battle.v1', HISTORY='ironroot.history.v1';
 const test = base.extend({page:async ({page},use)=>{
   const errors=[]; page.on('pageerror',error=>errors.push(error.message));
   await use(page); expect(errors,'uncaught browser errors').toEqual([]);
 }});
+async function startRunning(page) {
+  await press(page, '#start');
+  if (await page.locator('#coachingModal').isVisible()) await press(page, '#coachingPlay');
+}
 async function press(page,selector) {
   if (await prepareBuildControl(page, selector)) return;
   const control=page.locator(selector);
   if (await page.evaluate(()=>navigator.maxTouchPoints>0)) await control.tap();
   else await control.click();
 }
-async function openCampaign(page) {
-  await page.goto('/'); await press(page,'[data-mode="campaign"]'); await press(page,'[data-chapter="embers"]');
+async function openCampaign(page,{legacy=false}={}) {
+  // Declared earned-opening profile fixture for fresh main-campaign UI tests.
+  // The explicit legacy option retains the version-two envelope regression.
+  await page.goto('/');
+  const progress=progressionProfile(3),battle=legacy?{format:'ironroot-save',version:2,challengeId:null,campaignId:'emberwatch',game:createCampaignMission('emberwatch').serialize()}:null;
+  await page.evaluate(({progress,battle,key,save})=>{localStorage.setItem(key,JSON.stringify(progress));if(battle)localStorage.setItem(save,JSON.stringify(battle));},{progress,battle,key:CAMPAIGN_STORAGE_KEY,save:SAVE});
+  await page.reload(); await press(page,'[data-mode="campaign"]'); await press(page,'#campaignStoryNav'); await press(page,'[data-chapter="embers"]'); await press(page,'[data-mission="emberwatch"]');
   await expect(page.locator('#campaignConfig')).toBeVisible();
+}
+async function chooseMission(page,id) {
+  await press(page,'#campaignChapterNav'); await press(page,'[data-mission="'+id+'"]');
 }
 async function snapshot(page) {
   return page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
 }
 async function pause(page) {
+  if (await page.locator('#coachingModal').isVisible()) await press(page,'#coachingPlay');
   await press(page,'#pause'); await expect(page.locator('#pauseVeil')).toBeVisible();
   return snapshot(page);
 }
@@ -49,34 +63,36 @@ async function tapPoint(page,p) {
 }
 
 test('campaign locked mission cannot launch and an unlocked mission can',async ({page})=>{
-  await openCampaign(page); await press(page,'[data-mission="three-roads"]');
+  await openCampaign(page); await chooseMission(page,'three-roads');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('#campaignUnlock')).toContainText('Complete Emberwatch');
   await expect(page.locator('#start')).toBeDisabled();
   await expect(page.locator('#start')).toContainText('MISSION LOCKED');
   await page.keyboard.press('Enter'); await expect(page.locator('#welcome')).toBeVisible();
   expect(await snapshot(page)).toBeNull();
-  await press(page,'[data-mission="emberwatch"]'); await expect(page.locator('#start')).toBeEnabled();
-  await press(page,'#start'); await expect(page.locator('#welcome')).toBeHidden();
-  const save=await pause(page); expect(save.campaignId).toBe('emberwatch');
+  await chooseMission(page,'emberwatch'); await expect(page.locator('#start')).toBeEnabled();
+  await startRunning(page); await expect(page.locator('#welcome')).toBeHidden();
+  const save=await pause(page); expect(save.scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
 });
 
-test('campaign chapter and mission choices retain keyboard focus after rerender',async ({page})=>{
-  await openCampaign(page);
+test('campaign chapter and mission navigation focuses the new heading for keyboard users',async ({page})=>{
+  await openCampaign(page); await press(page,'#campaignStoryNav');
   await page.locator('[data-chapter="highpass"]').focus(); await page.keyboard.press('Enter');
-  await expect(page.locator('[data-chapter="highpass"]')).toBeFocused();
-  await expect(page.locator('#start')).toBeDisabled();
+  await expect(page.locator('#campaignChapterTitle')).toBeFocused();
+  await press(page,'#campaignStoryNav');
   await page.locator('[data-chapter="embers"]').focus(); await page.keyboard.press('Space');
-  await expect(page.locator('[data-chapter="embers"]')).toBeFocused();
+  await expect(page.locator('#campaignChapterTitle')).toBeFocused();
   await page.locator('[data-mission="three-roads"]').focus(); await page.keyboard.press('Enter');
-  await expect(page.locator('[data-mission="three-roads"]')).toBeFocused();
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();
+  await expect(page.locator('#start')).toBeDisabled();
+  await press(page,'#campaignChapterNav');
   await page.locator('[data-mission="emberwatch"]').focus(); await page.keyboard.press('Space');
-  await expect(page.locator('[data-mission="emberwatch"]')).toBeFocused();
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();
   await expect(page.locator('#start')).toBeEnabled();
 });
 
-test('campaign UI-created version 2 save reloads the same mission and construction',async ({page})=>{
-  await openCampaign(page); await press(page,'#start');
+test('explicit revision-one campaign retains its version 2 save through UI construction and reload',async ({page})=>{
+  await openCampaign(page,{legacy:true}); await press(page,'#resumeSaved');
   const point=await worldPoint(page,270,450);
   await press(page,'[data-type="archery"]'); await tapPoint(page,point);
   await expect(page.locator('#toast')).toContainText('Archery range raised');
@@ -114,9 +130,10 @@ test('campaign victory awards stars once and Continue unlocks the next mission',
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('[data-mission="three-roads"]')).toHaveClass(/active/);
   await expect(page.locator('#start')).toBeEnabled();
-  await expect(page.locator('#campaignProgressText')).toContainText('1/16 missions');
-  await press(page,'#start'); const save=await pause(page);
-  expect(save.campaignId).toBe('three-roads');
+  await expect(page.locator('#campaignProgressText')).toContainText('1/19 missions');
+  await startRunning(page); const save=await pause(page);
+  expect(save.scenario).toEqual({kind:'campaign',id:'three-roads',revision:2});
+  expect(Game.restore(save.game).buildings.wardenLodge).toBeTruthy();
 });
 
 test('campaign deadline failure focuses Retry and restarts without granting progress',async ({page})=>{
@@ -159,8 +176,7 @@ test('campaign briefing and launch remain reachable across viewport changes',asy
   await openCampaign(page);
   for (const viewport of [{width:320,height:568},{width:844,height:390},{width:390,height:650}]) {
     await page.setViewportSize(viewport);
-    await page.locator('[data-mission="emberwatch"]').scrollIntoViewIfNeeded();
-    await press(page,'[data-mission="emberwatch"]');
+    await chooseMission(page,'emberwatch');
     await page.locator('#start').scrollIntoViewIfNeeded();
     await expect(page.locator('#start')).toBeInViewport({ratio:1});
     await expect(page.locator('#start')).toBeEnabled();
@@ -168,15 +184,15 @@ test('campaign briefing and launch remain reachable across viewport changes',asy
     expect(bounds.x).toBeGreaterThanOrEqual(0);
     expect(bounds.x+bounds.width).toBeLessThanOrEqual(viewport.width+1);
   }
-  await press(page,'#start'); await expect(page.locator('#welcome')).toBeHidden();
-  expect((await pause(page)).campaignId).toBe('emberwatch');
+  await startRunning(page); await expect(page.locator('#welcome')).toBeHidden();
+  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
 });
 
 // Known regression from independent UI review: a stale paused tab used to write
 // over a newer battle during beforeunload. Keep this assertion red until fixed.
 test('closing a stale paused campaign tab preserves the newer shared-context skirmish save',async ({page,context})=>{
-  await openCampaign(page); await press(page,'#start');
-  expect((await pause(page)).campaignId).toBe('emberwatch');
+  await openCampaign(page); await startRunning(page);
+  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
 
   const newer=await context.newPage(),errors=[];
   newer.on('pageerror',error=>errors.push(error.message));
@@ -207,7 +223,7 @@ test('closing a stale paused campaign tab preserves the newer shared-context ski
 });
 
 test('landscape campaign content keeps more than 120px usable height with a saved mission',async ({page})=>{
-  await openCampaign(page); await press(page,'#start'); await pause(page);
+  await openCampaign(page); await startRunning(page); await pause(page);
   await press(page,'#saveExit');
   await expect(page.locator('#resumeSaved')).toBeVisible();
   await expect(page.locator('#campaignConfig')).toBeVisible();

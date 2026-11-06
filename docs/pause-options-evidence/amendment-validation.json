@@ -1,0 +1,115 @@
+{
+  "scope": "PR #5 independent-review amendments only; no campaign revision/roster/start-signature integration, branch merge or deployment.",
+  "testedSourceCommit": "2d1406015b881016575e1e7b2a4c6a457b26b8b8",
+  "runtimeSha256": {
+    "dist/app.js": "5ccec94b9bcced48c3084488088025a9d24a1c10119494c93267f824aff65301",
+    "dist/index.html": "274be82035b763a6cd3b5bdac33cbfa136e0f544388c9a7f22d0a4dace7ddc3c",
+    "dist/styles.css": "5784c1bb3774715da8999f168f775290fe773c882b193fe6ace7bac6499ac226"
+  },
+  "redReproduction": {
+    "sourceCommit": "0f3b1b90de98007f6f0bffd7dd5c96947268f3dd",
+    "intentionalNegativeControl": true,
+    "failed": 4,
+    "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test pause-menu.spec.mjs --project=desktop --grep 'direct Options|injected' --reporter=list",
+    "log": "amendment-red.log"
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "tests": 885,
+      "passed": 884,
+      "failed": 0,
+      "skipped": 1,
+      "log": "amendment-node.log"
+    },
+    {
+      "command": "node --test tests/pause-menu-start.test.mjs tests/profile-session.test.mjs tests/mobile-battlefield-pause.test.mjs tests/input-scope.test.mjs",
+      "exitCode": 0,
+      "passed": 80,
+      "failed": 0,
+      "log": "amendment-node-targeted.log"
+    },
+    {
+      "cwd": "qa/browser",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test pause-menu.spec.mjs regression.spec.mjs accessibility-backup.spec.mjs storage-recovery.spec.mjs --grep 'pause-menu|welcome and guide trap keyboard|preferences persist after reload|denied storage keeps|preference quota failure|incomplete backup rollback' --reporter=list",
+      "exitCode": 0,
+      "passed": 84,
+      "failed": 0,
+      "menuCases": 64,
+      "existingRegressions": 20,
+      "log": "amendment-browser.log"
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 0,
+      "log": "amendment-parse-check.log"
+    },
+    {
+      "command": "npm run check:release",
+      "exitCode": 0,
+      "scope": "Local source/runtime validation only, not release approval",
+      "log": "amendment-runtime-check.log"
+    },
+    {
+      "command": "npm run check --prefix qa/browser",
+      "exitCode": 0,
+      "log": "amendment-harness-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "projects": {
+    "phone": [
+      390,
+      650
+    ],
+    "narrow-phone": [
+      320,
+      568
+    ],
+    "landscape": [
+      844,
+      390
+    ],
+    "desktop": [
+      1180,
+      757
+    ]
+  },
+  "newBrowserCases": [
+    "Direct Options closes via Done and restores #settings; native Space reopens Options",
+    "Direct Options closes via Escape and restores #settings; native Space reopens Options",
+    "Native storage write after writeBattle succeeds but before start keeps newer bytes and the retained paused UI",
+    "Native storage write later during startup, after the ownership recheck, is not re-claimed or overwritten; external storage notification pauses and title resumes the newer checkpoint"
+  ],
+  "raceInjection": {
+    "method": "CDP breakpoints in unchanged production execution plus a native localStorage write, not an app state hook",
+    "boundaries": [
+      "Immediately before start(candidate, ...), after writeBattle has returned success",
+      "At beginBattleReport during start, after the new ownership guard and before the old claim location"
+    ],
+    "verifiedCandidateAssertions": [
+      "simulation time equals zero",
+      "one initial player structure",
+      "serialized bytes differ from the retained earlier checkpoint"
+    ],
+    "afterInjectionAssertions": [
+      "newer serialized checkpoint stays byte-identical",
+      "other profile domains stay byte-identical",
+      "early guard preserves old UI time and Node game-object identity",
+      "later setup keeps the existing ownership state and cannot write over the newer checkpoint",
+      "Save & return selects Long March from the newer checkpoint without writing over it"
+    ]
+  },
+  "focusFix": "Capture event.currentTarget (touch/keyboard/controller click opener), falling back to activeElement, before pause; register Options and then retain the original opener in dialogFocus.",
+  "ownershipFix": "A fresh verified restart rechecks battleSession.status before retained/UI mutation and skips battleSession.claim; subsequent saves keep checking the same expected checkpoint.",
+  "startSignatureChangedByAmendment": false,
+  "productionPersistenceApiOrSchemaChanged": false,
+  "merged": false,
+  "deployed": false,
+  "logFormat": "UTF-8 text, trailing whitespace normalized",
+  "remainingIntegrationOwner": "Main builder: campaign revisions, roster, start-signature integration, and combined-build/hardware validation."
+}

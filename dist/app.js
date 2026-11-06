@@ -57,23 +57,33 @@ import {
 import { decodeBattle, encodeBattle, scenarioForBattle, identityOf } from './battle-codec.js';
 import { GameAudio } from './audio.js';
 import { advanceObjectiveBattle } from './objectives.js';
-import { campaignBuildChoices, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
+import { campaignBuildChoices, campaignTeaching, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
+import { missionBriefing } from './campaign-presentation.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails } from './protected-objectives.js';
 import { createObjectiveAlertPolicy } from './objective-alerts.js';
 import {
-  ALL_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,
-  ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,
+  ALL_CAMPAIGN_CHAPTERS as LEGACY_CAMPAIGN_CHAPTERS,
+  ONBOARDING_CHAPTER,
+  CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,
   isIntroMission,
   createCampaignMission,
+  createCampaignRestart,
+  createProgressionCampaignMission,
+  getCampaignLaunchMission,
+  getCampaignMission,
+  campaignScenarioForGame,
+  getCampaignRoster,
   evaluateCampaignMission,
   getCampaignTargets,
   readCampaignProgress,
+  readCampaignProgressState,
   mergeCampaignProgress,
   writeCampaignProgress,
   recordCampaignResult,
-  getCampaignOverview,
+  getProgressionCampaignOverview as getCampaignOverview,
   isMissionUnlocked,
 } from './campaign.js';
+const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...LEGACY_CAMPAIGN_CHAPTERS];
 const $ = (id) => document.getElementById(id);
 const renderer = new Renderer($('battle'), $('minimap'));
 
@@ -127,7 +137,7 @@ function populateFieldGuide(context = null) {
     <div class="codex-body"><p><b>Upgrades:</b> ${b.upgradeCosts.map(n).join(' / ')} gold</p><p><b>Use it for:</b> ${esc(b.advantages)}</p><p><b>Watch out for:</b> ${esc(b.cautions)}</p>${list(b.mechanics)}</div></details>`,
   ).join('');
   $('economyCodex').innerHTML = `${stats([
-    ['Starting gold', n(ECONOMY_GUIDE.startingGold)],
+    [ECONOMY_GUIDE.startingGoldLabel || 'Starting gold', n(ECONOMY_GUIDE.startingGold)],
     ['Base income', `${n(ECONOMY_GUIDE.baseIncome)} /s`],
     ['Citadel health', n(ECONOMY_GUIDE.citadelHp)],
     ['Mine cap', n(ECONOMY_GUIDE.mineCap)],
@@ -172,6 +182,10 @@ let mode = 'campaign',
   selectedCampaign = CAMPAIGN_MISSIONS[0].id,
   selectedChapter = CAMPAIGN_CHAPTERS[0].id;
 let expandedBuilds = false, resumedBattle = false, coachEnabled = true;
+let campaignPage = 'mission', briefingMission = null;
+// A teaching hold stops simulation, while ordinary battle commands remain available.
+// Manual, visibility, viewport and storage pauses keep their existing guards.
+let coachingHold = false;
 const labels = {
   barracks: ['Barracks', 'Shielded warriors', '9s / wave'],
   archery: ['Archery', 'Ranged support', '10s / wave'],
@@ -180,8 +194,9 @@ const labels = {
   mint: ['Gold mine', 'Grow your economy', '+2.5 gold /s'],
   sanctum: ['Sanctum', 'Magic & splash', '14s / wave'],
   aerie: ['Aerie', 'Flying raiders', '15s / wave'],
+  wardenLodge: ['Warden lodge', 'Durable front line', '12s / wave'],
 };
-const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 3 });
+const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 4 });
 const storage = createStorage(() => profileSession.storage);
 let recoveryHold = null,
   profileGate = null,
@@ -203,8 +218,7 @@ let knownHistory = historySession.snapshot().rows,
 let campaignProgress = readCampaignProgress(storage),
   progressDirty = false;
 const initialOverview = getCampaignOverview(campaignProgress);
-const nextCampaign = initialOverview.introduction.recommended
-  ? initialOverview.introduction.nextMissionId : initialOverview.nextMissionId;
+const nextCampaign = initialOverview.nextMissionId || initialOverview.missions[0].id;
 if (nextCampaign) {
   selectedCampaign = nextCampaign;
   selectedChapter = CAMPAIGN_MISSIONS.find(
@@ -397,6 +411,9 @@ function canInteract() {
   return (
     started &&
     !paused &&
+    !document.hidden &&
+    !viewportPause.active &&
+    $('coachingModal').classList.contains('hidden') &&
     !recoveryHold &&
     !profileGate &&
     !battleSafetyReason &&
@@ -407,12 +424,16 @@ function canInteract() {
 }
 function selectBuild(type) {
   if (!canInteract()) return;
+  if (!Object.hasOwn(game.buildings || BUILDINGS, type)) {
+    toast('That building is not available in this battle.');
+    return;
+  }
   if (!campaignBuildChoices(currentCampaign, { expanded: expandedBuilds, resumed: resumedBattle, buildings: game.buildings || BUILDINGS }).includes(type)) {
     toast('Choose All buildings in the build bar to use this building.');
     return;
   }
   if (game.state.gold[0] < (game.buildings || BUILDINGS)[type].cost) {
-    toast(`Need ${(game.buildings || BUILDINGS)[type].cost} gold for ${(game.buildings || BUILDINGS)[type].name}.`);
+    toast(`Need ${(game.buildings || BUILDINGS)[type].cost} gold for ${(game.buildings || BUILDINGS)[type].name}.${coachingHold ? ' Resume battle to earn more gold.' : ''}`);
     sound('error');
     return;
   }
@@ -422,6 +443,10 @@ function selectBuild(type) {
   follow = false;
   updateSelection();
   syncChoice();
+  if (coachingHold && coachEnabled && ui.build) {
+    const site = campaignCoach(game, currentCampaign, ui)?.site;
+    if (site) { renderer.camera = site.x; renderer.clampCamera(); }
+  }
   setCompactBuildOpen(false);
   sound('click');
 }
@@ -464,6 +489,8 @@ function updateCampaignDeck() {
   $('allBuildings').setAttribute('aria-expanded', String(expandedBuilds));
   for (const card of document.querySelectorAll('.build-card'))
     card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
+  $('coachResume').classList.toggle('hidden', !coachingHold || !canInteract());
+  $('coachReplay').classList.toggle('hidden', coachingHold || !canInteract() || !campaignTeaching(currentCampaign));
   const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
   const show = coachEnabled && !!hint && canInteract() && !dialogLayers.some(layer => !layer.classList.contains('hidden'));
   const compact = $('app').classList.contains('protected-compact');
@@ -474,14 +501,16 @@ function updateCampaignDeck() {
   $('toggleCoach').setAttribute('aria-pressed', String(coachEnabled));
   let highlighted = show ? document.querySelector(hint.control) : null;
   let text = hint?.text || '';
+  if (show && coachingHold && ui.build && game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost)
+    text += ' Time and income are stopped during this teaching pause. Resume when you want to earn more gold.';
   if (show && compact && !open && hint.control.startsWith('[data-type=') && !ui.build) {
     highlighted = $('compactBuild');
     text = 'Open Build, then ' + text.charAt(0).toLowerCase() + text.slice(1);
   }
   const point = hint?.site || game.state.buildings.find(b => b.id === hint?.buildingId && b.hp > 0);
   if (show && point && !guidancePointVisible(renderer, game, point) && !open) {
-    highlighted = $('home');
-    text = 'Use Home to return to your buildings. ' + text;
+    highlighted = $('minimap');
+    text = 'Pan along the road or use the minimap to bring the suggested site into view. ' + text;
   }
   if (!coachControlVisible(highlighted)) highlighted = null;
   for (const element of document.querySelectorAll('.coach-highlight'))
@@ -509,6 +538,47 @@ $('toggleCoach').onclick = () => {
   coachEnabled = !coachEnabled;
   updateCampaignDeck();
 };
+function beginCampaignCoaching({ manual = false } = {}) {
+  const lesson = campaignTeaching(currentCampaign, manual ? {} : {
+    resumed: resumedBattle,
+    completed: !!campaignProgress.missions[currentCampaign]?.completed,
+    learnedBasics: !!campaignProgress.missions['roadside-watch']?.completed || !!campaignProgress.missions['first-watch']?.completed,
+  });
+  if (!lesson || !started || game.state.winner !== null || objectiveOutcome ||
+      (manual && (!canInteract() || viewportPause.active))) return;
+  coachingHold = true;
+  coachEnabled = true;
+  inputScope.interrupt();
+  resetBattleGesture();
+  $('coachingTitle').textContent = lesson.title;
+  $('coachingText').textContent = lesson.text;
+  $('coachingModal').classList.remove('hidden');
+  pauseControl('resume');
+  $('battleClockLabel').textContent = 'TEACHING PAUSE';
+  if (manual) updateHUD();
+  else updateCampaignDeck();
+  syncDialogs();
+  if (manual) save();
+}
+function planWithCoaching() {
+  inputScope.interrupt();
+  $('coachingModal').classList.add('hidden');
+  syncDialogs();
+  if (!canInteract() || viewportPause.active) return;
+  setCompactBuildOpen(true);
+  updateHUD();
+  const hint = campaignCoach(game, currentCampaign, ui);
+  const target = hint && document.querySelector(hint.control);
+  if (coachControlVisible(target)) target.focus({ preventScroll: true });
+  else $('battle').focus();
+}
+$('coachingPlan').onclick = planWithCoaching;
+$('coachingPlay').onclick = () => pause(false, { explicit: true });
+$('coachResume').onclick = () => pause(false, { explicit: true });
+$('coachReplay').onclick = () => beginCampaignCoaching({ manual: true });
+function toggleBattlePause() {
+  pause(coachingHold && !paused ? false : !paused, { explicit: true });
+}
 function coachControlVisible(element) {
   if (!element || !controlIsVisible(element)) return false;
   const rect = element.getBoundingClientRect();
@@ -614,7 +684,7 @@ $('rally').onclick = () => {
   setCompactBuildOpen(false);
   sound('click');
 };
-function pauseControl(mode = 'pause') {
+function pauseControl(mode = coachingHold ? 'resume' : 'pause') {
   const b = $('pause');
   b.innerHTML =
     mode === 'pause'
@@ -639,6 +709,7 @@ function pauseControl(mode = 'pause') {
 }
 pauseControl();
 function pause(value, { explicit = false } = {}) {
+  if (!value && document.hidden) return;
   if (!value && (recoveryHold || profileGate)) {
     showRecoverySettings();
     return;
@@ -660,14 +731,21 @@ function pause(value, { explicit = false } = {}) {
     $('viewportModal').classList.add('hidden');
     interruptMobileInput();
   }
+  if (!value && explicit && coachingHold) {
+    coachingHold = false;
+    $('coachingModal').classList.add('hidden');
+    inputScope.interrupt();
+    resetBattleGesture();
+    setCompactBuildOpen(false);
+  }
   if (value) setCompactBuildOpen(false);
   paused = value;
   $('pauseVeil').classList.toggle('hidden', !paused);
-  pauseControl(paused ? 'resume' : 'pause');
+  pauseControl(paused || coachingHold ? 'resume' : 'pause');
   if (paused) save();
   syncDialogs();
 }
-$('pause').onclick = () => pause(!paused, { explicit: true });
+$('pause').onclick = toggleBattlePause;
 $('resume').onclick = () => pause(false, { explicit: true });
 $('saveExit').onclick = () => {
   if (recoveryHold || profileGate) {
@@ -683,6 +761,8 @@ $('saveExit').onclick = () => {
   }
   if (!save() || (progressDirty && !persistProgress())) {
     if (viewportPause.active || battleSafetyReason) $('viewportSaveStatus').textContent = 'Saving failed. This battle remains paused on this page. Keep it open and try again.';
+    $('pauseSaveStatus').textContent = 'Could not save. This battle stays paused here. Keep this page open, free some storage and try again.';
+    $('pauseSaveStatus').classList.add('save-warning');
     toast(
       'Could not save on this browser. Keep this battle open or free some storage, then try again.',
     );
@@ -716,13 +796,9 @@ $('front').onclick = () => {
 };
 function showHelp() {
   helpWasPaused = paused;
-  if (started && game.state.winner === null) {
-    setCompactBuildOpen(false);
-    paused = true;
-    $('pauseVeil').classList.add('hidden');
-  }
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
   $('helpModal').classList.remove('hidden');
-  $('closeHelp').focus();
+  syncDialogs();
 }
 function hideHelp() {
   $('helpModal').classList.add('hidden');
@@ -800,6 +876,7 @@ function start(
   restored = null,
   restoredChallenge = null,
   restoredCampaign = null,
+  { fresh = false, scenarioRevision = null } = {},
 ) {
   syncProfileSafety();
   if (recoveryHold || profileGate) {
@@ -816,16 +893,28 @@ function start(
     : mode === 'campaign'
       ? selectedCampaign
       : null;
-  if (cid && !isMissionUnlocked(campaignProgress, cid)) {
+  const campaignRevision = cid
+    ? restored ? campaignScenarioForGame(restored, cid).revision
+      : scenarioRevision ?? (isIntroMission(cid) ? 1 : getCampaignLaunchMission(cid, campaignProgress).scenarioRevision)
+    : 1;
+  if (cid && !isMissionUnlocked(campaignProgress, cid, campaignRevision)) {
     toast('Complete the preceding missions to unlock this one.');
+    return;
+  }
+  // A restart already owns its verified candidate checkpoint. Recheck before
+  // replacing the retained game; claiming here could adopt another tab's save.
+  if (fresh && battleSession.status() !== 'current') {
+    $('restartStatus').textContent = 'The checkpoint changed or storage is unavailable. Your current battle stays paused here. Return to title to continue the newer checkpoint.';
     return;
   }
   battleSafetyReason = null;
   $('battleLimitWarning').classList.add('hidden');
   $('resume').disabled = false;
+  coachingHold = false;
+  $('coachingModal').classList.add('hidden');
   currentCampaign = cid;
   expandedBuilds = !!campaignProgress.missions[cid]?.completed;
-  resumedBattle = !!restored;
+  resumedBattle = !!restored && !fresh;
   coachEnabled = !campaignProgress.missions[cid]?.completed;
   currentChallenge = restored
     ? restoredChallenge
@@ -835,7 +924,9 @@ function start(
   game =
     restored ||
     (currentCampaign
-      ? createCampaignMission(currentCampaign)
+      ? (isIntroMission(currentCampaign) || (scenarioRevision === 1 && !getCampaignMission(currentCampaign).rulesetId?.startsWith('frontier-campaign-'))
+        ? createCampaignMission(currentCampaign)
+        : createProgressionCampaignMission(currentCampaign, campaignProgress))
       : currentChallenge
         ? createChallenge(currentChallenge)
         : new Game({ difficulty, seed: Date.now() >>> 0, mapId: selectedMap, mapRevision: 1, rulesetId: selectedRuleset, rulesetRevision: 1 }));
@@ -854,8 +945,10 @@ function start(
   viewportPause.clear();
   $('viewportModal').classList.add('hidden');
   beginProtectedObjectives();
-  beginBattleReport(!!restored);
-  battleSession.claim();
+  beginBattleReport(!!restored && !fresh);
+  // Keep the exact verified ownership state on restart. Every later save still
+  // checks it, so a write arriving during setup cannot be reclaimed/overwritten.
+  if (!fresh) battleSession.claim();
   padHud = false;
   padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
   started = true;
@@ -869,6 +962,7 @@ function start(
   renderer.vfx?.reset();
   cancel();
   $('welcome').classList.add('hidden');
+  $('restartModal').classList.add('hidden');
   $('resultModal').classList.add('hidden');
   $('pauseVeil').classList.add('hidden');
   const mission =
@@ -903,14 +997,14 @@ function start(
   );
   $('speed').textContent = '1×';
   pauseControl();
-  $('pause').onclick = () => pause(!paused, { explicit: true });
-  renderer.camera = restored ? game.state.frontline : 450;
+  $('pause').onclick = toggleBattlePause;
+  renderer.camera = restored && !fresh ? game.state.frontline : 450;
   renderer.clampCamera();
   initAudio();
   sound('build');
   $('toast').classList.remove('show');
   if (!mission || !coachEnabled || !campaignCoach(game, mission.id, ui)) toast(
-    restored
+    restored && !fresh
       ? 'Battle resumed.'
       : mission
         ? mission.objective
@@ -923,6 +1017,7 @@ function start(
   updateHUD();
   syncViewportSafety();
   if (game.limitReason) holdBattleSafety(game.limitReason);
+  beginCampaignCoaching();
   save();
 }
 function beginProtectedObjectives() {
@@ -1166,7 +1261,7 @@ function beginBattleReport(resumed) {
   try {
     battleJournal = createBattleJournal(game, {
       resumed,
-      identity: identityOf(game, scenarioForBattle(currentChallenge, currentCampaign)),
+      identity: identityOf(game, scenarioForBattle(currentChallenge, currentCampaign, game)),
       mode: currentCampaign ? 'campaign' : currentChallenge ? 'challenge' : 'skirmish',
       id: currentCampaign || currentChallenge,
       name: authored?.name || `${game.map.name} skirmish`,
@@ -1257,11 +1352,15 @@ function showTitle({ focusStart = false, focusResume = false } = {}) {
   padHud = false;
   started = false;
   paused = false;
+  coachingHold = false;
+  $('coachingModal').classList.add('hidden');
   cancel();
   renderer.vfx?.reset();
   $('resultModal').classList.add('hidden');
+  $('restartModal').classList.add('hidden');
   $('pauseVeil').classList.add('hidden');
   $('welcome').classList.remove('hidden');
+  campaignPage = 'mission';
   setMode(mode);
   updateResume();
   syncDialogs();
@@ -1275,7 +1374,7 @@ $('playAgain').onclick = () => {
   if (currentCampaign && objectiveOutcome?.failed) {
     mode = 'campaign';
     selectedCampaign = currentCampaign;
-    start();
+    start(null, null, null, { scenarioRevision: campaignScenarioForGame(game, currentCampaign).revision });
     return;
   }
   if (currentChallenge && objectiveOutcome?.failed) {
@@ -1287,7 +1386,7 @@ $('playAgain').onclick = () => {
   if (currentCampaign) {
     mode = 'campaign';
     const overview = getCampaignOverview(campaignProgress);
-    selectedCampaign = (isIntroMission(currentCampaign) ? overview.introduction.nextMissionId : null)
+    selectedCampaign = (isIntroMission(currentCampaign) ? overview.legacyIntroduction.nextMissionId : null)
       || overview.nextMissionId || currentCampaign;
     selectedChapter = CAMPAIGN_MISSIONS.find(
       (m) => m.id === selectedCampaign,
@@ -1300,7 +1399,7 @@ $('replayMission').onclick = () => {
   if (!currentCampaign || !objectiveOutcome?.completed || objectiveOutcome.stars >= 3) return;
   mode = 'campaign';
   selectedCampaign = currentCampaign;
-  start();
+  start(null, null, null, { scenarioRevision: campaignScenarioForGame(game, currentCampaign).revision });
 };
 $('resultMenu').onclick = () => showTitle({ focusStart: true });
 $('inspectBattle').onclick = () => {
@@ -1365,7 +1464,7 @@ function save() {
   }
   if (!ok && !saveWarning) {
     toast(
-      paused ? 'Saving unavailable. Your battle remains paused on this page; keep it open.' : 'Autosave unavailable. Your battle is still running, but keep this page open.',
+      paused || coachingHold ? 'Saving unavailable. Your battle remains paused on this page; keep it open.' : 'Autosave unavailable. Your battle is still running, but keep this page open.',
     );
     saveWarning = true;
   }
@@ -1502,7 +1601,7 @@ function finish() {
     won,
     draw,
     ...(game.schemaVersion === 3
-      ? { identity: identityOf(game, scenarioForBattle(currentChallenge, currentCampaign)) }
+      ? { identity: identityOf(game, scenarioForBattle(currentChallenge, currentCampaign, game)) }
       : { challengeId: currentChallenge, campaignId: currentCampaign, ...(game.map.id !== 'classic' ? { mapId: game.map.id } : {}) }),
     difficulty: game.difficulty,
     time: game.state.time,
@@ -1521,11 +1620,20 @@ function finish() {
     renderChallenge();
   }
   if (mission && won) {
+    const priorRoster = getCampaignRoster(campaignProgress);
     campaignProgress = recordCampaignResult(
       campaignProgress,
       currentCampaign,
       game,
     );
+    const earnedRoster = getCampaignRoster(campaignProgress);
+    const newBuildings = earnedRoster.buildings.filter(type => !priorRoster.buildings.includes(type));
+    if (newBuildings.length) {
+      const unlock = document.createElement('p');
+      unlock.className = 'campaign-earned';
+      unlock.textContent = 'New buildings: ' + newBuildings.map(type => getRuleset(earnedRoster.rulesetId).buildings[type].name).join(', ') + '.';
+      $('resultObjectives').append(unlock);
+    }
     persistProgress();
     renderCampaign();
   }
@@ -1725,17 +1833,26 @@ $('minimap').addEventListener('click', (e) => {
 window.addEventListener('keydown', (e) => {
   if (e.repeat && e.code !== 'ArrowLeft' && e.code !== 'ArrowRight') return;
   if (e.code === 'Escape') {
-    if (!$('backupModal').classList.contains('hidden')) hideBackup();
+    e.preventDefault();
+    if (!$('restartModal').classList.contains('hidden')) hideRestart();
+    else if (!$('backupModal').classList.contains('hidden')) hideBackup();
     else if (!$('settingsModal').classList.contains('hidden')) hideSettings();
     else if (!$('helpModal').classList.contains('hidden')) hideHelp();
     else if (!$('resultModal').classList.contains('hidden') && $('resultReport').querySelector('details')?.open) {
       const report = $('resultReport').querySelector('details');
       report.open = false;
       report.querySelector('summary').focus();
-    } else cancel();
+    } else if (!$('viewportModal').classList.contains('hidden')) return;
+    else if (!$('pauseVeil').classList.contains('hidden')) pause(false, { explicit: true });
+    else if (!$('coachingModal').classList.contains('hidden')) planWithCoaching();
+    else if (started && game.state.winner === null && !objectiveOutcome && !ui.build && !ui.spell && !ui.selected) pause(true);
+    else cancel();
+    return;
   }
   if (
     !started ||
+    !$('coachingModal').classList.contains('hidden') ||
+    !$('restartModal').classList.contains('hidden') ||
     !$('backupModal').classList.contains('hidden') ||
     !$('settingsModal').classList.contains('hidden') ||
     !$('helpModal').classList.contains('hidden') ||
@@ -1745,8 +1862,9 @@ window.addEventListener('keydown', (e) => {
     return;
   if (e.code === 'Space' && !nativeSpaceTarget(e.target)) {
     e.preventDefault();
-    pause(!paused, { explicit: true });
+    toggleBattlePause();
   }
+  if (paused) return;
   if (e.code === 'ArrowLeft') {
     e.preventDefault();
     renderer.pan(75);
@@ -1841,6 +1959,7 @@ function updateHUD() {
   $('army').textContent = army >= 70 ? '70/70' : army;
   $('army').title = `${army} / 70 army capacity`;
   $('time').textContent = timeText(s.time);
+  $('battleClockLabel').textContent = coachingHold ? 'TEACHING PAUSE' : 'BATTLE TIME';
   for (const [i, prefix] of [
     [0, 'your'],
     [1, 'enemy'],
@@ -1920,7 +2039,7 @@ let heardEffects = new WeakSet(),
 function updateAudio() {
   const ended = game.state.winner !== null || objectiveOutcome;
   audio.setScene(
-    document.hidden || paused
+    document.hidden || paused || coachingHold
       ? 'paused'
       : !started
         ? 'menu'
@@ -1930,7 +2049,7 @@ function updateAudio() {
             : 'defeat'
           : 'battle',
   );
-  if (!started || paused || ended) return;
+  if (!started || paused || coachingHold || ended) return;
   const s = game.state;
   audio.setIntensity(
     Math.min(
@@ -1981,7 +2100,7 @@ function frame(now) {
   updateController(now);
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
-  if (started && !paused && game.state.winner === null && !objectiveOutcome) {
+  if (started && !paused && !coachingHold && game.state.winner === null && !objectiveOutcome) {
     if (currentCampaign || currentChallenge) {
       const authored = currentCampaign
         ? CAMPAIGN_MISSIONS.find((m) => m.id === currentCampaign)
@@ -2018,7 +2137,7 @@ function frame(now) {
   }
   updateAudio();
   ui.paused =
-    paused || !started || game.state.winner !== null || !!objectiveOutcome;
+    paused || coachingHold || !started || game.state.winner !== null || !!objectiveOutcome;
   const missionTargets = currentCampaign
     ? getCampaignTargets(game, currentCampaign)
     : [];
@@ -2107,6 +2226,7 @@ function setMode(value) {
     .querySelector('.welcome')
     .classList.toggle('campaign-mode', mode === 'campaign');
   $('start').disabled = false;
+  $('start').classList.remove('hidden');
   $('start').innerHTML =
     mode === 'campaign'
       ? 'BEGIN MISSION <span>→</span>'
@@ -2136,43 +2256,76 @@ for (const button of document.querySelectorAll('[data-mode]'))
     setMode(button.dataset.mode);
     sound('click');
   };
-function revealCampaignChapter() {
-  const strip = $('campaignChapters'), active = strip.querySelector('.active');
-  if (mode !== 'campaign' || !active || strip.clientWidth <= 0) return;
-  const frame = strip.getBoundingClientRect(), item = active.getBoundingClientRect();
-  // Only move this horizontal strip. scrollIntoView also moves the briefing/page.
-  if (item.left < frame.left) strip.scrollLeft += item.left - frame.left;
-  else if (item.right > frame.right) strip.scrollLeft += item.right - frame.right;
+function showCampaignPage(page, focusId) {
+  campaignPage = page;
+  renderCampaign();
+  $('campaignConfig').scrollTop = 0;
+  if (focusId) $(focusId).focus({ preventScroll: true });
+}
+function selectCampaignMission(id) {
+  const mission = CAMPAIGN_MISSIONS.find(m => m.id === id);
+  if (!mission) return;
+  selectedCampaign = id;
+  selectedChapter = mission.chapterId;
+  showCampaignPage('mission', 'campaignMissionTitle');
 }
 function renderCampaign() {
   const overview = getCampaignOverview(campaignProgress),
-    chapters = [overview.introduction.chapter, ...overview.chapters],
-    missions = [...overview.introduction.missions, ...overview.missions],
-    mission =
-      CAMPAIGN_MISSIONS.find((m) => m.id === selectedCampaign) ||
-      CAMPAIGN_MISSIONS[0],
-    chapter =
-      CAMPAIGN_CHAPTERS.find((c) => c.id === selectedChapter) ||
-      CAMPAIGN_CHAPTERS[0];
+    legacy = overview.legacyIntroduction,
+    showLegacy = legacy.cleared > 0 || isIntroMission(selectedCampaign) || isIntroMission(currentCampaign),
+    chapters = [...overview.chapters, ...(showLegacy ? [legacy.chapter] : [])],
+    missions = [...overview.missions, ...(showLegacy ? legacy.missions : [])],
+    mission = missions.find((m) => m.id === selectedCampaign) || overview.missions[0],
+    chapter = chapters.find((c) => c.id === selectedChapter) || chapters.find(c => c.id === mission.chapterId);
+  selectedCampaign = mission.id;
+  selectedChapter = chapter.id;
+  const chapterMissions = missions.filter(m => m.chapterId === chapter.id),
+    chapterOverview = chapters.find(c => c.id === chapter.id),
+    position = chapterMissions.findIndex(m => m.id === mission.id),
+    missionIndex = missions.findIndex(m => m.id === mission.id),
+    record = campaignProgress.missions[mission.id];
+  for (const page of ['story', 'chapter', 'mission'])
+    $(`campaign${page[0].toUpperCase() + page.slice(1)}Page`).classList.toggle('hidden', campaignPage !== page);
+  $('campaignStoryNav').toggleAttribute('aria-current', campaignPage === 'story');
+  if (campaignPage === 'story') $('campaignStoryNav').setAttribute('aria-current', 'page');
+  $('campaignChapterNav').classList.toggle('hidden', campaignPage === 'story');
+  $('campaignStoryNav').nextElementSibling.classList.toggle('hidden', campaignPage === 'story');
+  $('campaignChapterNav').textContent = chapter.optional || chapter.id === ONBOARDING_CHAPTER.id ? chapter.name : `Chapter ${chapter.number} · ${chapter.name}`;
+  $('campaignChapterNav').toggleAttribute('aria-current', campaignPage === 'chapter');
+  if (campaignPage === 'chapter') $('campaignChapterNav').setAttribute('aria-current', 'page');
+  document.querySelectorAll('[data-mission-path]').forEach(el => el.classList.toggle('hidden', campaignPage !== 'mission'));
+  $('campaignMissionPosition').textContent = `Mission ${position + 1} of ${chapterMissions.length}`;
+  $('campaignChapterLabel').textContent = chapter.optional ? 'LEGACY LESSONS' : chapter.id === ONBOARDING_CHAPTER.id ? 'START HERE' : `CHAPTER ${chapter.number} · ${chapter.name}`;
+  $('campaignChapterProgress').textContent = `${chapterOverview.cleared}/${chapterOverview.total} missions complete · ${chapterOverview.stars}/${chapterOverview.maxStars} stars`;
+  $('campaignMissionStatus').textContent = record?.completed ? `${'★'.repeat(record.stars)}${'☆'.repeat(3 - record.stars)} · Complete` : mission.unlocked ? 'Ready to play' : 'Locked';
+  for (const [id, offset] of [['campaignPrevious', -1], ['campaignNext', 1]]) {
+    const neighbor = missions[missionIndex + offset];
+    $(id).disabled = !neighbor;
+    $(id).setAttribute('aria-label', neighbor ? `${offset < 0 ? 'Previous' : 'Next'} mission: ${neighbor.name}` : offset < 0 ? 'No previous mission' : 'No next mission');
+    $(id).onclick = () => neighbor && selectCampaignMission(neighbor.id);
+  }
+  $('campaignReturnMission').textContent = `Return to ${mission.name} →`;
   $('campaignProgressText').textContent =
     `${overview.cleared}/${overview.total} missions · ${overview.stars}/${overview.maxStars} stars`;
   $('campaignCount').textContent = String(overview.total);
   $('campaignChapters').textContent = '';
-  $('campaignIntroProgressText').textContent = `Optional opening missions: ${overview.introduction.cleared}/${overview.introduction.total} · ${overview.introduction.stars}/${overview.introduction.maxStars} stars`;
+  $('campaignIntroProgressText').textContent = `Company roster: ${overview.roster.buildings.length}/8 buildings` +
+    (overview.returning ? ' · Your earlier campaign progress keeps the full roster available.' : overview.roster.stage < 3 ? ' · Win the next opening mission to add more.' : ' · Full roster unlocked.') +
+    (legacy.cleared ? ` Legacy lessons: ${legacy.stars}/${legacy.maxStars} stars retained.` : '');
   $('skipIntroduction').classList.toggle('hidden', !isIntroMission(mission.id));
   for (const c of chapters) {
     const button = document.createElement('button');
     button.dataset.chapter = c.id;
     button.className = c.id === chapter.id ? 'active' : '';
-    button.innerHTML = `<span>${c.optional ? 'START HERE' : 'CHAPTER ' + c.number} · ${c.stars}/${c.maxStars} ★</span><b>${c.name}</b>`;
+    button.setAttribute('aria-pressed', String(c.id === chapter.id));
+    button.innerHTML = `<span>${c.optional ? 'LEGACY LESSONS' : c.id === ONBOARDING_CHAPTER.id ? 'START HERE' : 'CHAPTER ' + c.number} · ${c.stars}/${c.maxStars} ★</span><b>${c.name}</b><small>${c.cleared}/${c.total} missions complete</small>`;
     button.onclick = () => {
       selectedChapter = c.id;
       const candidates = missions.filter((m) => m.chapterId === c.id);
       selectedCampaign = (
         candidates.find((m) => m.unlocked && !m.completed) || candidates[0]
       ).id;
-      renderCampaign();
-      $('campaignChapters').querySelector(`[data-chapter="${c.id}"]`)?.focus();
+      showCampaignPage('chapter', 'campaignChapterTitle');
     };
     $('campaignChapters').append(button);
   }
@@ -2183,7 +2336,7 @@ function renderCampaign() {
     ? chapter.epilogue
     : chapter.description;
   $('campaignMissions').textContent = '';
-  for (const m of missions.filter((m) => m.chapterId === chapter.id)) {
+  for (const m of chapterMissions) {
     const button = document.createElement('button');
     button.dataset.mission = m.id;
     button.className = [
@@ -2191,20 +2344,36 @@ function renderCampaign() {
       !m.unlocked ? 'locked' : '',
       m.completed ? 'complete' : '',
     ].join(' ');
+    button.setAttribute('aria-pressed', String(m.id === mission.id));
     button.innerHTML = `<span class="mission-number">${String(m.number).padStart(2, '0')}</span><span><b>${m.name}</b><small>${m.completed ? '★'.repeat(m.record.stars) + '☆'.repeat(3 - m.record.stars) : m.unlocked ? 'READY TO PLAY' : 'LOCKED'}</small></span>`;
     button.onclick = () => {
-      selectedCampaign = m.id;
-      renderCampaign();
-      $('campaignMissions').querySelector(`[data-mission="${m.id}"]`)?.focus();
+      selectCampaignMission(m.id);
     };
     $('campaignMissions').append(button);
   }
   $('campaignMissionTitle').textContent = mission.name;
+  $('campaignMissionSubtitle').textContent = mission.subtitle;
   $('campaignMissionDescription').textContent = mission.description;
   $('campaignSpeaker').textContent = mission.dialogue.speaker;
   $('campaignDialogue').textContent = mission.dialogue.text;
+  const brief = missionBriefing(mission);
+  $('campaignGoal').textContent = brief.goal;
+  $('campaignGoalFacts').replaceChildren(...brief.facts.map(fact => {
+    const li = document.createElement('li');
+    li.textContent = fact;
+    return li;
+  }));
+  $('campaignProtection').textContent = brief.protection;
+  $('campaignProtection').classList.toggle('hidden', !brief.protection);
+  // A newly selected mission always starts with its optional details folded.
+  if (briefingMission !== mission.id) {
+    for (const id of ['campaignRules', 'campaignScout', 'campaignHintDetails']) $(id).open = false;
+    briefingMission = mission.id;
+  }
   $('campaignObjective').textContent = mission.objective;
-  $('campaignBriefing').innerHTML = mission.briefing
+  const roster = getRuleset(mission.rulesetId || 'frontier-legacy', mission.rulesetRevision || 1);
+  const rosterLine = 'Available here: ' + Object.values(roster.buildings).map(b => b.name).join(', ') + '.';
+  $('campaignBriefing').innerHTML = [rosterLine, ...mission.briefing]
     .map((t) => `<li>${t}</li>`)
     .join('');
   $('campaignHint').textContent = mission.hint;
@@ -2212,41 +2381,115 @@ function renderCampaign() {
   $('campaignScoutReport').innerHTML = renderMissionScouting(mission);
   $('campaignMedals').textContent =
     'Bonus stars: ' + mission.medals.map((m) => m.label).join(' · ');
-  const unlocked = isMissionUnlocked(campaignProgress, mission.id);
+  const unlocked = mission.unlocked;
+  const needed = mission.scenarioRevision === 2 && !overview.returning && !campaignProgress.missions['open-three-roads']
+    ? ['open-three-roads'] : mission.prerequisites;
   $('campaignUnlock').textContent = unlocked
     ? mission.reward
     : 'Complete ' +
-      mission.prerequisites
+      needed
         .map((id) => CAMPAIGN_MISSIONS.find((m) => m.id === id).name)
         .join(' and ') +
       ' to unlock.';
   $('campaignUnlock').classList.toggle('locked', !unlocked);
   if (mode === 'campaign') {
+    if (!started) populateFieldGuide(roster);
+    $('start').classList.toggle('hidden', campaignPage !== 'mission');
     $('start').disabled = !unlocked;
     $('start').innerHTML =
-      (unlocked ? 'BEGIN MISSION' : 'MISSION LOCKED') + ' <span>→</span>';
-    requestAnimationFrame(revealCampaignChapter);
+      (unlocked ? record?.completed ? 'REPLAY MISSION' : 'BEGIN MISSION' : 'MISSION LOCKED') + ' <span>→</span>';
   }
 }
+$('campaignStoryNav').onclick = () => showCampaignPage('story', 'campaignStoryTitle');
+$('campaignChapterNav').onclick = () => showCampaignPage('chapter', 'campaignChapterTitle');
+$('campaignReturnMission').onclick = () => showCampaignPage('mission', 'campaignMissionTitle');
 $('skipIntroduction').onclick = () => {
   const overview = getCampaignOverview(campaignProgress);
   selectedCampaign = overview.nextMissionId || overview.missions[0].id;
   selectedChapter = CAMPAIGN_MISSIONS.find(mission => mission.id === selectedCampaign).chapterId;
-  renderCampaign();
-  $('start').focus();
+  showCampaignPage('mission', 'campaignMissionTitle');
 };
 setMode(mode);
-new ResizeObserver(revealCampaignChapter).observe($('campaignChapters'));
-let settingsWasPaused = false;
-function showSettings() {
-  settingsWasPaused = paused;
-  if (started && game.state.winner === null && !objectiveOutcome) {
-    setCompactBuildOpen(false);
-    paused = true;
-    $('pauseVeil').classList.add('hidden');
+// The pause menu is a top-level dialog, independent of battlefield sizing.
+function syncPauseMenu() {
+  const mission = currentCampaign && CAMPAIGN_MISSIONS.find(m => m.id === currentCampaign);
+  const trial = currentChallenge && CHALLENGES.find(c => c.id === currentChallenge);
+  const noun = mission ? 'mission' : trial ? 'field trial' : 'battle';
+  $('pauseBattleName').textContent = mission?.name || trial?.name || game.map.name;
+  $('pauseContext').textContent = `${mission ? 'Campaign' : trial ? 'Field trial' : 'Skirmish'} · ${timeText(game.state.time)} · ${speed}× speed`;
+  $('pauseObjective').textContent = mission?.objective || trial?.objective || 'Destroy the enemy citadel.';
+  $('restartBattle').textContent = `Restart ${noun}…`;
+  $('restartTitle').textContent = `Restart ${noun}?`;
+  $('confirmRestart').textContent = `Restart ${noun}`;
+  const status = battleSession.status();
+  const unsafe = !!(battleSafetyReason || game.limitReason || viewportPause.active);
+  $('restartBattle').disabled = status !== 'current' || unsafe || !!(recoveryHold || profileGate);
+  const text = status === 'stale'
+    ? 'A newer battle is saved in another tab. Return to title to resume it.'
+    : status !== 'current' || saveWarning
+      ? 'Saving unavailable. Keep this page open. Your battle remains here until it can be saved.'
+      : 'Checkpoint saved on this device. You can return to this battle from the title screen.';
+  // Avoid repeatedly announcing an unchanged status when other dialogs change.
+  if ($('pauseSaveStatus').textContent !== text) $('pauseSaveStatus').textContent = text;
+  $('pauseSaveStatus').classList.toggle('save-warning', status !== 'current' || saveWarning);
+}
+function hideRestart() {
+  $('restartModal').classList.add('hidden');
+  syncDialogs();
+}
+$('restartBattle').onclick = () => {
+  syncProfileSafety();
+  if (recoveryHold || profileGate) { showRecoverySettings(); return; }
+  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+      battleSafetyReason || game.limitReason || viewportPause.active || battleSession.status() !== 'current') return;
+  $('restartStatus').textContent = '';
+  $('restartModal').classList.remove('hidden');
+  syncDialogs();
+};
+$('cancelRestart').onclick = hideRestart;
+$('confirmRestart').onclick = () => {
+  syncProfileSafety();
+  if (recoveryHold || profileGate) { hideRestart(); showRecoverySettings(); return; }
+  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+      battleSafetyReason || game.limitReason || viewportPause.active) return;
+  if (battleSession.status() !== 'current') {
+    $('restartStatus').textContent = 'The checkpoint changed or storage is unavailable. Keep this battle open. Return to the pause menu to continue safely.';
+    return;
   }
+  try {
+    const candidate = currentCampaign ? createCampaignRestart(game, currentCampaign)
+      : currentChallenge ? createChallenge(currentChallenge)
+        : new Game({ difficulty: game.difficulty, ai: game.ai, seed: Date.now() >>> 0,
+          mapId: game.map.id, mapRevision: game.map.revision,
+          ...(game.schemaVersion === 3 ? {rulesetId: game.ruleset.id, rulesetRevision: game.ruleset.revision} : {}) });
+    // Use the existing profile/ownership boundary. Never discard the retained
+    // battle until a fresh attempt has a verified checkpoint. No progress reward
+    // or completed-history row is produced by abandoning an unfinished battle.
+    if ((progressDirty && !persistProgress()) ||
+        !writeBattle(battleSession, SAVE, candidate, currentChallenge, currentCampaign, { campaignProgress })) {
+      $('restartStatus').textContent = 'Restart could not be saved or verified. Your current battle stays paused on this page. Keep it open and try again when storage is available.';
+      return;
+    }
+    start(candidate, currentChallenge, currentCampaign, { fresh: true });
+  } catch {
+    $('restartStatus').textContent = 'Restart is unavailable. Your current battle stays paused on this page.';
+  }
+};
+let settingsWasPaused = false;
+function showSettings(event) {
+  // Touch may not focus its button. Capture the actual opener before pause()
+  // focuses Resume, and retain it through the intermediate pause dialog.
+  const opener = event?.currentTarget || document.activeElement;
+  settingsWasPaused = paused;
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+  $('settingsContext').textContent = started && !objectiveOutcome && game.state.winner === null
+    ? 'Battle paused. Changes apply immediately.' : 'Changes apply immediately.';
+  $('settingsDone').textContent = started && !objectiveOutcome && game.state.winner === null
+    ? settingsWasPaused ? 'Back to pause menu' : coachingHold ? 'Back to planning' : 'Resume battle' : 'Done';
   syncSettings();
   $('settingsModal').classList.remove('hidden');
+  syncDialogs();
+  if (opener) dialogFocus.set($('settingsModal'), opener);
 }
 function hideSettings() {
   if (recoveryHold || profileGate) {
@@ -2423,12 +2666,15 @@ $('effectQuality').onchange = () => {
 };
 // Dialog focus never escapes into a live battlefield behind the overlay.
 const dialogLayers = [
+  $('coachingModal'),
+  $('pauseVeil'),
   $('viewportModal'),
   $('welcome'),
   $('helpModal'),
   $('settingsModal'),
   $('resultModal'),
   $('backupModal'),
+  $('restartModal'),
 ];
 let activeDialog = null;
 const dialogFocus = new WeakMap();
@@ -2509,6 +2755,13 @@ function dialogDefaultFocus(layer) {
 }
 function syncDialogs() {
   syncInputScope();
+  // A safety/recovery interruption takes precedence over a destructive prompt.
+  if (!$('restartModal').classList.contains('hidden') &&
+      (recoveryHold || profileGate || viewportPause.active || battleSafetyReason)) {
+    $('restartModal').classList.add('hidden');
+    syncInputScope();
+  }
+  if (!$('pauseVeil').classList.contains('hidden')) syncPauseMenu();
   const visible = dialogLayers.filter((x) => !x.classList.contains('hidden')),
     next = visible.at(-1) || null;
   document.querySelector('.app').inert = !!next;
@@ -2522,12 +2775,15 @@ function syncDialogs() {
   const previous = activeDialog;
   activeDialog = next;
   if (next) {
-    dialogFocus.set(next, document.activeElement);
-    const target = dialogDefaultFocus(next);
-    target?.focus();
+    const returning = previous && dialogFocus.get(previous);
+    const target = returning && next.contains(returning) && !returning.disabled && controlIsVisible(returning)
+      ? returning : null;
+    if (!target) dialogFocus.set(next, document.activeElement);
+    (target || dialogDefaultFocus(next))?.focus();
   } else {
     const target = previous && dialogFocus.get(previous);
-    if (target?.isConnected && !target.closest('.hidden')) target.focus();
+    if (target?.isConnected && target !== document.body && target !== document.documentElement &&
+        !target.closest('.hidden,[inert]')) target.focus();
     else $('battle').focus();
   }
 }
@@ -2754,7 +3010,7 @@ $('exportRecovery').onclick = () => {
   try {
     const battle =
       started && game.state.winner === null && !objectiveOutcome
-        ? encodeBattle(game, scenarioForBattle(currentChallenge, currentCampaign), { campaignProgress })
+        ? encodeBattle(game, scenarioForBattle(currentChallenge, currentCampaign, game), { campaignProgress })
         : null;
     // Every domain is explicit, so unavailable/partly replaced local storage is never read.
     const text = createBackup(
@@ -2807,7 +3063,9 @@ $('exportBackup').onclick = () => {
       options.history = historySession.view(history.rows);
     }
     if (progressDirty) {
-      options.campaign = campaignProgress;
+      const storedCampaign = readCampaignProgressState(storage);
+      if (!storedCampaign.ok) throw new Error('Stored campaign progress cannot be read safely. Use Export in-memory session to retain this tab’s known progress; it is not a complete saved-profile backup.');
+      options.campaign = mergeCampaignProgress(campaignProgress, storedCampaign.progress);
       options.trials = trialRecords;
     }
     if (
@@ -2817,13 +3075,8 @@ $('exportBackup').onclick = () => {
       !objectiveOutcome &&
       battleSession.isCurrent()
     )
-      options.battle = {
-        format: 'ironroot-save',
-        version: 2,
-        campaignId: currentCampaign,
-        challengeId: currentChallenge,
-        game: game.serialize(),
-      };
+      options.battle = encodeBattle(game, scenarioForBattle(currentChallenge, currentCampaign, game),
+        { campaignProgress: options.campaign || campaignProgress });
     downloadBackup(createBackup(localStorage, options));
     $('backupStatus').textContent =
       'Backup download started. Keep the file somewhere safe.';
@@ -3014,6 +3267,13 @@ function controllerNavigate(direction, scope) {
     active.dispatchEvent(new Event('change', { bubbles: true }));
     return;
   }
+  // These compact menus have a deliberate reading order. Spatial navigation
+  // would jump from the centered Resume button past both utility buttons.
+  if (scope.key === 'pauseVeil' || scope.key === 'restartModal') {
+    focusPadControl(controls[nextFocusIndex(controls, current,
+      ['left', 'up'].includes(direction) ? -1 : 1)]);
+    return;
+  }
   const items = controls.map((el) => ({ rect: el.getBoundingClientRect() }));
   let next = spatialFocusIndex(items, current, direction);
   if (next === current)
@@ -3025,10 +3285,12 @@ function controllerNavigate(direction, scope) {
   focusPadControl(controls[next]);
 }
 function controllerBack(scope) {
-  if (scope.key === 'backupModal') hideBackup();
+  if (scope.key === 'coachingModal') planWithCoaching();
+  else if (scope.key === 'backupModal') hideBackup();
   else if (scope.key === 'settingsModal') hideSettings();
   else if (scope.key === 'helpModal') hideHelp();
-  else if (scope.key === 'pause') pause(false, { explicit: true });
+  else if (scope.key === 'restartModal') hideRestart();
+  else if (scope.key === 'pauseVeil' || scope.key === 'pause') pause(false, { explicit: true });
   else if (scope.key === 'resultModal' || scope.key === 'ended') showTitle();
   else if (scope.key === 'hud') {
     padHud = false;
@@ -3055,8 +3317,8 @@ function handleControllerAction({ action }) {
     return;
   }
   if (action === 'pause') {
-    if (scope.key === 'pause') pause(false, { explicit: true });
-    else if (scope.key === 'battle' || scope.key === 'hud') pause(true);
+    if (scope.key === 'pauseVeil' || scope.key === 'pause') pause(false, { explicit: true });
+    else if (scope.key === 'battle' || scope.key === 'hud') toggleBattlePause();
   } else if (action === 'cancel') controllerBack(scope);
   else if (action === 'focus') {
     if (scope.key === 'battle') {

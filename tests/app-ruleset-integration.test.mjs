@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
 import {Game,BUILDINGS} from '../dist/engine.js';
-import {createCampaignProgress,getCampaignOverview,isIntroMission,ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS} from '../dist/campaign.js';
+import {createCampaignProgress,getProgressionCampaignOverview as getCampaignOverview,isIntroMission,CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS} from '../dist/campaign.js';
 import {decodeBattle,encodeBattle,scenarioForBattle} from '../dist/battle-codec.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
@@ -34,7 +34,7 @@ test('real start selects new skirmish rules explicitly but cannot reinterpret a 
 });
 
 function safetyContext(game=openGame()){
- const $=dom(),log={saves:0,interrupts:0},c={$,game,started:true,paused:false,battleSafetyReason:null,objectiveOutcome:null,recoveryHold:null,profileGate:null,
+ const $=dom(),log={saves:0,interrupts:0},c={$,game,started:true,paused:false,battleSafetyReason:null,coachingHold:false,document:{hidden:false},objectiveOutcome:null,recoveryHold:null,profileGate:null,
   viewportPause:{active:false},ui:{build:'barracks',spell:true},setCompactBuildOpen(){},pauseControl(){},syncDialogs(){},
   save(){log.saves++;return true;},interruptMobileInput(){log.interrupts++;},battleSession:{status:()=> 'current'},showRecoverySettings(){},showTitle(){},toast(){}};
  createContext(c);runInContext(part('function holdBattleSafety(','function start('),c);runInContext(part('function pause(value,',"$('pause').onclick ="),c);return {c,$,log};
@@ -74,11 +74,11 @@ test('Resume uses the shared decoder, discloses new endgame rules and retains un
  const h=startupHarness();h.c.resumeProblem={code:'unsupported-version'};h.c.showSettings=()=>{};const before=h.c.game;h.c.start();assert.equal(h.c.game,before);assert.equal(h.log.claims,0);assert.equal(h.log.saves,0);
 });
 
-test('intro Continue advances within the optional opening, then to unchanged legacy campaign without overwriting stars',()=>{
+test('legacy intro Continue preserves stars and leads an intro-only profile into the new opening',()=>{
  const $=dom(),progress=createCampaignProgress();progress.missions['first-watch']={completed:true,stars:1,bestTime:70};
  const c={$,CAMPAIGN_MISSIONS,isIntroMission,getCampaignOverview,campaignProgress:progress,currentCampaign:'first-watch',currentChallenge:null,objectiveOutcome:{completed:true,stars:1},
   selectedCampaign:'first-watch',selectedChapter:'first-roads',mode:'campaign',battleSession:{remove(){}},showTitle(){},start(){}};
  createContext(c);runInContext(part("$('playAgain').onclick", "$('inspectBattle').onclick"),c);$('playAgain').onclick();assert.equal(c.selectedCampaign,'forked-road');
- progress.missions['forked-road']={completed:true,stars:2,bestTime:90};c.currentCampaign='forked-road';$('playAgain').onclick();assert.equal(c.selectedCampaign,'emberwatch');
+ progress.missions['forked-road']={completed:true,stars:2,bestTime:90};c.currentCampaign='forked-road';$('playAgain').onclick();assert.equal(c.selectedCampaign,'roadside-watch');
  assert.deepEqual(progress.missions['first-watch'],{completed:true,stars:1,bestTime:70});assert.deepEqual(progress.missions['forked-road'],{completed:true,stars:2,bestTime:90});
 });

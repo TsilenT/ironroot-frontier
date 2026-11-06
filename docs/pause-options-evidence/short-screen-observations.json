@@ -1,0 +1,41 @@
+{
+  "scope": "Current main geometry, without phone/fullscreen branches",
+  "checks": [
+    {
+      "width": 390,
+      "height": 430,
+      "viewportHold": true,
+      "menu": {
+        "x": 16,
+        "y": 16,
+        "width": 358,
+        "height": 398
+      },
+      "saveExit": {
+        "x": 39,
+        "y": 432.765625,
+        "width": 312,
+        "height": 44
+      },
+      "pauseVisible": true
+    },
+    {
+      "width": 667,
+      "height": 300,
+      "viewportHold": true,
+      "menu": {
+        "x": 23.5,
+        "y": 16,
+        "width": 620,
+        "height": 268
+      },
+      "saveExit": {
+        "x": 345.5,
+        "y": 222.375,
+        "width": 275,
+        "height": 44
+      },
+      "pauseVisible": true
+    }
+  ]
+}

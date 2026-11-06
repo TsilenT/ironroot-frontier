@@ -328,7 +328,7 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
     const restored=await historyRecoveryBytes(page);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))
       expect(JSON.parse(restored[key])).toEqual(retained.backup.data[domain]);
-    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:3,phase:'ready'});
+    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:4,phase:'ready'});
     expect(JSON.parse(restored[PROFILE_MARKER]).epoch).not.toBe(JSON.parse(values[PROFILE_MARKER]).epoch);
     expect(parseBackup(createBackup({getItem:key=>restored[key]??null})).data).toEqual(retained.backup.data);
     await press(page,'#welcomeSettings');await press(page,recent+' > summary');

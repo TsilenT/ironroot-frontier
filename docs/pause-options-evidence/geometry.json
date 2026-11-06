@@ -1,0 +1,152 @@
+{
+  "kind": "Chromium emulation; not physical phone/PWA/controller validation",
+  "observations": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1180,
+        "height": 757
+      },
+      "geometry": [
+        {
+          "id": "resume",
+          "x": 399,
+          "y": 345.6875,
+          "width": 367,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "pauseSettings",
+          "x": 399,
+          "y": 401.6875,
+          "width": 178.5,
+          "height": 57,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "help",
+          "x": 587.5,
+          "y": 401.6875,
+          "width": 178.5,
+          "height": 57,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "saveExit",
+          "x": 399,
+          "y": 521.875,
+          "width": 367,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "restartBattle",
+          "x": 399,
+          "y": 573.875,
+          "width": 367,
+          "height": 44,
+          "visibleAtCenter": true
+        }
+      ]
+    },
+    {
+      "name": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 650
+      },
+      "geometry": [
+        {
+          "id": "resume",
+          "x": 39,
+          "y": 283.6875,
+          "width": 312,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "pauseSettings",
+          "x": 39,
+          "y": 339.6875,
+          "width": 151,
+          "height": 71,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "help",
+          "x": 200,
+          "y": 339.6875,
+          "width": 151,
+          "height": 71,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "saveExit",
+          "x": 39,
+          "y": 473.875,
+          "width": 312,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "restartBattle",
+          "x": 39,
+          "y": 525.875,
+          "width": 312,
+          "height": 44,
+          "visibleAtCenter": true
+        }
+      ]
+    },
+    {
+      "name": "landscape",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "geometry": [
+        {
+          "id": "resume",
+          "x": 434,
+          "y": 53.8125,
+          "width": 275,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "pauseSettings",
+          "x": 434,
+          "y": 145,
+          "width": 132.5,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "help",
+          "x": 576.5,
+          "y": 145,
+          "width": 132.5,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "saveExit",
+          "x": 434,
+          "y": 244.1875,
+          "width": 275,
+          "height": 44,
+          "visibleAtCenter": true
+        },
+        {
+          "id": "restartBattle",
+          "x": 434,
+          "y": 292.1875,
+          "width": 275,
+          "height": 44,
+          "visibleAtCenter": true
+        }
+      ]
+    }
+  ]
+}
