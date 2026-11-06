@@ -1,0 +1,177 @@
+[WebServer] (node:16637) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 148 tests using 2 workers
+
+(node:16668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16669) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -    1 [phone] › desktop-input.spec.mjs:38:3 › desktop mouse controls › middle drag pans in placement mode without spending, selecting, or building; left click still places
+  -    2 [phone] › desktop-input.spec.mjs:65:3 › desktop mouse controls › middle drag clamps at both map edges and release outside the canvas ends the gesture
+  -    3 [phone] › desktop-input.spec.mjs:82:3 › desktop mouse controls › right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults
+  -    4 [phone] › desktop-input.spec.mjs:108:3 › desktop mouse controls › secondary press during a held left placement retires the gesture and never buys
+  -    6 [phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on blur and the next left click works
+  -    5 [phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on lost capture and the next left click works
+  -    7 [phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on pause and the next left click works
+  -    8 [phone] › desktop-input.spec.mjs:146:3 › desktop mouse controls › keyboard arrows and Escape and the visible Cancel control retain their fallbacks
+  -    9 [phone] › desktop-input.spec.mjs:162:3 › desktop mouse controls › pause Preferences offers fullscreen and returns to the paused battle
+  ✓   10 [phone] › desktop-input.spec.mjs:217:1 › fullscreen button supports native Enter and Space with consistent exit state (3.2s)
+  ✓   12 [phone] › desktop-input.spec.mjs:239:61 › policy disabled fullscreen shows an accessible windowed fallback (3.7s)
+  ✓   11 [phone] › desktop-input.spec.mjs:184:1 › fullscreen is explicit, enters from a real button gesture, preserves dialogs and tracks native exit (7.6s)
+  ✓   13 [phone] › desktop-input.spec.mjs:239:61 › API absent fullscreen shows an accessible windowed fallback (3.6s)
+  ✓   14 [phone] › desktop-input.spec.mjs:259:1 › a rejected fullscreen request reports failure and allows another genuine request (3.0s)
+  ✓   16 [phone] › desktop-input.spec.mjs:278:55 › touch cancel never builds and the next fresh touch still places (3.6s)
+  ✓   15 [phone] › desktop-input.spec.mjs:278:55 › two contacts never builds and the next fresh touch still places (3.7s)
+  ✓   18 [phone] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (3.9s)
+  ✓   17 [phone] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (4.7s)
+  ✓   19 [phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (9.5s)
+  ✓   20 [phone] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (9.1s)
+  ✓   22 [phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (4.4s)
+  ✓   21 [phone] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (5.2s)
+  ✓   24 [phone] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (3.3s)
+  ✓   23 [phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (4.1s)
+  ✓   25 [phone] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (2.8s)
+  ✓   26 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (4.0s)
+  ✓   27 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (3.1s)
+  ✓   28 [phone] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (3.3s)
+  ✓   29 [phone] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (3.3s)
+  ✓   30 [phone] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (2.3s)
+  ✓   31 [phone] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open (3.8s)
+  ✓   32 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (9.6s)
+  ✓   33 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (10.0s)
+  ✓   34 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (9.9s)
+  ✓   35 [phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (9.3s)
+  ✓   36 [phone] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (4.5s)
+(node:18412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   38 [narrow-phone] › desktop-input.spec.mjs:38:3 › desktop mouse controls › middle drag pans in placement mode without spending, selecting, or building; left click still places
+  -   39 [narrow-phone] › desktop-input.spec.mjs:65:3 › desktop mouse controls › middle drag clamps at both map edges and release outside the canvas ends the gesture
+  -   40 [narrow-phone] › desktop-input.spec.mjs:82:3 › desktop mouse controls › right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults
+  -   41 [narrow-phone] › desktop-input.spec.mjs:108:3 › desktop mouse controls › secondary press during a held left placement retires the gesture and never buys
+  -   42 [narrow-phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on lost capture and the next left click works
+  -   43 [narrow-phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on blur and the next left click works
+  -   44 [narrow-phone] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on pause and the next left click works
+  -   45 [narrow-phone] › desktop-input.spec.mjs:146:3 › desktop mouse controls › keyboard arrows and Escape and the visible Cancel control retain their fallbacks
+  -   46 [narrow-phone] › desktop-input.spec.mjs:162:3 › desktop mouse controls › pause Preferences offers fullscreen and returns to the paused battle
+  ✓   37 [phone] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (2.7s)
+(node:18548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   48 [narrow-phone] › desktop-input.spec.mjs:217:1 › fullscreen button supports native Enter and Space with consistent exit state (2.1s)
+  ✓   47 [narrow-phone] › desktop-input.spec.mjs:184:1 › fullscreen is explicit, enters from a real button gesture, preserves dialogs and tracks native exit (4.5s)
+  ✓   49 [narrow-phone] › desktop-input.spec.mjs:239:61 › policy disabled fullscreen shows an accessible windowed fallback (2.6s)
+  ✓   50 [narrow-phone] › desktop-input.spec.mjs:239:61 › API absent fullscreen shows an accessible windowed fallback (2.5s)
+  ✓   51 [narrow-phone] › desktop-input.spec.mjs:259:1 › a rejected fullscreen request reports failure and allows another genuine request (2.7s)
+  ✓   52 [narrow-phone] › desktop-input.spec.mjs:278:55 › two contacts never builds and the next fresh touch still places (3.4s)
+  ✓   53 [narrow-phone] › desktop-input.spec.mjs:278:55 › touch cancel never builds and the next fresh touch still places (3.0s)
+  ✓   54 [narrow-phone] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (3.9s)
+  ✓   55 [narrow-phone] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (3.7s)
+  ✓   56 [narrow-phone] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (8.5s)
+  ✓   57 [narrow-phone] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (8.8s)
+  ✓   58 [narrow-phone] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (4.5s)
+  ✓   59 [narrow-phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (3.8s)
+  ✓   60 [narrow-phone] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (3.6s)
+  ✓   61 [narrow-phone] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (3.1s)
+  ✓   62 [narrow-phone] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (2.3s)
+  ✓   63 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (3.1s)
+  ✓   64 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (3.0s)
+  ✓   65 [narrow-phone] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (3.1s)
+  ✓   67 [narrow-phone] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (1.7s)
+  -   68 [narrow-phone] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓   66 [narrow-phone] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (4.0s)
+  ✓   69 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (8.3s)
+  ✓   70 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (8.6s)
+  ✓   71 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (9.3s)
+  ✓   72 [narrow-phone] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (9.7s)
+  ✓   73 [narrow-phone] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (4.5s)
+  ✓   74 [narrow-phone] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (2.9s)
+(node:19740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   75 [landscape] › desktop-input.spec.mjs:38:3 › desktop mouse controls › middle drag pans in placement mode without spending, selecting, or building; left click still places
+  -   77 [landscape] › desktop-input.spec.mjs:82:3 › desktop mouse controls › right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults
+  -   78 [landscape] › desktop-input.spec.mjs:108:3 › desktop mouse controls › secondary press during a held left placement retires the gesture and never buys
+  -   79 [landscape] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on lost capture and the next left click works
+  -   76 [landscape] › desktop-input.spec.mjs:65:3 › desktop mouse controls › middle drag clamps at both map edges and release outside the canvas ends the gesture
+  -   80 [landscape] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on blur and the next left click works
+  -   81 [landscape] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on pause and the next left click works
+  -   82 [landscape] › desktop-input.spec.mjs:146:3 › desktop mouse controls › keyboard arrows and Escape and the visible Cancel control retain their fallbacks
+  -   83 [landscape] › desktop-input.spec.mjs:162:3 › desktop mouse controls › pause Preferences offers fullscreen and returns to the paused battle
+  ✓   85 [landscape] › desktop-input.spec.mjs:217:1 › fullscreen button supports native Enter and Space with consistent exit state (2.5s)
+  ✓   84 [landscape] › desktop-input.spec.mjs:184:1 › fullscreen is explicit, enters from a real button gesture, preserves dialogs and tracks native exit (5.2s)
+  ✓   86 [landscape] › desktop-input.spec.mjs:239:61 › policy disabled fullscreen shows an accessible windowed fallback (2.8s)
+  ✓   88 [landscape] › desktop-input.spec.mjs:259:1 › a rejected fullscreen request reports failure and allows another genuine request (2.8s)
+  ✓   87 [landscape] › desktop-input.spec.mjs:239:61 › API absent fullscreen shows an accessible windowed fallback (3.0s)
+  ✓   89 [landscape] › desktop-input.spec.mjs:278:55 › two contacts never builds and the next fresh touch still places (3.8s)
+  ✓   90 [landscape] › desktop-input.spec.mjs:278:55 › touch cancel never builds and the next fresh touch still places (4.1s)
+  ✓   92 [landscape] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (4.3s)
+  ✓   91 [landscape] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (5.5s)
+  ✓   93 [landscape] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (9.5s)
+  ✓   94 [landscape] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (8.8s)
+  ✓   96 [landscape] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (4.4s)
+  ✓   95 [landscape] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (5.7s)
+  ✓   97 [landscape] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (4.7s)
+  ✓   98 [landscape] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (4.3s)
+  ✓   99 [landscape] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (2.8s)
+  ✓  100 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (3.9s)
+  ✓  101 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (3.6s)
+  ✓  102 [landscape] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (3.6s)
+  ✓  103 [landscape] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (4.0s)
+  ✓  104 [landscape] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (2.4s)
+  -  105 [landscape] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓  106 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (10.1s)
+  ✓  107 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (10.1s)
+  ✓  108 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (9.8s)
+  ✓  109 [landscape] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (10.4s)
+  ✓  111 [landscape] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (2.7s)
+  ✓  110 [landscape] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (4.0s)
+(node:21050) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  113 [desktop] › desktop-input.spec.mjs:65:3 › desktop mouse controls › middle drag clamps at both map edges and release outside the canvas ends the gesture (3.5s)
+  ✓  112 [desktop] › desktop-input.spec.mjs:38:3 › desktop mouse controls › middle drag pans in placement mode without spending, selecting, or building; left click still places (5.0s)
+  ✓  114 [desktop] › desktop-input.spec.mjs:82:3 › desktop mouse controls › right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults (3.6s)
+  ✓  115 [desktop] › desktop-input.spec.mjs:108:3 › desktop mouse controls › secondary press during a held left placement retires the gesture and never buys (2.8s)
+  ✓  116 [desktop] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on lost capture and the next left click works (3.1s)
+  ✓  117 [desktop] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on blur and the next left click works (2.9s)
+  ✓  119 [desktop] › desktop-input.spec.mjs:146:3 › desktop mouse controls › keyboard arrows and Escape and the visible Cancel control retain their fallbacks (2.9s)
+  ✓  118 [desktop] › desktop-input.spec.mjs:123:63 › desktop mouse controls › middle drag clears on pause and the next left click works (3.2s)
+  ✓  120 [desktop] › desktop-input.spec.mjs:162:3 › desktop mouse controls › pause Preferences offers fullscreen and returns to the paused battle (3.1s)
+  ✓  121 [desktop] › desktop-input.spec.mjs:184:1 › fullscreen is explicit, enters from a real button gesture, preserves dialogs and tracks native exit (3.9s)
+  ✓  122 [desktop] › desktop-input.spec.mjs:217:1 › fullscreen button supports native Enter and Space with consistent exit state (1.9s)
+  ✓  123 [desktop] › desktop-input.spec.mjs:239:61 › policy disabled fullscreen shows an accessible windowed fallback (2.5s)
+  ✓  124 [desktop] › desktop-input.spec.mjs:239:61 › API absent fullscreen shows an accessible windowed fallback (2.6s)
+  ✓  125 [desktop] › desktop-input.spec.mjs:259:1 › a rejected fullscreen request reports failure and allows another genuine request (2.4s)
+  ✓  126 [desktop] › desktop-input.spec.mjs:278:55 › two contacts never builds and the next fresh touch still places (3.2s)
+  ✓  127 [desktop] › desktop-input.spec.mjs:278:55 › touch cancel never builds and the next fresh touch still places (3.1s)
+  ✓  129 [desktop] › regression.spec.mjs:61:1 › drag in placement mode does not build or spend gold (3.0s)
+  ✓  128 [desktop] › regression.spec.mjs:46:1 › tap places exactly one building, rejects occupied slot, upgrades and salvages (4.1s)
+  ✓  130 [desktop] › regression.spec.mjs:77:1 › controls fit the viewport and survive orientation changes (7.4s)
+  ✓  131 [desktop] › regression.spec.mjs:107:1 › pause and field guide freeze time; resume advances it (8.5s)
+  ✓  132 [desktop] › regression.spec.mjs:121:1 › save, title, reload and resume preserve buildings, gold, time and difficulty (4.2s)
+  ✓  133 [desktop] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {broken (4.1s)
+  ✓  134 [desktop] › regression.spec.mjs:133:67 › invalid save is retained until explicit backup recovery: {"version":999} (3.9s)
+  ✓  135 [desktop] › regression.spec.mjs:148:1 › denied storage keeps unsaved battle open without crashing settings or pause (3.2s)
+  ✓  136 [desktop] › regression.spec.mjs:155:1 › welcome and guide trap keyboard focus and restore playable focus (2.4s)
+  ✓  137 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches VICTORY, clears save and supports replay (3.2s)
+  ✓  138 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches DEFEAT, clears save and supports replay (3.0s)
+  ✓  139 [desktop] › regression.spec.mjs:171:52 › near-end restored match reaches DRAW, clears save and supports replay (3.1s)
+  ✓  141 [desktop] › regression.spec.mjs:213:1 › Space activates the focused Save and return button (2.0s)
+  ✓  140 [desktop] › regression.spec.mjs:190:1 › failed save warns the player before leaving the active battle (3.3s)
+  -  142 [desktop] › regression.spec.mjs:219:1 › a touch selecting a building keeps its details panel open
+  ✓  144 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: null (7.7s)
+  ✓  143 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {broken (8.4s)
+  ✓  146 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: [null,4,"bad",[]] (7.0s)
+  ✓  145 [desktop] › regression.spec.mjs:245:3 › malformed history recovers through explicit retained-backup replacement: {"not":"an array"} (7.7s)
+  ✓  148 [desktop] › regression.spec.mjs:368:1 › preferences persist after reload and Space activates a focused checkbox (3.4s)
+  ✓  147 [desktop] › regression.spec.mjs:348:1 › failed save retains the previous durable snapshot and can recover (4.2s)
+
+  30 skipped
+  118 passed (4.7m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

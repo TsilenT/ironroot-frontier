@@ -6,7 +6,7 @@ A single-player real-time strategy tug-of-war for desktop and mobile browsers. B
 
 The verified live release is **v0.13**, source commit `76135e7b56077a661f67b0b5eeab7c118ec57844`, at https://ironroot.stevets.ai/. Its exact Chromium matrix passed 841 checks with zero failures and three intentional skips; root tests passed 825 with one optional desktop-dependency skip. Live smoke verified older campaign save migration and introductory mission completion, replay and resume.
 
-This checkout now contains a **next-batch work in progress** for combat feedback, protected-objective warnings and an intro Resume-label correction. Those changes are not the deployed build. See `docs/ROADMAP.md` and the individual review records for acceptance status and unrun gates. Historical release results do not certify unfinished work.
+This checkout is the **unreleased v0.14.1 phone/input integration candidate**. It combines the merged combat-feedback/objective-warning work with a visible-viewport phone repair, short-screen sidebar, middle-mouse panning, right-click cancellation and a Preferences fullscreen control. Its component checks are recorded separately; only a passing combined-head gate can qualify this build for release. See `docs/APP_CONTROLS_INTEGRATION.md`. Public deployment remains v0.13 until independently verified.
 
 ## Play
 
@@ -34,7 +34,8 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 ## Controls and saves
 
 - Choose a building, then a legal site. Troops spawn and fight automatically.
-- Drag the field or use Home, Front and the minimap to navigate.
+- Drag the field with touch, left mouse or middle mouse, or use Home, Front and the minimap to navigate. Middle mouse only pans; right-click on the battlefield cancels building or volley placement. Escape and the visible Cancel button remain available.
+- Fullscreen is in Preferences, available from the title screen or pause menu. Activate the button with a click, tap, Enter or Space; browser/device support and permissions apply. If unavailable, keep playing in the window. Ordinary browser and installed-app play do not require fullscreen; screen-size pause rules still apply.
 - Select an owned building to upgrade or salvage it. Original protected structures cannot be salvaged from the UI.
 - Keys 1–7 (legacy) or 1–8 (Rootwarden) select visible building options, R selects Arrow volley, Space pauses, Escape cancels and arrows move the camera. Expand **All buildings** for the full shortcut set.
 - Battles autosave every five seconds and on pause. One active battle slot is shared across modes. A failed Save & return keeps the battle on the page.
