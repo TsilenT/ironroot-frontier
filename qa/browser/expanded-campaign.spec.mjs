@@ -11,8 +11,8 @@ const SAVE=BACKUP_STORAGE_KEYS.battle,HISTORY=BACKUP_STORAGE_KEYS.history;
 async function profile(page){return page.evaluate(keys=>Object.fromEntries(keys.map(key=>[key,localStorage.getItem(key)])),Object.values(BACKUP_STORAGE_KEYS));}
 async function progress(page){return page.evaluate(key=>JSON.parse(localStorage.getItem(key)),CAMPAIGN_STORAGE_KEY);}
 async function showFrontier(page,id){
-  await press(page,'[data-mode="campaign"]');await press(page,'[data-chapter="frontier"]');
-  if(id)await press(page,'[data-mission="'+id+'"]');
+  await press(page,'[data-mode="campaign"]');await press(page,'#campaignStoryNav');await press(page,'[data-chapter="frontier"]');
+  await press(page,id?'[data-mission="'+id+'"]':'#campaignMissions > .active');
 }
 async function seedMission(page,fixture){
   await seedOnce(page,{[SAVE]:JSON.stringify(fixture.envelope),[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});
@@ -27,14 +27,13 @@ async function buildingPoint(page,map,building){
 }
 const layout=envelope=>envelope.game.state.buildings.map(b=>[b.id,b.side,b.type,b.x,b.y,b.lane,b.level]);
 async function expectSelectedChapterVisible(page,id='frontier'){
-  // Read-only geometry, before any chapter click/focus/scrollIntoView can let
-  // Playwright repair an offscreen active tab and hide the navigation defect.
   await expect(page.locator('#campaignChapters > .active')).toHaveAttribute('data-chapter',id);
-  await expect.poll(()=>page.locator('#campaignChapters').evaluate(strip=>{
-    const active=strip.querySelector('.active');if(!active||strip.clientWidth<=0)return false;
-    const frame=strip.getBoundingClientRect(),item=active.getBoundingClientRect();
-    return item.width>0&&item.left>=Math.max(frame.left,0)-1&&item.right<=Math.min(frame.right,innerWidth)+1;
-  }),{message:'Selected chapter must already be horizontally visible inside its own strip'}).toBe(true);
+  await expect(page.locator('#campaignChapterNav')).toBeVisible();
+  await expect(page.locator('#campaignChapterNav')).toContainText('The Open Frontier');
+  await expect(page.locator('#campaignMissionPage')).toBeVisible();
+}
+async function chooseMission(page,id){
+  await press(page,'#campaignChapterNav');await press(page,'[data-mission="'+id+'"]');
 }
 async function expectWholeSelectionHealth(page,building){
   await expect(page.locator('#selectionDetail')).toContainText('Level '+building.level);
@@ -63,11 +62,12 @@ test('existing twelve missions and 36 stars remain version 1 and unlock chapter 
   await expectSelectedChapterVisible(page);await expect(page.locator('#campaignMissionTitle')).toHaveText('Open Horizon');
   await expect(page.locator('[data-chapter]')).toHaveCount(6);
   await expect(page.locator('[data-mission]')).toHaveCount(4);
-  await expect(page.locator('#campaignProgressText')).toHaveText('12/16 missions · 36/48 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('12/19 missions · 36/57 stars');
   await expect(page.locator('#start')).toBeEnabled();
-  await press(page,'#start');expect((await pause(page)).campaignId).toBe('open-horizon');
+  await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toEqual({kind:'campaign',id:'open-horizon',revision:2});expect(Game.restore(fresh.game).buildings.wardenLodge).toBeTruthy();
   await press(page,'#saveExit');await page.reload();
   expect(await progress(page)).toEqual(legacy);
+  for(const opening of ['roadside-watch','shield-at-the-fork','open-three-roads'])expect((await progress(page)).missions[opening]).toBeUndefined();
   expect(await page.evaluate(key=>localStorage.getItem(key),CAMPAIGN_STORAGE_KEY)).toBe(bytes);
   await openBackup(page);const backup=parseBackup(await downloadBackup(page));
   expect(backup.data.campaign).toEqual(legacy);expect(backup.data.campaign.version).toBe(1);
@@ -87,14 +87,14 @@ test('frontier unlock branches after Open Horizon then converges only after both
     await press(page,'#playAgain');await expect(page.locator('#welcome')).toBeVisible();
     await showFrontier(page);
     if(id==='open-horizon'){
-      for(const branch of ['river-charter','far-beacon']){await press(page,'[data-mission="'+branch+'"]');await expect(page.locator('#start')).toBeEnabled();}
-      await press(page,'[data-mission="common-ground"]');await expect(page.locator('#start')).toBeDisabled();
+      for(const branch of ['river-charter','far-beacon']){await chooseMission(page,branch);await expect(page.locator('#start')).toBeEnabled();}
+      await chooseMission(page,'common-ground');await expect(page.locator('#start')).toBeDisabled();
     }else if(id==='river-charter'){
-      await press(page,'[data-mission="common-ground"]');await expect(page.locator('#start')).toBeDisabled();await expect(page.locator('#campaignUnlock')).toContainText('The Far Beacons');
+      await chooseMission(page,'common-ground');await expect(page.locator('#start')).toBeDisabled();await expect(page.locator('#campaignUnlock')).toContainText('The Far Beacons');
     }else if(id==='far-beacon'){
-      await press(page,'[data-mission="common-ground"]');await expect(page.locator('#start')).toBeEnabled();
+      await chooseMission(page,'common-ground');await expect(page.locator('#start')).toBeEnabled();
     }else{
-      await expect(page.locator('#campaignProgressText')).toContainText('16/16 missions');
+      await expect(page.locator('#campaignProgressText')).toContainText('16/19 missions');
       await expect(page.locator('#campaignChapterStory')).toContainText(CAMPAIGN_CHAPTERS.find(chapter=>chapter.id==='frontier').epilogue);
     }
   }
@@ -107,13 +107,14 @@ for(const mission of FRONTIER_MISSIONS){
     await seedOnce(page,{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});await showFrontier(page,id);
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);await expect(page.locator('#start')).toBeEnabled();
     await press(page,'#start');const before=await pause(page);
-    expect(before).toMatchObject({version:2,campaignId:id,challengeId:null,game:{version:2,mapId:mission.mapId,mapRevision:1}});
+    expect(before).toMatchObject({version:3,scenario:{kind:'campaign',id,revision:2},game:{version:3,mapId:mission.mapId,mapRevision:1,rulesetId:'frontier-campaign-open',rulesetRevision:1}});
+    expect(Object.keys(Game.restore(before.game).buildings)).toHaveLength(8);
     expect(layout(before)).toEqual(layout(fixture.envelope));expect(Game.restore(before.game).map.id).toBe(mission.mapId);
     await press(page,'#saveExit');
     await expect(page.locator('#resumeSaved')).toContainText('RESUME MISSION · '+mission.name.toUpperCase()+' ·');
     await page.reload();await expect(page.locator('#resumeSaved')).toContainText('RESUME MISSION · '+mission.name.toUpperCase()+' ·');
     await press(page,'#resumeSaved');await expect(page.locator('#opponentLabel')).toHaveText(mission.name.toUpperCase());
-    const after=await pause(page);expect(after.campaignId).toBe(id);expect(layout(after)).toEqual(layout(before));
+    const after=await pause(page);expect(after.scenario).toEqual({kind:'campaign',id,revision:2});expect(layout(after)).toEqual(layout(before));
     expect(after.game.mapId).toBe(mission.mapId);expect(after.game.state.time).toBeGreaterThanOrEqual(before.game.state.time);
     expect(after.game.state.time-before.game.state.time).toBeLessThan(3);expect(await progress(page)).toEqual(fixture.progress);
   });
@@ -240,14 +241,15 @@ test('Far Beacons minimum citadel health fails immediately even before the hold 
 
 test('scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield',async ({page})=>{
   await seedOnce(page,{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(progressThrough())});await press(page,'[data-mode="campaign"]');
-  await press(page,'[data-chapter="embers"]');await press(page,'[data-mission="emberwatch"]');
+  await press(page,'#campaignStoryNav');await press(page,'[data-chapter="embers"]');await press(page,'[data-mission="emberwatch"]');
   const toggle=page.locator('#campaignScoutToggle');await toggle.focus();await page.keyboard.press('Space');
   await expect(page.locator('#campaignScout')).toHaveJSProperty('open',true);await expect(toggle).toContainText('Classic');
   await expect(page.locator('.scouting-map')).toHaveAttribute('viewBox','0 0 3200 900');await expect(page.locator('.scouting-road')).toHaveCount(3);
-  await page.locator('[data-chapter="frontier"]').focus();await page.keyboard.press('Enter');
-  await expect(page.locator('[data-chapter="frontier"]')).toBeFocused();await expect(page.locator('#campaignScout')).toHaveJSProperty('open',true);
+  await press(page,'#campaignStoryNav');await page.locator('[data-chapter="frontier"]').focus();await page.keyboard.press('Enter');
+  await expect(page.locator('#campaignChapterTitle')).toBeFocused();await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);
   await page.locator('[data-mission="river-charter"]').focus();await page.keyboard.press('Enter');
-  await expect(page.locator('[data-mission="river-charter"]')).toBeFocused();await expect(toggle).toContainText('Twin Span');
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();await expect(toggle).toContainText('Twin Span');
+  await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);await toggle.focus();await page.keyboard.press('Enter');
   await expect(page.locator('.scouting-road')).toHaveCount(2);await expect(page.locator('#campaignScoutReport')).toContainText('2 allied structures to protect');
   await toggle.focus();await page.keyboard.press('Enter');await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);await expect(toggle).toBeFocused();
   expect(await saved(page)).toBeNull();

@@ -33,3 +33,14 @@ export function createCombatScene(Game, {
   game.state.effects = []; game.state.projectiles = [];
   return { game, ui, camera: 1600 };
 }
+
+/** Reject historical/current scene drift before comparing renderer output. */
+export function createCombatPair(CurrentGame, HistoricalGame, options = {}) {
+  const scenes = [HistoricalGame, CurrentGame].map(GameClass => createCombatScene(GameClass, options));
+  const signature = ({ game, ui, camera }) => JSON.stringify({
+    snapshot: game.serialize(), map: game.map, ruleset: game.ruleset, ui, camera,
+  });
+  if (signature(scenes[0]) !== signature(scenes[1]))
+    throw Error('Historical and current combat-fixture inputs differ; this comparison cannot certify a changed scenario.');
+  return scenes;
+}

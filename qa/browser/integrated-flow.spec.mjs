@@ -1,6 +1,7 @@
+import { startRunning } from './campaign-teaching-helpers.mjs';
 import {expect} from '@playwright/test';
 import {Game,getRuleset} from '../../dist/engine.js';
-import {createCampaignProgress} from '../../dist/campaign.js';
+import {createCampaignProgress,createCampaignMission} from '../../dist/campaign.js';
 import {parseBackup,BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
 import {test,press,pause,saved,seedOnce,homePoint,tapPoint,openBackup,downloadBackup,chooseBackup} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
@@ -8,24 +9,30 @@ import {introReplayFixture} from './campaign-fixtures.mjs';
 import {PRODUCTION_V012_PATH} from './production-v012-fixtures.mjs';
 const campaignKey=BACKUP_STORAGE_KEYS.campaign;
 
-test('optional introduction can be left for Emberwatch without granting stars or writing a battle',async({page})=>{
-  await page.goto('/');await expect(page.locator('#campaignMissionTitle')).toHaveText('First Watch');
-  const before=await page.evaluate(key=>localStorage.getItem(key),campaignKey);
-  await press(page,'#skipIntroduction');await expect(page.locator('#campaignMissionTitle')).toHaveText('Emberwatch');
-  expect(await page.evaluate(key=>localStorage.getItem(key),campaignKey)).toBe(before);expect(await saved(page)).toBeNull();
-  await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
+test('an explicitly restored legacy introduction can be left for the new opening without granting stars',async({page})=>{
+  const game=createCampaignMission('first-watch'),progress=createCampaignProgress();
+  const envelope={format:'ironroot-save',version:3,scenario:{kind:'campaign',id:'first-watch',revision:1},game:game.serialize()};
+  await seedOnce(page,{[BACKUP_STORAGE_KEYS.battle]:JSON.stringify(envelope),[campaignKey]:JSON.stringify(progress)});
+  await press(page,'#resumeSaved');await pause(page);await press(page,'#saveExit');
+  await expect(page.locator('#campaignMissionTitle')).toHaveText('First Watch');
+  const before=await page.evaluate(key=>localStorage.getItem(key),campaignKey),savedBefore=await saved(page);
+  await press(page,'#skipIntroduction');await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  expect(await page.evaluate(key=>localStorage.getItem(key),campaignKey)).toBe(before);expect(await saved(page)).toEqual(savedBefore);
+  await press(page,'#campaignStoryNav');await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
   await expect(page.locator('#start')).toBeDisabled();await expect(page.locator('#campaignUnlock')).toContainText('First Watch');
-  await press(page,'[data-mission="first-watch"]');await press(page,'#start');
+  await press(page,'#campaignChapterNav');await press(page,'[data-mission="first-watch"]');await startRunning(page, press);
   const first=await pause(page);expect(first).toMatchObject({version:3,scenario:{kind:'campaign',id:'first-watch',revision:1},game:{mapId:'intro-one-road',rulesetId:'frontier-legacy'}});
   expect(Game.restore(first.game).map.lanes).toHaveLength(1);expect(first.game.state.buildings.filter(b=>b.side===0)).toHaveLength(0);
 });
 
-test('completed First Watch selects Forked Road with two real roads and four paid cards without changing legacy totals',async({page})=>{
+test('intro-only progress defaults to the new opening and explicitly selected Forked Road retains four legacy paid cards',async({page})=>{
   const progress=createCampaignProgress();progress.missions['first-watch']={completed:true,stars:2,bestTime:95};
   const bytes=JSON.stringify(progress);await seedOnce(page,{[campaignKey]:bytes});
+  await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  await press(page,'#campaignStoryNav');await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Forked Road');
-  await expect(page.locator('#campaignProgressText')).toContainText('0/16 missions · 0/48 stars');
-  await press(page,'#start');await openBuildControls(page);
+  await expect(page.locator('#campaignProgressText')).toContainText('0/19 missions · 0/57 stars');
+  await startRunning(page, press);await openBuildControls(page);
   expect(await page.locator('.build-card:visible').evaluateAll(cards=>cards.map(card=>card.dataset.type))).toEqual(['barracks','archery','watchtower','mint']);
   await press(page,'[data-type="barracks"]');
   const first=Game.restore((await saved(page)).game),map=first.map;
@@ -43,7 +50,7 @@ for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed'])
   const rules=getRuleset(rulesetId,1);await page.goto('/');await press(page,'[data-mode="skirmish"]');
   await page.locator('#skirmishRules').selectOption(rulesetId);
   await expect(page.locator('#skirmishRulesDescription')).toContainText(rules.endgame.forcedDecay?'citadels begin losing health at 7:00':'Citadels never lose health just because time passes');
-  await press(page,'#start');await openBuildControls(page);
+  await startRunning(page, press);await openBuildControls(page);
   expect(await page.locator('.build-card:visible').evaluateAll(cards=>cards.map(card=>card.dataset.type))).toEqual(Object.keys(rules.buildings));
   await expect(page.locator('[data-type="wardenLodge"]')).toContainText('210');
   await press(page,'[data-type="wardenLodge"]');await tapPoint(page,await homePoint(page,Game.restore((await saved(page)).game).map,550,450));
@@ -70,7 +77,7 @@ for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed'])
   await press(page,'#resumeSaved');expect((await pause(page)).game.rulesetId).toBe(rulesetId);
 });
 
-for(const [id,nextId,title,cards] of [['first-watch','forked-road','Forked Road',4],['forked-road','emberwatch','Emberwatch',7]])test(id+' paid-run completion continues into '+nextId+' using the shared controls',async({page})=>{
+for(const [id,nextId,title,cards] of [['first-watch','forked-road','Forked Road',4],['forked-road','roadside-watch','Roadside Watch',2]])test(id+' paid-run completion continues into '+nextId+' using the shared controls',async({page})=>{
   const fixture=introReplayFixture(id);
   await seedOnce(page,{[BACKUP_STORAGE_KEYS.battle]:JSON.stringify(fixture.envelope),[campaignKey]:JSON.stringify(fixture.progress)});
   await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
@@ -78,8 +85,8 @@ for(const [id,nextId,title,cards] of [['first-watch','forked-road','Forked Road'
   const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),campaignKey);
   expect(progress.missions[id]).toMatchObject({completed:true,stars:3});
   await press(page,'#playAgain');await expect(page.locator('#campaignMissionTitle')).toHaveText(title);await expect(page.locator('#start')).toBeFocused();
-  await expect(page.locator('#campaignProgressText')).toContainText('0/16 missions · 0/48 stars');
-  await press(page,'#start');await openBuildControls(page);await expect(page.locator('.build-card:visible')).toHaveCount(cards);
+  await expect(page.locator('#campaignProgressText')).toContainText('0/19 missions · 0/57 stars');
+  await startRunning(page, press);await openBuildControls(page);await expect(page.locator('.build-card:visible')).toHaveCount(cards);
   await expect(page.locator('[data-type="wardenLodge"]')).toHaveCount(0);
-  const after=await pause(page);expect(after.scenario?.id??after.campaignId).toBe(nextId);expect(Game.restore(after.game).ruleset.id).toBe('frontier-legacy');
+  const after=await pause(page);expect(after.scenario?.id??after.campaignId).toBe(nextId);expect(Game.restore(after.game).ruleset.id).toBe(nextId==='roadside-watch'?'frontier-campaign-watch':'frontier-legacy');
 });

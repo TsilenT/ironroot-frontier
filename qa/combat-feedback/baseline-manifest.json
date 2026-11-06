@@ -1,16 +1,19 @@
 {
-  "scope": "Exact green v0.13.0 candidate3 original renderer, developer-only synthetic comparison, never ship or precache. Only three reversible import substitutions. Candidate and baseline share unchanged engine snapshots.",
+  "scope": "Exact green v0.13.0 candidate3 historical renderer and dependency closure, developer-only synthetic comparison, never ship or precache. Three reversible renderer import substitutions plus two engine import/re-export occurrences. Current runtime engine/rulesets are not historical byte oracles.",
   "privateCommit": "76135e7b56077a661f67b0b5eeab7c118ec57844",
   "source": {
     "dist/render.js": "d641e2b2a2ed8403441e98eb6ba5baa7455eb0cfb1795d804b00b73e491fa3aa",
     "dist/engine.js": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
     "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
-    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda"
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "dist/rulesets.js": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da"
   },
   "fixture": {
-    "baseline-render.js": "5cb2ae0caf0c5de2257d00b0b4df2179fa087ac0caab905b76965198fd6b7124",
+    "baseline-render.js": "a3b95a686105c54d7bb5642f0abf234af10bac1c166b09afc830a21080da1a9e",
     "baseline-vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
-    "baseline-rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda"
+    "baseline-rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "baseline-engine.js": "fbe7bc22a6468751848b2ee27a7502c9214e3f0848b27c90e3e5eb9637e82ff0",
+    "baseline-rulesets.js": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da"
   },
   "substitutions": [
     {
@@ -26,7 +29,21 @@
     {
       "file": "baseline-render.js",
       "from": "from './engine.js'",
+      "to": "from './baseline-engine.js'"
+    },
+    {
+      "file": "baseline-engine.js",
+      "from": "from './rulesets.js'",
+      "to": "from './baseline-rulesets.js'",
+      "occurrences": 2
+    }
+  ],
+  "previousSharedEngineFixture": {
+    "file": "baseline-render.js",
+    "sha256": "5cb2ae0caf0c5de2257d00b0b4df2179fa087ac0caab905b76965198fd6b7124",
+    "reconstructFromCurrent": {
+      "from": "from './baseline-engine.js'",
       "to": "from '../engine.js'"
     }
-  ]
+  }
 }

@@ -32,7 +32,7 @@ async function seedProfile(page,{terminal=true}={}){
   await expect(page.locator('#welcome')).toBeVisible();
   await expect(page.locator('#resumeSaved')).toBeVisible();
   await expect(page.locator('#profileRecovery')).toBeHidden();
-  expect(JSON.parse((await rawProfile(page))[PROFILE_MARKER])).toMatchObject({version:3,phase:'ready'});
+  expect(JSON.parse((await rawProfile(page))[PROFILE_MARKER])).toMatchObject({version:4,phase:'ready'});
   expect(await rawProfile(page)).toEqual(values);
   return {values,oldHistory:backup.data.history,result};
 }
@@ -295,7 +295,7 @@ test('a real backup replacement fences both retained history and preference retr
     await expect(other.locator('#welcome')).toBeVisible();
     const durable=await rawProfile(other);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))expect(JSON.parse(durable[key])).toEqual(expected.data[domain]);
-    expect(JSON.parse(durable[PROFILE_MARKER])).toMatchObject({version:3,phase:'ready'});
+    expect(JSON.parse(durable[PROFILE_MARKER])).toMatchObject({version:4,phase:'ready'});
     expect(durable[PROFILE_MARKER]).not.toBe(replacement.values[PROFILE_MARKER]);
     await page.bringToFront();await expect(page.locator('#profileRecovery')).toBeVisible();
     await expect(page.locator('#profileRecoveryMessage')).toContainText(/replaced|reload/i);
