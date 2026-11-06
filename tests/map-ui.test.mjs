@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { Game } from '../dist/engine.js';
-import { decodeBattle } from '../dist/battle-codec.js';
+import { decodeBattle, encodeBattle } from '../dist/battle-codec.js';
 import { CHALLENGES, createChallenge } from '../dist/challenges.js';
 import {
-  CAMPAIGN_MISSIONS,
+  CAMPAIGN_MISSIONS, ALL_CAMPAIGN_MISSIONS,
   createCampaignProgress,
   createCampaignMission,
   isMissionUnlocked,
@@ -51,7 +51,7 @@ function exercise(data, progress = createCampaignProgress()) {
     SAVE: 'battle',
     Game,
     CHALLENGES,
-    CAMPAIGN_MISSIONS,
+    CAMPAIGN_MISSIONS: ALL_CAMPAIGN_MISSIONS,
     campaignProgress: progress,
     isMissionUnlocked,
     timeText: (t) => String(Math.floor(t)),
@@ -177,5 +177,27 @@ test('actual Resume handler names saved trials independently from the new-battle
     assert.ok(result.button.textContent.includes(`RESUME TRIAL · ${trial.name.toUpperCase()} ·`));
     result.button.onclick();
     assert.equal(result.starts[0][1],trial.id);
+  }
+});
+
+
+test('new intro Resume labels name their authored mission without a skirmish sudden-death label',()=>{
+  const progress=createCampaignProgress();progress.missions['first-watch']={completed:true,stars:2,bestTime:58};
+  for(const id of ['first-watch','forked-road']){
+    const game=createCampaignMission(id);for(let i=0;i<50;i++)game.update(.25);
+    const snapshot=game.serialize(),envelope=encodeBattle(game,{kind:'campaign',id,revision:1},{campaignProgress:progress});
+    const result=exercise(envelope,progress);
+    assert.equal(result.button.classList.values.get('hidden'),false);
+    assert.match(result.button.textContent,new RegExp('RESUME MISSION · '+(id==='first-watch'?'FIRST WATCH':'FORKED ROAD')+' · 12$'));
+    assert.doesNotMatch(result.button.textContent,/SUDDEN DEATH|OPEN-ENDED/);
+    result.button.onclick();assert.equal(result.starts[0][2],id);assert.deepEqual(result.starts[0][0].serialize(),snapshot);
+    assert.equal(result.raw,JSON.stringify(envelope));assert.deepEqual(result.calls,[['get','battle']]);
+  }
+});
+test('fresh versioned skirmish Resume labels retain their actual endgame selection',()=>{
+  for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed']){
+    const game=new Game({rulesetId,ai:false}),result=exercise(encodeBattle(game));
+    assert.ok(result.button.textContent.includes(game.ruleset.endgame.name.toUpperCase()));
+    result.button.onclick();assert.equal(result.starts[0][0].ruleset.id,rulesetId);
   }
 });

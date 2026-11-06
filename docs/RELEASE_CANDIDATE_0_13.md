@@ -1,6 +1,6 @@
 # v0.13 consolidated candidate
 
-Private QA candidate only. Production remains v0.12 until the exact cloud browser gate and a deliberate release decision.
+Released as v0.13 after the exact cloud gate passed and the user approved publication. Source: `76135e7b56077a661f67b0b5eeab7c118ec57844`; public build: `f6d59bf634590a823ae64eea7defc71f13880e8b`. The historical candidate findings below are retained as development evidence.
 
 ## What changed
 
@@ -24,18 +24,18 @@ The sixteen original missions, forty-eight stars, old map identities, legacy bat
 - An additional integration check matches twelve timed Rootwarden scenarios and 336 state/RNG checkpoints to the frozen playtest implementation. This is equivalence evidence, not new balance statistics.
 - Bounded native review found no blocker. It completed both intros with honest two-star wins, activated Replay and Continue, exercised paid mobile building/inspection, protected targets, undersize pause, trial failure/Retry, and a Rootwarden skirmish whose timed identity survived menu changes and reload. Original local storage was restored byte-for-byte.
 - The native review used the final gameplay bytes before the version-only bump. Only the footer/cache identity and package metadata changed afterward; hashes are recorded in `integration-inputs/version-bump.json`.
-- Browser harness/fixtures and strict real-v0.12-to-v0.13 upgrade preflight pass. The first exact private commit `0823cb6776df37e2aa309e20fa329c565ca0a356` completed **844 entries: 715 passed, 126 failed, 3 intentional skips**. Its full failure mapping and narrow harness repair are recorded in `GATE_REPAIR_0_13.md`. The second candidate `cfc7c87242473aad0c4b9ac0515c1aabf1b27eb2` then completed **829 passed, 12 failed, 3 intentional skips**. Its twelve remaining failures share one toast-ordering assertion; measured geometry and the strict repair are recorded in `TOAST_GATE_0_13.md`. The current exact candidate requires affected-case and full cloud reruns; it is not a browser pass yet.
+- Browser harness/fixtures and strict real-v0.12-to-v0.13 upgrade preflight pass. The first exact private commit `0823cb6776df37e2aa309e20fa329c565ca0a356` completed **844 entries: 715 passed, 126 failed, 3 intentional skips**. Its full failure mapping and narrow harness repair are recorded in `GATE_REPAIR_0_13.md`. The second candidate `cfc7c87242473aad0c4b9ac0515c1aabf1b27eb2` then completed **829 passed, 12 failed, 3 intentional skips**. Its twelve remaining failures share one toast-ordering assertion; measured geometry and the strict repair are recorded in `TOAST_GATE_0_13.md`. The final candidate `76135e7b56077a661f67b0b5eeab7c118ec57844` passed the complete matrix: **841 passed, zero failed, three intentional skips**, with no flaky tests. All twelve repaired toast cases reached and passed their downstream save assertions.
 
-The test-only repair adds twelve actual-handler regressions and eight separate browser-harness contract checks. All eight harness checks pass. Seven additional toast-geometry checks cover active visibility, finite bounds, clipping and objective clearance. The forty-one playable runtime files remain byte-identical to the first v0.13 candidate. This does not substitute for the repaired full browser rerun.
+The test-only repair adds twelve actual-handler regressions and eight separate browser-harness contract checks. All eight harness checks pass. Seven additional toast-geometry checks cover active visibility, finite bounds, clipping and objective clearance. The forty-one playable runtime files remain byte-identical to the first v0.13 candidate. These local checks were followed by the exact full browser rerun reported above.
 
 ## Known limits
 
 A genuine cached v0.12 tab blocks ordinary writes under the new profile protocol, but its explicitly confirmed backup-recovery flow can replace the profile. The old UI warns that all local progress is replaced and requires other tabs to be closed. The new client stops writing after that replacement. The test records this historical exception rather than promising universal old-client protection.
 
-The native retained profile had old progress but no old active battle. The first exact cloud gate passed all twenty actual production upgrade checks, including released active-save migration. The corrected candidate must still rerun them. Physical touch/controllers, non-Chromium behavior, assistive technology, native safe areas, packaged desktop operation, subjective audio quality and full human campaign completion are not certified.
+The native retained profile had old progress but no old active battle. The first exact cloud gate passed all twenty actual production upgrade checks, including released active-save migration. The corrected final candidate reran and passed them. Production smoke additionally migrated a real v0.12 Emberwatch save, then completed First Watch with two stars and verified Replay, save/reload/resume, its separate stars and the Forked Road unlock. Physical touch/controllers, non-Chromium behavior, assistive technology, native safe areas, packaged desktop operation, subjective audio quality and full human campaign completion are not certified.
 
 Fixed flying crossings were deferred because the tested mechanic did not demonstrate useful new decisions. The unlistened longer score, unverified desktop export, and broad AI replacement were not merged. This candidate is neither multiplayer nor Steam-release ready.
 
-## Next step
+## Closure
 
-Capture the corrected test-only candidate privately, run its entire exact browser matrix, then make one release decision if it passes. Do not publish the intermediate proposals separately.
+The consolidated release is live. The tested snapshot remains immutable. The next combat-feedback and objective-warning work is separate and is not covered by these release results. No intermediate proposals were published independently.
