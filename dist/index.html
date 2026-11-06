@@ -254,35 +254,68 @@
           </details>
         </div>
         <div id="campaignConfig">
-          <div class="campaign-overview">
-            <span>THE IRONROOT CAMPAIGN</span><b id="campaignProgressText"></b>
-          </div>
-          <p class="campaign-intro-progress" id="campaignIntroProgressText"></p>
-          <div class="campaign-chapters" id="campaignChapters"></div>
-          <button id="skipIntroduction" class="text-button hidden">Go straight to the campaign</button>
-          <h3 class="campaign-chapter-title" id="campaignChapterTitle"></h3>
-          <p class="campaign-chapter-story" id="campaignChapterStory"></p>
-          <div class="campaign-missions" id="campaignMissions"></div>
-          <div class="campaign-brief">
+          <nav class="campaign-path" aria-label="Campaign navigation">
+            <button id="campaignStoryNav">Story</button><span aria-hidden="true">›</span>
+            <button id="campaignChapterNav"></button><span aria-hidden="true" data-mission-path>›</span>
+            <span id="campaignMissionPosition" data-mission-path aria-current="page"></span>
+          </nav>
+          <section id="campaignStoryPage" class="hidden" aria-labelledby="campaignStoryTitle">
+            <p class="campaign-kicker">THE STORY</p>
+            <h2 id="campaignStoryTitle" tabindex="-1">The Ironroot Campaign</h2>
+            <p class="campaign-story-copy">The northern road is sealed. Rally the valley, carry its signal over the mountains, and open the roads beyond the Crownworks.</p>
+            <button id="campaignReturnMission" class="campaign-return">Return to your briefing →</button>
+            <h3>Choose a chapter</h3>
+            <div class="campaign-chapters" id="campaignChapters" aria-label="Chapters"></div>
+            <details class="campaign-progress">
+              <summary>Campaign progress</summary>
+              <p id="campaignProgressText"></p>
+              <p id="campaignIntroProgressText"></p>
+            </details>
+          </section>
+          <section id="campaignChapterPage" class="hidden" aria-labelledby="campaignChapterTitle">
+            <p class="campaign-kicker" id="campaignChapterLabel"></p>
+            <h2 class="campaign-chapter-title" id="campaignChapterTitle" tabindex="-1"></h2>
+            <p class="campaign-chapter-story" id="campaignChapterStory"></p>
+            <p id="campaignChapterProgress" class="campaign-chapter-progress"></p>
+            <h3>Choose a mission</h3>
+            <div class="campaign-missions" id="campaignMissions" aria-label="Missions in this chapter"></div>
+          </section>
+          <section class="campaign-brief" id="campaignMissionPage" aria-labelledby="campaignMissionTitle">
+            <div class="campaign-mission-nav" aria-label="Browse missions">
+              <button id="campaignPrevious">← Previous</button>
+              <span id="campaignMissionStatus"></span>
+              <button id="campaignNext">Next →</button>
+            </div>
+            <p class="campaign-kicker" id="campaignMissionSubtitle"></p>
+            <h2 id="campaignMissionTitle" tabindex="-1"></h2>
+            <p id="campaignMissionDescription"></p>
+            <div class="campaign-goal" aria-labelledby="campaignGoalLabel">
+              <h3 id="campaignGoalLabel">Your goal</h3>
+              <p id="campaignGoal"></p>
+              <ul id="campaignGoalFacts"></ul>
+              <p id="campaignProtection" class="hidden"></p>
+            </div>
+            <p class="campaign-unlock" id="campaignUnlock"></p>
             <div class="campaign-dialogue">
               <b id="campaignSpeaker"></b>
               <p id="campaignDialogue"></p>
             </div>
-            <h3 id="campaignMissionTitle"></h3>
-            <p id="campaignMissionDescription"></p>
-            <p class="challenge-objective" id="campaignObjective"></p>
-            <ul id="campaignBriefing"></ul>
-            <p class="campaign-medals" id="campaignMedals"></p>
+            <details id="campaignRules">
+              <summary>Exact rules &amp; bonus stars</summary>
+              <p class="challenge-objective" id="campaignObjective"></p>
+              <ul id="campaignBriefing"></ul>
+              <p class="campaign-medals" id="campaignMedals"></p>
+            </details>
             <details class="campaign-scout" id="campaignScout">
               <summary id="campaignScoutToggle">Scout battlefield</summary>
               <div id="campaignScoutReport"></div>
             </details>
-            <details>
+            <details id="campaignHintDetails">
               <summary>Commander’s hint</summary>
               <p id="campaignHint"></p>
             </details>
-            <p class="campaign-unlock" id="campaignUnlock"></p>
-          </div>
+            <button id="skipIntroduction" class="text-button hidden">Go straight to the campaign</button>
+          </section>
         </div>
         <div id="challengeConfig" class="hidden">
           <div class="challenge-choices" id="challengeChoices"></div>

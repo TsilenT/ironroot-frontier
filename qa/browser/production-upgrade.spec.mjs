@@ -49,7 +49,7 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     // Replace the seeded battle by actually starting the historical UI. The
     // other four domains came from real historical validators, not candidate code.
     if(scenario==='far-beacon'){
-      await press(page,'[data-mode="campaign"]');await press(page,'[data-chapter="frontier"]');await press(page,'[data-mission="far-beacon"]');
+      await press(page,'[data-mode="campaign"]');await press(page,'#campaignStoryNav');await press(page,'[data-chapter="frontier"]');await press(page,'[data-mission="far-beacon"]');
     }else await selectMap(page,scenario);
     await press(page,'#start');
     if(scenario!=='far-beacon'){

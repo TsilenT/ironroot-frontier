@@ -2643,6 +2643,73 @@ button:disabled {
     0 0 0 3px #18281caa,
     0 0 15px #e5cb7955;
 }
+
+/* Campaign browsing: story > chapter > a focused mission briefing. */
+.campaign-mode h1 { font-size: 28px; margin-bottom: 12px; }
+.campaign-mode .mode-tabs { gap: 8px; }
+.campaign-mode .mode-tabs button { min-height: 44px; font-size: 10px; letter-spacing: .5px; }
+.campaign-mode h1 span { display: inline; font-size: 14px; letter-spacing: 3px; margin-left: 8px; }
+.campaign-mode #campaignConfig { text-align: left; overscroll-behavior: contain; }
+.campaign-path { display: flex; align-items: center; flex-wrap: wrap; gap: 0 8px; margin-bottom: 12px; color: #c3cdb7; font-size: 12px; }
+.campaign-path button, .campaign-mission-nav button, .campaign-return {
+  min-height: 44px; border: 1px solid #657657; background: #253b2b; color: #eddfb7;
+  padding: 9px 12px; font: 600 13px var(--font); text-align: left;
+}
+.campaign-path button { border-color: transparent; background: transparent; padding: 7px 4px; text-decoration: underline; text-underline-offset: 4px; }
+.campaign-path button[aria-current] { color: #f2e7c9; text-decoration: none; }
+.campaign-path #campaignMissionPosition { white-space: nowrap; }
+#campaignStoryPage h2, #campaignChapterPage h2, #campaignMissionPage h2 { font: 600 32px/1.1 var(--display); color: #f0e7cb; margin: 0 0 10px; }
+#campaignConfig h2:focus-visible { outline: 2px solid #f4d68d; outline-offset: 3px; }
+#campaignConfig h3 { font: 600 21px var(--display); color: #e1d7b9; margin: 20px 0 10px; }
+#campaignConfig .campaign-kicker { font-size: 11px; line-height: 1.4; letter-spacing: 1px; color: #d4c18e; margin: 8px 0; }
+.campaign-story-copy, #campaignChapterStory, #campaignChapterProgress, .campaign-progress p { font-size: 13px; line-height: 1.65; color: #c3d0ba; }
+#campaignStoryPage .campaign-chapters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; overflow: visible; }
+#campaignStoryPage .campaign-chapters button { min-width: 0; min-height: 88px; padding: 12px; }
+#campaignStoryPage .campaign-chapters span { font-size: 10px; }
+#campaignStoryPage .campaign-chapters b { font-size: 21px; }
+#campaignStoryPage .campaign-chapters small { display: block; margin-top: 6px; font-size: 11px; color: #c1ceb3; }
+.campaign-progress { margin: 20px 0 12px; border-top: 1px solid #536344; }
+#campaignConfig summary { font-size: 13px; line-height: 1.5; min-height: 44px; padding: 12px 0; color: #e5cf94; cursor: pointer; }
+#campaignConfig summary:focus-visible { outline: 2px solid #f4d68d; outline-offset: -2px; }
+#campaignChapterPage .campaign-missions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+#campaignChapterPage .campaign-missions button { display: flex; padding: 14px; min-height: 76px; }
+#campaignChapterPage .campaign-missions b { font-size: 21px; }
+#campaignChapterPage .campaign-missions small { font-size: 10px; }
+#campaignChapterPage .campaign-missions button.locked { opacity: 1; color: #c3c9b9; }
+#campaignMissionPage { padding: 0; border: 0; background: transparent; }
+.campaign-mission-nav { display: flex; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.campaign-mission-nav > span { text-align: center; font-size: 11px; color: #d4c18e; }
+.campaign-mission-nav button:disabled { opacity: .45; }
+#campaignMissionPage p { font-size: 13px; line-height: 1.6; color: #c3d0ba; }
+.campaign-goal { padding: 14px 16px; margin: 16px 0; border: 1px solid #8f8b53; background: #33432a; }
+#campaignConfig .campaign-goal h3 { font: 600 12px var(--font); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 6px; color: #dfce96; }
+#campaignMissionPage #campaignGoal { font-size: 17px; line-height: 1.45; font-weight: 600; color: #f3e9cc; margin: 0 0 10px; }
+#campaignGoalFacts { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; margin: 0; color: #ebd69d; font-size: 13px; }
+#campaignMissionPage #campaignProtection { border-top: 1px solid #747d4e; padding-top: 10px; margin-top: 12px; color: #f0d2ac; font-size: 12px; }
+#campaignMissionPage .campaign-dialogue { margin: 18px 0 12px; }
+#campaignMissionPage .campaign-dialogue b { font-size: 11px; }
+#campaignMissionPage .campaign-unlock { font-size: 12px; }
+#campaignMissionPage details { border-top: 1px solid #4c6042; margin-top: 0; }
+#campaignMissionPage details ul, #campaignMissionPage .campaign-medals { font-size: 12px; }
+#campaignMissionPage .campaign-scout { margin: 0; border: 0; border-top: 1px solid #4c6042; padding: 0; background: transparent; }
+#campaignConfig .text-button { min-height: 44px; font-size: 13px; }
+@media (max-width: 700px) {
+  .campaign-mode { padding: 15px 16px; }
+  .campaign-mode h1 { font-size: 23px; margin-bottom: 10px; }
+  .campaign-mode h1 span { font-size: 11px; letter-spacing: 2px; margin-left: 5px; }
+  .campaign-path { gap: 0 5px; margin-bottom: 8px; font-size: 11px; }
+  .campaign-path button { font-size: 11px; }
+  #campaignStoryPage .campaign-chapters, #campaignChapterPage .campaign-missions { grid-template-columns: minmax(0, 1fr); }
+  #campaignStoryPage h2, #campaignChapterPage h2, #campaignMissionPage h2 { font-size: 28px; }
+  .campaign-mission-nav { gap: 4px; }
+  .campaign-mission-nav button { padding: 8px; font-size: 12px; }
+  .campaign-mission-nav > span { font-size: 10px; }
+  .campaign-goal { padding: 12px; }
+  #campaignMissionPage #campaignGoal { font-size: 16px; }
+  .campaign-mode .welcome-foot { display: none; }
+  .campaign-mode .welcome-links { flex-wrap: wrap; gap: 0 12px; margin-top: 7px; }
+  .campaign-mode .welcome-links :is(button, a) { min-height: 32px; font-size: 10px; padding: 5px 0; }
+}
 .controller-cursor::before,
 .controller-cursor::after {
   content: '';

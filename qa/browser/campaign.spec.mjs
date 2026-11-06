@@ -16,8 +16,11 @@ async function press(page,selector) {
   else await control.click();
 }
 async function openCampaign(page) {
-  await page.goto('/'); await press(page,'[data-mode="campaign"]'); await press(page,'[data-chapter="embers"]');
+  await page.goto('/'); await press(page,'[data-mode="campaign"]'); await press(page,'#campaignStoryNav'); await press(page,'[data-chapter="embers"]'); await press(page,'[data-mission="emberwatch"]');
   await expect(page.locator('#campaignConfig')).toBeVisible();
+}
+async function chooseMission(page,id) {
+  await press(page,'#campaignChapterNav'); await press(page,'[data-mission="'+id+'"]');
 }
 async function snapshot(page) {
   return page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
@@ -49,29 +52,31 @@ async function tapPoint(page,p) {
 }
 
 test('campaign locked mission cannot launch and an unlocked mission can',async ({page})=>{
-  await openCampaign(page); await press(page,'[data-mission="three-roads"]');
+  await openCampaign(page); await chooseMission(page,'three-roads');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('#campaignUnlock')).toContainText('Complete Emberwatch');
   await expect(page.locator('#start')).toBeDisabled();
   await expect(page.locator('#start')).toContainText('MISSION LOCKED');
   await page.keyboard.press('Enter'); await expect(page.locator('#welcome')).toBeVisible();
   expect(await snapshot(page)).toBeNull();
-  await press(page,'[data-mission="emberwatch"]'); await expect(page.locator('#start')).toBeEnabled();
+  await chooseMission(page,'emberwatch'); await expect(page.locator('#start')).toBeEnabled();
   await press(page,'#start'); await expect(page.locator('#welcome')).toBeHidden();
   const save=await pause(page); expect(save.campaignId).toBe('emberwatch');
 });
 
-test('campaign chapter and mission choices retain keyboard focus after rerender',async ({page})=>{
-  await openCampaign(page);
+test('campaign chapter and mission navigation focuses the new heading for keyboard users',async ({page})=>{
+  await openCampaign(page); await press(page,'#campaignStoryNav');
   await page.locator('[data-chapter="highpass"]').focus(); await page.keyboard.press('Enter');
-  await expect(page.locator('[data-chapter="highpass"]')).toBeFocused();
-  await expect(page.locator('#start')).toBeDisabled();
+  await expect(page.locator('#campaignChapterTitle')).toBeFocused();
+  await press(page,'#campaignStoryNav');
   await page.locator('[data-chapter="embers"]').focus(); await page.keyboard.press('Space');
-  await expect(page.locator('[data-chapter="embers"]')).toBeFocused();
+  await expect(page.locator('#campaignChapterTitle')).toBeFocused();
   await page.locator('[data-mission="three-roads"]').focus(); await page.keyboard.press('Enter');
-  await expect(page.locator('[data-mission="three-roads"]')).toBeFocused();
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();
+  await expect(page.locator('#start')).toBeDisabled();
+  await press(page,'#campaignChapterNav');
   await page.locator('[data-mission="emberwatch"]').focus(); await page.keyboard.press('Space');
-  await expect(page.locator('[data-mission="emberwatch"]')).toBeFocused();
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();
   await expect(page.locator('#start')).toBeEnabled();
 });
 
@@ -159,8 +164,7 @@ test('campaign briefing and launch remain reachable across viewport changes',asy
   await openCampaign(page);
   for (const viewport of [{width:320,height:568},{width:844,height:390},{width:390,height:650}]) {
     await page.setViewportSize(viewport);
-    await page.locator('[data-mission="emberwatch"]').scrollIntoViewIfNeeded();
-    await press(page,'[data-mission="emberwatch"]');
+    await chooseMission(page,'emberwatch');
     await page.locator('#start').scrollIntoViewIfNeeded();
     await expect(page.locator('#start')).toBeInViewport({ratio:1});
     await expect(page.locator('#start')).toBeEnabled();
