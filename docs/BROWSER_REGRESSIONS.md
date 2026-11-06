@@ -9,10 +9,23 @@ Original files were retrieved through the authorized GitHub connector.
 
 Original reported run: 48 passed, 9 failed, 3 skipped on Chromium 155 /
 Playwright 1.65.0. **Those are historical baseline results, not current results.**
-This adaptation has passed JavaScript syntax checks only. No browser run was
-performed in the managed local environment, where browser actions require CUA.
-Run this suite only in a cloud coding environment authorized to launch Playwright.
-The managed preview on port 4173 is not used by this harness.
+The authorized cloud worker subsequently reported **81 passed, 0 failed,
+3 skipped** after correcting two stale Field Guide access tests on branch
+`test/field-guide-pause-harness`, commit
+`aef4155c15399825aef54e674f780bf45a03cbf2`, based on `a502451`.
+That commit's test-only diff was verified through GitHub and integrated locally:
+the guide is opened from pause, and dismissing it must return to pause before
+resuming. This is a reported cloud-worker result, not a local browser run or a
+claim that the newer v0.6 campaign integration has passed the matrix.
+
+Local v0.6 source review confirmed the existing save helper already unwraps outer
+save versions 1 and 2. A narrow additional adaptation checks the new invalid-save
+contract: retain the original bytes with a visible load warning, then replace
+them only when the player starts a new battle. Both old invalid fixtures remain.
+These v0.6 assertions have passed syntax checks but await browser execution.
+No browser run was performed in the managed local environment, where browser
+actions require CUA. Run this suite only in a cloud coding environment authorized
+to launch Playwright. The managed preview on port 4173 is not used by this harness.
 
 ## Isolated, reproducible tool package
 
@@ -75,8 +88,93 @@ still apply. The adaptation changes these obsolete assumptions:
   and open the recent-history preferences view.
 - Preferences reload persistence and native Space on a checkbox are covered.
 
-There are 21 logical cases, producing 84 profile instances, including the three
-intentional skips. This is an expected discovery count, not a pass claim.
+The original/adapted regression file has 21 logical cases (84 profile instances).
+The campaign file adds nine cases (36 instances), for an expected total of
+120 profile instances, including three intentional skips. This is an expected
+discovery count, not a pass claim. The historical 81-pass run covers only the
+previous 84-instance matrix.
+
+## v0.6 campaign critical flows (prepared, not browser-executed)
+
+Run in an authorized cloud coding environment:
+
+```sh
+cd qa/browser
+npm ci
+npx playwright install chromium
+npm run check
+npm test -- campaign.spec.mjs
+# Then run the complete combined suite:
+npm test
+```
+
+`campaign.spec.mjs` adds nine tests on all four profiles, with no new skips or
+expected-failure annotations:
+
+- Locked Three Roads has a disabled launch action and prerequisite explanation;
+  selecting Emberwatch enables launch. Enter on the locked selection stays on
+  the title screen without creating a save.
+- Keyboard activation of chapter and mission choices retains focus on the
+  replacement choice after the list rerenders.
+- A campaign started through the UI builds an Archery range, saves with outer
+  version 2, reloads, resumes Emberwatch and preserves construction and time.
+- A victory fixture produces three stars and exactly one history entry. Continue
+  selects/unlocks Three Roads, which can then launch through the UI.
+- A timeout-failure fixture initially focuses Retry, keeps progress empty, traps
+  result focus, and starts a fresh instance of the same mission on Enter.
+- A protected mine exposes a disabled salvage action and explanation; an ordinary
+  barracks remains salvageable. Both protected mines remain in the saved state.
+- Campaign briefing controls and Begin Mission remain reachable after narrow,
+  landscape and portrait viewport changes; the fully visible launch button works.
+
+Fixture provenance is explicit: `campaign-fixtures.mjs` creates missions using
+the public campaign factory and serializes them with the public engine contract.
+Victory removes the marked Emberwatch target at time 10 with an intact citadel;
+failure sets its clock to the deadline with the target alive; protected selection
+loads Winter Stores with synthetic valid completion records for its prerequisites.
+These fixtures seed only browser storage. They do not call private application
+functions, force a result DOM or set an engine winner. The real application
+evaluates the objectives and performs result, history and progress transitions.
+
+Locked/focus/responsive tests use fresh UI-started campaigns. The save/resume
+test builds through actual pointer input and does not seed storage. Synthetic
+outcome fixtures validate transitions, not player skill, combat balance or
+earned campaign progression.
+
+`npm run check` checks all harness module syntax and runs
+`validate-campaign-fixtures.mjs`. Its three fixtures passed Game.restore,
+campaign-outcome assertions, prerequisite checks and progress normalization
+locally. Browser assertions remain unrun here. Two independent-review defects now have
+explicit regressions, described below; cloud failures must be investigated, not
+automatically skipped. Campaign audio, all twelve missions, every branch, progression-write
+failure and complete campaign accessibility still need separate coverage.
+
+## Independent-review defects: regression assertions pending fixes
+
+Two additional campaign-file tests encode desired behavior and are expected to
+fail against the reviewed pre-fix implementation. They are not skipped or marked
+`test.fail`: once production fixes land, they must pass normally. Their current
+local execution status is syntax-checked, browser-unrun.
+
+- **Stale multi-tab save ownership.** Page A starts and pauses Emberwatch through
+  the UI. Page B, in the same browser context and origin, starts and pauses a new
+  Hard skirmish. Closing A explicitly runs beforeunload and must preserve B's
+  exact durable save bytes and skirmish identity. The test permits accepting a
+  leave-page warning but never authorizes overwriting the newer save. Both pages
+  are checked for uncaught errors. This uses real pages and UI-created saves,
+  not seeded storage or a manually dispatched lifecycle event. It specifically
+  covers unload; visibility-only lifecycle handling still needs separate review.
+- **Collapsed landscape campaign scroll area.** A UI-started campaign is saved
+  back to title so Resume occupies its real layout space. At 844×390, the
+  campaign content's client height and viewport-visible height must both exceed
+  120 CSS pixels. This catches the independently observed approximately 10px
+  content strip rather than merely checking that Begin Mission is reachable.
+
+Focused cloud command:
+```sh
+cd qa/browser
+npm test -- campaign.spec.mjs --grep 'stale paused|120px'
+```
 
 ## Targeted mobile click-through reproduction
 
@@ -106,7 +204,7 @@ synthetic click.
 Chromium emulation is not Safari, Firefox, real iOS/Android, physical rotation,
 safe-area or browser-bar testing. These tests do not establish audio quality,
 touch ergonomics, controller usability, balance, complete accessibility, offline
-upgrade behavior, memory stability or long-match frame rates. Newly added
-challenge content is not exhaustively covered by this suite. Near-end fixtures
+upgrade behavior, memory stability or long-match frame rates. Campaign and field-trial mission content is not exhaustively covered by this
+suite; the 81-pass historical cloud result predates the local v0.6 integration. Near-end fixtures
 test actual engine-triggered UI transitions, not human-played full matches.
 Screenshots, CUA reviews, unit tests and balance simulations remain separate gates.

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {Game,LANES} from '../dist/engine.js';
-import {CAMPAIGN_CHAPTERS,CAMPAIGN_MISSIONS,CAMPAIGN_VERSION,createCampaignMission,evaluateCampaignMission,getCampaignTargets,currentIncome,createCampaignProgress,normalizeCampaignProgress,recordCampaignResult,isMissionUnlocked,getCampaignOverview,readCampaignProgress,writeCampaignProgress} from '../dist/campaign.js';
+import {CAMPAIGN_CHAPTERS,CAMPAIGN_MISSIONS,CAMPAIGN_VERSION,createCampaignMission,evaluateCampaignMission,getCampaignTargets,currentIncome,createCampaignProgress,normalizeCampaignProgress,mergeCampaignProgress,recordCampaignResult,isMissionUnlocked,getCampaignOverview,readCampaignProgress,writeCampaignProgress} from '../dist/campaign.js';
 import {playCampaign} from './campaign-policies.mjs';
 
 const complete=(id)=>{const game=createCampaignMission(id);game.state.bases[1].hp=0;return game;};
@@ -157,4 +157,49 @@ test('all 36 stars are achievable through paid mastery routes, including resumed
     assert.equal(outcome.stars,3,`${mission.id}, seed ${seed}: ${outcome.medals.filter(m=>!m.earned).map(m=>m.label).join('; ')}`);
     assert.ok(game.state.bases[0].hp>0);
   }
+});
+
+
+test('progress merges preserve newer clears, best stars and best times against stale tabs',()=>{
+  const stale=clearThrough('emberwatch'),latest=clearThrough('winter-stores');
+  stale.missions.emberwatch={completed:true,stars:1,bestTime:40};
+  latest.missions.emberwatch={completed:true,stars:3,bestTime:70};
+  const staleBefore=structuredClone(stale),latestBefore=structuredClone(latest);
+  const merged=mergeCampaignProgress(stale,latest);
+  assert.deepEqual(merged.missions.emberwatch,{completed:true,stars:3,bestTime:40});
+  assert.equal(getCampaignOverview(merged).cleared,3);
+  assert.deepEqual(stale,staleBefore);assert.deepEqual(latest,latestBefore);
+  assert.deepEqual(merged,mergeCampaignProgress(latest,stale));
+  assert.deepEqual(merged,mergeCampaignProgress(merged,merged));
+  assert.deepEqual(merged,normalizeCampaignProgress(merged));
+  merged.missions.emberwatch.stars=2;
+  assert.equal(latest.missions.emberwatch.stars,3,'output must not alias either input');
+});
+
+test('independent branch victories merge and unlock their shared finale without fabricating clears',()=>{
+  const base=clearThrough('winter-stores');
+  const north=recordCampaignResult(base,'wings-of-ash',complete('wings-of-ash'));
+  const south=recordCampaignResult(base,'stonegate',complete('stonegate'));
+  assert.equal(isMissionUnlocked(north,'long-vigil'),false);assert.equal(isMissionUnlocked(south,'long-vigil'),false);
+  const merged=mergeCampaignProgress(north,south);
+  assert.equal(getCampaignOverview(merged).cleared,5);assert.equal(isMissionUnlocked(merged,'long-vigil'),true);
+  assert.equal(merged.missions['long-vigil'],undefined);
+  assert.equal(isMissionUnlocked(merged,'cold-forge'),false);
+  const final=recordCampaignResult(merged,'long-vigil',complete('long-vigil'));
+  assert.deepEqual(mergeCampaignProgress(north,mergeCampaignProgress(south,final)),mergeCampaignProgress(mergeCampaignProgress(north,south),final));
+  assert.deepEqual(mergeCampaignProgress(final,base),final);
+});
+
+test('merge rejects corrupt inputs and orphaned victories without losing the other valid snapshot',()=>{
+  const valid=clearThrough('winter-stores'),empty=createCampaignProgress();
+  for(const corrupt of [undefined,null,[],42,{},'bad',{...valid,version:999},{...empty,missions:{ironroot:{completed:true,stars:3,bestTime:10}}}]) {
+    assert.deepEqual(mergeCampaignProgress(corrupt,valid),valid);
+    assert.deepEqual(mergeCampaignProgress(valid,corrupt),valid);
+  }
+  for(const record of [{completed:true,stars:4,bestTime:1},{completed:true,stars:3,bestTime:NaN},{completed:true,stars:3,bestTime:-1},{completed:false,stars:3,bestTime:1}]) {
+    assert.deepEqual(mergeCampaignProgress(valid,{...empty,missions:{emberwatch:record}}),valid);
+  }
+  const hostile=JSON.parse('{"format":"ironroot-campaign","version":1,"missions":{"__proto__":{"polluted":true},"unknown":{"completed":true,"stars":3,"bestTime":1}}}');
+  assert.deepEqual(mergeCampaignProgress(hostile,valid),valid);assert.equal({}.polluted,undefined);
+  assert.deepEqual(mergeCampaignProgress(null,hostile),empty);
 });

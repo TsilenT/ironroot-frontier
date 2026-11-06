@@ -35,3 +35,25 @@ Independent UI review found a cross-mode selection bug: starting a challenge ove
 Core fairness was strengthened after an independent mirrored-army test exposed sequential movement bias. All movement and damage now commit simultaneously. After the fix, mirrored armies produced 49/51 results over 100 seeded runs, and matched-timing native AI produced 61/59 over 120. These are screening results, not proof of complete competitive fairness.
 
 At the 140-troop cap over 2,400 ticks, the simulation benchmark measured mean 0.465 ms/tick, p95 1.877 ms and p99 3.224 ms on the cloud executor. Retained heap after GC increased about 0.69 MB. Fifty full sessions and 116 restore checkpoints preserved valid numbers and unique IDs. Rendering/device performance is a separate unverified gate.
+
+## Iteration 0.5
+
+Added adaptive original music and distinct synthesized cues, independently controlled music/effects/volume, bounded VFX, reduced-motion/quality settings, and readable battle history. Independent Chromium review covered persisted settings, focus containment, native Space on controls, pause restoration, visible magic/siege/Rally effects, and 320×568 and 844×390 layouts. See `SETTINGS_VFX_UI_QA.md` and `AUDIO.md` for exact coverage. Audio PCM/clipping was measured; no subjective listening or real iOS claim is made.
+
+An independent cloud review reproduced storage-write loss, malformed-history crashes, native-Space interception and siege bonus leakage into troop splash. Each was fixed and regression-tested. A synthetic-touch issue that immediately closed newly opened building details was fixed using deferred panel display and explicit close activation. Cloud browser validation of source a502451 with two test-only field-guide access corrections reported 81 passed, 0 failed, 3 skipped. This is a tested v0.5 baseline, not an automatic pass for later source.
+
+Selectively integrated cloud AI spending/counter improvements while preserving newer combat fixes. Nine AI regressions pass. In fresh screening matches normal improved against the earlier AI, but still lost to a forward-infantry rush policy; balance is not solved.
+
+## Iteration 0.6
+
+Integrated a 12-mission, four-chapter campaign with branched unlocks, 36 optional stars, protected objectives, exact deadline evaluation, original dialogue and appearance-only terrain themes. The wider campaign sweep recorded 288/288 successful reference/mastery clears and 143/144 three-star mastery runs across 12 seeds; all authored-seed three-star routes pass. These policies prove content feasibility, not player difficulty or enjoyment.
+
+Outer battle envelopes now use version 2 and retain campaign identity outside engine state, while supporting earlier engine and version-1 saves. Invalid saved bytes are retained with a visible warning rather than silently deleted. Objective steps stop at completion/deadline even at 2× battle speed. The current automated suite has 109 passing tests, with all runtime JavaScript syntax checks passing.
+
+Independent actual-browser campaign review is in progress. Initial locked-mission gating, launch/HUD, save/reload/resume, Emberwatch victory, three-star persistence and Continue unlock have passed. A result-dialog initial-focus defect was found and is queued for correction. Final release status must be updated after the review and cloud regression rerun, not inferred from these initial passes.
+
+The campaign browser review additionally found two concrete issues before release: short-landscape campaign briefings had only 10 px of usable scroll height when Resume was shown, and an old paused tab could overwrite a newer tab's save during visibility/beforeunload handling. These are tracked as required fixes, alongside the result-focus timing edge case. A paused test tab was closed to isolate continued review.
+
+Required fixes were implemented: short-landscape campaign content now reserves a usable viewport (review measured 244 px); result dialogs prevent backdrop blur and repair late input focus; battle writes use optimistic ownership checks so stale tabs cannot overwrite or delete a newer save; repeated identical paused saves do not rewrite storage; campaign progress merges the latest valid record before writes. Browser retest verified old-tab Resume redirects to title and closing it preserves the newer Stonegate save. This reduces observed cross-tab conflicts, not a claim that localStorage offers atomic multi-tab transactions.
+
+The reviewer also completed Winter Stores through normal paid UI actions, earned three stars, verified branching High Pass unlocks and visually checked the snowy/rocky chapter treatment. See `CAMPAIGN_UI_QA.md` for exact scenarios and remaining limits. The final suite has 186 passing tests, 0 skipped/TODO. This includes private, unintegrated controller/backup foundations intended for the next release; no controller hardware or backup UI support is claimed for 0.6.

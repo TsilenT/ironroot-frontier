@@ -266,6 +266,17 @@ export function normalizeCampaignProgress(raw) {
   for(const mission of CAMPAIGN_MISSIONS)if(mission.prerequisites.some(id=>!progress.missions[id]))delete progress.missions[mission.id];
   return progress;
 }
+/** Merge independently valid snapshots without allowing a stale tab to erase records. */
+export function mergeCampaignProgress(a,b) {
+  const left=normalizeCampaignProgress(a),right=normalizeCampaignProgress(b),merged=createCampaignProgress();
+  for(const mission of CAMPAIGN_MISSIONS) {
+    const first=left.missions[mission.id],second=right.missions[mission.id];
+    if(!first&&!second)continue;
+    merged.missions[mission.id]={completed:true,stars:Math.max(first?.stars||0,second?.stars||0),bestTime:Math.min(first?.bestTime??Infinity,second?.bestTime??Infinity)};
+  }
+  // Each input is prerequisite-complete, so their union is also prerequisite-complete.
+  return merged;
+}
 export function isMissionUnlocked(progress,id) {
   const mission=missionFor(id),clean=normalizeCampaignProgress(progress);
   return mission.prerequisites.every(id=>clean.missions[id]?.completed);
