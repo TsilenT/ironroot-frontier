@@ -1,0 +1,32 @@
+{
+  "scope": "Exact green v0.13.0 candidate3 original renderer, developer-only synthetic comparison, never ship or precache. Only three reversible import substitutions. Candidate and baseline share unchanged engine snapshots.",
+  "privateCommit": "76135e7b56077a661f67b0b5eeab7c118ec57844",
+  "source": {
+    "dist/render.js": "d641e2b2a2ed8403441e98eb6ba5baa7455eb0cfb1795d804b00b73e491fa3aa",
+    "dist/engine.js": "2e0ab46d9623caaee7e0caf2906d3804502d080d58dc702f5ae63ab6f272ba60",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda"
+  },
+  "fixture": {
+    "baseline-render.js": "5cb2ae0caf0c5de2257d00b0b4df2179fa087ac0caab905b76965198fd6b7124",
+    "baseline-vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "baseline-rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda"
+  },
+  "substitutions": [
+    {
+      "file": "baseline-render.js",
+      "from": "from './rootwarden-art.js'",
+      "to": "from './baseline-rootwarden-art.js'"
+    },
+    {
+      "file": "baseline-render.js",
+      "from": "from './vfx.js'",
+      "to": "from './baseline-vfx.js'"
+    },
+    {
+      "file": "baseline-render.js",
+      "from": "from './engine.js'",
+      "to": "from '../engine.js'"
+    }
+  ]
+}

@@ -1,34 +1,44 @@
-# Development roadmap
+# Ironroot Frontier roadmap
 
-## Current pre-release game
+## Current state
 
-Seven buildings, five unit types, three lanes, autonomous spawning, income and investment, building levels, salvage, rally strike, three AI settings, original 2D models, touch/mouse controls, minimap, adaptive procedural score and effects, local battle persistence and deterministic tests.
+Production is v0.13, built from source `76135e7b56077a661f67b0b5eeab7c118ec57844` and public commit `f6d59bf634590a823ae64eea7defc71f13880e8b`. Live smoke verified the older campaign save migration and a new introductory mission clear, replay, save and resume. Its complete Chromium matrix passed **841 cases, zero failures, three intentional skips**; root tests passed **825 with one optional desktop-dependency skip**. These are automated/emulated results, not physical-device or human-balance certification.
 
-The released 0.7 campaign has twelve missions in four chapters, original fiction, branching unlocks, protection/economy/destruction/survival objectives and 36 optional stars. The isolated 0.10 candidate adds four missions on Long March and Twin Span, a fifth chapter, 48 total stars, and data-derived scouting reports. Five standalone field trials teach counterplay. Settings cover independent music/effects, volume, motion and quality, and display recent battle history. Local portable JSON backups and experimental standard-controller navigation are implemented. The 0.8 candidate adds a factual unit/economy field reference with original static portraits. Local 0.9 adds longer and two-road skirmish battlefields while preserving Classic and existing campaigns. The confirmed held-touch result-action leak is fixed locally in corrected 0.8/0.9/0.10 code, but its exact four-profile browser gate remains pending. Candidate commit/ref operations are stopped pending user approval; none of these newer candidates is published.
+The v0.13 integration brings together:
 
-Isolated 0.11 adds an optional post-match Battle Report: factual two-sided totals, sampled economy/army/citadel timelines, final forces and objective checks. A resumed timeline discloses its missing beginning, and a bounded series discloses thinning. Reports are current-page data with an optional local JSON download, not replays or durable history. Independent paired simulations preserve exact final engine/RNG states and action traces. Native result-flow review and an unrun four-profile regression harness supplement those tests; device performance and the exact browser gate remain required. The frozen 0.10 source is unchanged.
+- Campaign-first navigation, shared in-game coaching, one-road and two-road introductory missions, optional learning stars, and replay after a partial-star victory.
+- Sixteen preserved main missions and forty-eight stars, plus two optional introductions with six separate stars; branching chapters and destruction, protection, economy and survival objectives.
+- Rootwarden screening troops and their Warden lodge in fresh skirmishes; legacy battles and authored missions retain their original roster/rules.
+- Open-ended or timed skirmishes with explicit saved rules, three skirmish maps, fair paid AI actions, and a bounded supported-duration safety pause.
+- A single mobile Build drawer across modes; individual protected-objective health, camera focus and honest loss details; viewport safety suspension and reliable dialog navigation.
+- Readable original 2D art, reduced-motion/quality options, original procedural music/SFX, factual field reference, mission scouting and optional post-match reports.
+- Local saves, portable JSON backup, corruption preservation, profile ownership, offline updates and experimental controller support.
 
-Isolated 0.12 addresses the first-play learning gap with five short guided practice lessons on a separate page. It uses actual paid actions, production and combat while pausing instructions. Training is deliberately temporary and cannot alter normal saves, campaign progress, history or rewards. The original simulation, normal game controller and persistence modules are unchanged. The lesson system, observation truth, touch/keyboard UI and offline route require their own independent checks before release; frozen 0.10 and 0.11 remain separate.
+The selected campaign, lane, copy, tank and mobile proposals are consolidated. Fixed flying crossings, broad AI replacement, the unlistened longer score and unverified native export were not merged. They are not hidden release dependencies.
 
-## Release gates
+## Next coherent batch
 
-1. **Correct systems:** deterministic simulation, corrupted saves, targeting, air/ground interactions, upgrades/refunds, resource caps, objectives, exact deadlines and late-game behavior covered by tests.
-2. **Readable play:** desktop, narrow portrait and short landscape verified in a real browser; primary controls reachable; placement distinct from drag; counters and costs visible on touch. Physical devices remain required.
-3. **Fair strategy:** compare naive and adaptive policies across seeds, inspect extreme counters, economy payback and snowballing. Normal AI has a new early-pressure response, but its human difficulty and all opening policies still need broader review. Bot results are not human balance certification.
-4. **Good feel:** independent human playtests, readable silhouettes, audible mixing, meaningful losses and progression. Current browser reviews are useful but not a substitute for a player cohort.
-5. **Durability:** resume without divergence; safe storage failures; portable backup; offline updates; repeated mode transitions; bounded effects and performance on low-powered hardware.
-6. **Distribution:** controller mapping, packaged runtime actually launched and played, signed/notarized platform builds where appropriate, licensing audit, Steam integration and store requirements.
+Prioritize clearer combat feedback and actionable objective danger over increasing content counts:
 
-## Next iterations
+1. Restrain attack contact/recovery poses to actual attack events. The engine applies damage immediately, so the visuals must not invent a later windup or change timing. Preserve ground anchors, combat geometry, silhouettes and reduced motion. Accept only after an independent dense/mobile visual comparison.
+2. Connect the existing warning sound to real critical protected-objective danger, with named visual information already present. Batch simultaneous warnings, suppress repeated chatter, handle pause/resume and restored critical targets honestly, and respect SFX/mute settings. No new save protocol or hidden damage rules.
+3. Review the combined changes in ordinary paid play. Keep useful alternatives and player-caused stalemates; do not tune every policy into a forced victory or timeout.
 
-- Keep hardening the shipped portable-backup recovery and cross-tab ownership paths.
-- Validate shipped experimental controller support on physical hardware and add remapping.
-- Broader campaign/device playtests, economy pacing and AI response testing. The fifth chapter has authored, independent and primary-route simulations plus bounded native UI reviews; those are not a human player cohort or a physical-device validation.
-- Finish independent balance, device, backup and offline-update validation for the implemented Long March and Twin Span maps before exposing them publicly. Keep Classic and existing campaign saves exact. The authored fifth chapter is implemented in an isolated checkout against the unchanged map engine; complete its separate browser/progression/protocol migration gates before publication.
-- Broader original sound/visual polish after subjective player reviews.
-- Validate the integrated self-contained licensed font bundle across browsers and native desktop. Full notices are already available in-game.
-- Localization, accessibility, remappable inputs and player-facing diagnostics.
-- Validate Battle Reports with player reviews before adding strategic advice. Any future earnings, casualties, production totals or causal tips require real event counters rather than guesses from sampled snapshots. Consider durable report history/replays only with explicit storage/schema design and migration testing.
-- Steam integration only after a stable packaged game and explicit distribution decisions.
+No automatic deployment follows these changes. Freeze and verify a substantial candidate before a deliberate release decision.
 
-Online PvP is a separate substantial project: authoritative networking, reconnects, latency behavior, abuse handling, matchmaking and competitive validation. Local AI is never presented as PvP.
+## Remaining product work
+
+- More real-player campaign and counterplay sessions, including intentional poor compositions, uncovered roads, economy payback, and losses that clearly explain what happened. Bot policies are evidence of specific behavior, not player win rates.
+- A carefully designed explicit export-and-reset recovery path for a damaged save when no compatible backup exists. Current behavior protects the original bytes and refuses silent replacement.
+- Subjective listening and music pacing. PCM/mute/clipping tests do not establish that a score sounds good.
+- Physical phone and controller testing, remappable inputs, screen-reader/accessibility review, non-Chromium behavior, localization and long-session low-powered-device checks.
+- Packaged desktop play/save/audio and safe native file export. Wrapper/unit tests do not substitute for launching the actual package.
+- Distribution/rights review, stable signed builds where appropriate, Steam integration and store decisions only when separately authorized.
+
+Online PvP remains a distinct project requiring authoritative networking, reconnection, latency handling, matchmaking and abuse protections. Local AI is not presented as PvP.
+
+## Validation policy
+
+Preserve historical rules and genuine released-save fixtures. Validate before replacing storage. Keep exact candidate hashes, separate passed/failed/unrun checks, retain negative tests, and exercise interrupted/repeated navigation and held input. When the interface legitimately changes, update the test to the real user contract without dropping its later assertions.
+
+Prefer fewer meaningful releases. No number of passing tests makes the game automatically balanced, universally accessible or Steam-ready.
