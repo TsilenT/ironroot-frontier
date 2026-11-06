@@ -819,6 +819,12 @@ function start(
     toast('Complete the preceding missions to unlock this one.');
     return;
   }
+  // A restart already owns its verified candidate checkpoint. Recheck before
+  // replacing the retained game; claiming here could adopt another tab's save.
+  if (fresh && battleSession.status() !== 'current') {
+    $('restartStatus').textContent = 'The checkpoint changed or storage is unavailable. Your current battle stays paused here. Return to title to continue the newer checkpoint.';
+    return;
+  }
   battleSafetyReason = null;
   $('battleLimitWarning').classList.add('hidden');
   $('resume').disabled = false;
@@ -854,7 +860,9 @@ function start(
   $('viewportModal').classList.add('hidden');
   beginProtectedObjectives();
   beginBattleReport(!!restored && !fresh);
-  battleSession.claim();
+  // Keep the exact verified ownership state on restart. Every later save still
+  // checks it, so a write arriving during setup cannot be reclaimed/overwritten.
+  if (!fresh) battleSession.claim();
   padHud = false;
   padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
   started = true;
@@ -2264,7 +2272,10 @@ $('confirmRestart').onclick = () => {
   }
 };
 let settingsWasPaused = false;
-function showSettings() {
+function showSettings(event) {
+  // Touch may not focus its button. Capture the actual opener before pause()
+  // focuses Resume, and retain it through the intermediate pause dialog.
+  const opener = event?.currentTarget || document.activeElement;
   settingsWasPaused = paused;
   if (started && game.state.winner === null && !objectiveOutcome) pause(true);
   $('settingsContext').textContent = started && !objectiveOutcome && game.state.winner === null
@@ -2273,6 +2284,8 @@ function showSettings() {
     ? settingsWasPaused ? 'Back to pause menu' : 'Resume battle' : 'Done';
   syncSettings();
   $('settingsModal').classList.remove('hidden');
+  syncDialogs();
+  if (opener) dialogFocus.set($('settingsModal'), opener);
 }
 function hideSettings() {
   if (recoveryHold || profileGate) {
