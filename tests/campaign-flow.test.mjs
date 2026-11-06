@@ -165,3 +165,18 @@ test('all suggestions survive save restoration and use the actual battle roster 
   assert.ok(recommendCampaignSite(fresh,'wardenLodge').site);
   assert.equal(recommendCampaignSite(createCampaignMission('first-watch'),'wardenLodge').site,undefined);
 });
+
+
+test('selected production keeps Forked Road guidance on the uncovered road, including alternate producers', () => {
+  const game=createCampaignMission('forked-road');
+  const first=campaignCoach(game,'forked-road',{build:'barracks'});
+  assert.equal(first.site.lane,0);
+  const alternate=campaignCoach(game,'forked-road',{build:'archery'});
+  assert.equal(alternate.site.lane,0);
+  assert.equal(game.build('archery',alternate.site.x,alternate.site.y).ok,true);
+  const second=campaignCoach(game,'forked-road',{build:'barracks'});
+  assert.equal(second.site.lane,1);
+  assert.equal(game.build('barracks',second.site.x,second.site.y).ok,true);
+  assert.equal(campaignCoach(game,'forked-road').key,'build-mint');
+  assert.equal(campaignCoach(Game.restore(game.serialize()),'forked-road').key,'build-mint');
+});
