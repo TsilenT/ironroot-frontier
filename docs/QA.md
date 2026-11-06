@@ -22,3 +22,16 @@ Managed preview verified in Chromium at `http://127.0.0.1:4173/`. Welcome, all s
 - Finish narrow/landscape and lifecycle reviews, then retest fixes.
 - Validate maximum-cap rendering on representative low-powered mobile hardware; cloud desktop performance alone is insufficient.
 - Full accessibility, broader human playtests, controller and storefront packaging remain future work.
+
+
+## Iteration 0.4
+
+Added five authored field trials with distinct destruction, anti-air, siege, economic deadline and survival objectives. Their normal Game state is serialized separately from a validated challenge ID in the UI envelope. Completion and best times stay on the browser/device.
+
+The combined suite now has 48 tests: 33 core simulation, 11 challenge and 4 static web/accessibility/offline-shell contracts. The challenge suite includes 20 successful seeded strategy runs, five idle failures and four deliberately inappropriate compositions.
+
+Independent UI review found a cross-mode selection bug: starting a challenge overwrote the selected skirmish difficulty while its displayed radio-like selection stayed unchanged. Fixed by keeping selected skirmish difficulty independent of the active trial. Further challenge lifecycle review is underway.
+
+Core fairness was strengthened after an independent mirrored-army test exposed sequential movement bias. All movement and damage now commit simultaneously. After the fix, mirrored armies produced 49/51 results over 100 seeded runs, and matched-timing native AI produced 61/59 over 120. These are screening results, not proof of complete competitive fairness.
+
+At the 140-troop cap over 2,400 ticks, the simulation benchmark measured mean 0.465 ms/tick, p95 1.877 ms and p99 3.224 ms on the cloud executor. Retained heap after GC increased about 0.69 MB. Fifty full sessions and 116 restore checkpoints preserved valid numbers and unique IDs. Rendering/device performance is a separate unverified gate.

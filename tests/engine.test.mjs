@@ -180,3 +180,30 @@ test('projectiles identify airborne sources and destinations for rendering',()=>
   assert.equal(arrow.sourceAir,false);assert.equal(arrow.targetAir,true);assert.equal(bolt.sourceAir,true);assert.equal(bolt.targetAir,false);
   assert.deepEqual(Game.restore(g.serialize()).serialize(),g.serialize());
 });
+
+test('siege structure bonuses never inflate nearby troop splash at any level or overtime',()=>{
+  for(const level of [1,2,3])for(const overtime of [false,true]){
+    const g=new Game({ai:false});g.state.buildings=[];g.state.time=overtime?301:0;
+    const target=g._place('mint',1750,450,1),siege=soldier(g,'siege',0,1500),nearby=soldier(g,'warrior',1,1810);
+    siege.level=level;nearby.cooldown=100;
+    const hp=nearby.hp,targetHp=target.hp;g.update(.05);
+    const troopDamage=UNITS.siege.damage*(1+.12*(level-1));
+    assert.ok(Math.abs((targetHp-target.hp)-troopDamage*3*(overtime?1.75:1))<1e-8,'structure damage retains all siege/overtime bonuses');
+    assert.ok(Math.abs((hp-nearby.hp)-troopDamage*.45)<1e-8,`level${level}, overtime${overtime}: splash must only use troop damage`);
+  }
+});
+test('siege direct troop damage remains unchanged across levels and overtime',()=>{
+  for(const level of [1,2,3])for(const overtime of [false,true]){
+    const g=new Game({ai:false});g.state.buildings=[];g.state.time=overtime?301:0;
+    const siege=soldier(g,'siege',0,1500),primary=soldier(g,'warrior',1,1700),secondary=soldier(g,'warrior',1,1720);
+    siege.level=level;primary.cooldown=secondary.cooldown=100;const hp=primary.hp,shp=secondary.hp;g.update(.05);
+    const troopDamage=UNITS.siege.damage*(1+.12*(level-1));
+    assert.ok(Math.abs(hp-primary.hp-troopDamage)<1e-8);assert.ok(Math.abs(shp-secondary.hp-troopDamage*.45)<1e-8);
+  }
+});
+test('wizard overtime structure damage also remains separate from ground splash',()=>{
+  const g=new Game({ai:false});g.state.buildings=[];g.state.time=301;
+  const target=g._place('mint',1710,450,1),wizard=soldier(g,'wizard',0,1500),nearby=soldier(g,'warrior',1,1770);nearby.cooldown=100;
+  const hp=nearby.hp,targetHp=target.hp;g.update(.05);
+  assert.ok(Math.abs(targetHp-target.hp-24*1.75)<1e-8);assert.ok(Math.abs(hp-nearby.hp-24*.65)<1e-8);
+});
