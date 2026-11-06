@@ -1,6 +1,6 @@
 # Consolidated next-game candidate
 
-Status: local integration, not a release. The live game remains v0.12 at source commit `24edddab2cff33b3f91b396bc855193f87421ba3`. No proposal below has deployment authority by itself.
+Status: consolidated v0.13 passed its exact full cloud gate and is live at source commit `76135e7b56077a661f67b0b5eeab7c118ec57844`. Live migration, introductory mission completion and replay smoke passed. No proposal below has deployment authority by itself.
 
 ## Product direction
 
@@ -49,4 +49,4 @@ The paid introductory reference routes clear in 58.1 and 97.9 seconds; a thirty-
 
 The accepted renderer's legacy drawing commands remain exact across three maps and five viewport sizes; the new Rootwarden art is byte-identical to the reviewed original. Reports now identify the actual ruleset while old reports remain readable. Independent QA is replacing obsolete whole-current-source assertions with pinned historical-source verification and real legacy trajectory/serialization comparisons. Historical hashes are not being repinned to the new implementation.
 
-Combined native navigation/playtesting and the final aggregate/browser gates remain pending. There has been no new publication.
+Combined bounded native navigation/playtesting passed. Exact private candidate `76135e7b56077a661f67b0b5eeab7c118ec57844` passed 825 root tests with one optional skip and the complete Chromium matrix with 841 passes, zero failures and three intentional skips. The twelve toast cases reached and passed their downstream save assertions. That exact v0.13 source is now live; migration and introductory clear/replay/resume smoke passed. The next bounded gameplay-feedback batch is described in `ROADMAP.md`; the tested v0.13 snapshot remains unchanged.

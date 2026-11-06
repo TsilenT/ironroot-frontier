@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { CAMPAIGN_MISSIONS, createCampaignMission, getCampaignTargets } from '../dist/campaign.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails } from '../dist/protected-objectives.js';
+import { createObjectiveAlertPolicy } from '../dist/objective-alerts.js';
 import { BUILDINGS, SPELL } from '../dist/engine.js';
 import { campaignBuildChoices } from '../dist/campaign-flow.js';
 import { nativeSpaceTarget } from '../dist/persistence.js';
@@ -38,7 +39,7 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
   const context = {
     campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,updateCampaignDeck(){},
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
-    protectedMonitor:null,protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
+    protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
     canInteract:()=>state.canInteract,updateSelection(){},
     cancel:()=>{state.cancelled++;state.ui={build:null,spell:false,selected:null};context.ui=state.ui;},
     syncInputScope:()=>state.scopeUpdates++,resetBattleGesture:()=>state.reset++, renderer:{camera:123,clampCamera:()=>state.clamped++},
@@ -46,7 +47,7 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
     document:{createElement:tag=>new Element(tag),addEventListener:(name,callback,capture)=>{assert.equal(capture,true);documentListeners[name]=callback;}},
     window:{addEventListener:(name,callback)=>windowListeners[name]=callback,matchMedia:query=>({matches:query.includes('orientation: portrait')?state.portrait:state.landscape})},
   };
-  const api = runInNewContext(source+'\n({beginProtectedObjectives,updateProtectedObjectives,focusProtectedObjective,finishProtectedObjectives,syncProtectedLayout,setCompactBuildOpen,updateCompactBuildControl})',context);
+  const api = runInNewContext(source+'\n({beginProtectedObjectives,updateProtectedObjectives,focusProtectedObjective,finishProtectedObjectives,flushProtectedWarnings,syncProtectedLayout,setCompactBuildOpen,updateCompactBuildControl})',context);
   api.beginProtectedObjectives();api.updateProtectedObjectives();
   const buttons=()=>[...context.protectedControls.values()].map(control=>control.button);
   const click=(button,event={})=>button.listeners.click({detail:0,...event});
@@ -65,8 +66,11 @@ test('real app mounts stable focus controls, preserves HARD/PROTECT and moves th
   assert.deepEqual(h.buttons(),original);
   assert.equal(original[0].dataset.state,'critical');
   assert.match(h.context.protectedControls.get(building.id).health.textContent,/20% HP · Critical/);
-  assert.equal(h.$('protectedAlert').textContent,'North gold mine: critical health.');
-  h.$('protectedAlert').textContent='sentinel';building.hp--;h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();
+  h.api.flushProtectedWarnings(1);
+  assert.equal(h.$('protectedAlert').textContent,'Critical health: North gold mine (20% HP).');
+  assert.equal(h.state.sounds.length,1);assert.equal(h.state.sounds[0].name,'warning');
+  h.$('protectedAlert').textContent='sentinel';building.hp--;h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();h.api.flushProtectedWarnings(10);
+  assert.equal(h.state.sounds.length,1);
   assert.equal(h.$('protectedAlert').textContent,'sentinel','no repetitive alert for each damage tick');
 });
 
@@ -141,7 +145,7 @@ test('semantic HTML and responsive CSS reserve a real dock without reducing buil
   assert.match(css,/\.objective-hud \.protected-name \{[\s\S]*?font-size: 12px;/);
   const added=css.slice(css.indexOf('/* The protected-objective dock'),css.indexOf('/* A protected landscape battle'));
   assert.doesNotMatch(added,/\.build-card\s*\{|\.command-deck\s*\{|\.battlefield\s*\{|\.app\s*\{/);
-  assert.match(app,/protectedMonitor\?\.observe\(g\);\s*return currentCampaign/);
+  assert.match(app,/const snapshot = protectedMonitor\?\.observe\(g\);\s*if \(snapshot\) protectedAlerts\?\.observe\(snapshot,\{battleKey:protectedMonitor\}\);\s*return currentCampaign/);
   assert.match(app,/finishProtectedObjectives\(\);\s*\$\('resultTime'\)/);
   assert.match(readFileSync(new URL('../dist/service-worker.js',import.meta.url),'utf8'),/'\.\/protected-objectives\.js'/);
 });
@@ -383,4 +387,44 @@ test('portrait reuses navigation nodes and opens inspection intentionally, while
   assert.equal(h.$('battleTools').parentNode,h.$('battlefield'));
   assert.equal(h.$('mapControls').parentNode,h.$('battlefield'));
   assert.equal(h.$('selectionPanel').parentNode,h.$('battlefield'));
+});
+
+
+test('warning delivery waits through pause, help and hidden-page state without stealing focus or paid-action toast',()=>{
+  const h=harness(),target=getCampaignTargets(h.context.game,'common-ground').find(t=>t.kind==='protect').building;
+  target.hp=target.maxHp*.2;h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();
+  const before=JSON.stringify(h.context.game.serialize()),toasts=[...h.state.toasts];
+  h.state.canInteract=false;h.api.flushProtectedWarnings(1);assert.equal(h.state.sounds,undefined);
+  h.state.canInteract=true;h.context.dialogLayers[0].classList.remove('hidden');h.api.flushProtectedWarnings(2);assert.equal(h.state.sounds,undefined);
+  h.context.dialogLayers[0].classList.add('hidden');h.context.document.hidden=true;h.api.flushProtectedWarnings(3);assert.equal(h.state.sounds,undefined);
+  h.context.document.hidden=false;h.api.flushProtectedWarnings(4);assert.equal(h.state.sounds.length,1);
+  assert.match(h.$('protectedAlert').textContent,/North gold mine \(20% HP\)/);
+  assert.deepEqual(h.state.toasts,toasts);assert.equal(JSON.stringify(h.context.game.serialize()),before);
+  h.api.flushProtectedWarnings(100);assert.equal(h.state.sounds.length,1,'wall-clock elapsed alone is not another alert');
+});
+test('simultaneous critical originals share one warning and retain both accurate names',()=>{
+  const h=harness();for(const t of getCampaignTargets(h.context.game,'common-ground').filter(t=>t.kind==='protect'))t.building.hp=t.building.maxHp*.25;
+  h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();h.api.flushProtectedWarnings(1);
+  assert.equal(h.state.sounds.length,1);assert.match(h.$('protectedAlert').textContent,/North gold mine \(25% HP\)/);assert.match(h.$('protectedAlert').textContent,/South barracks \(25% HP\)/);
+});
+test('new current-page restored critical state warns once, without invented damage history',()=>{
+  const h=harness(),target=getCampaignTargets(h.context.game,'common-ground').find(t=>t.kind==='protect').building;
+  target.hp=target.maxHp*.1;h.api.beginProtectedObjectives();h.api.updateProtectedObjectives();
+  h.api.flushProtectedWarnings(1);assert.equal(h.state.sounds.length,1);assert.match(h.$('protectedAlert').textContent,/Critical health:/);
+  assert.doesNotMatch(h.$('protectedAlert').textContent,/attacked|enemy|since|ago/i);h.api.flushProtectedWarnings(10);assert.equal(h.state.sounds.length,1);
+});
+test('result and stale ownership discard pending warnings until a genuinely new battle monitor',()=>{
+  for(const stop of [h=>h.context.objectiveOutcome={failed:true},h=>h.state.stale=true,h=>h.context.started=false]){
+    const h=harness(),target=getCampaignTargets(h.context.game,'common-ground').find(t=>t.kind==='protect').building;
+    target.hp=target.maxHp*.2;h.context.protectedMonitor.observe();stop(h);h.api.flushProtectedWarnings(1);assert.equal(h.state.sounds,undefined);
+    h.context.objectiveOutcome=null;h.state.stale=false;h.context.started=true;h.api.flushProtectedWarnings(10);assert.equal(h.state.sounds,undefined);
+    h.api.beginProtectedObjectives();h.api.flushProtectedWarnings(11);assert.equal(h.state.sounds.length,1);
+  }
+});
+test('fixed-step observations precede objective evaluation and warning flush follows normal audio/HUD work',()=>{
+  const frame=app.slice(app.indexOf('function frame(now)'),app.indexOf('\nupdateHUD();',app.indexOf('function frame(now)')));
+  assert.ok(frame.indexOf('protectedAlerts?.observe')<frame.indexOf('evaluateCampaignMission(g'));
+  assert.ok(frame.indexOf('flushProtectedWarnings(now / 1000)')>frame.indexOf('updateAudio();'));
+  assert.ok(frame.indexOf('flushProtectedWarnings(now / 1000)')>frame.indexOf('updateHUD();'));
+  assert.match(app,/function sound\(name, options\) \{\s*audio\.play\(name, options\);/);
 });

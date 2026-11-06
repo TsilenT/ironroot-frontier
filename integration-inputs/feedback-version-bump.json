@@ -1,0 +1,32 @@
+{
+  "scope": "Unreleased feedback PR metadata only, not publication approval",
+  "from": "0.13.0",
+  "to": "0.14.0",
+  "files": [
+    {
+      "path": "package.json",
+      "before": "0281e87bf35b5d1f77b0d60d504ebb3d727852d2975957b31ef14a0eed65760a",
+      "after": "1f7543bc7fe8facf443c0c950786fceffaf41ecc81962cb197556a05a82bd280"
+    },
+    {
+      "path": "desktop/package.json",
+      "before": "95e9103d3bb7de778187dcc613b898ce5401e1d6311a16e6b46b06121ac479a3",
+      "after": "e543451579f96e78847929eada6ce8f9b2bba846e54937deede64a6d4a3c29ba"
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "before": "cae113be2b9e5862e115858221932db98fbc5df5f10829e710599d2fe7905845",
+      "after": "0d7bdc94bc43bb6da0e7b7e4ccaf234708846c81a94f532b207d7562617305ec"
+    },
+    {
+      "path": "dist/service-worker.js",
+      "before": "3205ca2b85a2ec12dd87d1528e313d2766c1a38cd1f8612b33d4849a42fb4774",
+      "after": "063642fdda050343553c4a8fc5fe264066bfc724a33b88e950f1e8c366f4f013"
+    },
+    {
+      "path": "dist/index.html",
+      "before": "573188dfc7ed3efb267898c2d6865df2b74246402f6f3293b7baebcca45ab4e2",
+      "after": "901a80e93200f09806f4ca772bef20949dcaf6e893237738b4f7131186e42522"
+    }
+  ]
+}
