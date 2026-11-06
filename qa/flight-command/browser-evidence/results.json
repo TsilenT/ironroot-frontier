@@ -1,0 +1,116 @@
+{
+  "browser": "Headless system Chromium",
+  "scope": "Actual touch taps at 390px and mouse/keyboard at 1280px; synthetic viewport audit, not physical-device certification",
+  "hashes": {
+    "./app.js": "0d52cf0c526529c994fe91914337870c982e50c0e00162e40ffa4a5773e18ea8",
+    "./index.html": "349ef962befc58db65c661c765b25dee3b15dfc7613d1931415d6ba6880f3a94",
+    "./styles.css": "c623b6e1ba48baed8c2eb4470b786e6928435073041e1396e620c5e875b51848",
+    "./scenarios.js": "eeaf371b6d0a301d52dad081109baf3d7491b4bc55337ec262b2e789b673f5d4",
+    "../lane-lab/engine.js": "52f5475ff3506ecc991797390a893b5bf4fceef6fdc486fb104f8eb5c6598d42",
+    "./browser-smoke.mjs": "b683861acafb04d5c96d177057838020422e7cd87b59915e892a0c242783d8b1"
+  },
+  "rows": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "touch": false,
+      "orderBoxes": [
+        {
+          "width": 228.125,
+          "height": 195.1875
+        },
+        {
+          "width": 228.140625,
+          "height": 195.1875
+        },
+        {
+          "width": 228.140625,
+          "height": 195.1875
+        }
+      ],
+      "nativePaidPlacement": true,
+      "committedFlightBefore": {
+        "unit": "16",
+        "from": "1",
+        "to": "0",
+        "phase": "approach"
+      },
+      "committedFlightAfter": {
+        "unit": "16",
+        "from": "1",
+        "to": "0",
+        "phase": "approach"
+      },
+      "transit": "G16\tMiddle → North\tCrossing\nG17\tMiddle → Middle\tHolding launch road",
+      "nextWave": "G16\tMiddle → North\tArrived\nG17\tMiddle → Middle\tHolding launch road\nG23\tMiddle → Middle\tHolding launch road\nG24\tMiddle → Middle\tHolding launch road",
+      "routeCounts": "Observed: 1 warnings · 1 crossings · 1 arrivals",
+      "responseSpending": "175 gold",
+      "rallyGrossSpend": "150 gold",
+      "rallyWoundedWave": [
+        "17",
+        "18"
+      ],
+      "rallyKilledOriginalPair": true,
+      "playerRallyGrossSpend": "75 gold",
+      "keyboardPause": true,
+      "setupResetClearsNotice": true,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "storagePreserved": true,
+      "pageOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touch": true,
+      "orderBoxes": [
+        {
+          "width": 330,
+          "height": 120
+        },
+        {
+          "width": 330,
+          "height": 130.375
+        },
+        {
+          "width": 330,
+          "height": 130.375
+        }
+      ],
+      "nativePaidPlacement": true,
+      "committedFlightBefore": {
+        "unit": "16",
+        "from": "1",
+        "to": "0",
+        "phase": "approach"
+      },
+      "committedFlightAfter": {
+        "unit": "16",
+        "from": "1",
+        "to": "0",
+        "phase": "approach"
+      },
+      "transit": "G16\tMiddle → North\tCrossing\nG17\tMiddle → Middle\tHolding launch road",
+      "nextWave": "G16\tMiddle → North\tArrived\nG17\tMiddle → Middle\tHolding launch road\nG23\tMiddle → Middle\tHolding launch road\nG24\tMiddle → Middle\tHolding launch road",
+      "routeCounts": "Observed: 1 warnings · 1 crossings · 1 arrivals",
+      "responseSpending": "175 gold",
+      "rallyGrossSpend": "150 gold",
+      "rallyWoundedWave": [
+        "17",
+        "18"
+      ],
+      "rallyKilledOriginalPair": true,
+      "playerRallyGrossSpend": "75 gold",
+      "keyboardPause": true,
+      "setupResetClearsNotice": true,
+      "pageErrors": [],
+      "externalRequests": 0,
+      "storagePreserved": true,
+      "pageOverflow": false
+    }
+  ]
+}

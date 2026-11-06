@@ -14,7 +14,12 @@ export const LAB_MAPS=Object.freeze({
   'two-roads-crosswind':descriptor('two-roads-crosswind','Crosswind: Two Roads',[340,560],[1,0]),
   'three-roads-crosswind':descriptor('three-roads-crosswind','Crosswind: Three Roads',[260,450,640],[1,null,1])
 });
-export const MAPS=Object.freeze({...RELEASE_MAPS,...LAB_MAPS});
+// Command trials use new identities; fixed-route v3 lab maps keep their rules.
+export const COMMAND_MAPS=Object.freeze({
+  'command-two-roads':Object.freeze({...descriptor('command-two-roads','Flight Orders: Two Roads',[340,560]),commandFlights:true}),
+  'command-three-roads':Object.freeze({...descriptor('command-three-roads','Flight Orders: Three Roads',[260,450,640]),commandFlights:true})
+});
+export const MAPS=Object.freeze({...RELEASE_MAPS,...LAB_MAPS,...COMMAND_MAPS});
 export function getMap(mapId='classic'){if(typeof mapId!=='string'||!Object.hasOwn(MAPS,mapId))throw new Error('Unknown battlefield: '+String(mapId));return MAPS[mapId];}
 const isBuildSite=(map,side,x,y)=>map.siteColumns.includes(homeX(map,side,x))&&map.lanes.includes(y);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -27,7 +32,7 @@ export class Game {
     this.state={time:0,gold:[420,420],income:[5,5],bases:[{id:'base0',type:'base',side:0,hp:6000,maxHp:6000,cooldown:0,x:110,y:450},{id:'base1',type:'base',side:1,hp:6000,maxHp:6000,cooldown:0,x:map.width-110,y:450}],buildings:[],units:[],projectiles:[],effects:[],frontline:map.width/2,winner:null,spellCooldown:[0,0],overtime:false,stats:{kills:[0,0],built:[0,0],damage:[0,0]}};
     for(let side=0;side<2;side++)this._place('barracks',worldX(map,side,410),map.lanes[map.startingLane],side);
   }
-  serialize(){return JSON.parse(JSON.stringify({...(this.map.experimental?{version:3,ruleset:'lane-lab-1',mapId:this.map.id,mapRevision:this.map.revision}:this.map.id==='classic'?{version:1}:{version:2,mapId:this.map.id,mapRevision:this.map.revision}),difficulty:this.difficulty,seed:this.seed,ai:this.ai,nextId:this.nextId,aiTimer:this.aiTimer,accumulator:this.accumulator,tick:this.tick,state:this.state}));}
+  serialize(){return JSON.parse(JSON.stringify({...(this.map.commandFlights?{version:4,ruleset:'lane-command-1',mapId:this.map.id,mapRevision:this.map.revision}:this.map.experimental?{version:3,ruleset:'lane-lab-1',mapId:this.map.id,mapRevision:this.map.revision}:this.map.id==='classic'?{version:1}:{version:2,mapId:this.map.id,mapRevision:this.map.revision}),difficulty:this.difficulty,seed:this.seed,ai:this.ai,nextId:this.nextId,aiTimer:this.aiTimer,accumulator:this.accumulator,tick:this.tick,state:this.state}));}
   static restore(data){
     const map=validateSave(data);
     const clean=JSON.parse(JSON.stringify(data));
@@ -49,12 +54,22 @@ export class Game {
     return {ok:true};
   }
   build(type,x,y,side=0){const result=this.canBuild(type,x,y,side);if(!result.ok)return result;this.state.gold[side]-=BUILDINGS[type].cost;return {ok:true,building:this._place(type,x,y,side)};}
-  _place(type,x,y,side){const d=BUILDINGS[type];const b={id:this.nextId++,type,side,x,y,lane:laneFor(this.map,y),hp:d.hp,maxHp:d.hp,level:1,progress:d.unit?1-1.2/d.spawnTime:0,cooldown:0,invested:d.cost};this.state.buildings.push(b);this.state.stats.built[side]++;this._effect(x,y,'build',side,0.7);return b;}
+  _place(type,x,y,side){const d=BUILDINGS[type];const b={id:this.nextId++,type,side,x,y,lane:laneFor(this.map,y),hp:d.hp,maxHp:d.hp,level:1,progress:d.unit?1-1.2/d.spawnTime:0,cooldown:0,invested:d.cost};if(this.map.commandFlights&&type==='aerie')b.flightPlan=b.lane;this.state.buildings.push(b);this.state.stats.built[side]++;this._effect(x,y,'build',side,0.7);return b;}
+  setFlightPlan(id,toLane,side=0){
+    if(this.state.winner!==null)return {ok:false,reason:'The battle has ended.'};
+    if(!this.map.commandFlights)return {ok:false,reason:'Flight orders are available only in command trials.'};
+    if(![0,1].includes(side))return {ok:false,reason:'Choose an owned gryphon aerie.'};
+    const b=this.state.buildings.find(b=>b.id===id&&b.side===side&&b.type==='aerie'&&b.hp>0);
+    if(!b)return {ok:false,reason:'Choose an owned gryphon aerie.'};
+    if(!Number.isInteger(toLane)||toLane<0||toLane>=this.map.lanes.length||Math.abs(toLane-b.lane)>1)return {ok:false,reason:'Hold this road or choose an adjacent road.'};
+    b.flightPlan=toLane;
+    return {ok:true,building:b,reason:'Flight plan set for future launches. Airborne gryphons keep their orders.'};
+  }
   upgrade(id,side=0){const b=this.state.buildings.find(b=>b.id===id&&b.side===side&&b.hp>0);if(this.state.winner!==null||!b)return {ok:false,reason:'Select one of your buildings.'};if(b.level>=3)return {ok:false,reason:'Already at maximum level.'};const cost=upgradeCost(b);if(this.state.gold[side]<cost)return {ok:false,reason:`Need ${cost} gold.`};this.state.gold[side]-=cost;b.invested+=cost;b.level++;const hp=BUILDINGS[b.type].hp*(1+0.4*(b.level-1));b.hp+=hp-b.maxHp;b.maxHp=hp;this._effect(b.x,b.y,'upgrade',side,0.8);return {ok:true,building:b};}
   sell(id,side=0){const b=this.state.buildings.find(b=>b.id===id&&b.side===side&&b.hp>0);if(this.state.winner!==null||!b)return {ok:false,reason:'Select one of your buildings.'};const refund=Math.floor(b.invested*0.5*b.hp/b.maxHp);this.state.gold[side]+=refund;this.state.buildings=this.state.buildings.filter(a=>a!==b);this._effect(b.x,b.y,'sell',side,0.6);return {ok:true,refund};}
   cast(x,y,side=0){const s=this.state;if(s.winner!==null||![0,1].includes(side)||!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>this.map.width||y<0||y>this.map.height)return {ok:false,reason:'Choose a point on the battlefield.'};if(s.spellCooldown[side]>0)return {ok:false,reason:'Volley is recharging.'};if(s.gold[side]<SPELL.cost)return {ok:false,reason:`Need ${SPELL.cost} gold.`};s.gold[side]-=SPELL.cost;s.spellCooldown[side]=SPELL.cooldown;for(const u of s.units)if(u.side!==side&&Math.hypot(u.x-x,u.y-y)<SPELL.radius)this._damage(u,SPELL.damage,side);this._effect(x,y,'volley',side,1.1,SPELL.radius);return {ok:true};}
   _effect(x,y,type,side,life=0.35,radius=30){if(this.state.effects.length>=256)this.state.effects.shift();this.state.effects.push({x,y,type,side,life,maxLife:life,radius});}
-  _spawn(b){const s=this.state;if(s.units.filter(u=>u.side===b.side&&u.hp>0).length>=70)return;const type=BUILDINGS[b.type].unit,d=UNITS[type],mult=1+0.12*(b.level-1);const u={id:this.nextId++,type,flying:d.flying,side:b.side,x:b.x+(b.side?-48:48),y:this.map.lanes[b.lane]+(this.random()-0.5)*32,lane:b.lane,hp:d.hp*mult,maxHp:d.hp*mult,level:b.level,cooldown:this.random()*0.2,attack:0};if(type==='gryphon'&&this.map.airRoutes?.[u.lane]!=null)u.airRoute={from:u.lane,to:this.map.airRoutes[u.lane],phase:'approach',remaining:AIR_ROUTE.warning};s.units.push(u);this._effect(u.x,u.y,'spawn',u.side,0.45);}
+  _spawn(b){const s=this.state;if(s.units.filter(u=>u.side===b.side&&u.hp>0).length>=70)return;const type=BUILDINGS[b.type].unit,d=UNITS[type],mult=1+0.12*(b.level-1);const u={id:this.nextId++,type,flying:d.flying,side:b.side,x:b.x+(b.side?-48:48),y:this.map.lanes[b.lane]+(this.random()-0.5)*32,lane:b.lane,hp:d.hp*mult,maxHp:d.hp*mult,level:b.level,cooldown:this.random()*0.2,attack:0};const to=this.map.commandFlights?(b.flightPlan??b.lane):this.map.airRoutes?.[u.lane];if(type==='gryphon'&&to!=null&&to!==u.lane)u.airRoute={from:u.lane,to,phase:'approach',remaining:AIR_ROUTE.warning};s.units.push(u);this._effect(u.x,u.y,'spawn',u.side,0.45);}
   _advanceAirRoute(u,dt){
     const route=u.airRoute;if(!route||route.phase==='done')return false;
     if(route.phase==='approach'){
@@ -86,7 +101,7 @@ export class Game {
     // Towers retain the original structure-first targeting. Resolve routes
     // together before unit combat so opposing units see the same route snapshot.
     const routing=new Set();
-    if(this.map.airRoutes)for(const u of s.units)if(u.hp>0&&this._advanceAirRoute(u,dt))routing.add(u.id);
+    if(this.map.airRoutes||this.map.commandFlights)for(const u of s.units)if(u.hp>0&&this._advanceAirRoute(u,dt))routing.add(u.id);
     const pendingMoves=[];
     for(const u of (this.tick%2?s.units:[...s.units].reverse())){if(u.hp<=0)continue;const d=UNITS[u.type],dir=u.side? -1:1;u.cooldown=Math.max(-1,u.cooldown-dt);u.attack=Math.max(0,u.attack-dt);u.hit=Math.max(0,(u.hit||0)-dt);
       if(routing.has(u.id))continue;
@@ -96,7 +111,7 @@ export class Game {
       if(!target){target=s.bases[1-u.side];best=Math.hypot(target.x-u.x,target.y-u.y)-55;}
       const structure=!UNITS[target.type];
       if(best<=d.range){if(u.cooldown<=0){const troopDamage=d.damage*(1+0.12*(u.level-1));let damage=troopDamage;if(u.type==='archer'&&target.type==='warrior')damage*=0.55;if(u.type==='warrior'&&target.type==='archer')damage*=1.35;if(u.type==='archer'&&UNITS[target.type]?.flying)damage*=1.5;if(u.type==='gryphon'&&structure)damage*=0.6;if(u.type==='siege'&&structure)damage*=3;if(s.overtime&&structure)damage*=1.75;this._fire(u,target,damage,u.type);if(u.type==='siege'||u.type==='wizard'){for(const e of s.units)if(e!==target&&e.side!==u.side&&e.hp>0&&!UNITS[e.type].flying&&Math.hypot(e.x-target.x,e.y-target.y)<64)this._damage(e,troopDamage*(u.type==='wizard'?.65:.45),u.side);this._effect(target.x,target.y,u.type==='wizard'?'magic':'blast',u.side,0.45,55);}u.cooldown=d.attackTime;}}
-      else {const targetY=target.type==='base'&&Math.abs(target.x-u.x)>180?this.map.lanes[u.lane]:target.y;let dx=target.x-u.x,dy=targetY-u.y;const length=Math.hypot(dx,dy)||1;pendingMoves.push([u,clamp(u.x+dx/length*d.speed*dt,75,this.map.width-75),clamp(u.y+dy/length*d.speed*dt,180,720)]);}
+      else {const committedApproach=this.map.commandFlights&&u.airRoute?.phase==='approach';const targetY=committedApproach||target.type==='base'&&Math.abs(target.x-u.x)>180?this.map.lanes[u.lane]:target.y;const targetX=committedApproach?worldX(this.map,u.side,AIR_ROUTE.gate):target.x;let dx=targetX-u.x,dy=targetY-u.y;const length=Math.hypot(dx,dy)||1;pendingMoves.push([u,clamp(u.x+dx/length*d.speed*dt,75,this.map.width-75),clamp(u.y+dy/length*d.speed*dt,180,720)]);}
     }
     for(const [unit,x,y] of pendingMoves){unit.x=x;unit.y=y;}
     for(const base of s.bases){
@@ -188,15 +203,16 @@ function validateSave(data){
   const num=(v,a,b,p,integer=false)=>{if(typeof v!=='number'||!Number.isFinite(v)||v<a||v>b||(integer&&!Number.isInteger(v)))fail(p+' is outside its valid range');};
   const arr=(v,min,max,p)=>{if(!Array.isArray(v)||v.length<min||v.length>max)fail(p+' has an invalid length');};
   const pair=(v,p,integer=false,max=1e9)=>{arr(v,2,2,p);v.forEach(n=>num(n,0,max,p,integer));};
-  obj(data,'save');if(data.version!==1&&data.version!==2&&data.version!==3)fail('unsupported version');
+  obj(data,'save');if(![1,2,3,4].includes(data.version))fail('unsupported version');
   let map=MAPS.classic;
   if(data.version===1){if(Object.hasOwn(data,'mapId')||Object.hasOwn(data,'mapRevision'))fail('version 1 cannot contain map identity');}
   else {
     if(typeof data.mapId!=='string'||!Object.hasOwn(MAPS,data.mapId)||data.mapId==='classic')fail('unknown battlefield');
-    if(data.version===3){if(!MAPS[data.mapId].experimental||data.ruleset!=='lane-lab-1')fail('unknown lab ruleset');}
+    if(data.version===4){if(!MAPS[data.mapId].commandFlights||data.ruleset!=='lane-command-1')fail('unknown command ruleset');}
+    else if(data.version===3){if(!MAPS[data.mapId].experimental||MAPS[data.mapId].commandFlights||data.ruleset!=='lane-lab-1')fail('unknown lab ruleset');}
     else if(MAPS[data.mapId].experimental)fail('lab battlefield requires version 3');
     map=MAPS[data.mapId];if(data.mapRevision!==map.revision)fail('unsupported battlefield revision');
-    const fields=[...(data.version===3?['ruleset']:[]),'version','mapId','mapRevision','difficulty','seed','ai','nextId','aiTimer','accumulator','tick','state'];
+    const fields=[...(data.version>=3?['ruleset']:[]),'version','mapId','mapRevision','difficulty','seed','ai','nextId','aiTimer','accumulator','tick','state'];
     if(Object.keys(data).some(key=>!fields.includes(key)))fail('unknown version 2 field');
   }
   if(!['easy','normal','hard'].includes(data.difficulty))fail('unknown difficulty');
@@ -214,16 +230,16 @@ function validateSave(data){
     entity(e,kind);if(typeof e.type!=='string'||!Object.hasOwn(types,e.type))fail('unknown '+kind+' type');num(e.id,1,data.nextId-1,kind+'.id',true);if(ids.has(e.id))fail('duplicate entity id');ids.add(e.id);
     num(e.lane,0,map.lanes.length-1,kind+'.lane',true);num(e.level,1,3,kind+'.level',true);num(e.cooldown,-1,20,kind+'.cooldown');
     const maxHp=types[e.type].hp*(1+(kind==='building'?.4:.12)*(e.level-1));if(Math.abs(e.maxHp-maxHp)>.001)fail(kind+' health does not match its level');
-    if(kind==='building'){num(e.progress,0,1,'progress');num(e.invested,types[e.type].cost,2000,'invested');const bounds=buildBounds(map,e.side);num(e.x,bounds.minX,bounds.maxX,'building.x');num(e.y,bounds.minY,bounds.maxY,'building.y');if(e.lane!==laneFor(map,e.y))fail('building lane does not match position');if(map.id!=='classic'){if(!isBuildSite(map,e.side,e.x,e.y))fail('building is not on an owned site');const site=e.side+':'+e.x+':'+e.y;if(occupiedSites.has(site))fail('duplicate occupied building site');occupiedSites.add(site);}}
+    if(kind==='building'){if(map.commandFlights&&e.type==='aerie'){num(e.flightPlan,0,map.lanes.length-1,'flightPlan',true);if(Math.abs(e.flightPlan-e.lane)>1)fail('flight plan is not adjacent');}else if(map.commandFlights&&e.flightPlan!==undefined)fail('unexpected flight plan');num(e.progress,0,1,'progress');num(e.invested,types[e.type].cost,2000,'invested');const bounds=buildBounds(map,e.side);num(e.x,bounds.minX,bounds.maxX,'building.x');num(e.y,bounds.minY,bounds.maxY,'building.y');if(e.lane!==laneFor(map,e.y))fail('building lane does not match position');if(map.id!=='classic'){if(!isBuildSite(map,e.side,e.x,e.y))fail('building is not on an owned site');const site=e.side+':'+e.x+':'+e.y;if(occupiedSites.has(site))fail('duplicate occupied building site');occupiedSites.add(site);}}
     else {if(e.flying!==types[e.type].flying)fail('unit flight does not match its type');num(e.attack,0,1,'unit.attack');num(e.x,75,map.width-75,'unit.x');num(e.y,180,720,'unit.y');validateAirRoute(e);}
   }
   function validateAirRoute(u){
-    const r=u.airRoute,eligible=u.type==='gryphon'&&map.airRoutes?.[r?.from??u.lane]!=null;
+    const r=u.airRoute,eligible=u.type==='gryphon'&&(map.commandFlights?r!==undefined:map.airRoutes?.[r?.from??u.lane]!=null);
     if(!eligible){if(r!==undefined)fail('unexpected air route');return;}
     obj(r,'airRoute');
     if(Object.keys(r).length!==4||Object.keys(r).some(k=>!['from','to','phase','remaining'].includes(k)))fail('unknown air route field');
     num(r.from,0,map.lanes.length-1,'airRoute.from',true);num(r.to,0,map.lanes.length-1,'airRoute.to',true);
-    if(map.airRoutes[r.from]!==r.to)fail('air route does not match battlefield');
+    if(map.commandFlights?Math.abs(r.from-r.to)!==1:map.airRoutes[r.from]!==r.to)fail('air route does not match battlefield');
     if(!['approach','warning','transit','done'].includes(r.phase))fail('unknown air route phase');
     num(r.remaining,0,AIR_ROUTE.warning,'airRoute.remaining');
     if(u.lane!==(r.phase==='done'?r.to:r.from))fail('air route lane mismatch');

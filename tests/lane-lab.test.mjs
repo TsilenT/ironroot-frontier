@@ -138,7 +138,7 @@ test('saves at all route phases and partial accumulator continue exactly',()=>{
 test('lab saves reject invalid identity, route fields, phase, lane, position and timers without mutation',()=>{
   const g=empty();spawn(g,'gryphon',0,0);advance(g,.5);
   const source=g.serialize();assert.equal(source.version,3);assert.equal(source.ruleset,'lane-lab-1');
-  assert.throws(()=>ReleaseGame.restore(source),/unsupported version/);
+  assert.throws(()=>ReleaseGame.restore(source),/Invalid saved game:/);
   const mutations=[d=>d.version=2,d=>delete d.ruleset,d=>d.ruleset='future',d=>d.mapRevision=2,d=>d.mapId='classic',
     d=>delete d.state.units[0].airRoute,d=>d.state.units[0].airRoute.to=2,d=>d.state.units[0].airRoute.from=99,
     d=>d.state.units[0].airRoute.phase='teleport',d=>d.state.units[0].airRoute.remaining=2.1,
