@@ -85,13 +85,15 @@ test('shared mobile field keeps controls outside the world and holds unsafe resi
     for(const target of await page.locator('[data-protected-id]').all())await target.scrollIntoViewIfNeeded();
     await activateCompact(page,'Build',true);await activateCompact(page,'Close',false);
   }
-  await press(page,'#settings');await page.setViewportSize({width:568,height:300});
+  // Former 568×300 is newly safe. 568×210 forces genuine grid overflow
+  // below the 252px protected sidebar budget, preserving every hold assertion.
+  await press(page,'#settings');await page.setViewportSize({width:568,height:210});
   await expect(page.locator('#settingsModal')).toBeVisible();
   await page.setViewportSize({width:320,height:480});await press(page,'#settingsDone');
   await expect(page.locator('#viewportModal')).toBeVisible();await expect(page.locator('#viewportResume')).toBeEnabled();
   const held=await saved(page);await page.waitForTimeout(700);expect(await saved(page)).toEqual(held);
   await press(page,'#viewportResume');await expect(page.locator('#viewportModal')).toBeHidden();
-  await page.setViewportSize({width:568,height:300});await expect(page.locator('#viewportResume')).toBeDisabled();
+  await page.setViewportSize({width:568,height:210});await expect(page.locator('#viewportResume')).toBeDisabled();
   await expect(page.locator('#viewportExit')).toBeEnabled();
   const before=await saved(page);await page.waitForTimeout(700);expect(await saved(page)).toEqual(before);
   // The bounded tiny dialog keeps safe actions as initial focus, while its

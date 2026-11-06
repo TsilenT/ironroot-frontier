@@ -5,7 +5,7 @@ import {Game,BUILDINGS,SPELL,UNITS,upgradeCost} from '../dist/engine.js';
 import {ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,createCampaignMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
-import {createViewportPause,inspectMobileGeometry,visibleViewportRect} from '../dist/mobile-battlefield.js';
+import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
@@ -15,9 +15,10 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=re
 // This is a narrow DOM/geometry fixture, not native browser layout evidence.
 // It parses the actual HTML ancestry, makes hidden descendants unmeasurable,
 // and executes the real startup, HUD, protected-control and pause functions.
-export function startupHarness({width=320,height=480,source=app}={}) {
+export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const section=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
- const nodes=new Map(),geometryFor=()=>layout(width,height,{protect:!nodes.get('app')?.classList.contains('mobile-ordinary')}),log={measures:[],saves:0,claims:0};let document;
+ const nodes=new Map(),log={measures:[],saves:0,claims:0,resizes:0,interruptions:0};let document;
+ const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
  class Element {
   constructor(tag='div'){this.tagName=tag.toUpperCase();this.id='';this.children=[];this.parentNode=null;this.classes=new Set();this.attributes={};this.style={};this.dataset={};this.disabled=false;this.text='';this.inert=false;this.scrollWidth=0;this.clientWidth=0;this.classList={contains:n=>this.classes.has(n),add:n=>this.classes.add(n),remove:n=>this.classes.delete(n),toggle:(n,on)=>on?this.classes.add(n):this.classes.delete(n)};}
   set className(v){this.classes=new Set(v.split(/\s+/));}get className(){return [...this.classes].join(' ');}
@@ -47,13 +48,13 @@ export function startupHarness({width=320,height=480,source=app}={}) {
   campaignBuildChoices,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
-  createViewportPause,visibleViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
+  createViewportPause,visibleViewportRect,fitMobileViewport,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:null,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,
-  inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){},closeSelectionArmed:false,
-  renderer:{width:width,height:height,camera:450,setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){}}},
+  inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){log.interruptions++;},closeSelectionArmed:false,
+  renderer:{width:width,height:height,camera:450,resize(){log.resizes++;},setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){}}},
   populateFieldGuide(){},populateBuildCards(){},renderMapSelection(){},syncProfileSafety(){},showRecoverySettings(){throw Error('unexpected recovery');},beginBattleReport(){},
   battleSession:{claim(){log.claims++;},status:()=> 'current'},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},
   getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible'}),
@@ -63,5 +64,5 @@ export function startupHarness({width=320,height=480,source=app}={}) {
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
  for(const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);
- return {c,$,log,fixture,source,resize(w,h){width=w;height=h;c.window.innerWidth=w;c.window.innerHeight=h;c.syncProtectedLayout();c.updateHUD();c.syncViewportSafety();},start(restored=false){const g=restored?Game.restore(fixture.envelope.game):null;c.start(g,null,restored?'winter-stores':null);return g;}};
+ return {c,$,log,fixture,source,geometry:geometryFor,resize(w,h){width=w;height=h;c.window.innerWidth=w;c.window.innerHeight=h;c.syncProtectedLayout();c.updateHUD();c.syncViewportSafety();},start(restored=false){const g=restored?Game.restore(fixture.envelope.game):null;c.start(g,null,restored?'winter-stores':null);return g;}};
 }

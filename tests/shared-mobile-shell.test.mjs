@@ -18,7 +18,7 @@ function begin(h,scenario,restored=false){
  h.c.start(game,restored&&scenario.mode==='challenges'?scenario.id:null,restored&&scenario.mode==='campaign'?scenario.id:null);return game;
 }
 for(const scenario of cases)for(const restored of [false,true])test(`${scenario.name} ${restored?'restores':'starts'} with the same dock, Build drawer and measured geometry`,()=>{
- for(const [width,height]of [[320,480],[390,500],[320,568],[568,320],[844,390]]){
+ for(const [width,height]of [[320,430],[667,300],[740,320],[393,659],[920,420],[320,480],[390,500],[320,568],[568,320],[844,390]]){
   const h=startupHarness({width,height}),game=begin(h,scenario,restored);
   assert.equal(h.c.paused,false,`${width}x${height}`);assert.equal(h.c.viewportPause.active,false);
   assert.equal(h.$('app').classList.contains('protected-mobile'),true);
@@ -40,15 +40,17 @@ test('ordinary mobile dock uses its smaller source budget without weakening the 
   const g=layout(width,height,{protect:false});assert.equal(g.controls.length,8);
   assert.deepEqual(inspectMobileGeometry(g),{safe:true,reason:''});
  }
- assert.equal(layout(320,480,{protect:false}).canvas.height,256);
+ assert.equal(layout(320,480,{protect:false}).canvas.height,292);
  assert.equal(inspectMobileGeometry(layout(320,480,{protect:false,bottom:34})).safe,true);
- assert.equal(inspectMobileGeometry(layout(320,430,{protect:false})).safe,false);
- assert.equal(inspectMobileGeometry(layout(568,300,{protect:false})).safe,false);
+ assert.equal(inspectMobileGeometry(layout(320,430,{protect:false})).safe,true);
+ assert.equal(inspectMobileGeometry(layout(568,300,{protect:false})).safe,true);
 });
 
+// 568×300 now has a safe full-height world. 568×210 is genuinely too
+// short for either sidebar and must retain the identical pause/resume latch.
 test('all modes pause on insufficient actual geometry and remain paused after growing until explicit Resume',()=>{
  for(const scenario of cases)for(const restored of [false,true]){
-  const h=startupHarness({width:568,height:300});begin(h,scenario,restored);
+  const h=startupHarness({width:568,height:210});begin(h,scenario,restored);
   const before=h.c.game.serialize();assert.equal(h.c.paused,true);assert.equal(h.c.viewportPause.blocked,true);
   h.resize(568,320);assert.equal(h.c.viewportPause.blocked,false);assert.equal(h.c.paused,true);
   assert.deepEqual(h.c.game.serialize(),before);
@@ -67,7 +69,7 @@ test('same-page transitions preserve node identity across campaign, protected mi
   assert.equal(h.$('protectedTargets').classList.contains('hidden'),!protect);
   h.$('compactBuild').onclick();h.resize(568,320);
   assert.equal(h.$('app').classList.contains('compact-build-open'),false);
-  assert.equal(h.$('compactBuild').parentNode,h.$('objectiveHUD'));
+  assert.equal(h.$('compactBuild').parentNode,h.$('protectedNavigation'));
   h.resize(320,480);assert.equal(h.$('compactBuild').parentNode,h.$('protectedNavigation'));
   assert.deepEqual(ids.map(h.$),nodes);
  }

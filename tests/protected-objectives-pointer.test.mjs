@@ -23,7 +23,9 @@ function tree(width,height){
   if(isLandscape)ids.get('app').classes.push('protected-landscape');
   const isPortrait=width<=height&&width<=700;
   if(isLandscape||isPortrait){ids.get('app').classes.push('protected-mobile','protected-compact');ids.get('protectedNavigation').classes=[];}
-  if(isPortrait){ids.get('app').classes.push('protected-portrait');const button=ids.get('compactBuild');button.parent.children=button.parent.children.filter(n=>n!==button);button.parent=ids.get('protectedNavigation');button.parent.children.push(button);}
+  if(isLandscape&&height<360)ids.get('app').classes.push('protected-sidebar');
+  if(isPortrait)ids.get('app').classes.push('protected-portrait');
+  if(isPortrait||isLandscape&&height<360){const button=ids.get('compactBuild');button.parent.children=button.parent.children.filter(n=>n!==button);button.parent=ids.get('protectedNavigation');button.parent.children.push(button);}
   const targetClass=app.slice(app.indexOf('function beginProtectedObjectives()')).match(/button\.className = '([^']+)'/)[1];
   for(let i=0;i<2;i++)targets.children.push({tag:'button',id:'original'+i,classes:[targetClass],parent:targets,children:[]});
   return {ids,targets:targets.children};
@@ -74,7 +76,7 @@ function hitEligible(node,styles){
 test('actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels',()=>{
   for(const [width,height] of [[568,320],[640,360],[320,480],[390,500]]){
     const {ids,targets}=tree(width,height),styles=rules(css,width,height),button=ids.get('compactBuild');
-    assert.equal(button.parent.id,width>height?'objectiveHUD':'protectedNavigation');assert.equal(property(ids.get('objectiveHUD'),'pointer-events',styles),'none');
+    assert.equal(button.parent.id,width>height&&height>=360?'objectiveHUD':'protectedNavigation');assert.equal(property(ids.get('objectiveHUD'),'pointer-events',styles),'none');
     for(const label of ['Build','Close','Cancel']){button.textContent=label;assert.equal(property(button,'pointer-events',styles),'auto');assert.equal(hitEligible(button,styles),true,label);}
     for(const target of targets){assert.equal(property(target,'pointer-events',styles),'auto');assert.equal(hitEligible(target,styles),true);}
     assert.equal(hitEligible(ids.get('objectiveProgress'),styles),false);
@@ -85,7 +87,7 @@ test('actual HTML ancestry and CSS inheritance expose Build Close Cancel and bot
 test('removing the pointer override reproduces the native failure despite a visible enabled button',()=>{
   const before=css.replace(/(\.compact-build\s*\{[^}]*?)pointer-events: auto;/g,'$1');
   assert.notEqual(before,css);
-  const {ids}=tree(568,320),styles=rules(before,568,320),button=ids.get('compactBuild');
+  const {ids}=tree(640,360),styles=rules(before,640,360),button=ids.get('compactBuild');
   assert.equal(property(button,'display',styles),'block');
   assert.equal(property(button,'pointer-events',styles),'none');
   assert.equal(hitEligible(button,styles),false);
