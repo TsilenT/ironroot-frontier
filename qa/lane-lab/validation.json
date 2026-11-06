@@ -1,0 +1,69 @@
+{
+  "baseCommit": "24edddab2cff33b3f91b396bc855193f87421ba3",
+  "branch": "explore/progressive-lanes-and-air-crossings",
+  "scope": "Isolated local QA prototype; no production runtime edits, push, merge, or deployment.",
+  "commands": {
+    "npm test": {
+      "tests": 649,
+      "pass": 648,
+      "fail": 0,
+      "skipped": 1
+    },
+    "node --test tests/lane-lab.test.mjs": {
+      "pass": 13,
+      "fail": 0
+    },
+    "npm run check": "pass",
+    "npm run check:release": {
+      "pass": true,
+      "runtimeFiles": 33,
+      "scope": "local source-dist validation only, not publication approval"
+    },
+    "optional lab module syntax": "pass",
+    "git diff --check": "pass"
+  },
+  "simulation": {
+    "skirmishes": 1056,
+    "authoredPilotGames": 80,
+    "nextStepRestoreChecks": 3394,
+    "matchedPlainCrossingPairs": 384,
+    "changedPairedOutcomes": 0
+  },
+  "browser": {
+    "profiles": [
+      {
+        "width": 1280,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "pageErrors": 0,
+    "externalRequests": 0,
+    "storagePreserved": true,
+    "pageOverflow": false,
+    "protectedMineFailureStops": true
+  },
+  "productionFilesUnchanged": true,
+  "hashes": {
+    "qa/lane-lab/app.js": "48c3a799d18bba1b0c802dcb31b67acb9bc91e19b80258be52cae1a0bc64e8d4",
+    "qa/lane-lab/balance.mjs": "7606eeefb11a0c5cd21aec0790c2a891ed8679e7ef6b4804ce2cb6781b6d3428",
+    "qa/lane-lab/browser-smoke.mjs": "0ad66cb72fce6373bca1b93cfe5e9f60c94e2059d1a6be885621b6dbf3a4ee28",
+    "qa/lane-lab/campaign.js": "3b4872a5d428796140b2b6add3b8f307be60c065a93f3d195d58303080229c1b",
+    "qa/lane-lab/engine.js": "9eeced24ff2926969920c2075025c56ec28d9d92417bc6ee2d9f1867e71ce481",
+    "qa/lane-lab/index.html": "c5452366f20481c4dca16768b45fd07e915506d87b5cc8a7e9967705256c94fa",
+    "qa/lane-lab/pilot-balance.mjs": "07bbfba376133f53fa09abe18382a159185cbf5262739959a09e926a38d76029",
+    "qa/lane-lab/policies.mjs": "30c98d7dfe15a6bc5d25379898087bc85cd3ef65bc91efbfa0153ef6718347ca",
+    "qa/lane-lab/styles.css": "a6fb4d707a1b89e2a85c2cf4d141a7a7e55e46b9726c0615b4223b57863b5ea0"
+  },
+  "dedicatedTestHash": "db31af5fc8ec2bd6a1bfcfc0f83e584e34fbc69a4506688440bbe47f27317122",
+  "remainingLimits": [
+    "Pinned QA engine fork requires rebase/parity checks before integration.",
+    "Four simulation seeds and scripted policies do not establish human difficulty or balanced play.",
+    "Crossing variants changed no measured paired outcome and can reduce campaign air pressure.",
+    "New intro mission IDs or explicit progress migration and an older-tab profile fence are required for production integration.",
+    "Headless desktop/narrow viewport smoke only; no physical-device/controller/audio/performance or human onboarding certification."
+  ]
+}

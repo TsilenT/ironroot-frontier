@@ -1,0 +1,1259 @@
+{
+  "schemaVersion": 1,
+  "engineHash": "9eeced24ff2926969920c2075025c56ec28d9d92417bc6ee2d9f1867e71ce481",
+  "campaignHash": "3b4872a5d428796140b2b6add3b8f307be60c065a93f3d195d58303080229c1b",
+  "harnessHash": "07bbfba376133f53fa09abe18382a159185cbf5262739959a09e926a38d76029",
+  "count": 4,
+  "seedRule": "Original authored seed, then i*2654435761 modulo 2^32. No artificial resources after the explicitly free authored formation.",
+  "limits": "QA-only remapping, no stars/unlocks/save-envelope integration. Reference routes make decisions every 1 simulated second, sometimes multiple paid purchases; these are not measured human onboarding results. New two-road pilot explicitly moves the original middle forces north; it is an authored variant, not a pure lane-count control.",
+  "games": 80,
+  "rows": [
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "reference",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 37.075
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "mixed",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 49.737
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "economy",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 134.55
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "idle",
+      "games": 4,
+      "clears": 0,
+      "failures": [
+        {
+          "seed": 1101,
+          "seconds": 129.75,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 2654435761,
+          "seconds": 128.7,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 1013904226,
+          "seconds": 129.15,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 3668339987,
+          "seconds": 129.15,
+          "reason": "Your citadel fell."
+        }
+      ],
+      "meanSeconds": 129.188
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "reference",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 53.85
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "mixed",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 60.575
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "economy",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 159.262
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "idle",
+      "games": 4,
+      "clears": 0,
+      "failures": [
+        {
+          "seed": 1203,
+          "seconds": 102.95,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 2654435761,
+          "seconds": 101.35,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 1013904226,
+          "seconds": 105.05,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 3668339987,
+          "seconds": 104.5,
+          "reason": "Your citadel fell."
+        }
+      ],
+      "meanSeconds": 103.463
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "reference",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 150
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 87.438
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "economy",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 95.95
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "games": 4,
+      "clears": 0,
+      "failures": [
+        {
+          "seed": 1307,
+          "seconds": 43.7,
+          "reason": "An original protected mine was lost or salvaged."
+        },
+        {
+          "seed": 2654435761,
+          "seconds": 43.7,
+          "reason": "An original protected mine was lost or salvaged."
+        },
+        {
+          "seed": 1013904226,
+          "seconds": 43.7,
+          "reason": "An original protected mine was lost or salvaged."
+        },
+        {
+          "seed": 3668339987,
+          "seconds": 43.7,
+          "reason": "An original protected mine was lost or salvaged."
+        }
+      ],
+      "meanSeconds": 43.7
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "outer-air-cover",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 71.75
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "destination-air-cover",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 99.45
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 100.225
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "games": 4,
+      "clears": 0,
+      "failures": [
+        {
+          "seed": 2101,
+          "seconds": 131.9,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 2654435761,
+          "seconds": 130.65,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 1013904226,
+          "seconds": 133.7,
+          "reason": "Your citadel fell."
+        },
+        {
+          "seed": 3668339987,
+          "seconds": 134.1,
+          "reason": "Your citadel fell."
+        }
+      ],
+      "meanSeconds": 132.588
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "outer-air-cover",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 67.425
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "destination-air-cover",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 94.175
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "mixed",
+      "games": 4,
+      "clears": 4,
+      "failures": [],
+      "meanSeconds": 92.1
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "idle",
+      "games": 4,
+      "clears": 0,
+      "failures": [
+        {
+          "seed": 2101,
+          "seconds": 210,
+          "reason": "Time expired."
+        },
+        {
+          "seed": 2654435761,
+          "seconds": 210,
+          "reason": "Time expired."
+        },
+        {
+          "seed": 1013904226,
+          "seconds": 210,
+          "reason": "Time expired."
+        },
+        {
+          "seed": 3668339987,
+          "seconds": 210,
+          "reason": "Time expired."
+        }
+      ],
+      "meanSeconds": 210
+    }
+  ],
+  "results": [
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "reference",
+      "seed": 1101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 37.2,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "reference",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 36.95,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "reference",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 36.95,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "reference",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 37.2,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "mixed",
+      "seed": 1101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 49.7,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "mixed",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 49.75,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "mixed",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 49.75,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "mixed",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 49.75,
+      "citadelHP": 6000,
+      "restores": 2
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "economy",
+      "seed": 1101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 144.55,
+      "citadelHP": 6000,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "economy",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 108.3,
+      "citadelHP": 6000,
+      "restores": 4
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "economy",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 143.6,
+      "citadelHP": 6000,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "economy",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 141.75,
+      "citadelHP": 6000,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "idle",
+      "seed": 1101,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 129.75,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "idle",
+      "seed": 2654435761,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 128.7,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "idle",
+      "seed": 1013904226,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 129.15,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "first-road",
+      "mapId": "single-road",
+      "policy": "idle",
+      "seed": 3668339987,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 129.15,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "reference",
+      "seed": 1203,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 53.85,
+      "citadelHP": 5200,
+      "restores": 2
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "reference",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 53.85,
+      "citadelHP": 5200,
+      "restores": 2
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "reference",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 53.85,
+      "citadelHP": 5200,
+      "restores": 2
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "reference",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 53.85,
+      "citadelHP": 5200,
+      "restores": 2
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "mixed",
+      "seed": 1203,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 61.05,
+      "citadelHP": 5200,
+      "restores": 3
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "mixed",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 61.1,
+      "citadelHP": 5200,
+      "restores": 3
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "mixed",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 61.05,
+      "citadelHP": 5200,
+      "restores": 3
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "mixed",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 59.1,
+      "citadelHP": 5200,
+      "restores": 2
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "economy",
+      "seed": 1203,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 159,
+      "citadelHP": 1746,
+      "restores": 6
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "economy",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 159,
+      "citadelHP": 3435,
+      "restores": 6
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "economy",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 158.95,
+      "citadelHP": 2324,
+      "restores": 6
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "economy",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 160.1,
+      "citadelHP": 2041,
+      "restores": 6
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "idle",
+      "seed": 1203,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 102.95,
+      "citadelHP": 0,
+      "restores": 4
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "idle",
+      "seed": 2654435761,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 101.35,
+      "citadelHP": 0,
+      "restores": 4
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "idle",
+      "seed": 1013904226,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 105.05,
+      "citadelHP": 0,
+      "restores": 4
+    },
+    {
+      "pilot": "divided-front",
+      "mapId": "two-roads",
+      "policy": "idle",
+      "seed": 3668339987,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 104.5,
+      "citadelHP": 0,
+      "restores": 4
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "reference",
+      "seed": 1307,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 150,
+      "citadelHP": 3800,
+      "restores": 5
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "reference",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 150,
+      "citadelHP": 3800,
+      "restores": 5
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "reference",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 150,
+      "citadelHP": 3800,
+      "restores": 5
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "reference",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 150,
+      "citadelHP": 3800,
+      "restores": 5
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 1307,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 88.4,
+      "citadelHP": 3800,
+      "restores": 3
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 87.1,
+      "citadelHP": 3800,
+      "restores": 3
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 85.8,
+      "citadelHP": 3800,
+      "restores": 3
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 88.45,
+      "citadelHP": 3800,
+      "restores": 3
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "economy",
+      "seed": 1307,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 96.7,
+      "citadelHP": 3800,
+      "restores": 4
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "economy",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 94.7,
+      "citadelHP": 3800,
+      "restores": 4
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "economy",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 96.7,
+      "citadelHP": 3800,
+      "restores": 4
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "economy",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 95.7,
+      "citadelHP": 3800,
+      "restores": 4
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 1307,
+      "completed": false,
+      "reason": "An original protected mine was lost or salvaged.",
+      "winCondition": null,
+      "seconds": 43.7,
+      "citadelHP": 3800,
+      "restores": 2
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 2654435761,
+      "completed": false,
+      "reason": "An original protected mine was lost or salvaged.",
+      "winCondition": null,
+      "seconds": 43.7,
+      "citadelHP": 3800,
+      "restores": 2
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 1013904226,
+      "completed": false,
+      "reason": "An original protected mine was lost or salvaged.",
+      "winCondition": null,
+      "seconds": 43.7,
+      "citadelHP": 3800,
+      "restores": 2
+    },
+    {
+      "pilot": "full-front",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 3668339987,
+      "completed": false,
+      "reason": "An original protected mine was lost or salvaged.",
+      "winCondition": null,
+      "seconds": 43.7,
+      "citadelHP": 3800,
+      "restores": 2
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "outer-air-cover",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 71.75,
+      "citadelHP": 4200,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "outer-air-cover",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 71.75,
+      "citadelHP": 4200,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "outer-air-cover",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 71.75,
+      "citadelHP": 4200,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "outer-air-cover",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 71.75,
+      "citadelHP": 4200,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "destination-air-cover",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 98.4,
+      "citadelHP": 4086.168,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "destination-air-cover",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 98.4,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "destination-air-cover",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 100.25,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "destination-air-cover",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 100.75,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 101.7,
+      "citadelHP": 3365.232,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 100.15,
+      "citadelHP": 3466.416,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 99,
+      "citadelHP": 3542.304,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "mixed",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 100.05,
+      "citadelHP": 3466.416,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 2101,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 131.9,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 2654435761,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 130.65,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 1013904226,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 133.7,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads",
+      "policy": "idle",
+      "seed": 3668339987,
+      "completed": false,
+      "reason": "Your citadel fell.",
+      "winCondition": null,
+      "seconds": 134.1,
+      "citadelHP": 0,
+      "restores": 5
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "outer-air-cover",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 67.2,
+      "citadelHP": 4111.464,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "outer-air-cover",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 67.65,
+      "citadelHP": 4111.464,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "outer-air-cover",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 67.2,
+      "citadelHP": 4111.464,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "outer-air-cover",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 67.65,
+      "citadelHP": 4111.464,
+      "restores": 3
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "destination-air-cover",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 94.5,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "destination-air-cover",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 93.7,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "destination-air-cover",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 94.25,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "destination-air-cover",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "enemy-citadel",
+      "seconds": 94.25,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "mixed",
+      "seed": 2101,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 92.15,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "mixed",
+      "seed": 2654435761,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 91.95,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "mixed",
+      "seed": 1013904226,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 92.15,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "mixed",
+      "seed": 3668339987,
+      "completed": true,
+      "reason": "Pilot objective complete.",
+      "winCondition": "authored-objective",
+      "seconds": 92.15,
+      "citadelHP": 4200,
+      "restores": 4
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "idle",
+      "seed": 2101,
+      "completed": false,
+      "reason": "Time expired.",
+      "winCondition": null,
+      "seconds": 210,
+      "citadelHP": 1695.696,
+      "restores": 8
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "idle",
+      "seed": 2654435761,
+      "completed": false,
+      "reason": "Time expired.",
+      "winCondition": null,
+      "seconds": 210,
+      "citadelHP": 1796.88,
+      "restores": 8
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "idle",
+      "seed": 1013904226,
+      "completed": false,
+      "reason": "Time expired.",
+      "winCondition": null,
+      "seconds": 210,
+      "citadelHP": 1619.808,
+      "restores": 8
+    },
+    {
+      "pilot": "crosswind-air",
+      "mapId": "three-roads-crosswind",
+      "policy": "idle",
+      "seed": 3668339987,
+      "completed": false,
+      "reason": "Time expired.",
+      "winCondition": null,
+      "seconds": 210,
+      "citadelHP": 1784.232,
+      "restores": 8
+    }
+  ]
+}
