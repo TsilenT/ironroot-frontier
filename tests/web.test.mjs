@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {join,dirname} from 'node:path';
+const root=join(dirname(fileURLToPath(import.meta.url)),'..','dist');
+const read=name=>readFileSync(join(root,name),'utf8');
+test('HTML has unique IDs and all static UI bindings exist',()=>{const html=read('index.html'),app=read('app.js');const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,'duplicate DOM IDs');const dynamic=new Set(['resumeSaved']);for(const [,id] of app.matchAll(/\$\('([^']+)'\)/g)){if(id.endsWith('Hp')||id.endsWith('HpText'))continue;assert.ok(ids.includes(id)||dynamic.has(id),`missing #${id}`);}});
+test('local scripts, styles, icon and manifest references resolve',()=>{const html=read('index.html');for(const [,path] of html.matchAll(/(?:src|href)="\.\/([^"#]*)"/g))if(path)assert.ok(existsSync(join(root,path)),`missing ${path}`);for(const file of ['app.js','render.js'])for(const [,path] of read(file).matchAll(/from\s+'\.\/([^']+)'/g))assert.ok(existsSync(join(root,path)),`missing import ${path}`);});
+test('offline shell is complete and deployment-relative',()=>{const sw=read('service-worker.js'),manifest=JSON.parse(read('manifest.webmanifest'));const entries=[...sw.matchAll(/'\.\/([^']*)'/g)].map(m=>m[1]);for(const name of entries)if(name)assert.ok(existsSync(join(root,name)),`missing cached ${name}`);assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');assert.equal(manifest.display,'standalone');assert.ok(manifest.icons.length);assert.match(sw,/request\.method!=='GET'/);assert.match(sw,/url\.origin!==self\.location\.origin/);});
+test('critical dialogs and battlefield expose accessible descriptions',()=>{const html=read('index.html');assert.equal([...html.matchAll(/role="dialog"/g)].length,3);assert.equal([...html.matchAll(/aria-modal="true"/g)].length,3);assert.match(html,/<canvas id="battle"[^>]+aria-label=/);assert.match(html,/id="toast"[^>]+role="status"/);assert.match(read('app.js'),/document\.querySelector\('\.app'\)\.inert/);});
