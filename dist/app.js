@@ -2465,11 +2465,13 @@ function dialogDefaultFocus(layer) {
   return controls.includes(preferred) ? preferred : controls[0];
 }
 function syncDialogs() {
+  syncInputScope();
   // A safety/recovery interruption takes precedence over a destructive prompt.
   if (!$('restartModal').classList.contains('hidden') &&
-      (recoveryHold || profileGate || viewportPause.active || battleSafetyReason))
+      (recoveryHold || profileGate || viewportPause.active || battleSafetyReason)) {
     $('restartModal').classList.add('hidden');
-  syncInputScope();
+    syncInputScope();
+  }
   if (!$('pauseVeil').classList.contains('hidden')) syncPauseMenu();
   const visible = dialogLayers.filter((x) => !x.classList.contains('hidden')),
     next = visible.at(-1) || null;
