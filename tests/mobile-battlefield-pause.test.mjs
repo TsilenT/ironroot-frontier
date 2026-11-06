@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext,createContext} from 'node:vm';
-import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport} from '../dist/mobile-battlefield.js';
+import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {createCampaignMission,getCampaignTargets,evaluateCampaignMission,CAMPAIGN_MISSIONS} from '../dist/campaign.js';
 import {drawCampaignGuidance} from '../dist/campaign-flow.js';
@@ -15,12 +15,13 @@ function harness(w=568,h=210){
  const $=id=>{if(!elements.has(id)){const classes=new Set(['viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
  $('app').classList.add('protected-mobile');$('app').classList.add('protected-compact');
  const game=createCampaignMission('winter-stores'),inputScope=createInputScopeGuard('compact-battle:landscape');
- const c={battleSafetyReason:null,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,
+ const c={battleSafetyReason:null,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
   protectedControls:new Map([['a',{button:$('target0')}],['b',{button:$('target1')}]]),
   inputScope,controller:{reset(){log.resets++;}},resetBattleGesture(){log.interruptions++;},armedProtectedControl:{},closeSelectionArmed:true,padHud:true,
   recoveryHold:null,profileGate:null,battleSession:{status:()=>c.stale?'stale':'current'},showRecoverySettings(){c.recoveryShown=true;},showTitle(){c.titleShown=true;c.started=false;},
   setCompactBuildOpen(){ $('app').classList.remove('compact-build-open');},cancel(){c.ui.build=null;c.ui.spell=false;c.ui.selected=null;c.setCompactBuildOpen(false);},pauseControl(){},
   save(){log.saves++;return !c.saveFails;},persistProgress:()=>true,progressDirty:false,toast:x=>log.toasts.push(x),
+  getComputedStyle:()=>Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`])),
   window:{innerWidth:w,innerHeight:h,visualViewport:{addEventListener(){}}},document:{},ui:{build:'mint',spell:true,selected:7},
   last:0,lastProfileCheck:0,syncProfileSafety(){},updateController(){assert.equal(c.paused||!c.viewportPause.active,true);},speed:1,follow:false,saveTimer:0,hudTimer:0,toastTimer:0,
   currentCampaign:'winter-stores',currentChallenge:null,CAMPAIGN_MISSIONS,CHALLENGES:[],evaluateCampaignMission,getCampaignTargets,

@@ -1,4 +1,4 @@
-import { createViewportPause, inspectMobileGeometry, visibleViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
+import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
 import {
@@ -2621,7 +2621,8 @@ function syncViewportSafety() {
       ...[...protectedControls.values()].map(c => c.button.id)].filter(Boolean).map(id => $(id).getBoundingClientRect());
     // Protected buttons use stable authored IDs in data attributes, not DOM IDs.
     for (const {button} of protectedControls.values()) if (!button.id) controls.push(button.getBoundingClientRect());
-    geometry = inspectMobileGeometry({viewport,canvas:$('battle').getBoundingClientRect(),
+    const safeContent = insetViewportRect(viewport, getComputedStyle($('app')));
+    geometry = inspectMobileGeometry({viewport:safeContent,canvas:$('battle').getBoundingClientRect(),
       regions:['topbar','protectedDock','protectedNavigation'].map(id => $(id).getBoundingClientRect()),controls});
   }
   const wasActive = viewportPause.active;
