@@ -83,7 +83,7 @@ test('actual start and input entry points check geometry before gameplay and nor
  const start=section('function start(','function beginProtectedObjectives(');
  assert.match(start,/started = true;[\s\S]*syncViewportSafety\(\);[\s\S]*?save\(\);/);
  assert.match(app,/function frame\(now\) \{\s*syncViewportSafety\(\);/);
- assert.match(app,/const dialogLayers = \[\s*\$\('viewportModal'\),\s*\$\('welcome'\),/);
+ assert.match(app,/const dialogLayers = \[\s*\$\('pauseVeil'\),\s*\$\('viewportModal'\),\s*\$\('welcome'\),/);
  assert.match(app,/function guardInput\(event, check\) \{\s*syncViewportSafety\(\);/);
  assert.match(app,/window\.visualViewport\?\.addEventListener\('resize'/);
 });

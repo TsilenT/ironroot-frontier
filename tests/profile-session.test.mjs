@@ -377,7 +377,7 @@ const corruptMaps=[...invalidMapFixtures(),...NEW_MAP_IDS.flatMap(id=>['campaign
 for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start with modal isolation until explicit backup replacement',async()=>{
   const r=uiRaw(),bytes=JSON.stringify(envelope);r.data.set(K.battle,bytes);r.data.set('qa.unrelated','keep me');
   const h=harness(r,3),{$,c}=h;
-  c.started=false;c.paused=false;c.resumeProblem=null;c.activeDialog=null;c.dialogFocus=new WeakMap();c.syncInputScope=()=>{};c.syncSettings=()=>{};
+  c.started=false;c.paused=false;c.resumeProblem=null;c.activeDialog=null;c.dialogFocus=new WeakMap();c.syncInputScope=()=>{};c.syncSettings=()=>{};c.syncPauseMenu=()=>{};
   c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
   for(const layer of c.dialogLayers){
     layer.classList.add('hidden');layer.inert=false;layer.aria={};

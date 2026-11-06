@@ -96,8 +96,8 @@
           ><button
             id="settings"
             class="icon-button"
-            title="Preferences"
-            aria-label="Open preferences"
+            title="Options"
+            aria-label="Open options"
           >
             ⚙
           </button>
@@ -154,20 +154,6 @@
         >
           <span>A</span>
         </div>
-        <div class="pause-veil hidden" id="pauseVeil">
-          <span>PAUSED</span><small>Resume when you’re ready.</small
-          ><button id="resume" class="gold-button">Resume battle</button
-          ><button id="saveExit" class="secondary-button">
-            Save & return to title
-          </button>
-          <p id="battleLimitWarning" class="battle-limit-warning hidden" role="status"></p>
-          <div class="pause-links">
-            <button id="pauseSettings" class="text-button">Preferences</button
-            ><button id="help" class="text-button" aria-label="Open field guide">
-              Field guide
-            </button>
-          </div>
-        </div>
       </main>
       <div id="protectedDock" class="protected-dock hidden"></div>
       <nav id="protectedNavigation" class="protected-navigation hidden" aria-label="Battle controls"></nav>
@@ -194,6 +180,30 @@
               >◆ 75 <em>25s cooldown</em></span
             >
           </button>
+        </div>
+      </section>
+    </div>
+    <div class="modal-backdrop pause-veil hidden" id="pauseVeil">
+      <section class="pause-menu modal" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" aria-describedby="pauseContext" aria-hidden="true">
+        <header class="menu-heading">
+          <div class="eyebrow">BATTLE MENU</div>
+          <h2 id="pauseTitle">Paused</h2>
+          <p id="pauseContext"></p>
+        </header>
+        <div class="pause-briefing">
+          <h3 id="pauseBattleName"></h3>
+          <p id="pauseObjective"></p>
+        </div>
+        <button id="resume" class="gold-button" data-dialog-focus>Resume battle <span aria-hidden="true">→</span></button>
+        <div class="pause-utilities">
+          <button id="pauseSettings" class="secondary-button">Options<small>Audio, display &amp; saves</small></button>
+          <button id="help" class="secondary-button" aria-label="Open field guide">Field guide<small>Units, controls &amp; economy</small></button>
+        </div>
+        <p id="pauseSaveStatus" class="menu-status" role="status" aria-live="polite"></p>
+        <p id="battleLimitWarning" class="battle-limit-warning hidden" role="status"></p>
+        <div class="pause-exit-actions">
+          <button id="saveExit" class="secondary-button">Save &amp; return to title</button>
+          <button id="restartBattle" class="text-button">Restart battle…</button>
         </div>
       </section>
     </div>
@@ -311,7 +321,7 @@
           <button class="text-button" id="welcomeHelp">
             Field guide</button
           ><button class="text-button" id="welcomeSettings">
-            Preferences
+            Options
           </button><button class="text-button hidden" id="lastResult">Last battle report</button>
         </div>
       </section>
@@ -431,12 +441,16 @@
         <button
           class="modal-close"
           id="closeSettings"
-          aria-label="Close preferences"
+          aria-label="Close options"
         >
           ×
         </button>
-        <div class="eyebrow">GAME SETTINGS</div>
-        <h2 id="settingsTitle">Preferences</h2>
+        <header class="menu-heading">
+          <div class="eyebrow">GAME SETTINGS</div>
+          <h2 id="settingsTitle">Options</h2>
+          <p id="settingsContext">Changes apply immediately.</p>
+        </header>
+        <div class="settings-content">
         <div class="settings-grid">
           <label class="setting-row"
             ><span>Enable audio<small>Music and sound effects</small></span
@@ -785,9 +799,22 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 </pre
           >
         </details>
-        <button id="settingsDone" class="gold-button">
-          Close preferences
-        </button>
+        </div>
+        <footer class="settings-footer">
+          <button id="settingsDone" class="gold-button">Done</button>
+        </footer>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="restartModal">
+      <section class="menu-confirm modal" role="dialog" aria-modal="true" aria-labelledby="restartTitle" aria-describedby="restartDescription" aria-hidden="true">
+        <div class="eyebrow">A FRESH ATTEMPT</div>
+        <h2 id="restartTitle">Restart battle?</h2>
+        <p id="restartDescription">This replaces your unfinished battle and its checkpoint. Campaign progress, medals, preferences and completed battle history are kept.</p>
+        <p id="restartStatus" class="menu-status" role="status"></p>
+        <div class="menu-confirm-actions">
+          <button id="cancelRestart" class="gold-button" data-dialog-focus>Cancel</button>
+          <button id="confirmRestart" class="secondary-button">Restart battle</button>
+        </div>
       </section>
     </div>
     <div class="modal-backdrop hidden" id="resultModal">
