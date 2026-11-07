@@ -33,12 +33,12 @@ function purchased(rulesetId,kind){
  return g;
 }
 
-test('protocol ten upgrades only marker bytes, fences exact live v0.19 writers and preserves earned domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
+test('current protocol upgrades only marker bytes, fences exact live v0.19 writers and preserves earned domains',()=>{
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
  assert.equal(createHash('sha256').update(protocolNineSource).digest('hex'),protocolNineHash);
  const value=earned();
  const domains=entries(value),r=raw([[MARKER,marker(9)],...domains]),stale=old(r);assert.ok(stale.status().canWrite);
- const fresh=current(r);assert.ok(fresh.status().canWrite);assert.deepEqual(r.writes,[MARKER]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),{format:'ironroot-profile',version:10,epoch:'retained-profile',phase:'ready'});
+ const fresh=current(r);assert.ok(fresh.status().canWrite);assert.deepEqual(r.writes,[MARKER]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),{format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,epoch:'retained-profile',phase:'ready'});
  for(const [k,v] of domains)assert.equal(r.data.get(k),v);
  const snapshot=[...r.data];r.writes.length=0;
  for(const client of [stale,old(r)]){
@@ -86,7 +86,7 @@ test('Skirmish citadel identities cannot be substituted into authored saves or h
 });
 
 test('unfinished, future and unverified protocol upgrades retain all earned bytes',()=>{
- for(const prior of [marker(9,'restoring'),marker(9,'failed'),marker(11)]){const r=raw([[MARKER,prior],...entries(earned())]),before=[...r.data],p=current(r);assert.equal(p.status().canWrite,false);assert.deepEqual([...r.data],before);assert.deepEqual(r.writes,[]);if(prior===marker(11))assert.equal(p.beginImport({recover:true}).code,'unsupported-protocol');}
+ for(const prior of [marker(9,'restoring'),marker(9,'failed'),marker(CURRENT_PROFILE_PROTOCOL_VERSION+1)]){const r=raw([[MARKER,prior],...entries(earned())]),before=[...r.data],p=current(r);assert.equal(p.status().canWrite,false);assert.deepEqual([...r.data],before);assert.deepEqual(r.writes,[]);if(prior===marker(CURRENT_PROFILE_PROTOCOL_VERSION+1))assert.equal(p.beginImport({recover:true}).code,'unsupported-protocol');}
  for(const fault of ['drop','throw','readback']){
   const r=raw([[MARKER,marker(9)],...entries(earned())]),before=[...r.data].filter(([k])=>k!==MARKER),read=r.getItem,write=r.setItem;let unreadable=false;
   r.getItem=k=>{if(k===MARKER&&unreadable)throw Error('unverified marker');return read(k);};r.setItem=(k,v)=>{if(k!==MARKER)return write(k,v);if(fault==='drop')return;if(fault==='throw')throw Error('denied');write(k,v);unreadable=true;};
@@ -94,7 +94,7 @@ test('unfinished, future and unverified protocol upgrades retain all earned byte
  }
 });
 
-test('failed citadel backup replacement rolls every domain back exactly and preserves profile-ten writer fence',()=>{
+test('failed citadel backup replacement rolls every domain back exactly and preserves current-protocol writer fence',()=>{
  const replacement=earned();replacement.settings.volume=.7;
  const text=createBackup(raw(entries(replacement)),{createdAt:date});
  for(const failedKey of Object.values(K)){
@@ -105,6 +105,6 @@ test('failed citadel backup replacement rolls every domain back exactly and pres
   const write=r.setItem,remove=r.removeItem;let pending=true;
   r.setItem=(k,v)=>{if(k===failedKey&&pending){pending=false;throw Error('quota');}write(k,v);};r.removeItem=k=>{if(k===failedKey&&pending){pending=false;throw Error('quota');}remove(k);};
   const result=restoreBackup(p.importStorage,text);assert.equal(result.ok,false,failedKey);assert.equal(result.rollback.complete,true,failedKey);
-  for(const [k,v] of prior)assert.equal(r.data.get(k),v);assert.ok(p.finishImport({outcome:'rolled-back'}).ok);assert.ok(p.status().canWrite);assert.equal(JSON.parse(r.data.get(MARKER)).version,10);
+  for(const [k,v] of prior)assert.equal(r.data.get(k),v);assert.ok(p.finishImport({outcome:'rolled-back'}).ok);assert.ok(p.status().canWrite);assert.equal(JSON.parse(r.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
  }
 });

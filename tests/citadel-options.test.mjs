@@ -18,7 +18,7 @@ const record=(g,side=0)=>g.state.citadelOptions.sides[side];
 
 test('new immutable identities preserve unit, building, economy and endgame definitions',()=>{
  assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[...campaignIds,...ids]);
- assert.deepEqual(CITADEL_OPTIONS,{policy:'citadel-choice-v1',cost:190,readyAt:90,readyTick:1800,extraDamageMultiplier:.5,regenRate:3,regenDelay:8});
+ assert.deepEqual(CITADEL_OPTIONS,{policy:'citadel-choice-v1',cost:190,extraDamageMultiplier:.5,regenRate:3,regenDelay:8});
  for(const id of ids){const g=new Game({rulesetId:id}),off=getRuleset(id.includes('bridge')?id.replace('citadel-',''):id.replace('citadel','air-local'));
   assert.equal(g.ruleset.skirmishOnly,true);assert.ok(Object.isFrozen(g.ruleset));assert.ok(Object.isFrozen(g.ruleset.citadel));
   for(const k of ['units','buildings','spell','movement','endgame','economy'])assert.deepEqual(g.ruleset[k],off[k]);
@@ -38,16 +38,15 @@ test('one honest 190-gold purchase per side changes no health, income, productio
  }
 });
 
-test('time/tick, gold, stale input, dead/end and safety boundaries reject without mutation',()=>{
+test('gold, stale input, dead/end and safety boundaries reject without mutation',()=>{
  const cases=[
-  ['citadel-too-early',g=>at(g,89.95)],['citadel-too-early',g=>{g.tick=1799;}],['citadel-too-early',g=>{g.state.time=89.95;}],
   ['insufficient-gold',g=>{g.state.gold[0]=189.999;}],['battle-ended',g=>{g.state.bases[0].hp=0;}],['battle-ended',g=>{g.state.bases[1].hp=0;}],
   ['battle-ended',g=>{g.state.winner=1;}],['save-safety-limit',g=>{g.tick=g.ruleset.limits.maxTick;}]
  ];
  for(const [code,edit] of cases){const g=fixture();edit(g);const before=g.serialize();assert.equal(g.buyCitadelOption('regen').code,code);assert.deepEqual(g.serialize(),before);}
  for(const [kind,side] of [['bad',0],['arrows',-1],['regen',2],['arrows','0']]){const g=fixture(),before=g.serialize();assert.equal(g.buyCitadelOption(kind,side).code,'invalid-citadel-choice');assert.deepEqual(g.serialize(),before);}
  const g=fixture();g.state.gold[0]=190;assert.equal(g.canBuyCitadelOption('arrows').ok,true);g.state.gold[0]-=1;assert.equal(g.buyCitadelOption('arrows').code,'insufficient-gold');g.state.gold[0]=190;assert.equal(g.buyCitadelOption('arrows').ok,true);near(g.state.gold[0],0);
- const natural=new Game({rulesetId:ids[0],ai:false});steps(natural,1799);assert.equal(natural.buyCitadelOption('arrows').code,'citadel-too-early');steps(natural,1);assert.equal(citadelOptionStatus(natural).readyWait,0);assert.equal(natural.buyCitadelOption('arrows').ok,true);
+ const natural=new Game({rulesetId:ids[0],ai:false});assert.equal(natural.buyCitadelOption('arrows').ok,true);assert.equal(record(natural).purchasedAt,0);assert.equal(record(natural).purchasedTick,0);
 });
 
 test('regeneration preserves pre-purchase damage, waits eight full seconds and resets only on actual damage',()=>{
