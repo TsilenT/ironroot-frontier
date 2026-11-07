@@ -2,7 +2,7 @@ import {expect} from '@playwright/test';
 import {Game, MAPS} from '../../dist/engine.js';
 import {createCampaignProgress, CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
 import {parseBackup} from '../../dist/backup.js';
-import {test, press, tapPoint, homePoint, saved, seedOnce, observeCanvas, expectCamera, downloadBackup} from './map-browser-helpers.mjs';
+import {test, press, tapPoint, homePoint, saved, seedOnce, observeCanvas, canvasFrame, expectCamera, downloadBackup} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
 
 const SETTINGS = 'ironroot.settings.v1';
@@ -116,6 +116,7 @@ test.describe('Battle keyboard controls on desktop', () => {
     await page.evaluate(() => { Storage.prototype.setItem = window.__keyboardSetItem; delete window.__keyboardSetItem; });
     await press(page, '#retryPreferences');
     await expect(page.locator('#preferenceSaveWarning')).toBeHidden();
+    await expect(page.locator('#keyboardStatus')).toHaveText('Keyboard controls saved.');
     expect((await settings(page)).keyboard.bindings).toMatchObject({build1:'KeyQ', build2:'KeyW'});
     await page.reload(); await openKeys(page);
     await expect(label(page, 'build1')).toHaveText('Q'); await expect(label(page, 'build2')).toHaveText('W');
@@ -337,6 +338,29 @@ test.describe('Battle keyboard controls on desktop', () => {
     expect(after.game.state.gold[0]).toBeCloseTo(280 + after.game.state.time * 5, 1);
   });
 
+  test('ordinary build and HUD clicks keep default and remapped shortcuts usable without moving focus', async ({page}) => {
+    await observeCanvas(page); await page.goto('/'); await openKeys(page);
+    await bind(page, 'build1', 'KeyQ'); await bind(page, 'pause', 'KeyP');
+    await press(page, '#settingsDone'); await skirmish(page);
+    await press(page, '[data-type="barracks"]');
+    await expect(page.locator('[data-type="barracks"]')).toBeFocused();
+    await page.keyboard.press('KeyR'); await expect(page.locator('#rally')).toHaveClass(/active/);
+    await press(page, '#rally'); await expect(page.locator('#rally')).toBeFocused();
+    await page.keyboard.press('Digit2'); await expect(page.locator('[data-type="archery"]')).toHaveClass(/active/);
+    await press(page, '#home'); await expect(page.locator('#home')).toBeFocused();
+    const before=(await canvasFrame(page)).mini.viewport[0];
+    await page.keyboard.press('ArrowRight');
+    await expect.poll(async () => (await canvasFrame(page)).mini.viewport[0]).toBeGreaterThan(before);
+    await expect(page.locator('#home')).toBeFocused();
+    await press(page, '#front'); await expect(page.locator('#front')).toBeFocused();
+    await page.keyboard.press('KeyQ'); await expect(page.locator('[data-type="barracks"]')).toHaveClass(/active/);
+    await page.keyboard.down('KeyP'); await expect(page.locator('#pauseVeil')).toBeVisible();
+    await expect(page.locator('#resume')).toBeFocused();
+    await page.keyboard.down('KeyP'); await page.keyboard.up('KeyP');
+    await expect(page.locator('#pauseVeil')).toBeVisible();
+    await page.keyboard.press('KeyP'); await expect(page.locator('#pauseVeil')).toBeHidden();
+  });
+
   for (const tier of ['five-building campaign', 'full skirmish']) test(`${tier} keeps remapped slot three tied to its current roster`, async ({page}) => {
     if (tier === 'five-building campaign') {
       const progress = createCampaignProgress();
@@ -359,6 +383,29 @@ test.describe('Battle keyboard controls on desktop', () => {
     await expect(row(page, 'build3')).toContainText(tier === 'five-building campaign' ? /tower/i : /foundry/i);
     await expect(label(page, 'build3')).toHaveText('Q');
   });
+});
+
+test('long shortcut badges fit beside building icons and names', async ({page}, info) => {
+  test.skip(info.project.name === 'phone', 'Bounded desktop, short portrait and landscape label gate.');
+  test.setTimeout(40000);
+  await page.goto('/'); await openKeys(page);
+  await bind(page, 'panRight', 'KeyL'); await bind(page, 'build1', 'ArrowRight'); await bind(page, 'build2', 'Numpad9');
+  await press(page, '#settingsDone'); await press(page, '#start'); await openBuildControls(page);
+  for (const [type,text] of [['barracks','Right arrow'],['archery','Numpad 9']]) {
+    const card=page.locator(`[data-type="${type}"]`); await card.scrollIntoViewIfNeeded();
+    await expect(card.locator('.hotkey')).toHaveText(text);
+    const bounds=await card.evaluate(el=>{
+      const rect=node=>{const r=node.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom};};
+      return {card:rect(el),key:rect(el.querySelector('.hotkey')),icon:rect(el.querySelector('.building-symbol')),name:rect(el.querySelector('h3'))};
+    });
+    expect(bounds.key.left).toBeGreaterThanOrEqual(bounds.card.left);
+    expect(bounds.key.right).toBeLessThanOrEqual(bounds.card.right);
+    expect(bounds.key.top).toBeGreaterThanOrEqual(bounds.card.top);
+    expect(bounds.key.bottom).toBeLessThanOrEqual(bounds.card.bottom);
+    for(const other of [bounds.icon,bounds.name])
+      expect(bounds.key.right<=other.left || bounds.key.left>=other.right || bounds.key.bottom<=other.top || bounds.key.top>=other.bottom).toBe(true);
+  }
+  await page.screenshot({path:info.outputPath('long-key-labels.png')});
 });
 
 test('short Options keyboard disclosure fits and touch still pays for the first placement', async ({page}, info) => {

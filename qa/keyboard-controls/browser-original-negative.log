@@ -1,0 +1,139 @@
+[WebServer] (node:16263) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 2 workers
+
+(node:16278) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop] › keyboard-controls.spec.mjs:298:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown (22.7s)
+  ✘  1 [desktop] › keyboard-controls.spec.mjs:92:3 › Battle keyboard controls on desktop › failed keyboard persistence stays page-only, exports the pending map and retries verifiably (24.7s)
+(node:16858) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 [desktop] › keyboard-controls.spec.mjs:341:3 › Battle keyboard controls on desktop › ordinary build and HUD clicks keep default and remapped shortcuts usable without moving focus (16.1s)
+
+
+  1) [desktop] › keyboard-controls.spec.mjs:92:3 › Battle keyboard controls on desktop › failed keyboard persistence stays page-only, exports the pending map and retries verifiably 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('#keyboardStatus')
+    Expected: "Keyboard controls saved."
+    Received: "Build slot 2: W. Applies to this page only. Use Retry saving preferences."
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" locator('#keyboardStatus') with timeout 5000ms
+      - waiting for locator('#keyboardStatus')
+        13 × locator resolved to <p role="status" aria-live="polite" id="keyboardStatus">Build slot 2: W. Applies to this page only. Use R…</p>
+           - unexpected value "Build slot 2: W. Applies to this page only. Use Retry saving preferences."
+
+
+      117 |     await press(page, '#retryPreferences');
+      118 |     await expect(page.locator('#preferenceSaveWarning')).toBeHidden();
+    > 119 |     await expect(page.locator('#keyboardStatus')).toHaveText('Keyboard controls saved.');
+          |                                                   ^
+      120 |     expect((await settings(page)).keyboard.bindings).toMatchObject({build1:'KeyQ', build2:'KeyW'});
+      121 |     await page.reload(); await openKeys(page);
+      122 |     await expect(label(page, 'build1')).toHaveText('Q'); await expect(label(page, 'build2')).toHaveText('W');
+        at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:119:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › keyboard-controls.spec.mjs:298:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown 
+
+    Test timeout of 20000ms exceeded.
+
+    Error: expect(locator).toBeHidden() failed
+
+    Locator:  locator('#pauseVeil')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeHidden" locator('#pauseVeil') with timeout 5000ms
+      - waiting for locator('#pauseVeil')
+        12 × locator resolved to <div id="pauseVeil" class="modal-backdrop pause-veil">…</div>
+           - unexpected value "visible"
+
+
+      313 |     await expect(page.locator('#pauseVeil')).toBeVisible();
+      314 |     await expect(page.locator('#resume')).toBeFocused();
+    > 315 |     await page.keyboard.press('KeyP'); await expect(page.locator('#pauseVeil')).toBeHidden();
+          |                                                                                 ^
+      316 |     await battlefield(page); await page.keyboard.press('KeyP');
+      317 |     await expect(page.locator('#pauseVeil')).toBeVisible();
+      318 |     await page.keyboard.press('Enter'); await expect(page.locator('#pauseVeil')).toBeHidden();
+        at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:315:81
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › keyboard-controls.spec.mjs:341:3 › Battle keyboard controls on desktop › ordinary build and HUD clicks keep default and remapped shortcuts usable without moving focus 
+
+    Error: expect(locator).toHaveClass(expected) failed
+
+    Locator: locator('#rally')
+    Expected pattern: /active/
+    Received string:  "rally-card"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveClass" locator('#rally') with timeout 5000ms
+      - waiting for locator('#rally')
+        13 × locator resolved to <button id="rally" class="rally-card" title="Arrow volley (R)">…</button>
+           - unexpected value "rally-card"
+
+
+      345 |     await press(page, '[data-type="barracks"]');
+      346 |     await expect(page.locator('[data-type="barracks"]')).toBeFocused();
+    > 347 |     await page.keyboard.press('KeyR'); await expect(page.locator('#rally')).toHaveClass(/active/);
+          |                                                                             ^
+      348 |     await press(page, '#rally'); await expect(page.locator('#rally')).toBeFocused();
+      349 |     await page.keyboard.press('Digit2'); await expect(page.locator('[data-type="archery"]')).toHaveClass(/active/);
+      350 |     await press(page, '#home'); await expect(page.locator('#home')).toBeFocused();
+        at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:347:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop] › keyboard-controls.spec.mjs:92:3 › Battle keyboard controls on desktop › failed keyboard persistence stays page-only, exports the pending map and retries verifiably 
+    [desktop] › keyboard-controls.spec.mjs:298:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown 
+    [desktop] › keyboard-controls.spec.mjs:341:3 › Battle keyboard controls on desktop › ordinary build and HUD clicks keep default and remapped shortcuts usable without moving focus 

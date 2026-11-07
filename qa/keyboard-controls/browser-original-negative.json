@@ -1,0 +1,405 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-frontier/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "keyboard-controls.spec.mjs",
+      "--project=desktop",
+      "--workers=2",
+      "--grep",
+      "remapped actions repeat|ordinary build and HUD clicks|failed keyboard persistence"
+    ],
+    "configFile": "/tmp/ironroot-keyboard-original/qa/browser/playwright.config.mjs",
+    "rootDir": "/tmp/ironroot-keyboard-original/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/ironroot-keyboard-original/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/tmp/ironroot-keyboard-original/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/tmp/ironroot-keyboard-original/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/tmp/ironroot-keyboard-original/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/ironroot-keyboard-original/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "snapshotDir": "/tmp/ironroot-keyboard-original/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1180,
+            "height": 757
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "keyboard-controls.spec.mjs",
+      "file": "keyboard-controls.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Battle keyboard controls on desktop",
+          "file": "keyboard-controls.spec.mjs",
+          "line": 39,
+          "column": 6,
+          "specs": [
+            {
+              "title": "failed keyboard persistence stays page-only, exports the pending map and retries verifiably",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 40000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 24664,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#keyboardStatus')\nExpected: \u001b[32m\"\u001b[7mKeyboard controls saved\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mBuild slot 2: W. Applies to this page only. Use Retry saving preferences\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#keyboardStatus') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#keyboardStatus')\u001b[22m\n\u001b[2m    13 × locator resolved to <p role=\"status\" aria-live=\"polite\" id=\"keyboardStatus\">Build slot 2: W. Applies to this page only. Use R…</p>\u001b[22m\n\u001b[2m       - unexpected value \"Build slot 2: W. Applies to this page only. Use Retry saving preferences.\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#keyboardStatus')\nExpected: \u001b[32m\"\u001b[7mKeyboard controls saved\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mBuild slot 2: W. Applies to this page only. Use Retry saving preferences\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#keyboardStatus') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#keyboardStatus')\u001b[22m\n\u001b[2m    13 × locator resolved to <p role=\"status\" aria-live=\"polite\" id=\"keyboardStatus\">Build slot 2: W. Applies to this page only. Use R…</p>\u001b[22m\n\u001b[2m       - unexpected value \"Build slot 2: W. Applies to this page only. Use Retry saving preferences.\"\u001b[22m\n\n    at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:119:51",
+                        "location": {
+                          "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                          "column": 51,
+                          "line": 119
+                        },
+                        "snippet": " \u001b[90m 117 |\u001b[39m     \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m \u001b[32m'#retryPreferences'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 118 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#preferenceSaveWarning'\u001b[39m))\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#keyboardStatus'\u001b[39m))\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Keyboard controls saved.'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m     expect((\u001b[36mawait\u001b[39m settings(page))\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mbindings)\u001b[33m.\u001b[39mtoMatchObject({build1\u001b[33m:\u001b[39m\u001b[32m'KeyQ'\u001b[39m\u001b[33m,\u001b[39m build2\u001b[33m:\u001b[39m\u001b[32m'KeyW'\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m 121 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m openKeys(page)\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m     \u001b[36mawait\u001b[39m expect(label(page\u001b[33m,\u001b[39m \u001b[32m'build1'\u001b[39m))\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'Q'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(label(page\u001b[33m,\u001b[39m \u001b[32m'build2'\u001b[39m))\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'W'\u001b[39m)\u001b[33m;\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                            "column": 51,
+                            "line": 119
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#keyboardStatus')\nExpected: \u001b[32m\"\u001b[7mKeyboard controls saved\u001b[27m.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mBuild slot 2: W. Applies to this page only. Use Retry saving preferences\u001b[27m.\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#keyboardStatus') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#keyboardStatus')\u001b[22m\n\u001b[2m    13 × locator resolved to <p role=\"status\" aria-live=\"polite\" id=\"keyboardStatus\">Build slot 2: W. Applies to this page only. Use R…</p>\u001b[22m\n\u001b[2m       - unexpected value \"Build slot 2: W. Applies to this page only. Use Retry saving preferences.\"\u001b[22m\n\n\n  117 |     await press(page, '#retryPreferences');\n  118 |     await expect(page.locator('#preferenceSaveWarning')).toBeHidden();\n> 119 |     await expect(page.locator('#keyboardStatus')).toHaveText('Keyboard controls saved.');\n      |                                                   ^\n  120 |     expect((await settings(page)).keyboard.bindings).toMatchObject({build1:'KeyQ', build2:'KeyW'});\n  121 |     await page.reload(); await openKeys(page);\n  122 |     await expect(label(page, 'build1')).toHaveText('Q'); await expect(label(page, 'build2')).toHaveText('W');\n    at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:119:51"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:45:25.670Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-c3347--map-and-retries-verifiably-desktop/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                        "column": 51,
+                        "line": 119
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-07dc3783d04200c29189",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 92,
+              "column": 3
+            },
+            {
+              "title": "remapped actions repeat by action: build and pause once, pan on every held keydown",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "timedOut",
+                      "duration": 22741,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                            "column": 81,
+                            "line": 315
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#pauseVeil')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" locator('#pauseVeil') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#pauseVeil')\u001b[22m\n\u001b[2m    12 × locator resolved to <div id=\"pauseVeil\" class=\"modal-backdrop pause-veil\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  313 |     await expect(page.locator('#pauseVeil')).toBeVisible();\n  314 |     await expect(page.locator('#resume')).toBeFocused();\n> 315 |     await page.keyboard.press('KeyP'); await expect(page.locator('#pauseVeil')).toBeHidden();\n      |                                                                                 ^\n  316 |     await battlefield(page); await page.keyboard.press('KeyP');\n  317 |     await expect(page.locator('#pauseVeil')).toBeVisible();\n  318 |     await page.keyboard.press('Enter'); await expect(page.locator('#pauseVeil')).toBeHidden();\n    at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:315:81"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:45:25.865Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-f732a8d0289c76e5854d",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 298,
+              "column": 3
+            },
+            {
+              "title": "ordinary build and HUD clicks keep default and remapped shortcuts usable without moving focus",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 16064,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#rally')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"rally-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('#rally') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#rally')\u001b[22m\n\u001b[2m    13 × locator resolved to <button id=\"rally\" class=\"rally-card\" title=\"Arrow volley (R)\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"rally-card\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#rally')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"rally-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('#rally') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#rally')\u001b[22m\n\u001b[2m    13 × locator resolved to <button id=\"rally\" class=\"rally-card\" title=\"Arrow volley (R)\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"rally-card\"\u001b[22m\n\n    at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:347:77",
+                        "location": {
+                          "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                          "column": 77,
+                          "line": 347
+                        },
+                        "snippet": " \u001b[90m 345 |\u001b[39m     \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m \u001b[32m'[data-type=\"barracks\"]'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 346 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-type=\"barracks\"]'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 347 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'KeyR'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#rally'\u001b[39m))\u001b[33m.\u001b[39mtoHaveClass(\u001b[35m/active/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 348 |\u001b[39m     \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m \u001b[32m'#rally'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#rally'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 349 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Digit2'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'[data-type=\"archery\"]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveClass(\u001b[35m/active/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 350 |\u001b[39m     \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m \u001b[32m'#home'\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#home'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                            "column": 77,
+                            "line": 347
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#rally')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"rally-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('#rally') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#rally')\u001b[22m\n\u001b[2m    13 × locator resolved to <button id=\"rally\" class=\"rally-card\" title=\"Arrow volley (R)\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"rally-card\"\u001b[22m\n\n\n  345 |     await press(page, '[data-type=\"barracks\"]');\n  346 |     await expect(page.locator('[data-type=\"barracks\"]')).toBeFocused();\n> 347 |     await page.keyboard.press('KeyR'); await expect(page.locator('#rally')).toHaveClass(/active/);\n      |                                                                             ^\n  348 |     await press(page, '#rally'); await expect(page.locator('#rally')).toBeFocused();\n  349 |     await page.keyboard.press('Digit2'); await expect(page.locator('[data-type=\"archery\"]')).toHaveClass(/active/);\n  350 |     await press(page, '#home'); await expect(page.locator('#home')).toBeFocused();\n    at /tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs:347:77"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:45:53.351Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/tmp/ironroot-keyboard-original/qa/browser/test-results/keyboard-controls-Battle-k-375f8-usable-without-moving-focus-desktop/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/tmp/ironroot-keyboard-original/qa/browser/keyboard-controls.spec.mjs",
+                        "column": 77,
+                        "line": 347
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-d80a0fc669fe53825432",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 341,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T16:45:24.602Z",
+    "duration": 48427.950000000004,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

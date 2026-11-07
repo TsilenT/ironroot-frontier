@@ -55,17 +55,16 @@ export function ignoreKeyboardEvent(event) {
   return !!(event.defaultPrevented || event.isComposing || event.keyCode === 229 ||
     event.ctrlKey || event.altKey || event.metaKey || event.shiftKey);
 }
-export function nativeKeyboardTarget(target, code) {
+export function nativeKeyboardTarget(target, code, allowButtonShortcuts = false) {
   // isContentEditable includes inherited and plaintext-only editing hosts.
-  if (target?.isContentEditable || target?.closest?.('input,textarea,select,[role="textbox"]')) return true;
-  // Preserve native activation/scrolling while allowing a remapped pause key
-  // to resume when the pause menu has focused its Resume button. Practice
-  // omits code and retains its existing broader native-control exclusion.
-  return !!(target?.closest?.('button,a[href],summary') &&
-    (code === undefined || ['Enter', 'NumpadEnter', 'Space'].includes(code)));
+  if (target?.isContentEditable || target?.closest?.('input,textarea,select,a[href],summary,[role="textbox"]')) return true;
+  // Only the app can admit a button in the current battle scope. Practice
+  // omits this opt-in and retains its existing native-control exclusion.
+  return !!(target?.closest?.('button') &&
+    (!allowButtonShortcuts || ['Enter', 'NumpadEnter', 'Space'].includes(code)));
 }
-export function keyboardAction(event, map) {
-  if (ignoreKeyboardEvent(event) || nativeKeyboardTarget(event.target, event.code)) return null;
+export function keyboardAction(event, map, { allowButtonShortcuts = false } = {}) {
+  if (ignoreKeyboardEvent(event) || nativeKeyboardTarget(event.target, event.code, allowButtonShortcuts)) return null;
   const bindings = effectiveBindings(map);
   const action = ACTIONS.find(action => bindings[action] === event.code);
   return action && (!event.repeat || action === 'panLeft' || action === 'panRight') ? action : null;

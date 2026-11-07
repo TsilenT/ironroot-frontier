@@ -33,7 +33,8 @@ test('lookup resolves repetition by mapped action and protects browser, IME, han
   assert.equal(keyboard.keyboardAction(event('KeyQ'),custom),'panLeft');
   assert.equal(keyboard.keyboardAction(event('Digit9')),null);
   const button={closest:selector=>selector.startsWith('button')?{}:null};
-  assert.equal(keyboard.keyboardAction(event('KeyP',{target:button}),map({pause:'KeyP'})),'pause');
+  assert.equal(keyboard.keyboardAction(event('KeyP',{target:button}),map({pause:'KeyP'})),null);
+  assert.equal(keyboard.keyboardAction(event('KeyP',{target:button}),map({pause:'KeyP'}),{allowButtonShortcuts:true}),'pause');
   assert.equal(keyboard.keyboardAction(event('Space',{target:button})),null);
 });
 
@@ -65,13 +66,16 @@ test('actual app handler routes remapped actions, active roster slots and only h
   assert.deepEqual(h.calls,[]);
   h.c.paused=true;assert.equal(h.send('KeyQ').defaultPrevented,undefined);
   h.c.preferences.keyboard=map({pause:'KeyP'});
-  h.send('KeyP',{target:{closest:selector=>selector.startsWith('button')?{}:null}});assert.deepEqual(h.calls.pop(),['pause']);
+  h.$('pauseVeil').classList.remove('hidden');
+  h.send('KeyP',{target:{closest:selector=>selector==='button'?h.$('resume'):null}});assert.deepEqual(h.calls.pop(),['pause']);
+  h.send('KeyP',{target:{closest:selector=>selector==='button'?h.$('pauseSettings'):null}});assert.deepEqual(h.calls,[]);
+  h.$('pauseVeil').classList.add('hidden');
   h.c.paused=false;h.c.recoveryHold={};assert.equal(h.send('KeyQ').defaultPrevented,undefined);
   h.c.recoveryHold=null;h.$('helpModal').classList.remove('hidden');assert.equal(h.send('KeyQ').defaultPrevented,undefined);
 });
 test('actual capture consumes a fresh binding and retires releases; conflict, Escape and Tab cancel safely', () => {
   const h=startupHarness(),{c,$}=h;const scope=createInputScopeGuard('options');
-  Object.assign(c,{...keyboard,preferences:{},keyboardCapture:null,keyboardLoadWarning:'',inputScope:scope,
+  Object.assign(c,{...keyboard,preferences:{},keyboardCapture:null,keyboardLoadWarning:'',keyboardSavePending:false,inputScope:scope,
     syncInputScope(){scope.setScope(c.keyboardCapture||'options');},savePreferences:()=>true,syncKeyboardSettings(){},populateBuildCards(){},pauseControl(){},updateCampaignDeck(){},updateHUD(){}});
   const source=h.source;
   runInContext(source.slice(source.indexOf('function cancelKeyboardCapture('),source.indexOf("$('keyboardDefaults').onclick")),c);
