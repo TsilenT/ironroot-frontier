@@ -5,7 +5,8 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {extname} from 'node:path';
 
-export const VOLLEY_BASE = 'b88119fdd2cc288633e58bfaf0baffa302ee76de';
+export const VOLLEY_BASE = process.env.VOLLEY_HISTORY_BASE || 'b88119fdd2cc288633e58bfaf0baffa302ee76de';
+if (!/^[a-f0-9]{40}$/.test(VOLLEY_BASE)) throw new Error('History comparison needs an exact full base commit.');
 const marker = state => state?.ironrootNavigation ?? null;
 const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.woff2':'font/woff2','.txt':'text/plain'};
