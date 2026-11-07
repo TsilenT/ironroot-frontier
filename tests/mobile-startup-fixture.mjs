@@ -12,7 +12,7 @@ import {supportsAutonomousAir} from '../dist/autonomous-air.js';
 import {airRulesGuide,airBuildingDescription} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import * as keyboard from '../dist/keyboard.js';
-import {CURRENT_CHALLENGES as CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,evaluateChallenge} from '../dist/challenges.js';
+import {CURRENT_CHALLENGES as CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
 import {layout,box} from './mobile-layout-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
@@ -67,7 +67,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,
   supportsAutonomousAir,airRulesGuide,airBuildingDescription,
-  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
+  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,

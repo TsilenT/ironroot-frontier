@@ -154,14 +154,14 @@ test('actual retained-session and dirty full-backup handlers export the page key
   }
 });
 
-test('protocol seven advances only a verified marker and the old real protocol-six source remains pinned',()=>{
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,7);assert.equal(OLD_PROTOCOL,6);
+test('current protocol advances only a verified marker and the old real protocol-six source remains pinned',()=>{
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,8);assert.equal(OLD_PROTOCOL,6);
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v017.js',import.meta.url))).digest('hex'),'980297cd20ab3ca653d132c1acb71bd7c793bed482bbaba05b53d078acbd45d0');
-  for(const prior of [null,1,2,3,4,5,6,7]){
+  for(const prior of [null,1,2,3,4,5,6,7,8]){
     const r=raw([[K.settings,JSON.stringify(settings)],[K.campaign,'  retained campaign bytes\n'],...(prior===null?[]:[[MARKER,marker(prior)]])]),before=domainBytes(r);
-    const p=current(r);assert.equal(p.status().canWrite,true);assert.equal(JSON.parse(r.data.get(MARKER)).version,7);
+    const p=current(r);assert.equal(p.status().canWrite,true);assert.equal(JSON.parse(r.data.get(MARKER)).version,8);
     assert.deepEqual(domainBytes(r),before);assert.ok(r.calls.every(([,key])=>key===MARKER));
-    assert.equal(writes(r).length,prior===7?0:1);
+    assert.equal(writes(r).length,prior===8?0:1);
     if(prior!==null)assert.equal(JSON.parse(r.data.get(MARKER)).epoch,'retained');
   }
 });
@@ -181,10 +181,10 @@ test('already-open and later-opened actual six-field clients cannot erase keyboa
   assert.deepEqual([...r.data],before);assert.deepEqual(writes(r),[]);assert.ok(r.calls.every(([,key])=>key===MARKER));
 });
 
-test('seven-marker write and readback failures leave existing domain bytes protected until verified reload',()=>{
+test('current-marker write and readback failures leave existing domain bytes protected until verified reload',()=>{
   for(const mode of ['drop','throw','readback','competing']){
     const r=raw([[MARKER,marker(6)],[K.settings,JSON.stringify(settings)]]),before=domainBytes(r),read=r.getItem,write=r.setItem;let denied=false;
-    r.setItem=(key,value)=>{if(key!==MARKER)return write(key,value);if(mode==='drop')return;if(mode==='throw')throw Error('quota');write(key,mode==='competing'?marker(7,'other'):value);if(mode==='readback')denied=true;};
+    r.setItem=(key,value)=>{if(key!==MARKER)return write(key,value);if(mode==='drop')return;if(mode==='throw')throw Error('quota');write(key,mode==='competing'?marker(8,'other'):value);if(mode==='readback')denied=true;};
     r.getItem=key=>{if(key===MARKER&&denied)throw Error('readback unavailable');return read(key);};
     const p=current(r);assert.equal(p.status().canWrite,false);assert.throws(()=>p.storage.setItem(K.settings,'overwrite'));assert.deepEqual(domainBytes(r),before);
     r.setItem=write;r.getItem=read;assert.throws(()=>p.storage.getItem(K.settings));assert.equal(p.beginImport({recover:true}).ok,false);
@@ -211,5 +211,5 @@ test('successful keyboard import verifies the new epoch, settings and current-ta
   assert.equal(p.beginImport().ok,true);assert.equal(restoreBackup(p.importStorage,backup(raw(),{settings:{keyboard:value}})).ok,true);
   assert.equal(p.finishImport({outcome:'restored'}).ok,true);assert.equal(p.status().canWrite,false);assert.equal(stale.status().canWrite,false);
   const reloaded=current(r);assert.equal(reloaded.status().canWrite,true);assert.deepEqual(JSON.parse(reloaded.storage.getItem(K.settings)),{keyboard:value});
-  assert.equal(JSON.parse(r.data.get(MARKER)).version,7);
+  assert.equal(JSON.parse(r.data.get(MARKER)).version,8);
 });

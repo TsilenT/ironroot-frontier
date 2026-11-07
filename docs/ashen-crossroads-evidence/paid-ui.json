@@ -1,0 +1,342 @@
+{
+  "base": "ea9da128e1a2d9902dc3261c045dd8ec1c1f9010",
+  "candidate": "0.18.0",
+  "node": "v24.22.1",
+  "playwright": "1.65.0",
+  "chromium": "155.0.8059.79",
+  "scope": "Native paid UI; shipped 2x speed and bounded callback-preserving virtual time; exact ordinary-engine replay asserted for every run",
+  "stats": {
+    "startTime": "2026-11-07T18:03:00.411Z",
+    "duration": 144546.698,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "runs": [
+    {
+      "profile": "phone",
+      "time": 104.19999999999622,
+      "actions": [
+        {
+          "args": [
+            "watchtower",
+            1250,
+            450
+          ],
+          "tick": 149,
+          "before": 687.25,
+          "after": 467.25,
+          "cost": 220
+        },
+        {
+          "args": [
+            "archery",
+            1250,
+            640
+          ],
+          "tick": 290,
+          "before": 502.5,
+          "after": 327.5,
+          "cost": 175
+        },
+        {
+          "args": [
+            "foundry",
+            1250,
+            260
+          ],
+          "tick": 430,
+          "before": 368.5,
+          "after": 98.5,
+          "cost": 270
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            640
+          ],
+          "tick": 731,
+          "before": 181.75,
+          "after": 6.75,
+          "cost": 175
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            260
+          ],
+          "tick": 1329,
+          "before": 184.25,
+          "after": 9.25,
+          "cost": 175
+        }
+      ],
+      "targets": [
+        {
+          "name": "Pinewatch",
+          "hp": 0
+        },
+        {
+          "name": "Stonegate",
+          "hp": 1260
+        },
+        {
+          "name": "Ember Roost",
+          "hp": 0
+        }
+      ],
+      "citadels": [
+        6000,
+        4758
+      ],
+      "gold": 220,
+      "kills": 32
+    },
+    {
+      "profile": "narrow-phone",
+      "time": 92.49999999999689,
+      "actions": [
+        {
+          "args": [
+            "watchtower",
+            1250,
+            450
+          ],
+          "tick": 150,
+          "before": 687.5,
+          "after": 467.5,
+          "cost": 220
+        },
+        {
+          "args": [
+            "archery",
+            1250,
+            640
+          ],
+          "tick": 292,
+          "before": 505,
+          "after": 330,
+          "cost": 175
+        },
+        {
+          "args": [
+            "foundry",
+            1250,
+            260
+          ],
+          "tick": 442,
+          "before": 371.5,
+          "after": 101.5,
+          "cost": 270
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            640
+          ],
+          "tick": 735,
+          "before": 182.75,
+          "after": 7.75,
+          "cost": 175
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            260
+          ],
+          "tick": 1326,
+          "before": 183.5,
+          "after": 8.5,
+          "cost": 175
+        }
+      ],
+      "targets": [
+        {
+          "name": "Pinewatch",
+          "hp": 0
+        },
+        {
+          "name": "Stonegate",
+          "hp": 1260
+        },
+        {
+          "name": "Ember Roost",
+          "hp": 0
+        }
+      ],
+      "citadels": [
+        6000,
+        6000
+      ],
+      "gold": 155.5,
+      "kills": 29
+    },
+    {
+      "profile": "landscape",
+      "time": 101.79999999999636,
+      "actions": [
+        {
+          "args": [
+            "watchtower",
+            1250,
+            450
+          ],
+          "tick": 144,
+          "before": 686,
+          "after": 466,
+          "cost": 220
+        },
+        {
+          "args": [
+            "archery",
+            1250,
+            640
+          ],
+          "tick": 285,
+          "before": 501.25,
+          "after": 326.25,
+          "cost": 175
+        },
+        {
+          "args": [
+            "foundry",
+            1250,
+            260
+          ],
+          "tick": 424,
+          "before": 367,
+          "after": 97,
+          "cost": 270
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            640
+          ],
+          "tick": 733,
+          "before": 182.25,
+          "after": 7.25,
+          "cost": 175
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            260
+          ],
+          "tick": 1333,
+          "before": 185.25,
+          "after": 10.25,
+          "cost": 175
+        }
+      ],
+      "targets": [
+        {
+          "name": "Pinewatch",
+          "hp": 0
+        },
+        {
+          "name": "Stonegate",
+          "hp": 1260
+        },
+        {
+          "name": "Ember Roost",
+          "hp": 0
+        }
+      ],
+      "citadels": [
+        6000,
+        5000
+      ],
+      "gold": 206,
+      "kills": 31
+    },
+    {
+      "profile": "desktop",
+      "time": 101.1499999999964,
+      "actions": [
+        {
+          "args": [
+            "watchtower",
+            1250,
+            450
+          ],
+          "tick": 138,
+          "before": 684.5,
+          "after": 464.5,
+          "cost": 220
+        },
+        {
+          "args": [
+            "archery",
+            1250,
+            640
+          ],
+          "tick": 279,
+          "before": 499.75,
+          "after": 324.75,
+          "cost": 175
+        },
+        {
+          "args": [
+            "foundry",
+            1250,
+            260
+          ],
+          "tick": 411,
+          "before": 361.75,
+          "after": 91.75,
+          "cost": 270
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            640
+          ],
+          "tick": 724,
+          "before": 180,
+          "after": 5,
+          "cost": 175
+        },
+        {
+          "args": [
+            "archery",
+            1110,
+            260
+          ],
+          "tick": 1315,
+          "before": 180.75,
+          "after": 5.75,
+          "cost": 175
+        }
+      ],
+      "targets": [
+        {
+          "name": "Pinewatch",
+          "hp": 0
+        },
+        {
+          "name": "Stonegate",
+          "hp": 1260
+        },
+        {
+          "name": "Ember Roost",
+          "hp": 0
+        }
+      ],
+      "citadels": [
+        6000,
+        5021
+      ],
+      "gold": 202.75,
+      "kills": 31
+    }
+  ]
+}
