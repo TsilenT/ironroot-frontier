@@ -3167,14 +3167,20 @@ function syncProfileSafety() {
   if (recoveryHold || profileGate) updateRecoveryUI();
 }
 function reloadProfile() {
-  if (!profileSession.status().canReload || pendingFinalizeOutcome) return;
+  const status = profileSession.status();
+  if (!status.canReload || pendingFinalizeOutcome) return;
+  // Import finalization clears the old gate. Re-establish it synchronously:
+  // even identical imported battle bytes belong to the replacement profile.
+  if (status.reloadRequired) profileGate = status;
   allowProfileReload = true;
-  started = false;
-  progressDirty = false;
+  // Keep the retained attempt and menu ancestry until the document actually
+  // leaves. Shortening this trail can make a queued menu sync call history.go()
+  // during reload. Pausing and the profile fence already prevent stale writes.
   setCompactBuildOpen(false);
   paused = true;
   pendingBackupText = null;
-  location.reload();
+  try { location.reload(); }
+  catch (error) { allowProfileReload = false; throw error; }
 }
 $('profileReload').onclick = reloadProfile;
 $('resumeRecovery').onclick = () => {
@@ -3831,6 +3837,7 @@ window.addEventListener('pagehide', () => {
 window.addEventListener('pageshow', event => {
   navigationAway = false;
   if (!event.persisted) return;
+  allowProfileReload = false;
   interruptMobileInput();
   if (started && game.state.winner === null && !objectiveOutcome) pause(true);
   syncDialogs();
