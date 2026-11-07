@@ -302,8 +302,8 @@ test('third mission full paid route wins two stars and offers a full-roster repl
   await expect(page.locator('#time')).not.toHaveText('00:00');await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await press(page,'#pause');const replay=await saved(page);
-  expect(replay.scenario).toEqual({kind:'campaign',id:'open-three-roads',revision:1});
-  expect(replay.game.rulesetId).toBe('frontier-campaign-open');
+  expect(replay.scenario).toEqual({kind:'campaign',id:'open-three-roads',revision:4});
+  expect(replay.game.rulesetId).toBe('frontier-campaign-air-local');
   expect(replay.game.state.buildings.filter(b=>b.side===0)).toHaveLength(0);
   expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),PROGRESS)).toEqual(progress);
 });
