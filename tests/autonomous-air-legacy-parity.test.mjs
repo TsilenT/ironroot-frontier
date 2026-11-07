@@ -13,7 +13,11 @@ test('frozen live precursor includes unchanged route helpers and all nine rule i
   const hashes={'engine.js':'548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168','rulesets.js':'9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d','flight-orders.js':'b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196'};
   for(const [file,hash] of Object.entries(hashes))assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/autonomous-air-baseline/'+file,import.meta.url))).digest('hex'),hash);
   for(const [id,rules] of Object.entries(FrozenRules))assert.deepEqual(RULESETS[id],rules);
-  assert.equal(Game.prototype._ai.toString(),FrozenGame.prototype._ai.toString(),'AI source is unchanged');
+  const citadelGate='    if(supportsCitadelOptions(this.ruleset)){const choice=chooseAICitadelOption(this,side);if(choice)this.buyCitadelOption(choice,side);}'+'\n';
+  const aiSource=Game.prototype._ai.toString();
+  assert.equal(aiSource.split(citadelGate).length,2,'exactly one new ruleset-gated citadel purchase precedes ordinary AI spending');
+  assert.ok(Object.values(FrozenRules).every(r=>r.citadel===undefined),'the citadel branch is unreachable in every frozen identity');
+  assert.equal(aiSource.replace(citadelGate,''),FrozenGame.prototype._ai.toString(),'all ordinary AI source remains exact after removing only the new gated purchase');
   const fallback=FrozenGame.prototype._step.toString().split('\n').find(line=>line.includes('else {const targetY='));
   assert.ok(Game.prototype._step.toString().includes(fallback),'fallback movement preserves exact floating-point evaluation order');
 });

@@ -1,0 +1,3543 @@
+{
+  "createdAt": "2026-11-07T22:22:28.217Z",
+  "scope": "Eight engine games; four paired choice comparisons. Native AI, no browser/human claims.",
+  "sourceSha256": {
+    "dist/engine.js": "dcb1ee44a9deb7c7bef49bffc8c71f6a07f4265e47d5580aa7f0c38b5b912dc4",
+    "dist/rulesets.js": "c93dc9b730d9d0aaacd6fd4e5717a42232432cbdcd084817544611979a3445f8",
+    "dist/citadel-options.js": "2b4de54ae6505ae45ac7aca4b9e21533ee8891aa17a16e1f6f5c18d55174b767",
+    "dist/bridge-control.js": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "qa/citadel-playtest/paid-sample.mjs": "48efcf893ded8a4c64bee85287b18e0b721e59bc2c65e0339f3d93ac6beea08c",
+    "qa/citadel-playtest/PLAN.md": "02c74f7673119a748de1f52709f5b128d07dff2ef82a800eb52ddab8b9064889"
+  },
+  "cases": [
+    {
+      "choice": "arrows",
+      "bridge": false,
+      "seed": 17,
+      "rulesetId": "frontier-citadel-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            122
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 56,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            122
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 56,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.7999999999975,
+        "tick": 1636,
+        "winner": 1,
+        "gold": [
+          518.25,
+          122
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          14
+        ],
+        "bridgeReceipts": [
+          0,
+          0
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.7999999999975,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 56,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.799999999999987,
+            "tick": 116,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169,
+            "afterGold": 29,
+            "immediateBounty": 0
+          },
+          {
+            "time": 29.80000000000029,
+            "tick": 596,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 157,
+            "afterGold": 17,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 321.5,
+            "afterGold": 181.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 61.39999999999865,
+            "tick": 1228,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 195,
+            "afterGold": 20,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          589.25,
+          409
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          58.6999999999988,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          28
+        ],
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "choice": "regen",
+      "bridge": false,
+      "seed": 17,
+      "rulesetId": "frontier-citadel-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            122
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 56,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            122
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 56,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.7999999999975,
+        "tick": 1636,
+        "winner": 1,
+        "gold": [
+          518.25,
+          122
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          14
+        ],
+        "bridgeReceipts": [
+          0,
+          0
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.7999999999975,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 56,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.799999999999987,
+            "tick": 116,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169,
+            "afterGold": 29,
+            "immediateBounty": 0
+          },
+          {
+            "time": 29.80000000000029,
+            "tick": 596,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 157,
+            "afterGold": 17,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 321.5,
+            "afterGold": 181.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 61.39999999999865,
+            "tick": 1228,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 195,
+            "afterGold": 20,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          589.25,
+          409
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          58.6999999999988,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          28
+        ],
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "choice": "arrows",
+      "bridge": false,
+      "seed": 91,
+      "rulesetId": "frontier-citadel-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            121
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            121
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.19999999999753,
+        "tick": 1624,
+        "winner": 1,
+        "gold": [
+          531,
+          121
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          15
+        ],
+        "bridgeReceipts": [
+          0,
+          0
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.19999999999753,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 54,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.899999999999987,
+            "tick": 118,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169.5,
+            "afterGold": 29.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 30.800000000000303,
+            "tick": 616,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 164,
+            "afterGold": 24,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 319.5,
+            "afterGold": 179.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 58.04999999999884,
+            "tick": 1161,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 176.25,
+            "afterGold": 1.25,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          602,
+          406
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          56.349999999998936,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          30
+        ],
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "choice": "regen",
+      "bridge": false,
+      "seed": 91,
+      "rulesetId": "frontier-citadel-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            121
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            121
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            0
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.19999999999753,
+        "tick": 1624,
+        "winner": 1,
+        "gold": [
+          531,
+          121
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          15
+        ],
+        "bridgeReceipts": [
+          0,
+          0
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.19999999999753,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 54,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.899999999999987,
+            "tick": 118,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169.5,
+            "afterGold": 29.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 30.800000000000303,
+            "tick": 616,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 164,
+            "afterGold": 24,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 319.5,
+            "afterGold": 179.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 58.04999999999884,
+            "tick": 1161,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 176.25,
+            "afterGold": 1.25,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          602,
+          406
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          56.349999999998936,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          30
+        ],
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "choice": "arrows",
+      "bridge": true,
+      "seed": 17,
+      "rulesetId": "frontier-citadel-bridge-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            153.83333333333823
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            31.833333333332554
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 51,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            153.83333333333823
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            31.833333333332554
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 51,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.7999999999975,
+        "tick": 1636,
+        "winner": 1,
+        "gold": [
+          518.25,
+          153.83333333333823
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          14
+        ],
+        "bridgeReceipts": [
+          0,
+          31.833333333332554
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.7999999999975,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 51,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.799999999999987,
+            "tick": 116,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169,
+            "afterGold": 29,
+            "immediateBounty": 0
+          },
+          {
+            "time": 29.80000000000029,
+            "tick": 596,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 163.8750000000013,
+            "afterGold": 23.875000000001307,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 321.5,
+            "afterGold": 181.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 54.449999999999044,
+            "tick": 1089,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 176.4083333333366,
+            "afterGold": 1.4083333333366,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          589.25,
+          409
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          58.6999999999988,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          28
+        ],
+        "residual": [
+          0,
+          -5.6559201766503975e-12
+        ]
+      }
+    },
+    {
+      "choice": "regen",
+      "bridge": true,
+      "seed": 17,
+      "rulesetId": "frontier-citadel-bridge-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            153.83333333333823
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            31.833333333332554
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 51,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.7999999999975,
+          "tick": 1636,
+          "winner": 1,
+          "gold": [
+            518.25,
+            153.83333333333823
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            14
+          ],
+          "bridgeReceipts": [
+            0,
+            31.833333333332554
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.7999999999975,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 51,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.7999999999975,
+        "tick": 1636,
+        "winner": 1,
+        "gold": [
+          518.25,
+          153.83333333333823
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          14
+        ],
+        "bridgeReceipts": [
+          0,
+          31.833333333332554
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.7999999999975,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 51,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.799999999999987,
+            "tick": 116,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169,
+            "afterGold": 29,
+            "immediateBounty": 0
+          },
+          {
+            "time": 29.80000000000029,
+            "tick": 596,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 163.8750000000013,
+            "afterGold": 23.875000000001307,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 321.5,
+            "afterGold": 181.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 54.449999999999044,
+            "tick": 1089,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 176.4083333333366,
+            "afterGold": 1.4083333333366,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          589.25,
+          409
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          58.6999999999988,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          28
+        ],
+        "residual": [
+          0,
+          -5.6559201766503975e-12
+        ]
+      }
+    },
+    {
+      "choice": "arrows",
+      "bridge": true,
+      "seed": 91,
+      "rulesetId": "frontier-citadel-bridge-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            152.35000000000545
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            31.34999999999926
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            152.35000000000545
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            31.34999999999926
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.19999999999753,
+        "tick": 1624,
+        "winner": 1,
+        "gold": [
+          531,
+          152.35000000000545
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          15
+        ],
+        "bridgeReceipts": [
+          0,
+          31.34999999999926
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.19999999999753,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 54,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.899999999999987,
+            "tick": 118,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169.5,
+            "afterGold": 29.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 30.800000000000303,
+            "tick": 616,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 171.19166666666825,
+            "afterGold": 31.191666666668254,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 319.5,
+            "afterGold": 179.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 58.04999999999884,
+            "tick": 1161,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 196.02500000000387,
+            "afterGold": 21.02500000000387,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          602,
+          406
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          56.349999999998936,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          30
+        ],
+        "residual": [
+          0,
+          -6.224354365258478e-12
+        ]
+      }
+    },
+    {
+      "choice": "regen",
+      "bridge": true,
+      "seed": 91,
+      "rulesetId": "frontier-citadel-bridge-open",
+      "openingAttempts": [
+        {
+          "time": 0,
+          "type": "archery",
+          "result": true
+        },
+        {
+          "time": 0,
+          "type": "mint",
+          "result": true
+        },
+        {
+          "time": 35.00000000000015,
+          "type": "barracks",
+          "result": true
+        }
+      ],
+      "supportAttempts": [],
+      "purchase": {
+        "before": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            152.35000000000545
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            31.34999999999926
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "result": {
+          "ok": false,
+          "code": "battle-ended",
+          "reason": "The battle has ended."
+        },
+        "after": {
+          "time": 81.19999999999753,
+          "tick": 1624,
+          "winner": 1,
+          "gold": [
+            531,
+            152.35000000000545
+          ],
+          "hp": [
+            0,
+            6000
+          ],
+          "kills": [
+            7,
+            15
+          ],
+          "bridgeReceipts": [
+            0,
+            31.34999999999926
+          ],
+          "citadel": [
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": 81.19999999999753,
+              "healedTotal": 0,
+              "extraShots": 0
+            },
+            {
+              "choice": null,
+              "purchasedAt": null,
+              "purchasedTick": null,
+              "lastDamageAt": null,
+              "healedTotal": 0,
+              "extraShots": 0
+            }
+          ],
+          "production": [
+            [],
+            [
+              {
+                "id": 2,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 5,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 6,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 12,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 30,
+                "type": "barracks",
+                "level": 1,
+                "hp": 700
+              },
+              {
+                "id": 54,
+                "type": "archery",
+                "level": 1,
+                "hp": 470
+              }
+            ]
+          ]
+        },
+        "earlyEnded": true
+      },
+      "horizons": {},
+      "final": {
+        "time": 81.19999999999753,
+        "tick": 1624,
+        "winner": 1,
+        "gold": [
+          531,
+          152.35000000000545
+        ],
+        "hp": [
+          0,
+          6000
+        ],
+        "kills": [
+          7,
+          15
+        ],
+        "bridgeReceipts": [
+          0,
+          31.34999999999926
+        ],
+        "citadel": [
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": 81.19999999999753,
+            "healedTotal": 0,
+            "extraShots": 0
+          },
+          {
+            "choice": null,
+            "purchasedAt": null,
+            "purchasedTick": null,
+            "lastDamageAt": null,
+            "healedTotal": 0,
+            "extraShots": 0
+          }
+        ],
+        "production": [
+          [],
+          [
+            {
+              "id": 2,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 5,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 6,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 30,
+              "type": "barracks",
+              "level": 1,
+              "hp": 700
+            },
+            {
+              "id": 54,
+              "type": "archery",
+              "level": 1,
+              "hp": 470
+            }
+          ]
+        ]
+      },
+      "ongoingBound": false,
+      "ledger": {
+        "actions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "archery",
+              550,
+              450
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 420,
+            "afterGold": 245,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "mint",
+              270,
+              260
+            ],
+            "grossCost": 190,
+            "refund": 0,
+            "beforeGold": 245,
+            "afterGold": 55,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 420.25,
+            "afterGold": 280.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 0.05,
+            "tick": 1,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              2090,
+              450,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 280.25,
+            "afterGold": 140.25,
+            "immediateBounty": 0
+          },
+          {
+            "time": 5.899999999999987,
+            "tick": 118,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 169.5,
+            "afterGold": 29.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 30.800000000000303,
+            "tick": 616,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "barracks",
+              1950,
+              640,
+              1
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 171.19166666666825,
+            "afterGold": 31.191666666668254,
+            "immediateBounty": 0
+          },
+          {
+            "time": 35.00000000000015,
+            "tick": 700,
+            "side": 0,
+            "action": "build",
+            "args": [
+              "barracks",
+              690,
+              260
+            ],
+            "grossCost": 140,
+            "refund": 0,
+            "beforeGold": 319.5,
+            "afterGold": 179.5,
+            "immediateBounty": 0
+          },
+          {
+            "time": 58.04999999999884,
+            "tick": 1161,
+            "side": 1,
+            "action": "build",
+            "args": [
+              "archery",
+              2090,
+              260,
+              1
+            ],
+            "grossCost": 175,
+            "refund": 0,
+            "beforeGold": 196.02500000000387,
+            "afterGold": 21.02500000000387,
+            "immediateBounty": 0
+          }
+        ],
+        "income": [
+          602,
+          406
+        ],
+        "spent": [
+          505,
+          735
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "firstDamage": [
+          56.349999999998936,
+          null
+        ],
+        "baseDamage": [
+          {
+            "warrior": 6000
+          },
+          {}
+        ],
+        "bounties": [
+          14,
+          30
+        ],
+        "residual": [
+          0,
+          -6.224354365258478e-12
+        ]
+      }
+    }
+  ],
+  "failures": []
+}

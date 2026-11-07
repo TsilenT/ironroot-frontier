@@ -36,7 +36,7 @@ test('historical audit retains the exact earned two/five/eight opening rosters a
   }
 });
 
-test('all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts', () => {
+test('all sixteen historical continuation descriptors and factories stay exact revision 2 despite current citadel starts', () => {
   const progress = fullProgress(), before = JSON.stringify(progress);
   for (const mission of CAMPAIGN_MISSIONS) {
     const descriptor = getHistoricalRosterMission(mission.id, progress);
@@ -48,7 +48,7 @@ test('all sixteen historical continuation descriptors and factories stay exact r
     assert.equal(game.ruleset.id, 'frontier-campaign-open');
     assert.equal(game.ruleset.combat.flyingCrossLanes, false);
     assert.equal(Object.keys(game.buildings).length, 8);
-    if (FLIGHT_CAMPAIGN_MISSION_IDS.includes(mission.id)) assert.equal(getCurrentCampaignRevision(mission.id), 4);
+    if (FLIGHT_CAMPAIGN_MISSION_IDS.includes(mission.id)) assert.equal(getCurrentCampaignRevision(mission.id), 5);
   }
   assert.equal(JSON.stringify(progress), before);
 });

@@ -43,7 +43,7 @@ const backup = (value = data()) => createBackup(raw(), {createdAt:date, ...value
 // Existing protocol clients are executed from the exact reviewed base source,
 // not modeled by the new implementation with a smaller version argument.
 test('current protocol pins the exact old seven source and retains the legacy default', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 9);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 10);
   assert.equal(protocolSeven.CURRENT_PROFILE_PROTOCOL_VERSION, 7);
   assert.equal(createHash('sha256').update(protocolSevenSource).digest('hex'), protocolSevenHash);
   const r = raw(), p = createProfileSession(() => r, {newEpoch:() => 'default'});
@@ -53,15 +53,15 @@ test('current protocol pins the exact old seven source and retains the legacy de
 });
 
 test('absent and all prior ready markers upgrade alone before any profile domain is accessed', () => {
-  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
     const r = raw([...entries(data(false)), ...(prior === null ? [] : [[MARKER, marker(prior)]])]);
     const before = bytes(r), p = current(r);
     assert.equal(p.status().canWrite, true);
     const migrated = JSON.parse(r.data.get(MARKER));
-    assert.equal(migrated.version, 9);
+    assert.equal(migrated.version, 10);
     if (prior !== null) assert.equal(migrated.epoch, 'retained');
     assert.deepEqual(bytes(r), before);
-    assert.equal(writes(r).length, prior === 9 ? 0 : 1);
+    assert.equal(writes(r).length, prior === 10 ? 0 : 1);
     assert.ok(r.calls.every(([, key]) => key === MARKER));
     for (const [key, value] of before) assert.equal(p.storage.getItem(key), value);
     const overview = getCampaignOverview(JSON.parse(p.storage.getItem(K.campaign)));
@@ -127,11 +127,11 @@ test('post-write throws are accepted only after readback, while unfinished and f
   const r = raw([[MARKER, marker(7)], ...entries(data())]), before = bytes(r), write = r.setItem;
   r.setItem = (key, value) => { write(key, value); throw Error('post write'); };
   assert.equal(current(r).status().canWrite, true); assert.deepEqual(bytes(r), before);
-  for (const prior of [marker(7, 'retained', 'restoring'), marker(7, 'retained', 'failed'), marker(8, 'retained', 'restoring'), marker(10), '{bad']) {
+  for (const prior of [marker(7, 'retained', 'restoring'), marker(7, 'retained', 'failed'), marker(8, 'retained', 'restoring'), marker(11), '{bad']) {
     const target = raw([[MARKER, prior], ...entries(data())]), original = [...target.data], p = current(target);
     assert.equal(p.status().canWrite, false); assert.deepEqual(writes(target), []);
     assert.throws(() => p.storage.setItem(K.trials, '{}'));
-    if (prior === marker(10)) assert.equal(p.beginImport({recover:true}).code, 'unsupported-protocol');
+    if (prior === marker(11)) assert.equal(p.beginImport({recover:true}).code, 'unsupported-protocol');
     assert.deepEqual([...target.data], original);
   }
 });
@@ -152,7 +152,7 @@ test('five old records and modern sixth record/history export and import without
   for (const domain of ['campaign', 'trials', 'settings', 'history']) assert.deepEqual(JSON.parse(ready.storage.getItem(K[domain])), value[domain]);
   assert.equal(ready.storage.getItem(K.battle), null);
   assert.equal(target.data.get('unrelated'), 'retained');
-  assert.equal(JSON.parse(target.data.get(MARKER)).version, 9);
+  assert.equal(JSON.parse(target.data.get(MARKER)).version, 10);
 });
 
 test('old backups still restore all five records and leave the current protocol in force', () => {
@@ -161,7 +161,7 @@ test('old backups still restore all five records and leave the current protocol 
   assert.equal(restoreBackup(p.importStorage, backup(value)).ok, true);
   assert.equal(p.finishImport({outcome:'restored'}).ok, true);
   assert.deepEqual(parseBackup(createBackup(current(r).storage, {createdAt:date})).data, value);
-  assert.equal(JSON.parse(r.data.get(MARKER)).version, 9);
+  assert.equal(JSON.parse(r.data.get(MARKER)).version, 10);
 });
 
 test('a failed replacement rolls back each domain exactly and preserves the new trial record', () => {
@@ -202,7 +202,7 @@ test('current trial attempt identity is admitted in the existing battle/backup s
   const game = createCurrentChallenge(id), scenario = scenarioForBattle(id, null, game);
   const battle = encodeBattle(game, scenario), parsed = parseBackup(backup({...data(), battle}));
   assert.equal(parsed.version, 2); assert.equal(parsed.data.battle.version, 3);
-  assert.deepEqual(scenario, {kind:'trial', id, revision:2});
+  assert.deepEqual(scenario, {kind:'trial', id, revision:3});
   assert.deepEqual(decodeBattle(parsed.data.battle).game.serialize(), game.serialize());
   const source = readFileSync(new URL('../dist/backup.js', import.meta.url), 'utf8');
   assert.match(source, /CURRENT_CHALLENGES as CHALLENGES/);

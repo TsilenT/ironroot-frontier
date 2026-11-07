@@ -1,0 +1,201 @@
+{
+  "kind": "bounded paid sample; pre-readiness failures retained",
+  "games": 8,
+  "failures": [],
+  "purchaseEligible": 0,
+  "cases": [
+    {
+      "choice": "arrows",
+      "bridge": false,
+      "seed": 17,
+      "time": 81.7999999999975,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        58.6999999999988,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        0
+      ],
+      "finalBridgeReceipts": [
+        0,
+        0
+      ]
+    },
+    {
+      "choice": "regen",
+      "bridge": false,
+      "seed": 17,
+      "time": 81.7999999999975,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        58.6999999999988,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        0
+      ],
+      "finalBridgeReceipts": [
+        0,
+        0
+      ]
+    },
+    {
+      "choice": "arrows",
+      "bridge": false,
+      "seed": 91,
+      "time": 81.19999999999753,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        56.349999999998936,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        0
+      ],
+      "finalBridgeReceipts": [
+        0,
+        0
+      ]
+    },
+    {
+      "choice": "regen",
+      "bridge": false,
+      "seed": 91,
+      "time": 81.19999999999753,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        56.349999999998936,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        0
+      ],
+      "finalBridgeReceipts": [
+        0,
+        0
+      ]
+    },
+    {
+      "choice": "arrows",
+      "bridge": true,
+      "seed": 17,
+      "time": 81.7999999999975,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        58.6999999999988,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        -5.6559201766503975e-12
+      ],
+      "finalBridgeReceipts": [
+        0,
+        31.833333333332554
+      ]
+    },
+    {
+      "choice": "regen",
+      "bridge": true,
+      "seed": 17,
+      "time": 81.7999999999975,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        58.6999999999988,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        -5.6559201766503975e-12
+      ],
+      "finalBridgeReceipts": [
+        0,
+        31.833333333332554
+      ]
+    },
+    {
+      "choice": "arrows",
+      "bridge": true,
+      "seed": 91,
+      "time": 81.19999999999753,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        56.349999999998936,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        -6.224354365258478e-12
+      ],
+      "finalBridgeReceipts": [
+        0,
+        31.34999999999926
+      ]
+    },
+    {
+      "choice": "regen",
+      "bridge": true,
+      "seed": 91,
+      "time": 81.19999999999753,
+      "winner": 1,
+      "purchase": {
+        "ok": false,
+        "code": "battle-ended",
+        "reason": "The battle has ended."
+      },
+      "firstDamage": [
+        56.349999999998936,
+        null
+      ],
+      "ledgerResidual": [
+        0,
+        -6.224354365258478e-12
+      ],
+      "finalBridgeReceipts": [
+        0,
+        31.34999999999926
+      ]
+    }
+  ],
+  "limitation": "All four paired opening/mode histories ended before 90 seconds; choice alternatives therefore share identical pre-purchase history and expose no upgrade use. No outcomes support effect or enjoyment conclusions."
+}

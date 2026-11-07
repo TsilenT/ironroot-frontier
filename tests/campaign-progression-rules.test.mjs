@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Game,getRuleset,buildSites} from '../dist/engine.js';
-import {CAMPAIGN_RULESET_IDS} from '../dist/rulesets.js';
+import {CAMPAIGN_RULESET_IDS,CITADEL_CAMPAIGN_RULESET_IDS} from '../dist/rulesets.js';
 import {
   CAMPAIGN_MISSIONS,INTRO_MISSIONS,ONBOARDING_MISSIONS,ALL_CAMPAIGN_MISSIONS,
   PROGRESSION_CAMPAIGN_MISSIONS,CAMPAIGN_PROGRESS_MISSIONS,
@@ -40,7 +40,7 @@ test('a win, not stars or hidden cards, earns the next whole immutable roster',(
   for(const [index,mission] of ONBOARDING_MISSIONS.entries()){
     const game=createProgressionCampaignMission(mission.id,progress);
     assert.equal(Object.keys(game.buildings).length,[2,5,8][index]);
-    assert.equal(game.ruleset.id,index===2?'frontier-campaign-air-local':CAMPAIGN_RULESET_IDS[index]);
+    assert.equal(game.ruleset.id,CITADEL_CAMPAIGN_RULESET_IDS[index]);
     assert.ok(Object.isFrozen(game.ruleset)&&Object.isFrozen(game.buildings)&&Object.isFrozen(game.units));
     assert.equal(getCampaignRoster(progress).stage,index+1);
     assert.deepEqual(decodeBattle(envelope(game,mission.id,progress),{campaignProgress:progress}).game.serialize(),game.serialize());
@@ -51,9 +51,9 @@ test('a win, not stars or hidden cards, earns the next whole immutable roster',(
   assert.equal(getProgressionCampaignOverview(progress).nextMissionId,'emberwatch');
   assert.equal(isMissionUnlocked(progress,'emberwatch',2),true);
   const main=createProgressionCampaignMission('emberwatch',progress);
-  assert.equal(main.ruleset.id,'frontier-campaign-air-local');assert.equal(main.buildings.wardenLodge.unit,'rootwarden');
-  assert.equal(campaignScenarioForGame(main,'emberwatch').revision,4);
-  assert.equal(decodeBattle(envelope(main,'emberwatch',progress),{campaignProgress:progress}).identity.scenario.revision,4);
+  assert.equal(main.ruleset.id,'frontier-campaign-citadel-open');assert.equal(main.buildings.wardenLodge.unit,'rootwarden');
+  assert.equal(campaignScenarioForGame(main,'emberwatch').revision,5);
+  assert.equal(decodeBattle(envelope(main,'emberwatch',progress),{campaignProgress:progress}).identity.scenario.revision,5);
 });
 
 test('engine build paths, restores and scenario admission reject unavailable rosters without charging gold',()=>{
@@ -65,11 +65,11 @@ test('engine build paths, restores and scenario admission reject unavailable ros
   }
   const rich=createProgressionCampaignMission('roadside-watch',full());
   rich.state.gold[0]=1000;const lodge=rich.build('wardenLodge',550,450).building;rich._spawn(lodge);
-  const forged=rich.serialize();forged.rulesetId='frontier-campaign-watch';
+  const forged=rich.serialize();forged.rulesetId='frontier-campaign-citadel-watch';
   assert.throws(()=>Game.restore(forged),/unknown (building|unit) type/);
   forged.state.buildings=forged.state.buildings.filter(b=>b.side!==0);
   assert.throws(()=>Game.restore(forged),/unknown unit type/);
-  const other=clone(envelope(game,'roadside-watch',empty));other.game.rulesetId='frontier-campaign-open';
+  const other=clone(envelope(game,'roadside-watch',empty));other.game.rulesetId='frontier-campaign-citadel-open';
   assert.throws(()=>decodeBattle(other,{campaignProgress:empty}),error=>error.code==='locked-roster');
   const unearned=createCampaignMission('shield-at-the-fork');
   assert.throws(()=>envelope(unearned,'shield-at-the-fork',empty),error=>error.code==='locked-mission');
@@ -128,13 +128,13 @@ test('returning records stay exact, skip teaching gates, and neither old intro-o
 test('modern identity plumbing covers saves, histories, reports and exact scenario revisions',()=>{
   const progress=full(),game=createProgressionCampaignMission('emberwatch',progress);
   const identity=identityOf(game,scenarioForBattle(null,'emberwatch',game));
-  assert.equal(resolveScenario(identity.scenario).mission.rulesetId,'frontier-campaign-air-local');
+  assert.equal(resolveScenario(identity.scenario).mission.rulesetId,'frontier-campaign-citadel-open');
   const row=validateHistoryRow({won:true,difficulty:game.difficulty,time:60,kills:0,built:1,date:'2026-11-06T12:00:00.000Z',identity});
-  assert.equal(row.identity.scenario.revision,4);
+  assert.equal(row.identity.scenario.revision,5);
   assert.ok(createBattleJournal(game,{mode:'campaign',id:'emberwatch'}));
   let value=null;const storage={get:()=>value,set:(_,v)=>(value=v,true)};
   assert.equal(writeBattle(storage,'battle',game,null,'emberwatch',{campaignProgress:progress}),true);
-  assert.equal(JSON.parse(value).scenario.revision,4);
+  assert.equal(JSON.parse(value).scenario.revision,5);
   for(const revision of [0,3,99])assert.throws(()=>resolveScenario({kind:'campaign',id:'emberwatch',revision}));
   assert.throws(()=>resolveScenario({kind:'campaign',id:'first-watch',revision:2}));
   assert.throws(()=>resolveScenario({kind:'campaign',id:'roadside-watch',revision:2}));

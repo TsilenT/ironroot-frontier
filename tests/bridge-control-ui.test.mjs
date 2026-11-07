@@ -33,13 +33,13 @@ for(const suffix of ['open','timed'])test(`actual ${suffix} setup binds the opte
   $('skirmishRules').value=`frontier-air-local-${suffix}`;$('skirmishRules').onchange();
   $('skirmishBridgeIncome').checked=true;$('skirmishBridgeIncome').onchange();
   assert.equal(saved.at(-1).skirmishBridgeIncome,true);
-  c.start();assert.equal(c.game.ruleset.id,`frontier-bridge-${suffix}`);
+  c.start();assert.equal(c.game.ruleset.id,`frontier-citadel-bridge-${suffix}`);
   assert.equal(c.game.ruleset.endgame.forcedDecay,suffix==='timed');
   const same=c.game;
   $('skirmishBridgeIncome').checked=false;$('skirmishBridgeIncome').onchange();
   assert.equal(saved.at(-1).skirmishBridgeIncome,false);assert.equal(c.game,same);
-  assert.equal(c.game.ruleset.id,`frontier-bridge-${suffix}`);
-  c.start();assert.equal(c.game.ruleset.id,`frontier-air-local-${suffix}`);
+  assert.equal(c.game.ruleset.id,`frontier-citadel-bridge-${suffix}`);
+  c.start();assert.equal(c.game.ruleset.id,`frontier-citadel-${suffix}`);
   assert.equal(c.game.state.bridgeControl,undefined);
 });
 

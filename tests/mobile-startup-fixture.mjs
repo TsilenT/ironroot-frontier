@@ -10,6 +10,7 @@ import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileV
 import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {supportsAutonomousAir} from '../dist/autonomous-air.js';
 import {bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT} from '../dist/bridge-control.js';
+import {skirmishRulesetId} from '../dist/citadel-view.js';
 import {airRulesGuide,airBuildingDescription} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import * as keyboard from '../dist/keyboard.js';
@@ -69,7 +70,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,briefingRestart:null,
   progressDirty:false,saveTimer:0,updateResume(){},setMode(){},activeDialog:null,writeBattle:()=>true,
-  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,
+  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,

@@ -1,0 +1,34 @@
+# Citadel choices playable candidate
+
+This v0.20.0 draft starts from private main `5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d` (v0.19.0). Branch: `codex/skirmish-citadel-options`; the branch name predates the broadened applicability. No merge, deployment, signing, Space upload or PR14 changes are part of this work.
+
+The choice is optional spending in every fresh Campaign mission, Field Trial and Skirmish. There is no setup checkbox and no progression requirement for citadel choices. Campaign building unlocks remain 2/5/8 buildings. Bridge income remains its separate, default-off Skirmish option. Five isolated Guided Practice lessons retain their scripted actions and UI: their reserved purchase budgets and marked observations (especially the anti-air target) are deliberately outside this increment. Optional introductory campaign missions do receive the choices.
+
+## Contract and access
+
+From 90 simulated seconds, either side may spend 190 normal gold once on one of two mutually exclusive effects. Keeping the gold for troops, buildings or income remains possible. There is no salvage, refund, swap, instant attack, cooldown reset or free healing on purchase.
+
+- **Extra Arrow:** each existing citadel firing cycle adds one half-strength projectile at the nearest different living enemy strictly within the native 310 range. It deals 16 damage normally, 9 after 300 seconds; the primary shot remains 32/18 and the cadence remains 1.15 seconds. A lone target receives no extra shot. Native queued damage is retained: a queued casualty is not used to retarget the shot to a third unit. This is not faster fire or a second hit on the primary target.
+- **Regeneration:** recurring 3 HP/sec after eight seconds since both purchase and last actual citadel HP damage, capped at the ordinary 6,000 maximum. Pre-purchase damage history is preserved. No lifetime limit, initial heal or resurrection. The first healed interval starts after the full wait. Native timed decay suppresses regeneration only while decay is active (`time > 420`), with no extra forced ending in open games.
+
+Use **Pause → Citadel choices**. The dialog explicitly pauses simulation: income, eligibility and recovery waits do not advance. It shows cost, exact effects, current HP, remaining waits, own and enemy choice, shots fired and HP restored. Purchase is atomic; Back/Cancel returns to Pause without spending, and only explicit Resume restarts simulation. Home and its controller action remain camera-only. The 90-second readiness toast does not move focus. Forced teaching holds hide the entry and postpone discovery until normal battle play.
+
+The menu uses existing overlay/navigation patterns, scrolls on short screens, and adds no permanent HUD row. Extra projectiles use a cyan second chevron as well as colour. Static citadel labels show the chosen effect and regeneration wait/activity/full/decay state; recovery/interruption toasts give readable updates. No additional motion or continuous sound is introduced. Purchase uses the existing preference-respecting upgrade sound.
+
+## AI, authored objectives and identity
+
+Both sides share the same price, gate, single-choice restriction and effects. Adaptive AI checks at its existing decision cadence, before normal spending: with 190 gold and eligibility, it chooses Extra Arrow when two enemies are in citadel range; otherwise Regeneration when missing at least 150 HP after eight quiet seconds, outside timed decay. It does not reserve gold or receive a subsidy. Fixed `ai:false` formations remain fixed and buy neither option; the dialog discloses that behavior.
+
+All authored starting resources, damaged HP, formations, protection requirements, income goals, deadlines and objective precedence remain unchanged. Regeneration can repair authored starting damage toward normal maximum HP. The 2,000-HP failure thresholds in Heart of the Furnace and Far Beacons still fail immediately: actual damage resets regeneration and the authored evaluator checks every fixed step before another one can run. Protected structures cannot be repaired by citadel regeneration. Final-HP medals may legitimately improve after recovery.
+
+Fresh Campaign attempts use revision 5 with separate first-company, Warden-company, full-roster and introductory identities. Fresh Field Trials use revision 3 with their existing seven-building roster and timed rules. Skirmishes have four explicit identities for open/timed × bridge off/on. Published identities are retained for historical records; they are not relabeled. Existing saved battles keep their rules and disclose when citadel choices are unavailable. A deliberate fresh launch selects current rules; restoring or restarting an existing attempt preserves its bound identity.
+
+Profile protocol 10 fences older writers, including a hash-pinned copy of the actual v0.19 protocol-9 writer. Campaign stars, trial records, preferences, histories and unrelated storage remain protected. Save, backup/import, restore and restart use the existing strict codecs, admitting choice metadata only for matching identities. No unshipped citadel setup preference is retained and no battle migration is required.
+
+## Evidence and limits
+
+The earlier engine research at `698d9645f9fe4e0a1e856d9e4fa44746353d44a8` informed the initial values; none of that branch is merged wholesale. Its 120 games were 24 paired quintets, not independent trials. Army opportunity cost and sparse recovery windows do not establish enjoyment or make an optional defensive purchase inappropriate. The earlier flat-HP accounting correction remains on its research branch; no unrelated evidence tree is imported here.
+
+Focused reproduction and per-case artifacts are in [the QA plan](../qa/citadel-playtest/PLAN.md) and [the QA report](../qa/citadel-playtest/REPORT.md). The eight paid native-AI games were fixed before outcomes and are retained, including every failure. All ended at 81.2–81.8 seconds, before purchase eligibility, so **zero of eight exposed a choice purchase**. Their ledgers reconcile; bridge-on receipts are reported separately. This sample cannot establish usefulness, recovery, balance or enjoyment. Its exact pre-applicability source snapshot is hash-verified and retained separately.
+
+Browser QA uses native Chromium input and rendering, legal two-sided paid prehistories for purchase/restore tests, and separately labeled synthetic mechanism arrangements for clear arrow/regen feedback. It is not physical-device or human enjoyment testing. The recommendation is a focused draft for Steve to play and independent review, with no balance superiority claim or automatic release.
