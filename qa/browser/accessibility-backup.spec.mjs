@@ -1,4 +1,5 @@
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
+import { startRunning } from './campaign-teaching-helpers.mjs';
 // v0.7 UI integration regressions. Browser execution requires an authorized cloud runner.
 import {test as base, expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
@@ -423,7 +424,7 @@ for(const mode of ['campaign','challenges'])test('stale '+mode+' tab cannot resu
   // Establish both kinds of old medals before loading the stale app session.
   await page.evaluate(({key,campaign})=>localStorage.setItem(key,JSON.stringify(campaign)),
     {key:BACKUP_STORAGE_KEYS.campaign,campaign:fixture(true).backup.data.campaign});
-  await page.reload();await press(page,'[data-mode="'+mode+'"]');await press(page,'#start');
+  await page.reload();await press(page,'[data-mode="'+mode+'"]');await startRunning(page,press);
   await press(page,'#pause');await expect(page.locator('#pauseVeil')).toBeVisible();
   const newer=await context.newPage(),errors=[];
   newer.on('pageerror',error=>errors.push(error.message));

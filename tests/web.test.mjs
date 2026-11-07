@@ -77,9 +77,9 @@ test('portable backup controls require a preview and explicit replacement action
 test('controller uses the shared legal placement path and runtime assets are cached', () => {
   const app = read('app.js'),
     sw = read('service-worker.js');
-  assert.match(app, /function activateBattlePoint\(w\)/);
+  assert.match(app, /function activateBattlePoint\(w, \{ repeatBuild = false \} = \{\}\)/);
   assert.match(app, /activateBattlePoint\(ui\.pointer\)/);
-  assert.match(app, /activateBattlePoint\(w\)/);
+  assert.match(app, /activateBattlePoint\(w, \{ repeatBuild: e\.pointerType === 'mouse' && e\.shiftKey \}\)/);
   for (const file of ['backup.js', 'controller.js'])
     assert.ok(sw.includes(`'./${file}'`));
   assert.match(read('index.html'), /id="controllerHelp"/);

@@ -1,0 +1,109 @@
+{
+  "scope": "isolated build-order completion; no publication or version change",
+  "files": [
+    {
+      "path": "README.md",
+      "status": "modified",
+      "sha256": "248ddddd0f15eddff348cd651bf3cdfdca0d442e95690f8bc94f221fca1dce6f"
+    },
+    {
+      "path": "dist/app.js",
+      "status": "modified",
+      "sha256": "835aa8274c675533f588efd7a300c75bf60f2fd2d8ffc9d9a836789343dae528"
+    },
+    {
+      "path": "dist/index.html",
+      "status": "modified",
+      "sha256": "6eeed4a4a82fbf65081586cae99dd5c824689a968cc86a254c9768c70a1523b5"
+    },
+    {
+      "path": "docs/BUILD_COMPLETION.md",
+      "status": "added",
+      "sha256": "07a3d9b33374aa51a260267d4b2ba6f5055331a231438d5a96be1160bf17329b"
+    },
+    {
+      "path": "docs/CONTROLLER.md",
+      "status": "modified",
+      "sha256": "493d7cecaef58bbac8dad680cfb5083e128cc0213623ff0fe7d1759446d12706"
+    },
+    {
+      "path": "qa/browser/battle-report.spec.mjs",
+      "status": "modified",
+      "sha256": "1cffe045695b3c3db025f703a01d96e3463ddd23b26ee92de9551c949574e622"
+    },
+    {
+      "path": "qa/browser/build-completion.spec.mjs",
+      "status": "added",
+      "sha256": "5305a8c8a7b7fb6107839d361c0feda6e58198443242a647648a44428d0c42c3"
+    },
+    {
+      "path": "qa/browser/campaign-onboarding.spec.mjs",
+      "status": "modified",
+      "sha256": "1e6a347333fedf1455735b3856ac02b5c9a619cd7fcb0e3ce88d6b9eb379101d"
+    },
+    {
+      "path": "qa/browser/contextual-coaching.spec.mjs",
+      "status": "modified",
+      "sha256": "b13ec01470873776b4798d0d8fac983b0360b4ed5c550556f2962ba1055e3d72"
+    },
+    {
+      "path": "qa/browser/maps.spec.mjs",
+      "status": "modified",
+      "sha256": "890840a7da3e06f4fd3e71ff535dc7e9282bd9cc58b74a78910c73ebfa6b3085"
+    },
+    {
+      "path": "qa/browser/package.json",
+      "status": "modified",
+      "sha256": "8a27955c8c3334c05e1e79eac2a0946d971c572c0bb779575d7776a693cbe74f"
+    },
+    {
+      "path": "qa/browser/regression.spec.mjs",
+      "status": "modified",
+      "sha256": "bb2f8c877ce00fb397657f0ebf416b4c5f6e53c037f6afabe972bb5d8dd9d53d"
+    },
+    {
+      "path": "tests/build-completion.test.mjs",
+      "status": "added",
+      "sha256": "a0dd3e1b29814f62c53a4ff19b520a00ab9ec35cd378950553a5f971298e9dc6"
+    },
+    {
+      "path": "tests/protected-objectives-ui.test.mjs",
+      "status": "modified",
+      "sha256": "3671b385c70737e31f678b54fc83814fc3549ca54777a075002b3f069bb9cbfb"
+    },
+    {
+      "path": "tests/shared-mobile-shell.test.mjs",
+      "status": "modified",
+      "sha256": "bb673e3bb9332f40bd59631ca8e99dae064c607df443f977dead475fe11fdc30"
+    },
+    {
+      "path": "tests/web.test.mjs",
+      "status": "modified",
+      "sha256": "764da5228390360e2e8bbd34f94cee8b7ea169888bb6c9df08bffc8f0cb92ffe"
+    }
+  ],
+  "validation": {
+    "node": {
+      "discovered": 979,
+      "passed": 978,
+      "failed": 0,
+      "skipped": 1
+    },
+    "sourceSyntax": "passed",
+    "runtimePreflight": "passed",
+    "browserPackageCheck": "passed",
+    "newBrowserCases": {
+      "logical": 9,
+      "discovered": 36,
+      "intentionalExclusions": 9,
+      "execution": "blocked before page load; no product assertions executed"
+    },
+    "localBrowserToolchain": {
+      "playwright": "1.57.0",
+      "chromium": "156.0.8078.79",
+      "sandboxEnabled": true
+    },
+    "browserBlocker": "process_singleton_posix.cc: socket() failed: Operation not permitted",
+    "requiredRemainingGate": "Playwright 1.65.0 on exact combined final source"
+  }
+}

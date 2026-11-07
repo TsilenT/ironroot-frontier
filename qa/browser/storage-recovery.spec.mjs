@@ -37,7 +37,7 @@ async function seedProfile(page,{terminal=true}={}){
   return {values,oldHistory:backup.data.history,result};
 }
 async function installFaults(page,{read=[],write=[]}={}){
-  // Install only AFTER app initialization and ready-v3 verification. The real
+  // Install only AFTER app initialization and ready-v4 verification. The real
   // Storage backend, profile facade, engine, event loop and UI keep running.
   await page.evaluate(({read,write})=>{
     const get=Storage.prototype.getItem,set=Storage.prototype.setItem,remove=Storage.prototype.removeItem;

@@ -2,6 +2,7 @@
 import {expect} from '@playwright/test';
 import {Game,MAPS,buildSites} from '../../dist/engine.js';
 import {parseBackup,BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
+import {createCampaignMission,createCampaignProgress} from '../../dist/campaign.js';
 import {MAP_IDS,NEW_MAP_IDS,SAVE,HISTORY,mapFixture,mapBackup,authoredMap,invalidMapFixtures} from './map-fixtures.mjs';
 import {test,press,tapPoint,selectMap,saved,pause,seedOnce,homePoint,chooseBackup,openBackup,downloadBackup,observeCanvas,canvasFrame,expectCamera,dragPoint} from './map-browser-helpers.mjs';
 import {installPad,padButton,steerTo} from './map-controller-helpers.mjs';
@@ -129,6 +130,8 @@ for(const id of MAP_IDS){
     expect((await canvasFrame(page)).battle.slots).toEqual(buildSites(map,0).map(({x,y})=>[x,y]));
     const y=map.lanes[map.startingLane],point=await homePoint(page,map,550,y);
     await tapPoint(page,point);await expect(page.locator('#toast')).toContainText('Archery range raised');
+    await expect(page.locator('#battle')).not.toHaveClass(/placing/);
+    await press(page,'[data-type="archery"]'); // A new order, not automatic repeat.
     await tapPoint(page,point);await expect(page.locator('#toast')).toContainText('Too close');
     const built=await pause(page);assertMap(built,id);
     expect(built.game.state.buildings.filter(b=>b.side===0&&b.type==='archery')).toMatchObject([{x:550,y,lane:map.startingLane}]);
@@ -181,15 +184,49 @@ test('Twin Span center-gap pointer snaps to a real road with sixteen sites and n
   expect(envelope.game.state.buildings.every(b=>[340,560].includes(b.y)&&[0,1].includes(b.lane))).toBe(true);
 });
 
-for(const mode of ['campaign','challenges'])test(mode+' initial legacy mission starts Classic after a nonclassic skirmish and preserves the skirmish choice',async ({page})=>{
-  await observeCanvas(page);await page.goto('/');await selectMap(page,'long-march');await press(page,'#start');await pause(page);await press(page,'#saveExit');
+for(const mode of ['campaign','challenges'])test(mode+' authored mission starts Classic after a nonclassic skirmish and preserves the skirmish choice',async ({page})=>{
+  await observeCanvas(page);
+  if(mode==='campaign'){
+    // A declared returning-player record unlocks the current Emberwatch replay.
+    // New main-campaign launches are revision 2, never the historical v1 battle.
+    const progress=createCampaignProgress();
+    progress.missions.emberwatch={completed:true,stars:1,bestTime:60};
+    await seedOnce(page,{[BACKUP_STORAGE_KEYS.campaign]:JSON.stringify(progress)});
+  }else await page.goto('/');
+  await selectMap(page,'long-march');await press(page,'#start');await pause(page);await press(page,'#saveExit');
   await press(page,'[data-mode="'+mode+'"]');await expect(page.locator('#mapPicker')).toBeHidden();
-  if(mode==='campaign')await press(page,'#skipIntroduction');
+  if(mode==='campaign'){
+    await press(page,'#campaignStoryNav');await press(page,'[data-chapter="embers"]');
+    await press(page,'[data-mission="emberwatch"]');
+    await expect(page.locator('#campaignMissionTitle')).toHaveText('Emberwatch');
+    await expect(page.locator('#start')).toBeEnabled();
+  }
   await press(page,'#start');const envelope=await pause(page);
-  expect(Game.restore(envelope.game).map.id).toBe('classic');expect(envelope.game.version).toBe(1);
-  expect(envelope[mode==='campaign'?'campaignId':'challengeId']).toBeTruthy();
+  expect(Game.restore(envelope.game).map.id).toBe('classic');
+  if(mode==='campaign')expect(envelope).toMatchObject({format:'ironroot-save',version:3,
+    scenario:{kind:'campaign',id:'emberwatch',revision:2},
+    game:{version:3,mapId:'classic',mapRevision:1,rulesetId:'frontier-campaign-open',rulesetRevision:1}});
+  else expect(envelope).toMatchObject({campaignId:null,challengeId:'shieldbreaker',game:{version:1}});
   await expect.poll(async()=>(await canvasFrame(page)).battle?.terrain?.width).toBe(3200);
   await press(page,'#saveExit');await press(page,'[data-mode="skirmish"]');await expect(page.locator('#selectedMapName')).toHaveText('Long March');
+  await press(page,'#start');assertMap(await pause(page),'long-march');
+});
+
+test('legacy Emberwatch resume keeps Classic and its original revision without replacing the nonclassic skirmish choice',async ({page})=>{
+  // Public legacy factory plus the historical envelope, not a new campaign start.
+  const legacy={format:'ironroot-save',version:2,challengeId:null,campaignId:'emberwatch',
+    game:createCampaignMission('emberwatch').serialize()};
+  await observeCanvas(page);await seedOnce(page,{[SAVE]:JSON.stringify(legacy)});
+  await selectMap(page,'long-march');await press(page,'[data-mode="campaign"]');
+  await expect(page.locator('#mapPicker')).toBeHidden();
+  await expect(page.locator('#resumeSaved')).toContainText('EMBERWATCH');
+  await press(page,'#resumeSaved');const envelope=await pause(page);
+  expect(envelope).toMatchObject({format:'ironroot-save',version:2,challengeId:null,campaignId:'emberwatch',game:{version:1}});
+  const restored=Game.restore(envelope.game);
+  expect(restored.map.id).toBe('classic');expect(restored.ruleset.id).toBe('frontier-legacy');
+  await expect.poll(async()=>(await canvasFrame(page)).battle?.terrain?.width).toBe(3200);
+  await press(page,'#saveExit');await press(page,'[data-mode="skirmish"]');
+  await expect(page.locator('#selectedMapName')).toHaveText('Long March');
   await press(page,'#start');assertMap(await pause(page),'long-march');
 });
 
@@ -247,6 +284,8 @@ for(const id of NEW_MAP_IDS){
     const map=MAPS[id];await installPad(page);await page.goto('/');await selectMap(page,id);await press(page,'#start');
     await press(page,'[data-type="archery"]');await tapPoint(page,await homePoint(page,map,270,map.lanes[0]));
     await expect(page.locator('#toast')).toContainText('Archery range raised');
+    await expect(page.locator('#battle')).not.toHaveClass(/placing/);
+    await press(page,'[data-type="archery"]'); // Explicit second order for controller confirmation.
     // Pointer controls reset controller context. A sampled neutral baseline and
     // Home pad input reveal the real cursor before confirm can spend anything.
     const target=await homePoint(page,map,550,map.lanes.at(-1));await padButton(page,8);

@@ -36,12 +36,13 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 
 ## Controls and saves
 
-- Choose a building, then a legal site. Troops spawn and fight automatically.
+- Choose a building, then a legal site. A successful placement finishes that build order and leaves the mobile drawer closed. With a mouse, hold Shift when placing to keep the same building selected while you can afford another. Touch, pen and controller placement are one-shot; rejected sites keep your selection and spend nothing. Troops spawn and fight automatically.
 - Drag the field with touch, left mouse or middle mouse, or use Home, Front and the minimap to navigate. Middle mouse only pans; right-click on the battlefield cancels building or volley placement. Escape and the visible Cancel button remain available.
 - Fullscreen is in Options, available from the title screen or pause menu. Activate the button with a click, tap, Enter or Space; browser/device support and permissions apply. If unavailable, keep playing in the window. Ordinary browser and installed-app play do not require fullscreen; screen-size pause rules still apply.
 - Select an owned building to upgrade or salvage it. Original protected structures cannot be salvaged from the UI.
 - Keys 1–7 (legacy) or 1–8 (Rootwarden) select visible building options, R selects Arrow volley, Space pauses, Escape cancels and arrows move the camera. Only buildings available in the active battle can be selected. The legacy optional lessons retain their old All buildings presentation control.
 - Battles autosave every five seconds and on pause. One active battle slot is shared across modes. A failed Save & return keeps the battle on the page.
+- Browser Back closes nested menus, pauses running combat, then uses Save & return. Teaching stays frozen when its reading dialog is dismissed. Forward never starts or resumes a battle. Top-level Back can leave normally; platform limits and validation are in `docs/BACK_NAVIGATION.md`.
 - Stars, records, preferences and history stay on that browser/device. Options → Save backups exports or imports a local JSON file. Import previews the replacement and asks for confirmation.
 - Reports describe the current battle, including sampled timelines. They are not playable replays, are not part of backups, and disappear on a new battle or reload unless exported.
 - Sound begins after a user gesture. Options include music, effects, volume, reduced motion and visual quality.
@@ -53,6 +54,7 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 - `dist/campaign-flow.js`, `dist/campaign-presentation.js`: shared-control guidance, teaching policy and concise briefings.
 - `dist/mobile-battlefield.js`, `dist/protected-objectives.js`, `dist/objective-alerts.js`: visible-geometry checks, pause latch, original-objective tracking and current-page warning policy.
 - `dist/persistence.js`, `dist/profile-session.js`, `dist/backup.js`: storage safety, profile coordination and portable saves.
+- `dist/menu-history.js`: finite, same-document menu navigation with opaque history entries.
 - `dist/app.js`, `dist/index.html`, `dist/styles.css`: controls, menus and integration.
 - `dist/render.js`, `dist/combat-feedback.js`, `dist/vfx.js`, `dist/audio.js`: original canvas art, timer-based poses, effects and procedural sound.
 - `tests/`, `qa/browser/`, `docs/`: checks and measured development records.

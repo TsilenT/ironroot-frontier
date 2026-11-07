@@ -1,6 +1,6 @@
 # Feature delivery, not branch count
 
-As of 6 November 2026. A branch, test fixture or passing simulation is not a shipped feature.
+As of 7 November 2026. A branch, test fixture or passing simulation is not a shipped feature.
 
 ## Live v0.14.1
 
@@ -21,7 +21,7 @@ The release also repairs the visible-viewport phone pause, short-screen control/
 
 ## Current gameplay implementation
 
-One coordinated v0.15.0 campaign integration is local and awaiting its exact cloud gate:
+The coordinated v0.15.0 campaign integration is in draft PR #8. Its first full gate exposed test setup mismatches; corrected tests and new user-requested build/teaching interactions are being reviewed locally:
 
 1. New-player campaign starts with a real one-road, two-building mission.
 2. A two-road mission introduces the Rootwarden screen, mines and towers: five usable buildings, with the usual costs.
@@ -29,7 +29,7 @@ One coordinated v0.15.0 campaign integration is local and awaiting its exact clo
 4. Engine construction and saved-battle admission enforce the roster. A UI toggle cannot bypass it. Replays may use a higher earned tier; a resumed battle retains the roster it saved.
 5. Existing campaign progress and ongoing legacy battles keep their identities and rules. New rules/scenario revisions and protocol-4 profile fencing are implemented with exact legacy preservation checks.
 
-The same candidate includes adapted PR #6 campaign navigation, amended PR #5 pause/options/restart, and adapted PR #7 paid teaching pauses. Two opening missions were won through ordinary native UI, with genuine 2→5 progression; third completion/replay still needs cloud verification after a native-browser error 9. All 973 Node tests pass, with one optional dependency skip. This is one selected change set for one integration PR, not a deployment claim.
+The same candidate includes adapted PR #6 campaign navigation, amended PR #5 pause/options/restart, and adapted PR #7 paid teaching pauses. Two opening missions were won through ordinary native UI, with genuine 2→5 progression. The full third paid mission and replay then passed in all four cloud browser profiles (portrait used separately recorded corrected native-minimap navigation). The original full gate was not green: 1,050 passed, 113 failed, 33 intentional skips. See CAMPAIGN_V015_QA_TRIAGE.md for preserved failures and repairs. The next revision also makes successful placement one-shot by default (mouse Shift repeats) and keeps mobile teaching outside the closed Build drawer. Those newer changes still require combined validation. This remains one coordinated PR, not a deployment claim.
 
 ## Still experimental or deferred
 
@@ -41,3 +41,7 @@ The same candidate includes adapted PR #6 campaign navigation, amended PR #5 pau
 - **Network PvP:** not implemented.
 
 The campaign and cross-lane gaps take priority over another polish-only batch. Experiments will be chosen, revised or rejected for gameplay reasons, not merged merely to close branches.
+
+### Final PR #8 feedback source checkpoint (7 November)
+
+The revised source combines one-shot placement (mouse+Shift repeats), mobile teaching visible outside Build, a pinned initial Start choice, finite Back/Forward menus, and an explicit optional fullscreen entry. Independent source review and 1,044 Node checks passed with one optional tooling skip. Browser QA of the exact revised commit is still required; live remains v0.14.1. Both Back defects found during review were fixed before freezing.

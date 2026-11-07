@@ -25,6 +25,7 @@ const FILES = [
   './training.css',
   './training.js',
   './input-scope.js',
+  './menu-history.js',
   './backup.js',
   './profile-session.js',
   './controller.js',

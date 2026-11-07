@@ -3186,6 +3186,23 @@ body.gamepad-active a:focus {
 .result .result-actions .text-button {margin: 0; min-height: 36px;}
 .result #resultMenu {margin-right: 0;}
 .welcome-links {flex-wrap: wrap;}
+/* One optional fullscreen control shares the existing footer, without a new
+   fixed toolbar or taking space from the essential in-battle gold/health HUD. */
+.welcome-links .welcome-fullscreen-status {
+  flex-basis: 100%;
+  margin: 0;
+  color: #c3cdb7;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.welcome-links #welcomeFullscreen {
+  min-height: 44px;
+  color: #e8d39b;
+}
+.welcome-links #welcomeFullscreen:disabled { color: #b3bba8; }
+.welcome-links #welcomeFullscreen:focus-visible { outline: 2px solid #f4d68d; outline-offset: 3px; }
+
 @media(max-width:700px) {
   .result-body {padding: 20px 17px 14px;}
   .result-actions {padding: 12px 17px 14px; gap: 5px 10px;}
@@ -3620,7 +3637,7 @@ body.gamepad-active a:focus {
 .viewport-actions { display: grid; gap: 8px; }
 .viewport-actions button { min-height: 44px; margin: 0; padding: 8px 12px; }
 
-/* Campaign hints live in the same command deck as every real build action. */
+/* Desktop hints accompany the same command deck as every real build action. */
 .campaign-coach {
   display: flex;
   align-items: baseline;
@@ -3652,8 +3669,8 @@ body.gamepad-active a:focus {
 }
 
 
-/* Hints use only the existing drawer. They do not consume the reserved world,
-   protected-objective or navigation rows. The drawer may scroll deliberately. */
+/* Uncoached mobile battles retain the original drawer. Active planning moves
+   the same hint/actions into the measured teaching rail below. */
 .protected-mobile .command-deck.inspecting-building > .deck-tools { display: none; }
 .protected-mobile .campaign-coach { margin: 0 12px 6px; }
 .protected-mobile .deck-tools { margin: 0 12px 6px; }
@@ -3872,8 +3889,60 @@ body.gamepad-active a:focus {
 
 /* Teaching stays below pause, viewport safety and recovery dialogs. */
 #coachingModal {z-index: 8;}
-.coaching-modal {max-width: 560px; padding: 24px;}
+.coaching-modal {max-width: 560px; padding: 20px; display: flex; flex-direction: column; gap: 12px; overflow: hidden;}
+.coaching-copy {min-height: 0; overflow-y: auto; overscroll-behavior: contain;}
+.coaching-copy:focus-visible {outline: 2px solid var(--gold); outline-offset: -2px;}
+.coaching-actions {flex-shrink: 0; display: grid; gap: 8px;}
 .coaching-modal h2 {margin: 8px 0 14px; font: 700 30px var(--display);}
 .coaching-modal p {line-height: 1.5; color: #e1e6d3;}
-.coaching-modal button {min-height: 44px; width: 100%; margin-top: 8px;}
+.coaching-modal button {min-height: 44px; width: 100%; margin: 0;}
 .deck-tools {flex-wrap: wrap;}
+
+/* The real hint and Start/Resume controls leave the Build drawer on phones.
+   This is reserved grid space, never an overlay on placement sites or tools. */
+.campaign-teaching {display: contents;}
+.coach-next, .coach-rail-status {display: none;}
+.campaign-coach:focus-visible {outline: 2px solid var(--gold); outline-offset: -2px;}
+.app.protected-mobile.mobile-coaching {--mobile-teaching: 64px;}
+.protected-mobile .campaign-teaching {display: contents;}
+.protected-mobile.mobile-coaching .campaign-teaching {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px;
+  min-width: 0; min-height: 0; height: var(--mobile-teaching); padding: 4px 6px;
+  background: #203429; border-block: 1px solid #7f7952; overflow: hidden;
+}
+.protected-mobile.mobile-coaching .campaign-coach {
+  display: block; min-width: 0; min-height: 0; height: 100%; margin: 0; padding: 0 4px;
+  overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  font-size: 12px; line-height: 15px;
+}
+.protected-mobile.mobile-coaching .coach-next {display: block; color: #fff0be; font-size: 12px; line-height: 15px; font-weight: 600; margin-bottom: 5px;}
+.protected-mobile.mobile-coaching .campaign-coach b {display: block; margin: 0 0 3px;}
+.protected-mobile.mobile-coaching .teaching-actions {margin: 0; gap: 4px; align-self: center; flex-wrap: nowrap;}
+.protected-mobile.mobile-coaching .teaching-actions button {padding: 4px; min-width: 44px; height: 44px; font-size: 12px;}
+.protected-mobile.mobile-coaching #coachResume {min-width: 56px; background: #e5ca88; color: #17261c; font-weight: 700;}
+.protected-mobile.mobile-coaching .coach-rail-status {display: block; margin: 0; align-self: center; font-size: 12px; line-height: 16px;}
+/* Landscape keeps the full-height protected HUD/navigation at right. Only the
+   left field is shortened: 320px becomes 256px, above the 212px safety floor. */
+.protected-mobile.protected-sidebar.mobile-coaching .battlefield {margin-top: var(--mobile-teaching);}
+.protected-mobile.protected-sidebar.mobile-coaching .campaign-teaching {grid-column: 1; grid-row: 1; align-self: start;}
+.protected-mobile.protected-sidebar.mobile-coaching .command-deck {
+  max-height: calc(100% - var(--mobile-teaching) - var(--mobile-inset-top) - var(--mobile-inset-bottom));
+}
+.app.protected-mobile.protected-portrait.mobile-coaching {
+  --mobile-teaching: 88px;
+  grid-template-rows: var(--mobile-header) minmax(0, 1fr) var(--mobile-teaching) var(--mobile-dock) var(--mobile-navigation);
+}
+.protected-mobile.protected-portrait.mobile-coaching .campaign-teaching {grid-column: 1; grid-row: 3;}
+.protected-mobile.protected-portrait.mobile-coaching .protected-dock {grid-row: 4;}
+.protected-mobile.protected-portrait.mobile-coaching .protected-navigation {grid-row: 5;}
+.protected-mobile.protected-portrait.mobile-coaching .command-deck {
+  bottom: calc(var(--mobile-teaching) + var(--mobile-dock) + var(--mobile-navigation) + var(--mobile-inset-bottom));
+  max-height: calc(100% - var(--mobile-header) - var(--mobile-teaching) - var(--mobile-dock) - var(--mobile-navigation) - var(--mobile-inset-top) - var(--mobile-inset-bottom));
+}
+.app.protected-mobile.protected-short-portrait.mobile-coaching {--mobile-teaching: 44px;}
+.protected-mobile.protected-short-portrait.mobile-coaching .campaign-teaching {padding-block: 0; border-block: 0; box-shadow: inset 0 1px #7f7952;}
+.protected-mobile.protected-short-portrait.mobile-coaching .coach-next {line-height: 14px;}
+@media (max-height: 500px) and (orientation: landscape) {
+  .coaching-modal {padding: 16px;}
+  .coaching-actions {grid-template-columns: 1fr 1fr;}
+}
