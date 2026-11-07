@@ -41,7 +41,7 @@ export class OptionGame extends Game {
   }
   _step(dt){
     super._step(dt);
-    if(this.state.winner!==null||this.limitReason||(this.ruleset.endgame.forcedDecay&&this.state.time>=420-1e-8))return;
+    if(this.state.winner!==null||this.limitReason||(this.ruleset.endgame.forcedDecay&&this.state.time>420))return;
     for(const side of [0,1]){
       const p=this.purchases[side],b=this.state.bases[side];
       if(p?.kind!=='regen'||b.hp<=0)continue;

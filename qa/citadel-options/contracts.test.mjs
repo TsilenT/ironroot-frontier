@@ -48,7 +48,7 @@ test('recurring regen exceeds 600 total, respects max HP, terminal and timed dec
  const g=fixture();g.state.bases[0].hp=5000;g.purchase('regen');advance(g,8000);close(g.purchases[0].healed,1000);close(g.state.bases[0].hp,6000);g._damage(g.state.bases[0],1000,1);advance(g,8000);close(g.purchases[0].healed,2000);close(g.state.bases[0].hp,6000);
  const full=fixture();full.state.bases[0].hp=5999;full.purchase('regen');advance(full,400);close(full.state.bases[0].hp,6000);close(full.purchases[0].healed,1);
  const dead=fixture();dead.purchase('regen');dead.state.bases[0].hp=0;dead.update(.05);assert.equal(dead.state.bases[0].hp,0);assert.equal(dead.state.winner,1);
- const timed=fixture(true);timed.state.bases[0].hp=5000;timed.purchase('regen');timed.tick=8399;timed.state.time=419.95;advance(timed,40);assert.equal(timed.purchases[0].healed,0);assert.ok(timed.state.bases[0].hp<5000);
+ const timed=fixture(true);timed.state.bases[0].hp=5000;timed.purchase('regen');timed.tick=8399;timed.state.time=419.95;timed.update(.05);assert.equal(timed.state.time,420);close(timed.purchases[0].healed,.15);const hp=timed.state.bases[0].hp;advance(timed,39);close(timed.purchases[0].healed,.15);assert.ok(timed.state.bases[0].hp<hp);
 });
 test('disabled parity with released engine during paid normal-AI actions',()=>{
  const options={ai:false,seed:91,mapId:'twin-span',rulesetId:'frontier-air-local-open'},a=new Game(options),b=new OptionGame(options);
@@ -67,4 +67,18 @@ test('controlled long open/timed regeneration: interrupted and continuous attrit
   rows.push({timed,pattern,time:g.state.time,winner:g.state.winner,hp:g.state.bases.map(b=>b.hp),restored:g.purchases[0].healed});
  }
  writeFileSync('qa/citadel-options/controlled-regen.json',JSON.stringify({scope:'synthetic no-production attrition fixtures; no paid-match claims',rows},null,2)+'\n');
+});
+
+test('queued strike alone does not interrupt regen; only resolved positive base damage resets delay',()=>{
+ const g=fixture();g.state.bases[0].hp=5000;g.purchase('regen');advance(g,200);const before=g.lastBaseDamage[0];g.damageQueue=[];g._damage(g.state.bases[0],20,1);assert.equal(g.lastBaseDamage[0],before);assert.equal(g.damageQueue.length,1);const queue=g.damageQueue;g.damageQueue=null;for(const hit of queue)g._damage(...hit);assert.equal(g.lastBaseDamage[0],g.state.time);const healed=g.purchases[0].healed;advance(g,160);close(g.purchases[0].healed,healed);g.update(.05);assert.ok(g.purchases[0].healed>healed);
+ const last=g.lastBaseDamage[0];g._damage(g.state.bases[0],0,1);assert.equal(g.lastBaseDamage[0],last);
+});
+test('extra arrow frame fairness: distinct queued targets, no overkill bounty or same-target retry, both sides',()=>{
+ for(const side of [0,1]){
+  const g=observe(fixture());g.purchase('arrows',side);const a=enemy(g),b=enemy(g,'warrior',210);a.hp=32;
+  if(side===1)for(const u of [a,b]){u.side=0;u.x=g.map.width-u.x;}
+  const targets=[],fire=g._baseShot.bind(g);g._baseShot=(base,target,d,extra)=>{targets.push({id:target.id,extra});return fire(base,target,d,extra);};
+  g.damageQueue=[];g._damage(b,180,side);g._fire(g.state.bases[side],a,32,'tower');assert.equal(a.hp,32);assert.equal(b.hp,180);assert.deepEqual(targets,[{id:a.id,extra:false},{id:b.id,extra:true}]);
+  const queue=g.damageQueue;g.damageQueue=null;for(const hit of queue)g._damage(...hit);assert.equal(g.metrics.baseShots[side].damage,32);assert.equal(g.metrics.baseShots[side].kills,1);assert.equal(g.metrics.ledgers[side].bounty,4);assert.equal(g.state.stats.kills[side],2);
+ }
 });

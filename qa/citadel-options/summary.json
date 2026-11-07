@@ -1,0 +1,1101 @@
+{
+  "sourceCommit": "ff760756df5e9a99f0c349ebcff17344b2f60338",
+  "totalGames": 120,
+  "sharedHistoryChoiceGroups": 24,
+  "groups": {
+    "all": {
+      "shot": {
+        "assigned": 24,
+        "alive": 24,
+        "timeEligible": 24,
+        "paid": 24,
+        "rejected": [],
+        "outcomes": {
+          "win": 7,
+          "loss": 17,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          127.09999999999492,
+          248.10000000002216
+        ],
+        "terminalTimeRange": [
+          127.09999999999492,
+          248.10000000002216
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 7,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 35661,
+          "archer": 19213.600000000035,
+          "siege": 33930,
+          "gryphon": 13195.39999999988,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "regen": {
+        "assigned": 24,
+        "alive": 24,
+        "timeEligible": 24,
+        "paid": 24,
+        "rejected": [],
+        "outcomes": {
+          "win": 7,
+          "loss": 17,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          123.59999999999512,
+          255.8000000000239
+        ],
+        "terminalTimeRange": [
+          123.59999999999512,
+          255.8000000000239
+        ],
+        "healedRange": [
+          0,
+          136.00000000033188
+        ],
+        "meanHealed": 21.250000000051834,
+        "noCitadelDamage": 7,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 38943,
+          "archer": 22833.60000000004,
+          "siege": 31833,
+          "gryphon": 8900.399999999923,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "arrows": {
+        "assigned": 24,
+        "alive": 24,
+        "timeEligible": 24,
+        "paid": 24,
+        "rejected": [],
+        "outcomes": {
+          "win": 7,
+          "loss": 17,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          132.39999999999586,
+          250.4500000000227
+        ],
+        "terminalTimeRange": [
+          132.39999999999586,
+          250.4500000000227
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 7,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          56
+        ],
+        "incomingTotals": {
+          "warrior": 34763,
+          "archer": 22704.400000000038,
+          "siege": 33279,
+          "gryphon": 11253.599999999906,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "archery": {
+        "assigned": 24,
+        "alive": 24,
+        "timeEligible": 24,
+        "paid": 24,
+        "rejected": [],
+        "outcomes": {
+          "win": 11,
+          "loss": 13,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          124.09999999999509,
+          390.4500000000545
+        ],
+        "terminalTimeRange": [
+          124.09999999999509,
+          390.4500000000545
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 7,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 36308,
+          "archer": 9117,
+          "siege": 33051,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "hold": {
+        "assigned": 24,
+        "alive": 24,
+        "timeEligible": 24,
+        "paid": 0,
+        "rejected": [],
+        "outcomes": {
+          "win": 7,
+          "loss": 17,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          123.59999999999512,
+          302.0500000000344
+        ],
+        "terminalTimeRange": [
+          123.59999999999512,
+          302.0500000000344
+        ],
+        "healedRange": null,
+        "meanHealed": null,
+        "noCitadelDamage": 7,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 38423.75,
+          "archer": 20412,
+          "siege": 31833,
+          "gryphon": 11331.249999999947,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      }
+    },
+    "swarm": {
+      "shot": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 3,
+          "loss": 5,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          127.09999999999492,
+          168.7000000000041
+        ],
+        "terminalTimeRange": [
+          127.09999999999492,
+          168.7000000000041
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 3,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 20751,
+          "archer": 9249,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "regen": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 3,
+          "loss": 5,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          123.59999999999512,
+          168.55000000000408
+        ],
+        "terminalTimeRange": [
+          123.59999999999512,
+          168.55000000000408
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 3,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 21033,
+          "archer": 8967,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "arrows": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 3,
+          "loss": 5,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          132.39999999999586,
+          169.70000000000434
+        ],
+        "terminalTimeRange": [
+          132.39999999999586,
+          169.70000000000434
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 3,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          51
+        ],
+        "incomingTotals": {
+          "warrior": 19013,
+          "archer": 10987,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "archery": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 3,
+          "loss": 5,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          124.09999999999509,
+          192.15000000000944
+        ],
+        "terminalTimeRange": [
+          124.09999999999509,
+          192.15000000000944
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 3,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 21359,
+          "archer": 8641,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "hold": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 0,
+        "rejected": [],
+        "outcomes": {
+          "win": 3,
+          "loss": 5,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          123.59999999999512,
+          169.60000000000431
+        ],
+        "terminalTimeRange": [
+          123.59999999999512,
+          169.60000000000431
+        ],
+        "healedRange": null,
+        "meanHealed": null,
+        "noCitadelDamage": 3,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 20897,
+          "archer": 9103,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      }
+    },
+    "siege": {
+      "shot": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          141.19999999999786,
+          152.20000000000036
+        ],
+        "terminalTimeRange": [
+          141.19999999999786,
+          152.20000000000036
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 0,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 14070,
+          "archer": 0,
+          "siege": 33930,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "regen": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          141.19999999999786,
+          149.09999999999965
+        ],
+        "terminalTimeRange": [
+          141.19999999999786,
+          149.09999999999965
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 0,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 16167,
+          "archer": 0,
+          "siege": 31833,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "arrows": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          141.19999999999786,
+          158.70000000000184
+        ],
+        "terminalTimeRange": [
+          141.19999999999786,
+          158.70000000000184
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 0,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          18,
+          56
+        ],
+        "incomingTotals": {
+          "warrior": 14721,
+          "archer": 0,
+          "siege": 33279,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "archery": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          142.2499999999981,
+          165.85000000000346
+        ],
+        "terminalTimeRange": [
+          142.2499999999981,
+          165.85000000000346
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 0,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 14949,
+          "archer": 0,
+          "siege": 33051,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "hold": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 0,
+        "rejected": [],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          141.19999999999786,
+          149.09999999999965
+        ],
+        "terminalTimeRange": [
+          141.19999999999786,
+          149.09999999999965
+        ],
+        "healedRange": null,
+        "meanHealed": null,
+        "noCitadelDamage": 0,
+        "noBaseShots": 0,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 16167,
+          "archer": 0,
+          "siege": 31833,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      }
+    },
+    "air": {
+      "shot": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 4,
+          "loss": 4,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          181.75000000000708,
+          248.10000000002216
+        ],
+        "terminalTimeRange": [
+          181.75000000000708,
+          248.10000000002216
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 4,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 840,
+          "archer": 9964.600000000035,
+          "siege": 0,
+          "gryphon": 13195.39999999988,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "regen": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 4,
+          "loss": 4,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          181.75000000000708,
+          255.8000000000239
+        ],
+        "terminalTimeRange": [
+          181.75000000000708,
+          255.8000000000239
+        ],
+        "healedRange": [
+          0,
+          136.00000000033188
+        ],
+        "meanHealed": 63.7500000001555,
+        "noCitadelDamage": 4,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 1743,
+          "archer": 13866.600000000037,
+          "siege": 0,
+          "gryphon": 8900.399999999923,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "arrows": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 4,
+          "loss": 4,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          181.75000000000708,
+          250.4500000000227
+        ],
+        "terminalTimeRange": [
+          181.75000000000708,
+          250.4500000000227
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 4,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          34
+        ],
+        "incomingTotals": {
+          "warrior": 1029,
+          "archer": 11717.40000000004,
+          "siege": 0,
+          "gryphon": 11253.599999999906,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "archery": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 8,
+        "rejected": [],
+        "outcomes": {
+          "win": 8,
+          "loss": 0,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          174.05000000000533,
+          390.4500000000545
+        ],
+        "terminalTimeRange": [
+          174.05000000000533,
+          390.4500000000545
+        ],
+        "healedRange": [
+          0,
+          0
+        ],
+        "meanHealed": 0,
+        "noCitadelDamage": 4,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 0,
+          "archer": 476,
+          "siege": 0,
+          "gryphon": 0,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      },
+      "hold": {
+        "assigned": 8,
+        "alive": 8,
+        "timeEligible": 8,
+        "paid": 0,
+        "rejected": [],
+        "outcomes": {
+          "win": 4,
+          "loss": 4,
+          "ongoing": 0,
+          "draw": 0
+        },
+        "timeRange": [
+          181.75000000000708,
+          302.0500000000344
+        ],
+        "terminalTimeRange": [
+          181.75000000000708,
+          302.0500000000344
+        ],
+        "healedRange": null,
+        "meanHealed": null,
+        "noCitadelDamage": 4,
+        "noBaseShots": 4,
+        "extraShotRange": [
+          0,
+          0
+        ],
+        "incomingTotals": {
+          "warrior": 1359.75,
+          "archer": 11309,
+          "siege": 0,
+          "gryphon": 11331.249999999947,
+          "wizard": 0,
+          "rootwarden": 0,
+          "unknown": 0
+        }
+      }
+    }
+  },
+  "paired": {
+    "shot": {
+      "archery": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [
+          {
+            "id": "classic/air/17/0/shot",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "shot",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 221.65000000001615,
+            "alternativeTime": 333.7000000000416,
+            "bothTerminal": true,
+            "terminalTimeDelta": -112.05000000002545
+          },
+          {
+            "id": "classic/air/17/1/shot",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "shot",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 248.10000000002216,
+            "alternativeTime": 353.9500000000462,
+            "bothTerminal": true,
+            "terminalTimeDelta": -105.85000000002404
+          },
+          {
+            "id": "classic/air/91/0/shot",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "shot",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 244.3500000000213,
+            "alternativeTime": 390.4500000000545,
+            "bothTerminal": true,
+            "terminalTimeDelta": -146.1000000000332
+          },
+          {
+            "id": "classic/air/91/1/shot",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "shot",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 210.55000000001363,
+            "alternativeTime": 309.5500000000361,
+            "bothTerminal": true,
+            "terminalTimeDelta": -99.00000000002248
+          }
+        ],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 4,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 13,
+        "bothLossDelayRange": [
+          -23.450000000005332,
+          4.199999999999832
+        ],
+        "bothWinTimeDeltaRange": [
+          -4.900000000001114,
+          7.900000000001796
+        ]
+      },
+      "hold": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 0,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 17,
+        "bothLossDelayRange": [
+          -74.80000000001698,
+          7.30000000000166
+        ],
+        "bothWinTimeDeltaRange": [
+          0,
+          0
+        ]
+      }
+    },
+    "regen": {
+      "archery": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [
+          {
+            "id": "classic/air/17/0/regen",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "regen",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 255.8000000000239,
+            "alternativeTime": 333.7000000000416,
+            "bothTerminal": true,
+            "terminalTimeDelta": -77.90000000001768
+          },
+          {
+            "id": "classic/air/17/1/regen",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "regen",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 247.25000000002197,
+            "alternativeTime": 353.9500000000462,
+            "bothTerminal": true,
+            "terminalTimeDelta": -106.70000000002423
+          },
+          {
+            "id": "classic/air/91/0/regen",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "regen",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 242.30000000002084,
+            "alternativeTime": 390.4500000000545,
+            "bothTerminal": true,
+            "terminalTimeDelta": -148.15000000003366
+          },
+          {
+            "id": "classic/air/91/1/regen",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "regen",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 233.7000000000189,
+            "alternativeTime": 309.5500000000361,
+            "bothTerminal": true,
+            "terminalTimeDelta": -75.85000000001722
+          }
+        ],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 4,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 13,
+        "bothLossDelayRange": [
+          -23.600000000005366,
+          -0.4500000000001023
+        ],
+        "bothWinTimeDeltaRange": [
+          -4.900000000001114,
+          7.900000000001796
+        ]
+      },
+      "hold": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 0,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 17,
+        "bothLossDelayRange": [
+          -54.80000000001243,
+          0
+        ],
+        "bothWinTimeDeltaRange": [
+          0,
+          0
+        ]
+      }
+    },
+    "arrows": {
+      "archery": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [
+          {
+            "id": "classic/air/17/0/arrows",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "arrows",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 222.45000000001633,
+            "alternativeTime": 333.7000000000416,
+            "bothTerminal": true,
+            "terminalTimeDelta": -111.25000000002527
+          },
+          {
+            "id": "classic/air/17/1/arrows",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "arrows",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 250.4500000000227,
+            "alternativeTime": 353.9500000000462,
+            "bothTerminal": true,
+            "terminalTimeDelta": -103.5000000000235
+          },
+          {
+            "id": "classic/air/91/0/arrows",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "arrows",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 244.3500000000213,
+            "alternativeTime": 390.4500000000545,
+            "bothTerminal": true,
+            "terminalTimeDelta": -146.1000000000332
+          },
+          {
+            "id": "classic/air/91/1/arrows",
+            "alternative": "archery",
+            "threat": "air",
+            "choice": "arrows",
+            "paid": true,
+            "outcome": "loss",
+            "alternativeOutcome": "win",
+            "time": 227.90000000001757,
+            "alternativeTime": 309.5500000000361,
+            "bothTerminal": true,
+            "terminalTimeDelta": -81.65000000001854
+          }
+        ],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 4,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 13,
+        "bothLossDelayRange": [
+          -22.450000000005105,
+          14.200000000002106
+        ],
+        "bothWinTimeDeltaRange": [
+          -4.900000000001114,
+          7.900000000001796
+        ]
+      },
+      "hold": {
+        "pairs": 24,
+        "paidPairs": 24,
+        "changedOutcomes": [],
+        "winInsteadOfLoss": 0,
+        "lossInsteadOfWin": 0,
+        "ongoingInsteadOfLoss": 0,
+        "lossInsteadOfOngoing": 0,
+        "bothLoss": 17,
+        "bothLossDelayRange": [
+          -74.0000000000168,
+          14.700000000002078
+        ],
+        "bothWinTimeDeltaRange": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "ongoing": [],
+  "maxLedgerResidual": 0,
+  "unknownIncoming": 0
+}
