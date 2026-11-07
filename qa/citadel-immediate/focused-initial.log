@@ -1,0 +1,76 @@
+✔ published v0.19 campaign-revision-four and trial-revision-two descriptors remain byte-identical (1.960808ms)
+✔ every campaign and field-trial fresh attempt has citadel eligibility with unchanged deployment, roster and objective data (58.695932ms)
+✔ all earned opening tiers retain their two/five/eight roster and original launch locks with revision five (0.963285ms)
+✔ published campaign and trial histories coexist with fresh citadel identities in a verified backup without earned-record changes (29.541064ms)
+✔ actual damage below 2000 HP fails Furnace Heart and Far Beacon on its first tick before regeneration can recover (2.443362ms)
+✔ regeneration never bypasses an actual protected loss or the authored deadline (1.306652ms)
+✔ authored starting damage can recover toward the ordinary 6000 maximum and recovered final HP can earn an existing medal (0.478538ms)
+✔ exact time zero and early fixed steps allow one 190-gold choice for each side, without an immediate effect (112.926889ms)
+✔ time-zero regeneration waits the full eight seconds, damage restarts only the real recovery wait, and early healing restores (15.359155ms)
+✔ early paid saves, backup and history retain every domain and accept recovery before the old 98-second floor (41.703239ms)
+✔ released bought records are state-equivalent and unbought early checkpoints gain availability without rewriting identity (4.243493ms)
+✖ protocol 11 marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains (5.096633ms)
+✔ protocol-10 interrupted and unverified upgrades preserve earned domains; future protocol recovery is fenced (7.299336ms)
+✔ fresh campaign and trial identities allow affordable time-zero choice while earned rosters and revisions stay intact (58.673147ms)
+✔ AI has no waiting privilege and pays the identical price at time zero on either side (1.27723ms)
+✔ Pause opens choices immediately; cancel and low gold never spend; only explicit Resume restarts play (3.850178ms)
+✔ failed purchase save retains warning through reopen and retries saving without a second debit (1.911664ms)
+✔ teaching holds and current-checkpoint safety still hide or block immediate choices without a replacement timer (8.569095ms)
+✔ new immutable identities preserve unit, building, economy and endgame definitions (9.84591ms)
+✔ one honest 190-gold purchase per side changes no health, income, production or cooldown (2.48443ms)
+✔ gold, stale input, dead/end and safety boundaries reject without mutation (1.061354ms)
+✔ regeneration preserves pre-purchase damage, waits eight full seconds and resets only on actual damage (9.983015ms)
+✔ regeneration recurs beyond 600 HP, clamps at ordinary maximum and cannot resurrect (16.314605ms)
+✔ timed regeneration works before decay and stops exactly when native decay is active; open play keeps it (0.760307ms)
+✔ extra arrow retains primary cadence/range and hits a distinct nearest living target at half damage (7.19945ms)
+✔ one target never receives the extra arrow; strict range excludes 310 and accepts inside (0.71271ms)
+✔ frame-snapshot target eligibility and applied damage preserve fair simultaneous kills/bounties (0.817749ms)
+✔ full projectile display budget does not cancel either native damage or the extra shot (0.934043ms)
+✔ AI chooses honestly before ordinary spending, for either side and only in the disclosed situations (2.875224ms)
+✔ strict metadata admission rejects cross-mode, unknown, impossible, mistyped and reset effect data (8.012693ms)
+✔ extra projectile field is admitted only for the opted-in bought-arrow tower and survives restoration (8.708989ms)
+✔ bridge interaction keeps exact native receipts separate from purchase spending and restore (3.476907ms)
+✔ disabled-mode deterministic paid histories match released main byte for byte, bridge separately (801.762598ms)
+✔ current protocol upgrades only marker bytes, fences exact live v0.19 writers and preserves earned domains (4.803345ms)
+✔ general citadel availability adds no preference and preserves optional bridge settings (7.214171ms)
+✔ each citadel identity and purchased choice survives save, backup, history and exact engine restoration (452.4423ms)
+✔ Skirmish citadel identities cannot be substituted into authored saves or history (8.80335ms)
+✔ unfinished, future and unverified protocol upgrades retain all earned bytes (1.218243ms)
+✔ failed citadel backup replacement rolls every domain back exactly and preserves current-protocol writer fence (3.263594ms)
+✔ citadel status badge fits either visible battlefield edge and stays absent for an offscreen base (155.932825ms)
+✔ fresh Skirmish always has choices, independently of bridge and endgame (2.481543ms)
+✔ availability disclosure starts at time zero and reflects ordinary gold (0.961185ms)
+✔ regen text preserves purchase wait at full health, actual damage wait, paused readiness and decay (0.689585ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 42
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1037.251795
+
+✖ failing tests:
+
+test at tests/citadel-immediate.test.mjs:75:1
+✖ protocol 11 marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains (5.096633ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'invalid-marker'
+  - 'unsupported-protocol'
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-citadel-immediate/work/tests/citadel-immediate.test.mjs:83:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'invalid-marker',
+    expected: 'unsupported-protocol',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

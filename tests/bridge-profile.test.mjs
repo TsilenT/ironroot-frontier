@@ -24,12 +24,12 @@ const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PRO
 const old=r=>protocolEight.createProfileSession(()=>r,{requiredProtocolVersion:8});
 
 test('current protocol advances only the marker and fences real v0.18.1 clients before they erase bridge choice or earned history',()=>{
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
   const domains=entries(earned()),r=storage([[MARKER,marker(8)],...domains]),stale=old(r);
   assert.equal(stale.status().canWrite,true);
   const ready=current(r);assert.equal(ready.status().canWrite,true);
   assert.deepEqual(r.writes,[MARKER]);for(const [key,value]of domains)assert.equal(r.data.get(key),value);
-  assert.deepEqual(JSON.parse(r.data.get(MARKER)),{format:'ironroot-profile',version:10,epoch:'earned-profile',phase:'ready'});
+  assert.deepEqual(JSON.parse(r.data.get(MARKER)),{format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,epoch:'earned-profile',phase:'ready'});
   ready.storage.setItem(K.settings,JSON.stringify({...earned().settings,skirmishBridgeIncome:true}));
   const game=new Game({rulesetId:'frontier-bridge-open',ai:false});
   ready.storage.setItem(K.history,JSON.stringify([...earned().history,{won:true,draw:false,difficulty:'normal',time:100,kills:10,built:4,date,identity:identityOf(game)}]));
@@ -57,7 +57,7 @@ test('old earned profile and checked/unchecked bridge choices survive verified b
     const next=current(target);assert.equal(next.status().canWrite,true);
     assert.deepEqual(parseBackup(createBackup(next.storage,{createdAt:date})).data,value);
     if(value.battle)assert.deepEqual(decodeBattle(JSON.parse(next.storage.getItem(K.battle))).game.serialize(),value.battle.game);
-    assert.equal(target.data.get('unrelated'),'retain');assert.equal(JSON.parse(target.data.get(MARKER)).version,10);
+    assert.equal(target.data.get('unrelated'),'retain');assert.equal(JSON.parse(target.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   }
 });
 
@@ -68,7 +68,7 @@ test('bridge setup preference admits only optional booleans, preserving other st
 });
 
 test('unfinished, future and unverified protocol upgrades never alter earned domains',()=>{
-  for(const prior of [marker(8,'restoring'),marker(8,'failed'),marker(11)]) {
+  for(const prior of [marker(8,'restoring'),marker(8,'failed'),marker(CURRENT_PROFILE_PROTOCOL_VERSION+1)]) {
     const r=storage([[MARKER,prior],...entries(earned())]),before=[...r.data],p=current(r);
     assert.equal(p.status().canWrite,false);assert.deepEqual([...r.data],before);assert.deepEqual(r.writes,[]);
   }
