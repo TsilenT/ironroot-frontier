@@ -1,0 +1,924 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-frontier/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "keyboard-contrast.spec.mjs",
+      "--project=desktop",
+      "--project=narrow-phone",
+      "--project=landscape",
+      "--workers=2"
+    ],
+    "configFile": "/workspace/ironroot-frontier/qa/browser/playwright.config.mjs",
+    "rootDir": "/workspace/ironroot-frontier/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 320,
+            "height": 568
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "narrow-phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1180,
+            "height": 757
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "keyboard-contrast.spec.mjs",
+      "file": "keyboard-contrast.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "enabled keyboard buttons have readable painted states, visible focus and real actions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9145,
+                  "error": {
+                    "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m",
+                    "stack": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                      "column": 101,
+                      "line": 42
+                    },
+                    "snippet": " \u001b[90m 40 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundAlpha)\u001b[33m.\u001b[39mtoBe(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundImage)\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mtextContrast\u001b[33m,\u001b[39m \u001b[32m`${sample.label}: ${sample.color} on ${sample.backgroundColor}`\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m4.5\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderWidth\u001b[33m,\u001b[39m sample\u001b[33m.\u001b[39mlabel \u001b[33m+\u001b[39m \u001b[32m' has an actual border'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderStyle)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Change Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:13:54.299Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-narrow-phone/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-narrow-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-narrow-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "column": 101,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 9391,
+                  "error": {
+                    "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m",
+                    "stack": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                      "column": 101,
+                      "line": 42
+                    },
+                    "snippet": " \u001b[90m 40 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundAlpha)\u001b[33m.\u001b[39mtoBe(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundImage)\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mtextContrast\u001b[33m,\u001b[39m \u001b[32m`${sample.label}: ${sample.color} on ${sample.backgroundColor}`\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m4.5\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderWidth\u001b[33m,\u001b[39m sample\u001b[33m.\u001b[39mlabel \u001b[33m+\u001b[39m \u001b[32m' has an actual border'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderStyle)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Change Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:13:56.230Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-landscape/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-landscape/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-landscape/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "column": 101,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6997,
+                  "error": {
+                    "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m",
+                    "stack": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                      "column": 101,
+                      "line": 42
+                    },
+                    "snippet": " \u001b[90m 40 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundAlpha)\u001b[33m.\u001b[39mtoBe(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 41 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundImage)\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 42 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mtextContrast\u001b[33m,\u001b[39m \u001b[32m`${sample.label}: ${sample.color} on ${sample.backgroundColor}`\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m4.5\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 43 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderWidth\u001b[33m,\u001b[39m sample\u001b[33m.\u001b[39mlabel \u001b[33m+\u001b[39m \u001b[32m' has an actual border'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderStyle)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan right: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Change Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Change Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 101,
+                        "line": 42
+                      },
+                      "message": "Error: Clear Pan left: rgb(238, 233, 217) on rgb(239, 239, 239)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m4.5\u001b[39m\nReceived:    \u001b[31m1.0561037764478018\u001b[39m\n\n  40 |   expect(sample.backgroundAlpha).toBe(1);\n  41 |   expect(sample.backgroundImage).toBe('none');\n> 42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n     |                                                                                                     ^\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:42:101)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:101:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:14:06.381Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-enabled--a07fb-ible-focus-and-real-actions-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "column": 101,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e425d4b5c462e88de0f-5c801698bc65f8a29b63",
+          "file": "keyboard-contrast.spec.mjs",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "keyboard buttons preserve native forced colors and keyboard activation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "One bounded native forced-colors profile.",
+                  "location": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "line": 105,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:13:54.284Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "One bounded native forced-colors profile.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "line": 105,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "One bounded native forced-colors profile.",
+                  "location": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "line": 105,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 438,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:14:05.042Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "One bounded native forced-colors profile.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "line": 105,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            },
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6842,
+                  "error": {
+                    "message": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m",
+                    "stack": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                      "column": 75,
+                      "line": 43
+                    },
+                    "snippet": " \u001b[90m 41 |\u001b[39m   expect(sample\u001b[33m.\u001b[39mbackgroundImage)\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mtextContrast\u001b[33m,\u001b[39m \u001b[32m`${sample.label}: ${sample.color} on ${sample.backgroundColor}`\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m4.5\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderWidth\u001b[33m,\u001b[39m sample\u001b[33m.\u001b[39mlabel \u001b[33m+\u001b[39m \u001b[32m' has an actual border'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m   expect\u001b[33m.\u001b[39msoft(sample\u001b[33m.\u001b[39mborderStyle)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(\u001b[32m'none'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 45 |\u001b[39m }\n \u001b[90m 46 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan right has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:59:147)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:73:33)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Change Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 75,
+                        "line": 43
+                      },
+                      "message": "Error: Clear Pan left has an actual border\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m0\u001b[39m\n\n  41 |   expect(sample.backgroundImage).toBe('none');\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n> 43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n     |                                                                           ^\n  44 |   expect.soft(sample.borderStyle).not.toBe('none');\n  45 | }\n  46 |\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:43:75)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                        "column": 39,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"none\"\u001b[39m\n\n  42 |   expect.soft(sample.textContrast, `${sample.label}: ${sample.color} on ${sample.backgroundColor}`).toBeGreaterThanOrEqual(4.5);\n  43 |   expect.soft(sample.borderWidth, sample.label + ' has an actual border').toBeGreaterThanOrEqual(1);\n> 44 |   expect.soft(sample.borderStyle).not.toBe('none');\n     |                                       ^\n  45 | }\n  46 |\n  47 | async function openControls(page) {\n    at readable (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:44:39)\n    at checkControls (/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:79:84)\n    at /workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs:108:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T17:14:07.253Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-keyboard-dba58-ors-and-keyboard-activation-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-keyboard-dba58-ors-and-keyboard-activation-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/keyboard-contrast-keyboard-dba58-ors-and-keyboard-activation-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-contrast.spec.mjs",
+                    "column": 75,
+                    "line": 43
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e425d4b5c462e88de0f-8f0c1bf8f833d917aae1",
+          "file": "keyboard-contrast.spec.mjs",
+          "line": 104,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T17:13:53.022Z",
+    "duration": 21772.334,
+    "expected": 0,
+    "skipped": 2,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}
