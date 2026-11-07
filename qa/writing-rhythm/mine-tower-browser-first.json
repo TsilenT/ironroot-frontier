@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "startTime": "2026-11-07T08:18:25.389Z",
+    "duration": 62138.654,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "shield-at-the-fork allows real paid planning across every road with its earned roster",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 202,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 14564,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "shield-at-the-fork allows real paid planning across every road with its earned roster",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 202,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9958,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "shield-at-the-fork allows real paid planning across every road with its earned roster",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 202,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13545,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "shield-at-the-fork allows real paid planning across every road with its earned roster",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 202,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10105,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "Forked Road mine and tower hints assemble complete prompts after real paid planning",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 228,
+      "project": "phone",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 15171,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m140\u001b[39m\nReceived: \u001b[31m610\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "Forked Road mine and tower hints assemble complete prompts after real paid planning",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 228,
+      "project": "narrow-phone",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 9631,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m140\u001b[39m\nReceived: \u001b[31m610\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "Forked Road mine and tower hints assemble complete prompts after real paid planning",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 228,
+      "project": "landscape",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 14752,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m140\u001b[39m\nReceived: \u001b[31m610\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "Forked Road mine and tower hints assemble complete prompts after real paid planning",
+      "file": "contextual-coaching.spec.mjs",
+      "line": 228,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 8793,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m140\u001b[39m\nReceived: \u001b[31m610\u001b[39m"
+        }
+      ]
+    }
+  ]
+}
