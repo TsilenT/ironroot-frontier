@@ -3,7 +3,7 @@
 import {expect} from '@playwright/test';
 import {test,press,seedOnce,saved,observeCanvas,expectCamera,openBackup,chooseBackup,downloadBackup} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
-import {settlePhoneViewport} from './phone-text-evidence.mjs';
+import {inspectPhoneText,settlePhoneViewport} from './phone-text-evidence.mjs';
 import {getMap} from '../../dist/engine.js';
 import {parseBackup,BACKUP_STORAGE_KEYS as K} from '../../dist/backup.js';
 import {CURRENT_PROFILE_PROTOCOL_VERSION,PROFILE_MARKER_KEY as MARKER} from '../../dist/profile-session.js';
@@ -48,6 +48,19 @@ test('sixth trial scouts three named choices and preserves native focus and comp
   if(info.project.name==='narrow-phone'){
     await page.setViewportSize({width:320,height:480});await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
     await targetGeometry(page);await screenshot(page,info,'short-portrait-targets');
+    await page.setViewportSize({width:320,height:430});await settlePhoneViewport(page);
+    await expect(page.locator('#viewportModal')).toBeHidden();await targetGeometry(page);
+    const text=await page.evaluate(inspectPhoneText,{selector:'#objectiveProgress,#objectiveTime,.protected-name,.protected-health,#gold,#income,#time'});
+    expect(text).toHaveLength(11);for(const row of text)expect(row.complete,JSON.stringify(row)).toBe(true);
+    for(const id of ['compactBuild','pause','speed','sound','settings','home','front','minimap']){
+      const control=page.locator('#'+id);await expect(control).toBeVisible();
+      const geometry=await control.evaluate(element=>{const r=element.getBoundingClientRect();return {width:r.width,height:r.height,within:r.left>=0&&r.right<=innerWidth+.5&&r.top>=0&&r.bottom<=innerHeight+.5,hit:element.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))};});
+      expect(geometry.width,id).toBeGreaterThanOrEqual(43.5);expect(geometry.height,id).toBeGreaterThanOrEqual(43.5);expect(geometry,id).toMatchObject({within:true,hit:true});
+    }
+    await press(page,`[data-protected-id="${TARGETS[0]}"]`);await expectCamera(page,getMap('classic'),1950);
+    const clock=await page.locator('#time').textContent();await expect.poll(()=>page.locator('#time').textContent()).not.toBe(clock);
+    await expect(page.locator('#viewportModal')).toBeHidden();
+    await screenshot(page,info,'shortest-portrait-targets');
   }
   await page.keyboard.press('Escape');await expect(page.locator('#pauseVeil')).toBeVisible();
   await expect(page.locator('#pauseObjective')).toContainText('any 2');await expect(page.locator('#pauseObjective')).toContainText('enemy citadel');
