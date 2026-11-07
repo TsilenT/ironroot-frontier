@@ -45,7 +45,7 @@ The **v0.17.1 Battle keyboard controls candidate is unmerged and not deployed**.
 
 - **Longer music:** 64-bar experiment has technical PCM checks but no actual listening assessment. Not selected for release yet.
 - **AI expansion and balance:** earlier selected economy/rush patches are incorporated. Recent support/reserve/ranged-first/tower experiments were rejected without a production change. Broad AI replacement is not selected; a better synthetic result against one opening would not establish overall difficulty or fun.
-- **Optional two-of-three objective routes:** prototype only, not part of the current campaign.
+- **Optional two-of-three objective routes:** Ashen Crossroads is now a draft Field Trial candidate based on main v0.17.2; it remains outside the campaign and is not deployed. See [ASHEN_CROSSROADS.md](ASHEN_CROSSROADS.md) for measured route and compatibility evidence.
 - **Manual and fixed lane routing:** manual controls were removed in shipped v0.17, following the player’s clarified intent. Fixed-gateway and forced-return prototypes are not selected.
 - **Native desktop/Steam readiness:** packaging, device/input coverage, accessibility and store/business requirements remain open. The game is not advertised as Steam-ready.
 - **Network PvP:** not implemented.

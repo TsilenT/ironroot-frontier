@@ -7,7 +7,7 @@ import {validateHistory,validateHistoryRow} from '../dist/history-codec.js';
 import {createBackup,parseBackup,restoreBackup,BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {createProfileSession,CURRENT_PROFILE_PROTOCOL_VERSION,PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
 import {createHistorySession,createSaveSession,createStorage,writeBattle} from '../dist/persistence.js';
-import {CURRENT_CHALLENGES,createCurrentChallenge,createChallenge} from '../dist/challenges.js';
+import {CHALLENGES,CURRENT_CHALLENGES,createCurrentChallenge,createChallenge} from '../dist/challenges.js';
 const rules=['frontier-air-local-open','frontier-air-local-timed'];
 const date='2026-11-07T00:00:00.000Z';
 const raw=(entries=[])=>{const data=new Map(entries),calls=[];return {data,calls,getItem(k){calls.push(['get',k]);return data.get(k)??null;},setItem(k,v){calls.push(['set',k]);data.set(k,v);},removeItem(k){calls.push(['remove',k]);data.delete(k);}};};
@@ -109,9 +109,12 @@ test('current trial revision-two battle, history and backups retain automatic-ai
   for(const mission of CURRENT_CHALLENGES){
     const game=createCurrentChallenge(mission.id),ref=scenarioForBattle(mission.id,null,game),battle=encodeBattle(game,ref);
     assert.deepEqual(ref,{kind:'trial',id:mission.id,revision:2});assert.equal(game.ruleset.id,'frontier-authored-air-local');assert.equal(Object.keys(game.buildings).length,7);
-    const historical=createChallenge(mission.id),oldRef=scenarioForBattle(mission.id,null,historical);
-    assert.deepEqual(oldRef,{kind:'trial',id:mission.id,revision:1});
-    const history=[row(game,ref),row(historical,oldRef)];
+    const history=[row(game,ref)];
+    if(CHALLENGES.some(c=>c.id===mission.id)){
+      const historical=createChallenge(mission.id),oldRef=scenarioForBattle(mission.id,null,historical);
+      assert.deepEqual(oldRef,{kind:'trial',id:mission.id,revision:1});
+      history.push(row(historical,oldRef));
+    }else assert.throws(()=>createChallenge(mission.id),/Unknown challenge/);
     const text=createBackup(raw(),{createdAt:date,battle,history}),parsed=parseBackup(text);
     assert.equal(parsed.version,2);assert.deepEqual(parsed.data.history,history);assert.deepEqual(parsed.data.battle,battle);
     const destination=raw();assert.equal(restoreBackup(destination,text).ok,true);

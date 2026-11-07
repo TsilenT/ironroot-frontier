@@ -13,7 +13,7 @@ import { createInputScopeGuard } from '../dist/input-scope.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../dist/styles.css', import.meta.url), 'utf8');
-const source = app.slice(app.indexOf('function beginProtectedObjectives()'), app.indexOf('function beginBattleReport('));
+const source = app.slice(app.indexOf('function objectiveFocusTargets()'), app.indexOf('function beginBattleReport('));
 class Element {
   constructor(tag = 'div') {
     this.tagName = tag.toUpperCase(); this.children = []; this.attributes = {}; this.listeners = {}; this.dataset = {}; this.style = {};

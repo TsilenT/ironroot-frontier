@@ -2,7 +2,11 @@
 
 A single-player real-time strategy tug-of-war for desktop and mobile browsers. Build an army, defend your economy and push along the battlefield lanes.
 
-## Status
+## Current draft candidate
+
+This branch adds **Ashen Crossroads**, an optional Field Trial that asks you to destroy any two of three named positions. It is based on main v0.17.2 (`ea9da128`) and uses a distinct v0.18.0 cache identity; it has not been deployed. Campaign progression remains unchanged. Design, compatibility and focused test evidence are in [ASHEN_CROSSROADS.md](docs/ASHEN_CROSSROADS.md).
+
+## Previous release notes
 
 The verified live release is **v0.17.0**, source merge `342d8b594091d323f2c0e92d9a170de0fcbdc2b9`, public commit `b2d3cbb550b929a8813c0a251fb6792bfcc4d59f`, at https://ironroot.stevets.ai/. Automatic nearby-enemy flyer behavior and PR #9's prose are shipped; manual routing controls are removed. Live smoke was desktop. Portrait coverage was emulated source QA, not physical-phone validation. Physical-device and non-Chromium certification remain open.
 
