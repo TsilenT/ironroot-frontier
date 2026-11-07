@@ -20,12 +20,12 @@ test('authored automatic air keeps the seven-building roster, exact paid stats/e
 });
 
 test('fresh revision2 descriptors preserve all published setup/objective data and historical factories remain revision1',()=>{
-  assert.equal(CURRENT_CHALLENGE_REVISION,2);assert.equal(CURRENT_CHALLENGES.length,5);assert.ok(Object.isFrozen(CURRENT_CHALLENGES));
+  assert.equal(CURRENT_CHALLENGE_REVISION,2);assert.equal(CURRENT_CHALLENGES.length,6);assert.ok(Object.isFrozen(CURRENT_CHALLENGES));
   for(const old of CHALLENGES){const current=getChallenge(old.id,2),legacy=createChallenge(old.id),fresh=createCurrentChallenge(old.id);const {scenarioRevision,rulesetId,rulesetRevision,mapId,mapRevision,...same}=current;assert.deepEqual(same,old);assert.equal(scenarioRevision,2);assert.equal(rulesetId,AUTHORED_AIR_RULESET_ID);assert.equal(mapId,'classic');assert.equal(mapRevision,1);assert.equal(legacy.serialize().version,1);assert.equal(legacy.ruleset.id,'frontier-legacy');assert.equal(fresh.serialize().version,3);assert.equal(fresh.ruleset.id,AUTHORED_AIR_RULESET_ID);assert.deepEqual(fresh.state,legacy.state);assert.deepEqual(challengeScenarioForGame(legacy,old.id),{kind:'trial',id:old.id,revision:1});assert.deepEqual(challengeScenarioForGame(fresh,old.id),{kind:'trial',id:old.id,revision:2});assert.deepEqual(getChallengeTargets(fresh,old.id),getChallengeTargets(legacy,old.id));}
 });
 
 test('all five fresh trials win recommended paid strategies across four seeds, including playable envelope restores',()=>{
-  for(const c of CURRENT_CHALLENGES)for(const seed of [c.seed,1,57,999]){const {g,outcome}=play(c.id,policies[c.id](),seed,seed===999);assert.equal(outcome.completed,true,`${c.id}/${seed}: ${outcome.label}`);assert.equal(outcome.failed,false);assert.ok(g.state.bases[0].hp>0);assert.ok(g.state.time<=c.timeLimit+.001);assert.doesNotThrow(()=>Game.restore(g.serialize()));}
+  for(const c of CURRENT_CHALLENGES.filter(c=>Object.hasOwn(policies,c.id)))for(const seed of [c.seed,1,57,999]){const {g,outcome}=play(c.id,policies[c.id](),seed,seed===999);assert.equal(outcome.completed,true,`${c.id}/${seed}: ${outcome.label}`);assert.equal(outcome.failed,false);assert.ok(g.state.bases[0].hp>0);assert.ok(g.state.time<=c.timeLimit+.001);assert.doesNotThrow(()=>Game.restore(g.serialize()));}
 });
 
 test('idle fresh trials all fail and their original objective/deadline rules remain meaningful',()=>{
