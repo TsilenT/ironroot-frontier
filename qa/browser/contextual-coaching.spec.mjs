@@ -202,7 +202,16 @@ for(const [id,purchases,gold] of [
 ])test(id+' allows real paid planning across every road with its earned roster',async({page})=>{
   await fresh(page,id);const before=await saved(page),rules=Game.restore(before.game).ruleset.id;
   await press(page,'#coachingPlan');
-  for(const [type,x,y]of purchases)await place(page,type,x,y);
+  const forkPrompts=[
+    {open:'Build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',closed:'Open Build, then build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.'},
+    {open:'Place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',closed:'Open Build, then place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.'},
+  ];
+  const compact=await page.locator('#app').evaluate(e=>e.classList.contains('protected-compact'));
+  if(id==='shield-at-the-fork')await expect(page.locator('#coachText')).toHaveText(forkPrompts[0][compact?'closed':'open']);
+  for(const [type,x,y]of purchases){
+    await place(page,type,x,y);
+    if(id==='shield-at-the-fork'&&type==='wardenLodge')await expect(page.locator('#coachText')).toHaveText(forkPrompts[1][compact?'closed':'open']);
+  }
   await expect(page.locator('#time')).toHaveText('00:00');
   await expect(page.locator('#gold')).toHaveText(String(gold));
   await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
