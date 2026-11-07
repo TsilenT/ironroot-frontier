@@ -89,3 +89,8 @@ it; distinguish useful time with surviving production from merely delaying a
 loss, an automatic economy purchase, and negligible benefit. Keep adverse/null
 results. Do not tune costs/HP/time to manufacture variety. No UI or integration
 PR without useful evidence; negative results remain a reproducible study.
+
+Pre-run clarification from parent: checkpoints include exact cumulative bridge
+receipts for both sides, and final analysis compares only shared observed
+horizons (120/150/210 seconds, or earlier paired minimum terminal time), so
+longer survival is not misidentified as improved capture economics.
