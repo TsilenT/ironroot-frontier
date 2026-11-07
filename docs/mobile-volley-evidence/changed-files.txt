@@ -11,6 +11,8 @@ docs/mobile-volley-evidence/cooldown-parity.json
 docs/mobile-volley-evidence/desktop-ashen-1180x757.png
 docs/mobile-volley-evidence/desktop-cast.json
 docs/mobile-volley-evidence/desktop-geometry.json
+docs/mobile-volley-evidence/history-readiness-traces.json.gz
+docs/mobile-volley-evidence/history-readiness.json
 docs/mobile-volley-evidence/independent-history-timing.json
 docs/mobile-volley-evidence/independent.json
 docs/mobile-volley-evidence/initial-failures.json
@@ -41,6 +43,7 @@ qa/browser/phone-viewport.spec.mjs
 qa/browser/protected-objectives-pointer.spec.mjs
 qa/browser/regression.spec.mjs
 qa/browser/short-coached-portrait.spec.mjs
+qa/browser/volley-history-evidence.mjs
 qa/browser/volley-independent.spec.mjs
 tests/campaign-mobile-integration.test.mjs
 tests/mobile-battlefield-pause.test.mjs

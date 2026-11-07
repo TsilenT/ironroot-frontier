@@ -7,6 +7,7 @@ import {test, press, saved, seedOnce, tapPoint} from './map-browser-helpers.mjs'
 import {trainingProfileFixture} from './training-fixtures.mjs';
 import {finishFirstBuild} from './campaign-teaching-helpers.mjs';
 import {installPad, neutralPad, padButton} from './synthetic-gamepad-helpers.mjs';
+import {observeVolleyHistory, serveVolleyBase, VOLLEY_BASE} from './volley-history-evidence.mjs';
 
 const SAVE = 'ironroot.battle.v1';
 const SETTINGS = 'ironroot.settings.v1';
@@ -54,41 +55,104 @@ async function pause(page) {
   return saved(page);
 }
 
-test('independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast', async ({page}, info) => {
-  await page.addInitScript(() => {
-    window.__volleyHistory = [];
-    const record = kind => window.__volleyHistory.push({kind, length:history.length, entry:history.state?.ironrootNavigation?.entry?.split(':').at(-1), armed:document.querySelector('#rally')?.getAttribute('aria-pressed'), at:performance.now()});
-    window.__recordVolleyHistory = record;
-    for (const name of ['pushState','replaceState','go','back','forward']) {
-      const original = history[name];
-      history[name] = function(...args) { record('before ' + name); const result = original.apply(this,args); record('after ' + name); return result; };
-    }
-    addEventListener('popstate', () => record('popstate'));
-  });
-  const persistent = await start(page), length = await page.evaluate(() => history.length);
-  await page.evaluate(() => window.__recordVolleyHistory('startup baseline'));
-  await arm(page);
-  await page.evaluate(() => window.__recordVolleyHistory('armed'));
-  await page.evaluate(() => history.back());
-  await expect(page.locator('#pauseVeil')).toBeVisible();
-  await unarmed(page);
-  const frozen = await bytes(page);
-  noCast(JSON.parse(frozen));
-  await page.waitForTimeout(180);
-  expect(await bytes(page)).toBe(frozen);
-  await page.evaluate(() => history.forward());
-  await expect(page.locator('#pauseVeil')).toBeVisible();
-  await unarmed(page);
-  expect(await bytes(page)).toBe(frozen);
-  await page.evaluate(() => window.__recordVolleyHistory('after Forward'));
-  await info.attach('real-time-history-observation', {body:JSON.stringify(await page.evaluate(() => window.__volleyHistory)), contentType:'application/json'});
-  expect(await page.evaluate(() => history.length)).toBe(length);
-  await press(page, '#resume');
-  await unarmed(page);
-  const box = await page.locator('#battle').boundingBox();
-  await tapPoint(page, {x:box.x + box.width / 2, y:box.y + box.height / 2});
-  noCast(await pause(page));
-  expect(await profile(page)).toEqual(persistent);
+test.describe('independent: native history readiness', () => {
+  // Both compared heads use the same storage, native timing and SW policy.
+  test.use({serviceWorkers:'block'});
+  const heads = process.env.VOLLEY_HISTORY_COMPARE_BASE === '1' ? ['candidate','base'] : ['candidate'];
+  for (const head of heads) for (const setup of ['fresh-document','seeded-reload']) {
+    test(`${head} ${setup}: Back/Forward markers, targeting, Resume and profile`, async ({page,context}, info) => {
+      const trace = await observeVolleyHistory(page);
+      const detail = {head,setup,base:VOLLEY_BASE,baseAccess:'Native KeyR on base because mobile Volley is hidden; no Build entry is added. Candidate uses its visible button.'};
+      try {
+        if (head === 'base') detail.runtime = await serveVolleyBase(context);
+        const game = new Game({seed:77201,ai:false,rulesetId:DEFAULT_SKIRMISH_RULESET_ID});
+        const fixture = trainingProfileFixture().values;
+        fixture[SAVE] = JSON.stringify(encodeBattle(game,scenarioForBattle(null,null,game)));
+        if (setup === 'fresh-document') {
+          // Seed on a real same-origin prior document; first app load has no
+          // stale app marker and must eventually Back out to this real page.
+          await page.goto('/FONTS-NOTICES.txt?volley-history-exit');
+          await page.evaluate(values => {for (const [key,value] of Object.entries(values)) localStorage.setItem(key,value);},fixture);
+          await page.goto('/');
+        } else await seedOnce(page,fixture);
+        const persistent = await profile(page);
+        await press(page,'#resumeSaved');
+        await expect(page.locator('#welcome')).toBeHidden();
+        await expect(page.locator('#viewportModal')).toBeHidden();
+        await trace.ready();
+        const baseline = await trace.mark('pre-arm baseline');
+        if (head === 'candidate') await arm(page);
+        else {
+          await page.locator('#battle').focus();
+          await page.keyboard.press('KeyR');
+          await expect(page.locator('#rally')).toHaveClass(/active/);
+          await expect(page.locator('#battle')).toHaveClass(/placing/);
+          await noDrawer(page);
+        }
+        const armed = await trace.ready();
+        expect(armed.length).toBe(baseline.length);
+        const back = await trace.traverse('back');
+        expect(back.state.ironrootNavigation.document === baseline.state.ironrootNavigation.document).toBe(setup === 'fresh-document');
+        await expect(page.locator('#pauseVeil')).toBeVisible();
+        if (head === 'candidate') await unarmed(page);
+        else await expect(page.locator('#rally')).toHaveClass(/active/);
+        const frozen = await bytes(page);
+        noCast(JSON.parse(frozen));
+        await page.waitForTimeout(180);
+        expect(await bytes(page)).toBe(frozen);
+        await trace.traverse('forward');
+        await expect(page.locator('#pauseVeil')).toBeVisible();
+        if (head === 'candidate') await unarmed(page);
+        else await expect(page.locator('#rally')).toHaveClass(/active/);
+        expect(await bytes(page)).toBe(frozen);
+        const beforeResume = await trace.mark('strict pre-Resume');
+        // Retain the original strict assertion, now after actual Forward.
+        expect(beforeResume.length).toBe(baseline.length);
+        expect(beforeResume.state).toEqual(baseline.state);
+        await press(page,'#resume');
+        await expect(page.locator('#pauseVeil')).toBeHidden();
+        await trace.ready();
+        const resumed = await trace.mark('explicit Resume');
+        // Stale-document ancestry can add one slot here on BOTH heads. This
+        // later effect does not explain the original pre-Resume failure.
+        expect(resumed.length).toBe(baseline.length + (setup === 'seeded-reload' ? 1 : 0));
+        if (head === 'candidate') await unarmed(page);
+        else await expect(page.locator('#battle')).toHaveClass(/placing/);
+        const box = await page.locator('#battle').boundingBox();
+        await tapPoint(page,{x:box.x + box.width / 2,y:box.y + box.height / 2});
+        const afterTouch = await pause(page);
+        if (head === 'candidate') noCast(afterTouch);
+        else {
+          expect(afterTouch.game.state.spellCooldown[0]).toBeGreaterThan(20);
+          expect(afterTouch.game.state.gold[0]).toBeCloseTo(420 - 75 + 5 * afterTouch.game.state.time,1);
+        }
+        expect(await profile(page)).toEqual(persistent);
+        await trace.ready();
+        await trace.mark('fresh battlefield input checked', {paidCast:head === 'base'});
+        if (setup === 'fresh-document') {
+          await press(page,'#resume');await trace.ready();
+          for (let cycle = 0; cycle < 2; cycle++) {
+            await trace.traverse('back');await expect(page.locator('#pauseVeil')).toBeVisible();
+            await trace.traverse('forward');await expect(page.locator('#pauseVeil')).toBeVisible();
+            expect((await trace.mark('repeat pre-Resume',{cycle})).length).toBe(baseline.length);
+            await press(page,'#resume');await trace.ready();
+            expect((await trace.mark('repeat resumed',{cycle})).length).toBe(baseline.length);
+          }
+          // The bound is the observed finite native stack, never a history trap.
+          let steps = 0;
+          while (!page.url().includes('volley-history-exit') && steps < baseline.length) {
+            await trace.traverse('back');steps++;
+          }
+          await expect(page).toHaveURL(/FONTS-NOTICES\.txt\?volley-history-exit$/);
+          await trace.mark('finite Back exit',{steps,bound:baseline.length});
+          expect(await profile(page)).toEqual(persistent);
+        }
+        trace.assertOpaqueStates();
+      } finally {
+        await trace.attach(info,detail);
+      }
+    });
+  }
 });
 
 test('independent: remapped V, Escape and native button cancellation retain menu input scope', async ({page}) => {

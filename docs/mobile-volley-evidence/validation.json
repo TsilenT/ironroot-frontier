@@ -133,5 +133,19 @@
     "No full huge browser matrix, desktop build, deployment, signing or store work.",
     "Local checks use Node 24; CI configuration uses Node 22."
   ],
-  "production": "Not accessed or modified."
+  "production": "Not accessed or modified.",
+  "historyReadinessRepair": {
+    "report": "history-readiness.json",
+    "completeTraces": "history-readiness-traces.json.gz",
+    "runtimeChanged": false,
+    "runCount": 1,
+    "passed": 8,
+    "failed": 0,
+    "retries": 0,
+    "strictResult": "All actual Forward traversals preserve pre-Resume baseline length. Full markers and new popstate are required before assertions.",
+    "fresh": "All four cases 5 -> 5 -> 5, two repeated cycles retain length, finite Back exit in three steps.",
+    "reload": "Three cases 4 -> 4 -> 5; phone candidate 5 -> 5 -> 6. Extra phone-candidate slot predates reload/baseline. Both heads add one slot only after explicit Resume.",
+    "historicalFailure": "Still unexplained; full original failure trace unavailable. Readiness repair and post-Resume effect are not proven causes or fixes.",
+    "sequencing": "No rebase or runtime/version changes now. PR15 releases first if approved; coordinator will later rebase PR14 and choose a distinct next identity."
+  }
 }

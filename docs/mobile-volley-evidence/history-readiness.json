@@ -1,0 +1,473 @@
+{
+  "scope": "Bounded test/evidence repair only; no runtime or restart changes.",
+  "candidateRuntimeCommit": "dc33357b4c51cc9ad421afd20c885356261e6a4a",
+  "base": "b88119fdd2cc288633e58bfaf0baffa302ee76de",
+  "command": "VOLLEY_HISTORY_COMPARE_BASE=1 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --grep 'native history readiness'",
+  "stats": {"startTime":"2026-11-07T19:25:59.938Z","duration":36683.781,"expected":8,"skipped":0,"unexpected":0,"flaky":0},
+  "executions": 1,
+  "retries": 0,
+  "repair": "The previous Forward check accepted already-true pause/unarmed states. Both directions now require a new native popstate carrying the full expected document/entry state and native current-state equality; queued native reconciliation must complete before the next action.",
+  "traceCapture": "Complete observed History API before/after calls with arguments, native popstate event/current markers, per-document UUID, timeOrigin, monotonic/wall time, lifecycle and input events. Attached in finally, then retained losslessly in compressed JSON. No history writes or serialized game data are introduced by the observer.",
+  "comparison": "Exact base runtime git objects are served at the same local origin, without duplicated fixtures. Both heads use the same readiness, profiles, real time and blocked service workers. Candidate arms with visible native button input; base uses the established native KeyR shortcut because mobile Volley is hidden, avoiding an extra Build history entry.",
+  "strictPreserved": "Pre-Resume history length equals its sampled baseline after confirmed Forward. Checkpoint bytes stay frozen, no pre-Resume spend/cooldown occurs, play stays paused, candidate stays unarmed, explicit Resume and fresh battlefield input cannot cast on candidate, and all durable profile domains remain unchanged.",
+  "freshResult": "All four fresh-document cases stayed 5 -> 5 -> 5 through baseline/confirmed Forward/Resume. Two additional Back/Forward/Resume cycles did not grow the stack; all exited to the genuine preceding document in three Back steps.",
+  "reloadResult": "Three reload cases measured 4 -> 4 -> 5; phone candidate measured 5 -> 5 -> 6. Strict pre-Resume equality passed in all four. The extra phone-candidate entry was pushed in the old document before reload and baseline sampling; no cause for that setup difference is claimed. Both heads exhibit the distinct post-Resume +1 behavior with stale-document ancestry.",
+  "targetingResult": "Candidate disarms on Back and fresh resumed battlefield input stays free. Exact base retains armed targeting through Back/Forward and fresh resumed input spends 75 gold and starts cooldown, as asserted by the comparison.",
+  "historicalUncertainty": "The earlier pre-Resume 4 -> 5 failure remains unexplained. Its full original failure trace is unavailable. Neither the readiness defect nor the later reload/Resume effect is established as its cause or a proven fix. Prior failure records remain unchanged.",
+  "checks": {
+    "browserHarness": "npm run check --prefix qa/browser passed",
+    "runtimeInventory": "All 51 hashes match the existing reviewed inventory",
+    "diffCheck": "git diff --check passed",
+    "rootSuite": "Not repeated: this repair changes tests/evidence only. Prior runtime validation remains recorded separately."
+  },
+  "traceArtifact": {
+    "file": "history-readiness-traces.json.gz",
+    "sha256": "bb897ae3f0d149054c8e2e97d4f520e0219b709dab1f13fd3aad187646c2f35e",
+    "compressedBytes": 22465,
+    "uncompressedBytes": 306279,
+    "cases": 8,
+    "read": "gzip -dc docs/mobile-volley-evidence/history-readiness-traces.json.gz"
+  },
+  "sourceSha256": {
+    "qa/browser/volley-history-evidence.mjs": "2fc48a28c0daecb85ad6d5c8a2f1ca92947a352fc95ccbe959f082ccb8dc1018",
+    "qa/browser/volley-independent.spec.mjs": "b396b241769efd9bab9f91d83631f8b6f6a388f133fa1e5705a013f845c272ad"
+  },
+  "cases": [
+    {
+      "project": "phone",
+      "head": "candidate",
+      "setup": "fresh-document",
+      "status": "passed",
+      "durationMs": 11433,
+      "failures": [],
+      "lengths": [5,5,5],
+      "paidAfterFreshInput": false,
+      "finiteExitSteps": 3,
+      "nativeEvents": 97,
+      "newPopstates": 9,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:3"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:3"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": false,
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:2"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 0,
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 0,
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:4"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 1,
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 1,
+          "documentId": "114fc50e-7f5c-4c30-9e52-6f556b2dc36d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"b9409017-aa94-4c05-977b-6ba032ba16e3","entry":"b9409017-aa94-4c05-977b-6ba032ba16e3:4"}}
+        },
+        {"label":"finite Back exit","steps":3,"bound":5,"documentId":"e8c9ae5b-e281-4d51-9616-dced9db4c412","length":5,"state":null}
+      ]
+    },
+    {
+      "project": "desktop",
+      "head": "candidate",
+      "setup": "fresh-document",
+      "status": "passed",
+      "durationMs": 10998,
+      "failures": [],
+      "lengths": [5,5,5],
+      "paidAfterFreshInput": false,
+      "finiteExitSteps": 3,
+      "nativeEvents": 97,
+      "newPopstates": 9,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:3"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:3"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": false,
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:2"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 0,
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 0,
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:4"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 1,
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 1,
+          "documentId": "2c11ac44-b713-4094-8f65-8e0c51e3a9c7",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d","entry":"0ac172a4-a3ff-49ac-b87c-2535b8a40e8d:4"}}
+        },
+        {"label":"finite Back exit","steps":3,"bound":5,"documentId":"d34ce724-ae6c-4b7c-93f4-c2fef2a13b4a","length":5,"state":null}
+      ]
+    },
+    {
+      "project": "phone",
+      "head": "candidate",
+      "setup": "seeded-reload",
+      "status": "passed",
+      "durationMs": 6498,
+      "failures": [],
+      "lengths": [5,5,6],
+      "paidAfterFreshInput": false,
+      "finiteExitSteps": null,
+      "nativeEvents": 49,
+      "newPopstates": 3,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "95f92035-3299-471c-b399-3922461f5f16",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b","entry":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b:1"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "95f92035-3299-471c-b399-3922461f5f16",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b","entry":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b:1"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "95f92035-3299-471c-b399-3922461f5f16",
+          "length": 6,
+          "state": {"ironrootNavigation":{"version":1,"document":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b","entry":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": false,
+          "documentId": "95f92035-3299-471c-b399-3922461f5f16",
+          "length": 6,
+          "state": {"ironrootNavigation":{"version":1,"document":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b","entry":"8cbc32a3-8670-4f37-b3ea-a6ef356a651b:2"}}
+        }
+      ]
+    },
+    {
+      "project": "desktop",
+      "head": "candidate",
+      "setup": "seeded-reload",
+      "status": "passed",
+      "durationMs": 6059,
+      "failures": [],
+      "lengths": [4,4,5],
+      "paidAfterFreshInput": false,
+      "finiteExitSteps": null,
+      "nativeEvents": 45,
+      "newPopstates": 3,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "c35f76e5-3e1e-4a4e-9709-fcb5367e799d",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"12e151e6-31f0-4340-af2a-11df2ec821fe","entry":"12e151e6-31f0-4340-af2a-11df2ec821fe:1"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "c35f76e5-3e1e-4a4e-9709-fcb5367e799d",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"12e151e6-31f0-4340-af2a-11df2ec821fe","entry":"12e151e6-31f0-4340-af2a-11df2ec821fe:1"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "c35f76e5-3e1e-4a4e-9709-fcb5367e799d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"12e151e6-31f0-4340-af2a-11df2ec821fe","entry":"12e151e6-31f0-4340-af2a-11df2ec821fe:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": false,
+          "documentId": "c35f76e5-3e1e-4a4e-9709-fcb5367e799d",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"12e151e6-31f0-4340-af2a-11df2ec821fe","entry":"12e151e6-31f0-4340-af2a-11df2ec821fe:2"}}
+        }
+      ]
+    },
+    {
+      "project": "phone",
+      "head": "base",
+      "setup": "fresh-document",
+      "status": "passed",
+      "durationMs": 10549,
+      "failures": [],
+      "lengths": [5,5,5],
+      "paidAfterFreshInput": true,
+      "finiteExitSteps": 3,
+      "nativeEvents": 98,
+      "newPopstates": 9,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:3"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:3"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": true,
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:2"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 0,
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 0,
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:4"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 1,
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 1,
+          "documentId": "4cc55cdb-9db1-4078-9704-d9e14903d279",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c","entry":"f7744bc0-2744-4b9b-973d-e7ffe9d2855c:4"}}
+        },
+        {"label":"finite Back exit","steps":3,"bound":5,"documentId":"0959bfe6-9e78-4b09-96f6-f6eff59cdff3","length":5,"state":null}
+      ]
+    },
+    {
+      "project": "desktop",
+      "head": "base",
+      "setup": "fresh-document",
+      "status": "passed",
+      "durationMs": 10646,
+      "failures": [],
+      "lengths": [5,5,5],
+      "paidAfterFreshInput": true,
+      "finiteExitSteps": 3,
+      "nativeEvents": 98,
+      "newPopstates": 9,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:3"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:3"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": true,
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:2"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 0,
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 0,
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:4"}}
+        },
+        {
+          "label": "repeat pre-Resume",
+          "cycle": 1,
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:4"}}
+        },
+        {
+          "label": "repeat resumed",
+          "cycle": 1,
+          "documentId": "a7fa625c-5c8b-4587-993f-5f9f36b404c0",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"15ea3556-cbfe-46df-bded-cc68c4d365f8","entry":"15ea3556-cbfe-46df-bded-cc68c4d365f8:4"}}
+        },
+        {"label":"finite Back exit","steps":3,"bound":5,"documentId":"a99796d4-c471-481d-bda6-fd5a2b048dc1","length":5,"state":null}
+      ]
+    },
+    {
+      "project": "phone",
+      "head": "base",
+      "setup": "seeded-reload",
+      "status": "passed",
+      "durationMs": 5481,
+      "failures": [],
+      "lengths": [4,4,5],
+      "paidAfterFreshInput": true,
+      "finiteExitSteps": null,
+      "nativeEvents": 46,
+      "newPopstates": 3,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "e311a069-dba7-4fce-bd4e-4fecc6ce0299",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62","entry":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62:1"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "e311a069-dba7-4fce-bd4e-4fecc6ce0299",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62","entry":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62:1"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "e311a069-dba7-4fce-bd4e-4fecc6ce0299",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62","entry":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": true,
+          "documentId": "e311a069-dba7-4fce-bd4e-4fecc6ce0299",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62","entry":"c54b12cd-1a3b-49d3-a7a3-27ec21310e62:2"}}
+        }
+      ]
+    },
+    {
+      "project": "desktop",
+      "head": "base",
+      "setup": "seeded-reload",
+      "status": "passed",
+      "durationMs": 6098,
+      "failures": [],
+      "lengths": [4,4,5],
+      "paidAfterFreshInput": true,
+      "finiteExitSteps": null,
+      "nativeEvents": 46,
+      "newPopstates": 3,
+      "checks": [
+        {
+          "label": "pre-arm baseline",
+          "documentId": "ccf670b8-c4d2-4811-933d-12f5dec6a5cb",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"a21f1a88-39a1-4feb-8f96-1def9e429503","entry":"a21f1a88-39a1-4feb-8f96-1def9e429503:1"}}
+        },
+        {
+          "label": "strict pre-Resume",
+          "documentId": "ccf670b8-c4d2-4811-933d-12f5dec6a5cb",
+          "length": 4,
+          "state": {"ironrootNavigation":{"version":1,"document":"a21f1a88-39a1-4feb-8f96-1def9e429503","entry":"a21f1a88-39a1-4feb-8f96-1def9e429503:1"}}
+        },
+        {
+          "label": "explicit Resume",
+          "documentId": "ccf670b8-c4d2-4811-933d-12f5dec6a5cb",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"a21f1a88-39a1-4feb-8f96-1def9e429503","entry":"a21f1a88-39a1-4feb-8f96-1def9e429503:3"}}
+        },
+        {
+          "label": "fresh battlefield input checked",
+          "paidCast": true,
+          "documentId": "ccf670b8-c4d2-4811-933d-12f5dec6a5cb",
+          "length": 5,
+          "state": {"ironrootNavigation":{"version":1,"document":"a21f1a88-39a1-4feb-8f96-1def9e429503","entry":"a21f1a88-39a1-4feb-8f96-1def9e429503:2"}}
+        }
+      ]
+    }
+  ]
+}
