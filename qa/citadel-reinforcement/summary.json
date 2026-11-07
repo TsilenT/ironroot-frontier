@@ -1,0 +1,1888 @@
+{
+  "sourceCommit": "92ce6cc1015349b2bbd220f1e093c2b892ef503c",
+  "groups": {
+    "primary": {
+      "reinforce": {
+        "assigned": 24,
+        "aliveAtDecision": 24,
+        "timeEligible": 24,
+        "affordable": 20,
+        "purchases": 20,
+        "rejections": [
+          {
+            "id": "primary/classic/17/E/0/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/17/E/1/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/0/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/1/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 12,
+          "loss": 12,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          103.69999999999625,
+          174.30000000000538
+        ],
+        "medianTime": 164.95000000000326,
+        "medianFirstDamage": 129.19999999999513,
+        "purchasedOutcomes": {
+          "win": 12,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "archery": {
+        "assigned": 24,
+        "aliveAtDecision": 24,
+        "timeEligible": 24,
+        "affordable": 20,
+        "purchases": 20,
+        "rejections": [
+          {
+            "id": "primary/classic/17/E/0/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/17/E/1/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/0/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/1/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 12,
+          "loss": 12,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          103.69999999999625,
+          169.85000000000437
+        ],
+        "medianTime": 164.95000000000326,
+        "medianFirstDamage": 128.29999999999492,
+        "purchasedOutcomes": {
+          "win": 12,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "mint": {
+        "assigned": 24,
+        "aliveAtDecision": 24,
+        "timeEligible": 24,
+        "affordable": 20,
+        "purchases": 20,
+        "rejections": [
+          {
+            "id": "primary/classic/17/E/0/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/17/E/1/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/0/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "primary/classic/91/E/1/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 12,
+          "loss": 12,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          103.69999999999625,
+          170.60000000000454
+        ],
+        "medianTime": 164.95000000000326,
+        "medianFirstDamage": 129.19999999999513,
+        "purchasedOutcomes": {
+          "win": 12,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "paired": {
+        "cases": 24,
+        "purchased": 20,
+        "repairPositive": 4,
+        "full600Consumed": 16,
+        "unused600": 4,
+        "purchasedConsumedRange": [
+          0,
+          600
+        ],
+        "compared": {
+          "archery": {
+            "changedOutcomes": 0,
+            "reinforcementWinAlternativeLoss": 0,
+            "reinforcementLossAlternativeWin": 0,
+            "paidBothLoss": 8,
+            "paidBothLossTimeDeltaRange": [
+              1.9499999999998892,
+              5.400000000001228
+            ],
+            "bothLoss": 12,
+            "bothLossTimeDeltas": [
+              0,
+              0,
+              0,
+              0,
+              4.100000000000932,
+              4.600000000001046,
+              5.150000000001171,
+              5.400000000001228,
+              1.9499999999998892,
+              2.0999999999998806,
+              2.2999999999998693,
+              2.0999999999998806
+            ],
+            "timeDeltaRange": [
+              -0.4500000000001023,
+              5.400000000001228
+            ],
+            "medianTimeDelta": 0.6500000000001478
+          },
+          "mint": {
+            "changedOutcomes": 0,
+            "reinforcementWinAlternativeLoss": 0,
+            "reinforcementLossAlternativeWin": 0,
+            "paidBothLoss": 8,
+            "paidBothLossTimeDeltaRange": [
+              1.9499999999998892,
+              3.7000000000008413
+            ],
+            "bothLoss": 12,
+            "bothLossTimeDeltas": [
+              0,
+              0,
+              0,
+              0,
+              3.400000000000773,
+              3.7000000000008413,
+              3.250000000000739,
+              3.400000000000773,
+              1.9499999999998892,
+              2.0999999999998806,
+              2.2999999999998693,
+              2.0999999999998806
+            ],
+            "timeDeltaRange": [
+              -0.950000000000216,
+              3.7000000000008413
+            ],
+            "medianTimeDelta": 0
+          }
+        }
+      }
+    },
+    "interaction": {
+      "reinforce": {
+        "assigned": 8,
+        "aliveAtDecision": 8,
+        "timeEligible": 8,
+        "affordable": 4,
+        "purchases": 4,
+        "rejections": [
+          {
+            "id": "interaction/classic/17/E/0/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/17/E/1/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/0/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/1/reinforce",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": "insufficient-gold",
+            "reason": null,
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          105.79999999999613,
+          165.50000000000338
+        ],
+        "medianTime": 164.80000000000322,
+        "medianFirstDamage": 75.29999999999787,
+        "purchasedOutcomes": {
+          "win": 0,
+          "loss": 4,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "archery": {
+        "assigned": 8,
+        "aliveAtDecision": 8,
+        "timeEligible": 8,
+        "affordable": 4,
+        "purchases": 4,
+        "rejections": [
+          {
+            "id": "interaction/classic/17/E/0/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/17/E/1/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/0/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/1/archery",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 175 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          103.69999999999625,
+          165.50000000000338
+        ],
+        "medianTime": 164.80000000000322,
+        "medianFirstDamage": 75.29999999999787,
+        "purchasedOutcomes": {
+          "win": 0,
+          "loss": 4,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "mint": {
+        "assigned": 8,
+        "aliveAtDecision": 8,
+        "timeEligible": 8,
+        "affordable": 4,
+        "purchases": 4,
+        "rejections": [
+          {
+            "id": "interaction/classic/17/E/0/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/17/E/1/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 171.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/0/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          },
+          {
+            "id": "interaction/classic/91/E/1/mint",
+            "tick": 1800,
+            "time": 89.99999999999703,
+            "ok": false,
+            "code": null,
+            "reason": "Need 190 gold.",
+            "cost": 0,
+            "availableGold": 173.25,
+            "alive": true,
+            "ongoing": true,
+            "timeEligible": true
+          }
+        ],
+        "outcomes": {
+          "win": 0,
+          "loss": 8,
+          "draw": 0,
+          "ongoing": 0
+        },
+        "timeRange": [
+          103.69999999999625,
+          165.50000000000338
+        ],
+        "medianTime": 164.80000000000322,
+        "medianFirstDamage": 75.29999999999787,
+        "purchasedOutcomes": {
+          "win": 0,
+          "loss": 4,
+          "draw": 0,
+          "ongoing": 0
+        }
+      },
+      "paired": {
+        "cases": 8,
+        "purchased": 4,
+        "repairPositive": 4,
+        "full600Consumed": 4,
+        "unused600": 0,
+        "purchasedConsumedRange": [
+          600,
+          600
+        ],
+        "compared": {
+          "archery": {
+            "changedOutcomes": 0,
+            "reinforcementWinAlternativeLoss": 0,
+            "reinforcementLossAlternativeWin": 0,
+            "paidBothLoss": 4,
+            "paidBothLossTimeDeltaRange": [
+              1.9499999999998892,
+              2.2999999999998693
+            ],
+            "bothLoss": 8,
+            "bothLossTimeDeltas": [
+              0,
+              0,
+              0,
+              0,
+              1.9499999999998892,
+              2.0999999999998806,
+              2.2999999999998693,
+              2.0999999999998806
+            ],
+            "timeDeltaRange": [
+              0,
+              2.2999999999998693
+            ],
+            "medianTimeDelta": 1.9499999999998892
+          },
+          "mint": {
+            "changedOutcomes": 0,
+            "reinforcementWinAlternativeLoss": 0,
+            "reinforcementLossAlternativeWin": 0,
+            "paidBothLoss": 4,
+            "paidBothLossTimeDeltaRange": [
+              1.9499999999998892,
+              2.2999999999998693
+            ],
+            "bothLoss": 8,
+            "bothLossTimeDeltas": [
+              0,
+              0,
+              0,
+              0,
+              1.9499999999998892,
+              2.0999999999998806,
+              2.2999999999998693,
+              2.0999999999998806
+            ],
+            "timeDeltaRange": [
+              0,
+              2.2999999999998693
+            ],
+            "medianTimeDelta": 1.9499999999998892
+          }
+        }
+      }
+    }
+  },
+  "symmetric": [
+    {
+      "id": "symmetric/classic/17/off",
+      "map": "classic",
+      "seed": 17,
+      "policy": "off",
+      "winner": 1,
+      "time": 157.2500000000015,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/classic/17/reactive",
+      "map": "classic",
+      "seed": 17,
+      "policy": "reactive",
+      "winner": 1,
+      "time": 157.2500000000015,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 124.99999999999504,
+          "tick": 2500,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 55,
+            "hp": 4989,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 55,
+            "hp": 4989,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 129.9999999999953,
+          "tick": 2600,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 82,
+            "hp": 4329,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 82,
+            "hp": 4329,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 134.99999999999645,
+          "tick": 2700,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 107,
+            "hp": 3417,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 107,
+            "hp": 3417,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 139.99999999999758,
+          "tick": 2800,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 69,
+            "hp": 2871,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 69,
+            "hp": 2871,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 144.99999999999872,
+          "tick": 2900,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 94,
+            "hp": 2367,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 94,
+            "hp": 2367,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 149.99999999999986,
+          "tick": 3000,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 123,
+            "hp": 1905,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 123,
+            "hp": 1905,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 155.000000000001,
+          "tick": 3100,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 148,
+            "hp": 843,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 148,
+            "hp": 843,
+            "maxHp": 6000
+          },
+          "id": null
+        }
+      ]
+    },
+    {
+      "id": "symmetric/classic/91/off",
+      "map": "classic",
+      "seed": 91,
+      "policy": "off",
+      "winner": 0,
+      "time": 349.0500000000451,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/classic/91/reactive",
+      "map": "classic",
+      "seed": 91,
+      "policy": "reactive",
+      "winner": 0,
+      "time": 349.6000000000452,
+      "ongoing": false,
+      "purchases": [
+        null,
+        {
+          "time": 270.0000000000271,
+          "hpBefore": 5034,
+          "deficit": 966,
+          "repair": 600,
+          "aboveOldCap": 0,
+          "damage": 5634,
+          "decay": 0,
+          "consumed": 600,
+          "backToPreHP": 334.90000000004187
+        }
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 245.00000000002146,
+          "tick": 4900,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 77,
+            "hp": 5370,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 77,
+            "hp": 5370,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 250.0000000000226,
+          "tick": 5000,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 57,
+            "hp": 5181,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 57,
+            "hp": 5181,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 255.00000000002373,
+          "tick": 5100,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 92,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 92,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 260.00000000002484,
+          "tick": 5200,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 121,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 121,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 265.000000000026,
+          "tick": 5300,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 158,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 158,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 270.0000000000271,
+          "tick": 5400,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": true,
+          "code": null,
+          "before": {
+            "gold": 193,
+            "hp": 5034,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 3,
+            "hp": 5634,
+            "maxHp": 6600
+          },
+          "id": null
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/17/off",
+      "map": "long-march",
+      "seed": 17,
+      "policy": "off",
+      "winner": 1,
+      "time": 609.0499999999938,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/long-march/17/reactive",
+      "map": "long-march",
+      "seed": 17,
+      "policy": "reactive",
+      "winner": 1,
+      "time": 609.0499999999938,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 590.0000000000111,
+          "tick": 11800,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 113.375,
+            "hp": 3863.25,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 113.375,
+            "hp": 3863.25,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 595.0000000000066,
+          "tick": 11900,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 127.875,
+            "hp": 3348.75,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 127.875,
+            "hp": 3348.75,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 600.000000000002,
+          "tick": 12000,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 185.375,
+            "hp": 2760.75,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 185.375,
+            "hp": 2760.75,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 604.9999999999975,
+          "tick": 12100,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 104.875,
+            "hp": 1474.5,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 104.875,
+            "hp": 1474.5,
+            "maxHp": 6000
+          },
+          "id": null
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/91/off",
+      "map": "long-march",
+      "seed": 91,
+      "policy": "off",
+      "winner": 0,
+      "time": 479.2000000000747,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/long-march/91/reactive",
+      "map": "long-march",
+      "seed": 91,
+      "policy": "reactive",
+      "winner": 0,
+      "time": 479.2000000000747,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 460.0000000000703,
+          "tick": 9200,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 107,
+            "hp": 5387.5,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 107,
+            "hp": 5387.5,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 465.00000000007145,
+          "tick": 9300,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 87.5,
+            "hp": 4391.75,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 87.5,
+            "hp": 4391.75,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 470.0000000000726,
+          "tick": 9400,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 143,
+            "hp": 3357.5,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 143,
+            "hp": 3357.5,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 475.0000000000737,
+          "tick": 9500,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 54.5,
+            "hp": 1782.5,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 54.5,
+            "hp": 1782.5,
+            "maxHp": 6000
+          },
+          "id": null
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/17/off",
+      "map": "twin-span",
+      "seed": 17,
+      "policy": "off",
+      "winner": 1,
+      "time": 158.5000000000018,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/twin-span/17/reactive",
+      "map": "twin-span",
+      "seed": 17,
+      "policy": "reactive",
+      "winner": 1,
+      "time": 158.5000000000018,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 129.9999999999953,
+          "tick": 2600,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 70,
+            "hp": 4917,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 70,
+            "hp": 4917,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 134.99999999999645,
+          "tick": 2700,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 97,
+            "hp": 3780,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 97,
+            "hp": 3780,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 139.99999999999758,
+          "tick": 2800,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 65,
+            "hp": 3207,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 65,
+            "hp": 3207,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 144.99999999999872,
+          "tick": 2900,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 94,
+            "hp": 2630,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 94,
+            "hp": 2630,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 149.99999999999986,
+          "tick": 3000,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 121,
+            "hp": 2074,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 121,
+            "hp": 2074,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 155.000000000001,
+          "tick": 3100,
+          "side": 0,
+          "method": "reinforce",
+          "args": [
+            0
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 146,
+            "hp": 961,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 146,
+            "hp": 961,
+            "maxHp": 6000
+          },
+          "id": null
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/91/off",
+      "map": "twin-span",
+      "seed": 91,
+      "policy": "off",
+      "winner": 0,
+      "time": 307.4000000000356,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": []
+    },
+    {
+      "id": "symmetric/twin-span/91/reactive",
+      "map": "twin-span",
+      "seed": 91,
+      "policy": "reactive",
+      "winner": 0,
+      "time": 307.4000000000356,
+      "ongoing": false,
+      "purchases": [
+        null,
+        null
+      ],
+      "reinforceAttempts": [
+        {
+          "time": 200.00000000001123,
+          "tick": 4000,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 83,
+            "hp": 5165,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 83,
+            "hp": 5165,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 205.00000000001236,
+          "tick": 4100,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 110,
+            "hp": 4890,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 110,
+            "hp": 4890,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 210.0000000000135,
+          "tick": 4200,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 86,
+            "hp": 4754,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 86,
+            "hp": 4754,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 215.00000000001464,
+          "tick": 4300,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 119,
+            "hp": 4703,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 119,
+            "hp": 4703,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 220.00000000001577,
+          "tick": 4400,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 148,
+            "hp": 4703,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 148,
+            "hp": 4703,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 225.0000000000169,
+          "tick": 4500,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 41,
+            "hp": 4686,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 41,
+            "hp": 4686,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 230.00000000001805,
+          "tick": 4600,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 80,
+            "hp": 4407,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 80,
+            "hp": 4407,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 235.00000000001918,
+          "tick": 4700,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 42,
+            "hp": 4365,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 42,
+            "hp": 4365,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 240.00000000002032,
+          "tick": 4800,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 71,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 71,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 245.00000000002146,
+          "tick": 4900,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 98,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 98,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 250.0000000000226,
+          "tick": 5000,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 127,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 127,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 255.00000000002373,
+          "tick": 5100,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 152,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 152,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 260.00000000002484,
+          "tick": 5200,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 130,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 130,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 265.000000000026,
+          "tick": 5300,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 157,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 157,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 270.0000000000271,
+          "tick": 5400,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 184,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 184,
+            "hp": 4344,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 275.00000000002825,
+          "tick": 5500,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 36,
+            "hp": 4209,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 36,
+            "hp": 4209,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 280.0000000000294,
+          "tick": 5600,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 67,
+            "hp": 3752,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 67,
+            "hp": 3752,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 285.0000000000305,
+          "tick": 5700,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 92,
+            "hp": 3307,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 92,
+            "hp": 3307,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 290.00000000003166,
+          "tick": 5800,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 66,
+            "hp": 2836,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 66,
+            "hp": 2836,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 295.0000000000328,
+          "tick": 5900,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 93,
+            "hp": 2327,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 93,
+            "hp": 2327,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 300.00000000003394,
+          "tick": 6000,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 118,
+            "hp": 1843,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 118,
+            "hp": 1843,
+            "maxHp": 6000
+          },
+          "id": null
+        },
+        {
+          "time": 305.0000000000351,
+          "tick": 6100,
+          "side": 1,
+          "method": "reinforce",
+          "args": [
+            1
+          ],
+          "ok": false,
+          "code": "insufficient-gold",
+          "before": {
+            "gold": 145,
+            "hp": 822.4,
+            "maxHp": 6000
+          },
+          "after": {
+            "gold": 145,
+            "hp": 822.4,
+            "maxHp": 6000
+          },
+          "id": null
+        }
+      ]
+    }
+  ],
+  "ledgerMaxResidual": 1.978150976356119e-11,
+  "paidBranchAttempts": 72,
+  "totalGames": 108
+}

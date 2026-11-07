@@ -1,0 +1,4745 @@
+{
+  "scope": "24 deterministic measurement replays; all final engine hashes, exact actions and ledgers equal original",
+  "originalResultsHash": "5c4ae7cb1d549e2d91124b6fafd057a967b1989e0a1f1e15b5db02d8e20e81c7",
+  "sources": {
+    "qa/citadel-reinforcement/study.mjs": "ac99cf0ea31b56093e56263cb816a97c9d1288256670b99520f6362a686f673f",
+    "qa/citadel-reinforcement/bridge-replay.mjs": "a7cf499c0c112dd1a4d23cbaaff525540995da42b2735eacdf691cac183541a4",
+    "qa/citadel-reinforcement/prototype.mjs": "6d513409b2044ecac58e8e6217576e8648ae81609e49d0bf2bef0151b6d18b93"
+  },
+  "results": [
+    {
+      "map": "classic",
+      "seed": 17,
+      "focal": 0,
+      "commonTick": 3299,
+      "time": 164.95000000000002,
+      "cases": [
+        {
+          "id": "interaction/classic/17/E/0/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/17/E/0/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/17/E/0/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              108.61666666666498,
+              190.56666666665694
+            ],
+            "hp": [
+              0,
+              1707
+            ],
+            "bridge": [
+              17.616666666667037,
+              40.81666666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 35
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "classic",
+      "seed": 17,
+      "focal": 1,
+      "commonTick": 3299,
+      "time": 164.95000000000002,
+      "cases": [
+        {
+          "id": "interaction/classic/17/E/1/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/17/E/1/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/17/E/1/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.95000000000326,
+            "tick": 3299,
+            "gold": [
+              192.56666666665694,
+              108.61666666666498
+            ],
+            "hp": [
+              1703,
+              0
+            ],
+            "bridge": [
+              40.81666666666564,
+              17.616666666667037
+            ],
+            "spawned": [
+              81,
+              75
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 0,
+              "bridge": 40.81666666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 8.753886504564434e-12
+            },
+            {
+              "initial": 420,
+              "base": 824.75,
+              "mine": 137.25,
+              "bridge": 17.616666666667037,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "classic",
+      "seed": 91,
+      "focal": 0,
+      "commonTick": 3296,
+      "time": 164.8,
+      "cases": [
+        {
+          "id": "interaction/classic/91/E/0/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 137.25,
+              "bridge": 17.56666666666704,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 0,
+              "bridge": 40.79166666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.094947017729282e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/91/E/0/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 137.25,
+              "bridge": 17.56666666666704,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 0,
+              "bridge": 40.79166666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.094947017729282e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/91/E/0/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 164.80000000000322,
+            "tick": 3296,
+            "gold": [
+              107.8166666666651,
+              191.79166666665662
+            ],
+            "hp": [
+              0,
+              2304
+            ],
+            "bridge": [
+              17.56666666666704,
+              40.79166666666564
+            ],
+            "spawned": [
+              75,
+              81
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 107,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 34
+              },
+              {
+                "producers": [
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 132,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 19
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 137.25,
+              "bridge": 17.56666666666704,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            },
+            {
+              "initial": 420,
+              "base": 824,
+              "mine": 0,
+              "bridge": 40.79166666666564,
+              "bounty": 82,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.094947017729282e-12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "classic",
+      "seed": 91,
+      "focal": 1,
+      "commonTick": 3310,
+      "time": 165.5,
+      "cases": [
+        {
+          "id": "interaction/classic/91/E/1/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 0,
+              "bridge": 40.9083333333323,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.066525308298878e-12
+            },
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 137.25,
+              "bridge": 17.80000000000036,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/91/E/1/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 0,
+              "bridge": 40.9083333333323,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.066525308298878e-12
+            },
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 137.25,
+              "bridge": 17.80000000000036,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/classic/91/E/1/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 165.50000000000338,
+            "tick": 3310,
+            "gold": [
+              193.40833333332333,
+              111.54999999999842
+            ],
+            "hp": [
+              1673,
+              0
+            ],
+            "bridge": [
+              40.9083333333323,
+              17.80000000000036
+            ],
+            "spawned": [
+              82,
+              76
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 131,
+                    "type": "barracks",
+                    "hp": 595,
+                    "level": 1
+                  },
+                  {
+                    "id": 156,
+                    "type": "sanctum",
+                    "hp": 520,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 20
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 27,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 69,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 108,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 157,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 36
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 0,
+              "bridge": 40.9083333333323,
+              "bounty": 80,
+              "spent": 1175,
+              "refund": 0,
+              "maxResidual": 9.066525308298878e-12
+            },
+            {
+              "initial": 420,
+              "base": 827.5,
+              "mine": 137.25,
+              "bridge": 17.80000000000036,
+              "bounty": 124,
+              "spent": 1415,
+              "refund": 0,
+              "maxResidual": 5.6843418860808015e-12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "twin-span",
+      "seed": 17,
+      "focal": 0,
+      "commonTick": 2111,
+      "time": 105.55000000000001,
+      "cases": [
+        {
+          "id": "interaction/twin-span/17/E/0/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.54999999999615,
+            "tick": 2111,
+            "gold": [
+              110.84999999999583,
+              382.0249999999804
+            ],
+            "hp": [
+              573,
+              6000
+            ],
+            "bridge": [
+              9.849999999999975,
+              24.274999999999157
+            ],
+            "spawned": [
+              30,
+              48
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 107.49999999999604,
+            "tick": 2150,
+            "gold": [
+              123.08749999999594,
+              392.26249999998
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.337499999999947,
+              24.76249999999913
+            ],
+            "spawned": [
+              30,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 92,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 26
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 537.5,
+              "mine": 187.25,
+              "bridge": 10.337499999999947,
+              "bounty": 48,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 5.076827847005916e-12
+            },
+            {
+              "initial": 420,
+              "base": 537.5,
+              "mine": 0,
+              "bridge": 24.76249999999913,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.91562321560923e-11
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/17/E/0/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.54999999999615,
+            "tick": 2111,
+            "gold": [
+              125.84999999999597,
+              382.0249999999804
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              9.849999999999975,
+              24.274999999999157
+            ],
+            "spawned": [
+              32,
+              48
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 105.54999999999615,
+            "tick": 2111,
+            "gold": [
+              125.84999999999597,
+              382.0249999999804
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              9.849999999999975,
+              24.274999999999157
+            ],
+            "spawned": [
+              32,
+              48
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 527.75,
+              "mine": 187.25,
+              "bridge": 9.849999999999975,
+              "bounty": 46,
+              "spent": 1065,
+              "refund": 0,
+              "maxResidual": 5.044853423896711e-12
+            },
+            {
+              "initial": 420,
+              "base": 527.75,
+              "mine": 0,
+              "bridge": 24.274999999999157,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8758328224066645e-11
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/17/E/0/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.54999999999615,
+            "tick": 2111,
+            "gold": [
+              149.72499999999508,
+              382.0249999999804
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              9.849999999999975,
+              24.274999999999157
+            ],
+            "spawned": [
+              30,
+              48
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 105.54999999999615,
+            "tick": 2111,
+            "gold": [
+              149.72499999999508,
+              382.0249999999804
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              9.849999999999975,
+              24.274999999999157
+            ],
+            "spawned": [
+              30,
+              48
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 527.75,
+              "mine": 226.125,
+              "bridge": 9.849999999999975,
+              "bounty": 46,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 5.066169705969514e-12
+            },
+            {
+              "initial": 420,
+              "base": 527.75,
+              "mine": 0,
+              "bridge": 24.274999999999157,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8758328224066645e-11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "twin-span",
+      "seed": 17,
+      "focal": 1,
+      "commonTick": 2119,
+      "time": 105.95,
+      "cases": [
+        {
+          "id": "interaction/twin-span/17/E/1/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.94999999999612,
+            "tick": 2119,
+            "gold": [
+              384.1249999999804,
+              114.94999999999585
+            ],
+            "hp": [
+              6000,
+              552
+            ],
+            "bridge": [
+              24.37499999999915,
+              9.949999999999969
+            ],
+            "spawned": [
+              48,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 24
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 108.049999999996,
+            "tick": 2161,
+            "gold": [
+              395.1499999999799,
+              127.97499999999597
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.89999999999912,
+              10.47499999999994
+            ],
+            "spawned": [
+              50,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 51,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 540.25,
+              "mine": 0,
+              "bridge": 24.89999999999912,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.9326762412674725e-11
+            },
+            {
+              "initial": 420,
+              "base": 540.25,
+              "mine": 187.25,
+              "bridge": 10.47499999999994,
+              "bounty": 50,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 5.076827847005916e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/17/E/1/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.94999999999612,
+            "tick": 2119,
+            "gold": [
+              384.1249999999804,
+              129.9499999999959
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.37499999999915,
+              9.949999999999969
+            ],
+            "spawned": [
+              48,
+              32
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 24
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 105.94999999999612,
+            "tick": 2119,
+            "gold": [
+              384.1249999999804,
+              129.9499999999959
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.37499999999915,
+              9.949999999999969
+            ],
+            "spawned": [
+              48,
+              32
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 24
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 529.75,
+              "mine": 0,
+              "bridge": 24.37499999999915,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8815171642927453e-11
+            },
+            {
+              "initial": 420,
+              "base": 529.75,
+              "mine": 187.25,
+              "bridge": 9.949999999999969,
+              "bounty": 48,
+              "spent": 1065,
+              "refund": 0,
+              "maxResidual": 5.044853423896711e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/17/E/1/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 105.94999999999612,
+            "tick": 2119,
+            "gold": [
+              384.1249999999804,
+              154.82499999999496
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.37499999999915,
+              9.949999999999969
+            ],
+            "spawned": [
+              48,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 24
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 105.94999999999612,
+            "tick": 2119,
+            "gold": [
+              384.1249999999804,
+              154.82499999999496
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.37499999999915,
+              9.949999999999969
+            ],
+            "spawned": [
+              48,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 24
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 529.75,
+              "mine": 0,
+              "bridge": 24.37499999999915,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8815171642927453e-11
+            },
+            {
+              "initial": 420,
+              "base": 529.75,
+              "mine": 227.125,
+              "bridge": 9.949999999999969,
+              "bounty": 48,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 5.087485988042317e-12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "twin-span",
+      "seed": 91,
+      "focal": 0,
+      "commonTick": 2157,
+      "time": 107.85000000000001,
+      "cases": [
+        {
+          "id": "interaction/twin-span/91/E/0/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 107.84999999999602,
+            "tick": 2157,
+            "gold": [
+              129.5499999999958,
+              394.0999999999799
+            ],
+            "hp": [
+              594,
+              6000
+            ],
+            "bridge": [
+              10.424999999999942,
+              24.849999999999124
+            ],
+            "spawned": [
+              30,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 75,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 110.14999999999588,
+            "tick": 2203,
+            "gold": [
+              1.624999999995316,
+              231.17499999997938
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.99999999999991,
+              25.42499999999909
+            ],
+            "spawned": [
+              30,
+              52
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 94,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 95,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 27
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 550.75,
+              "mine": 189.875,
+              "bridge": 10.99999999999991,
+              "bounty": 50,
+              "spent": 1220,
+              "refund": 0,
+              "maxResidual": 5.204725539442734e-12
+            },
+            {
+              "initial": 420,
+              "base": 550.75,
+              "mine": 0,
+              "bridge": 25.42499999999909,
+              "bounty": 40,
+              "spent": 805,
+              "refund": 0,
+              "maxResidual": 1.978150976356119e-11
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/91/E/0/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 107.84999999999602,
+            "tick": 2157,
+            "gold": [
+              144.54999999999518,
+              394.0999999999799
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.424999999999942,
+              24.849999999999124
+            ],
+            "spawned": [
+              32,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 75,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 107.84999999999602,
+            "tick": 2157,
+            "gold": [
+              144.54999999999518,
+              394.0999999999799
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.424999999999942,
+              24.849999999999124
+            ],
+            "spawned": [
+              32,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 79,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 12
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 75,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 539.25,
+              "mine": 189.875,
+              "bridge": 10.424999999999942,
+              "bounty": 50,
+              "spent": 1065,
+              "refund": 0,
+              "maxResidual": 5.186961971048731e-12
+            },
+            {
+              "initial": 420,
+              "base": 539.25,
+              "mine": 0,
+              "bridge": 24.849999999999124,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.9269918993813917e-11
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/91/E/0/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 107.84999999999602,
+            "tick": 2157,
+            "gold": [
+              174.17499999999427,
+              394.0999999999799
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.424999999999942,
+              24.849999999999124
+            ],
+            "spawned": [
+              30,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 75,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 107.84999999999602,
+            "tick": 2157,
+            "gold": [
+              174.17499999999427,
+              394.0999999999799
+            ],
+            "hp": [
+              0,
+              6000
+            ],
+            "bridge": [
+              10.424999999999942,
+              24.849999999999124
+            ],
+            "spawned": [
+              30,
+              50
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 4,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 10
+              },
+              {
+                "producers": [
+                  {
+                    "id": 2,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 5,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "archery",
+                    "hp": 75,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 539.25,
+              "mine": 234.5,
+              "bridge": 10.424999999999942,
+              "bounty": 50,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 5.7411853049416095e-12
+            },
+            {
+              "initial": 420,
+              "base": 539.25,
+              "mine": 0,
+              "bridge": 24.849999999999124,
+              "bounty": 40,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.9269918993813917e-11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "map": "twin-span",
+      "seed": 91,
+      "focal": 1,
+      "commonTick": 2074,
+      "time": 103.7,
+      "cases": [
+        {
+          "id": "interaction/twin-span/91/E/1/reinforce",
+          "choice": "reinforce",
+          "common": {
+            "label": "common-terminal",
+            "time": 103.69999999999625,
+            "tick": 2074,
+            "gold": [
+              370.312499999981,
+              95.3874999999959
+            ],
+            "hp": [
+              6000,
+              573
+            ],
+            "bridge": [
+              23.812499999999183,
+              9.387500000000001
+            ],
+            "spawned": [
+              48,
+              28
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 303,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 9
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 105.79999999999613,
+            "tick": 2116,
+            "gold": [
+              381.33749999998054,
+              106.41249999999602
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              24.337499999999153,
+              9.912499999999971
+            ],
+            "spawned": [
+              48,
+              29
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 160,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 10
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 529,
+              "mine": 0,
+              "bridge": 24.337499999999153,
+              "bounty": 38,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.864464138634503e-11
+            },
+            {
+              "initial": 420,
+              "base": 529,
+              "mine": 181.5,
+              "bridge": 9.912499999999971,
+              "bounty": 46,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 4.860112312599085e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/91/E/1/archery",
+          "choice": "archery",
+          "common": {
+            "label": "common-terminal",
+            "time": 103.69999999999625,
+            "tick": 2074,
+            "gold": [
+              370.312499999981,
+              110.38749999999608
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              23.812499999999183,
+              9.387500000000001
+            ],
+            "spawned": [
+              48,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 303,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 78,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 11
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 103.69999999999625,
+            "tick": 2074,
+            "gold": [
+              370.312499999981,
+              110.38749999999608
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              23.812499999999183,
+              9.387500000000001
+            ],
+            "spawned": [
+              48,
+              30
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 303,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  },
+                  {
+                    "id": 78,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 11
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 518.5,
+              "mine": 0,
+              "bridge": 23.812499999999183,
+              "bounty": 38,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8189894035458565e-11
+            },
+            {
+              "initial": 420,
+              "base": 518.5,
+              "mine": 181.5,
+              "bridge": 9.387500000000001,
+              "bounty": 46,
+              "spent": 1065,
+              "refund": 0,
+              "maxResidual": 4.82103246213228e-12
+            }
+          ]
+        },
+        {
+          "id": "interaction/twin-span/91/E/1/mint",
+          "choice": "mint",
+          "common": {
+            "label": "common-terminal",
+            "time": 103.69999999999625,
+            "tick": 2074,
+            "gold": [
+              370.312499999981,
+              129.63749999999587
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              23.812499999999183,
+              9.387500000000001
+            ],
+            "spawned": [
+              48,
+              28
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 303,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 9
+              }
+            ]
+          },
+          "terminal": {
+            "label": "final",
+            "time": 103.69999999999625,
+            "tick": 2074,
+            "gold": [
+              370.312499999981,
+              129.63749999999587
+            ],
+            "hp": [
+              6000,
+              0
+            ],
+            "bridge": [
+              23.812499999999183,
+              9.387500000000001
+            ],
+            "spawned": [
+              48,
+              28
+            ],
+            "sides": [
+              {
+                "producers": [
+                  {
+                    "id": 1,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 3,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 22,
+                    "type": "barracks",
+                    "hp": 700,
+                    "level": 1
+                  },
+                  {
+                    "id": 47,
+                    "type": "archery",
+                    "hp": 303,
+                    "level": 1
+                  }
+                ],
+                "mines": 0,
+                "units": 25
+              },
+              {
+                "producers": [
+                  {
+                    "id": 6,
+                    "type": "archery",
+                    "hp": 470,
+                    "level": 1
+                  },
+                  {
+                    "id": 46,
+                    "type": "wardenLodge",
+                    "hp": 650,
+                    "level": 1
+                  }
+                ],
+                "mines": 1,
+                "units": 9
+              }
+            ]
+          },
+          "ledger": [
+            {
+              "initial": 420,
+              "base": 518.5,
+              "mine": 0,
+              "bridge": 23.812499999999183,
+              "bounty": 38,
+              "spent": 630,
+              "refund": 0,
+              "maxResidual": 1.8189894035458565e-11
+            },
+            {
+              "initial": 420,
+              "base": 518.5,
+              "mine": 215.75,
+              "bridge": 9.387500000000001,
+              "bounty": 46,
+              "spent": 1080,
+              "refund": 0,
+              "maxResidual": 4.849454171562684e-12
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

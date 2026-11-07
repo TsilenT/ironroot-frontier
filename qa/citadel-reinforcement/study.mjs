@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {writeFileSync,readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {CitadelGame, CONTRACT} from './prototype.mjs';
 import {worldX} from '../../dist/engine.js';
@@ -77,7 +79,7 @@ function finish(g,meta) {
   assert.deepEqual(CitadelGame.restoreSnapshot(g.snapshot()).snapshot(),g.snapshot());
   return {...meta,time:g.state.time,winner:g.state.winner,ongoing:g.state.winner===null,final:checkpoint(g,'final'),...g.metrics,engineFinalHash:hash(JSON.stringify(g.snapshot()))};
 }
-function paired(group,map,seed,matchup,focal) {
+export function paired(group,map,seed,matchup,focal,extraTicks=[]) {
   const roles=focal===0?[matchup,matchup==='E'?'P':'E']:[matchup==='E'?'P':'E',matchup];
   const g=attach(new CitadelGame({reinforcement:true,ai:false,mapId:map,seed,rulesetId:group==='interaction'?'frontier-bridge-open':'frontier-air-local-open'}));
   const ctl=[{open:0,support:0,index:0},{open:0,support:0,index:0}];
@@ -89,7 +91,7 @@ function paired(group,map,seed,matchup,focal) {
     // Choice does not shift common support lane/index; keep scripts paired.
     b.metrics.checkpoints.push(before,checkpoint(b,'decision-after'));
     const assigned={tick:b.tick,time:b.state.time,ok:result.ok,code:result.code??null,reason:result.reason??null,cost:result.ok?(choice==='reinforce'?190:b.buildings[choice].cost):0,availableGold:before.gold[focal],alive:before.hp.every(h=>h>0),ongoing:b.state.winner===null,timeEligible:b.tick>=1800};
-    while(b.tick<18000&&b.state.winner===null){if(b.tick>=2200&&(b.tick-2200)%400===0)script(b,roles,c,'support');b.update(.05);if([2400,3000,4200].includes(b.tick))b.metrics.checkpoints.push(checkpoint(b,'decision-plus-'+(b.tick/20-90)));}
+    while(b.tick<18000&&b.state.winner===null){if(b.tick>=2200&&(b.tick-2200)%400===0)script(b,roles,c,'support');b.update(.05);if(extraTicks.includes(b.tick))b.metrics.checkpoints.push(checkpoint(b,'common-terminal'));if([2400,3000,4200].includes(b.tick))b.metrics.checkpoints.push(checkpoint(b,'decision-plus-'+(b.tick/20-90)));}
     return finish(b,{id:`${group}/${map}/${seed}/${matchup}/${focal}/${choice}`,group,map,seed,matchup,focal,choice,roles,assigned,prehistoryHash});
   });
 }
@@ -104,6 +106,7 @@ function symmetric(map,seed,policy) {
   }
   return finish(g,{id:`symmetric/${map}/${seed}/${policy}`,group:'symmetric',map,seed,policy});
 }
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
 const sources=Object.fromEntries(['dist/engine.js','dist/rulesets.js','dist/bridge-control.js','dist/autonomous-air.js',DIR+'prototype.mjs',DIR+'study.mjs',DIR+'PREREGISTRATION.md'].map(p=>[p,hash(readFileSync(p))]));
 const cases=[];
 for(const map of ['classic','long-march','twin-span'])for(const seed of [17,91])for(const matchup of ['E','P'])for(const focal of [0,1]){cases.push(...paired('primary',map,seed,matchup,focal));console.log(`primary ${map} ${seed} ${matchup} ${focal}`);}
@@ -112,3 +115,5 @@ for(const map of ['classic','long-march','twin-span'])for(const seed of [17,91])
 assert.equal(cases.length,108);
 writeFileSync(DIR+'results.json',JSON.stringify({base:'5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d',sourceCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),contract:CONTRACT,sources,cases},null,2)+'\n');
 console.log('Wrote 108 cases.');
+
+}
