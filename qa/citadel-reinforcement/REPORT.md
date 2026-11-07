@@ -56,7 +56,9 @@ not 132 independent or distinct cases.
 
 ## Primary: bridge disabled
 
-There are 24 paired decision states, each with three choices (72 runs).
+There are 12 distinct joint prehistories and 24 focal decision triplets, each
+with three choices (72 runs). These are correlated comparisons, not 24
+independent battles.
 The two scripts are economy-screen versus pressure and the reversed focal role.
 The rival never selects reinforcement in these player-choice branches; both
 sides are eligible but this is not symmetric reinforcement strategy evidence.
