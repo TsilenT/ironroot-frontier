@@ -1,0 +1,130 @@
+{
+  "scope": "Unreleased isolated mobile campaign teaching; no hosting/publishing/version bump; successful placement policy unchanged",
+  "sourceDirectory": "/workspace/shared/ironroot-visible-teaching-work",
+  "createdAtUtc": "2026-11-07T00:05:35.525536+00:00",
+  "base": {
+    "developmentOriginCommit": "55e97efde7e6218c6da9bc8088469e3ba02baa45",
+    "synchronizedProductionCommit": "27e9477e4abb8188f59e71e0663486507a34603d",
+    "candidateVersion": "0.15.0",
+    "scope": "Local combined campaign integration; no publication. See current validation manifest for exact source and upstream PR parents."
+  },
+  "patch": {
+    "path": "/workspace/shared/ironroot-visible-teaching-work/VISIBLE_MOBILE_TEACHING.patch",
+    "sha256": "fe620be05144ca5d66098631fb4a8a04e4c8cca7ca9bb7a52586f8e7d0e06de7"
+  },
+  "files": [
+    {
+      "path": "dist/app.js",
+      "baseSha256": "889c688d8c43338d55d45e98d27e790398df5927a84e1dcd7cb4e7b767e7a9c8",
+      "sha256": "9e6d9062c1b8105aa15515c313a55ab338671e7db71b3dea96299cef9153f5f8",
+      "bytes": 146654
+    },
+    {
+      "path": "dist/index.html",
+      "baseSha256": "e3ebae045b17e8270fe63dc40eb04cc5acb2ebcfb0764faf572ad3095b5be654",
+      "sha256": "185a7b048d128a86d7df03b1b1cc69876cedc3ab89a5b6520577fc87bfca0957",
+      "bytes": 44740
+    },
+    {
+      "path": "dist/styles.css",
+      "baseSha256": "a7dd583c78eb0c2227051bf5be58aa329a1e37e7979b0e5d9f23fa966727c6cd",
+      "sha256": "b2a0baa83f196fa91d0b9c1b5636a8ac14e5b44fe9649fef35c448f19d4f9ab5",
+      "bytes": 102053
+    },
+    {
+      "path": "tests/mobile-layout-fixture.mjs",
+      "baseSha256": "556ef99b9b5edf2f74f875feff2047e146ef3fa2e530f94fddaa668d32cc01d0",
+      "sha256": "51d417302bdfce2dc33b97d421da05416ab3c3ded25d0bb13e75b466e69804ea",
+      "bytes": 5374
+    },
+    {
+      "path": "tests/mobile-startup-fixture.mjs",
+      "baseSha256": "66dea1c5aab7e061e33d6198c1cc8e3c4ad138ed2158bbd713c23d0d9e6ffb01",
+      "sha256": "e5ba808dd713b654638df8fa8a9c85e5ff65d98a153916d370a0d8f163889782",
+      "bytes": 10826
+    },
+    {
+      "path": "tests/campaign-mobile-integration.test.mjs",
+      "baseSha256": "f3add85bb6a92b3d19640edebfded0bdc19d45a96f700b3741b86ab267bab0c7",
+      "sha256": "bf322cf0ad96ee588de9ef9eb537018203b5b5a5bc4e5093e83c6f97d1911116",
+      "bytes": 10170
+    },
+    {
+      "path": "tests/campaign-teaching-integration.test.mjs",
+      "baseSha256": "8228ef1fa6163778b7c50d4baea963541da11bd4116ad736839343c2bcd45101",
+      "sha256": "b5997feef04547251c2fc7cbcb71c5cb63c8b2ce7fea180b147c1aad130fd63d",
+      "bytes": 17526
+    },
+    {
+      "path": "tests/phone-viewport-fit.test.mjs",
+      "baseSha256": "4a3ee499f875dfcc45fdb2b8eb24ad62dae0e0273d6fd59ad5c2d3106965cb3e",
+      "sha256": "f80acbf2fda3a788e0fb5d05bb334757a9e58db5fa1923584a1543b5aeb01ef4",
+      "bytes": 9882
+    },
+    {
+      "path": "qa/browser/contextual-coaching.spec.mjs",
+      "baseSha256": "96eca981e82f502316c55fe602bfc717aac81c041b3ee372915e041e3ae7c25c",
+      "sha256": "88f0683094a4c3c6cea9aa3678128f7e18315f1048893694be8560d845500ddd",
+      "bytes": 17112
+    },
+    {
+      "path": "qa/browser/package.json",
+      "baseSha256": "b59eb0c9927a8a85895ac20b8e7274f62003a1b68148317cd8f164bc16a88f6a",
+      "sha256": "b844ab3229eaadff1b09f6d9cd3b85de66a59bbc6237a0651d2c2a6ef23b6c14",
+      "bytes": 3225
+    },
+    {
+      "path": "qa/browser/mobile-coaching-visibility.spec.mjs",
+      "baseSha256": null,
+      "sha256": "2fd25eecec6560f5721d24c9bd6b51cec412156650246eb6f5ca39e9d8ab1c87",
+      "bytes": 9749
+    },
+    {
+      "path": "docs/VISIBLE_MOBILE_CAMPAIGN_TEACHING.md",
+      "baseSha256": null,
+      "sha256": "f5d9654b0ec678156dde8d0778d77bea48aa13bf2d05cdd622ff4324f5db8a69",
+      "bytes": 4680
+    }
+  ],
+  "validation": {
+    "npmTest": {
+      "tests": 982,
+      "passed": 981,
+      "failed": 0,
+      "skipped": 1,
+      "log": "qa/visible-teaching-final-aggregate.tap"
+    },
+    "focusedTeaching": {
+      "passed": 23,
+      "failed": 0,
+      "log": "qa/visible-teaching-new-tests.tap"
+    },
+    "phoneViewport": {
+      "passed": 9,
+      "failed": 0,
+      "log": "qa/visible-teaching-viewport.tap"
+    },
+    "syntax": {
+      "passed": true,
+      "log": "qa/visible-teaching-syntax.log"
+    },
+    "runtime": {
+      "passed": true,
+      "log": "qa/visible-teaching-runtime.json"
+    },
+    "browserSourceAndFixtures": {
+      "passed": true,
+      "log": "qa/visible-teaching-browser-check.log"
+    },
+    "nativeBrowser": {
+      "status": "not_run",
+      "next": "Independent parent-owned combined-source native geometry/input review and cloud browser gate",
+      "newSpec": "qa/browser/mobile-coaching-visibility.spec.mjs"
+    }
+  },
+  "limits": [
+    "Source-derived geometry is not native CSS measurement.",
+    "Smaller protected portrait layouts may require more space during active teaching; 212px world floor is preserved.",
+    "Physical phone/PWA and non-Chromium browsers remain unverified."
+  ]
+}

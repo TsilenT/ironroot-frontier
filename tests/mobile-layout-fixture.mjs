@@ -1,6 +1,7 @@
 import {readFileSync} from 'node:fs';
 export const css=readFileSync(new URL('../dist/styles.css',import.meta.url),'utf8');
-const rule=selector=>css.slice(css.indexOf(selector+' {')).split('}')[0];
+const rule=selector=>[...css.replace(/\/\*[\s\S]*?\*\//g,'').matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>m[1].trim()===selector).map(m=>m[2]).join('\n');
+const shortCoached=rule('.app.protected-mobile.protected-short-portrait.mobile-coaching');
 const base=rule('.app.protected-mobile');
 export const portrait=rule('.app.protected-mobile.protected-portrait');
 export const ordinary=rule('.app.protected-mobile.protected-portrait.mobile-ordinary');
@@ -11,33 +12,52 @@ export const box=(left,top,width,height)=>({left,top,right:left+width,bottom:top
 // Source-derived grid fixture, not a CSS engine or native-browser evidence.
 // Root bounds deliberately come from inline style in the startup fixture, not
 // from the safety viewport: removing the real fit must reproduce the old bug.
-export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,root=box(0,0,width,height),viewport=root}={}){
-  const isPortrait=width<=height,isSidebar=!isPortrait&&root.height<360,isShort=isPortrait&&root.height<560;
+export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,teaching=false,root=box(0,0,width,height),viewport=root}={}){
+  const isPortrait=width<=height,isSidebar=!isPortrait&&(root.height<360||teaching),isShort=isPortrait&&root.height<560;
   const tokens=isSidebar?sidebar:isShort?shortPortrait:isPortrait?portrait:base;
   const header=token(tokens,'header'),dock=!protect&&(isPortrait||isSidebar)?token(isSidebar?rule('.app.protected-mobile.protected-sidebar.mobile-ordinary'):isShort?rule('.app.protected-mobile.protected-short-portrait.mobile-ordinary'):ordinary,'dock'):token(tokens,'dock');
-  const nav=isShort?token(portrait,'navigation'):token(tokens,'navigation'),rail=isShort?token(portrait,'rail'):token(tokens,'rail');
+  const shortCoaching=isShort&&teaching;
+  const nav=shortCoaching?token(shortCoached,'navigation'):isShort?token(portrait,'navigation'):token(tokens,'navigation'),rail=shortCoaching?token(shortCoached,'rail'):isShort?token(portrait,'rail'):token(tokens,'rail');
   const x=root.left+left,y=root.top+top,usableWidth=root.width-left-right,usableHeight=root.height-top-bottom;
-  let canvas,navigation,objective,headerBox;
+  const teachHeight=teaching ? token(rule(isPortrait?(isShort?'.app.protected-mobile.protected-short-portrait.mobile-coaching':'.app.protected-mobile.protected-portrait.mobile-coaching'):'.app.protected-mobile.mobile-coaching'),'teaching') : 0;
+  let canvas,navigation,objective,headerBox,teachingBox;
   if(isSidebar){
     // The minmax dock cannot shrink below its authored minimum. At truly tiny
     // heights grid overflow is rejected, rather than pretending controls fit.
     const trackHeight=Math.max(usableHeight,header+dock+nav),worldWidth=Math.max(0,usableWidth-rail);
-    canvas=box(x,y,worldWidth,trackHeight);headerBox=box(canvas.right,y,rail,header);
+    canvas=box(x,y+teachHeight,worldWidth,trackHeight-teachHeight);teachingBox=box(x,y,worldWidth,teachHeight);headerBox=box(canvas.right,y,rail,header);
     objective=box(canvas.right,y+header,rail,trackHeight-header-nav);
     navigation=box(canvas.right,y+trackHeight-nav,rail,nav);
   }else{
-    const worldHeight=Math.max(0,usableHeight-header-dock-nav);
+    const worldHeight=Math.max(0,usableHeight-header-dock-nav-teachHeight);
     canvas=box(x,y+header,Math.max(0,usableWidth-rail),worldHeight);
-    navigation=isPortrait?box(x,canvas.bottom+dock,usableWidth,nav):box(canvas.right,canvas.top,rail,worldHeight);
-    objective=box(x,canvas.bottom,usableWidth,dock);headerBox=box(x,y,usableWidth,header);
+    navigation=isPortrait&&!shortCoaching?box(x,canvas.bottom+teachHeight+dock,usableWidth,nav):box(canvas.right,canvas.top,rail,worldHeight);
+    teachingBox=box(x,canvas.bottom,usableWidth,teachHeight);objective=box(x,canvas.bottom+teachHeight,usableWidth,dock);headerBox=box(x,y,usableWidth,header);
   }
   const nodes={app:root,battle:canvas,topbar:headerBox,protectedDock:objective,protectedNavigation:navigation};
+  if(teaching){
+    nodes.campaignTeaching=teachingBox;
+    nodes.coachResume=box(teachingBox.right-110,teachingBox.top+(teachHeight-44)/2,56,44);
+    nodes.toggleCoach=box(teachingBox.right-50,teachingBox.top+(teachHeight-44)/2,44,44);
+    nodes.campaignCoach=box(teachingBox.left+6,teachingBox.top+(isShort?0:5),teachingBox.width-122,teachHeight-(isShort?0:10));
+  }
   if(isPortrait||isSidebar){
     const nx=navigation.left,nw=navigation.width;
     nodes.compactBuild=box(nx+6,navigation.top+2,56,44);
     for(const [i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(nx+nw-6-188+i*48,navigation.top+2,44,44);
     nodes.home=box(nx+6,navigation.top+50,44,44);nodes.front=box(nx+nw-50,navigation.top+50,44,44);
     nodes.minimap=box(nx+54,navigation.top+50,nw-108,44);
+    if(shortCoaching){
+      // The same 44px controls move beside the field. A too-short rail
+      // overflows rather than shrinking its tracks, so the guard rejects it.
+      const inset=6,gap=4,size=44,ny=navigation.top+inset;
+      nodes.compactBuild=box(nx+inset,ny,nw-2*inset,size);
+      for(const [i,id]of ['pause','speed','sound','settings'].entries())
+        nodes[id]=box(nx+inset+(i%2)*(size+gap),ny+size+gap+Math.floor(i/2)*(size+gap),size,size);
+      const mapTop=Math.max(ny+3*(size+gap),navigation.bottom-inset-(2*size+gap));
+      nodes.home=box(nx+inset,mapTop,size,size);nodes.front=box(nx+inset+size+gap,mapTop,size,size);
+      nodes.minimap=box(nx+inset,mapTop+size+gap,nw-2*inset,size);
+    }
     const targetY=objective.top+(isShort?16:36),w=(objective.width-18)/2;
     const targetHeight=isSidebar?Number(css.match(/\.protected-sidebar \.protected-target \{[^}]*min-height: (\d+)px/)[1]):44;
     nodes.target0=box(objective.left+6,targetY,w,targetHeight);nodes.target1=box(objective.left+12+w,targetY,w,targetHeight);
@@ -50,6 +70,6 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     nodes.compactBuild=protect?box(x+12+first,objective.top+8,52,44):box(x+usableWidth-58,objective.top+8,52,44);
     nodes.target0=box(x+70+first,objective.top+7,(last-6)/2,47);nodes.target1=box(x+76+first+(last-6)/2,objective.top+7,(last-6)/2,47);
   }
-  const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild',...(protect?['target0','target1']:[])].map(id=>nodes[id]);
-  return {nodes,canvas,controls,regions:[headerBox,objective,navigation],viewport};
+  const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild',...(protect?['target0','target1']:[]),...(teaching?['coachResume','toggleCoach']:[])].map(id=>nodes[id]);
+  return {nodes,canvas,controls,regions:[headerBox,objective,navigation,...(teaching?[teachingBox]:[])],viewport};
 }

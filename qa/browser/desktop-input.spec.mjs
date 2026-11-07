@@ -100,8 +100,19 @@ test.describe('desktop mouse controls', () => {
     const events=await page.evaluate(()=>window.__inputDefaults);
     expect(events.filter(e=>e.target==='battle')).toEqual([{target:'battle',prevented:true},{target:'battle',prevented:true}]);
     expect(events.at(-1)).toEqual({target:'gold',prevented:false});
-    await page.keyboard.press('Escape'); // Dismiss the native outside-game menu.
-    await pause(page);
+    // Headed browsers may consume Escape to dismiss their native context menu;
+    // when no native menu is shown, the trusted key reaches the game and opens
+    // Pause. Observe delivery instead of blindly clicking the now-inert HUD.
+    await page.evaluate(()=>{
+      window.__qaContextEscape=false;
+      document.addEventListener('keydown',event=>{
+        if(event.code==='Escape')window.__qaContextEscape=event.isTrusted;
+      },{capture:true,once:true,passive:true});
+    });
+    await page.keyboard.press('Escape');
+    if(await page.evaluate(()=>window.__qaContextEscape))
+      await expect(page.locator('#pauseVeil')).toBeVisible();
+    else await pause(page);
     expect((await ownBuildings(page)).filter(b=>b.type==='archery')).toHaveLength(0);
   });
 

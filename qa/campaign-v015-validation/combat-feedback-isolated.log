@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: labelled combat-feedback snapshots cover six roles, both teams and motion modes at three scales
+ok 1 - labelled combat-feedback snapshots cover six roles, both teams and motion modes at three scales
+  ---
+  duration_ms: 102.48039
+  type: 'test'
+  ...
+# Subtest: native 0.22/0.16 timers begin at contact or recoil and settle monotonically, without a windup
+ok 2 - native 0.22/0.16 timers begin at contact or recoil and settle monotonically, without a windup
+  ---
+  duration_ms: 0.88245
+  type: 'test'
+  ...
+# Subtest: reduced motion holds distinct static live states without new bob, blur, flash, opacity or clock dependence
+ok 3 - reduced motion holds distinct static live states without new bob, blur, flash, opacity or clock dependence
+  ---
+  duration_ms: 65.866724
+  type: 'test'
+  ...
+# Subtest: ground markers, shadows and left-to-right damaged health remain exact in every action pose
+ok 4 - ground markers, shadows and left-to-right damaged health remain exact in every action pose
+  ---
+  duration_ms: 12.434081
+  type: 'test'
+  ...
+# Subtest: contact/recoil stays within conservative original-silhouette bounds without extra draw shapes
+ok 5 - contact/recoil stays within conservative original-silhouette bounds without extra draw shapes
+  ---
+  duration_ms: 19.694832
+  type: 'test'
+  ...
+# Subtest: historical source still produces unchanged readability hashes; portraits and Rootwarden bytes are retained
+ok 6 - historical source still produces unchanged readability hashes; portraits and Rootwarden bytes are retained
+  ---
+  duration_ms: 86.739821
+  type: 'test'
+  ...
+# Subtest: real fire events show damage/contact immediately and drawing preserves engine, RNG, geometry and minimap
+ok 7 - real fire events show damage/contact immediately and drawing preserves engine, RNG, geometry and minimap
+  ---
+  duration_ms: 2571.222927
+  type: 'test'
+  ...
+# Subtest: pose sampling has no import, random, mutation, storage, events or clock dependencies
+ok 8 - pose sampling has no import, random, mutation, storage, events or clock dependencies
+  ---
+  duration_ms: 0.856822
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3000.438137

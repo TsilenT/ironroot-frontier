@@ -84,13 +84,13 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     const served=new Set();modern.on('response',response=>{if(response.fromServiceWorker())served.add(new URL(response.url()).pathname);});
     expect((await modern.goto(basePath))?.fromServiceWorker()).toBe(true);
     const migrated=await profile(modern);for(const key of HISTORICAL_KEYS)expect(migrated[key]).toBe(before[key]);
-    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...oldMarker,version:3});
+    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...oldMarker,version:4});
     await expect(page.locator('#profileRecovery')).toBeVisible();await assertOrdinaryFence(page,'__historical');expect(await profile(modern)).toEqual(migrated);
     expect(await shellHashes(modern,basePath,candidate.hashes)).toEqual(candidate.hashes);
     for(const file of Object.keys(candidate.hashes))expect(served.has(basePath+file),file+' served by active worker').toBe(true);
     for(const face of await loadFontFaces(modern)){expect(face.loaded).toHaveLength(1);expect(face.loaded[0].status).toBe('loaded');}
     for(const file of FONT_FILES)expect(served.has(basePath+file)).toBe(true);
-    await expect(modern.locator('#campaignProgressText')).toContainText(scenario==='far-beacon'?'13/16 missions · 39/48 stars':'16/16 missions · 48/48 stars');
+    await expect(modern.locator('#campaignProgressText')).toContainText(scenario==='far-beacon'?'13/19 missions · 39/57 stars':'16/19 missions · 48/57 stars');
     await press(modern,'#resumeSaved');const resumed=await pause(modern);
     expect(resumed.version).toBe(2);expect(resumed.campaignId).toBe(historical.campaignId);
     expect(resumed.game.version).toBe(historical.game.version);

@@ -1,0 +1,31 @@
+{
+  "method": "git merge-tree --write-tree (read-only worktree/branch preview; no merge applied)",
+  "menuCommit": "5edf05482d67acfa9c1983a634beb75578f68acd",
+  "previews": [
+    {
+      "branch": "fix/phone-visible-viewport",
+      "commit": "f06d940428bd2f23b9616f151f92c09170fe3107",
+      "appJsAutoMerged": true,
+      "conflicts": [
+        "dist/index.html",
+        "dist/styles.css",
+        "qa/browser/package.json"
+      ]
+    },
+    {
+      "branch": "fix/desktop-mouse-fullscreen",
+      "commit": "141df5da11c3b7b82bca43c30d3c771c2d2ab3ed",
+      "appJsAutoMerged": true,
+      "conflicts": [
+        "dist/index.html",
+        "qa/browser/package.json"
+      ]
+    }
+  ],
+  "resolution": {
+    "dist/index.html": "Keep the Options menu-heading and settings-content wrapper. Insert settingsFullscreen and fullscreenStatus at the top of settings-content, before settings-grid.",
+    "dist/styles.css": "Keep both appended rule blocks. Phone rules remain scoped to app layout, menu rules to top-level pause/options. Preserve the phone visible viewport CSS values.",
+    "qa/browser/package.json": "Keep pause-menu.spec.mjs syntax checking alongside both phone-viewport.spec.mjs and desktop-input.spec.mjs checks; retain the release owner version."
+  },
+  "notValidated": "No combined runtime or actual merge is claimed. Resolve the listed conflicts and run the menu, phone-viewport and desktop-input browser suites on the integrated branch."
+}

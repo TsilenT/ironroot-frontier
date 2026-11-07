@@ -1,4 +1,5 @@
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
+import { startRunning } from './campaign-teaching-helpers.mjs';
 // v0.7 UI integration regressions. Browser execution requires an authorized cloud runner.
 import {test as base, expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
@@ -350,10 +351,10 @@ test('late first backup read cannot replace a newer selected file preview',async
   await chooseFile(page,fixture(true).text);
   await expect.poll(()=>page.evaluate(()=>window.__qaFileReads.length)).toBe(2);
   await releaseRead(page,1);
-  await expect(page.locator('#backupSummary')).toContainText('1/16 campaign missions');
+  await expect(page.locator('#backupSummary')).toContainText('1/19 campaign missions');
   await releaseRead(page,0);
   await page.waitForTimeout(150);
-  await expect(page.locator('#backupSummary')).toContainText('1/16 campaign missions');
+  await expect(page.locator('#backupSummary')).toContainText('1/19 campaign missions');
   await Promise.all([page.waitForEvent('load'),press(page,'#confirmImport')]);
   const actual=await raw(page);
   expect(JSON.parse(actual[BACKUP_STORAGE_KEYS.campaign])).toEqual(fixture(true).backup.data.campaign);
@@ -423,7 +424,7 @@ for(const mode of ['campaign','challenges'])test('stale '+mode+' tab cannot resu
   // Establish both kinds of old medals before loading the stale app session.
   await page.evaluate(({key,campaign})=>localStorage.setItem(key,JSON.stringify(campaign)),
     {key:BACKUP_STORAGE_KEYS.campaign,campaign:fixture(true).backup.data.campaign});
-  await page.reload();await press(page,'[data-mode="'+mode+'"]');await press(page,'#start');
+  await page.reload();await press(page,'[data-mode="'+mode+'"]');await startRunning(page,press);
   await press(page,'#pause');await expect(page.locator('#pauseVeil')).toBeVisible();
   const newer=await context.newPage(),errors=[];
   newer.on('pageerror',error=>errors.push(error.message));

@@ -82,7 +82,9 @@ test('safe-area padding remains inside the fitted root, including shifted visual
   [740,320,{offsetLeft:1,offsetTop:1,width:738,height:318},{top:10,bottom:21,left:44,right:44}],
   [320,480,{offsetLeft:0,offsetTop:1,width:320,height:479},{bottom:34}],
  ]){
-  const h=startupHarness({width,height,insets});h.c.window.visualViewport=visual;h.start();
+  // Disable hints through the existing completed record, not a synthetic UI flag.
+  // Enabled restored guidance has its own rail/safe-area cases.
+  const h=startupHarness({width,height,insets});h.c.campaignProgress.missions['winter-stores']={completed:true,stars:1,bestTime:60};h.c.window.visualViewport=visual;h.start(true);
   const viewport=visibleViewportRect(width,height,visual),g=h.geometry();assert.equal(h.c.viewportPause.active,false);
   assert.deepEqual(inspectMobileGeometry({...g,viewport}),{safe:true,reason:''});
   for(const r of [g.canvas,...g.regions,...g.controls]){
@@ -118,7 +120,8 @@ test('safe content rect subtracts finite nonnegative CSS padding once and clamps
 });
 
 test('protected sidebar overflow into reserved safe area pauses even when it fits the outer viewport',()=>{
- const h=startupHarness({width:568,height:280,insets:{bottom:21}});h.start();
+ // Retain the original no-teaching overflow negative control.
+ const h=startupHarness({width:568,height:280,insets:{bottom:21}});h.c.campaignProgress.missions['winter-stores']={completed:true,stars:1,bestTime:60};h.start(true);
  const geometry=h.geometry(),viewport=box(0,0,568,280),safe=insetViewportRect(viewport,{paddingBottom:'21px'});
  assert.equal(geometry.canvas.height,272,'72px header + 104px objective + 96px navigation');
  assert.equal(inspectMobileGeometry({...geometry,viewport}).safe,true,'negative old outer-root-only guard misses the reserved area');

@@ -58,7 +58,9 @@ Full integration gates remain `npm test`, `npm run check`, and `npm run check:re
 
 ## Native comparison fixture
 
-`qa/combat-feedback/` is developer-only. Its baseline is a copy of the exact tested v0.13.0 candidate3 renderer, with precisely three reversible import substitutions recorded in `baseline-manifest.json`: the original VFX and Rootwarden art are copied byte-identically, and the renderer imports the shared unchanged engine from its temporary mount. The manifest pins all original/copy hashes. Tests reverse the substitutions and verify the exact original renderer hash and shared engine/art bytes.
+`qa/combat-feedback/` is developer-only. Its baseline is a copy of the exact tested v0.13.0 candidate3 renderer. For campaign compatibility maintenance, its dependency closure is now independently frozen: three renderer import substitutions select the copied engine, VFX and Rootwarden art; two engine import/re-export occurrences select copied rulesets. The original source hashes remain unchanged, and rulesets are byte-identical to that release. `baseline-manifest.json` records every substitution and source/copy hash. Tests reverse them to recover the exact released bytes and also reconstruct the prior renderer-copy hash. Current runtime engine/rulesets are no longer required to have historical hashes. No runtime or command-snapshot file changed in this maintenance.
+
+The fixture now builds separate historical/current Classic, `frontier-rootwarden-open` revision 1 scenes and rejects differing serialized state/RNG, map/ruleset definitions, UI or camera before drawing. This preserves the six-role comparison while allowing legitimate campaign-only admission changes. It does not validate the new campaign rosters, save admission or combat policy; those need their own integration evidence. This maintenance passed 55 focused renderer/fixture tests and fixture syntax checks; no native browser or full campaign validation was rerun.
 
 No browser, server, asset upload or publication was started by this worker. The parent may copy this directory into a separately coordinated review candidate at `dist/__qa_combat_feedback/`, then open `/__qa_combat_feedback/` on its approved private preview. Never add the fixture to the offline shell. Use a fresh preview origin without an old service worker. Remove only that temporary mount after review and rerun runtime preflight. The frozen baseline is not modified or hosted independently.
 
@@ -71,7 +73,7 @@ Controls:
 - Canvas sizes 320×220, 390×302, 844×240, 1180×757 and 534×190. These are field sizes, not claimed physical device viewports.
 - Four terrain themes, high/low detail, reduced motion, practice landscape scale and grayscale.
 
-Both renderers receive the same immutable scene, camera and settings. There is no simulation ticking, outcome generation, profile/save access or retained progress. Visible status checks state and RNG after each draw. Node tests additionally check minimaps and all recorded commands.
+Both renderers receive independent, byte-identical scene inputs with matching camera and settings. There is no simulation ticking, outcome generation, profile/save access or retained progress. Visible status checks state and RNG after each draw. Node tests additionally check minimaps and all recorded commands.
 
 ### Acceptance checklist
 

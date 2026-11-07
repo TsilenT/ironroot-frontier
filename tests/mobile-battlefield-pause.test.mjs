@@ -12,10 +12,10 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 const section=(a,b)=>app.slice(app.indexOf(a),app.indexOf(b,app.indexOf(a)));
 function harness(w=568,h=210){
  let insets={};const geometry=()=>{const style=$('app').style;return layout(w,h,{...insets,root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):w,style.height?parseFloat(style.height):h)});};const elements=new Map(),log={saves:0,interruptions:0,resets:0,scene:[],advances:[],toasts:[]};
- const $=id=>{if(!elements.has(id)){const classes=new Set(['viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
+ const $=id=>{if(!elements.has(id)){const classes=new Set(['coachingModal','viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
  $('app').classList.add('protected-mobile');$('app').classList.add('protected-compact');
  const game=createCampaignMission('winter-stores'),inputScope=createInputScopeGuard('compact-battle:landscape');
- const c={battleSafetyReason:null,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
+ const c={battleSafetyReason:null,coachingHold:false,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
   protectedControls:new Map([['a',{button:$('target0')}],['b',{button:$('target1')}]]),
   inputScope,controller:{reset(){log.resets++;}},resetBattleGesture(){log.interruptions++;},armedProtectedControl:{},closeSelectionArmed:true,padHud:true,
   recoveryHold:null,profileGate:null,battleSession:{status:()=>c.stale?'stale':'current'},showRecoverySettings(){c.recoveryShown=true;},showTitle(){c.titleShown=true;c.started=false;},
@@ -30,7 +30,7 @@ function harness(w=568,h=210){
   audio:{setScene:x=>log.scene.push(x),setIntensity(){}},heardEffects:new WeakSet(),heardProjectiles:new WeakSet(),sound(){},
   settingsWasPaused:false,helpWasPaused:false,invalidateImportRead(){},updateRecoveryUI(){},
  };
- c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
+ c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
  for(const source of [section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
@@ -84,7 +84,7 @@ test('actual start and input entry points check geometry before gameplay and nor
  const start=section('function start(','function beginProtectedObjectives(');
  assert.match(start,/started = true;[\s\S]*syncViewportSafety\(\);[\s\S]*?save\(\);/);
  assert.match(app,/function frame\(now\) \{\s*syncViewportSafety\(\);/);
- assert.match(app,/const dialogLayers = \[\s*\$\('viewportModal'\),\s*\$\('welcome'\),/);
+ assert.match(app,/const dialogLayers = \[\s*\$\('coachingModal'\),\s*\$\('pauseVeil'\),\s*\$\('viewportModal'\),\s*\$\('welcome'\),/);
  assert.match(app,/function guardInput\(event, check\) \{\s*syncViewportSafety\(\);/);
  assert.match(app,/window\.visualViewport\?\.addEventListener\('resize'/);
 });
