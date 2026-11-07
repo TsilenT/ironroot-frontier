@@ -4,7 +4,18 @@ const KEY = 'ironrootNavigation';
 const VERSION = 1;
 const same = (a, b) => a.length === b.length && a.every((route, i) => route.key === b[i].key);
 const snapshot = trail => trail.map(route => Object.freeze({...route}));
+// A return from the separate, optional practice document already has a real
+// Back destination. Do not put manufactured campaign parents in front of it.
+// Referrer is only a navigation hint, never authority to read or restore data.
+export function seedMenuAncestors(referrer, href) {
+  try {
+    const current = new URL(href), previous = new URL(referrer);
+    const practice = new URL('./training.html', current);
+    return previous.origin !== current.origin || previous.pathname !== practice.pathname;
+  } catch { return true; }
+}
 export function createMenuHistory({history, listen, read, apply, unknown, defer = queueMicrotask,
+  seedAncestors = true,
   token = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`}) {
   const entries = [];
   let cursor = -1, serial = 0, pending = null, applying = false, enabled = true, detached = null;
@@ -46,9 +57,9 @@ export function createMenuHistory({history, listen, read, apply, unknown, defer 
     if (cursor < 0) {
       // Reload/re-entry must not accumulate another synthetic ancestry. The old
       // document's markers are stale, not permission to restore its UI or game.
-      const reload = !!marker(history.state);
-      if (!establish(reload ? trail : trail.slice(0, 1))) return;
-      if (reload) return;
+      const singleEntry = !!marker(history.state) || !seedAncestors;
+      if (!establish(singleEntry ? trail : trail.slice(0, 1))) return;
+      if (singleEntry) return;
     }
     let current = entries[cursor].trail;
     if (same(current, trail)) { entries[cursor].trail = snapshot(trail); return; }

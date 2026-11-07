@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {inspectMobileGeometry} from '../dist/mobile-battlefield.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 
@@ -38,10 +39,19 @@ test('removing synchronous HUD initialization reproduces hidden-control false ho
   assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,width>height&&height>=360?3:2);
  }
 });
-// 568×300 / 320×440 are newly safe. Retain real-space negatives below
-// the sidebar track and short-portrait world budgets instead.
+test('coached protected launch and restore fit 320×430 and 320×400 without hiding any controls',()=>{
+ for(const restored of [false,true])for(const height of [430,400]){
+  const h=startupHarness({width:320,height});h.start(restored);
+  const geometry=h.geometry();assert.equal(geometry.canvas.width,216);assert.equal(geometry.canvas.height,height-152);
+  assert.deepEqual(inspectMobileGeometry(geometry),{safe:true,reason:''});
+  assert.equal(h.c.paused,false);assert.equal(h.c.viewportPause.active,false);
+  assert.equal(h.$('campaignTeaching').parentNode,h.$('app'));
+ }
+});
+// 320×400 now fits the 248px navigation budget exactly. Retain genuine
+// insufficient-space negatives below the unchanged sidebar/rail budgets.
 test('real first launch and restore still hold insufficient geometry after HUD initialization',()=>{
- for(const restored of [false,true])for(const [width,height]of [[568,240],[320,400]]){
+ for(const restored of [false,true])for(const [width,height]of [[568,240],[320,370]]){
   const h=startupHarness({width,height});h.start(restored);
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),false);
   assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,0,'hold is genuine space shortage, not hidden HUD');

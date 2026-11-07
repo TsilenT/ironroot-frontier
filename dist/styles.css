@@ -3911,7 +3911,9 @@ body.gamepad-active a:focus {
   background: #203429; border-block: 1px solid #7f7952; overflow: hidden;
 }
 .protected-mobile.mobile-coaching .campaign-coach {
-  display: block; min-width: 0; min-height: 0; height: 100%; margin: 0; padding: 0 4px;
+  /* DM Sans text ranges extend 1px above the first compact line box. Keep
+     that ink inside this scroller without changing the reserved rail. */
+  display: block; min-width: 0; min-height: 0; height: 100%; margin: 0; padding: 1px 4px;
   overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
   font-size: 12px; line-height: 15px;
 }
@@ -3946,3 +3948,44 @@ body.gamepad-active a:focus {
   .coaching-modal {padding: 16px;}
   .coaching-actions {grid-template-columns: 1fr 1fr;}
 }
+
+/* Short coached portrait shares the field row with navigation instead of
+   stacking another 96px below it. At 320x430 the field is 216x278, with a
+   separate full-width teaching strip and original-objective dock. Every
+   existing control remains mounted, visible and at least 44px; no zoom or
+   safety threshold changes are needed. Safe-area padding still belongs to
+   the outer mobile grid, and genuinely undersized layouts still pause. */
+.app.protected-mobile.protected-short-portrait.mobile-coaching {
+  --mobile-navigation: 0px;
+  --mobile-rail: 104px;
+  grid-template-columns: minmax(0, 1fr) var(--mobile-rail);
+  grid-template-rows: var(--mobile-header) minmax(0, 1fr) var(--mobile-teaching) var(--mobile-dock);
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .campaign-teaching {
+  grid-column: 1 / -1;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .protected-dock {
+  grid-column: 1 / -1;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .protected-navigation {
+  grid-column: 2; grid-row: 2;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 44px 92px minmax(92px, 1fr);
+  gap: 4px; padding: 6px;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .protected-navigation .compact-build {
+  grid-column: 1; grid-row: 1; width: 100%; height: 44px;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .protected-navigation .toolbelt {
+  grid-column: 1; grid-row: 2; position: static; transform: none;
+  justify-self: center; grid-template-columns: repeat(2, 44px);
+  grid-template-rows: repeat(2, 44px); gap: 4px;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching .protected-navigation .bottom-map {
+  grid-column: 1; grid-row: 3; position: static; transform: none;
+  align-self: end; width: 100%;
+  grid-template-columns: repeat(2, 44px); grid-template-rows: repeat(2, 44px); gap: 4px;
+}
+.protected-mobile.protected-short-portrait.mobile-coaching #home { grid-column: 1; grid-row: 1; }
+.protected-mobile.protected-short-portrait.mobile-coaching #front { grid-column: 2; grid-row: 1; }
+.protected-mobile.protected-short-portrait.mobile-coaching #minimap { grid-column: 1 / -1; grid-row: 2; }

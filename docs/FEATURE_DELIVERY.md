@@ -45,3 +45,11 @@ The campaign and cross-lane gaps take priority over another polish-only batch. E
 ### Final PR #8 feedback source checkpoint (7 November)
 
 The revised source combines one-shot placement (mouse+Shift repeats), mobile teaching visible outside Build, a pinned initial Start choice, finite Back/Forward menus, and an explicit optional fullscreen entry. Independent source review and 1,044 Node checks passed with one optional tooling skip. Browser QA of the exact revised commit is still required; live remains v0.14.1. Both Back defects found during review were fixed before freezing.
+
+### Subsequent PR8 browser repair
+
+The revised head `9aebcfd2` exposed two real UI defects in cloud checks: title Options Back focus was overwritten by campaign-heading focus, and mobile coach ink extended 1px above its scroller. A separate local correction preserves the title and its opener on modal dismissal, adds the small inner text inset, and fixes the QA server's missing-favicon error. Existing browser assertions remain intact. The repair passes 1,057 Node checks with one optional skip and all preflights; exact browser verification is pending. Live remains v0.14.1, and the flight feature is still a separate future integration.
+
+### PR8 full-gate repair checkpoint
+
+The revised PR8 cloud run finished1,330pass/32fail/46intentional exclusions. The corrective local batch addresses all four failure groups: title Options focus, teaching text ink clipping, short protected-phone layout and practice return-history. The QA server missing-file correction is included. Original browser assertions remain intact; added companions cover actual short-layout/return boundaries. Runtime changes are confined to app routing, menu history and CSS. The frozen future flight feature remains separate. This is not a passed browser gate or public release; final validation is recorded in `PR8_BROWSER_REPAIR_VALIDATION.json`.

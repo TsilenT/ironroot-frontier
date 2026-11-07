@@ -5,6 +5,7 @@ import { Game, buildBounds } from '../dist/engine.js';
 import { createCampaignProgress, createCampaignMission, CAMPAIGN_MISSIONS, ONBOARDING_MISSIONS, createCampaignRestart, getCampaignTargets, evaluateCampaignMission } from '../dist/campaign.js';
 import { campaignCoach, campaignTeaching, recommendCampaignSite } from '../dist/campaign-flow.js';
 import { advanceObjectiveBattle } from '../dist/objectives.js';
+import {inspectMobileGeometry} from '../dist/mobile-battlefield.js';
 import { startupHarness } from './mobile-startup-fixture.mjs';
 
 const completed = { completed: true, stars: 1, bestTime: 60 };
@@ -332,9 +333,19 @@ test('a genuinely guided restored protected mission keeps strict geometry safety
   c.start(Game.restore(snapshot),null,'winter-stores');h.resize(740,320);
   assert.equal(c.coachingHold,false);assert.equal(c.viewportPause.active,false);
   assert.equal($('campaignTeaching').parentNode,$('app'));assert.equal($('campaignCoach').classList.contains('hidden'),false);
-  h.resize(320,430);
+  // The repaired side rail makes both formerly constrained sizes safe.
+  for(const height of [430,400]){
+    h.resize(320,height);
+    const geometry=h.geometry();assert.equal(geometry.canvas.width,216);assert.equal(geometry.canvas.height,height-152);
+    assert.deepEqual(inspectMobileGeometry(geometry),{safe:true,reason:''});
+    assert.equal(c.coachingHold,false);assert.equal(c.viewportPause.active,false);assert.equal(c.paused,false);
+  }
+  // At 370px the unchanged 44px rail controls genuinely overflow their row.
+  h.resize(320,370);
+  const unsafe=h.geometry();
+  assert.equal(inspectMobileGeometry(unsafe).safe,false);
   assert.equal(c.coachingHold,false);assert.equal(c.viewportPause.blocked,true);assert.equal(c.paused,true);
-  assert.match($('viewportReason').textContent,/battlefield needs more visible space/i);
+  assert.match($('viewportReason').textContent,/controls/i);
   h.frame(1000);assert.deepEqual(c.game.serialize(),snapshot,'the normal geometry latch, not coaching, protects this small layout');
   h.resize(390,650);assert.equal(c.viewportPause.blocked,false);assert.equal(c.paused,true);
   c.pause(false);assert.equal(c.paused,true);c.pause(false,{explicit:true});assert.equal(c.paused,false);

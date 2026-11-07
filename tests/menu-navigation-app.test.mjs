@@ -12,7 +12,7 @@ import {createProfileSession,PROFILE_MARKER_KEY} from '../dist/profile-session.j
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 const SAVE='ironroot.battle.v1';
 const hidden=(h,id)=>h.$(id).classList.contains('hidden');
-function harness({mode='skirmish'}={}) {
+function harness({mode='skirmish', realDialogFocus=false}={}) {
   const h=startupHarness({width:1180,height:757}),{c,$}=h,browser=historyWindow({host:{panel:'arcade'}});
   const data=new Map(), writes=[];let fail=false;
   const raw={getItem:key=>data.get(key)??null,setItem(key,value){if(fail)throw Error('quota');data.set(key,value);writes.push([key,value]);},removeItem:key=>data.delete(key)};
@@ -45,6 +45,15 @@ function harness({mode='skirmish'}={}) {
     ['function invalidateImportRead()','function holdRecovery('],['function hideBackup()',"$('exportBackup').onclick"],
     ['function menuNavigationTrail()','menuHistory = createMenuHistory({'],
   ])runInContext(section(a,b),c);
+  if (realDialogFocus) {
+    // Execute the production focus handoff, with only layout/default focus
+    // supplied by this source-only DOM fixture. This is not browser geometry.
+    for (const id of ['welcomeSettings','start','settingsDone','campaignMissionTitle','campaignChapterTitle','campaignStoryTitle'])
+      $(id).getClientRects = () => $(id).closest('.hidden,[inert]') ? [] : [{width:44,height:44}];
+    c.dialogDefaultFocus = layer => layer === $('settingsModal') ? $('settingsDone') : layer === $('welcome') ? $('start') : $('resume');
+    c.document.querySelector = selector => selector === '.app' ? $('app') : c.document.body.querySelector(selector);
+    runInContext(section('function syncDialogs()', 'function keepDialogFocus()'), c);
+  }
   c.setMode(mode);c.syncDialogs();
   const nav=createMenuHistory({...browser,token:'app-document',read:c.menuNavigationTrail,apply:c.applyMenuNavigation,unknown:c.unknownMenuNavigation});
   const sync=()=>{c.syncDialogs();nav.sync();browser.flush();c.syncDialogs();};
@@ -212,4 +221,30 @@ test('five Back → Forward → explicit Resume cycles reuse the existing pause/
   }
   h.back();assert.equal(h.c.paused,true);assert.equal(h.c.started,true);
   h.back();assert.equal(h.c.started,false);assert.equal(hidden(h,'welcome'),false);
+});
+
+
+for (const mode of ['campaign','skirmish','challenges']) test(`Back from title Options restores its actual opener without re-rendering ${mode}`,()=>{
+  const h=harness({mode,realDialogFocus:true});
+  h.$('welcomeSettings').focus();
+  h.c.showSettings({currentTarget:h.$('welcomeSettings')});h.sync();
+  assert.equal(h.c.document.activeElement?.id,'settingsDone');
+  const before=h.c.game.serialize(),length=h.browser.history.length;
+  h.back();
+  assert.equal(hidden(h,'settingsModal'),true);
+  assert.equal(h.c.document.activeElement?.id,'welcomeSettings');
+  assert.equal(h.c.started,false);assert.deepEqual(h.c.game.serialize(),before);
+  h.forward();assert.equal(hidden(h,'settingsModal'),false);assert.equal(h.c.document.activeElement?.id,'settingsDone');
+  h.back();assert.equal(h.c.document.activeElement?.id,'welcomeSettings');
+  assert.equal(h.browser.history.length,length);
+  if(mode==='campaign') {h.back();assert.equal(h.c.campaignPage,'chapter');assert.equal(h.c.document.activeElement?.id,'campaignChapterTitle');}
+});
+
+for(const page of ['story','chapter']) test(`title Options Back keeps the ${page} page and restores its opener`,()=>{
+  const h=harness({mode:'campaign',realDialogFocus:true});h.c.showCampaignPage(page);h.sync();
+  const panel=h.$('campaign'+page[0].toUpperCase()+page.slice(1)+'Page');panel.scrollTop=37;
+  let renders=0;const setMode=h.c.setMode;h.c.setMode=(...args)=>{renders++;return setMode(...args);};
+  h.c.showSettings({currentTarget:h.$('welcomeSettings')});h.sync();h.back();
+  assert.equal(h.c.document.activeElement?.id,'welcomeSettings');assert.equal(h.c.campaignPage,page);
+  assert.equal(panel.scrollTop,37);assert.equal(renders,0,'dismissing Options must not rebuild the title');
 });

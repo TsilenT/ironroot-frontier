@@ -36,3 +36,19 @@ Phone viewport emulation and a mocked standalone display-mode signal do not cert
 The local Node suite, browser fixture/static checks, runtime syntax and offline inventory are required. Native browser execution remains a separate gate; local Chromium launch is blocked by the execution environment and was not bypassed. Browser tests here are prepared, not claimed as passed. The final combined source must run them in its authorized browser runner.
 
 Physical follow-up: on Android browser and installed PWA, start a battle, open each nested menu, press hardware/gesture Back repeatedly, use Forward where available, switch apps and return, reload, and repeat after a recoverable save failure. Verify fullscreen exit and the on-screen keyboard independently. Record browser/OS version and installed versus tab mode.
+
+## Practice document boundary repair
+
+Returning through the ordinary same-tab link from the separate optional
+`training.html` document keeps the chosen game title screen in one history
+entry. It does not manufacture Story and Chapter entries ahead of the real
+practice page. A subsequent Options dialog or battle still adds its normal
+finite menu/pause boundaries. The visible campaign navigation remains usable.
+Normal direct game loads continue to expose Story → Chapter → Mission ancestry.
+
+Recognition uses only the same-origin, exact sibling practice referrer as a
+read-only navigation hint. No save, profile, URL or practice storage is changed.
+Missing/suppressed referrers fall back to normal finite campaign navigation;
+new-tab behavior and actual cached-document retention are platform-dependent.
+The original repeated practice-return browser test remains unchanged, with
+additional nested Options, Back/Forward, reload and byte-preservation cases.

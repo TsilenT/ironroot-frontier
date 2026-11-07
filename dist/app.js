@@ -1,7 +1,7 @@
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
-import { createMenuHistory } from './menu-history.js';
+import { createMenuHistory, seedMenuAncestors } from './menu-history.js';
 import {
   GamepadInput,
   moveCursor,
@@ -3603,7 +3603,16 @@ function applyMenuNavigation(route, {direction = 'back'} = {}) {
     syncDialogs(); return;
   }
   if (route.kind === 'title') {
+    // Dismissing a title-screen layer is not a new campaign navigation. Keep
+    // the existing page/scroll and let the real dialog handoff restore its
+    // opener, rather than rebuilding the title and focusing its heading.
+    const sameTitleParent = !started && !$('welcome').classList.contains('hidden') &&
+      activeDialog && activeDialog !== $('welcome') && route.mode === mode &&
+      (mode !== 'campaign' || (route.page === campaignPage &&
+        (route.page === 'story' || route.chapter === selectedChapter) &&
+        (route.page !== 'mission' || route.mission === selectedCampaign)));
     closeNavigationLayers();
+    if (sameTitleParent) { syncDialogs(); return; }
     if (started && game.state.winner === null && !objectiveOutcome) {
       pause(true);
       $('saveExit').onclick();
@@ -3667,6 +3676,7 @@ function unknownMenuNavigation() {
 }
 menuHistory = createMenuHistory({
   history: window.history,
+  seedAncestors: seedMenuAncestors(document.referrer, window.location.href),
   listen(handler) {
     window.addEventListener('popstate', handler);
     return () => window.removeEventListener('popstate', handler);

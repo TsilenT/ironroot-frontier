@@ -1,0 +1,424 @@
+TAP version 13
+# Subtest: Roadside Watch: real shared-bar building is paid while clock, AI, income and production stay frozen
+ok 1 - Roadside Watch: real shared-bar building is paid while clock, AI, income and production stay frozen
+  ---
+  duration_ms: 39.948274
+  type: 'test'
+  ...
+# Subtest: Roadside Watch: Skip/Start works before spending and completed replays/restores never auto-teach
+ok 2 - Roadside Watch: Skip/Start works before spending and completed replays/restores never auto-teach
+  ---
+  duration_ms: 14.541143
+  type: 'test'
+  ...
+# Subtest: Roadside Watch: fresh restart repeats only unfinished teaching without changing its active identity
+ok 3 - Roadside Watch: fresh restart repeats only unfinished teaching without changing its active identity
+  ---
+  duration_ms: 15.230314
+  type: 'test'
+  ...
+# Subtest: Shield at the Fork: real shared-bar building is paid while clock, AI, income and production stay frozen
+ok 4 - Shield at the Fork: real shared-bar building is paid while clock, AI, income and production stay frozen
+  ---
+  duration_ms: 21.035208
+  type: 'test'
+  ...
+# Subtest: Shield at the Fork: Skip/Start works before spending and completed replays/restores never auto-teach
+ok 5 - Shield at the Fork: Skip/Start works before spending and completed replays/restores never auto-teach
+  ---
+  duration_ms: 15.270309
+  type: 'test'
+  ...
+# Subtest: Shield at the Fork: fresh restart repeats only unfinished teaching without changing its active identity
+ok 6 - Shield at the Fork: fresh restart repeats only unfinished teaching without changing its active identity
+  ---
+  duration_ms: 13.252754
+  type: 'test'
+  ...
+# Subtest: Open Three Roads: real shared-bar building is paid while clock, AI, income and production stay frozen
+ok 7 - Open Three Roads: real shared-bar building is paid while clock, AI, income and production stay frozen
+  ---
+  duration_ms: 19.448133
+  type: 'test'
+  ...
+# Subtest: Open Three Roads: Skip/Start works before spending and completed replays/restores never auto-teach
+ok 8 - Open Three Roads: Skip/Start works before spending and completed replays/restores never auto-teach
+  ---
+  duration_ms: 13.378811
+  type: 'test'
+  ...
+# Subtest: Open Three Roads: fresh restart repeats only unfinished teaching without changing its active identity
+ok 9 - Open Three Roads: fresh restart repeats only unfinished teaching without changing its active identity
+  ---
+  duration_ms: 14.32412
+  type: 'test'
+  ...
+# Subtest: hiding hints and help/options round trips preserve the teaching hold and do not force a build order
+ok 10 - hiding hints and help/options round trips preserve the teaching hold and do not force a build order
+  ---
+  duration_ms: 10.781201
+  type: 'test'
+  ...
+# Subtest: visibility, stale storage, profile recovery and simulation safety take precedence over teaching release
+ok 11 - visibility, stale storage, profile recovery and simulation safety take precedence over teaching release
+  ---
+  duration_ms: 39.184406
+  type: 'test'
+  ...
+# Subtest: startup on an unusable viewport arms teaching before any tick and never overrides the safety latch
+ok 12 - startup on an unusable viewport arms teaching before any tick and never overrides the safety latch
+  ---
+  duration_ms: 14.437058
+  type: 'test'
+  ...
+# Subtest: opening suggestions use the bound roster, Rootwarden screens, forward towers and real affordability
+ok 13 - opening suggestions use the bound roster, Rootwarden screens, forward towers and real affordability
+  ---
+  duration_ms: 44.403106
+  type: 'test'
+  ...
+# Subtest: earned first lesson suppresses redundant Emberwatch teaching while later income/defense lessons remain optional
+ok 14 - earned first lesson suppresses redundant Emberwatch teaching while later income/defense lessons remain optional
+  ---
+  duration_ms: 0.152497
+  type: 'test'
+  ...
+# Subtest: Escape closes teaching into planning, while a visible safety dialog keeps precedence
+ok 15 - Escape closes teaching into planning, while a visible safety dialog keeps precedence
+  ---
+  duration_ms: 8.293085
+  type: 'test'
+  ...
+# Subtest: mobile teaching stays outside Build at 320x480, including hide/show and paid correction
+ok 16 - mobile teaching stays outside Build at 320x480, including hide/show and paid correction
+  ---
+  duration_ms: 19.837704
+  type: 'test'
+  ...
+# Subtest: mobile teaching stays outside Build at 320x568, including hide/show and paid correction
+ok 17 - mobile teaching stays outside Build at 320x568, including hide/show and paid correction
+  ---
+  duration_ms: 13.632039
+  type: 'test'
+  ...
+# Subtest: mobile teaching stays outside Build at 390x650, including hide/show and paid correction
+ok 18 - mobile teaching stays outside Build at 390x650, including hide/show and paid correction
+  ---
+  duration_ms: 15.571372
+  type: 'test'
+  ...
+# Subtest: mobile teaching stays outside Build at 740x320, including hide/show and paid correction
+ok 19 - mobile teaching stays outside Build at 740x320, including hide/show and paid correction
+  ---
+  duration_ms: 19.066955
+  type: 'test'
+  ...
+# Subtest: mobile teaching stays outside Build at 844x390, including hide/show and paid correction
+ok 20 - mobile teaching stays outside Build at 844x390, including hide/show and paid correction
+  ---
+  duration_ms: 17.689282
+  type: 'test'
+  ...
+# Subtest: real protected teaching preserves its full right sidebar at 740x320 and the hold across rotations
+ok 21 - real protected teaching preserves its full right sidebar at 740x320 and the hold across rotations
+  ---
+  duration_ms: 17.612559
+  type: 'test'
+  ...
+# Subtest: restored enabled hints use the rail while completed disabled hints keep the drawer until requested
+ok 22 - restored enabled hints use the rail while completed disabled hints keep the drawer until requested
+  ---
+  duration_ms: 13.690907
+  type: 'test'
+  ...
+# Subtest: Space on the focused scrollable lesson never releases planning or becomes a battle command
+ok 23 - Space on the focused scrollable lesson never releases planning or becomes a battle command
+  ---
+  duration_ms: 7.301116
+  type: 'test'
+  ...
+# Subtest: first-watch: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+ok 24 - first-watch: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+  ---
+  duration_ms: 35.424585
+  type: 'test'
+  ...
+# Subtest: forked-road: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+ok 25 - forked-road: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+  ---
+  duration_ms: 37.305136
+  type: 'test'
+  ...
+# Subtest: roadside-watch: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+ok 26 - roadside-watch: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+  ---
+  duration_ms: 46.601185
+  type: 'test'
+  ...
+# Subtest: shield-at-the-fork: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+ok 27 - shield-at-the-fork: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+  ---
+  duration_ms: 51.385533
+  type: 'test'
+  ...
+# Subtest: open-three-roads: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+ok 28 - open-three-roads: enabled resumed hints are outside Build without a teaching pause or checkpoint rewrite
+  ---
+  duration_ms: 33.375475
+  type: 'test'
+  ...
+# Subtest: a fresh legacy attempt shows the same visible hint and remains frozen until explicit Start
+ok 29 - a fresh legacy attempt shows the same visible hint and remains frozen until explicit Start
+  ---
+  duration_ms: 21.53074
+  type: 'test'
+  ...
+# Subtest: protected battles without applicable hints retain their original small-portrait layout
+ok 30 - protected battles without applicable hints retain their original small-portrait layout
+  ---
+  duration_ms: 8.129442
+  type: 'test'
+  ...
+# Subtest: a genuinely guided restored protected mission keeps strict geometry safety rather than forcing a teaching hold
+ok 31 - a genuinely guided restored protected mission keeps strict geometry safety rather than forcing a teaching hold
+  ---
+  duration_ms: 14.281243
+  type: 'test'
+  ...
+# Subtest: direct mission load exposes chapter and story, then ordinary Back leaves
+ok 32 - direct mission load exposes chapter and story, then ordinary Back leaves
+  ---
+  duration_ms: 2.273346
+  type: 'test'
+  ...
+# Subtest: Back and Forward use registered UI routes without pushing or changing URLs
+ok 33 - Back and Forward use registered UI routes without pushing or changing URLs
+  ---
+  duration_ms: 0.445664
+  type: 'test'
+  ...
+# Subtest: unrelated history.state fields survive replace, push, close and traversal
+ok 34 - unrelated history.state fields survive replace, push, close and traversal
+  ---
+  duration_ms: 0.484462
+  type: 'test'
+  ...
+# Subtest: visible Close traverses rather than leaving duplicate dialogs, and a new choice discards Forward
+ok 35 - visible Close traverses rather than leaving duplicate dialogs, and a new choice discards Forward
+  ---
+  duration_ms: 0.399945
+  type: 'test'
+  ...
+# Subtest: a click while Close traversal is pending is not undone by the older popstate
+ok 36 - a click while Close traversal is pending is not undone by the older popstate
+  ---
+  duration_ms: 0.342991
+  type: 'test'
+  ...
+# Subtest: changing mission selection keeps its actual chapter as the Back parent
+ok 37 - changing mission selection keeps its actual chapter as the Back parent
+  ---
+  duration_ms: 0.273998
+  type: 'test'
+  ...
+# Subtest: reload replaces only the current marker and never seeds another synthetic hierarchy
+ok 38 - reload replaces only the current marker and never seeds another synthetic hierarchy
+  ---
+  duration_ms: 0.285646
+  type: 'test'
+  ...
+# Subtest: unknown or forged state never selects an injected route and is not rewritten or re-pushed
+ok 39 - unknown or forged state never selects an injected route and is not rewritten or re-pushed
+  ---
+  duration_ms: 1.001802
+  type: 'test'
+  ...
+# Subtest: even a registered ID must match the native current history state
+ok 40 - even a registered ID must match the native current history state
+  ---
+  duration_ms: 0.237814
+  type: 'test'
+  ...
+# Subtest: non-object host state "foreign" is preserved without breaking UI
+ok 41 - non-object host state "foreign" is preserved without breaking UI
+  ---
+  duration_ms: 0.280678
+  type: 'test'
+  ...
+# Subtest: non-object host state 42 is preserved without breaking UI
+ok 42 - non-object host state 42 is preserved without breaking UI
+  ---
+  duration_ms: 0.125918
+  type: 'test'
+  ...
+# Subtest: non-object host state [] is preserved without breaking UI
+ok 43 - non-object host state [] is preserved without breaking UI
+  ---
+  duration_ms: 0.094501
+  type: 'test'
+  ...
+# Subtest: History API denial degrades without an exception or an automatic retry loop
+ok 44 - History API denial degrades without an exception or an automatic retry loop
+  ---
+  duration_ms: 0.839701
+  type: 'test'
+  ...
+# Subtest: bfcache reconciliation replaces one current marker without adding guards or interpreting stale data
+ok 45 - bfcache reconciliation replaces one current marker without adding guards or interpreting stale data
+  ---
+  duration_ms: 0.272876
+  type: 'test'
+  ...
+# Subtest: rapid hardware-Back-equivalent traversals are finite and never reverse direction with new pushes
+ok 46 - rapid hardware-Back-equivalent traversals are finite and never reverse direction with new pushes
+  ---
+  duration_ms: 0.447517
+  type: 'test'
+  ...
+# Subtest: real app Back pauses the retained battle, saves it, then returns safely; Forward cannot revive it
+ok 47 - real app Back pauses the retained battle, saves it, then returns safely; Forward cannot revive it
+  ---
+  duration_ms: 47.369329
+  type: 'test'
+  ...
+# Subtest: real menu nesting: Back closes restart, backup preview, Options and guide without invoking actions
+ok 48 - real menu nesting: Back closes restart, backup preview, Options and guide without invoking actions
+  ---
+  duration_ms: 19.269837
+  type: 'test'
+  ...
+# Subtest: Back during teaching dismisses into frozen planning; Back from planning Options preserves the hold
+ok 49 - Back during teaching dismisses into frozen planning; Back from planning Options preserves the hold
+  ---
+  duration_ms: 15.894068
+  type: 'test'
+  ...
+# Subtest: campaign direct load and explicit route changes retain Story → Chapter → Mission hierarchy
+ok 50 - campaign direct load and explicit route changes retain Story → Chapter → Mission hierarchy
+  ---
+  duration_ms: 36.801286
+  type: 'test'
+  ...
+# Subtest: quota failure preserves exact retained game and warning with a finite history stack
+ok 51 - quota failure preserves exact retained game and warning with a finite history stack
+  ---
+  duration_ms: 15.931464
+  type: 'test'
+  ...
+# Subtest: another tab owns the checkpoint: Back returns to title without reclaiming or overwriting it
+ok 52 - another tab owns the checkpoint: Back returns to title without reclaiming or overwriting it
+  ---
+  duration_ms: 14.074658
+  type: 'test'
+  ...
+# Subtest: profile recovery and viewport safety remain held during repeated Back
+ok 53 - profile recovery and viewport safety remain held during repeated Back
+  ---
+  duration_ms: 27.240953
+  type: 'test'
+  ...
+# Subtest: Back retires held pointer, click and keyboard actions before revealing the next scope
+ok 54 - Back retires held pointer, click and keyboard actions before revealing the next scope
+  ---
+  duration_ms: 13.675334
+  type: 'test'
+  ...
+# Subtest: a stale attempt marker cannot replace a restarted game or change its campaign scenario identity
+ok 55 - a stale attempt marker cannot replace a restarted game or change its campaign scenario identity
+  ---
+  duration_ms: 14.49223
+  type: 'test'
+  ...
+# Subtest: older saved battles retain schema, map and bytes through browser Back and Forward pause
+ok 56 - older saved battles retain schema, map and bytes through browser Back and Forward pause
+  ---
+  duration_ms: 14.631588
+  type: 'test'
+  ...
+# Subtest: unknown history payload uses the live menu only and cannot assign game state
+ok 57 - unknown history payload uses the live menu only and cannot assign game state
+  ---
+  duration_ms: 10.869964
+  type: 'test'
+  ...
+# Subtest: result report is nested above results and the ended battlefield, without granting a restart
+ok 58 - result report is nested above results and the ended battlefield, without granting a restart
+  ---
+  duration_ms: 11.034028
+  type: 'test'
+  ...
+# Subtest: restoring profile gate cannot be dismissed or written through by Back/Forward
+ok 59 - restoring profile gate cannot be dismissed or written through by Back/Forward
+  ---
+  duration_ms: 14.788863
+  type: 'test'
+  ...
+# Subtest: failed profile gate cannot be dismissed or written through by Back/Forward
+ok 60 - failed profile gate cannot be dismissed or written through by Back/Forward
+  ---
+  duration_ms: 11.987539
+  type: 'test'
+  ...
+# Subtest: invalid profile gate cannot be dismissed or written through by Back/Forward
+ok 61 - invalid profile gate cannot be dismissed or written through by Back/Forward
+  ---
+  duration_ms: 11.088398
+  type: 'test'
+  ...
+# Subtest: newer-ready profile gate cannot be dismissed or written through by Back/Forward
+ok 62 - newer-ready profile gate cannot be dismissed or written through by Back/Forward
+  ---
+  duration_ms: 11.42447
+  type: 'test'
+  ...
+# Subtest: real pagehide/pageshow hooks retain a paused battle without adding history on cached return
+ok 63 - real pagehide/pageshow hooks retain a paused battle without adding history on cached return
+  ---
+  duration_ms: 10.017815
+  type: 'test'
+  ...
+# Subtest: Back closes the owned-building inspector before pausing, and Forward cannot resume its battle
+ok 64 - Back closes the owned-building inspector before pausing, and Forward cannot resume its battle
+  ---
+  duration_ms: 7.470019
+  type: 'test'
+  ...
+# Subtest: completed battle → title → Last battle report → Back twice restores the visible title
+ok 65 - completed battle → title → Last battle report → Back twice restores the visible title
+  ---
+  duration_ms: 10.948621
+  type: 'test'
+  ...
+# Subtest: five Back → Forward → explicit Resume cycles reuse the existing pause/play ancestry
+ok 66 - five Back → Forward → explicit Resume cycles reuse the existing pause/play ancestry
+  ---
+  duration_ms: 14.107648
+  type: 'test'
+  ...
+# Subtest: Back from title Options restores its actual opener without re-rendering campaign
+ok 67 - Back from title Options restores its actual opener without re-rendering campaign
+  ---
+  duration_ms: 15.518279
+  type: 'test'
+  ...
+# Subtest: Back from title Options restores its actual opener without re-rendering skirmish
+ok 68 - Back from title Options restores its actual opener without re-rendering skirmish
+  ---
+  duration_ms: 7.806269
+  type: 'test'
+  ...
+# Subtest: Back from title Options restores its actual opener without re-rendering challenges
+ok 69 - Back from title Options restores its actual opener without re-rendering challenges
+  ---
+  duration_ms: 7.66577
+  type: 'test'
+  ...
+1..69
+# tests 69
+# suites 0
+# pass 69
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 799.18556
