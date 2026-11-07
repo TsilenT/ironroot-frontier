@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { createProfileSession, PROFILE_MARKER_KEY as KEY, ProfileSessionError } from '../dist/profile-session.js';
+import { createProfileSession, PROFILE_MARKER_KEY as KEY, ProfileSessionError, CURRENT_PROFILE_PROTOCOL_VERSION } from '../dist/profile-session.js';
 import { createProfileSession as frozenV09Session } from './fixtures/profile-session-v0.9.js';
 import { BACKUP_STORAGE_KEYS as K, createBackup, restoreBackup } from '../dist/backup.js';
 import { createStorage } from '../dist/persistence.js';
@@ -245,7 +245,7 @@ test('explicit old-app recovery is a deliberate replacement, not an absolute cro
 });
 
 test('invalid marker versions, fields and migration options remain fail-closed', () => {
-  for (const value of [null, false, '2', 0, 5, 999, {}, []]) {
+  for (const value of [null, false, '2', 0, CURRENT_PROFILE_PROTOCOL_VERSION + 1, 999, {}, []]) {
     const r = raw(); assert.throws(() => expanded(r, { requiredProtocolVersion: value }), TypeError); assert.deepEqual(writes(r), []);
   }
   for (const prior of ['{broken', '{}', 'null', '[]', 'x'.repeat(513), encoded(3), encoded('2'), encoded(2, 'bad epoch'), encoded(2, 'epoch', 'unknown'),

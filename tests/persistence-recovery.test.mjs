@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { createStorage, createSaveSession, createHistorySession, createPreferenceSession, readHistoryState } from '../dist/persistence.js';
-import { createProfileSession, PROFILE_MARKER_KEY } from '../dist/profile-session.js';
+import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from '../dist/profile-session.js';
 import { createBackup, parseBackup } from '../dist/backup.js';
 const H = 'ironroot.history.v1', S = 'ironroot.settings.v1';
 const row = n => ({won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:n,kills:0,built:1,date:`2026-11-06T00:00:${String(n).padStart(2,'0')}.000Z`});
-const marker = epoch => JSON.stringify({format:'ironroot-profile',version:2,epoch,phase:'ready'});
+const marker = epoch => JSON.stringify({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,epoch,phase:'ready'});
 function fixture(entries = []) {
   const data = new Map(entries), calls = [];
   const faults = {read:null, write:null, afterWrite:null, readHook:null};
@@ -16,7 +16,7 @@ function fixture(entries = []) {
     setItem(key,value) { calls.push([key,value]); if (faults.write === key) throw Error('private quota payload'); data.set(key,value); faults.afterWrite?.(key,value); },
     removeItem(key) { data.delete(key); },
   };
-  const profile = createProfileSession(() => raw, {requiredProtocolVersion:2});
+  const profile = createProfileSession(() => raw, {requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});
   const storage = createStorage(() => profile.storage);
   const history = createHistorySession(storage,H,{canWrite:()=>profile.status().canWrite});
   const prefs = createPreferenceSession(storage,S,{canWrite:()=>profile.status().canWrite});

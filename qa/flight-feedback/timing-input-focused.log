@@ -1,0 +1,32 @@
+✔ Far Beacon replay handles the measured near-full remainder with exactly fourteen ticks (23.773376ms)
+✔ exact replay supports zero ticks, fractional RAF updates and both sides of the tick boundary (13.030902ms)
+✔ replay rejects altered state, RNG, identity and tick progression without dropping serialized fields (31.200855ms)
+✔ both accumulator observations and elapsed time are independently bounded (13.77772ms)
+✔ actual placement oracle accepts measured income beyond the old fixed gold bound (10.422954ms)
+✔ actual placement oracle rejects free builds, duplicate payment, charged rejection and altered income (13.993428ms)
+✔ browser case retains ordinary checkpoints, rejection, upgrade and salvage coverage (0.292921ms)
+✔ sampled tap releases its hardware without mutating the returned pressed snapshot (3.222491ms)
+✔ one sampled bumper tap cannot repeat with a 16 ms scheduling delay (1.694223ms)
+✔ one sampled bumper tap cannot repeat with a 331 ms scheduling delay (0.922698ms)
+✔ one sampled bumper tap cannot repeat with a 350 ms scheduling delay (2.768853ms)
+✔ one sampled bumper tap cannot repeat with a 450 ms scheduling delay (0.817513ms)
+✔ one sampled bumper tap cannot repeat with a 2000 ms scheduling delay (1.009235ms)
+✔ discrete bumpers retain the real affordable-card order under repeated long delays (1.244341ms)
+✔ explicit held bumper still exercises production repeat delay and interval (1.295076ms)
+✔ explicit held confirm survives a scope reset without click-through and rearms after release (1.466197ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 16 ms frames (9.39983ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 80 ms frames (2.92946ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 450 ms frames (1.806668ms)
+✔ steering preserves the strict 8 px stop threshold and does not move an already reached cursor (1.172015ms)
+✔ missing rendered cursor stops synthetic motion rather than claiming arrival (0.744074ms)
+✔ neutral input and disconnect cancel pending taps and steering without stale reconnect motion (0.738486ms)
+✔ invalid synthetic commands fail before they change an existing input (1.064657ms)
+✔ browser consumers retain deliberate 650 ms holds and the original placement assertions (1.396029ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 224.688095

@@ -1,3 +1,4 @@
+import {startRunning as startCampaignRunning} from './campaign-teaching-helpers.mjs';
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, LANES} from '../../dist/engine.js';
@@ -11,8 +12,7 @@ const test = base.extend({page:async ({page},use)=>{
   await use(page); expect(errors,'uncaught browser errors').toEqual([]);
 }});
 async function startRunning(page) {
-  await press(page, '#start');
-  if (await page.locator('#coachingModal').isVisible()) await press(page, '#coachingPlay');
+  await startCampaignRunning(page,press);
 }
 async function press(page,selector) {
   if (await prepareBuildControl(page, selector)) return;

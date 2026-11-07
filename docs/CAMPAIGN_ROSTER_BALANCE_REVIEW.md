@@ -1,4 +1,6 @@
-# Campaign full-roster balance review
+# Historical revision-2 campaign roster balance review
+
+This document and its stored JSON describe the historical **revision-2** full-roster benchmark. The optional runner is explicitly pinned to that revision for all sixteen continuations; it does not follow the current revision-3 flight launcher. The three opening battles still use their original earned roster behavior. For current flight campaign evidence, see [Flight campaign integration QA](FLIGHT_CAMPAIGN_QA.md) and run `node tests/flight-campaign-balance.mjs`.
 
 ## Verdict
 
@@ -12,12 +14,14 @@ The campaign is permissive about composition and early citadel victories. Rootwa
 node tests/campaign-roster-balance.mjs > docs/CAMPAIGN_ROSTER_BALANCE_RESULTS.json
 ```
 
-**Final run: 515 full battle simulations.** New-campaign and onboarding samples include **2,095 exact battle-envelope restore checkpoints**; the matched legacy restored samples are additional. The run completed successfully, and `node --check tests/campaign-roster-balance.mjs` also passed.
+**Recorded historical run: 515 full battle simulations.** New-campaign and onboarding samples include **2,095 exact battle-envelope restore checkpoints**; the matched legacy restored samples are additional. The run completed successfully, and `node --check tests/campaign-roster-balance.mjs` also passed.
 
 The JSON contains the input runtime SHA-256 hashes, per-mission results, paid action logs, starting authored formations, spending, citadel health, objectives, snapshots, seeds, and restore checks. The harness checks that its runtime inputs did not change during the run.
 
+The flight-integration maintenance change pins only the historical runner's setup. The 515-run evidence was not regenerated or widened. Syntax and the small `tests/campaign-roster-historical.test.mjs` setup/restore tests were checked instead; run them with `node --test tests/campaign-roster-historical.test.mjs`. Their synthetic progress fixtures test setup only and do not replace the originally earned full-matrix evidence.
+
 - Earn the three opening victories using the existing onboarding reference policy, a 10-second opening delay, one successful paid action every five seconds, and battle-envelope restores. The actual rosters are 2 → 5 → 8 buildings.
-- Continue through all 16 missions using `getCampaignLaunchMission`, `createProgressionCampaignMission`, and `recordCampaignResult`. There are no synthetic completion records or added resources/units.
+- Continue through all 16 missions using explicit revision-2 selection/factories and `recordCampaignResult`. The shared historical setup helper checks the original mission locks, while the three opening battles keep the earned launcher. There are no synthetic completion records or added resources/units.
 - Check the full eight-building roster and the unchanged 800-HP, 8-damage Rootwarden in every new continuation. Initial authored formations are retained; every later player build, upgrade, and volley is paid and audited. Volley kill bounties are accounted separately from the 75-gold charge.
 - Compare the existing reference policy at each authored seed, 57, and 999 against revision 1. The entire final combat state, RNG seed, IDs, tick, accumulator, and AI timer must match, not just victory labels.
 - Repeat those reference routes with new barracks purchases replaced by Warden lodges. Keep the same ranged, siege, economy, and protection decisions. Four mission policies buy no new barracks, so those cases are neutral controls rather than demonstrations of tank strength.

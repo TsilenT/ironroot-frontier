@@ -1,0 +1,3664 @@
+{
+  "title": "Ironroot PR #2 exact-candidate QA report — 46d324b",
+  "createdAt": "2026-11-07T09:00:44.085046+00:00",
+  "candidateCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "outcome": "BLOCKED: 11 full-matrix assertion failures and a confirmed native 370px Resume/re-pause layout loop remain.",
+  "integrity": {
+    "finalGitStatusPorcelain": "",
+    "candidateRuntimeOrTestEditsByQARunner": false,
+    "authoredBetweenCommitAssertionChanges": "The integrator changed presentation/teaching contracts and economic/replay/setup oracles before pinning this head. This QA run used that committed source unchanged; it does not claim byte-identical assertions across commits.",
+    "mergePerformed": false,
+    "deploymentPerformed": false,
+    "postFullServerStopped": true,
+    "postFullServerExitCode": 143,
+    "qaPortConnectResultAfterCleanup": 111,
+    "fullResultSha256": "d53595c4279201bf2a30c94e9036a976f97ea1ba273c61a4a260c1c1681e7d40"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "chromium": "Chromium 155.0.8059.79 built on Debian GNU/Linux 13 (trixie)",
+    "playwright": "1.65.0",
+    "browserProjects": [
+      "phone390x650 touchDPR2",
+      "narrow-phone320x568 touchDPR2",
+      "landscape844x390 touchDPR2",
+      "desktop1180x757"
+    ],
+    "workers": 2
+  },
+  "rootChecks": {
+    "total": 1222,
+    "passed": 1221,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "Existing optional desktop build tooling dependency is absent.",
+    "runtimeSyntax": "passed",
+    "runtimeInventory": {
+      "files": 49,
+      "bytes": 956156,
+      "passed": true
+    },
+    "browserSyntaxAndFixturePreflight": "passed",
+    "harnessContractsPassed": 8,
+    "syntheticProviderPreflightPassed": 17
+  },
+  "focused": {
+    "total": 176,
+    "passed": 169,
+    "failed": 4,
+    "skipped": 3,
+    "stats": {
+      "startTime": "2026-11-07T07:25:02.526Z",
+      "duration": 606771.3269999999,
+      "expected": 169,
+      "skipped": 3,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "byFile": {
+      "flight-orders.spec.mjs": {
+        "passed": 124
+      },
+      "flight-pause-layout.spec.mjs": {
+        "passed": 4
+      },
+      "hidden-coaching.spec.mjs": {
+        "passed": 20
+      },
+      "first-build-start.spec.mjs": {
+        "passed": 13,
+        "skipped": 3
+      },
+      "portrait-income.spec.mjs": {
+        "passed": 8,
+        "failed": 4
+      }
+    },
+    "failures": "Only the320x568 after-safe-inset income check failed in all4projects."
+  },
+  "full": {
+    "total": 1628,
+    "logicalCases": 407,
+    "specFiles": 37,
+    "passed": 1568,
+    "failed": 11,
+    "skipped": 49,
+    "flaky": 0,
+    "timedOut": 0,
+    "stats": {
+      "startTime": "2026-11-07T07:37:33.338Z",
+      "duration": 4608820.073,
+      "expected": 1568,
+      "skipped": 49,
+      "unexpected": 11,
+      "flaky": 0
+    },
+    "rawStatuses": {
+      "passed": 1568,
+      "skipped": 49,
+      "failed": 11
+    },
+    "byProject": {
+      "phone": {
+        "expected": 390,
+        "skipped": 14,
+        "unexpected": 3
+      },
+      "narrow-phone": {
+        "expected": 389,
+        "skipped": 15,
+        "unexpected": 3
+      },
+      "landscape": {
+        "expected": 389,
+        "skipped": 15,
+        "unexpected": 3
+      },
+      "desktop": {
+        "expected": 400,
+        "skipped": 5,
+        "unexpected": 2
+      }
+    },
+    "byFile": {
+      "accessibility-backup.spec.mjs": {
+        "expected": 72
+      },
+      "back-navigation.spec.mjs": {
+        "expected": 100
+      },
+      "battle-report.spec.mjs": {
+        "expected": 96
+      },
+      "build-completion.spec.mjs": {
+        "expected": 27,
+        "skipped": 9
+      },
+      "campaign-navigation.spec.mjs": {
+        "expected": 28
+      },
+      "campaign-onboarding.spec.mjs": {
+        "expected": 36
+      },
+      "campaign-progression.spec.mjs": {
+        "expected": 24
+      },
+      "campaign-restart-identity.spec.mjs": {
+        "expected": 24
+      },
+      "campaign.spec.mjs": {
+        "expected": 40
+      },
+      "contextual-coaching.spec.mjs": {
+        "expected": 46,
+        "unexpected": 3,
+        "skipped": 3
+      },
+      "desktop-input.spec.mjs": {
+        "expected": 37,
+        "skipped": 27
+      },
+      "expanded-campaign.spec.mjs": {
+        "expected": 136
+      },
+      "field-reference.spec.mjs": {
+        "expected": 20
+      },
+      "first-build-start.spec.mjs": {
+        "expected": 13,
+        "skipped": 3
+      },
+      "flight-orders.spec.mjs": {
+        "expected": 124
+      },
+      "flight-pause-layout.spec.mjs": {
+        "expected": 4
+      },
+      "fonts.spec.mjs": {
+        "expected": 8
+      },
+      "fullscreen-entry.spec.mjs": {
+        "expected": 44
+      },
+      "hidden-coaching.spec.mjs": {
+        "expected": 20
+      },
+      "integrated-flow.spec.mjs": {
+        "expected": 24
+      },
+      "maps.spec.mjs": {
+        "expected": 136
+      },
+      "mobile-coaching-visibility.spec.mjs": {
+        "expected": 20,
+        "skipped": 4
+      },
+      "objective-alerts.spec.mjs": {
+        "expected": 24
+      },
+      "offline-shell.spec.mjs": {
+        "expected": 4
+      },
+      "pause-menu.spec.mjs": {
+        "expected": 64
+      },
+      "phone-viewport.spec.mjs": {
+        "expected": 64
+      },
+      "portrait-income.spec.mjs": {
+        "expected": 8,
+        "unexpected": 4
+      },
+      "practice-history.spec.mjs": {
+        "expected": 8
+      },
+      "production-upgrade.spec.mjs": {
+        "expected": 20
+      },
+      "production-v015-upgrade.spec.mjs": {
+        "expected": 16
+      },
+      "profile-upgrade.spec.mjs": {
+        "expected": 68
+      },
+      "protected-objectives-pointer.spec.mjs": {
+        "expected": 8
+      },
+      "regression.spec.mjs": {
+        "expected": 81,
+        "skipped": 3
+      },
+      "service-worker-update.spec.mjs": {
+        "expected": 8
+      },
+      "short-coached-portrait.spec.mjs": {
+        "expected": 12,
+        "unexpected": 4
+      },
+      "storage-recovery.spec.mjs": {
+        "expected": 24
+      },
+      "training.spec.mjs": {
+        "expected": 80
+      }
+    },
+    "failureGroups": {
+      "legacy_compact_drawer_setup": 3,
+      "inset_income_safety_overlap": 4,
+      "confirmed_370_resume_repause_layout_loop": 4
+    },
+    "failures": [
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "phone",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7341,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 × locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "narrow-phone",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7228,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 × locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "landscape",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7648,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 × locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "phone",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2229,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "narrow-phone",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2341,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "landscape",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2460,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "desktop",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 1731,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "phone",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8788,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 × locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "narrow-phone",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8019,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 × locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "landscape",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8291,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 × locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "desktop",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7917,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 × locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      }
+    ],
+    "skipLedger": {
+      "head": "46d324b94754fe88ed9d324456f284af0aa4537d",
+      "count": 49,
+      "byReason": {
+        "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.": 6,
+        "Desktop mouse repeat affordability; default placement runs in every profile.": 3,
+        "One complete real-time route; touch paid construction is covered separately.": 3,
+        "Native mouse cases use the desktop profile; touch regressions run separately.": 27,
+        "Explicit mouse Shift workflow.": 3,
+        "Mobile rail; desktop shared controls remain in the normal deck.": 1,
+        "Mobile safe-area geometry.": 1,
+        "Mobile drawer visibility; actual-app checkpoint parity also runs in Node.": 1,
+        "Mobile replay hint layout.": 1,
+        "Coordinate-specific phone regression": 3
+      },
+      "cases": [
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit and ends on a normal click",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 259,
+              "retry": 0,
+              "startTime": "2026-11-07T07:40:06.131Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit and ends on a normal click",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 192,
+              "retry": 0,
+              "startTime": "2026-11-07T08:00:00.116Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit and ends on a normal click",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 267,
+              "retry": 0,
+              "startTime": "2026-11-07T08:18:10.843Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit in a narrow desktop window and ends on a normal click",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 233,
+              "retry": 0,
+              "startTime": "2026-11-07T07:40:06.420Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit in a narrow desktop window and ends on a normal click",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 250,
+              "retry": 0,
+              "startTime": "2026-11-07T08:00:00.329Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 93,
+          "title": "mouse Shift-repeat is explicit in a narrow desktop window and ends on a normal click",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 94,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 229,
+              "retry": 0,
+              "startTime": "2026-11-07T08:18:11.137Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 94,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mouse workflow, including a narrow desktop viewport; touch/pen are covered separately."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 105,
+          "title": "mouse Shift-repeat stops automatically when another building is unaffordable",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 106,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 257,
+              "retry": 0,
+              "startTime": "2026-11-07T07:40:06.685Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 106,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Desktop mouse repeat affordability; default placement runs in every profile."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 105,
+          "title": "mouse Shift-repeat stops automatically when another building is unaffordable",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 106,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 213,
+              "retry": 0,
+              "startTime": "2026-11-07T08:00:00.590Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 106,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Desktop mouse repeat affordability; default placement runs in every profile."
+          ]
+        },
+        {
+          "file": "build-completion.spec.mjs",
+          "line": 105,
+          "title": "mouse Shift-repeat stops automatically when another building is unaffordable",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                "line": 106,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 230,
+              "retry": 0,
+              "startTime": "2026-11-07T08:18:11.390Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Desktop mouse repeat affordability; default placement runs in every profile.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/build-completion.spec.mjs",
+                    "line": 106,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Desktop mouse repeat affordability; default placement runs in every profile."
+          ]
+        },
+        {
+          "file": "contextual-coaching.spec.mjs",
+          "line": 146,
+          "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "One complete real-time route; touch paid construction is covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                "line": 147,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 325,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:10.676Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "One complete real-time route; touch paid construction is covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                    "line": 147,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "One complete real-time route; touch paid construction is covered separately."
+          ]
+        },
+        {
+          "file": "contextual-coaching.spec.mjs",
+          "line": 146,
+          "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "One complete real-time route; touch paid construction is covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                "line": 147,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 323,
+              "retry": 0,
+              "startTime": "2026-11-07T08:01:48.087Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "One complete real-time route; touch paid construction is covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                    "line": 147,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "One complete real-time route; touch paid construction is covered separately."
+          ]
+        },
+        {
+          "file": "contextual-coaching.spec.mjs",
+          "line": 146,
+          "title": "a fresh suggested army earns a real win and Continue opens the next teaching mission",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 40000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "One complete real-time route; touch paid construction is covered separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                "line": 147,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 251,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:21.448Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "One complete real-time route; touch paid construction is covered separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs",
+                    "line": 147,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "One complete real-time route; touch paid construction is covered separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 38,
+          "title": "middle drag pans in placement mode without spending, selecting, or building; left click still places",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.037Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 38,
+          "title": "middle drag pans in placement mode without spending, selecting, or building; left click still places",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:01.899Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 38,
+          "title": "middle drag pans in placement mode without spending, selecting, or building; left click still places",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.377Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 65,
+          "title": "middle drag clamps at both map edges and release outside the canvas ends the gesture",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.097Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 65,
+          "title": "middle drag clamps at both map edges and release outside the canvas ends the gesture",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 1,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:01.940Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 65,
+          "title": "middle drag clamps at both map edges and release outside the canvas ends the gesture",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.401Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 82,
+          "title": "right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.112Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 82,
+          "title": "right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 1,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:01.960Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 82,
+          "title": "right-click cancels building and spell without opening a game context menu; outside canvas keeps browser defaults",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.416Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 119,
+          "title": "secondary press during a held left placement retires the gesture and never buys",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.127Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 119,
+          "title": "secondary press during a held left placement retires the gesture and never buys",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:01.982Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 119,
+          "title": "secondary press during a held left placement retires the gesture and never buys",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.433Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on lost capture and the next left click works",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.137Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on lost capture and the next left click works",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:01.996Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on lost capture and the next left click works",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.448Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on blur and the next left click works",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.150Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on blur and the next left click works",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:02.009Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on blur and the next left click works",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.462Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on pause and the next left click works",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.167Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on pause and the next left click works",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 1,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:02.022Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 134,
+          "title": "middle drag clears on pause and the next left click works",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.477Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 157,
+          "title": "keyboard arrows and Escape and the visible Cancel control retain their fallbacks",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.177Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 157,
+          "title": "keyboard arrows and Escape and the visible Cancel control retain their fallbacks",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:02.033Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 157,
+          "title": "keyboard arrows and Escape and the visible Cancel control retain their fallbacks",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.495Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 173,
+          "title": "pause Preferences offers fullscreen and returns to the paused battle",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T07:42:27.188Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 173,
+          "title": "pause Preferences offers fullscreen and returns to the paused battle",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:02:02.045Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "desktop-input.spec.mjs",
+          "line": 173,
+          "title": "pause Preferences offers fullscreen and returns to the paused battle",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                "line": 36,
+                "column": 44
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T08:20:38.510Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native mouse cases use the desktop profile; touch regressions run separately.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/desktop-input.spec.mjs",
+                    "line": 36,
+                    "column": 44
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Native mouse cases use the desktop profile; touch regressions run separately."
+          ]
+        },
+        {
+          "file": "first-build-start.spec.mjs",
+          "line": 57,
+          "title": "mouse Shift repeats remain deliberate across the automatic transition",
+          "project": "phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Explicit mouse Shift workflow.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                "line": 58,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 236,
+              "retry": 0,
+              "startTime": "2026-11-07T07:44:56.366Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Explicit mouse Shift workflow.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                    "line": 58,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Explicit mouse Shift workflow."
+          ]
+        },
+        {
+          "file": "first-build-start.spec.mjs",
+          "line": 57,
+          "title": "mouse Shift repeats remain deliberate across the automatic transition",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Explicit mouse Shift workflow.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                "line": 58,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 203,
+              "retry": 0,
+              "startTime": "2026-11-07T08:04:09.126Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Explicit mouse Shift workflow.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                    "line": 58,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Explicit mouse Shift workflow."
+          ]
+        },
+        {
+          "file": "first-build-start.spec.mjs",
+          "line": 57,
+          "title": "mouse Shift repeats remain deliberate across the automatic transition",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Explicit mouse Shift workflow.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                "line": 58,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 197,
+              "retry": 0,
+              "startTime": "2026-11-07T08:23:08.419Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Explicit mouse Shift workflow.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                    "line": 58,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Explicit mouse Shift workflow."
+          ]
+        },
+        {
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 55,
+          "title": "Plan, selected tool, failed correction and paid build keep teaching and Start outside the closed drawer",
+          "project": "desktop",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 45000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mobile rail; desktop shared controls remain in the normal deck.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                "line": 56,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 313,
+              "retry": 0,
+              "startTime": "2026-11-07T08:48:04.717Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile rail; desktop shared controls remain in the normal deck.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                    "line": 56,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mobile rail; desktop shared controls remain in the normal deck."
+          ]
+        },
+        {
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 89,
+          "title": "short portrait safe inset and protected landscape retain measured world and reachable teaching controls",
+          "project": "desktop",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 45000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mobile safe-area geometry.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                "line": 90,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 217,
+              "retry": 0,
+              "startTime": "2026-11-07T08:48:05.066Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile safe-area geometry.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                    "line": 90,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mobile safe-area geometry."
+          ]
+        },
+        {
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 148,
+          "title": "resumed First Watch and current campaign hints are visible without Build and never force a teaching pause",
+          "project": "desktop",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 45000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mobile drawer visibility; actual-app checkpoint parity also runs in Node.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                "line": 149,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 217,
+              "retry": 0,
+              "startTime": "2026-11-07T08:48:09.896Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile drawer visibility; actual-app checkpoint parity also runs in Node.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                    "line": 149,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mobile drawer visibility; actual-app checkpoint parity also runs in Node."
+          ]
+        },
+        {
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 177,
+          "title": "completed tutorial replay preserves disabled hints, then explicitly enabled hints leave Build without pausing",
+          "project": "desktop",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 45000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Mobile replay hint layout.",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                "line": 178,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 225,
+              "retry": 0,
+              "startTime": "2026-11-07T08:48:10.128Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Mobile replay hint layout.",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/mobile-coaching-visibility.spec.mjs",
+                    "line": 178,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Mobile replay hint layout."
+          ]
+        },
+        {
+          "file": "regression.spec.mjs",
+          "line": 241,
+          "title": "a touch selecting a building keeps its details panel open",
+          "project": "narrow-phone",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Coordinate-specific phone regression",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                "line": 242,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 199,
+              "retry": 0,
+              "startTime": "2026-11-07T08:13:04.509Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Coordinate-specific phone regression",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                    "line": 242,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Coordinate-specific phone regression"
+          ]
+        },
+        {
+          "file": "regression.spec.mjs",
+          "line": 241,
+          "title": "a touch selecting a building keeps its details panel open",
+          "project": "landscape",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Coordinate-specific phone regression",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                "line": 242,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 236,
+              "retry": 0,
+              "startTime": "2026-11-07T08:33:37.290Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Coordinate-specific phone regression",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                    "line": 242,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Coordinate-specific phone regression"
+          ]
+        },
+        {
+          "file": "regression.spec.mjs",
+          "line": 241,
+          "title": "a touch selecting a building keeps its details panel open",
+          "project": "desktop",
+          "expectedStatus": "skipped",
+          "outcome": "skipped",
+          "timeout": 20000,
+          "annotations": [
+            {
+              "type": "skip",
+              "description": "Coordinate-specific phone regression",
+              "location": {
+                "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                "line": 242,
+                "column": 8
+              }
+            }
+          ],
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 244,
+              "retry": 0,
+              "startTime": "2026-11-07T08:51:50.590Z",
+              "errors": [],
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Coordinate-specific phone regression",
+                  "location": {
+                    "file": "/workspace/ironroot-pr2-46d324b/qa/browser/regression.spec.mjs",
+                    "line": 242,
+                    "column": 8
+                  }
+                }
+              ],
+              "attachments": []
+            }
+          ],
+          "skipReasons": [
+            "Coordinate-specific phone regression"
+          ]
+        }
+      ]
+    },
+    "topLevelErrors": []
+  },
+  "previous62FailureComparison": {
+    "oldHead": "598925cbfea60acc734513d05dc14eeafe80a57d",
+    "oldWorkers": 4,
+    "newWorkers": 2,
+    "comparedNamedCases": 62,
+    "newExpectedOutcomes": 62,
+    "qualification": "Same named cases compared across different commits and authored harness/test repairs, with old four workers versus new two workers. Passing a named case does not isolate a production fix or erase the original run.",
+    "evidence": "previous-failure-comparison.json"
+  },
+  "skipComparison": {
+    "oldCount": 46,
+    "newCount": 49,
+    "unchangedCount": 46,
+    "newSkippedCases": [
+      {
+        "file": "first-build-start.spec.mjs",
+        "line": 57,
+        "title": "mouse Shift repeats remain deliberate across the automatic transition",
+        "project": "phone",
+        "expectedStatus": "skipped",
+        "outcome": "skipped",
+        "timeout": 20000,
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Explicit mouse Shift workflow.",
+            "location": {
+              "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+              "line": 58,
+              "column": 8
+            }
+          }
+        ],
+        "results": [
+          {
+            "status": "skipped",
+            "duration": 236,
+            "retry": 0,
+            "startTime": "2026-11-07T07:44:56.366Z",
+            "errors": [],
+            "annotations": [
+              {
+                "type": "skip",
+                "description": "Explicit mouse Shift workflow.",
+                "location": {
+                  "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                  "line": 58,
+                  "column": 8
+                }
+              }
+            ],
+            "attachments": []
+          }
+        ],
+        "skipReasons": [
+          "Explicit mouse Shift workflow."
+        ]
+      },
+      {
+        "file": "first-build-start.spec.mjs",
+        "line": 57,
+        "title": "mouse Shift repeats remain deliberate across the automatic transition",
+        "project": "narrow-phone",
+        "expectedStatus": "skipped",
+        "outcome": "skipped",
+        "timeout": 20000,
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Explicit mouse Shift workflow.",
+            "location": {
+              "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+              "line": 58,
+              "column": 8
+            }
+          }
+        ],
+        "results": [
+          {
+            "status": "skipped",
+            "duration": 203,
+            "retry": 0,
+            "startTime": "2026-11-07T08:04:09.126Z",
+            "errors": [],
+            "annotations": [
+              {
+                "type": "skip",
+                "description": "Explicit mouse Shift workflow.",
+                "location": {
+                  "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                  "line": 58,
+                  "column": 8
+                }
+              }
+            ],
+            "attachments": []
+          }
+        ],
+        "skipReasons": [
+          "Explicit mouse Shift workflow."
+        ]
+      },
+      {
+        "file": "first-build-start.spec.mjs",
+        "line": 57,
+        "title": "mouse Shift repeats remain deliberate across the automatic transition",
+        "project": "landscape",
+        "expectedStatus": "skipped",
+        "outcome": "skipped",
+        "timeout": 20000,
+        "annotations": [
+          {
+            "type": "skip",
+            "description": "Explicit mouse Shift workflow.",
+            "location": {
+              "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+              "line": 58,
+              "column": 8
+            }
+          }
+        ],
+        "results": [
+          {
+            "status": "skipped",
+            "duration": 197,
+            "retry": 0,
+            "startTime": "2026-11-07T08:23:08.419Z",
+            "errors": [],
+            "annotations": [
+              {
+                "type": "skip",
+                "description": "Explicit mouse Shift workflow.",
+                "location": {
+                  "file": "/workspace/ironroot-pr2-46d324b/qa/browser/first-build-start.spec.mjs",
+                  "line": 58,
+                  "column": 8
+                }
+              }
+            ],
+            "attachments": []
+          }
+        ],
+        "skipReasons": [
+          "Explicit mouse Shift workflow."
+        ]
+      }
+    ],
+    "noLongerSkippedCases": []
+  },
+  "confirmed370Blocker": {
+    "kind": "Genuine layout/state regression; keep original unsafe assertion.",
+    "trigger": "Original protected430px play path, resize to320x370, observe Ready then make exactly one unforced native viewportResume tap.",
+    "nativeEvidence": "Live370 frame captured by requestAnimationFrame, not only inferred paused geometry.",
+    "coachVisibleRect": {
+      "x": 6,
+      "y": 266,
+      "width": 258,
+      "height": 44
+    },
+    "hideRect": {
+      "x": 270,
+      "y": 266,
+      "width": 44,
+      "height": 44
+    },
+    "minimapRect": {
+      "x": 222,
+      "y": 246,
+      "width": 92,
+      "height": 44
+    },
+    "overlap": "44px wide by24px tall; Hide center hit the minimap.",
+    "sequence": "Paused coach hidden/Hide left looks safe and Ready. Resume shows coach and moves Hide right; its overlap triggers safety re-pause; hidden coach/Hide left restores Ready.",
+    "savedTimeBeforeResume": 1.1,
+    "savedTimeAfterRepause": 1.25,
+    "recoveryAt430": "Explicit native Resume restores noncolliding geometry and live clock00:01→00:02. No later save was requested, so unchanged checkpoint1.25 does not mean live recovery stalled.",
+    "observations": {
+      "nativeRAFSamples": 285,
+      "domTransitions": 8,
+      "captureBubbleEvents": 4,
+      "dropped": 0,
+      "browserErrors": 0
+    },
+    "compactRawEvidence": {
+      "commit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+      "steps": [
+        {
+          "label": "initial430",
+          "height": 430,
+          "clock": "00:01",
+          "time": 0,
+          "title": "Battle paused for screen size",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "immediate370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 0,
+          "title": "Battle paused for screen size",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "settled370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "before-native-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "immediately-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "settled-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "one-second-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-before-explicit-resume",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-held",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-after-explicit-resume",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "safe430-one-second-after-resume",
+          "height": 430,
+          "clock": "00:02",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        }
+      ],
+      "post370Changes": [
+        {
+          "source": "native-RAF",
+          "at": 2279.9000000003725,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2325.5,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2432.5,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            266,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "minimap",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": [
+            [
+              "minimap",
+              "coachNext"
+            ],
+            [
+              "minimap",
+              "toggleCoach"
+            ]
+          ]
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2452.800000000745,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle paused for screen size",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2468.300000000745,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        }
+      ],
+      "observed370": {
+        "unpaused": true,
+        "nativeRAF": true,
+        "eventOnly": false,
+        "count": 10
+      },
+      "resumeAttempts": [
+        {
+          "label": "one-native-viewportResume-at370",
+          "before": {
+            "disabled": false,
+            "hidden": null,
+            "hit": {
+              "id": "viewportResume",
+              "tag": "BUTTON"
+            },
+            "hitCorrect": true
+          },
+          "ok": true
+        },
+        {
+          "label": "explicit-safe430-viewportResume",
+          "before": {
+            "disabled": false,
+            "hidden": null,
+            "hit": {
+              "id": "viewportResume",
+              "tag": "BUTTON"
+            },
+            "hitCorrect": true
+          },
+          "ok": true
+        }
+      ],
+      "freezeBeforeResume370": {
+        "sameBytes": true,
+        "heldTime": 1.1000000000000003,
+        "afterTime": 1.1000000000000003
+      },
+      "freezeAtSafe430": {
+        "sameBytes": true,
+        "beforeTime": 1.2500000000000004,
+        "afterTime": 1.2500000000000004
+      },
+      "recovery": {
+        "nativeTapOk": true,
+        "advanced": false,
+        "clockBefore": "00:01",
+        "clockAfter": "00:02",
+        "viewportHidden": true,
+        "liveClockAdvanced": true,
+        "savedCheckpointNote": "No save requested after430 Resume; unchanged checkpoint does not imply stalled live clock."
+      },
+      "errors": [],
+      "browserClosed": true,
+      "finding": "Observed native370 Resume→coach visible→Hide/minimap overlap→safety re-pause→Ready cycle"
+    },
+    "summary": "supplemental/postfull-short370-summary.md"
+  },
+  "otherRemainingFindings": [
+    {
+      "type": "test_setup",
+      "cases": 3,
+      "finding": "Legacy agency case requires #allBuildings visible immediately after Plan closes compact Build. Button itself is not hidden; the ancestor drawer is closed.",
+      "blockedAssertions": "Subsequent2card/Foundry, paid unmarked Archery, Hide, clock/income freeze, Options/focus/Resume and final composition assertions are not reached on compact projects.",
+      "support": "Same case passes desktop; separate same-legacy-roster Build/All/Hide-Show case passes all4. These do not substitute for blocked touch flow."
+    },
+    {
+      "type": "income_safety_setup",
+      "cases": 4,
+      "finding": "Income320x568 initially passes. Injecting top12,left/right8,bottom21 insets produces195px battlefield under existing212px safety floor. Text glyphs remain complete/inside bounds with no listed collisions; active safety UI makes text-range hit test occluded=true.",
+      "directBounds": "income L70.71875,R100.3125,T18,B34; resource rowL16,R304,T12,B40; header72; direct battlefield height195.",
+      "blockedAssertions": "After occlusion failure, later header/height/containment assertions28–35 are unreached in that second check."
+    },
+    {
+      "type": "P2_visual_recovery_prompt",
+      "finding": "Ordinary Pause paints above active safety recovery prompt (z10 versus z9), despite Pause being inert. Removing insets gives228px world and explicit native viewportResume succeeds; visually covered controls are not clearly discoverable.",
+      "evidence": "supplemental/income-safearea-summary.md; supplemental/income-safearea-unsafe.png"
+    },
+    {
+      "type": "P2_visual_congested_route",
+      "finding": "Building pennants partially cover downward direction glyphs in congested two-row committed-route banners. Countdown remains visible; geometry-only background separation is insufficient.",
+      "source": "dist/render.js:541 routes precede later entities at555–559",
+      "evidence": "supplemental/phone-congested-banners.png; supplemental/landscape-congested-banners.png"
+    }
+  ],
+  "supplemental": {
+    "automatedSummary": {
+      "commit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+      "distinctChecks": 20,
+      "executions": 22,
+      "pass": 22,
+      "fail": 0,
+      "browsersClosed": true,
+      "candidateSourcesChanged": false,
+      "residualVisualFinding": "P2: building pennants partially obscure downward route glyphs in congested two-row committed banners."
+    },
+    "positiveCoverage": [
+      "Native flight orders through ordinary launch, warning/transit, saved route/cost/RNG continuation",
+      "Archer damage99.5→74 while transiting; Rootwardens within7.687px do no air damage",
+      "NEXT/banner separation repaired in phone/landscape",
+      "320x430 North ratio1,bottom334.375 versus clipping boundary342",
+      "320x568 initial Pause/Restart fit with44px controls",
+      "Four grouped banners covering8concurrent legal paid routes",
+      "Current syntheticGamepadAPI first140-gold barracks purchase, automatic combat start, zero-geometry hidden hints and reachable controls"
+    ],
+    "distinctAutomatedChecks": 20,
+    "executions": 22,
+    "passedExecutions": 22,
+    "failedExecutions": 0,
+    "additionalObservationalProbes": [
+      "inset safety/recovery",
+      "post-full370 Resume transition"
+    ],
+    "initialInfrastructureAttempt": "One connection-refused navigation at managed-server shutdown occurred before app navigation; retained separately. Successful temporary-server recovery probe followed.",
+    "browserAndServerCleanup": "All supplemental browsers closed; main-owned post-full server173592 stopped and port4187confirmed closed."
+  },
+  "verifiedRepairs": {
+    "flightFullPassed": 124,
+    "actualV015UpgradeFullPassed": 16,
+    "strictPauseFullPassed": 4,
+    "hiddenHintsFullPassed": 20,
+    "firstBuildFull": {
+      "passed": 13,
+      "skipped": 3
+    },
+    "oldNorthClipping": "Reproduced as fully contained with native hit testing.",
+    "oldNEXTOverlap": "NEXT/source label separated from committed warning/transit banners in phone/landscape.",
+    "oldNarrowRestartOverflow": "Initial no-scroll fit and downstream focus/keyboard assertions passed all4."
+  },
+  "limits": [
+    "Chromium/system headless execution with touch/mobile/landscape emulation; no physical-device/PWA/OSBack/non-Chromium certification.",
+    "Synthetic GamepadAPI inputs exercised real production polling; no physical controller certification.",
+    "Authored engine-valid saved checkpoints and ai:false supplemental scenes; no balance or human win-rate claim.",
+    "Passed named cases across changed commits/author harnesses/worker count do not isolate individual causes or erase old failures.",
+    "Original11failed cases retain their original errors and unreached downstream assertions. Post-full native observation establishes the370loop but does not convert those cases to passes.",
+    "No runtime, test, assertion, skip, timeout, or repository prose edits by this QA runner."
+  ],
+  "evidenceRoot": "/workspace/ironroot-pr2-46d324b-evidence",
+  "evidenceFiles": [
+    "root-test.log",
+    "root-check.log",
+    "release-check.log",
+    "browser-preflight.log",
+    "browser-discovery.log",
+    "focused-browser.log",
+    "focused-test-results/results.json",
+    "focused-ledger.json",
+    "full-browser.log",
+    "full-test-results/results.json",
+    "full-playwright-report/index.html",
+    "full-ledger.json",
+    "full-failure-ledger.json",
+    "full-skip-ledger.json",
+    "previous-failure-comparison.json",
+    "previous-skip-comparison.json",
+    "readonly-diff-review.json",
+    "income-320x568-trace-extract.json",
+    "legacy-agency-trace-extract.json",
+    "short-coached-unsafe-trace-extract.json",
+    "supplemental-findings-ledger.json",
+    "supplemental/README.md",
+    "supplemental/income-safearea-summary.md",
+    "supplemental/postfull-short370-summary.md",
+    "supplemental/postfull-short370-compact-results.json"
+  ],
+  "remainingBlockers": "Repair genuine370Ready/Resume geometry loop and visual layering/route legibility, reconcile compact legacy setup and unsafe inset-income assumptions without waiving original assertions, then gate a new exact candidate. No merge/deploy."
+}

@@ -1,0 +1,114 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ironroot-browser-regressions@0.12.0 check
+> node --check hidden-coaching.spec.mjs && node --check short-coached-portrait.spec.mjs && node --check practice-history.spec.mjs && node --check back-navigation.spec.mjs && node --check fullscreen-entry.spec.mjs && node --check mobile-coaching-visibility.spec.mjs && node --check build-completion.spec.mjs && node --check campaign-restart-identity.spec.mjs && node --check contextual-coaching.spec.mjs && node --check campaign-teaching-helpers.mjs && node --check campaign-navigation.spec.mjs && node --check pause-menu.spec.mjs && node --check campaign-progression.spec.mjs && node validate-campaign-progression-fixtures.mjs && node --check phone-text-evidence.mjs && node --check passive-continuation.mjs && node --check phone-viewport.spec.mjs && node --check desktop-input.spec.mjs && node --check regression.spec.mjs && node --check accessibility-backup.spec.mjs && node --check campaign.spec.mjs && node --check campaign-fixtures.mjs && node --check playwright.config.mjs && node --check server.mjs && node validate-campaign-fixtures.mjs && node --check field-reference.spec.mjs && node validate-codex-fixtures.mjs && node --check offline-shell.spec.mjs && node --check maps.spec.mjs && node --check map-fixtures.mjs && node --check map-browser-helpers.mjs && node --check map-controller-helpers.mjs && node validate-map-fixtures.mjs && node --check fonts.spec.mjs && node --check font-browser-helpers.mjs && node --check service-worker-update.spec.mjs && node --check update-fixtures.mjs && node validate-update-fixtures.mjs && node --check expanded-campaign.spec.mjs && node --check expanded-campaign-fixtures.mjs && node validate-expanded-campaign-fixtures.mjs && node --check profile-upgrade.spec.mjs && node --check legacy-profile-fixtures.mjs && node validate-legacy-profile-fixtures.mjs && node --check battle-report.spec.mjs && node --check battle-report-fixtures.mjs && node --check battle-report-legacy-fixtures.mjs && node validate-battle-report-fixtures.mjs && node --check training.spec.mjs && node --check training-fixtures.mjs && node --check training-browser-helpers.mjs && node validate-training-fixtures.mjs && node --check worker-update-helpers.mjs && node --check storage-recovery.spec.mjs && node --check protected-objectives-pointer.spec.mjs && node --check shared-build-controls.mjs && node --check campaign-onboarding.spec.mjs && node --check onboarding-fixtures.mjs && node --check integrated-flow.spec.mjs && node --check production-upgrade.spec.mjs && node --check production-v012-fixtures.mjs && node --check validate-production-upgrade.mjs && node ../fixtures/production-v012/validate-fixture.mjs && node validate-production-upgrade.mjs && node --check canvas-observation.mjs && node --test harness-contracts.node.mjs && node --check toast-geometry.mjs && node --check objective-alerts.spec.mjs && node --check objective-alert-fixtures.mjs && node --check objective-alert-browser-helpers.mjs && node --check validate-objective-alert-fixtures.mjs && node validate-objective-alert-fixtures.mjs && node --check flight-orders.spec.mjs && node --check flight-order-fixtures.mjs && node --check validate-flight-order-fixtures.mjs && node validate-flight-order-fixtures.mjs && node --check production-v015-upgrade.spec.mjs && node validate-production-v015-upgrade.mjs && node --check first-build-start.spec.mjs && node --check portrait-income.spec.mjs && node --check synthetic-gamepad-provider.mjs && node --check synthetic-gamepad-helpers.mjs && node --test ../../tests/synthetic-gamepad-provider.test.mjs && node --check flight-pause-layout.spec.mjs && node --check flight-pause-layout-geometry.mjs
+
+roadside-watch: paid 30-second checkpoint at 30.00000000000029s, roster 2, next-tick complete=false.
+roadside-watch: paid last active tick checkpoint at 60.4499999999987s, roster 2, next-tick complete=true.
+shield-at-the-fork: paid 30-second checkpoint at 30.00000000000029s, roster 5, next-tick complete=false.
+shield-at-the-fork: paid last active tick checkpoint at 114.39999999999564s, roster 5, next-tick complete=true.
+open-three-roads: paid 30-second checkpoint at 30.00000000000029s, roster 8, next-tick complete=false.
+open-three-roads: paid last active tick checkpoint at 113.3499999999957s, roster 8, next-tick complete=true.
+Validated paid two-star lower-roster replay boundary, newer-progress restore and revision-two main launch.
+Validated active campaign fixture and next-step oracle: victory
+Validated active campaign fixture and next-step oracle: failure
+Validated active campaign fixture and next-step oracle: protected
+Validated paid first-watch checkpoint: 58.04999999999884s -> 58.099999999998836s, 3 stars.
+Validated paid forked-road checkpoint: 97.84999999999658s -> 97.89999999999658s, 3 stars.
+Validated field-reference roster and marginal mine payback fixtures.
+Map fixtures: 3 geometry/save/backup/victory fixtures, 6 corruptions, 4 authored-map rejections passed.
+Update fixture 0.7.0: 17 pinned runtime files and complete precache manifest verified.
+Update fixture 0.8.0: 18 pinned runtime files and complete precache manifest verified.
+Production 0.7 commit/package metadata verified; candidate precache includes all five fonts and all three Battle Report modules/styles and all four Guided practice resources.
+open-horizon: paid primary checkpoint 87.0499999999972s -> 87.0999999999972s, 3 stars.
+open-horizon: start / success / exact deadline 240s / scouting / backup / wrong-map rejection verified.
+river-charter: paid primary checkpoint 209.9500000000135s -> 210.0000000000135s, 2 stars.
+river-charter: start / success / exact deadline 210s / scouting / backup / wrong-map rejection verified.
+far-beacon: paid primary checkpoint 189.95000000000894s -> 190.00000000000895s, 3 stars.
+far-beacon: start / success / exact deadline 280s / scouting / backup / wrong-map rejection verified.
+common-ground: paid primary checkpoint 105.89999999999613s -> 105.94999999999612s, 3 stars.
+common-ground: start / success / exact deadline 300s / scouting / backup / wrong-map rejection verified.
+Expanded fixtures: 13 start/success/deadline/health variants, 3 protected losses, 4 backup roundtrips, 4 valid-engine wrong-map rejections; legacy 12/36 preserved in 16/48 total.
+Frozen 0.9 QA baseline: 24 exact runtime SHA-256 hashes; unchanged first 12 mission rules; real protocol-1 rejects version-2 marker. Not a production release fixture.
+campaign-primary-zero: admitted active; next step 0.05s; victory; exact identity/counters/restore.
+campaign-alternate: admitted active; next step 40.05s; victory; exact identity/counters/restore.
+campaign-failure: admitted active; next step 180s; defeat; exact identity/counters/restore.
+campaign-protected-failure: admitted active; next step 40.05s; defeat; exact identity/counters/restore.
+trial-primary: admitted active; next step 39.9999999999s; victory; exact identity/counters/restore.
+trial-alternate: admitted active; next step 40.05s; victory; exact identity/counters/restore.
+trial-failure: admitted active; next step 210s; defeat; exact identity/counters/restore.
+skirmish-victory: admitted active; next step 40.05s; victory; exact identity/counters/restore.
+skirmish-defeat: admitted active; next step 40.05s; defeat; exact identity/counters/restore.
+skirmish-draw: admitted active; next step 40.05s; draw; exact identity/counters/restore.
+Battle report fixtures: 10 admissible imminent positions, 9 preserved-map base continuations, read-only export, exact counters and honest resumed scopes verified.
+Zero-duration single-point report remains independently checked after a real result; no completed-at-zero save is admitted.
+Frozen 0.10 QA baseline: 26 exact runtime SHA-256 hashes verified; no production/released provenance claimed.
+Training fixture: all five synthetic persisted profile domains plus ready protocol-5 marker validated without startup writes; active Twin Span legacy save is engine/backup-valid. Exact whitespace bytes retained.
+Training shell: independent HTML/module/style route and four precached resources verified; no browser, natural lesson, gesture or offline execution claimed.
+Training import graph: 12 modules, real engine/renderer, and no profile/storage/persistence/reward module dependency verified.
+PASS manifest pin, exact fixture inventory, documentation and local evidence hashes
+PASS 33 binary-exact runtime files / 668075 bytes, frozen package, both reconstructed Git trees
+PASS historical worker identity, full precache including five WOFF2 fonts and report/training resources
+PASS three-map historical save/backup round trips, all 16 mission saves, 48-star progress, protocol-2 fence
+PASS historical report generation/partial coverage and isolated paid practice action (in-memory only)
+UNRUN original deployment comparison (supply --compare-deployment PATH)
+UNRUN frozen private comparison (supply --compare-source PATH)
+UNRUN browsers, network, live smoke, and 0.12-to-future takeover; a distinct future worker and exact candidate are required.
+PASS historical fixture validated; manifest SHA-256 1bfa09e053e363e0589a8a96180be04cc4821b0b644b5b5923de66b83b6f6ff7
+Production 0.12 fixture: 33 files / 668075 bytes; four historical five-domain profiles accepted unchanged; same-identity rejection verified.
+Candidate ironroot-v0.16.0: distinct identity; browser takeover still UNRUN.
+✔ scale-aware observer recognizes only site geometry/styles and preserves actual draw calls (3.364939ms)
+✔ actual candidate renderer draws every registered map site and the placement ghost is excluded (263.124847ms)
+✔ minimap observation retains exact supplied paths and viewport coordinates (0.61205ms)
+✔ tap helper model waits through pending HUD enable then Cancel and Build expose the command (0.663836ms)
+✔ click helper model waits through pending HUD enable then Cancel and Build expose the command (0.27148ms)
+✔ permanently disabled Build remains blocked, without forced actions or app-state changes (0.773337ms)
+✔ desktop or historical pages without a visible mobile drawer require no synthetic action (0.241325ms)
+✔ renderer converts supplied field rectangles to backing pixels on both axes and after resize (32.668124ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 445.694991
+Validated critical protected-original fixture, shared admission and real-combat continuation.
+Validated delayed protected-original fixture, shared admission and real-combat continuation.
+Validated loss protected-original fixture, shared admission and real-combat continuation.
+Validated label fixture: RESUME MISSION · FIRST WATCH · 00:00
+Validated label fixture: RESUME MISSION · FORKED ROAD · 00:00
+Validated label fixture: RESUME BATTLE · SUDDEN DEATH · 00:00
+Validated label fixture: RESUME BATTLE · OPEN-ENDED · 00:00
+Validated 56 authored flight UI checkpoints, 3920 exact continuation comparisons, backup admission, historical revisions and protocol 5.
+v0.15: 46 exact runtime files, 907887 bytes; four earned profiles, full old read/write/recovery fence and fresh flight identity verified. Browser takeover UNRUN.
+✔ sampled tap releases its hardware without mutating the returned pressed snapshot (3.707854ms)
+✔ one sampled bumper tap cannot repeat with a 16 ms scheduling delay (1.886214ms)
+✔ one sampled bumper tap cannot repeat with a 331 ms scheduling delay (1.200395ms)
+✔ one sampled bumper tap cannot repeat with a 350 ms scheduling delay (2.255969ms)
+✔ one sampled bumper tap cannot repeat with a 450 ms scheduling delay (1.206635ms)
+✔ one sampled bumper tap cannot repeat with a 2000 ms scheduling delay (0.970177ms)
+✔ discrete bumpers retain the real affordable-card order under repeated long delays (1.308174ms)
+✔ explicit held bumper still exercises production repeat delay and interval (1.044877ms)
+✔ explicit held confirm survives a scope reset without click-through and rearms after release (1.115401ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 16 ms frames (5.44573ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 80 ms frames (2.635357ms)
+✔ sampled steering reaches the unchanged bound and stays neutral with 450 ms frames (1.804194ms)
+✔ steering preserves the strict 8 px stop threshold and does not move an already reached cursor (1.868148ms)
+✔ missing rendered cursor stops synthetic motion rather than claiming arrival (0.728731ms)
+✔ neutral input and disconnect cancel pending taps and steering without stale reconnect motion (0.77534ms)
+✔ invalid synthetic commands fail before they change an existing input (1.14268ms)
+✔ browser consumers retain deliberate 650 ms holds and the original placement assertions (0.687862ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.95174
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

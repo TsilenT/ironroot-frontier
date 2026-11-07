@@ -1,10 +1,11 @@
-import { startRunning } from './campaign-teaching-helpers.mjs';
+import { startRunning, finishFirstBuild } from './campaign-teaching-helpers.mjs';
 import {test as base, expect} from '@playwright/test';
 import {getProgressionCampaignOverview, createCampaignProgress, createCampaignMission} from '../../dist/campaign.js';
 import {getRuleset} from '../../dist/engine.js';
 import {missionBriefing} from '../../dist/campaign-presentation.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
 const SAVE = 'ironroot.battle.v1', PROGRESS = 'ironroot.campaign.v1';
+const RECORDS_NOTICE = 'Campaign records include stars and best times from earlier mission versions.';
 const missions = getProgressionCampaignOverview(createCampaignProgress()).missions;
 const test = base.extend({page: async ({page}, use) => {
   const errors = []; page.on('pageerror', e => errors.push(e.message));
@@ -33,6 +34,7 @@ const profile = page => page.evaluate(keys => keys.map(key => localStorage.getIt
 test('a focused briefing leads through story, chapter and mission with keyboard and visible goal', async ({page}) => {
   await page.goto('/');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  await expect(page.locator('#campaignScoutToggle')).toHaveText('Scout battlefield · Roadside Watch');
   await expect(page.locator('#campaignStoryPage')).toBeHidden();
   await expect(page.locator('#campaignChapterPage')).toBeHidden();
   await expect(page.locator('#campaignMissionDescription')).toContainText('One raider camp blocks the road');
@@ -60,6 +62,7 @@ test('a focused briefing leads through story, chapter and mission with keyboard 
   await expect(page.locator('[data-mode="campaign"]')).toBeFocused();
   await page.keyboard.press('Shift+Tab'); await expect(page.locator('#welcomeSettings')).toBeFocused();
   await page.locator('#start').focus(); await page.keyboard.press('Enter');
+  await finishFirstBuild(page,press);
   if (await page.locator('#coachingModal').isVisible()) await press(page, '#coachingPlay');
   await expect(page.locator('#welcome')).toBeHidden();
   await page.locator('#pause').focus(); await page.keyboard.press('Enter');
@@ -93,6 +96,7 @@ test('all 19 current briefings retain authored rules and prominent mandatory obj
   test.setTimeout(60000); await page.goto('/');
   for (const mission of missions) {
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);
+    await expect(page.locator('#campaignScoutToggle')).toHaveText(`Scout battlefield · ${mission.name}`);
     const brief = missionBriefing(mission);
     await expect(page.locator('#campaignGoal')).toHaveText(brief.goal);
     await expect(page.locator('#campaignGoalFacts li')).toHaveText(brief.facts);
@@ -102,7 +106,9 @@ test('all 19 current briefings retain authored rules and prominent mandatory obj
     await expect(page.locator('#campaignObjective')).toHaveText(mission.objective);
     const roster = getRuleset(mission.rulesetId, mission.rulesetRevision);
     const rosterLine = 'Available here: ' + Object.values(roster.buildings).map(b => b.name).join(', ') + '.';
-    await expect(page.locator('#campaignBriefing li')).toHaveText([rosterLine, ...mission.briefing]);
+    const recordNote = mission.scenarioRevision >= 3 ? [RECORDS_NOTICE] : [];
+    await expect(page.locator('#campaignBriefing li')).toHaveText([rosterLine, ...mission.briefing, ...recordNote]);
+    await expect(page.locator('#campaignBriefing').getByText(RECORDS_NOTICE, {exact:true})).toHaveCount(mission.scenarioRevision >= 3 ? 1 : 0);
     if (mission !== missions.at(-1)) await press(page, '#campaignNext');
   }
   await expect(page.locator('#campaignNext')).toBeDisabled();
@@ -124,7 +130,8 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);
   await startRunning(page, press); await press(page, '#pause');
-  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:2});
+  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:3});
+  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-flight');
   expect((await profile(page))[1]).toBe(bytes);
 });
 

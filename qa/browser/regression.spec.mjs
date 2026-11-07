@@ -1,3 +1,4 @@
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, BUILDINGS} from '../../dist/engine.js';
@@ -45,14 +46,33 @@ async function fits(page, selector) {
 
 test('tap places exactly one building, rejects occupied slot, upgrades and salvages', async ({page}) => {
   await start(page); const p = await slot(page,270);
+  const baseline = await pause(page); await press(page, '#resume');
   await press(page, '[data-type="archery"]'); await tapPoint(page, p);
   await expect(page.locator('#toast')).toContainText('Archery range raised');
   await expect(page.locator('#battle')).not.toHaveClass(/placing/);
+  const placed = await pause(page); await press(page, '#resume');
+  expect(placed.state.buildings.filter(b => b.side === 0 && b.type === 'archery')).toHaveLength(1);
   await press(page, '[data-type="archery"]'); // A distinct order tests the occupied site.
   await tapPoint(page, p); await expect(page.locator('#toast')).toContainText('Too close');
   const snapshot = await pause(page);
   expect(snapshot.state.buildings.filter(b => b.side === 0 && b.type === 'archery')).toHaveLength(1);
-  expect(snapshot.state.gold[0]).toBeLessThan(420 - BUILDINGS.archery.cost + 25);
+  expect(placed.state.stats.built[0]).toBe(baseline.state.stats.built[0] + 1);
+  expect(snapshot.state.stats.built[0]).toBe(placed.state.stats.built[0]);
+  // Ordinary Pause saves bracket each action. Account for every income tick,
+  // including slow browser runs, and require the occupied attempt to cost zero.
+  for (const [before, after, cost] of [[baseline, placed, BUILDINGS.archery.cost], [placed, snapshot, 0]]) {
+    Game.restore(before); Game.restore(after);
+    for (const checkpoint of [before, after]) {
+      expect(checkpoint.state.income[0]).toBe(5);
+      expect(checkpoint.state.buildings.filter(b => b.side === 0 && b.type === 'mint')).toHaveLength(0);
+    }
+    expect(after.state.stats.kills[0]).toBe(before.state.stats.kills[0]);
+    expect(after.tick).toBeGreaterThanOrEqual(before.tick);
+    let expectedTime = before.state.time;
+    for (let tick = before.tick; tick < after.tick; tick++) expectedTime += .05;
+    expect(after.state.time).toBe(expectedTime);
+    expect(after.state.gold[0]).toBe(before.state.gold[0] - cost + (after.tick - before.tick) * (5 * .05));
+  }
   await press(page, '#resume'); await press(page, '#cancelBuild'); await tapPoint(page, p);
   await expect(page.locator('#selectionTitle')).toHaveText('Archery range');
   await press(page, '#upgrade'); await expect(page.locator('#selectionDetail')).toContainText('Level 2');
@@ -330,7 +350,7 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
     const restored=await historyRecoveryBytes(page);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))
       expect(JSON.parse(restored[key])).toEqual(retained.backup.data[domain]);
-    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:4,phase:'ready'});
+    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,phase:'ready'});
     expect(JSON.parse(restored[PROFILE_MARKER]).epoch).not.toBe(JSON.parse(values[PROFILE_MARKER]).epoch);
     expect(parseBackup(createBackup({getItem:key=>restored[key]??null})).data).toEqual(retained.backup.data);
     await press(page,'#welcomeSettings');await press(page,recent+' > summary');

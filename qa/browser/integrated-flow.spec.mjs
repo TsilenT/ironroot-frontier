@@ -45,11 +45,12 @@ test('intro-only progress defaults to the new opening and explicitly selected Fo
   expect(await page.evaluate(key=>localStorage.getItem(key),campaignKey)).toBe(bytes);
 });
 
-for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed'])test(rulesetId+' binds active roster paid controls resume and backup identity',async({page})=>{
+for(const rulesetId of ['frontier-flight-open','frontier-flight-timed'])test(rulesetId+' binds active roster paid controls resume and backup identity',async({page})=>{
   test.setTimeout(35000);
   const rules=getRuleset(rulesetId,1);await page.goto('/');await press(page,'[data-mode="skirmish"]');
   await page.locator('#skirmishRules').selectOption(rulesetId);
-  await expect(page.locator('#skirmishRulesDescription')).toContainText(rules.endgame.forcedDecay?'citadels begin losing health at 7:00':'Citadels never lose health just because time passes');
+  await expect(page.locator('#skirmishRulesDescription')).toContainText(rules.endgame.forcedDecay?'citadels lose health from 7:00':'citadels never decay with time');
+  await expect(page.locator('#skirmishRulesDescription')).toContainText('aerie flight orders');
   await startRunning(page, press);await openBuildControls(page);
   expect(await page.locator('.build-card:visible').evaluateAll(cards=>cards.map(card=>card.dataset.type))).toEqual(Object.keys(rules.buildings));
   await expect(page.locator('[data-type="wardenLodge"]')).toContainText('210');

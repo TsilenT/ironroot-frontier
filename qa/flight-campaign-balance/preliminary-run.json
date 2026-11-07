@@ -1,0 +1,54 @@
+{
+  "note": "Preliminary behavioral matrix passed all simulation comparisons. Its broader whole-runtime hash gate failed only because two presentation modules changed concurrently. Simulation dependencies were unchanged. The final runner narrows that gate to imported simulation sources while still logging presentation deltas, uses an unrounded time comparator, and removes duplicate identical routes.",
+  "generatedAt": "2026-11-07T01:10:45.217Z",
+  "summary": {
+    "simulations": 249,
+    "holdPairs": 78,
+    "equalHoldPairs": 78,
+    "fullRestoredContinuations": 52,
+    "exactRestoredContinuations": 52,
+    "restoredSaveChecks": 1141,
+    "progressionCleared": 19,
+    "progressionStars": 52,
+    "referenceCurrentWins": 39,
+    "masteryCurrentWins": 39,
+    "referenceCurrentThreeStars": 24,
+    "masteryCurrentThreeStars": 39,
+    "flightExamples": 22,
+    "adverseFlightComparisons": 14,
+    "failedOutcomes": 10,
+    "failedInvariants": [
+      {
+        "pass": false,
+        "label": "Runtime and policies remained byte-identical during the entire evaluation"
+      }
+    ]
+  },
+  "simulationHashes": {
+    "dist/battle-codec.js": "2e675fe9b062cd1729c534919b3d8d454d904734a4cb3097989b0361c193a2ac",
+    "dist/campaign.js": "56f4a2d7bf50a316a60274dde63ffb1501ab89c36937612fbb25e2f3c13456eb",
+    "dist/engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "dist/rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d"
+  },
+  "presentationChangesDuringRun": [
+    {
+      "file": "dist/flight-orders-view.js",
+      "before": "09864659f863969ac17c4430efe61818f6c69949ac03a0a93a93c40afbc7beee",
+      "after": "8024be77be159d9c81260c4e9d45a9363a92673cd866741db5a50d31976857e8"
+    },
+    {
+      "file": "dist/flight-visuals.js",
+      "before": "c50cb00cdb3faf7725279555bb685d52f8472790a642383b1f0b319a019d187f",
+      "after": "880521372f56cd8c687bd037e7b5cfeefef96b1db1115c3ae58f36f489ac142f"
+    }
+  ],
+  "runnerRefinementAfterRun": [
+    {
+      "file": "tests/flight-campaign-balance.mjs",
+      "before": "e94f886823deeee93863832c6b4328f5efae296a19b1322afe4a7b8f18a0a212",
+      "after": "0849249f5a56dd3e6e8418518d5e47227438d07c148c0929b855ec5a49a79682"
+    }
+  ]
+}

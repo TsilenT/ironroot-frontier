@@ -1,3 +1,4 @@
+import {startLegacyTeaching} from './campaign-teaching-helpers.mjs';
 // Actual browser History API coverage. history.back()/forward() exercises the
 // navigation path used by hardware Back, not an Escape/Backspace key surrogate.
 // Phone viewports and display-mode signals do NOT certify an installed PWA/OS.
@@ -69,7 +70,7 @@ test('Back cancels an import preview; Forward never revives its pending replacem
 });
 
 test('Back dismisses teaching into planning and Options returns to the same frozen hold',async({page})=>{
-  await page.goto('/');await press(page,'#start');await expect(page.locator('#coachingModal')).toBeVisible();
+  await startLegacyTeaching(page,press);await expect(page.locator('#coachingModal')).toBeVisible();
   const checkpoint=await saved(page);await back(page);await expect(page.locator('#coachingModal')).toBeHidden();
   await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#battleClockLabel')).toHaveText('TEACHING PAUSE');
   await press(page,'#settings');await back(page);await expect(page.locator('#settingsModal')).toBeHidden();
