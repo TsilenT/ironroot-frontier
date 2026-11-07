@@ -1,0 +1,1033 @@
+{
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "reportSha256": "7df27a2f9ad381e07ce88be8832a08a3da843d69b2f2a6143f0861b5a2335cd8",
+  "scope": "Original failures retained unchanged; local repairs and browser reruns are pending.",
+  "full": {
+    "passed": 1568,
+    "failed": 11,
+    "skipped": 49,
+    "flaky": 0,
+    "timedOut": 0,
+    "failureGroups": {
+      "legacy_compact_drawer_setup": 3,
+      "inset_income_safety_overlap": 4,
+      "confirmed_370_resume_repause_layout_loop": 4
+    },
+    "failures": [
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "phone",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7341,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 \u00d7 locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "narrow-phone",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7228,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 \u00d7 locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "contextual-coaching.spec.mjs",
+        "line": 75,
+        "title": "legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency",
+        "project": "landscape",
+        "group": "legacy_compact_drawer_setup",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7648,
+            "errors": [
+              "Error: expect(locator).toBeVisible() failed\n\nLocator:  locator('#allBuildings')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('#allBuildings') with timeout 5000ms\n  - waiting for locator('#allBuildings')\n    14 \u00d7 locator resolved to <button class=\"\" id=\"allBuildings\" aria-expanded=\"false\" aria-controls=\"buildCards\">All buildings</button>\n       - unexpected value \"hidden\"\n\n\n  76 |   await fresh(page);await press(page,'#coachingPlan');\n  77 |   // Legacy optional roster is retained; only the two introductory cards show.\n> 78 |   await expect(page.locator('#allBuildings')).toBeVisible();\n     |                                               ^\n  79 |   await expect(page.locator('.build-card:visible')).toHaveCount(2);\n  80 |   await expect(page.locator('[data-type=\"foundry\"]')).toBeHidden();\n  81 |   await place(page,'archery',410);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/contextual-coaching.spec.mjs:78:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "phone",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2229,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "narrow-phone",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2341,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "landscape",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 2460,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "portrait-income.spec.mjs",
+        "line": 39,
+        "title": "income is visibly inside portrait HUD at 320x568",
+        "project": "desktop",
+        "group": "inset_income_safety_overlap",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 1731,
+            "errors": [
+              "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: false\nReceived: true\n\n  25 |   return {box,row,safe,collisions,occluded,header:r(document.getElementById('topbar')).height,short:app.classList.contains('protected-short-portrait')};\n  26 |  });\n> 27 |  expect(geometry.collisions).toEqual([]);expect(geometry.occluded).toBe(false);\n     |                                                                    ^\n  28 |  expect(geometry.header).toBe(geometry.short?48:72);\n  29 |  expect(geometry.box.height).toBeGreaterThanOrEqual(16);\n  30 |  for(const bounds of [geometry.row,geometry.safe]){\n    at checkIncome (/workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:27:68)\n    at /workspace/ironroot-pr2-46d324b/qa/browser/portrait-income.spec.mjs:47:3"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "phone",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8788,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 \u00d7 locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "narrow-phone",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8019,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 \u00d7 locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "landscape",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 8291,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 \u00d7 locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      },
+      {
+        "file": "short-coached-portrait.spec.mjs",
+        "line": 78,
+        "title": "unsafe short coached rail freezes the save and needs explicit Resume after safe recovery",
+        "project": "desktop",
+        "group": "confirmed_370_resume_repause_layout_loop",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7917,
+            "errors": [
+              "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#viewportTitle')\nExpected: \"Battle paused for screen size\"\nReceived: \"Battle ready to resume\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('#viewportTitle') with timeout 5000ms\n  - waiting for locator('#viewportTitle')\n    14 \u00d7 locator resolved to <h2 id=\"viewportTitle\">Battle ready to resume</h2>\n       - unexpected value \"Battle ready to resume\"\n\n\n  81 |  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});\n  82 |  await page.setViewportSize({width:320,height:370});await settlePhoneViewport(page);\n> 83 |  await expect(page.locator('#viewportTitle')).toHaveText('Battle paused for screen size');\n     |                                               ^\n  84 |  await expect(page.locator('#viewportResume')).toBeDisabled();\n  85 |  const held=await saved(page),clock=savedClockText(held);\n  86 |  await expect(page.locator('#time')).toHaveText(clock);\n    at /workspace/ironroot-pr2-46d324b/qa/browser/short-coached-portrait.spec.mjs:83:47"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "confirmed370Blocker": {
+    "kind": "Genuine layout/state regression; keep original unsafe assertion.",
+    "trigger": "Original protected430px play path, resize to320x370, observe Ready then make exactly one unforced native viewportResume tap.",
+    "nativeEvidence": "Live370 frame captured by requestAnimationFrame, not only inferred paused geometry.",
+    "coachVisibleRect": {
+      "x": 6,
+      "y": 266,
+      "width": 258,
+      "height": 44
+    },
+    "hideRect": {
+      "x": 270,
+      "y": 266,
+      "width": 44,
+      "height": 44
+    },
+    "minimapRect": {
+      "x": 222,
+      "y": 246,
+      "width": 92,
+      "height": 44
+    },
+    "overlap": "44px wide by24px tall; Hide center hit the minimap.",
+    "sequence": "Paused coach hidden/Hide left looks safe and Ready. Resume shows coach and moves Hide right; its overlap triggers safety re-pause; hidden coach/Hide left restores Ready.",
+    "savedTimeBeforeResume": 1.1,
+    "savedTimeAfterRepause": 1.25,
+    "recoveryAt430": "Explicit native Resume restores noncolliding geometry and live clock00:01\u219200:02. No later save was requested, so unchanged checkpoint1.25 does not mean live recovery stalled.",
+    "observations": {
+      "nativeRAFSamples": 285,
+      "domTransitions": 8,
+      "captureBubbleEvents": 4,
+      "dropped": 0,
+      "browserErrors": 0
+    },
+    "compactRawEvidence": {
+      "commit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+      "steps": [
+        {
+          "label": "initial430",
+          "height": 430,
+          "clock": "00:01",
+          "time": 0,
+          "title": "Battle paused for screen size",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "immediate370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 0,
+          "title": "Battle paused for screen size",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "settled370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "before-native-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "immediately-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "settled-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "one-second-after-resume370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "minimap",
+              "viewportResume"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-before-explicit-resume",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-held",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "",
+          "collisions": [
+            [
+              "4",
+              "viewportExit"
+            ],
+            [
+              "5",
+              "viewportExit"
+            ],
+            [
+              "toggleCoach",
+              "viewportResume"
+            ]
+          ]
+        },
+        {
+          "label": "safe430-after-explicit-resume",
+          "height": 430,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "label": "safe430-one-second-after-resume",
+          "height": 430,
+          "clock": "00:02",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            278
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            326,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            326,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            276,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        }
+      ],
+      "post370Changes": [
+        {
+          "source": "native-RAF",
+          "at": 2279.9000000003725,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2325.5,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "toggleCoach",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2432.5,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.1000000000000003,
+          "title": "Battle ready to resume",
+          "modalHidden": true,
+          "pauseHidden": true,
+          "appInert": false,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": false,
+          "coach": [
+            6,
+            266,
+            258,
+            44
+          ],
+          "hide": [
+            270,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "minimap",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "minimap",
+          "collisions": [
+            [
+              "minimap",
+              "coachNext"
+            ],
+            [
+              "minimap",
+              "toggleCoach"
+            ]
+          ]
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2452.800000000745,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle paused for screen size",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        },
+        {
+          "source": "DOM-transition",
+          "at": 2468.300000000745,
+          "phase": "one-native-viewportResume-at370",
+          "height": 370,
+          "clock": "00:01",
+          "time": 1.2500000000000004,
+          "title": "Battle ready to resume",
+          "modalHidden": false,
+          "pauseHidden": false,
+          "appInert": true,
+          "world": [
+            0,
+            48,
+            216,
+            218
+          ],
+          "coachHidden": true,
+          "coach": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hide": [
+            6,
+            266,
+            44,
+            44
+          ],
+          "hideHit": "viewportResume",
+          "mini": [
+            222,
+            246,
+            92,
+            44
+          ],
+          "miniHit": "viewportResume",
+          "collisions": []
+        }
+      ],
+      "observed370": {
+        "unpaused": true,
+        "nativeRAF": true,
+        "eventOnly": false,
+        "count": 10
+      },
+      "resumeAttempts": [
+        {
+          "label": "one-native-viewportResume-at370",
+          "before": {
+            "disabled": false,
+            "hidden": null,
+            "hit": {
+              "id": "viewportResume",
+              "tag": "BUTTON"
+            },
+            "hitCorrect": true
+          },
+          "ok": true
+        },
+        {
+          "label": "explicit-safe430-viewportResume",
+          "before": {
+            "disabled": false,
+            "hidden": null,
+            "hit": {
+              "id": "viewportResume",
+              "tag": "BUTTON"
+            },
+            "hitCorrect": true
+          },
+          "ok": true
+        }
+      ],
+      "freezeBeforeResume370": {
+        "sameBytes": true,
+        "heldTime": 1.1000000000000003,
+        "afterTime": 1.1000000000000003
+      },
+      "freezeAtSafe430": {
+        "sameBytes": true,
+        "beforeTime": 1.2500000000000004,
+        "afterTime": 1.2500000000000004
+      },
+      "recovery": {
+        "nativeTapOk": true,
+        "advanced": false,
+        "clockBefore": "00:01",
+        "clockAfter": "00:02",
+        "viewportHidden": true,
+        "liveClockAdvanced": true,
+        "savedCheckpointNote": "No save requested after430 Resume; unchanged checkpoint does not imply stalled live clock."
+      },
+      "errors": [],
+      "browserClosed": true,
+      "finding": "Observed native370 Resume\u2192coach visible\u2192Hide/minimap overlap\u2192safety re-pause\u2192Ready cycle"
+    },
+    "summary": "supplemental/postfull-short370-summary.md"
+  },
+  "otherRemainingFindings": [
+    {
+      "type": "test_setup",
+      "cases": 3,
+      "finding": "Legacy agency case requires #allBuildings visible immediately after Plan closes compact Build. Button itself is not hidden; the ancestor drawer is closed.",
+      "blockedAssertions": "Subsequent2card/Foundry, paid unmarked Archery, Hide, clock/income freeze, Options/focus/Resume and final composition assertions are not reached on compact projects.",
+      "support": "Same case passes desktop; separate same-legacy-roster Build/All/Hide-Show case passes all4. These do not substitute for blocked touch flow."
+    },
+    {
+      "type": "income_safety_setup",
+      "cases": 4,
+      "finding": "Income320x568 initially passes. Injecting top12,left/right8,bottom21 insets produces195px battlefield under existing212px safety floor. Text glyphs remain complete/inside bounds with no listed collisions; active safety UI makes text-range hit test occluded=true.",
+      "directBounds": "income L70.71875,R100.3125,T18,B34; resource rowL16,R304,T12,B40; header72; direct battlefield height195.",
+      "blockedAssertions": "After occlusion failure, later header/height/containment assertions28\u201335 are unreached in that second check."
+    },
+    {
+      "type": "P2_visual_recovery_prompt",
+      "finding": "Ordinary Pause paints above active safety recovery prompt (z10 versus z9), despite Pause being inert. Removing insets gives228px world and explicit native viewportResume succeeds; visually covered controls are not clearly discoverable.",
+      "evidence": "supplemental/income-safearea-summary.md; supplemental/income-safearea-unsafe.png"
+    },
+    {
+      "type": "P2_visual_congested_route",
+      "finding": "Building pennants partially cover downward direction glyphs in congested two-row committed-route banners. Countdown remains visible; geometry-only background separation is insufficient.",
+      "source": "dist/render.js:541 routes precede later entities at555\u2013559",
+      "evidence": "supplemental/phone-congested-banners.png; supplemental/landscape-congested-banners.png"
+    }
+  ],
+  "plannedRepairs": {
+    "legacy_compact_drawer_setup": "Use the real Build control before existing roster assertions; retain every later paid, hint, pause and composition check.",
+    "inset_income_safety_overlap": "Use inset content height for layout selection, react to padding-only changes, and preserve all income visibility, text and safe-area assertions.",
+    "confirmed_370_resume_repause_layout_loop": "Pin teaching grid cells so Pause cannot change safety geometry. Keep the 370 blocked assertion and explicit recovery at400.",
+    "visual_recovery_prompt": "Match visual safety stacking to logical dialog order, without covering settings/recovery.",
+    "visual_congested_route": "Draw flight labels above entity pennants, with route strokes below actors and objective overlays preserved."
+  },
+  "writingBranch": "Separate; not integrated, not retried for PR creation."
+}

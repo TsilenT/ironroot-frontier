@@ -1218,10 +1218,19 @@ function syncProtectedLayout() {
   const portrait = !!window.matchMedia?.('(max-width: 700px) and (orientation: portrait)').matches;
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
   const sidebar = landscape && (viewport.height < 360 || $('app').classList.contains('mobile-coaching'));
-  const shortPortrait = portrait && viewport.height < 560;
+  // Apply the mobile shell before reading padding, including desktop-to-phone
+  // transitions. Choose the compact tracks from usable space, not notch or
+  // home-indicator space that is reserved inside the fitted outer viewport.
+  $('app').classList.toggle('protected-landscape', landscape);
+  $('app').classList.toggle('protected-portrait', portrait);
+  $('app').classList.toggle('protected-mobile', landscape || portrait);
+  $('app').classList.toggle('mobile-ordinary', !protect);
+  $('app').classList.toggle('protected-compact', landscape || portrait);
+  const padding = landscape || portrait ? getComputedStyle($('app')) : {};
+  const shortPortrait = portrait && insetViewportRect(viewport, padding).height < 560;
   const next = (sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary') + ($('app').classList.contains('mobile-coaching') ? ':coaching' : '') +
     ($('app').classList.contains('coach-collapsed') ? ':collapsed' : '');
-  const fitted = fitMobileViewport($('app'), viewport, landscape || portrait);
+  const fitted = fitMobileViewport($('app'), viewport, landscape || portrait, padding);
   const changed = mobileLayout !== next;
   const focused = document.activeElement;
   if (changed || fitted) {
@@ -1229,13 +1238,8 @@ function syncProtectedLayout() {
     setCompactBuildOpen(false);
   }
   mobileLayout = next;
-  $('app').classList.toggle('protected-landscape', landscape);
-  $('app').classList.toggle('protected-portrait', portrait);
   $('app').classList.toggle('protected-sidebar', sidebar);
   $('app').classList.toggle('protected-short-portrait', shortPortrait);
-  $('app').classList.toggle('protected-mobile', landscape || portrait);
-  $('app').classList.toggle('mobile-ordinary', !protect);
-  $('app').classList.toggle('protected-compact', landscape || portrait);
   $('protectedNavigation').classList.toggle('hidden', !landscape && !portrait);
   const move = (id, parent) => { if ($(id).parentNode !== $(parent)) $(parent).append($(id)); };
   move('objectiveHUD', protect || landscape || portrait ? 'protectedDock' : 'battlefield');
@@ -1261,6 +1265,7 @@ function syncProtectedLayout() {
     if (focused?.isConnected && !focused.closest('.hidden,[inert]') && focused.getClientRects().length) focused.focus({preventScroll:true});
   }
   positionToast();
+  return changed || fitted;
 }
 window.addEventListener('resize', () => { syncProtectedLayout(); syncViewportSafety(); });
 function updateCompactBuildControl() {
@@ -3052,12 +3057,15 @@ function syncViewportSafety() {
   if (!relevant) return;
   const mobile = $('app').classList.contains('protected-mobile');
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
-  // Fit before measuring. A safe viewport move still invalidates held gestures:
-  // their old canvas-local coordinates must never place or pan in the new rect.
-  if (fitMobileViewport($('app'), viewport, mobile)) {
-    interruptMobileInput();
-    syncProtectedLayout();
-    renderer.resize();
+  // Fit before measuring, also checking padding-only content changes on every
+  // safety pass. A safe move still invalidates gestures from the previous rect.
+  if (fitMobileViewport($('app'), viewport, mobile, mobile ? getComputedStyle($('app')) : {})) {
+    // A track change interrupts and resizes inside syncProtectedLayout. A move
+    // within the same tracks still needs exactly one gesture invalidation.
+    if (!syncProtectedLayout()) {
+      interruptMobileInput();
+      renderer.resize();
+    }
   }
   const panel = $('viewportModal');
   panel.style.left = `${viewport.left}px`; panel.style.top = `${viewport.top}px`;

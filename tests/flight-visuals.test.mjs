@@ -4,7 +4,7 @@ import { MAPS, Game, getRuleset, RULESETS } from '../dist/engine.js';
 import { supportsFlightOrders, flightGateX } from '../dist/flight-orders.js';
 import { buildFlightSignals, flightRouteGeometry, flightViewport, flightBoundsVisible,
   groupFlightCorridors, flightSignalLabel, flightBannerLayout, flightBannerLayouts, flightPreviewLayout,
-  drawFlightRoutes, drawFlightMinimap } from '../dist/flight-visuals.js';
+  drawFlightRoutes, drawFlightLabels, drawFlightMinimap } from '../dist/flight-visuals.js';
 import { mockCanvas } from './renderer-canvas.mjs';
 
 const ruleset = getRuleset('frontier-flight-open');
@@ -23,6 +23,11 @@ const freeze = value => { if (value && typeof value === 'object' && !Object.isFr
   for (const child of Object.values(value)) freeze(child); Object.freeze(value);
 } return value; };
 const labels = canvas => canvas.calls.filter(call => call[0] === 'fillText').map(call => call[1]);
+const drawFlightSignals = (view, game, ui) => {
+  const frame = drawFlightRoutes(view, game, ui);
+  drawFlightLabels(view, frame);
+  return frame;
+};
 const overlap = (a, b, gap = 0) => a.x + a.width + gap > b.x + 1e-7 && b.x + b.width + gap > a.x + 1e-7 &&
   a.y + a.height + gap > b.y + 1e-7 && b.y + b.height + gap > a.y + 1e-7;
 
@@ -78,7 +83,7 @@ test('old rules, copied rules, and injected route properties draw nothing and do
     assert.deepEqual(buildFlightSignals(game), { routes: [], preview: null });
     assert.equal(flightRouteGeometry(game.map, rules, 0, 0, 1), null);
     const canvas = mockCanvas(), view = { ...renderer(game), c: canvas.c };
-    drawFlightRoutes(view, game, { selected: 10 });
+    drawFlightSignals(view, game, { selected: 10 });
     drawFlightMinimap(canvas.c, game, { width: 240, height: 72 });
     assert.deepEqual(canvas.calls, []);
   }
@@ -163,7 +168,7 @@ test('selected middle-road NEXT is separate from real warning/transit banners on
       game.state.units = [unit(game.map, 0, 1, 0, phase, 1.2)];
       game.state.buildings = [aerie(game.map, 0, 1, to)];
       const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: 1400 };
-      drawFlightRoutes(view, game, { selected: 10 });
+      drawFlightSignals(view, game, { selected: 10 });
       const boxes = signalBoxes(canvas, view, game.map);
       assert.equal(boxes.length, 2);
       assertSignalBoxes(boxes, view, `${width}×${height}/${scale}/${phase}/${to}`);
@@ -187,7 +192,7 @@ test('crowded measured banners and NEXT keep their own space at constrained view
       const canvas = mockCanvas(), source = { ...aerie(map, 0, lane, lane ? lane - 1 : 1), x: flightGateX(map, ruleset, 0) - 150 };
       game.state.buildings = [source];
       const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: map.width / 2 + cameraOffset };
-      const signals = drawFlightRoutes(view, game, { selected: source.id });
+      const signals = drawFlightSignals(view, game, { selected: source.id });
       const boxes = signalBoxes(canvas, view, map);
       assert.equal(boxes.length, groupFlightCorridors(signals.routes).length + Number(!!signals.preview?.showSource));
       assertSignalBoxes(boxes, view, `${map.id}/${width}×${height}/${lane}/${cameraOffset}`);
@@ -237,7 +242,7 @@ test('complete canvas operations remain finite and balanced on every map, side, 
     game.state.buildings = [aerie(map)];
     const world = mockCanvas(), mini = mockCanvas(), view = { ...renderer(game, scale, 1400, 700), c: world.c };
     world.c.globalAlpha = .5; world.c.lineWidth = 6;
-    const scene = drawFlightRoutes(view, game, { selected: 10 }); drawFlightMinimap(mini.c, game, { width: 240, height: 72, selected: 10 });
+    const scene = drawFlightSignals(view, game, { selected: 10 }); drawFlightMinimap(mini.c, game, { width: 240, height: 72, selected: 10 });
     assert.equal(world.depth(), 0); assert.equal(mini.depth(), 0); assert.equal(world.c.globalAlpha, .5); assert.equal(world.c.lineWidth, 6);
     assert.ok(labels(world).includes('YOU')); assert.ok(labels(world).includes('FOE')); assert.equal(labels(world).includes('NEXT ↓'), !!scene.preview?.showSource);
     assert.ok(world.calls.some(c => c[0] === 'set' && c[1] === 'font' && c[2] === '600 12px monospace'));
@@ -250,13 +255,46 @@ test('complete canvas operations remain finite and balanced on every map, side, 
 test('low effects/reduced motion keep essential countdown, ownership, arrows and next-order labels', () => {
   const game = fixture(); game.state.units = [unit(game.map), unit(game.map, 1)]; game.state.buildings = [aerie(game.map)];
   const render = (reducedMotion, quality) => {
-    const canvas = mockCanvas(); drawFlightRoutes({ ...renderer(game), c: canvas.c, reducedMotion, vfx: { quality } }, game, { selected: 10 }); return canvas;
+    const canvas = mockCanvas(); drawFlightSignals({ ...renderer(game), c: canvas.c, reducedMotion, vfx: { quality } }, game, { selected: 10 }); return canvas;
   };
   const high = render(false, 'high');
   for (const canvas of [render(true, 'high'), render(false, 'low'), render(true, 'low')]) {
     assert.deepEqual(labels(canvas), labels(high));
     assert.ok(canvas.calls.length < high.calls.length, 'Only optional feather ticks are removed');
   }
+});
+
+test('separated passes share one detached measurement and restore their canvas state', () => {
+  const game = fixture(), canvas = mockCanvas();
+  game.state.units = [unit(game.map), unit(game.map, 0, 1, 0), unit(game.map, 1)];
+  game.state.buildings = [aerie(game.map, 0, 1, 0)];
+  const view = { ...renderer(game), c: canvas.c };
+  canvas.c.globalAlpha = .4; canvas.c.lineWidth = 7;
+  const frame = drawFlightRoutes(view, game, { selected: 10 });
+  assert.deepEqual(labels(canvas), [], 'underlay contains no banner lettering');
+  assert.ok(canvas.calls.some(call => call[0] === 'stroke'), 'underlay retains routes and leaders');
+  assert.equal(canvas.depth(), 0); assert.equal(canvas.c.globalAlpha, .4); assert.equal(canvas.c.lineWidth, 7);
+  freeze(frame);
+  const before = JSON.stringify(frame);
+  canvas.reset(); drawFlightLabels(view, frame);
+  const first = JSON.stringify(canvas.calls);
+  assert.ok(labels(canvas).includes('↑ 2.0s')); assert.ok(labels(canvas).includes('↓ 2.0s'));
+  assert.ok(labels(canvas).includes('NEXT ↑'));
+  let closed = false;
+  for (const [op] of canvas.calls) {
+    if (op === 'beginPath') closed = false;
+    if (op === 'closePath') closed = true;
+    if (op === 'stroke') assert.equal(closed, true, 'label pass only strokes closed team marks, never route paths');
+  }
+  assert.equal(canvas.depth(), 0); assert.equal(canvas.c.globalAlpha, .4); assert.equal(canvas.c.lineWidth, 7);
+  // Deliberately invalidate live inputs. Labels use the prepared frame, without
+  // remeasuring, rereading simulation/selection or recomputing a different scale.
+  view.scale = 99; view.camera = 0;
+  Object.defineProperty(game, 'state', { get() { throw Error('Label pass reread game state'); } });
+  canvas.c.measureText = () => { throw Error('Label pass remeasured a banner'); };
+  canvas.reset(); drawFlightLabels(view, frame);
+  assert.equal(JSON.stringify(canvas.calls), first);
+  assert.equal(JSON.stringify(frame), before);
 });
 
 test('rendering frozen simulation leaves clock, RNG, route state and input UI byte-for-byte unchanged', () => {
@@ -268,7 +306,7 @@ test('rendering frozen simulation leaves clock, RNG, route state and input UI by
   const canvas = mockCanvas(), view = { ...renderer(game), c: canvas.c };
   const first = buildFlightSignals(game, { selected: 10 });
   for (let frame = 0; frame < 8; frame++) {
-    drawFlightRoutes(view, game, ui); drawFlightMinimap(canvas.c, game, { width: 240, height: 72, selected: 10 });
+    drawFlightSignals(view, game, ui); drawFlightMinimap(canvas.c, game, { width: 240, height: 72, selected: 10 });
   }
   assert.deepEqual(buildFlightSignals(game, { selected: 10 }), first);
   assert.equal(JSON.stringify(game.serialize()), before); assert.deepEqual(ui, { selected: 10, paused: false });
@@ -283,7 +321,7 @@ test('minimap validates bounds and never emits approach labels as actual warning
     assert.deepEqual(drawFlightMinimap(canvas.c, game, geometry), { routes: [], preview: null });
     assert.equal(canvas.calls.length, 0);
   }
-  assert.equal(drawFlightRoutes({ ...renderer(game), c: canvas.c }, game).routes.length, 0);
+  assert.equal(drawFlightSignals({ ...renderer(game), c: canvas.c }, game).routes.length, 0);
   assert.equal(drawFlightMinimap(canvas.c, game, { width: 240, height: 72, x: 12, y: 8 }).routes.length, 1);
   assert.deepEqual(labels(canvas), []);
   assert.ok(canvas.calls.some(call => call[0] === 'rect' && JSON.stringify(call.slice(1)) === JSON.stringify([12, 8, 240, 72])));
