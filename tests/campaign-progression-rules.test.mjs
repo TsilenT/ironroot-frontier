@@ -96,7 +96,7 @@ test('earned replay tiers persist without retroactively upgrading ongoing battle
 test('all sixteen revision-two battles retain the earned Rootwarden and revision-one remains seven buildings',()=>{
   const progress=full();for(const mission of CAMPAIGN_MISSIONS)progress.missions[mission.id]={...record};
   for(const mission of CAMPAIGN_MISSIONS){
-    const legacy=createCampaignMission(mission.id),modern=createProgressionCampaignMission(mission.id,progress);
+    const legacy=createCampaignMission(mission.id),modern=createCampaignMission(mission.id,{revision:2});
     assert.equal(Object.keys(legacy.buildings).length,7);assert.equal(Object.keys(modern.buildings).length,8);
     assert.equal(modern.units.rootwarden,getRuleset('frontier-rootwarden-open').units.rootwarden);
     assert.deepEqual(getCampaignTargets(modern,mission.id).map(t=>[t.originalId,t.kind]),getCampaignTargets(legacy,mission.id).map(t=>[t.originalId,t.kind]));

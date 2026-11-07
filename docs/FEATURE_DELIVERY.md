@@ -1,55 +1,49 @@
-# Feature delivery, not branch count
+# Feature delivery and branch disposition
 
-As of 7 November 2026. A branch, test fixture or passing simulation is not a shipped feature.
+As of 7 November 2026. A passing simulation or a branch is not a shipped feature.
 
-## Live v0.14.1
+## Live v0.15.0
 
-The public game is built from source merge `27e9477e4abb8188f59e71e0663486507a34603d`.
+Source merge: `f26b88106bed3d4932f5bf086cf21d5da18b5923`. Public commit: `3728e479b747cd360c01f154b1af94ab93fa421f`. The 46-file browser build is at https://ironroot.stevets.ai/.
 
-- Campaign opens first. Shared building controls carry hints. Partial-star wins offer Replay.
-- There are sixteen main missions with destruction, protection, economy and survival objectives, plus two **optional** one-/two-road introductions.
-- The small introduction build bars are **recommendations**, not earned technology. All buildings restores the old full roster immediately.
-- Rootwarden and its lodge are available in **fresh skirmishes only**. Authored campaign missions still use their legacy roster.
-- Gryphons fly but **do not change roads**.
-- Original canvas/vector art, the existing short procedural score, AI difficulties, three skirmish maps, protected-building HP controls and save/backup/offline safety are present.
+- Campaign starts with three required teaching battles: one, two, then three roads. The usable building roster grows from two to five to eight through victories. There is no unlock-bypass toggle in these new battles.
+- The Rootwarden and Warden lodge join the second teaching battle and remain available in later new campaign attempts. Old saves and restarts retain their original rules and rosters.
+- Campaign-first navigation presents the current mission, with Story and Chapter routes. Plain objectives stay visible; detailed rules and scouting expand on request. Stars are optional, and partial-star victories can be replayed.
+- Optional paused coaching uses the real build bar and gold. Mobile instructions remain outside the closed Build drawer; hiding hints does not start combat.
+- Successful construction finishes the build order and leaves the mobile drawer closed. Mouse Shift repeats while affordable; failed placement does not spend gold or clear the order.
+- Unified pause/options/restart and finite browser Back/Forward navigation preserve save ownership. Back closes a menu level or pauses/checkpoints battle; Forward never auto-resumes. Root navigation can leave normally.
+- Earlier phone sizing, middle-mouse camera drag, scoped right-click cancellation, optional fullscreen, combat poses and protected-building health/warnings are retained.
+- Existing art, short procedural score, AI difficulties, three skirmish maps, field trials, backup/offline support and local reports remain available.
+- Gryphons in this live release still **do not change roads**.
 
-## Also shipped in v0.14.1
+The exact source passed 1,072 Node tests with one optional tooling skip and 1,386 Chromium cases with zero failures and 46 intentional profile exclusions. All formerly blocked downstream checks executed. The merged tree is identical. Live smoke verified old stars/save migration, paid building, paused teaching and Back/save/reload. This does not certify physical phones, installed PWAs, hardware controllers, non-Chromium browsers or the desktop package.
 
-The release includes PR #1’s restrained combat poses, grouped objective-danger warnings and the intro Resume-label correction. It also corrects stale release documentation. It does not add campaign tanks, earned unlocks or lane changes.
+## PRs closed by consolidation
 
-The release also repairs the visible-viewport phone pause, short-screen control/text layout, and adds middle-mouse pan, battlefield right-click cancellation and browser-supported fullscreen. Its exact source passed 898 Node tests plus one optional skip and 222 selected Chromium checks with 30 intentional exclusions. Physical-phone/PWA and listening certification remain outstanding.
+- PR #1 combat feedback and objective warnings: merged and shipped in an earlier release.
+- PRs #3 and #4 desktop controls and phone sizing: merged and shipped in v0.14.1.
+- PRs #5, #6 and #7 pause/options, campaign navigation and teaching: adapted together in PR #8, with original ancestry retained. All four PRs are now merged, and their combined behavior shipped in v0.15.
+- Merged branch names can be removed after ancestry/dependency checks. Removing a redundant name does not erase the reachable commits.
 
-## Current gameplay implementation
+## Active next gameplay integration: flight
 
-The coordinated v0.15.0 campaign integration is in draft PR #8. Its first full gate exposed test setup mismatches; corrected tests and new user-requested build/teaching interactions are being reviewed locally:
+PR #2 contains the player-directed crossing prototype. It remains separate while its mechanics are adapted to the current production engine and reconciled with every released PR #8 repair. This local v0.16 work includes:
 
-1. New-player campaign starts with a real one-road, two-building mission.
-2. A two-road mission introduces the Rootwarden screen, mines and towers: five usable buildings, with the usual costs.
-3. A three-road mission opens the eight-building roster. Later new campaign battles retain the earned tank, rather than dropping it again.
-4. Engine construction and saved-battle admission enforce the roster. A UI toggle cannot bypass it. Replays may use a higher earned tier; a resumed battle retains the roster it saved.
-5. Existing campaign progress and ongoing legacy battles keep their identities and rules. New rules/scenario revisions and protocol-4 profile fencing are implemented with exact legacy preservation checks.
+- Owned-aerie Hold or adjacent-road orders for future launches only.
+- Two-second gateway warnings, crossing at normal speed without attacks, and ordinary anti-air interception. Crossing abandons support on the original road and is not always beneficial.
+- Battlefield/minimap signals, accessible inspector controls and a read-only Air routes view in Pause.
+- New High Pass-and-later campaign attempts use an explicit revision 3; old active attempts/restarts keep their original no-crossing rules. Profile protocol 5 fences older current clients.
+- AI reacts to committed launched destinations, not hidden orders. Enemy producers still use Hold; tactical enemy flight planning is not claimed.
 
-The same candidate includes adapted PR #6 campaign navigation, amended PR #5 pause/options/restart, and adapted PR #7 paid teaching pauses. Two opening missions were won through ordinary native UI, with genuine 2→5 progression. The full third paid mission and replay then passed in all four cloud browser profiles (portrait used separately recorded corrected native-minimap navigation). The original full gate was not green: 1,050 passed, 113 failed, 33 intentional skips. See CAMPAIGN_V015_QA_TRIAGE.md for preserved failures and repairs. The next revision also makes successful placement one-shot by default (mouse Shift repeats) and keeps mobile teaching outside the closed Build drawer. Those newer changes still require combined validation. This remains one coordinated PR, not a deployment claim.
+The earlier frozen flight work has extensive deterministic combat/save tests and retained adverse outcomes, but its native browser review was incomplete. The reconciled source needs its own exact combined gate. Do not merge the old prototype engine or call flight shipped before that review and release.
 
-## Still experimental or deferred
+## Explicitly unmerged or deferred
 
-- **Flying road changes:** the first fixed-crossing prototype was not selected. Draft PR #2 now provides player-directed crossings and anti-air counterplay; it remains under separate gameplay review. This is not considered finished or permanently rejected.
-- **Longer music:** the 64-bar branch has technical checks but no actual listening approval. Not merged.
-- **Specialist AI:** experimental personalities are not shipped. Improving a single rush benchmark did not establish good overall difficulty.
-- **Optional two-of-three objective routes:** prototype only. Existing mission variety should not be confused with this unshipped mechanic.
-- **Native desktop export/package and Steam integration:** unverified or incomplete. Browser/controller tests are not packaged-game certification.
+- **Longer music:** 64-bar experiment has technical PCM checks but no actual listening assessment. Not selected for release yet.
+- **Specialist AI:** experiments remain unmerged. Better performance against one rush does not establish good overall difficulty or fun.
+- **Optional two-of-three objective routes:** prototype only, not part of the current campaign.
+- **Fixed automatic lane crossings:** first prototype not selected; player orders are the active replacement.
+- **Native desktop/Steam readiness:** packaging, device/input coverage, accessibility and store/business requirements remain open. The game is not advertised as Steam-ready.
 - **Network PvP:** not implemented.
 
-The campaign and cross-lane gaps take priority over another polish-only batch. Experiments will be chosen, revised or rejected for gameplay reasons, not merged merely to close branches.
-
-### Final PR #8 feedback source checkpoint (7 November)
-
-The revised source combines one-shot placement (mouse+Shift repeats), mobile teaching visible outside Build, a pinned initial Start choice, finite Back/Forward menus, and an explicit optional fullscreen entry. Independent source review and 1,044 Node checks passed with one optional tooling skip. Browser QA of the exact revised commit is still required; live remains v0.14.1. Both Back defects found during review were fixed before freezing.
-
-### Subsequent PR8 browser repair
-
-The revised head `9aebcfd2` exposed two real UI defects in cloud checks: title Options Back focus was overwritten by campaign-heading focus, and mobile coach ink extended 1px above its scroller. A separate local correction preserves the title and its opener on modal dismissal, adds the small inner text inset, and fixes the QA server's missing-favicon error. Existing browser assertions remain intact. The repair passes 1,057 Node checks with one optional skip and all preflights; exact browser verification is pending. Live remains v0.14.1, and the flight feature is still a separate future integration.
-
-### PR8 full-gate repair checkpoint
-
-The revised PR8 cloud run finished1,330pass/32fail/46intentional exclusions. The corrective local batch addresses all four failure groups: title Options focus, teaching text ink clipping, short protected-phone layout and practice return-history. The QA server missing-file correction is included. Original browser assertions remain intact; added companions cover actual short-layout/return boundaries. Runtime changes are confined to app routing, menu history and CSS. The frozen future flight feature remains separate. This is not a passed browser gate or public release; final validation is recorded in `PR8_BROWSER_REPAIR_VALIDATION.json`.
+Historical candidate reports remain as evidence of failed and passed stages. This file and README describe current disposition rather than overwriting those records.

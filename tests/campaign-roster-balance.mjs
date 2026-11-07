@@ -1,5 +1,7 @@
-/** Read-only paid-policy review of all sixteen revision-2 continuations.
+/** Historical, read-only paid-policy review of all sixteen revision-2 continuations.
  * Run: node tests/campaign-roster-balance.mjs > docs/CAMPAIGN_ROSTER_BALANCE_RESULTS.json
+ * Current flight campaign review: node tests/flight-campaign-balance.mjs
+ * Continuations are pinned to revision 2; the opening retains earned roster tiers.
  * This is measured policy evidence, not a human win-rate or optimality claim.
  */
 import assert from 'node:assert/strict';
@@ -8,13 +10,14 @@ import { readFile } from 'node:fs/promises';
 import { Game } from '../dist/engine.js';
 import {
   CAMPAIGN_MISSIONS, ONBOARDING_MISSIONS, createCampaignProgress, createCampaignMission,
-  createProgressionCampaignMission, getCampaignLaunchMission, getCampaignRoster,
+  getCampaignRoster,
   getProgressionCampaignOverview, recordCampaignResult, evaluateCampaignMission,
   getCampaignTargets, campaignScenarioForGame, currentIncome,
 } from '../dist/campaign.js';
 import { encodeBattle, decodeBattle } from '../dist/battle-codec.js';
 import { playCampaign, campaignPolicy, productionPolicy } from './campaign-policies.mjs';
 import { onboardingReferencePolicy } from './onboarding-campaign-policies.mjs';
+import { createHistoricalRosterMission, getHistoricalRosterMission } from './campaign-roster-historical.mjs';
 
 const round = x => +x.toFixed(2);
 const sha = x => createHash('sha256').update(typeof x === 'string' ? x : JSON.stringify(x)).digest('hex');
@@ -69,7 +72,7 @@ function screenedRanged(mission, { siege = true, upgradeScreens = false } = {}) 
 
 function run(mission, progress, { legacy = false, policy, restore = false, seed = mission.seed,
   startDelay = 0, actionEvery = 1, maxActionsPerDecision = Infinity, name = 'reference' } = {}) {
-  const initial = legacy ? createCampaignMission(mission.id) : createProgressionCampaignMission(mission.id, progress);
+  const initial = legacy ? createCampaignMission(mission.id) : createHistoricalRosterMission(mission.id, progress);
   if (!legacy) {
     assert.equal(campaignScenarioForGame(initial, mission.id).revision, ONBOARDING_MISSIONS.some(m => m.id === mission.id) ? 1 : 2);
     if (!ONBOARDING_MISSIONS.some(m => m.id === mission.id)) {
@@ -148,8 +151,8 @@ function run(mission, progress, { legacy = false, policy, restore = false, seed 
 const onboarding = [], progression = [], results = [], legacyComparisons = [], beforeMission = {};
 let progress = createCampaignProgress();
 for (const mission of ONBOARDING_MISSIONS) {
-  const actual = getCampaignLaunchMission(mission.id, progress);
-  assert.equal(Object.keys(createProgressionCampaignMission(mission.id, progress).buildings).length, [2, 5, 8][onboarding.length]);
+  const actual = getHistoricalRosterMission(mission.id, progress);
+  assert.equal(Object.keys(createHistoricalRosterMission(mission.id, progress).buildings).length, [2, 5, 8][onboarding.length]);
   const sample = run(actual, progress, { name: 'paid-onboarding', policy: onboardingReferencePolicy(mission.id), restore: true, startDelay: 10, actionEvery: 5, maxActionsPerDecision: 1 });
   assert.ok(sample.outcome.completed, `Onboarding failed: ${mission.id}`);
   onboarding.push(sample.result);
@@ -157,7 +160,7 @@ for (const mission of ONBOARDING_MISSIONS) {
 }
 for (const original of CAMPAIGN_MISSIONS) {
   beforeMission[original.id] = structuredClone(progress);
-  const mission = getCampaignLaunchMission(original.id, progress);
+  const mission = getHistoricalRosterMission(original.id, progress);
   const sample = run(mission, progress, { name: 'reference' });
   assert.ok(sample.outcome.completed, `Paid reference cannot progress: ${original.id}`);
   progression.push(sample.result);
@@ -168,7 +171,7 @@ for (const original of CAMPAIGN_MISSIONS) {
 assert.equal(getProgressionCampaignOverview(progress).cleared, 19);
 assert.equal(getCampaignRoster(progress).buildings.length, 8);
 for (const original of CAMPAIGN_MISSIONS) {
-  const mission = getCampaignLaunchMission(original.id, beforeMission[original.id]);
+  const mission = getHistoricalRosterMission(original.id, beforeMission[original.id]);
   const earned = beforeMission[original.id];
   const seeds = [mission.seed, 57, 999];
   for (const [index, seed] of seeds.entries()) {
@@ -215,7 +218,7 @@ const aggregate = name => {
     paidWardens: samples.reduce((n, r) => n + (r.purchased.wardenLodge || 0), 0) };
 };
 console.log(JSON.stringify({ generatedAt: new Date().toISOString(), inputHashes,
-  note: 'All battles begin from the normal authored formation. Progress was earned through actual paid wins, without setting completion flags, gold, HP or units. Every later player action is an audited ordinary paid command. Seeds alter combat randomness, not map, formation or policy. Existing reference actions are checked against revision 1 using exact final combat state, not only outcome. Alternative controls intentionally omit some required counters or economy; their losses are not claims of impossibility. This does not measure human win rate, prove an optimal strategy, or replace UI playtesting.',
+  note: 'Historical revision-2 continuation audit; current flight campaign validation uses tests/flight-campaign-balance.mjs. All battles begin from the normal authored formation. Progress was earned through actual paid wins, without setting completion flags, gold, HP or units. Every later player action is an audited ordinary paid command. Seeds alter combat randomness, not map, formation or policy. Existing reference actions are checked against revision 1 using exact final combat state, not only outcome. Alternative controls intentionally omit some required counters or economy; their losses are not claims of impossibility. This does not measure human win rate, prove an optimal strategy, or replace UI playtesting.',
   paidOnboarding: onboarding, paidProgression: progression, finalProgress: progress,
   roster: getCampaignRoster(progress), legacyComparisons,
   simulations: onboarding.length + results.length + legacyComparisons.length,

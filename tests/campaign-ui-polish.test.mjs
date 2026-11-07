@@ -2,9 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runInNewContext} from 'node:vm';
 import {readFileSync} from 'node:fs';
+import {flightOrderModel} from '../dist/flight-orders-view.js';
 import {BUILDINGS,UNITS,upgradeCost} from '../dist/engine.js';
 import {CAMPAIGN_MISSIONS,createCampaignMission} from '../dist/campaign.js';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
+const syncFlight=app.slice(app.indexOf('function syncFlightOrders('),app.indexOf('let armedFlightControl ='));
 const selection=app.slice(app.indexOf('function updateSelection()'),app.indexOf("\n$('upgrade').onclick",app.indexOf('function updateSelection()')));
 
 test('actual building details round both HP values without changing upgraded campaign state',()=>{
@@ -14,7 +16,7 @@ test('actual building details round both HP values without changing upgraded cam
     for(const b of game.state.buildings.filter(b=>b.side===0&&b.level>1)){
       const elements=new Map();
       const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,classList:{toggle(){},contains(){return false;}}});return elements.get(id);};
-      runInNewContext(selection+'\nupdateSelection();',{$,game,ui:{selected:b.id,protectedTargets:[]},BUILDINGS,UNITS,upgradeCost,paused:false,iconSVG:()=>''});
+      runInNewContext(syncFlight+selection+'\nupdateSelection();',{$,game,flightOrderModel,ui:{selected:b.id,protectedTargets:[]},BUILDINGS,UNITS,upgradeCost,paused:false,iconSVG:()=>''});
       assert.ok($('selectionStats').innerHTML.startsWith(`<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span>`),mission.id+'/'+b.type);
       assert.ok(!/\d\.\d{5,}/.test($('selectionStats').innerHTML));
       checked++;

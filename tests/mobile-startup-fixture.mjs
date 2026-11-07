@@ -8,6 +8,8 @@ import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/prot
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
+import {supportsFlightOrders} from '../dist/flight-orders.js';
+import {flightOrderModel,flightRoadName,flightRouteRows,flightWarningSummary} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
@@ -63,6 +65,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const c={$,document,window:{innerWidth:width,innerHeight:height,addEventListener(){},matchMedia:q=>({matches:q.includes('orientation: landscape')?width>height&&height<=500:width<=height&&width<=700})},
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
+  supportsFlightOrders,flightOrderModel,flightRoadName,flightRouteRows,flightWarningSummary,
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,

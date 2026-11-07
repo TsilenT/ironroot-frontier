@@ -1,0 +1,32 @@
+✔ flight panel offers only Hold and adjacent roads, using the actual map names (2.689057ms)
+✔ old identities and non-owned/dead/non-aerie selections never offer orders (0.272952ms)
+✔ route text groups actual launches and ignores unlaunched enemy plans and completed flights (1.72554ms)
+✔ real aerie controls change only future plan and preserve focus, resources and airborne orders (22.715269ms)
+✔ an unarmed compatibility click cannot issue an order on a newly revealed aerie panel (10.071221ms)
+✔ paused prevents even a direct order activation (7.933956ms)
+✔ profileGate prevents even a direct order activation (7.639122ms)
+✔ recoveryHold prevents even a direct order activation (6.646161ms)
+✔ battleSafetyReason prevents even a direct order activation (10.524158ms)
+✔ paused route inspection is read-only and old battles do not expose the new controls (10.401296ms)
+✔ staggered paid launches report the earliest warning consistently with battlefield signals (10.895835ms)
+✔ warning rounding shares positive tenths and avoids binary floating-point overstatement (0.170672ms)
+✔ gate geometry uses each registered flight identity and map, mirrored for both sides and directions (2.956771ms)
+✔ old rules, copied rules, and injected route properties draw nothing and do not inspect state (2.14048ms)
+✔ many units collapse into stable directional groups, with earliest warning and leading transit marker (1.11426ms)
+✔ world culls offscreen gateways in both axes while minimap retains launched crossings (1.034833ms)
+✔ preview only reads a selected living owned aerie, including source when gateway is offscreen (0.457032ms)
+✔ dead, finished, malformed and non-gryphon flights never produce misleading signals (0.294573ms)
+✔ viewport conversion and banner geometry preserve fixed pixel text at phone and desktop scales (0.533886ms)
+✔ complete canvas operations remain finite and balanced on every map, side, phase and scale (10.917297ms)
+✔ low effects/reduced motion keep essential countdown, ownership, arrows and next-order labels (0.954144ms)
+✔ rendering frozen simulation leaves clock, RNG, route state and input UI byte-for-byte unchanged (2.177384ms)
+✔ minimap validates bounds and never emits approach labels as actual warning countdowns (0.411195ms)
+✔ real production flight phases drive preview, launched minimap, warning and crossing without simulation assistance (2.010379ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 256.000346

@@ -7,6 +7,8 @@ import {UPDATE_BUILDS} from './update-fixtures.mjs';
 import {LEGACY_QA_ROOT,LEGACY_QA_PATH} from './legacy-profile-fixtures.mjs';
 import {REPORT_LEGACY_ROOT,REPORT_LEGACY_PATH} from './battle-report-legacy-fixtures.mjs';
 import {PRODUCTION_V012_ROOT,PRODUCTION_V012_PATH,validateProductionV012} from './production-v012-fixtures.mjs';
+import {validateProductionV015} from './production-v015-fixtures.mjs';
+await validateProductionV015();
 await validateProductionV012(); // Fail closed before serving immutable historical bytes.
 const root = fileURLToPath(new URL('../../dist', import.meta.url));
 // QA-only, loopback-only update sessions. Each case gets an unguessable path

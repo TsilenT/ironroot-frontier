@@ -33,6 +33,7 @@ const profile = page => page.evaluate(keys => keys.map(key => localStorage.getIt
 test('a focused briefing leads through story, chapter and mission with keyboard and visible goal', async ({page}) => {
   await page.goto('/');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  await expect(page.locator('#campaignScoutToggle')).toHaveText('Scout battlefield · Roadside Watch');
   await expect(page.locator('#campaignStoryPage')).toBeHidden();
   await expect(page.locator('#campaignChapterPage')).toBeHidden();
   await expect(page.locator('#campaignMissionDescription')).toContainText('One raider camp blocks the road');
@@ -93,6 +94,7 @@ test('all 19 current briefings retain authored rules and prominent mandatory obj
   test.setTimeout(60000); await page.goto('/');
   for (const mission of missions) {
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);
+    await expect(page.locator('#campaignScoutToggle')).toHaveText(`Scout battlefield · ${mission.name}`);
     const brief = missionBriefing(mission);
     await expect(page.locator('#campaignGoal')).toHaveText(brief.goal);
     await expect(page.locator('#campaignGoalFacts li')).toHaveText(brief.facts);
@@ -124,7 +126,8 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);
   await startRunning(page, press); await press(page, '#pause');
-  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:2});
+  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:3});
+  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-flight');
   expect((await profile(page))[1]).toBe(bytes);
 });
 

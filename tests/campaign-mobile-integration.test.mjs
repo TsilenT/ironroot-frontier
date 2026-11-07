@@ -5,6 +5,8 @@ import { runInContext, createContext } from 'node:vm';
 import { BUILDINGS, buildBounds } from '../dist/engine.js';
 import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission, campaignScenarioForGame, getProgressionCampaignOverview, createCampaignProgress } from '../dist/campaign.js';
 import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
+import { supportsFlightOrders } from '../dist/flight-orders.js';
+import { flightOrderModel, flightRoadName } from '../dist/flight-orders-view.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 import { visibleViewportRect } from '../dist/mobile-battlefield.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
@@ -40,13 +42,13 @@ function harness() {
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
   $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+  c={$,BUILDINGS,buildBounds,supportsFlightOrders,flightOrderModel,flightRoadName,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
     game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
     viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),
-    document:{body:{},activeElement:null,querySelector:s=>s?.startsWith('[data-type=')?cards.find(n=>n.dataset.type===s.match(/"([^"]+)"/)[1]):s?.startsWith('#')?$(s.slice(1)):null,
+    document:{body:{},activeElement:null,listeners:new Map(),addEventListener(type,handler){const handlers=this.listeners.get(type)||[];handlers.push(handler);this.listeners.set(type,handlers);},querySelector:s=>s?.startsWith('[data-type=')?cards.find(n=>n.dataset.type===s.match(/"([^"]+)"/)[1]):s?.startsWith('#')?$(s.slice(1)):null,
       querySelectorAll:s=>s==='.build-card'?cards:s==='.coach-highlight'?[...nodes.values()].filter(n=>n.classList.contains('coach-highlight')):[]},
-    window:{innerWidth:320,innerHeight:568},getComputedStyle:n=>({visibility:'visible',overflowX:n.clip,overflowY:'visible'}),
+    window:{innerWidth:320,innerHeight:568,listeners:new Map(),addEventListener(type,handler){const handlers=this.listeners.get(type)||[];handlers.push(handler);this.listeners.set(type,handlers);}},getComputedStyle:n=>({visibility:'visible',overflowX:n.clip,overflowY:'visible'}),
     renderer:{width:320,height:250,scale:.32,camera:450,snap:p=>p},
     updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
   };

@@ -1,0 +1,126 @@
+Listing tests:
+  [phone] › flight-orders.spec.mjs:146:49 › wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [phone] › flight-orders.spec.mjs:146:49 › stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [phone] › flight-orders.spec.mjs:204:28 › edge road 0: only Hold and the adjacent destination are exposed
+  [phone] › flight-orders.spec.mjs:204:28 › edge road 2: only Hold and the adjacent destination are exposed
+  [phone] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey South
+  [phone] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey Hold
+  [phone] › flight-orders.spec.mjs:260:33 › authored approach checkpoint: real save, reload and backup preserve exact route continuation
+  [phone] › flight-orders.spec.mjs:260:33 › authored warning checkpoint: real save, reload and backup preserve exact route continuation
+  [phone] › flight-orders.spec.mjs:260:33 › authored transit checkpoint: real save, reload and backup preserve exact route continuation
+  [phone] › flight-orders.spec.mjs:260:33 › authored done checkpoint: real save, reload and backup preserve exact route continuation
+  [phone] › flight-orders.spec.mjs:303:76 › frontier-flight-open: restart and export retain the active identity; old saves never gain controls
+  [phone] › flight-orders.spec.mjs:303:76 › frontier-flight-timed: restart and export retain the active identity; old saves never gain controls
+  [phone] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-open: restart and export retain the active identity; old saves never gain controls
+  [phone] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-timed: restart and export retain the active identity; old saves never gain controls
+  [phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 1 resumes and restarts under its original rules
+  [phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 2 resumes and restarts under its original rules
+  [phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 3 resumes and restarts under its original rules
+  [phone] › flight-orders.spec.mjs:373:75 › held real order across pause never applies on release or implicitly resumes
+  [phone] › flight-orders.spec.mjs:373:75 › held real order across settings never applies on release or implicitly resumes
+  [phone] › flight-orders.spec.mjs:373:75 › held real order across viewport never applies on release or implicitly resumes
+  [phone] › flight-orders.spec.mjs:373:75 › held real order across Back/Forward never applies on release or implicitly resumes
+  [phone] › flight-orders.spec.mjs:441:5 › 320×430: flight controls scroll into real hit targets without hiding pause or charging twice
+  [phone] › flight-orders.spec.mjs:441:5 › 667×300: flight controls scroll into real hit targets without hiding pause or charging twice
+  [phone] › flight-orders.spec.mjs:475:1 › enemy unlaunched plans are private: no selection controls, Air routes entry, warning or rendered route label
+  [phone] › flight-orders.spec.mjs:494:1 › an enemy committed warning is accessible and Air routes disclosure never resumes battle
+  [phone] › flight-orders.spec.mjs:517:1 › fresh skirmish selection offers only explicit flight identities while retaining ordinary timed/open rules
+  [phone] › flight-orders.spec.mjs:534:1 › a newer tab owns its saved flight plan; stale Save and restart cannot overwrite it
+  [phone] › flight-orders.spec.mjs:569:1 › completed Wings deliberate replay uses current flight rules without restarting automatic teaching
+  [phone] › flight-orders.spec.mjs:601:1 › Back and Forward through flight planning Options preserve the paid order and teaching hold
+  [phone] › flight-orders.spec.mjs:635:1 › staggered legal paid launches announce the earliest saved warning, not the latest flyer
+  [phone] › flight-orders.spec.mjs:658:1 › native pause retains an approaching enemy warning, then Resume announces it once
+  [narrow-phone] › flight-orders.spec.mjs:146:49 › wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [narrow-phone] › flight-orders.spec.mjs:146:49 › stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [narrow-phone] › flight-orders.spec.mjs:204:28 › edge road 0: only Hold and the adjacent destination are exposed
+  [narrow-phone] › flight-orders.spec.mjs:204:28 › edge road 2: only Hold and the adjacent destination are exposed
+  [narrow-phone] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey South
+  [narrow-phone] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey Hold
+  [narrow-phone] › flight-orders.spec.mjs:260:33 › authored approach checkpoint: real save, reload and backup preserve exact route continuation
+  [narrow-phone] › flight-orders.spec.mjs:260:33 › authored warning checkpoint: real save, reload and backup preserve exact route continuation
+  [narrow-phone] › flight-orders.spec.mjs:260:33 › authored transit checkpoint: real save, reload and backup preserve exact route continuation
+  [narrow-phone] › flight-orders.spec.mjs:260:33 › authored done checkpoint: real save, reload and backup preserve exact route continuation
+  [narrow-phone] › flight-orders.spec.mjs:303:76 › frontier-flight-open: restart and export retain the active identity; old saves never gain controls
+  [narrow-phone] › flight-orders.spec.mjs:303:76 › frontier-flight-timed: restart and export retain the active identity; old saves never gain controls
+  [narrow-phone] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-open: restart and export retain the active identity; old saves never gain controls
+  [narrow-phone] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-timed: restart and export retain the active identity; old saves never gain controls
+  [narrow-phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 1 resumes and restarts under its original rules
+  [narrow-phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 2 resumes and restarts under its original rules
+  [narrow-phone] › flight-orders.spec.mjs:344:35 › saved Wings revision 3 resumes and restarts under its original rules
+  [narrow-phone] › flight-orders.spec.mjs:373:75 › held real order across pause never applies on release or implicitly resumes
+  [narrow-phone] › flight-orders.spec.mjs:373:75 › held real order across settings never applies on release or implicitly resumes
+  [narrow-phone] › flight-orders.spec.mjs:373:75 › held real order across viewport never applies on release or implicitly resumes
+  [narrow-phone] › flight-orders.spec.mjs:373:75 › held real order across Back/Forward never applies on release or implicitly resumes
+  [narrow-phone] › flight-orders.spec.mjs:441:5 › 320×430: flight controls scroll into real hit targets without hiding pause or charging twice
+  [narrow-phone] › flight-orders.spec.mjs:441:5 › 667×300: flight controls scroll into real hit targets without hiding pause or charging twice
+  [narrow-phone] › flight-orders.spec.mjs:475:1 › enemy unlaunched plans are private: no selection controls, Air routes entry, warning or rendered route label
+  [narrow-phone] › flight-orders.spec.mjs:494:1 › an enemy committed warning is accessible and Air routes disclosure never resumes battle
+  [narrow-phone] › flight-orders.spec.mjs:517:1 › fresh skirmish selection offers only explicit flight identities while retaining ordinary timed/open rules
+  [narrow-phone] › flight-orders.spec.mjs:534:1 › a newer tab owns its saved flight plan; stale Save and restart cannot overwrite it
+  [narrow-phone] › flight-orders.spec.mjs:569:1 › completed Wings deliberate replay uses current flight rules without restarting automatic teaching
+  [narrow-phone] › flight-orders.spec.mjs:601:1 › Back and Forward through flight planning Options preserve the paid order and teaching hold
+  [narrow-phone] › flight-orders.spec.mjs:635:1 › staggered legal paid launches announce the earliest saved warning, not the latest flyer
+  [narrow-phone] › flight-orders.spec.mjs:658:1 › native pause retains an approaching enemy warning, then Resume announces it once
+  [landscape] › flight-orders.spec.mjs:146:49 › wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [landscape] › flight-orders.spec.mjs:146:49 › stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [landscape] › flight-orders.spec.mjs:204:28 › edge road 0: only Hold and the adjacent destination are exposed
+  [landscape] › flight-orders.spec.mjs:204:28 › edge road 2: only Hold and the adjacent destination are exposed
+  [landscape] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey South
+  [landscape] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey Hold
+  [landscape] › flight-orders.spec.mjs:260:33 › authored approach checkpoint: real save, reload and backup preserve exact route continuation
+  [landscape] › flight-orders.spec.mjs:260:33 › authored warning checkpoint: real save, reload and backup preserve exact route continuation
+  [landscape] › flight-orders.spec.mjs:260:33 › authored transit checkpoint: real save, reload and backup preserve exact route continuation
+  [landscape] › flight-orders.spec.mjs:260:33 › authored done checkpoint: real save, reload and backup preserve exact route continuation
+  [landscape] › flight-orders.spec.mjs:303:76 › frontier-flight-open: restart and export retain the active identity; old saves never gain controls
+  [landscape] › flight-orders.spec.mjs:303:76 › frontier-flight-timed: restart and export retain the active identity; old saves never gain controls
+  [landscape] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-open: restart and export retain the active identity; old saves never gain controls
+  [landscape] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-timed: restart and export retain the active identity; old saves never gain controls
+  [landscape] › flight-orders.spec.mjs:344:35 › saved Wings revision 1 resumes and restarts under its original rules
+  [landscape] › flight-orders.spec.mjs:344:35 › saved Wings revision 2 resumes and restarts under its original rules
+  [landscape] › flight-orders.spec.mjs:344:35 › saved Wings revision 3 resumes and restarts under its original rules
+  [landscape] › flight-orders.spec.mjs:373:75 › held real order across pause never applies on release or implicitly resumes
+  [landscape] › flight-orders.spec.mjs:373:75 › held real order across settings never applies on release or implicitly resumes
+  [landscape] › flight-orders.spec.mjs:373:75 › held real order across viewport never applies on release or implicitly resumes
+  [landscape] › flight-orders.spec.mjs:373:75 › held real order across Back/Forward never applies on release or implicitly resumes
+  [landscape] › flight-orders.spec.mjs:441:5 › 320×430: flight controls scroll into real hit targets without hiding pause or charging twice
+  [landscape] › flight-orders.spec.mjs:441:5 › 667×300: flight controls scroll into real hit targets without hiding pause or charging twice
+  [landscape] › flight-orders.spec.mjs:475:1 › enemy unlaunched plans are private: no selection controls, Air routes entry, warning or rendered route label
+  [landscape] › flight-orders.spec.mjs:494:1 › an enemy committed warning is accessible and Air routes disclosure never resumes battle
+  [landscape] › flight-orders.spec.mjs:517:1 › fresh skirmish selection offers only explicit flight identities while retaining ordinary timed/open rules
+  [landscape] › flight-orders.spec.mjs:534:1 › a newer tab owns its saved flight plan; stale Save and restart cannot overwrite it
+  [landscape] › flight-orders.spec.mjs:569:1 › completed Wings deliberate replay uses current flight rules without restarting automatic teaching
+  [landscape] › flight-orders.spec.mjs:601:1 › Back and Forward through flight planning Options preserve the paid order and teaching hold
+  [landscape] › flight-orders.spec.mjs:635:1 › staggered legal paid launches announce the earliest saved warning, not the latest flyer
+  [landscape] › flight-orders.spec.mjs:658:1 › native pause retains an approaching enemy warning, then Resume announces it once
+  [desktop] › flight-orders.spec.mjs:146:49 › wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [desktop] › flight-orders.spec.mjs:146:49 › stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG
+  [desktop] › flight-orders.spec.mjs:204:28 › edge road 0: only Hold and the adjacent destination are exposed
+  [desktop] › flight-orders.spec.mjs:204:28 › edge road 2: only Hold and the adjacent destination are exposed
+  [desktop] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey South
+  [desktop] › flight-orders.spec.mjs:222:41 › authored launched gryphon keeps North while only future launches obey Hold
+  [desktop] › flight-orders.spec.mjs:260:33 › authored approach checkpoint: real save, reload and backup preserve exact route continuation
+  [desktop] › flight-orders.spec.mjs:260:33 › authored warning checkpoint: real save, reload and backup preserve exact route continuation
+  [desktop] › flight-orders.spec.mjs:260:33 › authored transit checkpoint: real save, reload and backup preserve exact route continuation
+  [desktop] › flight-orders.spec.mjs:260:33 › authored done checkpoint: real save, reload and backup preserve exact route continuation
+  [desktop] › flight-orders.spec.mjs:303:76 › frontier-flight-open: restart and export retain the active identity; old saves never gain controls
+  [desktop] › flight-orders.spec.mjs:303:76 › frontier-flight-timed: restart and export retain the active identity; old saves never gain controls
+  [desktop] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-open: restart and export retain the active identity; old saves never gain controls
+  [desktop] › flight-orders.spec.mjs:303:76 › frontier-rootwarden-timed: restart and export retain the active identity; old saves never gain controls
+  [desktop] › flight-orders.spec.mjs:344:35 › saved Wings revision 1 resumes and restarts under its original rules
+  [desktop] › flight-orders.spec.mjs:344:35 › saved Wings revision 2 resumes and restarts under its original rules
+  [desktop] › flight-orders.spec.mjs:344:35 › saved Wings revision 3 resumes and restarts under its original rules
+  [desktop] › flight-orders.spec.mjs:373:75 › held real order across pause never applies on release or implicitly resumes
+  [desktop] › flight-orders.spec.mjs:373:75 › held real order across settings never applies on release or implicitly resumes
+  [desktop] › flight-orders.spec.mjs:373:75 › held real order across viewport never applies on release or implicitly resumes
+  [desktop] › flight-orders.spec.mjs:373:75 › held real order across Back/Forward never applies on release or implicitly resumes
+  [desktop] › flight-orders.spec.mjs:441:5 › 320×430: flight controls scroll into real hit targets without hiding pause or charging twice
+  [desktop] › flight-orders.spec.mjs:441:5 › 667×300: flight controls scroll into real hit targets without hiding pause or charging twice
+  [desktop] › flight-orders.spec.mjs:475:1 › enemy unlaunched plans are private: no selection controls, Air routes entry, warning or rendered route label
+  [desktop] › flight-orders.spec.mjs:494:1 › an enemy committed warning is accessible and Air routes disclosure never resumes battle
+  [desktop] › flight-orders.spec.mjs:517:1 › fresh skirmish selection offers only explicit flight identities while retaining ordinary timed/open rules
+  [desktop] › flight-orders.spec.mjs:534:1 › a newer tab owns its saved flight plan; stale Save and restart cannot overwrite it
+  [desktop] › flight-orders.spec.mjs:569:1 › completed Wings deliberate replay uses current flight rules without restarting automatic teaching
+  [desktop] › flight-orders.spec.mjs:601:1 › Back and Forward through flight planning Options preserve the paid order and teaching hold
+  [desktop] › flight-orders.spec.mjs:635:1 › staggered legal paid launches announce the earliest saved warning, not the latest flyer
+  [desktop] › flight-orders.spec.mjs:658:1 › native pause retains an approaching enemy warning, then Resume announces it once
+Total: 124 tests in 1 file

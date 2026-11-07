@@ -1,3 +1,4 @@
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import {expect} from '@playwright/test';
 import {assertPassiveContinuation} from './passive-continuation.mjs';
 import {Game} from '../../dist/engine.js';
@@ -84,7 +85,7 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     const served=new Set();modern.on('response',response=>{if(response.fromServiceWorker())served.add(new URL(response.url()).pathname);});
     expect((await modern.goto(basePath))?.fromServiceWorker()).toBe(true);
     const migrated=await profile(modern);for(const key of HISTORICAL_KEYS)expect(migrated[key]).toBe(before[key]);
-    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...oldMarker,version:4});
+    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...oldMarker,version:CURRENT_PROFILE_PROTOCOL_VERSION});
     await expect(page.locator('#profileRecovery')).toBeVisible();await assertOrdinaryFence(page,'__historical');expect(await profile(modern)).toEqual(migrated);
     expect(await shellHashes(modern,basePath,candidate.hashes)).toEqual(candidate.hashes);
     for(const file of Object.keys(candidate.hashes))expect(served.has(basePath+file),file+' served by active worker').toBe(true);
@@ -124,8 +125,8 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     await press(modern,'#skipLesson');await expect(modern.locator('#lessonPicker')).toHaveValue('shield-and-arrow');
     await press(modern,'#returnGame');await expect(modern.locator('#welcome')).toBeVisible();expect(await profile(modern)).toEqual(prePractice);
     await selectMap(modern,'twin-span');await press(modern,'#start');
-    const fresh=await pause(modern);expect(fresh).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{version:3,mapId:'twin-span',rulesetId:'frontier-rootwarden-open'}});
-    await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');expect((await pause(modern)).game.rulesetId).toBe('frontier-rootwarden-open');
+    const fresh=await pause(modern);expect(fresh).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{version:3,mapId:'twin-span',rulesetId:'frontier-flight-open'}});
+    await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');expect((await pause(modern)).game.rulesetId).toBe('frontier-flight-open');
     const after=await profile(modern);for(const key of HISTORICAL_KEYS.filter(key=>key!==SAVE))expect(after[key]).toBe(before[key]);
     expect(errors).toEqual([]);expect(consoleErrors).toEqual([]);
     await testInfo.attach('production-upgrade-evidence',{contentType:'application/json',body:Buffer.from(JSON.stringify({scenario,manifestPin:PRODUCTION_V012_MANIFEST_SHA256,priorVersion:prior.version,candidateVersion:candidate.version,priorWorkerHash:prior.workerHash,candidateWorkerHash:candidate.workerHash,priorHashes:prior.hashes,candidateHashes:candidate.hashes,timing,migration:{from:oldMarker,to:JSON.parse(migrated[PROFILE_MARKER_KEY])},historicalSave:historical,resumedSave:resumed},null,2))});
@@ -140,7 +141,7 @@ test('historical 0.12 explicit recovery is a documented destructive exception an
   const modern=await context.newPage();
   try{
     await modern.goto('/');
-    await modern.evaluate(async()=>{const {createProfileSession}=await import('/profile-session.js');window.__modern={profile:createProfileSession(()=>localStorage,{requiredProtocolVersion:3})};});
+    await modern.evaluate(async()=>{const {createProfileSession,CURRENT_PROFILE_PROTOCOL_VERSION}=await import('/profile-session.js');window.__modern={profile:createProfileSession(()=>localStorage,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION})};});
     const upgraded=await profile(modern);await assertOrdinaryFence(page,'__historical');expect(await profile(modern)).toEqual(upgraded);
     await expect(page.locator('#profileRecovery')).toBeVisible();
     if(!await page.locator('.backup-details').evaluate(e=>e.open))await press(page,'.backup-details > summary');

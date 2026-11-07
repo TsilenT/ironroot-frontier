@@ -1,0 +1,45 @@
+{
+  "scope": "Reconciled local checks only; browser execution and publication are pending",
+  "baseCommit": "f26b88106bed3d4932f5bf086cf21d5da18b5923",
+  "baseTree": "8e41d9b03a4cabbaa1768b1ba4d25257df5bf268",
+  "prototypeCommit": "4581245af7e23e7c3b5eb905d4a29c663006e0ea",
+  "root": {
+    "passed": 1153,
+    "failed": 0,
+    "skipped": 1,
+    "total": 1154,
+    "log": "qa/flight-release-reconcile/root-final.log"
+  },
+  "browserDiscovery": {
+    "total": 1576,
+    "files": 33,
+    "runtime": "1.57.0 local adapter, discovery only; cloud uses pinned1.65.0",
+    "flight": 124,
+    "v015Upgrade": 16,
+    "executed": false
+  },
+  "preflight": {
+    "syntax": true,
+    "runtime": true,
+    "browserFixtures": true
+  },
+  "independentReconciliation": {
+    "passed": 80,
+    "failed": 0,
+    "runtimeEdits": false
+  },
+  "productionV015": {
+    "files": 46,
+    "bytes": 907887,
+    "manifestSha256": "9011e995f6e8562afc994cb3dc270d209e91a9568c7a9a11955d2f8eda9c4d8f",
+    "nodeChecks": 2,
+    "browserExecutions": 0
+  },
+  "limits": [
+    "Physical mobile/PWA unverified",
+    "Non-Chromium unverified",
+    "Physical controller unverified",
+    "Subjective music and desktop package unverified",
+    "New full browser matrix not yet executed"
+  ]
+}
