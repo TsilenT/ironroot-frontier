@@ -1,0 +1,39 @@
+✔ twelve defaults retain physical roster slots and explicit null differs from missing (2.06224ms)
+✔ strict bounded map rejects malformed versions, keys, actions and effective-default conflicts (1.018361ms)
+✔ lookup resolves repetition by mapped action and protects browser, IME, handled and native input (0.368507ms)
+✔ actual app handler routes remapped actions, active roster slots and only handled keys prevent defaults (22.416816ms)
+✔ actual capture consumes a fresh binding and retires releases; conflict, Escape and Tab cancel safely (10.647134ms)
+✔ actual scope synchronization cancels capture on closure, hidden page and profile recovery (31.049746ms)
+✔ capture key retirement preserves the deliberate native pointer focus gesture (0.451932ms)
+✔ history absence, backend failure and malformed existing bytes have distinct states (13.021372ms)
+✔ transient history read failure never overwrites existing history, and later retry merges both (1.619316ms)
+✔ unavailable initial history is not an empty cache and recovery reads the real current history (1.097797ms)
+✔ failed history write retains an immutable result and repeated retries never append duplicates (2.357818ms)
+✔ throw-after-write and unreadable readback remain recoverable without writing a second copy (1.447821ms)
+✔ newer history between snapshot and write aborts without damage, then merges a fresh retry (0.829657ms)
+✔ a racing history write after set is detected and is never rolled back over the winner (0.657139ms)
+✔ history dedupe survives backup field ordering and existing optional defaults (0.932914ms)
+✔ pending history honors the existing latest-30 limit and exports in the existing schema (17.594286ms)
+✔ retained results and preferences never commit to a replaced, restoring or failed profile (1.270509ms)
+✔ profile changes during the last history read prevent write even without a storage event (0.409451ms)
+✔ failed preferences are retained, replaced by the newest local choice, and verified on retry (0.427226ms)
+✔ preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data (0.563518ms)
+✔ preferences throw-after-write and transient readback denial verify without rewriting (1.253498ms)
+✔ actual finish warns on a history read failure, retains result after battle removal and recovers exactly once (5.968791ms)
+✔ actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds (3.61011ms)
+✔ actual preference handler applies in memory but visibly reports unsaved until explicit verified retry (3.542587ms)
+✔ actual retries stay blocked after profile change and still expose retained result for export (2.174612ms)
+✔ captured completion remains eligible after a new same-profile battle without deleting its save (2.386681ms)
+✔ stale completion never acquires a newer battle or blocks a later valid result from saving (0.91269ms)
+✔ completion with unavailable ownership only recovers if its original battle can still be verified (1.087563ms)
+✔ actual finish captures stale battle ownership and keeps the result unsaved/exportable (2.206618ms)
+✔ a captured valid completion still cannot cross a later imported profile boundary (0.541977ms)
+✔ profile recovery views never replace retained old-profile history with imported records (0.505331ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 376.156359
