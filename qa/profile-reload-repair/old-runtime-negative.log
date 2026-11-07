@@ -1,0 +1,54 @@
+✖ challenges: late post-reload sync retains ancestry and cannot traverse the imported empty profile (65.308122ms)
+✖ campaign: late post-reload sync retains ancestry and cannot traverse the imported empty profile (33.956283ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 244.689063
+
+✖ failing tests:
+
+test at tests/profile-reload-departure.test.mjs:141:3
+✖ challenges: late post-reload sync retains ancestry and cannot traverse the imported empty profile (65.308122ms)
+  AssertionError [ERR_ASSERTION]: reload must not request history.go before pagehide
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-profile-reload-repair-next/tests/profile-reload-departure.test.mjs:153:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/profile-reload-departure.test.mjs:141:3
+✖ campaign: late post-reload sync retains ancestry and cannot traverse the imported empty profile (33.956283ms)
+  AssertionError [ERR_ASSERTION]: reload must not request history.go before pagehide
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-profile-reload-repair-next/tests/profile-reload-departure.test.mjs:153:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at node:internal/test_runner/test:1305:31
+      at node:internal/process/task_queues:151:7
+      at AsyncResource.runInAsyncScope (node:async_hooks:227:14)
+      at AsyncResource.runMicrotask (node:internal/process/task_queues:148:8) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
