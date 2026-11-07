@@ -60,7 +60,11 @@ test.describe('independent: native history readiness', () => {
   const serviceWorkers = process.env.VOLLEY_HISTORY_SERVICE_WORKERS === 'allow' ? 'allow' : 'block';
   test.use({serviceWorkers});
   const heads = process.env.VOLLEY_HISTORY_COMPARE_BASE === '1' ? ['candidate','base'] : ['candidate'];
-  for (const head of heads) for (const setup of ['fresh-document','seeded-reload']) {
+  // The shipping worker serves index.html for same-origin navigation, so the
+  // plain-text prior-document exit fixture belongs to the blocked-worker slice.
+  // Worker-controlled coverage keeps the complete seeded-reload assertions.
+  const setups = serviceWorkers === 'allow' ? ['seeded-reload'] : ['fresh-document','seeded-reload'];
+  for (const head of heads) for (const setup of setups) {
     test(`${head} ${setup}: Back/Forward markers, targeting, Resume and profile`, async ({page,context}, info) => {
       const trace = await observeVolleyHistory(page);
       const detail = {head,setup,serviceWorkers,base:VOLLEY_BASE,baseAccess:'Native KeyR on base because mobile Volley is hidden; no Build entry is added. Candidate uses its visible button.'};
