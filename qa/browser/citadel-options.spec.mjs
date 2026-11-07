@@ -4,6 +4,9 @@ import {expect} from '@playwright/test';
 import {test,press,saved,pause,seedOnce,observeCanvas,canvasFrame} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
 import {settlePhoneViewport} from './phone-text-evidence.mjs';
+import {createCampaignMission} from '../../dist/campaign.js';
+import {encodeBattle,scenarioForBattle} from '../../dist/battle-codec.js';
+import {progressionProfile} from './campaign-progression-fixtures.mjs';
 import {startRunning as startCampaignRunning} from './campaign-teaching-helpers.mjs';
 import {installPad,padButton} from './synthetic-gamepad-helpers.mjs';
 import {paidPrehistory,feedbackFixture} from '../citadel-playtest/fixtures.mjs';
@@ -16,12 +19,25 @@ test.beforeEach(async({page},info)=>{
   if(info.project.name==='narrow-phone')await page.setViewportSize({width:320,height:430});
   await observeCanvas(page);
   await page.addInitScript(()=>{
-    window.__citadelSeen={text:[],strokes:[],readiness:[]};
+    window.__citadelSeen={text:[],strokes:[],readiness:[],visibleText:[],textBounds:[],lastVisibleExtra:null};
     let previousToast='';
     new MutationObserver(()=>{const text=document.getElementById('toast')?.textContent||'';if(text!==previousToast){if(/citadel/i.test(text)&&/ready|available|1:30/i.test(text))window.__citadelSeen.readiness.push({text,focus:document.activeElement?.id??''});previousToast=text;}}).observe(document,{subtree:true,childList:true,characterData:true});
     const fill=CanvasRenderingContext2D.prototype.fillText,stroke=CanvasRenderingContext2D.prototype.stroke;
-    CanvasRenderingContext2D.prototype.fillText=function(...args){if(this.canvas.id==='battle'&&/regen|heal|arrow|HP|wait/i.test(String(args[0]))){const value=String(args[0]);if(!window.__citadelSeen.text.includes(value)&&window.__citadelSeen.text.length<100)window.__citadelSeen.text.push(value);}return fill.apply(this,args);};
-    CanvasRenderingContext2D.prototype.stroke=function(...args){if(this.canvas.id==='battle'){const value=String(this.strokeStyle);if(!window.__citadelSeen.strokes.includes(value)&&window.__citadelSeen.strokes.length<100)window.__citadelSeen.strokes.push(value);}return stroke.apply(this,args);};
+    CanvasRenderingContext2D.prototype.fillText=function(...args){if(this.canvas.id==='battle'&&/regen|heal|arrow|HP|wait/i.test(String(args[0]))){const value=String(args[0]);if(!window.__citadelSeen.text.includes(value)&&window.__citadelSeen.text.length<100)window.__citadelSeen.text.push(value);
+      const m=this.getTransform(),r=this.canvas.getBoundingClientRect(),sx=r.width/this.canvas.width,sy=r.height/this.canvas.height,x=r.x+(m.a*args[1]+m.c*args[2]+m.e)*sx,y=r.y+(m.b*args[1]+m.d*args[2]+m.f)*sy;
+      if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom&&document.elementFromPoint(x,y)===this.canvas){
+        const metrics=this.measureText(value),left=args[1]-metrics.actualBoundingBoxLeft,right=args[1]+metrics.actualBoundingBoxRight,top=args[2]-metrics.actualBoundingBoxAscent,bottom=args[2]+metrics.actualBoundingBoxDescent;
+        const points=[[left,top],[left,bottom],[right,top],[right,bottom]].map(([px,py])=>({x:r.x+(m.a*px+m.c*py+m.e)*sx,y:r.y+(m.b*px+m.d*py+m.f)*sy}));
+        const bounds={left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))};
+        const fullyVisible=bounds.left>=Math.max(0,r.left)&&bounds.right<=Math.min(innerWidth,r.right)&&bounds.top>=Math.max(0,r.top)&&bounds.bottom<=Math.min(innerHeight,r.bottom);
+        const entry={text:value,x,y,bounds,fullyVisible,canvas:{x:r.x,y:r.y,width:r.width,height:r.height}};
+        if(!window.__citadelSeen.textBounds.some(item=>item.text===value))window.__citadelSeen.textBounds.push(entry);
+        if(fullyVisible&&!window.__citadelSeen.visibleText.some(item=>item.text===value))window.__citadelSeen.visibleText.push(entry);
+      }
+    }return fill.apply(this,args);};
+    CanvasRenderingContext2D.prototype.stroke=function(...args){if(this.canvas.id==='battle'){const value=String(this.strokeStyle);if(!window.__citadelSeen.strokes.includes(value)&&window.__citadelSeen.strokes.length<100)window.__citadelSeen.strokes.push(value);
+      if(value==='#a7e8f3'){const m=this.getTransform(),r=this.canvas.getBoundingClientRect(),x=r.x+m.e*r.width/this.canvas.width,y=r.y+m.f*r.height/this.canvas.height;if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom&&document.elementFromPoint(x,y)===this.canvas)window.__citadelSeen.lastVisibleExtra={time:performance.now(),x,y};}
+    }return stroke.apply(this,args);};
   });
 });
 async function skirmish(page){await press(page,'[data-mode="skirmish"]');await expect(page.locator('#skirmishConfig')).toBeVisible();}
@@ -86,7 +102,10 @@ test('restored legal paid prehistory: regeneration has no instant heal and discl
 
 for(const choice of ['arrows','regen'])test(`synthetic ${choice} feedback fixture: real canvas, active effect and damage interruption`,async({page},info)=>{
   test.info().annotations.push({type:'scope',description:'Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input.'});
-  await restore(page,feedbackFixture(choice),info);await page.waitForTimeout(220);await capture(page,info,'synthetic-'+choice+'-battle');await attach(page,info,'synthetic-'+choice+'-canvas');await openCitadel(page);const active=await saved(page);await capture(page,info,'synthetic-'+choice+'-status');
+  await restore(page,feedbackFixture(choice),info);await press(page,'#home');await expect(page.locator('#pauseVeil')).toBeHidden();
+  await expect.poll(async()=>page.evaluate(label=>window.__citadelSeen.visibleText.some(item=>item.text===label),choice==='arrows'?'EXTRA ARROW':'REGEN · +3 HP/s')).toBe(true);
+  if(choice==='arrows')await page.waitForFunction(()=>window.__citadelSeen.lastVisibleExtra&&performance.now()-window.__citadelSeen.lastVisibleExtra.time<80);
+  await capture(page,info,'synthetic-'+choice+'-battle');await attach(page,info,'synthetic-'+choice+'-canvas');await openCitadel(page);const active=await saved(page);await capture(page,info,'synthetic-'+choice+'-status');
   if(choice==='arrows'){expect(active.game.state.citadelOptions.sides[0].extraShots).toBeGreaterThan(0);const painted=await page.evaluate(()=>window.__citadelSeen);expect(painted.strokes).toContain('#a7e8f3');expect(painted.text).toContain('EXTRA ARROW');await expect(page.locator('#citadelPlayerStatus')).toContainText(/Extra Arrow/);}
   else {expect(active.game.state.citadelOptions.sides[0].healedTotal).toBeGreaterThan(0);expect((await page.evaluate(()=>window.__citadelSeen)).text).toContain('REGEN · +3 HP/s');await expect(page.locator('#citadelPlayerStatus')).toContainText(/heal|recover|3 HP/i);await press(page,'#citadelResume');await page.waitForTimeout(5200);await openCitadel(page);const interrupted=await saved(page);expect(interrupted.game.state.citadelOptions.sides[0].lastDamageAt).toBeGreaterThan(100);await expect(page.locator('#citadelPlayerStatus')).toContainText(/wait|damage|quiet|s\b/i);await capture(page,info,'synthetic-regen-damage-interruption');await attach(page,info,'synthetic-regen-interrupted',{active,interrupted});}
 });
@@ -132,4 +151,31 @@ test('unsafe resize interrupts held purchase and waits for explicit resume',asyn
   await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);await page.locator('#buyCitadelArrows').focus();await page.keyboard.down('Space');
   await page.setViewportSize({width:320,height:250});await expect(page.locator('#viewportModal')).toBeVisible();await expect(page.locator('#citadelModal')).toBeHidden();await page.keyboard.up('Space');await expect(page.locator('#viewportResume')).toBeDisabled();const held=await saved(page);expect(held.game.state.citadelOptions.sides[0].choice).toBeNull();expect(held.game.state.gold[0]).toBe(before.game.state.gold[0]);await capture(page,info,'unsafe-resize-purchase-blocked');
   await page.setViewportSize({width:1180,height:757});await expect(page.locator('#viewportResume')).toBeEnabled();await expect(page.locator('#viewportModal')).toBeVisible();await page.waitForTimeout(250);expect((await saved(page)).game.state.time).toBe(held.game.state.time);await press(page,'#viewportResume');await expect(page.locator('#viewportModal')).toBeHidden();await expect(page.locator('#citadelModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeHidden();await attach(page,info,'unsafe-resize-held-state',{before,held});
+});
+
+test('blocker regression: heading Space, scrolled Space and rebound Pause cannot run behind the dialog',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','Bounded native keyboard regression.');
+  await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);await expect(page.locator('#citadelTitle')).toBeFocused();
+  await page.keyboard.press('Space');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');await expect(page.locator('#citadelModal')).toBeVisible();
+  await page.locator('#citadelTitle').focus();await page.locator('.citadel-menu').hover();await page.mouse.wheel(0,600);await expect(page.locator('#citadelTitle')).toBeFocused();
+  await expect.poll(()=>page.locator('.citadel-menu').evaluate(e=>e.scrollTop)).toBeGreaterThan(0);await page.keyboard.press('Space');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');expect((await saved(page)).game.state.time).toBe(before.game.state.time);
+  await press(page,'#citadelBack');await press(page,'#pauseSettings');if(!await page.locator('#keyboardSettings').evaluate(e=>e.open))await press(page,'#keyboardSettings > summary');
+  await press(page,'#keyboardRows [data-keyboard-action="pause"] [data-keyboard-change]');await page.keyboard.press('KeyP');await expect.poll(async()=>(await settings(page)).keyboard.bindings.pause).toBe('KeyP');await press(page,'#settingsDone');await press(page,'#pauseCitadel');await expect(page.locator('#citadelTitle')).toBeFocused();await page.keyboard.press('KeyP');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');expect((await saved(page)).game.state.time).toBe(before.game.state.time);await capture(page,info,'heading-keyboard-remains-paused');
+});
+
+for(const fault of ['quota','silent'])test(`blocker regression: ${fault} purchase save keeps the paid choice and durable warning until verified retry`,async({page},info)=>{
+  test.skip(info.project.name!=='desktop','Bounded native storage-fault regression.');
+  await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);
+  await page.evaluate(({key,fault})=>{const set=Storage.prototype.setItem;window.__citadelStorageFault=fault;Storage.prototype.setItem=function(k,v){if(k===key&&window.__citadelStorageFault){if(window.__citadelStorageFault==='quota')throw new DOMException('Synthetic full storage','QuotaExceededError');return;}return set.call(this,k,v);};},{key:SAVE,fault});
+  await press(page,'#buyCitadelRegen');await expect(page.locator('#citadelPlayerStatus')).toContainText('Regeneration');await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await expect(page.locator('#citadelSaveWarning')).toBeVisible();await expect(page.locator('#citadelSaveWarning')).toContainText(/not saved/i);await expect(page.locator('#citadelSaveWarning')).toBeFocused();expect(await saved(page)).toEqual(before);await capture(page,info,fault+'-purchase-not-saved');
+  await press(page,'#citadelBack');await press(page,'#pauseCitadel');await expect(page.locator('#citadelSaveWarning')).toBeVisible();await expect(page.locator('#citadelPlayerStatus')).toContainText('Regeneration');await expect(page.locator('#buyCitadelArrows')).toBeDisabled();expect(await saved(page)).toEqual(before);
+  await page.evaluate(()=>{window.__citadelStorageFault=null;});await press(page,'#citadelRetrySave');await expect(page.locator('#citadelSaveWarning')).toBeHidden();await expect(page.locator('#citadelRetrySave')).toBeHidden();const after=await saved(page);expect(after.game.state.citadelOptions.sides[0].choice).toBe('regen');expect(after.game.state.gold[0]).toBeCloseTo(before.game.state.gold[0]-190,7);expect(after.game.state.time).toBe(before.game.state.time);await capture(page,info,fault+'-verified-save-retry');await attach(page,info,fault+'-save-recovered',{before,after});
+});
+
+test('blocker regression: historical restart retains old identity but a new Begin uses current campaign choices',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','One bounded legacy/current campaign transition.');
+  const progress=progressionProfile(3),old=createCampaignMission('emberwatch');for(let tick=0;tick<60;tick++)old.update(.05);
+  const legacy=encodeBattle(old,scenarioForBattle(null,'emberwatch',old),{campaignProgress:progress});await seedOnce(page,{[SAVE]:JSON.stringify(legacy),'ironroot.campaign.v1':JSON.stringify(progress)});const profileBefore=await earned(page);await press(page,'#resumeSaved');const before=await pause(page);expect(before.game.state.citadelOptions).toBeUndefined();await expect(page.locator('#pauseCitadel')).toBeHidden();
+  await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#campaignMissionPage')).toBeVisible();await press(page,'#start');const restarted=await pause(page);expect(restarted.game.rulesetId??'frontier-legacy').toBe(before.game.rulesetId??'frontier-legacy');expect(restarted.game.state.citadelOptions).toBeUndefined();
+  await press(page,'#saveExit');await expect(page.locator('#campaignMissionPage')).toBeVisible();await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toMatchObject({kind:'campaign',id:'emberwatch',revision:5});expect(fresh.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);await expect(page.locator('#pauseCitadel')).toBeVisible();expect(await earned(page)).toEqual(profileBefore);await attach(page,info,'historical-restart-new-attempt',{before,restarted,fresh});
 });

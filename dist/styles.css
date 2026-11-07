@@ -4131,3 +4131,6 @@ body.gamepad-active a:focus {
   .citadel-choices { grid-template-columns: 1fr; gap: 10px; }
   .citadel-choice { padding: 12px; }
 }
+
+#citadelRetrySave { min-height: 44px; margin-bottom: 12px; }
+#citadelSaveWarning { color: #f3cd89; border-left: 3px solid #d7b971; padding: 10px 12px; }

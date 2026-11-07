@@ -210,7 +210,7 @@
           </details>
         </div>
         <p id="pauseCitadelLegacy" class="rules-description hidden">This saved battle keeps earlier rules. Start a new battle from its briefing for citadel choices.</p>
-          <button id="pauseCitadel" class="secondary-button hidden">Citadel choice<small id="pauseCitadelStatus"></small></button>
+          <button id="pauseCitadel" class="secondary-button hidden">Citadel choices<small id="pauseCitadelStatus"></small></button>
         <button id="resume" class="gold-button" data-dialog-focus>Resume battle <span aria-hidden="true">→</span></button>
         <div class="pause-utilities">
           <button id="pauseSettings" class="secondary-button">Options<small>Audio, display &amp; saves</small></button>
@@ -238,6 +238,8 @@
         <div class="citadel-observation"><h3>Your citadel</h3><p id="citadelPlayerStatus"></p><h3>Enemy citadel</h3><p id="citadelEnemyStatus"></p></div>
         <details class="citadel-ai"><summary>How the enemy chooses</summary><p id="citadelAIPolicy"></p></details>
         <p id="citadelPurchaseStatus" class="menu-status" role="status" aria-live="polite"></p>
+        <p id="citadelSaveWarning" class="menu-status save-warning hidden" role="alert" tabindex="-1"></p>
+        <button id="citadelRetrySave" class="secondary-button hidden">Retry saving choice</button>
         <div class="citadel-actions"><button id="citadelBack" class="secondary-button">Back to pause menu</button><button id="citadelResume" class="gold-button">Resume battle</button></div>
       </section>
     </div>

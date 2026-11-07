@@ -1676,7 +1676,13 @@ function save() {
     );
     saveWarning = true;
   }
-  if (ok) saveWarning = false;
+  if (ok) {
+    saveWarning = false;
+    if (typeof citadelUnsavedGame !== 'undefined' && citadelUnsavedGame === game) {
+      citadelUnsavedGame = null;
+      updateCitadelSaveWarning();
+    }
+  }
   return ok;
 }
 function updateResume() {
@@ -2091,6 +2097,7 @@ window.addEventListener('keydown', (e) => {
   if (
     !started ||
     !$('coachingModal').classList.contains('hidden') ||
+    !$('citadelModal').classList.contains('hidden') ||
     !$('restartModal').classList.contains('hidden') ||
     !$('backupModal').classList.contains('hidden') ||
     !$('settingsModal').classList.contains('hidden') ||
@@ -2711,6 +2718,14 @@ $('skipIntroduction').onclick = () => {
 setMode(mode);
 // Citadel choices reuse the pause menu without changing camera controls.
 var citadelNoticeGame = null, citadelNoticePhase = null, citadelReadyNoticed = false;
+var citadelUnsavedGame = null;
+function updateCitadelSaveWarning() {
+  const pending = citadelUnsavedGame === game;
+  $('citadelSaveWarning').classList.toggle('hidden', !pending);
+  $('citadelRetrySave').classList.toggle('hidden', !pending);
+  $('citadelSaveWarning').textContent = pending
+    ? 'Your choice is paid for and active in this tab, but it is not saved. Keep this page open. Retry saving before leaving or reloading.' : '';
+}
 function citadelDialogSafe() {
   return started && supportsCitadelOptions(game.ruleset) && !coachingHold && !firstBuildHold && !document.hidden &&
     game.state.winner === null && !objectiveOutcome && !recoveryHold && !profileGate &&
@@ -2722,6 +2737,7 @@ function updateCitadelUI() {
   $('pauseCitadel').classList.toggle('hidden', !enabled);
   $('pauseCitadelLegacy').classList.toggle('hidden', !started || supportsCitadelOptions(game.ruleset));
   $('citadelBattleStatus').classList.toggle('hidden', !enabled);
+  updateCitadelSaveWarning();
   if (!enabled) return;
   const own = citadelOptionStatus(game, 0), enemy = citadelOptionStatus(game, 1);
   const text = citadelStatusText(game, 0, {paused});
@@ -2776,10 +2792,22 @@ function purchaseCitadelOption(kind) {
   const message = kind === 'arrows' ? 'Extra Arrow chosen. A second enemy in range receives the extra shot.' : 'Regeneration chosen. Recovery can begin after 8 seconds without damage and never exceeds full health.';
   $('citadelPurchaseStatus').textContent = message;
   sound('upgrade');
+  citadelUnsavedGame = game;
+  const persisted = save();
   updateCitadelUI();
-  save();
-  $('citadelResume').focus();
+  (persisted ? $('citadelResume') : $('citadelSaveWarning')).focus();
 }
+$('citadelRetrySave').onclick = () => {
+  syncProfileSafety();
+  if (citadelUnsavedGame !== game || !citadelDialogSafe() || !paused ||
+      $('citadelModal').classList.contains('hidden') ||
+      dialogLayers.findLast(layer => !layer.classList.contains('hidden')) !== $('citadelModal')) return;
+  if (save()) {
+    $('citadelPurchaseStatus').textContent = 'Your chosen citadel option is saved.';
+    $('citadelResume').focus();
+  } else $('citadelSaveWarning').focus();
+  updateCitadelSaveWarning();
+};
 $('pauseCitadel').onclick = showCitadelOptions;
 $('citadelBack').onclick = hideCitadelOptions;
 $('citadelResume').onclick = () => { hideCitadelOptions(); pause(false, {explicit:true}); };

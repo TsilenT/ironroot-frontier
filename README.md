@@ -6,7 +6,7 @@ A single-player real-time strategy tug-of-war for desktop and mobile browsers. B
 
 The **v0.20.0** candidate adds an optional paid choice between Extra Arrow and Regeneration in fresh Campaign missions, Field Trials and Skirmishes. From 1:30, spend 190 gold once through **Pause → Citadel choices**, or keep the gold. Extra Arrow adds a half-strength shot at a different enemy; Regeneration restores 3 HP/sec after eight seconds without damage and after purchase. Home remains camera-only. Guided Practice retains its scripted lesson actions. Bridge income remains an independent Skirmish option. Design, applicability and evidence limits are in [CITADEL_CHOICES.md](docs/CITADEL_CHOICES.md).
 
-This draft branch is `codex/skirmish-citadel-options`, based on verified private main `5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d` (v0.19.0). It uses `ironroot-v0.20.0`; it is not merged or deployed. The held mobile Volley PR #14 remains separate.
+[Draft PR #17](https://github.com/TsilenT/ironroot-frontier/pull/17) uses `codex/skirmish-citadel-options`, based on verified private main `5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d` (v0.19.0). It uses `ironroot-v0.20.0`; it is not merged or deployed. The held mobile Volley PR #14 remains separate.
 
 ## Release baseline
 
