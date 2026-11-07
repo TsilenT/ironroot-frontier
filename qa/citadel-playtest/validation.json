@@ -1,7 +1,7 @@
 {
-  "runtimeCommit": "6fff421ae36bc86c2864ba1adde8cd2a4361affe",
+  "runtimeCommit": "2602e6571f07555787602ef814fa6fc6beb467f2",
   "baseMain": "5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d",
-  "finalFullSuite": "/tmp/citadel-all-tests-final.log",
+  "finalFullSuite": "/tmp/citadel-all-tests-reviewed.log",
   "logs": [
     {
       "localPath": "/tmp/citadel-all-tests-initial.log",
@@ -184,6 +184,41 @@
         "\u2139 duration_ms 974.88982"
       ],
       "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-all-tests-reviewed.log",
+      "sha256": "a5a222bba6d5d00e831a66ef0a9a565e12efe82fefe8b958cf042992ce9be05d",
+      "bytes": 159494,
+      "summary": [
+        "\u2139 {\"id\":\"first-watch\",\"seconds\":58.1,\"stars\":3,\"paidActions\":4,\"goldSpent\":553}",
+        "\u2139 {\"id\":\"forked-road\",\"seconds\":97.9,\"stars\":3,\"paidActions\":7,\"goldSpent\":1016}",
+        "\u2139 Verified 132 actual starting buildings across 16 missions against aggregate, road and positioned SVG text.",
+        "\u2139 tests 1494",
+        "\u2139 suites 0",
+        "\u2139 pass 1493",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 1",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 146152.03203"
+      ],
+      "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-review-fixes.log",
+      "sha256": "500041bcd698fdbcd59eede4609d0c824291cfe890c37ea3661a29a4036d8148",
+      "bytes": 5512,
+      "summary": [
+        "\u2139 tests 51",
+        "\u2139 suites 0",
+        "\u2139 pass 51",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 284.518033"
+      ],
+      "failedCases": []
     }
   ],
   "corrections": [
@@ -192,14 +227,16 @@
     "Corrected locked-opening UI copy to use its actual preceding mission, excluding onboarding and introductory missions from the continuation gate.",
     "Clamped epsilon full-health and wait indicators at exact engine boundaries.",
     "Native Home captures revealed clipped status labels at the left edge. Clamp the whole badge to a four-screen-pixel viewport margin, and omit badges for offscreen citadels.",
-    "The first new renderer test incorrectly expected an offscreen base in a wide viewport that showed the whole map. Restrict that offscreen assertion to the narrow viewport; all edge-fitting cases remain."
+    "The first new renderer test incorrectly expected an offscreen base in a wide viewport that showed the whole map. Restrict that offscreen assertion to the narrow viewport; all edge-fitting cases remain.",
+    "Independent review found battle shortcuts omitted the new modal; add it to global shortcut exclusion so heading/scrolled/rebound Pause cannot resume behind the dialog.",
+    "Independent review found save failure had only an occluded toast; retain the paid in-memory choice, show an in-dialog persistent warning, and clear only after verified persistence."
   ],
   "limits": [
     "One optional desktop-tooling minimatch compatibility test is skipped because desktop build dependencies are not installed. Browser/runtime checks are unaffected.",
     "Actual Chromium/browser evidence is reported separately.",
     "No human enjoyment, physical-device, Safari/Firefox or physical-controller certification."
   ],
-  "fullSuiteScope": "Runtime at 6fff421, before the subsequent render-only status-label viewport clamp. Final-source focused renderer checks pass; final remote full CI is recorded in the PR.",
+  "fullSuiteScope": "Final repaired runtime at 2602e6571f07555787602ef814fa6fc6beb467f2; no runtime changes after this run.",
   "checks": {
     "syntax": "pass",
     "runtimeInventory": "runtime-final.json",
@@ -208,9 +245,34 @@
       "failed": 0
     },
     "fullLocal": {
-      "passed": 1492,
+      "passed": 1493,
       "failed": 0,
       "skipped": 1
+    },
+    "reviewKeyboardInputUI": {
+      "passed": 51,
+      "failed": 0
+    },
+    "finalBrowser": {
+      "passed": 30,
+      "failed": 0,
+      "skipped": 18,
+      "rawLocalPath": "/workspace/ironroot-citadel-playtest/qa/citadel-playtest/browser-reviewed.json",
+      "sha256": "68f7dae2db9a59fd0587a1d8dc9bcb80b667a7bfce9b0500f6a7829b38749ca1"
+    },
+    "githubCI": {
+      "head": "2602e6571f07555787602ef814fa6fc6beb467f2",
+      "status": "completed",
+      "conclusion": "success",
+      "run": "https://github.com/TsilenT/ironroot-frontier/actions/runs/42421863929"
     }
+  },
+  "initialCI": {
+    "head": "6fff421ae36bc86c2864ba1adde8cd2a4361affe",
+    "run": "https://github.com/TsilenT/ironroot-frontier/actions/runs/42421075964",
+    "passed": 1491,
+    "failed": 1,
+    "skipped": 1,
+    "failure": "tests/map-ui.test.mjs narrow VM lacked supportsCitadelOptions import; fixed without dropping assertions."
   }
 }

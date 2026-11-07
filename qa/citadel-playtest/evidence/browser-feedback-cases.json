@@ -1,0 +1,2093 @@
+{
+  "run": "browser-feedback",
+  "rawPath": "browser-feedback.json",
+  "rawSha256": "3553703af20ab0a8a70c919cc4ab5739ad8e787b1b6d33c9deaa87e80630cb0a",
+  "stats": {
+    "startTime": "2026-11-07T22:35:24.795Z",
+    "duration": 28458.752999999997,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "narrow-phone",
+      "status": "passed",
+      "durationMs": 4107,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "arrows",
+          "description": "Two distinct nearby living targets expose the additional projectile on the ordinary firing cycle."
+        },
+        "synthetic-arrows-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    212,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    212,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    212,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    212,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    101.75999999999999,
+                    0,
+                    8.48,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    15.317000000000007,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    19.2125,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    204,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    66.25,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                64.75,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "EXTRA ARROW",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "EXTRA ARROW"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#ebbc8a",
+              "#dae7b6",
+              "#a7e8f3",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#d6b77c",
+              "#d8dab7"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "EXTRA ARROW",
+                "x": 35.200002789497375,
+                "y": 211.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 320,
+                  "height": 242
+                }
+              }
+            ],
+            "lastVisibleExtra": {
+              "time": 920.7999999998137,
+              "x": 86.62857585872916,
+              "y": 163.56000012159348
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "landscape",
+      "status": "passed",
+      "durationMs": 4311,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "arrows",
+          "description": "Two distinct nearby living targets expose the additional projectile on the ordinary firing cycle."
+        },
+        "synthetic-arrows-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    136,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    136,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    136,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    136,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    65.28,
+                    0,
+                    5.44,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    8.330000000000009,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    12.325,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    128,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    91.90625,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                90.40625,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "EXTRA ARROW",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "EXTRA ARROW"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#ebbc8a",
+              "#dae7b6",
+              "#a7e8f3",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#d6b77c",
+              "#d8dab7",
+              "#f5d99b",
+              "#d9b46a"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "EXTRA ARROW",
+                "x": 35.20000694692135,
+                "y": 231.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 692,
+                  "height": 282
+                }
+              }
+            ],
+            "lastVisibleExtra": {
+              "time": 1859.9000000003725,
+              "x": 76.34286247261934,
+              "y": 183.56000012159348
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 4616,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "arrows",
+          "description": "Two distinct nearby living targets expose the additional projectile on the ordinary firing cycle."
+        },
+        "synthetic-arrows-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    17.15000000000002,
+                    17.5,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    25.375,
+                    17.5,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    195.22058823529412,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                193.72058823529412,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "EXTRA ARROW",
+                  "font": "bold 20.7983px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [
+              "EXTRA ARROW"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#ebbc8a",
+              "#dae7b6",
+              "#a7e8f3",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#d6b77c",
+              "#d8dab7",
+              "#f5d99b",
+              "#d9b46a"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "EXTRA ARROW",
+                "x": 58.17776108870021,
+                "y": 379.3599990796642,
+                "canvas": {
+                  "x": 0,
+                  "y": 78,
+                  "width": 1180,
+                  "height": 476
+                }
+              }
+            ],
+            "lastVisibleExtra": {
+              "time": 2013,
+              "x": 143.17776446557764,
+              "y": 307.0088890194893
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "narrow-phone",
+      "status": "passed",
+      "durationMs": 11122,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "regen",
+          "description": "Damaged base begins eligible to heal. A distant enemy archer advances and causes actual damage to interrupt healing."
+        },
+        "synthetic-regen-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    212,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    212,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    212,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    212,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    101.75999999999999,
+                    0,
+                    8.48,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    39.86925000000001,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    204,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    66.25,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                64.75,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 +3 HP/s",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 35.200002789497375,
+                "y": 211.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 320,
+                  "height": 242
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        },
+        "synthetic-regen-interrupted": {
+          "active": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2012,
+            "time": 100.59999999999997,
+            "gold": [
+              233,
+              423
+            ],
+            "bases": [
+              {
+                "hp": 5761.799999999996,
+                "maxHp": 6000,
+                "cooldown": -0.6
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.6
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 90,
+                  "healedTotal": 1.7999999999999998,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                0,
+                240
+              ]
+            }
+          },
+          "interrupted": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2121,
+            "time": 106.04999999999966,
+            "gold": [
+              262.25,
+              450.25
+            ],
+            "bases": [
+              {
+                "hp": 5739.199999999968,
+                "maxHp": 6000,
+                "cooldown": 0.9499999999999997
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 105.49999999999969,
+                  "healedTotal": 13.20000000000002,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                1,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                65,
+                274
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    212,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    212,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    212,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    212,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    101.75999999999999,
+                    0,
+                    8.48,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    204,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    66.25,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                64.75,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 WAIT 8s",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s",
+              "REGEN \u00b7 WAIT 8s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7",
+              "#dae7b6",
+              "#ebbc8a"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 35.200002789497375,
+                "y": 211.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 320,
+                  "height": 242
+                }
+              },
+              {
+                "text": "REGEN \u00b7 WAIT 8s",
+                "x": 35.200002789497375,
+                "y": 211.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 320,
+                  "height": 242
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "landscape",
+      "status": "passed",
+      "durationMs": 12160,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "regen",
+          "description": "Damaged base begins eligible to heal. A distant enemy archer advances and causes actual damage to interrupt healing."
+        },
+        "synthetic-regen-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    136,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    136,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    136,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    136,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    65.28,
+                    0,
+                    5.44,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    24.590500000000016,
+                    22,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    128,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    91.90625,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                90.40625,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 +3 HP/s",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 35.20000694692135,
+                "y": 231.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 692,
+                  "height": 282
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        },
+        "synthetic-regen-interrupted": {
+          "active": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2024,
+            "time": 101.19999999999993,
+            "gold": [
+              236,
+              426
+            ],
+            "bases": [
+              {
+                "hp": 5763.599999999991,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 90,
+                  "healedTotal": 3.5999999999999988,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                0,
+                240
+              ]
+            }
+          },
+          "interrupted": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2136,
+            "time": 106.79999999999961,
+            "gold": [
+              266,
+              454
+            ],
+            "bases": [
+              {
+                "hp": 5739.199999999968,
+                "maxHp": 6000,
+                "cooldown": 0.19999999999999946
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 105.49999999999969,
+                  "healedTotal": 13.20000000000002,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                1,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                65,
+                274
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    12.71111111111111
+                  ],
+                  [
+                    136,
+                    12.71111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    22
+                  ],
+                  [
+                    136,
+                    22
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    31.28888888888889
+                  ],
+                  [
+                    136,
+                    31.28888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    136,
+                    44
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    65.28,
+                    0,
+                    5.44,
+                    44
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    4,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    128,
+                    19,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    91.90625,
+                    44
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                90.40625,
+                42.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 WAIT 7s",
+                  "font": "bold 34.375px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 31.25px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 2
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s",
+              "REGEN \u00b7 WAIT 8s",
+              "REGEN \u00b7 WAIT 7s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7",
+              "#dae7b6",
+              "#ebbc8a"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 35.20000694692135,
+                "y": 231.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 692,
+                  "height": 282
+                }
+              },
+              {
+                "text": "REGEN \u00b7 WAIT 8s",
+                "x": 35.20000694692135,
+                "y": 231.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 692,
+                  "height": 282
+                }
+              },
+              {
+                "text": "REGEN \u00b7 WAIT 7s",
+                "x": 35.20000694692135,
+                "y": 231.67999904602766,
+                "canvas": {
+                  "x": 0,
+                  "y": 48,
+                  "width": 692,
+                  "height": 282
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 9476,
+      "annotations": [
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        },
+        {
+          "type": "scope",
+          "description": "Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input."
+        }
+      ],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "synthetic mechanism/presentation fixture",
+          "choice": "regen",
+          "description": "Damaged base begins eligible to heal. A distant enemy archer advances and causes actual damage to interrupt healing."
+        },
+        "synthetic-regen-canvas": {
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    52.15000000000002,
+                    17.5,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    195.22058823529412,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                193.72058823529412,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 +3 HP/s",
+                  "font": "bold 20.7983px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 58.17776108870021,
+                "y": 379.3599990796642,
+                "canvas": {
+                  "x": 0,
+                  "y": 78,
+                  "width": 1180,
+                  "height": 476
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        },
+        "synthetic-regen-interrupted": {
+          "active": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2015,
+            "time": 100.74999999999996,
+            "gold": [
+              233.75,
+              423.75
+            ],
+            "bases": [
+              {
+                "hp": 5762.2499999999945,
+                "maxHp": 6000,
+                "cooldown": -0.7500000000000001
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.7500000000000001
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 90,
+                  "healedTotal": 2.2499999999999996,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                0,
+                240
+              ]
+            }
+          },
+          "interrupted": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 2123,
+            "time": 106.14999999999965,
+            "gold": [
+              262.75,
+              450.75
+            ],
+            "bases": [
+              {
+                "hp": 5739.199999999968,
+                "maxHp": 6000,
+                "cooldown": 0.8499999999999996
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90,
+                  "purchasedTick": 1800,
+                  "lastDamageAt": 105.49999999999969,
+                  "healedTotal": 13.20000000000002,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                1,
+                0
+              ],
+              "built": [
+                1,
+                1
+              ],
+              "damage": [
+                65,
+                274
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    195.22058823529412,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                193.72058823529412,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "REGEN \u00b7 WAIT 8s",
+                  "font": "bold 20.7983px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [
+              "REGEN \u00b7 +3 HP/s",
+              "REGEN \u00b7 WAIT 8s"
+            ],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7",
+              "#dae7b6",
+              "#ebbc8a"
+            ],
+            "readiness": [],
+            "visibleText": [
+              {
+                "text": "REGEN \u00b7 +3 HP/s",
+                "x": 58.17776108870021,
+                "y": 379.3599990796642,
+                "canvas": {
+                  "x": 0,
+                  "y": 78,
+                  "width": 1180,
+                  "height": 476
+                }
+              },
+              {
+                "text": "REGEN \u00b7 WAIT 8s",
+                "x": 58.17776108870021,
+                "y": 379.3599990796642,
+                "canvas": {
+                  "x": 0,
+                  "y": 78,
+                  "width": 1180,
+                  "height": 476
+                }
+              }
+            ],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    }
+  ]
+}
