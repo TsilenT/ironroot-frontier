@@ -1,0 +1,244 @@
+{
+  "stats": {
+    "startTime": "2026-11-07T19:50:55.085Z",
+    "duration": 97448.554,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "project": "narrow-phone",
+      "title": "earned one-target save reloads with stable remaining states and Back restart preserves identity",
+      "status": "passed",
+      "durationMs": 5967,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "earned one-target save reloads with stable remaining states and Back restart preserves identity",
+      "status": "passed",
+      "durationMs": 7843,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "earned one-target save reloads with stable remaining states and Back restart preserves identity",
+      "status": "passed",
+      "durationMs": 6226,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 11437,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 13914,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 11845,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 9444,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 11704,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+      "status": "passed",
+      "durationMs": 10307,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "campaign-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 2307,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "campaign-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 3102,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "campaign-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 2439,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "trial-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 2066,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "trial-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 3332,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "trial-failure: result Retry shows its briefing before a new attempt",
+      "status": "passed",
+      "durationMs": 2794,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "queued removal retires a tab even when a fresh opening already has identical checkpoint bytes",
+      "status": "passed",
+      "durationMs": 2103,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "queued removal retires a tab even when a fresh opening already has identical checkpoint bytes",
+      "status": "passed",
+      "durationMs": 2907,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "queued removal retires a tab even when a fresh opening already has identical checkpoint bytes",
+      "status": "passed",
+      "durationMs": 2195,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "a delayed old removal event preserves an explicitly begun different battle",
+      "status": "passed",
+      "durationMs": 3844,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "a delayed old removal event preserves an explicitly begun different battle",
+      "status": "passed",
+      "durationMs": 5421,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "a delayed old removal event preserves an explicitly begun different battle",
+      "status": "passed",
+      "durationMs": 3917,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "held controller confirm reaches briefing once; a fresh activation explicitly begins",
+      "status": "passed",
+      "durationMs": 3334,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "held controller confirm reaches briefing once; a fresh activation explicitly begins",
+      "status": "passed",
+      "durationMs": 4294,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "held controller confirm reaches briefing once; a fresh activation explicitly begins",
+      "status": "passed",
+      "durationMs": 5124,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "native keyboard Restart and held Enter confirm cannot also activate Begin",
+      "status": "passed",
+      "durationMs": 2143,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "native keyboard Restart and held Enter confirm cannot also activate Begin",
+      "status": "passed",
+      "durationMs": 3120,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "native keyboard Restart and held Enter confirm cannot also activate Begin",
+      "status": "passed",
+      "durationMs": 2397,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via keyboard",
+      "status": "passed",
+      "durationMs": 5592,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via keyboard",
+      "status": "passed",
+      "durationMs": 7679,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via keyboard",
+      "status": "passed",
+      "durationMs": 5646,
+      "errors": []
+    },
+    {
+      "project": "narrow-phone",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via controller",
+      "status": "passed",
+      "durationMs": 5085,
+      "errors": []
+    },
+    {
+      "project": "landscape",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via controller",
+      "status": "passed",
+      "durationMs": 7606,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "current finale offers Skirmish setup and optional three-star Replay via controller",
+      "status": "passed",
+      "durationMs": 5663,
+      "errors": []
+    }
+  ],
+  "retries": "No configured retries; failed cases are retained, including downstream assertions not reached."
+}

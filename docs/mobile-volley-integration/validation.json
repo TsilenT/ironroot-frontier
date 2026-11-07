@@ -1,0 +1,185 @@
+{
+  "base": "495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca",
+  "baseTree": "da748165d0d2948c317eb43d4191fe1e20c6011d",
+  "previousReviewedHead": "28356b0762676f874b9d902615b34dc939fe5422",
+  "testedSourceHead": "be73fdcf643dd5a66c3d781f80be4ccb4f9cc99c",
+  "sourceIdentityNote": "Final handoff commit only adds documentation/evidence. Runtime bytes have been unchanged since integration merge 89213aa; package-lock metadata correction ade6e4b preceded checks. Later changes are QA observers/configuration only. Tests were not repeated merely for counts.",
+  "version": "0.18.2",
+  "cache": "ironroot-v0.18.2",
+  "profileProtocol": 8,
+  "runtimeInventory": "runtime.json",
+  "sourceSha256": {
+    "dist/app.js": "975b3d1c42d6237dc6e21f707d7edce3443b7a00938324cff0c358cf07a295f0",
+    "dist/index.html": "1fccb8bb1df2d6f4839735656c8e29358e3eb2f49115e9d92ff7468610f8b540",
+    "dist/styles.css": "accc022b9e7f65efdc071962e90d3bdfd6cb3aea33793ed1d8609b9cb4235ae8",
+    "dist/service-worker.js": "97ac9bcadd2e99476cca499bed5f8361313b4e53b2ce4ee9b876e37ef2319c65",
+    "qa/browser/mobile-volley.spec.mjs": "c38ed5e50f4af288b0cc8d523eb5254e8f92211b7de70e2b6bc5894ce7fd65b3",
+    "qa/browser/volley-independent.spec.mjs": "885f3ed592340f0d9e7b15fd80cdba9d3dd98787889669d0da3cd45b9eb89673",
+    "qa/browser/volley-history-evidence.mjs": "17f56c98961fd1e4e1fb579cbffb385c384738b187ce1a86ec0075be6d885227",
+    "qa/browser/volley-integration.config.mjs": "5f830008fccd24b68e2b842d50b0a2307e0fd964f9be628d83879d8ae7d01f0c",
+    "qa/browser/restart-briefing.spec.mjs": "d5c839f12352ea300acf15f7f74323a0c0cc3934d11021249d04382dbff4d5df",
+    "qa/browser/ashen-crossroads.spec.mjs": "5037202a2982cd6ecf38c86bd7bcf0b3fb5bc14fbe37259ae230b7fd290bbc32"
+  },
+  "environment": {
+    "node": "24.22.1",
+    "playwright": "1.65.0",
+    "chromium": "155.0.8059.79",
+    "origin": "http://127.0.0.1:4187",
+    "device": "emulated viewports/touch; synthetic controller provider"
+  },
+  "rootChecks": [
+    {
+      "command": "npm test",
+      "pass": 1441,
+      "fail": 0,
+      "skip": 1,
+      "durationMs": 129578.256844,
+      "skipReason": "Optional installed desktop tooling/minimatch contract requires desktop dependencies; no build/signing performed."
+    },
+    {
+      "command": "npm run check",
+      "result": "passed"
+    },
+    {
+      "command": "npm run check:release",
+      "result": "passed; 51 runtime files, 998322 bytes"
+    },
+    {
+      "command": "npm run check --prefix qa/browser",
+      "result": "passed; new integration config separately node --check after addition; executes fixture validators plus harness contracts"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed before final evidence commit"
+    }
+  ],
+  "browserRuns": [
+    {
+      "report": "primary.json",
+      "command": "VOLLEY_EVIDENCE_DIR=docs/mobile-volley-integration PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs mobile-volley.spec.mjs",
+      "stats": {
+        "startTime": "2026-11-07T19:42:28.545Z",
+        "duration": 147328.479,
+        "expected": 13,
+        "skipped": 15,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "independent-initial.json",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop",
+      "stats": {
+        "startTime": "2026-11-07T19:45:25.577Z",
+        "duration": 45704.529,
+        "expected": 13,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "history-native-keys.json",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --grep 'native history readiness'",
+      "stats": {
+        "startTime": "2026-11-07T19:47:53.679Z",
+        "duration": 19866.93,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "merged-base-control.json",
+      "command": "VOLLEY_HISTORY_BASE=495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca VOLLEY_HISTORY_COMPARE_BASE=1 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --grep 'base seeded-reload'",
+      "stats": {
+        "startTime": "2026-11-07T19:49:23.072Z",
+        "duration": 9857.436,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "worker-enabled.json",
+      "command": "VOLLEY_HISTORY_SERVICE_WORKERS=allow PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --grep 'native history readiness'",
+      "stats": {
+        "startTime": "2026-11-07T19:49:56.603Z",
+        "duration": 9934.715,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "restart-final.json",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/volley-integration.config.mjs restart-briefing.spec.mjs ashen-crossroads.spec.mjs --project=desktop --project=narrow-phone --project=landscape --grep 'roadside-watch:|shield-at-the-fork:|result Retry|current finale|native keyboard Restart|held controller confirm|queued removal|delayed old removal|earned one-target'",
+      "stats": {
+        "startTime": "2026-11-07T19:50:55.085Z",
+        "duration": 97448.554,
+        "expected": 33,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "retainedFailureNotes": [
+    "Initial independent phone reload observer expected a reconstructed old entry :3; actual native destination was :2. QA-only correction uses native keys/indexes and full observed markers. It does not weaken strict length or downstream invariants.",
+    "Native-key run reproduces strict pre-Resume 4-to-5 in phone seeded reload with service workers blocked.",
+    "Real worker-controlled run reproduces strict pre-Resume 4-to-5 in desktop seeded reload. Phone worker case passes.",
+    "Merged-base controls pass once each with same observer/readiness: phone 4-to-4-to-5 and desktop 5-to-5-to-6. Base uses KeyR because mobile Volley is hidden; candidate uses the visible action. These are observations, not proof the failure is product or setup."
+  ],
+  "noRetries": "No configured browser retries. Only one bounded affected run after native-key observer repair, one merged-base control slice, one worker-controlled slice. No rerun-until-green.",
+  "recommendation": "Keep draft for independent source and failure-mechanism review. Strict seeded-reload history validation remains unresolved; do not mark ready or merge based on this evidence.",
+  "limits": [
+    "Original historical pre-Resume failure cause remains unexplained and original full trace is unavailable.",
+    "All received native traces attached in finally, including failure cases; old-document terminal events can be lost at reload as explicitly shown in history-findings.json.",
+    "Retained Playwright frame snapshots show no child frame/iframe; no continuous frame navigation instrumentation.",
+    "Worker is genuinely controlling loopback and caching ironroot-v0.18.2 after explicit QA registration. App skips localhost registration. This is not production-origin install/update/takeover certification.",
+    "Fresh-document finite Back exit is tested with service workers blocked because the shipping worker serves index.html for navigations; the worker slice is seeded-reload only.",
+    "No physical device, non-Chromium, OS-driven visibility, physical controller, or full broad browser matrix certification. Gestures/history/storage use real time; virtual clock is limited to deterministic cooldown parity.",
+    "All prior docs/mobile-volley-evidence artifacts remain byte-identical to reviewed head 28356b; this directory is the current integration record.",
+    "CDP Page.getNavigationHistory was not captured. Navigation API entry keys are an exposed subset, not proof that no full native history entry was added."
+  ],
+  "screenshotsInspected": [
+    "desktop-ashen-1180x757.png",
+    "phone-ashen-390x650.png",
+    "narrow-phone-ashen-320x430.png",
+    "narrow-phone-protected-320x430-hidden.png",
+    "landscape-protected-844x390-hidden.png",
+    "volley-ready.png",
+    "volley-recharge.png",
+    "restart-briefing-320x430.png",
+    "finale-skirmishes-844x390.png"
+  ],
+  "operations": "Existing private draft PR14 only. No merge, deploy, public hosting, signing or store actions. Production untouched by this work.",
+  "initialReadinessFailureNotReached": [
+    "post-Back document ancestry assertion",
+    "pause/unarmed assertions",
+    "no-spend/frozen-checkpoint assertions",
+    "Forward",
+    "strict pre-Resume equality",
+    "Resume/post-Resume length",
+    "fresh field input",
+    "profile equality",
+    "opaque-state assertions"
+  ],
+  "logFingerprints": {
+    "volley-integration-primary.log": "8d89a5a8a9753c200984e51a6714eafe5997770d91faf0d63a020664f8c994d1",
+    "volley-integration-release.log": "d4f5d3fe11a88ff260406546c6baa9346b2247befc144ac637d96880c7715f52",
+    "volley-integration-base-control.log": "f21877910340a1d82fd19e426e5a5ae820a7827e7b044f891d00ddfcdeec6f4c",
+    "volley-integration-check.log": "52598150f43d6733abfc04a08d53148e085a10f8788837a7202d3a2366ec3cf5",
+    "volley-integration-restart.log": "96ce497ea644ad7d7eb8456f1c0dde3f79de052b5003c8c7a302cfb6d6ef60e1",
+    "volley-integration-harness.log": "1f1f74439ce8dd5121628f34ce465a6b0900a68684e998cf3240f808780809d7",
+    "volley-integration-independent.log": "499504b2f66a41b53c645f6e124a38e82ff638ecc39610abf5471ad238c69750",
+    "volley-integration-root.log": "23a4ec8fe905b7e709cbd25f43eccf27499084939e27e8303fa29af1033ed53e",
+    "volley-integration-syntax-final.log": "52598150f43d6733abfc04a08d53148e085a10f8788837a7202d3a2366ec3cf5",
+    "volley-integration-worker.log": "bd4de4285f9d23e3eec3105c82139fee1774b0f8af26c2da97e59e50da7b3fac",
+    "volley-integration-history-final.log": "33099bcfbe2b68955433843ed4d68d4a96654ce8917106da914cf2e2d0ab04e0",
+    "volley-integration-harness-final.log": "ea81c4812814b7287c079c282c978edfc00045fa4b835a53db4fcb8c0285081d"
+  }
+}

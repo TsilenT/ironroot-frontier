@@ -1,0 +1,433 @@
+{
+  "failures": [
+    {
+      "report": "history-native-keys.json",
+      "fullObservedNativeTrace": "history-native-keys-traces.json.gz",
+      "project": "phone",
+      "setup": "seeded-reload",
+      "serviceWorkers": "block",
+      "shippingWorker": null,
+      "assertion": "qa/browser/volley-independent.spec.mjs:129 expect(beforeResume.length).toBe(baseline.length)",
+      "baseline": {
+        "label": "pre-arm baseline",
+        "documentId": "e849ba40-a672-4b36-869b-b328763f21ce",
+        "sequence": 9,
+        "timeOrigin": 1794080876786.5,
+        "at": 1293.7000000001863,
+        "wallTime": 1794080878080,
+        "url": "http://127.0.0.1:4187/",
+        "length": 4,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
+            "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
+          }
+        },
+        "nativeKey": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "f9a975b6-1d10-4085-9a0c-78da072baced",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "cc66e89b-b3f8-46c4-a05a-2c257683bdb1",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 0,
+        "armed": false,
+        "paused": false,
+        "kind": "pre-arm baseline"
+      },
+      "lastObservationBeforeDivergence": {
+        "documentId": "e849ba40-a672-4b36-869b-b328763f21ce",
+        "sequence": 14,
+        "timeOrigin": 1794080876786.5,
+        "at": 1981.7000000001863,
+        "wallTime": 1794080878768,
+        "url": "http://127.0.0.1:4187/",
+        "length": 4,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
+            "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
+          }
+        },
+        "nativeKey": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "f9a975b6-1d10-4085-9a0c-78da072baced",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "cc66e89b-b3f8-46c4-a05a-2c257683bdb1",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 0,
+        "armed": true,
+        "paused": false,
+        "kind": "after back"
+      },
+      "firstObservedDivergence": {
+        "documentId": "e849ba40-a672-4b36-869b-b328763f21ce",
+        "sequence": 15,
+        "timeOrigin": 1794080876786.5,
+        "at": 2000.1000000005588,
+        "wallTime": 1794080878786,
+        "url": "http://127.0.0.1:4187/",
+        "length": 5,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "0b29c2a6-9ce1-40ee-ab55-1a1260559e30",
+            "entry": "0b29c2a6-9ce1-40ee-ab55-1a1260559e30:2"
+          }
+        },
+        "nativeKey": "cc66e89b-b3f8-46c4-a05a-2c257683bdb1",
+        "nativeIndex": 1,
+        "nativeEntries": [
+          {
+            "key": "f9a975b6-1d10-4085-9a0c-78da072baced",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "cc66e89b-b3f8-46c4-a05a-2c257683bdb1",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 1,
+        "armed": true,
+        "paused": false,
+        "kind": "popstate",
+        "eventState": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "0b29c2a6-9ce1-40ee-ab55-1a1260559e30",
+            "entry": "0b29c2a6-9ce1-40ee-ab55-1a1260559e30:2"
+          }
+        }
+      },
+      "strictPreResume": {
+        "label": "strict pre-Resume",
+        "documentId": "e849ba40-a672-4b36-869b-b328763f21ce",
+        "sequence": 30,
+        "timeOrigin": 1794080876786.5,
+        "at": 3484.100000000559,
+        "wallTime": 1794080880270,
+        "url": "http://127.0.0.1:4187/",
+        "length": 5,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
+            "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
+          }
+        },
+        "nativeKey": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "f9a975b6-1d10-4085-9a0c-78da072baced",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "cc66e89b-b3f8-46c4-a05a-2c257683bdb1",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "92efc287-1296-4ea5-8218-99ca3a1c204b",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 2,
+        "armed": false,
+        "paused": true,
+        "kind": "strict pre-Resume"
+      },
+      "sameTopLevelNativeEntryList": true,
+      "forwardReturnsExactBaselineMarkerAndKey": true,
+      "currentDocumentPushCallsAfterBaseline": [],
+      "executedBeforeFailure": [
+        "visible action arms without Build",
+        "arming preserves history length",
+        "Back reaches expected full native key/marker",
+        "Back pauses and disarms",
+        "no gold spent/cooldown started",
+        "checkpoint frozen for real 180 ms",
+        "Forward reaches expected full native key/marker",
+        "Forward stays paused and unarmed",
+        "checkpoint unchanged"
+      ],
+      "notReached": [
+        "explicit beforeResume.state equality assertion (the traversal observer itself already verified the marker)",
+        "explicit Resume",
+        "expected post-Resume history length",
+        "fresh field input no-spend assertion",
+        "persistent profile equality",
+        "final assertOpaqueStates"
+      ],
+      "frameObservations": {
+        "file": "history-native-keys-frame-observations.json.gz",
+        "sha256": "5f4ec69a5eece6379c9e7481e2052507d602ccce50ce4cca141228a5c59ca5f9",
+        "snapshotCount": 136,
+        "frameIds": [
+          "frame@597e2a626184ae0e759f95a6b23592e4"
+        ],
+        "childFrameSnapshotCount": 0,
+        "iframeElementCount": 0,
+        "limit": "No child frame or child-frame navigation is observed in these retained snapshots. No dedicated frame-attach/navigation observer was installed; absence between snapshots is not established."
+      },
+      "classification": "Unresolved strict validation failure. Entry-key/history.length disagreement is observed evidence, not an established browser bug or a proven runtime regression.",
+      "captureLimit": "The reloaded document starts with previous-document marker :4 while delivered previous-document records end at :3. Exposed-binding delivery can lose the old-document tail at reload; the underlying cause and complete old tail are not established."
+    },
+    {
+      "report": "worker-enabled.json",
+      "fullObservedNativeTrace": "worker-enabled-traces.json.gz",
+      "project": "desktop",
+      "setup": "seeded-reload",
+      "serviceWorkers": "allow",
+      "shippingWorker": {
+        "controller": "http://127.0.0.1:4187/service-worker.js",
+        "cacheKeys": [
+          "ironroot-v0.18.2"
+        ],
+        "registration": "explicit loopback QA registration; app skips localhost"
+      },
+      "assertion": "qa/browser/volley-independent.spec.mjs:129 expect(beforeResume.length).toBe(baseline.length)",
+      "baseline": {
+        "label": "pre-arm baseline",
+        "documentId": "e8db314b-6bfd-4940-bee9-d5fc6439f6d9",
+        "sequence": 9,
+        "timeOrigin": 1794080999489,
+        "at": 1657.1000000005588,
+        "wallTime": 1794081001146,
+        "url": "http://127.0.0.1:4187/",
+        "length": 4,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "ed9243dd-d9c9-4441-9d41-1ea8570eea46",
+            "entry": "ed9243dd-d9c9-4441-9d41-1ea8570eea46:1"
+          }
+        },
+        "nativeKey": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "9916a187-08d9-47d3-874b-31179b951350",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "eab45e37-70c0-4153-9e60-6e6bf2e95dfa",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 0,
+        "armed": false,
+        "paused": false,
+        "kind": "pre-arm baseline"
+      },
+      "lastObservationBeforeDivergence": {
+        "documentId": "e8db314b-6bfd-4940-bee9-d5fc6439f6d9",
+        "sequence": 14,
+        "timeOrigin": 1794080999489,
+        "at": 2321.100000000559,
+        "wallTime": 1794081001810,
+        "url": "http://127.0.0.1:4187/",
+        "length": 4,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "ed9243dd-d9c9-4441-9d41-1ea8570eea46",
+            "entry": "ed9243dd-d9c9-4441-9d41-1ea8570eea46:1"
+          }
+        },
+        "nativeKey": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "9916a187-08d9-47d3-874b-31179b951350",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "eab45e37-70c0-4153-9e60-6e6bf2e95dfa",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 0,
+        "armed": true,
+        "paused": false,
+        "kind": "after back"
+      },
+      "firstObservedDivergence": {
+        "documentId": "e8db314b-6bfd-4940-bee9-d5fc6439f6d9",
+        "sequence": 15,
+        "timeOrigin": 1794080999489,
+        "at": 2325.4000000003725,
+        "wallTime": 1794081001814,
+        "url": "http://127.0.0.1:4187/",
+        "length": 5,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "3959119e-6eb7-4b75-abb7-a1ac26269961",
+            "entry": "3959119e-6eb7-4b75-abb7-a1ac26269961:2"
+          }
+        },
+        "nativeKey": "eab45e37-70c0-4153-9e60-6e6bf2e95dfa",
+        "nativeIndex": 1,
+        "nativeEntries": [
+          {
+            "key": "9916a187-08d9-47d3-874b-31179b951350",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "eab45e37-70c0-4153-9e60-6e6bf2e95dfa",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 1,
+        "armed": true,
+        "paused": false,
+        "kind": "popstate",
+        "eventState": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "3959119e-6eb7-4b75-abb7-a1ac26269961",
+            "entry": "3959119e-6eb7-4b75-abb7-a1ac26269961:2"
+          }
+        }
+      },
+      "strictPreResume": {
+        "label": "strict pre-Resume",
+        "documentId": "e8db314b-6bfd-4940-bee9-d5fc6439f6d9",
+        "sequence": 30,
+        "timeOrigin": 1794080999489,
+        "at": 4023.600000000559,
+        "wallTime": 1794081003512,
+        "url": "http://127.0.0.1:4187/",
+        "length": 5,
+        "state": {
+          "ironrootNavigation": {
+            "version": 1,
+            "document": "ed9243dd-d9c9-4441-9d41-1ea8570eea46",
+            "entry": "ed9243dd-d9c9-4441-9d41-1ea8570eea46:1"
+          }
+        },
+        "nativeKey": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+        "nativeIndex": 2,
+        "nativeEntries": [
+          {
+            "key": "9916a187-08d9-47d3-874b-31179b951350",
+            "index": 0,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "eab45e37-70c0-4153-9e60-6e6bf2e95dfa",
+            "index": 1,
+            "url": "http://127.0.0.1:4187/"
+          },
+          {
+            "key": "f074490b-03b4-4704-ae7e-9f9963c77c27",
+            "index": 2,
+            "url": "http://127.0.0.1:4187/"
+          }
+        ],
+        "pops": 2,
+        "armed": false,
+        "paused": true,
+        "kind": "strict pre-Resume"
+      },
+      "sameTopLevelNativeEntryList": true,
+      "forwardReturnsExactBaselineMarkerAndKey": true,
+      "currentDocumentPushCallsAfterBaseline": [],
+      "executedBeforeFailure": [
+        "visible action arms without Build",
+        "arming preserves history length",
+        "Back reaches expected full native key/marker",
+        "Back pauses and disarms",
+        "no gold spent/cooldown started",
+        "checkpoint frozen for real 180 ms",
+        "Forward reaches expected full native key/marker",
+        "Forward stays paused and unarmed",
+        "checkpoint unchanged"
+      ],
+      "notReached": [
+        "explicit beforeResume.state equality assertion (the traversal observer itself already verified the marker)",
+        "explicit Resume",
+        "expected post-Resume history length",
+        "fresh field input no-spend assertion",
+        "persistent profile equality",
+        "final assertOpaqueStates"
+      ],
+      "frameObservations": {
+        "file": "worker-enabled-frame-observations.json.gz",
+        "sha256": "1bb54b2aac95eb81a9fe739abbdfa241b8c3d8b07f7f813131941b42edc75a2c",
+        "snapshotCount": 146,
+        "frameIds": [
+          "frame@83cf2be9110cd7d5b4308375678147bc"
+        ],
+        "childFrameSnapshotCount": 0,
+        "iframeElementCount": 0,
+        "limit": "No child frame or child-frame navigation is observed in these retained snapshots. No dedicated frame-attach/navigation observer was installed; absence between snapshots is not established."
+      },
+      "classification": "Unresolved strict validation failure. Entry-key/history.length disagreement is observed evidence, not an established browser bug or a proven runtime regression.",
+      "captureLimit": "The reloaded document starts with previous-document marker :4 while delivered previous-document records end at :3. Exposed-binding delivery can lose the old-document tail at reload; the underlying cause and complete old tail are not established."
+    }
+  ],
+  "historicalFailure": "The earlier pre-Resume 4-to-5 failure has no complete original trace. These new failures do not establish that earlier cause.",
+  "fullBrowserHistoryEvidence": {
+    "cdpPageGetNavigationHistory": "not captured; no full native entries/currentIndex comparison exists",
+    "navigationApiLimit": "Exposed entries can omit inaccessible entries. Unchanged keys do not establish absence of native addition. Actual addition and renderer length catch-up remain unproven hypotheses."
+  }
+}

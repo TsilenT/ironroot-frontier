@@ -1,0 +1,147 @@
+{
+  "stats": {
+    "startTime": "2026-11-07T19:49:56.603Z",
+    "duration": 9934.715,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "project": "phone",
+      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+      "status": "passed",
+      "durationMs": 8269,
+      "errors": [],
+      "history": {
+        "head": "candidate",
+        "setup": "seeded-reload",
+        "serviceWorkers": "allow",
+        "shippingWorker": {
+          "controller": "http://127.0.0.1:4187/service-worker.js",
+          "cacheKeys": [
+            "ironroot-v0.18.2"
+          ],
+          "registration": "explicit loopback QA registration; app skips localhost"
+        },
+        "nativeEventCount": 45,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 4,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "df962e53-5733-4780-9f13-169bc8c5cfef",
+                "entry": "df962e53-5733-4780-9f13-169bc8c5cfef:1"
+              }
+            }
+          },
+          {
+            "label": "strict pre-Resume",
+            "length": 4,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "df962e53-5733-4780-9f13-169bc8c5cfef",
+                "entry": "df962e53-5733-4780-9f13-169bc8c5cfef:1"
+              }
+            }
+          },
+          {
+            "label": "explicit Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "df962e53-5733-4780-9f13-169bc8c5cfef",
+                "entry": "df962e53-5733-4780-9f13-169bc8c5cfef:3"
+              }
+            }
+          },
+          {
+            "label": "fresh battlefield input checked",
+            "paidCast": false,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "df962e53-5733-4780-9f13-169bc8c5cfef",
+                "entry": "df962e53-5733-4780-9f13-169bc8c5cfef:2"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+      "status": "failed",
+      "durationMs": 6715,
+      "errors": [
+        {
+          "location": {
+            "file": "/workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs",
+            "column": 37,
+            "line": 129
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m5\u001b[39m\n\n  127 |         const beforeResume = await trace.mark('strict pre-Resume');\n  128 |         // Retain the original strict assertion, now after actual Forward.\n> 129 |         expect(beforeResume.length).toBe(baseline.length);\n      |                                     ^\n  130 |         expect(beforeResume.state).toEqual(baseline.state);\n  131 |         await press(page,'#resume');\n  132 |         await expect(page.locator('#pauseVeil')).toBeHidden();\n    at /workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs:129:37"
+        }
+      ],
+      "history": {
+        "head": "candidate",
+        "setup": "seeded-reload",
+        "serviceWorkers": "allow",
+        "shippingWorker": {
+          "controller": "http://127.0.0.1:4187/service-worker.js",
+          "cacheKeys": [
+            "ironroot-v0.18.2"
+          ],
+          "registration": "explicit loopback QA registration; app skips localhost"
+        },
+        "nativeEventCount": 30,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 4,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "ed9243dd-d9c9-4441-9d41-1ea8570eea46",
+                "entry": "ed9243dd-d9c9-4441-9d41-1ea8570eea46:1"
+              }
+            }
+          },
+          {
+            "label": "strict pre-Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "ed9243dd-d9c9-4441-9d41-1ea8570eea46",
+                "entry": "ed9243dd-d9c9-4441-9d41-1ea8570eea46:1"
+              }
+            }
+          }
+        ]
+      },
+      "attachments": [
+        "worker-enabled-failures/desktop-2-test-failed-1.png",
+        "worker-enabled-failures/desktop-2-error-context.md"
+      ],
+      "localPlaywrightTrace": [
+        "/tmp/volley-integration-playwright-traces/worker-enabled-failures-desktop-2-trace.zip"
+      ],
+      "traceRetention": "All received native history observations are committed as compressed JSON; old-document terminal delivery is not guaranteed across reload. Playwright bundles with duplicated runtime assets are retained locally only."
+    }
+  ],
+  "retries": "No configured retries; failed cases are retained, including downstream assertions not reached.",
+  "completeNativeTraces": {
+    "file": "worker-enabled-traces.json.gz",
+    "sha256": "5f3843b31e418798d6a576324fadff6e371d9e07d7547cb5b8239352c5ba896c",
+    "bytes": 3559,
+    "cases": 2
+  }
+}

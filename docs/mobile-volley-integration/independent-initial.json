@@ -1,0 +1,424 @@
+{
+  "stats": {
+    "startTime": "2026-11-07T19:45:25.577Z",
+    "duration": 45704.529,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "project": "phone",
+      "title": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+      "status": "passed",
+      "durationMs": 6273,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+      "status": "passed",
+      "durationMs": 5649,
+      "errors": []
+    },
+    {
+      "project": "phone",
+      "title": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+      "status": "passed",
+      "durationMs": 4874,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+      "status": "passed",
+      "durationMs": 5243,
+      "errors": []
+    },
+    {
+      "project": "phone",
+      "title": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+      "status": "passed",
+      "durationMs": 6730,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+      "status": "passed",
+      "durationMs": 6328,
+      "errors": []
+    },
+    {
+      "project": "phone",
+      "title": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+      "status": "passed",
+      "durationMs": 3112,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+      "status": "passed",
+      "durationMs": 3036,
+      "errors": []
+    },
+    {
+      "project": "phone",
+      "title": "independent: visibility interruption retires held targeting input and requires explicit resume",
+      "status": "passed",
+      "durationMs": 3746,
+      "errors": []
+    },
+    {
+      "project": "desktop",
+      "title": "independent: visibility interruption retires held targeting input and requires explicit resume",
+      "status": "passed",
+      "durationMs": 2827,
+      "errors": []
+    },
+    {
+      "project": "phone",
+      "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
+      "status": "passed",
+      "durationMs": 9760,
+      "errors": [],
+      "history": {
+        "head": "candidate",
+        "setup": "fresh-document",
+        "serviceWorkers": "block",
+        "shippingWorker": null,
+        "nativeEventCount": 97,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:3"
+              }
+            }
+          },
+          {
+            "label": "strict pre-Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:3"
+              }
+            }
+          },
+          {
+            "label": "explicit Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:3"
+              }
+            }
+          },
+          {
+            "label": "fresh battlefield input checked",
+            "paidCast": false,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:2"
+              }
+            }
+          },
+          {
+            "label": "repeat pre-Resume",
+            "cycle": 0,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:4"
+              }
+            }
+          },
+          {
+            "label": "repeat resumed",
+            "cycle": 0,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:4"
+              }
+            }
+          },
+          {
+            "label": "repeat pre-Resume",
+            "cycle": 1,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:4"
+              }
+            }
+          },
+          {
+            "label": "repeat resumed",
+            "cycle": 1,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7",
+                "entry": "e4d6dee1-6cce-4823-8328-fce4ebdb4bb7:4"
+              }
+            }
+          },
+          {
+            "label": "finite Back exit",
+            "steps": 3,
+            "length": 5,
+            "state": null
+          }
+        ]
+      }
+    },
+    {
+      "project": "desktop",
+      "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
+      "status": "passed",
+      "durationMs": 10540,
+      "errors": [],
+      "history": {
+        "head": "candidate",
+        "setup": "fresh-document",
+        "serviceWorkers": "block",
+        "shippingWorker": null,
+        "nativeEventCount": 97,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:3"
+              }
+            }
+          },
+          {
+            "label": "strict pre-Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:3"
+              }
+            }
+          },
+          {
+            "label": "explicit Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:3"
+              }
+            }
+          },
+          {
+            "label": "fresh battlefield input checked",
+            "paidCast": false,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:2"
+              }
+            }
+          },
+          {
+            "label": "repeat pre-Resume",
+            "cycle": 0,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:4"
+              }
+            }
+          },
+          {
+            "label": "repeat resumed",
+            "cycle": 0,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:4"
+              }
+            }
+          },
+          {
+            "label": "repeat pre-Resume",
+            "cycle": 1,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:4"
+              }
+            }
+          },
+          {
+            "label": "repeat resumed",
+            "cycle": 1,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79ad1cd8-96bb-4469-ade2-33cd35ce4154",
+                "entry": "79ad1cd8-96bb-4469-ade2-33cd35ce4154:4"
+              }
+            }
+          },
+          {
+            "label": "finite Back exit",
+            "steps": 3,
+            "length": 5,
+            "state": null
+          }
+        ]
+      }
+    },
+    {
+      "project": "phone",
+      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+      "status": "failed",
+      "durationMs": 8597,
+      "errors": [
+        {
+          "location": {
+            "file": "/workspace/ironroot-mobile-volley/qa/browser/volley-history-evidence.mjs",
+            "column": 96,
+            "line": 124
+          },
+          "message": "Error: new native popstate must carry the full expected document/entry identity\n\nnew native popstate must carry the full expected document/entry identity\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n   at volley-history-evidence.mjs:124\n\n  122 |         return records.filter(record => record.kind === 'popstate').slice(count).some(record =>\n  123 |           record.documentId === before.documentId && equal(record.eventState, expected.state) && equal(record.state, expected.state));\n> 124 |       }, {message:'new native popstate must carry the full expected document/entry identity'}).toBe(true);\n      |                                                                                                ^\n  125 |       await expect.poll(async () => (await snapshot()).state, {message:'native current marker reaches the expected destination'}).toEqual(expected.state);\n  126 |       return ready();\n  127 |     }\n    at Object.traverse (/workspace/ironroot-mobile-volley/qa/browser/volley-history-evidence.mjs:124:96)\n    at /workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs:113:22"
+        }
+      ],
+      "history": {
+        "head": "candidate",
+        "setup": "seeded-reload",
+        "serviceWorkers": "block",
+        "shippingWorker": null,
+        "nativeEventCount": 27,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "7b8e7e68-854b-4090-bf99-13f6c506bdbe",
+                "entry": "7b8e7e68-854b-4090-bf99-13f6c506bdbe:1"
+              }
+            }
+          }
+        ]
+      },
+      "attachments": [
+        "independent-initial-failures/phone-13-test-failed-1.png",
+        "independent-initial-failures/phone-13-error-context.md"
+      ],
+      "localPlaywrightTrace": [
+        "/tmp/volley-integration-playwright-traces/independent-initial-failures-phone-13-trace.zip"
+      ],
+      "traceRetention": "All received native history observations are committed as compressed JSON; old-document terminal delivery is not guaranteed across reload. Playwright bundles with duplicated runtime assets are retained locally only."
+    },
+    {
+      "project": "desktop",
+      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+      "status": "passed",
+      "durationMs": 6116,
+      "errors": [],
+      "history": {
+        "head": "candidate",
+        "setup": "seeded-reload",
+        "serviceWorkers": "block",
+        "shippingWorker": null,
+        "nativeEventCount": 45,
+        "phases": [
+          {
+            "label": "pre-arm baseline",
+            "length": 4,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "93ed673d-5bb7-4eff-b1a8-544aef26b909",
+                "entry": "93ed673d-5bb7-4eff-b1a8-544aef26b909:1"
+              }
+            }
+          },
+          {
+            "label": "strict pre-Resume",
+            "length": 4,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "93ed673d-5bb7-4eff-b1a8-544aef26b909",
+                "entry": "93ed673d-5bb7-4eff-b1a8-544aef26b909:1"
+              }
+            }
+          },
+          {
+            "label": "explicit Resume",
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "93ed673d-5bb7-4eff-b1a8-544aef26b909",
+                "entry": "93ed673d-5bb7-4eff-b1a8-544aef26b909:3"
+              }
+            }
+          },
+          {
+            "label": "fresh battlefield input checked",
+            "paidCast": false,
+            "length": 5,
+            "state": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "93ed673d-5bb7-4eff-b1a8-544aef26b909",
+                "entry": "93ed673d-5bb7-4eff-b1a8-544aef26b909:2"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "retries": "No configured retries; failed cases are retained, including downstream assertions not reached.",
+  "completeNativeTraces": {
+    "file": "independent-initial-traces.json.gz",
+    "sha256": "6dce7dd21efa2f138dd0a55e739fc479c93904495e8a56a120c45f9b1a0e2cb2",
+    "bytes": 7199,
+    "cases": 4
+  }
+}

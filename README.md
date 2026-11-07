@@ -6,9 +6,11 @@ A single-player real-time strategy tug-of-war for desktop and mobile browsers. B
 
 **v0.18.2** makes Arrow volley visible in compact mobile play in the existing Sound shortcut slot, with its 75-gold cost and ready/recharge/cancel state. Audio remains in Options; desktop keeps Sound and its Volley card. This candidate integrates verified main `495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca`, preserves profile protocol 8, and uses the fresh `ironroot-v0.18.2` cache identity. It has not been deployed. Exact integration checks and runtime inventory are in [MOBILE_VOLLEY_INTEGRATION.md](docs/MOBILE_VOLLEY_INTEGRATION.md); earlier control design and review evidence remain in [MOBILE_VOLLEY.md](docs/MOBILE_VOLLEY.md).
 
+PR14 remains a draft: strict pre-Resume history-length checks failed in two seeded-reload cases. The cause is unresolved; all failure traces and unrun downstream assertions are retained in the integration record.
+
 ## Merged release baseline
 
-**v0.18.1** is merged at `495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca` (tree `da748165d0d2948c317eb43d4191fe1e20c6011d`). Its standalone deployment and live verification belong to the release coordinator; this draft does not inspect or deploy production. It returns confirmed campaign/Field Trial restarts and failed-result Retry to the same briefing for an explicit Begin. Common Ground offers Skirmishes as the primary next action and optional Replay. Ordinary Skirmish restart remains immediate. These mechanics and save-session retirement are preserved. See [RESTART_BRIEFING.md](docs/RESTART_BRIEFING.md).
+**v0.18.1** is merged at `495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca` (tree `da748165d0d2948c317eb43d4191fe1e20c6011d`). The release coordinator has verified this standalone v0.18.1 release live; this draft does not inspect or deploy production. It returns confirmed campaign/Field Trial restarts and failed-result Retry to the same briefing for an explicit Begin. Common Ground offers Skirmishes as the primary next action and optional Replay. Ordinary Skirmish restart remains immediate. These mechanics and save-session retirement are preserved. See [RESTART_BRIEFING.md](docs/RESTART_BRIEFING.md).
 
 The preceding v0.18.0 release introduced [Ashen Crossroads](docs/ASHEN_CROSSROADS.md), with profile protocol 8. Production remains at https://ironroot.stevets.ai/ and is untouched by this work.
 
