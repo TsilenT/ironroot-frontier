@@ -1,0 +1,833 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-restart/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "campaign-restart-identity.spec.mjs",
+      "restart-briefing.spec.mjs",
+      "ashen-crossroads.spec.mjs",
+      "campaign.spec.mjs",
+      "contextual-coaching.spec.mjs",
+      "mobile-coaching-visibility.spec.mjs",
+      "--project=narrow-phone",
+      "--workers=2",
+      "--grep",
+      "confirmed campaign restart|native keyboard Restart|earned one-target|ordinary idle defeat|campaign deadline failure|gameplay gesture held|restart of an unfinished|resumed First Watch|completed tutorial replay|Forked Road mine"
+    ],
+    "configFile": "/workspace/ironroot-restart/qa/browser/playwright.config.mjs",
+    "rootDir": "/workspace/ironroot-restart/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "snapshotDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 320,
+            "height": 568
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "narrow-phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "ashen-crossroads.spec.mjs",
+      "file": "ashen-crossroads.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "earned one-target save reloads with stable remaining states and Back restart preserves identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:41.633Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "one-target",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/ashen-crossroads-earned-on-518d0--restart-preserves-identity-narrow-phone/attachments/one-target-8636997bb45c42a9ce9cbcd3abe824423bbfe54b.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "135d4eda90135f145c7c-c7ce82daaa81a9692a26",
+          "file": "ashen-crossroads.spec.mjs",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "ordinary idle defeat offers a fresh retry without awarding a trial record",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5672,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:41.530Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "failed",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/ashen-crossroads-ordinary--66763-out-awarding-a-trial-record-narrow-phone/attachments/failed-d97e7be025619eccc032012cfcbff0a639cf25f3.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "135d4eda90135f145c7c-eca6fa171809c527678b",
+          "file": "ashen-crossroads.spec.mjs",
+          "line": 107,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "campaign-restart-identity.spec.mjs",
+      "file": "campaign-restart-identity.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "confirmed campaign restart preserves two-building ongoing opening with newer full-roster profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7346,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:47.692Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-53bcb3daa85d0b0824c1",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves full-roster opening replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:50.549Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-aae054b59086f2ef2389",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves five-building ongoing fork with newer full-roster profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5738,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:55.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-934bb0b50caf7c0809a7",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves current main mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5495,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:21:57.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-4e09d86ce6cc2e84459a",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves optional introduction replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:00.814Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-a06528795a749c753f21",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves legacy revision-one main mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5043,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:03.164Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-c96ddaa56cba9681ec01",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves unfinished five-building fork and renewed teaching",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5794,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:06.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-c5ab9763a808e25c0c32",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        }
+      ]
+    },
+    {
+      "title": "campaign.spec.mjs",
+      "file": "campaign.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "campaign deadline failure focuses Retry and restarts without granting progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3027,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:08.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fd59f3e385f8bd48932-c905246629744aad9c03",
+          "file": "campaign.spec.mjs",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "a gameplay gesture held across mission end cannot activate the newly appearing result action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "gesture",
+                  "description": "touch down on sound at 226.5,511.0 in 320×568; release over inspectBattle"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16195,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:11.284Z",
+                  "annotations": [
+                    {
+                      "type": "gesture",
+                      "description": "touch down on sound at 226.5,511.0 in 320×568; release over inspectBattle"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fd59f3e385f8bd48932-9e8def213404e8e8d1b7",
+          "file": "campaign.spec.mjs",
+          "line": 272,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "contextual-coaching.spec.mjs",
+      "file": "contextual-coaching.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Forked Road mine and tower hints assemble complete prompts after real paid planning",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:12.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01337f92ab0fdd4b20d2-a83453977c8ce45681ef",
+          "file": "contextual-coaching.spec.mjs",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "restart of an unfinished opening keeps its exact roster and offers fresh teaching at zero",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3947,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:17.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01337f92ab0fdd4b20d2-31d09230a676301e7e1e",
+          "file": "contextual-coaching.spec.mjs",
+          "line": 270,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "mobile-coaching-visibility.spec.mjs",
+      "file": "mobile-coaching-visibility.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "resumed First Watch and current campaign hints are visible without Build and never force a teaching pause",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 14278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:21.358Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "first-watch-resumed-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    },
+                    {
+                      "name": "first-watch-reshown-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    },
+                    {
+                      "name": "first-watch-fresh-restart-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAiY29hY2hSZXN1bWUiOiB7CiAgICAgICJsZWZ0IjogMjEwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAiY29hY2hSZXN1bWUiLAogICAgICAibGVmdCI6IDIxMCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInRvZ2dsZUNvYWNoIiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiAzNTAsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDM5NCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjb21wYWN0QnVpbGQiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInBhdXNlIiwKICAgICAgImxlZnQiOiAxMjYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDE3MCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzcGVlZCIsCiAgICAgICJsZWZ0IjogMTc0LAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyMTgsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic291bmQiLAogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNldHRpbmdzIiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJob21lIiwKICAgICAgImxlZnQiOiA2LAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiA1MCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJmcm9udCIsCiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAibWluaW1hcCIsCiAgICAgICJsZWZ0IjogNTQsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDI2NiwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogMjEyLAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9CiAgXSwKICAicGFyZW50IjogImFwcCIKfQ=="
+                    },
+                    {
+                      "name": "roadside-watch-resumed-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    },
+                    {
+                      "name": "roadside-watch-reshown-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    },
+                    {
+                      "name": "roadside-watch-fresh-restart-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f282a44b164cc147d2c-001ef323fe1b6a7ebd86",
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 148,
+          "column": 1
+        },
+        {
+          "title": "completed tutorial replay preserves disabled hints, then explicitly enabled hints leave Build without pausing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:27.511Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "completed-replay-enabled-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJzYWZlIjogewogICAgImxlZnQiOiAwLAogICAgInRvcCI6IDAsCiAgICAicmlnaHQiOiAzMjAsCiAgICAiYm90dG9tIjogNTY4CiAgfSwKICAibm9kZXMiOiB7CiAgICAiYmF0dGxlIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA3MiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogMzI4LAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiAyNTYKICAgIH0sCiAgICAiY2FtcGFpZ25UZWFjaGluZyI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMzI4LAogICAgICAicmlnaHQiOiAzMjAsCiAgICAgICJib3R0b20iOiA0MTYsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDg4CiAgICB9LAogICAgInRvcGJhciI6IHsKICAgICAgImxlZnQiOiAwLAogICAgICAidG9wIjogMCwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNzIsCiAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgImhlaWdodCI6IDcyCiAgICB9LAogICAgInByb3RlY3RlZERvY2siOiB7CiAgICAgICJsZWZ0IjogMCwKICAgICAgInRvcCI6IDQxNiwKICAgICAgInJpZ2h0IjogMzIwLAogICAgICAiYm90dG9tIjogNDcyLAogICAgICAid2lkdGgiOiAzMjAsCiAgICAgICJoZWlnaHQiOiA1NgogICAgfSwKICAgICJwcm90ZWN0ZWROYXZpZ2F0aW9uIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiA0NzIsCiAgICAgICJyaWdodCI6IDMyMCwKICAgICAgImJvdHRvbSI6IDU2OCwKICAgICAgIndpZHRoIjogMzIwLAogICAgICAiaGVpZ2h0IjogOTYKICAgIH0sCiAgICAidG9nZ2xlQ29hY2giOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogMzUwLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiAzOTQsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiY29tcGFjdEJ1aWxkIjogewogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDYyLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA1NiwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInBhdXNlIjogewogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNwZWVkIjogewogICAgICAibGVmdCI6IDE3NCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjE4LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNvdW5kIjogewogICAgICAibGVmdCI6IDIyMiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgInNldHRpbmdzIjogewogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0CiAgICB9LAogICAgImhvbWUiOiB7CiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogNTAsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAiZnJvbnQiOiB7CiAgICAgICJsZWZ0IjogMjcwLAogICAgICAidG9wIjogNTIyLAogICAgICAicmlnaHQiOiAzMTQsCiAgICAgICJib3R0b20iOiA1NjYsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQKICAgIH0sCiAgICAibWluaW1hcCI6IHsKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NAogICAgfQogIH0sCiAgImNvbnRyb2xzIjogWwogICAgewogICAgICAiaWQiOiAidG9nZ2xlQ29hY2giLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDM1MCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogMzk0LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImNvbXBhY3RCdWlsZCIsCiAgICAgICJsZWZ0IjogNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogNjIsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDU2LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAicGF1c2UiLAogICAgICAibGVmdCI6IDEyNiwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMTcwLAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogInNwZWVkIiwKICAgICAgImxlZnQiOiAxNzQsCiAgICAgICJ0b3AiOiA0NzQsCiAgICAgICJyaWdodCI6IDIxOCwKICAgICAgImJvdHRvbSI6IDUxOCwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzb3VuZCIsCiAgICAgICJsZWZ0IjogMjIyLAogICAgICAidG9wIjogNDc0LAogICAgICAicmlnaHQiOiAyNjYsCiAgICAgICJib3R0b20iOiA1MTgsCiAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAiaGVpZ2h0IjogNDQsCiAgICAgICJoaXQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2V0dGluZ3MiLAogICAgICAibGVmdCI6IDI3MCwKICAgICAgInRvcCI6IDQ3NCwKICAgICAgInJpZ2h0IjogMzE0LAogICAgICAiYm90dG9tIjogNTE4LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImhvbWUiLAogICAgICAibGVmdCI6IDYsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDUwLAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiA0NCwKICAgICAgImhlaWdodCI6IDQ0LAogICAgICAiaGl0IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogImZyb250IiwKICAgICAgImxlZnQiOiAyNzAsCiAgICAgICJ0b3AiOiA1MjIsCiAgICAgICJyaWdodCI6IDMxNCwKICAgICAgImJvdHRvbSI6IDU2NiwKICAgICAgIndpZHRoIjogNDQsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJtaW5pbWFwIiwKICAgICAgImxlZnQiOiA1NCwKICAgICAgInRvcCI6IDUyMiwKICAgICAgInJpZ2h0IjogMjY2LAogICAgICAiYm90dG9tIjogNTY2LAogICAgICAid2lkdGgiOiAyMTIsCiAgICAgICJoZWlnaHQiOiA0NCwKICAgICAgImhpdCI6IHRydWUKICAgIH0KICBdLAogICJwYXJlbnQiOiAiYXBwIgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1f282a44b164cc147d2c-c937f1dc18028a783402",
+          "file": "mobile-coaching-visibility.spec.mjs",
+          "line": 177,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "restart-briefing.spec.mjs",
+      "file": "restart-briefing.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native keyboard Restart and held Enter confirm cannot also activate Begin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:22:33.218Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-ed3693eb2ed371bc9751",
+          "file": "restart-briefing.spec.mjs",
+          "line": 174,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T19:21:38.807Z",
+    "duration": 56978.344,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
