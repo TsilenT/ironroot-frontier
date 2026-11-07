@@ -1,0 +1,140 @@
+[WebServer] (node:14880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 24 tests using 2 workers
+
+(node:15031) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (3.7s)
+  ✓   2 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (3.7s)
+  ✓   3 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (3.3s)
+  ✓   4 [narrow-phone] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (5.7s)
+  ✓   5 [narrow-phone] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (6.1s)
+  ✓   6 [narrow-phone] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (5.7s)
+  ✓   7 [narrow-phone] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (2.6s)
+(node:15641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 [narrow-phone] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle (3.9s)
+  ✓   9 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (3.6s)
+(node:15849) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (4.0s)
+  ✓  11 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (4.5s)
+  ✓  12 [landscape] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (7.8s)
+  ✓  13 [landscape] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (7.8s)
+  ✓  15 [landscape] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (3.9s)
+  ✓  14 [landscape] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (6.8s)
+(node:17019) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  16 [landscape] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle (5.0s)
+(node:17175) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (2.7s)
+  ✓  18 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (2.9s)
+  ✓  19 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (3.1s)
+  ✓  20 [desktop] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (4.6s)
+  ✓  21 [desktop] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (5.1s)
+  ✓  23 [desktop] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (2.1s)
+  ✓  22 [desktop] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (5.1s)
+  ✘  24 [desktop] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle (3.2s)
+
+
+  1) [narrow-phone] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+
+    Error: expect(received).toBeNull()
+
+    Received: undefined
+
+      167 |   await press(page,'#restartBattle');await press(page,'#confirmRestart');await briefing(page);
+      168 |   await press(page,'[data-mode="skirmish"]');await press(page,'#start');await pause(page);
+    > 169 |   const newer=await saved(page);expect(newer.campaignId).toBeNull();
+          |                                                          ^
+      170 |   // Bounded delayed-event reproduction, while navigation and saving stay native.
+      171 |   await page.evaluate(({key,oldValue})=>window.dispatchEvent(new StorageEvent('storage',
+      172 |     {key,oldValue,newValue:null,storageArea:localStorage})),{key:SAVE,oldValue:removedBytes});
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:169:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-narrow-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-narrow-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-narrow-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-narrow-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [landscape] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+
+    Error: expect(received).toBeNull()
+
+    Received: undefined
+
+      167 |   await press(page,'#restartBattle');await press(page,'#confirmRestart');await briefing(page);
+      168 |   await press(page,'[data-mode="skirmish"]');await press(page,'#start');await pause(page);
+    > 169 |   const newer=await saved(page);expect(newer.campaignId).toBeNull();
+          |                                                          ^
+      170 |   // Bounded delayed-event reproduction, while navigation and saving stay native.
+      171 |   await page.evaluate(({key,oldValue})=>window.dispatchEvent(new StorageEvent('storage',
+      172 |     {key,oldValue,newValue:null,storageArea:localStorage})),{key:SAVE,oldValue:removedBytes});
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:169:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+
+    Error: expect(received).toBeNull()
+
+    Received: undefined
+
+      167 |   await press(page,'#restartBattle');await press(page,'#confirmRestart');await briefing(page);
+      168 |   await press(page,'[data-mode="skirmish"]');await press(page,'#start');await pause(page);
+    > 169 |   const newer=await saved(page);expect(newer.campaignId).toBeNull();
+          |                                                          ^
+      170 |   // Bounded delayed-event reproduction, while navigation and saving stay native.
+      171 |   await page.evaluate(({key,oldValue})=>window.dispatchEvent(new StorageEvent('storage',
+      172 |     {key,oldValue,newValue:null,storageArea:localStorage})),{key:SAVE,oldValue:removedBytes});
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:169:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../restart-briefing/browser-retirement-artifacts/restart-briefing-a-delayed-ada18-itly-begun-different-battle-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [narrow-phone] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+    [landscape] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+    [desktop] › restart-briefing.spec.mjs:164:1 › a delayed old removal event preserves an explicitly begun different battle
+  21 passed (58.7s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
