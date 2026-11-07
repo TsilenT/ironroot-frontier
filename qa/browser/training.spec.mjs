@@ -206,11 +206,11 @@ test('repeated interrupted navigation retry and lesson jumps never award or muta
 });
 
 const LESSON_CASES=[
-  {id:'first-barracks',type:'barracks',start:280,step:'place-barracks',watch:'watch-spawn',minimum:1,maximum:3,proof:/Your barracks trained its first warrior\. It will march toward enemy buildings on its own\./i},
-  {id:'shield-and-arrow',type:'archery',start:350,step:'place-support',watch:'watch-screen',minimum:8,maximum:11,proof:/Enemy arrows hit your warriors\. Your archers fired with a warrior still ahead of them\./i},
-  {id:'mine-and-upgrade',type:'mint',start:330,step:'place-mine',watch:'watch-income',minimum:4,maximum:6,proof:/With your upgraded mine working, you earned 8\.75 gold per second\./i},
-  {id:'siege-the-tower',type:'foundry',start:540,step:'place-foundry',watch:'watch-siege',minimum:31,maximum:35,proof:/Your siege engines hit the marked tower\. The tower fell\./i},
-  {id:'answer-the-air',type:'archery',start:350,step:'place-anti-air',watch:'watch-anti-air',minimum:14,maximum:17,proof:/Your archers hit the marked gryphon\. The gryphon fell\./i},
+  {id:'first-barracks',type:'barracks',start:280,step:'place-barracks',watch:'watch-spawn',minimum:1,maximum:3,proof:/Your barracks has trained its first warrior, who will march toward enemy buildings on its own\./i},
+  {id:'shield-and-arrow',type:'archery',start:350,step:'place-support',watch:'watch-screen',minimum:8,maximum:11,proof:/Your archers fired with a warrior still ahead of them, and enemy arrows hit your warriors\./i},
+  {id:'mine-and-upgrade',type:'mint',start:330,step:'place-mine',watch:'watch-income',minimum:4,maximum:6,proof:/The upgrade cost gold but no extra building site, raising your observed income to 8\.75 gold per second\./i},
+  {id:'siege-the-tower',type:'foundry',start:540,step:'place-foundry',watch:'watch-siege',minimum:31,maximum:35,proof:/After taking fire from your siege engines, the marked tower fell\./i},
+  {id:'answer-the-air',type:'archery',start:350,step:'place-anti-air',watch:'watch-anti-air',minimum:14,maximum:17,proof:/Your archers hit the marked gryphon before it fell, doing what warriors and siege engines cannot: attack flyers\./i},
 ];
 for(const lesson of LESSON_CASES)test('ordinary unmodified '+lesson.id+' lesson pays actual costs and completes its normal-time observation',async({page},testInfo)=>{
   test.setTimeout(90000);
@@ -238,7 +238,7 @@ for(const lesson of LESSON_CASES)test('ordinary unmodified '+lesson.id+' lesson 
     const goldBefore=await gold(page),timeBefore=await page.locator('#battleTime').textContent();
     await press(page,'#upgradeBuilding');expect(await gold(page)).toBe(goldBefore-133);
     await expect(page.locator('#battleTime')).toHaveText(timeBefore);
-    await expect(page.locator('#feedback')).toHaveText('Upgrade paid. Your level-2 mine has more health and earns more gold.');
+    await expect(page.locator('#feedback')).toHaveText('The paid upgrade gives your level-2 mine more health and income.');
     await continueStep(page);await expect(page.locator('body')).toHaveAttribute('data-step-id','watch-upgraded-income');
     await continueStep(page);
   }

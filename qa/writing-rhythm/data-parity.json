@@ -1,0 +1,26 @@
+{
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "result": "Every exported non-prose property matches the base, including dialogue speakers, all mission/objective/medal identifiers and labels, parameters, revisions, maps, seeds, deployments, prerequisites, rewards, practice steps and sites.",
+  "datasets": {
+    "CAMPAIGN_CHAPTERS": 5,
+    "CAMPAIGN_MISSIONS": 16,
+    "ONBOARDING_CHAPTER": 1,
+    "ONBOARDING_MISSIONS": 3,
+    "INTRO_CHAPTER": 1,
+    "INTRO_MISSIONS": 2,
+    "TRAINING_LESSONS": 5
+  },
+  "proseFieldsReviewed": [
+    "description",
+    "subtitle",
+    "epilogue",
+    "victoryText",
+    "hint",
+    "briefing",
+    "title",
+    "prompt",
+    "successText",
+    "dialogue.text"
+  ],
+  "mechanicalChanges": 0
+}

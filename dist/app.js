@@ -574,13 +574,13 @@ function updateCampaignDeck() {
   if (show) {
     let next = hint.title;
     if (ui.spell) next = 'Tap enemy troops to fire Arrow volley.';
-    else if (ui.build) next = hint.site ? 'Tap a green site. Gold ring suggested.'
+    else if (ui.build) next = hint.site ? 'Tap any green site; the gold ring is a suggestion.'
       : game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost
         ? 'Need more gold. Resume to earn income.' : 'No suggested site. Choose another site or building.';
     else if (hint.buildType) next = `${ui.selected ? 'Close details, then Build → ' : compact && !open ? 'Build → ' : 'Choose '}${(game.buildings || BUILDINGS)[hint.buildType].name}.`;
     else if (hint.control === '#upgrade') next = 'Upgrade the selected building.';
     else if (hint.buildingId) next = 'Tap your marked building to manage it.';
-    else if (hint.control === '#front') next = coachingHold ? 'Start when ready. Front follows your army.' : 'Use Front to follow your army.';
+    else if (hint.control === '#front') next = coachingHold ? 'Start when ready, then use Front to follow your army.' : 'Use Front to follow your army.';
     if (show && point && !guidancePointVisible(renderer, game, point) && !open) next = 'Pan or use the minimap to find the marked site.';
     if (coachingHold) next = 'Paused. ' + next;
     if ($('coachNext').textContent !== next || $('coachTitle').textContent !== hint.title || $('coachText').textContent !== text)
@@ -2770,7 +2770,7 @@ function syncFullscreenControls() {
         ? 'App view is already active. Fullscreen is optional; system controls may remain.'
         : 'App view is already active. Extra fullscreen is unavailable; keep playing here.'
       : available
-        ? 'Optional. Fullscreen can hide browser bars; system controls may remain.'
+        ? 'Optional fullscreen can hide browser bars, though system controls may remain.'
         : 'Fullscreen is unavailable here. Keep playing in this window.');
   for (const node of fullscreenStatuses) node.textContent = status;
 }

@@ -34,7 +34,7 @@ test('catalogues bind to one immutable roster, keep legacy exports clean and der
     for (const key of ['name', 'cost', 'hp', 'spawnTime']) assert.equal(entry.production[key], game.buildings.wardenLodge[key]);
     assert.deepEqual(entry.production.upgradeCosts, [1, 2].map(level => game.upgradeCost({ type: 'wardenLodge', level })));
     assert.match(entry.role, /High-health, low-damage/);
-    assert.match(entry.cautions, /No armor or arrow resistance/);
+    assert.match(entry.cautions, /health rather than armor or arrow resistance/);
     assert.match(entry.cautions, /archers behind it/);
     assert.equal(catalogue.ECONOMY_GUIDE.overtime.forcedDecay, mode === 'timed');
     assert.equal(catalogue.ECONOMY_GUIDE.overtime.decayAt, game.ruleset.endgame.decayAt);

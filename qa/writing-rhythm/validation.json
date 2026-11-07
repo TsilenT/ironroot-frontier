@@ -1,0 +1,130 @@
+{
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "branch": "codex/player-copy-rhythm-2026-11-07",
+  "runtimeEvidence": "source-audit.json",
+  "dataEvidence": "data-parity.json",
+  "environment": {
+    "node": "v24.22.1",
+    "playwright": "1.65.0",
+    "chromium": "155.0.8059.79",
+    "browserExecutable": "/usr/bin/chromium",
+    "browserWorkers": 2,
+    "rootTestConcurrency": 4,
+    "projects": [
+      "phone",
+      "narrow-phone",
+      "landscape",
+      "desktop"
+    ]
+  },
+  "node": {
+    "status": "passed with one pre-existing optional skip",
+    "command": "npm test",
+    "optionalSkip": "installed desktop tooling preserves the scoped minimatch compatibility contracts; optional desktop build dependencies are not installed",
+    "tests": 1225,
+    "passed": 1224,
+    "failed": 0,
+    "skipped": 1,
+    "durationMs": 110472.416891
+  },
+  "browserRuns": [
+    {
+      "name": "first writing pass",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- player-copy-rhythm.spec.mjs field-reference.spec.mjs campaign-navigation.spec.mjs training.spec.mjs first-build-start.spec.mjs hidden-coaching.spec.mjs portrait-income.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'revised copy|field reference|all 19 current briefings|ordinary unmodified|first lesson has no choice|Hide removes|income is visibly|real paid planning aerie|staggered' --reporter=line,html,json",
+      "results": "browser-first-pass.json",
+      "stats": {
+        "startTime": "2026-11-07T07:36:50.590Z",
+        "duration": 661957.826,
+        "expected": 72,
+        "skipped": 0,
+        "unexpected": 8,
+        "flaky": 0
+      },
+      "scope": "80 cases before final four wording refinements and the runtime fullscreen wording. All 19 current dialogue/hint screens, all five ordinary unmodified practice completions, first paid build, whole-banner Hide, field reference, native paid flight orders and staggered launch countdowns.",
+      "outcome": "72 passed, eight failed: four income occlusion failures and four desktop timeouts."
+    },
+    {
+      "name": "untouched exact-base comparison",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- portrait-income.spec.mjs field-reference.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'income is visibly|field reference disclosures|field reference cards|real paid planning aerie' --reporter=line,html,json",
+      "results": "baseline-comparison.json",
+      "stats": {
+        "startTime": "2026-11-07T07:48:03.278Z",
+        "duration": 214420.66,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "baseWorktreeClean": true,
+      "outcome": "24 passed, four failed. All four 320x568 safe-area income-occlusion failures reproduced; all desktop cases that timed out in the first writing run passed."
+    },
+    {
+      "name": "final writing source",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/ironroot-rhythm-browser-final.json npm test -- player-copy-rhythm.spec.mjs field-reference.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'revised copy|field reference disclosures|field reference cards|real paid planning aerie|native pause retains an approaching enemy warning' --reporter=line,html,json",
+      "results": "browser-final.json",
+      "stats": {
+        "startTime": "2026-11-07T07:52:05.226Z",
+        "duration": 271614.161,
+        "expected": 23,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "outcome": "23 passed, one failed: phone field-reference scrolling case exceeded its unchanged 20-second timeout. All four new 19-mission dialogue/hint/fullscreen checks and all four exact one-time warning announcements passed; the four earlier desktop timeout cases passed."
+    }
+  ],
+  "remainingIssues": [
+    {
+      "issue": "base income occlusion",
+      "test": "portrait-income.spec.mjs:39",
+      "viewport": "320x568, all four projects",
+      "assertion": "geometry.occluded expected false, received true after safe-area injection at line 47",
+      "evidence": "Reproduced in all four projects on clean exact base 46d324b. Retained screenshot shows pause menu over the income text. No income/layout code, assertions or test timing changed in this writing branch."
+    },
+    {
+      "issue": "intermittent browser timeout",
+      "test": "field-reference.spec.mjs:124, phone in final run",
+      "status": "unresolved",
+      "evidence": "Exceeded unchanged 20000 ms limit; same case passed first writing run and untouched-base comparison. Initial desktop field-reference and planning timeouts passed in both comparison and final run. No deterministic copy mismatch or geometry failure was observed in these cases; root cause is unproven."
+    }
+  ],
+  "preservation": {
+    "runtimeChanges": "142 literal/template tokens in eight JavaScript files and HTML prose; every executable JS token and inter-token byte unchanged",
+    "numericFactsUnchanged": true,
+    "htmlTagsAndAllAttributesUnchanged": true,
+    "nonProseExportDataUnchanged": true,
+    "frozenHistoricalHashes": "Expected hashes unchanged; restore only exact explicit reviewed prose strings before existing descriptor fingerprint checks",
+    "assertionsAndTimeouts": "Updated exact copy matchers; existing behavioral/geometry assertions, timeout values and skips preserved; incomplete success-feedback negatives retained and expanded"
+  },
+  "limitations": [
+    "This is the focused writing matrix, not the complete integrated flight browser release gate.",
+    "Browser practice completion is ordinary real-time UI execution paired with independent Node causality checks; no independent browser-level combat attribution is claimed.",
+    "No physical-device or assistive-technology validation.",
+    "Orbit writing guidance was not present in the available workspace or tool catalog."
+  ],
+  "publication": {
+    "draftPullRequestOnly": true,
+    "mergeOrDeploymentPerformed": false
+  },
+  "preflight": [
+    {
+      "command": "npm run check",
+      "status": "passed"
+    },
+    {
+      "command": "npm run check:release",
+      "status": "passed",
+      "runtimeFiles": 49,
+      "totalBytes": 956611,
+      "evidence": "runtime-inventory.json"
+    },
+    {
+      "command": "npm --prefix qa/browser run check",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ]
+}
