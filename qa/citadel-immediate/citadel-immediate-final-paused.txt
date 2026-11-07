@@ -1,0 +1,26 @@
+Browser tab: 82, Title: "Ironroot Frontier · RTS", URL: "http://127.0.0.1:4173/".
+1 AXWebArea Ironroot Frontier · RTS, URL: 127.0.0.1:4173/
+	2 container Paused
+		3 container
+			4 text BATTLE MENU
+			5 heading Paused, Value: 2, ID: pauseTitle
+				6 text Paused
+			7 text Campaign · 00:00 · 1× speed
+		8 heading Roadside Watch, Value: 3, ID: pauseBattleName
+			9 text Roadside Watch
+		10 text Destroy the marked barracks within 3:00, or destroy the enemy citadel.
+		11 button Citadel choices Regeneration waiting · 8s remaining. 0 HP restored., ID: pauseCitadel
+			12 text Citadel choices
+			24 text Regeneration waiting · 8s remaining. 0 HP restored.
+		14 button Resume battle, ID: resume
+		15 button Options Audio, display & saves, ID: pauseSettings
+			16 text Options
+			17 text Audio, display & saves
+		18 button Description: Open field guide, ID: help
+			19 text Field guide
+			20 text Units, controls & economy
+		21 text Checkpoint saved on this device. You can return to this battle from the title screen.
+		22 button Save & return to title, ID: saveExit
+		23 button Restart mission…, ID: restartBattle
+
+The focused UI element is 11 button Citadel choices Regeneration waiting · 8s remaining. 0 HP restored., ID: pauseCitadel
