@@ -145,7 +145,7 @@ symmetric strategy or prove that saving ahead would be bad. Automatic safe-
 economy purchase value remains unestablished; four unused preemptive buffers
 and their production opportunity cost argue against assuming it.
 
-## Contracts, ledgers and limits
+## Contracts, corrected accounting and limits
 
 Six focused tests passed: equal costs/single use/deficit preservation, exact
 time and gold boundaries, invalid/dead/ended/repeat rejection, protected mode
@@ -155,12 +155,29 @@ per test). Every gameplay final snapshot also passed strict restore and exact
 round-trip comparison. The strict extension is a QA format, not a finished
 production persistence integration or adversarial proof of purchase history.
 
-Both sides' ledgers reconcile every simulation step:
-420 + base income + mine income + actual bridge receipts + 2/kill bounties
-+ recorded refunds - actual paid actions = gold. Maximum absolute residual was
-1.9782e-11 gold. Initial free barracks, rejected actions, native spells/upgrades,
-all successful actions with time/gold/HP, and production counts are disclosed.
-No ledger gold became negative.
+Independent audit found that the original observer netted immediate Volley kill
+bounties out of both spending and bounty receipts. Its small residual verified
+cash balance, not the claimed gross decomposition. This affected 113 of 123
+successful casts across the 12 AI probes. Gameplay and affordability were honest;
+all successful casts paid the released 75-gold price.
+
+`correct-accounting.mjs` deterministically derives each immediate bounty as
+`75 - (beforeGold - afterGold)` from the retained action. It adds that amount to
+both gross spending and bounty receipts: **2146 gold to each category** in total.
+`corrected-accounting.json` preserves per-action adjustments and both old/new
+ledgers. The audit asserts each gross cast cost is 75, the final cash balances
+still reconcile, and every retained outcome, action/before-after state, HP,
+checkpoint and engine hash is exactly unchanged. No game was replayed.
+
+The raw `results.json`, original source commits and historical `provenance.json`
+remain untouched; their old symmetric ledger categories must not be treated as
+gross-cost evidence. `audit.mjs` is retained as a historical audit of the original
+net categories, not validation of that mistaken decomposition. The current
+correction artifact supersedes the symmetric gross-spending/bounty claim.
+Primary and bridge scripts cast no Volleys, so their ledgers and the independently
+checked outcome, delay, eligibility and matched-horizon findings are unaffected.
+The original maximum balance residual of 1.9782e-11 gold remains a cash-balance
+statement only. Initial free barracks and rejected actions are still disclosed.
 
 A synthetic no-army contract removes production deliberately, buys once, then
 applies 100 ordinary siege damage. Open mode stays ongoing at 1800 seconds
@@ -179,6 +196,7 @@ No browser, device, live gameplay, or human playtest was performed or claimed.
 Run from the repository root (no added packages):
 
 ```sh
+node qa/citadel-reinforcement/correct-accounting.mjs
 node --test qa/citadel-reinforcement/contracts.test.mjs
 node qa/citadel-reinforcement/study.mjs
 node qa/citadel-reinforcement/summarize.mjs
@@ -200,7 +218,9 @@ worktree or output directory first.
 - `paired-comparisons.json`: outcome/time and common checkpoint comparisons.
 - `bridge-matched-horizons.json`: earlier common terminal bridge comparisons.
 - `controlled.json`, `contracts.log`, repository/syntax/runtime logs: validation.
-- `provenance.json`: exact Git/source/evidence hashes and unchanged runtime proof.
+- `provenance.json`: historical Git/source/evidence hashes and unchanged runtime proof.
+- `corrected-accounting.json`: superseding symmetric gross-cost/bounty accounting.
+- `CORRECTION.md`: scope, evidence preservation and deterministic verification.
 
 This is a small, correlated deterministic study with only two seeds and two
 fixed scripted matchups. Pressure won every primary matchup regardless of the

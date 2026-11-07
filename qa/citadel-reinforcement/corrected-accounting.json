@@ -1,0 +1,1598 @@
+{
+  "scope": "observation correction from retained actions; zero replayed games; original results unchanged",
+  "originalCommit": "aabf5f924b95b9273dd26f6bd8eefad77801561e",
+  "firstRunSourceCommit": "92ce6cc1015349b2bbd220f1e093c2b892ef503c",
+  "rawResultsSha256": "5c4ae7cb1d549e2d91124b6fafd057a967b1989e0a1f1e15b5db02d8e20e81c7",
+  "scriptSha256": "9657b47c2d3711309a324c405ff99a381661d425a30a1f67440a065129ed3838",
+  "castCount": 123,
+  "affectedCasts": 113,
+  "totalCorrectionToEachCategory": 2146,
+  "successfulVolleyGrossCost": 75,
+  "exactRetainedActionOutcomeParity": true,
+  "cases": [
+    {
+      "id": "symmetric/classic/17/off",
+      "unchangedActionOutcomeHash": "17c6465de2176dca3c25db7e5b0e3d657c9a265993ebdee2500ff6ea086ba273",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 70,
+          "spent": 1255,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 96,
+          "spent": 1140,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 110,
+          "spent": 1295,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 96,
+          "spent": 1140,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 8,
+          "time": 49.9999999999993,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 11,
+          "time": 84.99999999999731,
+          "side": 0,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 13,
+          "time": 109.9999999999959,
+          "side": 0,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        }
+      ]
+    },
+    {
+      "id": "symmetric/classic/17/reactive",
+      "unchangedActionOutcomeHash": "288e1aee978e5c701d28e5601439dd101868fd120bfe095ee8254f9e0a469128",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 70,
+          "spent": 1255,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 96,
+          "spent": 1140,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 110,
+          "spent": 1295,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 786.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 96,
+          "spent": 1140,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 8,
+          "time": 49.9999999999993,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 11,
+          "time": 84.99999999999731,
+          "side": 0,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 13,
+          "time": 109.9999999999959,
+          "side": 0,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 19,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        }
+      ]
+    },
+    {
+      "id": "symmetric/classic/91/off",
+      "unchangedActionOutcomeHash": "d7cada42a0835ca69ba6444d193c821ff01d500b0fd92d407ecd6e8be5cea42c",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 1745.25,
+          "mine": 360.125,
+          "bridge": 0,
+          "bounty": 438,
+          "spent": 2795,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1745.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 398,
+          "spent": 2477,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 1745.25,
+          "mine": 360.125,
+          "bridge": 0,
+          "bounty": 508,
+          "spent": 2865,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1745.25,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 546,
+          "spent": 2625,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 7,
+          "time": 39.999999999999865,
+          "side": 1,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 10,
+          "time": 69.99999999999817,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 12,
+          "time": 94.99999999999675,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 15,
+          "time": 124.99999999999504,
+          "side": 1,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 21,
+          "time": 185.00000000000782,
+          "side": 1,
+          "netGoldDecrease": 47,
+          "grossCost": 75,
+          "immediateKillBounty": 28
+        },
+        {
+          "actionIndex": 24,
+          "time": 215.00000000001464,
+          "side": 1,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 25,
+          "time": 225.0000000000169,
+          "side": 0,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 28,
+          "time": 245.00000000002146,
+          "side": 1,
+          "netGoldDecrease": 53,
+          "grossCost": 75,
+          "immediateKillBounty": 22
+        },
+        {
+          "actionIndex": 31,
+          "time": 285.0000000000305,
+          "side": 1,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 34,
+          "time": 310.0000000000362,
+          "side": 0,
+          "netGoldDecrease": 49,
+          "grossCost": 75,
+          "immediateKillBounty": 26
+        },
+        {
+          "actionIndex": 35,
+          "time": 310.0000000000362,
+          "side": 1,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 38,
+          "time": 345.00000000004417,
+          "side": 1,
+          "netGoldDecrease": 29,
+          "grossCost": 75,
+          "immediateKillBounty": 46
+        }
+      ]
+    },
+    {
+      "id": "symmetric/classic/91/reactive",
+      "unchangedActionOutcomeHash": "d5d50dfa4fbd2cda41fb6a3a628d84ba4ba46495853a2ec27abeb3f7eb8da1cb",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 1748,
+          "mine": 361.5,
+          "bridge": 0,
+          "bounty": 442,
+          "spent": 2803,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1748,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 388,
+          "spent": 2498,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 1748,
+          "mine": 361.5,
+          "bridge": 0,
+          "bounty": 504,
+          "spent": 2865,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1748,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 490,
+          "spent": 2600,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 7,
+          "time": 39.999999999999865,
+          "side": 1,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 10,
+          "time": 69.99999999999817,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 12,
+          "time": 94.99999999999675,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 15,
+          "time": 124.99999999999504,
+          "side": 1,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 21,
+          "time": 185.00000000000782,
+          "side": 1,
+          "netGoldDecrease": 47,
+          "grossCost": 75,
+          "immediateKillBounty": 28
+        },
+        {
+          "actionIndex": 24,
+          "time": 215.00000000001464,
+          "side": 1,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 25,
+          "time": 225.0000000000169,
+          "side": 0,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 29,
+          "time": 245.00000000002146,
+          "side": 1,
+          "netGoldDecrease": 53,
+          "grossCost": 75,
+          "immediateKillBounty": 22
+        },
+        {
+          "actionIndex": 36,
+          "time": 285.0000000000305,
+          "side": 1,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 39,
+          "time": 310.0000000000362,
+          "side": 0,
+          "netGoldDecrease": 57,
+          "grossCost": 75,
+          "immediateKillBounty": 18
+        },
+        {
+          "actionIndex": 40,
+          "time": 320.0000000000385,
+          "side": 1,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/17/off",
+      "unchangedActionOutcomeHash": "36a111a3544db6a6ff0bd1f6b543d68cff96d5d4a4449d94f9c72dd1e1527408",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 2062,
+          "bridge": 0,
+          "bounty": 1662,
+          "spent": 7040,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 997.625,
+          "bridge": 0,
+          "bounty": 1306,
+          "spent": 5664,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 2062,
+          "bridge": 0,
+          "bounty": 1826,
+          "spent": 7204,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 997.625,
+          "bridge": 0,
+          "bounty": 1468,
+          "spent": 5826,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 8,
+          "time": 59.99999999999873,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 15,
+          "time": 149.99999999999986,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 21,
+          "time": 225.0000000000169,
+          "side": 0,
+          "netGoldDecrease": 43,
+          "grossCost": 75,
+          "immediateKillBounty": 32
+        },
+        {
+          "actionIndex": 26,
+          "time": 270.0000000000271,
+          "side": 1,
+          "netGoldDecrease": 45,
+          "grossCost": 75,
+          "immediateKillBounty": 30
+        },
+        {
+          "actionIndex": 35,
+          "time": 340.00000000004303,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 40,
+          "time": 365.0000000000487,
+          "side": 0,
+          "netGoldDecrease": 17,
+          "grossCost": 75,
+          "immediateKillBounty": 58
+        },
+        {
+          "actionIndex": 44,
+          "time": 390.0000000000544,
+          "side": 0,
+          "netGoldDecrease": 73,
+          "grossCost": 75,
+          "immediateKillBounty": 2
+        },
+        {
+          "actionIndex": 49,
+          "time": 420.0000000000612,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 50,
+          "time": 425.00000000006236,
+          "side": 1,
+          "netGoldDecrease": 29,
+          "grossCost": 75,
+          "immediateKillBounty": 46
+        },
+        {
+          "actionIndex": 72,
+          "time": 530.0000000000657,
+          "side": 1,
+          "netGoldDecrease": 37,
+          "grossCost": 75,
+          "immediateKillBounty": 38
+        },
+        {
+          "actionIndex": 75,
+          "time": 540.0000000000566,
+          "side": 0,
+          "netGoldDecrease": 33,
+          "grossCost": 75,
+          "immediateKillBounty": 42
+        },
+        {
+          "actionIndex": 80,
+          "time": 565.0000000000339,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 83,
+          "time": 585.0000000000157,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 85,
+          "time": 590.0000000000111,
+          "side": 0,
+          "netGoldDecrease": 49,
+          "grossCost": 75,
+          "immediateKillBounty": 26
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/17/reactive",
+      "unchangedActionOutcomeHash": "76c9eaa6adb969864b012e7f7036f56c4da6f49e44645ada1a26a8dc387d1a92",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 2062,
+          "bridge": 0,
+          "bounty": 1662,
+          "spent": 7040,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 997.625,
+          "bridge": 0,
+          "bounty": 1306,
+          "spent": 5664,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 2062,
+          "bridge": 0,
+          "bounty": 1826,
+          "spent": 7204,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 3045.25,
+          "mine": 997.625,
+          "bridge": 0,
+          "bounty": 1468,
+          "spent": 5826,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 8,
+          "time": 59.99999999999873,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 15,
+          "time": 149.99999999999986,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 21,
+          "time": 225.0000000000169,
+          "side": 0,
+          "netGoldDecrease": 43,
+          "grossCost": 75,
+          "immediateKillBounty": 32
+        },
+        {
+          "actionIndex": 26,
+          "time": 270.0000000000271,
+          "side": 1,
+          "netGoldDecrease": 45,
+          "grossCost": 75,
+          "immediateKillBounty": 30
+        },
+        {
+          "actionIndex": 35,
+          "time": 340.00000000004303,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 40,
+          "time": 365.0000000000487,
+          "side": 0,
+          "netGoldDecrease": 17,
+          "grossCost": 75,
+          "immediateKillBounty": 58
+        },
+        {
+          "actionIndex": 44,
+          "time": 390.0000000000544,
+          "side": 0,
+          "netGoldDecrease": 73,
+          "grossCost": 75,
+          "immediateKillBounty": 2
+        },
+        {
+          "actionIndex": 49,
+          "time": 420.0000000000612,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 50,
+          "time": 425.00000000006236,
+          "side": 1,
+          "netGoldDecrease": 29,
+          "grossCost": 75,
+          "immediateKillBounty": 46
+        },
+        {
+          "actionIndex": 72,
+          "time": 530.0000000000657,
+          "side": 1,
+          "netGoldDecrease": 37,
+          "grossCost": 75,
+          "immediateKillBounty": 38
+        },
+        {
+          "actionIndex": 75,
+          "time": 540.0000000000566,
+          "side": 0,
+          "netGoldDecrease": 33,
+          "grossCost": 75,
+          "immediateKillBounty": 42
+        },
+        {
+          "actionIndex": 80,
+          "time": 565.0000000000339,
+          "side": 0,
+          "netGoldDecrease": 75,
+          "grossCost": 75,
+          "immediateKillBounty": 0
+        },
+        {
+          "actionIndex": 83,
+          "time": 585.0000000000157,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 86,
+          "time": 590.0000000000111,
+          "side": 0,
+          "netGoldDecrease": 49,
+          "grossCost": 75,
+          "immediateKillBounty": 26
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/91/off",
+      "unchangedActionOutcomeHash": "56ad93c07fedb4e63d273d7d15ae744a32c2ae23c5d4a62258634b860b252d31",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1496,
+          "bridge": 0,
+          "bounty": 858,
+          "spent": 4962,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1420,
+          "bridge": 0,
+          "bounty": 834,
+          "spent": 4970,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1496,
+          "bridge": 0,
+          "bounty": 1026,
+          "spent": 5130,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1420,
+          "bridge": 0,
+          "bounty": 964,
+          "spent": 5100,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 10,
+          "time": 89.99999999999703,
+          "side": 1,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        },
+        {
+          "actionIndex": 17,
+          "time": 175.00000000000554,
+          "side": 0,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 20,
+          "time": 200.00000000001123,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 24,
+          "time": 245.00000000002146,
+          "side": 1,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 31,
+          "time": 305.0000000000351,
+          "side": 0,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 34,
+          "time": 335.0000000000419,
+          "side": 0,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 42,
+          "time": 395.00000000005554,
+          "side": 1,
+          "netGoldDecrease": 5,
+          "grossCost": 75,
+          "immediateKillBounty": 70
+        },
+        {
+          "actionIndex": 46,
+          "time": 425.00000000006236,
+          "side": 1,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 50,
+          "time": 445.0000000000669,
+          "side": 0,
+          "netGoldDecrease": 21,
+          "grossCost": 75,
+          "immediateKillBounty": 54
+        },
+        {
+          "actionIndex": 53,
+          "time": 460.0000000000703,
+          "side": 1,
+          "netGoldDecrease": 73,
+          "grossCost": 75,
+          "immediateKillBounty": 2
+        },
+        {
+          "actionIndex": 54,
+          "time": 470.0000000000726,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        }
+      ]
+    },
+    {
+      "id": "symmetric/long-march/91/reactive",
+      "unchangedActionOutcomeHash": "7905f63a7cec047b49ea487eee6fa06ab3f0bd513ab9543cabb98d0c9d67f519",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1496,
+          "bridge": 0,
+          "bounty": 858,
+          "spent": 4962,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1420,
+          "bridge": 0,
+          "bounty": 834,
+          "spent": 4970,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1496,
+          "bridge": 0,
+          "bounty": 1026,
+          "spent": 5130,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 2396,
+          "mine": 1420,
+          "bridge": 0,
+          "bounty": 964,
+          "spent": 5100,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 10,
+          "time": 89.99999999999703,
+          "side": 1,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        },
+        {
+          "actionIndex": 17,
+          "time": 175.00000000000554,
+          "side": 0,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 20,
+          "time": 200.00000000001123,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 24,
+          "time": 245.00000000002146,
+          "side": 1,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 31,
+          "time": 305.0000000000351,
+          "side": 0,
+          "netGoldDecrease": 39,
+          "grossCost": 75,
+          "immediateKillBounty": 36
+        },
+        {
+          "actionIndex": 34,
+          "time": 335.0000000000419,
+          "side": 0,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 42,
+          "time": 395.00000000005554,
+          "side": 1,
+          "netGoldDecrease": 5,
+          "grossCost": 75,
+          "immediateKillBounty": 70
+        },
+        {
+          "actionIndex": 46,
+          "time": 425.00000000006236,
+          "side": 1,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 50,
+          "time": 445.0000000000669,
+          "side": 0,
+          "netGoldDecrease": 21,
+          "grossCost": 75,
+          "immediateKillBounty": 54
+        },
+        {
+          "actionIndex": 54,
+          "time": 460.0000000000703,
+          "side": 1,
+          "netGoldDecrease": 73,
+          "grossCost": 75,
+          "immediateKillBounty": 2
+        },
+        {
+          "actionIndex": 56,
+          "time": 470.0000000000726,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/17/off",
+      "unchangedActionOutcomeHash": "e0b30cb0f96ee0f49b60cca7d5ec73f21dddc563d211b44487c890ff933c08af",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 64,
+          "spent": 1251,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 205,
+          "bridge": 0,
+          "bounty": 92,
+          "spent": 1435,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 108,
+          "spent": 1295,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 205,
+          "bridge": 0,
+          "bounty": 92,
+          "spent": 1435,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 8,
+          "time": 49.9999999999993,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 11,
+          "time": 84.99999999999731,
+          "side": 0,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 13,
+          "time": 109.9999999999959,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 59,
+          "grossCost": 75,
+          "immediateKillBounty": 16
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/17/reactive",
+      "unchangedActionOutcomeHash": "97b0477a5dd971c45c3c97da2313ff1a80012c7228d3275f64c6965042442966",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 64,
+          "spent": 1251,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 205,
+          "bridge": 0,
+          "bounty": 92,
+          "spent": 1435,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 108,
+          "spent": 1295,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 792.5,
+          "mine": 205,
+          "bridge": 0,
+          "bounty": 92,
+          "spent": 1435,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 8,
+          "time": 49.9999999999993,
+          "side": 0,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 11,
+          "time": 84.99999999999731,
+          "side": 0,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 13,
+          "time": 109.9999999999959,
+          "side": 0,
+          "netGoldDecrease": 67,
+          "grossCost": 75,
+          "immediateKillBounty": 8
+        },
+        {
+          "actionIndex": 18,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 59,
+          "grossCost": 75,
+          "immediateKillBounty": 16
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/91/off",
+      "unchangedActionOutcomeHash": "0f46f9f82c4a87b887af91723473caa6afac66667bac30d4aa808cebd2f5336e",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 231,
+          "bridge": 0,
+          "bounty": 278,
+          "spent": 2231,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 230,
+          "spent": 2030,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 231,
+          "bridge": 0,
+          "bounty": 312,
+          "spent": 2265,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 370,
+          "spent": 2170,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 7,
+          "time": 39.999999999999865,
+          "side": 1,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 10,
+          "time": 69.99999999999817,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 12,
+          "time": 94.99999999999675,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 15,
+          "time": 124.99999999999504,
+          "side": 1,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 18,
+          "time": 155.000000000001,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 21,
+          "time": 180.00000000000668,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 23,
+          "time": 205.00000000001236,
+          "side": 1,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 26,
+          "time": 230.00000000001805,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 27,
+          "time": 230.00000000001805,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 29,
+          "time": 255.00000000002373,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 32,
+          "time": 285.0000000000305,
+          "side": 1,
+          "netGoldDecrease": 53,
+          "grossCost": 75,
+          "immediateKillBounty": 22
+        }
+      ]
+    },
+    {
+      "id": "symmetric/twin-span/91/reactive",
+      "unchangedActionOutcomeHash": "43fca6ef294e31d07737990ec64234915d4c71a33f5659c4531a8923a2743cdd",
+      "ledgerBefore": [
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 231,
+          "bridge": 0,
+          "bounty": 278,
+          "spent": 2231,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 230,
+          "spent": 2030,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "ledgerCorrected": [
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 231,
+          "bridge": 0,
+          "bounty": 312,
+          "spent": 2265,
+          "refund": 0,
+          "maxResidual": 0
+        },
+        {
+          "initial": 420,
+          "base": 1537,
+          "mine": 0,
+          "bridge": 0,
+          "bounty": 370,
+          "spent": 2170,
+          "refund": 0,
+          "maxResidual": 0
+        }
+      ],
+      "adjustments": [
+        {
+          "actionIndex": 6,
+          "time": 25.00000000000022,
+          "side": 0,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 7,
+          "time": 39.999999999999865,
+          "side": 1,
+          "netGoldDecrease": 71,
+          "grossCost": 75,
+          "immediateKillBounty": 4
+        },
+        {
+          "actionIndex": 10,
+          "time": 69.99999999999817,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 12,
+          "time": 94.99999999999675,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 15,
+          "time": 124.99999999999504,
+          "side": 1,
+          "netGoldDecrease": 65,
+          "grossCost": 75,
+          "immediateKillBounty": 10
+        },
+        {
+          "actionIndex": 16,
+          "time": 134.99999999999645,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 18,
+          "time": 155.000000000001,
+          "side": 1,
+          "netGoldDecrease": 63,
+          "grossCost": 75,
+          "immediateKillBounty": 12
+        },
+        {
+          "actionIndex": 21,
+          "time": 180.00000000000668,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 25,
+          "time": 205.00000000001236,
+          "side": 1,
+          "netGoldDecrease": 55,
+          "grossCost": 75,
+          "immediateKillBounty": 20
+        },
+        {
+          "actionIndex": 32,
+          "time": 230.00000000001805,
+          "side": 0,
+          "netGoldDecrease": 61,
+          "grossCost": 75,
+          "immediateKillBounty": 14
+        },
+        {
+          "actionIndex": 34,
+          "time": 230.00000000001805,
+          "side": 1,
+          "netGoldDecrease": 69,
+          "grossCost": 75,
+          "immediateKillBounty": 6
+        },
+        {
+          "actionIndex": 41,
+          "time": 255.00000000002373,
+          "side": 1,
+          "netGoldDecrease": 51,
+          "grossCost": 75,
+          "immediateKillBounty": 24
+        },
+        {
+          "actionIndex": 50,
+          "time": 285.0000000000305,
+          "side": 1,
+          "netGoldDecrease": 53,
+          "grossCost": 75,
+          "immediateKillBounty": 22
+        }
+      ]
+    }
+  ]
+}
