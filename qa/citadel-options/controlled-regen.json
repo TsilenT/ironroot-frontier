@@ -1,0 +1,53 @@
+{
+  "scope": "synthetic no-production attrition fixtures; no paid-match claims",
+  "rows": [
+    {
+      "timed": false,
+      "pattern": "continuous",
+      "time": 1799.9999999989138,
+      "winner": null,
+      "hp": [
+        3150,
+        6000
+      ],
+      "restored": 0,
+      "budgetExhaustedAt": null
+    },
+    {
+      "timed": false,
+      "pattern": "interrupted",
+      "time": 1799.9999999989138,
+      "winner": null,
+      "hp": [
+        4019.9999999985903,
+        6000
+      ],
+      "restored": 600,
+      "budgetExhaustedAt": 488.0000000000797
+    },
+    {
+      "timed": true,
+      "pattern": "continuous",
+      "time": 551.6000000000491,
+      "winner": 1,
+      "hp": [
+        0,
+        768.2289999971405
+      ],
+      "restored": 0,
+      "budgetExhaustedAt": null
+    },
+    {
+      "timed": true,
+      "pattern": "interrupted",
+      "time": 560.4000000000411,
+      "winner": 1,
+      "hp": [
+        0,
+        233.1229999970214
+      ],
+      "restored": 485.85000000113615,
+      "budgetExhaustedAt": null
+    }
+  ]
+}
