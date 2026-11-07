@@ -168,6 +168,37 @@ test('opening suggestions use the bound roster, Rootwarden screens, forward towe
   assert.doesNotMatch($('coachText').textContent, /pause|Resume|stopped/);
 });
 
+for (const [width,height] of [[320,480],[320,568],[390,650],[740,320],[844,390]]) {
+  test(`Shield at the Fork assembles complete mobile build prompts at ${width}x${height}`, () => {
+    const h = harness(1,{width,height}), {c,$} = h;
+    $('coachingPlan').onclick();
+    const prompts = [
+      {
+        open: 'Build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',
+        closed: 'Open Build, then build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',
+      },
+      {
+        open: 'Place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',
+        closed: 'Open Build, then place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',
+      },
+    ];
+    for (const [index,prompt] of prompts.entries()) {
+      if (index) h.buy('wardenLodge',0);
+      const before = c.game.serialize();
+      c.setCompactBuildOpen(false); c.updateCampaignDeck();
+      assert.equal(c.ui.build,null);
+      assert.equal($('coachText').textContent,prompt.closed);
+      c.setCompactBuildOpen(true); c.updateCampaignDeck();
+      assert.equal($('coachText').textContent,prompt.open);
+      c.setCompactBuildOpen(false); c.updateCampaignDeck();
+      assert.equal($('coachText').textContent,prompt.closed);
+      assert.deepEqual(c.game.serialize(),before,'reading and toggling Build preserve the actual battle');
+    }
+    assert.equal(c.game.state.gold[0],740-c.game.buildings.wardenLodge.cost);
+    assert.equal(c.game.state.time,0);
+  });
+}
+
 test('earned first lesson suppresses redundant Emberwatch teaching while later income/defense lessons remain optional', () => {
   for (const mission of ONBOARDING_MISSIONS) assert.ok(campaignTeaching(mission.id));
   assert.equal(campaignTeaching('emberwatch', { learnedBasics: true }), null);

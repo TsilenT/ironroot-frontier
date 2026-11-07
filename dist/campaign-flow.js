@@ -149,9 +149,9 @@ export function campaignCoach(game, id, choice = {}) {
     }
     if (id === 'shield-at-the-fork') {
       if (!own.some(b => b.type === 'wardenLodge'))
-        return build('wardenLodge', 'Give the archers cover', 'A Warden lodge toward the front of the north road trains Rootwardens to take hits, though they deal little damage.', 0);
+        return build('wardenLodge', 'Give the archers cover', 'Build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.', 0);
       if (!own.some(b => b.type === 'archery' && b.lane === 0))
-        return build('archery', 'Add damage behind the screen', 'An archery range behind the northern Warden lodge adds damage while the Rootwardens hold the front.', 0);
+        return build('archery', 'Add damage behind the screen', 'Place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.', 0);
       if (!own.some(b => b.lane === 1 && definitions[b.type]?.unit))
         return build('barracks', 'Watch the other road', 'Build a force on the south road to meet the troops still coming from that camp.', 1);
       if (!own.some(b => b.type === 'mint'))

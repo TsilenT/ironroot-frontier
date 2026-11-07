@@ -21,11 +21,11 @@
     "status": "passed with one pre-existing optional skip",
     "command": "npm test",
     "optionalSkip": "installed desktop tooling preserves the scoped minimatch compatibility contracts; optional desktop build dependencies are not installed",
-    "tests": 1225,
-    "passed": 1224,
+    "tests": 1230,
+    "passed": 1229,
     "failed": 0,
     "skipped": 1,
-    "durationMs": 110472.416891
+    "durationMs": 110911.959248
   },
   "browserRuns": [
     {
@@ -59,7 +59,7 @@
       "outcome": "24 passed, four failed. All four 320x568 safe-area income-occlusion failures reproduced; all desktop cases that timed out in the first writing run passed."
     },
     {
-      "name": "final writing source",
+      "name": "writing source before mobile-prompt amendment",
       "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/ironroot-rhythm-browser-final.json npm test -- player-copy-rhythm.spec.mjs field-reference.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'revised copy|field reference disclosures|field reference cards|real paid planning aerie|native pause retains an approaching enemy warning' --reporter=line,html,json",
       "results": "browser-final.json",
       "stats": {
@@ -70,7 +70,8 @@
         "unexpected": 1,
         "flaky": 0
       },
-      "outcome": "23 passed, one failed: phone field-reference scrolling case exceeded its unchanged 20-second timeout. All four new 19-mission dialogue/hint/fullscreen checks and all four exact one-time warning announcements passed; the four earlier desktop timeout cases passed."
+      "outcome": "23 passed, one failed: phone field-reference scrolling case exceeded its unchanged 20-second timeout. All four new 19-mission dialogue/hint/fullscreen checks and all four exact one-time warning announcements passed; the four earlier desktop timeout cases passed.",
+      "testedSourceCommit": "93f8e43bb1ae36c4ee3fb65a5dbce392586ac502"
     }
   ],
   "remainingIssues": [
@@ -115,7 +116,7 @@
       "command": "npm run check:release",
       "status": "passed",
       "runtimeFiles": 49,
-      "totalBytes": 956611,
+      "totalBytes": 956619,
       "evidence": "runtime-inventory.json"
     },
     {
@@ -126,5 +127,42 @@
       "command": "git diff --check",
       "status": "passed"
     }
-  ]
+  ],
+  "integrationAmendment": {
+    "parentCommit": "93f8e43bb1ae36c4ee3fb65a5dbce392586ac502",
+    "scope": "Exactly two coaching strings now begin with imperatives, so the real mobile Open Build, then prefix produces complete sentences. No composer, mechanics, identifiers or numbers changed.",
+    "sourceEvidence": "amendment-source-audit.json",
+    "beforeFixRegression": {
+      "tests": 5,
+      "failed": 5,
+      "reason": "Complete prefixed Warden-lodge prompt did not match the expected imperative at all five mobile viewports."
+    },
+    "focusedNode": {
+      "command": "node --test tests/campaign-flow.test.mjs tests/campaign-teaching-integration.test.mjs tests/first-build-start.test.mjs",
+      "passed": 62,
+      "failed": 0
+    },
+    "newNodeCoverage": "Five mobile viewports assert exact full closed-drawer and open-drawer prompts at the Warden-lodge and archery stages; actual paid construction, unchanged gold and stopped clock remain checked.",
+    "browser": {
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/ironroot-prompt-browser.json npm test -- contextual-coaching.spec.mjs --workers=2 --grep 'shield-at-the-fork allows real paid planning' --reporter=line,html,json",
+      "stats": {
+        "startTime": "2026-11-07T08:10:04.319Z",
+        "duration": 60757.154,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "results": "amendment-browser.json",
+      "scope": "Both exact complete prompts checked in the existing real paid-planning test on all four profiles; original gameplay and geometry assertions, timeout and skip declarations unchanged."
+    },
+    "prCreationRetried": false,
+    "fullNode": {
+      "tests": 1230,
+      "passed": 1229,
+      "failed": 0,
+      "skipped": 1,
+      "durationMs": 110911.959248
+    }
+  }
 }
