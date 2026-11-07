@@ -1,0 +1,35 @@
+[WebServer] (node:8050) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 2 workers
+
+(node:8062) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8063) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [phone] › hidden-coaching.spec.mjs:85:1 › hidden hints stay hidden through Options and Back, while reload keeps the existing per-attempt default (7.0s)
+  ✓   2 [phone] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.7s)
+(node:8400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [phone] › restart-briefing.spec.mjs:198:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (5.9s)
+(node:8529) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [narrow-phone] › hidden-coaching.spec.mjs:85:1 › hidden hints stay hidden through Options and Back, while reload keeps the existing per-attempt default (6.8s)
+  ✓   6 [narrow-phone] › restart-briefing.spec.mjs:198:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (5.6s)
+  ✓   5 [narrow-phone] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.7s)
+(node:8827) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8837) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [landscape] › hidden-coaching.spec.mjs:85:1 › hidden hints stay hidden through Options and Back, while reload keeps the existing per-attempt default (7.6s)
+  ✓   8 [landscape] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (12.7s)
+(node:9249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [landscape] › restart-briefing.spec.mjs:198:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (8.4s)
+(node:9404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 [desktop] › hidden-coaching.spec.mjs:85:1 › hidden hints stay hidden through Options and Back, while reload keeps the existing per-attempt default (6.5s)
+  ✓  12 [desktop] › restart-briefing.spec.mjs:198:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (5.3s)
+  ✓  11 [desktop] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.0s)
+
+  12 passed (56.0s)

@@ -1,0 +1,66 @@
+{
+  "base": "495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca",
+  "runtimeCommit": "d1bfec3e859827ea4b1deb199c94542e5f6f92ae",
+  "candidate": "0.19.0",
+  "cache": "ironroot-v0.19.0",
+  "scope": "Private draft PR16; no merge or deployment",
+  "localEnvironment": {
+    "node": "v24.22.1",
+    "chromium": "155.0.8059.79",
+    "playwright": "1.65.0"
+  },
+  "node": {
+    "passed": 1461,
+    "failed": 0,
+    "skipped": 1,
+    "skip": "Optional desktop build dependency compatibility test; dependencies not installed",
+    "log": "qa/bridge-control/node-ui-final.log"
+  },
+  "syntax": "qa/bridge-control/syntax-ui-final.log",
+  "browserPreflight": "qa/bridge-control/browser-harness-final.log",
+  "publishedCi": {
+    "head": "d1bfec3e859827ea4b1deb199c94542e5f6f92ae",
+    "run": 42413281225,
+    "url": "https://github.com/TsilenT/ironroot-frontier/actions/runs/42413281225",
+    "test": "success",
+    "syntax": "success"
+  },
+  "initialPublishedCi": "qa/bridge-control/ci-initial-failure.json",
+  "study": {
+    "plan": "qa/bridge-control/study-plan.json",
+    "harness": "qa/bridge-control/paid-study.mjs",
+    "results": "qa/bridge-control/study-final-results.json",
+    "review": "qa/bridge-control/study-final-review.md",
+    "provenance": "qa/bridge-control/study-provenance.json",
+    "games": 36,
+    "paidActions": 457,
+    "restoreChecks": 121,
+    "readinessBlockers": []
+  },
+  "runtime": {
+    "manifest": "qa/bridge-control/runtime-final.json",
+    "files": 52,
+    "bytes": 1008378,
+    "manifestSha256": "47c1265f794fb75d228a9fc397203a39db59cf7f9bb4fe50e3ed19bb4115c9dd"
+  },
+  "desktopMetadataReview": "qa/bridge-control/desktop-lock-review.json",
+  "failedEvidenceRetained": true,
+  "limits": [
+    "One seed, Normal difficulty, synthetic policies; no human balance claim",
+    "No physical-device or non-Chromium certification",
+    "No production smoke, merge, deployment or PR14 integration",
+    "Natural study did not exercise isolated air denial or long empty ownership; pure tests cover those mechanics",
+    "Final documentation/evidence commit will trigger its own CI; recorded CI is pinned to the runtime commit above"
+  ],
+  "browser": {
+    "summary": "qa/bridge-control/browser-summary.json",
+    "review": "qa/bridge-control/browser-review.md",
+    "measurements": "qa/bridge-control/browser-measurements.json",
+    "latestApplicablePassed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "automaticRetries": 0,
+    "totalExecutionsIncludingRetainedFailures": 41,
+    "retainedPreliminaryFailures": 6
+  }
+}

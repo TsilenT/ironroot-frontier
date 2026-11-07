@@ -63,11 +63,12 @@ cues that do not depend on color.
 The paid study's fixed preregistration is in
 `qa/bridge-control/study-plan.json`. The earlier presence/12-second lease shadow
 study was not consumed and supplies no balance evidence for persistent ownership.
+
 ## Measured validation
 
-- Aggregate Node run: 1,461 passed, zero failed, one existing skipped
+- Final post-readability-repair aggregate Node run: 1,461 passed, zero failed, one existing skipped
   optional desktop dependency compatibility test (1,462 total). See
-  `qa/bridge-control/node-final.log`.
+  `qa/bridge-control/node-ui-final.log`.
 - All runtime JavaScript parses; browser harness preflight passes. Source runtime
   preflight admits exactly 52 runtime files, 1,008,378 bytes, recorded with SHA-256
   per file in `qa/bridge-control/runtime-final.json`.
@@ -105,7 +106,45 @@ Initial failed evidence is retained: transient extracted-UI fixture dependencies
 and hardcoded protocol-8 test expectations. Their assertions and downstream
 checks were retained; current tests passed after integration fixes.
 
-The first focused native run passed 8/12 cases. Four minimum-font failures (8px landscape total income, 9px desktop bridge subtitle) and a visually observed flyer-over-label occlusion were repaired with a mode-scoped 11px font and labels drawn after troops/projectiles. No new row or smaller controls. Failed artifacts remain in `qa/bridge-control/browser-initial`. Final native and post-repair aggregate checks are still running at this draft stage.
+Published CI on initial head `d3a3f3d` is distinct from those local integration
+runs: GitHub run `42412863526` had 1,460 pass, one fail and one skip. Its only
+failure was the protocol-8 expectation in
+`qa/browser/validate-production-v015-upgrade.mjs`; syntax checking was skipped
+after that failure. `qa/bridge-control/ci-initial-failure.json` retains the
+authoritative job excerpt and link. The repair changes that expected version to
+9 and retains every underlying old-profile preservation and fencing assertion.
+
+The latest applicable native Chromium results are **25/25**: 12 bridge cases and
+13 existing navigation/coaching regressions. The requested 320×430, 390×650,
+844×390 and 1180×757 sizes preserve usable fields and all mobile 44px targets.
+The smallest portrait battlefield measures 320×242; landscape measures 692×282.
+Real 140-gold native purchases capture, pay while empty and survive reload;
+total +5.17/s and separate bridge +0.17/s remain visible. Setup remembers both
+booleans, active/restarted identity stays fixed, and PR15 navigation stays intact.
+See [browser-review.md](../qa/bridge-control/browser-review.md) and the measured
+[geometry/ledgers](../qa/bridge-control/browser-measurements.json).
+
+The initial browser run passed 8/12. Four small-text failures (8px landscape,
+9px desktop) and visually observed troop occlusion were repaired with a scoped
+11px font and labels above actors. A second run passed 10/12; two synthetic
+capture-observation races were fixed in the passive QA observer, with no
+simulation changes. All four affected cases passed the focused rerun. The
+six preliminary failures remain with screenshots, error contexts and downstream
+assertions; 41 total executions cover 25 latest-applicable cases, with no skips
+or automatic retries. The ordinary temporary Resume toast can cover one pending
+label in the early synthetic screenshot; actual draw/status observations and
+clear paid-ownership screenshots are distinguished in the review.
+
+Published CI on runtime commit `d1bfec3e` passed both `npm test` and
+`npm run check` (run `42413281225`). Later final evidence/metadata commits trigger
+their own CI; consult the PR for the latest status. Independent review also
+caught an accidental transitive `undici` Node-constraint version replacement;
+it was restored to `>=20.18.1`. A full JSON comparison proves all third-party
+lockfile metadata identical to base; only the two game-version fields differ.
+See `qa/bridge-control/desktop-lock-review.json`. No runtime bytes changed in
+that correction. The final source inventory SHA-256 is
+`47c1265f794fb75d228a9fc397203a39db59cf7f9bb4fe50e3ed19bb4115c9dd`.
+
 Physical devices, non-Chromium browsers and production smoke are outside this
 candidate's evidence. No merge, deployment, PR14 integration, permanent upgrades
 or spell changes are included.

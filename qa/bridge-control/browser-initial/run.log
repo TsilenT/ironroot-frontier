@@ -1,0 +1,175 @@
+[WebServer] (node:6401) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 2 workers
+
+(node:6413) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [phone] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (10.8s)
+  ✓   3 [phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (4.3s)
+(node:6776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [phone] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (20.2s)
+(node:6930) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [narrow-phone] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (9.0s)
+  ✓   6 [narrow-phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (4.0s)
+(node:7137) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [narrow-phone] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (17.0s)
+(node:7318) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [landscape] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (9.9s)
+  ✘   8 [landscape] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (3.5s)
+  ✘   9 [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (3.2s)
+(node:7511) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7519) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  11 [desktop] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (3.0s)
+(node:7805) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 [desktop] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (3.3s)
+  ✓  10 [desktop] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (9.3s)
+
+
+  1) [landscape] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back 
+
+    Error: {"text":"+5.00 /s","expectedText":"+5.00/s","visibleText":"","complete":false,"characters":[{"character":"+","visible":false,"reasons":["undersized"]},{"character":"5","visible":false,"reasons":["undersized"]},{"character":".","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"/","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]}],"rects":[{"left":630.015625,"top":19,"right":633.875,"bottom":28,"width":3.859375,"height":9},{"left":633.859375,"top":19,"right":638.109375,"bottom":28,"width":4.25,"height":9},{"left":638.09375,"top":19,"right":639.296875,"bottom":28,"width":1.203125,"height":9},{"left":639.28125,"top":19,"right":643.890625,"bottom":28,"width":4.609375,"height":9},{"left":643.875,"top":19,"right":648.46875,"bottom":28,"width":4.59375,"height":9},{"left":650.34375,"top":19,"right":652.90625,"bottom":28,"width":2.5625,"height":9},{"left":652.890625,"top":19,"right":656.46875,"bottom":28,"width":3.578125,"height":9}],"overflow":false}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      30 |   for(const c of geometry.controls){if(geometry.mobile){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);}expect(c.hit,c.id).toBe(true);expect(c.left).toBeGreaterThanOrEqual(-.5);expect(c.right).toBeLessThanOrEqual(geometry.viewport.width+.5);expect(c.top).toBeGreaterThanOrEqual(-.5);expect(c.bottom).toBeLessThanOrEqual(geometry.viewport.height+.5);}
+      31 |   const text=await page.evaluate(inspectPhoneText,{selector:geometry.mobile?'#income,#gold,#objectiveProgress,#objectiveTime':'#income,#gold,#phase small',ownerSelector:'.resources,#protectedDock,#phase',minimumFont:10});
+    > 32 |   for(const t of text){expect(t.complete,JSON.stringify(t)).toBe(true);expect(t.overflow,t.text).toBe(false);}
+         |                                                             ^
+      33 |   await info.attach(label+'-geometry',{body:JSON.stringify({geometry,text},null,2),contentType:'application/json'});return geometry;
+      34 | }
+      35 | async function savedIncome(page,battle){
+        at fit (/workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:32:61)
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:60:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+
+    Error: {"text":"+5.00 /s","expectedText":"+5.00/s","visibleText":"","complete":false,"characters":[{"character":"+","visible":false,"reasons":["undersized"]},{"character":"5","visible":false,"reasons":["undersized"]},{"character":".","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"/","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]}],"rects":[{"left":630.015625,"top":19,"right":633.875,"bottom":28,"width":3.859375,"height":9},{"left":633.859375,"top":19,"right":638.109375,"bottom":28,"width":4.25,"height":9},{"left":638.09375,"top":19,"right":639.296875,"bottom":28,"width":1.203125,"height":9},{"left":639.28125,"top":19,"right":643.890625,"bottom":28,"width":4.609375,"height":9},{"left":643.875,"top":19,"right":648.46875,"bottom":28,"width":4.59375,"height":9},{"left":650.34375,"top":19,"right":652.90625,"bottom":28,"width":2.5625,"height":9},{"left":652.890625,"top":19,"right":656.46875,"bottom":28,"width":3.578125,"height":9}],"overflow":false}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      30 |   for(const c of geometry.controls){if(geometry.mobile){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);}expect(c.hit,c.id).toBe(true);expect(c.left).toBeGreaterThanOrEqual(-.5);expect(c.right).toBeLessThanOrEqual(geometry.viewport.width+.5);expect(c.top).toBeGreaterThanOrEqual(-.5);expect(c.bottom).toBeLessThanOrEqual(geometry.viewport.height+.5);}
+      31 |   const text=await page.evaluate(inspectPhoneText,{selector:geometry.mobile?'#income,#gold,#objectiveProgress,#objectiveTime':'#income,#gold,#phase small',ownerSelector:'.resources,#protectedDock,#phase',minimumFont:10});
+    > 32 |   for(const t of text){expect(t.complete,JSON.stringify(t)).toBe(true);expect(t.overflow,t.text).toBe(false);}
+         |                                                             ^
+      33 |   await info.attach(label+'-geometry',{body:JSON.stringify({geometry,text},null,2),contentType:'application/json'});return geometry;
+      34 | }
+      35 | async function savedIncome(page,battle){
+        at fit (/workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:32:61)
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:83:224
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back 
+
+    Error: {"text":"Bridges +0.00 /s","expectedText":"Bridges+0.00/s","visibleText":"","complete":false,"characters":[{"character":"B","visible":false,"reasons":["undersized"]},{"character":"r","visible":false,"reasons":["undersized"]},{"character":"i","visible":false,"reasons":["undersized"]},{"character":"d","visible":false,"reasons":["undersized"]},{"character":"g","visible":false,"reasons":["undersized"]},{"character":"e","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]},{"character":"+","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":".","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"/","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]}],"rects":[{"left":546.515625,"top":129.5,"right":553.0625,"bottom":139.5,"width":6.546875,"height":10},{"left":553.046875,"top":129.5,"right":557.890625,"bottom":139.5,"width":4.84375,"height":10},{"left":557.875,"top":129.5,"right":561.515625,"bottom":139.5,"width":3.640625,"height":10},{"left":561.5,"top":129.5,"right":568.15625,"bottom":139.5,"width":6.65625,"height":10},{"left":568.140625,"top":129.5,"right":574.25,"bottom":139.5,"width":6.109375,"height":10},{"left":574.234375,"top":129.5,"right":580.46875,"bottom":139.5,"width":6.234375,"height":10},{"left":580.453125,"top":129.5,"right":586.21875,"bottom":139.5,"width":5.765625,"height":10},{"left":589.890625,"top":129.5,"right":595.96875,"bottom":139.5,"width":6.078125,"height":10},{"left":595.953125,"top":129.5,"right":602.5625,"bottom":139.5,"width":6.609375,"height":10},{"left":602.546875,"top":129.5,"right":605.65625,"bottom":139.5,"width":3.109375,"height":10},{"left":605.640625,"top":129.5,"right":612.546875,"bottom":139.5,"width":6.90625,"height":10},{"left":612.53125,"top":129.5,"right":619.453125,"bottom":139.5,"width":6.921875,"height":10},{"left":623.125,"top":129.5,"right":627.734375,"bottom":139.5,"width":4.609375,"height":10},{"left":627.71875,"top":129.5,"right":633.484375,"bottom":139.5,"width":5.765625,"height":10}],"overflow":false}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      30 |   for(const c of geometry.controls){if(geometry.mobile){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);}expect(c.hit,c.id).toBe(true);expect(c.left).toBeGreaterThanOrEqual(-.5);expect(c.right).toBeLessThanOrEqual(geometry.viewport.width+.5);expect(c.top).toBeGreaterThanOrEqual(-.5);expect(c.bottom).toBeLessThanOrEqual(geometry.viewport.height+.5);}
+      31 |   const text=await page.evaluate(inspectPhoneText,{selector:geometry.mobile?'#income,#gold,#objectiveProgress,#objectiveTime':'#income,#gold,#phase small',ownerSelector:'.resources,#protectedDock,#phase',minimumFont:10});
+    > 32 |   for(const t of text){expect(t.complete,JSON.stringify(t)).toBe(true);expect(t.overflow,t.text).toBe(false);}
+         |                                                             ^
+      33 |   await info.attach(label+'-geometry',{body:JSON.stringify({geometry,text},null,2),contentType:'application/json'});return geometry;
+      34 | }
+      35 | async function savedIncome(page,battle){
+        at fit (/workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:32:61)
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:60:105
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-initial/artifacts/bridge-control-native-paid-de8b0-ts-with-drawer-options-Back-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+
+    Error: {"text":"Bridges +0.00 /s","expectedText":"Bridges+0.00/s","visibleText":"","complete":false,"characters":[{"character":"B","visible":false,"reasons":["undersized"]},{"character":"r","visible":false,"reasons":["undersized"]},{"character":"i","visible":false,"reasons":["undersized"]},{"character":"d","visible":false,"reasons":["undersized"]},{"character":"g","visible":false,"reasons":["undersized"]},{"character":"e","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]},{"character":"+","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":".","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"0","visible":false,"reasons":["undersized"]},{"character":"/","visible":false,"reasons":["undersized"]},{"character":"s","visible":false,"reasons":["undersized"]}],"rects":[{"left":546.515625,"top":129.5,"right":553.0625,"bottom":139.5,"width":6.546875,"height":10},{"left":553.046875,"top":129.5,"right":557.890625,"bottom":139.5,"width":4.84375,"height":10},{"left":557.875,"top":129.5,"right":561.515625,"bottom":139.5,"width":3.640625,"height":10},{"left":561.5,"top":129.5,"right":568.15625,"bottom":139.5,"width":6.65625,"height":10},{"left":568.140625,"top":129.5,"right":574.25,"bottom":139.5,"width":6.109375,"height":10},{"left":574.234375,"top":129.5,"right":580.46875,"bottom":139.5,"width":6.234375,"height":10},{"left":580.453125,"top":129.5,"right":586.21875,"bottom":139.5,"width":5.765625,"height":10},{"left":589.890625,"top":129.5,"right":595.96875,"bottom":139.5,"width":6.078125,"height":10},{"left":595.953125,"top":129.5,"right":602.5625,"bottom":139.5,"width":6.609375,"height":10},{"left":602.546875,"top":129.5,"right":605.65625,"bottom":139.5,"width":3.109375,"height":10},{"left":605.640625,"top":129.5,"right":612.546875,"bottom":139.5,"width":6.90625,"height":10},{"left":612.53125,"top":129.5,"right":619.453125,"bottom":139.5,"width":6.921875,"height":10},{"left":623.125,"top":129.5,"right":627.734375,"bottom":139.5,"width":4.609375,"height":10},{"left":627.71875,"top":129.5,"right":633.484375,"bottom":139.5,"width":5.765625,"height":10}],"overflow":false}
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      30 |   for(const c of geometry.controls){if(geometry.mobile){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);}expect(c.hit,c.id).toBe(true);expect(c.left).toBeGreaterThanOrEqual(-.5);expect(c.right).toBeLessThanOrEqual(geometry.viewport.width+.5);expect(c.top).toBeGreaterThanOrEqual(-.5);expect(c.bottom).toBeLessThanOrEqual(geometry.viewport.height+.5);}
+      31 |   const text=await page.evaluate(inspectPhoneText,{selector:geometry.mobile?'#income,#gold,#objectiveProgress,#objectiveTime':'#income,#gold,#phase small',ownerSelector:'.resources,#protectedDock,#phase',minimumFont:10});
+    > 32 |   for(const t of text){expect(t.complete,JSON.stringify(t)).toBe(true);expect(t.overflow,t.text).toBe(false);}
+         |                                                             ^
+      33 |   await info.attach(label+'-geometry',{body:JSON.stringify({geometry,text},null,2),contentType:'application/json'});return geometry;
+      34 | }
+      35 | async function savedIncome(page,battle){
+        at fit (/workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:32:61)
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:83:224
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-initial/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [landscape] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back 
+    [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+    [desktop] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back 
+    [desktop] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+  8 passed (56.6s)
