@@ -212,7 +212,7 @@ for (const [width,height,insets] of [[320,480,{bottom:34}],[320,568,{}],[390,650
     const original=c.game.serialize(),site=recommendCampaignSite(c.game,'barracks').site;
     c.setCompactBuildOpen(true);c.selectBuild('barracks');c.updateHUD();
     assert.equal($('app').classList.contains('compact-build-open'),false);
-    assert.match($('coachNext').textContent,/Tap a green site/);
+    assert.match($('coachNext').textContent,/Tap any green site/);
     c.activateBattlePoint({x:3000,y:site.y});
     assert.deepEqual(c.game.serialize(),original,'failed placement spends nothing and allows correction');
     assert.equal(c.ui.build,'barracks');

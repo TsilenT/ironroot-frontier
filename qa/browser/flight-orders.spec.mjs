@@ -89,7 +89,7 @@ async function airDisclosure(page,envelope) {
   else {
     const lines=text.split('\n');expect(lines).toHaveLength(rows.length);
     for(const row of rows){
-      const prefix=`${row.side?'Enemy':'Your'} ${row.count} ${row.count===1?'gryphon':'gryphons'}: ${road(row.from)} to ${road(row.to)}.`;
+      const prefix=`${row.side?'Enemy':'Your'} ${row.count} ${row.count===1?'gryphon':'gryphons'}: ${road(row.from)} to ${road(row.to)} ·`;
       const suffix=row.phase==='approach'?'Approaching the crossing.':row.phase==='transit'?'Crossing now; cannot attack.':null;
       if(suffix)expect(lines).toContain(prefix+' '+suffix);
       else {
@@ -113,7 +113,7 @@ for(const id of ['wings-of-ash','stonegate'])test(`${id}: real paid planning aer
   expect(purchase.game.state.units).toHaveLength(0);expect(purchase.game.state.time).toBe(0);
   await inspect(page,purchase,aerie.id);
   await expect(page.locator('#flightOrders')).toHaveAttribute('aria-label','Aerie flight orders');
-  await expect(page.locator('#flightOrderHelp')).toContainText('Airborne gryphons keep their route');
+  await expect(page.locator('#flightOrderHelp')).toContainText('gryphons already in the air keep their route');
   const handle=await page.locator('#flightSouth').elementHandle();
   for(const [key,lane] of [['North',0],['South',2],['Hold',1],['North',0],['North',0]]) {
     await readyFlightOrder(page,purchase,aerie.id,key);await press(page,'#flight'+key);
@@ -370,5 +370,5 @@ test('native pause retains an approaching enemy warning, then Resume announces i
   const announced=await pause(page);expect(unit(announced,fixture.unitId).airRoute).toMatchObject({from:1,to:0});
   await page.waitForTimeout(300);expect(await saved(page)).toEqual(announced);
   await press(page,'#resume');await page.waitForTimeout(350);await pause(page);
-  expect(await page.evaluate(()=>window.__qaFlightAnnouncements)).toEqual(['Enemy gryphons are about to cross toward north road. Archers can hit them in the air.']);
+  expect(await page.evaluate(()=>window.__qaFlightAnnouncements)).toEqual(['Enemy gryphons are about to cross toward north road, where archers can still hit them in the air.']);
 });
