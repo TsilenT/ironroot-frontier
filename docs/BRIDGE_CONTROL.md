@@ -63,4 +63,49 @@ cues that do not depend on color.
 The paid study's fixed preregistration is in
 `qa/bridge-control/study-plan.json`. The earlier presence/12-second lease shadow
 study was not consumed and supplies no balance evidence for persistent ownership.
-Validation results and limits will be recorded below after execution.
+## Measured validation
+
+- Aggregate Node run: 1,461 passed, zero failed, one existing skipped
+  optional desktop dependency compatibility test (1,462 total). See
+  `qa/bridge-control/node-final.log`.
+- All runtime JavaScript parses; browser harness preflight passes. Source runtime
+  preflight admits exactly 52 runtime files, 1,008,378 bytes, recorded with SHA-256
+  per file in `qa/bridge-control/runtime-final.json`.
+- Pure/new-mode tests cover boundaries, actual positions, both sides, dead and
+  non-troop exclusions, ground capture, friendly air, hostile air denial,
+  uninterrupted capture, unfinished withdrawal, repeated flips, empty ownership
+  for 86,400 simulated seconds, exact threshold payment, map-wide cap, overtime,
+  strict save rejection and byte-identical continuation. Six exact serialized
+  snapshot oracles from verified v0.18.1 prove disabled behavior unchanged on all
+  three maps with both endgame identities and paid air/Rootwarden/mine actions.
+- Profile tests preserve old earned domains and explicit checked/unchecked
+  preferences through backup/restore, and fence exact v0.18.1 writers.
+- The fixed 36-game paid comparison passed all ledger/cap/save checks, with 457
+  accepted paid actions and 121 save/continuation checks. Every air/Rootwarden
+  policy game produced both types and recorded attacks. The final-source rerun,
+  needed after stricter save bounds, reproduced every original game result,
+  action and state hash. Initial evidence remains retained. See
+  [the full paid-study review](../qa/bridge-control/study-final-review.md).
+
+The paid study has one seed, Normal difficulty and scripted policies. Rush won
+6/6 disabled and 5/6 enabled; the other two policies lost 6/6 in both modes. One
+Long March rush changed from a 151.9-second win to a 216.55-second loss despite
+the scripted player earning more bridge gold. This adverse result is retained.
+The largest single-side bridge payout was 42.65 gold, at most 7.30% of that
+side's earnings excluding starting gold. The 90-second payout leader won 17/18
+enabled games: extra gold largely followed stronger field positions, so longer
+term snowball remains an open question. No reward was tuned. All games ended
+naturally; this does not certify long stalemates or force equal strategy wins.
+
+32.26% of bridge receipts arrived while empty. Natural empty ownership lasted
+at most 5.7 seconds, and no isolated air-only denial occurred; the pure contracts
+supply those mechanical checks. The study is not human balance certification.
+
+Initial failed evidence is retained: transient extracted-UI fixture dependencies
+and hardcoded protocol-8 test expectations. Their assertions and downstream
+checks were retained; current tests passed after integration fixes.
+
+The first focused native run passed 8/12 cases. Four minimum-font failures (8px landscape total income, 9px desktop bridge subtitle) and a visually observed flyer-over-label occlusion were repaired with a mode-scoped 11px font and labels drawn after troops/projectiles. No new row or smaller controls. Failed artifacts remain in `qa/bridge-control/browser-initial`. Final native and post-repair aggregate checks are still running at this draft stage.
+Physical devices, non-Chromium browsers and production smoke are outside this
+candidate's evidence. No merge, deployment, PR14 integration, permanent upgrades
+or spell changes are included.

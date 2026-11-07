@@ -1,0 +1,60 @@
+✔ the actual app exposes no flight-order controls, command handler, route information or stale route instruction (2.25769ms)
+✖ fresh open skirmish selects automatic air and refuses old route-rule choices (16.813734ms)
+✖ fresh timed skirmish selects automatic air and refuses old route-rule choices (7.394577ms)
+✔ the field guide uses active air rules without changing stats or retained saves (9.558011ms)
+✔ a paid aerie placement explains automatic engagement and retains normal one-shot build behavior (15.563576ms)
+✔ fresh shieldbreaker trial and its actual Restart action use automatic air (32.034686ms)
+✔ fresh skyguard trial and its actual Restart action use automatic air (24.769782ms)
+✔ fresh siegecraft trial and its actual Restart action use automatic air (26.215697ms)
+✔ fresh goldrush trial and its actual Restart action use automatic air (27.028737ms)
+✔ fresh holdfast trial and its actual Restart action use automatic air (26.126837ms)
+✔ fresh optional first-watch uses automatic air with its original seven-building roster (32.942572ms)
+✔ explicit old first-watch Restart keeps its retained attempt rather than invoking a fresh launch (52.884771ms)
+✔ fresh optional forked-road uses automatic air with its original seven-building roster (24.686317ms)
+✔ explicit old forked-road Restart keeps its retained attempt rather than invoking a fresh launch (47.643807ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 463.960059
+
+✖ failing tests:
+
+test at tests/automatic-air-ui.test.mjs:27:38
+✖ fresh open skirmish selects automatic air and refuses old route-rule choices (16.813734ms)
+  evalmachine.<anonymous>:19
+  $('skirmishBridgeDescription').textContent = BRIDGE_RULES_TEXT;
+                                               ^
+  
+  ReferenceError: BRIDGE_RULES_TEXT is not defined
+      at evalmachine.<anonymous>:19:46
+      at Script.runInContext (node:vm:149:12)
+      at runInContext (node:vm:301:6)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/automatic-air-ui.test.mjs:30:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/automatic-air-ui.test.mjs:27:38
+✖ fresh timed skirmish selects automatic air and refuses old route-rule choices (7.394577ms)
+  evalmachine.<anonymous>:19
+  $('skirmishBridgeDescription').textContent = BRIDGE_RULES_TEXT;
+                                               ^
+  
+  ReferenceError: BRIDGE_RULES_TEXT is not defined
+      at evalmachine.<anonymous>:19:46
+      at Script.runInContext (node:vm:149:12)
+      at runInContext (node:vm:301:6)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/automatic-air-ui.test.mjs:30:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

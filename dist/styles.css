@@ -4101,3 +4101,8 @@ body.gamepad-active a:focus {
 .bridge-details summary::before { content: '▸'; margin-right: 7px; }
 .bridge-details[open] summary::before { content: '▾'; }
 .bridge-details p { margin: 6px 0 10px; }
+
+/* Bridge totals include fractional road shares; keep this new text readable
+   in the existing resource/phase slots without changing ordinary battles. */
+.bridge-income #income { font-size: 11px; line-height: 16px; white-space: nowrap; }
+.bridge-income:not(.protected-mobile) #phase small { font-size: 11px; line-height: 1.2; }

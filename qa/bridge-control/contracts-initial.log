@@ -1,0 +1,25 @@
+✔ bridge contract is opt-in through two frozen whole rulesets with existing automatic flyers and endgame rules (2.687741ms)
+✔ every road has a symmetric 210 by 130 inclusive center zone, determined by actual position (11.79249ms)
+✔ empty untouched bridges stay unowned; dead units, buildings, projectiles and unknown types cannot capture or deny (0.958672ms)
+✔ first capture needs continuous two seconds and pays only time after the threshold (0.412018ms)
+✔ ground captures and same-side air can accompany it; opposing air interrupts and cannot capture alone (1.20567ms)
+✔ both living sides stop capture and payment, retaining the owner regardless of entity order (0.892258ms)
+✔ unfinished enemy capture suspends old income; withdrawal resumes it; returning owner cannot cause instant flip (0.716371ms)
+✔ ownership persists empty indefinitely within the supported horizon, with repeated symmetric flips (1.879596ms)
+✔ reward is at most 0.5 per second map-wide, divided by roads and identical under mirrored sides (2.534736ms)
+✔ real engine credits exact incremental gold and saves unfinished capture then continues byte-identically (24.123684ms)
+✔ new-mode save schema rejects malformed ownership, progress, income, counters and unknown fields (3.733294ms)
+✔ authored identities and current campaign, trial and practice factories cannot receive bridge income (2.618171ms)
+✔ mode off is exactly behavior-identical to verified v0.18.1 across all Skirmish maps and endgame identities (755.701975ms)
+✔ protocol nine advances only the marker and fences real v0.18.1 clients before they erase bridge choice or earned history (3.641869ms)
+✔ old earned profile and checked/unchecked bridge choices survive verified backup replacement independently (25.382998ms)
+✔ bridge setup preference admits only optional booleans, preserving other strict settings boundaries (1.260055ms)
+✔ unfinished, future and unverified protocol upgrades never alter earned domains (0.804926ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 974.393828
