@@ -1,0 +1,92 @@
+{
+  "scope": "Local checks for the isolated repair only. Exact revised-commit cloud gate, merge and deployment remain pending.",
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "root": {
+    "passed": 1251,
+    "failed": 0,
+    "skipped": 1,
+    "total": 1252,
+    "skipReason": "Optional desktop build dependencies are not installed.",
+    "log": "qa/mobile-safety-repair/root-final.log"
+  },
+  "preflight": {
+    "runtimeSyntax": true,
+    "runtimeInventory": true,
+    "browserFixtures": true,
+    "logs": [
+      "qa/mobile-safety-repair/syntax-final.log",
+      "qa/mobile-safety-repair/runtime-final.json",
+      "qa/mobile-safety-repair/preflight-final.log"
+    ]
+  },
+  "browserDiscovery": {
+    "cases": 1640,
+    "files": 37,
+    "executed": false,
+    "runner": "Local 1.57 adapter for discovery only; exact cloud execution uses the pinned runner.",
+    "log": "qa/mobile-safety-repair/browser-discovery-final.log"
+  },
+  "browserIntegrity": {
+    "configuredWorkers": 2,
+    "all177OriginalAssertionFragmentsRetained": true,
+    "existingModifiedSpecSkipFixmeDeadlineDeclarationsUnchanged": true,
+    "retainedFailures": "qa/mobile-safety-repair/retained-failures.json",
+    "previousFull": {
+      "passed": 1568,
+      "failed": 11,
+      "skipped": 49,
+      "timeouts": 0
+    },
+    "previousFocused": {
+      "passed": 169,
+      "failed": 4,
+      "skipped": 3
+    }
+  },
+  "negativeControls": {
+    "geometry": "Actual-app harness reproduces old inset-selection and false-Ready behavior under targeted old-source mutations.",
+    "layering": "All 16 new Renderer.draw painter-order cases fail against the untouched pre-repair runtime and pass after repair."
+  },
+  "runtimeDeltaFiles": [
+    "dist/app.js",
+    "dist/styles.css",
+    "dist/mobile-battlefield.js",
+    "dist/render.js",
+    "dist/flight-visuals.js"
+  ],
+  "mechanicsUnchanged": {
+    "engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "campaign.js": "56f4a2d7bf50a316a60274dde63ffb1501ab89c36937612fbb25e2f3c13456eb",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d"
+  },
+  "nativeBrowser": {
+    "report": "docs/MOBILE_SAFETY_REPAIR_NATIVE_QA.md",
+    "boundedPass": true,
+    "verified": [
+      "320\u00d7568 dynamic insets without a resize nudge select short layout, keep visible income and safe 200\u00d7383 field",
+      "Initial inset startup and desktop-to-mobile with retained insets",
+      "320\u00d7370 remains blocked with unchanged clock/save across multiple HUD cycles",
+      "Visible safety prompt above inert Pause; native unsafe Save & return preserves held save",
+      "320\u00d7400 requires explicit Resume and then runs from 00:03 to 00:26 without re-pausing",
+      "Crowded two-direction flight banners at390\u00d7650 and844\u00d7390 paint complete 12px labels above pennants/actors"
+    ],
+    "syntheticEvidence": "Protected saved-campaign setup and crowded-flight authored checkpoints are explicitly identified; they are not human balance or progression evidence.",
+    "cleanup": {
+      "realLocalAndSessionFingerprintsUnchanged": true,
+      "all49RuntimeFilesByteIdentical": true,
+      "originalSixTabsPreserved": true,
+      "reviewTabClosed": true,
+      "previewStoppedAndTemporaryFixtureRemoved": true
+    }
+  },
+  "writingBranch": "Separate and not integrated. No denied PR action retried or indirectly executed.",
+  "limits": [
+    "New exact-source cloud browser matrix not yet executed.",
+    "Physical phones/PWA, OS Back, physical controllers and non-Chromium are not certified.",
+    "Subjective music listening and native desktop package remain unverified.",
+    "No game balance, campaign formation or AI behavior changed in this repair."
+  ]
+}

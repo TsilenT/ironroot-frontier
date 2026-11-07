@@ -74,6 +74,8 @@ test('legacy lesson reading and paid construction stop both armies, clocks and i
 
 test('legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency',async({page})=>{
   await fresh(page);await press(page,'#coachingPlan');
+  // Open the real mobile drawer before inspecting its retained legacy roster.
+  await openBuildControls(page);
   // Legacy optional roster is retained; only the two introductory cards show.
   await expect(page.locator('#allBuildings')).toBeVisible();
   await expect(page.locator('.build-card:visible')).toHaveCount(2);
@@ -81,11 +83,12 @@ test('legacy lesson alternative composition, legal unmarked sites and hiding hin
   await place(page,'archery',410);
   await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Build a barracks');
   await expect(page.locator('#time')).toHaveText('00:00');
+  const planningGold=await page.locator('#gold').textContent();
   await press(page,'#toggleCoach');await expect(page.locator('#campaignCoach')).toBeHidden();
-  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
+  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');await expect(page.locator('#gold')).toHaveText(planningGold);
   await press(page,'#settings');await expect(page.locator('#settingsDone')).toHaveText('Back to planning');
   await press(page,'#settingsDone');await expect(page.locator('#settings')).toBeFocused();
-  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
+  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');await expect(page.locator('#gold')).toHaveText(planningGold);
   await press(page,'#coachResume');await expect(page.locator('#time')).not.toHaveText('00:00');
   await press(page,'#pause');const result=await saved(page);
   expect(result.game.state.buildings.some(b=>b.side===0&&b.type==='archery'&&b.x===410)).toBe(true);

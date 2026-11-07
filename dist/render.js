@@ -1,7 +1,7 @@
 import { drawRootwarden, drawWardenLodge } from './rootwarden-art.js';
 import { sampleCombatFeedback } from './combat-feedback.js';
 import { BattleVFX } from './vfx.js';
-import { drawFlightRoutes, drawFlightMinimap } from './flight-visuals.js';
+import { drawFlightRoutes, drawFlightLabels, drawFlightMinimap } from './flight-visuals.js';
 import {
   BUILDINGS,
   UNITS,
@@ -538,7 +538,7 @@ export class Renderer {
     // Impacts read as ground events; troops and objective markers stay on top.
     for (const e of s.effects) this.drawEffect(e);
     this.vfx.draw(c, { x: left, y: 0, width: right - left, height: this.map.height }, { compact: compact > 0 });
-    drawFlightRoutes(this, game, ui);
+    const flightLabels = drawFlightRoutes(this, game, ui);
     this.drawBase(s.bases[0]);
     this.drawBase(s.bases[1]);
     // Presentation-only locomotion from observed simulation positions, never cooldown.
@@ -618,6 +618,8 @@ export class Renderer {
       }
       c.restore();
     }
+    // Paths stay below actors; complete route labels clear building pennants.
+    drawFlightLabels(this, flightLabels);
     // Mission badges must not disappear behind enlarged troops or projectile trails.
     for (const e of s.buildings) {
       if (e.x < left || e.x > right) continue;

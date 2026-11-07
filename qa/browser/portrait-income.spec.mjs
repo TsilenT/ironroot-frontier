@@ -4,6 +4,9 @@ import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
 import {test,press,seedOnce} from './map-browser-helpers.mjs';
 import {inspectPhoneText,settlePhoneViewport} from './phone-text-evidence.mjs';
+import {inspectMobileBattlefield,installViewportSafetyWatch} from './mobile-safety-evidence.mjs';
+
+const SAFE_INSETS='.app.protected-mobile { --mobile-inset-top: 12px; --mobile-inset-left: 8px; --mobile-inset-right: 8px; --mobile-inset-bottom: 21px; }';
 
 async function checkIncome(page){
  await settlePhoneViewport(page);
@@ -33,6 +36,26 @@ async function checkIncome(page){
   expect(geometry.box.top).toBeGreaterThanOrEqual(bounds.top-.5);
  }
  expect(geometry.box.bottom).toBeLessThanOrEqual(geometry.row.bottom+.5);
+ // Income must remain reachable during live play, not merely render beneath
+ // a safety overlay. Also retain real world/44px-control clearance.
+ await expect(page.locator('#viewportModal')).toBeHidden();
+ await expect(page.locator('#pause')).toHaveAttribute('aria-label','Pause game');
+ const g=await page.evaluate(inspectMobileBattlefield);
+ expect(g.world.height).toBeGreaterThanOrEqual(211.5);expect(g.world.width).toBeGreaterThanOrEqual(128);
+ expect(g.controls.length).toBeGreaterThanOrEqual(11);expect(g.collisions).toEqual([]);expect(g.covered).toBe(false);
+ for(const b of [g.world,...g.controls,...g.regions]){
+  expect(b.left).toBeGreaterThanOrEqual(g.safe.left-.5);expect(b.right).toBeLessThanOrEqual(g.safe.right+.5);
+  expect(b.top).toBeGreaterThanOrEqual(g.safe.top-.5);expect(b.bottom).toBeLessThanOrEqual(g.safe.bottom+.5);
+ }
+ for(const c of g.controls){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id).toBe(true);}
+}
+
+async function expectLiveIncome(page){
+ await checkIncome(page);
+ const clock=await page.locator('#time').textContent();
+ await expect(page.locator('#time')).not.toHaveText(clock,{timeout:6000});
+ await checkIncome(page);
+ expect(await page.evaluate(()=>window.__qaViewportSafetySamples.filter(sample=>sample.visible)),'safe padding changes must never interrupt play').toEqual([]);
 }
 
 for(const [width,height] of [[320,430],[320,568],[390,650]]){
@@ -41,9 +64,35 @@ for(const [width,height] of [[320,430],[320,568],[390,650]]){
   const fixture=campaignFixture('protected');
   await seedOnce(page,{'ironroot.battle.v1':JSON.stringify(fixture.envelope),[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});
   await press(page,'#resumeSaved');
-  await checkIncome(page);
+  await checkIncome(page);await page.evaluate(installViewportSafetyWatch);
   // Exercise the existing safe-area variables, not a mock layout calculation.
-  await page.addStyleTag({content:'.app.protected-mobile { --mobile-inset-top: 12px; --mobile-inset-left: 8px; --mobile-inset-right: 8px; --mobile-inset-bottom: 21px; }'});
-  await checkIncome(page);
+  // No viewport resize or synthetic resize event may rescue add/remove.
+  const insets=await page.addStyleTag({content:SAFE_INSETS});
+  await expectLiveIncome(page);
+  if(height-33<560)await expect(page.locator('#app')).toHaveClass(/protected-short-portrait/);
+  else await expect(page.locator('#app')).not.toHaveClass(/protected-short-portrait/);
+  await insets.evaluate(element=>element.remove());
+  await expectLiveIncome(page);
+  if(height<560)await expect(page.locator('#app')).toHaveClass(/protected-short-portrait/);
+  else await expect(page.locator('#app')).not.toHaveClass(/protected-short-portrait/);
+ });
+}
+
+for(const entry of ['initial mobile resume','desktop to mobile']){
+ test(`safe-area income survives ${entry} before the first mobile layout`,async({page})=>{
+  await page.setViewportSize(entry==='initial mobile resume'?{width:320,height:568}:{width:1180,height:757});
+  const fixture=campaignFixture('protected');
+  await seedOnce(page,{'ironroot.battle.v1':JSON.stringify(fixture.envelope),[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});
+  // Install before battle entry. On desktop the selector takes effect only
+  // when the real mobile shell is applied during the subsequent transition.
+  const insets=await page.addStyleTag({content:SAFE_INSETS});
+  await page.evaluate(installViewportSafetyWatch);await press(page,'#resumeSaved');
+  if(entry==='desktop to mobile'){
+   await expect(page.locator('#app')).not.toHaveClass(/protected-mobile/);
+   await page.setViewportSize({width:320,height:568});
+  }
+  await expectLiveIncome(page);await expect(page.locator('#app')).toHaveClass(/protected-short-portrait/);
+  await insets.evaluate(element=>element.remove());
+  await expectLiveIncome(page);await expect(page.locator('#app')).not.toHaveClass(/protected-short-portrait/);
  });
 }

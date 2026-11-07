@@ -253,11 +253,15 @@ function drawWorldRoute(c, route, scale, { preview = false, simple = false, offs
   c.restore();
 }
 
-/** Call once under the existing world transform, after terrain and before troops. */
+/**
+ * Draw paths/leaders under actors and return this frame's detached label layout.
+ * Pass that same layout to drawFlightLabels after actors, under the same world
+ * transform. Neither pass retains state or advances the simulation.
+ */
 export function drawFlightRoutes(renderer, game, ui = {}) {
   const scale = scaleOf(renderer?.scale), viewport = flightViewport(renderer, game.map);
   const signals = buildFlightSignals(game, { selected: ui.selected, scale, viewport });
-  if (!signals.routes.length && !signals.preview) return signals;
+  if (!signals.routes.length && !signals.preview) return { ...signals, scale, banners: [], next: null };
   const c = renderer.c, simple = !!renderer.reducedMotion || renderer.vfx?.quality === 'low';
   c.save(); c.globalAlpha = 1; c.lineCap = 'round'; c.lineJoin = 'round'; c.setLineDash([]);
   const banners = flightBannerLayouts(groupFlightCorridors(signals.routes).map(corridor =>
@@ -284,7 +288,16 @@ export function drawFlightRoutes(renderer, game, ui = {}) {
       stroke(c, [[0, 0], [x, y]], TEAMS[corridor.side], 1); c.restore();
     }
   }
-  // All route strokes and leaders stay underneath every text banner.
+  c.restore();
+  return { ...signals, scale, banners, next };
+}
+
+/** Text and direction glyphs clear actor pennants; mission overlays stay above. */
+export function drawFlightLabels(renderer, { scale, banners, preview, next }) {
+  if (!banners.length && !next) return;
+  const c = renderer.c;
+  c.save(); c.globalAlpha = 1; c.lineCap = 'round'; c.lineJoin = 'round'; c.setLineDash([]);
+  // Paint complete opaque banners, not only their text, over the actor layer.
   for (const layout of banners) {
     const { corridor } = layout;
     c.save(); c.translate(corridor.x, corridor.midY); c.scale(1 / scale, 1 / scale);
@@ -298,7 +311,7 @@ export function drawFlightRoutes(renderer, game, ui = {}) {
     c.fillStyle = NEXT; c.font = '700 12px monospace'; c.textAlign = 'center'; c.textBaseline = 'middle';
     c.fillText(`NEXT ${preview.direction < 0 ? '↑' : '↓'}`, x + width / 2, y + height / 2); c.restore();
   }
-  c.restore(); return signals;
+  c.restore();
 }
 
 /**

@@ -3628,7 +3628,9 @@ body.gamepad-active a:focus {
 .protected-portrait #front { grid-column: 3; grid-row: 1; }
 /* At extremely small sizes, the world stops rather than running out of view.
    The two action rows never shrink; the explanatory region can scroll. */
-.viewport-pause { position: fixed; z-index: 9; background: #102119f5; padding: calc(8px + env(safe-area-inset-top, 0px)) calc(8px + env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) calc(8px + env(safe-area-inset-left, 0px)); }
+/* Same stacking level as Pause: DOM order matches dialogLayers, so this
+   safety hold is above Pause but below title, settings and recovery dialogs. */
+.viewport-pause { position: fixed; z-index: 10; background: #102119f5; padding: calc(8px + env(safe-area-inset-top, 0px)) calc(8px + env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) calc(8px + env(safe-area-inset-left, 0px)); }
 .viewport-pause > section { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; max-width: 560px; margin: auto; }
 .viewport-message { min-height: 0; overflow: auto; overscroll-behavior: contain; }
 .viewport-message:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
@@ -3922,6 +3924,11 @@ body.gamepad-active a:focus {
   min-width: 0; min-height: 0; height: var(--mobile-teaching); padding: 4px 6px;
   background: #203429; border-block: 1px solid #7f7952; overflow: hidden;
 }
+/* Hiding hint text while paused must not auto-place its actions in column 1.
+   Keep the same control geometry before Resume is offered and after resuming.
+   Direct children only: collapsed hints move these actions into navigation. */
+.protected-mobile.mobile-coaching .campaign-teaching > .campaign-coach {grid-column: 1; grid-row: 1;}
+.protected-mobile.mobile-coaching .campaign-teaching > .teaching-actions {grid-column: 2; grid-row: 1;}
 .protected-mobile.mobile-coaching .campaign-coach {
   /* DM Sans text ranges extend 1px above the first compact line box. Keep
      that ink inside this scroller without changing the reserved rail. */

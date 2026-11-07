@@ -8,7 +8,7 @@ import { createObjectiveAlertPolicy } from '../dist/objective-alerts.js';
 import { BUILDINGS, SPELL } from '../dist/engine.js';
 import { campaignBuildChoices } from '../dist/campaign-flow.js';
 import { nativeSpaceTarget } from '../dist/persistence.js';
-import { visibleViewportRect, fitMobileViewport } from '../dist/mobile-battlefield.js';
+import { visibleViewportRect, fitMobileViewport, insetViewportRect } from '../dist/mobile-battlefield.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
@@ -38,7 +38,8 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
   const dialogLayers = [new Element(),new Element()];
   for(const layer of dialogLayers)layer.classes.add('hidden');
   const context = {
-    visibleViewportRect,fitMobileViewport,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
+    visibleViewportRect,fitMobileViewport,insetViewportRect,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
+    getComputedStyle:()=>({paddingTop:'0px',paddingRight:'0px',paddingBottom:'0px',paddingLeft:'0px'}),
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
     canInteract:()=>state.canInteract,updateSelection(){},
