@@ -220,7 +220,7 @@ test('paid wins advance two to five to eight, every in-progress save restores ex
   const replay = createProgressionCampaignMission('roadside-watch', progress);
   assert.equal(Object.keys(replay.buildings).length, 8);
   assert.equal(replay.build('wardenLodge', 970, replay.map.lanes[0]).ok, true);
-  assert.equal(decodeBattle(encodeBattle(replay, campaignScenarioForGame(replay, 'roadside-watch'), { campaignProgress: progress }), { campaignProgress: progress }).game.ruleset.id, 'frontier-campaign-air-local');
+  assert.equal(decodeBattle(encodeBattle(replay, campaignScenarioForGame(replay, 'roadside-watch'), { campaignProgress: progress }), { campaignProgress: progress }).game.ruleset.id, 'frontier-campaign-citadel-open');
 });
 
 test('one- and two-star wins advance the same route, and replay never lowers previous records', () => {

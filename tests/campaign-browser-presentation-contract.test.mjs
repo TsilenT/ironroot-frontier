@@ -36,21 +36,21 @@ function authoredRows(mission) {
   return ['Available here: ' + Object.values(rules.buildings).map(b => b.name).join(', ') + '.', ...mission.briefing];
 }
 
-test('all 19 current briefings retain the exact roster and authored list with one records notice for all 17 automatic-air revisions', () => {
+test('all 19 current briefings retain the exact roster and authored list with one records notice for all 19 current citadel revisions', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
   assert.equal(missions.length, 19);
   let notices = 0;
   for (const mission of missions) {
-    const automatic = mission.rulesetId === 'frontier-campaign-air-local';
-    assert.equal(mission.scenarioRevision === 4, automatic, mission.id);
+    const automatic = mission.scenarioRevision >= 3;
+    assert.equal(mission.scenarioRevision, 5, mission.id);
     const rows = renderBriefing(mission);
     assert.deepEqual(rows, [...authoredRows(mission), ...(automatic ? [RECORDS_NOTICE] : [])], mission.id);
     assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, automatic ? 1 : 0, mission.id);
     if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
-  assert.equal(notices, 17);
-  assert.equal(missions.length - notices, 2, 'only the first two reduced-roster openings omit the records notice');
+  assert.equal(notices, 19);
+  assert.equal(missions.length - notices, 0, 'restricted opening rosters also have a new combat revision');
   assert.equal(JSON.stringify(progress), bytes);
 });
 

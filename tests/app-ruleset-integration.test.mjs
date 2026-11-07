@@ -7,6 +7,7 @@ import {createCampaignProgress,getProgressionCampaignOverview as getCampaignOver
 import {decodeBattle,encodeBattle,scenarioForBattle} from '../dist/battle-codec.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 import * as keyboard from '../dist/keyboard.js';
+import {supportsCitadelOptions} from '../dist/citadel-options.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 const part=(a,b)=>app.slice(app.indexOf(a),app.indexOf(b,app.indexOf(a)));
@@ -27,11 +28,11 @@ test('real deck rebuilds from the active immutable roster and restores the origi
 
 test('real start selects current skirmish and optional lesson rules without reinterpreting a restored battle',()=>{
  const h=startupHarness();h.c.mode='skirmish';h.c.selectedRuleset='frontier-air-local-open';h.c.start();
- assert.equal(h.c.game.schemaVersion,3);assert.equal(h.c.game.ruleset.id,'frontier-air-local-open');assert.ok(h.c.game.buildings.wardenLodge);
- h.c.selectedRuleset='frontier-air-local-timed';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-air-local-timed');
+ assert.equal(h.c.game.schemaVersion,3);assert.equal(h.c.game.ruleset.id,'frontier-citadel-open');assert.ok(h.c.game.buildings.wardenLodge);
+ h.c.selectedRuleset='frontier-air-local-timed';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-citadel-timed');
  const legacy=Game.restore(new Game({seed:8}).serialize()),before=legacy.serialize();h.c.start(legacy,null,null);
  assert.equal(h.c.game,legacy);assert.deepEqual(h.c.game.serialize(),before);assert.equal(h.c.game.buildings.wardenLodge,undefined);
- h.c.mode='campaign';h.c.selectedCampaign='first-watch';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-authored-air-local');assert.equal(h.c.game.map.id,'intro-one-road');assert.equal(h.c.game.buildings.wardenLodge,undefined);
+ h.c.mode='campaign';h.c.selectedCampaign='first-watch';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-authored-citadel');assert.equal(h.c.game.map.id,'intro-one-road');assert.equal(h.c.game.buildings.wardenLodge,undefined);
 });
 
 function safetyContext(game=openGame()){
@@ -64,7 +65,7 @@ test('actual save rejects an invalid candidate before storage and holds the in-m
 test('Resume uses the shared decoder, discloses new endgame rules and retains unsupported original bytes',()=>{
  for(const invalid of [false,true]){
   const $=dom(),game=openGame(),raw=invalid?'{"format":"ironroot-save","version":99}':JSON.stringify(encodeBattle(game,scenarioForBattle()));
-  let writes=0,download=null,restored=null;const c={$,SAVE:'ironroot.battle.v1',resumeProblem:null,decodeBattle,campaignProgress:createCampaignProgress(),CAMPAIGN_MISSIONS,CHALLENGES:[],
+  let writes=0,download=null,restored=null;const c={$,supportsCitadelOptions,SAVE:'ironroot.battle.v1',resumeProblem:null,decodeBattle,campaignProgress:createCampaignProgress(),CAMPAIGN_MISSIONS,CHALLENGES:[],
    storage:{get:()=>raw,set(){writes++;}},timeText:String,downloadBackup:text=>download=text,start:g=>restored=g};
   createContext(c);runInContext(part('function updateResume()','\nupdateResume();')+'\nupdateResume();',c);
   assert.equal(writes,0);

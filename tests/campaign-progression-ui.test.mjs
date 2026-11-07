@@ -111,7 +111,7 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   assert.deepEqual(codexStructures(h), []);
   h.$('start').onclick();
   assert.equal(h.c.currentCampaign, 'roadside-watch');
-  assert.equal(h.c.game.ruleset.id, 'frontier-campaign-watch');
+  assert.equal(h.c.game.ruleset.id, 'frontier-campaign-citadel-watch');
   assert.deepEqual(cardTypes(h), ['barracks', 'archery']);
   assert.deepEqual(visibleCards(h), ['barracks', 'archery']);
   assert.equal(h.$('allBuildings').classList.contains('hidden'), true);
@@ -159,7 +159,7 @@ test('actual Continue walks the 2 → 5 → 8 opening, records wins once and sep
     assert.equal(h.c.started, false); assert.equal(h.$('welcome').classList.contains('hidden'), false);
   }
   h.$('start').onclick(); assert.equal(h.c.currentCampaign, 'emberwatch');
-  assert.equal(campaign.campaignScenarioForGame(h.c.game, 'emberwatch').revision, 4);
+  assert.equal(campaign.campaignScenarioForGame(h.c.game, 'emberwatch').revision, 5);
   assert.equal(cardTypes(h).length, 8);
   launch(h, 'roadside-watch'); injectResultBoundary(h);
   assert.equal(h.$('resultObjectives').children.some(node => node.classList.contains('campaign-earned')), false);
@@ -185,7 +185,7 @@ test('Resume preserves a two-building battle after a later unlock; deliberate re
   assert.equal(h.$('replayMission').classList.contains('hidden'), false);
   h.$('replayMission').onclick();
   assert.equal(h.c.currentCampaign, 'roadside-watch');
-  assert.equal(h.c.game.ruleset.id, 'frontier-campaign-air-local');
+  assert.equal(h.c.game.ruleset.id, 'frontier-campaign-citadel-open');
   assert.equal(cardTypes(h).length, 8);
   assert.deepEqual(codexUnits(h), Object.keys(h.c.game.units));
 });
@@ -194,7 +194,7 @@ test('returning main progress keeps full roster; legacy-intro-only records retai
   const old = returning(), h = uiHarness({ campaignProgress: old }); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'three-roads');
   assert.match(h.$('campaignIntroProgressText').textContent, /8\/8 buildings.*earlier campaign progress/);
-  launch(h); assert.equal(h.c.game.ruleset.id, 'frontier-campaign-air-local');
+  launch(h); assert.equal(h.c.game.ruleset.id, 'frontier-campaign-citadel-open');
   assert.equal(cardTypes(h).length, 8); assert.deepEqual(h.c.campaignProgress, old);
   const introOnly = { ...progress(), missions: { 'first-watch': { ...record, stars: 2 }, 'forked-road': { ...record } } };
   const intro = uiHarness({ campaignProgress: introOnly }); intro.c.renderCampaign();
@@ -339,7 +339,7 @@ test('paid UI commands win all three lessons, restore midbattle, and Continue st
   }
   assert.equal(h.c.selectedCampaign, 'emberwatch'); h.$('start').onclick();
   assert.equal(cardTypes(h).length, 8);
-  assert.deepEqual(scenarioForBattle(null, 'emberwatch', h.c.game), { kind: 'campaign', id: 'emberwatch', revision: 4 });
+  assert.deepEqual(scenarioForBattle(null, 'emberwatch', h.c.game), { kind: 'campaign', id: 'emberwatch', revision: 5 });
   assert.equal(h.uiLog.history.length, 3);
 });
 
@@ -410,7 +410,7 @@ test('completed opening replay advertises the earned roster without changing sta
   assert.match(h.$('campaignBriefing').innerHTML, /Warden lodge/);
   const before = [...h.data]; h.$('campaignStoryNav').click(); h.$('campaignReturnMission').click();
   assert.deepEqual([...h.data], before);
-  h.$('start').click(); assert.equal(h.c.game.ruleset.id, 'frontier-campaign-air-local');
+  h.$('start').click(); assert.equal(h.c.game.ruleset.id, 'frontier-campaign-citadel-open');
   assert.equal(cardTypes(h).length, 8);
   const old = uiHarness({ campaignProgress: returning() }); old.c.renderCampaign();
   assert.equal(old.c.selectedCampaign, 'three-roads');

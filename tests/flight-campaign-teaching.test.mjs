@@ -16,7 +16,7 @@ function harness(id) {
 for(const id of ['wings-of-ash','stonegate']) {
   test(`${id}: only fresh automatic-air starts pause for the optional flying lesson`,()=>{
     const h=harness(id),{c,$}=h;
-    assert.deepEqual(campaignScenarioForGame(c.game,id),{kind:'campaign',id,revision:4});
+    assert.deepEqual(campaignScenarioForGame(c.game,id),{kind:'campaign',id,revision:5});
     assert.equal(c.coachingHold,true);
     assert.doesNotMatch($('coachingText').textContent,/flight orders|two-second|gateway|Hold road|Air routes/i);
     assert.equal($('coachingModal').classList.contains('hidden'),false);

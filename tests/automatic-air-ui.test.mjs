@@ -28,7 +28,7 @@ for(const suffix of ['open','timed'])test(`fresh ${suffix} skirmish selects auto
   const h=startupHarness(),{c,$}=h;
   Object.assign(c,{getRuleset});c.mode='skirmish';
   runInContext(section('function updateSkirmishRules()','for (const button of document.querySelectorAll('),c);
-  assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-air-local-open');
+  assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-citadel-open');
   $('skirmishRules').value=`frontier-air-local-${suffix}`;$('skirmishRules').onchange();
   assert.equal(c.selectedRuleset,`frontier-air-local-${suffix}`);
   assert.match($('skirmishRulesDescription').textContent,/gryphons that seek nearby enemies one road over/);
@@ -38,7 +38,7 @@ for(const suffix of ['open','timed'])test(`fresh ${suffix} skirmish selects auto
     assert.equal(c.selectedRuleset,`frontier-air-local-${suffix}`);
   }
   c.start();
-  assert.equal(c.game.ruleset.id,`frontier-air-local-${suffix}`);
+  assert.equal(c.game.ruleset.id,`frontier-citadel-${suffix}`);
   assert.equal(c.game.ruleset.movement.policy,'autonomous-air-local-v1');
   assert.equal(c.game.ruleset.endgame.forcedDecay,suffix==='timed');
   assert.equal(c.document.querySelector('#pauseFlights'),null);
@@ -96,10 +96,10 @@ for(const id of ['shieldbreaker','skyguard','siegecraft','goldrush','holdfast'])
   c.selectedChallenge=id;
   runInContext(section('function setMode(','function updateSkirmishRules()'),c);
   c.setMode('challenges');
-  assert.equal(guideContexts.at(-1).id,'frontier-authored-air-local');
+  assert.equal(guideContexts.at(-1).id,'frontier-authored-citadel');
   c.start();
   assert.equal(c.currentChallenge,id);
-  assert.equal(c.game.ruleset.id,'frontier-authored-air-local');
+  assert.equal(c.game.ruleset.id,'frontier-authored-citadel');
   assert.equal(c.game.ruleset.movement.policy,'autonomous-air-local-v1');
   assert.equal(Object.keys(c.game.buildings).length,7);
   const initial=c.game.serialize();c.game.update(.25);const advanced=c.game.serialize();
@@ -126,8 +126,8 @@ for(const [id,mapId] of [['first-watch','intro-one-road'],['forked-road','intro-
     const progress=JSON.stringify(c.campaignProgress);
     c.start();
     assert.equal(c.currentCampaign,id);
-    assert.deepEqual(campaignScenarioForGame(c.game,id),{kind:'campaign',id,revision:4});
-    assert.equal(c.game.ruleset.id,'frontier-authored-air-local');
+    assert.deepEqual(campaignScenarioForGame(c.game,id),{kind:'campaign',id,revision:5});
+    assert.equal(c.game.ruleset.id,'frontier-authored-citadel');
     assert.equal(c.game.ruleset.movement.policy,'autonomous-air-local-v1');
     assert.equal(c.game.map.id,mapId);
     assert.equal(Object.keys(c.game.buildings).length,7);

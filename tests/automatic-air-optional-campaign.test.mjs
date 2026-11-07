@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {supportsAutonomousAir} from '../dist/autonomous-air.js';
 import {supportsFlightOrders} from '../dist/flight-orders.js';
-import {AUTHORED_AIR_RULESET_ID} from '../dist/rulesets.js';
+import {AUTHORED_AIR_RULESET_ID,AUTHORED_CITADEL_RULESET_ID} from '../dist/rulesets.js';
 import * as campaign from '../dist/campaign.js';
 import {campaignBuildChoices} from '../dist/campaign-flow.js';
 import {encodeBattle, decodeBattle, identityOf} from '../dist/battle-codec.js';
@@ -10,15 +10,15 @@ import {validateHistoryRow} from '../dist/history-codec.js';
 import {playCampaign} from './campaign-policies.mjs';
 import {introReferencePolicy} from './intro-campaign-policies.mjs';
 
-test('current optional lesson descriptors change air identity without changing their original objectives or presentation',()=>{
+test('historical optional lesson descriptors preserve air identity without changing their original objectives or presentation',()=>{
   assert.equal(campaign.AUTONOMOUS_AIR_INTRO_MISSIONS.length,2);
   for(const old of campaign.INTRO_MISSIONS){
     const current=campaign.getCampaignMission(old.id,4);
     assert.ok(Object.isFrozen(current)&&Object.isFrozen(current.objectives));
     assert.deepEqual(current,{...old,scenarioRevision:4,rulesetId:AUTHORED_AIR_RULESET_ID});
     assert.equal(campaign.getCampaignMission(old.id),old,'historical descriptor still resolves exactly');
-    assert.equal(campaign.getCurrentCampaignRevision(old.id),4);
-    assert.equal(campaign.getCampaignLaunchMission(old.id,campaign.createCampaignProgress()).scenarioRevision,4);
+    assert.equal(campaign.getCurrentCampaignRevision(old.id),5);
+    assert.equal(campaign.getCampaignLaunchMission(old.id,campaign.createCampaignProgress()).scenarioRevision,5);
     assert.equal(campaign.campaignRulesetAllowed(old.id,4,AUTHORED_AIR_RULESET_ID),true);
     for(const wrong of ['frontier-legacy','frontier-campaign-air-local','frontier-air-local-open'])
       assert.equal(campaign.campaignRulesetAllowed(old.id,4,wrong),false);
@@ -33,7 +33,7 @@ test('both optional lessons keep seven expanded building choices, automatic flye
   assert.equal(overview.legacyIntroduction.cleared,1);assert.equal(overview.legacyIntroduction.stars,3);
   for(const mission of overview.legacyIntroduction.missions){
     const game=campaign.createProgressionCampaignMission(mission.id,p);
-    assert.equal(game.ruleset.id,AUTHORED_AIR_RULESET_ID);assert.equal(supportsAutonomousAir(game.ruleset),true);
+    assert.equal(game.ruleset.id,AUTHORED_CITADEL_RULESET_ID);assert.equal(supportsAutonomousAir(game.ruleset),true);
     assert.equal(supportsFlightOrders(game.ruleset),false);assert.equal(Object.keys(game.buildings).length,7);
     assert.equal(game.buildings.wardenLodge,undefined);assert.equal(game.units.rootwarden,undefined);
     assert.equal(campaignBuildChoices(mission.id,{buildings:game.buildings}).length,mission.id==='first-watch'?2:4);
@@ -45,9 +45,9 @@ test('both optional lessons keep seven expanded building choices, automatic flye
     const flyer=game.state.units.find(u=>u.side===0&&u.type==='gryphon');assert.ok(flyer);
     assert.ok(Object.hasOwn(flyer,'airTargetId'));assert.equal(Object.hasOwn(flyer,'airRoute'),false);
     const scenario=campaign.campaignScenarioForGame(game,mission.id);
-    assert.deepEqual(scenario,{kind:'campaign',id:mission.id,revision:4});
+    assert.deepEqual(scenario,{kind:'campaign',id:mission.id,revision:5});
     const envelope=encodeBattle(game,scenario,{campaignProgress:p});
-    assert.equal(decodeBattle(envelope,{campaignProgress:p}).game.ruleset.id,AUTHORED_AIR_RULESET_ID);
+    assert.equal(decodeBattle(envelope,{campaignProgress:p}).game.ruleset.id,AUTHORED_CITADEL_RULESET_ID);
     const row={won:false,draw:false,difficulty:game.difficulty,time:game.state.time,kills:0,built:1,date:'2026-11-07T10:00:00.000Z',identity:identityOf(game,scenario)};
     assert.deepEqual(validateHistoryRow(row),row);
   }
@@ -73,7 +73,7 @@ test('both current optional lessons clear through ordinary paid commands without
         actions.push({name:action.name,cost:action.cost});
       },
     });
-    assert.equal(outcome.completed,true);assert.equal(outcome.stars,3);assert.equal(game.ruleset.id,AUTHORED_AIR_RULESET_ID);
+    assert.equal(outcome.completed,true);assert.equal(outcome.stars,3);assert.equal(game.ruleset.id,AUTHORED_CITADEL_RULESET_ID);
     const before=structuredClone(progress);progress=campaign.recordCampaignResult(progress,id,game);
     assert.equal(progress.missions[id].stars,3);assert.equal(campaign.getCampaignRoster(progress).stage,1);
     assert.equal(campaign.getProgressionCampaignOverview(progress).nextMissionId,'roadside-watch');
