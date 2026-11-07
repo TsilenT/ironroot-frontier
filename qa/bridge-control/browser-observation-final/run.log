@@ -1,0 +1,19 @@
+[WebServer] (node:12646) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:12658) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [phone] › bridge-control.spec.mjs:105:1 › synthetic restored contest and pending ground takeover display non-color state (4.4s)
+(node:13126) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [narrow-phone] › bridge-control.spec.mjs:105:1 › synthetic restored contest and pending ground takeover display non-color state (4.1s)
+(node:13497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [landscape] › bridge-control.spec.mjs:105:1 › synthetic restored contest and pending ground takeover display non-color state (4.4s)
+(node:13894) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [desktop] › bridge-control.spec.mjs:105:1 › synthetic restored contest and pending ground takeover display non-color state (3.8s)
+
+  4 passed (20.4s)

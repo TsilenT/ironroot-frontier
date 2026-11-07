@@ -1,0 +1,1136 @@
+{
+  "study": "bridge-income-paid-feedback-v1",
+  "sourceResults": "study-final-results.json",
+  "resultsSha256": "abb251eb497df45f6d375947123803b16b3726848fc30ccd72f02a8ede6cfd45",
+  "planSha256": "46745fdac69dd219ff2da2d17489b3fad6e3435db84d85dc81b08c6db1e8345c",
+  "sourceHashes": {
+    "engine.js": "6dfcc3fe1d8f7fae8a91b778a759dc1f4e016f2cff55f12d6056a2c8e43505ad",
+    "rulesets.js": "be7e3a7f91aa3869ea7d727018b60e18687961bef440f67f45f675ed8491b978",
+    "bridge-control.js": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567"
+  },
+  "currentSourcesMatch": true,
+  "completedGames": 36,
+  "declaredGames": 36,
+  "failures": [],
+  "groups": [
+    {
+      "policy": "concentrated-rush",
+      "mode": "disabled",
+      "games": 6,
+      "playerWins": 6,
+      "aiWins": 0,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 94.55,
+        "median": 103.325,
+        "max": 151.9
+      }
+    },
+    {
+      "policy": "concentrated-rush",
+      "mode": "enabled",
+      "games": 6,
+      "playerWins": 5,
+      "aiWins": 1,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 94.2,
+        "median": 98.7,
+        "max": 216.55
+      }
+    },
+    {
+      "policy": "screened-mixed-mine",
+      "mode": "disabled",
+      "games": 6,
+      "playerWins": 0,
+      "aiWins": 6,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 96.2,
+        "median": 97.85,
+        "max": 138.7
+      }
+    },
+    {
+      "policy": "screened-mixed-mine",
+      "mode": "enabled",
+      "games": 6,
+      "playerWins": 0,
+      "aiWins": 6,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 96.2,
+        "median": 98.25,
+        "max": 123.55
+      }
+    },
+    {
+      "policy": "air-and-rootwarden",
+      "mode": "disabled",
+      "games": 6,
+      "playerWins": 0,
+      "aiWins": 6,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 112.45,
+        "median": 113.65,
+        "max": 149.2
+      }
+    },
+    {
+      "policy": "air-and-rootwarden",
+      "mode": "enabled",
+      "games": 6,
+      "playerWins": 0,
+      "aiWins": 6,
+      "draws": 0,
+      "ongoing": 0,
+      "seconds": {
+        "min": 105.85,
+        "median": 107.475,
+        "max": 136.85
+      }
+    }
+  ],
+  "economy": {
+    "acceptedPaidActions": 457,
+    "rejectedActionChecks": 13040,
+    "maximumLedgerResidual": 1.0462741784067475e-11,
+    "maximumMapWideRate": 0.5,
+    "bridgeReceiptsPlayer": {
+      "min": 0,
+      "median": 0,
+      "max": 19.441667
+    },
+    "bridgeReceiptsAI": {
+      "min": 0,
+      "median": 33.304167,
+      "max": 42.65
+    },
+    "bridgeReceipts90Player": {
+      "min": 0,
+      "median": 0,
+      "max": 16.1125
+    },
+    "bridgeReceipts90AI": {
+      "min": 0,
+      "median": 19.091667,
+      "max": 38.275
+    },
+    "maximumBridgeShareOfEarnedGoldExcludingStart": 0.07298083504448794,
+    "bridgeDependentHeldLedgerActionsPlayer": 16,
+    "bridgeDependentHeldLedgerActionsAI": 32
+  },
+  "persistence": {
+    "restoreAndContinuationCheckpoints": 121
+  },
+  "ownership": {
+    "recaptures": 1,
+    "totalBridgePayout": 532.066667,
+    "emptyBridgePayout": 171.645833,
+    "emptyPayoutShare": 0.3226021175291372,
+    "maximumUninterruptedEmptyOwnershipSeconds": 5.7,
+    "observedAirOnlyDenialSeconds": 0
+  },
+  "participation": {
+    "airPolicyGames": 12,
+    "playerGryphonSpawns": {
+      "min": 5,
+      "median": 5,
+      "max": 7
+    },
+    "playerRootwardenSpawns": {
+      "min": 6,
+      "median": 7,
+      "max": 11
+    },
+    "playerGryphonAttacks": {
+      "min": 109,
+      "median": 116.5,
+      "max": 190
+    },
+    "playerRootwardenAttacks": {
+      "min": 44,
+      "median": 48.5,
+      "max": 62
+    }
+  },
+  "leadership": {
+    "citadelLeaderAt90Games": 12,
+    "tiedCitadelsAt90Games": 6,
+    "earlyCitadelLeaderWasWinner": 12,
+    "earlyPayoutLeaderWasWinner": 17,
+    "finalPayoutLeaderWasWinner": 17
+  },
+  "pairedComparisons": [
+    {
+      "mapId": "classic",
+      "policy": "concentrated-rush",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "player-win",
+      "offOutcome": "player-win",
+      "onSeconds": 94.2,
+      "offSeconds": 94.55,
+      "durationDelta": -0.35,
+      "outcomeChanged": false,
+      "playerBridge": 11.441667,
+      "aiBridge": 0,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 48.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140.325,
+          "bridgeEarnedBefore": 3.825,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 141.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "classic",
+      "policy": "concentrated-rush",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "player-win",
+      "offOutcome": "player-win",
+      "onSeconds": 98.15,
+      "offSeconds": 103.1,
+      "durationDelta": -4.95,
+      "outcomeChanged": false,
+      "playerBridge": 12.1,
+      "aiBridge": 0,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 48.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140.325,
+          "bridgeEarnedBefore": 3.825,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 141.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "classic",
+      "policy": "screened-mixed-mine",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 96.55,
+      "offSeconds": 97.2,
+      "durationDelta": -0.65,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 33.391667,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 56.15,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 2,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 153.983333,
+          "bridgeEarnedBefore": 14.233333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 61.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 178.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "classic",
+      "policy": "screened-mixed-mine",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 96.2,
+      "offSeconds": 96.2,
+      "durationDelta": 0,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 33.216667,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 56.15,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 2,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 153.983333,
+          "bridgeEarnedBefore": 14.233333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 61.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 176.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "classic",
+      "policy": "air-and-rootwarden",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 107.05,
+      "offSeconds": 112.45,
+      "durationDelta": -5.4,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 26.483333,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 177.858333,
+          "bridgeEarnedBefore": 3.358333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 207.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "classic",
+      "policy": "air-and-rootwarden",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 105.85,
+      "offSeconds": 112.55,
+      "durationDelta": -6.7,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 25.883333,
+      "playerSpendDelta": -210,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 177.858333,
+          "bridgeEarnedBefore": 3.358333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 207.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "concentrated-rush",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "player-win",
+      "offOutcome": "player-win",
+      "onSeconds": 145.45,
+      "offSeconds": 136.75,
+      "durationDelta": 8.7,
+      "outcomeChanged": false,
+      "playerBridge": 19.441667,
+      "aiBridge": 0,
+      "playerSpendDelta": 98,
+      "aiSpendDelta": 75,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140.95,
+          "bridgeEarnedBefore": 3.45,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 50,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "concentrated-rush",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "player-win",
+      "onSeconds": 216.55,
+      "offSeconds": 151.9,
+      "durationDelta": 64.65,
+      "outcomeChanged": true,
+      "playerBridge": 17.2,
+      "aiBridge": 14.941667,
+      "playerSpendDelta": 378,
+      "aiSpendDelta": 585,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140.95,
+          "bridgeEarnedBefore": 3.45,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 50,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "screened-mixed-mine",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 122.7,
+      "offSeconds": 138.7,
+      "durationDelta": -16,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 37.108333,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 7,
+        "enabled": {
+          "at": 41.85,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "sanctum",
+          "lane": 1,
+          "level": 1,
+          "cost": 230,
+          "refund": 0,
+          "goldBefore": 234.633333,
+          "bridgeEarnedBefore": 7.383333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 46.9,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "sanctum",
+          "lane": 1,
+          "level": 1,
+          "cost": 230,
+          "refund": 0,
+          "goldBefore": 258.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "screened-mixed-mine",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 123.55,
+      "offSeconds": 124.95,
+      "durationDelta": -1.4,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 37.533333,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 175,
+      "firstDifferentAction": {
+        "actionIndex": 7,
+        "enabled": {
+          "at": 41.85,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "sanctum",
+          "lane": 1,
+          "level": 1,
+          "cost": 230,
+          "refund": 0,
+          "goldBefore": 234.633333,
+          "bridgeEarnedBefore": 7.383333,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 46.9,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "sanctum",
+          "lane": 1,
+          "level": 1,
+          "cost": 230,
+          "refund": 0,
+          "goldBefore": 258.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "air-and-rootwarden",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 134.7,
+      "offSeconds": 143.4,
+      "durationDelta": -8.7,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 33.541667,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 176.816667,
+          "bridgeEarnedBefore": 2.316667,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 201.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "long-march",
+      "policy": "air-and-rootwarden",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 136.85,
+      "offSeconds": 149.2,
+      "durationDelta": -12.35,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 34.283333,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 176.816667,
+          "bridgeEarnedBefore": 2.316667,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 201.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "concentrated-rush",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "player-win",
+      "offOutcome": "player-win",
+      "onSeconds": 95.65,
+      "offSeconds": 95.05,
+      "durationDelta": 0.6,
+      "outcomeChanged": false,
+      "playerBridge": 17.525,
+      "aiBridge": 0,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 48.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 0,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 142.2375,
+          "bridgeEarnedBefore": 5.7375,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 0,
+          "name": "build",
+          "type": "barracks",
+          "lane": 0,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 141.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "concentrated-rush",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "player-win",
+      "offOutcome": "player-win",
+      "onSeconds": 99.25,
+      "offSeconds": 103.55,
+      "durationDelta": -4.3,
+      "outcomeChanged": false,
+      "playerBridge": 18.425,
+      "aiBridge": 0,
+      "playerSpendDelta": -140,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 48.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 0,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 142.2375,
+          "bridgeEarnedBefore": 5.7375,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 0,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 141.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "screened-mixed-mine",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 98.75,
+      "offSeconds": 97.95,
+      "durationDelta": 0.8,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 42.65,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 175,
+      "firstDifferentAction": {
+        "actionIndex": 9,
+        "enabled": {
+          "at": 62.35,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 199.2,
+          "bridgeEarnedBefore": 24.45,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 68.3,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 210.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "screened-mixed-mine",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 97.75,
+      "offSeconds": 97.75,
+      "durationDelta": 0,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 42.15,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 175,
+      "firstDifferentAction": {
+        "actionIndex": 9,
+        "enabled": {
+          "at": 62.35,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 199.2,
+          "bridgeEarnedBefore": 24.45,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 68.3,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 1,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 210.5,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "air-and-rootwarden",
+      "playerSide": 0,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 107.7,
+      "offSeconds": 113.95,
+      "durationDelta": -6.25,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 37.4875,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 179.5375,
+          "bridgeEarnedBefore": 5.0375,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 1,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 207.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    },
+    {
+      "mapId": "twin-span",
+      "policy": "air-and-rootwarden",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "ai-win",
+      "onSeconds": 107.25,
+      "offSeconds": 113.35,
+      "durationDelta": -6.1,
+      "outcomeChanged": false,
+      "playerBridge": 0,
+      "aiBridge": 37.2625,
+      "playerSpendDelta": 0,
+      "aiSpendDelta": 0,
+      "firstDifferentAction": {
+        "actionIndex": 5,
+        "enabled": {
+          "at": 34.1,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 179.5375,
+          "bridgeEarnedBefore": 5.0375,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 39.45,
+          "actor": "ai",
+          "side": 0,
+          "name": "build",
+          "type": "archery",
+          "lane": 0,
+          "level": 1,
+          "cost": 175,
+          "refund": 0,
+          "goldBefore": 207.25,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      }
+    }
+  ],
+  "changedOutcomes": [
+    {
+      "mapId": "long-march",
+      "policy": "concentrated-rush",
+      "playerSide": 1,
+      "seed": 61001,
+      "onOutcome": "ai-win",
+      "offOutcome": "player-win",
+      "onSeconds": 216.55,
+      "offSeconds": 151.9,
+      "durationDelta": 64.65,
+      "outcomeChanged": true,
+      "playerBridge": 17.2,
+      "aiBridge": 14.941667,
+      "playerSpendDelta": 378,
+      "aiSpendDelta": 585,
+      "firstDifferentAction": {
+        "actionIndex": 8,
+        "enabled": {
+          "at": 49.5,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140.95,
+          "bridgeEarnedBefore": 3.45,
+          "bridgeDependentLedger": true
+        },
+        "disabled": {
+          "at": 50,
+          "actor": "player",
+          "side": 1,
+          "name": "build",
+          "type": "barracks",
+          "lane": 1,
+          "level": 1,
+          "cost": 140,
+          "refund": 0,
+          "goldBefore": 140,
+          "bridgeEarnedBefore": 0,
+          "bridgeDependentLedger": false
+        }
+      },
+      "firstBuildTimes": [
+        {
+          "actor": "player",
+          "type": "barracks",
+          "onCount": 9,
+          "offCount": 7,
+          "firstOn": 0,
+          "firstOff": 0,
+          "firstDelta": 0
+        },
+        {
+          "actor": "ai",
+          "type": "barracks",
+          "onCount": 4,
+          "offCount": 2,
+          "firstOn": 0.05,
+          "firstOff": 0.05,
+          "firstDelta": 0
+        },
+        {
+          "actor": "ai",
+          "type": "archery",
+          "onCount": 3,
+          "offCount": 1,
+          "firstOn": 68.55,
+          "firstOff": 68.55,
+          "firstDelta": 0
+        },
+        {
+          "actor": "ai",
+          "type": "aerie",
+          "onCount": 1,
+          "offCount": 0,
+          "firstOn": 169.6,
+          "firstOff": null,
+          "firstDelta": null
+        },
+        {
+          "actor": "ai",
+          "type": "sanctum",
+          "onCount": 1,
+          "offCount": 1,
+          "firstOn": 22.4,
+          "firstOff": 22.4,
+          "firstDelta": 0
+        },
+        {
+          "actor": "ai",
+          "type": "watchtower",
+          "onCount": 0,
+          "offCount": 1,
+          "firstOn": null,
+          "firstOff": 129.3,
+          "firstDelta": null
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Synthetic, paid, DOM-free engine comparison. Not human win rates or tuning evidence.",
+    "One declared seed and normal AI only; mirrored sides are separate simulations, not assumed identical outcomes.",
+    "Paid scripted decisions are synthetic and faster/more consistent than human input. No native browser/UI evidence is provided by this study.",
+    "Open-ended games remaining alive at 600 seconds are ongoing. No forced endings or policy/reward tuning.",
+    "Bridge-dependent ledger action means current gold minus cumulative bridge receipts would not pay for the action with all other recorded transactions held fixed. Diverging kill/build histories prevent interpreting this as a full causal counterfactual.",
+    "The 90-second citadel leader can be tied; army count and payout leaders are separate descriptive values.",
+    "Zone occupancy is the engine fixed-step sample; crossing time is quantized to 0.05 seconds. Empty payout accounting counts only stable owners empty in the post-step sample.",
+    "All 36 observed games ended naturally before 600 seconds; this sample does not exercise a long strategic stalemate or timed citadel decay.",
+    "No air-only denial occurred in these natural games; pure contracts provide that evidence. Maximum uninterrupted empty ownership observed was only 5.7 seconds; indefinite absence is a pure-contract test."
+  ]
+}

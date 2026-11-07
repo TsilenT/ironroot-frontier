@@ -42,8 +42,8 @@ const backup = (value = data()) => createBackup(raw(), {createdAt:date, ...value
 
 // Existing protocol clients are executed from the exact reviewed base source,
 // not modeled by the new implementation with a smaller version argument.
-test('protocol eight pins the exact old seven source and retains the legacy default', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 8);
+test('current protocol pins the exact old seven source and retains the legacy default', () => {
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 9);
   assert.equal(protocolSeven.CURRENT_PROFILE_PROTOCOL_VERSION, 7);
   assert.equal(createHash('sha256').update(protocolSevenSource).digest('hex'), protocolSevenHash);
   const r = raw(), p = createProfileSession(() => r, {newEpoch:() => 'default'});
@@ -53,15 +53,15 @@ test('protocol eight pins the exact old seven source and retains the legacy defa
 });
 
 test('absent and all prior ready markers upgrade alone before any profile domain is accessed', () => {
-  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8]) {
+  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
     const r = raw([...entries(data(false)), ...(prior === null ? [] : [[MARKER, marker(prior)]])]);
     const before = bytes(r), p = current(r);
     assert.equal(p.status().canWrite, true);
     const migrated = JSON.parse(r.data.get(MARKER));
-    assert.equal(migrated.version, 8);
+    assert.equal(migrated.version, 9);
     if (prior !== null) assert.equal(migrated.epoch, 'retained');
     assert.deepEqual(bytes(r), before);
-    assert.equal(writes(r).length, prior === 8 ? 0 : 1);
+    assert.equal(writes(r).length, prior === 9 ? 0 : 1);
     assert.ok(r.calls.every(([, key]) => key === MARKER));
     for (const [key, value] of before) assert.equal(p.storage.getItem(key), value);
     const overview = getCampaignOverview(JSON.parse(p.storage.getItem(K.campaign)));
@@ -95,7 +95,7 @@ test('already-open and later-opened protocol-seven clients cannot discard the ne
   assert.equal(JSON.parse(r.data.get(K.trials))[id].completed, true);
 });
 
-test('failed or uncertain eight-marker writes block reads, saves and import until a verified reload', () => {
+test('failed or uncertain current-marker writes block reads, saves and import until a verified reload', () => {
   for (const fault of ['initial-read', 'drop', 'throw', 'readback', 'competing']) {
     const r = raw([[MARKER, marker(7)], ...entries(data(false))]), before = bytes(r), read = r.getItem, write = r.setItem;
     let denied = fault === 'initial-read';
@@ -127,11 +127,11 @@ test('post-write throws are accepted only after readback, while unfinished and f
   const r = raw([[MARKER, marker(7)], ...entries(data())]), before = bytes(r), write = r.setItem;
   r.setItem = (key, value) => { write(key, value); throw Error('post write'); };
   assert.equal(current(r).status().canWrite, true); assert.deepEqual(bytes(r), before);
-  for (const prior of [marker(7, 'retained', 'restoring'), marker(7, 'retained', 'failed'), marker(8, 'retained', 'restoring'), marker(9), '{bad']) {
+  for (const prior of [marker(7, 'retained', 'restoring'), marker(7, 'retained', 'failed'), marker(8, 'retained', 'restoring'), marker(10), '{bad']) {
     const target = raw([[MARKER, prior], ...entries(data())]), original = [...target.data], p = current(target);
     assert.equal(p.status().canWrite, false); assert.deepEqual(writes(target), []);
     assert.throws(() => p.storage.setItem(K.trials, '{}'));
-    if (prior === marker(9)) assert.equal(p.beginImport({recover:true}).code, 'unsupported-protocol');
+    if (prior === marker(10)) assert.equal(p.beginImport({recover:true}).code, 'unsupported-protocol');
     assert.deepEqual([...target.data], original);
   }
 });
@@ -152,16 +152,16 @@ test('five old records and modern sixth record/history export and import without
   for (const domain of ['campaign', 'trials', 'settings', 'history']) assert.deepEqual(JSON.parse(ready.storage.getItem(K[domain])), value[domain]);
   assert.equal(ready.storage.getItem(K.battle), null);
   assert.equal(target.data.get('unrelated'), 'retained');
-  assert.equal(JSON.parse(target.data.get(MARKER)).version, 8);
+  assert.equal(JSON.parse(target.data.get(MARKER)).version, 9);
 });
 
-test('old backups still restore all five records and leave protocol eight in force', () => {
+test('old backups still restore all five records and leave the current protocol in force', () => {
   const value = data(false), r = raw([[MARKER, marker(7)], ...entries(data())]), p = current(r);
   assert.equal(p.beginImport().ok, true);
   assert.equal(restoreBackup(p.importStorage, backup(value)).ok, true);
   assert.equal(p.finishImport({outcome:'restored'}).ok, true);
   assert.deepEqual(parseBackup(createBackup(current(r).storage, {createdAt:date})).data, value);
-  assert.equal(JSON.parse(r.data.get(MARKER)).version, 8);
+  assert.equal(JSON.parse(r.data.get(MARKER)).version, 9);
 });
 
 test('a failed replacement rolls back each domain exactly and preserves the new trial record', () => {
