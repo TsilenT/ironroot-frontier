@@ -1,0 +1,32 @@
+✔ uncoached protected launch and restore reveal and populate HUD before geometry measurement (171.528836ms)
+✔ removing synchronous HUD initialization reproduces hidden-control false holds on fresh start and restore (51.767924ms)
+✔ coached protected launch and restore fit 320×430 and 320×400 without hiding any controls (54.577771ms)
+✔ real first launch and restore still hold insufficient geometry after HUD initialization (53.098628ms)
+✔ same-page skirmish to protected launch does not reuse the skirmish-hidden HUD or invent a hold (24.916154ms)
+✔ character evidence accepts the entire nested critical-health string, not just a visible parent box (3.452293ms)
+✔ hidden, clipped, transparent and zero-size nested status text are individually rejected (5.060827ms)
+✔ line-box overflow remains a failure rather than being renamed a successful glyph check (1.136169ms)
+✔ paused HUD expectations derive from the authoritative saved clock, including a just-crossed second (0.25834ms)
+✔ passive replay accepts real spawned-unit/RNG changes after Resume and compares full simulation state (8.277984ms)
+✔ passive replay rejects seed, state, progression and sub-tick remainder corruption (9.657672ms)
+✔ held-release browser contract compares baseline buildings/costs and requires one fresh paid build (1.015312ms)
+✔ the measured old 568x320 field reproduces clipped originals and Front/Pause overlap (16.476502ms)
+✔ CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas (85.429587ms)
+✔ all six rail buttons retain 44px hit targets, remain separate and never cover the canvas (0.795508ms)
+✔ native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail (4.557706ms)
+✔ build overlay is anchored to the whole grid rather than the 60px objective row (0.216128ms)
+✔ short portrait preserves readable type and fits two lines intrinsically inside its 44px target row (5.264706ms)
+✔ original padding is a negative control that exceeds the same row without weakening the minimum (0.426596ms)
+✔ padding-only override preserves state styling, full labels, and meter clearance (1.442049ms)
+✔ short coached portrait replaces the bottom navigation tracks with a real side rail (7.961559ms)
+✔ 320x430 resumed protected coaching fits the unchanged safety contract without a screen-pause latch (5.338094ms)
+✔ short coached rail respects bottom safe areas and still rejects genuinely tiny geometry (7.632145ms)
+✔ shared short-coached fixture exposes teaching controls and rejects the 370px rail overlap (3.55875ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 497.178895
