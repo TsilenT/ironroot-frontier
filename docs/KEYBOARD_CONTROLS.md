@@ -23,10 +23,15 @@ actual v0.17 protocol-six client verifies both already-open and later-opened
 clients, including destructive recovery refusal. No battle identity or campaign
 progress schema changed.
 
-A review follow-up narrows the native button guard to Enter/Space activation,
-so a remapped pause key can resume while Resume has focus. Input/select/range
-and inherited contenteditable remain fully protected. The real-handler and
-browser tests now assert both remapped resume and native Enter.
+The review follow-up admits non-activation shortcut keys only on the active
+battle HUD and on Resume in the pause menu. Clicking build, Home, Front or
+volley keeps its native focus, and both defaults and remapped keys still work.
+Input/select/range, links, disclosures, coach scrolling and inherited editing
+remain protected. Resume supports P → P without forced focus, while held P
+cannot double-toggle and native Enter/Space still activate the button. A
+confirmed preference retry also clears the keyboard-specific page-only status.
+Options explains key positions without exposing a JavaScript property name;
+the implementation uses KeyboardEvent.code.
 
 ## Validation in progress
 
@@ -59,3 +64,10 @@ remain in the task workspace's `first-failure-artifacts/`; compact JSON and logs
 are committed. No virtual-time harness, forced clicks or free-resource placement
 was used for the new browser gate. Chromium automation and emulated touch do not
 establish physical-device, non-Chromium or Steam certification.
+
+Independent-review negative controls run the strengthened tests against exact
+original draft `0707617638aba7352119d74df1437647465f518f` in a separate checkout.
+All three fail at the reported boundaries: P cannot resume, an ordinary build
+click suppresses the next R, and retry leaves the keyboard page-only status.
+The original runtime is unchanged; only the new regression spec is copied into
+that checkout. Logs and JSON are retained as `browser-original-negative.*`.

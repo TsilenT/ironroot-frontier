@@ -263,7 +263,7 @@ const preferences = {
   reducedMotion: renderer.reducedMotion,
   quality: 'high',
 };
-let keyboardCapture = null, keyboardLoadWarning = '';
+let keyboardCapture = null, keyboardLoadWarning = '', keyboardSavePending = false;
 try {
   const saved = JSON.parse(preferenceSession.initial().value || '{}');
   if (saved && typeof saved === 'object') {
@@ -314,6 +314,10 @@ function updatePreferenceSaveStatus() {
 function retryPreferences(notify = false) {
   const dirty = preferenceSession.dirty(), ok = preferenceSession.retry();
   updatePreferenceSaveStatus();
+  if (dirty && ok && keyboardSavePending) {
+    keyboardSavePending = false;
+    $('keyboardStatus').textContent = 'Keyboard controls saved.';
+  }
   if (dirty && ok && keyboardLoadWarning) {
     keyboardLoadWarning = 'Unreadable keyboard controls were replaced with defaults when preferences were saved.';
     $('keyboardStatus').textContent = keyboardLoadWarning;
@@ -1990,7 +1994,14 @@ window.addEventListener('keydown', (e) => {
     return;
   // Space/Page/arrow keys scroll the focused lesson; they are not battle commands.
   if ($('campaignCoach').contains(e.target)) return;
-  const action = keyboardAction(e, preferences.keyboard);
+  const button = e.target?.closest?.('button');
+  // Clicking a battle HUD button leaves native focus there. Keep its ordinary
+  // shortcuts usable, but only Resume admits shortcuts in the pause menu.
+  // Native activation, text controls, disclosures and higher dialogs retain
+  // their guards; pause() still owns all recovery/viewport/profile holds.
+  const allowButtonShortcuts = !!button && ((!paused && $('app').contains(button)) ||
+    (!$('pauseVeil').classList.contains('hidden') && button === $('resume')));
+  const action = keyboardAction(e, preferences.keyboard, { allowButtonShortcuts });
   if (!action) return;
   if (action === 'pause') {
     e.preventDefault();
@@ -2670,6 +2681,7 @@ function setKeyboardBinding(action, code) {
   }
   preferences.keyboard = normalizeKeyboardMap(next); keyboardLoadWarning = '';
   const ok = savePreferences();
+  keyboardSavePending = !ok;
   syncKeyboardSettings(); populateBuildCards(); pauseControl(); updateCampaignDeck(); updateHUD();
   $('keyboardStatus').textContent = `${actionLabel(action, started ? game.buildings : {})}: ${keyLabel(code)}. ${ok ? 'Saved.' : 'Applies to this page only. Use Retry saving preferences.'}`;
   return true;
@@ -2698,6 +2710,7 @@ $('keyboardDefaults').onclick = () => {
   cancelKeyboardCapture();
   delete preferences.keyboard; keyboardLoadWarning = '';
   const ok = savePreferences();
+  keyboardSavePending = !ok;
   syncKeyboardSettings(); populateBuildCards(); pauseControl(); updateCampaignDeck(); updateHUD();
   $('keyboardStatus').textContent = 'Keyboard defaults restored. ' + (ok ? 'Saved.' : 'Applies to this page only. Use Retry saving preferences.');
 };
