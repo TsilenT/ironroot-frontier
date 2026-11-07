@@ -1,0 +1,300 @@
+{
+  "baseCommit": "342d8b594091d323f2c0e92d9a170de0fcbdc2b9",
+  "baseTree": "9cc8afedde4a63288dfb2f2fe95f327ce1a32d50",
+  "testedCodeCommit": "93f7b8f415646bbbe906b5b38fc4339a39d7436d",
+  "testedCodeSha256": {
+    "qa/browser/package.json": "e5792b6d630e02143fce479058f2ab57b63d98a7da81374ec88d2e6dc7ead2bf",
+    "qa/deterministic-fast/cases.mjs": "7d9db5bead9f954178fd20300d10523b4ebeb914573af12bad73265cc1179fd7",
+    "qa/deterministic-fast/helpers.mjs": "00ba3b93b1ba510e034fce95d54ea9e0d9039f971ad00f203e341e1ade56f7b5",
+    "qa/deterministic-fast/playwright.config.mjs": "0af976434a018ac9a489d75b5fb3eea0e9fe74a281e784737efa82e9bfabc12c",
+    "qa/deterministic-fast/run.mjs": "7e62daba684326b7b7d80f3f9e033933dc030be19fb37b0d94e3e9bb6633afb9",
+    "qa/deterministic-fast/server.mjs": "2d23665f84781f2e90554c539b2589ceb5dfbf45805f2a0731454fdf920b5303"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "playwright": "1.65.0",
+    "chromium": "Chromium 155.0.8059.79 built on Debian GNU/Linux 13 (trixie)",
+    "cpuMax": "400000 100000",
+    "memoryMaxBytes": 17179869184,
+    "workers": 1,
+    "tracing": "retain-on-failure, identical standard page fixtures in both modes"
+  },
+  "measurement": {
+    "method": "Python perf_counter around subprocess.Popen npm through wait(), including npm, startup, setup, readback/oracles, reports and teardown. Separate psutil sampler at 0.25s. No overlapping CPU-heavy work.",
+    "order": [
+      "real",
+      "virtual",
+      "virtual",
+      "real"
+    ],
+    "meanRealSeconds": 175.8967781125,
+    "meanFastSeconds": 66.74928991449997,
+    "commandSpeedup": 2.635185757598447,
+    "shorterPercent": 62.05201105400096,
+    "scope": "Optional two-case/four-profile slice only. Does not reduce unchanged full-release-gate runtime; no pipeline attribution."
+  },
+  "commands": [
+    {
+      "number": 1,
+      "mode": "real",
+      "command": [
+        "npm",
+        "run",
+        "test:deterministic-real"
+      ],
+      "wallHostSeconds": 175.87043207999977,
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cpuSeconds": 156.490559,
+      "peakCgroupMemoryBytes": 1325035520,
+      "peakTreeRssBytes": 1518182400,
+      "throttledPeriods": 1,
+      "totalCpuQuotaPeriods": 1758,
+      "oomEvents": 0
+    },
+    {
+      "number": 2,
+      "mode": "virtual",
+      "command": [
+        "npm",
+        "run",
+        "test:deterministic-fast"
+      ],
+      "wallHostSeconds": 66.70674139699986,
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cpuSeconds": 112.486778,
+      "peakCgroupMemoryBytes": 1354067968,
+      "peakTreeRssBytes": 1507688448,
+      "throttledPeriods": 1,
+      "totalCpuQuotaPeriods": 667,
+      "oomEvents": 0
+    },
+    {
+      "number": 3,
+      "mode": "virtual",
+      "command": [
+        "npm",
+        "run",
+        "test:deterministic-fast"
+      ],
+      "wallHostSeconds": 66.79183843200008,
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cpuSeconds": 112.319929,
+      "peakCgroupMemoryBytes": 1417195520,
+      "peakTreeRssBytes": 1523073024,
+      "throttledPeriods": 0,
+      "totalCpuQuotaPeriods": 667,
+      "oomEvents": 0
+    },
+    {
+      "number": 4,
+      "mode": "real",
+      "command": [
+        "npm",
+        "run",
+        "test:deterministic-real"
+      ],
+      "wallHostSeconds": 175.9231241450002,
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cpuSeconds": 157.881006,
+      "peakCgroupMemoryBytes": 1358921728,
+      "peakTreeRssBytes": 1474805760,
+      "throttledPeriods": 0,
+      "totalCpuQuotaPeriods": 1759,
+      "oomEvents": 0
+    }
+  ],
+  "defaultDiscovery": {
+    "before": 1596,
+    "after": 1596,
+    "identical": true,
+    "originalScriptsUnchanged": true,
+    "referenceTestsAndConfigUnchanged": true
+  },
+  "priorFailure": {
+    "testedCodeCommit": "fa004dc67dae5bc5ee202d7fcd6ee02d2a704155",
+    "mode": "virtual",
+    "passed": 7,
+    "failed": 1,
+    "unrun": 0,
+    "wallHostSeconds": 58.29356434100009,
+    "case": "desktop siege, pre-observation nonblank canvas",
+    "cause": "Native instruction transition resized/cleared the canvas after the last pumped RAF.",
+    "fix": "Deliver the next scheduled real renderer callback after native input. The >30-color assertion and all runtime files stay unchanged.",
+    "focusedRepeat": {
+      "command": "npm run test:deterministic-fast -- --project=desktop --grep=siege --repeat-each=3",
+      "passed": 3,
+      "failed": 0
+    }
+  },
+  "validationScope": {
+    "finalOptionalCasesPassed": 32,
+    "finalOptionalFailed": 0,
+    "finalOptionalSkipped": 0,
+    "finalOptionalRetries": 0,
+    "crossModePairsPassed": 16,
+    "fullDefaultBrowserMatrix": "not run; unchanged 1596-case discovery verified",
+    "productionRuntime": "unchanged",
+    "timingSensitiveOriginalTests": "unchanged; not accelerated",
+    "qaPreflight": "npm run check passed in qa/browser; new modules also passed node --check.",
+    "existingNodeSuite": "Not rerun locally for unchanged production/runtime sources; normal PR CI remains responsible."
+  },
+  "rawEvidence": "Generated under ignored qa/browser/test-results/deterministic-pr/final: complete state attachments, screenshots, JSON/HTML reports, stdout logs, outer-command.json and resources.jsonl. Not committed.",
+  "caseMetrics": "case-metrics.csv; complete raw states are in the generated ignored report attachments.",
+  "crossMode": {
+    "pairsPassed": 16,
+    "flyer": [
+      {
+        "profile": "phone",
+        "case": "flyer",
+        "commands": [
+          1,
+          2
+        ],
+        "actualTicks": [
+          187,
+          187
+        ],
+        "alignedTick": 187,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "narrow-phone",
+        "case": "flyer",
+        "commands": [
+          1,
+          2
+        ],
+        "actualTicks": [
+          186,
+          187
+        ],
+        "alignedTick": 187,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "landscape",
+        "case": "flyer",
+        "commands": [
+          1,
+          2
+        ],
+        "actualTicks": [
+          188,
+          187
+        ],
+        "alignedTick": 188,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "desktop",
+        "case": "flyer",
+        "commands": [
+          1,
+          2
+        ],
+        "actualTicks": [
+          186,
+          186
+        ],
+        "alignedTick": 186,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "phone",
+        "case": "flyer",
+        "commands": [
+          4,
+          3
+        ],
+        "actualTicks": [
+          187,
+          186
+        ],
+        "alignedTick": 187,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "narrow-phone",
+        "case": "flyer",
+        "commands": [
+          4,
+          3
+        ],
+        "actualTicks": [
+          185,
+          187
+        ],
+        "alignedTick": 187,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "landscape",
+        "case": "flyer",
+        "commands": [
+          4,
+          3
+        ],
+        "actualTicks": [
+          188,
+          187
+        ],
+        "alignedTick": 188,
+        "fullEnvelopeParity": true
+      },
+      {
+        "profile": "desktop",
+        "case": "flyer",
+        "commands": [
+          4,
+          3
+        ],
+        "actualTicks": [
+          187,
+          187
+        ],
+        "alignedTick": 187,
+        "fullEnvelopeParity": true
+      }
+    ],
+    "siege": {
+      "pairsPassed": 8,
+      "tick": 634,
+      "rng": 1324800736,
+      "attemptId": 2,
+      "ruleset": "frontier-authored-air-local",
+      "gameHash": "7210ea77fab33c4aee143e48a54aff29bc34eab434ef87e94d4e5aea254f896a",
+      "objectiveHash": "032e2d6ebfaf45ba847fdea023d78d30fdef556da91b4d7331441b65901cbdd4",
+      "fullGameObjectiveAndStorageParity": true
+    }
+  },
+  "observer": {
+    "lessonRuns": 16,
+    "readOnlyAuditsAllPassed": true,
+    "extraMsPerCaptureRange": [
+      -0.037259157999997114,
+      0.036666918000017173
+    ],
+    "readbackMsRange": [
+      883.6913359999999,
+      1032.0709290000013
+    ],
+    "caveat": "Signed extra-time estimates include separate browser-round-trip noise. Raw batches remain in generated state attachments. Active-case total is not full command time.",
+    "capturedStateCountRange": [
+      637,
+      638
+    ],
+    "captureScope": "One clone per observed tick/status transition after a frame update. A native frame may execute multiple fixed ticks; every recorded state and the complete terminal state match the ordinary per-tick oracle."
+  }
+}
