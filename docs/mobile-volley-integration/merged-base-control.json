@@ -1,141 +1,134 @@
 {
-  "stats": {
-    "startTime": "2026-11-07T19:49:23.072Z",
-    "duration": 9857.436,
-    "expected": 2,
-    "skipped": 0,
-    "unexpected": 0,
-    "flaky": 0
-  },
+  "stats": {"startTime": "2026-11-07T19:49:23.072Z","duration": 9857.436,"expected": 2,"skipped": 0,"unexpected": 0,"flaky": 0},
   "cases": [
-    {
-      "project": "phone",
-      "title": "base seeded-reload: Back/Forward markers, targeting, Resume and profile",
-      "status": "passed",
-      "durationMs": 7916,
-      "errors": [],
-      "history": {
-        "head": "base",
-        "setup": "seeded-reload",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 46,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 4,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
-                "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:1"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 4,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
-                "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:1"
-              }
-            }
-          },
-          {
-            "label": "explicit Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
-                "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:3"
-              }
-            }
-          },
-          {
-            "label": "fresh battlefield input checked",
-            "paidCast": true,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
-                "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:2"
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "project": "desktop",
-      "title": "base seeded-reload: Back/Forward markers, targeting, Resume and profile",
-      "status": "passed",
-      "durationMs": 7376,
-      "errors": [],
-      "history": {
-        "head": "base",
-        "setup": "seeded-reload",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 50,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
-                "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:1"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
-                "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:1"
-              }
-            }
-          },
-          {
-            "label": "explicit Resume",
-            "length": 6,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
-                "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:3"
-              }
-            }
-          },
-          {
-            "label": "fresh battlefield input checked",
-            "paidCast": true,
-            "length": 6,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
-                "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:2"
-              }
-            }
-          }
-        ]
-      }
-    }
-  ],
+             {
+               "project": "phone",
+               "title": "base seeded-reload: Back/Forward markers, targeting, Resume and profile",
+               "status": "passed",
+               "durationMs": 7916,
+               "errors": [],
+               "history": {
+                            "head": "base",
+                            "setup": "seeded-reload",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 46,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 4,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
+                                                                             "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 4,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
+                                                                             "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "explicit Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
+                                                                             "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "fresh battlefield input checked",
+                                          "paidCast": true,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "133409af-4008-44d8-bcbe-b1df5d19ce22",
+                                                                             "entry": "133409af-4008-44d8-bcbe-b1df5d19ce22:2"
+                                                                           }
+                                                   }
+                                        }
+                                      ]
+                          }
+             },
+             {
+               "project": "desktop",
+               "title": "base seeded-reload: Back/Forward markers, targeting, Resume and profile",
+               "status": "passed",
+               "durationMs": 7376,
+               "errors": [],
+               "history": {
+                            "head": "base",
+                            "setup": "seeded-reload",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 50,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
+                                                                             "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
+                                                                             "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "explicit Resume",
+                                          "length": 6,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
+                                                                             "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "fresh battlefield input checked",
+                                          "paidCast": true,
+                                          "length": 6,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "e0377c81-1a97-4168-9f8a-d3cf15759d8c",
+                                                                             "entry": "e0377c81-1a97-4168-9f8a-d3cf15759d8c:2"
+                                                                           }
+                                                   }
+                                        }
+                                      ]
+                          }
+             }
+           ],
   "retries": "No configured retries; failed cases are retained, including downstream assertions not reached.",
   "completeNativeTraces": {
-    "file": "merged-base-control-traces.json.gz",
-    "sha256": "b7114707d042333674bd4d8dce9254da2d1ee8083399ceab0e6cff52092fb0c0",
-    "bytes": 9211,
-    "cases": 2
-  }
+                            "file": "merged-base-control-traces.json.gz",
+                            "sha256": "b7114707d042333674bd4d8dce9254da2d1ee8083399ceab0e6cff52092fb0c0",
+                            "bytes": 9211,
+                            "cases": 2
+                          }
 }

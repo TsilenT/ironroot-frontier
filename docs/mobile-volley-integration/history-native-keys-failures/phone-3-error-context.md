@@ -122,7 +122,7 @@ Received: 5
   54  |   await expect(page.locator('#pauseVeil')).toBeVisible();
   55  |   return saved(page);
   56  | }
-  57  | 
+  57  |
   58  | test.describe('independent: native history readiness', () => {
   59  |   // Both compared heads use the same storage, native timing and SW policy.
   60  |   const serviceWorkers = process.env.VOLLEY_HISTORY_SERVICE_WORKERS === 'allow' ? 'allow' : 'block';
@@ -242,7 +242,7 @@ Received: 5
   173 |     });
   174 |   }
   175 | });
-  176 | 
+  176 |
   177 | test('independent: remapped V, Escape and native button cancellation retain menu input scope', async ({page}) => {
   178 |   const persistent = await start(page);
   179 |   await press(page, '#settings');
@@ -278,7 +278,7 @@ Received: 5
   209 |   for (const key of DOMAINS.filter(key => key !== SETTINGS)) expect(current[key]).toBe(persistent[key]);
   210 |   expect(JSON.parse(current[SETTINGS]).keyboard.bindings.volley).toBe('KeyV');
   211 | });
-  212 | 
+  212 |
   213 | test('independent: controller Y arms, B cancels, and Y/A casts once without opening Build', async ({page}) => {
   214 |   await installPad(page);
   215 |   const persistent = await start(page);

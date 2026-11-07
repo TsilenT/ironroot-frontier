@@ -1,10 +1,7 @@
 [
   {
     "kind": "skirmish",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "width": 44,
     "height": 44,
@@ -12,92 +9,26 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Ready",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 48,
-      "right": 692,
-      "bottom": 330,
-      "width": 692,
-      "height": 282
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Ready","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 48,"right": 692,"bottom": 330,"width": 692,"height": 282},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 52,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 136,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "444",
-      "+5 /s",
-      "00:04",
-      "Destroy the enemy citadel.",
-      "3 roads"
-    ]
+                  {"id": "compactBuild","width": 52,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 136,"height": 44},
+                  {"id": "front","width": 44,"height": 44}
+                ],
+    "labels": ["444","+5 /s","00:04","Destroy the enemy citadel.","3 roads"]
   },
   {
     "kind": "skirmish",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "armed": true,
     "width": 44,
@@ -106,92 +37,26 @@
     "background": "rgb(86, 81, 56)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "Cancel",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 48,
-      "right": 692,
-      "bottom": 330,
-      "width": 692,
-      "height": 282
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "Cancel","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676}
+            ],
+    "field": {"left": 0,"top": 48,"right": 692,"bottom": 330,"width": 692,"height": 282},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 52,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 136,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "453",
-      "+5 /s",
-      "00:06",
-      "Destroy the enemy citadel.",
-      "3 roads"
-    ]
+                  {"id": "compactBuild","width": 52,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 136,"height": 44},
+                  {"id": "front","width": 44,"height": 44}
+                ],
+    "labels": ["453","+5 /s","00:06","Destroy the enemy citadel.","3 roads"]
   },
   {
     "kind": "protected",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "width": 44,
     "height": 44,
@@ -199,111 +64,29 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Ready",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 64,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 326
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Ready","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 64,"right": 568,"bottom": 390,"width": 568,"height": 326},
     "controls": [
-      {
-        "id": "4",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "5",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 168,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "543",
-      "+10 /s",
-      "00:02",
-      "10.0/15 gold/s · 2/2 protected",
-      "02:28 remaining",
-      "North gold mine",
-      "100% HP",
-      "South gold mine",
-      "100% HP"
-    ]
+                  {"id": "4","width": 129,"height": 64},
+                  {"id": "5","width": 129,"height": 64},
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 168,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["543","+10 /s","00:02","10.0/15 gold/s · 2/2 protected","02:28 remaining","North gold mine","100% HP","South gold mine","100% HP"]
   },
   {
     "kind": "protected",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "armed": true,
     "width": 44,
@@ -312,111 +95,29 @@
     "background": "rgb(86, 81, 56)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "Cancel",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 64,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 326
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "Cancel","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676}
+            ],
+    "field": {"left": 0,"top": 64,"right": 568,"bottom": 390,"width": 568,"height": 326},
     "controls": [
-      {
-        "id": "4",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "5",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 168,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "562",
-      "+10 /s",
-      "00:04",
-      "10.0/15 gold/s · 2/2 protected",
-      "02:26 remaining",
-      "North gold mine",
-      "100% HP",
-      "South gold mine",
-      "100% HP"
-    ]
+                  {"id": "4","width": 129,"height": 64},
+                  {"id": "5","width": 129,"height": 64},
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 168,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["562","+10 /s","00:04","10.0/15 gold/s · 2/2 protected","02:26 remaining","North gold mine","100% HP","South gold mine","100% HP"]
   },
   {
     "kind": "protected",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": true,
     "width": 44,
     "height": 44,
@@ -424,111 +125,29 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Ready",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 0,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 390
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Ready","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 0,"right": 568,"bottom": 390,"width": 568,"height": 390},
     "controls": [
-      {
-        "id": "4",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "5",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 120,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "583",
-      "+10 /s",
-      "00:06",
-      "10.0/15 gold/s · 2/2 protected",
-      "02:24 remaining",
-      "North gold mine",
-      "100% HP",
-      "South gold mine",
-      "100% HP"
-    ]
+                  {"id": "4","width": 129,"height": 64},
+                  {"id": "5","width": 129,"height": 64},
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 120,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["583","+10 /s","00:06","10.0/15 gold/s · 2/2 protected","02:24 remaining","North gold mine","100% HP","South gold mine","100% HP"]
   },
   {
     "kind": "protected",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": true,
     "armed": true,
     "width": 44,
@@ -537,111 +156,29 @@
     "background": "rgb(86, 81, 56)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "Cancel",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 0,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 390
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "Cancel","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676}
+            ],
+    "field": {"left": 0,"top": 0,"right": 568,"bottom": 390,"width": 568,"height": 390},
     "controls": [
-      {
-        "id": "4",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "5",
-        "width": 129,
-        "height": 64
-      },
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 120,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "601",
-      "+10 /s",
-      "00:08",
-      "10.0/15 gold/s · 2/2 protected",
-      "02:22 remaining",
-      "North gold mine",
-      "100% HP",
-      "South gold mine",
-      "100% HP"
-    ]
+                  {"id": "4","width": 129,"height": 64},
+                  {"id": "5","width": 129,"height": 64},
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 120,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["601","+10 /s","00:08","10.0/15 gold/s · 2/2 protected","02:22 remaining","North gold mine","100% HP","South gold mine","100% HP"]
   },
   {
     "kind": "ashen",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "width": 44,
     "height": 44,
@@ -649,113 +186,29 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Ready",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 48,
-      "right": 692,
-      "bottom": 330,
-      "width": 692,
-      "height": 282
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Ready","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 48,"right": 692,"bottom": 330,"width": 692,"height": 282},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 52,
-        "height": 44
-      },
-      {
-        "id": "watchtower-1950-0",
-        "width": 166.65625,
-        "height": 47
-      },
-      {
-        "id": "barracks-2090-1",
-        "width": 166.671875,
-        "height": 47
-      },
-      {
-        "id": "aerie-2230-2",
-        "width": 166.671875,
-        "height": 47
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 136,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "675",
-      "+5 /s",
-      "00:05",
-      "0/2 targets destroyed",
-      "03:55 remaining",
-      "Pinewatch",
-      "North · 100%",
-      "Stonegate",
-      "Middle · 100%",
-      "Ember Roost",
-      "South · 100%"
-    ]
+                  {"id": "compactBuild","width": 52,"height": 44},
+                  {"id": "watchtower-1950-0","width": 166.65625,"height": 47},
+                  {"id": "barracks-2090-1","width": 166.671875,"height": 47},
+                  {"id": "aerie-2230-2","width": 166.671875,"height": 47},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 136,"height": 44},
+                  {"id": "front","width": 44,"height": 44}
+                ],
+    "labels": ["675","+5 /s","00:05","0/2 targets destroyed","03:55 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
   },
   {
     "kind": "ashen",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "armed": true,
     "width": 44,
@@ -764,113 +217,29 @@
     "background": "rgb(86, 81, 56)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      },
-      {
-        "text": "Cancel",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 6.389328337327676
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 48,
-      "right": 692,
-      "bottom": 330,
-      "width": 692,
-      "height": 282
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676},
+              {"text": "Cancel","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 6.389328337327676}
+            ],
+    "field": {"left": 0,"top": 48,"right": 692,"bottom": 330,"width": 692,"height": 282},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 52,
-        "height": 44
-      },
-      {
-        "id": "watchtower-1950-0",
-        "width": 166.65625,
-        "height": 47
-      },
-      {
-        "id": "barracks-2090-1",
-        "width": 166.671875,
-        "height": 47
-      },
-      {
-        "id": "aerie-2230-2",
-        "width": 166.671875,
-        "height": 47
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 136,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "681",
-      "+5 /s",
-      "00:06",
-      "0/2 targets destroyed",
-      "03:54 remaining",
-      "Pinewatch",
-      "North · 100%",
-      "Stonegate",
-      "Middle · 100%",
-      "Ember Roost",
-      "South · 100%"
-    ]
+                  {"id": "compactBuild","width": 52,"height": 44},
+                  {"id": "watchtower-1950-0","width": 166.65625,"height": 47},
+                  {"id": "barracks-2090-1","width": 166.671875,"height": 47},
+                  {"id": "aerie-2230-2","width": 166.671875,"height": 47},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 136,"height": 44},
+                  {"id": "front","width": 44,"height": 44}
+                ],
+    "labels": ["681","+5 /s","00:06","0/2 targets destroyed","03:54 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
   },
   {
     "kind": "first-build",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": false,
     "width": 44,
     "height": 44,
@@ -878,97 +247,27 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Build",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 64,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 326
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Build","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 64,"right": 568,"bottom": 390,"width": 568,"height": 326},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 168,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "420",
-      "+5 /s",
-      "00:00",
-      "0/1 targets",
-      "03:00 remaining"
-    ]
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 168,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
   },
   {
     "kind": "first-build",
-    "viewport": {
-      "width": 844,
-      "height": 390
-    },
+    "viewport": {"width": 844,"height": 390},
     "hidden": true,
     "width": 44,
     "height": 44,
@@ -976,89 +275,22 @@
     "background": "rgb(36, 60, 48)",
     "hit": true,
     "text": [
-      {
-        "text": "Volley",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "◆ 75",
-        "font": 12,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      },
-      {
-        "text": "Build",
-        "font": 14,
-        "color": "rgb(241, 230, 190)",
-        "inside": true,
-        "contrast": 9.524981658397794
-      }
-    ],
-    "field": {
-      "left": 0,
-      "top": 0,
-      "right": 568,
-      "bottom": 390,
-      "width": 568,
-      "height": 390
-    },
+              {"text": "Volley","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "◆ 75","font": 12,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794},
+              {"text": "Build","font": 14,"color": "rgb(241, 230, 190)","inside": true,"contrast": 9.524981658397794}
+            ],
+    "field": {"left": 0,"top": 0,"right": 568,"bottom": 390,"width": 568,"height": 390},
     "controls": [
-      {
-        "id": "compactBuild",
-        "width": 56,
-        "height": 44
-      },
-      {
-        "id": "pause",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "speed",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "rally",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "settings",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "home",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "minimap",
-        "width": 120,
-        "height": 44
-      },
-      {
-        "id": "front",
-        "width": 44,
-        "height": 44
-      },
-      {
-        "id": "toggleCoach",
-        "width": 44,
-        "height": 44
-      }
-    ],
-    "labels": [
-      "420",
-      "+5 /s",
-      "00:00",
-      "0/1 targets",
-      "03:00 remaining"
-    ]
+                  {"id": "compactBuild","width": 56,"height": 44},
+                  {"id": "pause","width": 44,"height": 44},
+                  {"id": "speed","width": 44,"height": 44},
+                  {"id": "rally","width": 44,"height": 44},
+                  {"id": "settings","width": 44,"height": 44},
+                  {"id": "home","width": 44,"height": 44},
+                  {"id": "minimap","width": 120,"height": 44},
+                  {"id": "front","width": 44,"height": 44},
+                  {"id": "toggleCoach","width": 44,"height": 44}
+                ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
   }
 ]

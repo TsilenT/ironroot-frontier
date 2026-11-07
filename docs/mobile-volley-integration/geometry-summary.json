@@ -2,9 +2,7 @@
   {
     "file": "landscape-geometry.json",
     "observations": 10,
-    "viewports": [
-      "844x390"
-    ],
+    "viewports": ["844x390"],
     "minimumFieldWidth": 568,
     "minimumFieldHeight": 282,
     "minimumTextContrast": 6.389328337327676
@@ -12,22 +10,10 @@
   {
     "file": "narrow-phone-geometry.json",
     "observations": 20,
-    "viewports": [
-      "320x430",
-      "320x568"
-    ],
+    "viewports": ["320x430","320x568"],
     "minimumFieldWidth": 216,
     "minimumFieldHeight": 226,
     "minimumTextContrast": 6.389328337327676
   },
-  {
-    "file": "phone-geometry.json",
-    "observations": 10,
-    "viewports": [
-      "390x650"
-    ],
-    "minimumFieldWidth": 390,
-    "minimumFieldHeight": 310,
-    "minimumTextContrast": 6.389328337327676
-  }
+  {"file": "phone-geometry.json","observations": 10,"viewports": ["390x650"],"minimumFieldWidth": 390,"minimumFieldHeight": 310,"minimumTextContrast": 6.389328337327676}
 ]

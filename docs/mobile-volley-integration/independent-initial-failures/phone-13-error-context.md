@@ -109,7 +109,7 @@ Call Log:
   29  |   });
   30  |   return Object.fromEntries([...baseAssets].map(([path, value]) => [path, value.sha256]));
   31  | }
-  32  | 
+  32  |
   33  | export async function observeVolleyHistory(page) {
   34  |   const records = [], checks = [], entries = [];
   35  |   let index = -1;
@@ -224,5 +224,5 @@ Call Log:
   143 |   }
   144 |   return {ready,mark,traverse,attach,assertOpaqueStates};
   145 | }
-  146 | 
+  146 |
 ```

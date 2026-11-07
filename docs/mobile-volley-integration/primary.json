@@ -1,209 +1,184 @@
 {
-  "stats": {
-    "startTime": "2026-11-07T19:42:28.545Z",
-    "duration": 147328.479,
-    "expected": 13,
-    "skipped": 15,
-    "unexpected": 0,
-    "flaky": 0
-  },
+  "stats": {"startTime": "2026-11-07T19:42:28.545Z","duration": 147328.479,"expected": 13,"skipped": 15,"unexpected": 0,"flaky": 0},
   "cases": [
-    {
-      "project": "phone",
-      "title": "visible named action fits existing slots with objectives and hints retained",
-      "status": "passed",
-      "durationMs": 48669,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "visible named action fits existing slots with objectives and hints retained",
-      "status": "passed",
-      "durationMs": 55719,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "visible named action fits existing slots with objectives and hints retained",
-      "status": "passed",
-      "durationMs": 38471,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "visible named action fits existing slots with objectives and hints retained",
-      "status": "passed",
-      "durationMs": 18357,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
-      "status": "passed",
-      "durationMs": 19211,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
-      "status": "passed",
-      "durationMs": 13100,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
-      "status": "passed",
-      "durationMs": 9560,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
-      "status": "passed",
-      "durationMs": 4777,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "held touch multitouch and resize cannot cast; short safety stays paused",
-      "status": "passed",
-      "durationMs": 18062,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "held touch multitouch and resize cannot cast; short safety stays paused",
-      "status": "skipped",
-      "durationMs": 522,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "held touch multitouch and resize cannot cast; short safety stays paused",
-      "status": "skipped",
-      "durationMs": 348,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "held touch multitouch and resize cannot cast; short safety stays paused",
-      "status": "skipped",
-      "durationMs": 300,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
-      "status": "skipped",
-      "durationMs": 662,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
-      "status": "skipped",
-      "durationMs": 721,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
-      "status": "skipped",
-      "durationMs": 256,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
-      "status": "passed",
-      "durationMs": 9403,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
-      "status": "passed",
-      "durationMs": 13795,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
-      "status": "skipped",
-      "durationMs": 697,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
-      "status": "skipped",
-      "durationMs": 357,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
-      "status": "skipped",
-      "durationMs": 326,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
-      "status": "passed",
-      "durationMs": 8543,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
-      "status": "skipped",
-      "durationMs": 630,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
-      "status": "skipped",
-      "durationMs": 381,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
-      "status": "skipped",
-      "durationMs": 233,
-      "errors": []
-    },
-    {
-      "project": "phone",
-      "title": "owned-building inspector hands control to Volley and Options dominates targeting",
-      "status": "passed",
-      "durationMs": 10132,
-      "errors": []
-    },
-    {
-      "project": "narrow-phone",
-      "title": "owned-building inspector hands control to Volley and Options dominates targeting",
-      "status": "skipped",
-      "durationMs": 751,
-      "errors": []
-    },
-    {
-      "project": "landscape",
-      "title": "owned-building inspector hands control to Volley and Options dominates targeting",
-      "status": "skipped",
-      "durationMs": 313,
-      "errors": []
-    },
-    {
-      "project": "desktop",
-      "title": "owned-building inspector hands control to Volley and Options dominates targeting",
-      "status": "skipped",
-      "durationMs": 230,
-      "errors": []
-    }
-  ],
+             {
+               "project": "phone",
+               "title": "visible named action fits existing slots with objectives and hints retained",
+               "status": "passed",
+               "durationMs": 48669,
+               "errors": []
+             },
+             {
+               "project": "narrow-phone",
+               "title": "visible named action fits existing slots with objectives and hints retained",
+               "status": "passed",
+               "durationMs": 55719,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "visible named action fits existing slots with objectives and hints retained",
+               "status": "passed",
+               "durationMs": 38471,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "visible named action fits existing slots with objectives and hints retained",
+               "status": "passed",
+               "durationMs": 18357,
+               "errors": []
+             },
+             {
+               "project": "phone",
+               "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
+               "status": "passed",
+               "durationMs": 19211,
+               "errors": []
+             },
+             {
+               "project": "narrow-phone",
+               "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
+               "status": "passed",
+               "durationMs": 13100,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
+               "status": "passed",
+               "durationMs": 9560,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "real pointer arm cancel drag and cast are free until exactly one valid release",
+               "status": "passed",
+               "durationMs": 4777,
+               "errors": []
+             },
+             {"project": "phone","title": "held touch multitouch and resize cannot cast; short safety stays paused","status": "passed","durationMs": 18062,"errors": []},
+             {
+               "project": "narrow-phone",
+               "title": "held touch multitouch and resize cannot cast; short safety stays paused",
+               "status": "skipped",
+               "durationMs": 522,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "held touch multitouch and resize cannot cast; short safety stays paused",
+               "status": "skipped",
+               "durationMs": 348,
+               "errors": []
+             },
+             {"project": "desktop","title": "held touch multitouch and resize cannot cast; short safety stays paused","status": "skipped","durationMs": 300,"errors": []},
+             {"project": "phone","title": "bounded virtual cooldown preserves ordinary engine state and returns Ready","status": "skipped","durationMs": 662,"errors": []},
+             {
+               "project": "narrow-phone",
+               "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
+               "status": "skipped",
+               "durationMs": 721,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
+               "status": "skipped",
+               "durationMs": 256,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "bounded virtual cooldown preserves ordinary engine state and returns Ready",
+               "status": "passed",
+               "durationMs": 9403,
+               "errors": []
+             },
+             {
+               "project": "phone",
+               "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
+               "status": "passed",
+               "durationMs": 13795,
+               "errors": []
+             },
+             {
+               "project": "narrow-phone",
+               "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
+               "status": "skipped",
+               "durationMs": 697,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
+               "status": "skipped",
+               "durationMs": 357,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "Options audio synchronizes desktop Sound; the same focused Volley survives relocation",
+               "status": "skipped",
+               "durationMs": 326,
+               "errors": []
+             },
+             {
+               "project": "phone",
+               "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
+               "status": "passed",
+               "durationMs": 8543,
+               "errors": []
+             },
+             {
+               "project": "narrow-phone",
+               "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
+               "status": "skipped",
+               "durationMs": 630,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
+               "status": "skipped",
+               "durationMs": 381,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "unaffordable spell and measured subminimum target cannot bypass their guards",
+               "status": "skipped",
+               "durationMs": 233,
+               "errors": []
+             },
+             {
+               "project": "phone",
+               "title": "owned-building inspector hands control to Volley and Options dominates targeting",
+               "status": "passed",
+               "durationMs": 10132,
+               "errors": []
+             },
+             {
+               "project": "narrow-phone",
+               "title": "owned-building inspector hands control to Volley and Options dominates targeting",
+               "status": "skipped",
+               "durationMs": 751,
+               "errors": []
+             },
+             {
+               "project": "landscape",
+               "title": "owned-building inspector hands control to Volley and Options dominates targeting",
+               "status": "skipped",
+               "durationMs": 313,
+               "errors": []
+             },
+             {
+               "project": "desktop",
+               "title": "owned-building inspector hands control to Volley and Options dominates targeting",
+               "status": "skipped",
+               "durationMs": 230,
+               "errors": []
+             }
+           ],
   "retries": "No configured retries; failed cases are retained, including downstream assertions not reached."
 }

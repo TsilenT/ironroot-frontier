@@ -1,365 +1,339 @@
 {
-  "stats": {
-    "startTime": "2026-11-07T19:47:53.679Z",
-    "duration": 19866.93,
-    "expected": 3,
-    "skipped": 0,
-    "unexpected": 1,
-    "flaky": 0
-  },
+  "stats": {"startTime": "2026-11-07T19:47:53.679Z","duration": 19866.93,"expected": 3,"skipped": 0,"unexpected": 1,"flaky": 0},
   "cases": [
-    {
-      "project": "phone",
-      "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
-      "status": "passed",
-      "durationMs": 11178,
-      "errors": [],
-      "history": {
-        "head": "candidate",
-        "setup": "fresh-document",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 97,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
-              }
-            }
-          },
-          {
-            "label": "explicit Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
-              }
-            }
-          },
-          {
-            "label": "fresh battlefield input checked",
-            "paidCast": false,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:2"
-              }
-            }
-          },
-          {
-            "label": "repeat pre-Resume",
-            "cycle": 0,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
-              }
-            }
-          },
-          {
-            "label": "repeat resumed",
-            "cycle": 0,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
-              }
-            }
-          },
-          {
-            "label": "repeat pre-Resume",
-            "cycle": 1,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
-              }
-            }
-          },
-          {
-            "label": "repeat resumed",
-            "cycle": 1,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
-                "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
-              }
-            }
-          },
-          {
-            "label": "finite Back exit",
-            "steps": 3,
-            "length": 5,
-            "state": null
-          }
-        ]
-      }
-    },
-    {
-      "project": "desktop",
-      "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
-      "status": "passed",
-      "durationMs": 10537,
-      "errors": [],
-      "history": {
-        "head": "candidate",
-        "setup": "fresh-document",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 97,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
-              }
-            }
-          },
-          {
-            "label": "explicit Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
-              }
-            }
-          },
-          {
-            "label": "fresh battlefield input checked",
-            "paidCast": false,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:2"
-              }
-            }
-          },
-          {
-            "label": "repeat pre-Resume",
-            "cycle": 0,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
-              }
-            }
-          },
-          {
-            "label": "repeat resumed",
-            "cycle": 0,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
-              }
-            }
-          },
-          {
-            "label": "repeat pre-Resume",
-            "cycle": 1,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
-              }
-            }
-          },
-          {
-            "label": "repeat resumed",
-            "cycle": 1,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
-                "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
-              }
-            }
-          },
-          {
-            "label": "finite Back exit",
-            "steps": 3,
-            "length": 5,
-            "state": null
-          }
-        ]
-      }
-    },
-    {
-      "project": "phone",
-      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
-      "status": "failed",
-      "durationMs": 6230,
-      "errors": [
-        {
-          "location": {
-            "file": "/workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs",
-            "column": 37,
-            "line": 129
-          },
-          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m5\u001b[39m\n\n  127 |         const beforeResume = await trace.mark('strict pre-Resume');\n  128 |         // Retain the original strict assertion, now after actual Forward.\n> 129 |         expect(beforeResume.length).toBe(baseline.length);\n      |                                     ^\n  130 |         expect(beforeResume.state).toEqual(baseline.state);\n  131 |         await press(page,'#resume');\n  132 |         await expect(page.locator('#pauseVeil')).toBeHidden();\n    at /workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs:129:37"
-        }
-      ],
-      "history": {
-        "head": "candidate",
-        "setup": "seeded-reload",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 30,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 4,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
-                "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
-                "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
-              }
-            }
-          }
-        ]
-      },
-      "attachments": [
-        "history-native-keys-failures/phone-3-test-failed-1.png",
-        "history-native-keys-failures/phone-3-error-context.md"
-      ],
-      "localPlaywrightTrace": [
-        "/tmp/volley-integration-playwright-traces/history-native-keys-failures-phone-3-trace.zip"
-      ],
-      "traceRetention": "All received native history observations are committed as compressed JSON; old-document terminal delivery is not guaranteed across reload. Playwright bundles with duplicated runtime assets are retained locally only."
-    },
-    {
-      "project": "desktop",
-      "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
-      "status": "passed",
-      "durationMs": 6070,
-      "errors": [],
-      "history": {
-        "head": "candidate",
-        "setup": "seeded-reload",
-        "serviceWorkers": "block",
-        "shippingWorker": null,
-        "nativeEventCount": 45,
-        "phases": [
-          {
-            "label": "pre-arm baseline",
-            "length": 4,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
-                "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:1"
-              }
-            }
-          },
-          {
-            "label": "strict pre-Resume",
-            "length": 4,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
-                "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:1"
-              }
-            }
-          },
-          {
-            "label": "explicit Resume",
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
-                "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:3"
-              }
-            }
-          },
-          {
-            "label": "fresh battlefield input checked",
-            "paidCast": false,
-            "length": 5,
-            "state": {
-              "ironrootNavigation": {
-                "version": 1,
-                "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
-                "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:2"
-              }
-            }
-          }
-        ]
-      }
-    }
-  ],
+             {
+               "project": "phone",
+               "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
+               "status": "passed",
+               "durationMs": 11178,
+               "errors": [],
+               "history": {
+                            "head": "candidate",
+                            "setup": "fresh-document",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 97,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "explicit Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "fresh battlefield input checked",
+                                          "paidCast": false,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:2"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat pre-Resume",
+                                          "cycle": 0,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat resumed",
+                                          "cycle": 0,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat pre-Resume",
+                                          "cycle": 1,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat resumed",
+                                          "cycle": 1,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "bd606fff-d707-42f7-a7fe-3f9be389a6e6",
+                                                                             "entry": "bd606fff-d707-42f7-a7fe-3f9be389a6e6:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {"label": "finite Back exit","steps": 3,"length": 5,"state": null}
+                                      ]
+                          }
+             },
+             {
+               "project": "desktop",
+               "title": "candidate fresh-document: Back/Forward markers, targeting, Resume and profile",
+               "status": "passed",
+               "durationMs": 10537,
+               "errors": [],
+               "history": {
+                            "head": "candidate",
+                            "setup": "fresh-document",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 97,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "explicit Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "fresh battlefield input checked",
+                                          "paidCast": false,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:2"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat pre-Resume",
+                                          "cycle": 0,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat resumed",
+                                          "cycle": 0,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat pre-Resume",
+                                          "cycle": 1,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "repeat resumed",
+                                          "cycle": 1,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5c8790f2-fdf2-46df-a2f1-690b2499a02d",
+                                                                             "entry": "5c8790f2-fdf2-46df-a2f1-690b2499a02d:4"
+                                                                           }
+                                                   }
+                                        },
+                                        {"label": "finite Back exit","steps": 3,"length": 5,"state": null}
+                                      ]
+                          }
+             },
+             {
+               "project": "phone",
+               "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+               "status": "failed",
+               "durationMs": 6230,
+               "errors": [
+                           {
+                             "location": {"file": "/workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs","column": 37,"line": 129},
+                             "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m5\u001b[39m\n\n  127 |         const beforeResume = await trace.mark('strict pre-Resume');\n  128 |         // Retain the original strict assertion, now after actual Forward.\n> 129 |         expect(beforeResume.length).toBe(baseline.length);\n      |                                     ^\n  130 |         expect(beforeResume.state).toEqual(baseline.state);\n  131 |         await press(page,'#resume');\n  132 |         await expect(page.locator('#pauseVeil')).toBeHidden();\n    at /workspace/ironroot-mobile-volley/qa/browser/volley-independent.spec.mjs:129:37"
+                           }
+                         ],
+               "history": {
+                            "head": "candidate",
+                            "setup": "seeded-reload",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 30,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 4,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
+                                                                             "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "4825e723-77a9-4f2a-881b-ba16e7d6826a",
+                                                                             "entry": "4825e723-77a9-4f2a-881b-ba16e7d6826a:1"
+                                                                           }
+                                                   }
+                                        }
+                                      ]
+                          },
+               "attachments": ["history-native-keys-failures/phone-3-test-failed-1.png","history-native-keys-failures/phone-3-error-context.md"],
+               "localPlaywrightTrace": ["/tmp/volley-integration-playwright-traces/history-native-keys-failures-phone-3-trace.zip"],
+               "traceRetention": "All received native history observations are committed as compressed JSON; old-document terminal delivery is not guaranteed across reload. Playwright bundles with duplicated runtime assets are retained locally only."
+             },
+             {
+               "project": "desktop",
+               "title": "candidate seeded-reload: Back/Forward markers, targeting, Resume and profile",
+               "status": "passed",
+               "durationMs": 6070,
+               "errors": [],
+               "history": {
+                            "head": "candidate",
+                            "setup": "seeded-reload",
+                            "serviceWorkers": "block",
+                            "shippingWorker": null,
+                            "nativeEventCount": 45,
+                            "phases": [
+                                        {
+                                          "label": "pre-arm baseline",
+                                          "length": 4,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
+                                                                             "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "strict pre-Resume",
+                                          "length": 4,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
+                                                                             "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:1"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "explicit Resume",
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
+                                                                             "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:3"
+                                                                           }
+                                                   }
+                                        },
+                                        {
+                                          "label": "fresh battlefield input checked",
+                                          "paidCast": false,
+                                          "length": 5,
+                                          "state": {
+                                                     "ironrootNavigation": {
+                                                                             "version": 1,
+                                                                             "document": "5514c41a-2928-47eb-bf08-4c489a7360c7",
+                                                                             "entry": "5514c41a-2928-47eb-bf08-4c489a7360c7:2"
+                                                                           }
+                                                   }
+                                        }
+                                      ]
+                          }
+             }
+           ],
   "retries": "No configured retries; failed cases are retained, including downstream assertions not reached.",
   "completeNativeTraces": {
-    "file": "history-native-keys-traces.json.gz",
-    "sha256": "2e787ae439b36441e4792541af4d1d8da209bb8433908cbb87a41e6f50d8ec75",
-    "bytes": 9397,
-    "cases": 4
-  }
+                            "file": "history-native-keys-traces.json.gz",
+                            "sha256": "2e787ae439b36441e4792541af4d1d8da209bb8433908cbb87a41e6f50d8ec75",
+                            "bytes": 9397,
+                            "cases": 4
+                          }
 }

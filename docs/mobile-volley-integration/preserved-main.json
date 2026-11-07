@@ -2,19 +2,14 @@
   "base": "495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca",
   "baseTree": "da748165d0d2948c317eb43d4191fe1e20c6011d",
   "byteIdentical": {
-    "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
-    "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
-    "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
-    "dist/profile-session.js": "dfab0369f5beefc742bed294c2172bc70128f8c1c49e7cbbb24890d81c75f8e3",
-    "qa/browser/restart-briefing.spec.mjs": "d5c839f12352ea300acf15f7f74323a0c0cc3934d11021249d04382dbff4d5df",
-    "tests/storage-retirement-app.test.mjs": "028bd43a8282e14711fffac798e59262fd62e6e9183f4881e3e300299548ea04",
-    "tests/persistence.test.mjs": "69450f37f1aba258b5c223e2f42c6ee0ff1e0016e18927f19a31fd6a54ecb8f2"
-  },
-  "runtimeDiff": [
-    "dist/app.js",
-    "dist/index.html",
-    "dist/styles.css",
-    "dist/service-worker.js"
-  ],
+                     "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+                     "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+                     "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+                     "dist/profile-session.js": "dfab0369f5beefc742bed294c2172bc70128f8c1c49e7cbbb24890d81c75f8e3",
+                     "qa/browser/restart-briefing.spec.mjs": "d5c839f12352ea300acf15f7f74323a0c0cc3934d11021249d04382dbff4d5df",
+                     "tests/storage-retirement-app.test.mjs": "028bd43a8282e14711fffac798e59262fd62e6e9183f4881e3e300299548ea04",
+                     "tests/persistence.test.mjs": "69450f37f1aba258b5c223e2f42c6ee0ff1e0016e18927f19a31fd6a54ecb8f2"
+                   },
+  "runtimeDiff": ["dist/app.js","dist/index.html","dist/styles.css","dist/service-worker.js"],
   "profileProtocol": 8
 }
