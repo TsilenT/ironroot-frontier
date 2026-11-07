@@ -79,7 +79,7 @@ test('earned one-target save reloads with stable remaining states and Back resta
   await page.reload();await expect(page.locator('#resumeSaved')).toContainText('ASHEN CROSSROADS');await press(page,'#resumeSaved');
   await expect(page.locator('#objectiveProgress')).toHaveText('1/2 targets destroyed');
   await press(page,'#pause');await press(page,'#restartBattle');await page.evaluate(()=>history.back());await expect(page.locator('#restartModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeVisible();
-  await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#objectiveProgress')).toHaveText('0/2 targets destroyed');
+  await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');await expect(page.locator('#objectiveProgress')).toHaveText('0/2 targets destroyed');
   await expect(page.locator('#protectedTargets [data-state="standing"]')).toHaveCount(3);
   await press(page,'#pause');const restarted=await saved(page);expect(restarted.scenario).toEqual({kind:'trial',id:ID,revision:2});
   expect(restarted.game.state.stats.built[0]).toBe(3);expect(restarted.game.state.gold[0]).toBeCloseTo(650+5*restarted.game.state.time,1);
@@ -108,7 +108,7 @@ test('ordinary idle defeat offers a fresh retry without awarding a trial record'
   await seedOnce(page,priorProfile(FIXTURES.nearLoss));await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('TRIAL FAILED');
   await expect(page.locator('#resultCopy')).toContainText('Your citadel fell');await expect(page.locator('#playAgain')).toContainText('RETRY FIELD TRIAL');
   expect(JSON.parse((await domains(page))[K.trials])).toEqual({shieldbreaker:{completed:true,bestTime:10}});await screenshot(page,info,'failed');
-  await press(page,'#playAgain');await expect(page.locator('#objectiveProgress')).toHaveText('0/2 targets destroyed');await expect(page.locator('#protectedTargets [data-state="standing"]')).toHaveCount(3);
+  await press(page,'#playAgain');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');await expect(page.locator('#objectiveProgress')).toHaveText('0/2 targets destroyed');await expect(page.locator('#protectedTargets [data-state="standing"]')).toHaveCount(3);
   await press(page,'#pause');const battle=await saved(page);expect(battle.scenario).toEqual({kind:'trial',id:ID,revision:2});expect(battle.game.state.stats.built[0]).toBe(3);expect(battle.game.state.gold[0]).toBeCloseTo(650+5*battle.game.state.time,1);
 });
 

@@ -1,5 +1,7 @@
 # Visible mobile Volley candidate
 
+**Current integration:** [v0.18.2 on merged v0.18.1 main](MOBILE_VOLLEY_INTEGRATION.md). The following is the preserved original v0.18.1 candidate review record, including its historical failures and sequencing decisions.
+
 This draft starts from exact private `main` **b88119fdd2cc288633e58bfaf0baffa302ee76de** (v0.18.0, profile protocol 8). Branch: `codex/mobile-volley` in an isolated worktree. The candidate identity is **v0.18.1 / ironroot-v0.18.1**. No merge, publication, deployment, signing or store work is part of this change. Production was neither accessed nor modified.
 
 ## Selected control and tradeoffs

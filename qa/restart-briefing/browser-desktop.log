@@ -1,0 +1,132 @@
+[WebServer] (node:4148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 42 tests using 2 workers
+
+(node:4187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4186) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves two-building ongoing opening with newer full-roster profile (15.0s)
+  ✓   1 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves full-roster opening replay (16.5s)
+  ✓   3 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves five-building ongoing fork with newer full-roster profile (14.2s)
+  ✓   4 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves current main mission (15.1s)
+  ✓   6 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves legacy revision-one main mission (13.0s)
+  ✓   5 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves optional introduction replay (15.6s)
+  ✓   8 [desktop] › pause-menu.spec.mjs:27:1 › pause dialog traps focus, isolates gameplay and resumes by keyboard (6.9s)
+  ✓   7 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves unfinished five-building fork and renewed teaching (14.6s)
+  ✓   9 [desktop] › pause-menu.spec.mjs:43:1 › options and guide return focus to their pause-menu entry without advancing or changing saves (9.6s)
+  ✓  11 [desktop] › pause-menu.spec.mjs:66:1 › restart confirms, cancellation is lossless and fresh attempt retains battle identity and profile (10.1s)
+  ✓  10 [desktop] › pause-menu.spec.mjs:55:1 › save and return reloads the same map, ruleset, construction and profile (13.8s)
+  ✓  12 [desktop] › pause-menu.spec.mjs:76:1 › storage failure retains the paused battle on save-exit and restart with honest retry feedback (10.6s)
+  ✓  13 [desktop] › pause-menu.spec.mjs:87:1 › newer tab checkpoint cannot be overwritten by an open restart confirmation (15.9s)
+  ✓  14 [desktop] › pause-menu.spec.mjs:96:3 › campaign restart retains authored identity without awarding progress or history (11.0s)
+  ✓  15 [desktop] › pause-menu.spec.mjs:96:3 › trial restart retains authored identity without awarding progress or history (10.9s)
+  ✓  16 [desktop] › pause-menu.spec.mjs:115:1 › controller navigation, B and Start respect each menu scope (12.6s)
+  ✓  17 [desktop] › pause-menu.spec.mjs:128:45 › legacy classic checkpoint restarts in its own schema and retains every nonempty profile domain (10.9s)
+  ✓  18 [desktop] › pause-menu.spec.mjs:128:45 › legacy long-march checkpoint restarts in its own schema and retains every nonempty profile domain (11.1s)
+  ✓  19 [desktop] › pause-menu.spec.mjs:149:1 › viewport interruption closes restart and keeps its resume latch and checkpoint intact (7.5s)
+  ✓  21 [desktop] › pause-menu.spec.mjs:158:38 › direct Options opened during play returns focus to settings via Escape (3.8s)
+  ✓  20 [desktop] › pause-menu.spec.mjs:158:38 › direct Options opened during play returns focus to settings via Done (4.1s)
+  ✓  23 [desktop] › pause-menu.spec.mjs:166:79 › restart preserves a newer checkpoint injected after ownership recheck (5.9s)
+  ✓  22 [desktop] › pause-menu.spec.mjs:166:79 › restart preserves a newer checkpoint injected after verified checkpoint (6.4s)
+  ✓  24 [desktop] › restart-briefing.spec.mjs:30:1 › roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin (10.1s)
+  ✓  25 [desktop] › restart-briefing.spec.mjs:30:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.4s)
+  ✓  26 [desktop] › restart-briefing.spec.mjs:30:1 › open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin (10.5s)
+  ✓  27 [desktop] › restart-briefing.spec.mjs:30:1 › emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.8s)
+  ✓  29 [desktop] › restart-briefing.spec.mjs:68:56 › campaign-failure: result Retry shows its briefing before a new attempt (3.0s)
+  ✓  28 [desktop] › restart-briefing.spec.mjs:54:1 › restart retires history attempt markers; Back/Forward cannot resume and Back can leave (4.5s)
+  ✓  30 [desktop] › restart-briefing.spec.mjs:68:56 › trial-failure: result Retry shows its briefing before a new attempt (2.8s)
+  ✓  31 [desktop] › restart-briefing.spec.mjs:80:1 › result Continue advances and optional Replay retains the completed mission (3.1s)
+  ✓  32 [desktop] › restart-briefing.spec.mjs:91:48 › checkpoint removal throw: honest warning retains paused attempt (2.7s)
+  ✓  33 [desktop] › restart-briefing.spec.mjs:91:48 › checkpoint removal noop: honest warning retains paused attempt (2.7s)
+  ✓  34 [desktop] › restart-briefing.spec.mjs:91:48 › checkpoint removal readback: honest warning retains paused attempt (2.7s)
+  ✓  35 [desktop] › restart-briefing.spec.mjs:113:1 › Begin write failure stays on briefing and can retry without resurrecting old attempt (2.7s)
+  ✓  36 [desktop] › restart-briefing.spec.mjs:124:48 › newer tab checkpoint survives confirmation (4.5s)
+  ✓  37 [desktop] › restart-briefing.spec.mjs:124:48 › newer tab checkpoint survives briefing (4.7s)
+  ✓  38 [desktop] › restart-briefing.spec.mjs:133:1 › a resumed stale copy cannot autosave after another tab confirms restart (4.4s)
+  ✘  40 [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (319ms)
+(node:7884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [desktop] › restart-briefing.spec.mjs:141:1 › held controller confirm reaches briefing once; a fresh activation explicitly begins (4.7s)
+  ✘  41 [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via controller (544ms)
+  ✓  42 [desktop] › restart-briefing.spec.mjs:183:1 › profile change during restart confirmation preserves the recovery hold and all stored bytes (2.2s)
+
+
+  1) [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard
+
+    BattleCodecError: Saved battle does not match its scenario rules.
+
+       at ../../dist/battle-codec.js:11
+
+       9 | const own=(value,key)=>Object.hasOwn(value,key);
+      10 | export class BattleCodecError extends Error {constructor(message,code='invalid-battle'){super(message);this.name='BattleCodecError';this.code=code;}}
+    > 11 | const fail=(message,code)=>{throw new BattleCodecError(message,code);};
+         |                                   ^
+      12 | function fields(value,allowed,required=allowed){
+      13 |   if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))fail('Saved battle must contain plain objects.');
+      14 |   const descriptors=Object.getOwnPropertyDescriptors(value);
+        at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)
+        at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)
+        at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)
+        at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)
+        at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via controller
+
+    BattleCodecError: Saved battle does not match its scenario rules.
+
+       at ../../dist/battle-codec.js:11
+
+       9 | const own=(value,key)=>Object.hasOwn(value,key);
+      10 | export class BattleCodecError extends Error {constructor(message,code='invalid-battle'){super(message);this.name='BattleCodecError';this.code=code;}}
+    > 11 | const fail=(message,code)=>{throw new BattleCodecError(message,code);};
+         |                                   ^
+      12 | function fields(value,allowed,required=allowed){
+      13 |   if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))fail('Saved battle must contain plain objects.');
+      14 |   const descriptors=Object.getOwnPropertyDescriptors(value);
+        at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)
+        at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)
+        at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)
+        at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)
+        at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard
+    [desktop] › restart-briefing.spec.mjs:151:51 › current finale offers Skirmish setup and optional three-star Replay via controller
+  40 passed (2.9m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,6 +1,8 @@
 // Real-time layout/pointer cases. Only the isolated cooldown case virtualizes RAFs.
 import {expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
 import {test,press,seedOnce,saved,tapPoint,dragPoint,homePoint} from './map-browser-helpers.mjs';
 import {campaignFixture} from './campaign-fixtures.mjs';
 import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
@@ -8,7 +10,7 @@ import {inspectMobileBattlefield} from './mobile-safety-evidence.mjs';
 import {inspectPhoneText,settlePhoneViewport} from './phone-text-evidence.mjs';
 import {Game,SPELL,getMap} from '../../dist/engine.js';
 import {encodeBattle,scenarioForBattle} from '../../dist/battle-codec.js';
-const output=new URL('../../docs/mobile-volley-evidence/',import.meta.url);
+const output=process.env.VOLLEY_EVIDENCE_DIR ? pathToFileURL(resolve(process.env.VOLLEY_EVIDENCE_DIR) + '/') : new URL('../../docs/mobile-volley-evidence/',import.meta.url);
 mkdirSync(output,{recursive:true});
 const direct=async(page,id)=>{if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.locator('#'+id).tap();else await page.locator('#'+id).click();};
 const snap=page=>page.evaluate(()=>window.__volleyRead());

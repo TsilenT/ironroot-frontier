@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
 import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
-import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
+import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS];
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
@@ -44,6 +44,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   getBoundingClientRect(){if(this.closest('.hidden'))return box(0,0,0,0);if(this.dataset.protectedId)return geometryFor().nodes['target'+this.parentNode.children.indexOf(this)];return geometryFor().nodes[this.id]||box(0,0,0,0);}
   getClientRects(){const r=this.getBoundingClientRect();return r.width&&r.height?[r]:[];}
   focus(){document.activeElement=this;}
+  scrollIntoView(){}
   matches(selector){
    if(selector.startsWith('.'))return this.classes.has(selector.slice(1));
    if(selector.startsWith('#'))return this.id===selector.slice(1);
@@ -66,9 +67,10 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const fixture=campaignFixture('protected');
  const c={$,document,window:{innerWidth:width,innerHeight:height,addEventListener(){},matchMedia:q=>({matches:q.includes('orientation: landscape')?width>height&&height<=500:width<=height&&width<=700})},
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
-  battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,
+  battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,briefingRestart:null,
+  progressDirty:false,saveTimer:0,updateResume(){},setMode(){},activeDialog:null,writeBattle:()=>true,
   supportsAutonomousAir,airRulesGuide,airBuildingDescription,
-  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
+  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
@@ -78,13 +80,13 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){log.interruptions++;},closeSelectionArmed:false,
   renderer:{width:width,height:height,camera:450,resize(){log.resizes++;},setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){}}},
   populateFieldGuide(){},populateBuildCards(){},renderMapSelection(){},syncProfileSafety(){},showRecoverySettings(){throw Error('unexpected recovery');},beginBattleReport(){},
-  battleSession:{claim(){log.claims++;},status:()=> 'current'},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},
+  battleSession:{claim(){log.claims++;},status:()=> 'current',remove:()=>true},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},
   getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible',...Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`]))}),
   iconSVG:()=>'',timeText:t=>String(t),setTimeout,requestAnimationFrame(){},pauseControl(){},
  };
  c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
- for(const code of [section('function keyboardTitle(', 'function syncKeyboardSettings()'),section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);
+ for(const code of [section("$('start').onclick =","$('playAgain').onclick"),section('function keyboardTitle(', 'function syncKeyboardSettings()'),section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);
  return {c,$,log,fixture,source,geometry:geometryFor,resize(w,h){width=w;height=h;c.window.innerWidth=w;c.window.innerHeight=h;c.syncProtectedLayout();c.updateHUD();c.syncViewportSafety();},start(restored=false){const g=restored?Game.restore(fixture.envelope.game):null;c.start(g,null,restored?'winter-stores':null);return g;}};
 }

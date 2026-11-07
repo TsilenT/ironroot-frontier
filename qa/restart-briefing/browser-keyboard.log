@@ -1,0 +1,18 @@
+[WebServer] (node:13894) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 2 workers
+
+(node:13921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13922) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [desktop] › restart-briefing.spec.mjs:174:1 › native keyboard Restart and held Enter confirm cannot also activate Begin (3.6s)
+  ✓  1 [landscape] › restart-briefing.spec.mjs:174:1 › native keyboard Restart and held Enter confirm cannot also activate Begin (4.0s)
+
+  2 passed (5.7s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

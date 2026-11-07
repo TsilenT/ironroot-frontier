@@ -60,6 +60,8 @@ export async function startLegacyTeaching(page,press) {
   },{format:'ironroot-save',version:3,scenario:{kind:'campaign',id:'first-watch',revision:1},game:game.serialize()});
   await page.reload();await press(page,'#resumeSaved');await press(page,'#pause');
   await press(page,'#restartBattle');await press(page,'#confirmRestart');
+  await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();
+  await press(page,'#start');
   await expect(page.locator('#coachingModal')).toBeVisible();
   await expect(page.locator('#time')).toHaveText('00:00');
   await expect(page.locator('#gold')).toHaveText('420');

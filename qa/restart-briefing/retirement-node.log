@@ -1,0 +1,19 @@
+✔ save success requires a completed storage write and preserves its envelope (39.806087ms)
+✔ quota, denied storage access and serialization failure return false rather than false success (0.886158ms)
+✔ malformed history cannot freeze result processing and valid history is bounded (0.421056ms)
+✔ Space belongs to focused native controls, not the global pause shortcut (0.173452ms)
+✔ campaign saves keep mission identity outside the deterministic engine state (5.857691ms)
+✔ save sessions never overwrite a newer tab and skip unchanged writes (2.632074ms)
+✔ save session never claims a failed write as persisted (3.858484ms)
+✔ retiring a checkpoint requires verified removal and retains newer-tab ownership (0.334915ms)
+✔ an observed retirement fences an old attempt even if the fresh checkpoint has identical bytes (0.235736ms)
+✔ unavailable reads are not mistaken for a newer saved battle (0.374976ms)
+✔ storage-denied fresh game recovers only into an empty save slot (0.273503ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 396.111481

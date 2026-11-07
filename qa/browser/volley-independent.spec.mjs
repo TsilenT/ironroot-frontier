@@ -57,14 +57,18 @@ async function pause(page) {
 
 test.describe('independent: native history readiness', () => {
   // Both compared heads use the same storage, native timing and SW policy.
-  test.use({serviceWorkers:'block'});
+  const serviceWorkers = process.env.VOLLEY_HISTORY_SERVICE_WORKERS === 'allow' ? 'allow' : 'block';
+  test.use({serviceWorkers});
   const heads = process.env.VOLLEY_HISTORY_COMPARE_BASE === '1' ? ['candidate','base'] : ['candidate'];
   for (const head of heads) for (const setup of ['fresh-document','seeded-reload']) {
     test(`${head} ${setup}: Back/Forward markers, targeting, Resume and profile`, async ({page,context}, info) => {
       const trace = await observeVolleyHistory(page);
-      const detail = {head,setup,base:VOLLEY_BASE,baseAccess:'Native KeyR on base because mobile Volley is hidden; no Build entry is added. Candidate uses its visible button.'};
+      const detail = {head,setup,serviceWorkers,base:VOLLEY_BASE,baseAccess:'Native KeyR on base because mobile Volley is hidden; no Build entry is added. Candidate uses its visible button.'};
       try {
-        if (head === 'base') detail.runtime = await serveVolleyBase(context);
+        if (head === 'base') {
+          expect(serviceWorkers, 'base diagnostics must stay isolated from service workers').toBe('block');
+          detail.runtime = await serveVolleyBase(context);
+        }
         const game = new Game({seed:77201,ai:false,rulesetId:DEFAULT_SKIRMISH_RULESET_ID});
         const fixture = trainingProfileFixture().values;
         fixture[SAVE] = JSON.stringify(encodeBattle(game,scenarioForBattle(null,null,game)));
@@ -75,6 +79,13 @@ test.describe('independent: native history readiness', () => {
           await page.evaluate(values => {for (const [key,value] of Object.entries(values)) localStorage.setItem(key,value);},fixture);
           await page.goto('/');
         } else await seedOnce(page,fixture);
+        if (serviceWorkers === 'allow') {
+          await page.evaluate(() => navigator.serviceWorker.ready);
+          await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL)).toMatch(/\/service-worker\.js$/);
+          const keys = await page.evaluate(() => caches.keys());
+          expect(keys).toContain('ironroot-v0.18.2');
+          detail.shippingWorker = {controller:await page.evaluate(() => navigator.serviceWorker.controller.scriptURL),cacheKeys:keys};
+        }
         const persistent = await profile(page);
         await press(page,'#resumeSaved');
         await expect(page.locator('#welcome')).toBeHidden();
