@@ -1,0 +1,1706 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-restart/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "restart-briefing.spec.mjs",
+      "campaign-restart-identity.spec.mjs",
+      "pause-menu.spec.mjs",
+      "--project=desktop",
+      "--workers=2"
+    ],
+    "configFile": "/workspace/ironroot-restart/qa/browser/playwright.config.mjs",
+    "rootDir": "/workspace/ironroot-restart/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-restart/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-restart/qa/browser",
+        "snapshotDir": "/workspace/ironroot-restart/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1180,
+            "height": 757
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "campaign-restart-identity.spec.mjs",
+      "file": "campaign-restart-identity.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "confirmed campaign restart preserves two-building ongoing opening with newer full-roster profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15008,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:01.769Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-06a317998841ebc4a958",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves full-roster opening replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16495,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:01.045Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-9defeb29375afbf66da8",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves five-building ongoing fork with newer full-roster profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14242,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:17.650Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-5e7c0824f47e528652ee",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves current main mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15089,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:18.237Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-cca8450a803eece83a10",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves optional introduction replay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15610,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:31.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-fc55e8092133545fc6f9",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves legacy revision-one main mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12987,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:33.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-7647e8190fe276154f59",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        },
+        {
+          "title": "confirmed campaign restart preserves unfinished five-building fork and renewed teaching",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 14634,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:46.485Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "04a925418c3d61d8c1f1-9d48a220769701e05622",
+          "file": "campaign-restart-identity.spec.mjs",
+          "line": 21,
+          "column": 25
+        }
+      ]
+    },
+    {
+      "title": "pause-menu.spec.mjs",
+      "file": "pause-menu.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pause dialog traps focus, isolates gameplay and resumes by keyboard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:47.632Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-f264bad35ebedbcf8725",
+          "file": "pause-menu.spec.mjs",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "options and guide return focus to their pause-menu entry without advancing or changing saves",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9642,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:15:54.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-d059c0136bf004f86eb6",
+          "file": "pause-menu.spec.mjs",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "save and return reloads the same map, ruleset, construction and profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13827,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:01.219Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-dbe2acb1106205dab5fb",
+          "file": "pause-menu.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "restart confirms, cancellation is lossless and fresh attempt retains battle identity and profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10111,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:04.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-7583befcbd284aa712d7",
+          "file": "pause-menu.spec.mjs",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "storage failure retains the paused battle on save-exit and restart with honest retry feedback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:14.460Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-f59cd87616b4025b2ea8",
+          "file": "pause-menu.spec.mjs",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "newer tab checkpoint cannot be overwritten by an open restart confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15939,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:15.082Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-d453a5c6250e6efd1ed4",
+          "file": "pause-menu.spec.mjs",
+          "line": 87,
+          "column": 1
+        },
+        {
+          "title": "campaign restart retains authored identity without awarding progress or history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:25.138Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-429ebc32f3a1c52b285c",
+          "file": "pause-menu.spec.mjs",
+          "line": 96,
+          "column": 3
+        },
+        {
+          "title": "trial restart retains authored identity without awarding progress or history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:31.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-1a64c0a724ae0ff87b6c",
+          "file": "pause-menu.spec.mjs",
+          "line": 96,
+          "column": 3
+        },
+        {
+          "title": "controller navigation, B and Start respect each menu scope",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12593,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:36.271Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-727b888528b2738ed3da",
+          "file": "pause-menu.spec.mjs",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "legacy classic checkpoint restarts in its own schema and retains every nonempty profile domain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10862,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:41.956Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-e00927f3e2c01c2a35ba",
+          "file": "pause-menu.spec.mjs",
+          "line": 128,
+          "column": 45
+        },
+        {
+          "title": "legacy long-march checkpoint restarts in its own schema and retains every nonempty profile domain",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:48.959Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-37db086943614f10a0a3",
+          "file": "pause-menu.spec.mjs",
+          "line": 128,
+          "column": 45
+        },
+        {
+          "title": "viewport interruption closes restart and keeps its resume latch and checkpoint intact",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7453,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:16:52.852Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-a2883dd1f6af4bd776f3",
+          "file": "pause-menu.spec.mjs",
+          "line": 149,
+          "column": 1
+        },
+        {
+          "title": "direct Options opened during play returns focus to settings via Done",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:00.163Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-b6f458b1efe715821009",
+          "file": "pause-menu.spec.mjs",
+          "line": 158,
+          "column": 38
+        },
+        {
+          "title": "direct Options opened during play returns focus to settings via Escape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3845,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:00.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-293398abcdeef4ca9ada",
+          "file": "pause-menu.spec.mjs",
+          "line": 158,
+          "column": 38
+        },
+        {
+          "title": "restart preserves a newer checkpoint injected after verified checkpoint",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6443,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:04.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-1e547d4894b24159b6f7",
+          "file": "pause-menu.spec.mjs",
+          "line": 166,
+          "column": 79
+        },
+        {
+          "title": "restart preserves a newer checkpoint injected after ownership recheck",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5855,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:04.332Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26cca9ec1065e13f0569-29c88c220d0a6b04ebf7",
+          "file": "pause-menu.spec.mjs",
+          "line": 166,
+          "column": 79
+        }
+      ]
+    },
+    {
+      "title": "restart-briefing.spec.mjs",
+      "file": "restart-briefing.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:10.274Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-334d3ce2024ddc53c160",
+          "file": "restart-briefing.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11358,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:10.710Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-a0cfa632a50ec3cb31cb",
+          "file": "restart-briefing.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:20.412Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-89ce2368110f032921de",
+          "file": "restart-briefing.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9834,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:22.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-081b4cd3ae0cadca3103",
+          "file": "restart-briefing.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "restart retires history attempt markers; Back/Forward cannot resume and Back can leave",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4527,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:30.947Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-45090d2ee6c3010d0317",
+          "file": "restart-briefing.spec.mjs",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "campaign-failure: result Retry shows its briefing before a new attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3033,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:31.945Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-5873da5719c29a2197b0",
+          "file": "restart-briefing.spec.mjs",
+          "line": 68,
+          "column": 56
+        },
+        {
+          "title": "trial-failure: result Retry shows its briefing before a new attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:35.000Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-58bd0ab6d4a32422557a",
+          "file": "restart-briefing.spec.mjs",
+          "line": 68,
+          "column": 56
+        },
+        {
+          "title": "result Continue advances and optional Replay retains the completed mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:35.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-af7e9e0a385f1771ba0c",
+          "file": "restart-briefing.spec.mjs",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "checkpoint removal throw: honest warning retains paused attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2683,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:37.840Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-9d252d442d0ebd197bbf",
+          "file": "restart-briefing.spec.mjs",
+          "line": 91,
+          "column": 48
+        },
+        {
+          "title": "checkpoint removal noop: honest warning retains paused attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:38.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-c2381b08beb97536fd8f",
+          "file": "restart-briefing.spec.mjs",
+          "line": 91,
+          "column": 48
+        },
+        {
+          "title": "checkpoint removal readback: honest warning retains paused attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:40.536Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-24492168893fd63ee312",
+          "file": "restart-briefing.spec.mjs",
+          "line": 91,
+          "column": 48
+        },
+        {
+          "title": "Begin write failure stays on briefing and can retry without resurrecting old attempt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2691,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:41.356Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-c29f04cbf0e6b7bc4005",
+          "file": "restart-briefing.spec.mjs",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "newer tab checkpoint survives confirmation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:43.249Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-5df16840e06ddaad98f1",
+          "file": "restart-briefing.spec.mjs",
+          "line": 124,
+          "column": 48
+        },
+        {
+          "title": "newer tab checkpoint survives briefing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4662,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:44.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-473736c6c699edb5ed59",
+          "file": "restart-briefing.spec.mjs",
+          "line": 124,
+          "column": 48
+        },
+        {
+          "title": "a resumed stale copy cannot autosave after another tab confirms restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4375,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:47.808Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-d4090c5760c78c9aea70",
+          "file": "restart-briefing.spec.mjs",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "held controller confirm reaches briefing once; a fresh activation explicitly begins",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4732,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:48.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-74c88d4a788f99d71dc8",
+          "file": "restart-briefing.spec.mjs",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "current finale offers Skirmish setup and optional three-star Replay via keyboard",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 319,
+                  "error": {
+                    "message": "BattleCodecError: Saved battle does not match its scenario rules.",
+                    "stack": "BattleCodecError: Saved battle does not match its scenario rules.\n    at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)\n    at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)\n    at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)\n    at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)\n    at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)\n    at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17",
+                    "location": {
+                      "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                      "column": 35,
+                      "line": 11
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../../dist/battle-codec.js:11\n\n \u001b[90m  9 |\u001b[39m \u001b[36mconst\u001b[39m own\u001b[33m=\u001b[39m(value\u001b[33m,\u001b[39mkey)\u001b[33m=>\u001b[39m\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mhasOwn(value\u001b[33m,\u001b[39mkey)\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mclass\u001b[39m \u001b[33mBattleCodecError\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mError\u001b[39m {constructor(message\u001b[33m,\u001b[39mcode\u001b[33m=\u001b[39m\u001b[32m'invalid-battle'\u001b[39m){\u001b[36msuper\u001b[39m(message)\u001b[33m;\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m=\u001b[39m\u001b[32m'BattleCodecError'\u001b[39m\u001b[33m;\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcode\u001b[33m=\u001b[39mcode\u001b[33m;\u001b[39m}}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m \u001b[36mconst\u001b[39m fail\u001b[33m=\u001b[39m(message\u001b[33m,\u001b[39mcode)\u001b[33m=>\u001b[39m{\u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mBattleCodecError\u001b[39m(message\u001b[33m,\u001b[39mcode)\u001b[33m;\u001b[39m}\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m \u001b[36mfunction\u001b[39m fields(value\u001b[33m,\u001b[39mallowed\u001b[33m,\u001b[39mrequired\u001b[33m=\u001b[39mallowed){\n \u001b[90m 13 |\u001b[39m   \u001b[36mif\u001b[39m(\u001b[33m!\u001b[39mvalue\u001b[33m||\u001b[39m\u001b[36mtypeof\u001b[39m value\u001b[33m!==\u001b[39m\u001b[32m'object'\u001b[39m\u001b[33m||\u001b[39m\u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(value)\u001b[33m||\u001b[39m\u001b[33m!\u001b[39m[\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mprototype\u001b[33m,\u001b[39m\u001b[36mnull\u001b[39m]\u001b[33m.\u001b[39mincludes(\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mgetPrototypeOf(value)))fail(\u001b[32m'Saved battle must contain plain objects.'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[36mconst\u001b[39m descriptors\u001b[33m=\u001b[39m\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mgetOwnPropertyDescriptors(value)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                        "column": 35,
+                        "line": 11
+                      },
+                      "message": "BattleCodecError: Saved battle does not match its scenario rules.\n\n   at ../../dist/battle-codec.js:11\n\n   9 | const own=(value,key)=>Object.hasOwn(value,key);\n  10 | export class BattleCodecError extends Error {constructor(message,code='invalid-battle'){super(message);this.name='BattleCodecError';this.code=code;}}\n> 11 | const fail=(message,code)=>{throw new BattleCodecError(message,code);};\n     |                                   ^\n  12 | function fields(value,allowed,required=allowed){\n  13 |   if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))fail('Saved battle must contain plain objects.');\n  14 |   const descriptors=Object.getOwnPropertyDescriptors(value);\n    at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)\n    at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)\n    at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)\n    at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)\n    at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)\n    at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:52.214Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-807e4-ee-star-Replay-via-keyboard-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                    "column": 35,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-3427b5e3a7e18aa6cc2b",
+          "file": "restart-briefing.spec.mjs",
+          "line": 151,
+          "column": 51
+        },
+        {
+          "title": "current finale offers Skirmish setup and optional three-star Replay via controller",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 544,
+                  "error": {
+                    "message": "BattleCodecError: Saved battle does not match its scenario rules.",
+                    "stack": "BattleCodecError: Saved battle does not match its scenario rules.\n    at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)\n    at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)\n    at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)\n    at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)\n    at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)\n    at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17",
+                    "location": {
+                      "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                      "column": 35,
+                      "line": 11
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../../dist/battle-codec.js:11\n\n \u001b[90m  9 |\u001b[39m \u001b[36mconst\u001b[39m own\u001b[33m=\u001b[39m(value\u001b[33m,\u001b[39mkey)\u001b[33m=>\u001b[39m\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mhasOwn(value\u001b[33m,\u001b[39mkey)\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mclass\u001b[39m \u001b[33mBattleCodecError\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mError\u001b[39m {constructor(message\u001b[33m,\u001b[39mcode\u001b[33m=\u001b[39m\u001b[32m'invalid-battle'\u001b[39m){\u001b[36msuper\u001b[39m(message)\u001b[33m;\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m=\u001b[39m\u001b[32m'BattleCodecError'\u001b[39m\u001b[33m;\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcode\u001b[33m=\u001b[39mcode\u001b[33m;\u001b[39m}}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m \u001b[36mconst\u001b[39m fail\u001b[33m=\u001b[39m(message\u001b[33m,\u001b[39mcode)\u001b[33m=>\u001b[39m{\u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mBattleCodecError\u001b[39m(message\u001b[33m,\u001b[39mcode)\u001b[33m;\u001b[39m}\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m \u001b[36mfunction\u001b[39m fields(value\u001b[33m,\u001b[39mallowed\u001b[33m,\u001b[39mrequired\u001b[33m=\u001b[39mallowed){\n \u001b[90m 13 |\u001b[39m   \u001b[36mif\u001b[39m(\u001b[33m!\u001b[39mvalue\u001b[33m||\u001b[39m\u001b[36mtypeof\u001b[39m value\u001b[33m!==\u001b[39m\u001b[32m'object'\u001b[39m\u001b[33m||\u001b[39m\u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(value)\u001b[33m||\u001b[39m\u001b[33m!\u001b[39m[\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mprototype\u001b[33m,\u001b[39m\u001b[36mnull\u001b[39m]\u001b[33m.\u001b[39mincludes(\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mgetPrototypeOf(value)))fail(\u001b[32m'Saved battle must contain plain objects.'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[36mconst\u001b[39m descriptors\u001b[33m=\u001b[39m\u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mgetOwnPropertyDescriptors(value)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                        "column": 35,
+                        "line": 11
+                      },
+                      "message": "BattleCodecError: Saved battle does not match its scenario rules.\n\n   at ../../dist/battle-codec.js:11\n\n   9 | const own=(value,key)=>Object.hasOwn(value,key);\n  10 | export class BattleCodecError extends Error {constructor(message,code='invalid-battle'){super(message);this.name='BattleCodecError';this.code=code;}}\n> 11 | const fail=(message,code)=>{throw new BattleCodecError(message,code);};\n     |                                   ^\n  12 | function fields(value,allowed,required=allowed){\n  13 |   if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))fail('Saved battle must contain plain objects.');\n  14 |   const descriptors=Object.getOwnPropertyDescriptors(value);\n    at fail (/workspace/ironroot-restart/dist/battle-codec.js:11:35)\n    at validateBattleIdentity (/workspace/ironroot-restart/dist/battle-codec.js:67:354)\n    at identityOf (/workspace/ironroot-restart/dist/battle-codec.js:71:10)\n    at encodeBattle (/workspace/ironroot-restart/dist/battle-codec.js:104:3)\n    at validateImminent (/workspace/ironroot-restart/qa/browser/campaign-fixtures.mjs:32:18)\n    at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:158:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:53.190Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-restart/qa/browser/test-results/restart-briefing-current-f-2ee11--star-Replay-via-controller-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-restart/dist/battle-codec.js",
+                    "column": 35,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-8864782b46c4d301f3b6",
+          "file": "restart-briefing.spec.mjs",
+          "line": 151,
+          "column": 51
+        },
+        {
+          "title": "profile change during restart confirmation preserves the recovery hold and all stored bytes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T19:17:53.512Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5cf3a8244399764ad514-e7953f9755f33f99207e",
+          "file": "restart-briefing.spec.mjs",
+          "line": 183,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T19:14:59.323Z",
+    "duration": 176591.28499999997,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,32 @@
+[WebServer] (node:12188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 2 workers
+
+(node:12339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:12340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [narrow-phone] › ashen-crossroads.spec.mjs:107:1 › ordinary idle defeat offers a fresh retry without awarding a trial record (5.7s)
+  ✓   2 [narrow-phone] › ashen-crossroads.spec.mjs:69:1 › earned one-target save reloads with stable remaining states and Back restart preserves identity (8.6s)
+  ✓   3 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves two-building ongoing opening with newer full-roster profile (7.3s)
+  ✓   4 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves full-roster opening replay (7.1s)
+  ✓   5 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves five-building ongoing fork with newer full-roster profile (5.7s)
+  ✓   6 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves current main mission (5.5s)
+  ✓   7 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves optional introduction replay (5.4s)
+  ✓   8 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves legacy revision-one main mission (5.0s)
+  ✓  10 [narrow-phone] › campaign.spec.mjs:139:1 › campaign deadline failure focuses Retry and restarts without granting progress (3.0s)
+  ✓   9 [narrow-phone] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves unfinished five-building fork and renewed teaching (5.8s)
+  ✓  12 [narrow-phone] › contextual-coaching.spec.mjs:231:1 › Forked Road mine and tower hints assemble complete prompts after real paid planning (5.3s)
+  ✓  13 [narrow-phone] › contextual-coaching.spec.mjs:270:1 › restart of an unfinished opening keeps its exact roster and offers fresh teaching at zero (3.9s)
+  ✓  11 [narrow-phone] › campaign.spec.mjs:272:1 › a gameplay gesture held across mission end cannot activate the newly appearing result action (16.2s)
+  ✓  15 [narrow-phone] › mobile-coaching-visibility.spec.mjs:177:1 › completed tutorial replay preserves disabled hints, then explicitly enabled hints leave Build without pausing (5.7s)
+  ✓  16 [narrow-phone] › restart-briefing.spec.mjs:174:1 › native keyboard Restart and held Enter confirm cannot also activate Begin (2.2s)
+  ✓  14 [narrow-phone] › mobile-coaching-visibility.spec.mjs:148:1 › resumed First Watch and current campaign hints are visible without Build and never force a teaching pause (14.3s)
+
+  16 passed (57.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

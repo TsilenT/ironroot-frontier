@@ -149,6 +149,38 @@ test('save session never claims a failed write as persisted', async () => {
   assert.equal(values.get('save'), 'data');
 });
 
+test('retiring a checkpoint requires verified removal and retains newer-tab ownership', async () => {
+  const { createSaveSession } = await import('../dist/persistence.js');
+  for (const behavior of ['noop', 'throw', 'removed-then-throw', 'newer', 'unreadable', 'removed']) {
+    let value = 'old', readable = true;
+    const session = createSaveSession({
+      read: () => ({ok: readable, value}),
+      remove() {
+        if (behavior === 'throw') throw Error('denied');
+        if (behavior === 'noop') return true;
+        value = behavior === 'newer' ? 'newer' : null;
+        if (behavior === 'unreadable') readable = false;
+        if (behavior === 'removed-then-throw') throw Error('after removal');
+        return true;
+      },
+    }, 'save');
+    session.claim();
+    assert.equal(session.remove(), ['removed', 'removed-then-throw'].includes(behavior), behavior);
+    if (behavior === 'newer') { assert.equal(value, 'newer'); assert.equal(session.status(), 'stale'); }
+    if (behavior === 'noop' || behavior === 'throw') { assert.equal(value, 'old'); assert.equal(session.status(), 'current'); }
+  }
+});
+
+test('an observed retirement fences an old attempt even if the fresh checkpoint has identical bytes', async () => {
+  const {createSaveSession} = await import('../dist/persistence.js');
+  let value = 'opening';
+  const session = createSaveSession({get:()=>value,set:(_key,next)=>{value=next;return true;}}, 'save');
+  session.claim();assert.equal(session.release('different checkpoint'),false);
+  assert.equal(session.status(),'current');assert.equal(session.release('opening'),true);
+  assert.equal(session.status(),'stale');assert.equal(session.set('save','old attempt advanced'),false);
+  assert.equal(value,'opening');session.claim();assert.equal(session.set('save','explicit new attempt'),true);
+});
+
 test('unavailable reads are not mistaken for a newer saved battle', async () => {
   const { createSaveSession } = await import('../dist/persistence.js');
   let denied = false,

@@ -13,7 +13,8 @@ const cases=[
   {label:'two-building ongoing opening with newer full-roster profile',id:'roadside-watch',tier:0,count:2},
   {label:'full-roster opening replay',id:'roadside-watch',tier:3,count:8},
   {label:'five-building ongoing fork with newer full-roster profile',id:'shield-at-the-fork',tier:1,count:5},
-  {label:'revision-two main mission',id:'emberwatch',tier:3,count:8},
+  {label:'current main mission',id:'emberwatch',tier:3,count:8},
+  {label:'optional introduction replay',id:'first-watch',tier:3,count:7,teaches:true},
   {label:'legacy revision-one main mission',id:'emberwatch',legacy:true,count:7},
   {label:'unfinished five-building fork and renewed teaching',id:'shield-at-the-fork',tier:1,profileTier:1,count:5,teaches:true},
 ];
@@ -32,6 +33,13 @@ for(const spec of cases)test(`confirmed campaign restart preserves ${spec.label}
   const before=await pause(page),profileBefore=await profile(page);
   await press(page,'#restartBattle');await expect(page.locator('#cancelRestart')).toBeFocused();
   await press(page,'#confirmRestart');
+  await expect(page.locator('#campaignMissionPage')).toBeVisible();
+  await expect(page.locator('#resumeSaved')).toBeHidden();
+  expect(await saved(page)).toBeNull();
+  await expect(page.locator('#start')).toBeFocused();
+  await expect(page.locator('#campaignBriefing li').first()).toHaveText(
+    'Available here: '+Object.values(game.buildings).map(building=>building.name).join(', ')+'.');
+  await press(page,'#start');
   // An unfinished new attempt may explicitly offer its opening lesson again.
   // The test chooses Start through the real dialog instead of suppressing it.
   if(spec.teaches){await expect(page.locator('#coachingModal')).toBeVisible();await press(page,'#coachingPlay');}

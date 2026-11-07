@@ -159,7 +159,7 @@ test('resumed First Watch and current campaign hints are visible without Build a
     await press(page,'#toggleCoach');await visibleRail(page,testInfo,id+'-reshown',{running:true});
     await expect(page.locator('#commandDeck')).toBeHidden();
     // A deliberate fresh restart has a different teaching policy than Resume.
-    await press(page,'#pause');await press(page,'#restartBattle');await press(page,'#confirmRestart');
+    await press(page,'#pause');await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
     if(id==='roadside-watch'){
       await expect(page.locator('#coachingModal')).toBeHidden();
       await expect(page.locator('#coachResume')).toBeHidden();await frozen(page);
@@ -178,7 +178,7 @@ test('completed tutorial replay preserves disabled hints, then explicitly enable
   test.skip(testInfo.project.name==='desktop','Mobile replay hint layout.');
   await resumeFixture(page,resumedHintFixture('first-watch',{completed:true}));
   await expect(page.locator('#coachingModal')).toBeHidden();await expect(page.locator('#app')).not.toHaveClass(/mobile-coaching/);
-  await press(page,'#pause');await press(page,'#restartBattle');await press(page,'#confirmRestart');
+  await press(page,'#pause');await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
   await expect(page.locator('#coachingModal')).toBeHidden();await expect(page.locator('#time')).not.toHaveText('00:00');
   await openBuildControls(page);await expect(page.locator('#toggleCoach')).toHaveAccessibleName('Show hints');await press(page,'#toggleCoach');
   await visibleRail(page,testInfo,'completed-replay-enabled',{running:true});await expect(page.locator('#commandDeck')).toBeHidden();
