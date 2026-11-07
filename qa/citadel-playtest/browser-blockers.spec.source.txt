@@ -1,0 +1,181 @@
+// Real Chromium input/render loop. No application-state or simulation-clock hook.
+// Restore histories and synthetic mechanism scenes are explicitly distinguished.
+import {expect} from '@playwright/test';
+import {test,press,saved,pause,seedOnce,observeCanvas,canvasFrame} from './map-browser-helpers.mjs';
+import {openBuildControls} from './shared-build-controls.mjs';
+import {settlePhoneViewport} from './phone-text-evidence.mjs';
+import {createCampaignMission} from '../../dist/campaign.js';
+import {encodeBattle,scenarioForBattle} from '../../dist/battle-codec.js';
+import {progressionProfile} from './campaign-progression-fixtures.mjs';
+import {startRunning as startCampaignRunning} from './campaign-teaching-helpers.mjs';
+import {installPad,padButton} from './synthetic-gamepad-helpers.mjs';
+import {paidPrehistory,feedbackFixture} from '../citadel-playtest/fixtures.mjs';
+const SAVE='ironroot.battle.v1',SETTINGS='ironroot.settings.v1';
+const earnedKeys=['ironroot.campaign.v1','ironroot.trials.v1','ironroot.history.v1'];
+const earned=page=>page.evaluate(keys=>Object.fromEntries(keys.map(k=>[k,localStorage.getItem(k)])),earnedKeys);
+const settings=page=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SETTINGS);
+test.setTimeout(60000);
+test.beforeEach(async({page},info)=>{
+  if(info.project.name==='narrow-phone')await page.setViewportSize({width:320,height:430});
+  await observeCanvas(page);
+  await page.addInitScript(()=>{
+    window.__citadelSeen={text:[],strokes:[],readiness:[],visibleText:[],textBounds:[],lastVisibleExtra:null};
+    let previousToast='';
+    new MutationObserver(()=>{const text=document.getElementById('toast')?.textContent||'';if(text!==previousToast){if(/citadel/i.test(text)&&/ready|available|1:30/i.test(text))window.__citadelSeen.readiness.push({text,focus:document.activeElement?.id??''});previousToast=text;}}).observe(document,{subtree:true,childList:true,characterData:true});
+    const fill=CanvasRenderingContext2D.prototype.fillText,stroke=CanvasRenderingContext2D.prototype.stroke;
+    CanvasRenderingContext2D.prototype.fillText=function(...args){if(this.canvas.id==='battle'&&/regen|heal|arrow|HP|wait/i.test(String(args[0]))){const value=String(args[0]);if(!window.__citadelSeen.text.includes(value)&&window.__citadelSeen.text.length<100)window.__citadelSeen.text.push(value);
+      const m=this.getTransform(),r=this.canvas.getBoundingClientRect(),sx=r.width/this.canvas.width,sy=r.height/this.canvas.height,x=r.x+(m.a*args[1]+m.c*args[2]+m.e)*sx,y=r.y+(m.b*args[1]+m.d*args[2]+m.f)*sy;
+      if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom&&document.elementFromPoint(x,y)===this.canvas){
+        const metrics=this.measureText(value),left=args[1]-metrics.actualBoundingBoxLeft,right=args[1]+metrics.actualBoundingBoxRight,top=args[2]-metrics.actualBoundingBoxAscent,bottom=args[2]+metrics.actualBoundingBoxDescent;
+        const points=[[left,top],[left,bottom],[right,top],[right,bottom]].map(([px,py])=>({x:r.x+(m.a*px+m.c*py+m.e)*sx,y:r.y+(m.b*px+m.d*py+m.f)*sy}));
+        const bounds={left:Math.min(...points.map(p=>p.x)),right:Math.max(...points.map(p=>p.x)),top:Math.min(...points.map(p=>p.y)),bottom:Math.max(...points.map(p=>p.y))};
+        const fullyVisible=bounds.left>=Math.max(0,r.left)&&bounds.right<=Math.min(innerWidth,r.right)&&bounds.top>=Math.max(0,r.top)&&bounds.bottom<=Math.min(innerHeight,r.bottom);
+        const entry={text:value,x,y,bounds,fullyVisible,canvas:{x:r.x,y:r.y,width:r.width,height:r.height}};
+        if(!window.__citadelSeen.textBounds.some(item=>item.text===value))window.__citadelSeen.textBounds.push(entry);
+        if(fullyVisible&&!window.__citadelSeen.visibleText.some(item=>item.text===value))window.__citadelSeen.visibleText.push(entry);
+      }
+    }return fill.apply(this,args);};
+    CanvasRenderingContext2D.prototype.stroke=function(...args){if(this.canvas.id==='battle'){const value=String(this.strokeStyle);if(!window.__citadelSeen.strokes.includes(value)&&window.__citadelSeen.strokes.length<100)window.__citadelSeen.strokes.push(value);
+      if(value==='#a7e8f3'){const m=this.getTransform(),r=this.canvas.getBoundingClientRect(),x=r.x+m.e*r.width/this.canvas.width,y=r.y+m.f*r.height/this.canvas.height;if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom&&document.elementFromPoint(x,y)===this.canvas)window.__citadelSeen.lastVisibleExtra={time:performance.now(),x,y};}
+    }return stroke.apply(this,args);};
+  });
+});
+async function skirmish(page){await press(page,'[data-mode="skirmish"]');await expect(page.locator('#skirmishConfig')).toBeVisible();}
+async function begin(page){await press(page,'#start');await expect(page.locator('#welcome')).toBeHidden();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Pause game');}
+async function capture(page,info,label){await page.screenshot({path:info.outputPath(label+'.png'),fullPage:true});}
+async function attach(page,info,label,data={}){await info.attach(label,{body:JSON.stringify({...data,canvas:await canvasFrame(page),presentation:await page.evaluate(()=>window.__citadelSeen)},null,2),contentType:'application/json'});}
+async function openCitadel(page){if(await page.locator('#pauseVeil').isHidden())await press(page,'#pause');await press(page,'#pauseCitadel');await expect(page.locator('#citadelModal')).toBeVisible();await expect(page.locator('#pauseVeil')).toBeVisible();}
+async function restore(page,fixture,info){await info.attach('fixture-provenance',{body:JSON.stringify(fixture.provenance,null,2),contentType:'application/json'});await seedOnce(page,{[SAVE]:JSON.stringify(fixture.battle),[SETTINGS]:JSON.stringify({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low'})});await press(page,'#resumeSaved');await expect(page.locator('#welcome')).toBeHidden();}
+async function fit(page,info,label){
+  await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
+  const geometry=await page.evaluate(()=>{
+    const box=e=>{const b=e.getBoundingClientRect();return {left:b.left,right:b.right,top:b.top,bottom:b.bottom,width:b.width,height:b.height};};
+    const visible=e=>e&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden';
+    const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)).filter(visible).map(e=>({id:e.id,...box(e),hit:e.contains(document.elementFromPoint(box(e).left+box(e).width/2,box(e).top+box(e).height/2))}));
+    const overlaps=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
+    return {mobile:document.getElementById('app').classList.contains('protected-mobile'),viewport:{width:innerWidth,height:innerHeight},world:box(document.getElementById('battle')),controls,collisions:controls.flatMap((a,i)=>controls.slice(i+1).filter(b=>overlaps(a,b)).map(b=>[a.id,b.id]))};
+  });
+  expect(geometry.world.height).toBeGreaterThanOrEqual(211.5);expect(geometry.world.width).toBeGreaterThanOrEqual(128);expect(geometry.collisions).toEqual([]);
+  for(const c of geometry.controls){if(geometry.mobile){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);}expect(c.hit,c.id).toBe(true);expect(c.left).toBeGreaterThanOrEqual(-.5);expect(c.right).toBeLessThanOrEqual(geometry.viewport.width+.5);expect(c.top).toBeGreaterThanOrEqual(-.5);expect(c.bottom).toBeLessThanOrEqual(geometry.viewport.height+.5);}
+  await info.attach(label+'-geometry',{body:JSON.stringify(geometry,null,2),contentType:'application/json'});return geometry;
+}
+async function modalTargets(page,info){
+  const geometry=[];
+  for(const id of ['buyCitadelArrows','buyCitadelRegen','citadelBack','citadelResume']){
+    const locator=page.locator('#'+id);await locator.scrollIntoViewIfNeeded();const r=await locator.boundingBox();expect(r.width,id).toBeGreaterThanOrEqual(43.5);expect(r.height,id).toBeGreaterThanOrEqual(43.5);
+    const hit=await locator.evaluate(e=>{const b=e.getBoundingClientRect();return e.contains(document.elementFromPoint(b.x+b.width/2,b.y+b.height/2));});expect(hit,id).toBe(true);geometry.push({id,...r,hit});
+  }
+  await info.attach('modal-targets',{body:JSON.stringify(geometry,null,2),contentType:'application/json'});
+}
+
+test('fresh Skirmish includes choices; independent bridge option, bound identity, restart and earned profile persist',async({page},info)=>{
+  await page.goto('/');await skirmish(page);await expect(page.locator('#skirmishCitadelOptions')).toHaveCount(0);await begin(page);
+  const ordinary=await pause(page);expect(ordinary.game.rulesetId).toBe('frontier-citadel-open');expect(ordinary.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);await expect(page.locator('#pauseCitadel')).toBeVisible();await press(page,'#saveExit');
+  await page.evaluate(()=>{localStorage.setItem('ironroot.trials.v1',JSON.stringify({shieldbreaker:{completed:true,bestTime:20}}));localStorage.setItem('ironroot.history.v1',JSON.stringify([{won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:60,kills:0,built:1,date:'2026-11-06T11:00:00.000Z'}]));localStorage.setItem('ironroot.settings.v1',JSON.stringify({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low'}));});
+  await page.reload();const before=await earned(page);await skirmish(page);await press(page,'#skirmishBridgeIncome');await page.reload();await skirmish(page);await expect(page.locator('#skirmishBridgeIncome')).toBeChecked();await page.locator('#skirmishRules').selectOption('frontier-air-local-timed');await capture(page,info,'setup-citadel-bridge-timed');await begin(page);
+  const bound=await pause(page);expect(bound.game.rulesetId).toBe('frontier-citadel-bridge-timed');await press(page,'#pauseCitadel');await expect(page.locator('#citadelModal')).toBeVisible();await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await expect(page.locator('#citadelReadiness')).toContainText(/1:30|90|Available in/);await modalTargets(page,info);await capture(page,info,'early-citadel-dialog');
+  await press(page,'#citadelBack');await expect(page.locator('#pauseVeil')).toBeVisible();await press(page,'#saveExit');await press(page,'#skirmishBridgeIncome');await page.reload();await skirmish(page);await expect(page.locator('#skirmishBridgeIncome')).not.toBeChecked();await press(page,'#resumeSaved');const resumed=await pause(page);expect(resumed.game.rulesetId).toBe(bound.game.rulesetId);
+  await press(page,'#restartBattle');await press(page,'#confirmRestart');const restarted=await pause(page);expect(restarted.game.rulesetId).toBe(bound.game.rulesetId);expect(restarted.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);await press(page,'#saveExit');
+  expect(await earned(page)).toEqual(before);expect(await settings(page)).toMatchObject({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low',skirmishBridgeIncome:false});
+});
+
+test('fresh campaign and trial expose paused choices while retaining their rosters and earned data',async({page},info)=>{
+  await page.goto('/');const before=await earned(page);await press(page,'[data-mode="campaign"]');await startCampaignRunning(page,press);await expect(page.locator('#welcome')).toBeHidden();const campaign=await pause(page);expect(campaign.scenario).toMatchObject({kind:'campaign',id:'roadside-watch',revision:5});expect(campaign.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);expect(campaign.game.state.time).toBeLessThan(90);
+  await press(page,'#pauseCitadel');await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await capture(page,info,'campaign-early-citadel');await press(page,'#citadelBack');await press(page,'#saveExit');await press(page,'[data-mode="challenges"]');await begin(page);
+  const trial=await pause(page);expect(trial.scenario).toMatchObject({kind:'trial',id:'shieldbreaker',revision:3});expect(trial.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);expect(trial.game.ai).toBe(false);await press(page,'#pauseCitadel');await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await capture(page,info,'trial-early-citadel');expect(await earned(page)).toEqual(before);await attach(page,info,'authored-mode-checkpoints',{campaign,trial});await press(page,'#citadelBack');await press(page,'#saveExit');const trialSave=await saved(page);await press(page,'#welcomeTraining');await expect(page.locator('#lessonPicker option')).toHaveCount(5);for(const id of await page.locator('#lessonPicker option').evaluateAll(options=>options.map(option=>option.value))){await page.locator('#lessonPicker').selectOption(id);await expect(page.locator('#stepTitle')).not.toHaveText('Preparing your lesson…');await expect(page.locator('#citadelModal')).toHaveCount(0);await expect(page.locator('#pauseCitadel')).toHaveCount(0);}expect(await saved(page)).toEqual(trialSave);expect(await earned(page)).toEqual(before);
+});
+
+test('restored legal paid prehistory: arrows, native input, Back cancellation, one choice and restore',async({page},info)=>{
+  const fixture=paidPrehistory();await restore(page,fixture,info);await fit(page,info,'enabled-battle');await press(page,'#home');await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#citadelModal')).toBeHidden();await openBuildControls(page);
+  if(await page.locator('#compactBuild').isVisible()){await capture(page,info,'citadel-build-drawer');await press(page,'#compactBuild');}
+  await openCitadel(page);await expect(page.locator('#buyCitadelArrows')).toBeEnabled();await modalTargets(page,info);await capture(page,info,'ready-citadel-footer');await page.locator('#citadelTitle').scrollIntoViewIfNeeded();await capture(page,info,'ready-citadel-dialog');await page.locator('#buyCitadelArrows').scrollIntoViewIfNeeded();await capture(page,info,'ready-extra-arrow-description');await page.locator('#buyCitadelRegen').scrollIntoViewIfNeeded();await capture(page,info,'ready-regeneration-description');
+  const before=await saved(page);await page.locator('#buyCitadelArrows').focus();await page.keyboard.down('Space');await page.evaluate(()=>history.back());await expect(page.locator('#citadelModal')).toBeHidden();await page.keyboard.up('Space');await expect(page.locator('#pauseVeil')).toBeVisible();expect((await saved(page)).game.state.citadelOptions.sides[0].choice).toBeNull();
+  await page.evaluate(()=>history.forward());await expect(page.locator('#pauseVeil')).toBeVisible();if(await page.locator('#citadelModal').isHidden())await press(page,'#pauseCitadel');
+  await page.locator('#buyCitadelArrows').evaluate(e=>e.addEventListener('click',event=>{window.__citadelPurchaseTrusted=event.isTrusted;},{once:true,passive:true}));await press(page,'#buyCitadelArrows');expect(await page.evaluate(()=>window.__citadelPurchaseTrusted)).toBe(true);await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await expect(page.locator('#citadelPlayerStatus')).toContainText(/Extra Arrow/);await capture(page,info,'arrows-purchased');
+  await press(page,'#citadelBack');const bought=await saved(page);expect(bought.game.state.gold[0]).toBeCloseTo(before.game.state.gold[0]-190,7);expect(bought.game.state.bases[0].hp).toBe(before.game.state.bases[0].hp);expect(bought.game.state.bases[0].cooldown).toBe(before.game.state.bases[0].cooldown);expect(bought.game.state.citadelOptions.sides[0].choice).toBe('arrows');expect(bought.game.state.time).toBe(before.game.state.time);
+  await press(page,'#saveExit');await page.reload();await press(page,'#resumeSaved');const restored=await pause(page);expect(restored.game.state.citadelOptions.sides[0].choice).toBe('arrows');await press(page,'#pauseCitadel');await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await press(page,'#citadelResume');await expect(page.locator('#pauseVeil')).toBeHidden();await expect(page.locator('#citadelModal')).toBeHidden();await attach(page,info,'arrows-paid-result',{before,bought,restored});
+});
+
+test('restored legal paid prehistory: regeneration has no instant heal and discloses purchase wait',async({page},info)=>{
+  await restore(page,paidPrehistory({bridge:true,seed:91}),info);await openCitadel(page);const before=await saved(page);await press(page,'#buyCitadelRegen');await expect(page.locator('#citadelPlayerStatus')).toContainText(/Regeneration/);await expect(page.locator('#citadelPlayerStatus')).toContainText(/8|wait/i);await capture(page,info,'regen-purchase-wait');await press(page,'#citadelBack');const after=await saved(page);expect(after.game.state.gold[0]).toBeCloseTo(before.game.state.gold[0]-190,7);expect(after.game.state.bases[0].hp).toBe(before.game.state.bases[0].hp);expect(after.game.state.citadelOptions.sides[0].healedTotal).toBe(0);expect(after.game.state.citadelOptions.sides[0].lastDamageAt).toBe(before.game.state.citadelOptions.sides[0].lastDamageAt);await attach(page,info,'regen-paid-result',{before,after});
+});
+
+for(const choice of ['arrows','regen'])test(`synthetic ${choice} feedback fixture: real canvas, active effect and damage interruption`,async({page},info)=>{
+  test.info().annotations.push({type:'scope',description:'Synthetic engine-valid arrangement; presentation/mechanics evidence only. Native browser clock and input.'});
+  await restore(page,feedbackFixture(choice),info);await press(page,'#home');await expect(page.locator('#pauseVeil')).toBeHidden();
+  await expect.poll(async()=>page.evaluate(label=>window.__citadelSeen.visibleText.some(item=>item.text===label),choice==='arrows'?'EXTRA ARROW':'REGEN · +3 HP/s')).toBe(true);
+  if(choice==='arrows')await page.waitForFunction(()=>window.__citadelSeen.lastVisibleExtra&&performance.now()-window.__citadelSeen.lastVisibleExtra.time<80);
+  await capture(page,info,'synthetic-'+choice+'-battle');await attach(page,info,'synthetic-'+choice+'-canvas');await openCitadel(page);const active=await saved(page);await capture(page,info,'synthetic-'+choice+'-status');
+  if(choice==='arrows'){expect(active.game.state.citadelOptions.sides[0].extraShots).toBeGreaterThan(0);const painted=await page.evaluate(()=>window.__citadelSeen);expect(painted.strokes).toContain('#a7e8f3');expect(painted.text).toContain('EXTRA ARROW');await expect(page.locator('#citadelPlayerStatus')).toContainText(/Extra Arrow/);}
+  else {expect(active.game.state.citadelOptions.sides[0].healedTotal).toBeGreaterThan(0);expect((await page.evaluate(()=>window.__citadelSeen)).text).toContain('REGEN · +3 HP/s');await expect(page.locator('#citadelPlayerStatus')).toContainText(/heal|recover|3 HP/i);await press(page,'#citadelResume');await page.waitForTimeout(5200);await openCitadel(page);const interrupted=await saved(page);expect(interrupted.game.state.citadelOptions.sides[0].lastDamageAt).toBeGreaterThan(100);await expect(page.locator('#citadelPlayerStatus')).toContainText(/wait|damage|quiet|s\b/i);await capture(page,info,'synthetic-regen-damage-interruption');await attach(page,info,'synthetic-regen-interrupted',{active,interrupted});}
+});
+
+test('fresh desktop native 2x battle reaches readiness and pays through UI',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','One bounded native-time desktop run.');test.setTimeout(85000);
+  await page.goto('/');await skirmish(page);await begin(page);await press(page,'#speed');await press(page,'#speed');await expect(page.locator('#speed')).toHaveText('2×');
+  // Native wall time, no fast-forward route, game-state injection or virtual clock.
+  const focusedBefore=await page.evaluate(()=>document.activeElement?.id??'');await expect.poll(async()=>page.evaluate(()=>window.__citadelSeen.readiness.length),{timeout:65000,intervals:[1000]}).toBe(1);await expect(page.locator('#pauseVeil')).toBeHidden();expect((await page.evaluate(()=>window.__citadelSeen.readiness))[0].focus).toBe(focusedBefore);await openCitadel(page);await expect(page.locator('#buyCitadelArrows')).toBeEnabled();const before=await saved(page);expect(before.game.state.time).toBeGreaterThanOrEqual(90);await press(page,'#buyCitadelArrows');await press(page,'#citadelBack');const after=await saved(page);expect(after.game.state.gold[0]).toBeCloseTo(before.game.state.gold[0]-190,7);expect(after.game.state.citadelOptions.sides[0].choice).toBe('arrows');await attach(page,info,'fresh-native-paid',{before,after});await capture(page,info,'fresh-native-purchased');
+});
+
+test('desktop controller provider and keyboard keep Citadel focus and cancel safely',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','Synthetic standard Gamepad provider, desktop only.');await installPad(page);await restore(page,paidPrehistory(),info);await openCitadel(page);await page.locator('#citadelBack').focus();await padButton(page,0);await expect(page.locator('#citadelModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pauseCitadel')).toBeFocused();await press(page,'#pauseCitadel');await page.keyboard.press('Escape');await expect(page.locator('#citadelModal')).toBeHidden();expect((await saved(page)).game.state.citadelOptions.sides[0].choice).toBeNull();
+});
+
+test('short landscape protects the 212px battlefield or enters the explicit safety pause',async({page},info)=>{
+  test.skip(info.project.name!=='landscape','One bounded additional short landscape check.');await page.setViewportSize({width:667,height:300});await page.goto('/');await skirmish(page);await begin(page);await settlePhoneViewport(page);
+  const height=await page.locator('#battle').evaluate(e=>e.getBoundingClientRect().height);if(height<211.5){await expect(page.locator('#viewportModal')).toBeVisible();await capture(page,info,'short-landscape-safety-pause');}else {await fit(page,info,'short-landscape');await openCitadel(page);await modalTargets(page,info);await capture(page,info,'short-landscape-citadel');}
+});
+
+test('citadel opens at its heading before any test scrolling',async({page},info)=>{
+  await restore(page,paidPrehistory(),info);await openCitadel(page);
+  await expect(page.locator('#citadelTitle')).toBeFocused();await expect(page.locator('#citadelTitle')).toBeInViewport({ratio:1});
+  await capture(page,info,'citadel-immediate-open');
+  const b=await page.locator('#citadelTitle').boundingBox();expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(page.viewportSize().height);
+  await page.keyboard.press('Tab');await expect(page.locator('#buyCitadelArrows')).toBeFocused();
+});
+
+test('held purchase cannot overwrite a newer legitimate external checkpoint',async({page,context},info)=>{
+  test.skip(info.project.name!=='desktop','One bounded cross-tab checkpoint guard.');
+  await restore(page,paidPrehistory({seed:17}),info);await openCitadel(page);await page.locator('#buyCitadelArrows').focus();await page.keyboard.down('Space');
+  const replacement=paidPrehistory({bridge:true,seed:91}).battle;
+  const other=await context.newPage();await other.goto('/FONTS-NOTICES.txt');await other.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:SAVE,value:replacement});
+  await page.bringToFront();await page.keyboard.up('Space');await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  expect(await saved(page)).toEqual(replacement);expect((await saved(page)).game.state.citadelOptions.sides[0].choice).toBeNull();
+  if(await page.locator('#citadelModal').isVisible())await expect(page.locator('#buyCitadelArrows')).toBeDisabled();
+  await capture(page,info,'stale-checkpoint-purchase-blocked');await attach(page,info,'stale-checkpoint-preserved',{replacement,after:await saved(page)});
+  await other.close();
+});
+
+test('unsafe resize interrupts held purchase and waits for explicit resume',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','One bounded native resize safety guard.');
+  await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);await page.locator('#buyCitadelArrows').focus();await page.keyboard.down('Space');
+  await page.setViewportSize({width:320,height:250});await expect(page.locator('#viewportModal')).toBeVisible();await expect(page.locator('#citadelModal')).toBeHidden();await page.keyboard.up('Space');await expect(page.locator('#viewportResume')).toBeDisabled();const held=await saved(page);expect(held.game.state.citadelOptions.sides[0].choice).toBeNull();expect(held.game.state.gold[0]).toBe(before.game.state.gold[0]);await capture(page,info,'unsafe-resize-purchase-blocked');
+  await page.setViewportSize({width:1180,height:757});await expect(page.locator('#viewportResume')).toBeEnabled();await expect(page.locator('#viewportModal')).toBeVisible();await page.waitForTimeout(250);expect((await saved(page)).game.state.time).toBe(held.game.state.time);await press(page,'#viewportResume');await expect(page.locator('#viewportModal')).toBeHidden();await expect(page.locator('#citadelModal')).toBeHidden();await expect(page.locator('#pauseVeil')).toBeHidden();await attach(page,info,'unsafe-resize-held-state',{before,held});
+});
+
+test('blocker regression: heading Space, scrolled Space and rebound Pause cannot run behind the dialog',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','Bounded native keyboard regression.');
+  await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);await expect(page.locator('#citadelTitle')).toBeFocused();
+  await page.keyboard.press('Space');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');await expect(page.locator('#citadelModal')).toBeVisible();
+  await page.locator('#citadelTitle').focus();await page.locator('.citadel-menu').hover();await page.mouse.wheel(0,600);await expect(page.locator('#citadelTitle')).toBeFocused();
+  await expect.poll(()=>page.locator('.citadel-menu').evaluate(e=>e.scrollTop)).toBeGreaterThan(0);await page.keyboard.press('Space');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');expect((await saved(page)).game.state.time).toBe(before.game.state.time);
+  await press(page,'#citadelBack');await press(page,'#pauseSettings');if(!await page.locator('#keyboardSettings').evaluate(e=>e.open))await press(page,'#keyboardSettings > summary');
+  await press(page,'#keyboardRows [data-keyboard-action="pause"] [data-keyboard-change]');await page.keyboard.press('KeyP');await expect.poll(async()=>(await settings(page)).keyboard.bindings.pause).toBe('KeyP');await press(page,'#settingsDone');await press(page,'#pauseCitadel');await expect(page.locator('#citadelTitle')).toBeFocused();await page.keyboard.press('KeyP');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Resume game');expect((await saved(page)).game.state.time).toBe(before.game.state.time);await capture(page,info,'heading-keyboard-remains-paused');
+});
+
+for(const fault of ['quota','silent'])test(`blocker regression: ${fault} purchase save keeps the paid choice and durable warning until verified retry`,async({page},info)=>{
+  test.skip(info.project.name!=='desktop','Bounded native storage-fault regression.');
+  await restore(page,paidPrehistory(),info);await openCitadel(page);const before=await saved(page);
+  await page.evaluate(({key,fault})=>{const set=Storage.prototype.setItem;window.__citadelStorageFault=fault;Storage.prototype.setItem=function(k,v){if(k===key&&window.__citadelStorageFault){if(window.__citadelStorageFault==='quota')throw new DOMException('Synthetic full storage','QuotaExceededError');return;}return set.call(this,k,v);};},{key:SAVE,fault});
+  await press(page,'#buyCitadelRegen');await expect(page.locator('#citadelPlayerStatus')).toContainText('Regeneration');await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await expect(page.locator('#citadelSaveWarning')).toBeVisible();await expect(page.locator('#citadelSaveWarning')).toContainText(/not saved/i);await expect(page.locator('#citadelSaveWarning')).toBeFocused();expect(await saved(page)).toEqual(before);await capture(page,info,fault+'-purchase-not-saved');
+  await press(page,'#citadelBack');await press(page,'#pauseCitadel');await expect(page.locator('#citadelSaveWarning')).toBeVisible();await expect(page.locator('#citadelPlayerStatus')).toContainText('Regeneration');await expect(page.locator('#buyCitadelArrows')).toBeDisabled();expect(await saved(page)).toEqual(before);
+  await page.evaluate(()=>{window.__citadelStorageFault=null;});await press(page,'#citadelRetrySave');await expect(page.locator('#citadelSaveWarning')).toBeHidden();await expect(page.locator('#citadelRetrySave')).toBeHidden();const after=await saved(page);expect(after.game.state.citadelOptions.sides[0].choice).toBe('regen');expect(after.game.state.gold[0]).toBeCloseTo(before.game.state.gold[0]-190,7);expect(after.game.state.time).toBe(before.game.state.time);await capture(page,info,fault+'-verified-save-retry');await attach(page,info,fault+'-save-recovered',{before,after});
+});
+
+test('blocker regression: historical restart retains old identity but a new Begin uses current campaign choices',async({page},info)=>{
+  test.skip(info.project.name!=='desktop','One bounded legacy/current campaign transition.');
+  const progress=progressionProfile(3),old=createCampaignMission('emberwatch');for(let tick=0;tick<60;tick++)old.update(.05);
+  const legacy=encodeBattle(old,scenarioForBattle(null,'emberwatch',old),{campaignProgress:progress});await seedOnce(page,{[SAVE]:JSON.stringify(legacy),'ironroot.campaign.v1':JSON.stringify(progress)});const profileBefore=await earned(page);await press(page,'#resumeSaved');const before=await pause(page);expect(before.game.state.citadelOptions).toBeUndefined();await expect(page.locator('#pauseCitadel')).toBeHidden();
+  await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#campaignMissionPage')).toBeVisible();await press(page,'#start');const restarted=await pause(page);expect(restarted.game.rulesetId??'frontier-legacy').toBe(before.game.rulesetId??'frontier-legacy');expect(restarted.game.state.citadelOptions).toBeUndefined();
+  await press(page,'#saveExit');await expect(page.locator('#campaignMissionPage')).toBeVisible();await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toMatchObject({kind:'campaign',id:'emberwatch',revision:5});expect(fresh.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);await expect(page.locator('#pauseCitadel')).toBeVisible();expect(await earned(page)).toEqual(profileBefore);await attach(page,info,'historical-restart-new-attempt',{before,restarted,fresh});
+});

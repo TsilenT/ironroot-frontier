@@ -1,0 +1,23 @@
+{
+  "reason": "Parent broadened mode availability while run active; requested stop.",
+  "runnerPid": 5660,
+  "termination": "SIGINT confirmed exit130",
+  "sourceSnapshot": "browser-initial.spec.source.txt",
+  "sourceSha256": "0f69b9c9ceb70e09a97c36b24555bfdf93c08d0ca7738edfba1430a16cffbb24",
+  "retainedArtifacts": "browser-initial-artifacts",
+  "knownFindings": [
+    {
+      "case": "narrow-phone setup",
+      "status": "harness failure",
+      "reason": "Timed select made before reload was reset by ordinary nonpersistent setup; revised test must select after reload."
+    },
+    {
+      "case": "narrow-phone legal restored arrows",
+      "status": "interrupted",
+      "reason": "Reached purchased screenshot and paid assertions; interruption while waiting for Save & return."
+    }
+  ],
+  "jsonReportWritten": true,
+  "runComplete": false,
+  "reportNote": "The JSON report was not present at the immediate termination check, but was found after delayed reporter completion; browser-initial.json preserves one failed, one interrupted and remaining unrun cases."
+}
