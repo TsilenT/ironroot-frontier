@@ -123,7 +123,8 @@ test('document wires capture guards, interruptions and bfcache reset', () => {
   for (const method of ['pointerDown','pointerEnd','click','keyDown','keyUp','interrupt','setScope']) assert.ok(source.includes(`inputScope.${method}(`),method);
   for (const event of ['visibilitychange','blur','pagehide','pageshow','lostpointercapture']) assert.ok(source.includes(`'${event}'`),event);
   assert.match(source,/event\.persisted[\s\S]*session = createCurrentTrainingSession\(\)/);
-  assert.match(source,/event\.target\?\.closest\('button,a,select,input,textarea,summary/);
+  assert.match(source,/nativeKeyboardTarget\(event\.target\)/);
+  assert.match(source,/ignoreKeyboardEvent\(event\)/);
   assert.match(source,/if \(snapshot\.shouldRun\) \{\s*session\.setPaused\(true\)/);
 });
 

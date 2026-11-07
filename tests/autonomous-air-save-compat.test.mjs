@@ -54,7 +54,7 @@ test('paid mid-chase backup/profile restore preserves target, nearest road, frac
     const target=raw([[MARKER,marker(5)]]),profile=current(target);
     assert.equal(profile.beginImport().ok,true);assert.equal(restoreBackup(profile.importStorage,text).ok,true);assert.equal(profile.finishImport({outcome:'restored'}).ok,true);
     const reloaded=current(target),restored=decodeBattle(reloaded.storage.getItem(K.battle)).game;
-    assert.equal(JSON.parse(target.data.get(MARKER)).version,6);assert.deepEqual(restored.serialize(),saved);
+    assert.equal(JSON.parse(target.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);assert.deepEqual(restored.serialize(),saved);
     const restoredFlyer=restored.state.units.find(u=>u.id===flyer.id);
     assert.deepEqual(restoredFlyer,flyer);
     for(let tick=0;tick<80;tick++){game.update(.05);restored.update(.05);assert.deepEqual(restored.serialize(),game.serialize());continuations++;}
