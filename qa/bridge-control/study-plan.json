@@ -1,0 +1,50 @@
+{
+  "study": "bridge-income-paid-feedback-v1",
+  "registeredBeforeExecution": true,
+  "registeredAtUtc": "2026-11-07T20:44:30Z",
+  "baseCommit": "495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca",
+  "scope": "Synthetic, paid, DOM-free engine comparison. Not human win rates or tuning evidence.",
+  "maps": ["classic", "long-march", "twin-span"],
+  "difficulty": "normal",
+  "seeds": [61001],
+  "playerSides": [0, 1],
+  "modes": {"disabled": "frontier-air-local-open", "enabled": "frontier-bridge-open"},
+  "policies": {
+    "concentrated-rush": {
+      "opening": ["barracks"],
+      "repeat": ["barracks"],
+      "lanes": "Starting road only. Upgrade living production there only when every legal site on that road is occupied. Never expand to other roads."
+    },
+    "screened-mixed-mine": {
+      "opening": ["barracks", "mint", "archery", "wardenLodge", "archery", "foundry"],
+      "repeat": ["barracks", "archery", "foundry", "sanctum"],
+      "lanes": "Opening production on starting road; mine at rear of starting road. Repeat cycles rotate through starting road then remaining roads; no second mine."
+    },
+    "air-and-rootwarden": {
+      "opening": ["wardenLodge", "aerie", "archery", "barracks"],
+      "repeat": ["wardenLodge", "aerie", "archery", "foundry"],
+      "lanes": "Opening production on starting road. Repeat cycles rotate through starting road then remaining roads."
+    }
+  },
+  "games": 36,
+  "fixedStepSeconds": 0.05,
+  "maximumSimulatedSeconds": 600,
+  "playerDecisionEverySeconds": 0.5,
+  "playerMaximumSuccessfulActionsPerDecision": 2,
+  "playerActionPolicy": "Ordered sequence advances only after successful paid build. Production chooses forward-to-rear official sites. If requested road is full, mixed policies try remaining roads, then upgrade lowest-level oldest living producer at full map capacity. Rush remains one road. No player spells or salvage. Never skip an unaffordable next producer to spend on a cheaper alternative.",
+  "nativeAi": "Game ai:false solely to mirror the enemy side. Invoke unchanged Game._ai(enemySide) after each fixed step when its external timer expires, initially at the first step. Set timer to 5 + game.random() * 3 seconds exactly as normal production AI. Player decisions occur before update; AI decisions after update. Both sides pay ordinary engine prices. No gold/entity/health injection.",
+  "continuation": "Stop only at native winner or 600 seconds. A living match at the bound is ongoing, never a forced draw or balance failure by itself. Open-ended overtime keeps existing production and structure damage rules; no citadel decay.",
+  "observations": [
+    "Every accepted/rejected paid command cost checked against ordinary engine action result; both-side ledger reconciles initial gold + base + mine + kill bounty + bridge - spending + refunds.",
+    "Every 60 seconds and at final state: strict save restore and next-step continuation comparison on independent clones, never advancing the measured game.",
+    "Every fixed step: ownership transitions, uninterrupted empty ownership durations, contested/empty times, map-wide payout bound and actual bridge receipts. Empty receipts inferred only for bridges empty in the post-step sample and owned before/after the step.",
+    "Native spawn observations count actual gryphons and Rootwardens; no unit injection.",
+    "Snapshots at 30, 60, 90, 180, 300, 420 and 600 seconds or native end. Early leader at 90 seconds means healthier own citadel; ties remain ties. Record separate payout and army-count leads without claiming causal leadership.",
+    "Paired enabled/disabled first successful build times by type/actor, first differing paid action, spending, outcomes, duration and bridge receipts. Label any affordability check subtracting cumulative bridge receipts as an all-other-recorded-actions-held-fixed ledger check, not an isolated causal simulation."
+  ],
+  "readinessChecks": [
+    "Any negative/nonfinite gold, wrong price, unexplained ledger residual > 1e-6, map-wide bridge payout above 0.5 gold/second, ownership loss without enemy recapture, invalid save or divergent restored continuation is a blocker.",
+    "Report every natural outcome and adverse comparison. A large enabled-vs-disabled duration or win shift is inspected, not automatically tuned away. Reward is provisional and not claimed balanced.",
+    "Do not change seeds, policies, cap, reward or engine rules in response to desired results. Retain failed run output; a repair rerun must state why and keep original evidence."
+  ]
+}
