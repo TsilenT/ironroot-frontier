@@ -1,0 +1,42 @@
+{
+  "dist/engine.js": {
+    "expected": "dcb1ee44a9deb7c7bef49bffc8c71f6a07f4265e47d5580aa7f0c38b5b912dc4",
+    "retainedExact": true,
+    "recovery": "Engine author reversed known scope edits; independently SHA256 matched original run."
+  },
+  "dist/rulesets.js": {
+    "expected": "c93dc9b730d9d0aaacd6fd4e5717a42232432cbdcd084817544611979a3445f8",
+    "retainedExact": true,
+    "recovery": "Engine author reversed known scope edits; independently SHA256 matched original run."
+  },
+  "dist/citadel-options.js": {
+    "expected": "2b4de54ae6505ae45ac7aca4b9e21533ee8891aa17a16e1f6f5c18d55174b767",
+    "retainedExact": true,
+    "recovery": "Engine author reversed known scope edits; independently SHA256 matched original run."
+  },
+  "dist/bridge-control.js": {
+    "expected": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "actualCurrent": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "retainedExact": true
+  },
+  "qa/citadel-playtest/paid-sample.mjs": {
+    "expected": "48efcf893ded8a4c64bee85287b18e0b721e59bc2c65e0339f3d93ac6beea08c",
+    "actualCurrent": "48efcf893ded8a4c64bee85287b18e0b721e59bc2c65e0339f3d93ac6beea08c",
+    "retainedExact": true
+  },
+  "qa/citadel-playtest/PLAN.md": {
+    "expected": "02c74f7673119a748de1f52709f5b128d07dff2ef82a800eb52ddab8b9064889",
+    "actualCurrent": "02c74f7673119a748de1f52709f5b128d07dff2ef82a800eb52ddab8b9064889",
+    "retainedExact": true
+  },
+  "dist/flight-orders.js": {
+    "retainedExact": true,
+    "sha256": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "source": "unchanged from main 5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d"
+  },
+  "dist/autonomous-air.js": {
+    "retainedExact": true,
+    "sha256": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "source": "unchanged from main 5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d"
+  }
+}

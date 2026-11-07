@@ -4,13 +4,13 @@ A single-player real-time strategy tug-of-war for desktop and mobile browsers. B
 
 ## Current draft candidate
 
-The **v0.19.0** candidate adds experimental, opt-in **Skirmish bridge income**. Ground troops capture marked center zones after two uncontested seconds; any living enemy troop, including air, stops capture and payment. Empty ownership persists. Both sides share at most 0.5 extra gold per second across the map. Open-ended and timed games use separate new immutable identities; campaign, Field Trials, practice and ordinary Skirmishes keep their rules. Design and evidence are in [BRIDGE_CONTROL.md](docs/BRIDGE_CONTROL.md).
+The **v0.20.0** candidate adds an optional paid choice between Extra Arrow and Regeneration in fresh Campaign missions, Field Trials and Skirmishes. From 1:30, spend 190 gold once through **Pause → Citadel choices**, or keep the gold. Extra Arrow adds a half-strength shot at a different enemy; Regeneration restores 3 HP/sec after eight seconds without damage and after purchase. Home remains camera-only. Guided Practice retains its scripted lesson actions. Bridge income remains an independent Skirmish option. Design, applicability and evidence limits are in [CITADEL_CHOICES.md](docs/CITADEL_CHOICES.md).
 
-This is draft PR #16 on `codex/skirmish-bridge-income`, based on verified private main `495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca` (v0.18.1). It uses `ironroot-v0.19.0`; it is not merged or deployed. The unrelated held mobile Volley PR #14 is not included.
+[Draft PR #17](https://github.com/TsilenT/ironroot-frontier/pull/17) uses `codex/skirmish-citadel-options`, based on verified private main `5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d` (v0.19.0). It uses `ironroot-v0.20.0`; it is not merged or deployed. The held mobile Volley PR #14 remains separate.
 
 ## Release baseline
 
-The release handoff identifies **v0.18.1** as live. Private source main was verified at `495cf2563f8b9f06723e27e06ae77dcdc5d9b2ca` before this work. This task performs no production browser checks or publication. v0.18.1 includes PR #15's restart-to-briefing and finale-to-Skirmish navigation, documented in [RESTART_BRIEFING.md](docs/RESTART_BRIEFING.md). Its predecessor v0.18.0 introduced **Ashen Crossroads**, documented in [ASHEN_CROSSROADS.md](docs/ASHEN_CROSSROADS.md).
+The release handoff identifies **v0.19.0** as live. Private source main was verified at `5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d` before this work. This task performs no production browser checks or publication. v0.19.0 includes opt-in persistent bridge income, documented in [BRIDGE_CONTROL.md](docs/BRIDGE_CONTROL.md). Earlier restart/briefing and Ashen Crossroads work remains documented in [RESTART_BRIEFING.md](docs/RESTART_BRIEFING.md) and [ASHEN_CROSSROADS.md](docs/ASHEN_CROSSROADS.md).
 
 Historical v0.17.0 shipped automatic flyers and PR #9's prose from source `342d8b594091d323f2c0e92d9a170de0fcbdc2b9`, public commit `b2d3cbb550b929a8813c0a251fb6792bfcc4d59f`. Its live smoke was desktop; portrait evidence was emulated source QA, not physical-phone validation. PR #10 (`3548031a3e8d8e04c7b81784d6c0fe174b1522fe`) subsequently added opt-in deterministic tests. The keyboard work originally described as the v0.17.1 candidate is included in v0.17.2. Earlier development records remain in [FEATURE_DELIVERY.md](docs/FEATURE_DELIVERY.md) and [AUTOMATIC_AIR_INTEGRATION.md](docs/AUTOMATIC_AIR_INTEGRATION.md). Physical-device and non-Chromium certification remain open.
 
@@ -24,7 +24,7 @@ Historical v0.17.0 shipped automatic flyers and PR #9's prose from source `342d8
 - **Automatic flyers:** gryphons notice nearby troops on their current or an adjacent road and fly into attack range without commands. After losing a target they find another nearby enemy or advance along the nearest road, so successive fights can carry them across roads. Detours can expose enemies or pull flyers away from their own army. Archers remain on their roads but can hit nearby flyers between roads; towers can intercept them too. There are no route buttons, gateways, crossing countdowns or forced returns.
 - **Small screens:** Income remains visible beside gold in portrait, including short layouts. Build opens a shared drawer. Named protected-objective controls focus the actual structures. The released visible-viewport repair supports short portrait and landscape layouts; truly insufficient space pauses combat until it fits and the player explicitly resumes.
 
-Campaign stars, unlocks, settings, trial records and result history remain persistent. New full-roster campaign attempts use revision 4, including the third opening and replays of earlier openings after the full roster is earned. Fresh trials and practice retain their original seven-building roster while using automatic flyers. The v0.19.0 candidate uses profile protocol 9 to protect the remembered bridge setup choice and new result identities from older clients. Existing earned data and save formats are preserved; bridge ownership/progress and exact bridge earnings are admitted only under the new ruleset identities. Close old game tabs before importing a backup. In-progress older battles are not a release requirement during this pre-release polish phase; no new migration machinery is added for them.
+Campaign stars, unlocks, settings, trial records and result history remain persistent. Fresh Campaign attempts use revision 5 while preserving earned 2/5/8-building stages; fresh Field Trials use revision 3 with their seven-building roster. Guided Practice retains its existing rules. Profile protocol 10 protects the new identities from older writers. Existing saved battles keep their bound rules; a fresh launch uses current choices. Close old game tabs before importing a backup. No in-progress battle migration is added.
 
 ## Run and check
 
@@ -57,6 +57,7 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 ## Source map
 
 - `dist/engine.js`: deterministic combat, maps, AI and engine saves.
+- `dist/citadel-options.js`, `dist/citadel-view.js`: paid choice mechanics and readable state.
 - `dist/bridge-control.js`: the optional Skirmish capture, denial, persistent ownership and bounded income contract.
 - `dist/campaign.js`, `dist/campaign-onboarding.js`, `dist/challenges.js`, `dist/objectives.js`: authored battles, progression, immutable attempt identity and fixed-step objective checks.
 - `dist/campaign-flow.js`, `dist/campaign-presentation.js`: shared-control guidance, teaching policy and concise briefings.
@@ -73,6 +74,6 @@ Fonts are bundled under OFL 1.1 with notices in `dist/FONTS-NOTICES.txt`. No ext
 
 ## Release boundaries
 
-The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. The v0.19.0 candidate remains separate from the released baseline. Its authoritative source runtime inventory is [runtime-final.json](qa/bridge-control/runtime-final.json), with the distinct `ironroot-v0.19.0` cache/version. PR #14 remains held and untouched. No merge or publication is included in this candidate work. Never publish changed assets under an old cache identity.
+The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. The v0.20.0 candidate remains separate from the released baseline. Its authoritative source runtime inventory is [runtime-final.json](qa/citadel-playtest/runtime-final.json), with the distinct `ironroot-v0.20.0` cache/version. PR #14 remains held and untouched. No merge or publication is included in this candidate work. Never publish changed assets under an old cache identity.
 
 There is no network PvP, account service or authoritative server. Physical mobile/controller testing, full nonvisual battlefield access and desktop/store certification remain separate work. Automated balance simulations do not establish human difficulty or mobile performance. See `docs/DESKTOP.md` for the optional desktop shell.

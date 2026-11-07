@@ -11,7 +11,7 @@ import {validateHistoryRow} from '../dist/history-codec.js';
 import {createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {writeBattle} from '../dist/persistence.js';
 
-const automatic='frontier-campaign-air-local', date='2026-11-07T09:00:00.000Z';
+const current='frontier-campaign-citadel-open',automatic='frontier-campaign-air-local', date='2026-11-07T09:00:00.000Z';
 const record={completed:true,stars:2,bestTime:60};
 const full=()=>({...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.map(m=>[m.id,{...record}]))});
 const stages=()=>{
@@ -46,37 +46,37 @@ test('fresh onboarding selects the revision from its actual two/five/eight roste
   const tiers=stages();
   for(const [minimum,mission] of campaign.ONBOARDING_MISSIONS.entries())for(let tier=minimum;tier<3;tier++){
     const p=tiers[tier],before=JSON.stringify(p),preview=campaign.getCampaignLaunchMission(mission.id,p);
-    const game=campaign.createProgressionCampaignMission(mission.id,p),revision=tier===2?4:1;
+    const game=campaign.createProgressionCampaignMission(mission.id,p),revision=5;
     assert.equal(preview.scenarioRevision,revision);assert.equal(campaign.getCurrentCampaignRevision(mission.id,p),revision);
     assert.equal(scenario(game,mission.id).revision,revision);
-    assert.equal(game.ruleset.id,['frontier-campaign-watch','frontier-campaign-fork',automatic][tier]);
+    assert.equal(game.ruleset.id,['frontier-campaign-citadel-watch','frontier-campaign-citadel-fork',current][tier]);
     assert.equal(preview.rulesetId,game.ruleset.id);assert.equal(Object.keys(game.buildings).length,[2,5,8][tier]);
     assert.equal(supportsAutonomousAir(game.ruleset),tier===2);assert.equal(supportsFlightOrders(game.ruleset),false);
     assert.deepEqual(decodeBattle(saved(game,mission.id,p),{campaignProgress:p}).game.serialize(),game.serialize());
     assert.equal(JSON.stringify(p),before);
   }
-  assert.equal(campaign.getCampaignRoster(tiers[2]).stage,3);assert.equal(campaign.getCampaignRoster(tiers[2]).rulesetId,automatic);
+  assert.equal(campaign.getCampaignRoster(tiers[2]).stage,3);assert.equal(campaign.getCampaignRoster(tiers[2]).rulesetId,current);
   assert.equal(campaign.CAMPAIGN_RULESET_STAGES[automatic],3);
   assert.equal(campaign.isMissionUnlocked(tiers[2],'open-three-roads',4),true,'third opening is not gated by its own victory');
   assert.equal(campaign.isMissionUnlocked(tiers[2],'emberwatch',4),false);
   assert.equal(campaign.isMissionUnlocked(tiers[3],'emberwatch',4),true);
-  for(const id of ['roadside-watch','shield-at-the-fork'])assert.equal(campaign.getCurrentCampaignRevision(id),1);
-  assert.equal(campaign.getCurrentCampaignRevision('open-three-roads'),4);
-  for(const mission of campaign.INTRO_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(mission.id,full()).rulesetId,'frontier-authored-air-local','optional fresh lessons use automatic air without a Rootwarden unlock');
+  for(const id of ['roadside-watch','shield-at-the-fork'])assert.equal(campaign.getCurrentCampaignRevision(id),5);
+  assert.equal(campaign.getCurrentCampaignRevision('open-three-roads'),5);
+  for(const mission of campaign.INTRO_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(mission.id,full()).rulesetId,'frontier-authored-citadel','optional fresh lessons use automatic air without a Rootwarden unlock');
 });
 
 test('all nineteen full-roster starts roundtrip battle, history and backup and restart the exact authored revision',()=>{
   const p=full(),before=JSON.stringify(p);
   for(const mission of campaign.AUTONOMOUS_AIR_CAMPAIGN_MISSIONS){
     const id=mission.id,game=campaign.createProgressionCampaignMission(id,p),initial=game.serialize();
-    assert.equal(game.ruleset.id,automatic);assert.equal(game.schemaVersion,3);assert.equal(scenario(game,id).revision,4);
+    assert.equal(game.ruleset.id,current);assert.equal(game.schemaVersion,3);assert.equal(scenario(game,id).revision,5);
     assert.equal(Object.keys(game.buildings).length,8);assert.equal(game.ruleset.endgame.forcedDecay,false);
     const site=buildSites(game.map,0).find(s=>game.canBuild('aerie',s.x,s.y).ok);
     assert.ok(site,id);assert.equal(game.build('aerie',site.x,site.y).ok,true);
     for(let i=0;i<330;i++)game.update(.05);game.update(.017);
     assert.ok(game.state.units.some(u=>u.type==='gryphon'&&Object.hasOwn(u,'airTargetId')),id);
     const envelope=saved(game,id,p),decoded=decodeBattle(envelope,{campaignProgress:p});
-    assert.deepEqual(decoded.game.serialize(),game.serialize());assert.equal(resolveScenario(decoded.identity.scenario).revision,4);
+    assert.deepEqual(decoded.game.serialize(),game.serialize());assert.equal(resolveScenario(decoded.identity.scenario).revision,5);
     const row={won:false,draw:false,difficulty:game.difficulty,time:game.state.time,kills:0,built:1,date,identity:decoded.identity};
     assert.deepEqual(validateHistoryRow(row),row);
     const text=createBackup(storage(),{createdAt:date,campaign:p,battle:envelope,history:[row]}),backup=parseBackup(text);
@@ -90,11 +90,11 @@ test('all nineteen full-roster starts roundtrip battle, history and backup and r
   assert.equal(JSON.stringify(p),before);
 });
 
-test('revision-four admission rejects unearned full rosters, mismatched descriptors and skirmish identities before writing',()=>{
+test('current-revision admission rejects unearned full rosters, mismatched descriptors and skirmish identities before writing',()=>{
   const p=full(),empty=campaign.createCampaignProgress(),game=campaign.createProgressionCampaignMission('roadside-watch',p);
   const envelope=saved(game,'roadside-watch',p);
   assert.throws(()=>decodeBattle(envelope,{campaignProgress:empty}),e=>e.code==='locked-roster');
-  for(const revision of [1,2,3]){
+  for(const revision of [1,2,3,4]){
     const changed=structuredClone(envelope);changed.scenario.revision=revision;
     assert.throws(()=>decodeBattle(changed,{campaignProgress:p}));
   }

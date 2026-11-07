@@ -17,8 +17,8 @@ const pay=(control,units,dt=.05,map=MAPS.classic)=>advanceBridgeControl(control,
 const pureGame=(control,units=[],map=MAPS.classic)=>({map,ruleset:getRuleset('frontier-bridge-open'),units:types,state:{bridgeControl:control,units}});
 function hold(control,units,seconds,map=MAPS.classic) {let total=[0,0];for(let n=0;n<Math.round(seconds/.05);n++){const p=pay(control,units,.05,map);total=total.map((v,i)=>v+p[i]);}return total;}
 
-test('bridge contract is opt-in through two frozen whole rulesets with existing automatic flyers and endgame rules',()=>{
-  assert.deepEqual(Object.values(RULESETS).filter(supportsBridgeControl).map(r=>r.id),['frontier-bridge-open','frontier-bridge-timed']);
+test('bridge contract is opt-in through frozen whole rulesets with existing automatic flyers and endgame rules',()=>{
+  assert.deepEqual(Object.values(RULESETS).filter(supportsBridgeControl).map(r=>r.id).sort(),['frontier-bridge-open','frontier-bridge-timed','frontier-citadel-bridge-open','frontier-citadel-bridge-timed'].sort());
   for(const id of ['frontier-bridge-open','frontier-bridge-timed']) {
     const game=modern('classic',id),off=getRuleset(id.endsWith('timed')?'frontier-air-local-timed':'frontier-air-local-open');
     assert.ok(Object.isFrozen(game.ruleset.economy));assert.equal(game.units,off.units);assert.equal(game.buildings,off.buildings);
