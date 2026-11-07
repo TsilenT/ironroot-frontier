@@ -5,8 +5,8 @@ import { runInContext, createContext } from 'node:vm';
 import { BUILDINGS, buildBounds } from '../dist/engine.js';
 import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission, campaignScenarioForGame, getProgressionCampaignOverview, createCampaignProgress } from '../dist/campaign.js';
 import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
-import { supportsFlightOrders } from '../dist/flight-orders.js';
-import { flightOrderModel, flightRoadName } from '../dist/flight-orders-view.js';
+import { supportsAutonomousAir } from '../dist/autonomous-air.js';
+import { airBuildingDescription } from '../dist/flight-orders-view.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 import { visibleViewportRect } from '../dist/mobile-battlefield.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
@@ -42,7 +42,7 @@ function harness() {
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
   $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,supportsFlightOrders,flightOrderModel,flightRoadName,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+  c={$,BUILDINGS,buildBounds,supportsAutonomousAir,airBuildingDescription,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
     battleSession:{status:()=> 'current'},game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
     viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,padHud:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),

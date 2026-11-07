@@ -1,0 +1,652 @@
+{
+  "format": "ironroot-automatic-air-campaign-smoke",
+  "version": 1,
+  "generatedAt": "2026-11-07T13:42:22.767Z",
+  "durationSeconds": 4.007,
+  "scope": "One authored-seed paid reference route through nineteen current campaign missions, plus full-roster replays of the first two openings. Original formation, HP, gold and objectives; no synthetic unlocks or free commands. Playable battle restore and exact authored restart every ten seconds. Three-tick deterministic continuation probes. This is bounded scripted evidence, not a large balance sweep, human difficulty claim, browser certification or deployment.",
+  "sourceHashes": {
+    "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+    "dist/rulesets.js": "371e6201e92058faa7d5027229f609bb02c39f761f0eee28420e1bac992f00cf",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/campaign.js": "538ef217ea510e13d072282c5dda4beeadd59ff696461d47b222731c74397b26",
+    "dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "dist/battle-codec.js": "051bf9533ec71d6a0148066a23db4773b922359c1baa0921ca8534276186ac07",
+    "tests/campaign-policies.mjs": "62ec228967ac6d3582379eaa01b76785e0aa6f7e0b3d2a18f0e918c9f1c2873b",
+    "tests/onboarding-campaign-policies.mjs": "57ab268177cc6f695215df554a9c3608580ae0e6333929d5e1c54935c7138ed3",
+    "tests/automatic-air-campaign-smoke.mjs": "e84652b685debd5f8ae4fd833c2707eb30149b93268440d5bfbd2ffb6d8fff4c"
+  },
+  "summary": {
+    "cleared": 19,
+    "total": 19,
+    "stars": 52,
+    "paidActions": 232,
+    "grossSpend": 41291,
+    "restores": 246,
+    "replayWins": 2,
+    "failures": []
+  },
+  "progression": [
+    {
+      "id": "roadside-watch",
+      "scenarioRevision": 1,
+      "rulesetId": "frontier-campaign-watch",
+      "mapId": "intro-one-road",
+      "seed": 2001,
+      "policy": "onboarding-reference/5-second-single-action",
+      "won": true,
+      "stars": 3,
+      "seconds": 60.5,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 4,
+      "grossSpend": 553,
+      "purchased": {
+        "barracks": 2,
+        "archery": 1
+      },
+      "restores": 7,
+      "continuations": 7,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "shield-at-the-fork",
+      "scenarioRevision": 1,
+      "rulesetId": "frontier-campaign-fork",
+      "mapId": "intro-two-road",
+      "seed": 2003,
+      "policy": "onboarding-reference/5-second-single-action",
+      "won": true,
+      "stars": 3,
+      "seconds": 114.45,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 9,
+      "grossSpend": 1379,
+      "purchased": {
+        "wardenLodge": 1,
+        "barracks": 1,
+        "archery": 2,
+        "mint": 1
+      },
+      "restores": 12,
+      "continuations": 12,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "open-three-roads",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 2007,
+      "policy": "onboarding-reference/5-second-single-action",
+      "won": true,
+      "stars": 3,
+      "seconds": 103.15,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 8,
+      "grossSpend": 1567,
+      "purchased": {
+        "archery": 3,
+        "wardenLodge": 1,
+        "aerie": 1,
+        "foundry": 1,
+        "mint": 1
+      },
+      "restores": 11,
+      "continuations": 11,
+      "airLockSamples": 2801,
+      "offRoadFlyerSamples": 3297
+    },
+    {
+      "id": "emberwatch",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 1101,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 37.2,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 4,
+      "grossSpend": 630,
+      "purchased": {
+        "barracks": 2,
+        "archery": 2
+      },
+      "restores": 4,
+      "continuations": 4,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "three-roads",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 1203,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 93.95,
+      "citadelHP": 5200,
+      "label": "All mission objectives complete.",
+      "paidActions": 6,
+      "grossSpend": 1080,
+      "purchased": {
+        "watchtower": 1,
+        "barracks": 2,
+        "archery": 2,
+        "sanctum": 1
+      },
+      "restores": 10,
+      "continuations": 10,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "winter-stores",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 1307,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 150,
+      "citadelHP": 3800,
+      "label": "All mission objectives complete.",
+      "paidActions": 15,
+      "grossSpend": 2641,
+      "purchased": {
+        "watchtower": 2,
+        "mint": 1
+      },
+      "restores": 15,
+      "continuations": 15,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "wings-of-ash",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 2101,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 71.75,
+      "citadelHP": 4200,
+      "label": "All mission objectives complete.",
+      "paidActions": 5,
+      "grossSpend": 875,
+      "purchased": {
+        "archery": 5
+      },
+      "restores": 8,
+      "continuations": 8,
+      "airLockSamples": 900,
+      "offRoadFlyerSamples": 297
+    },
+    {
+      "id": "stonegate",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 2203,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 2,
+      "seconds": 73.15,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 4,
+      "grossSpend": 725,
+      "purchased": {
+        "barracks": 2,
+        "foundry": 1,
+        "archery": 1
+      },
+      "restores": 8,
+      "continuations": 8,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "long-vigil",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 2309,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 2,
+      "seconds": 150,
+      "citadelHP": 2600,
+      "label": "All mission objectives complete.",
+      "paidActions": 9,
+      "grossSpend": 1605,
+      "purchased": {
+        "watchtower": 3,
+        "archery": 3,
+        "barracks": 3
+      },
+      "restores": 15,
+      "continuations": 15,
+      "airLockSamples": 1630,
+      "offRoadFlyerSamples": 1983
+    },
+    {
+      "id": "cold-forge",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 3101,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 97.05,
+      "citadelHP": 4800,
+      "label": "All mission objectives complete.",
+      "paidActions": 6,
+      "grossSpend": 1130,
+      "purchased": {
+        "aerie": 2,
+        "barracks": 2,
+        "archery": 2
+      },
+      "restores": 10,
+      "continuations": 10,
+      "airLockSamples": 9950,
+      "offRoadFlyerSamples": 664
+    },
+    {
+      "id": "black-ledger",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 3203,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 2,
+      "seconds": 120.2,
+      "citadelHP": 6000,
+      "label": "Enemy citadel destroyed.",
+      "paidActions": 13,
+      "grossSpend": 2405,
+      "purchased": {
+        "mint": 2,
+        "watchtower": 2,
+        "barracks": 4,
+        "foundry": 1,
+        "sanctum": 1,
+        "archery": 3
+      },
+      "restores": 13,
+      "continuations": 13,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "furnace-heart",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 3307,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 163.25,
+      "citadelHP": 5200,
+      "label": "All mission objectives complete.",
+      "paidActions": 16,
+      "grossSpend": 3175,
+      "purchased": {
+        "mint": 2,
+        "watchtower": 2,
+        "barracks": 4,
+        "foundry": 3,
+        "sanctum": 2,
+        "archery": 3
+      },
+      "restores": 17,
+      "continuations": 17,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "crown-foothold",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 4101,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 180,
+      "citadelHP": 4200,
+      "label": "All mission objectives complete.",
+      "paidActions": 22,
+      "grossSpend": 3860,
+      "purchased": {
+        "watchtower": 1,
+        "mint": 2,
+        "archery": 2
+      },
+      "restores": 18,
+      "continuations": 18,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "last-light",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 4201,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 2,
+      "seconds": 180,
+      "citadelHP": 3200,
+      "label": "All mission objectives complete.",
+      "paidActions": 18,
+      "grossSpend": 3452,
+      "purchased": {
+        "watchtower": 1,
+        "mint": 3,
+        "aerie": 1,
+        "archery": 4,
+        "barracks": 4,
+        "sanctum": 3
+      },
+      "restores": 18,
+      "continuations": 18,
+      "airLockSamples": 4816,
+      "offRoadFlyerSamples": 2496
+    },
+    {
+      "id": "ironroot",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "classic",
+      "seed": 4303,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 170.45,
+      "citadelHP": 6000,
+      "label": "Enemy citadel destroyed.",
+      "paidActions": 19,
+      "grossSpend": 3595,
+      "purchased": {
+        "mint": 2,
+        "barracks": 6,
+        "foundry": 3,
+        "sanctum": 3,
+        "archery": 5
+      },
+      "restores": 18,
+      "continuations": 18,
+      "airLockSamples": 1029,
+      "offRoadFlyerSamples": 903
+    },
+    {
+      "id": "open-horizon",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "long-march",
+      "seed": 5101,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 94.95,
+      "citadelHP": 5200,
+      "label": "All mission objectives complete.",
+      "paidActions": 10,
+      "grossSpend": 1895,
+      "purchased": {
+        "archery": 3,
+        "barracks": 4,
+        "foundry": 3
+      },
+      "restores": 10,
+      "continuations": 10,
+      "airLockSamples": 4743,
+      "offRoadFlyerSamples": 4047
+    },
+    {
+      "id": "river-charter",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "twin-span",
+      "seed": 5203,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 2,
+      "seconds": 99.05,
+      "citadelHP": 3800,
+      "label": "Enemy citadel destroyed.",
+      "paidActions": 16,
+      "grossSpend": 2651,
+      "purchased": {
+        "aerie": 2,
+        "archery": 2,
+        "mint": 2
+      },
+      "restores": 10,
+      "continuations": 10,
+      "airLockSamples": 10783,
+      "offRoadFlyerSamples": 2698
+    },
+    {
+      "id": "far-beacon",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "long-march",
+      "seed": 5309,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 126.95,
+      "citadelHP": 5400,
+      "label": "Enemy citadel destroyed.",
+      "paidActions": 19,
+      "grossSpend": 3382,
+      "purchased": {
+        "aerie": 2,
+        "mint": 2,
+        "archery": 6,
+        "barracks": 2,
+        "foundry": 2
+      },
+      "restores": 13,
+      "continuations": 13,
+      "airLockSamples": 12497,
+      "offRoadFlyerSamples": 5554
+    },
+    {
+      "id": "common-ground",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "twin-span",
+      "seed": 5407,
+      "policy": "campaign-reference/1-second",
+      "won": true,
+      "stars": 3,
+      "seconds": 97.75,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 16,
+      "grossSpend": 2759,
+      "purchased": {
+        "barracks": 2,
+        "archery": 4,
+        "foundry": 2,
+        "mint": 2,
+        "sanctum": 1
+      },
+      "restores": 10,
+      "continuations": 10,
+      "airLockSamples": 1414,
+      "offRoadFlyerSamples": 1065
+    }
+  ],
+  "replays": [
+    {
+      "id": "roadside-watch",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "intro-one-road",
+      "seed": 2001,
+      "policy": "onboarding-reference/5-second-single-action",
+      "won": true,
+      "stars": 3,
+      "seconds": 60.5,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 4,
+      "grossSpend": 553,
+      "purchased": {
+        "barracks": 2,
+        "archery": 1
+      },
+      "restores": 7,
+      "continuations": 7,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    },
+    {
+      "id": "shield-at-the-fork",
+      "scenarioRevision": 4,
+      "rulesetId": "frontier-campaign-air-local",
+      "mapId": "intro-two-road",
+      "seed": 2003,
+      "policy": "onboarding-reference/5-second-single-action",
+      "won": true,
+      "stars": 3,
+      "seconds": 114.45,
+      "citadelHP": 6000,
+      "label": "All mission objectives complete.",
+      "paidActions": 9,
+      "grossSpend": 1379,
+      "purchased": {
+        "wardenLodge": 1,
+        "barracks": 1,
+        "archery": 2,
+        "mint": 1
+      },
+      "restores": 12,
+      "continuations": 12,
+      "airLockSamples": 0,
+      "offRoadFlyerSamples": 0
+    }
+  ],
+  "finalProgress": {
+    "format": "ironroot-campaign",
+    "version": 1,
+    "missions": {
+      "emberwatch": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 37.200000000000024
+      },
+      "three-roads": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 93.9499999999968
+      },
+      "winter-stores": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 149.99999999999986
+      },
+      "wings-of-ash": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 71.74999999999807
+      },
+      "stonegate": {
+        "completed": true,
+        "stars": 2,
+        "bestTime": 73.14999999999799
+      },
+      "long-vigil": {
+        "completed": true,
+        "stars": 2,
+        "bestTime": 149.99999999999986
+      },
+      "cold-forge": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 97.04999999999663
+      },
+      "black-ledger": {
+        "completed": true,
+        "stars": 2,
+        "bestTime": 120.19999999999531
+      },
+      "furnace-heart": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 163.25000000000287
+      },
+      "crown-foothold": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 180.00000000000668
+      },
+      "last-light": {
+        "completed": true,
+        "stars": 2,
+        "bestTime": 180.00000000000668
+      },
+      "ironroot": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 170.4500000000045
+      },
+      "open-horizon": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 94.94999999999675
+      },
+      "river-charter": {
+        "completed": true,
+        "stars": 2,
+        "bestTime": 99.04999999999652
+      },
+      "far-beacon": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 126.94999999999493
+      },
+      "roadside-watch": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 60.4999999999987
+      },
+      "shield-at-the-fork": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 114.44999999999564
+      },
+      "open-three-roads": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 103.14999999999628
+      },
+      "common-ground": {
+        "completed": true,
+        "stars": 3,
+        "bestTime": 97.74999999999659
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { ONBOARDING_CHAPTER, ONBOARDING_MISSIONS, isOnboardingMission } from '..
 import {
   CAMPAIGN_MISSIONS, INTRO_MISSIONS, createCampaignMission, createProgressionCampaignMission,
   createCampaignProgress, evaluateCampaignMission, getCampaignTargets, getCampaignRoster,
-  isMissionUnlocked, recordCampaignResult, normalizeCampaignProgress,
+  isMissionUnlocked, recordCampaignResult, normalizeCampaignProgress, campaignScenarioForGame,
 } from '../dist/campaign.js';
 import { encodeBattle, decodeBattle } from '../dist/battle-codec.js';
 import { playCampaign, productionPolicy } from './campaign-policies.mjs';
@@ -201,7 +201,7 @@ test('paid wins advance two to five to eight, every in-progress save restores ex
       policy: onboardingReferencePolicy(mission.id), startDelay: 10, actionEvery: 5, maxActionsPerDecision: 1,
       restore: data => {
         const current = Game.restore(data);
-        const envelope = encodeBattle(current, { kind: 'campaign', id: mission.id, revision: 1 }, { campaignProgress: progress });
+        const envelope = encodeBattle(current, campaignScenarioForGame(current, mission.id), { campaignProgress: progress });
         const restored = decodeBattle(envelope, { campaignProgress: progress }).game;
         assert.deepEqual(restored.serialize(), data);
         assert.deepEqual(getCampaignTargets(restored, mission.id), getCampaignTargets(current, mission.id));
@@ -220,7 +220,7 @@ test('paid wins advance two to five to eight, every in-progress save restores ex
   const replay = createProgressionCampaignMission('roadside-watch', progress);
   assert.equal(Object.keys(replay.buildings).length, 8);
   assert.equal(replay.build('wardenLodge', 970, replay.map.lanes[0]).ok, true);
-  assert.equal(decodeBattle(encodeBattle(replay, { kind: 'campaign', id: 'roadside-watch', revision: 1 }, { campaignProgress: progress }), { campaignProgress: progress }).game.ruleset.id, 'frontier-campaign-open');
+  assert.equal(decodeBattle(encodeBattle(replay, campaignScenarioForGame(replay, 'roadside-watch'), { campaignProgress: progress }), { campaignProgress: progress }).game.ruleset.id, 'frontier-campaign-air-local');
 });
 
 test('one- and two-star wins advance the same route, and replay never lowers previous records', () => {

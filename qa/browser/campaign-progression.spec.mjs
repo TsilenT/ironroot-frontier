@@ -37,7 +37,7 @@ test('fresh campaign exposes two real buildings, a matching guide and no All-bui
   await expect(page.locator('[data-codex-structure]')).toHaveCount(0);
 });
 
-test('paid checkpoints earn 2 → 5 → 8 in one persistent profile, then Continue starts eight-building Emberwatch revision two', async ({ page }) => {
+test('paid checkpoints earn 2 → 5 → 8 in one persistent profile, then Continue starts eight-building Emberwatch with automatic flyers', async ({ page }) => {
   test.setTimeout(45000);
   await seedCheckpoint(page, progressionFixture('roadside-watch', { terminal: true }));
   for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
@@ -63,7 +63,8 @@ test('paid checkpoints earn 2 → 5 → 8 in one persistent profile, then Contin
     await expect(page.locator('.build-card:visible')).toHaveCount([5, 8, 8][index]);
     await expect(page.locator('[data-type="wardenLodge"]')).toBeVisible();
     const active = await pause(page);
-    expect(active.scenario).toEqual({ kind: 'campaign', id: ['shield-at-the-fork', 'open-three-roads', 'emberwatch'][index], revision: index === 2 ? 2 : 1 });
+    expect(active.scenario).toEqual({ kind: 'campaign', id: ['shield-at-the-fork', 'open-three-roads', 'emberwatch'][index], revision: index === 0 ? 1 : 4 });
+    expect(active.game.rulesetId).toBe(index === 0 ? 'frontier-campaign-fork' : 'frontier-campaign-air-local');
     await press(page, '#saveExit'); await page.reload();
     expect(await readProgress(page)).toEqual(progress);
   }
@@ -84,13 +85,15 @@ test('newer profile progress does not upgrade a saved two-building battle, while
   await press(page, '#replayMission'); await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await expect(page.locator('[data-type="wardenLodge"]')).toBeVisible();
-  expect((await pause(page)).game.rulesetId).toBe('frontier-campaign-open');
+  const replay = await pause(page);
+  expect(replay.scenario).toEqual({ kind: 'campaign', id: 'roadside-watch', revision: 4 });
+  expect(replay.game.rulesetId).toBe('frontier-campaign-air-local');
   const after = await readProgress(page);
   expect(after.missions['roadside-watch'].stars).toBe(2);
   expect(after.missions['shield-at-the-fork']).toEqual(progress.missions['shield-at-the-fork']);
 });
 
-test('new main battle builds a paid Rootwarden lodge and preserves revision two through reload and backup import', async ({ page }) => {
+test('new main battle builds a paid Rootwarden lodge and preserves automatic-flight identity through reload and backup import', async ({ page }) => {
   test.setTimeout(35000);
   // Declared already-earned profile fixture, not browser-earned milestones.
   const progress = progressionProfile(3); await seedOnce(page, { [K.campaign]: JSON.stringify(progress) });
@@ -99,7 +102,7 @@ test('new main battle builds a paid Rootwarden lodge and preserves revision two 
   await tapPoint(page, await homePoint(page, Game.restore((await saved(page)).game).map, 550, 450));
   await expect(page.locator('#toast')).toContainText('Warden lodge raised');
   const before = await pause(page);
-  expect(before).toMatchObject({ version: 3, scenario: { kind: 'campaign', id: 'emberwatch', revision: 2 }, game: { rulesetId: 'frontier-campaign-open' } });
+  expect(before).toMatchObject({ version: 3, scenario: { kind: 'campaign', id: 'emberwatch', revision: 4 }, game: { rulesetId: 'frontier-campaign-air-local' } });
   expect(before.game.state.buildings.filter(building => building.side === 0 && building.type === 'wardenLodge')).toHaveLength(1);
   await press(page, '#saveExit'); await page.reload(); await press(page, '#resumeSaved');
   const resumed = await pause(page); expect(resumed.scenario).toEqual(before.scenario);
@@ -123,7 +126,9 @@ test('intro-only records remain visible without skipping the opening; returning 
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('#campaignIntroProgressText')).toContainText('8/8 buildings');
   await startRunning(page, press); await openBuildControls(page); await expect(page.locator('.build-card:visible')).toHaveCount(8);
-  expect((await pause(page)).scenario).toEqual({ kind: 'campaign', id: 'three-roads', revision: 2 });
+  const active = await pause(page);
+  expect(active.scenario).toEqual({ kind: 'campaign', id: 'three-roads', revision: 4 });
+  expect(active.game.rulesetId).toBe('frontier-campaign-air-local');
   expect(await readProgress(page)).toEqual(returning);
 });
 

@@ -64,7 +64,7 @@ test('existing twelve missions and 36 stars remain version 1 and unlock chapter 
   await expect(page.locator('[data-mission]')).toHaveCount(4);
   await expect(page.locator('#campaignProgressText')).toHaveText('12/19 missions · 36/57 stars');
   await expect(page.locator('#start')).toBeEnabled();
-  await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toEqual({kind:'campaign',id:'open-horizon',revision:3});expect(fresh.game.rulesetId).toBe('frontier-campaign-flight');expect(Game.restore(fresh.game).buildings.wardenLodge).toBeTruthy();
+  await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toEqual({kind:'campaign',id:'open-horizon',revision:4});expect(fresh.game.rulesetId).toBe('frontier-campaign-air-local');expect(Game.restore(fresh.game).buildings.wardenLodge).toBeTruthy();
   await press(page,'#saveExit');await page.reload();
   expect(await progress(page)).toEqual(legacy);
   for(const opening of ['roadside-watch','shield-at-the-fork','open-three-roads'])expect((await progress(page)).missions[opening]).toBeUndefined();
@@ -107,14 +107,14 @@ for(const mission of FRONTIER_MISSIONS){
     await seedOnce(page,{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress)});await showFrontier(page,id);
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);await expect(page.locator('#start')).toBeEnabled();
     await press(page,'#start');const before=await pause(page);
-    expect(before).toMatchObject({version:3,scenario:{kind:'campaign',id,revision:3},game:{version:3,mapId:mission.mapId,mapRevision:1,rulesetId:'frontier-campaign-flight',rulesetRevision:1}});
+    expect(before).toMatchObject({version:3,scenario:{kind:'campaign',id,revision:4},game:{version:3,mapId:mission.mapId,mapRevision:1,rulesetId:'frontier-campaign-air-local',rulesetRevision:1}});
     expect(Object.keys(Game.restore(before.game).buildings)).toHaveLength(8);
     expect(layout(before)).toEqual(layout(fixture.envelope));expect(Game.restore(before.game).map.id).toBe(mission.mapId);
     await press(page,'#saveExit');
     await expect(page.locator('#resumeSaved')).toContainText('RESUME MISSION · '+mission.name.toUpperCase()+' ·');
     await page.reload();await expect(page.locator('#resumeSaved')).toContainText('RESUME MISSION · '+mission.name.toUpperCase()+' ·');
     await press(page,'#resumeSaved');await expect(page.locator('#opponentLabel')).toHaveText(mission.name.toUpperCase());
-    const after=await pause(page);expect(after.scenario).toEqual({kind:'campaign',id,revision:3});expect(layout(after)).toEqual(layout(before));
+    const after=await pause(page);expect(after.scenario).toEqual({kind:'campaign',id,revision:4});expect(layout(after)).toEqual(layout(before));
     expect(after.game.mapId).toBe(mission.mapId);expect(after.game.state.time).toBeGreaterThanOrEqual(before.game.state.time);
     expect(after.game.state.time-before.game.state.time).toBeLessThan(3);expect(await progress(page)).toEqual(fixture.progress);
   });

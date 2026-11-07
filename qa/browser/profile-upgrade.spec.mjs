@@ -42,7 +42,7 @@ async function bootWithProtocol(page,{raw=readyMarker(),fault='none',values={}}=
   await page.goto('/');
 }
 
-for(const priorVersion of [null,1,2,3,4])test((priorVersion===null?'absent':'ready v'+priorVersion)+' profile marker upgrades once to verified v'+CURRENT_PROFILE_PROTOCOL_VERSION+' while keeping all legacy mission records',async ({page})=>{
+for(const priorVersion of [null,...Array.from({length:CURRENT_PROFILE_PROTOCOL_VERSION-1},(_,index)=>index+1)])test((priorVersion===null?'absent':'ready v'+priorVersion)+' profile marker upgrades once to verified v'+CURRENT_PROFILE_PROTOCOL_VERSION+' while keeping all legacy mission records',async ({page})=>{
   const absent=priorVersion===null;
   const bytes=JSON.stringify(progressThrough());await bootWithProtocol(page,{raw:absent?null:readyMarker(priorVersion),values:{[CAMPAIGN_STORAGE_KEY]:bytes}});
   const current=await marker(page);expect(current).toMatchObject({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,phase:'ready'});

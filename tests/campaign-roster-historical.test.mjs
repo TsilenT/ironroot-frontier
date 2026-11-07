@@ -21,9 +21,9 @@ const fullProgress = () => ({...createCampaignProgress(), missions: Object.fromE
 test('historical audit retains the exact earned two/five/eight opening rosters and returning replays', () => {
   const progress = createCampaignProgress();
   for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
-    assert.deepEqual(getHistoricalRosterMission(mission.id, progress), getCampaignLaunchMission(mission.id, progress));
+    assert.equal(getHistoricalRosterMission(mission.id, progress).scenarioRevision, 1);
     const historical = createHistoricalRosterMission(mission.id, progress);
-    assert.deepEqual(historical.serialize(), createProgressionCampaignMission(mission.id, progress).serialize());
+    assert.deepEqual(historical.serialize(), createCampaignMission(mission.id, {revision: 1, progress}).serialize());
     assert.equal(Object.keys(historical.buildings).length, [2, 5, 8][index]);
     assert.equal(campaignScenarioForGame(historical, mission.id).revision, 1);
     progress.missions[mission.id] = record();
@@ -32,11 +32,11 @@ test('historical audit retains the exact earned two/five/eight opening rosters a
   for (const mission of ONBOARDING_MISSIONS) {
     const historical = createHistoricalRosterMission(mission.id, returning);
     assert.equal(historical.ruleset.id, 'frontier-campaign-open');
-    assert.deepEqual(historical.serialize(), createProgressionCampaignMission(mission.id, returning).serialize());
+    assert.deepEqual(historical.serialize(), createCampaignMission(mission.id, {revision: 1, progress: returning}).serialize());
   }
 });
 
-test('all sixteen historical continuation descriptors and factories stay exact revision 2 despite current flight starts', () => {
+test('all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts', () => {
   const progress = fullProgress(), before = JSON.stringify(progress);
   for (const mission of CAMPAIGN_MISSIONS) {
     const descriptor = getHistoricalRosterMission(mission.id, progress);
@@ -48,7 +48,7 @@ test('all sixteen historical continuation descriptors and factories stay exact r
     assert.equal(game.ruleset.id, 'frontier-campaign-open');
     assert.equal(game.ruleset.combat.flyingCrossLanes, false);
     assert.equal(Object.keys(game.buildings).length, 8);
-    if (FLIGHT_CAMPAIGN_MISSION_IDS.includes(mission.id)) assert.equal(getCurrentCampaignRevision(mission.id), 3);
+    if (FLIGHT_CAMPAIGN_MISSION_IDS.includes(mission.id)) assert.equal(getCurrentCampaignRevision(mission.id), 4);
   }
   assert.equal(JSON.stringify(progress), before);
 });

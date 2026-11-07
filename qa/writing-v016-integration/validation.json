@@ -1,0 +1,76 @@
+{
+  "scope": "Local source integration and Node/preflight checks only; no browser run, publication, merge or deployment.",
+  "candidateVersion": "0.16.1",
+  "releasedMain": "2094b5fb71755ddd37677ae65d5b3d1438487366",
+  "incomingBranch": "codex/player-copy-rhythm-2026-11-07",
+  "incomingHead": "c359d325080fd07261f5fa92a73cac7ae2680e61",
+  "checks": [
+    {
+      "command": "npm test",
+      "status": "passed",
+      "total": 1299,
+      "passed": 1298,
+      "failed": 0,
+      "skipped": 1,
+      "durationMs": 46849.000724,
+      "skipReason": "Optional desktop build dependencies are not installed.",
+      "log": "node-final.log"
+    },
+    {
+      "command": "node scripts/check.mjs",
+      "status": "passed",
+      "result": "All game JavaScript modules parse.",
+      "log": "syntax-final.log"
+    },
+    {
+      "command": "node scripts/verify-runtime.mjs",
+      "status": "passed",
+      "runtimeFiles": 49,
+      "resultFile": "runtime-inventory.json"
+    },
+    {
+      "command": "npm run check --prefix qa/browser",
+      "status": "passed",
+      "result": "Browser source syntax and authored fixtures passed; 8 harness contracts and 17 synthetic-provider contracts passed. No browser is launched by this command.",
+      "log": "browser-preflight-final.log"
+    },
+    {
+      "command": "node qa/writing-v016-integration/audit-source.mjs RELEASED_ROOT COMMON_BASE PR9_INPUT .",
+      "status": "passed",
+      "resultFile": "source-audit.json",
+      "changedOriginalPR9TextTokens": 142,
+      "changedOriginalPR9HTMLTextNodes": 5,
+      "additionalCoordinatorTextRefinements": 2,
+      "unchangedRuntimeFiles": 39,
+      "otherReleasedFilesPreserved": 1038,
+      "additionalCoordinatorTextTokens": 3,
+      "finalNetChangedJavaScriptTextTokens": 143
+    },
+    {
+      "command": "npm run list --prefix qa/browser",
+      "status": "blocked_by_local_tooling",
+      "exitCode": 1,
+      "error": "error: unknown command 'test'",
+      "result": "The local executable does not provide the project Playwright test runner. No project dependency install or browser execution was attempted.",
+      "log": "browser-discovery.log"
+    },
+    {
+      "command": "node /opt/codex/cua_node/lib/node_modules/playwright/cli.js test --list --config qa/browser/playwright.config.mjs --reporter=list",
+      "status": "passed_discovery_only",
+      "testCases": 1668,
+      "testFiles": 39,
+      "adapterVersion": "1.57.0",
+      "projectRunnerAdapterVersion": "1.57.0-local-adapter",
+      "log": "browser-discovery-adapter.log",
+      "result": "Existing local adapter only; no browser, server or dependency installation. Temporary qa/browser/node_modules symlink removed. Pinned cloud-runner dependency unchanged."
+    }
+  ],
+  "frozenMissionDescriptorHashes": "Unchanged expected hashes, checked after the original explicit approved-prose reversal; all corresponding Node tests pass.",
+  "assertionReview": "Existing geometry, storage, timing, flight targeting, one-time announcement and progression assertions are retained. Existing copy matchers changed only to authored strings. Complete mobile prompt tests and exact coordinator-copy checks strengthen coverage.",
+  "pending": [
+    "Native visual/text inspection",
+    "Exact-source browser review of changed text and affected flows; coordinator chooses appropriate coverage",
+    "Physical mobile/PWA and non-Chromium validation"
+  ],
+  "historicalEvidence": "All incoming qa/writing-rhythm files and docs/PLAYER_COPY_RHYTHM.md are byte-identical to PR9. They remain branch-era results, not current integration browser certification."
+}

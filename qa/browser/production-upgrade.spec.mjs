@@ -125,8 +125,8 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     await press(modern,'#skipLesson');await expect(modern.locator('#lessonPicker')).toHaveValue('shield-and-arrow');
     await press(modern,'#returnGame');await expect(modern.locator('#welcome')).toBeVisible();expect(await profile(modern)).toEqual(prePractice);
     await selectMap(modern,'twin-span');await press(modern,'#start');
-    const fresh=await pause(modern);expect(fresh).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{version:3,mapId:'twin-span',rulesetId:'frontier-flight-open'}});
-    await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');expect((await pause(modern)).game.rulesetId).toBe('frontier-flight-open');
+    const fresh=await pause(modern);expect(fresh).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{version:3,mapId:'twin-span',rulesetId:'frontier-air-local-open'}});
+    await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');expect((await pause(modern)).game.rulesetId).toBe('frontier-air-local-open');
     const after=await profile(modern);for(const key of HISTORICAL_KEYS.filter(key=>key!==SAVE))expect(after[key]).toBe(before[key]);
     expect(errors).toEqual([]);expect(consoleErrors).toEqual([]);
     await testInfo.attach('production-upgrade-evidence',{contentType:'application/json',body:Buffer.from(JSON.stringify({scenario,manifestPin:PRODUCTION_V012_MANIFEST_SHA256,priorVersion:prior.version,candidateVersion:candidate.version,priorWorkerHash:prior.workerHash,candidateWorkerHash:candidate.workerHash,priorHashes:prior.hashes,candidateHashes:candidate.hashes,timing,migration:{from:oldMarker,to:JSON.parse(migrated[PROFILE_MARKER_KEY])},historicalSave:historical,resumedSave:resumed,repeatedSave:twice,continuations:{resumed:resumedContinuation,repeated:repeatedContinuation}},null,2))});

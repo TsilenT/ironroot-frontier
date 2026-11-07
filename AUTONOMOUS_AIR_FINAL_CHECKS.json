@@ -1,0 +1,43 @@
+{
+  "status": "Local prototype complete; no app/campaign selection, publication or deployment",
+  "sourceHashes": {
+    "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+    "dist/rulesets.js": "2250756425cff1a7f643f2c222008453472180777d8f643674b2b2fa101ef2ec",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/service-worker.js": "5c99ad1ae97a0d5385418ef5c5d61662f1bd6f59be4bcb139f82d0c47f42c993",
+    "tests/autonomous-air-engine.test.mjs": "0e24cdade750bfc573a53a9cba7d124b6c448da6a16dc57c8729f10be8849716",
+    "tests/autonomous-air-legacy-parity.test.mjs": "5c6a3b96dc2306f2a48c6d2b0dd7931af8bb833f4029e60e2d46979a2cdacf64",
+    "scripts/measure-autonomous-air.mjs": "b9f1cf09bf7c6945d6f95798e5ed2355038038219873ff0da2f7e7dd47afda1e"
+  },
+  "checks": {
+    "npm test": {
+      "tests": 1300,
+      "pass": 1299,
+      "fail": 0,
+      "skip": 1,
+      "durationMs": 54817.726267
+    },
+    "node scripts/check.mjs": "passed",
+    "node scripts/verify-runtime.mjs": "passed",
+    "node scripts/measure-autonomous-air.mjs": "passed"
+  },
+  "newCoverage": {
+    "focusedBehaviorTests": 17,
+    "frozenPredecessorTests": 2,
+    "exactPredecessorCohorts": 135,
+    "adjacentMapSideDirections": 24,
+    "maps": 5
+  },
+  "correctedRegression": {
+    "rejectedEngineSha256": "cf74699df39275a0c482977e88f0db2797ca5c43e8da4d9ee11297f1a994eeb1",
+    "fullSuiteFailures": 14,
+    "cause": "A conditional movement clamp regrouped legacy speed and timestep arithmetic, producing tiny floating-point differences.",
+    "fix": "Isolated the new-policy anti-air movement branch and restored the exact old fallback arithmetic. Original tests unchanged; full rerun green."
+  },
+  "limitations": [
+    "DOM-free simulation only; no browser/mobile/rendering certification",
+    "Experimental immutable rules are not application defaults",
+    "Campaign revision, legacy presentation, copy/tutorial controls and profile fencing remain integration work",
+    "Independent reviewer report is separate; no release authority"
+  ]
+}

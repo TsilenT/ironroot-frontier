@@ -1,3 +1,4 @@
+import {beforeRhythmCopy} from './writing-rhythm-copy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -16,20 +17,17 @@ const scenario=(game,id)=>scenarioForBattle(null,id,game);
 const saved=(game,id,progress=full())=>encodeBattle(game,scenario(game,id),{campaignProgress:progress});
 const fingerprint=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
-test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes',()=>{
-  assert.equal(fingerprint(campaign.CAMPAIGN_PROGRESS_MISSIONS),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
-  assert.equal(fingerprint(campaign.PROGRESSION_CAMPAIGN_MISSIONS),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
+test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes outside reviewed prose',()=>{
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS)),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.PROGRESSION_CAMPAIGN_MISSIONS)),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
 });
 
-test('current flight campaign is thirteen explicit immutable revisions after the unchanged opening and Embers',()=>{
+test('historical flight campaign keeps thirteen explicit immutable revisions after the original opening and Embers',()=>{
   assert.equal(campaign.FLIGHT_CAMPAIGN_MISSIONS.length,13);
   assert.deepEqual(campaign.FLIGHT_CAMPAIGN_MISSION_IDS,campaign.CAMPAIGN_MISSIONS.slice(3).map(m=>m.id));
   assert.equal(CAMPAIGN_RULESET_IDS.length,3);
   for(const original of campaign.CAMPAIGN_PROGRESS_MISSIONS){
-    const expected=campaign.FLIGHT_CAMPAIGN_MISSION_IDS.includes(original.id)?3:campaign.CAMPAIGN_MISSIONS.includes(original)?2:1;
-    assert.equal(campaign.getCurrentCampaignRevision(original.id),expected);
-    assert.equal(campaign.getCampaignLaunchMission(original.id,full()).scenarioRevision,expected);
-    if(expected!==3){assert.throws(()=>campaign.getCampaignMission(original.id,3));continue;}
+    if(!campaign.FLIGHT_CAMPAIGN_MISSION_IDS.includes(original.id)){assert.throws(()=>campaign.getCampaignMission(original.id,3));continue;}
     const flight=campaign.getCampaignMission(original.id,3);
     assert.equal(flight.rulesetId,'frontier-campaign-flight');assert.equal(flight.rulesetRevision,1);
     assert.equal(flight.mapRevision,1);assert.ok(Object.isFrozen(flight)&&Object.isFrozen(flight.objectives));
@@ -67,7 +65,7 @@ test('flight is earned stage three, while old opening replay identity and histor
   const p=full(),before=JSON.stringify(p),overview=campaign.getProgressionCampaignOverview(p);
   assert.equal(overview.total,19);assert.equal(overview.cleared,19);assert.equal(overview.stars,38);
   assert.equal(JSON.stringify(campaign.normalizeCampaignProgress(p)),before);
-  for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-open');
+  for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-air-local');
   const old=campaign.createProgressionCampaignMission('roadside-watch',tiers[0]);
   const restored=decodeBattle(saved(old,'roadside-watch',tiers[0]),{campaignProgress:p}).game;
   assert.equal(restored.ruleset.id,'frontier-campaign-watch');assert.equal(restored.ruleset.combat.flyingCrossLanes,false);
@@ -75,10 +73,10 @@ test('flight is earned stage three, while old opening replay identity and histor
   assert.equal(JSON.stringify(p),before);
 });
 
-test('all thirteen current launches roundtrip battle/history/backup and restart the exact authored identity',()=>{
+test('all thirteen historical manual-flight attempts roundtrip battle/history/backup and restart the exact authored identity',()=>{
   const p=full();
   for(const id of campaign.FLIGHT_CAMPAIGN_MISSION_IDS){
-    const game=campaign.createProgressionCampaignMission(id,p),initial=game.serialize(),ref=scenario(game,id);
+    const game=campaign.createCampaignMission(id,{revision:3}),initial=game.serialize(),ref=scenario(game,id);
     assert.equal(game.ruleset.id,'frontier-campaign-flight');assert.equal(game.schemaVersion,3);assert.equal(ref.revision,3);
     assert.equal(Object.keys(game.buildings).length,8);assert.ok(game.units.rootwarden);assert.equal(game.ruleset.campaignOnly,true);
     assert.equal(game.ruleset.endgame.forcedDecay,false);

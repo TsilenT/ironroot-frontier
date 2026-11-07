@@ -8,11 +8,11 @@ import {TRAINING_LESSONS} from '../dist/training.js';
 // Revised approved prose literals, not expectations derived from runtime successText.
 // Combat attribution/evidence is independently checked by training and accepted-copy-parity tests.
 const EXPECTED_FEEDBACK = new Map([
-  ['first-barracks', 'Your barracks trained its first warrior. It will march toward enemy buildings on its own.'],
-  ['shield-and-arrow', 'Enemy arrows hit your warriors. Your archers fired with a warrior still ahead of them.'],
-  ['mine-and-upgrade', 'With your upgraded mine working, you earned 8.75 gold per second. Upgrades cost gold but need no extra building site.'],
-  ['siege-the-tower', 'Your siege engines hit the marked tower. The tower fell.'],
-  ['answer-the-air', 'Your archers hit the marked gryphon. The gryphon fell. Warriors and siege engines cannot attack flyers.'],
+  ['first-barracks', 'Your barracks has trained its first warrior, who will march toward enemy buildings on its own.'],
+  ['shield-and-arrow', 'Your archers fired with a warrior still ahead of them, and enemy arrows hit your warriors.'],
+  ['mine-and-upgrade', 'The upgrade cost gold but no extra building site, raising your observed income to 8.75 gold per second.'],
+  ['siege-the-tower', 'After taking fire from your siege engines, the marked tower fell.'],
+  ['answer-the-air', 'Your archers hit the marked gryphon before it fell, doing what warriors and siege engines cannot: attack flyers.'],
 ]);
 
 const browserSource = readFileSync(new URL('../qa/browser/training.spec.mjs', import.meta.url), 'utf8');
@@ -31,6 +31,7 @@ for (const [id,feedback] of EXPECTED_FEEDBACK) {
   test(`${id}: final authored success copy matches its independent contract`, () => {
     const lesson = TRAINING_LESSONS.find(lesson => lesson.id === id);
     assert.equal(lesson.steps.at(-1).successText, feedback);
+    if(id==='siege-the-tower')assert.equal(lesson.steps.at(-1).prompt,'Watch your siege engines fire on the marked tower until it falls.');
   });
 
   test(`${id}: browser proof accepts its success copy and rejects unrelated feedback`, () => {
@@ -47,6 +48,9 @@ for (const [id,feedback] of EXPECTED_FEEDBACK) {
 }
 
 for (const [id,partialFeedback] of [
+  ['siege-the-tower', 'After taking fire from your siege engines.'],
+  ['siege-the-tower', 'The marked tower fell.'],
+  ['answer-the-air', 'The marked gryphon fell.'],
   ['siege-the-tower', 'Your siege engines hit the marked tower.'],
   ['siege-the-tower', 'The tower fell.'],
   ['answer-the-air', 'Your archers hit the marked gryphon.'],

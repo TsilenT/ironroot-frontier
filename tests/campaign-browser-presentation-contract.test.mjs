@@ -7,7 +7,7 @@ import {runInNewContext} from 'node:vm';
 import {getRuleset} from '../dist/engine.js';
 import {
   ALL_CAMPAIGN_MISSIONS, ONBOARDING_MISSIONS, PROGRESSION_CAMPAIGN_MISSIONS,
-  FLIGHT_CAMPAIGN_MISSION_IDS, getProgressionCampaignOverview, createCampaignProgress,
+  getProgressionCampaignOverview, createCampaignProgress,
 } from '../dist/campaign.js';
 
 const RECORDS_NOTICE = 'Campaign records include stars and best times from earlier mission versions.';
@@ -36,21 +36,21 @@ function authoredRows(mission) {
   return ['Available here: ' + Object.values(rules.buildings).map(b => b.name).join(', ') + '.', ...mission.briefing];
 }
 
-test('all 19 current briefings retain the exact roster and authored list with one notice for the 13 flight revisions', () => {
+test('all 19 current briefings retain the exact roster and authored list with one records notice for all 17 automatic-air revisions', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
   assert.equal(missions.length, 19);
   let notices = 0;
   for (const mission of missions) {
-    const flight = FLIGHT_CAMPAIGN_MISSION_IDS.includes(mission.id);
-    assert.equal(mission.scenarioRevision === 3, flight, mission.id);
+    const automatic = mission.rulesetId === 'frontier-campaign-air-local';
+    assert.equal(mission.scenarioRevision === 4, automatic, mission.id);
     const rows = renderBriefing(mission);
-    assert.deepEqual(rows, [...authoredRows(mission), ...(flight ? [RECORDS_NOTICE] : [])], mission.id);
-    assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, flight ? 1 : 0, mission.id);
-    if (flight) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
+    assert.deepEqual(rows, [...authoredRows(mission), ...(automatic ? [RECORDS_NOTICE] : [])], mission.id);
+    assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, automatic ? 1 : 0, mission.id);
+    if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
-  assert.equal(notices, 13);
-  assert.equal(missions.length - notices, 6, 'the opening and Embers do not acquire a flight records notice');
+  assert.equal(notices, 17);
+  assert.equal(missions.length - notices, 2, 'only the first two reduced-roster openings omit the records notice');
   assert.equal(JSON.stringify(progress), bytes);
 });
 
@@ -65,14 +65,14 @@ test('historical revision-one and revision-two descriptors keep their exact brie
   }
 });
 
-test('repeated briefing selection removes old notices and never duplicates the revision-three notice', () => {
+test('repeated briefing selection removes old notices and never duplicates the current revision notice', () => {
   const missions = getProgressionCampaignOverview(createCampaignProgress()).missions;
   const flight = missions.find(m => m.id === 'wings-of-ash');
   const historical = PROGRESSION_CAMPAIGN_MISSIONS.find(m => m.id === flight.id);
   const node = {innerHTML:''};
   for (const mission of [flight, flight, historical, missions[0], flight, missions[3]]) {
     assert.deepEqual(renderBriefing(mission, node), [
-      ...authoredRows(mission), ...(mission.scenarioRevision === 3 ? [RECORDS_NOTICE] : []),
+      ...authoredRows(mission), ...(mission.scenarioRevision >= 3 ? [RECORDS_NOTICE] : []),
     ]);
   }
 });

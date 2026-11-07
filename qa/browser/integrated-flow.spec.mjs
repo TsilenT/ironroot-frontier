@@ -21,11 +21,11 @@ test('an explicitly restored legacy introduction can be left for the new opening
   await press(page,'#campaignStoryNav');await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
   await expect(page.locator('#start')).toBeDisabled();await expect(page.locator('#campaignUnlock')).toContainText('First Watch');
   await press(page,'#campaignChapterNav');await press(page,'[data-mission="first-watch"]');await startRunning(page, press);
-  const first=await pause(page);expect(first).toMatchObject({version:3,scenario:{kind:'campaign',id:'first-watch',revision:1},game:{mapId:'intro-one-road',rulesetId:'frontier-legacy'}});
+  const first=await pause(page);expect(first).toMatchObject({version:3,scenario:{kind:'campaign',id:'first-watch',revision:4},game:{mapId:'intro-one-road',rulesetId:'frontier-authored-air-local'}});
   expect(Game.restore(first.game).map.lanes).toHaveLength(1);expect(first.game.state.buildings.filter(b=>b.side===0)).toHaveLength(0);
 });
 
-test('intro-only progress defaults to the new opening and explicitly selected Forked Road retains four legacy paid cards',async({page})=>{
+test('intro-only progress defaults to the new opening and explicitly selected Forked Road retains four paid teaching cards with automatic flyers',async({page})=>{
   const progress=createCampaignProgress();progress.missions['first-watch']={completed:true,stars:2,bestTime:95};
   const bytes=JSON.stringify(progress);await seedOnce(page,{[campaignKey]:bytes});
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
@@ -39,18 +39,19 @@ test('intro-only progress defaults to the new opening and explicitly selected Fo
   expect(map.lanes).toHaveLength(2);
   await tapPoint(page,await homePoint(page,map,550,map.lanes[0]));
   await expect(page.locator('#toast')).toContainText('Barracks raised');
-  const state=await pause(page);expect(state.scenario).toEqual({kind:'campaign',id:'forked-road',revision:1});
+  const state=await pause(page);expect(state.scenario).toEqual({kind:'campaign',id:'forked-road',revision:4});
+  expect(state.game.rulesetId).toBe('frontier-authored-air-local');
   expect(state.game.state.buildings.filter(b=>b.side===0)).toMatchObject([{type:'barracks',lane:0}]);
   expect(state.game.state.gold[0]).toBeCloseTo(610-140+5*state.game.state.time,1);
   expect(await page.evaluate(key=>localStorage.getItem(key),campaignKey)).toBe(bytes);
 });
 
-for(const rulesetId of ['frontier-flight-open','frontier-flight-timed'])test(rulesetId+' binds active roster paid controls resume and backup identity',async({page})=>{
+for(const rulesetId of ['frontier-air-local-open','frontier-air-local-timed'])test(rulesetId+' binds active roster paid controls resume and backup identity',async({page})=>{
   test.setTimeout(35000);
   const rules=getRuleset(rulesetId,1);await page.goto('/');await press(page,'[data-mode="skirmish"]');
   await page.locator('#skirmishRules').selectOption(rulesetId);
   await expect(page.locator('#skirmishRulesDescription')).toContainText(rules.endgame.forcedDecay?'citadels lose health from 7:00':'citadels never decay with time');
-  await expect(page.locator('#skirmishRulesDescription')).toContainText('aerie flight orders');
+  await expect(page.locator('#skirmishRulesDescription')).toContainText('gryphons that seek nearby enemies one road over');
   await startRunning(page, press);await openBuildControls(page);
   expect(await page.locator('.build-card:visible').evaluateAll(cards=>cards.map(card=>card.dataset.type))).toEqual(Object.keys(rules.buildings));
   await expect(page.locator('[data-type="wardenLodge"]')).toContainText('210');
@@ -89,5 +90,5 @@ for(const [id,nextId,title,cards] of [['first-watch','forked-road','Forked Road'
   await expect(page.locator('#campaignProgressText')).toContainText('0/19 missions · 0/57 stars');
   await startRunning(page, press);await openBuildControls(page);await expect(page.locator('.build-card:visible')).toHaveCount(cards);
   await expect(page.locator('[data-type="wardenLodge"]')).toHaveCount(0);
-  const after=await pause(page);expect(after.scenario?.id??after.campaignId).toBe(nextId);expect(Game.restore(after.game).ruleset.id).toBe(nextId==='roadside-watch'?'frontier-campaign-watch':'frontier-legacy');
+  const after=await pause(page);expect(after.scenario?.id??after.campaignId).toBe(nextId);expect(Game.restore(after.game).ruleset.id).toBe(nextId==='roadside-watch'?'frontier-campaign-watch':'frontier-authored-air-local');
 });

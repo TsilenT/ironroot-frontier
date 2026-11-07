@@ -96,14 +96,14 @@ test('all sixteen legacy defaults and restart formations remain equal to frozen 
 test('every allowed onboarding replay tier stays pinned even after the profile earns more',()=>{
   let checked=0;
   for(const [minimum,mission] of ONBOARDING_MISSIONS.entries())for(let tier=minimum;tier<3;tier++){
-    const game=createProgressionCampaignMission(mission.id,tiers[tier]),start=game.serialize();
+    const game=createCampaignMission(mission.id,{revision:1,progress:tiers[tier]}),start=game.serialize();
     assert.equal(game.ruleset.id,CAMPAIGN_RULESET_IDS[tier]);
     const restarted=assertRestart(game,mission.id,start,tiers[tier]);
     assert.equal(Object.keys(restarted.buildings).length,[2,5,8][tier]);
     assert.equal(fullIdentity(restarted,mission.id).scenario.revision,1);
     const restoredWithLaterProgress=roundtrip(advance(game),mission.id,complete);
     assertRestart(restoredWithLaterProgress,mission.id,start);
-    assert.equal(createProgressionCampaignMission(mission.id,complete).ruleset.id,'frontier-campaign-open');
+    assert.equal(createProgressionCampaignMission(mission.id,complete).ruleset.id,'frontier-campaign-air-local');
     if(tier<2)assert.notEqual(restarted.ruleset.id,'frontier-campaign-open');
     checked++;
   }

@@ -20,31 +20,28 @@ test('strict geometry rejects the recorded fractional North clip and initial Res
     {left:0,top:0,right:320,bottom:568}),false,'initial Restart overflow must fail');
 });
 
-test('flight insets belong to the real desktop and mobile scrollports without shrinking controls',()=>{
-  const desktop=rule('.selection-panel:has(.flight-orders:not(.hidden))');
-  const mobile=rule('.protected-mobile .command-deck:has(.flight-orders:not(.hidden))');
+test('read-only aerie description insets belong to the real desktop and mobile scrollports',()=>{
+  const desktop=rule('.selection-panel.air-inspector');
+  const mobile=rule('.protected-mobile .command-deck:has(.air-inspector:not(.hidden))');
   assert.match(desktop,/overflow-y: auto;/);
   assert.match(desktop,/scroll-padding-block: 8px;/);
   assert.match(mobile,/scroll-padding-block: 8px;/);
   assert.match(rule('.protected-mobile .command-deck'),/overflow-y: auto;/);
-  assert.match(rule('.protected-mobile .command-deck .selection-panel:has(.flight-orders:not(.hidden))'),/overflow: visible;/);
-  const control=rule('.flight-order-buttons button');
-  assert.match(control,/min-width: 44px;/);assert.match(control,/min-height: 44px;/);
-  assert.match(control,/font-size: 12px;/);
+  assert.match(rule('.protected-mobile .command-deck .selection-panel.air-inspector'),/overflow: visible;/);
+  assert.doesNotMatch(css,/flight-order-buttons|flight-orders/);
+  assert.match(rule('.protected-mobile .selection-actions button, .protected-mobile #closeSelection'),/min-width: 44px; min-height: 44px;/);
 });
 
-test('short portrait pause reclaims only whitespace and retains readable disclosure and actions',()=>{
+test('short portrait pause reclaims only whitespace and retains readable actions',()=>{
   const compact=css.split('@media (max-width: 400px) and (max-height: 600px) and (orientation: portrait) {')[1]?.split('\n}')[0];
   assert.ok(compact);
   assert.match(compact,/\.pause-menu \{ padding: 16px 18px; \}/);
   assert.match(compact,/\.pause-menu \.pause-briefing \{ margin: 10px 0; padding: 10px 0; \}/);
-  assert.match(compact,/\.pause-menu \.pause-utilities, \.pause-menu \.pause-flights \{ margin: 8px 0; \}/);
+  assert.match(compact,/\.pause-menu \.pause-utilities \{ margin: 8px 0; \}/);
   assert.match(compact,/\.pause-menu \.menu-status \{ margin: 8px 0; \}/);
   assert.doesNotMatch(compact,/font-size|line-height|display: none|overflow: hidden|transform|zoom/);
   assert.match(rule('.pause-veil .pause-menu button, .menu-confirm button'),/min-height: 44px;/);
-  assert.match(rule('.pause-flights summary'),/min-height: 44px;.*font-size: 14px;/s);
-  assert.match(rule('.pause-flights p'),/font-size: 13px; line-height: 1.5;/);
   assert.match(rule('.modal'),/overflow: auto;/);
-  assert.match(html,/<details id="pauseFlights"[^>]*>[\s\S]*?<summary>Air routes<\/summary>[\s\S]*?<p id="pauseFlightList"><\/p>[\s\S]*?Select an aerie after resuming to change future launches\./);
+  assert.doesNotMatch(html,/pauseFlights|pauseFlightList|flightNorth|flightHold|flightSouth/);
 });
 

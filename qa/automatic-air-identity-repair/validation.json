@@ -1,0 +1,30 @@
+{
+  "baseCommit": "9ee50921cd4e865852c8a52ed1ead085642e75f2",
+  "changeType": "Test-only expectations for current fresh full-roster campaign identity; no runtime change.",
+  "cloudBaseResult": {
+    "rootPassed": 1357,
+    "automaticAirBrowserPassed": 52,
+    "sharedBrowserPassed": 334,
+    "sharedBrowserFailed": 20,
+    "sharedBrowserSkipped": 6,
+    "failedGroups": 5,
+    "profiles": 4,
+    "downstreamStatus": "Unverified after the five identity assertion sites until corrected cloud rerun."
+  },
+  "focusedNode": {
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 1643.372338,
+    "log": "qa/automatic-air-identity-repair/focused-node.log"
+  },
+  "fixtureValidation": "Passed: all six paid opening checkpoints, lower-roster resume and current revision-four launch.",
+  "syntax": "Both changed browser specs pass node --check.",
+  "runtimeInventory": "Passed; all 50 runtime files byte-identical to exact base.",
+  "cloudRerunRequired": [
+    "campaign-progression.spec.mjs",
+    "contextual-coaching.spec.mjs"
+  ],
+  "coverageRetained": "No tests removed, skipped or shortened; all paid placement, unlock, saved-roster, profile, reload, export/import, replay and restart assertions retained. Added explicit scenario/ruleset checks for fresh replays, sequential full-roster launches and returning Three Roads.",
+  "independentReview": "Passed. Factory/fixture checks confirm current revision-four identities and unchanged reduced/old saved rosters. Added explicit ruleset checks for the progressive sequence and returning Three Roads as recommended."
+}

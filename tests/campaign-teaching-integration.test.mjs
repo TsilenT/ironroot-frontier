@@ -44,6 +44,18 @@ function harness(index = 0, options = {}) {
   } };
 }
 
+function assertCompleteBuildPrompt(h,open,closed) {
+  const {c,$}=h,before=c.game.serialize();
+  c.setCompactBuildOpen(false); c.updateCampaignDeck();
+  assert.equal(c.ui.build,null);
+  assert.equal($('coachText').textContent,closed);
+  c.setCompactBuildOpen(true); c.updateCampaignDeck();
+  assert.equal($('coachText').textContent,open);
+  c.setCompactBuildOpen(false); c.updateCampaignDeck();
+  assert.equal($('coachText').textContent,closed);
+  assert.deepEqual(c.game.serialize(),before,'reading and toggling Build preserve the actual battle');
+}
+
 for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
   if(index > 0) test(`${mission.name}: real shared-bar building is paid while clock, AI, income and production stay frozen`, () => {
     const h = harness(index), { c, $ } = h;
@@ -168,6 +180,65 @@ test('opening suggestions use the bound roster, Rootwarden screens, forward towe
   assert.doesNotMatch($('coachText').textContent, /pause|Resume|stopped/);
 });
 
+for (const [width,height] of [[320,480],[320,568],[390,650],[740,320],[844,390]]) {
+  test(`Shield at the Fork assembles its complete mobile mine prompt at ${width}x${height}`, () => {
+    const h=harness(1,{width,height}),{c,$}=h;
+    $('coachingPlan').onclick();
+    for(const [type,lane] of [['wardenLodge',0],['archery',0],['barracks',1]])h.buy(type,lane);
+    assert.equal(c.game.state.gold[0],215); assert.equal(c.game.state.time,0);
+    assertCompleteBuildPrompt(h,
+      'Build a gold mine behind your front line to fund more troop buildings as the battle goes on.',
+      'Open Build, then build a gold mine behind your front line to fund more troop buildings as the battle goes on.');
+  });
+
+  test(`Forked Road assembles its complete mobile mine and tower prompts at ${width}x${height}`, () => {
+    const h=harness(0,{width,height}),{c,$}=h;
+    c.campaignProgress.missions['first-watch']={...completed};
+    c.start(createCampaignMission('forked-road'),null,'forked-road');
+    c.beginCampaignCoaching({manual:true}); $('coachingPlan').onclick();
+    assert.equal(c.coachingHold,true);
+    h.buy('barracks',0); h.buy('barracks',1);
+    assert.equal(c.game.state.gold[0],330);
+    assertCompleteBuildPrompt(h,
+      'Build a mine behind your troops to add 2.5 gold per second for later reinforcements.',
+      'Open Build, then build a mine behind your troops to add 2.5 gold per second for later reinforcements.');
+    h.buy('mint');
+    assert.equal(c.game.state.gold[0],140); assert.equal(c.game.state.time,0);
+    assertCompleteBuildPrompt(h,
+      'Place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.',
+      'Open Build, then place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.');
+  });
+
+  test(`Shield at the Fork assembles complete mobile build prompts at ${width}x${height}`, () => {
+    const h = harness(1,{width,height}), {c,$} = h;
+    $('coachingPlan').onclick();
+    const prompts = [
+      {
+        open: 'Build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',
+        closed: 'Open Build, then build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',
+      },
+      {
+        open: 'Place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',
+        closed: 'Open Build, then place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',
+      },
+    ];
+    for (const [index,prompt] of prompts.entries()) {
+      if (index) h.buy('wardenLodge',0);
+      const before = c.game.serialize();
+      c.setCompactBuildOpen(false); c.updateCampaignDeck();
+      assert.equal(c.ui.build,null);
+      assert.equal($('coachText').textContent,prompt.closed);
+      c.setCompactBuildOpen(true); c.updateCampaignDeck();
+      assert.equal($('coachText').textContent,prompt.open);
+      c.setCompactBuildOpen(false); c.updateCampaignDeck();
+      assert.equal($('coachText').textContent,prompt.closed);
+      assert.deepEqual(c.game.serialize(),before,'reading and toggling Build preserve the actual battle');
+    }
+    assert.equal(c.game.state.gold[0],740-c.game.buildings.wardenLodge.cost);
+    assert.equal(c.game.state.time,0);
+  });
+}
+
 test('earned first lesson suppresses redundant Emberwatch teaching while later income/defense lessons remain optional', () => {
   for (const mission of ONBOARDING_MISSIONS) assert.ok(campaignTeaching(mission.id));
   assert.equal(campaignTeaching('emberwatch', { learnedBasics: true }), null);
@@ -212,7 +283,7 @@ for (const [width,height,insets] of [[320,480,{bottom:34}],[320,568,{}],[390,650
     const original=c.game.serialize(),site=recommendCampaignSite(c.game,'barracks').site;
     c.setCompactBuildOpen(true);c.selectBuild('barracks');c.updateHUD();
     assert.equal($('app').classList.contains('compact-build-open'),false);
-    assert.match($('coachNext').textContent,/Tap a green site/);
+    assert.match($('coachNext').textContent,/Tap any green site/);
     c.activateBattlePoint({x:3000,y:site.y});
     assert.deepEqual(c.game.serialize(),original,'failed placement spends nothing and allows correction');
     assert.equal(c.ui.build,'barracks');

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Game } from '../dist/engine.js';
-import { flightRoadName, flightOrderModel, flightRouteRows, flightWarningSummary, flightWarningTime } from '../dist/flight-orders-view.js';
+import { flightRoadName, airRulesGuide, airBuildingDescription, flightRouteRows, flightWarningSummary, flightWarningTime } from '../dist/flight-orders-view.js';
 import { startupHarness } from './mobile-startup-fixture.mjs';
 
 function setup(rulesetId = 'frontier-flight-open') {
@@ -11,35 +11,30 @@ function setup(rulesetId = 'frontier-flight-open') {
   assert.equal(result.ok, true);
   return {game, building: result.building};
 }
-function ui() {
-  const h = startupHarness({width: 390, height: 650});
-  const {game, building} = setup();
-  h.c.start(game);
-  h.c.ui.selected = building.id;
-  h.c.setCompactBuildOpen(true);
-  h.c.updateSelection();
-  return {...h, game, building};
-}
-
-test('flight panel offers only Hold and adjacent roads, using the actual map names', () => {
-  const {game, building} = setup();
-  assert.deepEqual(flightOrderModel(game, building).options.map(o => [o.key, o.lane, o.available, o.selected]),
-    [['north',0,true,false],['hold',1,true,true],['south',2,true,false]]);
-  const outer = {...building, lane: 0, flightPlan: 0};
-  assert.equal(flightOrderModel(game, outer).options[0].available, false);
-  assert.equal(flightOrderModel(game, outer).options[2].label, 'Middle road');
-  assert.equal(flightRoadName({lanes:[340,560]},1),'South road');
-  assert.equal(flightRoadName({lanes:[450]},0),'Only road');
-  assert.equal(flightRoadName(game.map,-1),'Unknown road');
+test('automatic flying descriptions explain local targets and actual anti-air range without orders', () => {
+  const {game, building} = setup('frontier-air-local-open');
+  const before = game.serialize(), guide = airRulesGuide(game);
+  assert.equal(guide.title, 'Flying between roads');
+  assert.match(guide.detail, /one road over.*automatically.*farther across the field/);
+  assert.match(guide.detail, /Archers stay on their road.*within range/);
+  assert.doesNotMatch(guide.detail, /gateway|two-second|route|Hold road|North road|South road/);
+  assert.match(airBuildingDescription(game, 'aerie', building), /nearby enemies.*one road over.*Archers and towers/);
+  assert.deepEqual(flightRouteRows(game),[]);
+  assert.equal(flightWarningSummary(game,game.state.units),'');
+  assert.deepEqual(game.serialize(),before);
 });
 
-test('old identities and non-owned/dead/non-aerie selections never offer orders', () => {
-  const old = setup('frontier-rootwarden-open');
-  assert.equal(flightOrderModel(old.game, old.building),null);
-  const {game, building} = setup();
-  for(const change of [{side:1},{hp:0},{type:'barracks'}])
-    assert.equal(flightOrderModel(game,{...building,...change}),null);
-  assert.equal(flightOrderModel(game,null),null);
+test('non-automatic battle identities have no automatic guide or route instructions', () => {
+  for(const id of ['frontier-flight-open','frontier-rootwarden-open']) {
+    const {game,building}=setup(id),before=game.serialize();
+    assert.equal(airRulesGuide(game),null);
+    assert.equal(airBuildingDescription(game,'aerie',building),game.buildings.aerie.description);
+    assert.deepEqual(game.serialize(),before);
+  }
+  assert.equal(airRulesGuide(null),null);
+  assert.equal(flightRoadName({lanes:[340,560]},1),'South road');
+  assert.equal(flightRoadName({lanes:[450]},0),'Only road');
+  assert.equal(flightRoadName(setup().game.map,-1),'Unknown road');
 });
 
 test('route text groups actual launches and ignores unlaunched enemy plans and completed flights', () => {
@@ -54,49 +49,21 @@ test('route text groups actual launches and ignores unlaunched enemy plans and c
   assert.match(rows.find(row=>row.phase==='warning').text,/Enemy 2 gryphons: Middle road to North road.*Next crossing starts in 0.6 seconds/);
   assert.match(rows.find(row=>row.phase==='transit').text,/cannot attack/);
   assert.equal(JSON.stringify(game.state),before);
-  assert.match(flightWarningSummary(game,game.state.units),/toward north road/);
+  assert.equal(flightWarningSummary(game,game.state.units),'Enemy gryphons are about to cross toward the north road, and your archers can hit them along the way.');
   assert.equal(flightWarningSummary({...game,ruleset:{combat:{flyingCrossLanes:false}}},game.state.units),'');
 });
 
-test('real aerie controls change only future plan and preserve focus, resources and airborne orders', () => {
-  const h = ui();
-  h.game.setFlightPlan(h.building.id,0);
-  for(let i=0;i<30;i++)h.game.update(.05);
-  const airborne = h.game.state.units.filter(u=>u.type==='gryphon').map(u=>JSON.stringify(u));
-  assert.ok(airborne.length);
-  const gold = h.game.state.gold[0], seed = h.game.seed, time = h.game.state.time;
-  const button = h.$('flightSouth'); button.focus();
-  button.onclick({detail:0,currentTarget:button});
-  assert.equal(h.building.flightPlan,2);
-  assert.equal(h.c.document.activeElement,button);
-  assert.equal(h.game.state.gold[0],gold);assert.equal(h.game.seed,seed);assert.equal(h.game.state.time,time);
-  assert.deepEqual(h.game.state.units.filter(u=>u.type==='gryphon').map(u=>JSON.stringify(u)),airborne);
-  assert.match(h.$('flightOrderCurrent').textContent,/south road/);
-  assert.equal(h.$('flightSouth').attributes['aria-pressed'],'true');
+test('actual aerie inspection is automatic and has no manual route information', () => {
+  const h=startupHarness({width:390,height:650});
+  for(const rulesetId of ['frontier-air-local-open','frontier-air-local-timed']) {
+    const {game,building}=setup(rulesetId);h.c.start(game);h.c.ui.selected=building.id;
+    const before=game.serialize();h.c.updateHUD();h.c.pause(true);h.c.updateHUD();
+    for(const id of ['flightOrders','flightNorth','flightHold','flightSouth','pauseFlights','flightAlert'])
+      assert.equal(h.c.document.querySelector('#'+id),null);
+    assert.match(h.$('selectionDescription').textContent,/one road over/);
+    assert.deepEqual(game.serialize(),before);
+  }
 });
-
-test('an unarmed compatibility click cannot issue an order on a newly revealed aerie panel', () => {
-  const h = ui(), before = h.game.serialize(), button = h.$('flightNorth');
-  button.onclick({detail:1,pointerId:7,currentTarget:button});
-  assert.deepEqual(h.game.serialize(),before);
-});
-
-for(const gate of ['paused','profileGate','recoveryHold','battleSafetyReason']) test(`${gate} prevents even a direct order activation`,()=>{
-  const h = ui(), before=h.game.serialize();h.c[gate]=gate==='paused'?true:{};
-  const button=h.$('flightNorth');button.onclick({detail:0,currentTarget:button});
-  assert.deepEqual(h.game.serialize(),before);
-});
-
-test('paused route inspection is read-only and old battles do not expose the new controls', () => {
-  const h=ui();h.c.pause(true);const before=h.game.serialize();h.c.updateHUD();
-  assert.deepEqual(h.game.serialize(),before);
-  assert.equal(h.$('flightNorth').disabled,true);
-  assert.equal(h.$('pauseFlights').classList.contains('hidden'),false);
-  const old=setup('frontier-rootwarden-open');h.c.start(old.game);h.c.ui.selected=old.building.id;h.c.updateHUD();
-  assert.equal(h.$('flightOrders').classList.contains('hidden'),true);
-  assert.equal(h.$('pauseFlights').classList.contains('hidden'),true);
-});
-
 
 test('staggered paid launches report the earliest warning consistently with battlefield signals', async()=>{
   const {buildFlightSignals,flightSignalLabel}=await import('../dist/flight-visuals.js');
@@ -127,18 +94,3 @@ test('warning rounding shares positive tenths and avoids binary floating-point o
 });
 
 
-for(const hold of ['paused','coachingHold','hidden'])test(`${hold} does not consume an unannounced live enemy crossing warning`,()=>{
-  const h=startupHarness({width:390,height:650}),game=new Game({rulesetId:'frontier-flight-open',ai:false,seed:1717});
-  const paid=game.build('aerie',1950,450,1);assert.equal(paid.ok,true);assert.equal(game.setFlightPlan(paid.building.id,0,1).ok,true);
-  h.c.start(game);const sounds=[];h.c.sound=name=>sounds.push(name);
-  let warning;
-  for(let i=0;i<200;i++){game.update(.05);warning=game.state.units.find(u=>u.side===1&&u.airRoute?.phase==='warning');if(warning)break;}
-  assert.ok(warning);const before=game.serialize();
-  if(hold==='hidden')h.c.document.hidden=true;else h.c[hold]=true;
-  h.c.updateHUD();assert.equal(h.$('flightAlert').textContent,'');assert.equal(sounds.includes('warning'),false);
-  if(hold==='hidden')h.c.document.hidden=false;else h.c[hold]=false;
-  h.c.updateHUD();assert.match(h.$('flightAlert').textContent,/Enemy gryphons.*north road/);
-  assert.equal(sounds.filter(n=>n==='warning').length,1);
-  h.c.updateHUD();assert.equal(sounds.filter(n=>n==='warning').length,1,'the same live warning is announced once');
-  assert.deepEqual(game.serialize(),before,'feedback changes neither combat nor timer/RNG');
-});
