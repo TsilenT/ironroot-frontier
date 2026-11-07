@@ -1,0 +1,87 @@
+[WebServer] (node:8458) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 63 tests using 2 workers
+
+(node:8470) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8471) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [narrow-phone] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.2s)
+  ✓   1 [narrow-phone] › restart-briefing.spec.mjs:42:1 › roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin (12.0s)
+  ✓   3 [narrow-phone] › restart-briefing.spec.mjs:42:1 › open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.8s)
+  ✓   4 [narrow-phone] › restart-briefing.spec.mjs:42:1 › emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.7s)
+  ✓   6 [narrow-phone] › restart-briefing.spec.mjs:82:56 › campaign-failure: result Retry shows its briefing before a new attempt (2.7s)
+  ✓   5 [narrow-phone] › restart-briefing.spec.mjs:68:1 › restart retires history attempt markers; Back/Forward cannot resume and Back can leave (4.4s)
+  ✓   7 [narrow-phone] › restart-briefing.spec.mjs:82:56 › trial-failure: result Retry shows its briefing before a new attempt (2.7s)
+  ✓   8 [narrow-phone] › restart-briefing.spec.mjs:94:1 › result Continue advances and optional Replay retains the completed mission (2.8s)
+  ✓   9 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (2.4s)
+  ✓  10 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (2.5s)
+  ✓  11 [narrow-phone] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (2.4s)
+  ✓  12 [narrow-phone] › restart-briefing.spec.mjs:127:1 › Begin write failure stays on briefing and can retry without resurrecting old attempt (2.8s)
+  ✓  13 [narrow-phone] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (4.7s)
+  ✓  14 [narrow-phone] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (6.5s)
+  ✓  15 [narrow-phone] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (4.8s)
+  ✓  16 [narrow-phone] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (2.4s)
+  ✓  17 [narrow-phone] › restart-briefing.spec.mjs:164:1 › held controller confirm reaches briefing once; a fresh activation explicitly begins (4.0s)
+  ✓  18 [narrow-phone] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (5.7s)
+  ✓  20 [narrow-phone] › restart-briefing.spec.mjs:203:1 › Ironroot is an earlier story victory and still continues to Open Horizon (2.3s)
+  ✓  19 [narrow-phone] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via controller (5.9s)
+(node:9670) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  21 [narrow-phone] › restart-briefing.spec.mjs:211:1 › profile change during restart confirmation preserves the recovery hold and all stored bytes (2.4s)
+(node:9820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  22 [landscape] › restart-briefing.spec.mjs:42:1 › roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin (13.8s)
+  ✓  23 [landscape] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (12.1s)
+  ✓  25 [landscape] › restart-briefing.spec.mjs:42:1 › emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin (10.9s)
+  ✓  24 [landscape] › restart-briefing.spec.mjs:42:1 › open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.8s)
+  ✓  27 [landscape] › restart-briefing.spec.mjs:82:56 › campaign-failure: result Retry shows its briefing before a new attempt (3.7s)
+  ✓  26 [landscape] › restart-briefing.spec.mjs:68:1 › restart retires history attempt markers; Back/Forward cannot resume and Back can leave (5.3s)
+  ✓  28 [landscape] › restart-briefing.spec.mjs:82:56 › trial-failure: result Retry shows its briefing before a new attempt (3.4s)
+  ✓  29 [landscape] › restart-briefing.spec.mjs:94:1 › result Continue advances and optional Replay retains the completed mission (3.5s)
+  ✓  30 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (3.3s)
+  ✓  31 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (2.9s)
+  ✓  32 [landscape] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (3.3s)
+  ✓  33 [landscape] › restart-briefing.spec.mjs:127:1 › Begin write failure stays on briefing and can retry without resurrecting old attempt (3.8s)
+  ✓  34 [landscape] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (6.0s)
+  ✓  35 [landscape] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (6.1s)
+  ✓  37 [landscape] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (3.2s)
+  ✓  36 [landscape] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (5.4s)
+  ✓  38 [landscape] › restart-briefing.spec.mjs:164:1 › held controller confirm reaches briefing once; a fresh activation explicitly begins (4.5s)
+  ✓  39 [landscape] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (6.9s)
+  ✓  41 [landscape] › restart-briefing.spec.mjs:203:1 › Ironroot is an earlier story victory and still continues to Open Horizon (2.9s)
+  ✓  40 [landscape] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via controller (7.4s)
+(node:10859) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  42 [landscape] › restart-briefing.spec.mjs:211:1 › profile change during restart confirmation preserves the recovery hold and all stored bytes (2.9s)
+(node:11010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [desktop] › restart-briefing.spec.mjs:42:1 › roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.9s)
+  ✓  44 [desktop] › restart-briefing.spec.mjs:42:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (11.7s)
+  ✓  45 [desktop] › restart-briefing.spec.mjs:42:1 › open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin (10.7s)
+  ✓  46 [desktop] › restart-briefing.spec.mjs:42:1 › emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin (10.2s)
+  ✓  48 [desktop] › restart-briefing.spec.mjs:82:56 › campaign-failure: result Retry shows its briefing before a new attempt (2.9s)
+  ✓  47 [desktop] › restart-briefing.spec.mjs:68:1 › restart retires history attempt markers; Back/Forward cannot resume and Back can leave (4.7s)
+  ✓  49 [desktop] › restart-briefing.spec.mjs:82:56 › trial-failure: result Retry shows its briefing before a new attempt (2.7s)
+  ✓  50 [desktop] › restart-briefing.spec.mjs:94:1 › result Continue advances and optional Replay retains the completed mission (3.0s)
+  ✓  51 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal throw: honest warning retains paused attempt (3.0s)
+  ✓  52 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal noop: honest warning retains paused attempt (2.8s)
+  ✓  53 [desktop] › restart-briefing.spec.mjs:105:48 › checkpoint removal readback: honest warning retains paused attempt (2.7s)
+  ✓  54 [desktop] › restart-briefing.spec.mjs:127:1 › Begin write failure stays on briefing and can retry without resurrecting old attempt (3.0s)
+  ✓  55 [desktop] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives confirmation (4.8s)
+  ✓  56 [desktop] › restart-briefing.spec.mjs:138:48 › newer tab checkpoint survives briefing (5.0s)
+  ✓  58 [desktop] › restart-briefing.spec.mjs:155:1 › queued removal retires a tab even when a fresh opening already has identical checkpoint bytes (2.4s)
+  ✓  57 [desktop] › restart-briefing.spec.mjs:147:1 › a resumed stale copy cannot autosave after another tab confirms restart (4.8s)
+  ✓  59 [desktop] › restart-briefing.spec.mjs:164:1 › held controller confirm reaches briefing once; a fresh activation explicitly begins (4.7s)
+  ✓  60 [desktop] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via keyboard (5.9s)
+  ✓  62 [desktop] › restart-briefing.spec.mjs:203:1 › Ironroot is an earlier story victory and still continues to Open Horizon (2.3s)
+  ✓  61 [desktop] › restart-briefing.spec.mjs:174:51 › current finale offers Skirmish setup and optional three-star Replay via controller (6.6s)
+  ✓  63 [desktop] › restart-briefing.spec.mjs:211:1 › profile change during restart confirmation preserves the recovery hold and all stored bytes (2.5s)
+
+  63 passed (2.9m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

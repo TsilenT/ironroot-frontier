@@ -1,0 +1,235 @@
+[WebServer] (node:2470) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 23 tests using 2 workers
+
+(node:2482) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2483) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves two-building ongoing opening with newer full-roster profile (5.6s)
+  ✓   2 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves full-roster opening replay (6.2s)
+  ✓   3 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves five-building ongoing fork with newer full-roster profile (5.2s)
+  ✓   4 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves current main mission (5.1s)
+  ✓   5 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves optional introduction replay (5.6s)
+  ✓   6 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves legacy revision-one main mission (5.4s)
+  ✓   7 [desktop] › campaign-restart-identity.spec.mjs:21:25 › confirmed campaign restart preserves unfinished five-building fork and renewed teaching (5.1s)
+  ✓   8 [desktop] › restart-briefing.spec.mjs:29:1 › roadside-watch: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.6s)
+  ✓   9 [desktop] › restart-briefing.spec.mjs:29:1 › shield-at-the-fork: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.6s)
+  ✓  10 [desktop] › restart-briefing.spec.mjs:29:1 › open-three-roads: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.5s)
+  ✓  12 [desktop] › restart-briefing.spec.mjs:53:1 › restart retires history attempt markers; Back/Forward cannot resume and Back can leave (3.8s)
+  ✓  11 [desktop] › restart-briefing.spec.mjs:29:1 › emberwatch: real launch, cancel, confirm, same briefing and explicit fresh Begin (9.5s)
+  ✓  13 [desktop] › restart-briefing.spec.mjs:67:56 › campaign-failure: result Retry shows its briefing before a new attempt (3.1s)
+  ✓  14 [desktop] › restart-briefing.spec.mjs:67:56 › trial-failure: result Retry shows its briefing before a new attempt (3.0s)
+  ✓  16 [desktop] › restart-briefing.spec.mjs:89:48 › checkpoint removal throw: honest warning retains paused attempt (2.0s)
+  ✓  17 [desktop] › restart-briefing.spec.mjs:89:48 › checkpoint removal noop: honest warning retains paused attempt (2.1s)
+  ✘  15 [desktop] › restart-briefing.spec.mjs:79:1 › result Continue advances and optional Replay retains the completed mission (7.0s)
+(node:3498) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  19 [desktop] › restart-briefing.spec.mjs:107:1 › Begin write failure stays on briefing and can retry without resurrecting old attempt (2.8s)
+  ✘  18 [desktop] › restart-briefing.spec.mjs:89:48 › checkpoint removal readback: honest warning retains paused attempt (7.6s)
+(node:3708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 [desktop] › restart-briefing.spec.mjs:118:48 › newer tab checkpoint survives confirmation (4.1s)
+  ✓  21 [desktop] › restart-briefing.spec.mjs:118:48 › newer tab checkpoint survives briefing (4.8s)
+  ✓  23 [desktop] › restart-briefing.spec.mjs:135:1 › held controller confirm reaches briefing once; a fresh activation explicitly begins (4.2s)
+  ✘  22 [desktop] › restart-briefing.spec.mjs:127:1 › a resumed stale copy cannot autosave after another tab confirms restart (20.9s)
+
+
+  1) [desktop] › restart-briefing.spec.mjs:79:1 › result Continue advances and optional Replay retains the completed mission
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#replayMission')
+    Expected: visible
+    Received: hidden
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeVisible" locator('#replayMission') with timeout 5000ms
+      - waiting for locator('#replayMission')
+        13 × locator resolved to <button id="replayMission" class="secondary-button hidden">Replay for more stars</button>
+           - unexpected value "hidden"
+
+
+      81 |   await seedOnce(page,{[PROGRESS]:JSON.stringify(fixture.progress),[SAVE]:JSON.stringify(fixture.envelope)});
+      82 |   await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
+    > 83 |   await expect(page.locator('#replayMission')).toBeVisible();const profile=await domains(page);
+         |                                                ^
+      84 |   await press(page,'#playAgain');await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
+      85 |   await press(page,'#lastResult');await press(page,'#replayMission');await expect(page.locator('#welcome')).toBeHidden();
+      86 |   const battle=await saved(page);expect(battle.campaignId??battle.scenario?.id).toBe('emberwatch');expect(await domains(page)).toEqual(profile);
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:83:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-result-Co-18564-tains-the-completed-mission-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/restart-briefing-result-Co-18564-tains-the-completed-mission-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restart-briefing-result-Co-18564-tains-the-completed-mission-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restart-briefing-result-Co-18564-tains-the-completed-mission-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › restart-briefing.spec.mjs:89:48 › checkpoint removal readback: honest warning retains paused attempt
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  locator('#restartBattle')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" locator('#restartBattle') with timeout 5000ms
+      - waiting for locator('#restartBattle')
+        13 × locator resolved to <button disabled id="restartBattle" class="text-button">Restart mission…</button>
+           - unexpected value "inactive"
+
+
+      102 |   await page.evaluate(()=>{window.__restartFault=false;});
+      103 |   if(fault==='readback')expect(await saved(page)).toBeNull();else expect(await saved(page)).toEqual(before);
+    > 104 |   await press(page,'#cancelRestart');await expect(page.locator('#pauseVeil')).toBeVisible();await expect(page.locator('#restartBattle')).toBeFocused();
+          |                                                                                                                                          ^
+      105 | });
+      106 |
+      107 | test('Begin write failure stays on briefing and can retry without resurrecting old attempt',async({page})=>{
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:104:138
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-checkpoin-2d4f9-ning-retains-paused-attempt-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/restart-briefing-checkpoin-2d4f9-ning-retains-paused-attempt-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restart-briefing-checkpoin-2d4f9-ning-retains-paused-attempt-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restart-briefing-checkpoin-2d4f9-ning-retains-paused-attempt-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › restart-briefing.spec.mjs:127:1 › a resumed stale copy cannot autosave after another tab confirms restart
+
+    Test timeout of 20000ms exceeded.
+
+    Error: locator.click: Test timeout of 20000ms exceeded.
+    Browser logs:
+
+    <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,AvoidCorsURLLoaderRestartOnRedirect,TcpPortRandomizationWin,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,PreconnectToSearch,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --enable-unsafe-swiftshader --edge-skip-compat-layer-relaunch --disable-stack-profiler --disable-infobars --disable-sync --do-not-de-elevate --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-sBzBe9 --remote-debugging-pipe --no-startup-window
+    <launched> pid=3510
+    [pid=3510][err] [3510:3510:1107/191322.650379:ERROR:third_party/crashpad/crashpad/util/file/filesystem_posix.cc:63] mkdir : No such file or directory (2)
+    [pid=3510][err] chrome_crashpad_handler: --database is required
+    [pid=3510][err] Try 'chrome_crashpad_handler --help' for more information.
+    [pid=3510][err] [3510:3534:1107/191322.658950:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.658976:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] Fontconfig error: No writable cache directories
+    [pid=3510][err] [3510:3534:1107/191322.673827:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.674076:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.674417:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.674429:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3534:1107/191322.674435:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3543:1107/191322.699361:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3546: Read-only file system (30)
+    [pid=3510][err] [3510:3534:1107/191322.723091:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3543:1107/191322.726374:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3564: Read-only file system (30)
+    [pid=3510][err] [3510:3510:1107/191322.740475:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.740572:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.740641:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.740679:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.747950:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.748415:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.751288:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3510:1107/191322.751414:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.751422:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.751438:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=3510][err] [3510:3534:1107/191322.751445:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.752371:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3510:1107/191322.756105:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: unknown error type:
+    [pid=3510][err] [3510:3510:1107/191322.756133:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.756272:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.760848:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err] [3510:3534:1107/191322.760971:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=3510][err] [3510:3510:1107/191322.762159:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type:
+    [pid=3510][err]
+    [pid=3510][err] (process:3510): dconf-CRITICAL **: 19:13:22.799: unable to create directory '/home/agent/.cache/dconf': Read-only file system.  dconf will not work properly.
+    [pid=3510][err]
+    [pid=3510][err] (process:3510): dconf-CRITICAL **: 19:13:22.799: unable to create directory '/home/agent/.cache/dconf': Read-only file system.  dconf will not work properly.
+    [pid=3510][err]
+    [pid=3510][err] (process:3510): dconf-CRITICAL **: 19:13:22.800: unable to create directory '/home/agent/.cache/dconf': Read-only file system.  dconf will not work properly.
+    [pid=3510][err] [3510:3543:1107/191322.833332:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3594: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191322.853586:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3603: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191322.856228:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3604: Read-only file system (30)
+    [pid=3510][err] Failed to create secure directory (/home/agent/.config/pulse): Read-only file system
+    [pid=3510][err] [3510:3543:1107/191325.582916:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3649: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191325.600362:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3658: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191325.601898:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3659: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191327.064625:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3690: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191329.749365:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3848: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191329.769969:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3862: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191329.771616:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3864: Read-only file system (30)
+    [pid=3510][err] [3510:3543:1107/191331.070235:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:312] Failed to adjust OOM score of renderer with pid 3917: Read-only file system (30)
+    [pid=3510] <gracefully close start>
+    Call log:
+      - waiting for locator('#restartBattle')
+        - locator resolved to <button disabled id="restartBattle" class="text-button">Restart mission…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        28 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+       at map-browser-helpers.mjs:12
+
+      10 |   if (await prepareBuildControl(page, selector)) return;
+      11 |   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.locator(selector).tap();
+    > 12 |   else await page.locator(selector).click();
+         |                                     ^
+      13 | }
+      14 | export async function tapPoint(page,point){
+      15 |   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.touchscreen.tap(point.x,point.y);
+        at press (/workspace/ironroot-restart/qa/browser/map-browser-helpers.mjs:12:37)
+        at /workspace/ironroot-restart/qa/browser/restart-briefing.spec.mjs:130:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-a-resumed-faf15-nother-tab-confirms-restart-desktop/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/restart-briefing-a-resumed-faf15-nother-tab-confirms-restart-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/restart-briefing-a-resumed-faf15-nother-tab-confirms-restart-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/restart-briefing-a-resumed-faf15-nother-tab-confirms-restart-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/restart-briefing-a-resumed-faf15-nother-tab-confirms-restart-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop] › restart-briefing.spec.mjs:79:1 › result Continue advances and optional Replay retains the completed mission
+    [desktop] › restart-briefing.spec.mjs:89:48 › checkpoint removal readback: honest warning retains paused attempt
+    [desktop] › restart-briefing.spec.mjs:127:1 › a resumed stale copy cannot autosave after another tab confirms restart
+  20 passed (1.4m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

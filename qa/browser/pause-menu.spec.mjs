@@ -98,6 +98,8 @@ for(const scenario of [{kind:'campaign',id:'first-watch',label:'mission'},{kind:
     const battle=encodeBattle(game,scenarioForBattle(scenario.kind==='trial'?scenario.id:null,scenario.kind==='campaign'?scenario.id:null));
     await seedOnce(page,{[SAVE]:JSON.stringify(battle)});await press(page,'#resumeSaved');await pause(page);const before=await domains(page);
     await expect(page.locator('#restartBattle')).toHaveText(`Restart ${scenario.label}…`);await press(page,'#restartBattle');await press(page,'#confirmRestart');
+    await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();
+    expect(await saved(page)).toBeNull();await press(page,'#start');
     // A confirmed restart is a fresh attempt: the unfinished legacy opening
     // offers teaching again. Choose Start through its real dialog before pause.
     if(scenario.kind==='campaign'){
