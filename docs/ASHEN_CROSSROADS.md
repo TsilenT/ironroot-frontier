@@ -47,6 +47,7 @@ Validated with Node 24.22.1, Playwright 1.65.0 and Chromium 155.0.8059.79:
 - Runtime parse and inventory preflight: passed, 51 runtime files.
 - Existing browser harness `npm run check`: passed, including frozen fixture and continuation checks. New browser modules also pass `node --check`.
 - New real-time trial suite: **20 passed**, zero failures/skips/retries, across all four profiles plus the narrow profile's 320×480 resize.
+- Follow-up shortest-portrait check: **1 passed**, zero failures/skips/retries, at 320×430 in the same real-time narrow-phone case. All prior assertions remain; it also checks all target names/states, objective/time/resource text, minimum control sizes, viewport containment and center hit testing, exact target focus, continued combat and no viewport warning. No runtime change was needed.
 - Selected existing Back, protected-control, keyboard and hidden-hint regressions: **27 passed, zero failed, nine pre-existing mobile exclusions for desktop keyboard cases**.
 - Native paid UI proof: **4 passed**, zero failures/skips/retries, with exact full-game replay and no engine/counter edits. North + south were destroyed in every run; Stonegate retained 1,260 HP, and the player's citadel retained 6,000 HP. Every run paid 1,015 gold through five real build-bar/canvas purchases. Compact action/tick/cost evidence is in [paid-ui.json](ashen-crossroads-evidence/paid-ui.json).
 
@@ -59,7 +60,7 @@ Validated with Node 24.22.1, Playwright 1.65.0 and Chromium 155.0.8059.79:
 
 Initial checks found a real camera-clamping issue after cancelling placement changed the deck height. Refreshing renderer dimensions before focusing fixes it; the original exact-camera assertion now passes. Test harness imports, current-catalog versus historical-catalog loops, and synchronized package-lock version assertions were updated without removing downstream assertions. Initial paid UI instrumentation had a selector error and incorrectly assumed enemy gold remained zero; those observer errors were repaired. The first mobile build order reached the documented citadel alternative, so those runs are **not** counted as route evidence; the later order covers the southern flyers earlier. No content or combat rule was changed to manufacture those results.
 
-Reviewed screenshots: [short portrait, 320×480](ashen-crossroads-evidence/short-portrait-targets.png), [landscape, 844×390](ashen-crossroads-evidence/landscape-targets.png), [phone result from the native paid route](ashen-crossroads-evidence/phone-result.png). Names, remaining states, target controls, Build and navigation fit. The result explicitly distinguishes the third standing position.
+Reviewed screenshots: [shortest portrait, 320×430](ashen-crossroads-evidence/shortest-portrait-targets.png), [short portrait, 320×480](ashen-crossroads-evidence/short-portrait-targets.png), [landscape, 844×390](ashen-crossroads-evidence/landscape-targets.png), [phone result from the native paid route](ashen-crossroads-evidence/phone-result.png). Names, remaining states, target controls, Build and navigation fit. The result explicitly distinguishes the third standing position.
 
 Reproduction commands:
 
@@ -76,7 +77,9 @@ cd ../..
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/field-trial-browser/playwright.config.mjs
 ```
 
-The real-time browser suite covers selection/scouting, target geometry and focus, partial/reload, Back/Forward, restart/retry, results/records, backup export/import and old-client fencing on desktop, portrait, narrow and landscape. The narrow profile additionally checks 320×480. Simulation-only paid UI coverage uses bounded callback-preserving clock increments and the shipped 2× speed control, with native build controls/canvas clicks and exact ordinary-engine replay. It does not establish real-world pacing or gesture/storage timing; those stay real-time in the separate suite.
+The real-time browser suite covers selection/scouting, target geometry and focus, partial/reload, Back/Forward, restart/retry, results/records, backup export/import and old-client fencing on desktop, portrait, narrow and landscape. The narrow profile additionally checks 320×480 and 320×430. Simulation-only paid UI coverage uses bounded callback-preserving clock increments and the shipped 2× speed control, with native build controls/canvas clicks and exact ordinary-engine replay. It does not establish real-world pacing or gesture/storage timing; those stay real-time in the separate suite.
+
+The 320×430 follow-up was run independently with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs ashen-crossroads.spec.mjs --project=narrow-phone --grep 'sixth trial scouts'`. It passed in 9.5 seconds including startup. README now identifies the verified live v0.17.2 source/public commits and labels the v0.17.0 facts historical. This follow-up changes documentation and browser coverage only; root and broad browser suites were not repeated.
 
 No complete large browser matrix, physical-device, non-Chromium, deployment, signing or store certification is claimed. The original downstream input/navigation/hint/keyboard assertions remain in place. Screenshots are emulated Chromium evidence.
 
@@ -109,6 +112,7 @@ docs/ashen-crossroads-evidence/landscape-targets.png
 docs/ashen-crossroads-evidence/paid-ui.json
 docs/ashen-crossroads-evidence/phone-result.png
 docs/ashen-crossroads-evidence/short-portrait-targets.png
+docs/ashen-crossroads-evidence/shortest-portrait-targets.png
 package.json
 qa/browser/ashen-crossroads-fixtures.mjs
 qa/browser/ashen-crossroads.spec.mjs
