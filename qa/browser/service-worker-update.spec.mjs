@@ -74,7 +74,7 @@ for(const [from,{root:priorRoot,label}] of Object.entries(PRIOR_BUILDS))test('re
     expect(resumed.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level])).toEqual(classic.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]));
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(classic.game.state.time);
     await press(page,'#saveExit');await selectMap(page,'twin-span');await press(page,'#start');
-    const fresh=await pause(page);expect(fresh.game).toMatchObject({version:3,mapId:'twin-span',mapRevision:1,rulesetId:'frontier-flight-open',rulesetRevision:1});
+    const fresh=await pause(page);expect(fresh.game).toMatchObject({version:3,mapId:'twin-span',mapRevision:1,rulesetId:'frontier-air-local-open',rulesetRevision:1});
     await press(page,'#saveExit');await page.reload();await expect(page.locator('#resumeSaved')).toContainText('TWIN SPAN');
     await press(page,'#resumeSaved');expect((await pause(page)).game.mapId).toBe('twin-span');await press(page,'#saveExit');
     const after=await profileBytes(page);

@@ -1,0 +1,64 @@
+{
+  "status": "Local integration checked; exact uploaded cloud browser gate pending",
+  "root": {
+    "tests": 1358,
+    "passed": 1357,
+    "failed": 0,
+    "optionalSkipped": 1,
+    "log": "qa/automatic-air-integration/node-final.log"
+  },
+  "syntax": "passed",
+  "runtimeInventory": "passed",
+  "runtimeFileCount": 50,
+  "browserPreflight": {
+    "status": "passed",
+    "log": "qa/automatic-air-integration/browser-preflight.log"
+  },
+  "focusedBrowser": {
+    "preparedInstances": 52,
+    "executedHere": 0,
+    "passedHere": 0,
+    "status": "Local launch blocked by required socket EPERM before page creation; no security workaround",
+    "report": "qa/browser/autonomous-air-validation.json",
+    "requiredRunner": "Pinned Playwright1.65.0, normal cloud environment"
+  },
+  "engineReview": "docs/AUTOMATIC_AIR_ENGINE_REVIEW.md",
+  "paidCampaign": {
+    "mainClears": 19,
+    "mainStars": 52,
+    "mainStarsAvailable": 57,
+    "paidActions": 232,
+    "goldSpent": 41291,
+    "earlierFullRosterReplaysCleared": 2,
+    "optionalLessonsCleared": 2,
+    "evidence": "docs/AUTOMATIC_AIR_CAMPAIGN_SMOKE.json"
+  },
+  "authoredFlows": {
+    "trialWinningRuns": 20,
+    "trialIdleFailures": 5,
+    "practicePaidCompletions": 35
+  },
+  "profile": {
+    "focusedPassed": 215,
+    "evidence": "PROFILE6_SAVE_COMPAT_VALIDATION.json",
+    "scope": "Persistent progress/preferences/history protection and current saves; no added old-active-battle migration requirement"
+  },
+  "priorWritingGate": {
+    "commit": "477d529f28da56873ed6461da7a1277c08d349bf",
+    "rootPassed": 1298,
+    "focusedBrowserPassed": 511,
+    "intentionalSkipped": 13,
+    "caveat": "These precede gameplay integration; not a combined browser pass"
+  },
+  "repairedFirstAggregate": {
+    "passed": 1330,
+    "failed": 9,
+    "optionalSkipped": 1,
+    "cause": "Obsolete current defaults/descriptors, removed UI-function test fixtures, a historical data-URL loader using current source and changed practice factory. Original semantic resource/focus/state assertions retained; historical oracle pinned to original source."
+  },
+  "scopeExclusions": [
+    "Rootwarden AI support experiments v1-v3 rejected; no runtime inclusion.",
+    "No physical-device/non-Chromium/subjective-audio/Steam readiness claim.",
+    "Independent bounded balance review continues outside frozen source; any actual defect blocks merge."
+  ]
+}

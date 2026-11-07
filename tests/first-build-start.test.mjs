@@ -33,6 +33,7 @@ test('fresh Roadside enters real build UI without a choice, stays frozen, then p
   assert.equal($('coachResume').classList.contains('hidden'),true);
   assert.equal($('campaignCoach').classList.contains('hidden'),false);
   assert.match($('coachText').textContent,/automatically/);
+  assert.doesNotMatch($('coachingText').textContent,/Spend what you want|then start the battle/);
   const before=c.game.serialize();c.frame(100);c.frame(9000);assert.deepEqual(c.game.serialize(),before);
   h.buy();assert.equal(c.firstBuildHold,false);assert.equal(c.coachingHold,false);assert.equal(c.ui.build,null);
   assert.equal(c.game.state.gold[0],before.state.gold[0]-c.game.buildings.barracks.cost);

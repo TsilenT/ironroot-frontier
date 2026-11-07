@@ -122,7 +122,7 @@ test('document wires capture guards, interruptions and bfcache reset', () => {
   const source=readFileSync(new URL('../dist/training-app.js',import.meta.url),'utf8');
   for (const method of ['pointerDown','pointerEnd','click','keyDown','keyUp','interrupt','setScope']) assert.ok(source.includes(`inputScope.${method}(`),method);
   for (const event of ['visibilitychange','blur','pagehide','pageshow','lostpointercapture']) assert.ok(source.includes(`'${event}'`),event);
-  assert.match(source,/event\.persisted[\s\S]*session = new TrainingSession\(\)/);
+  assert.match(source,/event\.persisted[\s\S]*session = createCurrentTrainingSession\(\)/);
   assert.match(source,/event\.target\?\.closest\('button,a,select,input,textarea,summary/);
   assert.match(source,/if \(snapshot\.shouldRun\) \{\s*session\.setPaused\(true\)/);
 });

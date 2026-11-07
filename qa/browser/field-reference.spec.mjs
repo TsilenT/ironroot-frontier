@@ -1,6 +1,9 @@
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base,expect} from '@playwright/test';
-import {UNIT_CODEX,STRUCTURE_CODEX,ECONOMY_GUIDE,formatNumber,formatSeconds} from '../../dist/codex.js';
+import {createCodex,formatNumber,formatSeconds} from '../../dist/codex.js';
+import {getRuleset} from '../../dist/engine.js';
+import {CURRENT_CHALLENGES} from '../../dist/challenges.js';
+const {UNIT_CODEX,STRUCTURE_CODEX,ECONOMY_GUIDE}=createCodex(getRuleset(CURRENT_CHALLENGES[0].rulesetId,CURRENT_CHALLENGES[0].rulesetRevision));
 const SAVE='ironroot.battle.v1';
 const test=base.extend({page:async ({page},use)=>{
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
@@ -14,8 +17,8 @@ async function press(page,selector){
 }
 async function guide(page){
   await page.goto('/');
-  // Field trials deliberately retain the complete five-unit legacy reference.
-  // Fresh campaign and skirmish rosters have different scopes in v0.15.
+  // Fresh trials keep five units and seven buildings, with automatic flying.
+  // Compare the reference to the current bound rules, not historical exports.
   await press(page,'[data-mode="challenges"]');await press(page,'#welcomeHelp');
   await expect(page.locator('#helpModal')).toBeVisible();
   await expect(page.locator('#closeHelp')).toBeFocused();
@@ -76,6 +79,10 @@ test('field reference disclosures show every unit structure and exact counter ec
   await expect(page.locator('[data-codex-unit="wizard"]')).toContainText('65% of troop damage: 15.6');
   await toggle(page,'[data-codex-unit="gryphon"]',true);
   await expect(page.locator('[data-codex-unit="gryphon"]')).toContainText('60% of normal damage to structures: 10.2');
+  await expect(page.locator('[data-codex-unit="gryphon"]')).toContainText('within 300 world units');
+  await expect(page.locator('[data-codex-unit="gryphon"]')).toContainText('normal 110 attack range');
+  await expect(page.locator('[data-codex-unit="gryphon"]')).toContainText('up to 420 world units');
+  await expect(page.locator('[data-codex-unit="archer"]')).toContainText('Archers stay on their road');
   await toggle(page,'[data-codex-structure="mint"]',true);
   await expect(page.locator('[data-codex-structure="mint"]')).toContainText('Level 2 upgrade: 133 gold ÷ 1.25 additional gold/s = 106.4 s');
   await expect(page.locator('[data-codex-structure="mint"]')).toContainText('Level 3 upgrade: 199 gold ÷ 1.25 additional gold/s = 159.2 s');
@@ -95,7 +102,7 @@ test('field reference native Space and focus keep a paused battle read-only',asy
   await page.goto('/');await press(page,'[data-mode="challenges"]');
   await press(page,'#start');await press(page,'#pause');
   const before=await page.evaluate(key=>localStorage.getItem(key),SAVE);
-  expect(JSON.parse(before)).toMatchObject({campaignId:null,challengeId:'shieldbreaker',game:{version:1}});
+  expect(JSON.parse(before)).toMatchObject({version:3,scenario:{kind:'trial',id:'shieldbreaker',revision:2},game:{version:3,rulesetId:'frontier-authored-air-local'}});
   const time=await page.locator('#time').innerText();
   await press(page,'#help');await expect(page.locator('#closeHelp')).toBeFocused();
   await toggle(page,'#rosterGuide',true);

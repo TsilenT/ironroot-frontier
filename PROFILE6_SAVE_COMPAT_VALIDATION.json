@@ -1,0 +1,68 @@
+{
+  "scope": "Local automatic-air profile protocol and save compatibility. No publish, no browser execution, no added old-active-battle migration guarantee.",
+  "profileProtocol": 6,
+  "defaultConstructorProtocol": 1,
+  "historicalSource": {
+    "path": "/workspace/shared/ironroot-pr2-profile-reload/private/dist/profile-session.js",
+    "fixture": "tests/fixtures/profile-session-v016.js",
+    "sha256": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "exactSourceMatch": true
+  },
+  "runtimeChanges": "Only protocol version, accepted-version enum/error text and protocol comment changed. All existing read/write/import/recovery/race logic is unchanged.",
+  "newTests": {
+    "protocolSix": 12,
+    "saveCompatibility": 5,
+    "freshSkirmishCombinations": 6,
+    "paidMidChaseCheckpoints": 12,
+    "paidMidChaseExactContinuationComparisons": 960,
+    "currentTrialRevisionTwoRoundtrips": 5,
+    "failedDomainWriteRollbackCombinations": 15
+  },
+  "regression": {
+    "passed": 215,
+    "failed": 0,
+    "skipped": 0,
+    "log": "qa/automatic-air-profile/profile-regression.tap",
+    "command": "node --test --test-concurrency=4 tests/autonomous-air-profile-protocol.test.mjs tests/autonomous-air-save-compat.test.mjs tests/flight-profile-protocol.test.mjs tests/profile-session.test.mjs tests/profile-reload-departure.test.mjs tests/profile-reload-observation.test.mjs tests/campaign-profile-compat.test.mjs tests/persistence.test.mjs tests/persistence-recovery.test.mjs tests/backup.test.mjs tests/versioned-backup-profile.test.mjs tests/versioned-engine-codec.test.mjs tests/production-v015-upgrade.test.mjs"
+  },
+  "otherChecks": [
+    {
+      "command": "node qa/browser/validate-training-fixtures.mjs",
+      "result": "passed; five domain bytes and protocol6 ready marker unchanged; training dependency isolation checked"
+    },
+    {
+      "command": "node qa/browser/validate-flight-order-fixtures.mjs",
+      "result": "passed; existing 56 authored checkpoints / 3920 exact continuation comparisons; historical flight rules not relabeled"
+    },
+    {
+      "command": "node --check qa/browser/production-v015-upgrade.spec.mjs && node --check qa/browser/production-upgrade.spec.mjs && node --check qa/browser/profile-upgrade.spec.mjs",
+      "result": "passed"
+    }
+  ],
+  "browserExecution": "NOT RUN. Updated current fixture/spec expectations only; frozen production fixtures unchanged.",
+  "fullSuite": "NOT RUN by this worker; bounded 215-test regression only.",
+  "changedSourceFiles": {
+    "dist/profile-session.js": "980297cd20ab3ca653d132c1acb71bd7c793bed482bbaba05b53d078acbd45d0",
+    "tests/fixtures/profile-session-v016.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "tests/flight-profile-protocol.test.mjs": "8c61fdcc3e3cbbf6f5cbcc6f1525991a1b6c272f389d4b61656b940d4c7f1efb",
+    "tests/autonomous-air-profile-protocol.test.mjs": "fc1bd4f2f14c00e6e8aa153fe44ed3c203a1b6f279e5e88d4c069dbb4adef4cd",
+    "tests/autonomous-air-save-compat.test.mjs": "4163c189de7aab524731a0b56fd8e5e9d89a3b43704d0bdfc754b11618f4193f",
+    "tests/profile-session.test.mjs": "ecc3e6ef66c0c8393107c921d528dd0afafc7b8def5445edbc2fb96328c771e6",
+    "qa/browser/validate-flight-order-fixtures.mjs": "65c3508352e65eac6d924d62014e78aca3692d3afc36ecbdc04d3210b5df3352",
+    "qa/browser/validate-production-v015-upgrade.mjs": "2b0c0298b71f9371544c5a412804e05c16d5ed03f7e557a8f0c177f8f82460eb",
+    "qa/browser/production-v015-upgrade.spec.mjs": "9da7a1fa79a393918f57b1e915dc95b441af6ee969420c4a800947b227b11c0e",
+    "qa/browser/production-upgrade.spec.mjs": "95d816968d195af5bbf1e7fae011d3b15ae36d41b51da29d9cc90615cb79b9aa",
+    "qa/browser/profile-upgrade.spec.mjs": "c5e804159005b9a7fdb22f85e8d5f7d678fec903f593c134488aff02aa63ad3e"
+  },
+  "runtimeDependencyHashesAtReport": {
+    "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+    "dist/rulesets.js": "371e6201e92058faa7d5027229f609bb02c39f761f0eee28420e1bac992f00cf",
+    "dist/campaign.js": "538ef217ea510e13d072282c5dda4beeadd59ff696461d47b222731c74397b26",
+    "dist/challenges.js": "4af66884165d037686981720cab6c77826e032582c59957b20c6f2f584675a62",
+    "dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "dist/battle-codec.js": "051bf9533ec71d6a0148066a23db4773b922359c1baa0921ca8534276186ac07",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/persistence.js": "d901660d4f324989fd13a85f0a823bb9310f61a3b7acfd4544719a9b3fecc0a5",
+    "dist/backup.js": "c03d277c7129150d5a085f0a46d0a437aa23adc97abb1796ebae76b4ea471ca3"
+  }
+}

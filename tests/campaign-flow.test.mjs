@@ -145,7 +145,7 @@ test('mines shelter behind production, live danger is disclosed, and blocked/poo
   for(const x of [970,1110,1250]) independent.state.units.push({side:1,hp:20,lane:0,x});
   assert.match(recommendCampaignSite(independent,'watchtower').explanation,/Enemies are already close/);
   const choice=campaignCoach(game,'emberwatch',{build:'foundry'});
-  assert.equal(choice.buildType,'foundry');assert.match(choice.text,/Other green sites/);
+  assert.equal(choice.buildType,'foundry');assert.match(choice.text,/choose another green site/);
   assert.ok(game.build('foundry',choice.site.x,choice.site.y).ok);
   assert.equal(campaignCoach(game,'emberwatch').key,'build-archery','a different purchase does not fabricate the suggested action');
 });

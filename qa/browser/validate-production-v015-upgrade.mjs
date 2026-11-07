@@ -7,7 +7,7 @@ import {parseBackup} from '../../dist/backup.js';
 import {getCampaignRoster,createProgressionCampaignMission,campaignScenarioForGame} from '../../dist/campaign.js';
 import {shellManifest,candidateIdentity,requireDistinctUpgrade} from './update-fixtures.mjs';
 export async function validateProductionV015Upgrade(){
-  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,5);
+  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,6);
   const prior=await shellManifest(PRODUCTION_V015_ROOT);
   assert.throws(()=>requireDistinctUpgrade(prior,prior),/BLOCKED/);
   requireDistinctUpgrade(prior,await candidateIdentity());
@@ -15,8 +15,8 @@ export async function validateProductionV015Upgrade(){
     const fixture=productionV015Profile(name),values={...fixture.values};
     const backend={getItem:k=>values[k]??null,setItem:(k,v)=>{values[k]=v;},removeItem:k=>{delete values[k];}};
     const old=historicalSession(()=>backend,{requiredProtocolVersion:4});assert.equal(old.status().canWrite,true);
-    const modern=createProfileSession(()=>backend,{requiredProtocolVersion:5});assert.equal(modern.status().canWrite,true);
-    const after={...values};assert.deepEqual(JSON.parse(after[PROFILE_MARKER_KEY]),{...JSON.parse(fixture.values[PROFILE_MARKER_KEY]),version:5});
+    const modern=createProfileSession(()=>backend,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});assert.equal(modern.status().canWrite,true);
+    const after={...values};assert.deepEqual(JSON.parse(after[PROFILE_MARKER_KEY]),{...JSON.parse(fixture.values[PROFILE_MARKER_KEY]),version:CURRENT_PROFILE_PROTOCOL_VERSION});
     for(const key of V015_KEYS){assert.equal(values[key],fixture.values[key]);for(const method of ['getItem','setItem','removeItem'])assert.throws(()=>old.storage[method](key,'forbidden'));}
     assert.equal(old.beginImport().ok,false);assert.equal(old.beginImport({recover:true}).ok,false);
     const reopened=historicalSession(()=>backend,{requiredProtocolVersion:4});assert.equal(reopened.beginImport({recover:true}).ok,false);
@@ -24,13 +24,13 @@ export async function validateProductionV015Upgrade(){
     assert.deepEqual(parseBackup(fixture.text).data,fixture.domains);
     const decoded=decodeBattle(fixture.domains.battle,{campaignProgress:fixture.domains.campaign});
     assert.deepEqual(decoded.game.serialize(),fixture.domains.battle.game);
-    assert.deepEqual(getCampaignRoster(fixture.domains.campaign),fixture.roster);
+    assert.deepEqual(getCampaignRoster(fixture.domains.campaign),{...fixture.roster,rulesetId:fixture.roster.stage===3?'frontier-campaign-air-local':fixture.roster.rulesetId});
     if(name==='saved-wings'){
       assert.equal(fixture.domains.battle.scenario.revision,2);
       const fresh=createProgressionCampaignMission('wings-of-ash',fixture.domains.campaign);
-      assert.equal(campaignScenarioForGame(fresh,'wings-of-ash').revision,3);assert.equal(fresh.ruleset.id,'frontier-campaign-flight');
+      assert.equal(campaignScenarioForGame(fresh,'wings-of-ash').revision,4);assert.equal(fresh.ruleset.id,'frontier-campaign-air-local');
     }
   }
   return manifest;
 }
-if(process.argv[1]&&new URL(import.meta.url).pathname===process.argv[1]){const m=await validateProductionV015Upgrade();console.log(`v0.15: ${m.runtimeFiles} exact runtime files, ${m.totalBytes} bytes; four earned profiles, full old read/write/recovery fence and fresh flight identity verified. Browser takeover UNRUN.`);}
+if(process.argv[1]&&new URL(import.meta.url).pathname===process.argv[1]){const m=await validateProductionV015Upgrade();console.log(`v0.15: ${m.runtimeFiles} exact runtime files, ${m.totalBytes} bytes; four earned profiles, full old read/write/recovery fence and fresh automatic-air identity verified. Browser takeover UNRUN.`);}

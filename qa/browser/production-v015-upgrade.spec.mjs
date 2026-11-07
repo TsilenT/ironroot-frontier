@@ -1,3 +1,4 @@
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import {expect} from '@playwright/test';
 import {test,press,pause,selectMap,openBackup,downloadBackup} from './map-browser-helpers.mjs';
 import {loadFontFaces} from './font-browser-helpers.mjs';
@@ -35,7 +36,7 @@ for(const name of V015_SCENARIOS)test(`production 0.15 ${name}: offline takeover
     await context.setOffline(true);modern=await context.newPage();modern.on('pageerror',e=>errors.push(e.message));
     expect((await modern.goto(basePath))?.fromServiceWorker()).toBe(true);
     const migrated=await profile(modern);for(const key of V015_KEYS)expect(migrated[key]).toBe(before[key]);
-    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...marker,version:5});
+    expect(JSON.parse(migrated[PROFILE_MARKER_KEY])).toEqual({...marker,version:CURRENT_PROFILE_PROTOCOL_VERSION});
     await expect(page.locator('#profileRecovery')).toBeVisible();
     const fence=await page.evaluate(keys=>{
       const clients=[window.__v015.profile,window.__v015.session.createProfileSession(()=>localStorage,{requiredProtocolVersion:4})];
@@ -60,8 +61,8 @@ for(const name of V015_SCENARIOS)test(`production 0.15 ${name}: offline takeover
     await press(modern,'#start');
     if(name==='saved-wings'){await expect(modern.locator('#coachingModal')).toBeVisible();await press(modern,'#coachingPlay');}
     const fresh=await pause(modern);
-    expect(fresh.game.rulesetId).toBe(name==='saved-wings'?'frontier-campaign-flight':'frontier-flight-open');
-    expect(fresh.scenario).toEqual(name==='saved-wings'?{kind:'campaign',id:'wings-of-ash',revision:3}:{kind:'skirmish',id:'standard',revision:1});
+    expect(fresh.game.rulesetId).toBe(name==='saved-wings'?'frontier-campaign-air-local':'frontier-air-local-open');
+    expect(fresh.scenario).toEqual(name==='saved-wings'?{kind:'campaign',id:'wings-of-ash',revision:4}:{kind:'skirmish',id:'standard',revision:1});
     await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');const reloaded=await pause(modern);
     expect(reloaded.scenario).toEqual(fresh.scenario);expect(reloaded.game.rulesetId).toBe(fresh.game.rulesetId);assertPassiveContinuation(fresh.game,reloaded.game);
     const after=await profile(modern);for(const key of V015_KEYS.filter(k=>k!==saveKey))expect(after[key]).toBe(before[key]);expect(errors).toEqual([]);

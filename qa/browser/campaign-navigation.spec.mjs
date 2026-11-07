@@ -37,7 +37,7 @@ test('a focused briefing leads through story, chapter and mission with keyboard 
   await expect(page.locator('#campaignScoutToggle')).toHaveText('Scout battlefield · Roadside Watch');
   await expect(page.locator('#campaignStoryPage')).toBeHidden();
   await expect(page.locator('#campaignChapterPage')).toBeHidden();
-  await expect(page.locator('#campaignMissionDescription')).toContainText('One raider camp blocks the road');
+  await expect(page.locator('#campaignMissionDescription')).toContainText('clear the raider camp blocking this road');
   await expect(page.locator('#campaignGoal')).toHaveText(missionBriefing(missions[0]).goal);
   await expect(page.locator('#campaignRules')).toHaveJSProperty('open', false);
   await expect(page.locator('#campaignBriefing')).toBeHidden();
@@ -130,8 +130,8 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);
   await startRunning(page, press); await press(page, '#pause');
-  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:3});
-  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-flight');
+  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:4});
+  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-air-local');
   expect((await profile(page))[1]).toBe(bytes);
 });
 
@@ -168,7 +168,7 @@ test('Continue from victory opens the next briefing directly and preserves earne
   const progress = JSON.parse((await profile(page))[1]);
   expect(progress.missions.emberwatch).toMatchObject({completed:true,stars:3});
   await startRunning(page, press); await press(page, '#pause');
-  expect(JSON.parse((await profile(page))[0]).scenario).toEqual({kind:'campaign',id:'three-roads',revision:2});
+  expect(JSON.parse((await profile(page))[0]).scenario).toEqual({kind:'campaign',id:'three-roads',revision:4});
 });
 
 test('briefing and launch remain usable on narrow phones, landscape and desktop with a saved battle', async ({page}, testInfo) => {

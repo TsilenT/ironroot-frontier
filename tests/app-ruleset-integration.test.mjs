@@ -24,13 +24,13 @@ test('real deck rebuilds from the active immutable roster and restores the origi
  assert.deepEqual($('buildCards').children.map(n=>n.dataset.type),Object.keys(BUILDINGS));assert.match($('buildingKeyHelp').textContent,/1–7/);
 });
 
-test('real start selects new skirmish rules explicitly but cannot reinterpret a restored legacy battle or an intro',()=>{
- const h=startupHarness();h.c.mode='skirmish';h.c.selectedRuleset='frontier-rootwarden-open';h.c.start();
- assert.equal(h.c.game.schemaVersion,3);assert.equal(h.c.game.ruleset.id,'frontier-rootwarden-open');assert.ok(h.c.game.buildings.wardenLodge);
- h.c.selectedRuleset='frontier-rootwarden-timed';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-rootwarden-timed');
+test('real start selects current skirmish and optional lesson rules without reinterpreting a restored battle',()=>{
+ const h=startupHarness();h.c.mode='skirmish';h.c.selectedRuleset='frontier-air-local-open';h.c.start();
+ assert.equal(h.c.game.schemaVersion,3);assert.equal(h.c.game.ruleset.id,'frontier-air-local-open');assert.ok(h.c.game.buildings.wardenLodge);
+ h.c.selectedRuleset='frontier-air-local-timed';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-air-local-timed');
  const legacy=Game.restore(new Game({seed:8}).serialize()),before=legacy.serialize();h.c.start(legacy,null,null);
  assert.equal(h.c.game,legacy);assert.deepEqual(h.c.game.serialize(),before);assert.equal(h.c.game.buildings.wardenLodge,undefined);
- h.c.mode='campaign';h.c.selectedCampaign='first-watch';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-legacy');assert.equal(h.c.game.map.id,'intro-one-road');assert.equal(h.c.game.buildings.wardenLodge,undefined);
+ h.c.mode='campaign';h.c.selectedCampaign='first-watch';h.c.start();assert.equal(h.c.game.ruleset.id,'frontier-authored-air-local');assert.equal(h.c.game.map.id,'intro-one-road');assert.equal(h.c.game.buildings.wardenLodge,undefined);
 });
 
 function safetyContext(game=openGame()){
