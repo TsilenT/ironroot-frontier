@@ -68,7 +68,7 @@ function assertRestart(game,id,start,progress=complete) {
 
 test('all sixteen revision-two restarts retain the full roster, map and scenario identity',()=>{
   for(const mission of CAMPAIGN_MISSIONS){
-    const game=createProgressionCampaignMission(mission.id,complete),start=game.serialize();
+    const game=createCampaignMission(mission.id,{revision:2}),start=game.serialize();
     const restarted=assertRestart(game,mission.id,start);
     assert.equal(fullIdentity(restarted,mission.id).scenario.revision,2);
     assert.equal(restarted.ruleset.id,'frontier-campaign-open');

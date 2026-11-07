@@ -1,0 +1,1698 @@
+{
+  "source": {
+    "name": "Ironroot-PR2-d0f43c2-QA-report.json",
+    "library_file_id": "libfile_b4b40a05d38c8191a3afd7821930e2ee",
+    "file_id": "file_00000000a0fc81f5a681de5b5b42df1c",
+    "sha256": "e4c323ebcc5bdd0a7721362f21c88c07009c37f2b7335ba678c3a9d7d4f52542",
+    "bytes": 2273779,
+    "version": 1
+  },
+  "candidate": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+  "fullGateStats": {
+    "startTime": "2026-11-07T09:32:19.844Z",
+    "duration": 4420137.508,
+    "expected": 1590,
+    "skipped": 49,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "remainingFailure": [
+    {
+      "file": "accessibility-backup.spec.mjs",
+      "line": 373,
+      "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+      "project": "narrow-phone",
+      "expectedStatus": "passed",
+      "outcome": "unexpected",
+      "timeout": 20000,
+      "annotations": [],
+      "results": [
+        {
+          "status": "timedOut",
+          "duration": 21900,
+          "retry": 0,
+          "startTime": "2026-11-07T09:51:50.534Z",
+          "errors": [
+            {
+              "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+            },
+            {
+              "location": {
+                "file": "/workspace/ironroot-pr2-d0f43c2/qa/browser/accessibility-backup.spec.mjs",
+                "column": 29,
+                "line": 403
+              },
+              "message": "Error: page.waitForEvent: Test timeout of 20000ms exceeded.\n=========================== logs ===========================\nwaiting for event \"load\"\n============================================================\n\n  401 |     expect(await raw(newer)).toEqual(expected);\n  402 |     await expect(page.locator('#profileReload')).toBeEnabled();\n> 403 |     await Promise.all([page.waitForEvent('load'),press(page,'#profileReload')]);\n      |                             ^\n  404 |     await expect(page.locator('#welcome')).toBeVisible();\n  405 |     await expect(page.locator('#resumeSaved')).toBeHidden();\n  406 |     expect(await raw(page)).toEqual(expected);\n    at /workspace/ironroot-pr2-d0f43c2/qa/browser/accessibility-backup.spec.mjs:403:29"
+            }
+          ],
+          "annotations": [],
+          "attachments": [
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "/workspace/ironroot-pr2-d0f43c2/qa/browser/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/test-failed-2.png"
+            },
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "/workspace/ironroot-pr2-d0f43c2/qa/browser/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/test-failed-1.png"
+            },
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "/workspace/ironroot-pr2-d0f43c2/qa/browser/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/error-context.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "/workspace/ironroot-pr2-d0f43c2/qa/browser/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/trace.zip"
+            }
+          ]
+        }
+      ],
+      "group": "Stale challenges recovery reload aborted before load",
+      "classification": "Reload document request is immediately aborted after a completed native tap; no load event arrives. Direct trace establishes stalled recovery action and retained storage protection. Cause is unresolved: do not label it harmless scheduler slowness, a confirmed profile-data loss, or a proven new source regression without bounded same-head reproduction.",
+      "notReached": "Lines404\u2013407: stale page welcome after reload, Resume Saved hidden, final five-domain equality on reloaded page, importing-tab errors equality. No storage read after stalled reload; last retained bytes predate tap.",
+      "evidence": [
+        "stale-challenges-reload-trace-extract.json",
+        "failure-evidence/stale-challenges-narrow-phone/trace.zip",
+        "failure-evidence/stale-challenges-narrow-phone/error-context.md"
+      ]
+    }
+  ],
+  "originalFailureTraceAnalysis": {
+    "head": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+    "identity": {
+      "file": "accessibility-backup.spec.mjs",
+      "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+      "project": "narrow-phone"
+    },
+    "failure": {
+      "line": 403,
+      "operation": "Promise.all([page.waitForEvent(load),press(profileReload)])",
+      "error": "Test timeout of 20000ms exceeded while waiting for load",
+      "rawStatus": "timedOut",
+      "originalDurationMs": 21900
+    },
+    "classification": "Reload document request is immediately aborted after a completed native tap; no load event arrives. Direct trace establishes stalled recovery action and retained storage protection. Cause is unresolved: do not label it harmless scheduler slowness, a confirmed profile-data loss, or a proven new source regression without bounded same-head reproduction.",
+    "pageURL": "http://127.0.0.1:4187/",
+    "trace": "failure-evidence/stale-challenges-narrow-phone/trace.zip",
+    "testContextMonotonicStart": 1171111.215,
+    "testContextWallTimeMs": 1794045110534,
+    "testTimeoutMs": 20000,
+    "nativeTap": {
+      "callId": "rdkm@2149",
+      "start": 1177176.834,
+      "end": 1177305.698,
+      "duration": 128.8640000000596,
+      "input": {
+        "type": "input",
+        "callId": "rdkm@2149",
+        "point": {
+          "x": 114.65,
+          "y": 316.67
+        },
+        "box": {
+          "x": 53,
+          "y": 294.671875,
+          "width": 123.3125,
+          "height": 44
+        }
+      },
+      "logs": [
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177195.973,
+          "message": "waiting for locator('#profileReload')"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177212.498,
+          "message": "  locator resolved to <button id=\"profileReload\" class=\"gold-button\">\u21b5            Reload saved profile\u21b5          </button>"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177215.503,
+          "message": "attempting tap action"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177215.558,
+          "message": "  waiting for element to be visible, enabled and stable"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177243.422,
+          "message": "  element is visible, enabled and stable"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177243.428,
+          "message": "  scrolling into view if needed"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177247,
+          "message": "  done scrolling"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177266.808,
+          "message": "  performing tap action"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177305.57,
+          "message": "  tap action done"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177305.587,
+          "message": "  waiting for scheduled navigations to finish"
+        },
+        {
+          "type": "log",
+          "callId": "rdkm@2149",
+          "time": 1177305.661,
+          "message": "  navigations have finished"
+        }
+      ],
+      "remainingNominalCaseBudgetAfterTapMs": 13805.516999999993
+    },
+    "loadWait": {
+      "callId": "rdkm@2140",
+      "before": {
+        "type": "before",
+        "callId": "rdkm@2140",
+        "startTime": 1177052.017,
+        "title": "Wait for event \"load\"",
+        "class": "Page",
+        "method": "__waitInfo__",
+        "params": {
+          "waitId": "2d3659d851c124f28ad947589eae1cd2",
+          "phase": "before",
+          "event": "load"
+        }
+      },
+      "after": {
+        "type": "after",
+        "callId": "rdkm@2140",
+        "endTime": 1193049.33,
+        "annotations": [],
+        "error": {
+          "name": "",
+          "message": "Error: page.waitForEvent: Test timeout of 20000ms exceeded.\n=========================== logs ===========================\nwaiting for event \"load\"\n============================================================",
+          "stack": "Error: page.waitForEvent: Test timeout of 20000ms exceeded.\n=========================== logs ===========================\nwaiting for event \"load\"\n============================================================\n    at /workspace/ironroot-pr2-d0f43c2/qa/browser/accessibility-backup.spec.mjs:403:29"
+        }
+      },
+      "timingLimit": "API lifetime includes cancellation/teardown; about13.8s nominal case budget remained after native tap, not16s."
+    },
+    "documentRequestsAfterTap": [
+      {
+        "pageref": "page@e2870235c4fa4a3a1ed08bbd397c20be",
+        "startedDateTime": "2026-11-07T09:51:56.732Z",
+        "time": 14.293999999994412,
+        "request": {
+          "method": "GET",
+          "url": "http://127.0.0.1:4187/",
+          "httpVersion": "HTTP/1.1",
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Accept-Language",
+              "value": "en-US"
+            },
+            {
+              "name": "Referer",
+              "value": "http://127.0.0.1:4187/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"155\", \"Not(A:Brand\";v=\"24\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"Linux\""
+            }
+          ],
+          "queryString": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": -1,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "cookies": [],
+          "headers": [],
+          "content": {
+            "size": -1,
+            "mimeType": "x-unknown"
+          },
+          "headersSize": -1,
+          "bodySize": -1,
+          "redirectURL": "",
+          "_transferSize": -1,
+          "_failureText": "net::ERR_ABORTED"
+        },
+        "cache": {},
+        "timings": {
+          "send": -1,
+          "wait": -1,
+          "receive": -1
+        },
+        "_frameref": "frame@b56f7b7627caea1cc6829082276ddfda",
+        "_monotonicTime": 1177309.417,
+        "_resourceType": "document"
+      }
+    ],
+    "retainedStorageReads": [
+      {
+        "callId": "rdkm@2107",
+        "start": 1176413.032,
+        "end": 1176475.94,
+        "rawStorageBytes": {
+          "ironroot.campaign.v1": "{\"format\":\"ironroot-campaign\",\"version\":1,\"missions\":{}}",
+          "ironroot.trials.v1": "{}",
+          "ironroot.settings.v1": "{}",
+          "ironroot.history.v1": "[]",
+          "ironroot.battle.v1": null,
+          "qa.unrelated": "keep me"
+        }
+      },
+      {
+        "callId": "rdkm@2135",
+        "start": 1176956.441,
+        "end": 1176977.65,
+        "rawStorageBytes": {
+          "ironroot.campaign.v1": "{\"format\":\"ironroot-campaign\",\"version\":1,\"missions\":{}}",
+          "ironroot.trials.v1": "{}",
+          "ironroot.settings.v1": "{}",
+          "ironroot.history.v1": "[]",
+          "ironroot.battle.v1": null,
+          "qa.unrelated": "keep me"
+        }
+      }
+    ],
+    "reachedAssertions": "Newer import/reload completes; campaign missions{},trials{},settings{},battle null; stale page shows recovery, settings exit controls disabled, Escape preserves Options; attempted reduceMotion is unable to alter any five-domain bytes; profileReload enabled.",
+    "notReached": "Lines404\u2013407: stale page welcome after reload, Resume Saved hidden, final five-domain equality on reloaded page, importing-tab errors equality. No storage read after stalled reload; last retained bytes predate tap.",
+    "renderedState": "320\u00d7568, Options dialog remains foreground with app inert; Shieldbreaker paused00:00,gold521,+5/s; profile reload enabled/focused. Settings content scrolls252\u2192927 before tap. Importing tab screenshot shows empty-profile Roadside Watch welcome.",
+    "currentPhoneIdentity": "Passed7.7s in unchanged full run.",
+    "previous46SameIdentity": [
+      {
+        "project": "phone",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7413
+          }
+        ]
+      },
+      {
+        "project": "narrow-phone",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7608
+          }
+        ]
+      },
+      {
+        "project": "landscape",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7612
+          }
+        ]
+      },
+      {
+        "project": "desktop",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 6828
+          }
+        ]
+      }
+    ],
+    "sourceProvenance": "accessibility-backup.spec.mjs, map-browser-helpers.mjs, profile-session.js unchanged from46; app reloadProfile and beforeunload handler unchanged. New candidate only alters mobile layout/safety and flight painting nearby; no causal isolation.",
+    "sourceLines": [
+      "qa/browser/accessibility-backup.spec.mjs:373",
+      "qa/browser/accessibility-backup.spec.mjs:403",
+      "dist/app.js:3169",
+      "dist/app.js:2047"
+    ],
+    "recommendation": "After unchanged full completes only: main-owned exact narrow-phone case with original source/assertions/configuration/20000ms timeout, repeat-each4 and workers2, no retries. Preserve original timeout. No wider rerun yet. If a separate native diagnosis is needed, retain requestfailed/navigation/dialog/console/pageerror and pass-through history.go/popstate/pagehide events.",
+    "reviewerActions": "Read source, JSON trace and existing screenshots; copied evidence only outside candidate. No browser, source/assertion edit or rerun.",
+    "competingNavigationReview": {
+      "directTrace": "No Playwright goto/reload/goBack after the native tap; no close action until timeout teardown. No recorded crash or controller-change/service-worker signal.",
+      "serviceWorkerSource": "app.js2350\u20132353 excludes automatic service-worker registration on HTTP127.0.0.1; test uses a fresh ordinary browser context. No SW takeover evidence in this trace.",
+      "runtimeHistoryHypothesis": "reloadProfile sets started=false before location.reload. Capture-phase click listener queues syncMenuHistory; its guard excludes only navigationAway/document.hidden, while pagehide sets navigationAway later. A shortened menu trail can call history.go and could cancel same-URL document reload before departure. This is source-supported inference, not observed history.go/popstate proof.",
+      "source": [
+        "dist/app.js:198",
+        "dist/app.js:3169",
+        "dist/app.js:3818",
+        "dist/app.js:3826",
+        "dist/menu-history.js:87"
+      ],
+      "causeUnresolved": true,
+      "screencastAfterTap": {
+        "page@bbe44eca3b00759f2257d00a55ae6d3a": {
+          "count": 74,
+          "first": 1177321.824,
+          "last": 1191741.965
+        },
+        "page@e2870235c4fa4a3a1ed08bbd397c20be": {
+          "count": 93,
+          "first": 1177322.103,
+          "last": 1191886.963
+        }
+      },
+      "traceCoverageLimit": "Recorded native API calls, network requests and continued screencast are available. Application history API calls, browser dialogs and service-worker controller state were not independently instrumented; absence from this trace is not universal absence proof."
+    },
+    "currentFullStats": {
+      "startTime": "2026-11-07T09:32:19.844Z",
+      "duration": 4420137.508,
+      "expected": 1590,
+      "skipped": 49,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "currentHeadSameIdentity": [
+      {
+        "project": "phone",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7736
+          }
+        ]
+      },
+      {
+        "project": "narrow-phone",
+        "outcome": "unexpected",
+        "results": [
+          {
+            "status": "timedOut",
+            "duration": 21900
+          }
+        ]
+      },
+      {
+        "project": "landscape",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7429
+          }
+        ]
+      },
+      {
+        "project": "desktop",
+        "outcome": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7290
+          }
+        ]
+      }
+    ],
+    "postFullInstrumentedRepeat": {
+      "report": "reload-recording/results.json",
+      "analysis": "reload-recording/analysis.json",
+      "stats": {
+        "startTime": "2026-11-07T10:46:51.558Z",
+        "duration": 16454.726,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "workers": 2,
+      "testDeadlineMs": 20000,
+      "retries": 0,
+      "qualification": "Separate parent-owned instrumented exact narrow-phone repeat4 with original test/actions/assertions/deadline. Observer adds nonzero overhead. Four passes do not erase original full timedOut or identify its cause.",
+      "recordingSummary": "588 lines, four observed contexts; setup history.go(-1) settles 3.3362-3.7843s before Reload. No recorded go near Reload; beforeunload uncancelled; GET/new document/load succeeds in all repeats. Old-document pagehide at successful reload not retained, so console capture is incomplete across departure."
+    }
+  },
+  "instrumentedBoundedReloadReproduction": {
+    "stats": {
+      "startTime": "2026-11-07T10:46:51.558Z",
+      "duration": 16454.726,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "workers": 2,
+    "originalTestFile": "qa/browser/accessibility-backup.spec.mjs",
+    "originalTestTitle": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+    "selection": "narrow-phone only; repeat-each4; original20s deadline and all original actions/assertions unchanged",
+    "qualification": "Native history methods were transparent Reflect.apply wrappers installed by external preload. Passive event and request recording has nonzero overhead and incomplete cross-unload console delivery; it is not timing-identical to the original run. Passing repeats do not erase the original full timeout.",
+    "selectionCorrection": "First grep used full anchors and selected zero cases. Corrected title filter selected exactly4. Zero-case attempt retained separately and excluded from all case totals.",
+    "analysis": {
+      "head": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+      "scope": "Independent read-only review of parent-owned passive recording. Reviewer launched no browsers and edited no candidate source/tests/assertions.",
+      "sourceReport": "results.json",
+      "stats": {
+        "startTime": "2026-11-07T10:46:51.558Z",
+        "duration": 16454.726,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "workers": 2,
+      "cases": [
+        {
+          "file": "accessibility-backup.spec.mjs",
+          "line": 373,
+          "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+          "project": "narrow-phone",
+          "timeoutMs": 20000,
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7200,
+              "workerIndex": 0,
+              "parallelIndex": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T10:46:52.359Z"
+            }
+          ]
+        },
+        {
+          "file": "accessibility-backup.spec.mjs",
+          "line": 373,
+          "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+          "project": "narrow-phone",
+          "timeoutMs": 20000,
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7513,
+              "workerIndex": 1,
+              "parallelIndex": 1,
+              "retry": 0,
+              "startTime": "2026-11-07T10:46:52.377Z"
+            }
+          ]
+        },
+        {
+          "file": "accessibility-backup.spec.mjs",
+          "line": 373,
+          "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+          "project": "narrow-phone",
+          "timeoutMs": 20000,
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7193,
+              "workerIndex": 2,
+              "parallelIndex": 0,
+              "retry": 0,
+              "startTime": "2026-11-07T10:47:00.315Z"
+            }
+          ]
+        },
+        {
+          "file": "accessibility-backup.spec.mjs",
+          "line": 373,
+          "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+          "project": "narrow-phone",
+          "timeoutMs": 20000,
+          "outcome": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7030,
+              "workerIndex": 3,
+              "parallelIndex": 1,
+              "retry": 0,
+              "startTime": "2026-11-07T10:47:00.610Z"
+            }
+          ]
+        }
+      ],
+      "preload": {
+        "path": "/workspace/ironroot-pr2-d0f43c2-evidence/passive-history-preload.cjs",
+        "sha256": "15451dff97484b259f7a3a64ef80372dbb9f938b617b354d3bca6c6315158628",
+        "qualification": "Instrumented repeat: native calls pass through Reflect.apply, original test/actions/assertions/20,000ms deadline unchanged; init script, stack capture, console transfer and synchronous file recording have nonzero observer overhead."
+      },
+      "selectionError": {
+        "source": "selection-error-results.json",
+        "stats": {
+          "startTime": "2026-11-07T10:46:35.963Z",
+          "duration": 451.477,
+          "expected": 0,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "qualification": "Initial anchored grep selected no cases. Kept separately; contributes zero executed cases and zero passes."
+      },
+      "recordingCounts": {
+        "files": 8,
+        "lines": 588,
+        "filesWithObservedTestContext": 4,
+        "observedContexts": 4,
+        "preloadOnlyFiles": [
+          "events-249989.jsonl",
+          "events-250002.jsonl",
+          "events-250036.jsonl",
+          "events-250049.jsonl"
+        ],
+        "eventTypes": {
+          "preload-installed": 8,
+          "context-observed": 4,
+          "page-created": 8,
+          "beforeunload": 24,
+          "beforeunload-after-handlers": 24,
+          "document-request": 24,
+          "frame-navigated": 124,
+          "document-observer-installed": 24,
+          "document-finished": 24,
+          "history-replaceState-before": 56,
+          "history-replaceState-after": 56,
+          "history-pushState-before": 40,
+          "history-pushState-after": 40,
+          "domcontentloaded": 24,
+          "load": 24,
+          "pageshow": 24,
+          "history-go-before": 4,
+          "history-go-after": 4,
+          "popstate": 4,
+          "profileReload-pointerdown": 8,
+          "profileReload-pointerup": 8,
+          "profileReload-click": 8,
+          "pagehide": 8,
+          "visibilitychange": 8,
+          "page-closed": 8
+        }
+      },
+      "integrity": {
+        "allJsonlLinesParsed": true,
+        "documentFailedEvents": 0,
+        "pageErrors": 0,
+        "crashes": 0,
+        "observerErrorOrLimitMarkers": [],
+        "emittedBeforeunloadCaptureAllUncancelled": true,
+        "emittedBeforeunloadAfterHandlersAllUncancelled": true,
+        "reloadTrustedClickEvents": 8,
+        "noRecordedWriteWarningInRunLog": true
+      },
+      "perRepeat": [
+        {
+          "source": "events/events-250061.jsonl",
+          "pid": 250061,
+          "contextId": 1,
+          "lines": 146,
+          "reloadClick": {
+            "pageId": 1,
+            "timeOrigin": 1794048414468.3,
+            "documentTimeMs": 4447.10000000149,
+            "nodeReceiptEpochMs": 1794048418919,
+            "nodeReceiptUtc": "2026-11-07T10:46:58.919000+00:00",
+            "trustedCaptureAndBubble": true,
+            "captureAndBubbleCount": 2
+          },
+          "setupHistoryGo": {
+            "args": [
+              -1
+            ],
+            "sourceStack": "menu-history.js:93 -> app.js:198 syncMenuHistory",
+            "beforeClickBrowserMs": 3336.2,
+            "popstateBeforeClickBrowserMs": 3324.0
+          },
+          "reloadBeforeunload": {
+            "captureAfterClickBrowserMs": 0.6,
+            "afterHandlersAfterClickBrowserMs": 0.9,
+            "captureDefaultPrevented": false,
+            "captureReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "reloadDocument": {
+            "method": "GET",
+            "url": "http://127.0.0.1:4187/",
+            "requestNodeReceiptEpochMs": 1794048418925,
+            "requestAfterClickNodeReceiptMs": 6,
+            "finishedAfterRequestNodeReceiptMs": 59,
+            "loadNodeReceiptEpochMs": 1794048419231,
+            "loadAfterClickNodeReceiptMs": 312,
+            "newDocumentTimeOrigin": 1794048418916.2,
+            "historyGoBetweenClickAndNewDoc": 0
+          },
+          "pagehide": {
+            "oldDocumentCapturedAtReload": false,
+            "finalCloseEventsOnOtherDocumentOrigins": 2
+          }
+        },
+        {
+          "source": "events/events-250062.jsonl",
+          "pid": 250062,
+          "contextId": 1,
+          "lines": 146,
+          "reloadClick": {
+            "pageId": 1,
+            "timeOrigin": 1794048414443.2,
+            "documentTimeMs": 4846.900000002235,
+            "nodeReceiptEpochMs": 1794048419292,
+            "nodeReceiptUtc": "2026-11-07T10:46:59.292000+00:00",
+            "trustedCaptureAndBubble": true,
+            "captureAndBubbleCount": 2
+          },
+          "setupHistoryGo": {
+            "args": [
+              -1
+            ],
+            "sourceStack": "menu-history.js:93 -> app.js:198 syncMenuHistory",
+            "beforeClickBrowserMs": 3784.3,
+            "popstateBeforeClickBrowserMs": 3781.9
+          },
+          "reloadBeforeunload": {
+            "captureAfterClickBrowserMs": 2.1,
+            "afterHandlersAfterClickBrowserMs": 3.5,
+            "captureDefaultPrevented": false,
+            "captureReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "reloadDocument": {
+            "method": "GET",
+            "url": "http://127.0.0.1:4187/",
+            "requestNodeReceiptEpochMs": 1794048419312,
+            "requestAfterClickNodeReceiptMs": 20,
+            "finishedAfterRequestNodeReceiptMs": 46,
+            "loadNodeReceiptEpochMs": 1794048419622,
+            "loadAfterClickNodeReceiptMs": 330,
+            "newDocumentTimeOrigin": 1794048419293.5,
+            "historyGoBetweenClickAndNewDoc": 0
+          },
+          "pagehide": {
+            "oldDocumentCapturedAtReload": false,
+            "finalCloseEventsOnOtherDocumentOrigins": 2
+          }
+        },
+        {
+          "source": "events/events-250386.jsonl",
+          "pid": 250386,
+          "contextId": 1,
+          "lines": 146,
+          "reloadClick": {
+            "pageId": 1,
+            "timeOrigin": 1794048422240.2,
+            "documentTimeMs": 4526.300000000745,
+            "nodeReceiptEpochMs": 1794048426767,
+            "nodeReceiptUtc": "2026-11-07T10:47:06.767000+00:00",
+            "trustedCaptureAndBubble": true,
+            "captureAndBubbleCount": 2
+          },
+          "setupHistoryGo": {
+            "args": [
+              -1
+            ],
+            "sourceStack": "menu-history.js:93 -> app.js:198 syncMenuHistory",
+            "beforeClickBrowserMs": 3419.8,
+            "popstateBeforeClickBrowserMs": 3411.3
+          },
+          "reloadBeforeunload": {
+            "captureAfterClickBrowserMs": 3.9,
+            "afterHandlersAfterClickBrowserMs": 4.3,
+            "captureDefaultPrevented": false,
+            "captureReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "reloadDocument": {
+            "method": "GET",
+            "url": "http://127.0.0.1:4187/",
+            "requestNodeReceiptEpochMs": 1794048426781,
+            "requestAfterClickNodeReceiptMs": 14,
+            "finishedAfterRequestNodeReceiptMs": 44,
+            "loadNodeReceiptEpochMs": 1794048427060,
+            "loadAfterClickNodeReceiptMs": 293,
+            "newDocumentTimeOrigin": 1794048426770.7,
+            "historyGoBetweenClickAndNewDoc": 0
+          },
+          "pagehide": {
+            "oldDocumentCapturedAtReload": false,
+            "finalCloseEventsOnOtherDocumentOrigins": 2
+          }
+        },
+        {
+          "source": "events/events-250396.jsonl",
+          "pid": 250396,
+          "contextId": 1,
+          "lines": 146,
+          "reloadClick": {
+            "pageId": 1,
+            "timeOrigin": 1794048422614.5,
+            "documentTimeMs": 4647.29999999702,
+            "nodeReceiptEpochMs": 1794048427272,
+            "nodeReceiptUtc": "2026-11-07T10:47:07.272000+00:00",
+            "trustedCaptureAndBubble": true,
+            "captureAndBubbleCount": 2
+          },
+          "setupHistoryGo": {
+            "args": [
+              -1
+            ],
+            "sourceStack": "menu-history.js:93 -> app.js:198 syncMenuHistory",
+            "beforeClickBrowserMs": 3546.0,
+            "popstateBeforeClickBrowserMs": 3536.7
+          },
+          "reloadBeforeunload": {
+            "captureAfterClickBrowserMs": 0.7,
+            "afterHandlersAfterClickBrowserMs": 1.1,
+            "captureDefaultPrevented": false,
+            "captureReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "reloadDocument": {
+            "method": "GET",
+            "url": "http://127.0.0.1:4187/",
+            "requestNodeReceiptEpochMs": 1794048427287,
+            "requestAfterClickNodeReceiptMs": 15,
+            "finishedAfterRequestNodeReceiptMs": 22,
+            "loadNodeReceiptEpochMs": 1794048427489,
+            "loadAfterClickNodeReceiptMs": 217,
+            "newDocumentTimeOrigin": 1794048427262.6,
+            "historyGoBetweenClickAndNewDoc": 0
+          },
+          "pagehide": {
+            "oldDocumentCapturedAtReload": false,
+            "finalCloseEventsOnOtherDocumentOrigins": 2
+          }
+        }
+      ],
+      "findings": [
+        "All four exact narrow-phone cases passed with no retry. Post-reload welcome, hidden Resume Saved, final five-domain equality and importing-tab error assertion were reached in these repeats; those assertions remain blocked in the original full timeout.",
+        "Each context records one history.go(-1), followed by popstate, during earlier setup. It precedes Reload by 3336.2 to 3784.3 browser ms. No history.go is recorded between the Reload capture click and new document initialization in any repeat.",
+        "Every Reload records trusted capture/bubble click, uncancelled beforeunload before and after app handlers, successful document GET, new document, document-finished and load. Node receipt click-to-load spans 217 to 330ms.",
+        "No failed document request, pageerror, crash, observer parse error or limit marker is retained. All 588 JSONL lines parse across four observed contexts plus preload-only process files.",
+        "The old document pagehide at each successful Reload is not retained. Only later final-close pagehide events on different document origins appear. Console transfer across document teardown is incomplete; this absence is not proof that pagehide or the app handler did not run."
+      ],
+      "raceHypothesis": {
+        "status": "Unconfirmed; not observed in these four successful instrumented repeats.",
+        "sourceSupportedPossibility": "Original reloadProfile changes started=false then location.reload while capture click queues syncMenuHistory; a history traversal could theoretically compete before departure guards. Original trace has no native history instrumentation.",
+        "whatRepeatsEstablish": "Earlier setup traversal is observed and settled before Reload. Successful repeat unload is uncancelled and no traversal is recorded near Reload.",
+        "whatRepeatsDoNotEstablish": "They neither reproduce nor disprove a rare competing traversal in the original failure, identify infrastructure as its cause, establish data loss, or erase the original timeout."
+      },
+      "originalFullResultRetained": {
+        "report": "../full-test-results/results.json",
+        "stats": {
+          "startTime": "2026-11-07T09:32:19.844Z",
+          "duration": 4420137.508,
+          "expected": 1590,
+          "skipped": 49,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "soleFailure": {
+          "file": "accessibility-backup.spec.mjs",
+          "line": 373,
+          "project": "narrow-phone",
+          "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+          "rawStatus": "timedOut",
+          "durationMs": 21900,
+          "deadlineMs": 20000,
+          "failedActionLine": 403,
+          "blockedLines": "404-407",
+          "lastStorageReadBeforeReloadTap": true,
+          "cause": "Unresolved"
+        }
+      },
+      "limits": [
+        "Instrumented successful repeat evidence is separate from the original unchanged full run. No aggregate passing count substitutes for the original 1,590 passed / one timedOut / 49 skipped.",
+        "Browser documentTime deltas are used only within the same timeOrigin. Node receipt deltas include console/protocol delivery latency; they are chronology evidence, not precise native request timing.",
+        "Observer logs can be lost during unload; initial about:blank install is also not captured. No marker or warning does not prove every potential event was delivered.",
+        "No dialog listener was added, preserving Playwright default dismissal behavior. No direct service-worker controller-change recording was added; automatic app service-worker registration excludes this HTTP 127.0.0.1 origin.",
+        "Four two-worker Chromium repeats do not cover physical mobile hardware, other browser engines or rare timing distributions."
+      ]
+    },
+    "preloadReadOnlyReview": {
+      "head": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+      "scope": "Read-only review of external parent-owned preload, no browser launch or source/assertion edits. Execution gated until original full completes.",
+      "reviewedScript": "/workspace/ironroot-pr2-d0f43c2-evidence/passive-history-preload.cjs",
+      "reviewedSHA256": "15451dff97484b259f7a3a64ef80372dbb9f938b617b354d3bca6c6315158628",
+      "finding": "Feasible instrumented repeat4, workers2, exact original case/actions/assertions/configuration/deadline. No forced UI action or deliberate delay change. Observer has nonzero setup/runtime overhead; do not call timing-identical.",
+      "checks": {
+        "prefixLength23Correct": true,
+        "nativeThisArgumentsReturnErrorsPreserved": true,
+        "noPreventDefault": true,
+        "noDialogListener": true,
+        "contextInitBeforeTestPages": true,
+        "pageCap": 2000,
+        "processCap": 20000,
+        "browserCallsByReviewer": 0,
+        "nodeRecordFailOpen": true,
+        "processLimitMarker": true,
+        "documentLimitMarker": true,
+        "beforeunloadAfterHandlersRead": true,
+        "sourceEditWordingCorrected": true
+      },
+      "recommendations": [],
+      "limits": [
+        "Instrumentation may affect the timing of an intermittent race even with unchanged test deadline.",
+        "A clean instrumented repeat does not erase the original full timeout or prove its cause.",
+        "No browser/controller-change state is independently recorded by this script; app origin excludes automatic SW registration."
+      ],
+      "previousReviewedSHA256": "c5d63e324289684441c493159ace9dd8b7b2c629a7567f6f170e4cca61be6d06",
+      "hardenedRevisionReviewed": true,
+      "conclusion": "Hardened external script is suitable for the planned post-full instrumented exact-case repeat4/workers2. Production source/test/actions/assertions/deadlines remain unchanged; addInitScript, stack capture, console transfer and synchronous file logging add nonzero observer overhead. No forced UI action, native return suppression or dialog-handler behavior change found."
+    }
+  },
+  "limits": [
+    "Chromium viewport/touch/DPR emulation and synthetic Gamepad API; no physical phone, tablet, controller or hardware-cutout certification.",
+    "No non-Chromium browser, installed PWA, or hardware OS Back claim. Browser history and synthetic display modes were exercised.",
+    "Authored engine-valid checkpoints and ai:false native tactical probes are reproducible QA, not human-earned campaign or balance certification.",
+    "Positive native anti-air observation is actual archer damage99.5 to74HP during transit; Rootwarden close-range airborne immunity observed. No legal tower-interception browser claim.",
+    "All177 original matcher trees are statically preserved across the3 changed specs,57 added, with old geometry observers AST-identical. Runtime/tests changed by the author across commits, so this is not an isolated production-only causal comparison.",
+    "The sole full-run timeout is unresolved even though4 instrumented repeats and the other3 full profiles pass. Post-reload welcome, Resume-hidden, finalbytes and uncaught-importer-error assertions were not reached in the failed run.",
+    "No candidate source/test/assertion edits by QA runner or children, no merge, no deployment. All QA browsers and both local QA servers closed.",
+    "Text-only Library artifact; screenshots and trace archives remain local. Embedded reporter attachment bodies/base64 images are deliberately omitted."
+  ],
+  "schedulingAlteredSlowReloadDiagnostic": {
+    "candidate": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+    "counts": {
+      "cases": 4,
+      "passed": 0,
+      "timedOut": 4,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "requestedResponseHoldsMs": [
+      250,
+      750
+    ],
+    "repeatsPerDelay": 2,
+    "workers": 2,
+    "originalActionsAssertionsAnd20sDeadlinePreserved": true,
+    "classification": "Separate scheduling-altered diagnostic; not an unchanged gate or a successful completed response-delay test.",
+    "rawRunStatsByRequestedDelayMs": {
+      "250": {
+        "startTime": "2026-11-07T10:56:59.205Z",
+        "duration": 24303.876,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "750": {
+        "startTime": "2026-11-07T10:57:53.279Z",
+        "duration": 23732.39,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      }
+    },
+    "result": "Each exact explicit Reload response was targeted once. Native history.go(-1) from menu-history.js93 via app.js198 ran in the same old document while its response was held, canceling the matching request with net::ERR_ABORTED and navigating within the document. Original load wait then timed out.",
+    "holdCompletionQualification": "All four targeted responses were canceled before timer release. Completed continuations=0; release attempts at250/750ms reported Invalid InterceptionId after independently recorded cancellation. No clean completed-hold result is claimed.",
+    "storageQualification": "Original pre-Reload empty-profile storage equality checks passed. Post-reload assertions were unreached; no post-cancel storage integrity claim.",
+    "analysis": {
+      "head": "d0f43c26748ff6e92d2cb96a5af7b364c9f404fe",
+      "scope": "Separate scheduling-altered bounded response-window diagnostic. Parent ran browsers; reviewer inspected retained files/source only and wrote QA evidence outside checkout.",
+      "preloadSHA256": "c181d26d634efb109561bfb10752bb454151806361ae9ed3e9e07fa46924dd54",
+      "matrix": "Two repeats at250ms then two at750ms, narrow-phone, two workers, original test/actions/storage assertions and20,000ms deadline, retries0.",
+      "originalFullGate": {
+        "report": "../full-test-results/results.json",
+        "stats": {
+          "startTime": "2026-11-07T09:32:19.844Z",
+          "duration": 4420137.508,
+          "expected": 1590,
+          "skipped": 49,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "rawFinalStatuses": {
+          "passed": 1590,
+          "timedOut": 1,
+          "skipped": 49
+        }
+      },
+      "separatePassiveBaseline": {
+        "stats": {
+          "startTime": "2026-11-07T10:46:51.558Z",
+          "duration": 16454.726,
+          "expected": 4,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "analysis": "../reload-recording/analysis.json",
+        "qualification": "Four instrumented passes without deliberate response holds; no recorded competing history traversal near Reload. Nonzero observer overhead."
+      },
+      "runs": [
+        {
+          "requestedHoldMs": 250,
+          "report": "250ms/results.json",
+          "stats": {
+            "startTime": "2026-11-07T10:56:59.205Z",
+            "duration": 24303.876,
+            "expected": 0,
+            "skipped": 0,
+            "unexpected": 2,
+            "flaky": 0
+          },
+          "workers": 2,
+          "cases": [
+            {
+              "file": "accessibility-backup.spec.mjs",
+              "line": 373,
+              "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+              "project": "narrow-phone",
+              "timeoutMs": 20000,
+              "outcome": "unexpected",
+              "results": [
+                {
+                  "status": "timedOut",
+                  "duration": 21848,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:57:00.624Z"
+                }
+              ]
+            },
+            {
+              "file": "accessibility-backup.spec.mjs",
+              "line": 373,
+              "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+              "project": "narrow-phone",
+              "timeoutMs": 20000,
+              "outcome": "unexpected",
+              "results": [
+                {
+                  "status": "timedOut",
+                  "duration": 21735,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:57:00.577Z"
+                }
+              ]
+            }
+          ],
+          "reportErrors": [],
+          "eventLines": 588,
+          "observedContexts": 2,
+          "noRecordedWriteWarning": true
+        },
+        {
+          "requestedHoldMs": 750,
+          "report": "750ms/results.json",
+          "stats": {
+            "startTime": "2026-11-07T10:57:53.279Z",
+            "duration": 23732.39,
+            "expected": 0,
+            "skipped": 0,
+            "unexpected": 2,
+            "flaky": 0
+          },
+          "workers": 2,
+          "cases": [
+            {
+              "file": "accessibility-backup.spec.mjs",
+              "line": 373,
+              "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+              "project": "narrow-phone",
+              "timeoutMs": 20000,
+              "outcome": "unexpected",
+              "results": [
+                {
+                  "status": "timedOut",
+                  "duration": 21815,
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:57:54.111Z"
+                }
+              ]
+            },
+            {
+              "file": "accessibility-backup.spec.mjs",
+              "line": 373,
+              "title": "stale challenges tab cannot resurrect medals or settings after an empty-profile import",
+              "project": "narrow-phone",
+              "timeoutMs": 20000,
+              "outcome": "unexpected",
+              "results": [
+                {
+                  "status": "timedOut",
+                  "duration": 21581,
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "retry": 0,
+                  "startTime": "2026-11-07T10:57:54.087Z"
+                }
+              ]
+            }
+          ],
+          "reportErrors": [],
+          "eventLines": 588,
+          "observedContexts": 2,
+          "noRecordedWriteWarning": true
+        }
+      ],
+      "totals": {
+        "executed": 4,
+        "passed": 0,
+        "timedOut": 4,
+        "skipped": 0,
+        "flaky": 0,
+        "targetHoldStarts": 4,
+        "completedTargetResponseContinuations": 0,
+        "cancellationsDuringTargetHold": 4,
+        "fullyCompletedRequestedHoldCases": 0,
+        "eventLines": 1176,
+        "observedContexts": 4
+      },
+      "perCase": [
+        {
+          "requestedHoldMs": 250,
+          "events": "250ms/events/events-251283.jsonl",
+          "pid": 251283,
+          "contextId": 1,
+          "oldPageId": 1,
+          "oldTimeOrigin": 1794049022904,
+          "reload": {
+            "trustedCapture": true,
+            "clickDocumentTimeMs": 4613.800000000745,
+            "clickNodeEpochMs": 1794049027518,
+            "wireSequence": 128,
+            "mainFrameId": "138E3014AE4EB67E300380343671A42A",
+            "networkId": "3ED8E388AEF77F96DC3D444E0706233C",
+            "loaderId": "3ED8E388AEF77F96DC3D444E0706233C",
+            "fetchId": "interception-job-231.0",
+            "statusAtFetchPause": 200,
+            "initiator": {
+              "type": "script",
+              "stack": {
+                "callFrames": [
+                  {
+                    "functionName": "reloadProfile",
+                    "scriptId": "7",
+                    "url": "http://127.0.0.1:4187/app.js",
+                    "lineNumber": 3176,
+                    "columnNumber": 11
+                  }
+                ]
+              }
+            },
+            "beforeunloadDefaultPrevented": false,
+            "beforeunloadReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "hold": {
+            "targetStarts": 1,
+            "completedTargetContinuations": 0,
+            "startWireSequence": 138,
+            "startNodeMonotonicMs": 23435316.598955,
+            "goAfterStartNodeReceiptMs": 189.052232,
+            "cancellationAfterStartNodeReceiptMs": 191.385269,
+            "timerElapsedBeforeContinueAttemptMs": 250.39818500354886,
+            "continueAttemptWireSequence": 146,
+            "continuationError": "Error: cdpSession.send: Protocol error (Fetch.continueResponse): Invalid InterceptionId.",
+            "closeSummary": {
+              "holds": 1,
+              "completions": 0,
+              "pendingFetchIds": []
+            },
+            "classification": "Correct targeted response hold started; request cancelled during hold. Zero completed continuations. Requested250/750ms was not fully delivered to a successfully continued response."
+          },
+          "history": {
+            "args": [
+              -1
+            ],
+            "stack": "Error\n    at History.value (<anonymous>:16:62)\n    at Object.sync (http://127.0.0.1:4187/menu-history.js:93:23)\n    at syncMenuHistory (http://127.0.0.1:4187/app.js:198:84)",
+            "goWireSequence": 139,
+            "goAfterClickBrowserMs": 209.3,
+            "goTimeOrigin": 1794049022904,
+            "beforeHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6d6d9dd3-e793-43eb-958b-0631ce3f286f",
+                "entry": "6d6d9dd3-e793-43eb-958b-0631ce3f286f:4"
+              }
+            },
+            "abortedRequestId": "3ED8E388AEF77F96DC3D444E0706233C",
+            "errorText": "net::ERR_ABORTED",
+            "canceled": true,
+            "failureWireSequence": 140,
+            "nativeRequestToFailureMs": 203.352,
+            "followingNavigation": "historySameDocument",
+            "followingNavigationWireSequence": 141,
+            "popstateWireSequence": 144,
+            "popstateTimeOrigin": 1794049022904,
+            "popstateDocumentTimeMs": 4833.199999999255,
+            "popstateHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6d6d9dd3-e793-43eb-958b-0631ce3f286f",
+                "entry": "6d6d9dd3-e793-43eb-958b-0631ce3f286f:2"
+              }
+            },
+            "pagehideTimeOrigin": 1794049022904,
+            "pagehideDocumentTimeMs": 19788.400000002235,
+            "pagehideAfterPopBrowserMs": 14955.2,
+            "pagehideOnlyAtTimeoutTeardown": true,
+            "newDocumentOrLoadAfterClick": false
+          },
+          "storage": {
+            "trace": "250ms/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/trace.zip",
+            "captureClickTraceTime": 8772.697,
+            "rawReads": [
+              {
+                "callId": "sqdu@203",
+                "startTime": 7766.65,
+                "endTime": 7860.083,
+                "equalsExpected": true
+              },
+              {
+                "callId": "sqdu@231",
+                "startTime": 8392.175,
+                "endTime": 8421.2,
+                "equalsExpected": true
+              }
+            ],
+            "postClickStorageReads": 0,
+            "allReadsEndBeforeClick": true
+          },
+          "importingPageNotHeld": true,
+          "immediateUnarmedContinuations": 5,
+          "observerErrorOrLimitMarkers": []
+        },
+        {
+          "requestedHoldMs": 250,
+          "events": "250ms/events/events-251284.jsonl",
+          "pid": 251284,
+          "contextId": 1,
+          "oldPageId": 1,
+          "oldTimeOrigin": 1794049022936.1,
+          "reload": {
+            "trustedCapture": true,
+            "clickDocumentTimeMs": 4705.89999999851,
+            "clickNodeEpochMs": 1794049027643,
+            "wireSequence": 128,
+            "mainFrameId": "950826E92BF6C080371E67A3AEFA5438",
+            "networkId": "2AA5A3945F34613A2A8DD772D1B51C97",
+            "loaderId": "2AA5A3945F34613A2A8DD772D1B51C97",
+            "fetchId": "interception-job-231.0",
+            "statusAtFetchPause": 200,
+            "initiator": {
+              "type": "script",
+              "stack": {
+                "callFrames": [
+                  {
+                    "functionName": "reloadProfile",
+                    "scriptId": "7",
+                    "url": "http://127.0.0.1:4187/app.js",
+                    "lineNumber": 3176,
+                    "columnNumber": 11
+                  }
+                ]
+              }
+            },
+            "beforeunloadDefaultPrevented": false,
+            "beforeunloadReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "hold": {
+            "targetStarts": 1,
+            "completedTargetContinuations": 0,
+            "startWireSequence": 138,
+            "startNodeMonotonicMs": 23435439.47324,
+            "goAfterStartNodeReceiptMs": 143.251654,
+            "cancellationAfterStartNodeReceiptMs": 147.288573,
+            "timerElapsedBeforeContinueAttemptMs": 250.1649839989841,
+            "continueAttemptWireSequence": 146,
+            "continuationError": "Error: cdpSession.send: Protocol error (Fetch.continueResponse): Invalid InterceptionId.",
+            "closeSummary": {
+              "holds": 1,
+              "completions": 0,
+              "pendingFetchIds": []
+            },
+            "classification": "Correct targeted response hold started; request cancelled during hold. Zero completed continuations. Requested250/750ms was not fully delivered to a successfully continued response."
+          },
+          "history": {
+            "args": [
+              -1
+            ],
+            "stack": "Error\n    at History.value (<anonymous>:16:62)\n    at Object.sync (http://127.0.0.1:4187/menu-history.js:93:23)\n    at syncMenuHistory (http://127.0.0.1:4187/app.js:198:84)",
+            "goWireSequence": 139,
+            "goAfterClickBrowserMs": 161.1,
+            "goTimeOrigin": 1794049022936.1,
+            "beforeHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6e0361e1-0f35-4676-805c-2eb885dda1f2",
+                "entry": "6e0361e1-0f35-4676-805c-2eb885dda1f2:4"
+              }
+            },
+            "abortedRequestId": "2AA5A3945F34613A2A8DD772D1B51C97",
+            "errorText": "net::ERR_ABORTED",
+            "canceled": true,
+            "failureWireSequence": 140,
+            "nativeRequestToFailureMs": 156.463,
+            "followingNavigation": "historySameDocument",
+            "followingNavigationWireSequence": 141,
+            "popstateWireSequence": 144,
+            "popstateTimeOrigin": 1794049022936.1,
+            "popstateDocumentTimeMs": 4883.800000000745,
+            "popstateHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6e0361e1-0f35-4676-805c-2eb885dda1f2",
+                "entry": "6e0361e1-0f35-4676-805c-2eb885dda1f2:2"
+              }
+            },
+            "pagehideTimeOrigin": 1794049022936.1,
+            "pagehideDocumentTimeMs": 19578.800000000745,
+            "pagehideAfterPopBrowserMs": 14695.0,
+            "pagehideOnlyAtTimeoutTeardown": true,
+            "newDocumentOrLoadAfterClick": false
+          },
+          "storage": {
+            "trace": "250ms/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone-repeat1/trace.zip",
+            "captureClickTraceTime": 8897.336,
+            "rawReads": [
+              {
+                "callId": "hyqu@203",
+                "startTime": 8018.331,
+                "endTime": 8088.391,
+                "equalsExpected": true
+              },
+              {
+                "callId": "hyqu@231",
+                "startTime": 8617.888,
+                "endTime": 8646.108,
+                "equalsExpected": true
+              }
+            ],
+            "postClickStorageReads": 0,
+            "allReadsEndBeforeClick": true
+          },
+          "importingPageNotHeld": true,
+          "immediateUnarmedContinuations": 5,
+          "observerErrorOrLimitMarkers": []
+        },
+        {
+          "requestedHoldMs": 750,
+          "events": "750ms/events/events-251713.jsonl",
+          "pid": 251713,
+          "contextId": 1,
+          "oldPageId": 1,
+          "oldTimeOrigin": 1794049076559,
+          "reload": {
+            "trustedCapture": true,
+            "clickDocumentTimeMs": 5264.599999997765,
+            "clickNodeEpochMs": 1794049081823,
+            "wireSequence": 128,
+            "mainFrameId": "85647E724E2097A529C50B62551A6768",
+            "networkId": "DEF22EF2CE58BD970EEB0AE3561F9702",
+            "loaderId": "DEF22EF2CE58BD970EEB0AE3561F9702",
+            "fetchId": "interception-job-231.0",
+            "statusAtFetchPause": 200,
+            "initiator": {
+              "type": "script",
+              "stack": {
+                "callFrames": [
+                  {
+                    "functionName": "reloadProfile",
+                    "scriptId": "7",
+                    "url": "http://127.0.0.1:4187/app.js",
+                    "lineNumber": 3176,
+                    "columnNumber": 11
+                  }
+                ]
+              }
+            },
+            "beforeunloadDefaultPrevented": false,
+            "beforeunloadReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "hold": {
+            "targetStarts": 1,
+            "completedTargetContinuations": 0,
+            "startWireSequence": 138,
+            "startNodeMonotonicMs": 23489626.927886,
+            "goAfterStartNodeReceiptMs": 153.515015,
+            "cancellationAfterStartNodeReceiptMs": 157.346274,
+            "timerElapsedBeforeContinueAttemptMs": 750.6002410016954,
+            "continueAttemptWireSequence": 146,
+            "continuationError": "Error: cdpSession.send: Protocol error (Fetch.continueResponse): Invalid InterceptionId.",
+            "closeSummary": {
+              "holds": 1,
+              "completions": 0,
+              "pendingFetchIds": []
+            },
+            "classification": "Correct targeted response hold started; request cancelled during hold. Zero completed continuations. Requested250/750ms was not fully delivered to a successfully continued response."
+          },
+          "history": {
+            "args": [
+              -1
+            ],
+            "stack": "Error\n    at History.value (<anonymous>:16:62)\n    at Object.sync (http://127.0.0.1:4187/menu-history.js:93:23)\n    at syncMenuHistory (http://127.0.0.1:4187/app.js:198:84)",
+            "goWireSequence": 139,
+            "goAfterClickBrowserMs": 171.3,
+            "goTimeOrigin": 1794049076559,
+            "beforeHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6ae84580-f084-40b7-aa2b-dc39b986f347",
+                "entry": "6ae84580-f084-40b7-aa2b-dc39b986f347:4"
+              }
+            },
+            "abortedRequestId": "DEF22EF2CE58BD970EEB0AE3561F9702",
+            "errorText": "net::ERR_ABORTED",
+            "canceled": true,
+            "failureWireSequence": 140,
+            "nativeRequestToFailureMs": 166.25,
+            "followingNavigation": "historySameDocument",
+            "followingNavigationWireSequence": 141,
+            "popstateWireSequence": 144,
+            "popstateTimeOrigin": 1794049076559,
+            "popstateDocumentTimeMs": 5460.29999999702,
+            "popstateHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "6ae84580-f084-40b7-aa2b-dc39b986f347",
+                "entry": "6ae84580-f084-40b7-aa2b-dc39b986f347:2"
+              }
+            },
+            "pagehideTimeOrigin": 1794049076559,
+            "pagehideDocumentTimeMs": 19593.5,
+            "pagehideAfterPopBrowserMs": 14133.2,
+            "pagehideOnlyAtTimeoutTeardown": true,
+            "newDocumentOrLoadAfterClick": false
+          },
+          "storage": {
+            "trace": "750ms/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone/trace.zip",
+            "captureClickTraceTime": 8992.711,
+            "rawReads": [
+              {
+                "callId": "evor@203",
+                "startTime": 7660.565,
+                "endTime": 7699.95,
+                "equalsExpected": true
+              },
+              {
+                "callId": "evor@231",
+                "startTime": 8460.45,
+                "endTime": 8507.236,
+                "equalsExpected": true
+              }
+            ],
+            "postClickStorageReads": 0,
+            "allReadsEndBeforeClick": true
+          },
+          "importingPageNotHeld": true,
+          "immediateUnarmedContinuations": 5,
+          "observerErrorOrLimitMarkers": []
+        },
+        {
+          "requestedHoldMs": 750,
+          "events": "750ms/events/events-251714.jsonl",
+          "pid": 251714,
+          "contextId": 1,
+          "oldPageId": 1,
+          "oldTimeOrigin": 1794049076798.7,
+          "reload": {
+            "trustedCapture": true,
+            "clickDocumentTimeMs": 5583.199999999255,
+            "clickNodeEpochMs": 1794049082391,
+            "wireSequence": 128,
+            "mainFrameId": "E1AB43FDCC1EB25ED173E86897E53594",
+            "networkId": "0CBC63A2CC4E50E1E5CC7E6211A1601E",
+            "loaderId": "0CBC63A2CC4E50E1E5CC7E6211A1601E",
+            "fetchId": "interception-job-231.0",
+            "statusAtFetchPause": 200,
+            "initiator": {
+              "type": "script",
+              "stack": {
+                "callFrames": [
+                  {
+                    "functionName": "reloadProfile",
+                    "scriptId": "7",
+                    "url": "http://127.0.0.1:4187/app.js",
+                    "lineNumber": 3176,
+                    "columnNumber": 11
+                  }
+                ]
+              }
+            },
+            "beforeunloadDefaultPrevented": false,
+            "beforeunloadReturnValue": "",
+            "afterHandlersDefaultPrevented": false,
+            "afterHandlersReturnValue": ""
+          },
+          "hold": {
+            "targetStarts": 1,
+            "completedTargetContinuations": 0,
+            "startWireSequence": 138,
+            "startNodeMonotonicMs": 23490203.931454,
+            "goAfterStartNodeReceiptMs": 71.289658,
+            "cancellationAfterStartNodeReceiptMs": 80.041755,
+            "timerElapsedBeforeContinueAttemptMs": 755.8560919985175,
+            "continueAttemptWireSequence": 147,
+            "continuationError": "Error: cdpSession.send: Protocol error (Fetch.continueResponse): Invalid InterceptionId.",
+            "closeSummary": {
+              "holds": 1,
+              "completions": 0,
+              "pendingFetchIds": []
+            },
+            "classification": "Correct targeted response hold started; request cancelled during hold. Zero completed continuations. Requested250/750ms was not fully delivered to a successfully continued response."
+          },
+          "history": {
+            "args": [
+              -1
+            ],
+            "stack": "Error\n    at History.value (<anonymous>:16:62)\n    at Object.sync (http://127.0.0.1:4187/menu-history.js:93:23)\n    at syncMenuHistory (http://127.0.0.1:4187/app.js:198:84)",
+            "goWireSequence": 139,
+            "goAfterClickBrowserMs": 111.8,
+            "goTimeOrigin": 1794049076798.7,
+            "beforeHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79286de2-920d-49b0-985d-ab9a534303e2",
+                "entry": "79286de2-920d-49b0-985d-ab9a534303e2:4"
+              }
+            },
+            "abortedRequestId": "0CBC63A2CC4E50E1E5CC7E6211A1601E",
+            "errorText": "net::ERR_ABORTED",
+            "canceled": true,
+            "failureWireSequence": 140,
+            "nativeRequestToFailureMs": 98.876,
+            "followingNavigation": "historySameDocument",
+            "followingNavigationWireSequence": 141,
+            "popstateWireSequence": 144,
+            "popstateTimeOrigin": 1794049076798.7,
+            "popstateDocumentTimeMs": 5715.39999999851,
+            "popstateHistoryState": {
+              "ironrootNavigation": {
+                "version": 1,
+                "document": "79286de2-920d-49b0-985d-ab9a534303e2",
+                "entry": "79286de2-920d-49b0-985d-ab9a534303e2:2"
+              }
+            },
+            "pagehideTimeOrigin": 1794049076798.7,
+            "pagehideDocumentTimeMs": 19036.599999997765,
+            "pagehideAfterPopBrowserMs": 13321.2,
+            "pagehideOnlyAtTimeoutTeardown": true,
+            "newDocumentOrLoadAfterClick": false
+          },
+          "storage": {
+            "trace": "750ms/test-results/accessibility-backup-stale-14495-ter-an-empty-profile-import-narrow-phone-repeat1/trace.zip",
+            "captureClickTraceTime": 9559.826,
+            "rawReads": [
+              {
+                "callId": "demc@203",
+                "startTime": 8337.327,
+                "endTime": 8407.175,
+                "equalsExpected": true
+              },
+              {
+                "callId": "demc@231",
+                "startTime": 9154.975,
+                "endTime": 9194.146,
+                "equalsExpected": true
+              }
+            ],
+            "postClickStorageReads": 0,
+            "allReadsEndBeforeClick": true
+          },
+          "importingPageNotHeld": true,
+          "immediateUnarmedContinuations": 5,
+          "observerErrorOrLimitMarkers": []
+        }
+      ],
+      "directPreReloadStorageBytes": {
+        "ironroot.campaign.v1": "{\"format\":\"ironroot-campaign\",\"version\":1,\"missions\":{}}",
+        "ironroot.trials.v1": "{}",
+        "ironroot.settings.v1": "{}",
+        "ironroot.history.v1": "[]",
+        "ironroot.battle.v1": null,
+        "qa.unrelated": "keep me"
+      },
+      "originalAssertions": {
+        "reached": "Importer reload and empty-domain assertions; stale recovery visible; exits disabled; Escape retains Options; attempted preference cannot overwrite imported bytes; line401 equality; Reload enabled and trusted tap completed.",
+        "failed": "accessibility-backup.spec.mjs:403 load wait, configured20,000ms timeout, raw timedOut in all4.",
+        "blocked": "Lines404-407: reloaded stale-page welcome, hidden Resume Saved, final five-domain equality after reload, importing-tab error equality.",
+        "storageQualification": "Eight retained raw reads (two/case), all before Reload, equal imported empty profile. No post-cancel raw read; no post-cancel integrity or confirmed data-loss claim."
+      },
+      "source": {
+        "provenance": "source-provenance.json",
+        "comparisonHead": "46d324b94754fe88ed9d324456f284af0aa4537d",
+        "equalBlocks": {
+          "syncMenuHistory": {
+            "equal": true,
+            "oldSHA256": "ae8832505a7ea5fed995aaf434dbac0058f0a804df1c95a8ccce740ca35fc42e",
+            "newSHA256": "ae8832505a7ea5fed995aaf434dbac0058f0a804df1c95a8ccce740ca35fc42e",
+            "newStartLine": 198,
+            "oldStartLine": 198
+          },
+          "beforeunload": {
+            "equal": true,
+            "oldSHA256": "469da21516461989794d9e25d067577df3531804678a8a3946013c6987e58fbc",
+            "newSHA256": "469da21516461989794d9e25d067577df3531804678a8a3946013c6987e58fbc",
+            "newStartLine": 2047,
+            "oldStartLine": 2042
+          },
+          "reloadProfile": {
+            "equal": true,
+            "oldSHA256": "9a1d0428b6edc966c38b24490c5f3fee6a79778a0606c2934453691123018655",
+            "newSHA256": "9a1d0428b6edc966c38b24490c5f3fee6a79778a0606c2934453691123018655",
+            "newStartLine": 3169,
+            "oldStartLine": 3161
+          },
+          "menuNavigationTrail": {
+            "equal": true,
+            "oldSHA256": "bc8b18a3667ba1cb1fc5531dea8282d338c6c8e165ee8a2f1862f95567750fa0",
+            "newSHA256": "bc8b18a3667ba1cb1fc5531dea8282d338c6c8e165ee8a2f1862f95567750fa0",
+            "newStartLine": 3673,
+            "oldStartLine": 3665
+          },
+          "menuHistoryWiringAndDeparture": {
+            "equal": true,
+            "oldSHA256": "89b00ae9730e705fd7bdd3791c2fc6296abcd77de8c3939a1c2da3b34b0f6c21",
+            "newSHA256": "89b00ae9730e705fd7bdd3791c2fc6296abcd77de8c3939a1c2da3b34b0f6c21",
+            "newStartLine": 3809,
+            "oldStartLine": 3801
+          },
+          "entireMenuHistoryModule": {
+            "equal": true,
+            "oldSHA256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+            "newSHA256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c"
+          }
+        },
+        "mechanism": "reloadProfile app.js:3169-3177 sets allowProfileReload=true and started=false then location.reload. beforeunload app.js:2047 permits that reload. syncMenuHistory app.js:198 guards navigationAway/document.hidden, not allowProfileReload. Trail app.js:3673 removes started battle depth; menu-history.js:87-94 may call history.go for shortened trail. Departure guard app.js:3826 sets navigationAway on pagehide, which is observed only at timeout teardown after cancellation/popstate.",
+        "triggerLimit": "Stack proves syncMenuHistory -> menu-history sync -> native go. It does not identify which queued callback or observer invoked syncMenuHistory."
+      },
+      "conclusion": {
+        "observed": "4/4 altered-schedule cases directly record app history.go(-1) during correctly targeted explicit Reload response hold, cancellation of the same reload request (ERR_ABORTED/canceled:true), native historySameDocument navigation, popstate within the original timeOrigin, then original load timeout.",
+        "strength": "Competing-history cancellation mechanism is directly observed and repeatable under this intervention. The later Invalid InterceptionId continuation error follows cancellation and does not show continueResponse initiated it.",
+        "originalGateCausality": "Not proven for the original uninstrumented timeout. Matching symptom and source-supported path strengthen the hypothesis, but original trace lacks native history instrumentation; do not claim exact original causality or newly introduced d0 source regression.",
+        "completionLimit": "Four cancellations during targeted holds are not four fully completed250/750ms holds. No further browser execution requested."
+      },
+      "limits": [
+        "Fetch response interception deliberately alters scheduling; CDP, stack/console and synchronous-file recording add observer overhead. Unarmed documents also incur immediate interception/continuation overhead. This is separate from the gate.",
+        "No production/test source, original action/assertion/storage value/deadline was edited. No forced click, request retry, body read/fulfillment, header/status override, cache bypass or dialog listener was added.",
+        "Browser time deltas use same timeOrigin only. Node receipt hold deltas include protocol delivery. Native request-to-failure uses Network timestamps.",
+        "Exactly one target hold began per old page; importing page holds0; five unarmed continuations/case. No pending Fetch IDs at close.",
+        "Raw Page.frameNavigated detail.type overrides emitter label as Navigation (five/case); frame payload remains recoverable. Raw logs preserved.",
+        "No emitted observer parse/error/limit or file-write warning; console event delivery can still be incomplete across document departure.",
+        "Relevant handler/history blocks and entire menu-history module are byte-identical to46. Previously passing identities do not isolate whether d0 layout changes affect timing.",
+        "No physical mobile/controller, installed PWA or non-Chromium coverage."
+      ]
+    },
+    "sourceProvenance": {
+      "syncMenuHistory": {
+        "equal": true,
+        "oldSHA256": "ae8832505a7ea5fed995aaf434dbac0058f0a804df1c95a8ccce740ca35fc42e",
+        "newSHA256": "ae8832505a7ea5fed995aaf434dbac0058f0a804df1c95a8ccce740ca35fc42e",
+        "newStartLine": 198,
+        "oldStartLine": 198
+      },
+      "beforeunload": {
+        "equal": true,
+        "oldSHA256": "469da21516461989794d9e25d067577df3531804678a8a3946013c6987e58fbc",
+        "newSHA256": "469da21516461989794d9e25d067577df3531804678a8a3946013c6987e58fbc",
+        "newStartLine": 2047,
+        "oldStartLine": 2042
+      },
+      "reloadProfile": {
+        "equal": true,
+        "oldSHA256": "9a1d0428b6edc966c38b24490c5f3fee6a79778a0606c2934453691123018655",
+        "newSHA256": "9a1d0428b6edc966c38b24490c5f3fee6a79778a0606c2934453691123018655",
+        "newStartLine": 3169,
+        "oldStartLine": 3161
+      },
+      "menuNavigationTrail": {
+        "equal": true,
+        "oldSHA256": "bc8b18a3667ba1cb1fc5531dea8282d338c6c8e165ee8a2f1862f95567750fa0",
+        "newSHA256": "bc8b18a3667ba1cb1fc5531dea8282d338c6c8e165ee8a2f1862f95567750fa0",
+        "newStartLine": 3673,
+        "oldStartLine": 3665
+      },
+      "menuHistoryWiringAndDeparture": {
+        "equal": true,
+        "oldSHA256": "89b00ae9730e705fd7bdd3791c2fc6296abcd77de8c3939a1c2da3b34b0f6c21",
+        "newSHA256": "89b00ae9730e705fd7bdd3791c2fc6296abcd77de8c3939a1c2da3b34b0f6c21",
+        "newStartLine": 3809,
+        "oldStartLine": 3801
+      },
+      "entireMenuHistoryModule": {
+        "equal": true,
+        "oldSHA256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+        "newSHA256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c"
+      }
+    },
+    "scope": "External preload only; CDP Fetch response-stage exact root Document URL. Original response bytes/status/headers unchanged; unmatched responses immediately continued; no forced UI actions or test/runtime source edits.",
+    "limits": [
+      "Response interception and passive observers alter scheduling and add overhead, including immediate continuation overhead for earlier unarmed root documents.",
+      "This directly demonstrates the competing traversal mechanism under the measured window; it cannot retroactively prove the original full timeout had identical cause.",
+      "There are no successful completed250/750ms holds because the app canceled navigation first.",
+      "Chromium emulation only, not hardware or general slow-network certification.",
+      "Raw Page.frameNavigated payload includes type Navigation overriding one log label; original payloads retained, analysis normalizes the label only."
+    ]
+  }
+}

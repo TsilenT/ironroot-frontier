@@ -1,0 +1,353 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { MAPS, Game, getRuleset, RULESETS } from '../dist/engine.js';
+import { supportsFlightOrders, flightGateX } from '../dist/flight-orders.js';
+import { buildFlightSignals, flightRouteGeometry, flightViewport, flightBoundsVisible,
+  groupFlightCorridors, flightSignalLabel, flightBannerLayout, flightBannerLayouts, flightPreviewLayout,
+  drawFlightRoutes, drawFlightLabels, drawFlightMinimap } from '../dist/flight-visuals.js';
+import { mockCanvas } from './renderer-canvas.mjs';
+
+const ruleset = getRuleset('frontier-flight-open');
+const fixture = (map = MAPS.classic) => ({ map, ruleset, state: { units: [], buildings: [] } });
+const unit = (map, side = 0, from = 0, to = 1, phase = 'warning', remaining = 2) => ({
+  id: 1, hp: 100, type: 'gryphon', side, x: flightGateX(map, ruleset, side),
+  y: phase === 'transit' ? (map.lanes[from] + map.lanes[to]) / 2 : map.lanes[from],
+  airRoute: { from, to, phase, remaining },
+});
+const aerie = (map, side = 0, lane = 0, flightPlan = 1) => ({ id: 10 + side, type: 'aerie', side,
+  hp: 300, x: side ? map.width - 1250 : 1250, y: map.lanes[lane], lane, flightPlan });
+const renderer = (game, scale = .32, width = 390, height = 240) => ({
+  c: mockCanvas().c, scale, width, height, camera: game.map.width / 2, reducedMotion: false, vfx: { quality: 'high' },
+});
+const freeze = value => { if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+  for (const child of Object.values(value)) freeze(child); Object.freeze(value);
+} return value; };
+const labels = canvas => canvas.calls.filter(call => call[0] === 'fillText').map(call => call[1]);
+const drawFlightSignals = (view, game, ui) => {
+  const frame = drawFlightRoutes(view, game, ui);
+  drawFlightLabels(view, frame);
+  return frame;
+};
+const overlap = (a, b, gap = 0) => a.x + a.width + gap > b.x + 1e-7 && b.x + b.width + gap > a.x + 1e-7 &&
+  a.y + a.height + gap > b.y + 1e-7 && b.y + b.height + gap > a.y + 1e-7;
+
+// Replay the actual Canvas2D transforms, not a second copy of layout decisions.
+function signalBoxes(canvas, view, map) {
+  const boxes = [], stack = [];
+  let t = { sx: view.scale, sy: view.scale, x: view.width / 2 - view.camera * view.scale,
+    y: view.height / 2 - map.height * view.scale / 2, fill: '' };
+  for (const [op, ...args] of canvas.calls) {
+    if (op === 'save') stack.push({ ...t });
+    if (op === 'restore') t = stack.pop();
+    if (op === 'translate') { t.x += args[0] * t.sx; t.y += args[1] * t.sy; }
+    if (op === 'scale') { t.sx *= args[0]; t.sy *= args[1]; }
+    if (op === 'set' && args[0] === 'fillStyle') t.fill = args[1];
+    if (op === 'fillRect' && t.fill === '#142a28') boxes.push({ x: t.x + args[0] * t.sx,
+      y: t.y + args[1] * t.sy, width: args[2] * t.sx, height: args[3] * t.sy, labels: [] });
+    if (op === 'fillText') {
+      const x = t.x + args[1] * t.sx, y = t.y + args[2] * t.sy;
+      const box = boxes.findLast(b => x >= b.x && x <= b.x + b.width && y >= b.y && y <= b.y + b.height);
+      if (box) box.labels.push(args[0]);
+    }
+  }
+  return boxes;
+}
+
+function assertSignalBoxes(boxes, view, context) {
+  for (const [i, box] of boxes.entries()) {
+    assert.ok(box.x >= 4 - 1e-7 && box.y >= 4 - 1e-7 &&
+      box.x + box.width <= view.width - 4 + 1e-7 && box.y + box.height <= view.height - 4 + 1e-7,
+    `${context}: label remains inside field: ${JSON.stringify(box)}`);
+    for (const other of boxes.slice(i + 1)) assert.equal(overlap(box, other, 4), false,
+      `${context}: labels keep a four-pixel gap: ${JSON.stringify([box, other])}`);
+  }
+}
+
+test('gate geometry uses each registered flight identity and map, mirrored for both sides and directions', () => {
+  for (const rules of Object.values(RULESETS).filter(supportsFlightOrders)) for (const map of Object.values(MAPS)) {
+    for (const side of [0, 1]) for (let from = 0; from < map.lanes.length; from++) for (const to of [from - 1, from + 1]) {
+      const actual = flightRouteGeometry(map, rules, side, from, to);
+      if (to < 0 || to >= map.lanes.length) { assert.equal(actual, null); continue; }
+      assert.deepEqual(actual, { x: flightGateX(map, rules, side), fromY: map.lanes[from], toY: map.lanes[to],
+        direction: Math.sign(to - from), midY: (map.lanes[from] + map.lanes[to]) / 2 });
+      assert.equal(actual.x, map.width / 2 + (side ? 200 : -200));
+    }
+    for (const [side, from, to] of [[2, 0, 1], [0, 0, 0], [0, 0, 2], [0, .5, 1], [0, 0, NaN]])
+      assert.equal(flightRouteGeometry(map, rules, side, from, to), null);
+  }
+});
+
+test('old rules, copied rules, and injected route properties draw nothing and do not inspect state', () => {
+  for (const rules of [...Object.values(RULESETS).filter(r => !supportsFlightOrders(r)), { ...ruleset }]) {
+    const game = { map: MAPS.classic, ruleset: rules, get state() { throw Error('Old state inspected'); } };
+    assert.deepEqual(buildFlightSignals(game), { routes: [], preview: null });
+    assert.equal(flightRouteGeometry(game.map, rules, 0, 0, 1), null);
+    const canvas = mockCanvas(), view = { ...renderer(game), c: canvas.c };
+    drawFlightSignals(view, game, { selected: 10 });
+    drawFlightMinimap(canvas.c, game, { width: 240, height: 72 });
+    assert.deepEqual(canvas.calls, []);
+  }
+});
+
+test('many units collapse into stable directional groups, with earliest warning and leading transit marker', () => {
+  const game = fixture();
+  game.state.units = [unit(game.map, 1, 1, 0, 'transit', 0), unit(game.map, 0, 0, 1, 'warning', 1.8),
+    unit(game.map, 0, 0, 1, 'warning', .6), unit(game.map, 0, 0, 1, 'transit', 0),
+    { ...unit(game.map, 0, 0, 1, 'transit', 0), y: 400 }, unit(game.map, 0, 1, 0, 'warning', 1.4),
+    unit(game.map, 0, 0, 1, 'approach', 2), unit(game.map, 0, 0, 1, 'done', 0)];
+  const signals = buildFlightSignals(game);
+  assert.equal(signals.routes.length, 3);
+  assert.deepEqual(signals.routes.map(r => r.key), ['0:0:1', '0:1:0', '1:1:0']);
+  const route = signals.routes[0];
+  assert.equal(route.warningCount, 2); assert.equal(route.remaining, .6);
+  assert.equal(route.transitCount, 2); assert.equal(route.transitY, 400); assert.equal(route.approachCount, 0);
+  assert.equal(flightSignalLabel(route), '↓ 0.6s×2 / AIR×2');
+  assert.equal(groupFlightCorridors(signals.routes).length, 2);
+  assert.equal(groupFlightCorridors(signals.routes)[0].routes.length, 2);
+  assert.deepEqual(buildFlightSignals({ ...game, state: { ...game.state, units: [...game.state.units].reverse() } }), signals);
+  assert.equal(buildFlightSignals(game, { includeApproach: true }).routes[0].approachCount, 1);
+  assert.equal(flightSignalLabel({ ...route, warningCount: 1, remaining: .00001, transitCount: 0 }), '↓ 0.1s');
+});
+
+test('world culls offscreen gateways in both axes while minimap retains launched crossings', () => {
+  const game = fixture(MAPS['long-march']); game.state.units = [unit(game.map), unit(game.map, 1)];
+  const viewport = { minX: 200, maxX: 900, minY: 150, maxY: 750 };
+  assert.equal(buildFlightSignals(game, { viewport }).routes.length, 0);
+  assert.equal(buildFlightSignals(game).routes.length, 2);
+  assert.equal(buildFlightSignals(game, { viewport: { minX: 1700, maxX: 1900, minY: 200, maxY: 500 } }).routes.length, 1);
+  assert.equal(buildFlightSignals(game, { viewport: { minX: 1700, maxX: 1900, minY: 700, maxY: 800 } }).routes.length, 0);
+  assert.equal(flightBoundsVisible({ minX: 0, maxX: 100, minY: 0, maxY: 100 }, { minX: 100, maxX: 200, minY: 100, maxY: 200 }), true);
+  const canvas = mockCanvas();
+  const signals = drawFlightMinimap(canvas.c, game, { width: 240, height: 72 });
+  assert.equal(signals.routes.length, 2); assert.ok(canvas.calls.length > 0);
+});
+
+test('preview only reads a selected living owned aerie, including source when gateway is offscreen', () => {
+  const game = fixture(); game.state.buildings = [aerie(game.map), { ...aerie(game.map, 1),
+    get flightPlan() { throw Error('Read an unlaunched enemy plan'); } }];
+  assert.equal(buildFlightSignals(game).preview, null);
+  assert.equal(buildFlightSignals(game, { selected: 11 }).preview, null);
+  const preview = buildFlightSignals(game, { selected: 10, viewport: { minX: 1100, maxX: 1300, minY: 100, maxY: 350 } }).preview;
+  assert.equal(preview.showSource, true); assert.equal(preview.showGate, false);
+  assert.equal(preview.from, 0); assert.equal(preview.to, 1);
+  for (const patch of [{ hp: 0 }, { type: 'barracks' }, { flightPlan: 0 }, { flightPlan: 2 }, { flightPlan: NaN }]) {
+    game.state.buildings[0] = { ...aerie(game.map), ...patch };
+    assert.equal(buildFlightSignals(game, { selected: 10 }).preview, null);
+  }
+});
+
+test('dead, finished, malformed and non-gryphon flights never produce misleading signals', () => {
+  const game = fixture(), base = unit(game.map);
+  game.state.units = [{ ...base, hp: 0 }, { ...base, type: 'warrior' }, { ...base, side: 7 }, { ...base, x: Infinity },
+    { ...base, y: NaN }, { ...base, airRoute: null }, ...[
+      { phase: 'done' }, { phase: 'future' }, { to: 2 }, { to: 0 }, { from: -1 }, { remaining: NaN }, { remaining: 3 }, { remaining: -.1 },
+    ].map(patch => ({ ...base, airRoute: { ...base.airRoute, ...patch } }))];
+  assert.deepEqual(buildFlightSignals(game), { routes: [], preview: null });
+});
+
+test('viewport conversion and banner geometry preserve fixed pixel text at phone and desktop scales', () => {
+  const game = fixture();
+  for (const scale of [.32, .45, 1, 1.5]) {
+    const view = renderer(game, scale, 390, 240), port = flightViewport(view, game.map);
+    assert.ok(Math.abs((port.maxX - port.minX) * scale - 390) < 1e-9);
+    assert.ok(Math.abs((port.maxY - port.minY) * scale - 240) < 1e-9);
+    for (const side of [0, 1]) for (const screenX of [4, 90, 200, 386]) {
+      const corridor = { side, x: port.minX + screenX / scale, midY: 450 };
+      const badge = flightBannerLayout(corridor, 140, 37, scale, port);
+      assert.ok(screenX + badge.x >= 4 - 1e-9); assert.ok(screenX + badge.x + badge.width <= 386 + 1e-9);
+      assert.equal(badge.height, 37);
+    }
+  }
+  assert.equal(flightViewport({ width: 0, height: 300, camera: 1600 }, game.map), null);
+});
+
+test('selected middle-road NEXT is separate from real warning/transit banners on phone and landscape', () => {
+  for (const [width, height, scale] of [[320, 168, .32], [390, 240, .32], [390, 405, .45], [844, 240, .32], [1180, 720, .8]]) {
+    for (const phase of ['warning', 'transit']) for (const to of [0, 2]) {
+      const game = fixture(), canvas = mockCanvas();
+      game.state.units = [unit(game.map, 0, 1, 0, phase, 1.2)];
+      game.state.buildings = [aerie(game.map, 0, 1, to)];
+      const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: 1400 };
+      drawFlightSignals(view, game, { selected: 10 });
+      const boxes = signalBoxes(canvas, view, game.map);
+      assert.equal(boxes.length, 2);
+      assertSignalBoxes(boxes, view, `${width}×${height}/${scale}/${phase}/${to}`);
+      assert.ok(labels(canvas).includes('YOU'));
+      assert.ok(labels(canvas).includes(phase === 'warning' ? '↑ 1.2s' : '↑ AIR'));
+      assert.ok(labels(canvas).includes(to === 0 ? 'NEXT ↑' : 'NEXT ↓'));
+    }
+  }
+});
+
+test('crowded measured banners and NEXT keep their own space at constrained viewport edges', () => {
+  for (const map of Object.values(MAPS)) for (const width of [320, 390, 844]) for (const height of [168, 240, 450]) {
+    const game = fixture(map), scale = Math.max(.32, height / map.height);
+    // 64 units per side, below the legal cap: every directed route has eight
+    // warning and eight transit units. This creates the widest two-row labels.
+    for (const side of [0, 1]) for (let from = 0; from < map.lanes.length; from++) for (const to of [from - 1, from + 1]) {
+      if (to < 0 || to >= map.lanes.length) continue;
+      for (const phase of ['warning', 'transit']) for (let count = 0; count < 8; count++) game.state.units.push(unit(map, side, from, to, phase, 1.2));
+    }
+    for (const lane of [0, 1, map.lanes.length - 1]) for (const cameraOffset of [-190, 0, 190]) {
+      const canvas = mockCanvas(), source = { ...aerie(map, 0, lane, lane ? lane - 1 : 1), x: flightGateX(map, ruleset, 0) - 150 };
+      game.state.buildings = [source];
+      const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: map.width / 2 + cameraOffset };
+      const signals = drawFlightSignals(view, game, { selected: source.id });
+      const boxes = signalBoxes(canvas, view, map);
+      assert.equal(boxes.length, groupFlightCorridors(signals.routes).length + Number(!!signals.preview?.showSource));
+      assertSignalBoxes(boxes, view, `${map.id}/${width}×${height}/${lane}/${cameraOffset}`);
+      assert.equal(boxes.some(b => b.labels.some(label => label.startsWith('NEXT'))), !!signals.preview?.showSource);
+    }
+  }
+});
+
+test('preview placement reserves the source art, uses all measured banners and is deterministic', () => {
+  const game = fixture(); game.state.buildings = [aerie(game.map, 0, 1, 0)];
+  const preview = buildFlightSignals(game, { selected: 10, scale: .32 }).preview;
+  const occupied = [{ minX: 900, maxX: 1387.5, minY: 303.125, maxY: 371.875 },
+    { minX: 900, maxX: 1387.5, minY: 400, maxY: 468.75 }];
+  freeze(preview); freeze(occupied);
+  const layout = flightPreviewLayout(preview, occupied, .32);
+  assert.deepEqual(flightPreviewLayout(preview, [...occupied].reverse(), .32), layout);
+  const source = preview.sourceBounds;
+  assert.equal(overlap(layout, { x: (source.minX - preview.sourceX) * .32, y: (source.minY - preview.sourceY) * .32,
+    width: (source.maxX - source.minX) * .32, height: (source.maxY - source.minY) * .32 }, 4), false);
+  assert.equal(layout.width, 70); assert.equal(layout.height, 20);
+});
+
+test('normal committed positions remain unchanged; undersized fields retain full labels rather than dropping routes', () => {
+  const measured = [0, 1].flatMap(side => [337.5, 562.5].map(midY => ({
+    corridor: { side, x: side ? 1800 : 1400, midY }, width: 161, height: 37,
+  })));
+  const large = { minX: 0, maxX: 3200, minY: 0, maxY: 900 };
+  assert.deepEqual(flightBannerLayouts(measured, 1, large).map(({ x, y, width, height }) => ({ x, y, width, height })),
+    measured.map(b => flightBannerLayout(b.corridor, b.width, b.height, 1, large)));
+  const tiny = flightViewport({ width: 320, height: 100, camera: 1600, scale: .32 }, MAPS.classic);
+  const retained = flightBannerLayouts(measured, .32, tiny);
+  assert.equal(retained.length, 4);
+  assert.ok(retained.every(b => b.width === 161 && b.height === 37));
+  // There is no promise of non-overlap when 160px of complete banners must fit
+  // in a 92px interior. Their original in-bounds positions are the fallback.
+  assert.deepEqual(retained.map(({ x, y, width, height }) => ({ x, y, width, height })),
+    measured.map(b => flightBannerLayout(b.corridor, b.width, b.height, .32, tiny)));
+});
+
+test('complete canvas operations remain finite and balanced on every map, side, phase and scale', () => {
+  for (const map of Object.values(MAPS)) for (const scale of [.32, .4, .8, 1.5]) {
+    const game = fixture(map);
+    for (const side of [0, 1]) for (let from = 0; from < map.lanes.length; from++) for (const to of [from - 1, from + 1]) {
+      if (to < 0 || to >= map.lanes.length) continue;
+      for (const phase of ['warning', 'transit', 'approach']) game.state.units.push(unit(map, side, from, to, phase, phase === 'warning' ? 1.2 : 0));
+    }
+    game.state.buildings = [aerie(map)];
+    const world = mockCanvas(), mini = mockCanvas(), view = { ...renderer(game, scale, 1400, 700), c: world.c };
+    world.c.globalAlpha = .5; world.c.lineWidth = 6;
+    const scene = drawFlightSignals(view, game, { selected: 10 }); drawFlightMinimap(mini.c, game, { width: 240, height: 72, selected: 10 });
+    assert.equal(world.depth(), 0); assert.equal(mini.depth(), 0); assert.equal(world.c.globalAlpha, .5); assert.equal(world.c.lineWidth, 6);
+    assert.ok(labels(world).includes('YOU')); assert.ok(labels(world).includes('FOE')); assert.equal(labels(world).includes('NEXT ↓'), !!scene.preview?.showSource);
+    assert.ok(world.calls.some(c => c[0] === 'set' && c[1] === 'font' && c[2] === '600 12px monospace'));
+    assert.ok(mini.calls.some(c => c[0] === 'clip'));
+    // Unit counts do not multiply route banners. At most four corridor banners on three roads.
+    assert.ok(labels(world).filter(text => text === 'YOU' || text === 'FOE').length <= (map.lanes.length - 1) * 2);
+  }
+});
+
+test('low effects/reduced motion keep essential countdown, ownership, arrows and next-order labels', () => {
+  const game = fixture(); game.state.units = [unit(game.map), unit(game.map, 1)]; game.state.buildings = [aerie(game.map)];
+  const render = (reducedMotion, quality) => {
+    const canvas = mockCanvas(); drawFlightSignals({ ...renderer(game), c: canvas.c, reducedMotion, vfx: { quality } }, game, { selected: 10 }); return canvas;
+  };
+  const high = render(false, 'high');
+  for (const canvas of [render(true, 'high'), render(false, 'low'), render(true, 'low')]) {
+    assert.deepEqual(labels(canvas), labels(high));
+    assert.ok(canvas.calls.length < high.calls.length, 'Only optional feather ticks are removed');
+  }
+});
+
+test('separated passes share one detached measurement and restore their canvas state', () => {
+  const game = fixture(), canvas = mockCanvas();
+  game.state.units = [unit(game.map), unit(game.map, 0, 1, 0), unit(game.map, 1)];
+  game.state.buildings = [aerie(game.map, 0, 1, 0)];
+  const view = { ...renderer(game), c: canvas.c };
+  canvas.c.globalAlpha = .4; canvas.c.lineWidth = 7;
+  const frame = drawFlightRoutes(view, game, { selected: 10 });
+  assert.deepEqual(labels(canvas), [], 'underlay contains no banner lettering');
+  assert.ok(canvas.calls.some(call => call[0] === 'stroke'), 'underlay retains routes and leaders');
+  assert.equal(canvas.depth(), 0); assert.equal(canvas.c.globalAlpha, .4); assert.equal(canvas.c.lineWidth, 7);
+  freeze(frame);
+  const before = JSON.stringify(frame);
+  canvas.reset(); drawFlightLabels(view, frame);
+  const first = JSON.stringify(canvas.calls);
+  assert.ok(labels(canvas).includes('↑ 2.0s')); assert.ok(labels(canvas).includes('↓ 2.0s'));
+  assert.ok(labels(canvas).includes('NEXT ↑'));
+  let closed = false;
+  for (const [op] of canvas.calls) {
+    if (op === 'beginPath') closed = false;
+    if (op === 'closePath') closed = true;
+    if (op === 'stroke') assert.equal(closed, true, 'label pass only strokes closed team marks, never route paths');
+  }
+  assert.equal(canvas.depth(), 0); assert.equal(canvas.c.globalAlpha, .4); assert.equal(canvas.c.lineWidth, 7);
+  // Deliberately invalidate live inputs. Labels use the prepared frame, without
+  // remeasuring, rereading simulation/selection or recomputing a different scale.
+  view.scale = 99; view.camera = 0;
+  Object.defineProperty(game, 'state', { get() { throw Error('Label pass reread game state'); } });
+  canvas.c.measureText = () => { throw Error('Label pass remeasured a banner'); };
+  canvas.reset(); drawFlightLabels(view, frame);
+  assert.equal(JSON.stringify(canvas.calls), first);
+  assert.equal(JSON.stringify(frame), before);
+});
+
+test('rendering frozen simulation leaves clock, RNG, route state and input UI byte-for-byte unchanged', () => {
+  const game = new Game({ rulesetId: ruleset.id, mapId: 'long-march', ai: false });
+  game.state.units.push(unit(game.map)); game.state.buildings.push(aerie(game.map));
+  const before = JSON.stringify(game.serialize()); const ui = freeze({ selected: 10, paused: false });
+  game.random = () => { throw Error('Visuals must not consume simulation RNG'); };
+  freeze(game); freeze(ui);
+  const canvas = mockCanvas(), view = { ...renderer(game), c: canvas.c };
+  const first = buildFlightSignals(game, { selected: 10 });
+  for (let frame = 0; frame < 8; frame++) {
+    drawFlightSignals(view, game, ui); drawFlightMinimap(canvas.c, game, { width: 240, height: 72, selected: 10 });
+  }
+  assert.deepEqual(buildFlightSignals(game, { selected: 10 }), first);
+  assert.equal(JSON.stringify(game.serialize()), before); assert.deepEqual(ui, { selected: 10, paused: false });
+  first.routes[0].warningCount = 999;
+  assert.equal(game.state.units[0].airRoute.remaining, 2); assert.equal(buildFlightSignals(game).routes[0].warningCount, 1);
+});
+
+test('minimap validates bounds and never emits approach labels as actual warning countdowns', () => {
+  const game = fixture(); game.state.units = [unit(game.map, 1, 0, 1, 'approach', 2)];
+  const canvas = mockCanvas();
+  for (const geometry of [{}, { width: 0, height: 72 }, { width: 240, height: Infinity }, { width: 240, height: 72, x: NaN }]) {
+    assert.deepEqual(drawFlightMinimap(canvas.c, game, geometry), { routes: [], preview: null });
+    assert.equal(canvas.calls.length, 0);
+  }
+  assert.equal(drawFlightSignals({ ...renderer(game), c: canvas.c }, game).routes.length, 0);
+  assert.equal(drawFlightMinimap(canvas.c, game, { width: 240, height: 72, x: 12, y: 8 }).routes.length, 1);
+  assert.deepEqual(labels(canvas), []);
+  assert.ok(canvas.calls.some(call => call[0] === 'rect' && JSON.stringify(call.slice(1)) === JSON.stringify([12, 8, 240, 72])));
+});
+
+test('real production flight phases drive preview, launched minimap, warning and crossing without simulation assistance', () => {
+  for (const map of Object.values(MAPS)) for (const side of [0, 1]) {
+    const game = new Game({ rulesetId: ruleset.id, mapId: map.id, ai: false });
+    game.state.gold[side] = 2000;
+    const producer = game.build('aerie', side ? map.width - 1250 : 1250, map.lanes[0], side).building;
+    assert.ok(producer); assert.equal(game.setFlightPlan(producer.id, 1, side).ok, true);
+    game._spawn(producer);
+    const gryphon = game.state.units.find(u => u.type === 'gryphon');
+    assert.equal(buildFlightSignals(game).routes.length, 0);
+    assert.equal(buildFlightSignals(game, { includeApproach: true }).routes[0].approachCount, 1);
+    // Resolve a permitted engine phase at its exact gate. The renderer is only an observer.
+    gryphon.x = flightGateX(map, ruleset, side); gryphon.y = map.lanes[0];
+    game._advanceAirRoute(gryphon, .05);
+    assert.equal(buildFlightSignals(game).routes[0].warningCount, 1);
+    assert.equal(buildFlightSignals(game).routes[0].remaining, gryphon.airRoute.remaining);
+    assert.equal(game.setFlightPlan(producer.id, 0, side).ok, true);
+    assert.equal(buildFlightSignals(game, { selected: producer.id }).preview, null);
+    assert.equal(buildFlightSignals(game).routes[0].to, 1, 'Future Hold does not redraw the launched destination');
+    for (let tick = 0; tick < 42; tick++) game._advanceAirRoute(gryphon, .05);
+    assert.equal(buildFlightSignals(game).routes[0].transitCount, 1);
+    for (let tick = 0; tick < 60; tick++) game._advanceAirRoute(gryphon, .05);
+    assert.equal(gryphon.airRoute.phase, 'done'); assert.equal(buildFlightSignals(game, { includeApproach: true }).routes.length, 0);
+  }
+});

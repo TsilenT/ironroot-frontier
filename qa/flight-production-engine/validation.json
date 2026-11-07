@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "branches": 1584,
+  "cohortCounts": {
+    "prototype-port": 720,
+    "long-march": 480,
+    "extension": 384
+  },
+  "continuationChecks": 5904,
+  "reportSha256": "e736341ebd47fc672f1167f44d4fe048da729bc6432a20ae55d0e2924fe87604",
+  "sourceHashes": {
+    "engine": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "rulesets": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d",
+    "flightHelper": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "scenarios": "337eb27841f7a7e77c2dba02bbc9c2a28ae2bcd16ad37d7d7092472e3fba2a6a",
+    "evaluation": "c4e50c94d4b57775f934759390d22426865230ab530431d4e1c84ddcfa22c87d"
+  },
+  "elapsedSeconds": 195.527,
+  "adverseCounterfactuals": 445,
+  "limitations": "Authored starting forces are unequal; synthetic branch win/loss counts are not human balance estimates or difficulty certification. Fixed 110/180-second horizons may stop unfinished. After-step observers can miss a unit spawned and killed within the same step. First damage/death phases are observations, not complete causal attribution. Only first four wave traces are retained, with aggregate counts for all observed waves. Save checks compare first observed route phase/60-second next-step continuation, not every full replay. No human/hardware playtest."
+}

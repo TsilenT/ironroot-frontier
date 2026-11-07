@@ -1,3 +1,4 @@
+import {startLegacyTeaching} from './campaign-teaching-helpers.mjs';
 import {test as base,expect} from '@playwright/test';
 import {openBuildControls,prepareBuildControl} from './shared-build-controls.mjs';
 import {Game} from '../../dist/engine.js';
@@ -8,7 +9,8 @@ const test=base.extend({page:async({page},use)=>{const errors=[];page.on('pageer
 test.setTimeout(40000);
 async function press(page,selector){if(await prepareBuildControl(page,selector))return;const e=page.locator(selector);if(await page.evaluate(()=>navigator.maxTouchPoints>0))await e.tap();else await e.click();}
 const saved=page=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
-async function fresh(page,id='roadside-watch'){
+async function fresh(page,id='first-watch'){
+  if(id==='first-watch'){await startLegacyTeaching(page,press);return;}
   await page.goto('/');
   const index=ONBOARDING_MISSIONS.findIndex(mission=>mission.id===id);
   if(index>0){
@@ -17,7 +19,9 @@ async function fresh(page,id='roadside-watch'){
     await page.reload();
   }
   await expect(page.locator('#campaignMissionTitle')).toHaveText(ONBOARDING_MISSIONS[index].name);
-  await press(page,'#start');await expect(page.locator('#coachingModal')).toBeVisible();
+  await press(page,'#start');
+  if(id==='roadside-watch')await expect(page.locator('#coachingModal')).toBeHidden();
+  else await expect(page.locator('#coachingModal')).toBeVisible();
 }
 async function place(page,type,x,y=450){
   await press(page,`[data-type="${type}"]`);
@@ -51,7 +55,7 @@ async function place(page,type,x,y=450){
   await expect(page.locator('#app')).not.toHaveClass(/compact-build-open/);
 }
 
-test('reading and paid construction stop both armies, clocks and income until explicit Resume',async({page})=>{
+test('legacy lesson reading and paid construction stop both armies, clocks and income until explicit Resume',async({page})=>{
   await fresh(page);
   await expect(page.locator('#coachingPlan')).toBeFocused();
   await expect(page.locator('#app')).toHaveAttribute('inert','');
@@ -68,18 +72,23 @@ test('reading and paid construction stop both armies, clocks and income until ex
   expect(JSON.stringify(result)).not.toMatch(/coachingHold|teachingPause/);
 });
 
-test('another composition, legal unmarked sites and hiding hints preserve player agency',async({page})=>{
+test('legacy lesson alternative composition, legal unmarked sites and hiding hints preserve player agency',async({page})=>{
   await fresh(page);await press(page,'#coachingPlan');
-  await expect(page.locator('#allBuildings')).toBeHidden();
-  await expect(page.locator('[data-type="foundry"]')).toHaveCount(0);
+  // Open the real mobile drawer before inspecting its retained legacy roster.
+  await openBuildControls(page);
+  // Legacy optional roster is retained; only the two introductory cards show.
+  await expect(page.locator('#allBuildings')).toBeVisible();
+  await expect(page.locator('.build-card:visible')).toHaveCount(2);
+  await expect(page.locator('[data-type="foundry"]')).toBeHidden();
   await place(page,'archery',410);
   await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Build a barracks');
   await expect(page.locator('#time')).toHaveText('00:00');
+  const planningGold=await page.locator('#gold').textContent();
   await press(page,'#toggleCoach');await expect(page.locator('#campaignCoach')).toBeHidden();
-  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
+  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');await expect(page.locator('#gold')).toHaveText(planningGold);
   await press(page,'#settings');await expect(page.locator('#settingsDone')).toHaveText('Back to planning');
   await press(page,'#settingsDone');await expect(page.locator('#settings')).toBeFocused();
-  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
+  await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');await expect(page.locator('#gold')).toHaveText(planningGold);
   await press(page,'#coachResume');await expect(page.locator('#time')).not.toHaveText('00:00');
   await press(page,'#pause');const result=await saved(page);
   expect(result.game.state.buildings.some(b=>b.side===0&&b.type==='archery'&&b.x===410)).toBe(true);
@@ -140,13 +149,15 @@ test('keyboard focus stays in the teaching dialog and Space on its buttons does 
 test('a fresh suggested army earns a real win and Continue opens the next teaching mission',async({page},testInfo)=>{
   test.skip(testInfo.project.name!=='desktop','One complete real-time route; touch paid construction is covered separately.');
   test.setTimeout(110000);
-  await fresh(page);await press(page,'#coachingPlan');
+  await fresh(page,'roadside-watch');
   // The documented renderer transform includes camera clamping on wide views.
   // These are the independently verified opening suggestions, paid through UI.
   await place(page,'barracks',970);
   await place(page,'archery',830);
   await openBuildControls(page);await expect(page.locator('#coachTitle')).toHaveText('Follow your army');
-  await press(page,'#coachResume');await press(page,'#speed');await press(page,'#speed');
+  await expect(page.locator('#coachResume')).toBeHidden();
+  await expect(page.locator('#time')).not.toHaveText('00:00');
+  await press(page,'#speed');await press(page,'#speed');
   await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE',{timeout:95000});
   const result=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),PROGRESS);
   expect(result.missions['roadside-watch'].completed).toBe(true);

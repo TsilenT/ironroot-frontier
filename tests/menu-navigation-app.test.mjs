@@ -8,7 +8,7 @@ import {Game,getRuleset,getMap} from '../dist/engine.js';
 import * as campaign from '../dist/campaign.js';
 import {missionBriefing} from '../dist/campaign-presentation.js';
 import {renderMissionScouting} from '../dist/scouting.js';
-import {createProfileSession,PROFILE_MARKER_KEY} from '../dist/profile-session.js';
+import {createProfileSession,PROFILE_MARKER_KEY,CURRENT_PROFILE_PROTOCOL_VERSION} from '../dist/profile-session.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 const SAVE='ironroot.battle.v1';
 const hidden=(h,id)=>h.$(id).classList.contains('hidden');
@@ -16,7 +16,7 @@ function harness({mode='skirmish', realDialogFocus=false}={}) {
   const h=startupHarness({width:1180,height:757}),{c,$}=h,browser=historyWindow({host:{panel:'arcade'}});
   const data=new Map(), writes=[];let fail=false;
   const raw={getItem:key=>data.get(key)??null,setItem(key,value){if(fail)throw Error('quota');data.set(key,value);writes.push([key,value]);},removeItem:key=>data.delete(key)};
-  const profileSession=createProfileSession(()=>raw,{requiredProtocolVersion:4});
+  const profileSession=createProfileSession(()=>raw,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});
   const storage=createStorage(()=>profileSession.storage);
   const section=(a,b)=>h.source.slice(h.source.indexOf(a),h.source.indexOf(b,h.source.indexOf(a)));
   Object.assign(c,campaign,{
@@ -85,8 +85,11 @@ test('real menu nesting: Back closes restart, backup preview, Options and guide 
   h.c.showHelp();h.sync();h.back();assert.equal(hidden(h,'helpModal'),true);assert.equal(h.c.paused,true);
   assert.equal(h.c.game,game);assert.equal(h.data.get(SAVE),bytes);
 });
-test('Back during teaching dismisses into frozen planning; Back from planning Options preserves the hold',()=>{
-  const h=harness({mode:'campaign'});h.start();const before=JSON.stringify(h.c.game.serialize());
+test('Back during later teaching dismisses into frozen planning; Back from planning Options preserves the hold',()=>{
+  const h=harness({mode:'campaign'});
+  h.c.campaignProgress.missions['roadside-watch']={completed:true,stars:1,bestTime:60};
+  h.c.selectedCampaign='shield-at-the-fork';h.start();
+  assert.equal(h.c.firstBuildHold,false);const before=JSON.stringify(h.c.game.serialize());
   assert.equal(hidden(h,'coachingModal'),false);h.back();
   assert.equal(hidden(h,'coachingModal'),true);assert.equal(h.c.coachingHold,true);assert.equal(h.c.paused,false);
   h.c.showSettings();h.sync();h.back();assert.equal(hidden(h,'settingsModal'),true);
@@ -136,9 +139,12 @@ test('Back retires held pointer, click and keyboard actions before revealing the
   guard.pointerDown({pointerId:2,pointerType:'touch'});assert.equal(guard.pointerEnd({pointerId:2}),false,'fresh input is immediately actionable');
 });
 test('a stale attempt marker cannot replace a restarted game or change its campaign scenario identity',()=>{
-  const h=harness({mode:'campaign'});h.start();h.click('coachingPlay');h.back();
+  const h=harness({mode:'campaign'});h.start();h.c.toggleBattlePause();h.sync();
+  assert.equal(h.c.firstBuildHold,true);assert.equal(h.c.paused,true);
   const old=h.c.menuNavigationTrail().at(-1),game=campaign.createCampaignRestart(h.c.game,'roadside-watch');
   h.c.start(game,null,'roadside-watch',{fresh:true});h.sync();const bytes=JSON.stringify(game.serialize());
+  assert.equal(h.c.firstBuildHold,true);assert.equal(h.c.coachingHold,true);
+  assert.equal(hidden(h,'coachingModal'),true);assert.equal(game.state.time,0);
   h.c.applyMenuNavigation(old,{direction:'forward'});
   assert.equal(h.c.game,game);assert.equal(JSON.stringify(game.serialize()),bytes);assert.equal(h.c.paused,true);
 });
@@ -247,4 +253,20 @@ for(const page of ['story','chapter']) test(`title Options Back keeps the ${page
   h.c.showSettings({currentTarget:h.$('welcomeSettings')});h.sync();h.back();
   assert.equal(h.c.document.activeElement?.id,'welcomeSettings');assert.equal(h.c.campaignPage,page);
   assert.equal(panel.scrollTop,37);assert.equal(renders,0,'dismissing Options must not rebuild the title');
+});
+
+
+test('fresh first-build Options Back retains planning; returning to title cannot resume or restart it',()=>{
+  const h=harness({mode:'campaign'});h.start();const game=h.c.game,before=JSON.stringify(game.serialize());
+  assert.equal(h.c.firstBuildHold,true);assert.equal(hidden(h,'coachingModal'),true);assert.equal(hidden(h,'coachResume'),true);
+  h.c.showSettings();h.sync();assert.equal(h.c.paused,true);h.back();
+  assert.equal(hidden(h,'settingsModal'),true);assert.equal(h.c.paused,false);
+  assert.equal(h.c.firstBuildHold,true);assert.equal(h.c.coachingHold,true);assert.equal(JSON.stringify(game.serialize()),before);
+  h.forward();assert.equal(h.c.paused,true);assert.equal(h.c.firstBuildHold,true);
+  h.back();assert.equal(h.c.paused,true,'Forward-opened Options returns to its manual pause boundary');
+  h.c.pause(false,{explicit:true});h.sync();assert.equal(h.c.paused,false);assert.equal(h.c.firstBuildHold,true);
+  h.back();assert.equal(h.c.started,false);assert.equal(hidden(h,'welcome'),false);
+  assert.equal(JSON.stringify(JSON.parse(h.data.get(SAVE)).game),before);
+  h.forward();assert.equal(h.c.started,false,'history cannot restart the saved first-build attempt');
+  assert.equal(h.c.game,game);assert.equal(JSON.stringify(game.serialize()),before);
 });

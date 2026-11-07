@@ -9,7 +9,10 @@ import {startupHarness} from './mobile-startup-fixture.mjs';
 function harness() {
   const h = startupHarness({width:390,height:650});
   h.c.selectedCampaign='roadside-watch';
-  h.c.start(); h.$('coachingPlan').onclick();
+  // Deliberate manual replay keeps generic planning frozen; fresh first-build
+  // auto-start is exercised separately in first-build-start.test.mjs.
+  h.c.campaignProgress.missions['roadside-watch']={completed:true,stars:1,bestTime:60};
+  h.c.start(); h.$('coachReplay').onclick(); h.$('coachingPlan').onclick();
   h.c.buildBounds = buildBounds;
   h.c.renderer.snap = point => point;
   for (const [from,to] of [['function selectBuild(','function cancel()'],['function activateBattlePoint(','function resetBattleGesture()']])

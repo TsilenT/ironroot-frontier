@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import {Game} from '../../dist/engine.js';
 import {BACKUP_STORAGE_KEYS,createBackup,parseBackup} from '../../dist/backup.js';
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import {createCampaignProgress} from '../../dist/campaign.js';
 export const TRAINING_PATH='/training.html';
 export const PROFILE_DOMAINS=Object.values(BACKUP_STORAGE_KEYS);
@@ -25,7 +26,7 @@ export function trainingProfileFixture(){
     [BACKUP_STORAGE_KEYS.battle]:bytes({format:'ironroot-save',version:2,challengeId:null,campaignId:null,game:game.serialize()}),
     // Current ready profile for byte-preservation/retry tests, not a historical
     // client fixture. Protocol migration is covered in profile-upgrade.spec.mjs.
-    [PROFILE_MARKER]:JSON.stringify({format:'ironroot-profile',version:4,epoch:'qa-training-isolation',phase:'ready'}),
+    [PROFILE_MARKER]:JSON.stringify({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,epoch:'qa-training-isolation',phase:'ready'}),
   };
   const backup=parseBackup(createBackup({getItem:key=>values[key]??null},{createdAt:'2026-11-06T00:00:00.000Z'}));
   assert.equal(backup.data.battle.game.state.winner,null);

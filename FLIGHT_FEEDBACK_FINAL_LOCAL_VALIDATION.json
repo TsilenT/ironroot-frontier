@@ -1,0 +1,92 @@
+{
+  "scope": "Consolidated local repair checks only; the new exact-commit browser gate, merge and deployment remain pending.",
+  "baseCommit": "598925cbfea60acc734513d05dc14eeafe80a57d",
+  "root": {
+    "passed": 1221,
+    "failed": 0,
+    "skipped": 1,
+    "total": 1222,
+    "skipReason": "Optional desktop build dependencies are not installed.",
+    "log": "qa/flight-feedback/root-final.log"
+  },
+  "preflight": {
+    "syntax": true,
+    "runtime": true,
+    "browserFixtures": true,
+    "logs": [
+      "qa/flight-feedback/syntax-final.log",
+      "qa/flight-feedback/runtime-final.json",
+      "qa/flight-feedback/preflight-final.log"
+    ]
+  },
+  "browserDiscovery": {
+    "total": 1628,
+    "files": 37,
+    "executed": false,
+    "runtime": "Local Playwright 1.57 adapter, discovery only; exact cloud gate uses the pinned runner.",
+    "log": "qa/flight-feedback/browser-discovery-final.log"
+  },
+  "browserIntegrity": {
+    "configuredWorkers": 2,
+    "existingModifiedSpecSkipFixmeTimeoutDeclarationsUnchanged": true,
+    "noExistingSpecLostLiteralTestCalls": true,
+    "all62OriginalFailuresRetained": "qa/flight-feedback/full-failure-reconciliation.json",
+    "oldFullGate": {
+      "passed": 1468,
+      "failed": 62,
+      "skipped": 46
+    },
+    "oldBoundedUnchangedRerun": {
+      "passed": 27,
+      "failed": 1,
+      "scope": "28 old-candidate timing/setup/replay plus narrow-pause cases at two workers; not a pass of the new source."
+    }
+  },
+  "runtimeDeltaFiles": [
+    "dist/app.js",
+    "dist/campaign-flow.js",
+    "dist/flight-visuals.js",
+    "dist/index.html",
+    "dist/styles.css"
+  ],
+  "mechanicsUnchanged": {
+    "engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "campaign.js": "56f4a2d7bf50a316a60274dde63ffb1501ab89c36937612fbb25e2f3c13456eb",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d"
+  },
+  "nativeBrowser": {
+    "report": "docs/FLIGHT_REPAIR_NATIVE_QA.md",
+    "boundedPass": true,
+    "verified": [
+      "Initial 320\u00d7568 Pause actions, zero scroll, 44px Restart, focus trap and Resume",
+      "320\u00d7430 paid aerie North/Hold/South, full button rectangle and edge hits",
+      "Ordinary paid Wings flight launch and live transit",
+      "Close-source warning/transit labels at 390\u00d7650 and 844\u00d7390, 4px separation",
+      "All-key shared storage hash unchanged; own tab closed; six prior tabs unchanged"
+    ],
+    "syntheticEvidence": "Closer aerie/gate warning and transit geometry used explicitly frozen authored checkpoints, not a claimed normal-play sequence.",
+    "crash": false
+  },
+  "priorFeedbackNative": {
+    "reports": [
+      "docs/INCOME_FIRST_BUILD_NATIVE_QA.md",
+      "docs/hidden-hints-native-qa.md"
+    ],
+    "verified": [
+      "Portrait income",
+      "Real paid first-barracks automatic start and invalid/cancel holds",
+      "Full hint-banner collapse, Show and manual Resume, recovered field space"
+    ],
+    "limit": "An earlier hint-review renderer crashed during separate final storage verification after useful checks; preceding fingerprints matched. It is retained in that report, not erased by the later clean bounded pass."
+  },
+  "knownLimits": [
+    "Physical phones/PWA, non-Chromium, physical controllers and desktop package remain unverified.",
+    "Subjective music listening is still unverified.",
+    "The exact revised-source cloud browser matrix has not run.",
+    "AI still does not buy Warden lodges or issue flight orders; no balance mechanic change is claimed in this repair.",
+    "Crowded flight-label fallback below 168 CSS px field height can overlap; supported-size geometry and current viewport safety are covered separately."
+  ]
+}

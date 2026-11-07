@@ -68,10 +68,12 @@ test('portable backup controls require a preview and explicit replacement action
     /restoreBackup\(profileSession\.importStorage, pendingBackupText\)/,
   );
   assert.match(app, /createBackup\(localStorage, options\)/);
-  assert.match(
-    app,
-    /allowProfileReload = true;[\s\S]*?started = false;[\s\S]*?progressDirty = false;[\s\S]*?location\.reload\(\)/,
-  );
+  const reload = app.slice(app.indexOf('function reloadProfile()'), app.indexOf("$('profileReload').onclick"));
+  assert.match(reload, /const status = profileSession\.status\(\);[\s\S]*if \(!status\.canReload \|\| pendingFinalizeOutcome\) return;/);
+  assert.match(reload, /if \(status\.reloadRequired\) profileGate = status;/);
+  assert.match(reload, /allowProfileReload = true;[\s\S]*?paused = true;[\s\S]*?location\.reload\(\)/);
+  assert.doesNotMatch(reload, /started\s*=|progressDirty\s*=/,
+    'reload keeps the retained attempt and dirty progress until actual departure');
 });
 
 test('controller uses the shared legal placement path and runtime assets are cached', () => {

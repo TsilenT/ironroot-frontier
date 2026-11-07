@@ -13,7 +13,7 @@ function assertMap(envelope,id){
   // v1/v2 restoration is covered separately, without rewriting its identity.
   expect(envelope).toMatchObject({format:'ironroot-save',version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
   expect(envelope).not.toHaveProperty('campaignId');
-  expect(envelope.game).toMatchObject({version:3,mapId:id,mapRevision:1,rulesetId:'frontier-rootwarden-open',rulesetRevision:1});
+  expect(envelope.game).toMatchObject({version:3,mapId:id,mapRevision:1,rulesetId:'frontier-flight-open',rulesetRevision:1});
   expect(Game.restore(envelope.game).map.id).toBe(id);
 }
 

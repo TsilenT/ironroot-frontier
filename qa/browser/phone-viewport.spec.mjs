@@ -48,7 +48,7 @@ async function expectGeometry(page,{protectedCount=0}={}){
  return g;
 }
 async function startSkirmish(page){
- await page.goto('/');await press(page,'[data-mode="skirmish"]');await page.locator('#skirmishRules').selectOption('frontier-rootwarden-open');await press(page,'#start');
+ await page.goto('/');await press(page,'[data-mode="skirmish"]');await page.locator('#skirmishRules').selectOption('frontier-flight-open');await press(page,'#start');
  await expect(page.locator('#welcome')).toBeHidden();await expect(page.locator('#pause')).toHaveAttribute('aria-label','Pause game');
 }
 async function waitForClock(page,previous='00:00'){
@@ -63,7 +63,7 @@ for(const size of sizes)test(`phone ${size.width}x${size.height}: clock, paid bu
  const state=await pause(page);
  expect(state.game.state.time).toBeGreaterThan(0);expect(state.game.state.buildings.filter(b=>b.side===0&&b.type==='wardenLodge')).toHaveLength(1);
  expect(state.game.state.gold[0]).toBeCloseTo(420-210+5*state.game.state.time,1);
- expect(state).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-rootwarden-open'}});
+ expect(state).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-flight-open'}});
  const stopped=savedClockText(state);await expect(page.locator('#time')).toHaveText(stopped);await page.waitForTimeout(1100);expect(await saved(page)).toEqual(state);await expect(page.locator('#time')).toHaveText(stopped);
  await press(page,'#saveExit');await page.reload();expect(await saved(page)).toEqual(state);
  await press(page,'#resumeSaved');await expectGeometry(page);await waitForClock(page,stopped);const resumed=await pause(page);
