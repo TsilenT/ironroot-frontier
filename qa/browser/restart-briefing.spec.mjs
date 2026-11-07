@@ -161,6 +161,20 @@ test('queued removal retires a tab even when a fresh opening already has identic
   expect(await saved(page)).toEqual(opening);await press(page,'#saveExit');expect(await saved(page)).toEqual(opening);
 });
 
+test('a delayed old removal event preserves an explicitly begun different battle',async({page})=>{
+  await page.goto('/');await begin(page);await pause(page);
+  const removedBytes=await page.evaluate(key=>localStorage.getItem(key),SAVE);
+  await press(page,'#restartBattle');await press(page,'#confirmRestart');await briefing(page);
+  await press(page,'[data-mode="skirmish"]');await press(page,'#start');await pause(page);
+  const newer=await saved(page);expect(newer.scenario.kind).toBe('skirmish');
+  // Bounded delayed-event reproduction, while navigation and saving stay native.
+  await page.evaluate(({key,oldValue})=>window.dispatchEvent(new StorageEvent('storage',
+    {key,oldValue,newValue:null,storageArea:localStorage})),{key:SAVE,oldValue:removedBytes});
+  await expect(page.locator('#restartBattle')).toBeEnabled();expect(await saved(page)).toEqual(newer);
+  await press(page,'#resume');await page.waitForTimeout(120);await pause(page);
+  expect((await saved(page)).game.state.time).toBeGreaterThan(newer.game.state.time);
+});
+
 test('held controller confirm reaches briefing once; a fresh activation explicitly begins',async({page})=>{
   await installPad(page);await page.goto('/');await begin(page);await pause(page);
   await page.locator('#restartBattle').focus();await padButton(page,0);await padButton(page,1);

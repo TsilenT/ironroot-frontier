@@ -175,7 +175,8 @@ test('an observed retirement fences an old attempt even if the fresh checkpoint 
   const {createSaveSession} = await import('../dist/persistence.js');
   let value = 'opening';
   const session = createSaveSession({get:()=>value,set:(_key,next)=>{value=next;return true;}}, 'save');
-  session.claim();session.release();
+  session.claim();assert.equal(session.release('different checkpoint'),false);
+  assert.equal(session.status(),'current');assert.equal(session.release('opening'),true);
   assert.equal(session.status(),'stale');assert.equal(session.set('save','old attempt advanced'),false);
   assert.equal(value,'opening');session.claim();assert.equal(session.set('save','explicit new attempt'),true);
 });

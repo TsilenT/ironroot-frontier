@@ -3,19 +3,19 @@
   "branch": "codex/restart-briefing",
   "repository": "TsilenT/ironroot-frontier",
   "parallelPR14": "dc33357b4c51cc9ad421afd20c885356261e6a4a",
-  "releaseVersionChanged": false,
+  "releaseVersionChanged": true,
   "profileProtocolChanged": false,
-  "cacheChanged": false,
+  "cacheChanged": true,
   "merged": false,
   "deployed": false,
   "instructions": "No AGENTS.md or .agents/skills found in repository or workspace ancestors; read README and managed cloud runtime skill.",
   "runtime": {
     "scope": "local source-dist validation only, not publication approval",
     "runtimeFiles": 51,
-    "totalBytes": 992307,
+    "totalBytes": 992586,
     "files": {
       "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
-      "app.js": "06e7f65b24317057130ff7dfe68dae104f8e4a5e54e9d2c3bd3321cd4b26fc17",
+      "app.js": "421d8f628700fb02a11a21f9bf48d7985d4a66af042a89bc8cc82f497a48703e",
       "audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
       "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
       "backup.js": "16f6ccd3c857b1e518350fe9b9e098a87eb0eb15ce72a434550df543604edaa1",
@@ -40,7 +40,7 @@
       "flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
       "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
       "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
-      "index.html": "f29b5d581bb3557bef7245358c31400fe5d1e4a089a053becfcfba773856c68f",
+      "index.html": "37231541c2dd576fe2bc896824664b46ba054a1740b90c79d8a6525f13d36ac9",
       "input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
       "intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
       "keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
@@ -49,7 +49,7 @@
       "mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
       "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
       "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
-      "persistence.js": "dc94ae5e6760ac35157cfc0f7b93274c8d5dfc0021f7c0e3a15270f84040f828",
+      "persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
       "profile-session.js": "dfab0369f5beefc742bed294c2172bc70128f8c1c49e7cbbb24890d81c75f8e3",
       "protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
       "render.js": "5d567675c6f1c523ea85233de8f4365e4bfb8312371715dfc8247be9b36d8dc2",
@@ -58,7 +58,7 @@
       "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
       "rulesets.js": "371e6201e92058faa7d5027229f609bb02c39f761f0eee28420e1bac992f00cf",
       "scouting.js": "d2e75359e295aa61d8ef41db96a579983cdd7149424c4ec5e1017125d4a46b4d",
-      "service-worker.js": "d8c9912f30645250f9864999935c425d37ace0830a6d313fa350e32cc52a460e",
+      "service-worker.js": "9aa72ca28a226755411e6b9d1335c71efe48babae13e26524a7fc9fd7bb783a4",
       "styles.css": "6ffc4f9052486d2ceea5d66a3ba687f79df9d482f34fb6cf59da149888b584e4",
       "training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
       "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
@@ -71,12 +71,14 @@
     "passed": 1433,
     "failed": 0,
     "skipped": 1,
-    "log": "qa/restart-briefing/root-final.log"
+    "log": "qa/restart-briefing/root-final.log",
+    "sourceHead": "e7674b0b3968ddaf4c45af2207c7ea8b83541fd8"
   },
   "finalOwnershipTests": {
     "passed": 103,
     "failed": 0,
-    "log": "qa/restart-briefing/ownership-final.log"
+    "log": "qa/restart-briefing/ownership-final.log",
+    "sourceHead": "e7674b0b3968ddaf4c45af2207c7ea8b83541fd8"
   },
   "browser": "Chromium 155.0.8059.79, Playwright 1.65.0, Node v24.22.1",
   "browserRuns": {
@@ -144,6 +146,30 @@
       },
       "results": "qa/restart-briefing/browser-keyboard-artifacts/results.json",
       "log": "qa/restart-briefing/browser-keyboard.log"
+    },
+    "browser-retirement": {
+      "description": "Affected storage flows; 21 pass, three new-case fixture-field failures before event injection; failed log/screenshots/error contexts retained",
+      "stats": {
+        "expected": 21,
+        "unexpected": 3,
+        "flaky": 0,
+        "skipped": 0
+      },
+      "statsSource": "retained browser-retirement.log; original JSON reporter file was overwritten by the final run",
+      "log": "qa/restart-briefing/browser-retirement.log"
+    },
+    "browser-retirement-final": {
+      "description": "Corrected scenario.kind assertion; all downstream delayed-removal, resume and advancing-save assertions retained",
+      "stats": {
+        "startTime": "2026-11-07T19:32:58.768Z",
+        "duration": 10085.142,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "results": "qa/restart-briefing/browser-retirement-final-artifacts/results.json",
+      "log": "qa/restart-briefing/browser-retirement-final.log"
     }
   },
   "screenshots": [
@@ -161,11 +187,31 @@
     "No non-Chromium run",
     "No deployed smoke",
     "No combined PR14 integration run",
-    "Existing localStorage optimistic ownership is not atomic compare-and-swap"
+    "Existing localStorage optimistic ownership is not atomic compare-and-swap",
+    "A delayed removal of identical bytes conservatively retires even an explicit newer identical claim; the current optimistic protocol cannot distinguish it from a stale old claim"
   ],
   "runtimeSourceHashes": {
-    "dist/app.js": "06e7f65b24317057130ff7dfe68dae104f8e4a5e54e9d2c3bd3321cd4b26fc17",
-    "dist/index.html": "f29b5d581bb3557bef7245358c31400fe5d1e4a089a053becfcfba773856c68f",
-    "dist/persistence.js": "dc94ae5e6760ac35157cfc0f7b93274c8d5dfc0021f7c0e3a15270f84040f828"
-  }
+    "dist/app.js": "421d8f628700fb02a11a21f9bf48d7985d4a66af042a89bc8cc82f497a48703e",
+    "dist/index.html": "37231541c2dd576fe2bc896824664b46ba054a1740b90c79d8a6525f13d36ac9",
+    "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "dist/service-worker.js": "9aa72ca28a226755411e6b9d1335c71efe48babae13e26524a7fc9fd7bb783a4"
+  },
+  "navigationHead": "e7674b0b3968ddaf4c45af2207c7ea8b83541fd8",
+  "releaseCandidate": "0.18.1",
+  "cacheIdentity": "ironroot-v0.18.1",
+  "integrationOrder": "PR15 first; PR14 rebases afterward with another fresh cache identity; no combined run, merge or deployment",
+  "parallelPR14LatestObserved": "28356b0762676f874b9d902615b34dc939fe5422",
+  "runtimeNavigationHead": "qa/restart-briefing/runtime-navigation-head.json",
+  "releaseOwnershipTests": {
+    "passed": 124,
+    "failed": 0,
+    "skipped": 1,
+    "log": "qa/restart-briefing/release-ownership-tests.log",
+    "coverage": "actual app handler and createSaveSession event orders, persistence, profile, history, version, package and runtime"
+  },
+  "releaseChecks": [
+    "qa/restart-briefing/release-syntax.log",
+    "qa/restart-briefing/release-browser-check.log",
+    "qa/restart-briefing/release-metadata-check.log"
+  ]
 }

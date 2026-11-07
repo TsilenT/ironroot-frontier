@@ -226,9 +226,13 @@ export function createSaveSession(storage, key) {
       unavailableClaim = !current.ok;
       return current.ok;
     },
-    release() {
+    release(removedValue) {
+      // A queued removal belongs to the checkpoint it removed, not a later
+      // explicit claim/save. Equal bytes remain conservatively indistinguishable.
+      if (!claimed || expected !== removedValue) return false;
       claimed = false;
       unavailableClaim = false;
+      return true;
     },
     status() {
       const current = read();

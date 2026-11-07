@@ -2173,10 +2173,10 @@ window.addEventListener('storage', (event) => {
     return;
   }
   if (event.key !== SAVE) return;
-  // A confirmed restart removes the old attempt. Keep that retirement even
-  // if another tab has already saved a byte-identical fresh opening by the
-  // time this queued event arrives. Only an explicit new/resumed start claims.
-  if (event.newValue === null && event.oldValue !== null) battleSession.release();
+  // Retire the removed checkpoint's claim, even if identical bytes were saved
+  // again before this event arrived. A different, explicitly claimed checkpoint
+  // must survive an older queued removal; equal-byte claims are indistinguishable.
+  if (event.newValue === null && event.oldValue !== null) battleSession.release(event.oldValue);
   if (
     started &&
     !battleSession.isCurrent() &&
