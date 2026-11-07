@@ -32,6 +32,9 @@ test('lookup resolves repetition by mapped action and protects browser, IME, han
     assert.equal(keyboard.keyboardAction(event('Digit1',extra)),null);
   assert.equal(keyboard.keyboardAction(event('KeyQ'),custom),'panLeft');
   assert.equal(keyboard.keyboardAction(event('Digit9')),null);
+  const button={closest:selector=>selector.startsWith('button')?{}:null};
+  assert.equal(keyboard.keyboardAction(event('KeyP',{target:button}),map({pause:'KeyP'})),'pause');
+  assert.equal(keyboard.keyboardAction(event('Space',{target:button})),null);
 });
 
 function handlerHarness() {
@@ -61,6 +64,8 @@ test('actual app handler routes remapped actions, active roster slots and only h
   for(const extra of [{ctrlKey:true},{metaKey:true},{altKey:true},{shiftKey:true},{defaultPrevented:true},{isComposing:true},{keyCode:229},{target:{isContentEditable:true}},{target:{closest:()=>({})}},{repeat:true}]) h.send('KeyQ',extra);
   assert.deepEqual(h.calls,[]);
   h.c.paused=true;assert.equal(h.send('KeyQ').defaultPrevented,undefined);
+  h.c.preferences.keyboard=map({pause:'KeyP'});
+  h.send('KeyP',{target:{closest:selector=>selector.startsWith('button')?{}:null}});assert.deepEqual(h.calls.pop(),['pause']);
   h.c.paused=false;h.c.recoveryHold={};assert.equal(h.send('KeyQ').defaultPrevented,undefined);
   h.c.recoveryHold=null;h.$('helpModal').classList.remove('hidden');assert.equal(h.send('KeyQ').defaultPrevented,undefined);
 });
@@ -79,4 +84,28 @@ test('actual capture consumes a fresh binding and retires releases; conflict, Es
   assert.notEqual(c.keyboardCapture,null);assert.match($('keyboardStatus').textContent,/already used/);assert.equal(scope.keyUp(event('Digit2')),true);
   const esc=event('Escape');scope.keyDown(esc);c.captureKeyboardInput(esc);assert.equal(esc.stopped,true);assert.equal(c.keyboardCapture,null);assert.equal(scope.keyUp(event('Escape')),true);
   begin();const tab=event('Tab');scope.keyDown(tab);c.captureKeyboardInput(tab);assert.equal(c.keyboardCapture,null);assert.equal(tab.defaultPrevented,undefined);
+});
+test('actual scope synchronization cancels capture on closure, hidden page and profile recovery', () => {
+  for (const reason of ['dialog', 'disclosure', 'hidden', 'recovery', 'profile']) {
+    const h=startupHarness(), {c,$}=h;
+    c.keyboardCapture={action:'build1'};
+    c.document.hidden=false; $('settingsModal').classList.remove('hidden'); $('keyboardSettings').open=true;
+    runInContext(h.source.slice(h.source.indexOf('function cancelKeyboardCapture('),h.source.indexOf('function setKeyboardBinding(')),c);
+    c.inputScope.keyDown(event('Space'));
+    if(reason==='dialog') $('settingsModal').classList.add('hidden');
+    if(reason==='disclosure') $('keyboardSettings').open=false;
+    if(reason==='hidden') c.document.hidden=true;
+    if(reason==='recovery') c.recoveryHold={};
+    if(reason==='profile') c.profileGate={};
+    c.syncInputScope();
+    assert.equal(c.keyboardCapture,null,reason);
+    assert.equal(c.inputScope.keyUp(event('Space')),true,reason+' retires release');
+  }
+});
+test('capture key retirement preserves the deliberate native pointer focus gesture', () => {
+  const scope=createInputScopeGuard('options'),pointer={pointerId:1,pointerType:'mouse',detail:1,isTrusted:true};
+  scope.keyDown(event('Enter'));scope.pointerDown(pointer);scope.interruptKeys();
+  assert.equal(scope.keyUp(event('Enter')),true);
+  assert.equal(scope.pointerEnd(pointer),false);assert.equal(scope.click(pointer),false);
+  assert.equal(scope.keyDown(event('Enter')),false,'next independent key is immediately usable');
 });
