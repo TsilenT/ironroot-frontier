@@ -494,7 +494,7 @@ export class Renderer {
     c.fillRect(0, 150, frontier, 600);
     c.fillStyle = '#a051370b';
     c.fillRect(this.map.width - frontier, 150, frontier, 600);
-    this.drawBridgeZones(game);
+    this.drawBridgeZones(game, 'zones');
     if (buildType) {
       for (const { x, y } of buildSites(this.map, 0)) {
         const valid = game.canBuild(buildType, x, y).ok;
@@ -622,6 +622,8 @@ export class Renderer {
     }
     // Paths stay below actors; complete route labels clear building pennants.
     drawFlightLabels(this, flightLabels);
+    // Control labels stay readable above troops and projectiles; zone fills remain below them.
+    this.drawBridgeZones(game, 'labels');
     // Mission badges must not disappear behind enlarged troops or projectile trails.
     for (const e of s.buildings) {
       if (e.x < left || e.x > right) continue;
@@ -717,7 +719,7 @@ export class Renderer {
     c.fillRect(0, 0, this.width, this.height);
     this.drawMinimap(s, game, ui);
   }
-  drawBridgeZones(game) {
+  drawBridgeZones(game, layer = 'all') {
     if (!supportsBridgeControl(game.ruleset)) return;
     const c = this.c, states = bridgeStatus(game), zones = bridgeZones(game.map);
     c.save();
@@ -725,14 +727,21 @@ export class Renderer {
     for (const zone of zones) {
       const state = states[zone.lane], left = zone.x - zone.width / 2, top = zone.y - zone.height / 2;
       const color = state.owner === 0 ? '#c4edd8' : state.owner === 1 ? '#ffd4b5' : '#f0e6bb';
-      c.fillStyle = state.owner === 0 ? '#367c6840' : state.owner === 1 ? '#9b4f3d40' : '#20312855';
-      c.fillRect(left, top, zone.width, zone.height);
-      c.strokeStyle = color;
-      c.setLineDash(state.blocked ? [10, 7] : []);
-      c.strokeRect(left, top, zone.width, zone.height);
-      c.setLineDash([]);
-      const owner = state.owner === null ? 'UNOWNED' : state.owner === 0 ? 'YOU' : 'ENEMY';
       const capturing = state.capturing !== null;
+      if (layer !== 'labels') {
+        c.fillStyle = state.owner === 0 ? '#367c6840' : state.owner === 1 ? '#9b4f3d40' : '#20312855';
+        c.fillRect(left, top, zone.width, zone.height);
+        c.strokeStyle = color;
+        c.setLineDash(state.blocked ? [10, 7] : []);
+        c.strokeRect(left, top, zone.width, zone.height);
+        c.setLineDash([]);
+        if (capturing) {
+          c.fillStyle = '#14291f'; c.fillRect(left, top + zone.height - 10, zone.width, 10);
+          c.fillStyle = '#fff0b5'; c.fillRect(left, top + zone.height - 10, zone.width * state.progress / 2, 10);
+        }
+      }
+      if (layer === 'zones') continue;
+      const owner = state.owner === null ? 'UNOWNED' : state.owner === 0 ? 'YOU' : 'ENEMY';
       const label = `${zone.lane + 1} ${owner}`;
       const detail = capturing ? `${state.capturing === 0 ? 'Y' : 'E'} → ${Math.floor(state.progress / 2 * 100)}%`
         : state.blocked ? 'X BLOCKED' : state.owner === null ? 'GROUND 2s' : 'HELD';
@@ -745,10 +754,6 @@ export class Renderer {
       c.fillText(label, zone.x, top - line / 2);
       c.fillStyle = '#fff2d8';
       c.fillText(detail, zone.x, top + line / 2 + 3);
-      if (capturing) {
-        c.fillStyle = '#14291f'; c.fillRect(left, top + zone.height - 10, zone.width, 10);
-        c.fillStyle = '#fff0b5'; c.fillRect(left, top + zone.height - 10, zone.width * state.progress / 2, 10);
-      }
     }
     c.restore();
   }

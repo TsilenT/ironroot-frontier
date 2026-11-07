@@ -2205,6 +2205,7 @@ let hudTimer = 0,
 function updateHUD() {
   const s = game.state;
   const bridgeMode = !!s.bridgeControl;
+  $('app').classList.toggle('bridge-income', bridgeMode);
   const bridgeRate = bridgeMode ? bridgeIncome(game)[0] : 0;
   const bridgeLabel = bridgeMode ? `Bridges +${bridgeRate.toFixed(2)} /s` : '';
   $('bridgeBattleStatus').classList.toggle('hidden', !bridgeMode);
