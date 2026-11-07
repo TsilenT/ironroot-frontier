@@ -28,7 +28,11 @@ export async function nativeAction(page,operation){
     // Playwright's genuine click/tap actionability waits for stable RAF geometry.
     await page.clock.runFor(16);await hostWait(1);
   }
-  await pending;if(error)throw error;return value;
+  await pending;if(error)throw error;
+  // The native click can synchronously resize/clear the lesson canvas after the
+  // last pumped RAF. Deliver its next scheduled frame before reading pixels.
+  // This runs the real renderer; it does not repair or bypass the pixel proof.
+  await page.clock.runFor(16);return value;
 }
 export async function resumeRealTime(page){if(virtual)await page.clock.resume();}
 
