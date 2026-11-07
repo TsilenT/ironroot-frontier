@@ -310,6 +310,10 @@ test.describe('Battle keyboard controls on desktop', () => {
     await page.keyboard.down('KeyP'); await expect(page.locator('#pauseVeil')).toBeVisible();
     await page.keyboard.down('KeyP'); await page.keyboard.up('KeyP');
     await expect(page.locator('#pauseVeil')).toBeVisible();
+    await expect(page.locator('#resume')).toBeFocused();
+    await page.keyboard.press('KeyP'); await expect(page.locator('#pauseVeil')).toBeHidden();
+    await battlefield(page); await page.keyboard.press('KeyP');
+    await expect(page.locator('#pauseVeil')).toBeVisible();
     await page.keyboard.press('Enter'); await expect(page.locator('#pauseVeil')).toBeHidden();
   });
 

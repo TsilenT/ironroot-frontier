@@ -55,12 +55,17 @@ export function ignoreKeyboardEvent(event) {
   return !!(event.defaultPrevented || event.isComposing || event.keyCode === 229 ||
     event.ctrlKey || event.altKey || event.metaKey || event.shiftKey);
 }
-export function nativeKeyboardTarget(target) {
+export function nativeKeyboardTarget(target, code) {
   // isContentEditable includes inherited and plaintext-only editing hosts.
-  return !!(target?.isContentEditable || target?.closest?.('input,textarea,select,button,a[href],summary,[role="textbox"]'));
+  if (target?.isContentEditable || target?.closest?.('input,textarea,select,[role="textbox"]')) return true;
+  // Preserve native activation/scrolling while allowing a remapped pause key
+  // to resume when the pause menu has focused its Resume button. Practice
+  // omits code and retains its existing broader native-control exclusion.
+  return !!(target?.closest?.('button,a[href],summary') &&
+    (code === undefined || ['Enter', 'NumpadEnter', 'Space'].includes(code)));
 }
 export function keyboardAction(event, map) {
-  if (ignoreKeyboardEvent(event) || nativeKeyboardTarget(event.target)) return null;
+  if (ignoreKeyboardEvent(event) || nativeKeyboardTarget(event.target, event.code)) return null;
   const bindings = effectiveBindings(map);
   const action = ACTIONS.find(action => bindings[action] === event.code);
   return action && (!event.repeat || action === 'panLeft' || action === 'panRight') ? action : null;

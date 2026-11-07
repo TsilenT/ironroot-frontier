@@ -11,7 +11,7 @@ practice keeps its defaults and has no profile/storage access.
 
 Dispatch uses the existing paid build, volley, pause and pan handlers. Keyboard
 events already handled elsewhere, IME composition, modifier combinations and
-editable/native-control targets do not trigger battle actions. Only pan repeats.
+text entry and native activation/control-editing keys do not trigger battle actions. Only pan repeats.
 Capture retires held keys using the existing input-scope guard. Leaving focus,
 Tab, Escape, Back, closure, blur, visibility loss and recovery cancel capture.
 
@@ -22,6 +22,11 @@ that reconstruct only six preferences from discarding keyboard settings. A pinne
 actual v0.17 protocol-six client verifies both already-open and later-opened
 clients, including destructive recovery refusal. No battle identity or campaign
 progress schema changed.
+
+A review follow-up narrows the native button guard to Enter/Space activation,
+so a remapped pause key can resume while Resume has focus. Input/select/range
+and inherited contenteditable remain fully protected. The real-handler and
+browser tests now assert both remapped resume and native Enter.
 
 ## Validation in progress
 
