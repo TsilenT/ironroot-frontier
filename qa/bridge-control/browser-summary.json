@@ -1,0 +1,69 @@
+{
+  "scope": "Local native Chromium QA; real clock and trusted mouse/touch input; no deployment",
+  "runtimeInventory": "qa/bridge-control/runtime-final.json",
+  "runtimeInventorySha256": "47c1265f794fb75d228a9fc397203a39db59cf7f9bb4fe50e3ed19bb4115c9dd",
+  "runtimeFiles": 52,
+  "runtimeBytes": 1008378,
+  "runs": {
+    "browser-initial": {
+      "startTime": "2026-11-07T20:51:00.110Z",
+      "duration": 56618.775,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    "browser-final": {
+      "startTime": "2026-11-07T20:53:41.522Z",
+      "duration": 142333.98400000003,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "browser-observation-final": {
+      "startTime": "2026-11-07T20:57:00.847Z",
+      "duration": 20386.176,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "browser-regressions": {
+      "startTime": "2026-11-07T20:52:37.669Z",
+      "duration": 56000.213,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "browser-short-hints": {
+      "startTime": "2026-11-07T20:57:49.443Z",
+      "duration": 6730.769,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "latestApplicable": {
+    "bridgeCases": 12,
+    "existingRegressionCases": 13,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "automaticRetries": 0
+  },
+  "retainedFailures": {
+    "readability": 4,
+    "transientObservationRace": 2
+  },
+  "measurements": "qa/bridge-control/browser-measurements.json",
+  "limits": [
+    "Emulated Chromium viewports, not physical-phone or non-Chromium evidence",
+    "Synthetic contest fixture is not paid gameplay or balance evidence",
+    "Ordinary Resume toast can temporarily cover second-road label in the first screenshot; captured labels are additionally proven by bounded passive actual Canvas2D and accessible-status observations",
+    "No whole 1600-case browser suite",
+    "Desktop controls retain pre-existing31px dimensions; mobile controls measured44px minimum"
+  ]
+}

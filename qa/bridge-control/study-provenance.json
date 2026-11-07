@@ -1,0 +1,24 @@
+{
+  "reason": "One source-validation rerun after strict save admission was tightened for per-owned-share time bounds and sparse/nonfinite earned entries. Simulation, AI, reward, declared policy and seeds did not change. Initial evidence retained.",
+  "initial": "study-results.json",
+  "final": "study-final-results.json",
+  "planSha256": "46745fdac69dd219ff2da2d17489b3fad6e3435db84d85dc81b08c6db1e8345c",
+  "initialSourceHashes": {
+    "engine.js": "98751383f0f754a9ca79297050439c717c62ba1e868a38b83e21bace016c43c4",
+    "rulesets.js": "be7e3a7f91aa3869ea7d727018b60e18687961bef440f67f45f675ed8491b978",
+    "bridge-control.js": "aaa1c4f0ef1925363b771da0b9aec474ab35ead429d1b62067f2a04b27abaa9b",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567"
+  },
+  "finalSourceHashes": {
+    "engine.js": "6dfcc3fe1d8f7fae8a91b778a759dc1f4e016f2cff55f12d6056a2c8e43505ad",
+    "rulesets.js": "be7e3a7f91aa3869ea7d727018b60e18687961bef440f67f45f675ed8491b978",
+    "bridge-control.js": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567"
+  },
+  "exactGameResultsUnchanged": true,
+  "exactComparisonsUnchanged": true,
+  "gamesPerRun": 36,
+  "failedGames": 0,
+  "retainedInitial": true,
+  "finalResultSha256": "abb251eb497df45f6d375947123803b16b3726848fc30ccd72f02a8ede6cfd45"
+}

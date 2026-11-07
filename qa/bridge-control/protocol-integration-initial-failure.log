@@ -1,0 +1,184 @@
+✔ current protocol pins the exact old seven source and retains the legacy default (3.114424ms)
+✔ absent and all prior ready markers upgrade alone before any profile domain is accessed (16.753402ms)
+✔ already-open and later-opened protocol-seven clients cannot discard the new record or any other profile data (8.451225ms)
+✔ failed or uncertain current-marker writes block reads, saves and import until a verified reload (3.091073ms)
+✔ post-write throws are accepted only after readback, while unfinished and future markers remain untouched (2.107674ms)
+✔ five old records and modern sixth record/history export and import without changing campaign totals or preferences (19.081036ms)
+✔ old backups still restore all five records and leave the current protocol in force (9.61592ms)
+✔ a failed replacement rolls back each domain exactly and preserves the new trial record (30.13604ms)
+✔ new trial records validate current IDs and deadlines without broadening legacy result identities (13.378976ms)
+✔ current trial attempt identity is admitted in the existing battle/backup schema (28.000558ms)
+✔ keyboard settings round trip through optional partial preferences and copied backup overrides (11.252064ms)
+✔ old backups without keyboard settings restore defaults and remove a previous remap (1.630663ms)
+✔ backup validation rejects malformed, excessive, reserved and duplicate effective keyboard bindings before storage access (12.759988ms)
+✔ null unbinds survive export and allow another action to use that vacated default (0.925128ms)
+✔ keyboard preference writes are immutable, verified and retried after quota and readback failures (2.34938ms)
+✔ stale preferences and changed profile epochs cannot replace newer keyboard or campaign settings (0.541957ms)
+✔ absent, unavailable and malformed preference bytes never trigger startup writes (0.791976ms)
+✔ actual application startup uses validated defaults for malformed maps without rewriting retained preferences (30.833417ms)
+✔ actual retained-session and dirty full-backup handlers export the page keyboard map without saving it (11.92778ms)
+✔ current protocol advances only a verified marker and the old real protocol-six source remains pinned (1.468823ms)
+✔ already-open and later-opened actual six-field clients cannot erase keyboard controls or campaign progress (3.3862ms)
+✔ current-marker write and readback failures leave existing domain bytes protected until verified reload (1.003414ms)
+✔ keyboard import readback and rollback retain exact prior bytes and leave stale current tabs fenced (6.983785ms)
+✔ successful keyboard import verifies the new epoch, settings and current-tab fence (0.791401ms)
+✔ absent marker is a legacy-ready profile; guarded storage works without writing a marker (2.410621ms)
+✔ begin publishes a verified restoring marker before permitting import reads or writes (3.933186ms)
+✔ all ordinary save writes and removes are blocked in stale tabs throughout restoration (1.930674ms)
+✔ restored marker makes every old tab read-only and requires reload, including its owner (17.207248ms)
+✔ verified rollback to an originally ready profile rebinds only its owning tab (0.980668ms)
+✔ incomplete rollback publishes failed barrier and requires explicit recovery (3.158168ms)
+✔ rollback during recovery of a partial or abandoned profile never publishes ready (0.499972ms)
+✔ invalid markers require explicit recovery; future protocol markers cannot be downgraded (2.28988ms)
+✔ initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import (0.626867ms)
+✔ read failures and invalid raw read return values cannot be interpreted as an absent marker (0.953614ms)
+✔ marker begin quota failure leaves original game bytes intact and denies the import adapter (0.764726ms)
+✔ marker writes that throw after taking effect are accepted only after exact readback (0.337395ms)
+✔ an unverified begin can be resumed only after the same owned restoring marker becomes readable (0.439239ms)
+✔ failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry (0.607055ms)
+✔ ready marker written before a failed read can be verified by idempotent finalization retry (0.273165ms)
+✔ failure marker publication can be retried without falsely opening partial data (0.217446ms)
+✔ unexpected marker corruption after a write never grants import ownership (0.365786ms)
+✔ a superseded importer cannot read, write, remove, finalize or roll back over the newer owner (0.675921ms)
+✔ import ownership loss mid-restore prevents rollback from undoing a newer completed import (6.48527ms)
+✔ stale dirty campaign and trial bests cannot be reintroduced after a successful empty import (2.207685ms)
+✔ beforeunload-style stale history, settings and battle writes are also blocked after replacement (1.075002ms)
+✔ ordinary facades reserve the marker; import facade is limited to the five game domains (1.724019ms)
+✔ session checks marker before every operation, not merely before the first of five writes (1.383919ms)
+✔ marker factory failures, invalid options and invalid outcomes cannot mutate game state (0.692053ms)
+✔ a denied marker read after initially ready play blocks saving without deleting any bytes (0.226423ms)
+✔ fresh page opened during restoring or failed phase cannot read partial profile domains (0.658968ms)
+✔ UI: late older successful file read cannot replace the newer confirmed import (16.61059ms)
+✔ UI: late older file failure cannot invalidate a newer parsed backup (3.984834ms)
+✔ UI: dismissing Settings invalidates an outstanding file read across reopen (2.84713ms)
+✔ UI: incomplete rollback preserves the paused session and warning after cancellation (4.247568ms)
+✔ UI: failed marker finalization blocks reload until the same-outcome retry succeeds (14.410233ms)
+✔ UI: normal export is blocked during recovery while retained-game export remains available (8.728111ms)
+✔ UI: blocked result persistence marks newly earned progress dirty (2.179987ms)
+✔ UI: storage-unavailable autosave warns once without discarding the active game (1.633724ms)
+✔ UI: beforeunload during recovery warns without saving old in-memory data (3.621997ms)
+✔ UI: actual application startup protects the current profile with protocol 9 before ordinary storage (1.272439ms)
+✔ UI: failed profile upgrade pauses play and cannot bypass protection through import recovery (2.807325ms)
+✔ UI: uncertain profile upgrade stays visibly paused while its verification read is denied (1.10256ms)
+✔ UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results (3.825907ms)
+✔ UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage (3.984115ms)
+✖ UI: unknown map refuses fresh Start with modal isolation until explicit backup replacement (29.439277ms)
+✖ UI: future revision refuses fresh Start with modal isolation until explicit backup replacement (14.454611ms)
+✖ UI: missing map identity refuses fresh Start with modal isolation until explicit backup replacement (14.119298ms)
+✖ UI: Long March wrong right base refuses fresh Start with modal isolation until explicit backup replacement (12.425131ms)
+✖ UI: Twin Span phantom third lane refuses fresh Start with modal isolation until explicit backup replacement (12.964627ms)
+✖ UI: Twin Span off-site building refuses fresh Start with modal isolation until explicit backup replacement (13.967398ms)
+✖ UI: long-march masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement (9.323181ms)
+✖ UI: long-march masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement (16.459392ms)
+✖ UI: twin-span masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement (20.173893ms)
+✖ UI: twin-span masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement (9.531269ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 64
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 514.068656
+
+✖ failing tests:
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: unknown map refuses fresh Start with modal isolation until explicit backup replacement (29.439277ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: future revision refuses fresh Start with modal isolation until explicit backup replacement (14.454611ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: missing map identity refuses fresh Start with modal isolation until explicit backup replacement (14.119298ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: Long March wrong right base refuses fresh Start with modal isolation until explicit backup replacement (12.425131ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: Twin Span phantom third lane refuses fresh Start with modal isolation until explicit backup replacement (12.964627ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: Twin Span off-site building refuses fresh Start with modal isolation until explicit backup replacement (13.967398ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: long-march masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement (9.323181ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: long-march masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement (16.459392ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: twin-span masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement (20.173893ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/profile-session.test.mjs:378:42
+✖ UI: twin-span masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement (9.531269ms)
+  ReferenceError [Error]: bridgeMode is not defined
+      at syncChoice (evalmachine.<anonymous>:12:3)
+      at cancel (evalmachine.<anonymous>:7:3)
+      at Object.start (evalmachine.<anonymous>:116:3)
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

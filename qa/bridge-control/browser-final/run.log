@@ -1,0 +1,110 @@
+[WebServer] (node:9997) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 2 workers
+
+(node:10075) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10074) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [phone] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (28.6s)
+  ✓   1 [phone] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (34.9s)
+(node:10766) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (12.2s)
+(node:10962) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [narrow-phone] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (26.5s)
+  ✘   6 [narrow-phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (6.0s)
+(node:11417) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [narrow-phone] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (31.5s)
+(node:11575) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [landscape] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (31.5s)
+  ✓   8 [landscape] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (35.9s)
+(node:12104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (12.6s)
+(node:12323) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 [desktop] › bridge-control.spec.mjs:42:1 › setup defaults off, remembers both choices and keeps active/restarted identity with earned profiles intact (15.1s)
+  ✓  12 [desktop] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state (4.2s)
+  ✓  11 [desktop] › bridge-control.spec.mjs:59:1 › native paid forward barracks captures, pays while empty, restores ownership, and fits with drawer/options/Back (17.9s)
+
+
+  1) [narrow-phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      81 | test('synthetic restored contest and pending ground takeover display non-color state',async({page},info)=>{
+      82 |   const mapId=['phone','landscape'].includes(info.project.name)?'twin-span':'long-march',fixture=contestedFixture(mapId);await seedOnce(page,{[SAVE]:JSON.stringify(fixture),[SETTINGS]:JSON.stringify({skirmishBridgeIncome:false})});await press(page,'#resumeSaved');await press(page,'#front');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 1: yours, payment stopped');await expect(page.locator('#bridgeBattleStatus')).toContainText('enemy capturing');
+    > 83 |   const frame=await canvasFrame(page);expect(frame.battle.text.some(t=>t.text==='X BLOCKED')).toBe(true);expect(frame.battle.text.some(t=>t.text.startsWith('E →'))).toBe(true);await capture(page,info,'contested-capturing');await fit(page,info,'contest');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 2: enemy owned',{timeout:4000});
+         |                                                                                                                                                                      ^
+      84 |   const state=await pause(page);expect(state.game.mapId).toBe(mapId);expect(state.game.state.bridgeControl.bridges[0].owner).toBe(0);expect(state.game.state.bridgeControl.bridges[1].owner).toBe(1);expect(state.game.state.bridgeControl.earned[0]).toBe(0);expect(state.game.state.bridgeControl.earned[1]).toBeGreaterThan(0);await savedIncome(page,state);await press(page,'#saveExit');await page.reload();await press(page,'#resumeSaved');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 2: enemy owned');await pause(page);await info.attach('synthetic-contest-save',{body:JSON.stringify(state,null,2),contentType:'application/json'});
+      85 | });
+      86 |
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:83:166
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-narrow-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-narrow-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-narrow-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-narrow-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#bridgeBattleStatus')
+    Expected substring: "enemy capturing"
+    Received string:    "Road 1: yours, earning. Road 2: enemy owned, earning"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('#bridgeBattleStatus') with timeout 5000ms
+      - waiting for locator('#bridgeBattleStatus')
+        8 × locator resolved to <p class="sr-only" aria-live="off" id="bridgeBattleStatus">Road 1: yours, payment stopped. Road 2: enemy own…</p>
+          - unexpected value "Road 1: yours, payment stopped. Road 2: enemy owned, earning"
+        5 × locator resolved to <p class="sr-only" aria-live="off" id="bridgeBattleStatus">Road 1: yours, earning. Road 2: enemy owned, earn…</p>
+          - unexpected value "Road 1: yours, earning. Road 2: enemy owned, earning"
+
+
+      80 | }
+      81 | test('synthetic restored contest and pending ground takeover display non-color state',async({page},info)=>{
+    > 82 |   const mapId=['phone','landscape'].includes(info.project.name)?'twin-span':'long-march',fixture=contestedFixture(mapId);await seedOnce(page,{[SAVE]:JSON.stringify(fixture),[SETTINGS]:JSON.stringify({skirmishBridgeIncome:false})});await press(page,'#resumeSaved');await press(page,'#front');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 1: yours, payment stopped');await expect(page.locator('#bridgeBattleStatus')).toContainText('enemy capturing');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      83 |   const frame=await canvasFrame(page);expect(frame.battle.text.some(t=>t.text==='X BLOCKED')).toBe(true);expect(frame.battle.text.some(t=>t.text.startsWith('E →'))).toBe(true);await capture(page,info,'contested-capturing');await fit(page,info,'contest');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 2: enemy owned',{timeout:4000});
+      84 |   const state=await pause(page);expect(state.game.mapId).toBe(mapId);expect(state.game.state.bridgeControl.bridges[0].owner).toBe(0);expect(state.game.state.bridgeControl.bridges[1].owner).toBe(1);expect(state.game.state.bridgeControl.earned[0]).toBe(0);expect(state.game.state.bridgeControl.earned[1]).toBeGreaterThan(0);await savedIncome(page,state);await press(page,'#saveExit');await page.reload();await press(page,'#resumeSaved');await expect(page.locator('#bridgeBattleStatus')).toContainText('Road 2: enemy owned');await pause(page);await info.attach('synthetic-contest-save',{body:JSON.stringify(state,null,2),contentType:'application/json'});
+      85 | });
+        at /workspace/ironroot-frontier/qa/browser/bridge-control.spec.mjs:82:440
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace ../bridge-control/browser-final/artifacts/bridge-control-synthetic-r-f2612-ver-display-non-color-state-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [narrow-phone] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+    [landscape] › bridge-control.spec.mjs:81:1 › synthetic restored contest and pending ground takeover display non-color state 
+  10 passed (2.4m)

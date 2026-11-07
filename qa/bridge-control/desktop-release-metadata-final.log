@@ -1,0 +1,16 @@
+✔ only the fixed offline origin is trusted (1.918114ms)
+✔ asset resolution rejects traversal, unsupported types, workers and malformed encodings (0.407506ms)
+✔ real asset reads refuse symlink escape, missing files and directories (13.605041ms)
+✔ CSP prohibits remote code, network connections, workers and framing (0.254512ms)
+✔ desktop backup export fails honestly before creating any download side effect (5.730226ms)
+✔ desktop isolation and package safety contracts remain explicit (5.610743ms)
+﹣ installed desktop tooling preserves the scoped minimatch compatibility contracts (0.866799ms) # Optional desktop build dependencies are not installed; run npm ci in desktop/ to include this check.
+✔ main process wires a sandboxed persistent window and denies privileged actions (28.344477ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 142.251043
