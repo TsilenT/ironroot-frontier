@@ -1,0 +1,33 @@
+✔ all 19 current briefings retain the exact roster and authored list with one notice for the 13 flight revisions (15.707195ms)
+✔ historical revision-one and revision-two descriptors keep their exact briefing without the flight records notice (20.970411ms)
+✔ repeated briefing selection removes old notices and never duplicates the revision-three notice (3.949775ms)
+✔ browser expectations require exact mission labels and the complete ordered briefing including notice presence or absence (0.459265ms)
+✔ collapsed mobile flight inspector reopens through the real aerie before readiness/focus (2.773319ms)
+✔ visible desktop flight inspector waits for enabled without reopening or premature focus (0.736485ms)
+✔ a permanently disabled flight control blocks before focus, rather than bypassing the UI (1.057501ms)
+✔ paid-flight repetitions and native Space retain their exact downstream oracles (0.386845ms)
+✔ short-screen flight reachability remains a full-visibility assertion (0.40296ms)
+✔ gate geometry uses each registered flight identity and map, mirrored for both sides and directions (3.548285ms)
+✔ old rules, copied rules, and injected route properties draw nothing and do not inspect state (1.248314ms)
+✔ many units collapse into stable directional groups, with earliest warning and leading transit marker (0.972459ms)
+✔ world culls offscreen gateways in both axes while minimap retains launched crossings (0.938659ms)
+✔ preview only reads a selected living owned aerie, including source when gateway is offscreen (0.419897ms)
+✔ dead, finished, malformed and non-gryphon flights never produce misleading signals (0.271229ms)
+✔ viewport conversion and banner geometry preserve fixed pixel text at phone and desktop scales (0.528367ms)
+✔ selected middle-road NEXT is separate from real warning/transit banners on phone and landscape (8.475536ms)
+✔ crowded measured banners and NEXT keep their own space at constrained viewport edges (73.494596ms)
+✔ preview placement reserves the source art, uses all measured banners and is deterministic (0.71443ms)
+✔ normal committed positions remain unchanged; undersized fields retain full labels rather than dropping routes (0.436461ms)
+✔ complete canvas operations remain finite and balanced on every map, side, phase and scale (6.674074ms)
+✔ low effects/reduced motion keep essential countdown, ownership, arrows and next-order labels (0.866753ms)
+✔ rendering frozen simulation leaves clock, RNG, route state and input UI byte-for-byte unchanged (2.466805ms)
+✔ minimap validates bounds and never emits approach labels as actual warning countdowns (0.339509ms)
+✔ real production flight phases drive preview, launched minimap, warning and crossing without simulation assistance (2.46301ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 229.485529

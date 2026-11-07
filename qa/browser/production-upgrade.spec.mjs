@@ -97,14 +97,14 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     expect(resumed.game.version).toBe(historical.game.version);
     // RNG and spawned units may advance between Resume and the next Pause.
     // Preserve exact simulation/seed verification through bounded tick replay.
-    assertPassiveContinuation(historical.game,resumed.game);
+    const resumedContinuation=assertPassiveContinuation(historical.game,resumed.game);
     expect(Game.restore(resumed.game).ruleset.id).toBe('frontier-legacy');
     expect(resumed.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level])).toEqual(historical.game.state.buildings.map(b=>[b.id,b.type,b.side,b.x,b.y,b.lane,b.level]));
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(historical.game.state.time);
     expect(resumed.game.state.time-historical.game.state.time).toBeLessThan(3);
     await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');const twice=await pause(modern);
     expect(twice.game.version).toBe(historical.game.version);expect(twice.campaignId).toBe(historical.campaignId);
-    assertPassiveContinuation(resumed.game,twice.game);
+    const repeatedContinuation=assertPassiveContinuation(resumed.game,twice.game);
     await press(modern,'#saveExit');await openBackup(modern);
     const exported=parseBackup(await downloadBackup(modern));
     for(const domain of ['campaign','trials','settings','history'])expect(exported.data[domain]).toEqual(fixture.domains[domain]);
@@ -129,7 +129,7 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     await press(modern,'#saveExit');await modern.reload();await press(modern,'#resumeSaved');expect((await pause(modern)).game.rulesetId).toBe('frontier-flight-open');
     const after=await profile(modern);for(const key of HISTORICAL_KEYS.filter(key=>key!==SAVE))expect(after[key]).toBe(before[key]);
     expect(errors).toEqual([]);expect(consoleErrors).toEqual([]);
-    await testInfo.attach('production-upgrade-evidence',{contentType:'application/json',body:Buffer.from(JSON.stringify({scenario,manifestPin:PRODUCTION_V012_MANIFEST_SHA256,priorVersion:prior.version,candidateVersion:candidate.version,priorWorkerHash:prior.workerHash,candidateWorkerHash:candidate.workerHash,priorHashes:prior.hashes,candidateHashes:candidate.hashes,timing,migration:{from:oldMarker,to:JSON.parse(migrated[PROFILE_MARKER_KEY])},historicalSave:historical,resumedSave:resumed},null,2))});
+    await testInfo.attach('production-upgrade-evidence',{contentType:'application/json',body:Buffer.from(JSON.stringify({scenario,manifestPin:PRODUCTION_V012_MANIFEST_SHA256,priorVersion:prior.version,candidateVersion:candidate.version,priorWorkerHash:prior.workerHash,candidateWorkerHash:candidate.workerHash,priorHashes:prior.hashes,candidateHashes:candidate.hashes,timing,migration:{from:oldMarker,to:JSON.parse(migrated[PROFILE_MARKER_KEY])},historicalSave:historical,resumedSave:resumed,repeatedSave:twice,continuations:{resumed:resumedContinuation,repeated:repeatedContinuation}},null,2))});
   }finally{await context.setOffline(false);if(modern)await modern.close();await request.delete(basePath);}
 });
 

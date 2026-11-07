@@ -1,3 +1,4 @@
+import {startLegacyTeaching,finishFirstBuild} from './campaign-teaching-helpers.mjs';
 import {test as base,expect} from '@playwright/test';
 import {openBuildControls,prepareBuildControl} from './shared-build-controls.mjs';
 import {inspectPhoneText} from './phone-text-evidence.mjs';
@@ -11,6 +12,8 @@ const test=base.extend({page:async({page},use)=>{const errors=[];page.on('pageer
 test.setTimeout(45000);
 async function press(page,selector){if(await prepareBuildControl(page,selector))return;const target=page.locator(selector);if(await page.evaluate(()=>navigator.maxTouchPoints>0))await target.tap();else await target.click();}
 async function fresh(page,index=0){
+  // Zero index exercises retained legacy teaching; first Roadside has no Start rail.
+  if(index===0){await startLegacyTeaching(page,press);return;}
   await page.goto('/');
   await page.evaluate(({key,profile})=>{localStorage.clear();localStorage.setItem(key,JSON.stringify(profile));},{key:PROGRESS,profile:progressionProfile(index)});
   await page.reload();await press(page,'#start');await expect(page.locator('#coachingModal')).toBeVisible();
@@ -157,9 +160,17 @@ test('resumed First Watch and current campaign hints are visible without Build a
     await expect(page.locator('#commandDeck')).toBeHidden();
     // A deliberate fresh restart has a different teaching policy than Resume.
     await press(page,'#pause');await press(page,'#restartBattle');await press(page,'#confirmRestart');
-    await expect(page.locator('#coachingModal')).toBeVisible();await press(page,'#coachingPlan');
-    await expect(page.locator('#commandDeck')).toBeHidden();await visibleRail(page,testInfo,id+'-fresh-restart');await frozen(page);
-    await press(page,'#coachResume');await expect(page.locator('#time')).not.toHaveText('00:00');await press(page,'#pause');
+    if(id==='roadside-watch'){
+      await expect(page.locator('#coachingModal')).toBeHidden();
+      await expect(page.locator('#coachResume')).toBeHidden();await frozen(page);
+      await finishFirstBuild(page,press);
+      await visibleRail(page,testInfo,id+'-fresh-restart',{running:true});
+    }else{
+      await expect(page.locator('#coachingModal')).toBeVisible();await press(page,'#coachingPlan');
+      await expect(page.locator('#commandDeck')).toBeHidden();await visibleRail(page,testInfo,id+'-fresh-restart');await frozen(page);
+      await press(page,'#coachResume');
+    }
+    await expect(page.locator('#time')).not.toHaveText('00:00');await press(page,'#pause');
   }
 });
 

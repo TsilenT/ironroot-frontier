@@ -45,7 +45,7 @@ function harness(index = 0, options = {}) {
 }
 
 for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
-  test(`${mission.name}: real shared-bar building is paid while clock, AI, income and production stay frozen`, () => {
+  if(index > 0) test(`${mission.name}: real shared-bar building is paid while clock, AI, income and production stay frozen`, () => {
     const h = harness(index), { c, $ } = h;
     assert.equal(c.coachingHold, true); assert.equal(c.paused, false);
     assert.equal($('coachingModal').classList.contains('hidden'), false);
@@ -70,7 +70,7 @@ for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
     assert.ok(c.game.state.gold[0] > planned.state.gold[0]);
   });
 
-  test(`${mission.name}: Skip/Start works before spending and completed replays/restores never auto-teach`, () => {
+  if(index > 0) test(`${mission.name}: Skip/Start works before spending and completed replays/restores never auto-teach`, () => {
     const h = harness(index), { c, $ } = h;
     const original = c.game.serialize(); $('coachingPlay').onclick();
     assert.equal(c.coachingHold, false); assert.deepEqual(c.game.serialize(), original);
@@ -100,7 +100,7 @@ for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
 }
 
 test('hiding hints and help/options round trips preserve the teaching hold and do not force a build order', () => {
-  const h = harness(), { c, $ } = h; $('coachingPlan').onclick();
+  const h = harness(1), { c, $ } = h; $('coachingPlan').onclick();
   h.buy('archery', 0); assert.equal(c.game.state.buildings[0].side, 1);
   assert.equal(c.game.state.buildings.filter(b => b.side === 0 && b.type === 'barracks').length, 0);
   const snapshot = c.game.serialize();
@@ -140,7 +140,8 @@ test('startup on an unusable viewport arms teaching before any tick and never ov
   h.resize(390, 650); assert.equal(c.viewportPause.blocked, false);
   c.pause(false); assert.equal(c.paused, true); assert.equal(c.coachingHold, true);
   c.pause(false, { explicit: true }); assert.equal(c.viewportPause.active, false);
-  assert.equal(c.coachingHold, false); h.frame(200); assert.ok(c.game.state.time > 0);
+  assert.equal(c.coachingHold, true); h.frame(200); assert.equal(c.game.state.time, 0);
+  h.buy('barracks'); h.frame(300); assert.equal(c.coachingHold,false); assert.ok(c.game.state.time>0);
 });
 
 test('opening suggestions use the bound roster, Rootwarden screens, forward towers and real affordability', () => {
@@ -175,8 +176,8 @@ test('earned first lesson suppresses redundant Emberwatch teaching while later i
 });
 
 // Execute the actual keyboard handler, not a hand-authored routing model.
-test('Escape closes teaching into planning, while a visible safety dialog keeps precedence', () => {
-  const h = harness(), { c, $ } = h;
+test('Escape closes later teaching into planning, while a visible safety dialog keeps precedence', () => {
+  const h = harness(1), { c, $ } = h;
   c.window.addEventListener = (type, handler) => { if (type === 'keydown') c.keydown = handler; };
   runInContext(h.source.slice(h.source.indexOf("window.addEventListener('keydown',"), h.source.indexOf("document.addEventListener('visibilitychange',")), c);
   const key = { code: 'Escape', repeat: false, preventDefault() {} };
@@ -199,11 +200,11 @@ for (const [width,height,insets] of [[320,480,{bottom:34}],[320,568,{}],[390,650
     assert.equal($('campaignTeaching').parentNode,$('app'));
     assert.equal($('app').classList.contains('compact-build-open'),false);
     assert.equal($('campaignCoach').classList.contains('hidden'),false);
-    assert.equal($('coachResume').classList.contains('hidden'),false);
-    assert.equal($('coachResume').attributes['aria-label'],'Start battle');
+    assert.equal($('coachResume').classList.contains('hidden'),true);
+    assert.equal(c.firstBuildHold,true);
     assert.match($('coachNext').textContent,/Paused.*Build → Barracks/);
     assert.ok($('battle').getBoundingClientRect().height>=212);
-    for(const id of ['coachResume','toggleCoach']) {
+    for(const id of ['toggleCoach']) {
       const r=$(id).getBoundingClientRect();assert.ok(r.height>=44&&r.width>=44);
     }
     const canvas=$('battle').getBoundingClientRect();
@@ -220,12 +221,13 @@ for (const [width,height,insets] of [[320,480,{bottom:34}],[320,568,{}],[390,650
     assert.equal($('campaignCoach').classList.contains('hidden'),false);
     c.cancel();c.updateHUD();assert.match($('coachNext').textContent,/Archery/);
     $('toggleCoach').onclick();assert.equal($('campaignCoach').classList.contains('hidden'),true);
-    assert.equal($('coachResume').classList.contains('hidden'),false);
+    assert.equal($('coachResume').classList.contains('hidden'),true);
     assert.equal($('toggleCoach').attributes['aria-label'],'Show hints');
-    const paused=c.game.serialize();h.frame(1000);h.frame(4000);assert.deepEqual(c.game.serialize(),paused);
+    const before=c.game.state.time;h.frame(1000);h.frame(4000);assert.ok(c.game.state.time>before);
+    assert.equal(c.firstBuildHold,false);assert.equal(c.coachingHold,false);
     $('toggleCoach').onclick();assert.equal($('campaignCoach').classList.contains('hidden'),false);
     assert.equal($('app').classList.contains('compact-build-open'),false);
-    $('coachResume').onclick();h.frame(4100);assert.ok(c.game.state.time>0);
+    h.frame(4100);assert.ok(c.game.state.time>0);
   });
 }
 

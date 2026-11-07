@@ -1,5 +1,6 @@
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import { startRunning } from './campaign-teaching-helpers.mjs';
+import { installPad as installSyntheticPad, padButton, holdPadButton, steerTo } from './synthetic-gamepad-helpers.mjs';
 // v0.7 UI integration regressions. Browser execution requires an authorized cloud runner.
 import {test as base, expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
@@ -196,74 +197,24 @@ test('backup quota failure rolls back earlier domain writes without reloading',a
 // Only the standard Gamepad API is mocked. The actual app polls it and performs
 // UI/game actions. No app-private function, state, or controller object is used.
 async function installPad(page) {
-  await page.addInitScript(()=>{
-    window.__qaPad={connected:true,axes:[0,0,0,0],buttons:Array(17).fill(false)};
-    window.__qaPadPolls=0;
-    Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>{
-      window.__qaPadPolls++;const p=window.__qaPad;
-      return p.connected?[{id:'QA Standard Controller',index:0,mapping:'standard',connected:true,timestamp:performance.now(),
-        axes:p.axes,buttons:p.buttons.map(pressed=>({pressed,touched:pressed,value:pressed?1:0}))}]:[];
-    }});
-  });
+  await installSyntheticPad(page);
   await page.goto('/');await press(page,'[data-mode="skirmish"]');
   await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls)).toBeGreaterThanOrEqual(3);
-}
-async function neutralPad(page) {
-  const baseline=await page.evaluate(()=>{
-    window.__qaPad.buttons.fill(false);
-    window.__qaPad.axes=[0,0,0,0];
-    return window.__qaPadPolls;
-  });
-  // A pointer-triggered context reset needs a sampled neutral baseline before
-  // the next edge. Elapsed time alone does not prove that polling ran.
-  await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls),
-    {intervals:[20,40,80]}).toBeGreaterThanOrEqual(baseline+3);
-}
-async function padButton(page,index,hold=100) {
-  await neutralPad(page);
-  const baseline=await page.evaluate(index=>{
-    window.__qaPad.buttons[index]=true;
-    return window.__qaPadPolls;
-  },index);
-  await expect.poll(()=>page.evaluate(()=>window.__qaPadPolls),
-    {intervals:[20,40,80]}).toBeGreaterThanOrEqual(baseline+2);
-  if(hold>0)await page.waitForTimeout(hold);
-  await neutralPad(page);
 }
 async function gameSave(page) {
   return page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
 }
-async function steerTo(page,target) {
-  // Read visible cursor geometry and steer through the mocked left stick,
-  // rather than editing any application cursor coordinates.
-  await page.evaluate(()=>{window.__qaPad.buttons[6]=true;});
-  for(let step=0;step<160;step++){
-    const box=await page.locator('#controllerCursor').boundingBox();
-    expect(box).not.toBeNull();
-    const dx=target.x-(box.x+box.width/2),dy=target.y-(box.y+box.height/2);
-    if(Math.hypot(dx,dy)<8)break;
-    await page.evaluate(({dx,dy})=>{
-      const length=Math.hypot(dx,dy),magnitude=length>25?1:.5;
-      window.__qaPad.axes=[dx/length*magnitude,dy/length*magnitude,0,0];
-    },{dx,dy});
-    await page.waitForTimeout(40);
-  }
-  await page.evaluate(()=>{window.__qaPad.axes=[0,0,0,0];window.__qaPad.buttons[6]=false;});
-  await page.waitForTimeout(80);
-  const box=await page.locator('#controllerCursor').boundingBox();
-  expect(Math.hypot(target.x-box.x-box.width/2,target.y-box.y-box.height/2)).toBeLessThan(15);
-}
 
 test('controller held confirm starts once without click-through and pause remains usable',async ({page})=>{
   await installPad(page);await page.locator('#start').focus();
-  await padButton(page,0,650);
+  await holdPadButton(page,0,650);
   await expect(page.locator('#welcome')).toBeHidden();
   await expect(page.locator('#controllerCursor')).toBeVisible();
   await expect(page.locator('#selectionPanel')).toBeHidden();
   await padButton(page,9);
   await expect(page.locator('#pauseVeil')).toBeVisible();
   expect((await gameSave(page)).game.state.buildings.filter(b=>b.side===0)).toHaveLength(1);
-  await page.locator('#resume').focus();await padButton(page,0,650);
+  await page.locator('#resume').focus();await holdPadButton(page,0,650);
   await expect(page.locator('#pauseVeil')).toBeHidden();
   await expect(page.locator('#welcome')).toBeHidden();
 });

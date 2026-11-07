@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { MAPS, Game, getRuleset, RULESETS } from '../dist/engine.js';
 import { supportsFlightOrders, flightGateX } from '../dist/flight-orders.js';
 import { buildFlightSignals, flightRouteGeometry, flightViewport, flightBoundsVisible,
-  groupFlightCorridors, flightSignalLabel, flightBannerLayout, drawFlightRoutes, drawFlightMinimap } from '../dist/flight-visuals.js';
+  groupFlightCorridors, flightSignalLabel, flightBannerLayout, flightBannerLayouts, flightPreviewLayout,
+  drawFlightRoutes, drawFlightMinimap } from '../dist/flight-visuals.js';
 import { mockCanvas } from './renderer-canvas.mjs';
 
 const ruleset = getRuleset('frontier-flight-open');
@@ -22,6 +23,40 @@ const freeze = value => { if (value && typeof value === 'object' && !Object.isFr
   for (const child of Object.values(value)) freeze(child); Object.freeze(value);
 } return value; };
 const labels = canvas => canvas.calls.filter(call => call[0] === 'fillText').map(call => call[1]);
+const overlap = (a, b, gap = 0) => a.x + a.width + gap > b.x + 1e-7 && b.x + b.width + gap > a.x + 1e-7 &&
+  a.y + a.height + gap > b.y + 1e-7 && b.y + b.height + gap > a.y + 1e-7;
+
+// Replay the actual Canvas2D transforms, not a second copy of layout decisions.
+function signalBoxes(canvas, view, map) {
+  const boxes = [], stack = [];
+  let t = { sx: view.scale, sy: view.scale, x: view.width / 2 - view.camera * view.scale,
+    y: view.height / 2 - map.height * view.scale / 2, fill: '' };
+  for (const [op, ...args] of canvas.calls) {
+    if (op === 'save') stack.push({ ...t });
+    if (op === 'restore') t = stack.pop();
+    if (op === 'translate') { t.x += args[0] * t.sx; t.y += args[1] * t.sy; }
+    if (op === 'scale') { t.sx *= args[0]; t.sy *= args[1]; }
+    if (op === 'set' && args[0] === 'fillStyle') t.fill = args[1];
+    if (op === 'fillRect' && t.fill === '#142a28') boxes.push({ x: t.x + args[0] * t.sx,
+      y: t.y + args[1] * t.sy, width: args[2] * t.sx, height: args[3] * t.sy, labels: [] });
+    if (op === 'fillText') {
+      const x = t.x + args[1] * t.sx, y = t.y + args[2] * t.sy;
+      const box = boxes.findLast(b => x >= b.x && x <= b.x + b.width && y >= b.y && y <= b.y + b.height);
+      if (box) box.labels.push(args[0]);
+    }
+  }
+  return boxes;
+}
+
+function assertSignalBoxes(boxes, view, context) {
+  for (const [i, box] of boxes.entries()) {
+    assert.ok(box.x >= 4 - 1e-7 && box.y >= 4 - 1e-7 &&
+      box.x + box.width <= view.width - 4 + 1e-7 && box.y + box.height <= view.height - 4 + 1e-7,
+    `${context}: label remains inside field: ${JSON.stringify(box)}`);
+    for (const other of boxes.slice(i + 1)) assert.equal(overlap(box, other, 4), false,
+      `${context}: labels keep a four-pixel gap: ${JSON.stringify([box, other])}`);
+  }
+}
 
 test('gate geometry uses each registered flight identity and map, mirrored for both sides and directions', () => {
   for (const rules of Object.values(RULESETS).filter(supportsFlightOrders)) for (const map of Object.values(MAPS)) {
@@ -119,6 +154,77 @@ test('viewport conversion and banner geometry preserve fixed pixel text at phone
     }
   }
   assert.equal(flightViewport({ width: 0, height: 300, camera: 1600 }, game.map), null);
+});
+
+test('selected middle-road NEXT is separate from real warning/transit banners on phone and landscape', () => {
+  for (const [width, height, scale] of [[320, 168, .32], [390, 240, .32], [390, 405, .45], [844, 240, .32], [1180, 720, .8]]) {
+    for (const phase of ['warning', 'transit']) for (const to of [0, 2]) {
+      const game = fixture(), canvas = mockCanvas();
+      game.state.units = [unit(game.map, 0, 1, 0, phase, 1.2)];
+      game.state.buildings = [aerie(game.map, 0, 1, to)];
+      const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: 1400 };
+      drawFlightRoutes(view, game, { selected: 10 });
+      const boxes = signalBoxes(canvas, view, game.map);
+      assert.equal(boxes.length, 2);
+      assertSignalBoxes(boxes, view, `${width}×${height}/${scale}/${phase}/${to}`);
+      assert.ok(labels(canvas).includes('YOU'));
+      assert.ok(labels(canvas).includes(phase === 'warning' ? '↑ 1.2s' : '↑ AIR'));
+      assert.ok(labels(canvas).includes(to === 0 ? 'NEXT ↑' : 'NEXT ↓'));
+    }
+  }
+});
+
+test('crowded measured banners and NEXT keep their own space at constrained viewport edges', () => {
+  for (const map of Object.values(MAPS)) for (const width of [320, 390, 844]) for (const height of [168, 240, 450]) {
+    const game = fixture(map), scale = Math.max(.32, height / map.height);
+    // 64 units per side, below the legal cap: every directed route has eight
+    // warning and eight transit units. This creates the widest two-row labels.
+    for (const side of [0, 1]) for (let from = 0; from < map.lanes.length; from++) for (const to of [from - 1, from + 1]) {
+      if (to < 0 || to >= map.lanes.length) continue;
+      for (const phase of ['warning', 'transit']) for (let count = 0; count < 8; count++) game.state.units.push(unit(map, side, from, to, phase, 1.2));
+    }
+    for (const lane of [0, 1, map.lanes.length - 1]) for (const cameraOffset of [-190, 0, 190]) {
+      const canvas = mockCanvas(), source = { ...aerie(map, 0, lane, lane ? lane - 1 : 1), x: flightGateX(map, ruleset, 0) - 150 };
+      game.state.buildings = [source];
+      const view = { ...renderer(game, scale, width, height), c: canvas.c, camera: map.width / 2 + cameraOffset };
+      const signals = drawFlightRoutes(view, game, { selected: source.id });
+      const boxes = signalBoxes(canvas, view, map);
+      assert.equal(boxes.length, groupFlightCorridors(signals.routes).length + Number(!!signals.preview?.showSource));
+      assertSignalBoxes(boxes, view, `${map.id}/${width}×${height}/${lane}/${cameraOffset}`);
+      assert.equal(boxes.some(b => b.labels.some(label => label.startsWith('NEXT'))), !!signals.preview?.showSource);
+    }
+  }
+});
+
+test('preview placement reserves the source art, uses all measured banners and is deterministic', () => {
+  const game = fixture(); game.state.buildings = [aerie(game.map, 0, 1, 0)];
+  const preview = buildFlightSignals(game, { selected: 10, scale: .32 }).preview;
+  const occupied = [{ minX: 900, maxX: 1387.5, minY: 303.125, maxY: 371.875 },
+    { minX: 900, maxX: 1387.5, minY: 400, maxY: 468.75 }];
+  freeze(preview); freeze(occupied);
+  const layout = flightPreviewLayout(preview, occupied, .32);
+  assert.deepEqual(flightPreviewLayout(preview, [...occupied].reverse(), .32), layout);
+  const source = preview.sourceBounds;
+  assert.equal(overlap(layout, { x: (source.minX - preview.sourceX) * .32, y: (source.minY - preview.sourceY) * .32,
+    width: (source.maxX - source.minX) * .32, height: (source.maxY - source.minY) * .32 }, 4), false);
+  assert.equal(layout.width, 70); assert.equal(layout.height, 20);
+});
+
+test('normal committed positions remain unchanged; undersized fields retain full labels rather than dropping routes', () => {
+  const measured = [0, 1].flatMap(side => [337.5, 562.5].map(midY => ({
+    corridor: { side, x: side ? 1800 : 1400, midY }, width: 161, height: 37,
+  })));
+  const large = { minX: 0, maxX: 3200, minY: 0, maxY: 900 };
+  assert.deepEqual(flightBannerLayouts(measured, 1, large).map(({ x, y, width, height }) => ({ x, y, width, height })),
+    measured.map(b => flightBannerLayout(b.corridor, b.width, b.height, 1, large)));
+  const tiny = flightViewport({ width: 320, height: 100, camera: 1600, scale: .32 }, MAPS.classic);
+  const retained = flightBannerLayouts(measured, .32, tiny);
+  assert.equal(retained.length, 4);
+  assert.ok(retained.every(b => b.width === 161 && b.height === 37));
+  // There is no promise of non-overlap when 160px of complete banners must fit
+  // in a 92px interior. Their original in-bounds positions are the fallback.
+  assert.deepEqual(retained.map(({ x, y, width, height }) => ({ x, y, width, height })),
+    measured.map(b => flightBannerLayout(b.corridor, b.width, b.height, .32, tiny)));
 });
 
 test('complete canvas operations remain finite and balanced on every map, side, phase and scale', () => {

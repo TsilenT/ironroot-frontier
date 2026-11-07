@@ -1,12 +1,13 @@
+import {startLegacyTeaching} from './campaign-teaching-helpers.mjs';
 import {expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
 import {test,press,tapPoint,homePoint,saved} from './map-browser-helpers.mjs';
 import {openBuildControls} from './shared-build-controls.mjs';
-import {installPad,padButton,steerTo} from './map-controller-helpers.mjs';
+import {installPad,padButton,steerTo} from './synthetic-gamepad-helpers.mjs';
 
 test.setTimeout(40000);
 async function planning(page) {
-  await page.goto('/'); await press(page,'#start');
+  await startLegacyTeaching(page,press);
   await expect(page.locator('#coachingModal')).toBeVisible();
   await press(page,'#coachingPlan');
   await expect(page.locator('#time')).toHaveText('00:00');

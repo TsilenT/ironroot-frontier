@@ -1,0 +1,35 @@
+✔ flight panel offers only Hold and adjacent roads, using the actual map names (3.515521ms)
+✔ old identities and non-owned/dead/non-aerie selections never offer orders (0.476942ms)
+✔ route text groups actual launches and ignores unlaunched enemy plans and completed flights (2.549891ms)
+✔ real aerie controls change only future plan and preserve focus, resources and airborne orders (32.084259ms)
+✔ an unarmed compatibility click cannot issue an order on a newly revealed aerie panel (12.543587ms)
+✔ paused prevents even a direct order activation (11.026518ms)
+✔ profileGate prevents even a direct order activation (9.28763ms)
+✔ recoveryHold prevents even a direct order activation (11.72136ms)
+✔ battleSafetyReason prevents even a direct order activation (8.277414ms)
+✔ paused route inspection is read-only and old battles do not expose the new controls (14.620063ms)
+✔ staggered paid launches report the earliest warning consistently with battlefield signals (11.33417ms)
+✔ warning rounding shares positive tenths and avoids binary floating-point overstatement (0.21733ms)
+✔ paused does not consume an unannounced live enemy crossing warning (10.961872ms)
+✔ coachingHold does not consume an unannounced live enemy crossing warning (11.889847ms)
+✔ hidden does not consume an unannounced live enemy crossing warning (9.010022ms)
+✔ strict geometry rejects the recorded fractional North clip and initial Restart overflow (1.079718ms)
+✔ flight insets belong to the real desktop and mobile scrollports without shrinking controls (0.989205ms)
+✔ short portrait pause reclaims only whitespace and retains readable disclosure and actions (0.737565ms)
+✔ compact coaching contains the observed text ascent inside its unchanged rail at 390x650 (2.681954ms)
+✔ compact coaching contains the observed text ascent inside its unchanged rail at 320x568 (1.597489ms)
+✔ compact coaching contains the observed text ascent inside its unchanged rail at 844x390 (1.657217ms)
+✔ compact coaching contains the observed text ascent inside its unchanged rail at 740x320 (2.583169ms)
+✔ compact coaching contains the observed text ascent inside its unchanged rail at 320x480 (1.93807ms)
+✔ coach text inset retains border-box sizing, scrolling and compact typography (0.580104ms)
+✔ verified restart keeps its ownership state when current (26.666235ms)
+✔ verified restart keeps its ownership state when stale (6.82695ms)
+✔ portrait income stays inline and readable without increasing HUD tracks (1.668294ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.663425
