@@ -103,7 +103,7 @@ test('documented direct counter numbers match executed combat, without a univers
   assert.match(entry('warrior').mechanics.join(' '), /45% less.*9\.35.*35% extra.*28\.35.*28% less/);
   assert.match(entry('archer').mechanics.join(' '), /50% extra.*25\.5.*55%.*9\.35/);
   assert.match(entry('wizard').mechanics.join(' '), /full 24 damage/);
-  assert.match(entry('wizard').cautions, /Archers outrange it.*can kill it/);
+  assert.match(entry('wizard').cautions, /Archers outrange the wizard.*can kill it/);
   assert.ok(entry('archer').baseStats.range > entry('wizard').baseStats.range);
   assert.match(ECONOMY_GUIDE.counterCaveat, /Army size, range, position, upgrades and support can still decide/);
 });

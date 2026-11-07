@@ -42,6 +42,18 @@
       "field": "epilogue",
       "before": "No banner claims the two bridges. The river charter belongs to every settlement, the distant beacons answer, and the frontier keeps its own watch.",
       "after": "The settlements share the bridges under the river charter. The distant beacons answer, and each village takes its turn on watch."
+    },
+    {
+      "id": "highpass",
+      "field": "epilogue",
+      "before": "Stonegate opens. Beyond the pass, the smoke of a hundred furnaces darkens the sky.",
+      "after": "Beyond the open gates of Stonegate, smoke from a hundred furnaces darkens the sky."
+    },
+    {
+      "id": "furnace",
+      "field": "epilogue",
+      "before": "The furnaces fall silent. Vey retreats to the Crownworks, taking the last of his host with him.",
+      "after": "Vey retreats from the silent furnaces to the Crownworks with the last of his host."
     }
   ],
   "missions": [
@@ -54,7 +66,7 @@
       },
       "after": {
         "speaker": "Captain Rowan",
-        "text": "Build a barracks near the crossing. We need warriors there before the next raid."
+        "text": "We’ll need warriors at the crossing before the next raid, so get a barracks up there."
       }
     },
     {
@@ -72,7 +84,7 @@
       },
       "after": {
         "speaker": "Scout Sera",
-        "text": "They’re coming around both sides of the village. Watch the north and south roads."
+        "text": "Watch the north and south roads for raiders coming around the village."
       }
     },
     {
@@ -84,7 +96,7 @@
       },
       "after": {
         "speaker": "Quartermaster Iona",
-        "text": "The relief wagons need an escort. Keep those mines working so we can pay for one."
+        "text": "Keep those mines working so we can pay an escort for the relief wagons."
       }
     },
     {
@@ -96,7 +108,7 @@
       },
       "after": {
         "speaker": "Scout Sera",
-        "text": "Gryphons over both roads. Get archers up here before we move through the pass."
+        "text": "Bring archers forward to clear the gryphons over both roads before we enter the pass."
       }
     },
     {
@@ -120,7 +132,7 @@
       },
       "after": {
         "speaker": "Engineer Bram",
-        "text": "My engines can reach those towers. Keep their infantry off us while we work."
+        "text": "My engines can reach those towers if you keep the infantry off us while we aim."
       }
     },
     {
@@ -138,7 +150,7 @@
       },
       "after": {
         "speaker": "Engineer Bram",
-        "text": "Those foundries are sending engines toward the pass. Hit them before they get their infantry into place."
+        "text": "Hit those foundries before their crews bring up infantry to cover the engines coming toward the pass."
       }
     },
     {
@@ -150,14 +162,14 @@
       },
       "after": {
         "speaker": "Quartermaster Iona",
-        "text": "Those three mines pay for Vey’s reinforcements. Hit them to slow his reinforcements."
+        "text": "Vey pays for his reinforcements with those three mines, so that’s where we hit him."
       }
     },
     {
       "id": "black-ledger",
       "field": "victoryText",
       "before": "The ledger closes. For the first time, the marshal’s quartermasters cannot promise another regiment.",
-      "after": "The mines fall. Vey’s quartermasters can no longer afford the reinforcements he needs."
+      "after": "With the mines lost, Vey’s quartermasters can no longer afford the reinforcements he needs."
     },
     {
       "id": "furnace-heart",
@@ -168,7 +180,7 @@
       },
       "after": {
         "speaker": "Captain Rowan",
-        "text": "Take out the siege works. Keep our troops covered on the way in."
+        "text": "Cover our troops as they move in to take out the siege works."
       }
     },
     {
@@ -180,7 +192,7 @@
       },
       "after": {
         "speaker": "Quartermaster Iona",
-        "text": "We’ll need food and reinforcements for the siege. Get the mines working before Rowan attacks."
+        "text": "Get the mines working before Rowan attacks; the siege crews will need food and reinforcements."
       }
     },
     {
@@ -198,7 +210,7 @@
       },
       "after": {
         "speaker": "Captain Rowan",
-        "text": "Vey is behind those walls. Once his citadel falls, we can open the roads for good."
+        "text": "Bring down Vey’s citadel behind those walls so we can open these roads for good."
       }
     },
     {
@@ -216,7 +228,7 @@
       },
       "after": {
         "speaker": "Captain Rowan",
-        "text": "The war is over, but the relief wagons still can’t get through. Clear those toll towers."
+        "text": "Now the war’s over, clear those toll towers so the relief wagons can finally get through."
       }
     },
     {
@@ -260,7 +272,7 @@
       },
       "after": {
         "speaker": "Quartermaster Iona",
-        "text": "Keep both bridge watchposts standing. We need room for mines as well as troops."
+        "text": "Leave room for mines as well as troops, and keep both bridge watchposts standing."
       }
     },
     {
@@ -336,7 +348,7 @@
       },
       "after": {
         "speaker": "Captain Rowan",
-        "text": "Hold the camp. Iona and Sera are bringing the delegates here, and they need both bridges open."
+        "text": "Iona and Sera are bringing the delegates here, so hold the camp and keep both bridges open."
       }
     },
     {
@@ -370,6 +382,281 @@
         "Hard adaptive enemy starts with 80 gold and ordinary income; it pays for buildings, upgrades and arrow volleys",
         "Losing or salvaging the marked council mine or southern barracks fails immediately; both toll works or the enemy citadel must fall by 5:00"
       ]
+    },
+    {
+      "id": "winter-stores",
+      "field": "description",
+      "before": "The first snow is days away. Two working mines can fund the valley’s relief, but Vey’s outriders are already on the road.",
+      "after": "With the first snow days away and Vey’s outriders on the road, two working mines must fund the valley’s relief."
+    },
+    {
+      "id": "long-vigil",
+      "field": "dialogue",
+      "before": {
+        "speaker": "Captain Rowan",
+        "text": "They are watching for that light. If it goes out, the army comes back for us."
+      },
+      "after": {
+        "speaker": "Captain Rowan",
+        "text": "Keep that light burning, or the army will turn back through the pass to look for us."
+      }
+    },
+    {
+      "id": "cold-forge",
+      "field": "victoryText",
+      "before": "The forward foundries are cold. Bram turns their abandoned tools toward repairing the road.",
+      "after": "Bram puts the abandoned tools from the silent foundries to work repairing the road."
+    },
+    {
+      "id": "crown-foothold",
+      "field": "victoryText",
+      "before": "The camp holds. Every regiment receives its rations, and the siege crews prepare for the final road.",
+      "after": "With the camp secure and every regiment fed, the siege crews prepare for the final road."
+    },
+    {
+      "id": "last-light",
+      "field": "victoryText",
+      "before": "Both lights are still burning. Vey has no reserve left, and the army knows exactly where to go.",
+      "after": "Both lights guide the army toward Vey, whose last reserves have been spent."
+    },
+    {
+      "id": "ironroot",
+      "field": "victoryText",
+      "before": "The Crownworks fall. The war is over, and the frontier belongs to the people who kept its watchfires burning.",
+      "after": "The fall of the Crownworks ends the war, leaving the frontier in the hands of those who kept its watchfires burning."
+    }
+  ],
+  "revisionBaseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "rhythmEdits": [
+    {
+      "file": "dist/campaign.js",
+      "before": "Build a barracks near the crossing. We need warriors there before the next raid.",
+      "after": "We’ll need warriors at the crossing before the next raid, so get a barracks up there."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "They’re coming around both sides of the village. Watch the north and south roads.",
+      "after": "Watch the north and south roads for raiders coming around the village."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The relief wagons need an escort. Keep those mines working so we can pay for one.",
+      "after": "Keep those mines working so we can pay an escort for the relief wagons."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Gryphons over both roads. Get archers up here before we move through the pass.",
+      "after": "Bring archers forward to clear the gryphons over both roads before we enter the pass."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "My engines can reach those towers. Keep their infantry off us while we work.",
+      "after": "My engines can reach those towers if you keep the infantry off us while we aim."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "They are watching for that light. If it goes out, the army comes back for us.",
+      "after": "Keep that light burning, or the army will turn back through the pass to look for us."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Those foundries are sending engines toward the pass. Hit them before they get their infantry into place.",
+      "after": "Hit those foundries before their crews bring up infantry to cover the engines coming toward the pass."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Those three mines pay for Vey’s reinforcements. Hit them to slow his reinforcements.",
+      "after": "Vey pays for his reinforcements with those three mines, so that’s where we hit him."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Take out the siege works. Keep our troops covered on the way in.",
+      "after": "Cover our troops as they move in to take out the siege works."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "We’ll need food and reinforcements for the siege. Get the mines working before Rowan attacks.",
+      "after": "Get the mines working before Rowan attacks; the siege crews will need food and reinforcements."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Vey is behind those walls. Once his citadel falls, we can open the roads for good.",
+      "after": "Bring down Vey’s citadel behind those walls so we can open these roads for good."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The war is over, but the relief wagons still can’t get through. Clear those toll towers.",
+      "after": "Now the war’s over, clear those toll towers so the relief wagons can finally get through."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Keep both bridge watchposts standing. We need room for mines as well as troops.",
+      "after": "Leave room for mines as well as troops, and keep both bridge watchposts standing."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Hold the camp. Iona and Sera are bringing the delegates here, and they need both bridges open.",
+      "after": "Iona and Sera are bringing the delegates here, so hold the camp and keep both bridges open."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The first snow is days away. Two working mines can fund the valley’s relief, but Vey’s outriders are already on the road.",
+      "after": "With the first snow days away and Vey’s outriders on the road, two working mines must fund the valley’s relief."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Stonegate opens. Beyond the pass, the smoke of a hundred furnaces darkens the sky.",
+      "after": "Beyond the open gates of Stonegate, smoke from a hundred furnaces darkens the sky."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The furnaces fall silent. Vey retreats to the Crownworks, taking the last of his host with him.",
+      "after": "Vey retreats from the silent furnaces to the Crownworks with the last of his host."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The forward foundries are cold. Bram turns their abandoned tools toward repairing the road.",
+      "after": "Bram puts the abandoned tools from the silent foundries to work repairing the road."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The mines fall. Vey’s quartermasters can no longer afford the reinforcements he needs.",
+      "after": "With the mines lost, Vey’s quartermasters can no longer afford the reinforcements he needs."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The camp holds. Every regiment receives its rations, and the siege crews prepare for the final road.",
+      "after": "With the camp secure and every regiment fed, the siege crews prepare for the final road."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "Both lights are still burning. Vey has no reserve left, and the army knows exactly where to go.",
+      "after": "Both lights guide the army toward Vey, whose last reserves have been spent."
+    },
+    {
+      "file": "dist/campaign.js",
+      "before": "The Crownworks fall. The war is over, and the frontier belongs to the people who kept its watchfires burning.",
+      "after": "The fall of the Crownworks ends the war, leaving the frontier in the hands of those who kept its watchfires burning."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "The company is assembled. Rowan leads the march to Emberwatch.",
+      "after": "Rowan leads the assembled company toward Emberwatch."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "One raider camp blocks the road. Your builders have brought plans for a barracks and an archery range.",
+      "after": "Your builders can raise barracks and archery ranges to clear the raider camp blocking this road."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Put a barracks on the road. Build archers behind it if the warriors need help.",
+      "after": "Start a barracks on the road, with archers behind the warriors if they need help."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "The first road is clear. Wardens and miners meet the company at the fork.",
+      "after": "Wardens and miners meet the company at the fork beyond the cleared road."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Choose a building in the build bar, then choose a site. Warriors move and fight on their own. Archers work best behind them.",
+      "after": "Use the build bar to place a barracks for warriors who move and fight on their own, with archery ranges behind them for support."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "One road. 420 gold. Build barracks and archery ranges at their normal prices.",
+      "after": "One road and 420 starting gold, with barracks and archery ranges at their normal prices."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "A Rootwarden can take a beating, but it hits slowly. Put archers behind it and keep an eye on the other road.",
+      "after": "A Rootwarden can take a beating, but hits slowly enough to need archers behind it. Keep watch on the other road while it advances."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "The fork is open. Siege crews, wizards and gryphon riders join the march.",
+      "after": "Siege crews, wizards and gryphon riders join the march through the open fork."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "A Warden lodge in front of an archery range gives the archers a durable screen. Barracks still work. Mines fund more troops; towers can hold a road.",
+      "after": "Give your archers a durable screen with a Warden lodge ahead of their range, or stay with barracks if you prefer warriors. Leave space for mines to fund more troops and towers to hold a road."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Two roads. 740 gold. Warden lodges, gold mines and watchtowers join your barracks and archery ranges.",
+      "after": "Two roads and 740 starting gold, with Warden lodges, gold mines and watchtowers alongside barracks and archery ranges."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Archers for those northern gryphons. Siege can reach the middle tower. Pick your route, but don’t lose sight of the other roads.",
+      "after": "Bring archers for the northern gryphons, or try siege against the middle tower. Pick your route without losing sight of the other roads."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "The way to Emberwatch is open. The full company is yours to command.",
+      "after": "Take command of the full company for the open road to Emberwatch."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Rootwardens cannot hit flyers or protect another road. Wizard and siege splash can catch troops behind a screen. Use archers against air and consider siege or gryphons for the middle.",
+      "after": "Use archers against air, and consider siege or gryphons for the middle. Rootwardens cannot hit flyers or cover another road, and wizard or siege splash can catch troops behind their screen."
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "before": "Three roads. 1,100 gold. All eight buildings are available at their normal prices.",
+      "after": "All eight buildings are available at their normal prices across three roads, with 1,100 starting gold."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "The roads are clear. Rowan is waiting at Emberwatch.",
+      "after": "The cleared roads lead on to Rowan at Emberwatch."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "A raider barracks blocks the road to Emberwatch. Your camp is empty. Build an army and clear the way.",
+      "after": "Raise an army from your empty camp to clear the raider barracks blocking the road to Emberwatch."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "Put a barracks on the road. The warriors will take it from there.",
+      "after": "A barracks on the road will send warriors to take care of the raiders."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "The raiders leave the road. Ahead, the path splits around the hills.",
+      "after": "Beyond the retreating raiders, the road splits around the hills."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "Start with a barracks. An archery range behind it adds ranged support. Troops march and fight on their own.",
+      "after": "Start with a barracks and an archery range behind it for support; their troops march and fight on their own."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "One road. 420 gold. No starting buildings; every choice has its normal cost.",
+      "after": "An empty camp on one road, with 420 starting gold and normal building costs."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "They have a camp on each road. Check both before you spend.",
+      "after": "Check the raider camp on each road before you spend."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "Both roads are open. The scouts lead you on to Emberwatch.",
+      "after": "The scouts lead you along the cleared roads toward Emberwatch."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "Build troops on both roads first. A mine adds 2.5 gold/sec; a watchtower can hold a road while you build up.",
+      "after": "Get troops onto both roads before investing in a mine for an extra 2.5 gold/sec or a watchtower to hold ground while you build up."
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "before": "Two roads. 610 gold. No starting buildings; mines and towers use normal gold costs.",
+      "after": "An empty camp across two roads, with 610 starting gold and normal mine and tower costs."
     }
   ]
 }

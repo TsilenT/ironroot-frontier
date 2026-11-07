@@ -1,0 +1,29 @@
+{
+  "baseCommit": "93f8e43bb1ae36c4ee3fb65a5dbce392586ac502",
+  "method": "Acorn 8.19.0 token comparison; every non-string/template token and every inter-token byte must remain identical.",
+  "files": [
+    {
+      "file": "dist/campaign-flow.js",
+      "changedTextTokens": 2,
+      "baseSha256": "4fbb9206d8e79e8faded1c7e83eb810c27ec32db16ae6e4c7da53f34560540c1",
+      "revisedSha256": "ef3d03b144b0a95ee391e490e9b095292cb18f44309b36421a5b028c97c2cfd1"
+    }
+  ],
+  "fixedNumericFactsInChangedJavaScriptTextUnchanged": true,
+  "changedTextTokens": 2,
+  "unchangedSystems": {
+    "dist/engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "dist/rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/flight-visuals.js": "216031a0e08f0ade9d61b81c3372d4a0c8a7f2619b1c2d830f6fc06b6bbe04d6",
+    "dist/battle-codec.js": "2e675fe9b062cd1729c534919b3d8d454d904734a4cb3097989b0361c193a2ac",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "dist/backup.js": "c03d277c7129150d5a085f0a46d0a437aa23adc97abb1796ebae76b4ea471ca3",
+    "dist/persistence.js": "d901660d4f324989fd13a85f0a823bb9310f61a3b7acfd4544719a9b3fecc0a5",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/render.js": "9ad1826eacf8f1d298d34aba8e404a94f9a2e548d7390e4974229219c5be6319",
+    "dist/styles.css": "1fe8c072007e667c3498143c27e03608ee10c97a391b5d0774c7dcbf0ec142dd",
+    "dist/service-worker.js": "407da570cd1d7e4b7d65bee0391229582346c07f1771d9ed1aa707143f3809c3"
+  }
+}

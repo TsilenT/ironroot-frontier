@@ -54,7 +54,7 @@ test('route text groups actual launches and ignores unlaunched enemy plans and c
   assert.match(rows.find(row=>row.phase==='warning').text,/Enemy 2 gryphons: Middle road to North road.*Next crossing starts in 0.6 seconds/);
   assert.match(rows.find(row=>row.phase==='transit').text,/cannot attack/);
   assert.equal(JSON.stringify(game.state),before);
-  assert.match(flightWarningSummary(game,game.state.units),/toward north road/);
+  assert.equal(flightWarningSummary(game,game.state.units),'Enemy gryphons are about to cross toward the north road, and your archers can hit them along the way.');
   assert.equal(flightWarningSummary({...game,ruleset:{combat:{flyingCrossLanes:false}}},game.state.units),'');
 });
 

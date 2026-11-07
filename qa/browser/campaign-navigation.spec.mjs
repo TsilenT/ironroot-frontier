@@ -37,7 +37,7 @@ test('a focused briefing leads through story, chapter and mission with keyboard 
   await expect(page.locator('#campaignScoutToggle')).toHaveText('Scout battlefield · Roadside Watch');
   await expect(page.locator('#campaignStoryPage')).toBeHidden();
   await expect(page.locator('#campaignChapterPage')).toBeHidden();
-  await expect(page.locator('#campaignMissionDescription')).toContainText('One raider camp blocks the road');
+  await expect(page.locator('#campaignMissionDescription')).toContainText('clear the raider camp blocking this road');
   await expect(page.locator('#campaignGoal')).toHaveText(missionBriefing(missions[0]).goal);
   await expect(page.locator('#campaignRules')).toHaveJSProperty('open', false);
   await expect(page.locator('#campaignBriefing')).toBeHidden();

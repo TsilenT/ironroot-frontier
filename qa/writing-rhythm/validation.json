@@ -1,0 +1,221 @@
+{
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "branch": "codex/player-copy-rhythm-2026-11-07",
+  "runtimeEvidence": "source-audit.json",
+  "dataEvidence": "data-parity.json",
+  "environment": {
+    "node": "v24.22.1",
+    "playwright": "1.65.0",
+    "chromium": "155.0.8059.79",
+    "browserExecutable": "/usr/bin/chromium",
+    "browserWorkers": 2,
+    "rootTestConcurrency": 4,
+    "projects": [
+      "phone",
+      "narrow-phone",
+      "landscape",
+      "desktop"
+    ]
+  },
+  "node": {
+    "status": "passed with one pre-existing optional skip",
+    "command": "npm test",
+    "optionalSkip": "installed desktop tooling preserves the scoped minimatch compatibility contracts; optional desktop build dependencies are not installed",
+    "tests": 1240,
+    "passed": 1239,
+    "failed": 0,
+    "skipped": 1,
+    "durationMs": 93731.704548
+  },
+  "browserRuns": [
+    {
+      "name": "first writing pass",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- player-copy-rhythm.spec.mjs field-reference.spec.mjs campaign-navigation.spec.mjs training.spec.mjs first-build-start.spec.mjs hidden-coaching.spec.mjs portrait-income.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'revised copy|field reference|all 19 current briefings|ordinary unmodified|first lesson has no choice|Hide removes|income is visibly|real paid planning aerie|staggered' --reporter=line,html,json",
+      "results": "browser-first-pass.json",
+      "stats": {
+        "startTime": "2026-11-07T07:36:50.590Z",
+        "duration": 661957.826,
+        "expected": 72,
+        "skipped": 0,
+        "unexpected": 8,
+        "flaky": 0
+      },
+      "scope": "80 cases before final four wording refinements and the runtime fullscreen wording. All 19 current dialogue/hint screens, all five ordinary unmodified practice completions, first paid build, whole-banner Hide, field reference, native paid flight orders and staggered launch countdowns.",
+      "outcome": "72 passed, eight failed: four income occlusion failures and four desktop timeouts."
+    },
+    {
+      "name": "untouched exact-base comparison",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- portrait-income.spec.mjs field-reference.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'income is visibly|field reference disclosures|field reference cards|real paid planning aerie' --reporter=line,html,json",
+      "results": "baseline-comparison.json",
+      "stats": {
+        "startTime": "2026-11-07T07:48:03.278Z",
+        "duration": 214420.66,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "baseWorktreeClean": true,
+      "outcome": "24 passed, four failed. All four 320x568 safe-area income-occlusion failures reproduced; all desktop cases that timed out in the first writing run passed."
+    },
+    {
+      "name": "writing source before mobile-prompt amendment",
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/ironroot-rhythm-browser-final.json npm test -- player-copy-rhythm.spec.mjs field-reference.spec.mjs flight-orders.spec.mjs --workers=2 --grep 'revised copy|field reference disclosures|field reference cards|real paid planning aerie|native pause retains an approaching enemy warning' --reporter=line,html,json",
+      "results": "browser-final.json",
+      "stats": {
+        "startTime": "2026-11-07T07:52:05.226Z",
+        "duration": 271614.161,
+        "expected": 23,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "outcome": "23 passed, one failed: phone field-reference scrolling case exceeded its unchanged 20-second timeout. All four new 19-mission dialogue/hint/fullscreen checks and all four exact one-time warning announcements passed; the four earlier desktop timeout cases passed.",
+      "testedSourceCommit": "93f8e43bb1ae36c4ee3fb65a5dbce392586ac502"
+    }
+  ],
+  "remainingIssues": [
+    {
+      "issue": "base income occlusion",
+      "test": "portrait-income.spec.mjs:39",
+      "viewport": "320x568, all four projects",
+      "assertion": "geometry.occluded expected false, received true after safe-area injection at line 47",
+      "evidence": "Reproduced in all four projects on clean exact base 46d324b. Retained screenshot shows pause menu over the income text. No income/layout code, assertions or test timing changed in this writing branch."
+    },
+    {
+      "issue": "intermittent browser timeout",
+      "test": "field-reference.spec.mjs:124, phone in final run",
+      "status": "unresolved",
+      "evidence": "Exceeded unchanged 20000 ms limit; same case passed first writing run and untouched-base comparison. Initial desktop field-reference and planning timeouts passed in both comparison and final run. No deterministic copy mismatch or geometry failure was observed in these cases; root cause is unproven."
+    }
+  ],
+  "preservation": {
+    "runtimeChanges": "142 literal/template tokens in eight JavaScript files and HTML prose; every executable JS token and inter-token byte unchanged",
+    "numericFactsUnchanged": true,
+    "htmlTagsAndAllAttributesUnchanged": true,
+    "nonProseExportDataUnchanged": true,
+    "frozenHistoricalHashes": "Expected hashes unchanged; restore only exact explicit reviewed prose strings before existing descriptor fingerprint checks",
+    "assertionsAndTimeouts": "Updated exact copy matchers; existing behavioral/geometry assertions, timeout values and skips preserved; incomplete success-feedback negatives retained and expanded"
+  },
+  "limitations": [
+    "This is the focused writing matrix, not the complete integrated flight browser release gate.",
+    "Browser practice completion is ordinary real-time UI execution paired with independent Node causality checks; no independent browser-level combat attribution is claimed.",
+    "No physical-device or assistive-technology validation.",
+    "Orbit writing guidance was not present in the available workspace or tool catalog."
+  ],
+  "publication": {
+    "draftPullRequestOnly": true,
+    "mergeOrDeploymentPerformed": false
+  },
+  "preflight": [
+    {
+      "command": "npm run check",
+      "status": "passed"
+    },
+    {
+      "command": "npm run check:release",
+      "status": "passed",
+      "runtimeFiles": 49,
+      "totalBytes": 956625,
+      "evidence": "runtime-inventory.json"
+    },
+    {
+      "command": "npm --prefix qa/browser run check",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "integrationAmendment": {
+    "parentCommit": "93f8e43bb1ae36c4ee3fb65a5dbce392586ac502",
+    "scope": "Exactly two coaching strings now begin with imperatives, so the real mobile Open Build, then prefix produces complete sentences. No composer, mechanics, identifiers or numbers changed.",
+    "sourceEvidence": "amendment-source-audit.json",
+    "beforeFixRegression": {
+      "tests": 5,
+      "failed": 5,
+      "reason": "Complete prefixed Warden-lodge prompt did not match the expected imperative at all five mobile viewports."
+    },
+    "focusedNode": {
+      "command": "node --test tests/campaign-flow.test.mjs tests/campaign-teaching-integration.test.mjs tests/first-build-start.test.mjs",
+      "passed": 62,
+      "failed": 0
+    },
+    "newNodeCoverage": "Five mobile viewports assert exact full closed-drawer and open-drawer prompts at the Warden-lodge and archery stages; actual paid construction, unchanged gold and stopped clock remain checked.",
+    "browser": {
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/ironroot-prompt-browser.json npm test -- contextual-coaching.spec.mjs --workers=2 --grep 'shield-at-the-fork allows real paid planning' --reporter=line,html,json",
+      "stats": {
+        "startTime": "2026-11-07T08:10:04.319Z",
+        "duration": 60757.154,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "results": "amendment-browser.json",
+      "scope": "Both exact complete prompts checked in the existing real paid-planning test on all four profiles; original gameplay and geometry assertions, timeout and skip declarations unchanged."
+    },
+    "prCreationRetried": false,
+    "fullNode": {
+      "tests": 1230,
+      "passed": 1229,
+      "failed": 0,
+      "skipped": 1,
+      "durationMs": 110911.959248
+    },
+    "testedSourceCommit": "85b68b9305f97e795768fed3ed88d75bb2604720"
+  },
+  "mineTowerAmendment": {
+    "parentCommit": "85b68b9305f97e795768fed3ed88d75bb2604720",
+    "scope": "Exactly three coaching text tokens: Shield at the Fork mine, Forked Road mine and Forked Road tower. All start with imperative verbs for the unchanged mobile composer. Prices, the 2.5 gold-per-second fact, identifiers and mechanics are unchanged.",
+    "sourceEvidence": "mine-tower-source-audit.json",
+    "beforeFixRegression": {
+      "tests": 10,
+      "failed": 10,
+      "reason": "Complete mine prompts were noun-led after Open Build, then at all five tested mobile viewports."
+    },
+    "focusedNode": {
+      "command": "node --test tests/campaign-flow.test.mjs tests/campaign-teaching-integration.test.mjs tests/first-build-start.test.mjs",
+      "passed": 72,
+      "failed": 0
+    },
+    "newNodeCoverage": "Five mobile sizes check complete open- and closed-drawer mine and tower prompts after actual paid construction; reading and toggling Build preserve the battle. Forked Road uses a supported legacy checkpoint and explicit manual teaching replay.",
+    "browserCommand": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- contextual-coaching.spec.mjs --workers=2 --grep 'shield-at-the-fork allows real paid planning|Forked Road mine and tower hints' --reporter=line,html,json",
+    "browserFirst": {
+      "stats": {
+        "startTime": "2026-11-07T08:18:25.389Z",
+        "duration": 62138.654,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "results": "mine-tower-browser-first.json",
+      "outcome": "Four passed, four new Forked Road cases failed by reading the initial 610-gold restart checkpoint before planning purchases were saved. All text and visible 140-gold checks passed.",
+      "resolution": "The new test now opens Options, which executes the normal pause/save path, before inspecting persistence. Exact 140-gold, zero-time, deployment and progress assertions were retained; no runtime save behavior or existing assertions were changed."
+    },
+    "browserFinal": {
+      "stats": {
+        "startTime": "2026-11-07T08:19:48.972Z",
+        "duration": 58785.845,
+        "expected": 8,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "results": "mine-tower-browser.json",
+      "scope": "All eight cases passed across four profiles at two workers. The existing Shield at the Fork paid-planning case pins its mine prompt; the new Forked Road case pins mine and tower prompts after native paid construction and verifies persisted costs using the ordinary Options save action."
+    },
+    "prCreationRetried": false,
+    "mergeOrDeploymentPerformed": false,
+    "fullNode": {
+      "tests": 1240,
+      "passed": 1239,
+      "failed": 0,
+      "skipped": 1,
+      "durationMs": 93731.704548
+    },
+    "preflight": "Syntax, 49-file runtime inventory, browser fixture/harness checks and git diff --check passed."
+  }
+}

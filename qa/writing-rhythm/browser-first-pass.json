@@ -1,0 +1,1132 @@
+{
+  "stats": {
+    "startTime": "2026-11-07T07:36:50.590Z",
+    "duration": 661957.826,
+    "expected": 72,
+    "skipped": 0,
+    "unexpected": 8,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "file": "campaign-navigation.spec.mjs",
+      "line": 95,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 23857,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "file": "campaign-navigation.spec.mjs",
+      "line": 95,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 16176,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "file": "campaign-navigation.spec.mjs",
+      "line": 95,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 26821,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "file": "campaign-navigation.spec.mjs",
+      "line": 95,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15529,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "file": "field-reference.spec.mjs",
+      "line": 33,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15943,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "file": "field-reference.spec.mjs",
+      "line": 33,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13714,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "file": "field-reference.spec.mjs",
+      "line": 33,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 17283,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference disclosures show every unit structure and exact counter economics",
+      "file": "field-reference.spec.mjs",
+      "line": 33,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "timedOut",
+          "duration": 51586,
+          "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "field reference native Space and focus keep a paused battle read-only",
+      "file": "field-reference.spec.mjs",
+      "line": 94,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7155,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference native Space and focus keep a paused battle read-only",
+      "file": "field-reference.spec.mjs",
+      "line": 94,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6749,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference native Space and focus keep a paused battle read-only",
+      "file": "field-reference.spec.mjs",
+      "line": 94,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6153,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference native Space and focus keep a paused battle read-only",
+      "file": "field-reference.spec.mjs",
+      "line": 94,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6474,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens",
+      "file": "field-reference.spec.mjs",
+      "line": 124,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15776,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens",
+      "file": "field-reference.spec.mjs",
+      "line": 124,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 14057,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens",
+      "file": "field-reference.spec.mjs",
+      "line": 124,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 12402,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference cards remain horizontally contained and scroll reachable on narrow and landscape screens",
+      "file": "field-reference.spec.mjs",
+      "line": 124,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "timedOut",
+          "duration": 45061,
+          "error": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "field reference renders five distinct nonempty original portrait canvases",
+      "file": "field-reference.spec.mjs",
+      "line": 143,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5189,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference renders five distinct nonempty original portrait canvases",
+      "file": "field-reference.spec.mjs",
+      "line": 143,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3862,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference renders five distinct nonempty original portrait canvases",
+      "file": "field-reference.spec.mjs",
+      "line": 143,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4753,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "field reference renders five distinct nonempty original portrait canvases",
+      "file": "field-reference.spec.mjs",
+      "line": 143,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5738,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "fresh campaign field reference contains only its two unlocked units and no mine economy",
+      "file": "field-reference.spec.mjs",
+      "line": 164,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2881,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "fresh campaign field reference contains only its two unlocked units and no mine economy",
+      "file": "field-reference.spec.mjs",
+      "line": 164,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2776,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "fresh campaign field reference contains only its two unlocked units and no mine economy",
+      "file": "field-reference.spec.mjs",
+      "line": 164,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3027,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "fresh campaign field reference contains only its two unlocked units and no mine economy",
+      "file": "field-reference.spec.mjs",
+      "line": 164,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3196,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "first lesson has no choice; real paid barracks automatically starts combat and ends placement",
+      "file": "first-build-start.spec.mjs",
+      "line": 17,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9231,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "first lesson has no choice; real paid barracks automatically starts combat and ends placement",
+      "file": "first-build-start.spec.mjs",
+      "line": 17,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7338,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "first lesson has no choice; real paid barracks automatically starts combat and ends placement",
+      "file": "first-build-start.spec.mjs",
+      "line": 17,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9097,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "first lesson has no choice; real paid barracks automatically starts combat and ends placement",
+      "file": "first-build-start.spec.mjs",
+      "line": 17,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10043,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28070,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 24669,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 33141,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "timedOut",
+          "duration": 50166,
+          "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 27371,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 23239,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 34233,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "file": "flight-orders.spec.mjs",
+      "line": 104,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "timedOut",
+          "duration": 49439,
+          "error": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "staggered legal paid launches announce the earliest saved warning, not the latest flyer",
+      "file": "flight-orders.spec.mjs",
+      "line": 346,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4818,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "staggered legal paid launches announce the earliest saved warning, not the latest flyer",
+      "file": "flight-orders.spec.mjs",
+      "line": 346,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4344,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "staggered legal paid launches announce the earliest saved warning, not the latest flyer",
+      "file": "flight-orders.spec.mjs",
+      "line": 346,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5068,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "staggered legal paid launches announce the earliest saved warning, not the latest flyer",
+      "file": "flight-orders.spec.mjs",
+      "line": 346,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5758,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "Hide removes the banner, preserves native focus and keeps paid first construction as the start trigger",
+      "file": "hidden-coaching.spec.mjs",
+      "line": 55,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8388,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "Hide removes the banner, preserves native focus and keeps paid first construction as the start trigger",
+      "file": "hidden-coaching.spec.mjs",
+      "line": 55,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8346,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "Hide removes the banner, preserves native focus and keeps paid first construction as the start trigger",
+      "file": "hidden-coaching.spec.mjs",
+      "line": 55,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10207,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "Hide removes the banner, preserves native focus and keeps paid first construction as the start trigger",
+      "file": "hidden-coaching.spec.mjs",
+      "line": 55,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7336,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "revised copy presents every current dialogue and hint without horizontal clipping",
+      "file": "player-copy-rhythm.spec.mjs",
+      "line": 13,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 26798,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "revised copy presents every current dialogue and hint without horizontal clipping",
+      "file": "player-copy-rhythm.spec.mjs",
+      "line": 13,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 24193,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "revised copy presents every current dialogue and hint without horizontal clipping",
+      "file": "player-copy-rhythm.spec.mjs",
+      "line": 13,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 27902,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "revised copy presents every current dialogue and hint without horizontal clipping",
+      "file": "player-copy-rhythm.spec.mjs",
+      "line": 13,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 22448,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x430",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2914,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x430",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3108,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x430",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2936,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x430",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2867,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x568",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "phone",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 4195,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x568",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "narrow-phone",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 3773,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x568",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "landscape",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 4093,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 320x568",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 3379,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m"
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 390x650",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4550,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 390x650",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3932,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 390x650",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4285,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "income is visibly inside portrait HUD at 390x650",
+      "file": "portrait-income.spec.mjs",
+      "line": 39,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3652,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8040,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6519,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8837,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified first-barracks lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8133,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 14655,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13345,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28427,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified shield-and-arrow lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15490,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11172,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10904,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 25500,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified mine-and-upgrade lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13172,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 37801,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 38755,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 39116,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified siege-the-tower lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 55102,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 19767,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "narrow-phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 18861,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "landscape",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 20306,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "title": "ordinary unmodified answer-the-air lesson pays actual costs and completes its normal-time observation",
+      "file": "training.spec.mjs",
+      "line": 215,
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 21847,
+          "error": ""
+        }
+      ]
+    }
+  ]
+}

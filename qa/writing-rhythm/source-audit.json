@@ -1,0 +1,77 @@
+{
+  "baseCommit": "46d324b94754fe88ed9d324456f284af0aa4537d",
+  "method": "Acorn 8.19.0 token comparison; every non-string/template token and every inter-token byte must remain identical.",
+  "files": [
+    {
+      "file": "dist/app.js",
+      "changedTextTokens": 3,
+      "baseSha256": "f4ca172dac45bf1c85556041bce4e19cd27e17f21136f189320b82ace058232c",
+      "revisedSha256": "6941e626ab3935068016ccdb1d75ad92810f63f7129212e8372bfadb0deb8b26"
+    },
+    {
+      "file": "dist/campaign-flow.js",
+      "changedTextTokens": 45,
+      "baseSha256": "537bd2ab13fb882f2ac731669d36662c93ab5ad6017ad8331d231181769d785a",
+      "revisedSha256": "459faec8b37289feef1baf215722a7b68362e1fc92c2ff6e490097aaa8428a42"
+    },
+    {
+      "file": "dist/campaign-onboarding.js",
+      "changedTextTokens": 14,
+      "baseSha256": "2f9fcc9839d1a844ff0ea60f71e9e80715c188cd847c9d063b6530d6f90c33af",
+      "revisedSha256": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381"
+    },
+    {
+      "file": "dist/campaign.js",
+      "changedTextTokens": 22,
+      "baseSha256": "56f4a2d7bf50a316a60274dde63ffb1501ab89c36937612fbb25e2f3c13456eb",
+      "revisedSha256": "bc8f82a047b57433958bee49d616a089f107917a5319c71abcaf3447f616e885"
+    },
+    {
+      "file": "dist/codex.js",
+      "changedTextTokens": 17,
+      "baseSha256": "15e0062db3fb71801b4582ea61f777507dbdec20fd963d7d11f53c92c4460e4a",
+      "revisedSha256": "0d8322f6267233375633e9f39ee3d8434e1a8ce768b3efd03fed70794086ea9c"
+    },
+    {
+      "file": "dist/flight-orders-view.js",
+      "changedTextTokens": 3,
+      "baseSha256": "8024be77be159d9c81260c4e9d45a9363a92673cd866741db5a50d31976857e8",
+      "revisedSha256": "13e3a8846d767e75389c8b877288fda6ca5de21a8dc1f8fc1e9d1f6ccaf20eba"
+    },
+    {
+      "file": "dist/intro-campaign.js",
+      "changedTextTokens": 10,
+      "baseSha256": "6d095c15ef2dd0a4fea7ed633567fe0ddf294505c866a7d97c79d993676c819b",
+      "revisedSha256": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173"
+    },
+    {
+      "file": "dist/training.js",
+      "changedTextTokens": 28,
+      "baseSha256": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79",
+      "revisedSha256": "636b6e3e9f881a5051c96aee5ee9d4a53da359576cca8498887e961a799b7ab2"
+    }
+  ],
+  "fixedNumericFactsInChangedJavaScriptTextUnchanged": true,
+  "changedTextTokens": 142,
+  "unchangedSystems": {
+    "dist/engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "dist/rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/flight-visuals.js": "216031a0e08f0ade9d61b81c3372d4a0c8a7f2619b1c2d830f6fc06b6bbe04d6",
+    "dist/battle-codec.js": "2e675fe9b062cd1729c534919b3d8d454d904734a4cb3097989b0361c193a2ac",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "dist/backup.js": "c03d277c7129150d5a085f0a46d0a437aa23adc97abb1796ebae76b4ea471ca3",
+    "dist/persistence.js": "d901660d4f324989fd13a85f0a823bb9310f61a3b7acfd4544719a9b3fecc0a5",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/render.js": "9ad1826eacf8f1d298d34aba8e404a94f9a2e548d7390e4974229219c5be6319",
+    "dist/styles.css": "1fe8c072007e667c3498143c27e03608ee10c97a391b5d0774c7dcbf0ec142dd",
+    "dist/service-worker.js": "407da570cd1d7e4b7d65bee0391229582346c07f1771d9ed1aa707143f3809c3"
+  },
+  "html": {
+    "file": "dist/index.html",
+    "tagsAndAllAttributesUnchanged": true,
+    "baseSha256": "b5d4584af9bf44ea7979557d87063233f848a5bf7574dbada22a6ffd110f1ddc",
+    "revisedSha256": "af40cc77ca4c220a9aed63959caccd18fd174ac17be62b11446c99fc90708dec"
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "refinement": "flight-crossing-warning",
+    "path": "dist/flight-orders-view.js",
+    "before": ", where archers can still hit them in the air.",
+    "after": ", and your archers can hit them along the way.",
+    "reason": "Clarify that source-road archers can also attack crossing gryphons, rather than imply interception only at the destination."
+  },
+  {
+    "refinement": "flight-crossing-warning",
+    "path": "dist/flight-orders-view.js",
+    "before": "Enemy gryphons are about to cross toward ",
+    "after": "Enemy gryphons are about to cross toward the ",
+    "reason": "Complete the assembled lowercase road name with the definite article; retain destination sorting and formatting."
+  },
+  {
+    "refinement": "siege-practice-prompt",
+    "path": "dist/training.js",
+    "before": "Finish the lesson by watching your siege engines hit the marked tower and that tower fall.",
+    "after": "Watch your siege engines fire on the marked tower until it falls.",
+    "reason": "Replace the awkward final clause with a natural instruction while keeping both the attributable hit and target-defeat completion requirements unchanged."
+  }
+]
