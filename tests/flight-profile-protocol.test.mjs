@@ -2,12 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {CURRENT_PROFILE_PROTOCOL_VERSION,createProfileSession,PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {CURRENT_PROFILE_PROTOCOL_VERSION,createProfileSession,PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v016.js';
 import {createProfileSession as historicalProtocolFour} from './fixtures/profile-session-v015.js';
-import {createCampaignProgress,CAMPAIGN_PROGRESS_MISSIONS,createProgressionCampaignMission} from '../dist/campaign.js';
+import {createCampaignProgress,CAMPAIGN_PROGRESS_MISSIONS,createCampaignMission} from '../dist/campaign.js';
 import {encodeBattle,scenarioForBattle,identityOf,decodeBattle} from '../dist/battle-codec.js';
 import {createBackup,parseBackup,restoreBackup,BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
-import {trainingProfileFixture} from '../qa/browser/training-fixtures.mjs';
 const keys=Object.values(K),date='2026-11-07T00:00:00.000Z';
 const marker=(version,phase='ready',epoch='retained')=>JSON.stringify({format:'ironroot-profile',version,epoch,phase});
 function raw(entries=[]){const data=new Map(entries),calls=[];return {data,calls,
@@ -22,12 +21,13 @@ const writes=r=>r.calls.filter(([op])=>op!=='get');
 const domainCalls=r=>r.calls.filter(([,key])=>keys.includes(key));
 function flightBackup(){
   const campaign={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))};
-  const game=createProgressionCampaignMission('wings-of-ash',campaign),ref=scenarioForBattle(null,'wings-of-ash',game);
+  const game=createCampaignMission('wings-of-ash',{revision:3}),ref=scenarioForBattle(null,'wings-of-ash',game);
   const history=[{won:false,draw:false,difficulty:game.difficulty,time:1,kills:0,built:1,date,identity:identityOf(game,ref)}];
   return createBackup(raw(),{createdAt:date,campaign,history,settings:{quality:'low'},trials:{},battle:encodeBattle(game,ref,{campaignProgress:campaign})});
 }
 
-test('current protocol is explicitly five, historical default stays one, and actual protocol-four fixture is pinned',()=>{
+test('frozen v0.16 protocol is explicitly five, historical default stays one, and actual source fixtures are pinned',()=>{
+  assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v016.js',import.meta.url))).digest('hex'),'f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19');
   assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,5);
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v015.js',import.meta.url))).digest('hex'),'7bbb09a46de6868406b49436de7013a1b962c446cdc67aa9ca2dbd551f3534e6');
   const r=raw(),p=createProfileSession(()=>r,{newEpoch:()=> 'historical-default'});
@@ -138,12 +138,4 @@ test('unverified rollback and marker finalization remain blocked until the exact
   assert.equal(recovery.finishImport({outcome:'restored'}).ok,false);assert.equal(recovery.finishImport({outcome:'rolled-back'}).code,'outcome-conflict');
   assert.equal(recovery.status().canWrite,false);r.setItem=write;assert.equal(recovery.finishImport({outcome:'restored'}).ok,true);
   assert.equal(current(r).status().canWrite,true);
-});
-
-test('current synthetic training profile is already protocol five and preserves every domain without migration',()=>{
-  const fixture=trainingProfileFixture(),r=raw(Object.entries(fixture.values)),before=[...r.data];
-  assert.equal(JSON.parse(r.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
-  const p=current(r);assert.equal(p.status().canWrite,true);for(const key of keys)assert.equal(p.storage.getItem(key),fixture.values[key]);
-  assert.deepEqual([...r.data],before);assert.deepEqual(writes(r),[]);
-  assert.equal(fixture.backup.data.battle.version,2,'current profile protocol does not relabel a historical battle envelope');
 });

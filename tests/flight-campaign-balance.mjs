@@ -1,4 +1,5 @@
-/** Optional bounded campaign review; not included in npm test.
+/** Historical manual-flight campaign review; not included in npm test.
+ * Explicit revision-1 opening and revision-2/3 continuations; never current automatic-air launches.
  * Run from the repository root: node tests/flight-campaign-balance.mjs
  * Only this runner's qa/flight-campaign-balance/results.json is written.
  * Paid scripted policies are synthetic evidence, never human win-rate estimates.
@@ -9,7 +10,9 @@ import {readFileSync, readdirSync, mkdirSync, writeFileSync} from 'node:fs';
 import {Game} from '../dist/engine.js';
 import * as campaign from '../dist/campaign.js';
 import {encodeBattle, decodeBattle} from '../dist/battle-codec.js';
-import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../dist/profile-session.js';
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from './fixtures/profile-session-v016.js';
+import {beforeRhythmCopy} from './writing-rhythm-copy.mjs';
+import {getHistoricalRosterMission,createHistoricalRosterMission} from './campaign-roster-historical.mjs';
 import {campaignPolicy, campaignMasteryPolicy} from './campaign-policies.mjs';
 import {onboardingReferencePolicy} from './onboarding-campaign-policies.mjs';
 
@@ -18,22 +21,22 @@ const out = new URL('qa/flight-campaign-balance/', root);
 const hash = value => createHash('sha256').update(typeof value === 'string' || Buffer.isBuffer(value) ? value : JSON.stringify(value)).digest('hex');
 const round = value => +value.toFixed(3);
 const runtimeFiles = readdirSync(new URL('dist/', root)).filter(file => /\.(js|html|css)$/.test(file)).sort();
-const sourceFiles = [...runtimeFiles.map(file => 'dist/' + file), 'tests/campaign-policies.mjs', 'tests/onboarding-campaign-policies.mjs', 'tests/flight-campaign-balance.mjs'];
-const simulationFiles = ['dist/engine.js', 'dist/rulesets.js', 'dist/flight-orders.js', 'dist/campaign.js', 'dist/campaign-onboarding.js', 'dist/intro-campaign.js', 'dist/battle-codec.js', 'dist/challenges.js', 'dist/training.js', 'dist/profile-session.js', 'tests/campaign-policies.mjs', 'tests/onboarding-campaign-policies.mjs', 'tests/flight-campaign-balance.mjs'];
+const sourceFiles = [...runtimeFiles.map(file => 'dist/' + file), 'tests/campaign-policies.mjs', 'tests/onboarding-campaign-policies.mjs', 'tests/flight-campaign-balance.mjs', 'tests/fixtures/profile-session-v016.js', 'tests/writing-rhythm-copy.mjs', 'tests/campaign-roster-historical.mjs'];
+const simulationFiles = ['dist/engine.js', 'dist/rulesets.js', 'dist/flight-orders.js', 'dist/campaign.js', 'dist/campaign-onboarding.js', 'dist/intro-campaign.js', 'dist/battle-codec.js', 'dist/challenges.js', 'dist/training.js', 'tests/campaign-policies.mjs', 'tests/onboarding-campaign-policies.mjs', 'tests/flight-campaign-balance.mjs', 'tests/fixtures/profile-session-v016.js', 'tests/writing-rhythm-copy.mjs', 'tests/campaign-roster-historical.mjs'];
 const sourceHashes = () => Object.fromEntries(sourceFiles.map(file => [file, hash(readFileSync(new URL(file, root)))]));
 const started = Date.now(), inputHashes = sourceHashes();
 const invariants = [];
 const check = (pass, label) => {invariants.push({pass, label});};
 const publishedCatalogHashes = {
-  revision1: hash(campaign.CAMPAIGN_PROGRESS_MISSIONS),
-  revision2: hash(campaign.PROGRESSION_CAMPAIGN_MISSIONS),
+  revision1: hash(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS)),
+  revision2: hash(beforeRhythmCopy(campaign.PROGRESSION_CAMPAIGN_MISSIONS)),
 };
 assert.equal(publishedCatalogHashes.revision1, '3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
 assert.equal(publishedCatalogHashes.revision2, '42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
 assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 5);
 assert.equal(campaign.FLIGHT_CAMPAIGN_MISSION_IDS.length, 13);
 for (const id of campaign.FLIGHT_CAMPAIGN_MISSION_IDS) {
-  assert.equal(campaign.getCurrentCampaignRevision(id), 3);
+  assert.equal(campaign.getCampaignMission(id, 3).scenarioRevision, 3);
   assert.equal(campaign.campaignScenarioForGame(campaign.createCampaignMission(id), id).revision, 1, 'Never silently test the legacy default as current');
   assert.ok(Object.isFrozen(campaign.getCampaignMission(id, 2)));
 }
@@ -76,8 +79,10 @@ function orderAeries(game, route) {
 }
 let simulations = 0;
 function run({id, revision, progress, seed, kind = 'reference', restore = false, route = 'hold', launch = false}) {
-  const mission = launch ? campaign.getCampaignLaunchMission(id, progress) : campaign.getCampaignMission(id, revision);
-  let game = launch ? campaign.createProgressionCampaignMission(id, progress) : campaign.createCampaignMission(id, {revision});
+  const historicalRevision = campaign.isOnboardingMission(id) ? 1 : campaign.FLIGHT_CAMPAIGN_MISSION_IDS.includes(id) ? 3 : 2;
+  const mission = launch && campaign.isOnboardingMission(id) ? getHistoricalRosterMission(id, progress) : campaign.getCampaignMission(id, launch ? historicalRevision : revision);
+  if (launch && !campaign.isMissionUnlocked(progress, id, mission.scenarioRevision)) throw new RangeError('Historical campaign mission is locked.');
+  let game = launch && campaign.isOnboardingMission(id) ? createHistoricalRosterMission(id, progress) : campaign.createCampaignMission(id, {revision: launch ? historicalRevision : revision});
   const actualRevision = campaign.campaignScenarioForGame(game, id).revision;
   if (revision !== undefined) assert.equal(actualRevision, revision);
   game.seed = seed ?? mission.seed;
@@ -192,12 +197,12 @@ for (const descriptor of [...campaign.ONBOARDING_MISSIONS, ...campaign.CAMPAIGN_
   const entry = run({id, progress, launch: true, restore: true,
     kind: campaign.ONBOARDING_MISSIONS.some(m => m.id === id) ? 'onboarding' : 'reference'});
   progression.push(entry.summary);
-  check(entry.outcome.completed, 'Paid current-profile progression/' + id);
+  check(entry.outcome.completed, 'Paid historical-profile progression/' + id);
   if (!entry.outcome.completed) break; // Keep the negative result; never invent prerequisites.
   progress = campaign.recordCampaignResult(progress, id, entry.game);
 }
 const overview = campaign.getProgressionCampaignOverview(progress);
-check(overview.cleared === 19, 'All 19 current-profile missions earned');
+check(overview.cleared === 19, 'All 19 historical-profile missions earned');
 check(progression.slice(0, 3).map(r => r.rulesetId).join(',') === 'frontier-campaign-watch,frontier-campaign-fork,frontier-campaign-open', 'Opening retains the three earned roster identities');
 check(progression.some(r => r.maxWardens > 0 && r.purchased.wardenLodge > 0), 'Paid Rootwardens participate in actual progression');
 process.stderr.write(`Paid progression: ${overview.cleared}/19 cleared; ${overview.stars}/${overview.maxStars} stars.\n`);
@@ -267,7 +272,7 @@ const report = {
     seedChoices: ['authored mission seed', 57, 999], timeStepSeconds: .05, decisionEverySeconds: 1,
     actionLimitPerDecision: null, restoreEverySeconds: 10, restoreSeed: 999,
     normalizedFields: ['rulesetId frontier-campaign-flight → frontier-campaign-open', 'remove aerie flightPlan only after checking it equals its source lane'],
-    limits: 'Scripted paid policies are not human play or optimality claims. No combat tuning, free buildings, HP/gold edits, synthetic troops, or automatic wins. Seed is the only initial battle override. Trace hashes sample before each one-second decision and at the exact end, not every simulation tick. Current progression and optional flight examples also use playable save roundtrips. Terminal states use raw engine hashes because the playable codec intentionally rejects ended battles. No browser, physical-device, performance, network, deployment or live-release certification. Historical identity compatibility is covered separately by existing frozen-oracle/identity tests.',
+    limits: 'Scripted paid policies are not human play or optimality claims. No combat tuning, free buildings, HP/gold edits, synthetic troops, or automatic wins. Seed is the only initial battle override. Trace hashes sample before each one-second decision and at the exact end, not every simulation tick. Historical progression and optional flight examples also use playable save roundtrips. Terminal states use raw engine hashes because the playable codec intentionally rejects ended battles. No browser, physical-device, performance, network, deployment or live-release certification. Historical identity compatibility is covered separately by existing frozen-oracle/identity tests.',
   },
   summary: {
     simulations, holdPairs: holdComparisons.length,

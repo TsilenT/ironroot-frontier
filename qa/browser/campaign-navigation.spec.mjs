@@ -130,8 +130,8 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);
   await startRunning(page, press); await press(page, '#pause');
-  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:3});
-  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-flight');
+  expect((JSON.parse((await profile(page))[0])).scenario).toEqual({kind:'campaign',id:'common-ground',revision:4});
+  expect(JSON.parse((await profile(page))[0]).game.rulesetId).toBe('frontier-campaign-air-local');
   expect((await profile(page))[1]).toBe(bytes);
 });
 
@@ -168,7 +168,7 @@ test('Continue from victory opens the next briefing directly and preserves earne
   const progress = JSON.parse((await profile(page))[1]);
   expect(progress.missions.emberwatch).toMatchObject({completed:true,stars:3});
   await startRunning(page, press); await press(page, '#pause');
-  expect(JSON.parse((await profile(page))[0]).scenario).toEqual({kind:'campaign',id:'three-roads',revision:2});
+  expect(JSON.parse((await profile(page))[0]).scenario).toEqual({kind:'campaign',id:'three-roads',revision:4});
 });
 
 test('briefing and launch remain usable on narrow phones, landscape and desktop with a saved battle', async ({page}, testInfo) => {

@@ -22,8 +22,8 @@ function phaseFixture(phase,side=0,mapId='classic'){
 }
 function rejectsUnchanged(g,fn){const before=g.serialize();assert.equal(fn().ok,false);assert.deepEqual(g.serialize(),before);}
 
-test('flight identities are immutable full-roster revisions; old default and three campaign stages stay intact',()=>{
-  assert.equal(new Game().ruleset.id,'frontier-legacy');assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-flight-open');
+test('historical flight identities and three campaign stages stay immutable as fresh defaults advance',()=>{
+  assert.equal(new Game().ruleset.id,'frontier-legacy');assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-air-local-open');
   assert.deepEqual(CAMPAIGN_RULESET_IDS,['frontier-campaign-watch','frontier-campaign-fork','frontier-campaign-open']);
   for(const id of ids){const r=RULESETS[id];assert.equal(r.revision,1);assert.equal(Object.keys(r.buildings).length,8);assert.equal(r.units.rootwarden.hp,800);assert.equal(r.units.gryphon.speed,84);assert.equal(r.units,RULESETS['frontier-rootwarden-open'].units);assert.equal(r.limits,RULESETS['frontier-rootwarden-open'].limits);assert.deepEqual(r.movement,{policy:'flight-orders-v1',flightOrders:{gateCenterOffset:200,warningSeconds:2,adjacentOnly:true,maxCrossings:1}});assert.equal(r.endgame.forcedDecay,id==='frontier-flight-timed');assert.equal(!!r.campaignOnly,id==='frontier-campaign-flight');assert.throws(()=>r.movement.flightOrders.warningSeconds=1,TypeError);}
   for(const r of Object.values(RULESETS))for(const m of Object.values(MAPS)){const enabled=ids.includes(r.id);assert.equal(supportsFlightOrders(r),enabled);assert.equal(flightGateHome(m,r),enabled?m.width/2-200:null);for(const side of [0,1])assert.equal(flightGateX(m,r,side),enabled?worldX(m,side,m.width/2-200):null);}

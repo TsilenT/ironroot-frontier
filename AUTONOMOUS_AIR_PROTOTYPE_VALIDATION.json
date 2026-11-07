@@ -1,0 +1,239 @@
+{
+  "status": "Local DOM-free prototype; not selected by app/campaign and not deployed",
+  "ruleIds": [
+    "frontier-air-local-open",
+    "frontier-air-local-timed",
+    "frontier-campaign-air-local"
+  ],
+  "sourceHashes": {
+    "engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+    "rulesets.js": "2250756425cff1a7f643f2c222008453472180777d8f643674b2b2fa101ef2ec",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "service-worker.js": "5c99ad1ae97a0d5385418ef5c5d61662f1bd6f59be4bcb139f82d0c47f42c993"
+  },
+  "mechanic": {
+    "acquisition": 300,
+    "retentionDistance": 420,
+    "attackRange": 110,
+    "speed": 84,
+    "persistentState": "airTargetId only",
+    "roadIdentity": "current nearest physical road",
+    "targetLoss": "seek locally or ordinary forward movement from current road",
+    "manualOrders": false
+  },
+  "performanceCaveat": "Node timings on a shared machine; not browser, phone, rendering or human balance certification",
+  "cap": [
+    {
+      "composition": "gryphons",
+      "livingAfterNineSeconds": 140,
+      "maxDistanceCallsPerStep": 10360,
+      "timedSteps": 900,
+      "medianStepMs": 0.08943199999998797,
+      "p95StepMs": 0.1461749999999995,
+      "maxStepMs": 0.6218259999999987
+    },
+    {
+      "composition": "mixed six unit types",
+      "livingAfterNineSeconds": 140,
+      "maxDistanceCallsPerStep": 4654,
+      "timedSteps": 900,
+      "medianStepMs": 0.33403199999997923,
+      "p95StepMs": 0.5321440000000166,
+      "maxStepMs": 4.741424999999936
+    }
+  ],
+  "wardenRegression": [
+    {
+      "side": 0,
+      "startingGold": 1000,
+      "defaultBarracks": false,
+      "seconds": 119.99999999999532,
+      "nearbyLivingTargetDrops": 0,
+      "deadTargetReleases": 8,
+      "firstFlyer": {
+        "x": 644.4714735995431,
+        "y": 447.8521391792741,
+        "lane": 1,
+        "hp": 125
+      },
+      "kills": [
+        8,
+        0
+      ],
+      "damage": [
+        7165,
+        144
+      ]
+    },
+    {
+      "side": 0,
+      "startingGold": 420,
+      "defaultBarracks": true,
+      "seconds": 119.99999999999532,
+      "nearbyLivingTargetDrops": 0,
+      "deadTargetReleases": 18,
+      "firstFlyer": {
+        "x": 2645.2945847899364,
+        "y": 449.3590849714387,
+        "lane": 1,
+        "hp": 125
+      },
+      "kills": [
+        23,
+        4
+      ],
+      "damage": [
+        10638.80000000003,
+        1219
+      ]
+    },
+    {
+      "side": 1,
+      "startingGold": 1000,
+      "defaultBarracks": false,
+      "seconds": 119.99999999999532,
+      "nearbyLivingTargetDrops": 0,
+      "deadTargetReleases": 8,
+      "firstFlyer": {
+        "x": 2555.528526400458,
+        "y": 447.85213917927405,
+        "lane": 1,
+        "hp": 125
+      },
+      "kills": [
+        0,
+        8
+      ],
+      "damage": [
+        144,
+        7165
+      ]
+    },
+    {
+      "side": 1,
+      "startingGold": 420,
+      "defaultBarracks": true,
+      "seconds": 119.99999999999532,
+      "nearbyLivingTargetDrops": 0,
+      "deadTargetReleases": 17,
+      "firstFlyer": {
+        "x": 273.5974664697967,
+        "y": 449.7857224425295,
+        "lane": 1,
+        "hp": 125
+      },
+      "kills": [
+        5,
+        21
+      ],
+      "damage": [
+        1231,
+        11025.40000000005
+      ]
+    }
+  ],
+  "paidOutcomes": [
+    {
+      "side": 0,
+      "defender": "barracks",
+      "seconds": 44.99999999999958,
+      "kills": [
+        4,
+        0
+      ],
+      "damage": [
+        822,
+        0
+      ],
+      "gold": [
+        983,
+        1085
+      ]
+    },
+    {
+      "side": 0,
+      "defender": "archery",
+      "seconds": 44.99999999999958,
+      "kills": [
+        2,
+        3
+      ],
+      "damage": [
+        181,
+        392
+      ],
+      "gold": [
+        979,
+        1056
+      ]
+    },
+    {
+      "side": 0,
+      "defender": "watchtower",
+      "seconds": 44.99999999999958,
+      "kills": [
+        0,
+        3
+      ],
+      "damage": [
+        0,
+        375
+      ],
+      "gold": [
+        975,
+        1011
+      ]
+    },
+    {
+      "side": 1,
+      "defender": "barracks",
+      "seconds": 44.99999999999958,
+      "kills": [
+        0,
+        4
+      ],
+      "damage": [
+        0,
+        822
+      ],
+      "gold": [
+        1085,
+        983
+      ]
+    },
+    {
+      "side": 1,
+      "defender": "archery",
+      "seconds": 44.99999999999958,
+      "kills": [
+        3,
+        2
+      ],
+      "damage": [
+        392,
+        181
+      ],
+      "gold": [
+        1056,
+        979
+      ]
+    },
+    {
+      "side": 1,
+      "defender": "watchtower",
+      "seconds": 44.99999999999958,
+      "kills": [
+        3,
+        0
+      ],
+      "damage": [
+        375,
+        0
+      ],
+      "gold": [
+        1011,
+        975
+      ]
+    }
+  ]
+}

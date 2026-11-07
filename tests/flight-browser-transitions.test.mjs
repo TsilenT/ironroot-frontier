@@ -1,11 +1,11 @@
-// Pure tests of the browser harness's routing/readiness sequence. These do not
+// Historical manual-flight tests of the browser harness's routing/readiness sequence. These do not
 // execute a browser or establish runtime visibility, input or focus behavior.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 
-const source=readFileSync(new URL('../qa/browser/flight-orders.spec.mjs',import.meta.url),'utf8');
+const source=readFileSync(new URL('../qa/historical/manual-flight/flight-orders.spec.mjs.txt',import.meta.url),'utf8');
 const helper=source.match(/async function readyFlightOrder\([^]*?\n\}/)?.[0];
 assert.ok(helper,'the flight readiness helper must remain inspectable');
 

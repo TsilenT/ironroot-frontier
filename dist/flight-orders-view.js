@@ -1,4 +1,5 @@
 import { supportsFlightOrders } from './flight-orders.js';
+import { supportsAutonomousAir } from './autonomous-air.js';
 
 /** Match the visual countdown; a pending warning never displays zero. */
 export function flightWarningTime(remaining) {
@@ -14,25 +15,21 @@ export function flightRoadName(map, lane) {
   return names?.[lane] || (map.lanes.length === 1 ? 'Only road' : `Road ${lane + 1}`);
 }
 
-export function flightOrderModel(game, building) {
-  if (!supportsFlightOrders(game.ruleset) || !building || building.side !== 0 ||
-      building.type !== 'aerie' || building.hp <= 0) return null;
-  const source = building.lane, current = building.flightPlan;
-  const options = [-1, 0, 1].map(offset => {
-    const lane = source + offset;
-    return {
-      key: offset < 0 ? 'north' : offset > 0 ? 'south' : 'hold', lane,
-      available: lane >= 0 && lane < game.map.lanes.length,
-      label: offset === 0 ? 'Hold road' : flightRoadName(game.map, lane),
-      selected: lane === current,
-    };
-  });
-  return {
-    options,
-    current: current === source ? `Next launch: hold ${flightRoadName(game.map, source).toLowerCase()}.`
-      : `Next launch: shift to ${flightRoadName(game.map, current).toLowerCase()}.`,
-    detail: 'New orders apply to future launches, while gryphons already in the air keep their route. Crossing between roads takes time and leaves them exposed to archers.',
+// All presentation is read-only, including battles retained under earlier rules.
+export function airRulesGuide(context) {
+  const ruleset = context?.ruleset || context;
+  if (supportsAutonomousAir(ruleset)) return {
+    title: 'Flying between roads',
+    detail: 'Gryphons spot nearby enemies on their road or one road over and fly toward them automatically. Following fights can carry them farther across the field. Archers stay on their road; they and watchtowers can hit a flyer whenever it comes within range.',
   };
+  return null;
+}
+
+export function airBuildingDescription(game, type) {
+  const description = game.buildings[type]?.description || '';
+  if (type !== 'aerie') return description;
+  if (supportsAutonomousAir(game.ruleset)) return 'Spawns gryphons that fly toward nearby enemies on their road or one road over. Archers and towers counter them.';
+  return description;
 }
 
 export function flightRouteRows(game) {

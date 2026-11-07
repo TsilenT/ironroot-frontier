@@ -27,16 +27,16 @@ The exact released source passed **1,280 Node tests / one optional skip** and **
 - PR #2 now contains the reviewed production flight implementation and shipped in v0.16, together with income, first-build teaching, hidden-hint and recovery fixes. The older automatic-crossing prototype was not substituted for the production engine.
 - Redundant branch names can be removed after ancestry/dependency checks; their reachable commits remain available.
 
-## Active integration: PR #9 player copy
+## Active integration: automatic flyers and PR #9 prose
 
-The writing branch at `c359d325080fd07261f5fa92a73cac7ae2680e61` is being reconciled with released v0.16. It varies campaign dialogue, coaching, practice feedback and guide prose without changing mechanics or making every instruction longer. Complete mobile prompts and first-build instructions are part of the review. The branch's earlier tests are historical evidence, not a pass for this integrated candidate. PR #9 stays draft until the combined changes are checked.
+The reviewed writing head `477d529f28da56873ed6461da7a1277c08d349bf` passed 1,298 Node and 511 focused browser checks with 13 intentional exclusions. It has not been separately deployed. The next coherent candidate replaces its manual-route instructions with automatic nearby-enemy combat, removes routing controls, and applies the same behavior in fresh campaign, skirmish, trials and practice. Current campaign smoke clears all nineteen missions through ordinary paid actions; integrated browser checks are still pending. See AUTOMATIC_AIR_INTEGRATION.md.
 
 ## Explicitly unmerged or deferred
 
 - **Longer music:** 64-bar experiment has technical PCM checks but no actual listening assessment. Not selected for release yet.
 - **AI expansion and balance:** experiments remain unmerged. Current AI reacts to committed flight destinations but does not issue flight orders or buy Warden lodges. Concentrated barracks remain strong in synthetic benchmarks; better results against one opening would not establish overall difficulty or fun.
 - **Optional two-of-three objective routes:** prototype only, not part of the current campaign.
-- **Fixed automatic lane crossings:** first prototype not selected; player-directed orders are the shipped replacement.
+- **Manual and fixed lane routing:** manual orders are still in live v0.16 but are being replaced, following the player’s clarified intent. The initial fixed-gateway and forced-return prototypes are not selected.
 - **Native desktop/Steam readiness:** packaging, device/input coverage, accessibility and store/business requirements remain open. The game is not advertised as Steam-ready.
 - **Network PvP:** not implemented.
 

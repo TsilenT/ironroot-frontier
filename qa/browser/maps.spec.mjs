@@ -13,7 +13,7 @@ function assertMap(envelope,id){
   // v1/v2 restoration is covered separately, without rewriting its identity.
   expect(envelope).toMatchObject({format:'ironroot-save',version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
   expect(envelope).not.toHaveProperty('campaignId');
-  expect(envelope.game).toMatchObject({version:3,mapId:id,mapRevision:1,rulesetId:'frontier-flight-open',rulesetRevision:1});
+  expect(envelope.game).toMatchObject({version:3,mapId:id,mapRevision:1,rulesetId:'frontier-air-local-open',rulesetRevision:1});
   expect(Game.restore(envelope.game).map.id).toBe(id);
 }
 
@@ -188,7 +188,7 @@ for(const mode of ['campaign','challenges'])test(mode+' authored mission starts 
   await observeCanvas(page);
   if(mode==='campaign'){
     // A declared returning-player record unlocks the current Emberwatch replay.
-    // New main-campaign launches are revision 2, never the historical v1 battle.
+    // New main-campaign launches are revision 4, never the historical v1 battle.
     const progress=createCampaignProgress();
     progress.missions.emberwatch={completed:true,stars:1,bestTime:60};
     await seedOnce(page,{[BACKUP_STORAGE_KEYS.campaign]:JSON.stringify(progress)});
@@ -204,9 +204,9 @@ for(const mode of ['campaign','challenges'])test(mode+' authored mission starts 
   await press(page,'#start');const envelope=await pause(page);
   expect(Game.restore(envelope.game).map.id).toBe('classic');
   if(mode==='campaign')expect(envelope).toMatchObject({format:'ironroot-save',version:3,
-    scenario:{kind:'campaign',id:'emberwatch',revision:2},
-    game:{version:3,mapId:'classic',mapRevision:1,rulesetId:'frontier-campaign-open',rulesetRevision:1}});
-  else expect(envelope).toMatchObject({campaignId:null,challengeId:'shieldbreaker',game:{version:1}});
+    scenario:{kind:'campaign',id:'emberwatch',revision:4},
+    game:{version:3,mapId:'classic',mapRevision:1,rulesetId:'frontier-campaign-air-local',rulesetRevision:1}});
+  else expect(envelope).toMatchObject({version:3,scenario:{kind:'trial',id:'shieldbreaker',revision:2},game:{version:3,mapId:'classic',mapRevision:1,rulesetId:'frontier-authored-air-local',rulesetRevision:1}});
   await expect.poll(async()=>(await canvasFrame(page)).battle?.terrain?.width).toBe(3200);
   await press(page,'#saveExit');await press(page,'[data-mode="skirmish"]');await expect(page.locator('#selectedMapName')).toHaveText('Long March');
   await press(page,'#start');assertMap(await pause(page),'long-march');
