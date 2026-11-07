@@ -151,7 +151,8 @@ test('campaign deadline failure focuses Retry and restarts without granting prog
   await page.keyboard.press('Tab'); await expect(page.locator('#playAgain')).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#resultModal')).toBeHidden();
-  await expect(page.locator('#welcome')).toBeHidden();
+  await expect(page.locator('#welcome')).toBeVisible();
+  await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
   const retry=await pause(page); expect(retry.campaignId).toBe('emberwatch');
   expect(retry.game.state.time).toBeLessThan(5);
   expect(retry.game.state.buildings.some(b=>b.side===1&&b.type==='barracks'&&b.x===2230)).toBe(true);
@@ -329,7 +330,8 @@ test('a gameplay gesture held across mission end cannot activate the newly appea
     // A first independent press must still work after observing the old click.
     await press(page,'#playAgain');
     await expect(page.locator('#resultModal')).toBeHidden();
-    await expect(page.locator('#welcome')).toBeHidden();
+    await expect(page.locator('#welcome')).toBeVisible();
+    await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
     const retry=await pause(page);
     expect(retry.campaignId).toBe('emberwatch');
     expect(retry.game.state.time).toBeLessThan(5);
@@ -362,7 +364,8 @@ test('a gameplay gesture held across mission end cannot activate the newly appea
       await page.mouse.click(freshPoint.x,freshPoint.y);
     }
     await expect(page.locator('#resultModal')).toBeHidden();
-    await expect(page.locator('#welcome')).toBeHidden();
+    await expect(page.locator('#welcome')).toBeVisible();
+    await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
     const immediateRetry=await pause(page);
     expect(immediateRetry.campaignId).toBe('emberwatch');
     expect(immediateRetry.game.state.time).toBeLessThan(5);

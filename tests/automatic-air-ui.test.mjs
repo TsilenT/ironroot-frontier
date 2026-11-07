@@ -110,6 +110,7 @@ for(const id of ['shieldbreaker','skyguard','siegecraft','goldrush','holdfast'])
   };
   runInContext(section('function hideRestart()','let settingsWasPaused ='),c);
   $('restartBattle').onclick();$('confirmRestart').onclick();
+  assert.equal(c.started,false);$('start').onclick();
   assert.equal(checkpoint.challenge,id);assert.equal(checkpoint.campaign,null);
   assert.deepEqual(checkpoint.game,initial);
   assert.deepEqual(c.game.serialize(),initial);
@@ -145,6 +146,7 @@ for(const [id,mapId] of [['first-watch','intro-one-road'],['forked-road','intro-
     Object.assign(c,{createCampaignRestart,progressDirty:false,SAVE:'ironroot.battle.v1',writeBattle:()=>true});
     runInContext(section('function hideRestart()','let settingsWasPaused ='),c);
     $('restartBattle').onclick();$('confirmRestart').onclick();
+  assert.equal(c.started,false);$('start').onclick();
     assert.deepEqual(campaignScenarioForGame(c.game,id),{kind:'campaign',id,revision:1});
     assert.equal(c.game.ruleset.id,'frontier-legacy');
     assert.deepEqual(c.game.serialize(),initial);

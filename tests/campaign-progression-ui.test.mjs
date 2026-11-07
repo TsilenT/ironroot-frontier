@@ -62,7 +62,7 @@ function uiHarness({ campaignProgress = progress(), width = 390, height = 650 } 
     downloadBackup: text => log.downloads.push(text), toast: text => log.notices.push(text),
   });
   Object.assign(c.battleSession, {
-    remove() { log.removals++; }, isCurrent: () => true,
+    remove() { log.removals++; return true; }, isCurrent: () => true,
     captureResult: () => ({ remove() { log.removals++; }, status: 'current' }),
   });
   c.renderer.scale = 1;
@@ -212,6 +212,7 @@ test('restored legacy main mission retries and replays legacy identity without r
   assert.deepEqual(h.c.game.serialize(), before); assert.deepEqual(cardTypes(h), Object.keys(BUILDINGS));
   assert.equal(h.c.game.ruleset.id, 'frontier-legacy');
   h.c.objectiveOutcome = { failed: true }; h.$('playAgain').onclick();
+  assert.equal(h.c.started,false); h.$('start').onclick();
   assert.equal(h.c.game.ruleset.id, 'frontier-legacy'); assert.deepEqual(h.c.game.serialize(), before);
   injectResultBoundary(h); h.$('replayMission').onclick();
   assert.equal(h.c.game.ruleset.id, 'frontier-legacy'); assert.deepEqual(cardTypes(h), Object.keys(BUILDINGS));

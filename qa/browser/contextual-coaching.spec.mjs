@@ -240,7 +240,7 @@ test('Forked Road mine and tower hints assemble complete prompts after real paid
     localStorage.setItem('ironroot.campaign.v1',JSON.stringify(progress));
   },{battle,progress});
   await page.reload(); await press(page,'#resumeSaved'); await press(page,'#pause');
-  await press(page,'#restartBattle'); await press(page,'#confirmRestart');
+  await press(page,'#restartBattle'); await press(page,'#confirmRestart');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
   await expect(page.locator('#coachingModal')).toBeVisible();
   await press(page,'#coachingPlan');
   await place(page,'barracks',970,340); await place(page,'barracks',970,560);
@@ -270,7 +270,7 @@ test('Forked Road mine and tower hints assemble complete prompts after real paid
 test('restart of an unfinished opening keeps its exact roster and offers fresh teaching at zero',async({page})=>{
   await fresh(page,'shield-at-the-fork');await press(page,'#coachingPlan');await place(page,'wardenLodge',970,340);
   await openBuildControls(page);await press(page,'#coachResume');await press(page,'#pause');
-  const before=await saved(page);await press(page,'#restartBattle');await press(page,'#confirmRestart');
+  const before=await saved(page);await press(page,'#restartBattle');await press(page,'#confirmRestart');await expect(page.locator('#welcome')).toBeVisible();await expect(page.locator('#resumeSaved')).toBeHidden();await press(page,'#start');
   await expect(page.locator('#coachingModal')).toBeVisible();
   const after=await saved(page);expect(after.scenario).toEqual(before.scenario);
   expect(after.game.rulesetId).toBe(before.game.rulesetId);expect(after.game.mapId).toBe(before.game.mapId);
