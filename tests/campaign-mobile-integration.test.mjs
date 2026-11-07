@@ -43,8 +43,8 @@ function harness() {
   $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
   c={$,BUILDINGS,buildBounds,supportsFlightOrders,flightOrderModel,flightRoadName,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
-    game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
-    viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,
+    battleSession:{status:()=> 'current'},game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
+    viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,padHud:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),
     document:{body:{},activeElement:null,listeners:new Map(),addEventListener(type,handler){const handlers=this.listeners.get(type)||[];handlers.push(handler);this.listeners.set(type,handlers);},querySelector:s=>s?.startsWith('[data-type=')?cards.find(n=>n.dataset.type===s.match(/"([^"]+)"/)[1]):s?.startsWith('#')?$(s.slice(1)):null,
       querySelectorAll:s=>s==='.build-card'?cards:s==='.coach-highlight'?[...nodes.values()].filter(n=>n.classList.contains('coach-highlight')):[]},

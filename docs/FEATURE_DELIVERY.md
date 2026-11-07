@@ -27,7 +27,7 @@ The exact source passed 1,072 Node tests with one optional tooling skip and 1,38
 
 ## Active next gameplay integration: flight
 
-PR #2 contains the player-directed crossing prototype. It remains separate while its mechanics are adapted to the current production engine and reconciled with every released PR #8 repair. This local v0.16 work includes:
+PR #2 now contains the production adaptation of player-directed crossings, with the prototype and released PR #8 ancestry retained. Its first uploaded v0.16 integration head was `598925cbfea60acc734513d05dc14eeafe80a57d`. Flight remains unshipped while the exact combined browser gate is repaired. This work includes:
 
 - Owned-aerie Hold or adjacent-road orders for future launches only.
 - Two-second gateway warnings, crossing at normal speed without attacks, and ordinary anti-air interception. Crossing abandons support on the original road and is not always beneficial.
@@ -35,7 +35,11 @@ PR #2 contains the player-directed crossing prototype. It remains separate while
 - New High Pass-and-later campaign attempts use an explicit revision 3; old active attempts/restarts keep their original no-crossing rules. Profile protocol 5 fences older current clients.
 - AI reacts to committed launched destinations, not hidden orders. Enemy producers still use Hold; tactical enemy flight planning is not claimed.
 
-The earlier frozen flight work has extensive deterministic combat/save tests and retained adverse outcomes, but its native browser review was incomplete. The reconciled source needs its own exact combined gate. Do not merge the old prototype engine or call flight shipped before that review and release.
+The first combined flight gate passed 1,468 browser cases, failed 62 and intentionally excluded 46; actual-v0.15 upgrades passed all 16 cases. It exposed clipped controls, pause layout and overlapping flight labels, alongside stale test contracts and scheduler-sensitive input/oracles. Original failures and downstream checks are retained in FLIGHT_FULL_GATE_RECONCILIATION.md. The next source must pass its own exact gate. Do not merge the old prototype engine or call flight shipped before review and release.
+
+## Latest user feedback, in the next candidate only
+
+The next flight candidate also carries readable inline portrait income, a direct first-build lesson that starts only after paying for its barracks, and complete hint-banner hiding with a compact Show control. Other lessons and saved attempts retain their existing rules. Bounded native review verified paid automatic start, full banner-space recovery and readable compact labels; its later preview crash is preserved as a limit in hidden-hints-native-qa.md. These fixes are not yet live and do not replace the exact combined cloud gate. The final local count and source hashes belong to the next capture manifest, not the earlier candidate reports.
 
 ## Explicitly unmerged or deferred
 

@@ -149,7 +149,7 @@ for(const mission of FRONTIER_MISSIONS){
     const report=getMissionScouting(mission),disclosure=page.locator('#campaignScout'),toggle=page.locator('#campaignScoutToggle'),svg=page.locator('#campaignScoutReport svg');
     await expect(disclosure).toHaveJSProperty('open',false);await expect(page.locator('#campaignScoutReport')).toBeHidden();
     await toggle.focus();await page.keyboard.press('Enter');await expect(disclosure).toHaveJSProperty('open',true);await expect(toggle).toBeFocused();
-    await expect(toggle).toContainText(map.name);await expect(svg).toHaveAttribute('viewBox',`0 0 ${map.width} ${map.height}`);
+    await expect(toggle).toHaveText('Scout battlefield · '+mission.name);await expect(svg).toHaveAttribute('viewBox',`0 0 ${map.width} ${map.height}`);
     await expect(svg).toHaveAttribute('role','img');await expect(svg).toHaveAttribute('aria-label',new RegExp(mission.name));
     await expect(svg).toHaveAttribute('aria-label',/Building names, levels and roads are listed below the map\./);
     await expect(page.locator('.scouting-map-facts')).toHaveText(report.map.summary+'.');await expect(page.locator('.scouting-objectives')).toHaveText(report.objectives.summary);
@@ -243,12 +243,12 @@ test('scouting stays keyboard operable when switching a legacy Classic mission t
   await seedOnce(page,{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(progressThrough())});await press(page,'[data-mode="campaign"]');
   await press(page,'#campaignStoryNav');await press(page,'[data-chapter="embers"]');await press(page,'[data-mission="emberwatch"]');
   const toggle=page.locator('#campaignScoutToggle');await toggle.focus();await page.keyboard.press('Space');
-  await expect(page.locator('#campaignScout')).toHaveJSProperty('open',true);await expect(toggle).toContainText('Classic');
+  await expect(page.locator('#campaignScout')).toHaveJSProperty('open',true);await expect(toggle).toHaveText('Scout battlefield · Emberwatch');
   await expect(page.locator('.scouting-map')).toHaveAttribute('viewBox','0 0 3200 900');await expect(page.locator('.scouting-road')).toHaveCount(3);
   await press(page,'#campaignStoryNav');await page.locator('[data-chapter="frontier"]').focus();await page.keyboard.press('Enter');
   await expect(page.locator('#campaignChapterTitle')).toBeFocused();await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);
   await page.locator('[data-mission="river-charter"]').focus();await page.keyboard.press('Enter');
-  await expect(page.locator('#campaignMissionTitle')).toBeFocused();await expect(toggle).toContainText('Twin Span');
+  await expect(page.locator('#campaignMissionTitle')).toBeFocused();await expect(toggle).toHaveText('Scout battlefield · The River Charter');
   await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);await toggle.focus();await page.keyboard.press('Enter');
   await expect(page.locator('.scouting-road')).toHaveCount(2);await expect(page.locator('#campaignScoutReport')).toContainText('2 allied structures to protect');
   await toggle.focus();await page.keyboard.press('Enter');await expect(page.locator('#campaignScout')).toHaveJSProperty('open',false);await expect(toggle).toBeFocused();

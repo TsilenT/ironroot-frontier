@@ -1,3 +1,4 @@
+import {startRunning as startCampaignRunning} from './campaign-teaching-helpers.mjs';
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import { test as base, expect } from '@playwright/test';
 import { campaignReplayFixture } from './onboarding-fixtures.mjs';
@@ -12,8 +13,7 @@ const test = base.extend({ page: async ({ page }, use) => {
   expect(errors, 'uncaught browser errors').toEqual([]);
 } });
 async function startRunning(page) {
-  await press(page, '#start');
-  if (await page.locator('#coachingModal').isVisible()) await press(page, '#coachingPlay');
+  await startCampaignRunning(page,press);
 }
 async function press(page, selector) {
   if (await prepareBuildControl(page, selector)) return;
@@ -61,7 +61,9 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
 
 test('opening guidance uses real build cards, normal gold costs, and real battlefield construction', async ({ page }) => {
   await page.goto('/');
-  await startRunning(page);
+  await press(page,'#start');
+  await expect(page.locator('#coachingModal')).toBeHidden();
+  await expect(page.locator('#time')).toHaveText('00:00');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(2);
   await expect(page.locator('[data-type="barracks"]')).toHaveClass(/coach-highlight/);
@@ -69,6 +71,7 @@ test('opening guidance uses real build cards, normal gold costs, and real battle
   await press(page, '[data-type="barracks"]');
   await placeAt(page, 550, 450);
   await expect(page.locator('#battle')).not.toHaveClass(/placing/); // Successful placement finishes the order.
+  await expect(page.locator('#time')).not.toHaveText('00:00');
   await openBuildControls(page);
   await expect(page.locator('#coachTitle')).toHaveText('Add archers');
   await press(page, '[data-type="archery"]');

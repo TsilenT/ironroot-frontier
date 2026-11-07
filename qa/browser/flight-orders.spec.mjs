@@ -34,6 +34,16 @@ async function inspect(page,envelope,id) {
   await tapPoint(page,await pointAt(page,getMap(envelope.game.mapId||'classic'),building(envelope,id)));
   await expect(page.locator('#selectionPanel')).toBeVisible();
 }
+async function readyFlightOrder(page,envelope,id,key) {
+  // Options closes the compact inspector. Tap the actual aerie to reopen it;
+  // opening Build instead would clear the selected building. Desktop keeps its
+  // inspector, but its controls may still await the next rendered HUD update.
+  if(!await page.locator('#selectionPanel').isVisible())await inspect(page,envelope,id);
+  const selector='#flight'+key,control=page.locator(selector);
+  await expect(control).toBeVisible();await expect(control).toBeEnabled();
+  await expectReachable(page,selector);
+  return control;
+}
 async function planning(page,id='wings-of-ash') {
   const progress=prerequisiteProgress(id);
   await seedOnce(page,{[K.campaign]:JSON.stringify(progress)});
@@ -47,6 +57,7 @@ async function planning(page,id='wings-of-ash') {
 }
 async function planningSnapshot(page) {
   await press(page,'#settings');const result=await saved(page);await press(page,'#settingsDone');
+  await expect(page.locator('#settingsModal')).toBeHidden();
   await expect(page.locator('#pauseVeil')).toBeHidden();return result;
 }
 async function paidAerie(page,map,lane=1) {
@@ -105,13 +116,22 @@ for(const id of ['wings-of-ash','stonegate'])test(`${id}: real paid planning aer
   await expect(page.locator('#flightOrderHelp')).toContainText('Airborne gryphons keep their route');
   const handle=await page.locator('#flightSouth').elementHandle();
   for(const [key,lane] of [['North',0],['South',2],['Hold',1],['North',0],['North',0]]) {
-    await expectReachable(page,'#flight'+key);await press(page,'#flight'+key);
+    await readyFlightOrder(page,purchase,aerie.id,key);await press(page,'#flight'+key);
     await expect(page.locator('#flight'+key)).toHaveAttribute('aria-pressed','true');
     const after=await planningSnapshot(page),expected=structuredClone(purchase);
     building(expected,aerie.id).flightPlan=lane;
     expect(after).toEqual(expected); // Includes clock, gold, full unit state, RNG, accumulator and costs.
   }
-  await page.locator('#flightSouth').focus();await page.keyboard.press('Space');await page.waitForTimeout(350);
+  const south=await readyFlightOrder(page,purchase,aerie.id,'South');
+  await south.focus();await expect(south).toBeFocused();await page.keyboard.press('Space');
+  await expect(south).toHaveAttribute('aria-pressed','true');
+  // Observe a real later HUD render before checking stable node/focus identity.
+  // The teaching hold keeps the model still, so elapsed-time sleeps cannot be
+  // replaced by a game-clock wait. This observer never writes app or DOM state.
+  await page.locator('#flightOrderCurrent').evaluate(element=>new Promise(resolve=>{
+    const observer=new MutationObserver(()=>{observer.disconnect();resolve();});
+    observer.observe(element,{childList:true});
+  }));
   expect(await handle.evaluate(e=>e.isConnected&&e===document.activeElement)).toBe(true);
   const final=await planningSnapshot(page);expect(building(final,aerie.id).flightPlan).toBe(2);
   expect(final.game.state.time).toBe(0);expect(final.game.state.gold[0]).toBe(mission.startingGold-250);

@@ -79,11 +79,13 @@ export function buildFlightSignals(game, { selected = null, viewport = null, sca
     if (geometry) {
       // Clear the aerie's 83-world-pixel flag plus a fixed-pixel label gap.
       const sourceX = aerie.x, sourceY = aerie.y - 90 - 12 / scaleOf(scale);
-      const showSource = flightBoundsVisible({ minX: sourceX - 38 / scaleOf(scale), maxX: sourceX + 38 / scaleOf(scale),
-        minY: sourceY - 12 / scaleOf(scale), maxY: sourceY + 12 / scaleOf(scale) }, viewport);
+      const sourceBounds = { minX: aerie.x - 52, maxX: aerie.x + 52, minY: aerie.y - 83, maxY: aerie.y + 48 };
+      const showSource = flightBoundsVisible(sourceBounds, viewport) ||
+        flightBoundsVisible({ minX: sourceX - 38 / scaleOf(scale), maxX: sourceX + 38 / scaleOf(scale),
+          minY: sourceY - 12 / scaleOf(scale), maxY: sourceY + 12 / scaleOf(scale) }, viewport);
       const showGate = flightBoundsVisible(routeBounds(geometry, pad), viewport);
       if (showGate || showSource) result.preview = { side: 0, from: aerie.lane, to: aerie.flightPlan,
-        ...geometry, sourceX, sourceY, showSource, showGate };
+        ...geometry, sourceX, sourceY, sourceBounds, showSource, showGate };
     }
   }
   return result;
@@ -145,13 +147,80 @@ export function flightBannerLayout(corridor, width, height, scale = 1, viewport 
   return { x, y, width, height };
 }
 
-function banner(c, corridor, scale, viewport) {
+function bannerMetrics(c, corridor) {
   const rows = corridor.routes.map(flightSignalLabel), team = corridor.side ? 'FOE' : 'YOU';
   c.font = '600 12px monospace';
   const width = Math.max(...rows.map(row => c.measureText(row).width)) + 49;
   const height = rows.length * 15 + 7;
-  // Banners grow toward their own territory, never across the central battlefield.
-  const { x, y } = flightBannerLayout(corridor, width, height, scale, viewport);
+  return { rows, team, width, height };
+}
+
+const bannerBounds = ({ corridor, x, y, width, height }, scale) => ({
+  minX: corridor.x + x / scale, maxX: corridor.x + (x + width) / scale,
+  minY: corridor.midY + y / scale, maxY: corridor.midY + (y + height) / scale,
+});
+
+/** Resolve crowded, viewport-clamped committed banners before reserving NEXT. */
+export function flightBannerLayouts(measured, scale = 1, viewport = null) {
+  const s = scaleOf(scale), gap = 4;
+  const layouts = measured.map(banner => ({ ...banner,
+    ...flightBannerLayout(banner.corridor, banner.width, banner.height, s, viewport) }));
+  const bounds = layouts.map(layout => bannerBounds(layout, s));
+  const collision = bounds.some((a, i) => bounds.slice(i + 1).some(b =>
+    a.maxX + gap / s > b.minX && b.maxX + gap / s > a.minX &&
+    a.maxY + gap / s > b.minY && b.maxY + gap / s > a.minY));
+  if (!collision) return layouts;
+  const ordered = [...layouts].sort((a, b) => a.corridor.midY - b.corridor.midY || a.corridor.side - b.corridor.side);
+  const total = ordered.reduce((sum, banner) => sum + banner.height, 0) + (ordered.length - 1) * gap;
+  // Four two-direction banners need 168px including margins. Keep full-size
+  // text and the normal in-bounds positions if an even smaller field cannot
+  // fit that stack; never shrink text, silently drop a route or invent a count.
+  if (viewport && (viewport.maxY - viewport.minY) * s < total + gap * 2) return layouts;
+  let top = layouts.reduce((sum, b) => sum + b.corridor.midY * s + b.y + b.height / 2, 0) / layouts.length - total / 2;
+  if (viewport) top = Math.max(viewport.minY * s + gap, Math.min(viewport.maxY * s - gap - total, top));
+  for (const layout of ordered) {
+    layout.y = top - layout.corridor.midY * s;
+    top += layout.height + gap;
+  }
+  return layouts;
+}
+
+/**
+ * NEXT stays near its aerie and clears measured banners whenever a slot fits.
+ * Occupied bounds are world coordinates; the returned rectangle is in CSS
+ * pixels relative to the preview's source anchor. No retained layout state.
+ */
+export function flightPreviewLayout(preview, occupied = [], scale = 1, viewport = null) {
+  const s = scaleOf(scale), width = 70, height = 20, gap = 4;
+  const local = bounds => ({ minX: (bounds.minX - preview.sourceX) * s,
+    maxX: (bounds.maxX - preview.sourceX) * s, minY: (bounds.minY - preview.sourceY) * s,
+    maxY: (bounds.maxY - preview.sourceY) * s });
+  const obstacles = [...occupied, ...(preview.sourceBounds ? [preview.sourceBounds] : [])].map(local);
+  const port = viewport ? local(viewport) : null;
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const fitX = x => port && port.maxX - port.minX >= width + gap * 2 ?
+    clamp(x, port.minX + gap, port.maxX - gap - width) : x;
+  const fitY = y => port && port.maxY - port.minY >= height + gap * 2 ?
+    clamp(y, port.minY + gap, port.maxY - gap - height) : y;
+  const desired = { x: fitX(-width / 2), y: fitY(-height / 2) };
+  const xs = [desired.x], ys = [desired.y];
+  for (const bounds of obstacles) {
+    xs.push(fitX(bounds.minX - gap - width), fitX(bounds.maxX + gap));
+    ys.push(fitY(bounds.minY - gap - height), fitY(bounds.maxY + gap));
+  }
+  const candidates = [...new Set(xs)].flatMap(x => [...new Set(ys)].map(y => ({ x, y, width, height })));
+  // Prefer a small vertical shift to keep the label over its selected source.
+  const distance = rect => Math.abs(rect.x - desired.x) * 2 + Math.abs(rect.y - desired.y);
+  candidates.sort((a, b) => distance(a) - distance(b) || a.y - b.y || a.x - b.x);
+  const clear = rect => obstacles.every(bounds => rect.x + width + gap <= bounds.minX + 1e-9 ||
+    rect.x - gap >= bounds.maxX - 1e-9 || rect.y + height + gap <= bounds.minY + 1e-9 ||
+    rect.y - gap >= bounds.maxY - 1e-9);
+  // An undersized, completely occupied field keeps the in-bounds source label
+  // at full size. This explicit fallback is not a claim of overlap-free fit.
+  return candidates.find(clear) || { ...desired, width, height };
+}
+
+function banner(c, corridor, { x, y, width, height, rows, team }) {
   c.fillStyle = INK; c.fillRect(x, y, width, height);
   c.strokeStyle = TEAMS[corridor.side]; c.lineWidth = 1; c.strokeRect(x + .5, y + .5, width - 1, height - 1);
   teamMark(c, x + 8, y + height / 2, corridor.side, 4);
@@ -191,19 +260,43 @@ export function drawFlightRoutes(renderer, game, ui = {}) {
   if (!signals.routes.length && !signals.preview) return signals;
   const c = renderer.c, simple = !!renderer.reducedMotion || renderer.vfx?.quality === 'low';
   c.save(); c.globalAlpha = 1; c.lineCap = 'round'; c.lineJoin = 'round'; c.setLineDash([]);
-  if (signals.preview?.showGate) drawWorldRoute(c, signals.preview, scale, { preview: true, offset: -7 });
-  for (const corridor of groupFlightCorridors(signals.routes)) {
-    for (const route of corridor.routes) drawWorldRoute(c, route, scale, { simple, offset: corridor.routes.length > 1 ? route.direction * 5 : 0 });
-    c.save(); c.translate(corridor.x, corridor.midY); c.scale(1 / scale, 1 / scale);
-    banner(c, corridor, scale, viewport); c.restore();
-  }
+  const banners = flightBannerLayouts(groupFlightCorridors(signals.routes).map(corridor =>
+    ({ corridor, ...bannerMetrics(c, corridor) })), scale, viewport);
   const preview = signals.preview;
-  if (preview?.showSource) {
+  const next = preview?.showSource ? flightPreviewLayout(preview, banners.map(layout => bannerBounds(layout, scale)), scale, viewport) : null;
+  if (signals.preview?.showGate) drawWorldRoute(c, signals.preview, scale, { preview: true, offset: -7 });
+  if (next && (Math.abs(next.x + 35) > 1 || Math.abs(next.y + 10) > 1)) {
+    // A displaced plan stays tied to its aerie. Draw this leader underneath the
+    // committed banners, so the line cannot cross their lettering.
     c.save(); c.translate(preview.sourceX, preview.sourceY); c.scale(1 / scale, 1 / scale);
-    c.fillStyle = INK; c.fillRect(-35, -10, 70, 20);
-    c.strokeStyle = NEXT; c.lineWidth = 1; c.strokeRect(-34.5, -9.5, 69, 19);
+    const x = Math.max(next.x, Math.min(next.x + next.width, 0));
+    const y = Math.max(next.y, Math.min(next.y + next.height, 12));
+    stroke(c, [[0, 12], [x, y]], NEXT, 1, [2, 3]); c.restore();
+  }
+  for (const layout of banners) {
+    const { corridor } = layout;
+    for (const route of corridor.routes) drawWorldRoute(c, route, scale, { simple, offset: corridor.routes.length > 1 ? route.direction * 5 : 0 });
+    // Retain the exact crossing location if a crowded banner had to move.
+    if (Math.abs(layout.y + layout.height / 2) > 1) {
+      c.save(); c.translate(corridor.x, corridor.midY); c.scale(1 / scale, 1 / scale);
+      const x = Math.max(layout.x, Math.min(layout.x + layout.width, 0));
+      const y = Math.max(layout.y, Math.min(layout.y + layout.height, 0));
+      stroke(c, [[0, 0], [x, y]], TEAMS[corridor.side], 1); c.restore();
+    }
+  }
+  // All route strokes and leaders stay underneath every text banner.
+  for (const layout of banners) {
+    const { corridor } = layout;
+    c.save(); c.translate(corridor.x, corridor.midY); c.scale(1 / scale, 1 / scale);
+    banner(c, corridor, layout); c.restore();
+  }
+  if (next) {
+    c.save(); c.translate(preview.sourceX, preview.sourceY); c.scale(1 / scale, 1 / scale);
+    const { x, y, width, height } = next;
+    c.fillStyle = INK; c.fillRect(x, y, width, height);
+    c.strokeStyle = NEXT; c.lineWidth = 1; c.strokeRect(x + .5, y + .5, width - 1, height - 1);
     c.fillStyle = NEXT; c.font = '700 12px monospace'; c.textAlign = 'center'; c.textBaseline = 'middle';
-    c.fillText(`NEXT ${preview.direction < 0 ? '↑' : '↓'}`, 0, 0); c.restore();
+    c.fillText(`NEXT ${preview.direction < 0 ? '↑' : '↓'}`, x + width / 2, y + height / 2); c.restore();
   }
   c.restore(); return signals;
 }

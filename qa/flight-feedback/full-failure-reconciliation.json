@@ -1,0 +1,1024 @@
+{
+  "candidateCommit": "598925cbfea60acc734513d05dc14eeafe80a57d",
+  "sourceLibraryFileId": "libfile_05b320048ff88191980db900d4295f3e",
+  "sourceReportSha256": "539689c6a0ad56a82b8e786885c55bd72f32882f1ec2d8d4f463d298f98381d4",
+  "scope": "Original full-run failures retained unchanged. Local implemented remedies and native review do not replace the exact revised-candidate cloud gate.",
+  "groups": [
+    {
+      "group": "shoulder autorepeat plus explicit toggle",
+      "count": 1,
+      "classification": "synthetic input timing",
+      "action": "Sample discrete taps in the provider; retain deliberate held-confirm coverage.",
+      "status": "implemented locally with focused pure regression tests; exact revised browser gate pending"
+    },
+    {
+      "group": "bumper held-duration autorepeat",
+      "count": 4,
+      "classification": "synthetic input timing",
+      "action": "Release discrete taps after their pressed sample rather than runner wall time.",
+      "status": "implemented locally with focused pure regression tests; exact revised browser gate pending"
+    },
+    {
+      "group": "report-controller timeout text with raw failed status",
+      "count": 3,
+      "classification": "load-sensitive timeout",
+      "action": "All three passed unchanged at two workers; retain source assertions and deadlines.",
+      "status": "unchanged; rerun final gate at two workers"
+    },
+    {
+      "group": "steering stop overshoot",
+      "count": 1,
+      "classification": "synthetic input timing",
+      "action": "Stop stick input from provider-side read-only cursor observation; preserve target bound.",
+      "status": "implemented locally with focused pure regression tests; exact revised browser gate pending"
+    },
+    {
+      "group": "briefing historical-note contract",
+      "count": 4,
+      "classification": "stale exact presentation contract",
+      "action": "Include one historical-record notice for revision3 and none for other revisions; preserve exact ordered list.",
+      "status": "contract repaired locally with focused pure tests; exact revised cloud gate pending"
+    },
+    {
+      "group": "cumulative configured timeout",
+      "count": 15,
+      "classification": "load-sensitive timeout",
+      "action": "All fifteen passed unchanged at two workers; retain all cases, assertions and deadlines.",
+      "status": "unchanged; rerun final gate at two workers"
+    },
+    {
+      "group": "scouting mission/map label contract",
+      "count": 20,
+      "classification": "stale exact presentation contract",
+      "action": "Require exact mission name; retain map geometry, deployments and keyboard assertions.",
+      "status": "contract repaired locally with focused pure tests; exact revised cloud gate pending"
+    },
+    {
+      "group": "compact deck closes during snapshot helper",
+      "count": 6,
+      "classification": "test transition setup",
+      "action": "Reopen the actual aerie after Options collapses inspector; wait enabled and verify focus.",
+      "status": "contract repaired locally with focused pure tests; exact revised cloud gate pending"
+    },
+    {
+      "group": "fractional North control clipping",
+      "count": 4,
+      "classification": "product geometry",
+      "action": "Correct ordinary scroll/focus boundary; retain100% visibility and center-hit requirement.",
+      "status": "CSS repair and independent native exact-geometry checks pass; exact revised cloud gate pending"
+    },
+    {
+      "group": "new flight disclosure initial pause overflow",
+      "count": 1,
+      "classification": "product layout",
+      "action": "Keep primary pause actions in initial narrow view without shrinking controls or text.",
+      "status": "CSS repair and independent native exact-geometry checks pass; exact revised cloud gate pending"
+    },
+    {
+      "group": "fractional-boundary passive replay helper",
+      "count": 1,
+      "classification": "test replay oracle",
+      "action": "Replay exact ticks independently from sub-tick accumulator and retain full state/RNG/identity comparison.",
+      "status": "implemented locally with focused pure regression tests; exact revised browser gate pending"
+    },
+    {
+      "group": "fixed elapsed-income allowance",
+      "count": 2,
+      "classification": "test economy oracle",
+      "action": "Account for actual checkpoint elapsed income and paid cost, preserving upgrade/salvage continuation.",
+      "status": "implemented locally with focused pure regression tests; exact revised browser gate pending"
+    }
+  ],
+  "cases": [
+    {
+      "index": 1,
+      "file": "accessibility-backup.spec.mjs",
+      "project": "desktop",
+      "title": "controller shoulders select build cards and virtual cursor confirm places one building",
+      "group": "shoulder autorepeat plus explicit toggle",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#toast')\nExpected substring: \u001b[32m\"Archery range raised\"\u001b[39m\nReceived string:    \u001b[31m\"Choose a building, then tap a green slot to place it.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#toast') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#toast')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <div id=\"toast\" class=\"toast\" role=\"status\">Choose a building, then tap a green slot to place\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"Choose a building, then tap a green slot to place it.\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 18640
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 2,
+      "file": "accessibility-backup.spec.mjs",
+      "project": "phone",
+      "title": "controller bumpers skip unaffordable cards to reach a later affordable card",
+      "group": "bumper held-duration autorepeat",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-type=\"archery\"]')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"build-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-type=\"archery\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-type=\"archery\"]')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button class=\"build-card\" data-type=\"archery\" title=\"Archery range \u00b7 175 gold. Spawns fragile ranged archers. Best behind a warrior screen.\" aria-label=\"Archery range, 175 gold. Spawns fragile ranged archers. Best behind a warrior screen.\">\u2026</button>\u001b[22m\n\u001b[2m       - unexpected value \"build-card\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12032
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 3,
+      "file": "accessibility-backup.spec.mjs",
+      "project": "narrow-phone",
+      "title": "controller bumpers skip unaffordable cards to reach a later affordable card",
+      "group": "bumper held-duration autorepeat",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-type=\"barracks\"]')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"build-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-type=\"barracks\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-type=\"barracks\"]')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button class=\"build-card\" data-type=\"barracks\" title=\"Barracks \u00b7 140 gold. Spawns shielded warriors. Absorbs arrows and protects your archers.\" aria-label=\"Barracks, 140 gold. Spawns shielded warriors. Absorbs arrows and protects your archers.\">\u2026</button>\u001b[22m\n\u001b[2m       - unexpected value \"build-card\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 8994
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 4,
+      "file": "accessibility-backup.spec.mjs",
+      "project": "landscape",
+      "title": "controller bumpers skip unaffordable cards to reach a later affordable card",
+      "group": "bumper held-duration autorepeat",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-type=\"barracks\"]')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"build-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-type=\"barracks\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-type=\"barracks\"]')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button class=\"build-card\" data-type=\"barracks\" title=\"Barracks \u00b7 140 gold. Spawns shielded warriors. Absorbs arrows and protects your archers.\" aria-label=\"Barracks, 140 gold. Spawns shielded warriors. Absorbs arrows and protects your archers.\">\u2026</button>\u001b[22m\n\u001b[2m       - unexpected value \"build-card\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 9888
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 5,
+      "file": "accessibility-backup.spec.mjs",
+      "project": "desktop",
+      "title": "controller bumpers skip unaffordable cards to reach a later affordable card",
+      "group": "bumper held-duration autorepeat",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-type=\"archery\"]')\nExpected pattern: \u001b[32m/active/\u001b[39m\nReceived string:  \u001b[31m\"build-card\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-type=\"archery\"]') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-type=\"archery\"]')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button class=\"build-card\" data-type=\"archery\" title=\"Archery range \u00b7 175 gold. Spawns fragile ranged archers. Best behind a warrior screen.\" aria-label=\"Archery range, 175 gold. Spawns fragile ranged archers. Best behind a warrior screen.\">\u2026</button>\u001b[22m\n\u001b[2m       - unexpected value \"build-card\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 13682
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 6,
+      "file": "battle-report.spec.mjs",
+      "project": "phone",
+      "title": "controller focuses report disclosure and toggles it while Continue and Inspect remain reachable",
+      "group": "report-controller timeout text with raw failed status",
+      "originalError": "Error: Test timeout of 20000ms exceeded",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 23408
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 7,
+      "file": "battle-report.spec.mjs",
+      "project": "landscape",
+      "title": "controller focuses report disclosure and toggles it while Continue and Inspect remain reachable",
+      "group": "report-controller timeout text with raw failed status",
+      "originalError": "Error: Test timeout of 20000ms exceeded",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 21986
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 8,
+      "file": "battle-report.spec.mjs",
+      "project": "desktop",
+      "title": "controller focuses report disclosure and toggles it while Continue and Inspect remain reachable",
+      "group": "report-controller timeout text with raw failed status",
+      "originalError": "Error: Test timeout of 20000ms exceeded",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 21339
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 9,
+      "file": "build-completion.spec.mjs",
+      "project": "landscape",
+      "title": "controller confirm remains one-shot even with a keyboard Shift held",
+      "group": "steering stop overshoot",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m15\u001b[39m\nReceived:   \u001b[31m16.877160712720404\u001b[39m",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 9419
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 10,
+      "file": "campaign-navigation.spec.mjs",
+      "project": "phone",
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "group": "briefing historical-note contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignBriefing li')\nTimeout: 5000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -2,6 +2,7 @@\u001b[39m\n\u001b[2m    \"Available here: Barracks, Archery range, Siege foundry, Watchtower, Gold mine, Arcane sanctum, Gryphon aerie, Warden lodge.\",\u001b[22m\n\u001b[2m    \"550 starting gold; citadel starts at 4,200 HP\",\u001b[22m\n\u001b[2m    \"Both enemy aeries begin at level 3\",\u001b[22m\n\u001b[2m    \"Fixed enemy formation; the north and south lanes are under air attack\",\u001b[22m\n\u001b[2m    \"Select an owned gryphon aerie to order Hold or one adjacent road. Orders are free and affect future launches only. Each gryphon gives a two-second warning at the gateway, then crosses once at normal speed. It cannot attack while warning or crossing, and remains vulnerable to anti-air.\",\u001b[22m\n\u001b[31m+   \"Campaign records include stars and best times from earlier mission versions.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#campaignBriefing li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignBriefing li')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to 6 elements\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 18221
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 11,
+      "file": "campaign-navigation.spec.mjs",
+      "project": "narrow-phone",
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "group": "briefing historical-note contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignBriefing li')\nTimeout: 5000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -2,6 +2,7 @@\u001b[39m\n\u001b[2m    \"Available here: Barracks, Archery range, Siege foundry, Watchtower, Gold mine, Arcane sanctum, Gryphon aerie, Warden lodge.\",\u001b[22m\n\u001b[2m    \"550 starting gold; citadel starts at 4,200 HP\",\u001b[22m\n\u001b[2m    \"Both enemy aeries begin at level 3\",\u001b[22m\n\u001b[2m    \"Fixed enemy formation; the north and south lanes are under air attack\",\u001b[22m\n\u001b[2m    \"Select an owned gryphon aerie to order Hold or one adjacent road. Orders are free and affect future launches only. Each gryphon gives a two-second warning at the gateway, then crosses once at normal speed. It cannot attack while warning or crossing, and remains vulnerable to anti-air.\",\u001b[22m\n\u001b[31m+   \"Campaign records include stars and best times from earlier mission versions.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#campaignBriefing li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignBriefing li')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to 6 elements\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 18248
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 12,
+      "file": "campaign-navigation.spec.mjs",
+      "project": "landscape",
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "group": "briefing historical-note contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignBriefing li')\nTimeout: 5000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -2,6 +2,7 @@\u001b[39m\n\u001b[2m    \"Available here: Barracks, Archery range, Siege foundry, Watchtower, Gold mine, Arcane sanctum, Gryphon aerie, Warden lodge.\",\u001b[22m\n\u001b[2m    \"550 starting gold; citadel starts at 4,200 HP\",\u001b[22m\n\u001b[2m    \"Both enemy aeries begin at level 3\",\u001b[22m\n\u001b[2m    \"Fixed enemy formation; the north and south lanes are under air attack\",\u001b[22m\n\u001b[2m    \"Select an owned gryphon aerie to order Hold or one adjacent road. Orders are free and affect future launches only. Each gryphon gives a two-second warning at the gateway, then crosses once at normal speed. It cannot attack while warning or crossing, and remains vulnerable to anti-air.\",\u001b[22m\n\u001b[31m+   \"Campaign records include stars and best times from earlier mission versions.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#campaignBriefing li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignBriefing li')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to 6 elements\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 17864
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 13,
+      "file": "campaign-navigation.spec.mjs",
+      "project": "desktop",
+      "title": "all 19 current briefings retain authored rules and prominent mandatory objectives",
+      "group": "briefing historical-note contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignBriefing li')\nTimeout: 5000ms\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -2,6 +2,7 @@\u001b[39m\n\u001b[2m    \"Available here: Barracks, Archery range, Siege foundry, Watchtower, Gold mine, Arcane sanctum, Gryphon aerie, Warden lodge.\",\u001b[22m\n\u001b[2m    \"550 starting gold; citadel starts at 4,200 HP\",\u001b[22m\n\u001b[2m    \"Both enemy aeries begin at level 3\",\u001b[22m\n\u001b[2m    \"Fixed enemy formation; the north and south lanes are under air attack\",\u001b[22m\n\u001b[2m    \"Select an owned gryphon aerie to order Hold or one adjacent road. Orders are free and affect future launches only. Each gryphon gives a two-second warning at the gateway, then crosses once at normal speed. It cannot attack while warning or crossing, and remains vulnerable to anti-air.\",\u001b[22m\n\u001b[31m+   \"Campaign records include stars and best times from earlier mission versions.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#campaignBriefing li') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignBriefing li')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to 6 elements\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 16001
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 14,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "frontier unlock branches after Open Horizon then converges only after both river and beacon victories",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 50118
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 15,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "phone",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Open Horizon\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Open Horizon</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Open Horizon\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11760
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 16,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "narrow-phone",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Open Horizon\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Open Horizon</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Open Horizon\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11505
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 17,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Open Horizon\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Open Horizon</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Open Horizon\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 13086
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 18,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "desktop",
+      "title": "open-horizon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Open Horizon\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Open Horizon</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Open Horizon\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11026
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 19,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "phone",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The River Charter\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The River Charter</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The River Charter\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11569
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 20,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "narrow-phone",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The River Charter\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The River Charter</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The River Charter\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11818
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 21,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The River Charter\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The River Charter</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The River Charter\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12148
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 22,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "desktop",
+      "title": "river-charter scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The River Charter\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The River Charter</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The River Charter\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11418
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 23,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "phone",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The Far Beacons\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The Far Beacons</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The Far Beacons\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12211
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 24,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "narrow-phone",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The Far Beacons\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The Far Beacons</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The Far Beacons\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 10815
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 25,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The Far Beacons\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The Far Beacons</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The Far Beacons\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12797
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 26,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "desktop",
+      "title": "far-beacon scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Long March\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 The Far Beacons\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 The Far Beacons</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 The Far Beacons\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 10743
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 27,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "phone",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Common Ground\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Common Ground</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Common Ground\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12954
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 28,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "narrow-phone",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Common Ground\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Common Ground</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Common Ground\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11764
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 29,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Common Ground\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Common Ground</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Common Ground\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 13667
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 30,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "desktop",
+      "title": "common-ground scouting is collapsed keyboard reachable and matches real geometry deployments levels and objectives",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Twin Span\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Common Ground\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Common Ground</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Common Ground\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 10940
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 31,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "phone",
+      "title": "scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Classic\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Emberwatch\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Emberwatch</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Emberwatch\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 13426
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 32,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "narrow-phone",
+      "title": "scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Classic\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Emberwatch\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Emberwatch</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Emberwatch\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11121
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 33,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "landscape",
+      "title": "scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Classic\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Emberwatch\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Emberwatch</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Emberwatch\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 13031
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 34,
+      "file": "expanded-campaign.spec.mjs",
+      "project": "desktop",
+      "title": "scouting stays keyboard operable when switching a legacy Classic mission to an expanded battlefield",
+      "group": "scouting mission/map label contract",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#campaignScoutToggle')\nExpected substring: \u001b[32m\"Classic\"\u001b[39m\nReceived string:    \u001b[31m\"Scout battlefield \u00b7 Emberwatch\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#campaignScoutToggle') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#campaignScoutToggle')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <summary id=\"campaignScoutToggle\">Scout battlefield \u00b7 Emberwatch</summary>\u001b[22m\n\u001b[2m       - unexpected value \"Scout battlefield \u00b7 Emberwatch\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 11352
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 35,
+      "file": "flight-orders.spec.mjs",
+      "project": "phone",
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 23497
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 36,
+      "file": "flight-orders.spec.mjs",
+      "project": "narrow-phone",
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 20627
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 37,
+      "file": "flight-orders.spec.mjs",
+      "project": "landscape",
+      "title": "wings-of-ash: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 22846
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 38,
+      "file": "flight-orders.spec.mjs",
+      "project": "phone",
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 22821
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 39,
+      "file": "flight-orders.spec.mjs",
+      "project": "narrow-phone",
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 19314
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 40,
+      "file": "flight-orders.spec.mjs",
+      "project": "landscape",
+      "title": "stonegate: real paid planning aerie has free native Hold/North/South orders without advancing time, gold or RNG",
+      "group": "compact deck closes during snapshot helper",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightSouth')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#flightSouth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightSouth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightSouth\" aria-pressed=\"false\" data-flight-order=\"south\">South road</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 23258
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 41,
+      "file": "flight-orders.spec.mjs",
+      "project": "phone",
+      "title": "320\u00d7430: flight controls scroll into real hit targets without hiding pause or charging twice",
+      "group": "fractional North control clipping",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightNorth')\nExpected: in viewport\nReceived: viewport ratio 0.991847813129425\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('#flightNorth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightNorth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightNorth\" aria-pressed=\"false\" data-flight-order=\"north\">North road</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.991847813129425\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 14932
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 42,
+      "file": "flight-orders.spec.mjs",
+      "project": "narrow-phone",
+      "title": "320\u00d7430: flight controls scroll into real hit targets without hiding pause or charging twice",
+      "group": "fractional North control clipping",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightNorth')\nExpected: in viewport\nReceived: viewport ratio 0.991847813129425\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('#flightNorth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightNorth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightNorth\" aria-pressed=\"false\" data-flight-order=\"north\">North road</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.991847813129425\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 16414
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 43,
+      "file": "flight-orders.spec.mjs",
+      "project": "landscape",
+      "title": "320\u00d7430: flight controls scroll into real hit targets without hiding pause or charging twice",
+      "group": "fractional North control clipping",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightNorth')\nExpected: in viewport\nReceived: viewport ratio 0.991847813129425\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('#flightNorth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightNorth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightNorth\" aria-pressed=\"false\" data-flight-order=\"north\">North road</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.991847813129425\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 15188
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 44,
+      "file": "flight-orders.spec.mjs",
+      "project": "desktop",
+      "title": "320\u00d7430: flight controls scroll into real hit targets without hiding pause or charging twice",
+      "group": "fractional North control clipping",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#flightNorth')\nExpected: in viewport\nReceived: viewport ratio 0.991847813129425\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" locator('#flightNorth') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#flightNorth')\u001b[22m\n\u001b[2m    13 \u00d7 locator resolved to <button id=\"flightNorth\" aria-pressed=\"false\" data-flight-order=\"north\">North road</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.991847813129425\"\u001b[22m\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 14079
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 45,
+      "file": "maps.spec.mjs",
+      "project": "phone",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23359
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 46,
+      "file": "maps.spec.mjs",
+      "project": "landscape",
+      "title": "corrupt map save preserves original bytes: unknown map",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 22624
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 47,
+      "file": "maps.spec.mjs",
+      "project": "phone",
+      "title": "corrupt map save preserves original bytes: future revision",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23193
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 48,
+      "file": "maps.spec.mjs",
+      "project": "phone",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 22819
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 49,
+      "file": "maps.spec.mjs",
+      "project": "landscape",
+      "title": "corrupt map save preserves original bytes: Twin Span off-site building",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23014
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 50,
+      "file": "maps.spec.mjs",
+      "project": "phone",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23062
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 51,
+      "file": "maps.spec.mjs",
+      "project": "landscape",
+      "title": "corrupt map save preserves original bytes: long-march masquerading as campaign",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 22353
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 52,
+      "file": "mobile-coaching-visibility.spec.mjs",
+      "project": "phone",
+      "title": "Plan, selected tool, failed correction and paid build keep teaching and Start outside the closed drawer",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 52608
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 53,
+      "file": "mobile-coaching-visibility.spec.mjs",
+      "project": "landscape",
+      "title": "Plan, selected tool, failed correction and paid build keep teaching and Start outside the closed drawer",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 50744
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 54,
+      "file": "pause-menu.spec.mjs",
+      "project": "narrow-phone",
+      "title": "pause dialog traps focus, isolates gameplay and resumes by keyboard",
+      "group": "new flight disclosure initial pause overflow",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m569\u001b[39m\nReceived:    \u001b[31m586.765625\u001b[39m",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 6679
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 55,
+      "file": "production-upgrade.spec.mjs",
+      "project": "landscape",
+      "title": "production 0.12 far-beacon real worker takeover preserves all five domains and legacy identity offline",
+      "group": "fractional-boundary passive replay helper",
+      "originalError": "AssertionError: replay reaches the observed fixed tick\n\n28 !== 27\n",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 20381
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 56,
+      "file": "regression.spec.mjs",
+      "project": "phone",
+      "title": "tap places exactly one building, rejects occupied slot, upgrades and salvages",
+      "group": "fixed elapsed-income allowance",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m270\u001b[39m\nReceived:   \u001b[31m272.75\u001b[39m",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 10788
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 57,
+      "file": "regression.spec.mjs",
+      "project": "landscape",
+      "title": "tap places exactly one building, rejects occupied slot, upgrades and salvages",
+      "group": "fixed elapsed-income allowance",
+      "originalError": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m270\u001b[39m\nReceived:   \u001b[31m276.75\u001b[39m",
+      "originalResults": [
+        {
+          "status": "failed",
+          "duration": 12118
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 58,
+      "file": "regression.spec.mjs",
+      "project": "phone",
+      "title": "controls fit the viewport and survive orientation changes",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23922
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 59,
+      "file": "regression.spec.mjs",
+      "project": "narrow-phone",
+      "title": "controls fit the viewport and survive orientation changes",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23276
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 60,
+      "file": "regression.spec.mjs",
+      "project": "landscape",
+      "title": "controls fit the viewport and survive orientation changes",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23210
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 61,
+      "file": "storage-recovery.spec.mjs",
+      "project": "landscape",
+      "title": "history quota failure retains the result across title and repeated reopen then Retry and reload save it exactly once",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 23590
+        }
+      ],
+      "nextGateRequired": true
+    },
+    {
+      "index": 62,
+      "file": "storage-recovery.spec.mjs",
+      "project": "desktop",
+      "title": "history quota failure retains the result across title and repeated reopen then Retry and reload save it exactly once",
+      "group": "cumulative configured timeout",
+      "originalError": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+      "originalResults": [
+        {
+          "status": "timedOut",
+          "duration": 21587
+        }
+      ],
+      "nextGateRequired": true
+    }
+  ]
+}

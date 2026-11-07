@@ -41,7 +41,8 @@ export function drawCampaignGuidance(renderer, game, ui) {
   c.restore();
 }
 
-/** Fresh openings pause for reading and planning, never for a mid-battle hint.
+/** Fresh openings pause for teaching, never for a mid-battle hint.
+ * Roadside Watch enters building directly and starts after its first paid barracks.
  * UI-only state: restored saves and completed replays run normally. */
 export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false, flightOrders = false } = {}) {
   if (resumed || completed) return null;
@@ -61,7 +62,8 @@ export function campaignTeaching(id, { resumed = false, completed = false, learn
     'winter-stores': ['Fund the relief', 'Keep both marked mines standing. Add income and upgrade mines to reach the goal; leave gold for troops to defend them.'],
   };
   if (!Object.hasOwn(lessons, id) || (id === 'emberwatch' && learnedBasics)) return null;
-  return { title: lessons[id][0], text: lessons[id][1] };
+  return { title: lessons[id][0], text: lessons[id][1],
+    ...(id === 'roadside-watch' ? { startAfterBuild: 'barracks' } : {}) };
 }
 
 /** Paid, engine-valid suggestions. A tower needs forward coverage; if that is

@@ -190,6 +190,8 @@ let campaignPage = 'mission', briefingMission = null;
 // A teaching hold stops simulation, while ordinary battle commands remain available.
 // Manual, visibility, viewport and storage pauses keep their existing guards.
 let coachingHold = false;
+// UI-only first-build gate. Never persisted into a battle or campaign profile.
+let firstBuildHold = false;
 let navigationAttempt = 0, navigationGame = null;
 var menuHistory = null;
 let navigationAway = false;
@@ -432,6 +434,11 @@ function canInteract() {
 }
 function selectBuild(type) {
   if (!canInteract()) return;
+  if (firstBuildHold && type !== 'barracks') {
+    toast('Build a barracks first to begin.');
+    sound('error');
+    return;
+  }
   if (!Object.hasOwn(game.buildings || BUILDINGS, type)) {
     toast('That building is not available in this battle.');
     return;
@@ -497,7 +504,7 @@ function updateCampaignDeck() {
   $('allBuildings').setAttribute('aria-expanded', String(expandedBuilds));
   for (const card of document.querySelectorAll('.build-card'))
     card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
-  $('coachResume').classList.toggle('hidden', !coachingHold || !canInteract());
+  $('coachResume').classList.toggle('hidden', !coachingHold || firstBuildHold || !canInteract());
   $('coachReplay').classList.toggle('hidden', coachingHold || !canInteract() || !campaignTeaching(currentCampaign, { flightOrders: supportsFlightOrders(game.ruleset) }));
   const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
   const show = coachEnabled && !!hint && canInteract() && !dialogLayers.some(layer => !layer.classList.contains('hidden'));
@@ -517,19 +524,32 @@ function updateCampaignDeck() {
   const available = started && !objectiveOutcome && game.state.winner === null &&
     (coachingHold || (!!hint && teaching.classList.contains('coach-started')));
   const rail = compact && available;
-  const layoutChanged = $('app').classList.contains('mobile-coaching') !== rail;
+  const collapsed = !coachEnabled;
+  const compactActions = rail && collapsed;
+  const layoutChanged = $('app').classList.contains('mobile-coaching') !== rail ||
+    $('app').classList.contains('coach-collapsed') !== compactActions;
+  const focused = document.activeElement;
+  const restorePadHud = started && layoutChanged && padHud;
   $('app').classList.toggle('mobile-coaching', rail);
+  $('app').classList.toggle('coach-collapsed', compactActions);
+  $('app').classList.toggle('coach-held', compactActions && coachingHold && !firstBuildHold);
   const parent = rail ? $('app') : $('commandDeck');
   if (teaching.parentNode !== parent) parent.insertBefore(teaching, rail ? $('commandDeck') : $('deckHeading'));
-  teaching.classList.toggle('hidden', !rail && !show && !coachingHold && !hint);
+  // Hide removes the banner itself. Keep only its controls in existing
+  // navigation slots, including Start/Resume while a teaching hold is active.
+  const actions = $('coachActions');
+  const actionParent = collapsed ? compactActions ? $('protectedNavigation') : $('commandDeck') : teaching;
+  if (actions.parentNode !== actionParent)
+    actionParent.insertBefore(actions, actionParent === $('commandDeck') ? $('deckHeading') : null);
+  actions.classList.toggle('hidden', !hint && !coachingHold);
+  teaching.classList.toggle('hidden', collapsed || (!rail && !show && !coachingHold && !hint));
   $('coachResume').textContent = compact ? game.state.time === 0 ? 'Start' : 'Resume'
     : game.state.time === 0 ? 'Start battle' : 'Resume battle';
   $('coachResume').setAttribute('aria-label', game.state.time === 0 ? 'Start battle' : 'Resume battle');
-  $('coachRailStatus').classList.toggle('hidden', !rail || show);
-  $('coachRailStatus').textContent = coachingHold ? 'Paused. Start when ready.' : 'Hints hidden. Battle continues.';
 
   let highlighted = show ? document.querySelector(hint.control) : null;
   let text = hint?.text || '';
+  if (firstBuildHold) text += ' Battle starts automatically when you place your barracks.';
   if (show && coachingHold && ui.build && game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost)
     text += ' Time and income are stopped during this teaching pause. Resume when you want to earn more gold.';
   if (show && compact && !open && hint.control.startsWith('[data-type=') && !ui.build) {
@@ -546,6 +566,11 @@ function updateCampaignDeck() {
     if (element !== highlighted) element.classList.remove('coach-highlight');
   ui.coachSite = show ? hint.site : null;
   ui.coachBuilding = show ? hint.buildingId : null;
+  if (!show) {
+    $('coachNext').textContent = '';
+    $('coachTitle').textContent = '';
+    $('coachText').textContent = '';
+  }
   if (show) {
     let next = hint.title;
     if (ui.spell) next = 'Tap enemy troops to fire Arrow volley.';
@@ -566,6 +591,11 @@ function updateCampaignDeck() {
     highlighted?.classList.add('coach-highlight');
   }
   if (layoutChanged) syncProtectedLayout();
+  // Moving the same controls must not drop keyboard or controller focus.
+  if (focused?.isConnected && actions.contains(focused) && coachControlVisible(focused)) {
+    focused.focus({ preventScroll: true });
+    if (restorePadHud) padHud = true;
+  }
 }
 $('allBuildings').onclick = () => {
   if (!canInteract()) return;
@@ -596,13 +626,14 @@ function beginCampaignCoaching({ manual = false } = {}) {
   if (!lesson || !started || game.state.winner !== null || objectiveOutcome ||
       (manual && (!canInteract() || viewportPause.active))) return;
   coachingHold = true;
+  firstBuildHold = !manual && lesson.startAfterBuild === 'barracks';
   coachEnabled = true;
   inputScope.interrupt();
   resetBattleGesture();
   $('coachingTitle').textContent = lesson.title;
   $('coachingText').textContent = lesson.text;
-  $('coachingModal').classList.remove('hidden');
-  pauseControl('resume');
+  $('coachingModal').classList.toggle('hidden', firstBuildHold);
+  pauseControl(firstBuildHold && !paused ? 'pause' : 'resume');
   $('battleClockLabel').textContent = 'TEACHING PAUSE';
   if (manual) updateHUD();
   else updateCampaignDeck();
@@ -627,7 +658,7 @@ $('coachingPlay').onclick = () => pause(false, { explicit: true });
 $('coachResume').onclick = () => pause(false, { explicit: true });
 $('coachReplay').onclick = () => beginCampaignCoaching({ manual: true });
 function toggleBattlePause() {
-  pause(coachingHold && !paused ? false : !paused, { explicit: true });
+  pause(coachingHold && !firstBuildHold && !paused ? false : !paused, { explicit: true });
 }
 function coachControlVisible(element) {
   if (!element || !controlIsVisible(element)) return false;
@@ -777,7 +808,7 @@ $('rally').onclick = () => {
   setCompactBuildOpen(false);
   sound('click');
 };
-function pauseControl(mode = coachingHold ? 'resume' : 'pause') {
+function pauseControl(mode = coachingHold && !firstBuildHold ? 'resume' : 'pause') {
   const b = $('pause');
   b.innerHTML =
     mode === 'pause'
@@ -824,7 +855,7 @@ function pause(value, { explicit = false } = {}) {
     $('viewportModal').classList.add('hidden');
     interruptMobileInput();
   }
-  if (!value && explicit && coachingHold) {
+  if (!value && explicit && coachingHold && !firstBuildHold) {
     coachingHold = false;
     $('coachingModal').classList.add('hidden');
     inputScope.interrupt();
@@ -834,7 +865,7 @@ function pause(value, { explicit = false } = {}) {
   if (value) setCompactBuildOpen(false);
   paused = value;
   $('pauseVeil').classList.toggle('hidden', !paused);
-  pauseControl(paused || coachingHold ? 'resume' : 'pause');
+  pauseControl(paused || (coachingHold && !firstBuildHold) ? 'resume' : 'pause');
   if (paused) save();
   syncDialogs();
 }
@@ -1004,6 +1035,7 @@ function start(
   $('battleLimitWarning').classList.add('hidden');
   $('resume').disabled = false;
   coachingHold = false;
+  firstBuildHold = false;
   $('campaignTeaching').classList.remove('coach-started');
   $('coachingModal').classList.add('hidden');
   currentCampaign = cid;
@@ -1187,7 +1219,8 @@ function syncProtectedLayout() {
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
   const sidebar = landscape && (viewport.height < 360 || $('app').classList.contains('mobile-coaching'));
   const shortPortrait = portrait && viewport.height < 560;
-  const next = (sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary') + ($('app').classList.contains('mobile-coaching') ? ':coaching' : '');
+  const next = (sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary') + ($('app').classList.contains('mobile-coaching') ? ':coaching' : '') +
+    ($('app').classList.contains('coach-collapsed') ? ':collapsed' : '');
   const fitted = fitMobileViewport($('app'), viewport, landscape || portrait);
   const changed = mobileLayout !== next;
   const focused = document.activeElement;
@@ -1448,6 +1481,7 @@ function showTitle({ focusStart = false, focusResume = false } = {}) {
   started = false;
   paused = false;
   coachingHold = false;
+  firstBuildHold = false;
   $('coachingModal').classList.add('hidden');
   cancel();
   renderer.vfx?.reset();
@@ -1830,6 +1864,12 @@ $('battle').addEventListener('mouseup', (e) => {
 });
 function activateBattlePoint(w, { repeatBuild = false } = {}) {
   if (!canInteract() || $('app').classList.contains('compact-build-open')) return;
+  // Recheck ownership at the command boundary, before spending in a stale tab.
+  if (battleSession.status() === 'stale' || dialogLayers.some(layer => !layer.classList.contains('hidden'))) return;
+  if (firstBuildHold && ((ui.build && ui.build !== 'barracks') || ui.spell)) {
+    toast('Build a barracks first to begin.');
+    return;
+  }
   if (ui.build) {
     const bounds = buildBounds(game.map, 0);
     if (
@@ -1842,9 +1882,21 @@ function activateBattlePoint(w, { repeatBuild = false } = {}) {
       sound('error');
       return;
     }
+    const type = ui.build, goldBefore = game.state.gold[0];
     const snap = renderer.snap(w),
-      result = game.build(ui.build, snap.x, snap.y);
+      result = game.build(type, snap.x, snap.y);
     if (result.ok) {
+      // Only the successful paid placement from this live command can release
+      // the gate. Inspection, cancellation and restored buildings never do.
+      if (firstBuildHold && coachingHold && type === 'barracks' &&
+          result.building?.side === 0 && result.building.type === type &&
+          game.state.gold[0] === goldBefore - (game.buildings || BUILDINGS)[type].cost &&
+          canInteract() && battleSession.status() !== 'stale') {
+        firstBuildHold = false;
+        coachingHold = false;
+        interruptMobileInput();
+        pauseControl('pause');
+      }
       sound('build');
       toast(
         `${(game.buildings || BUILDINGS)[ui.build].name} raised. ${ui.build === 'aerie' && supportsFlightOrders(game.ruleset) ? 'Tap it for flight orders.' : (game.buildings || BUILDINGS)[ui.build].unit ? 'First troops in a moment.' : 'Your frontier grows.'}`,
@@ -3021,7 +3073,7 @@ function syncViewportSafety() {
       if (!$(id).classList.contains('hidden')) controls.push($(id).getBoundingClientRect());
     const safeContent = insetViewportRect(viewport, getComputedStyle($('app')));
     geometry = inspectMobileGeometry({viewport:safeContent,canvas:$('battle').getBoundingClientRect(),
-      regions:['topbar','protectedDock','protectedNavigation', ...(teaching ? ['campaignTeaching'] : [])].map(id => $(id).getBoundingClientRect()),controls});
+      regions:['topbar','protectedDock','protectedNavigation', ...(teaching && !$('app').classList.contains('coach-collapsed') ? ['campaignTeaching'] : [])].map(id => $(id).getBoundingClientRect()),controls});
   }
   const wasActive = viewportPause.active;
   const changed = viewportPause.measure(!geometry.safe);
@@ -3734,7 +3786,7 @@ function applyMenuNavigation(route, {direction = 'back'} = {}) {
   } else if (route.kind === 'selection') {
     const building = game.state.buildings.find(b => b.id === route.buildingId && b.side === 0);
     ui.selected = building?.id ?? null; updateSelection();
-  } else if (route.kind === 'coachingModal' && coachingHold) {
+  } else if (route.kind === 'coachingModal' && coachingHold && !firstBuildHold) {
     $('coachingModal').classList.remove('hidden');
   }
   syncDialogs();
