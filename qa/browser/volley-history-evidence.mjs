@@ -31,28 +31,13 @@ export async function serveVolleyBase(context) {
 }
 
 export async function observeVolleyHistory(page) {
-  const records = [], checks = [], entries = [];
-  let index = -1;
+  const records = [], checks = [], statesByNativeKey = new Map();
   function accept(record) {
     records.push(record);
-    // This passive ledger retains full opaque identities, including the prior
-    // document's entries across a fixture reload. It is not written to the app.
-    if (record.kind === 'document-start' || record.kind === 'popstate' || record.kind === 'pageshow') {
-      const found = entries.findIndex(entry => entry && (marker(record.state)
-        ? equal(entry.state, record.state) : !marker(entry.state) && entry.url === record.url));
-      if (found >= 0) index = found;
-      else if (record.kind === 'document-start') {
-        index = record.length - 1;
-        entries.length = record.length;
-        entries[index] = {state:record.state,url:record.url};
-      }
-    }
-    if (record.kind === 'after pushState') {
-      entries.splice(index + 1);
-      entries.push({state:record.state,url:record.url});
-      index++;
-    }
-    if (record.kind === 'after replaceState') entries[index] = {state:record.state,url:record.url};
+    // Native entry keys/indexes describe the browser's actual stack. A reload
+    // racing a final old-document push can invalidate a push-derived ledger.
+    // Keep the full observed marker for each native key, without writing state.
+    if (record.nativeKey) statesByNativeKey.set(record.nativeKey, {state:record.state,url:record.url});
   }
   await page.exposeBinding('__volleyHistorySink', (_source, record) => accept(record));
   await page.addInitScript(() => {
@@ -61,7 +46,9 @@ export async function observeVolleyHistory(page) {
     const copy = value => value == null ? null : structuredClone(value);
     const snapshot = () => ({documentId, sequence:++sequence, timeOrigin:performance.timeOrigin,
       at:performance.now(), wallTime:Date.now(), url:location.href, length:history.length,
-      state:copy(history.state), pops, armed:document.querySelector('#rally')?.classList.contains('active') ?? false,
+      state:copy(history.state), nativeKey:window.navigation?.currentEntry?.key, nativeIndex:window.navigation?.currentEntry?.index,
+      nativeEntries:window.navigation?.entries().map(entry => ({key:entry.key,index:entry.index,url:entry.url})),
+      pops, armed:document.querySelector('#rally')?.classList.contains('active') ?? false,
       paused:document.querySelector('#pauseVeil')?.classList.contains('hidden') === false});
     const record = (kind, detail = {}) => {
       const value = {...snapshot(),kind,...detail};
@@ -101,8 +88,9 @@ export async function observeVolleyHistory(page) {
     }, {message:'pending native traversal must finish before the next action'}).toBe(true);
     await flush();
     const current = await snapshot();
-    expect(entries[index]?.state, 'passive ledger agrees with the full native marker').toEqual(current.state);
-    expect(entries.length).toBe(current.length);
+    expect(current.nativeKey, 'native navigation entry identity is available').toBeTruthy();
+    expect(statesByNativeKey.get(current.nativeKey)?.state, 'observed marker agrees with the current native entry').toEqual(current.state);
+    expect(current.nativeEntries.some(entry => entry.key === current.nativeKey && entry.index === current.nativeIndex)).toBe(true);
     return current;
   }
   async function mark(label, detail = {}) {
@@ -110,19 +98,23 @@ export async function observeVolleyHistory(page) {
     await flush();checks.push({label,...detail,...current});return current;
   }
   async function traverse(direction) {
-    const before = await ready(), destination = entries[index + (direction === 'back' ? -1 : 1)];
-    expect(destination, 'observed native history destination exists').toBeTruthy();
-    const expected = structuredClone(destination);
+    const before = await ready();
+    const nativeDestination = before.nativeEntries.find(entry => entry.index === before.nativeIndex + (direction === 'back' ? -1 : 1));
+    expect(nativeDestination, 'native browser history destination exists').toBeTruthy();
+    const destination = statesByNativeKey.get(nativeDestination.key);
+    expect(destination, 'full marker was observed for the native destination key').toBeTruthy();
+    const expected = {...structuredClone(destination),nativeKey:nativeDestination.key};
     const count = records.filter(record => record.kind === 'popstate').length;
-    checks.push({label:'expected ' + direction,from:before.state,to:expected.state,documentId:before.documentId,popCountBefore:count});
+    checks.push({label:'expected ' + direction,from:before.state,to:expected.state,documentId:before.documentId,nativeKey:expected.nativeKey,popCountBefore:count});
     await page.evaluate(direction => history[direction](), direction);
     if (marker(expected.state)) {
       await expect.poll(async () => {
         await flush();
         return records.filter(record => record.kind === 'popstate').slice(count).some(record =>
-          record.documentId === before.documentId && equal(record.eventState, expected.state) && equal(record.state, expected.state));
+          record.documentId === before.documentId && record.nativeKey === expected.nativeKey && equal(record.eventState, expected.state) && equal(record.state, expected.state));
       }, {message:'new native popstate must carry the full expected document/entry identity'}).toBe(true);
       await expect.poll(async () => (await snapshot()).state, {message:'native current marker reaches the expected destination'}).toEqual(expected.state);
+      expect((await snapshot()).nativeKey).toBe(expected.nativeKey);
       return ready();
     }
     await expect(page).toHaveURL(expected.url);
