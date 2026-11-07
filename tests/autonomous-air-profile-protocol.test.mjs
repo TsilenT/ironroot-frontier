@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {CURRENT_PROFILE_PROTOCOL_VERSION,createProfileSession,PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {CURRENT_PROFILE_PROTOCOL_VERSION,createProfileSession,PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v017.js';
 import {CURRENT_PROFILE_PROTOCOL_VERSION as HISTORICAL_PROFILE_PROTOCOL_VERSION,createProfileSession as historicalProtocolFive} from './fixtures/profile-session-v016.js';
 import {createCampaignProgress,CAMPAIGN_PROGRESS_MISSIONS,createProgressionCampaignMission} from '../dist/campaign.js';
 import {encodeBattle,scenarioForBattle,identityOf,decodeBattle} from '../dist/battle-codec.js';
 import {createBackup,parseBackup,restoreBackup,BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
+import {createProfileSession as createCurrentProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as LATEST_PROFILE_PROTOCOL_VERSION} from '../dist/profile-session.js';
 import {trainingProfileFixture} from '../qa/browser/training-fixtures.mjs';
 const keys=Object.values(K),date='2026-11-07T00:00:00.000Z';
 const marker=(version,phase='ready',epoch='retained')=>JSON.stringify({format:'ironroot-profile',version,epoch,phase});
@@ -143,8 +144,8 @@ test('unverified rollback and marker finalization remain blocked until the exact
 
 test('current synthetic training profile is already the current protocol and preserves every domain without migration',()=>{
   const fixture=trainingProfileFixture(),r=raw(Object.entries(fixture.values)),before=[...r.data];
-  assert.equal(JSON.parse(r.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
-  const p=current(r);assert.equal(p.status().canWrite,true);for(const key of keys)assert.equal(p.storage.getItem(key),fixture.values[key]);
+  assert.equal(JSON.parse(r.data.get(MARKER)).version,LATEST_PROFILE_PROTOCOL_VERSION);
+  const p=createCurrentProfileSession(()=>r,{requiredProtocolVersion:LATEST_PROFILE_PROTOCOL_VERSION});assert.equal(p.status().canWrite,true);for(const key of keys)assert.equal(p.storage.getItem(key),fixture.values[key]);
   assert.deepEqual([...r.data],before);assert.deepEqual(writes(r),[]);
   assert.equal(fixture.backup.data.battle.version,2,'current profile protocol does not relabel a historical battle envelope');
 });

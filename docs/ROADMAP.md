@@ -2,36 +2,41 @@
 
 ## Current state
 
-Production is v0.13, built from source `76135e7b56077a661f67b0b5eeab7c118ec57844` and public commit `f6d59bf634590a823ae64eea7defc71f13880e8b`. Live smoke verified the older campaign save migration and a new introductory mission clear, replay, save and resume. Its complete Chromium matrix passed **841 cases, zero failures, three intentional skips**; root tests passed **825 with one optional desktop-dependency skip**. These are automated/emulated results, not physical-device or human-balance certification.
+Production is **v0.17.0**, source merge `342d8b594091d323f2c0e92d9a170de0fcbdc2b9` and public commit `b2d3cbb550b929a8813c0a251fb6792bfcc4d59f`. Automatic nearby-enemy flyer behavior and PR #9 prose have shipped; manual routing controls are removed. Live smoke was desktop. Portrait coverage was emulated source QA, not physical-phone validation.
 
-The v0.13 integration brings together:
+The current game includes:
 
-- Campaign-first navigation, shared in-game coaching, one-road and two-road introductory missions, optional learning stars, and replay after a partial-star victory.
-- Sixteen preserved main missions and forty-eight stars, plus two optional introductions with six separate stars; branching chapters and destruction, protection, economy and survival objectives.
-- Rootwarden screening troops and their Warden lodge in fresh skirmishes; legacy battles and authored missions retain their original roster/rules.
-- Open-ended or timed skirmishes with explicit saved rules, three skirmish maps, fair paid AI actions, and a bounded supported-duration safety pause.
-- A single mobile Build drawer across modes; individual protected-objective health, camera focus and honest loss details; viewport safety suspension and reliable dialog navigation.
-- Readable original 2D art, reduced-motion/quality options, original procedural music/SFX, factual field reference, mission scouting and optional post-match reports.
-- Local saves, portable JSON backup, corruption preservation, profile ownership, offline updates and experimental controller support.
+- Campaign-first navigation, shared coaching and three required teaching battles that grow the earned roster from two to five to eight buildings, followed by sixteen continuation missions. Optional stars and partial-star replays remain available.
+- Paid first-barracks automatic start, a single mobile Build drawer, portrait income, Hide/Show hints, protected-objective health and warnings, reliable dialog navigation and browser Back/Forward handling.
+- Rootwarden screening troops, automatic nearby-enemy flyers, open-ended or timed skirmishes with three maps, field trials and isolated optional guided practice.
+- Combat feedback, readable original 2D art, reduced-motion/quality options, procedural music/SFX, field reference, mission scouting and optional local reports.
+- Local saves, portable JSON backup, corruption preservation, profile ownership, offline updates, desktop mouse controls, optional fullscreen and experimental controller support.
 
-The selected campaign, lane, copy, tank and mobile proposals are consolidated. Fixed flying crossings, broad AI replacement, the unlistened longer score and unverified native export were not merged. They are not hidden release dependencies.
+Earlier selected AI economy/rush patches are incorporated. Recent support/reserve/ranged-first/tower experiments were rejected without changing production; broad AI replacement is not selected. The longer score remains unselected without subjective listening. Fixed-gateway/forced-return flying prototypes and unverified native export are not release dependencies.
 
-## Next coherent batch
+PR #10 merged at `3548031a3e8d8e04c7b81784d6c0fe174b1522fe`. It adds opt-in deterministic tests only, with no runtime change or game release. [FEATURE_DELIVERY.md](FEATURE_DELIVERY.md) records current disposition and historical release evidence.
 
-Prioritize clearer combat feedback and actionable objective danger over increasing content counts:
+### Historical v0.13 evidence
 
-1. Restrain attack contact/recovery poses to actual attack events. The engine applies damage immediately, so the visuals must not invent a later windup or change timing. Preserve ground anchors, combat geometry, silhouettes and reduced motion. Accept only after an independent dense/mobile visual comparison.
-2. Connect the existing warning sound to real critical protected-objective danger, with named visual information already present. Batch simultaneous warnings, suppress repeated chatter, handle pause/resume and restored critical targets honestly, and respect SFX/mute settings. No new save protocol or hidden damage rules.
-3. Review the combined changes in ordinary paid play. Keep useful alternatives and player-caused stalemates; do not tune every policy into a forced victory or timeout.
+The previous roadmap recorded v0.13 source `76135e7b56077a661f67b0b5eeab7c118ec57844` and public commit `f6d59bf634590a823ae64eea7defc71f13880e8b`: 841 Chromium cases passed with zero failures and three intentional skips; 825 root tests passed with one optional desktop-dependency skip. Its smoke covered older campaign-save migration and a new introductory mission clear, replay, save and resume. These are historical automated/emulated results, not physical-device or human-balance certification.
 
-No automatic deployment follows these changes. Freeze and verify a substantial candidate before a deliberate release decision.
+## Current review batch
+
+The **v0.17.1 keyboard-controls candidate remains unmerged and undeployed**:
+
+1. Add Battle keyboard controls inside existing Options, with twelve configurable actions, clear/reset, roster-slot semantics and effective-key help. Optional guided practice retains its defaults and storage isolation.
+2. Preserve browser shortcuts, native control activation, layered Escape, input scope and held-key safety. This increment does not add keyboard-only battlefield placement or change touch/gamepad mappings.
+3. Validate preference writes, retries, backups, rollback and stale-tab behavior. Profile protocol 7 protects the new setting from later-opened older clients without changing campaign identities or engine rules.
+4. Gate the exact candidate with focused real-browser controls, paid placement, bounded portrait/landscape fit and pertinent regressions. Do not substitute virtual-time checks or source assertions for actual native activation.
+
+No deployment follows automatically. Freeze and verify the candidate before a deliberate release decision.
 
 ## Remaining product work
 
 - More real-player campaign and counterplay sessions, including intentional poor compositions, uncovered roads, economy payback, and losses that clearly explain what happened. Bot policies are evidence of specific behavior, not player win rates.
 - A carefully designed explicit export-and-reset recovery path for a damaged save when no compatible backup exists. Current behavior protects the original bytes and refuses silent replacement.
 - Subjective listening and music pacing. PCM/mute/clipping tests do not establish that a score sounds good.
-- Physical phone and controller testing, remappable inputs, screen-reader/accessibility review, non-Chromium behavior, localization and long-session low-powered-device checks.
+- Physical phone and controller testing, broader input remapping and keyboard-only battlefield access, screen-reader/accessibility review, non-Chromium behavior, localization and long-session low-powered-device checks. The current Battle keyboard controls candidate covers a bounded desktop subset.
 - Packaged desktop play/save/audio and safe native file export. Wrapper/unit tests do not substitute for launching the actual package.
 - Distribution/rights review, stable signed builds where appropriate, Steam integration and store decisions only when separately authorized.
 

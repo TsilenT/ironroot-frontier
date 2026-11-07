@@ -11,6 +11,7 @@ import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible
 import {supportsAutonomousAir} from '../dist/autonomous-air.js';
 import {airRulesGuide,airBuildingDescription} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
+import * as keyboard from '../dist/keyboard.js';
 import {CURRENT_CHALLENGES as CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
 import {layout,box} from './mobile-layout-fixture.mjs';
@@ -72,6 +73,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,
+  ...keyboard,preferences:{},keyboardCapture:null,cancelKeyboardCapture(){},syncKeyboardSettings(){},keyboardTitle:label=>label,
   inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){log.interruptions++;},closeSelectionArmed:false,
   renderer:{width:width,height:height,camera:450,resize(){log.resizes++;},setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){}}},
   populateFieldGuide(){},populateBuildCards(){},renderMapSelection(){},syncProfileSafety(){},showRecoverySettings(){throw Error('unexpected recovery');},beginBattleReport(){},
@@ -82,6 +84,6 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
- for(const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);
+ for(const code of [section('function keyboardTitle(', 'function syncKeyboardSettings()'),section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);
  return {c,$,log,fixture,source,geometry:geometryFor,resize(w,h){width=w;height=h;c.window.innerWidth=w;c.window.innerHeight=h;c.syncProtectedLayout();c.updateHUD();c.syncViewportSafety();},start(restored=false){const g=restored?Game.restore(fixture.envelope.game):null;c.start(g,null,restored?'winter-stores':null);return g;}};
 }
