@@ -43,8 +43,13 @@ export function drawCampaignGuidance(renderer, game, ui) {
 
 /** Fresh openings pause for reading and planning, never for a mid-battle hint.
  * UI-only state: restored saves and completed replays run normally. */
-export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false } = {}) {
+export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false, flightOrders = false } = {}) {
   if (resumed || completed) return null;
+  if (flightOrders && ['wings-of-ash', 'stonegate'].includes(id)) return {
+    title: id === 'wings-of-ash' ? 'Take control of the sky' : 'Find a way past the towers',
+    text: (id === 'wings-of-ash' ? 'Archers can stop the veteran flyers. ' : 'Siege can break the middle defenses. ') +
+      'If you build an aerie, select it to send future gryphons to an adjacent road. They give a two-second warning before crossing and cannot attack while changing roads. Holding their road may protect the troops below. Plan your approach, then start when ready.',
+  };
   const lessons = {
     'roadside-watch': ['Build your first army', 'One road, two choices. Choose Barracks in the build bar, then a green site. An archery range behind the barracks adds ranged support. Spend what you want, then start the battle.'],
     'shield-at-the-fork': ['Plan for both roads', 'Warden lodges, gold mines and watchtowers have joined the company. Rootwardens take hits but deal little damage. Add archers behind their lodge, and keep troops on the other road. Towers belong ahead of production; mines belong toward the rear.'],

@@ -1,0 +1,67 @@
+{
+  "format": "ironroot-flight-campaign-validation",
+  "version": 1,
+  "generatedAt": "2026-11-07T01:13:08.059Z",
+  "node": "v24.22.1",
+  "status": "passed",
+  "commands": [
+    "node --check tests/flight-campaign-balance.mjs",
+    "node tests/flight-campaign-balance.mjs",
+    "node --test --test-concurrency=2 tests/flight-campaign-identity.test.mjs tests/flight-profile-protocol.test.mjs tests/flight-order-legacy-parity.test.mjs"
+  ],
+  "campaignMatrix": {
+    "simulations": 245,
+    "holdPairs": 78,
+    "equalHoldPairs": 78,
+    "fullRestoredContinuations": 52,
+    "exactRestoredContinuations": 52,
+    "restoredSaveChecks": 1095,
+    "progressionCleared": 19,
+    "progressionStars": 52,
+    "referenceCurrentWins": 39,
+    "masteryCurrentWins": 39,
+    "referenceCurrentThreeStars": 24,
+    "masteryCurrentThreeStars": 39,
+    "flightExamples": 18,
+    "adverseFlightComparisons": 10,
+    "failedOutcomes": 6,
+    "invariantChecks": 729,
+    "failedInvariants": []
+  },
+  "identityTests": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0
+  },
+  "simulationHashes": {
+    "dist/engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "dist/rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/campaign.js": "56f4a2d7bf50a316a60274dde63ffb1501ab89c36937612fbb25e2f3c13456eb",
+    "dist/campaign-onboarding.js": "2f9fcc9839d1a844ff0ea60f71e9e80715c188cd847c9d063b6530d6f90c33af",
+    "dist/intro-campaign.js": "6d095c15ef2dd0a4fea7ed633567fe0ddf294505c866a7d97c79d993676c819b",
+    "dist/battle-codec.js": "2e675fe9b062cd1729c534919b3d8d454d904734a4cb3097989b0361c193a2ac",
+    "dist/challenges.js": "d071e8eb6b63b633b59705452e02ed090469c0f70fcc60c5da87fe1fb4c47c66",
+    "dist/training.js": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79",
+    "dist/profile-session.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "tests/campaign-policies.mjs": "62ec228967ac6d3582379eaa01b76785e0aa6f7e0b3d2a18f0e918c9f1c2873b",
+    "tests/onboarding-campaign-policies.mjs": "57ab268177cc6f695215df554a9c3608580ae0e6333929d5e1c54935c7138ed3",
+    "tests/flight-campaign-balance.mjs": "14b4795c9f6a5b6c2bb186c9f8c122a7edca2f6a83de09042b761028843db363"
+  },
+  "additionalTestHashes": {
+    "tests/flight-campaign-identity.test.mjs": "457727b16b9d4169d5dec314965ee3eac21e22ecbf5252cf0ce434b3636cea66",
+    "tests/flight-profile-protocol.test.mjs": "96e6ca325f649c10c70cdecceabf2b30a10bfee0195e763d9be0e06a3596eb25",
+    "tests/flight-order-legacy-parity.test.mjs": "f62f10e29718b3609fcdbeceae6e7976dc92bd962188995e3e0299cdd62e93c3"
+  },
+  "frozenOracleHashes": {
+    "tests/fixtures/flight-baseline-v015/engine.js": "16320893e83d7819b3103117803845e061fdb79cbb8adc2a8e6e95d76ec168bf",
+    "tests/fixtures/flight-baseline-v015/rulesets.js": "d674b36b469ade51f50eeeb45fe6253c7828578524adf96f1903ad45b72f9785"
+  },
+  "artifactHashes": {
+    "results.json": "46caee16bf5b4e4a2fff38b56af74c924a067b70445e099a8751f5532d98fec5",
+    "run.log": "284083bda7d3d68fe0656efa0fcb29606e5b4b3f3ea356c3c833adb38475928d",
+    "identity-tests.log": "7ac4538ce555504c268de56577c6d219be68ed628306dbac4a0fa5d111b68bff",
+    "preliminary-run.json": "fa886debf10712919379b7bfc557f271b1c5c43115a3c370667c81e699246ac4"
+  },
+  "sourceChangesDuringFinalMatrix": []
+}

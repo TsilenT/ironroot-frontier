@@ -1,7 +1,9 @@
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
-import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
+import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
 import { createMenuHistory, seedMenuAncestors } from './menu-history.js';
+import { supportsFlightOrders } from './flight-orders.js';
+import { flightOrderModel, flightRoadName, flightRouteRows, flightWarningSummary } from './flight-orders-view.js';
 import {
   GamepadInput,
   moveCursor,
@@ -108,6 +110,7 @@ function populateFieldGuide(context = null) {
     `<ul>${items.map((text) => `<li>${esc(text)}</li>`).join('')}</ul>`;
   const stats = (values) =>
     `<dl class="codex-stats">${values.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
+  $('flightGuide').classList.toggle('hidden', !supportsFlightOrders(context?.ruleset || context));
   $('codexScope').textContent = ECONOMY_GUIDE.scope;
   $('codexCaveat').textContent = ECONOMY_GUIDE.counterCaveat;
   $('unitCodex').innerHTML = UNIT_CODEX.map(
@@ -201,7 +204,7 @@ const labels = {
   aerie: ['Aerie', 'Flying raiders', '15s / wave'],
   wardenLodge: ['Warden lodge', 'Durable front line', '12s / wave'],
 };
-const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: 4 });
+const profileSession = createProfileSession(() => localStorage, { requiredProtocolVersion: CURRENT_PROFILE_PROTOCOL_VERSION });
 const storage = createStorage(() => profileSession.storage);
 let recoveryHold = null,
   profileGate = null,
@@ -495,7 +498,7 @@ function updateCampaignDeck() {
   for (const card of document.querySelectorAll('.build-card'))
     card.classList.toggle('hidden', started && !choices.includes(card.dataset.type));
   $('coachResume').classList.toggle('hidden', !coachingHold || !canInteract());
-  $('coachReplay').classList.toggle('hidden', coachingHold || !canInteract() || !campaignTeaching(currentCampaign));
+  $('coachReplay').classList.toggle('hidden', coachingHold || !canInteract() || !campaignTeaching(currentCampaign, { flightOrders: supportsFlightOrders(game.ruleset) }));
   const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
   const show = coachEnabled && !!hint && canInteract() && !dialogLayers.some(layer => !layer.classList.contains('hidden'));
   const compact = $('app').classList.contains('protected-compact');
@@ -582,10 +585,13 @@ $('toggleCoach').onclick = () => {
   updateCampaignDeck();
 };
 function beginCampaignCoaching({ manual = false } = {}) {
-  const lesson = campaignTeaching(currentCampaign, manual ? {} : {
-    resumed: resumedBattle,
-    completed: !!campaignProgress.missions[currentCampaign]?.completed,
-    learnedBasics: !!campaignProgress.missions['roadside-watch']?.completed || !!campaignProgress.missions['first-watch']?.completed,
+  const lesson = campaignTeaching(currentCampaign, {
+    flightOrders: supportsFlightOrders(game.ruleset),
+    ...(manual ? {} : {
+      resumed: resumedBattle,
+      completed: !!campaignProgress.missions[currentCampaign]?.completed,
+      learnedBasics: !!campaignProgress.missions['roadside-watch']?.completed || !!campaignProgress.missions['first-watch']?.completed,
+    }),
   });
   if (!lesson || !started || game.state.winner !== null || objectiveOutcome ||
       (manual && (!canInteract() || viewportPause.active))) return;
@@ -637,10 +643,53 @@ function coachControlVisible(element) {
   }
   return true;
 }
+function syncFlightOrders(building) {
+  const model = flightOrderModel(game, building);
+  $('flightOrders').classList.toggle('hidden', !model);
+  if (!model) return;
+  $('flightOrderCurrent').textContent = model.current;
+  $('flightOrderHelp').textContent = model.detail;
+  for (const option of model.options) {
+    const button = $('flight' + option.key[0].toUpperCase() + option.key.slice(1));
+    button.classList.toggle('hidden', !option.available);
+    button.textContent = option.label;
+    button.setAttribute('aria-pressed', String(option.selected));
+    button.disabled = !option.available || !canInteract();
+  }
+}
+let armedFlightControl = null;
+document.addEventListener('pointerdown', event => {
+  const button = event.target.closest?.('[data-flight-order]');
+  armedFlightControl = button && $('flightOrders').contains(button)
+    ? {button, pointerId: event.pointerId} : null;
+}, true);
+document.addEventListener('pointercancel', () => { armedFlightControl = null; }, true);
+window.addEventListener('blur', () => { armedFlightControl = null; });
+for (const key of ['north', 'hold', 'south']) {
+  $('flight' + key[0].toUpperCase() + key.slice(1)).onclick = event => {
+    const button = event.currentTarget;
+    if (event.detail !== 0 && (armedFlightControl?.button !== button ||
+      (Number.isFinite(event.pointerId) && event.pointerId > 0 && armedFlightControl.pointerId !== event.pointerId))) return;
+    armedFlightControl = null;
+    syncProfileSafety();
+    if (!canInteract()) return;
+    const building = game.state.buildings.find(b => b.id === ui.selected && b.side === 0);
+    const option = flightOrderModel(game, building)?.options.find(value => value.key === key && value.available);
+    if (!option) return;
+    const result = game.setFlightPlan(building.id, option.lane);
+    if (result.ok) {
+      sound('click');
+      toast(option.lane === building.lane ? 'Future gryphons will hold this road.'
+        : `Future gryphons will cross to ${flightRoadName(game.map, option.lane).toLowerCase()}.`);
+    } else toast(result.reason);
+    updateSelection();
+  };
+}
 function updateSelection() {
   const b = game.state.buildings.find(
     (x) => x.id === ui.selected && x.side === 0,
   );
+  syncFlightOrders(b);
   $('selectionPanel').classList.toggle('hidden', !b);
   $('commandDeck').classList.toggle('inspecting-building', !!b && $('app').classList.contains('protected-mobile'));
   if (!b) return;
@@ -1798,7 +1847,7 @@ function activateBattlePoint(w, { repeatBuild = false } = {}) {
     if (result.ok) {
       sound('build');
       toast(
-        `${(game.buildings || BUILDINGS)[ui.build].name} raised. ${(game.buildings || BUILDINGS)[ui.build].unit ? 'First troops in a moment.' : 'Your frontier grows.'}`,
+        `${(game.buildings || BUILDINGS)[ui.build].name} raised. ${ui.build === 'aerie' && supportsFlightOrders(game.ruleset) ? 'Tap it for flight orders.' : (game.buildings || BUILDINGS)[ui.build].unit ? 'First troops in a moment.' : 'Your frontier grows.'}`,
       );
       if (!repeatBuild || game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build].cost) {
         ui.build = null;
@@ -2083,6 +2132,27 @@ function updateHUD() {
   }
   updateSelection();
   updateCampaignDeck();
+  updateFlightStatus();
+}
+let flightStatusGame = null, seenFlightWarnings = new Set(), lastFlightNotice = -Infinity;
+function updateFlightStatus() {
+  if (flightStatusGame !== game) { flightStatusGame = game; seenFlightWarnings = new Set(); lastFlightNotice = -Infinity; $('flightAlert').textContent = ''; }
+  const rows = flightRouteRows(game);
+  $('pauseFlights').classList.toggle('hidden', !supportsFlightOrders(game.ruleset));
+  const text = rows.length ? rows.map(row => row.text).join('\n') : 'No gryphons are changing roads.';
+  if ($('pauseFlightList').textContent !== text) $('pauseFlightList').textContent = text;
+  const living = new Set(game.state.units.filter(unit => unit.hp > 0).map(unit => unit.id));
+  for (const id of seenFlightWarnings) if (!living.has(id)) seenFlightWarnings.delete(id);
+  const warnings = game.state.units.filter(unit => unit.side === 1 && unit.hp > 0 && unit.airRoute?.phase === 'warning' && !seenFlightWarnings.has(unit.id));
+  const message = flightWarningSummary(game, warnings);
+  if (message && !paused && !coachingHold && !document.hidden && game.state.time - lastFlightNotice >= 6) {
+    // A pause or throttled observation must not consume an unannounced warning.
+    // If it is still pending when live feedback is eligible, announce it once.
+    for (const unit of warnings) seenFlightWarnings.add(unit.id);
+    $('flightAlert').textContent = message;
+    sound('warning');
+    lastFlightNotice = game.state.time;
+  }
 }
 let heardEffects = new WeakSet(),
   heardProjectiles = new WeakSet();
@@ -2291,13 +2361,13 @@ function updateSkirmishRules() {
   const rules = getRuleset(selectedRuleset, 1);
   $('skirmishRules').value = selectedRuleset;
   $('skirmishRulesDescription').textContent = rules.endgame.forcedDecay
-    ? 'Rootwardens join the roster. Production and structure damage increase at 5:00; citadels begin losing health at 7:00.'
-    : 'Rootwardens join the roster. Production and structure damage increase at 5:00. Citadels never lose health just because time passes.';
+    ? 'Eight buildings, including Rootwardens and aerie flight orders. Production and structure damage increase at 5:00; citadels lose health from 7:00.'
+    : 'Eight buildings, including Rootwardens and aerie flight orders. Production and structure damage increase at 5:00; citadels never decay with time.';
   if (!started && mode === 'skirmish') populateFieldGuide(rules);
 }
 $('skirmishRules').onchange = () => {
   const value = $('skirmishRules').value;
-  if (!['frontier-rootwarden-open', 'frontier-rootwarden-timed'].includes(value)) return;
+  if (!['frontier-flight-open', 'frontier-flight-timed'].includes(value)) return;
   selectedRuleset = value;
   updateSkirmishRules();
 };
@@ -2425,16 +2495,17 @@ function renderCampaign() {
   $('campaignObjective').textContent = mission.objective;
   const roster = getRuleset(mission.rulesetId || 'frontier-legacy', mission.rulesetRevision || 1);
   const rosterLine = 'Available here: ' + Object.values(roster.buildings).map(b => b.name).join(', ') + '.';
-  $('campaignBriefing').innerHTML = [rosterLine, ...mission.briefing]
+  const recordNote = mission.scenarioRevision >= 3 ? ['Campaign records include stars and best times from earlier mission versions.'] : [];
+  $('campaignBriefing').innerHTML = [rosterLine, ...mission.briefing, ...recordNote]
     .map((t) => `<li>${t}</li>`)
     .join('');
   $('campaignHint').textContent = mission.hint;
-  $('campaignScoutToggle').textContent = `Scout battlefield · ${getMap(mission.mapId || 'classic').name}`;
+  $('campaignScoutToggle').textContent = `Scout battlefield · ${mission.name}`;
   $('campaignScoutReport').innerHTML = renderMissionScouting(mission);
   $('campaignMedals').textContent =
     'Bonus stars: ' + mission.medals.map((m) => m.label).join(' · ');
   const unlocked = mission.unlocked;
-  const needed = mission.scenarioRevision === 2 && !overview.returning && !campaignProgress.missions['open-three-roads']
+  const needed = mission.scenarioRevision >= 2 && !overview.returning && !campaignProgress.missions['open-three-roads']
     ? ['open-three-roads'] : mission.prerequisites;
   $('campaignUnlock').textContent = unlocked
     ? mission.reward
@@ -2920,6 +2991,7 @@ function interruptMobileInput() {
   resetBattleGesture();
   armedProtectedControl = null;
   closeSelectionArmed = false;
+  armedFlightControl = null;
   controller.reset();
   padHud = false;
 }

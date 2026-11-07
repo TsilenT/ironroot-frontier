@@ -8,7 +8,7 @@ import {Game,getRuleset,getMap} from '../dist/engine.js';
 import * as campaign from '../dist/campaign.js';
 import {missionBriefing} from '../dist/campaign-presentation.js';
 import {renderMissionScouting} from '../dist/scouting.js';
-import {createProfileSession,PROFILE_MARKER_KEY} from '../dist/profile-session.js';
+import {createProfileSession,PROFILE_MARKER_KEY,CURRENT_PROFILE_PROTOCOL_VERSION} from '../dist/profile-session.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 const SAVE='ironroot.battle.v1';
 const hidden=(h,id)=>h.$(id).classList.contains('hidden');
@@ -16,7 +16,7 @@ function harness({mode='skirmish', realDialogFocus=false}={}) {
   const h=startupHarness({width:1180,height:757}),{c,$}=h,browser=historyWindow({host:{panel:'arcade'}});
   const data=new Map(), writes=[];let fail=false;
   const raw={getItem:key=>data.get(key)??null,setItem(key,value){if(fail)throw Error('quota');data.set(key,value);writes.push([key,value]);},removeItem:key=>data.delete(key)};
-  const profileSession=createProfileSession(()=>raw,{requiredProtocolVersion:4});
+  const profileSession=createProfileSession(()=>raw,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});
   const storage=createStorage(()=>profileSession.storage);
   const section=(a,b)=>h.source.slice(h.source.indexOf(a),h.source.indexOf(b,h.source.indexOf(a)));
   Object.assign(c,campaign,{

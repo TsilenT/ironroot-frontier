@@ -1,3 +1,4 @@
+import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import { prepareBuildControl, openBuildControls } from './shared-build-controls.mjs';
 import {test as base, expect} from '@playwright/test';
 import {Game, BUILDINGS} from '../../dist/engine.js';
@@ -330,7 +331,7 @@ for (const value of ['{broken', 'null', '{"not":"an array"}', '[null,4,"bad",[]]
     const restored=await historyRecoveryBytes(page);
     for(const [domain,key] of Object.entries(BACKUP_STORAGE_KEYS))
       expect(JSON.parse(restored[key])).toEqual(retained.backup.data[domain]);
-    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:4,phase:'ready'});
+    expect(JSON.parse(restored[PROFILE_MARKER])).toMatchObject({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,phase:'ready'});
     expect(JSON.parse(restored[PROFILE_MARKER]).epoch).not.toBe(JSON.parse(values[PROFILE_MARKER]).epoch);
     expect(parseBackup(createBackup({getItem:key=>restored[key]??null})).data).toEqual(retained.backup.data);
     await press(page,'#welcomeSettings');await press(page,recent+' > summary');

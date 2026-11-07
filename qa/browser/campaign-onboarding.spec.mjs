@@ -56,7 +56,7 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await expect(page.locator('#campaignCoach')).toBeHidden();
-  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-rootwarden-open'}});
+  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-flight-open'}});
 });
 
 test('opening guidance uses real build cards, normal gold costs, and real battlefield construction', async ({ page }) => {
