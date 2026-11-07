@@ -1,0 +1,26 @@
+✔ twelve defaults retain physical roster slots and explicit null differs from missing (2.057898ms)
+✔ strict bounded map rejects malformed versions, keys, actions and effective-default conflicts (2.275843ms)
+✔ lookup resolves repetition by mapped action and protects browser, IME, handled and native input (0.621373ms)
+✖ actual app handler routes remapped actions, active roster slots and only handled keys prevent defaults (23.387936ms)
+✔ actual capture consumes a fresh binding and retires releases; conflict, Escape and Tab cancel safely (19.583248ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 364.374091
+
+✖ failing tests:
+
+test at tests/keyboard.test.mjs:50:1
+✖ actual app handler routes remapped actions, active roster slots and only handled keys prevent defaults (23.387936ms)
+  TypeError [Error]: Cannot assign to read only property 'buildings' of object '#<Game>'
+      at TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/keyboard.test.mjs:53:21)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

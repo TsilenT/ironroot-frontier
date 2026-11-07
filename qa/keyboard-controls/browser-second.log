@@ -1,0 +1,83 @@
+[WebServer] (node:4300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 56 tests using 2 workers
+
+(node:4312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4313) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   2 [phone] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -   1 [phone] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+  -   3 [phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -   4 [phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -   5 [phone] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -   7 [phone] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -   6 [phone] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native document blur cancels capture and a fresh Change remains usable
+  -   8 [phone] › keyboard-controls.spec.mjs:198:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -   9 [phone] › keyboard-controls.spec.mjs:222:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  11 [phone] › keyboard-controls.spec.mjs:282:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  10 [phone] › keyboard-controls.spec.mjs:263:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  12 [phone] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+  -  13 [phone] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+(node:4339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  14 [phone] › keyboard-controls.spec.mjs:326:1 › short Options keyboard disclosure fits and touch still pays for the first placement
+  -  15 [narrow-phone] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -  16 [narrow-phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -  17 [narrow-phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -  18 [narrow-phone] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -  19 [narrow-phone] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -  20 [narrow-phone] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native document blur cancels capture and a fresh Change remains usable
+  -  21 [narrow-phone] › keyboard-controls.spec.mjs:198:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -  22 [narrow-phone] › keyboard-controls.spec.mjs:222:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  23 [narrow-phone] › keyboard-controls.spec.mjs:263:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  24 [narrow-phone] › keyboard-controls.spec.mjs:282:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  25 [narrow-phone] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+  -  26 [narrow-phone] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+(node:4504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  28 [narrow-phone] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+(node:4598) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  29 [landscape] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -  30 [landscape] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+  -  31 [landscape] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -  32 [landscape] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -  33 [landscape] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -  34 [landscape] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -  35 [landscape] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native document blur cancels capture and a fresh Change remains usable
+  -  36 [landscape] › keyboard-controls.spec.mjs:198:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -  37 [landscape] › keyboard-controls.spec.mjs:222:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  38 [landscape] › keyboard-controls.spec.mjs:263:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  39 [landscape] › keyboard-controls.spec.mjs:282:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  40 [landscape] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+  -  41 [landscape] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+  ✓  27 [narrow-phone] › keyboard-controls.spec.mjs:326:1 › short Options keyboard disclosure fits and touch still pays for the first placement (16.1s)
+(node:4952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  42 [landscape] › keyboard-controls.spec.mjs:326:1 › short Options keyboard disclosure fits and touch still pays for the first placement (18.9s)
+(node:5189) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  44 [desktop] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding (7.7s)
+  ✓  43 [desktop] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide (19.4s)
+  ✓  45 [desktop] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding (5.7s)
+  ✓  46 [desktop] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding (5.3s)
+  ✓  47 [desktop] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options (6.6s)
+  ✓  48 [desktop] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings (6.5s)
+  ✓  49 [desktop] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native document blur cancels capture and a fresh Change remains usable (4.3s)
+  ✓  51 [desktop] › keyboard-controls.spec.mjs:222:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands (3.8s)
+  ✓  50 [desktop] › keyboard-controls.spec.mjs:198:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior (4.0s)
+  ✓  53 [desktop] › keyboard-controls.spec.mjs:282:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path (5.7s)
+  ✓  52 [desktop] › keyboard-controls.spec.mjs:263:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown (6.1s)
+  ✓  55 [desktop] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster (4.8s)
+  -  56 [desktop] › keyboard-controls.spec.mjs:326:1 › short Options keyboard disclosure fits and touch still pays for the first placement
+  ✓  54 [desktop] › keyboard-controls.spec.mjs:302:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster (5.4s)
+
+  41 skipped
+  15 passed (1.2m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -101,7 +101,8 @@ test('native keyboard/assistive clicks work and remain subject to existing held-
   const h=harness(),button=h.buttons()[0];
   h.click(button,{detail:0});assert.equal(h.context.renderer.camera,410);
   assert.equal(nativeSpaceTarget({closest:selector=>selector.includes('button')?button:null}),true);
-  assert.match(app,/e\.code === 'Space' && !nativeSpaceTarget\(e\.target\)/);
+  assert.match(app,/keyboardAction\(e, preferences\.keyboard, \{ allowButtonShortcuts \}\)/);
+  assert.match(app,/if \(action === 'pause'\)/);
   assert.match(app,/guardInput\(event, \(\) => inputScope\.keyDown\(event\)\)/);
   assert.match(app,/guardInput\(event, \(\) => inputScope\.keyUp\(event\)\)/);
   assert.match(app,/guardInput\(event, \(\) => inputScope\.click\(event\)\)/);
