@@ -1,0 +1,1028 @@
+TAP version 13
+# Subtest: automatic-air protocol is explicitly six, historical default stays one, and actual v0.16 source stays pinned
+ok 1 - automatic-air protocol is explicitly six, historical default stays one, and actual v0.16 source stays pinned
+  ---
+  duration_ms: 3.292661
+  type: 'test'
+  ...
+# Subtest: protocol six upgrades only the ready marker and verifies it before the first of five domain reads or writes
+ok 2 - protocol six upgrades only the ready marker and verifies it before the first of five domain reads or writes
+  ---
+  duration_ms: 4.229123
+  type: 'test'
+  ...
+# Subtest: already-open and freshly-opened real protocol-five clients refuse six including explicit recovery with exact byte retention
+ok 3 - already-open and freshly-opened real protocol-five clients refuse six including explicit recovery with exact byte retention
+  ---
+  duration_ms: 2.543806
+  type: 'test'
+  ...
+# Subtest: current marker failures and uncertain upgrades block every domain until a verified reload
+ok 4 - current marker failures and uncertain upgrades block every domain until a verified reload
+  ---
+  duration_ms: 3.54355
+  type: 'test'
+  ...
+# Subtest: a marker adapter throwing after a verified successful write is accepted without changing domain bytes
+ok 5 - a marker adapter throwing after a verified successful write is accepted without changing domain bytes
+  ---
+  duration_ms: 0.444189
+  type: 'test'
+  ...
+# Subtest: unfinished, malformed or future markers never upgrade implicitly, and future recovery cannot downgrade
+ok 6 - unfinished, malformed or future markers never upgrade implicitly, and future recovery cannot downgrade
+  ---
+  duration_ms: 4.473671
+  type: 'test'
+  ...
+# Subtest: five-domain automatic-air backup imports retain exact identities and stale-tab fences through verified finalization
+ok 7 - five-domain automatic-air backup imports retain exact identities and stale-tab fences through verified finalization
+  ---
+  duration_ms: 29.426126
+  type: 'test'
+  ...
+# Subtest: a failed replacement at each of five domains rolls back exact raw bytes before returning ready
+ok 8 - a failed replacement at each of five domains rolls back exact raw bytes before returning ready
+  ---
+  duration_ms: 103.507141
+  type: 'test'
+  ...
+# Subtest: unverified rollback and marker finalization remain blocked until the exact same outcome is verified
+ok 9 - unverified rollback and marker finalization remain blocked until the exact same outcome is verified
+  ---
+  duration_ms: 8.912252
+  type: 'test'
+  ...
+# Subtest: current synthetic training profile is already the current protocol and preserves every domain without migration
+ok 10 - current synthetic training profile is already the current protocol and preserves every domain without migration
+  ---
+  duration_ms: 14.317622
+  type: 'test'
+  ...
+# Subtest: an actual protocol-five importer loses every operation when explicit protocol-six recovery supersedes it
+ok 11 - an actual protocol-five importer loses every operation when explicit protocol-six recovery supersedes it
+  ---
+  duration_ms: 10.233203
+  type: 'test'
+  ...
+# Subtest: two protocol-six importers retain ownership fences and cannot roll back over a newer recovered profile
+ok 12 - two protocol-six importers retain ownership fences and cannot roll back over a newer recovered profile
+  ---
+  duration_ms: 9.949557
+  type: 'test'
+  ...
+# Subtest: fresh automatic-air skirmish identities and mixed history roundtrip without envelope or legacy relabeling
+ok 13 - fresh automatic-air skirmish identities and mixed history roundtrip without envelope or legacy relabeling
+  ---
+  duration_ms: 62.539122
+  type: 'test'
+  ...
+# Subtest: paid mid-chase backup/profile restore preserves target, nearest road, fractional time and every deterministic continuation byte
+ok 14 - paid mid-chase backup/profile restore preserves target, nearest road, fractional time and every deterministic continuation byte
+  ---
+  duration_ms: 277.795676
+  type: 'test'
+  ...
+# Subtest: nullable target metadata survives idle and locked saves; malformed state rejects before any backup destination access
+ok 15 - nullable target metadata survives idle and locked saves; malformed state rejects before any backup destination access
+  ---
+  duration_ms: 44.645787
+  type: 'test'
+  ...
+# Subtest: history and active-battle sessions preserve distinct old/new identities and reject mismatches without writes
+ok 16 - history and active-battle sessions preserve distinct old/new identities and reject mismatches without writes
+  ---
+  duration_ms: 9.980134
+  type: 'test'
+  ...
+# Subtest: current trial revision-two battle, history and backups retain automatic-air identity while revision-one records remain readable
+ok 17 - current trial revision-two battle, history and backups retain automatic-air identity while revision-one records remain readable
+  ---
+  duration_ms: 53.205932
+  type: 'test'
+  ...
+# Subtest: format, keys and module stay standalone, finite and local-only
+ok 18 - format, keys and module stay standalone, finite and local-only
+  ---
+  duration_ms: 2.480827
+  type: 'test'
+  ...
+# Subtest: empty local data exports a complete valid snapshot without writing anything
+ok 19 - empty local data exports a complete valid snapshot without writing anything
+  ---
+  duration_ms: 5.527483
+  type: 'test'
+  ...
+# Subtest: full campaign, trial, preference, history and battle export round trips independently
+ok 20 - full campaign, trial, preference, history and battle export round trips independently
+  ---
+  duration_ms: 23.291703
+  type: 'test'
+  ...
+# Subtest: all authored campaigns and 5 field trials preserve their mode after active-battle restore
+ok 21 - all authored campaigns and 5 field trials preserve their mode after active-battle restore
+  ---
+  duration_ms: 345.367705
+  type: 'test'
+  ...
+# Subtest: simulation replay remains deterministic after import, including particles and projectiles
+ok 22 - simulation replay remains deterministic after import, including particles and projectiles
+  ---
+  duration_ms: 364.386285
+  type: 'test'
+  ...
+# Subtest: in-memory overrides include unsaved progress without writing or reading replaced domains
+ok 23 - in-memory overrides include unsaved progress without writing or reading replaced domains
+  ---
+  duration_ms: 9.353927
+  type: 'test'
+  ...
+# Subtest: invalid stored bytes survive export attempts, parse failures and excluded battles
+ok 24 - invalid stored bytes survive export attempts, parse failures and excluded battles
+  ---
+  duration_ms: 2.016407
+  type: 'test'
+  ...
+# Subtest: empty import replaces all progress and removes the destination battle but preserves other keys
+ok 25 - empty import replaces all progress and removes the destination battle but preserves other keys
+  ---
+  duration_ms: 0.579396
+  type: 'test'
+  ...
+# Subtest: identical imports avoid unnecessary writes and removals
+ok 26 - identical imports avoid unnecessary writes and removals
+  ---
+  duration_ms: 0.818982
+  type: 'test'
+  ...
+# Subtest: legacy engine and version-1 trial saves migrate without losing identity
+ok 27 - legacy engine and version-1 trial saves migrate without losing identity
+  ---
+  duration_ms: 6.54039
+  type: 'test'
+  ...
+# Subtest: legacy result records gain explicit nullable mode IDs and draw flag
+ok 28 - legacy result records gain explicit nullable mode IDs and draw flag
+  ---
+  duration_ms: 0.598983
+  type: 'test'
+  ...
+# Subtest: corrupt JSON, incomplete backups, foreign formats and all unsupported schema versions fail before reads
+ok 29 - corrupt JSON, incomplete backups, foreign formats and all unsupported schema versions fail before reads
+  ---
+  duration_ms: 12.341246
+  type: 'test'
+  ...
+# Subtest: UTF-8 size limit rejects oversized input before parsing, including multibyte characters
+ok 30 - UTF-8 size limit rejects oversized input before parsing, including multibyte characters
+  ---
+  duration_ms: 45.657374
+  type: 'test'
+  ...
+# Subtest: structured depth, array, string and property bounds reject excessive data safely
+ok 31 - structured depth, array, string and property bounds reject excessive data safely
+  ---
+  duration_ms: 68.062471
+  type: 'test'
+  ...
+# Subtest: prototype pollution, HTML and arbitrary metadata never reach restored domains
+ok 32 - prototype pollution, HTML and arbitrary metadata never reach restored domains
+  ---
+  duration_ms: 17.265696
+  type: 'test'
+  ...
+# Subtest: overrides reject getters, functions, cycles, sparse arrays, symbols and nonplain values without invoking code
+ok 33 - overrides reject getters, functions, cycles, sparse arrays, symbols and nonplain values without invoking code
+  ---
+  duration_ms: 1.310324
+  type: 'test'
+  ...
+# Subtest: campaign normalizer is used without silently dropping invalid or orphaned records
+ok 34 - campaign normalizer is used without silently dropping invalid or orphaned records
+  ---
+  duration_ms: 7.922111
+  type: 'test'
+  ...
+# Subtest: trial validation rejects unknown IDs, invalid completion flags and impossible best times
+ok 35 - trial validation rejects unknown IDs, invalid completion flags and impossible best times
+  ---
+  duration_ms: 1.875905
+  type: 'test'
+  ...
+# Subtest: preferences require known fields and bounded values but retain intentional partial settings
+ok 36 - preferences require known fields and bounded values but retain intentional partial settings
+  ---
+  duration_ms: 1.255589
+  type: 'test'
+  ...
+# Subtest: history requires real timestamps, valid identities and plausible bounded statistics
+ok 37 - history requires real timestamps, valid identities and plausible bounded statistics
+  ---
+  duration_ms: 11.179769
+  type: 'test'
+  ...
+# Subtest: battle identity rejects unknown or combined modes, locked missions and inconsistent mission rules
+ok 38 - battle identity rejects unknown or combined modes, locked missions and inconsistent mission rules
+  ---
+  duration_ms: 12.654864
+  type: 'test'
+  ...
+# Subtest: ended and corrupt battles reject even if objective completion leaves engine winner null
+ok 39 - ended and corrupt battles reject even if objective completion leaves engine winner null
+  ---
+  duration_ms: 22.871768
+  type: 'test'
+  ...
+# Subtest: raw storage reads that throw abort export/import without silently exporting empty progress
+ok 40 - raw storage reads that throw abort export/import without silently exporting empty progress
+  ---
+  duration_ms: 6.515991
+  type: 'test'
+  ...
+# Subtest: strict throwing adapter works and requires explicit true for writes
+ok 41 - strict throwing adapter works and requires explicit true for writes
+  ---
+  duration_ms: 3.686499
+  type: 'test'
+  ...
+# Subtest: quota failure at every write position restores exact corrupt original bytes
+ok 42 - quota failure at every write position restores exact corrupt original bytes
+  ---
+  duration_ms: 5.483729
+  type: 'test'
+  ...
+# Subtest: failed writes that mutate before throwing or returning false are rolled back too
+ok 43 - failed writes that mutate before throwing or returning false are rolled back too
+  ---
+  duration_ms: 2.610345
+  type: 'test'
+  ...
+# Subtest: quota rollback removes newly introduced keys and does not invent previous absent data
+ok 44 - quota rollback removes newly introduced keys and does not invent previous absent data
+  ---
+  duration_ms: 1.13268
+  type: 'test'
+  ...
+# Subtest: failed battle removal rolls back progress and preserves the old corrupt battle
+ok 45 - failed battle removal rolls back progress and preserves the old corrupt battle
+  ---
+  duration_ms: 0.304008
+  type: 'test'
+  ...
+# Subtest: readback catches adapters that claim success but drop or corrupt writes
+ok 46 - readback catches adapters that claim success but drop or corrupt writes
+  ---
+  duration_ms: 1.863128
+  type: 'test'
+  ...
+# Subtest: rollback failure reports exact changed keys and never claims no changes
+ok 47 - rollback failure reports exact changed keys and never claims no changes
+  ---
+  duration_ms: 1.186219
+  type: 'test'
+  ...
+# Subtest: permanent read denial during rollback reports unverified keys separately
+ok 48 - permanent read denial during rollback reports unverified keys separately
+  ---
+  duration_ms: 1.350005
+  type: 'test'
+  ...
+# Subtest: a transient verification read failure can still restore and verify original values
+ok 49 - a transient verification read failure can still restore and verify original values
+  ---
+  duration_ms: 1.541879
+  type: 'test'
+  ...
+# Subtest: rollback verifies actual bytes even if restoration writes return an error afterward
+ok 50 - rollback verifies actual bytes even if restoration writes return an error afterward
+  ---
+  duration_ms: 1.102825
+  type: 'test'
+  ...
+# Subtest: concurrent destination changes are detected and never overwritten on that key
+ok 51 - concurrent destination changes are detected and never overwritten on that key
+  ---
+  duration_ms: 0.969453
+  type: 'test'
+  ...
+# Subtest: validation precedes adapter construction even if storage access itself would throw
+ok 52 - validation precedes adapter construction even if storage access itself would throw
+  ---
+  duration_ms: 0.545715
+  type: 'test'
+  ...
+# Subtest: a real persistent capacity limit rolls back partial replacements, then permits a successful retry
+ok 53 - a real persistent capacity limit rolls back partial replacements, then permits a successful retry
+  ---
+  duration_ms: 3.865914
+  type: 'test'
+  ...
+# Subtest: a removal that deletes the old battle before throwing restores its exact original bytes
+ok 54 - a removal that deletes the old battle before throwing restores its exact original bytes
+  ---
+  duration_ms: 0.38285
+  type: 'test'
+  ...
+# Subtest: final readback verifies unchanged domains too and reports concurrent foreign writes exactly
+ok 55 - final readback verifies unchanged domains too and reports concurrent foreign writes exactly
+  ---
+  duration_ms: 0.428151
+  type: 'test'
+  ...
+# Subtest: keyboard settings round trip through optional partial preferences and copied backup overrides
+ok 56 - keyboard settings round trip through optional partial preferences and copied backup overrides
+  ---
+  duration_ms: 13.010217
+  type: 'test'
+  ...
+# Subtest: old backups without keyboard settings restore defaults and remove a previous remap
+ok 57 - old backups without keyboard settings restore defaults and remove a previous remap
+  ---
+  duration_ms: 2.109706
+  type: 'test'
+  ...
+# Subtest: backup validation rejects malformed, excessive, reserved and duplicate effective keyboard bindings before storage access
+ok 58 - backup validation rejects malformed, excessive, reserved and duplicate effective keyboard bindings before storage access
+  ---
+  duration_ms: 15.776088
+  type: 'test'
+  ...
+# Subtest: null unbinds survive export and allow another action to use that vacated default
+ok 59 - null unbinds survive export and allow another action to use that vacated default
+  ---
+  duration_ms: 0.468583
+  type: 'test'
+  ...
+# Subtest: keyboard preference writes are immutable, verified and retried after quota and readback failures
+ok 60 - keyboard preference writes are immutable, verified and retried after quota and readback failures
+  ---
+  duration_ms: 2.979442
+  type: 'test'
+  ...
+# Subtest: stale preferences and changed profile epochs cannot replace newer keyboard or campaign settings
+ok 61 - stale preferences and changed profile epochs cannot replace newer keyboard or campaign settings
+  ---
+  duration_ms: 0.925182
+  type: 'test'
+  ...
+# Subtest: absent, unavailable and malformed preference bytes never trigger startup writes
+ok 62 - absent, unavailable and malformed preference bytes never trigger startup writes
+  ---
+  duration_ms: 1.019483
+  type: 'test'
+  ...
+# Subtest: actual retained-session and dirty full-backup handlers export the page keyboard map without saving it
+ok 63 - actual retained-session and dirty full-backup handlers export the page keyboard map without saving it
+  ---
+  duration_ms: 6.437918
+  type: 'test'
+  ...
+# Subtest: protocol seven advances only a verified marker and the old real protocol-six source remains pinned
+ok 64 - protocol seven advances only a verified marker and the old real protocol-six source remains pinned
+  ---
+  duration_ms: 1.761299
+  type: 'test'
+  ...
+# Subtest: already-open and later-opened actual six-field clients cannot erase keyboard controls or campaign progress
+ok 65 - already-open and later-opened actual six-field clients cannot erase keyboard controls or campaign progress
+  ---
+  duration_ms: 3.300743
+  type: 'test'
+  ...
+# Subtest: seven-marker write and readback failures leave existing domain bytes protected until verified reload
+ok 66 - seven-marker write and readback failures leave existing domain bytes protected until verified reload
+  ---
+  duration_ms: 1.62779
+  type: 'test'
+  ...
+# Subtest: keyboard import readback and rollback retain exact prior bytes and leave stale current tabs fenced
+ok 67 - keyboard import readback and rollback retain exact prior bytes and leave stale current tabs fenced
+  ---
+  duration_ms: 8.930505
+  type: 'test'
+  ...
+# Subtest: successful keyboard import verifies the new epoch, settings and current-tab fence
+ok 68 - successful keyboard import verifies the new epoch, settings and current-tab fence
+  ---
+  duration_ms: 0.84685
+  type: 'test'
+  ...
+# Subtest: history absence, backend failure and malformed existing bytes have distinct states
+ok 69 - history absence, backend failure and malformed existing bytes have distinct states
+  ---
+  duration_ms: 13.518396
+  type: 'test'
+  ...
+# Subtest: transient history read failure never overwrites existing history, and later retry merges both
+ok 70 - transient history read failure never overwrites existing history, and later retry merges both
+  ---
+  duration_ms: 1.200532
+  type: 'test'
+  ...
+# Subtest: unavailable initial history is not an empty cache and recovery reads the real current history
+ok 71 - unavailable initial history is not an empty cache and recovery reads the real current history
+  ---
+  duration_ms: 0.555687
+  type: 'test'
+  ...
+# Subtest: failed history write retains an immutable result and repeated retries never append duplicates
+ok 72 - failed history write retains an immutable result and repeated retries never append duplicates
+  ---
+  duration_ms: 11.024061
+  type: 'test'
+  ...
+# Subtest: throw-after-write and unreadable readback remain recoverable without writing a second copy
+ok 73 - throw-after-write and unreadable readback remain recoverable without writing a second copy
+  ---
+  duration_ms: 2.929358
+  type: 'test'
+  ...
+# Subtest: newer history between snapshot and write aborts without damage, then merges a fresh retry
+ok 74 - newer history between snapshot and write aborts without damage, then merges a fresh retry
+  ---
+  duration_ms: 0.489418
+  type: 'test'
+  ...
+# Subtest: a racing history write after set is detected and is never rolled back over the winner
+ok 75 - a racing history write after set is detected and is never rolled back over the winner
+  ---
+  duration_ms: 0.369167
+  type: 'test'
+  ...
+# Subtest: history dedupe survives backup field ordering and existing optional defaults
+ok 76 - history dedupe survives backup field ordering and existing optional defaults
+  ---
+  duration_ms: 0.965709
+  type: 'test'
+  ...
+# Subtest: pending history honors the existing latest-30 limit and exports in the existing schema
+ok 77 - pending history honors the existing latest-30 limit and exports in the existing schema
+  ---
+  duration_ms: 9.744551
+  type: 'test'
+  ...
+# Subtest: retained results and preferences never commit to a replaced, restoring or failed profile
+ok 78 - retained results and preferences never commit to a replaced, restoring or failed profile
+  ---
+  duration_ms: 0.706559
+  type: 'test'
+  ...
+# Subtest: profile changes during the last history read prevent write even without a storage event
+ok 79 - profile changes during the last history read prevent write even without a storage event
+  ---
+  duration_ms: 0.250918
+  type: 'test'
+  ...
+# Subtest: failed preferences are retained, replaced by the newest local choice, and verified on retry
+ok 80 - failed preferences are retained, replaced by the newest local choice, and verified on retry
+  ---
+  duration_ms: 0.260387
+  type: 'test'
+  ...
+# Subtest: preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+ok 81 - preferences cannot overwrite a changed tab snapshot, a double-read race, or unknown startup data
+  ---
+  duration_ms: 0.330169
+  type: 'test'
+  ...
+# Subtest: preferences throw-after-write and transient readback denial verify without rewriting
+ok 82 - preferences throw-after-write and transient readback denial verify without rewriting
+  ---
+  duration_ms: 0.420729
+  type: 'test'
+  ...
+# Subtest: actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+ok 83 - actual finish warns on a history read failure, retains result after battle removal and recovers exactly once
+  ---
+  duration_ms: 6.19487
+  type: 'test'
+  ...
+# Subtest: actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+ok 84 - actual finish survives write denial without a false saved claim; beforeunload warns until retry succeeds
+  ---
+  duration_ms: 1.771571
+  type: 'test'
+  ...
+# Subtest: actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+ok 85 - actual preference handler applies in memory but visibly reports unsaved until explicit verified retry
+  ---
+  duration_ms: 1.45715
+  type: 'test'
+  ...
+# Subtest: actual retries stay blocked after profile change and still expose retained result for export
+ok 86 - actual retries stay blocked after profile change and still expose retained result for export
+  ---
+  duration_ms: 1.205945
+  type: 'test'
+  ...
+# Subtest: captured completion remains eligible after a new same-profile battle without deleting its save
+ok 87 - captured completion remains eligible after a new same-profile battle without deleting its save
+  ---
+  duration_ms: 0.673671
+  type: 'test'
+  ...
+# Subtest: stale completion never acquires a newer battle or blocks a later valid result from saving
+ok 88 - stale completion never acquires a newer battle or blocks a later valid result from saving
+  ---
+  duration_ms: 0.393376
+  type: 'test'
+  ...
+# Subtest: completion with unavailable ownership only recovers if its original battle can still be verified
+ok 89 - completion with unavailable ownership only recovers if its original battle can still be verified
+  ---
+  duration_ms: 0.719058
+  type: 'test'
+  ...
+# Subtest: actual finish captures stale battle ownership and keeps the result unsaved/exportable
+ok 90 - actual finish captures stale battle ownership and keeps the result unsaved/exportable
+  ---
+  duration_ms: 1.339336
+  type: 'test'
+  ...
+# Subtest: a captured valid completion still cannot cross a later imported profile boundary
+ok 91 - a captured valid completion still cannot cross a later imported profile boundary
+  ---
+  duration_ms: 0.267707
+  type: 'test'
+  ...
+# Subtest: profile recovery views never replace retained old-profile history with imported records
+ok 92 - profile recovery views never replace retained old-profile history with imported records
+  ---
+  duration_ms: 0.149745
+  type: 'test'
+  ...
+# Subtest: absent marker is a legacy-ready profile; guarded storage works without writing a marker
+ok 93 - absent marker is a legacy-ready profile; guarded storage works without writing a marker
+  ---
+  duration_ms: 1.959217
+  type: 'test'
+  ...
+# Subtest: begin publishes a verified restoring marker before permitting import reads or writes
+ok 94 - begin publishes a verified restoring marker before permitting import reads or writes
+  ---
+  duration_ms: 1.048401
+  type: 'test'
+  ...
+# Subtest: all ordinary save writes and removes are blocked in stale tabs throughout restoration
+ok 95 - all ordinary save writes and removes are blocked in stale tabs throughout restoration
+  ---
+  duration_ms: 0.853486
+  type: 'test'
+  ...
+# Subtest: restored marker makes every old tab read-only and requires reload, including its owner
+ok 96 - restored marker makes every old tab read-only and requires reload, including its owner
+  ---
+  duration_ms: 3.439483
+  type: 'test'
+  ...
+# Subtest: verified rollback to an originally ready profile rebinds only its owning tab
+ok 97 - verified rollback to an originally ready profile rebinds only its owning tab
+  ---
+  duration_ms: 0.565007
+  type: 'test'
+  ...
+# Subtest: incomplete rollback publishes failed barrier and requires explicit recovery
+ok 98 - incomplete rollback publishes failed barrier and requires explicit recovery
+  ---
+  duration_ms: 1.66315
+  type: 'test'
+  ...
+# Subtest: rollback during recovery of a partial or abandoned profile never publishes ready
+ok 99 - rollback during recovery of a partial or abandoned profile never publishes ready
+  ---
+  duration_ms: 1.120465
+  type: 'test'
+  ...
+# Subtest: invalid markers require explicit recovery; future protocol markers cannot be downgraded
+ok 100 - invalid markers require explicit recovery; future protocol markers cannot be downgraded
+  ---
+  duration_ms: 1.188606
+  type: 'test'
+  ...
+# Subtest: initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+ok 101 - initial unavailable storage is explicit and permits only unsaved app operation, never a claimed import
+  ---
+  duration_ms: 0.506572
+  type: 'test'
+  ...
+# Subtest: read failures and invalid raw read return values cannot be interpreted as an absent marker
+ok 102 - read failures and invalid raw read return values cannot be interpreted as an absent marker
+  ---
+  duration_ms: 0.760639
+  type: 'test'
+  ...
+# Subtest: marker begin quota failure leaves original game bytes intact and denies the import adapter
+ok 103 - marker begin quota failure leaves original game bytes intact and denies the import adapter
+  ---
+  duration_ms: 1.555819
+  type: 'test'
+  ...
+# Subtest: marker writes that throw after taking effect are accepted only after exact readback
+ok 104 - marker writes that throw after taking effect are accepted only after exact readback
+  ---
+  duration_ms: 0.641491
+  type: 'test'
+  ...
+# Subtest: an unverified begin can be resumed only after the same owned restoring marker becomes readable
+ok 105 - an unverified begin can be resumed only after the same owned restoring marker becomes readable
+  ---
+  duration_ms: 0.448612
+  type: 'test'
+  ...
+# Subtest: failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+ok 106 - failed finalization keeps barrier closed, locks the import adapter and supports same-outcome retry
+  ---
+  duration_ms: 1.491394
+  type: 'test'
+  ...
+# Subtest: ready marker written before a failed read can be verified by idempotent finalization retry
+ok 107 - ready marker written before a failed read can be verified by idempotent finalization retry
+  ---
+  duration_ms: 1.281654
+  type: 'test'
+  ...
+# Subtest: failure marker publication can be retried without falsely opening partial data
+ok 108 - failure marker publication can be retried without falsely opening partial data
+  ---
+  duration_ms: 0.247111
+  type: 'test'
+  ...
+# Subtest: unexpected marker corruption after a write never grants import ownership
+ok 109 - unexpected marker corruption after a write never grants import ownership
+  ---
+  duration_ms: 0.186936
+  type: 'test'
+  ...
+# Subtest: a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+ok 110 - a superseded importer cannot read, write, remove, finalize or roll back over the newer owner
+  ---
+  duration_ms: 0.913011
+  type: 'test'
+  ...
+# Subtest: import ownership loss mid-restore prevents rollback from undoing a newer completed import
+ok 111 - import ownership loss mid-restore prevents rollback from undoing a newer completed import
+  ---
+  duration_ms: 3.342414
+  type: 'test'
+  ...
+# Subtest: stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+ok 112 - stale dirty campaign and trial bests cannot be reintroduced after a successful empty import
+  ---
+  duration_ms: 2.37732
+  type: 'test'
+  ...
+# Subtest: beforeunload-style stale history, settings and battle writes are also blocked after replacement
+ok 113 - beforeunload-style stale history, settings and battle writes are also blocked after replacement
+  ---
+  duration_ms: 1.203174
+  type: 'test'
+  ...
+# Subtest: ordinary facades reserve the marker; import facade is limited to the five game domains
+ok 114 - ordinary facades reserve the marker; import facade is limited to the five game domains
+  ---
+  duration_ms: 0.642814
+  type: 'test'
+  ...
+# Subtest: session checks marker before every operation, not merely before the first of five writes
+ok 115 - session checks marker before every operation, not merely before the first of five writes
+  ---
+  duration_ms: 0.769849
+  type: 'test'
+  ...
+# Subtest: marker factory failures, invalid options and invalid outcomes cannot mutate game state
+ok 116 - marker factory failures, invalid options and invalid outcomes cannot mutate game state
+  ---
+  duration_ms: 0.6404
+  type: 'test'
+  ...
+# Subtest: a denied marker read after initially ready play blocks saving without deleting any bytes
+ok 117 - a denied marker read after initially ready play blocks saving without deleting any bytes
+  ---
+  duration_ms: 0.430134
+  type: 'test'
+  ...
+# Subtest: fresh page opened during restoring or failed phase cannot read partial profile domains
+ok 118 - fresh page opened during restoring or failed phase cannot read partial profile domains
+  ---
+  duration_ms: 1.003322
+  type: 'test'
+  ...
+# Subtest: UI: late older successful file read cannot replace the newer confirmed import
+ok 119 - UI: late older successful file read cannot replace the newer confirmed import
+  ---
+  duration_ms: 14.071746
+  type: 'test'
+  ...
+# Subtest: UI: late older file failure cannot invalidate a newer parsed backup
+ok 120 - UI: late older file failure cannot invalidate a newer parsed backup
+  ---
+  duration_ms: 2.628183
+  type: 'test'
+  ...
+# Subtest: UI: dismissing Settings invalidates an outstanding file read across reopen
+ok 121 - UI: dismissing Settings invalidates an outstanding file read across reopen
+  ---
+  duration_ms: 3.878348
+  type: 'test'
+  ...
+# Subtest: UI: incomplete rollback preserves the paused session and warning after cancellation
+ok 122 - UI: incomplete rollback preserves the paused session and warning after cancellation
+  ---
+  duration_ms: 3.662268
+  type: 'test'
+  ...
+# Subtest: UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+ok 123 - UI: failed marker finalization blocks reload until the same-outcome retry succeeds
+  ---
+  duration_ms: 2.552358
+  type: 'test'
+  ...
+# Subtest: UI: normal export is blocked during recovery while retained-game export remains available
+ok 124 - UI: normal export is blocked during recovery while retained-game export remains available
+  ---
+  duration_ms: 11.701521
+  type: 'test'
+  ...
+# Subtest: UI: blocked result persistence marks newly earned progress dirty
+ok 125 - UI: blocked result persistence marks newly earned progress dirty
+  ---
+  duration_ms: 1.285261
+  type: 'test'
+  ...
+# Subtest: UI: storage-unavailable autosave warns once without discarding the active game
+ok 126 - UI: storage-unavailable autosave warns once without discarding the active game
+  ---
+  duration_ms: 1.490047
+  type: 'test'
+  ...
+# Subtest: UI: beforeunload during recovery warns without saving old in-memory data
+ok 127 - UI: beforeunload during recovery warns without saving old in-memory data
+  ---
+  duration_ms: 2.567585
+  type: 'test'
+  ...
+# Subtest: UI: actual application startup protects current keyboard profiles with protocol 7 before ordinary storage
+ok 128 - UI: actual application startup protects current keyboard profiles with protocol 7 before ordinary storage
+  ---
+  duration_ms: 1.245519
+  type: 'test'
+  ...
+# Subtest: UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+ok 129 - UI: failed profile upgrade pauses play and cannot bypass protection through import recovery
+  ---
+  duration_ms: 2.510275
+  type: 'test'
+  ...
+# Subtest: UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+ok 130 - UI: uncertain profile upgrade stays visibly paused while its verification read is denied
+  ---
+  duration_ms: 2.616553
+  type: 'test'
+  ...
+# Subtest: UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+ok 131 - UI: unreadable current history prevents a falsely complete backup but retained export includes known and pending results
+  ---
+  duration_ms: 6.562249
+  type: 'test'
+  ...
+# Subtest: UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+ok 132 - UI: pending results and unsaved preferences are included in a readable full backup without changing browser storage
+  ---
+  duration_ms: 2.463325
+  type: 'test'
+  ...
+# Subtest: UI: unknown map refuses fresh Start with modal isolation until explicit backup replacement
+not ok 133 - UI: unknown map refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 35.498012
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: future revision refuses fresh Start with modal isolation until explicit backup replacement
+not ok 134 - UI: future revision refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 15.174098
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: missing map identity refuses fresh Start with modal isolation until explicit backup replacement
+not ok 135 - UI: missing map identity refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 10.972897
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: Long March wrong right base refuses fresh Start with modal isolation until explicit backup replacement
+not ok 136 - UI: Long March wrong right base refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 11.216221
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: Twin Span phantom third lane refuses fresh Start with modal isolation until explicit backup replacement
+not ok 137 - UI: Twin Span phantom third lane refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 14.182231
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: Twin Span off-site building refuses fresh Start with modal isolation until explicit backup replacement
+not ok 138 - UI: Twin Span off-site building refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 17.427565
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: long-march masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement
+not ok 139 - UI: long-march masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 16.910627
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: long-march masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement
+not ok 140 - UI: long-march masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 22.727797
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: twin-span masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement
+not ok 141 - UI: twin-span masquerading as campaign refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 8.654822
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: UI: twin-span masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement
+not ok 142 - UI: twin-span masquerading as challenges refuses fresh Start with modal isolation until explicit backup replacement
+  ---
+  duration_ms: 13.905847
+  type: 'test'
+  location: '/workspace/ironroot-frontier/tests/profile-session.test.mjs:378:42'
+  failureType: 'testCodeFailure'
+  error: 'keyboardCapture is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    syncInputScope (evalmachine.<anonymous>:3:3)
+    syncProtectedLayout (evalmachine.<anonymous>:285:5)
+    beginProtectedObjectives (evalmachine.<anonymous>:234:3)
+    Object.start (evalmachine.<anonymous>:94:3)
+    TestContext.<anonymous> (file:///workspace/ironroot-frontier/tests/profile-session.test.mjs:411:52)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: legacy export remains v1; mixed new battle/history exports v2 and restores full identities
+ok 143 - legacy export remains v1; mixed new battle/history exports v2 and restores full identities
+  ---
+  duration_ms: 21.39886
+  type: 'test'
+  ...
+# Subtest: history-only open results retain supported long duration and reject unknown identities or old bounds
+ok 144 - history-only open results retain supported long duration and reject unknown identities or old bounds
+  ---
+  duration_ms: 3.564846
+  type: 'test'
+  ...
+# Subtest: v1 refuses v3 domain data and failed import never accesses destination
+ok 145 - v1 refuses v3 domain data and failed import never accesses destination
+  ---
+  duration_ms: 4.694744
+  type: 'test'
+  ...
+# Subtest: protocol3 ready upgrade fences cached protocol2 client without changing domain bytes
+ok 146 - protocol3 ready upgrade fences cached protocol2 client without changing domain bytes
+  ---
+  duration_ms: 1.215213
+  type: 'test'
+  ...
+# Subtest: protocol3 upgrades only verified ready markers and never recovers over future versions
+ok 147 - protocol3 upgrades only verified ready markers and never recovers over future versions
+  ---
+  duration_ms: 0.726982
+  type: 'test'
+  ...
+# Subtest: new intro progress and authored v3 battles preserve separate IDs through backup
+ok 148 - new intro progress and authored v3 battles preserve separate IDs through backup
+  ---
+  duration_ms: 9.029248
+  type: 'test'
+  ...
+1..148
+# tests 148
+# suites 0
+# pass 138
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1875.618238

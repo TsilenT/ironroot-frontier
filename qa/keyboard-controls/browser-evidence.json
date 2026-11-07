@@ -1,0 +1,121 @@
+{
+  "node": "24.22.1",
+  "playwright": "1.65.0",
+  "chromium": "155.0.8059.79",
+  "runs": {
+    "first": {
+      "startTime": "2026-11-07T16:31:39.961Z",
+      "duration": 59426.913,
+      "expected": 9,
+      "skipped": 41,
+      "unexpected": 6,
+      "flaky": 0
+    },
+    "second": {
+      "startTime": "2026-11-07T16:33:34.587Z",
+      "duration": 71201.51,
+      "expected": 15,
+      "skipped": 41,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final": {
+      "startTime": "2026-11-07T16:35:23.667Z",
+      "duration": 108878.27900000001,
+      "expected": 16,
+      "skipped": 44,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "reviewedFinal": {
+      "startTime": "2026-11-07T16:47:01.462Z",
+      "duration": 63116.159999999996,
+      "expected": 20,
+      "skipped": 48,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "existingFinal": {
+      "startTime": "2026-11-07T16:48:26.581Z",
+      "duration": 313746.22500000003,
+      "expected": 103,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "initialFailures": [
+    {
+      "count": 3,
+      "reason": "Test text expected defaults; UI accurately says default controls.",
+      "resolution": "Updated exact copy assertion; downstream remap, fit and paid-placement stages retained and passed."
+    },
+    {
+      "count": 1,
+      "reason": "Camera test treated screen-pixel pan as world units.",
+      "resolution": "Assert 150 / renderer scale, preserving repeated-action checks."
+    },
+    {
+      "count": 1,
+      "reason": "Headless tabs retain focus; page bringToFront did not emit window blur.",
+      "resolution": "Native click into a real iframe document emits trusted blur. OS window/tab switching remains unverified."
+    },
+    {
+      "count": 1,
+      "reason": "Capture focus departure invalidated the native summary pointer gesture.",
+      "resolution": "Runtime now retires held keyboard releases without changing pointer scope; disclosure closure and downstream Back assertions pass."
+    }
+  ],
+  "limits": [
+    "Chromium automation only; no physical devices, OS window-switch or non-Chromium certification.",
+    "Modifier checks establish trusted delivered key events remain unprevented; they do not establish browser chrome shortcut behavior on every OS.",
+    "Handled-event and IME probes explicitly use synthetic KeyboardEvents; contenteditable entry, key capture, fullscreen, mouse and touch actions are native trusted events."
+  ],
+  "reviewedSourceHead": "a55d85fa2035b808aa332fbd1e7c54f8c9c0bc04",
+  "negativeControl": {
+    "sourceHead": "0707617638aba7352119d74df1437647465f518f",
+    "spec": "current strengthened keyboard-controls.spec.mjs",
+    "stats": {
+      "startTime": "2026-11-07T16:45:24.602Z",
+      "duration": 48427.950000000004,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 3,
+      "flaky": 0
+    },
+    "boundaries": [
+      "remapped P cannot resume from normally focused Resume",
+      "build-card click suppresses the next default R shortcut",
+      "verified preference retry leaves page-only keyboard status"
+    ]
+  },
+  "longLabels": {
+    "labels": [
+      "Right arrow",
+      "Numpad 9"
+    ],
+    "viewports": [
+      [
+        1180,
+        757
+      ],
+      [
+        320,
+        568
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "checks": [
+      "badge inside build card",
+      "no overlap with icon",
+      "no overlap with building name"
+    ]
+  },
+  "commands": {
+    "newGate": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test keyboard-controls.spec.mjs --workers=2",
+    "existingGate": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test desktop-input.spec.mjs pause-menu.spec.mjs back-navigation.spec.mjs practice-history.spec.mjs accessibility-backup.spec.mjs storage-recovery.spec.mjs training.spec.mjs --project=desktop --workers=2"
+  }
+}
