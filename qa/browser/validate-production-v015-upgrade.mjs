@@ -7,7 +7,7 @@ import {parseBackup} from '../../dist/backup.js';
 import {getCampaignRoster,createProgressionCampaignMission,campaignScenarioForGame} from '../../dist/campaign.js';
 import {shellManifest,candidateIdentity,requireDistinctUpgrade} from './update-fixtures.mjs';
 export async function validateProductionV015Upgrade(){
-  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,6);
+  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,7);
   const prior=await shellManifest(PRODUCTION_V015_ROOT);
   assert.throws(()=>requireDistinctUpgrade(prior,prior),/BLOCKED/);
   requireDistinctUpgrade(prior,await candidateIdentity());

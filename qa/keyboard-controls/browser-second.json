@@ -1,0 +1,2556 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-frontier/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "keyboard-controls.spec.mjs",
+      "--workers=2"
+    ],
+    "configFile": "/workspace/ironroot-frontier/qa/browser/playwright.config.mjs",
+    "rootDir": "/workspace/ironroot-frontier/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 650
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 320,
+            "height": 568
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "narrow-phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1180,
+            "height": 757
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "keyboard-controls.spec.mjs",
+      "file": "keyboard-controls.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "short Options keyboard disclosure fits and touch still pays for the first placement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Bounded 320×568 portrait and 844×390 touch gate.",
+                  "location": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                    "line": 327,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 783,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:33:37.073Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Bounded 320×568 portrait and 844×390 touch gate.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 327,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:33:39.455Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 18894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:33:43.784Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Bounded 320×568 portrait and 844×390 touch gate.",
+                  "location": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                    "line": 327,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "skipped",
+                  "duration": 193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:34:45.234Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Bounded 320×568 portrait and 844×390 touch gate.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 327,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "d42c6908aa36aa4ac3c0-c06d4f6f315838df5022",
+          "file": "keyboard-controls.spec.mjs",
+          "line": 326,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Battle keyboard controls on desktop",
+          "file": "keyboard-controls.spec.mjs",
+          "line": 38,
+          "column": 6,
+          "specs": [
+            {
+              "title": "remap, clear, reload and restore update stored controls, badges and field guide",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 8,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.545Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 8,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:38.753Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 10,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.402Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 19403,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:58.423Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-218a27fb286b71912865",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 41,
+              "column": 3
+            },
+            {
+              "title": "default collisions, reserved keys and modifier chords cannot steal a binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 19,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.538Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 6,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.984Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.627Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7745,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:05.247Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-a55fe062a16fdcc4bd0d",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 90,
+              "column": 3
+            },
+            {
+              "title": "Enter opens capture once and held activation cannot become its binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.728Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:38.899Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.693Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 5702,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:13.683Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-6a1f7ba14d84acb0e85c",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 108,
+              "column": 44
+            },
+            {
+              "title": "Space opens capture once and held activation cannot become its binding",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.764Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:38.962Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.788Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5348,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:18.495Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-ef4287117f982d9bb4ac",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 108,
+              "column": 44
+            },
+            {
+              "title": "captured Space release cannot reactivate Change or leak through closed Options",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.828Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.032Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.888Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 6586,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:19.471Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-54faf627fb69b9350ef1",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 127,
+              "column": 3
+            },
+            {
+              "title": "Tab, focus departure, disclosure closure and Back cancel capture without changing settings",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.852Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.071Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:42.986Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6460,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:23.927Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-9cc37a009287f00ebea7",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 148,
+              "column": 3
+            },
+            {
+              "title": "native document blur cancels capture and a fresh Change remains usable",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.878Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.141Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.070Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4278,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:26.161Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-54e7838dff8f04477091",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 174,
+              "column": 3
+            },
+            {
+              "title": "native disclosure, select, range and actual fullscreen activation retain keyboard behavior",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.901Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.169Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 2,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.175Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3961,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:30.466Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-ae4292eb559d490bc0c8",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 198,
+              "column": 3
+            },
+            {
+              "title": "delivered browser chords, native editable text, handled events and IME never arm battle commands",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.932Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 3,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.200Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.278Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3755,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:30.489Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-10aaf28de969f7709396",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 222,
+              "column": 3
+            },
+            {
+              "title": "remapped actions repeat by action: build and pause once, pan on every held keydown",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.970Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 4,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.261Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 6,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.394Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 6080,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:34.293Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-3e9933e031e3fefabe0f",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 263,
+              "column": 3
+            },
+            {
+              "title": "remapped first roster slot uses the real paid barracks and automatic-start path",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 9,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:36.973Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.296Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.492Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5697,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:34.485Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-512e7ddfc45c55dc0c5c",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 282,
+              "column": 3
+            },
+            {
+              "title": "five-building campaign keeps remapped slot three tied to its current roster",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:37.028Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.367Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.629Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5379,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:40.251Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-816ed691d0dbee6e8fab",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 302,
+              "column": 67
+            },
+            {
+              "title": "full skirmish keeps remapped slot three tied to its current roster",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 5,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:37.034Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "narrow-phone",
+                  "projectName": "narrow-phone",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "skipped",
+                      "duration": 1,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:39.425Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                        "line": 39,
+                        "column": 44
+                      }
+                    }
+                  ],
+                  "expectedStatus": "skipped",
+                  "projectId": "landscape",
+                  "projectName": "landscape",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:33:43.691Z",
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Desktop keyboard gate; bounded touch/fit cases below.",
+                          "location": {
+                            "file": "/workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs",
+                            "line": 39,
+                            "column": 44
+                          }
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                },
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4777,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-07T16:34:40.421Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d42c6908aa36aa4ac3c0-702567119c2faf15a51e",
+              "file": "keyboard-controls.spec.mjs",
+              "line": 302,
+              "column": 67
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T16:33:34.587Z",
+    "duration": 71201.51,
+    "expected": 15,
+    "skipped": 41,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

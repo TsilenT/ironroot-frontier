@@ -6,6 +6,7 @@ import {Game,BUILDINGS} from '../dist/engine.js';
 import {createCampaignProgress,getProgressionCampaignOverview as getCampaignOverview,isIntroMission,CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS} from '../dist/campaign.js';
 import {decodeBattle,encodeBattle,scenarioForBattle} from '../dist/battle-codec.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
+import * as keyboard from '../dist/keyboard.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 const part=(a,b)=>app.slice(app.indexOf(a),app.indexOf(b,app.indexOf(a)));
@@ -15,13 +16,13 @@ function dom(){
 }
 
 test('real deck rebuilds from the active immutable roster and restores the original seven-card order',()=>{
- const $=dom(),selected=[],c={$,game:openGame(),BUILDINGS,labels:{},iconSVG:()=>'',selectBuild:type=>selected.push(type),document:{createElement:()=>({dataset:{},setAttribute(){},addEventListener(type,fn){this[type]=fn;}})}};
- createContext(c);runInContext(part('function populateBuildCards()','function canInteract()'),c);
+ const $=dom(),selected=[],c={...keyboard,preferences:{},$,game:openGame(),BUILDINGS,labels:{},iconSVG:()=>'',selectBuild:type=>selected.push(type),document:{createElement:()=>({dataset:{},setAttribute(){},addEventListener(type,fn){this[type]=fn;}})}};
+ createContext(c);runInContext(part('function keyboardTitle(', 'function syncKeyboardSettings()'),c);runInContext(part('function populateBuildCards()','function canInteract()'),c);
  assert.deepEqual($('buildCards').children.map(n=>n.dataset.type),Object.keys(c.game.buildings));
- assert.equal($('buildCards').children.at(-1).dataset.type,'wardenLodge');assert.match($('buildingKeyHelp').textContent,/1–8/);
+ assert.equal($('buildCards').children.at(-1).dataset.type,'wardenLodge');assert.match($('buildingKeyHelp').textContent,/Warden lodge: 8/);
  $('buildCards').children.at(-1).click();assert.deepEqual(selected,['wardenLodge']);
  c.game=Game.restore(new Game({seed:55}).serialize());c.populateBuildCards();
- assert.deepEqual($('buildCards').children.map(n=>n.dataset.type),Object.keys(BUILDINGS));assert.match($('buildingKeyHelp').textContent,/1–7/);
+ assert.deepEqual($('buildCards').children.map(n=>n.dataset.type),Object.keys(BUILDINGS));assert.match($('buildingKeyHelp').textContent,/Gryphon aerie: 7/);assert.doesNotMatch($('buildingKeyHelp').textContent,/Warden lodge/);
 });
 
 test('real start selects current skirmish and optional lesson rules without reinterpreting a restored battle',()=>{

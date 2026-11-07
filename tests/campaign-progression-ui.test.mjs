@@ -115,7 +115,7 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   assert.deepEqual(cardTypes(h), ['barracks', 'archery']);
   assert.deepEqual(visibleCards(h), ['barracks', 'archery']);
   assert.equal(h.$('allBuildings').classList.contains('hidden'), true);
-  assert.equal(h.$('buildingKeyHelp').textContent, '1–2 buildings');
+  assert.equal(h.$('buildingKeyHelp').textContent, 'Barracks: 1 · Archery range: 2');
   assert.match(h.$('coachText').textContent, /Barracks|barracks/);
   assert.equal(h.c.paused, false);
 });

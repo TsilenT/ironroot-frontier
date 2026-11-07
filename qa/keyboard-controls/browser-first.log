@@ -1,0 +1,375 @@
+[WebServer] (node:1708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 56 tests using 2 workers
+
+(node:1732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1733) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 [phone] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -   2 [phone] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+  -   3 [phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -   4 [phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -   5 [phone] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -   6 [phone] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -   7 [phone] › keyboard-controls.spec.mjs:189:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -   8 [phone] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable
+  -   9 [phone] › keyboard-controls.spec.mjs:213:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  10 [phone] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  11 [phone] › keyboard-controls.spec.mjs:272:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  12 [phone] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+  -  13 [phone] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+(node:1756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  15 [narrow-phone] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -  16 [narrow-phone] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+  -  17 [narrow-phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -  18 [narrow-phone] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -  19 [narrow-phone] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -  20 [narrow-phone] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -  21 [narrow-phone] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable
+  -  22 [narrow-phone] › keyboard-controls.spec.mjs:189:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -  23 [narrow-phone] › keyboard-controls.spec.mjs:213:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  24 [narrow-phone] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  25 [narrow-phone] › keyboard-controls.spec.mjs:272:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  26 [narrow-phone] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+  -  27 [narrow-phone] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+  -  14 [phone] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement
+(node:2002) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  29 [landscape] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide
+  -  30 [landscape] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding
+  -  31 [landscape] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -  32 [landscape] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -  33 [landscape] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options
+  -  34 [landscape] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -  35 [landscape] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable
+  -  36 [landscape] › keyboard-controls.spec.mjs:189:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  -  37 [landscape] › keyboard-controls.spec.mjs:213:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands
+  -  38 [landscape] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown
+  -  39 [landscape] › keyboard-controls.spec.mjs:272:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path
+  -  40 [landscape] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster
+  -  41 [landscape] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster
+  ✘  28 [narrow-phone] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement (8.2s)
+(node:2162) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  42 [landscape] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement (8.4s)
+(node:2309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  44 [desktop] › keyboard-controls.spec.mjs:90:3 › Battle keyboard controls on desktop › default collisions, reserved keys and modifier chords cannot steal a binding (2.6s)
+  ✓  45 [desktop] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding (2.4s)
+  ✘  43 [desktop] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide (8.4s)
+(node:2526) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  46 [desktop] › keyboard-controls.spec.mjs:108:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding (3.0s)
+  ✓  47 [desktop] › keyboard-controls.spec.mjs:127:3 › Battle keyboard controls on desktop › captured Space release cannot reactivate Change or leak through closed Options (4.2s)
+  ✘  48 [desktop] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings (8.5s)
+(node:2764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  49 [desktop] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable (6.7s)
+(node:2905) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  50 [desktop] › keyboard-controls.spec.mjs:189:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior (3.9s)
+  ✓  51 [desktop] › keyboard-controls.spec.mjs:213:3 › Battle keyboard controls on desktop › delivered browser chords, native editable text, handled events and IME never arm battle commands (5.0s)
+  ✓  53 [desktop] › keyboard-controls.spec.mjs:272:3 › Battle keyboard controls on desktop › remapped first roster slot uses the real paid barracks and automatic-start path (5.8s)
+  ✓  54 [desktop] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › five-building campaign keeps remapped slot three tied to its current roster (4.5s)
+  ✘  52 [desktop] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown (11.8s)
+(node:3380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  56 [desktop] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement
+  ✓  55 [desktop] › keyboard-controls.spec.mjs:292:67 › Battle keyboard controls on desktop › full skirmish keeps remapped slot three tied to its current roster (8.3s)
+
+
+  1) [narrow-phone] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#keyboardSettings')
+    Timeout: 5000ms
+    Expected pattern: /guided practice.*defaults/i
+    Received string:  "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear···········
+              Restore keyboard defaults
+            "
+
+    Call log:
+      - Expect "toContainText" locator('#keyboardSettings') with timeout 5000ms
+      - waiting for locator('#keyboardSettings')
+        13 × locator resolved to <details open="" id="keyboardSettings" class="history-details">…</details>
+           - unexpected value "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear
+              
+              Restore keyboard defaults
+            "
+
+
+      317 |   test.skip(!['narrow-phone', 'landscape'].includes(info.project.name), 'Bounded 320×568 portrait and 844×390 touch gate.');
+      318 |   await page.goto('/'); await openKeys(page);
+    > 319 |   await expect(page.locator('#keyboardSettings')).toContainText(/guided practice.*defaults/i);
+          |                                                   ^
+      320 |   expect(await page.locator('.settings-modal').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
+      321 |   for (const action of ['build1', 'panRight']) {
+      322 |     for (const control of ['[data-keyboard-change]', '[data-keyboard-clear]']) {
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:319:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-narrow-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-narrow-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-narrow-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-narrow-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [landscape] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#keyboardSettings')
+    Timeout: 5000ms
+    Expected pattern: /guided practice.*defaults/i
+    Received string:  "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear···········
+              Restore keyboard defaults
+            "
+
+    Call log:
+      - Expect "toContainText" locator('#keyboardSettings') with timeout 5000ms
+      - waiting for locator('#keyboardSettings')
+        14 × locator resolved to <details open="" id="keyboardSettings" class="history-details">…</details>
+           - unexpected value "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear
+              
+              Restore keyboard defaults
+            "
+
+
+      317 |   test.skip(!['narrow-phone', 'landscape'].includes(info.project.name), 'Bounded 320×568 portrait and 844×390 touch gate.');
+      318 |   await page.goto('/'); await openKeys(page);
+    > 319 |   await expect(page.locator('#keyboardSettings')).toContainText(/guided practice.*defaults/i);
+          |                                                   ^
+      320 |   expect(await page.locator('.settings-modal').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
+      321 |   for (const action of ['build1', 'panRight']) {
+      322 |     for (const control of ['[data-keyboard-change]', '[data-keyboard-clear]']) {
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:319:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-short-Op-a8f38-ays-for-the-first-placement-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#keyboardSettings')
+    Timeout: 5000ms
+    Expected pattern: /guided practice.*defaults/i
+    Received string:  "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear···········
+              Restore keyboard defaults
+            "
+
+    Call log:
+      - Expect "toContainText" locator('#keyboardSettings') with timeout 5000ms
+      - waiting for locator('#keyboardSettings')
+        13 × locator resolved to <details open="" id="keyboardSettings" class="history-details">…</details>
+           - unexpected value "
+              Battle keyboard controls
+              Keys use physical positions (KeyboardEvent.code), based on a US keyboard. The printed letter may differ on your layout. Build slots follow the current battle’s roster and earned unlocks.
+              Choose Change, then press a letter, digit, numpad digit, arrow or Space. Clear leaves an action unbound. Esc cancels capture; Tab moves on. Esc, Tab, Enter, modifier combinations and system keys are reserved. Only camera panning repeats while held.
+              Optional guided practice retains its default controls. These settings apply to campaign, coaching and skirmishes in the main game.
+              Build slot 11ChangeClearBuild slot 22ChangeClearBuild slot 33ChangeClearBuild slot 44ChangeClearBuild slot 55ChangeClearBuild slot 66ChangeClearBuild slot 77ChangeClearBuild slot 88ChangeClearArrow volleyRChangeClearPause / resumeSpaceChangeClearPan leftLeft arrowChangeClearPan rightRight arrowChangeClear
+              
+              Restore keyboard defaults
+            "
+
+
+      43 |     await openKeys(page);
+      44 |     await expect(page.locator('#keyboardSettings')).toContainText(/physical/i);
+    > 45 |     await expect(page.locator('#keyboardSettings')).toContainText(/guided practice.*defaults/i);
+         |                                                     ^
+      46 |     await bind(page, 'build1', 'KeyQ');
+      47 |     await bind(page, 'volley', 'KeyV');
+      48 |     await bind(page, 'pause', 'KeyP');
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:45:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-97b80-rols-badges-and-field-guide-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-97b80-rols-badges-and-field-guide-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-97b80-rols-badges-and-field-guide-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-97b80-rols-badges-and-field-guide-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings 
+
+    Error: expect(locator).toHaveJSProperty(expected) failed
+
+    Locator:  locator('#keyboardSettings')
+    Expected: false
+    Received: true
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveJSProperty" locator('#keyboardSettings') with timeout 5000ms
+      - waiting for locator('#keyboardSettings')
+        14 × locator resolved to <details open="" id="keyboardSettings" class="history-details">…</details>
+           - unexpected value "true"
+
+
+      160 |     await change(page, 'build1').click();
+      161 |     await press(page, '#keyboardSettings > summary');
+    > 162 |     await expect(page.locator('#keyboardSettings')).toHaveJSProperty('open', false);
+          |                                                     ^
+      163 |     await page.keyboard.press('KeyQ');
+      164 |     expect(await settingsBytes(page)).toBe(before);
+      165 |     await press(page, '#keyboardSettings > summary');
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:162:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-42d6b-e-without-changing-settings-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-42d6b-e-without-changing-settings-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-42d6b-e-without-changing-settings-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-42d6b-e-without-changing-settings-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [desktop] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      179 |     const other = await context.newPage();
+      180 |     await other.goto('about:blank'); await other.bringToFront();
+    > 181 |     await expect.poll(() => page.evaluate(() => window.__keyboardBlur)).toBe(true);
+          |                                                                         ^
+      182 |     await page.bringToFront();
+      183 |     await page.keyboard.press('KeyQ');
+      184 |     expect(await settingsBytes(page)).toBe(before);
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:181:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-4f480-fresh-Change-remains-usable-desktop/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-4f480-fresh-Change-remains-usable-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-4f480-fresh-Change-remains-usable-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-4f480-fresh-Change-remains-usable-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-4f480-fresh-Change-remains-usable-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [desktop] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown 
+
+    Error: real minimap viewport maps to camera 1750
+
+    real minimap viewport maps to camera 1750
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 3
+    Received:   133.61344537815148
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+       at map-browser-helpers.mjs:69
+
+      67 |     const [x,,width]=frame.viewport;
+      68 |     return Math.abs(((x-.75)+(width+1.5)/2)/mini.width*map.width-expected);
+    > 69 |   },{message:'real minimap viewport maps to camera '+target}).toBeLessThan(tolerance);
+         |                                                               ^
+      70 |   const frame=(await canvasFrame(page)).mini;
+      71 |   expect(frame.viewport[2]+1.5).toBeCloseTo(Math.min(mini.width,rect.width/scale/map.width*mini.width),3);
+      72 | }
+        at expectCamera (/workspace/ironroot-frontier/qa/browser/map-browser-helpers.mjs:69:63)
+        at /workspace/ironroot-frontier/qa/browser/keyboard-controls.spec.mjs:265:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/keyboard-controls-Battle-k-fccb8-e-pan-on-every-held-keydown-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    [narrow-phone] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement 
+    [landscape] › keyboard-controls.spec.mjs:316:1 › short Options keyboard disclosure fits and touch still pays for the first placement 
+    [desktop] › keyboard-controls.spec.mjs:41:3 › Battle keyboard controls on desktop › remap, clear, reload and restore update stored controls, badges and field guide 
+    [desktop] › keyboard-controls.spec.mjs:148:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings 
+    [desktop] › keyboard-controls.spec.mjs:174:3 › Battle keyboard controls on desktop › native blur cancels capture and a fresh Change remains usable 
+    [desktop] › keyboard-controls.spec.mjs:254:3 › Battle keyboard controls on desktop › remapped actions repeat by action: build and pause once, pan on every held keydown 
+  41 skipped
+  9 passed (59.4s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

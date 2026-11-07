@@ -1,0 +1,48 @@
+✔ touch: a held gesture cannot activate a new scope, but the very next press can (5.471215ms)
+✔ mouse: a held gesture cannot activate a new scope, but the very next press can (0.193793ms)
+✔ pen: a held gesture cannot activate a new scope, but the very next press can (0.115782ms)
+✔ a compatibility MouseEvent is attributed to its touch gesture, not the new modal target (0.182116ms)
+✔ legacy mouse clicks without sourceCapabilities keep their originating generation (0.157295ms)
+✔ touch fallback remains tied to the primary contact when another finger ends (0.153417ms)
+✔ old and fresh simultaneous contacts are independent, regardless of release order (0.162401ms)
+✔ lost capture does not erase a held gesture; release/click remain blocked without a timer (0.103305ms)
+✔ pointercancel blocks any trailing click but never eats a fresh same-ID press (0.125951ms)
+✔ leaving and returning to the same scope does not re-arm a held gesture (0.222306ms)
+✔ ordinary pointer gestures and native range drags stay untouched within a scope (0.207043ms)
+✔ native zero-detail keyboard/assistive clicks and synthetic controller activation remain allowed (0.122062ms)
+✔ Enter: a held key cannot cross scopes or activate a different focused control (0.18834ms)
+✔ NumpadEnter: a held key cannot cross scopes or activate a different focused control (0.107046ms)
+✔ Space: a held key cannot cross scopes or activate a different focused control (0.296746ms)
+✔ normal native repeats and Tab/Shift navigation keep browser defaults (4.360625ms)
+✔ window interruption cancels held physical inputs and repeats, not fresh input (0.291882ms)
+✔ repeated interruptions retire abandoned IDs into bounded completed history (8.029667ms)
+✔ interrupted pointer ID reuse is immediately fresh without reviving other abandoned contacts (0.323982ms)
+✔ retiring interrupted contacts preserves primary compatibility-click fallback through eviction (0.267775ms)
+✔ runtime wires capture guards, scope/drag cleanup, and the offline module (1.629912ms)
+✔ keyboard settings round trip through optional partial preferences and copied backup overrides (22.787565ms)
+✔ old backups without keyboard settings restore defaults and remove a previous remap (7.429711ms)
+✔ backup validation rejects malformed, excessive, reserved and duplicate effective keyboard bindings before storage access (68.348048ms)
+✔ null unbinds survive export and allow another action to use that vacated default (0.530912ms)
+✔ keyboard preference writes are immutable, verified and retried after quota and readback failures (7.067127ms)
+✔ stale preferences and changed profile epochs cannot replace newer keyboard or campaign settings (5.045086ms)
+✔ absent, unavailable and malformed preference bytes never trigger startup writes (1.147393ms)
+✔ actual application startup uses validated defaults for malformed maps without rewriting retained preferences (32.258396ms)
+✔ actual retained-session and dirty full-backup handlers export the page keyboard map without saving it (14.897419ms)
+✔ protocol seven advances only a verified marker and the old real protocol-six source remains pinned (4.05437ms)
+✔ already-open and later-opened actual six-field clients cannot erase keyboard controls or campaign progress (34.038353ms)
+✔ seven-marker write and readback failures leave existing domain bytes protected until verified reload (5.987582ms)
+✔ keyboard import readback and rollback retain exact prior bytes and leave stale current tabs fenced (30.37276ms)
+✔ successful keyboard import verifies the new epoch, settings and current-tab fence (6.366911ms)
+✔ twelve defaults retain physical roster slots and explicit null differs from missing (1.74961ms)
+✔ strict bounded map rejects malformed versions, keys, actions and effective-default conflicts (0.890624ms)
+✔ lookup resolves repetition by mapped action and protects browser, IME, handled and native input (0.412581ms)
+✔ actual app handler routes remapped actions, active roster slots and only handled keys prevent defaults (38.780311ms)
+✔ actual capture consumes a fresh binding and retires releases; conflict, Escape and Tab cancel safely (32.622065ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 784.215582
