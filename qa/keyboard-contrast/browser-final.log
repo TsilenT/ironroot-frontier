@@ -1,0 +1,43 @@
+[WebServer] (node:28220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 2 workers
+
+(node:28319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   2 [narrow-phone] › keyboard-contrast.spec.mjs:113:1 › keyboard buttons preserve native forced colors and keyboard activation
+  -   3 [narrow-phone] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -   4 [narrow-phone] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -   5 [narrow-phone] › keyboard-controls.spec.mjs:183:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -   6 [narrow-phone] › keyboard-controls.spec.mjs:233:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+(node:28745) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [narrow-phone] › keyboard-contrast.spec.mjs:108:1 › enabled keyboard buttons have readable painted states, visible focus and real actions (7.4s)
+(node:28913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   8 [landscape] › keyboard-contrast.spec.mjs:113:1 › keyboard buttons preserve native forced colors and keyboard activation
+  -   9 [landscape] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding
+  -  10 [landscape] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding
+  -  11 [landscape] › keyboard-controls.spec.mjs:183:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings
+  -  12 [landscape] › keyboard-controls.spec.mjs:233:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior
+  ✓   7 [landscape] › keyboard-contrast.spec.mjs:108:1 › enabled keyboard buttons have readable painted states, visible focus and real actions (7.7s)
+(node:29045) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:29055) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 [desktop] › keyboard-contrast.spec.mjs:108:1 › enabled keyboard buttons have readable painted states, visible focus and real actions (6.6s)
+  ✓  14 [desktop] › keyboard-contrast.spec.mjs:113:1 › keyboard buttons preserve native forced colors and keyboard activation (6.9s)
+  ✓  15 [desktop] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Enter opens capture once and held activation cannot become its binding (2.8s)
+  ✓  16 [desktop] › keyboard-controls.spec.mjs:143:44 › Battle keyboard controls on desktop › Space opens capture once and held activation cannot become its binding (2.7s)
+  ✓  18 [desktop] › keyboard-controls.spec.mjs:233:3 › Battle keyboard controls on desktop › native disclosure, select, range and actual fullscreen activation retain keyboard behavior (2.2s)
+  ✓  17 [desktop] › keyboard-controls.spec.mjs:183:3 › Battle keyboard controls on desktop › Tab, focus departure, disclosure closure and Back cancel capture without changing settings (4.1s)
+
+  10 skipped
+  8 passed (25.5s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
