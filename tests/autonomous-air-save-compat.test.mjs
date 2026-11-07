@@ -108,7 +108,7 @@ test('current trial revision-two battle, history and backups retain automatic-ai
   let cases=0;
   for(const mission of CURRENT_CHALLENGES){
     const game=createCurrentChallenge(mission.id),ref=scenarioForBattle(mission.id,null,game),battle=encodeBattle(game,ref);
-    assert.deepEqual(ref,{kind:'trial',id:mission.id,revision:2});assert.equal(game.ruleset.id,'frontier-authored-air-local');assert.equal(Object.keys(game.buildings).length,7);
+    assert.deepEqual(ref,{kind:'trial',id:mission.id,revision:3});assert.equal(game.ruleset.id,'frontier-authored-citadel');assert.equal(Object.keys(game.buildings).length,7);
     const history=[row(game,ref)];
     if(CHALLENGES.some(c=>c.id===mission.id)){
       const historical=createChallenge(mission.id),oldRef=scenarioForBattle(mission.id,null,historical);

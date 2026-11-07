@@ -324,10 +324,10 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 });
 
 
-test('UI: actual application startup protects the current profile with protocol 9 before ordinary storage', () => {
+test('UI: actual application startup protects the current profile with protocol 10 before ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage,CURRENT_PROFILE_PROTOCOL_VERSION}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,9);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,10);
   assert.equal(JSON.parse(r.data.get(KEY)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });

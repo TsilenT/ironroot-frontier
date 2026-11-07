@@ -1,0 +1,358 @@
+{
+  "run": "browser-initial",
+  "rawPath": "browser-initial.json",
+  "rawSha256": "879f663f2d3f11461a03f184c6e87581e3ccb2a1b31706df4a0cd377f0c6d77b",
+  "stats": {
+    "startTime": "2026-11-07T22:22:44.017Z",
+    "duration": 26283.571,
+    "expected": 0,
+    "skipped": 23,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "citadel defaults off; setup, bound identity, restart and earned profile remain deliberate",
+      "project": "narrow-phone",
+      "status": "failed",
+      "durationMs": 16109,
+      "annotations": [],
+      "errors": [
+        {
+          "location": {
+            "file": "/workspace/ironroot-citadel-playtest/qa/browser/citadel-options.spec.mjs",
+            "column": 62,
+            "line": 60
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"frontier-citadel-bridge-\u001b[7mtimed\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"frontier-citadel-bridge-\u001b[7mopen\u001b[27m\"\u001b[39m\n\n  58 |   await page.reload();const before=await earned(page);await skirmish(page);await press(page,'#skirmishCitadelOptions');await press(page,'#skirmishBridgeIncome');await page.locator('#skirmishRules').selectOption('frontier-air-local-timed');\n  59 |   expect((await settings(page)).skirmishCitadelOptions).toBe(true);await page.reload();await skirmish(page);await expect(page.locator('#skirmishCitadelOptions')).toBeChecked();await capture(page,info,'setup-citadel-bridge-timed');await begin(page);\n> 60 |   const bound=await pause(page);expect(bound.game.rulesetId).toBe('frontier-citadel-bridge-timed');await press(page,'#pauseCitadel');await expect(page.locator('#citadelModal')).toBeVisible();await expect(page.locator('#buyCitadelArrows')).toBeDisabled();await expect(page.locator('#buyCitadelRegen')).toBeDisabled();await expect(page.locator('#citadelReadiness')).toContainText(/1:30|90|Available in/);await modalTargets(page,info);await capture(page,info,'early-citadel-dialog');\n     |                                                              ^\n  61 |   await press(page,'#citadelBack');await expect(page.locator('#pauseVeil')).toBeVisible();await press(page,'#saveExit');await press(page,'#skirmishCitadelOptions');await press(page,'#skirmishBridgeIncome');await page.reload();await skirmish(page);await expect(page.locator('#skirmishCitadelOptions')).not.toBeChecked();await press(page,'#resumeSaved');const resumed=await pause(page);expect(resumed.game.rulesetId).toBe(bound.game.rulesetId);\n  62 |   await press(page,'#restartBattle');await press(page,'#confirmRestart');const restarted=await pause(page);expect(restarted.game.rulesetId).toBe(bound.game.rulesetId);expect(restarted.game.state.citadelOptions.sides.every(s=>s.choice===null)).toBe(true);await press(page,'#saveExit');\n  63 |   await press(page,'[data-mode=\"campaign\"]');await expect(page.locator('#skirmishCitadelOptions')).toBeHidden();await press(page,'[data-mode=\"challenges\"]');await expect(page.locator('#skirmishCitadelOptions')).toBeHidden();expect(await earned(page)).toEqual(before);expect(await settings(page)).toMatchObject({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low',skirmishCitadelOptions:false});\n    at /workspace/ironroot-citadel-playtest/qa/browser/citadel-options.spec.mjs:60:62"
+        }
+      ],
+      "observations": {}
+    },
+    {
+      "title": "citadel defaults off; setup, bound identity, restart and earned profile remain deliberate",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "citadel defaults off; setup, bound identity, restart and earned profile remain deliberate",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "restored legal paid prehistory: arrows, native input, Back cancellation, one choice and restore",
+      "project": "narrow-phone",
+      "status": "interrupted",
+      "durationMs": 19205,
+      "annotations": [],
+      "errors": [
+        {
+          "location": {
+            "file": "/workspace/ironroot-citadel-playtest/qa/browser/map-browser-helpers.mjs",
+            "column": 87,
+            "line": 11
+          },
+          "message": "Error: locator.tap: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('#saveExit')\u001b[22m\n\n\n   at map-browser-helpers.mjs:11\n\n   9 | export async function press(page,selector){\n  10 |   if (await prepareBuildControl(page, selector)) return;\n> 11 |   if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.locator(selector).tap();\n     |                                                                                       ^\n  12 |   else await page.locator(selector).click();\n  13 | }\n  14 | export async function tapPoint(page,point){\n    at press (/workspace/ironroot-citadel-playtest/qa/browser/map-browser-helpers.mjs:11:87)\n    at /workspace/ironroot-citadel-playtest/qa/browser/citadel-options.spec.mjs:74:3"
+        }
+      ],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "legal scripted paid prehistory",
+          "seed": 17,
+          "ai": false,
+          "actions": [
+            {
+              "time": 0,
+              "side": 0,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 0,
+              "type": "mint",
+              "cost": 190
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "mint",
+              "cost": 190
+            }
+          ],
+          "tick": 1800,
+          "time": 89.99999999999703,
+          "baseHp": [
+            6000,
+            6000
+          ],
+          "gold": [
+            760,
+            760
+          ]
+        },
+        "enabled-battle-geometry": {
+          "mobile": true,
+          "viewport": {
+            "width": 320,
+            "height": 430
+          },
+          "world": {
+            "left": 0,
+            "right": 320,
+            "top": 48,
+            "bottom": 290,
+            "width": 320,
+            "height": 242
+          },
+          "controls": [
+            {
+              "id": "pause",
+              "left": 126,
+              "right": 170,
+              "top": 336,
+              "bottom": 380,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "speed",
+              "left": 174,
+              "right": 218,
+              "top": 336,
+              "bottom": 380,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "sound",
+              "left": 222,
+              "right": 266,
+              "top": 336,
+              "bottom": 380,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "settings",
+              "left": 270,
+              "right": 314,
+              "top": 336,
+              "bottom": 380,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "home",
+              "left": 6,
+              "right": 50,
+              "top": 384,
+              "bottom": 428,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "front",
+              "left": 270,
+              "right": 314,
+              "top": 384,
+              "bottom": 428,
+              "width": 44,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "minimap",
+              "left": 54,
+              "right": 266,
+              "top": 384,
+              "bottom": 428,
+              "width": 212,
+              "height": 44,
+              "hit": true
+            },
+            {
+              "id": "compactBuild",
+              "left": 6,
+              "right": 62,
+              "top": 336,
+              "bottom": 380,
+              "width": 56,
+              "height": 44,
+              "hit": true
+            }
+          ],
+          "collisions": []
+        },
+        "modal-targets": [
+          {
+            "id": "buyCitadelArrows",
+            "x": 42,
+            "y": 191.109375,
+            "width": 236,
+            "height": 48,
+            "hit": true
+          },
+          {
+            "id": "buyCitadelRegen",
+            "x": 42,
+            "y": 190.921875,
+            "width": 236,
+            "height": 48,
+            "hit": true
+          },
+          {
+            "id": "citadelBack",
+            "x": 29,
+            "y": 303.453125,
+            "width": 262,
+            "height": 44,
+            "hit": true
+          },
+          {
+            "id": "citadelResume",
+            "x": 29,
+            "y": 357.453125,
+            "width": 262,
+            "height": 44,
+            "hit": true
+          }
+        ]
+      }
+    },
+    {
+      "title": "restored legal paid prehistory: arrows, native input, Back cancellation, one choice and restore",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "restored legal paid prehistory: arrows, native input, Back cancellation, one choice and restore",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "restored legal paid prehistory: regeneration has no instant heal and discloses purchase wait",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "restored legal paid prehistory: regeneration has no instant heal and discloses purchase wait",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "restored legal paid prehistory: regeneration has no instant heal and discloses purchase wait",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic arrows feedback fixture: real canvas, active effect and damage interruption",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "synthetic regen feedback fixture: real canvas, active effect and damage interruption",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "fresh desktop native 2x battle reaches readiness and pays through UI",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "fresh desktop native 2x battle reaches readiness and pays through UI",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "fresh desktop native 2x battle reaches readiness and pays through UI",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "desktop controller provider and keyboard keep Citadel focus and cancel safely",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "desktop controller provider and keyboard keep Citadel focus and cancel safely",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "desktop controller provider and keyboard keep Citadel focus and cancel safely",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "short landscape protects the 212px battlefield or enters the explicit safety pause",
+      "project": "narrow-phone",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "short landscape protects the 212px battlefield or enters the explicit safety pause",
+      "project": "landscape",
+      "status": "not-run",
+      "annotations": []
+    },
+    {
+      "title": "short landscape protects the 212px battlefield or enters the explicit safety pause",
+      "project": "desktop",
+      "status": "not-run",
+      "annotations": []
+    }
+  ]
+}

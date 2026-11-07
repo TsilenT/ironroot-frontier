@@ -18,7 +18,7 @@ function enemy(g,type,side,lane,x,y=g.map.lanes[lane]){
 function resume(g,ticks=40){g.update(.017);const saved=g.serialize(),r=Game.restore(saved);validateEngineFields(saved);assert.deepEqual(r.serialize(),saved);for(let i=0;i<ticks;i++){g.update(.05);r.update(.05);assert.deepEqual(r.serialize(),g.serialize());}return r;}
 
 test('automatic-air identities preserve all stats and the legacy constructor and reject all manual commands without mutation',()=>{
-  assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-air-local-open');assert.equal(new Game().ruleset.id,'frontier-legacy');
+  assert.equal(DEFAULT_SKIRMISH_RULESET_ID,'frontier-citadel-open');assert.equal(new Game().ruleset.id,'frontier-legacy');
   for(const id of ids){const r=RULESETS[id];assert.equal(r.experimental,undefined);assert.equal(r.units,RULESETS['frontier-rootwarden-open'].units);assert.equal(r.buildings,RULESETS['frontier-rootwarden-open'].buildings);assert.ok(Object.isFrozen(r.movement.autonomousAir));assert.equal(supportsFlightOrders(r),false);assert.equal(supportsAutonomousAir(r),true);assert.equal(r.endgame.forcedDecay,id===ids[1]);
     const {g,b}=fixture('classic',0,0,id),before=g.serialize();for(const to of [0,1,2,null,'1',NaN])assert.equal(g.setFlightPlan(b.id,to).ok,false);assert.deepEqual(g.serialize(),before);assert.equal(b.flightPlan,undefined);assert.equal(g.state.units[0].airRoute,undefined);}
   assert.equal(supportsAutonomousAir({...RULESETS[ids[0]]}),false);

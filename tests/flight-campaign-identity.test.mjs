@@ -65,8 +65,8 @@ test('flight is earned stage three, while old opening replay identity and histor
   const p=full(),before=JSON.stringify(p),overview=campaign.getProgressionCampaignOverview(p);
   assert.equal(overview.total,19);assert.equal(overview.cleared,19);assert.equal(overview.stars,38);
   assert.equal(JSON.stringify(campaign.normalizeCampaignProgress(p)),before);
-  for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-air-local');
-  const old=campaign.createProgressionCampaignMission('roadside-watch',tiers[0]);
+  for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-citadel-open');
+  const old=campaign.createCampaignMission('roadside-watch',{revision:1,progress:tiers[0]});
   const restored=decodeBattle(saved(old,'roadside-watch',tiers[0]),{campaignProgress:p}).game;
   assert.equal(restored.ruleset.id,'frontier-campaign-watch');assert.equal(restored.ruleset.combat.flyingCrossLanes,false);
   assert.deepEqual(campaign.createCampaignRestart(restored,'roadside-watch').serialize(),old.serialize());

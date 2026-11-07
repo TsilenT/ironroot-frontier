@@ -10,7 +10,7 @@ test('current-only optional trial preserves the historical five and campaign 19/
   const g=createCurrentChallenge(TRIAL_ID),c=getChallengeForGame(g,TRIAL_ID);
   assert.equal(CHALLENGES.length,5);assert.equal(CURRENT_CHALLENGES.length,6);
   assert.throws(()=>getChallenge(TRIAL_ID,1),/Unknown challenge/);
-  assert.equal(c.scenarioRevision,2);assert.equal(g.ruleset.id,'frontier-authored-air-local');
+  assert.equal(c.scenarioRevision,3);assert.equal(g.ruleset.id,'frontier-authored-citadel');
   assert.equal(Object.keys(g.buildings).length,7);assert.equal(g.ai,false);
   assert.equal(g.state.gold[0],650);assert.equal(g.state.bases[0].hp,6000);
   assert.deepEqual(restartChallenge(g,TRIAL_ID).serialize(),g.serialize());

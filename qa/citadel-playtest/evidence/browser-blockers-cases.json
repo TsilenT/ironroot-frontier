@@ -1,0 +1,1290 @@
+{
+  "run": "browser-blockers",
+  "rawPath": "browser-blockers.json",
+  "rawSha256": "72fb86a0b8dfa69578c5c0c496830170704304dddeffc37fbfa4254043df7c2b",
+  "stats": {
+    "startTime": "2026-11-07T22:41:26.343Z",
+    "duration": 12219.383,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "blocker regression: heading Space, scrolled Space and rebound Pause cannot run behind the dialog",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 6259,
+      "annotations": [],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "legal scripted paid prehistory",
+          "seed": 17,
+          "ai": false,
+          "actions": [
+            {
+              "time": 0,
+              "side": 0,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 0,
+              "type": "mint",
+              "cost": 190
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "mint",
+              "cost": 190
+            }
+          ],
+          "tick": 1800,
+          "time": 89.99999999999703,
+          "baseHp": [
+            6000,
+            6000
+          ],
+          "gold": [
+            760,
+            760
+          ]
+        }
+      }
+    },
+    {
+      "title": "blocker regression: quota purchase save keeps the paid choice and durable warning until verified retry",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 5674,
+      "annotations": [],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "legal scripted paid prehistory",
+          "seed": 17,
+          "ai": false,
+          "actions": [
+            {
+              "time": 0,
+              "side": 0,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 0,
+              "type": "mint",
+              "cost": 190
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "mint",
+              "cost": 190
+            }
+          ],
+          "tick": 1800,
+          "time": 89.99999999999703,
+          "baseHp": [
+            6000,
+            6000
+          ],
+          "gold": [
+            760,
+            760
+          ]
+        },
+        "quota-save-recovered": {
+          "before": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 1809,
+            "time": 90.449999999997,
+            "gold": [
+              763.375,
+              763.375
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                15,
+                15
+              ],
+              "built": [
+                3,
+                3
+              ],
+              "damage": [
+                1904.3499999999976,
+                1904.3499999999976
+              ]
+            }
+          },
+          "after": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 1809,
+            "time": 90.449999999997,
+            "gold": [
+              573.375,
+              763.375
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90.449999999997,
+                  "purchasedTick": 1809,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                15,
+                15
+              ],
+              "built": [
+                3,
+                3
+              ],
+              "damage": [
+                1904.3499999999976,
+                1904.3499999999976
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    34.875,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    243.125,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    47.125,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    22.625,
+                    9.11111111111111,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    230.875,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    255.375,
+                    9.11111111111111,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    148.763252954794,
+                    17.362607898504926,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    131.23515820082554,
+                    17.3810874524443,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    136.67030361249255,
+                    17.74974707124791,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    143.32755394040382,
+                    17.65640874513351,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    180.47759236365812,
+                    17.383625819114446,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    99.52214348210687,
+                    17.271361465701474,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    86.27482048165648,
+                    17.319603094293193,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    193.72611431470148,
+                    17.949456823023237,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    42.38863465880111,
+                    0,
+                    195.22058823529412,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                43.13863465880111,
+                0.75,
+                193.72058823529412,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#a5efdc",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#ffd091",
+              "#bd8663",
+              "#ded0a4"
+            ],
+            "readiness": [],
+            "visibleText": [],
+            "textBounds": [],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    },
+    {
+      "title": "blocker regression: silent purchase save keeps the paid choice and durable warning until verified retry",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 4846,
+      "annotations": [],
+      "errors": [],
+      "observations": {
+        "fixture-provenance": {
+          "kind": "legal scripted paid prehistory",
+          "seed": 17,
+          "ai": false,
+          "actions": [
+            {
+              "time": 0,
+              "side": 0,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 0,
+              "type": "mint",
+              "cost": 190
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "archery",
+              "cost": 175
+            },
+            {
+              "time": 0,
+              "side": 1,
+              "type": "mint",
+              "cost": 190
+            }
+          ],
+          "tick": 1800,
+          "time": 89.99999999999703,
+          "baseHp": [
+            6000,
+            6000
+          ],
+          "gold": [
+            760,
+            760
+          ]
+        },
+        "silent-save-recovered": {
+          "before": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 1807,
+            "time": 90.34999999999701,
+            "gold": [
+              762.625,
+              762.625
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                15,
+                15
+              ],
+              "built": [
+                3,
+                3
+              ],
+              "damage": [
+                1904.3499999999976,
+                1904.3499999999976
+              ]
+            }
+          },
+          "after": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "skirmish",
+              "id": "standard",
+              "revision": 1
+            },
+            "rulesetId": "frontier-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "normal",
+            "tick": 1807,
+            "time": 90.34999999999701,
+            "gold": [
+              572.625,
+              762.625
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": "regen",
+                  "purchasedAt": 90.34999999999701,
+                  "purchasedTick": 1807,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                15,
+                15
+              ],
+              "built": [
+                3,
+                3
+              ],
+              "damage": [
+                1904.3499999999976,
+                1904.3499999999976
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    34.875,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    243.125,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    47.125,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    22.625,
+                    9.11111111111111,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    230.875,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    255.375,
+                    9.11111111111111,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    148.763252954794,
+                    17.362607898504926,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    131.23515820082554,
+                    17.3810874524443,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    136.11058205100832,
+                    17.757594676650402,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    143.887275501888,
+                    17.648561139731015,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    180.9850913705005,
+                    17.3831795884803,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    99.01464731563259,
+                    17.270484770005456,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    85.71482265763639,
+                    17.318909263591955,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#c7dfaf"
+                },
+                {
+                  "args": [
+                    194.2861008078566,
+                    17.951185448187502,
+                    1.5,
+                    1.5
+                  ],
+                  "color": "#df9b77"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    42.38863465880111,
+                    0,
+                    195.22058823529412,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                43.13863465880111,
+                0.75,
+                193.72058823529412,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 18.9076px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#a5efdc",
+              "#514c36",
+              "#d6b77c",
+              "#d8dab7",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#ffd091",
+              "#bd8663",
+              "#ded0a4"
+            ],
+            "readiness": [],
+            "visibleText": [],
+            "textBounds": [],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    },
+    {
+      "title": "blocker regression: historical restart retains old identity but a new Begin uses current campaign choices",
+      "project": "desktop",
+      "status": "passed",
+      "durationMs": 4097,
+      "annotations": [],
+      "errors": [],
+      "observations": {
+        "historical-restart-new-attempt": {
+          "before": {
+            "format": "ironroot-save",
+            "scenario": null,
+            "rulesetId": null,
+            "mapId": null,
+            "ai": false,
+            "difficulty": "easy",
+            "tick": 66,
+            "time": 3.2999999999999963,
+            "gold": [
+              476.5,
+              16.5
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -1
+              }
+            ],
+            "citadelOptions": null,
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                2
+              ],
+              "damage": [
+                0,
+                0
+              ]
+            }
+          },
+          "restarted": {
+            "format": "ironroot-save",
+            "scenario": null,
+            "rulesetId": null,
+            "mapId": null,
+            "ai": false,
+            "difficulty": "easy",
+            "tick": 4,
+            "time": 0.2,
+            "gold": [
+              461,
+              1
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.2
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.2
+              }
+            ],
+            "citadelOptions": null,
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                2
+              ],
+              "damage": [
+                0,
+                0
+              ]
+            }
+          },
+          "fresh": {
+            "format": "ironroot-save",
+            "scenario": {
+              "kind": "campaign",
+              "id": "emberwatch",
+              "revision": 5
+            },
+            "rulesetId": "frontier-campaign-citadel-open",
+            "mapId": "classic",
+            "ai": false,
+            "difficulty": "easy",
+            "tick": 4,
+            "time": 0.2,
+            "gold": [
+              461,
+              1
+            ],
+            "bases": [
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.2
+              },
+              {
+                "hp": 6000,
+                "maxHp": 6000,
+                "cooldown": -0.2
+              }
+            ],
+            "citadelOptions": {
+              "sides": [
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                },
+                {
+                  "choice": null,
+                  "purchasedAt": null,
+                  "purchasedTick": null,
+                  "lastDamageAt": null,
+                  "healedTotal": 0,
+                  "extraShots": 0
+                }
+              ]
+            },
+            "bridgeControl": null,
+            "stats": {
+              "kills": [
+                0,
+                0
+              ],
+              "built": [
+                1,
+                2
+              ],
+              "damage": [
+                0,
+                0
+              ]
+            }
+          },
+          "canvas": {
+            "mini": {
+              "lines": [
+                [
+                  [
+                    0,
+                    10.11111111111111
+                  ],
+                  [
+                    280,
+                    10.11111111111111
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    17.5
+                  ],
+                  [
+                    280,
+                    17.5
+                  ]
+                ],
+                [
+                  [
+                    0,
+                    24.88888888888889
+                  ],
+                  [
+                    280,
+                    24.88888888888889
+                  ]
+                ]
+              ],
+              "fills": [
+                {
+                  "args": [
+                    0,
+                    0,
+                    280,
+                    35
+                  ],
+                  "color": "#56704e"
+                },
+                {
+                  "args": [
+                    134.4,
+                    0,
+                    11.200000000000001,
+                    35
+                  ],
+                  "color": "#628476"
+                },
+                {
+                  "args": [
+                    59.375,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#bbdfaf"
+                },
+                {
+                  "args": [
+                    194.125,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    230.875,
+                    16.5,
+                    3,
+                    3
+                  ],
+                  "color": "#e9a080"
+                },
+                {
+                  "args": [
+                    4,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#f0d28c"
+                },
+                {
+                  "args": [
+                    272,
+                    14.5,
+                    4,
+                    6
+                  ],
+                  "color": "#e5a281"
+                },
+                {
+                  "args": [
+                    0,
+                    0,
+                    269.18933598877476,
+                    35
+                  ],
+                  "color": "rgba(240, 236, 212, 0.082)"
+                }
+              ],
+              "viewport": [
+                0.75,
+                0.75,
+                267.68933598877476,
+                33.5
+              ]
+            },
+            "battle": {
+              "text": [
+                {
+                  "text": "HOME CITADEL",
+                  "font": "bold 26.0716px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "IRON CITADEL",
+                  "font": "bold 26.0716px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "YOUR FRONTIER",
+                  "font": "600 26.0716px \"DM Sans\", sans-serif"
+                },
+                {
+                  "text": "ENEMY FRONTIER",
+                  "font": "600 26.0716px \"DM Sans\", sans-serif"
+                }
+              ],
+              "terrain": {
+                "width": 3200,
+                "height": 900
+              },
+              "dpr": 1
+            }
+          },
+          "presentation": {
+            "text": [],
+            "strokes": [
+              "#e6d49a",
+              "#5f6145",
+              "#c1ba8b",
+              "#8cab83",
+              "#6d6146",
+              "#d3d2ad",
+              "#182a26",
+              "#ffd091",
+              "#514c36",
+              "#d3d4ac",
+              "#ddd9b6",
+              "#bd8663",
+              "#ded0a4",
+              "#d6b77c",
+              "#d8dab7",
+              "#a5efdc"
+            ],
+            "readiness": [],
+            "visibleText": [],
+            "textBounds": [],
+            "lastVisibleExtra": null
+          }
+        }
+      }
+    }
+  ]
+}

@@ -103,7 +103,7 @@ test('every allowed onboarding replay tier stays pinned even after the profile e
     assert.equal(fullIdentity(restarted,mission.id).scenario.revision,1);
     const restoredWithLaterProgress=roundtrip(advance(game),mission.id,complete);
     assertRestart(restoredWithLaterProgress,mission.id,start);
-    assert.equal(createProgressionCampaignMission(mission.id,complete).ruleset.id,'frontier-campaign-air-local');
+    assert.equal(createProgressionCampaignMission(mission.id,complete).ruleset.id,'frontier-campaign-citadel-open');
     if(tier<2)assert.notEqual(restarted.ruleset.id,'frontier-campaign-open');
     checked++;
   }

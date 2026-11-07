@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Game, BUILDINGS, UNITS, RULESETS, supportsAutonomousAir, supportsFlightOrders, LANES } from '../dist/engine.js';
-import { AUTHORED_AIR_RULESET_ID } from '../dist/rulesets.js';
+import { AUTHORED_AIR_RULESET_ID, AUTHORED_CITADEL_RULESET_ID } from '../dist/rulesets.js';
 import { CHALLENGES, CURRENT_CHALLENGES, CURRENT_CHALLENGE_REVISION, createChallenge, createCurrentChallenge, restartChallenge, getChallenge, getChallengeForGame, challengeScenarioForGame, getChallengeTargets, evaluateChallenge } from '../dist/challenges.js';
 import { TRAINING_LESSONS, TrainingSession, createCurrentTrainingSession, CURRENT_TRAINING_RULESET_ID } from '../dist/training.js';
 import { encodeBattle, decodeBattle, scenarioForBattle, resolveScenario, validateBattleIdentity } from '../dist/battle-codec.js';
@@ -19,9 +19,9 @@ test('authored automatic air keeps the seven-building roster, exact paid stats/e
   assert.throws(()=>encodeBattle(new Game({rulesetId:AUTHORED_AIR_RULESET_ID,ai:false})),/authored/);
 });
 
-test('fresh revision2 descriptors preserve all published setup/objective data and historical factories remain revision1',()=>{
-  assert.equal(CURRENT_CHALLENGE_REVISION,2);assert.equal(CURRENT_CHALLENGES.length,6);assert.ok(Object.isFrozen(CURRENT_CHALLENGES));
-  for(const old of CHALLENGES){const current=getChallenge(old.id,2),legacy=createChallenge(old.id),fresh=createCurrentChallenge(old.id);const {scenarioRevision,rulesetId,rulesetRevision,mapId,mapRevision,...same}=current;assert.deepEqual(same,old);assert.equal(scenarioRevision,2);assert.equal(rulesetId,AUTHORED_AIR_RULESET_ID);assert.equal(mapId,'classic');assert.equal(mapRevision,1);assert.equal(legacy.serialize().version,1);assert.equal(legacy.ruleset.id,'frontier-legacy');assert.equal(fresh.serialize().version,3);assert.equal(fresh.ruleset.id,AUTHORED_AIR_RULESET_ID);assert.deepEqual(fresh.state,legacy.state);assert.deepEqual(challengeScenarioForGame(legacy,old.id),{kind:'trial',id:old.id,revision:1});assert.deepEqual(challengeScenarioForGame(fresh,old.id),{kind:'trial',id:old.id,revision:2});assert.deepEqual(getChallengeTargets(fresh,old.id),getChallengeTargets(legacy,old.id));}
+test('fresh revision3 descriptors preserve all published setup/objective data and historical factories remain revision1',()=>{
+  assert.equal(CURRENT_CHALLENGE_REVISION,3);assert.equal(CURRENT_CHALLENGES.length,6);assert.ok(Object.isFrozen(CURRENT_CHALLENGES));
+  for(const old of CHALLENGES){const current=getChallenge(old.id,3),legacy=createChallenge(old.id),fresh=createCurrentChallenge(old.id);const {scenarioRevision,rulesetId,rulesetRevision,mapId,mapRevision,...same}=current;assert.deepEqual(same,old);assert.equal(scenarioRevision,3);assert.equal(rulesetId,AUTHORED_CITADEL_RULESET_ID);assert.equal(mapId,'classic');assert.equal(mapRevision,1);assert.equal(legacy.serialize().version,1);assert.equal(legacy.ruleset.id,'frontier-legacy');assert.equal(fresh.serialize().version,3);assert.equal(fresh.ruleset.id,AUTHORED_CITADEL_RULESET_ID);const {citadelOptions,...unchanged}=fresh.state;assert.deepEqual(unchanged,legacy.state);assert.deepEqual(citadelOptions.sides,[0,1].map(()=>({choice:null,purchasedAt:null,purchasedTick:null,lastDamageAt:null,healedTotal:0,extraShots:0}))); assert.deepEqual(challengeScenarioForGame(legacy,old.id),{kind:'trial',id:old.id,revision:1});assert.deepEqual(challengeScenarioForGame(fresh,old.id),{kind:'trial',id:old.id,revision:3});assert.deepEqual(getChallengeTargets(fresh,old.id),getChallengeTargets(legacy,old.id));}
 });
 
 test('all five fresh trials win recommended paid strategies across four seeds, including playable envelope restores',()=>{
@@ -34,15 +34,15 @@ test('idle fresh trials all fail and their original objective/deadline rules rem
 });
 
 test('actual game identity chooses trial revision, roundtrips and exact restarts without upgrading old attempts',()=>{
-  for(const c of CHALLENGES)for(const current of [false,true]){const g=(current?createCurrentChallenge:createChallenge)(c.id);step(g,300);const scenario=scenarioForBattle(c.id,null,g),saved=encodeBattle(g,scenario),copy=decodeBattle(saved).game;assert.equal(scenario.revision,current?2:1);assert.equal(resolveScenario(scenario).rulesetId,current?AUTHORED_AIR_RULESET_ID:'frontier-legacy');assert.deepEqual(copy.serialize(),g.serialize());const initial=(current?createCurrentChallenge:createChallenge)(c.id);assert.deepEqual(restartChallenge(copy,c.id).serialize(),initial.serialize());step(g,300);step(copy,300);assert.deepEqual(copy.serialize(),g.serialize());assert.deepEqual(evaluateChallenge(copy,c.id),evaluateChallenge(g,c.id));
+  for(const c of CHALLENGES)for(const current of [false,true]){const g=(current?createCurrentChallenge:createChallenge)(c.id);step(g,300);const scenario=scenarioForBattle(c.id,null,g),saved=encodeBattle(g,scenario),copy=decodeBattle(saved).game;assert.equal(scenario.revision,current?3:1);assert.equal(resolveScenario(scenario).rulesetId,current?AUTHORED_CITADEL_RULESET_ID:'frontier-legacy');assert.deepEqual(copy.serialize(),g.serialize());const initial=(current?createCurrentChallenge:createChallenge)(c.id);assert.deepEqual(restartChallenge(copy,c.id).serialize(),initial.serialize());step(g,300);step(copy,300);assert.deepEqual(copy.serialize(),g.serialize());assert.deepEqual(evaluateChallenge(copy,c.id),evaluateChallenge(g,c.id));
     if(!current){const explicit=g.serialize();explicit.version=3;explicit.rulesetId='frontier-legacy';explicit.rulesetRevision=1;explicit.mapId='classic';explicit.mapRevision=1;const r=restartChallenge(Game.restore(explicit),c.id);assert.equal(r.serialize().version,3);assert.equal(r.ruleset.id,'frontier-legacy');assert.equal(challengeScenarioForGame(r,c.id).revision,1);}
   }
-  for(const revision of [0,3,99,'2',null])assert.throws(()=>getChallenge('skyguard',revision));assert.throws(()=>scenarioForBattle('skyguard',null,new Game({rulesetId:'frontier-air-local-open'})),/trial identity/);
+  for(const revision of [0,4,99,'2',null])assert.throws(()=>getChallenge('skyguard',revision));assert.throws(()=>scenarioForBattle('skyguard',null,new Game({rulesetId:'frontier-air-local-open'})),/trial identity/);
 });
 
 test('trial revisions and engine identities cannot be forged or silently coerced during admission',()=>{
   for(const current of [false,true]){const g=(current?createCurrentChallenge:createChallenge)('skyguard'),scenario=scenarioForBattle('skyguard',null,g);const identity={ruleset:{id:g.ruleset.id,revision:1},map:{id:g.map.id,revision:1},scenario:{...scenario,revision:current?1:2}};assert.throws(()=>validateBattleIdentity(identity),/scenario rules/);}
-  for(const revision of [3,4,'2'])assert.throws(()=>resolveScenario({kind:'trial',id:'skyguard',revision}));assert.throws(()=>resolveScenario({kind:'skirmish',id:'standard',revision:2}));
+  for(const revision of [4,5,'2'])assert.throws(()=>resolveScenario({kind:'trial',id:'skyguard',revision}));assert.throws(()=>resolveScenario({kind:'skirmish',id:'standard',revision:2}));
 });
 
 test('explicit fresh practice finishes all five lessons with normal costs across seven seeds and remains unsaved',()=>{

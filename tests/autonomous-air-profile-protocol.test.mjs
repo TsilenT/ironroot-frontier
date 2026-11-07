@@ -111,7 +111,7 @@ test('five-domain automatic-air backup imports retain exact identities and stale
   assert.equal(p.finishImport({outcome:'restored'}).ok,true);assert.equal(p.status().canWrite,false);assert.equal(stale.status().canWrite,false);
   const ready=current(r);assert.equal(ready.status().canWrite,true);
   const parsed=parseBackup(text),decoded=decodeBattle(ready.storage.getItem(K.battle),{campaignProgress:parsed.data.campaign});
-  assert.equal(decoded.scenario.revision,4);assert.equal(decoded.game.ruleset.id,'frontier-campaign-air-local');
+  assert.equal(decoded.scenario.revision,5);assert.equal(decoded.game.ruleset.id,'frontier-campaign-citadel-open');
   assert.deepEqual(JSON.parse(ready.storage.getItem(K.history)),parsed.data.history);
   assert.equal(prior.beginImport({recover:true}).code,'unsupported-protocol');
 });
