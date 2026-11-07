@@ -1,0 +1,59 @@
+{
+  "rootInitial": {
+    "passed": 1211,
+    "failed": 220,
+    "skipped": 1,
+    "causes": {
+      "updateRallyMissingFromVMExtraction": 213,
+      "getClientRectsMissingFromDOMDouble": 6,
+      "secondaryNegativeControlExpectedDifferentError": 1
+    }
+  },
+  "rootAfterHarnessUpdates": {
+    "passed": 1431,
+    "failed": 0,
+    "skipped": 1
+  },
+  "browserSetupFailures": [
+    "Test file creation path typo; no file/test run.",
+    "campaign fixture import did not export CAMPAIGN_STORAGE_KEY; corrected to dist/campaign.js.",
+    "persistence import did not export encodeBattle; corrected to dist/battle-codec.js."
+  ],
+  "firstExecutableBrowserRun": {
+    "passed": 8,
+    "failed": 2,
+    "skipped": 6,
+    "failures": [
+      {
+        "title": "visible named action fits existing slots with objectives and hints retained",
+        "project": "desktop",
+        "status": "failed",
+        "errors": [
+          "Error: {\"text\":\"\",\"expectedText\":\"\",\"visibleText\":\"\",\"complete\":false,\"characters\":[],\"rects\":[],\"overflow\":false}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  50 |  }else{await expect(page.locator('#sound')).toBeVisible();expect(v.width).toBe(145);}\n  51 |  const labels=await page.evaluate(inspectPhoneText,{selector:'#gold,#income,#time,#objectiveProgress,#objectiveTime,.protected-name,.protected-health',minimumFont:0});\n> 52 |  for(const t of labels)expect(t.complete,JSON.stringify(t)).toBe(true);v.labels=labels.map(t=>t.text);return v;\n     |                                                             ^\n  53 | }\n  54 |\n  55 | test('visible named action fits existing slots with objectives and hints retained',async({page},info)=>{\n    at geometry (/workspace/ironroot-mobile-volley/qa/browser/mobile-volley.spec.mjs:52:61)\n    at /workspace/ironroot-mobile-volley/qa/browser/mobile-volley.spec.mjs:67:13"
+        ]
+      },
+      {
+        "title": "held touch multitouch and resize cannot cast; short safety stays paused",
+        "project": "phone",
+        "status": "failed",
+        "errors": [
+          "Error: {\"text\":\"Destroy the enemy citadel.\",\"expectedText\":\"Destroytheenemycitadel.\",\"visibleText\":\"\",\"complete\":false,\"characters\":[{\"character\":\"D\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"e\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"s\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"t\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"r\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"o\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"y\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"t\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"h\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"e\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"e\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"n\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"e\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"m\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"y\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"c\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"i\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"t\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"a\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"d\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"e\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\"l\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]},{\"character\":\".\",\"visible\":false,\"reasons\":[\"no rendered character\",\"hidden ancestor\",\"outside owner\"]}],\"rects\":[],\"overflow\":false}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  50 |  }else{await expect(page.locator('#sound')).toBeVisible();expect(v.width).toBe(145);}\n  51 |  const labels=await page.evaluate(inspectPhoneText,{selector:'#gold,#income,#time,#objectiveProgress,#objectiveTime,.protected-name,.protected-health',minimumFont:0});\n> 52 |  for(const t of labels)expect(t.complete,JSON.stringify(t)).toBe(true);v.labels=labels.map(t=>t.text);return v;\n     |                                                             ^\n  53 | }\n  54 |\n  55 | test('visible named action fits existing slots with objectives and hints retained',async({page},info)=>{\n    at geometry (/workspace/ironroot-mobile-volley/qa/browser/mobile-volley.spec.mjs:52:61)\n    at /workspace/ironroot-mobile-volley/qa/browser/mobile-volley.spec.mjs:113:162"
+        ]
+      }
+    ]
+  },
+  "followupBrowserRun": {
+    "passed": 4,
+    "failed": 1,
+    "skipped": 3,
+    "cause": "Text probe still used mobile-only default owner selector; ordinary desktop objectives have #objectiveHUD in the battlefield. Added that actual owner without changing containment assertions.",
+    "downstream": "Desktop first-build checks not reached in this run; retained for next run."
+  },
+  "expandedFinalBrowserRun": {
+    "passed": 12,
+    "failed": 1,
+    "skipped": 15,
+    "cause": "Common objective owner selector correctly handled desktop but selected display:contents #objectiveHUD in short portrait; its empty box falsely rejected visible text. Probe now uses actual mobile #protectedDock and actual desktop #objectiveHUD separately, retaining containment assertions.",
+    "downstream": "Narrow Ashen/first-build assertions after protected resize not reached in this run; retained for rerun."
+  }
+}

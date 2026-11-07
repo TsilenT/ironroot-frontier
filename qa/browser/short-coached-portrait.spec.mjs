@@ -131,29 +131,29 @@ test('unsafe short coached rail freezes the save and needs explicit Resume after
 
 test('padding-only changes cancel a held control once while stable inset geometry accepts fresh gestures',async({page,context})=>{
  await resumeProtected(page);await assertLayout(page);await page.evaluate(installViewportSafetyWatch);
- const sound=page.locator('#sound'),before=await sound.getAttribute('aria-label');
- const point=await center(page,'#sound'),held=await heldPointer(page,context,point);
+ const volley=page.locator('#rally'),before=await volley.getAttribute('aria-pressed');
+ const point=await center(page,'#rally'),held=await heldPointer(page,context,point);
  let insets;
  try{
   insets=await page.addStyleTag({content:'.app.protected-mobile { --mobile-inset-bottom: 21px; }'});
   await assertLayout(page);await page.waitForTimeout(350);
   // The target itself has not moved away from the native release location.
   // Only the content-rectangle change should invalidate the old gesture.
-  expect(await center(page,'#sound')).toEqual(point);
+  expect(await center(page,'#rally')).toEqual(point);
   await held.release();
  }finally{await held.dispose();}
- await expect(sound).toHaveAttribute('aria-label',before);
+ await expect(volley).toHaveAttribute('aria-pressed',before);
  // A stable signature must not cancel a later valid gesture on every HUD pass.
- const fresh=await heldPointer(page,context,await center(page,'#sound'));
+ const fresh=await heldPointer(page,context,await center(page,'#rally'));
  try{await page.waitForTimeout(350);await fresh.release();}finally{await fresh.dispose();}
- await expect(sound).not.toHaveAttribute('aria-label',before);
- const changed=await sound.getAttribute('aria-label'),heldForRemoval=await heldPointer(page,context,await center(page,'#sound'));
+ await expect(volley).not.toHaveAttribute('aria-pressed',before);
+ const changed=await volley.getAttribute('aria-pressed'),heldForRemoval=await heldPointer(page,context,await center(page,'#rally'));
  try{
   await insets.evaluate(element=>element.remove());await assertLayout(page);await page.waitForTimeout(350);
   await heldForRemoval.release();
  }finally{await heldForRemoval.dispose();}
- await expect(sound).toHaveAttribute('aria-label',changed);
- await press(page,'#sound');await expect(sound).toHaveAttribute('aria-label',before);
+ await expect(volley).toHaveAttribute('aria-pressed',changed);
+ await press(page,'#rally');await expect(volley).toHaveAttribute('aria-pressed',before);
  await assertLayout(page);
  expect(await page.evaluate(()=>window.__qaViewportSafetySamples.filter(sample=>sample.visible))).toEqual([]);
 });

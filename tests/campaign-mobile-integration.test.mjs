@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInContext, createContext } from 'node:vm';
-import { BUILDINGS, buildBounds } from '../dist/engine.js';
+import { BUILDINGS, SPELL, buildBounds } from '../dist/engine.js';
 import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission, campaignScenarioForGame, getProgressionCampaignOverview, createCampaignProgress } from '../dist/campaign.js';
 import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
 import { supportsAutonomousAir } from '../dist/autonomous-air.js';
@@ -22,6 +22,7 @@ function harness() {
       const node = {id, dataset:{}, style:{}, textContent:'', disabled:false, parentElement:null,
         rect:box(0,0,44,44), clip:'visible', attributes:{},
         classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:k=>classes.delete(k),toggle(k,on){on?classes.add(k):classes.delete(k);}},
+        getAttribute(k){return this.attributes[k]??null;},
         setAttribute(k,v){this.attributes[k]=v;},
         insertBefore(child){child.parentNode=this;child.parentElement=this;},
         closest(selector){for(let e=this;e;e=e.parentElement)if((selector.includes('.hidden')&&e.classList.contains('hidden'))||(selector.includes('[inert]')&&e.inert))return e;return null;},
@@ -42,7 +43,7 @@ function harness() {
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
   $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,supportsAutonomousAir,airBuildingDescription,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+  c={$,BUILDINGS,SPELL,buildBounds,supportsAutonomousAir,airBuildingDescription,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
     battleSession:{status:()=> 'current'},game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
     viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,padHud:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),

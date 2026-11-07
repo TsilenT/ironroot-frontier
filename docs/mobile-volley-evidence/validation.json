@@ -1,0 +1,137 @@
+{
+  "date": "2026-11-07",
+  "base": "b88119fdd2cc288633e58bfaf0baffa302ee76de",
+  "branch": "codex/mobile-volley",
+  "originMainReverifiedBeforeCommit": "b88119fdd2cc288633e58bfaf0baffa302ee76de",
+  "version": "0.18.1",
+  "cache": "ironroot-v0.18.1",
+  "profileProtocol": 8,
+  "environment": {
+    "node": "24.22.1",
+    "playwright": "1.65.0",
+    "chromium": "155.0.8059.79",
+    "ciNode": "22 (remote CI not claimed by local results)"
+  },
+  "runtimeSha256": {
+    "dist/app.js": "bfaab0ed8e5abf13d16f39a58b4c025981ac995cc2525a68fb0e7e1837707497",
+    "dist/index.html": "8c4834be65bb681dccca012285e7e2b7a37afcdb484c5f340adcbc09831b2818",
+    "dist/styles.css": "accc022b9e7f65efdc071962e90d3bdfd6cb3aea33793ed1d8609b9cb4235ae8",
+    "dist/service-worker.js": "9aa72ca28a226755411e6b9d1335c71efe48babae13e26524a7fc9fd7bb783a4"
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "passed": 1435,
+      "failed": 0,
+      "skipped": 1,
+      "durationMs": 131643.641001,
+      "skipReason": "Optional desktop build dependency unavailable",
+      "scope": "Entire root suite including four focused Volley tests. Final app.js and markup; subsequent CSS-only desktop 11px status rule covered by browser checks."
+    },
+    {
+      "command": "npm run check",
+      "result": "passed"
+    },
+    {
+      "command": "npm run check:release",
+      "result": "passed",
+      "runtimeFiles": 51,
+      "inventory": "runtime.json"
+    },
+    {
+      "command": "npm run check --prefix qa/browser",
+      "result": "passed",
+      "scope": "Browser source parses; helper contracts and existing deterministic fixture validators pass."
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "primaryBrowser": {
+    "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs mobile-volley.spec.mjs",
+    "fullRun": {
+      "passed": 12,
+      "failed": 1,
+      "projectExclusions": 15,
+      "failure": "Short portrait text probe chose empty display:contents objective owner. Corrected actual owner selector; containment assertion retained. See initial-failures.json."
+    },
+    "repairCommand": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs mobile-volley.spec.mjs --project=narrow-phone --project=desktop --grep 'visible named|real pointer'",
+    "repairRun": {
+      "passed": 4,
+      "failed": 0,
+      "durationSeconds": 27.8,
+      "retainedDownstream": "Narrow Ashen/first-build assertions and resource/objective text checks all reached and passed."
+    },
+    "finalCssCommand": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs mobile-volley.spec.mjs --project=desktop --grep 'real pointer'",
+    "finalCssRun": {
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 4.6,
+      "scope": "Desktop recharge stays at least 11px after removing redundant identical media-query rules. Compact 14px ID rule is unchanged."
+    },
+    "distinctCasesPassedAcrossRuns": 13,
+    "projectExclusions": "Geometry and native cast run on all four projects. Touch/resize, Options/focus, unavailable/safety and inspector cases run on phone; deterministic cooldown runs only on desktop. Exclusions are declared before assertions, not failed cases suppressed.",
+    "realTime": "Native touch, pan, multitouch, held input, orientation, overlays, audio, focus and safety cases use real time.",
+    "virtualTime": "Only isolated cooldown case: 100ms increments to tick 513, exact public-engine replay parity excluding fractional RAF accumulator. No gesture/history/storage inference from this case."
+  },
+  "independentBrowser": {
+    "report": "independent.json",
+    "historyDiagnostics": "independent-history-timing.json",
+    "distinctScenarios": 12,
+    "result": "Initial ten pass plus two teaching-actionability failures; both retained teaching cases pass after native-coordinate input repair. Later full independent run: 11 pass, 1 intermittent phone history.length 4-to-5 failure. Three exact-spec repeats and final six phone/desktop Back, remap and controller cases pass.",
+    "remainingObservation": "Cause of one history-length increase is unestablished. Disarm/no-spend/checkpoint assertions before it passed; downstream Resume assertions were not reached in that failed attempt and passed in all retained repeats. Strict length assertion remains. This is not claimed fixed or proven preexisting.",
+    "sourceParity": "Final six input cases use final app.js hash. Independent CSS predates the desktop-only 11px recharge-status rule; final primary geometry/cast checks cover that addition. Earlier teaching/recovery/visibility cases retain their exact hashes in independent.json."
+  },
+  "existingRegressionSelections": [
+    {
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs short-coached-portrait.spec.mjs protected-objectives-pointer.spec.mjs ashen-crossroads.spec.mjs hidden-coaching.spec.mjs regression.spec.mjs mobile-coaching-visibility.spec.mjs --project=narrow-phone --grep 'padding-only|unsafe short|320x430 protected|shared mobile field|sixth trial|hidden hints stay hidden|controls fit the viewport|denied storage|short portrait safe inset'",
+      "passed": 10,
+      "failed": 0,
+      "durationSeconds": 43.2
+    },
+    {
+      "command": "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config qa/browser/playwright.config.mjs desktop-input.spec.mjs --project=desktop --grep 'right-click cancels'",
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 3.6
+    }
+  ],
+  "measurements": {
+    "viewports": [
+      "1180x757",
+      "390x650",
+      "320x568",
+      "320x430",
+      "844x390"
+    ],
+    "smallSafetyCase": "240x180 plus deliberately 43px target and existing unsafe coached layout",
+    "compactTargetCssPx": "44x44",
+    "nameStateFontPx": 14,
+    "costFontPx": 12,
+    "minimumMeasuredTextContrast": 6.3893,
+    "minimumFieldThresholdCssPx": "128 width, 212 height (unchanged)",
+    "scenarioFiles": "*-geometry.json: ordinary skirmish, protected Winter Stores, Ashen Crossroads, first-build teaching; applicable hints shown/hidden."
+  },
+  "inspectedScreenshots": {
+    "desktop-ashen-1180x757.png": "65792b2778d27230ebb62d0b877aa04146e2fc16e7ec8827b1eafc4852457003",
+    "landscape-ashen-844x390.png": "e75736746210fbf13f52429c7f8ae5d8303b831da42f38d9a21ed5b936ea8d36",
+    "landscape-protected-844x390-hidden.png": "fd53a37732c9753816b57f2bf2a5c1e8284444feefa0d8fbed1d7b691ae78412",
+    "narrow-phone-ashen-320x430.png": "0c229727319dd5e2255711839f6fbb860cf6b174405d8d63c43f60336ca1f3cc",
+    "narrow-phone-ashen-320x568.png": "f828f6e575ddb6d25fb0d6390d5f757fd18f551b7e6af19c5912b8df46094cff",
+    "narrow-phone-protected-320x430-hidden.png": "e017b939e5561540335fd650d3adfc2a388c47f8bca8493a2d2c1b949da29a3b",
+    "phone-ashen-390x650.png": "85b04825074b8a433e0cf71b16a71d070e10eae5a4d7910913d8719bd57e5cfc",
+    "volley-ready.png": "4fd28e917c9f6052c05e9774e835fabaf163070688aa1458a099e4f9b84e201c",
+    "volley-recharge.png": "7c4c2b6a6aa09c83a5bd1958ca37c79052498bc5aeab07f8bcdb3fc95c193bdb"
+  },
+  "visualAssessment": "Volley name, gold cost, Ready/Cancel/recharge remain readable and unclipped in inspected screenshots; short portrait and landscape retain income, objectives and hints. Three compact lines are dense. Aiming instructions occupy existing field-note edge space and consume taps; no new row or battlefield reduction.",
+  "failureRetention": "initial-failures.json and independent.json retain setup, assertion failures, downstream checks and repairs. Diagnostic port-busy attempts ran no tests. No assertion was skipped to inflate a count; repeat runs are not summed as unique coverage.",
+  "limits": [
+    "Chromium emulation only; no physical phones, Safari/Firefox or screen-reader certification.",
+    "Controller provider is synthetic; visibility uses signal double with native held input and real time.",
+    "Unresolved single history-length observation requires reviewer attention.",
+    "No full huge browser matrix, desktop build, deployment, signing or store work.",
+    "Local checks use Node 24; CI configuration uses Node 22."
+  ],
+  "production": "Not accessed or modified."
+}

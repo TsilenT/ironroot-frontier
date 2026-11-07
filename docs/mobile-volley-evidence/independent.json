@@ -1,0 +1,390 @@
+{
+  "scope": "Independent Chromium input checks on source candidate; no production requests, no virtual clock.",
+  "base": "b88119fdd2cc288633e58bfaf0baffa302ee76de",
+  "branch": "codex/mobile-volley",
+  "browser": "Chromium 155.0.8059.79 built on Debian GNU/Linux 13 (trixie)",
+  "runner": "Playwright 1.65.0, system Chromium, phone 390x650 touch DPR2 and desktop 1180x757",
+  "commands": [
+    "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium node_modules/.bin/playwright test volley-independent.spec.mjs --project=phone --project=desktop --workers=2 --reporter=list,json",
+    "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config=qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --workers=2 --grep='first-build teaching' --reporter=list,json",
+    "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium node_modules/.bin/playwright test volley-independent.spec.mjs --project=phone --project=desktop --workers=2 --reporter=list,json",
+    "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config=qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --workers=1 --grep='Back disarms' --repeat-each=3 --reporter=list,json",
+    "PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium qa/browser/node_modules/.bin/playwright test --config=qa/browser/playwright.config.mjs volley-independent.spec.mjs --project=phone --project=desktop --workers=2 --grep='Back disarms|remapped V|controller Y' --reporter=list,json"
+  ],
+  "initial": {
+    "stats": {
+      "startTime": "2026-11-07T18:39:03.947Z",
+      "duration": 49511.465000000004,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 4423
+      },
+      {
+        "project": "desktop",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 3344
+      },
+      {
+        "project": "phone",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 6019
+      },
+      {
+        "project": "desktop",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 3925
+      },
+      {
+        "project": "phone",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 4476
+      },
+      {
+        "project": "desktop",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 3882
+      },
+      {
+        "project": "phone",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "timedOut",
+        "durationMs": 20826,
+        "failure": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+      },
+      {
+        "project": "desktop",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "timedOut",
+        "durationMs": 20542,
+        "failure": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+      },
+      {
+        "project": "phone",
+        "case": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+        "status": "passed",
+        "durationMs": 2470
+      },
+      {
+        "project": "desktop",
+        "case": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+        "status": "passed",
+        "durationMs": 2973
+      },
+      {
+        "project": "phone",
+        "case": "independent: visibility interruption retires held targeting input and requires explicit resume",
+        "status": "passed",
+        "durationMs": 2974,
+        "annotations": [
+          {
+            "type": "scope",
+            "description": "Visibility signal integration; document.hidden/visibilitychange double, native held pointer, real time. Not OS backgrounding certification."
+          }
+        ]
+      },
+      {
+        "project": "desktop",
+        "case": "independent: visibility interruption retires held targeting input and requires explicit resume",
+        "status": "passed",
+        "durationMs": 2957,
+        "annotations": [
+          {
+            "type": "scope",
+            "description": "Visibility signal integration; document.hidden/visibilitychange double, native held pointer, real time. Not OS backgrounding certification."
+          }
+        ]
+      }
+    ]
+  },
+  "focusedRerun": {
+    "stats": {
+      "startTime": "2026-11-07T18:40:10.927Z",
+      "duration": 9113.42,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "phone",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "passed",
+        "durationMs": 7459
+      },
+      {
+        "project": "desktop",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "passed",
+        "durationMs": 6515
+      }
+    ]
+  },
+  "failureAnalysis": [
+    {
+      "affected": [
+        "phone first-build teaching",
+        "desktop first-build teaching"
+      ],
+      "classification": "QA actionability error",
+      "cause": "locator.tap/click considers aria-disabled=true unavailable, so the test never sent the intended physical input. The product had correctly marked Volley unavailable during first-build hold.",
+      "fix": "Retained unavailable state assertion, measured center, required real elementFromPoint to hit #rally, then sent native coordinate touch/mouse input. No force flag, style mutation, app state hook, reduced assertion or product change.",
+      "downstream": "Initial later teaching assertions were not reached. Focused rerun passed all retained downstream checks: no arming/cost/cooldown, hints shown/hidden, pause/resume cannot bypass hold, paid barracks unlocks Volley."
+    },
+    {
+      "affected": [
+        "phone Back/Forward case during finalTwelve"
+      ],
+      "classification": "Intermittent unreproduced history-length observation; cause not established",
+      "observation": "Expected history.length 4 sampled after resumeSaved, received 5 after Back/Forward. Disarm, frozen checkpoint, and no-spend assertions preceding it passed; subsequent Resume and profile assertions were not reached in that attempt.",
+      "investigation": "Three standalone real-time pass-through History API probes and three exact-spec instrumented repeats observed 4 at startup, 4 while armed, and 4 after Back/Forward. All had no pushState after arm/Back/Forward. The final phone+desktop Back checks also passed. No history implementation change or history-length assertion relaxation was made.",
+      "causeStatus": "Startup reconciliation race was considered but not proven. Retain as an unresolved intermittent observation for separate review, not a confirmed fixed product defect or a guaranteed QA-only error.",
+      "downstream": "All retained Resume, fresh battlefield input, no-cast/gold/cooldown and persistent-profile assertions passed in the 3 exact-spec repeats and final phone+desktop input runs."
+    }
+  ],
+  "result": "Initial 12 distinct scenarios passed after two QA actionability corrections. Final accessible-name source rerun was 11/12 with one unexplained phone history-length increase; all downstream Back assertions passed in 3 exact repeats and final input runs. Final gesture-reset/overlay source input slice passed 6/6 phone+desktop. No product failure is claimed fixed without evidence.",
+  "limits": [
+    "Chromium emulation, not physical mobile/controllers or Safari/Firefox.",
+    "Synthetic Gamepad API provider exercises real application mapping but is not hardware certification.",
+    "Visibility uses a document.hidden/visibilitychange signal double with native held touch/mouse and real-time waits; not OS backgrounding certification.",
+    "Synthetic current public engine/codec profile fixtures verify cost/input/persistence, not human-played balance.",
+    "Final runtime hashes identify the 6-case input rerun; teaching/recovery/visibility passed on the preceding finalTwelve hash. Final overlay-pointer geometry/native-tap coverage belongs to the main suite. Review the retained intermittent history observation before merge."
+  ],
+  "initialProductSha256": {
+    "dist/app.js": "218560f25f5a3a2f39b23097b53e18230d5adc1a792a5b7d105de3e0f6389861",
+    "dist/index.html": "8c4834be65bb681dccca012285e7e2b7a37afcdb484c5f340adcbc09831b2818",
+    "dist/styles.css": "df2679a42ed292fffa8b3868f39981f1c64d46f2dcdf443f9bfb8cca414f19b8"
+  },
+  "initialTestSha256": "0b863c2b66b39daaec14b780e15d94823e25b4420077a2f7aa14761e702ba8a9",
+  "finalTwelve": {
+    "stats": {
+      "startTime": "2026-11-07T18:48:33.761Z",
+      "duration": 73394.163,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "failed",
+        "durationMs": 4603,
+        "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 4\nReceived: 5\n\n  69 |   await unarmed(page);"
+      },
+      {
+        "project": "desktop",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 9269
+      },
+      {
+        "project": "phone",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 7366
+      },
+      {
+        "project": "desktop",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 14489
+      },
+      {
+        "project": "phone",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 13749
+      },
+      {
+        "project": "desktop",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 11564
+      },
+      {
+        "project": "phone",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "passed",
+        "durationMs": 19990
+      },
+      {
+        "project": "desktop",
+        "case": "independent: first-build teaching with hints shown or hidden forbids Volley until the paid barracks",
+        "status": "passed",
+        "durationMs": 17753
+      },
+      {
+        "project": "phone",
+        "case": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+        "status": "passed",
+        "durationMs": 7936
+      },
+      {
+        "project": "desktop",
+        "case": "independent: profile recovery dominates Volley input and preserves durable campaign/trial/settings/history",
+        "status": "passed",
+        "durationMs": 8192
+      },
+      {
+        "project": "phone",
+        "case": "independent: visibility interruption retires held targeting input and requires explicit resume",
+        "status": "passed",
+        "durationMs": 10170,
+        "annotations": [
+          {
+            "type": "scope",
+            "description": "Visibility signal integration; document.hidden/visibilitychange double, native held pointer, real time. Not OS backgrounding certification."
+          }
+        ]
+      },
+      {
+        "project": "desktop",
+        "case": "independent: visibility interruption retires held targeting input and requires explicit resume",
+        "status": "passed",
+        "durationMs": 9078,
+        "annotations": [
+          {
+            "type": "scope",
+            "description": "Visibility signal integration; document.hidden/visibilitychange double, native held pointer, real time. Not OS backgrounding certification."
+          }
+        ]
+      }
+    ],
+    "productSha256": {
+      "dist/app.js": "bd8c0883f982e6877a40abd529e1470bb7ec69e7a6a4302dac8b6bfc67be738a",
+      "dist/index.html": "8c4834be65bb681dccca012285e7e2b7a37afcdb484c5f340adcbc09831b2818",
+      "dist/styles.css": "df2679a42ed292fffa8b3868f39981f1c64d46f2dcdf443f9bfb8cca414f19b8"
+    }
+  },
+  "historyProbe": {
+    "stats": {
+      "startTime": "2026-11-07T18:53:21.361Z",
+      "duration": 14059.083,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 4517
+      },
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 3085
+      },
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 3273
+      }
+    ]
+  },
+  "finalInputSix": {
+    "stats": {
+      "startTime": "2026-11-07T18:54:23.286Z",
+      "duration": 20276.83,
+      "expected": 6,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "project": "phone",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 5918
+      },
+      {
+        "project": "desktop",
+        "case": "independent: Back disarms Volley, Forward never resumes, and resumed input cannot revive the old cast",
+        "status": "passed",
+        "durationMs": 4191
+      },
+      {
+        "project": "phone",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 7774
+      },
+      {
+        "project": "desktop",
+        "case": "independent: remapped V, Escape and native button cancellation retain menu input scope",
+        "status": "passed",
+        "durationMs": 5989
+      },
+      {
+        "project": "phone",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 5536
+      },
+      {
+        "project": "desktop",
+        "case": "independent: controller Y arms, B cancels, and Y/A casts once without opening Build",
+        "status": "passed",
+        "durationMs": 5499
+      }
+    ],
+    "productSha256": {
+      "dist/app.js": "bfaab0ed8e5abf13d16f39a58b4c025981ac995cc2525a68fb0e7e1837707497",
+      "dist/index.html": "8c4834be65bb681dccca012285e7e2b7a37afcdb484c5f340adcbc09831b2818",
+      "dist/styles.css": "cefa6aca8a329bc9764efebb1073bf152f7281570f46c6dacb640e71784f1557",
+      "dist/service-worker.js": "9aa72ca28a226755411e6b9d1335c71efe48babae13e26524a7fc9fd7bb783a4"
+    }
+  },
+  "finalProductSha256": {
+    "dist/app.js": "bfaab0ed8e5abf13d16f39a58b4c025981ac995cc2525a68fb0e7e1837707497",
+    "dist/index.html": "8c4834be65bb681dccca012285e7e2b7a37afcdb484c5f340adcbc09831b2818",
+    "dist/styles.css": "cefa6aca8a329bc9764efebb1073bf152f7281570f46c6dacb640e71784f1557",
+    "dist/service-worker.js": "9aa72ca28a226755411e6b9d1335c71efe48babae13e26524a7fc9fd7bb783a4"
+  },
+  "finalTestSha256": "aa05688ef99e3792ee6c82f86953d036e393b27c2d70640cacb89920d5eab81b",
+  "diagnosticInfrastructure": {
+    "attemptsNotExecuted": 2,
+    "reason": "Standalone diagnostic server still occupied loopback4187 while Playwright required an unused port. No tests ran in these attempts. The owned orphan diagnostic server was terminated, then the unchanged diagnostic command ran successfully."
+  },
+  "sourceReview": {
+    "findings": [
+      "One #rally node and one handler retained; stable child nodes survive countdown and relocation.",
+      "Changed/fitted viewport invalidates held input before reparenting and restores focus afterward; hidden desktop Sound focus is handed to Volley.",
+      "Arming and armed cancellation reset the prior battle gesture before changing spell state; no engine resource mutation on these paths.",
+      "aria-disabled intentionally preserves discovery/focus. Native, keyboard, assistive and controller activation still pass through the shared refusal guard; armed cancellation precedes affordability checks.",
+      "History fix clears only armed spell state through existing cancel() on navigation; no new history pushes, saved fields, schema or route framework.",
+      "Raised per-second focused accessible-name concern; final code keeps Recharging label stable while visual Ns counts down and deduplicates aria writes.",
+      "Compact aim copy consumes pointer events without a cast handler; main owner supplies final native overlay regression."
+    ],
+    "blockingDefectsFound": [],
+    "remainingObservation": "Single unreproduced history-length increase is retained in failureAnalysis."
+  },
+  "visualReview": {
+    "files": {
+      "narrow-phone-protected-320x430-hidden.png": "afe8db9a31741c4c220a22a1f5778193fcbb646e58b46507d75cd610f097d6f6",
+      "narrow-phone-ashen-320x430.png": "19cd01950ed7a844cd90b7599b83c86f765098a0adef9890a18d5820fa535230"
+    },
+    "assessment": "At 320x430 the three-line Volley / cost / Cancel cell is tightly stacked but legible and not visibly clipped. Selected outline is distinct. Resource, income and named objective labels remain visible; target/cancel instruction remains available outside Build. Physical phone reading remains uncertified.",
+    "caveat": "The reviewed Ashen screenshot still contains the transient initial mission toast over the field center; a clean screenshot after it expires was recommended. Main owner may replace screenshot bytes afterward."
+  }
+}

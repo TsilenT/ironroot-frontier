@@ -103,9 +103,12 @@
           </button>
         </div>
         <div class="map-note" id="mapNote">
+          <span id="mapExplore">
           <span class="key">DRAG</span> to explore
           <span class="note-dot">·</span> <span class="key">TAP</span> a
           building to manage it
+          </span>
+          <span id="volleyAim" class="hidden">Tap enemy troops</span>
         </div>
         <div id="toast" class="toast" role="status"></div>
         <div class="selection-panel hidden" id="selectionPanel">
@@ -178,13 +181,13 @@
           <button id="coachReplay" class="hidden">Pause to learn</button>
           <button id="allBuildings" class="hidden" aria-expanded="false" aria-controls="buildCards">All buildings</button>
         </div>
-        <div class="deck-body">
+        <div class="deck-body" id="deckBody">
           <div class="build-cards" id="buildCards"></div>
-          <button id="rally" class="rally-card">
-            <span class="rally-icon">✦</span><b>Arrow volley</b
+          <button id="rally" class="rally-card" aria-pressed="false">
+            <span class="rally-icon" aria-hidden="true">✦</span><b id="rallyName">Arrow volley</b
             ><small>Area damage to troops</small
             ><span class="rally-cost" id="rallyCost"
-              >◆ 75 <em>25s cooldown</em></span
+              ><span id="rallyGold">◆ 75</span> <em id="rallyStatus">25s cooldown</em></span
             >
           </button>
         </div>
@@ -356,7 +359,7 @@
         </button>
         <p class="save-status hidden" id="saveStatus" role="status"></p>
         <button id="exportUnreadableBattle" class="text-button hidden">Download original save</button>
-        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.18.0</p>
+        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.18.1</p>
         <div class="welcome-links">
           <a class="text-button training-link" id="welcomeTraining" href="./training.html" aria-label="Optional guided practice. Learn without changing your saved battle">Guided practice (optional) →</a>
           <button class="text-button" id="welcomeFullscreen" type="button" data-fullscreen aria-pressed="false" aria-describedby="welcomeFullscreenStatus">Enter fullscreen</button>

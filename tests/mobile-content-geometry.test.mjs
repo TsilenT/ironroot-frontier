@@ -47,7 +47,7 @@ function contentHarness({width=320,height=568,insets={},source=app,styleSource=c
   };
   return element;
  };
- for(const id of ['battle','topbar','protectedDock','protectedNavigation','campaignTeaching','campaignCoach','coachResume','toggleCoach','pause','speed','sound','settings','home','front','minimap','compactBuild'])install(h.$(id));
+ for(const id of ['battle','topbar','protectedDock','protectedNavigation','campaignTeaching','campaignCoach','coachResume','toggleCoach','pause','speed','rally','settings','home','front','minimap','compactBuild'])install(h.$(id));
  const create=h.c.document.createElement;h.c.document.createElement=tag=>install(create(tag));
  const inspect=h.c.inspectMobileGeometry;
  h.c.inspectMobileGeometry=g=>{

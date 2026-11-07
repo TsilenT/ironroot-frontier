@@ -493,12 +493,36 @@ function cancel() {
   syncChoice();
   setCompactBuildOpen(false);
 }
+// One spell control serves the desktop card and compact navigation slot. Keep
+// its children stable, including during countdown updates (no live region).
+function updateRally() {
+  const compact = $('app').classList.contains('protected-compact');
+  const seconds = Math.ceil(game.state.spellCooldown[0]);
+  const available = canInteract() && !firstBuildHold;
+  const state = ui.spell ? 'Cancel' : firstBuildHold ? 'Build' : !canInteract() ? 'Paused'
+    : seconds > 0 ? `${seconds}s` : game.state.gold[0] < SPELL.cost ? 'No gold' : 'Ready';
+  const text = (id, value) => { if ($(id).textContent !== value) $(id).textContent = value; };
+  text('rallyName', compact ? 'Volley' : 'Arrow volley');
+  text('rallyGold', `◆ ${SPELL.cost}`);
+  text('rallyStatus', compact || state !== 'Ready' ? state : `${SPELL.cooldown}s cooldown`);
+  const button = $('rally');
+  const attribute = (name, value) => { if (button.getAttribute(name) !== value) button.setAttribute(name, value); };
+  button.classList.toggle('active', ui.spell);
+  attribute('aria-pressed', String(ui.spell));
+  attribute('aria-disabled', String(!available || (!ui.spell && (seconds > 0 || game.state.gold[0] < SPELL.cost))));
+  attribute('aria-label', ui.spell ? 'Cancel Arrow volley targeting. Tap enemy troops to fire.'
+    : `Arrow volley, ${SPELL.cost} gold. ${firstBuildHold ? 'Build a barracks first to begin.'
+      : state === 'No gold' ? 'Not enough gold.' : seconds > 0 ? 'Recharging.' : state + '.'}`);
+  $('app').classList.toggle('volley-armed', ui.spell);
+  $('mapExplore').classList.toggle('hidden', compact && ui.spell);
+  $('volleyAim').classList.toggle('hidden', !compact || !ui.spell);
+}
 function syncChoice() {
   updateCampaignDeck();
   document
     .querySelectorAll('.build-card')
     .forEach((b) => b.classList.toggle('active', b.dataset.type === ui.build));
-  $('rally').classList.toggle('active', ui.spell);
+  updateRally();
   $('battle').classList.toggle('placing', !!ui.build || ui.spell);
   $('cancelBuild').classList.toggle('hidden', !ui.build && !ui.spell);
   $('buildPrompt').textContent = ui.build
@@ -766,7 +790,11 @@ $('closeSelection').onclick = (e) => {
 };
 $('cancelBuild').onclick = cancel;
 $('rally').onclick = () => {
-  if (!canInteract()) return;
+  if (!canInteract() || dialogLayers.some(layer => !layer.classList.contains('hidden'))) return;
+  // Cancellation must still work if a pending build or other spending made
+  // the armed spell unaffordable. Arming itself never touches engine state.
+  if (ui.spell) { resetBattleGesture(); cancel(); return; }
+  if (firstBuildHold) { toast('Build a barracks first to begin.'); return; }
   if (game.state.spellCooldown[0] > 0) {
     toast(
       `Arrow volley ready in ${Math.ceil(game.state.spellCooldown[0])} seconds.`,
@@ -777,7 +805,9 @@ $('rally').onclick = () => {
     toast(`Need ${SPELL.cost} gold.`);
     return;
   }
-  ui.spell = !ui.spell;
+  // A field press started before arming cannot become a paid spell on release.
+  resetBattleGesture();
+  ui.spell = true;
   ui.build = null;
   ui.selected = null;
   updateSelection();
@@ -1243,6 +1273,13 @@ function syncProtectedLayout() {
     ? `${game.difficulty.toUpperCase()} · ${currentCampaign ? 'MISSION' : currentChallenge ? 'FIELD TRIAL' : 'SKIRMISH'}` : '';
   move('battleTop', landscape || portrait ? 'topbar' : 'battlefield');
   move('battleTools', landscape || portrait ? 'protectedNavigation' : 'battlefield');
+  // Transfer the Sound slot deliberately; keep the same spell node and input
+  // handler. The layout transition above retires held pointer/key gestures.
+  const rallyParent = landscape || portrait ? $('battleTools') : $('deckBody');
+  const rallyNext = landscape || portrait ? $('sound') : null;
+  if ($('rally').parentNode !== rallyParent || $('rally').nextSibling !== rallyNext)
+    rallyParent.insertBefore($('rally'), rallyNext);
+  updateRally();
   move('mapControls', landscape || portrait ? 'protectedNavigation' : 'battlefield');
   const buildParent = portrait || sidebar ? $('protectedNavigation') : $('objectiveHUD');
   const buildNext = portrait || sidebar ? $('battleTools') : $('protectedTargets');
@@ -1254,6 +1291,7 @@ function syncProtectedLayout() {
     renderer.resize();
     syncInputScope();
     if (focused?.isConnected && !focused.closest('.hidden,[inert]') && focused.getClientRects().length) focused.focus({preventScroll:true});
+    else if (focused === $('sound') && (landscape || portrait)) $('rally').focus({preventScroll:true});
   }
   positionToast();
   return changed || fitted;
@@ -2154,11 +2192,7 @@ function updateHUD() {
         s.gold[0] < (game.buildings || BUILDINGS)[b.dataset.type].cost,
       ),
     );
-  $('rallyCost').innerHTML =
-    s.spellCooldown[0] > 0
-      ? `${Math.ceil(s.spellCooldown[0])}s <em>Recharging</em>`
-      : `◆ ${SPELL.cost} <em>${SPELL.cooldown}s cooldown</em>`;
-  $('rally').style.opacity = s.spellCooldown[0] > 0 ? '.55' : '1';
+  updateRally();
   $('objectiveHUD').classList.toggle(
     'hidden',
     !currentChallenge && !currentCampaign && !$('app').classList.contains('protected-mobile'),
@@ -3168,8 +3202,10 @@ function syncViewportSafety() {
   panel.style.width = `${viewport.width}px`; panel.style.height = `${viewport.height}px`;
   let geometry = {safe:true,reason:''};
   if (mobile) {
-    const controls = ['pause','speed','sound','settings','home','front','minimap','compactBuild',
-      ...[...protectedControls.values()].map(c => c.button.id)].filter(Boolean).map(id => $(id).getBoundingClientRect());
+    const controls = ['pause','speed','sound','rally','settings','home','front','minimap','compactBuild',
+      ...[...protectedControls.values()].map(c => c.button.id)].filter(Boolean)
+      .map(id => $(id)).filter(node => node.getClientRects().length && getComputedStyle(node).visibility !== 'hidden')
+      .map(node => node.getBoundingClientRect());
     // Protected buttons use stable authored IDs in data attributes, not DOM IDs.
     for (const {button} of protectedControls.values()) if (!button.id) controls.push(button.getBoundingClientRect());
     const teaching = $('app').classList.contains('mobile-coaching');
@@ -3830,6 +3866,9 @@ function applyMenuNavigation(route, {direction = 'back'} = {}) {
     (!$('settingsModal').classList.contains('hidden') && !settingsWasPaused) ||
     (!$('helpModal').classList.contains('hidden') && !helpWasPaused));
   interruptMobileInput();
+  // History navigation leaves the current targeting gesture behind. Resume
+  // or Forward must never revive a spell that the player armed before Back.
+  if (ui.spell) cancel();
   // Only this retained attempt can be inspected. Previous attempts and reload
   // markers cannot reconstruct a Game or take ownership of a checkpoint.
   if (route.attempt != null && (!started || route.attempt !== navigationAttempt)) {

@@ -117,7 +117,8 @@ test('controls fit the viewport and survive orientation changes', async ({page})
       };
     })).toEqual({viewport:[size.width,size.height],width:size.width-(size.height<=500&&size.width>size.height?152:0),expectedWidth:size.width-(size.height<=500&&size.width>size.height?152:0),startsAtLeft:true,rightEdgeMatches:true,railFits:true,backingMatches:true});
     await openBuildControls(page);
-    for (const selector of ['#battle','#pause','#speed','#sound','#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
+    const desktopSound=await page.locator('#sound').isVisible()?['#sound']:[];
+    for (const selector of ['#battle','#pause','#speed',...desktopSound,'#settings','#home','#front','#rally','.command-deck']) await fits(page,selector);
     await press(page,'#pause'); await fits(page,'#help');
     await press(page,'#help'); await expect(page.locator('#helpModal')).toBeVisible(); await press(page,'#guideDone');
     await expect(page.locator('#pauseVeil')).toBeVisible(); await press(page,'#resume');
@@ -169,7 +170,10 @@ for (const invalid of ['{broken', JSON.stringify({version:999})]) test(`invalid 
 
 test('denied storage keeps unsaved battle open without crashing settings or pause', async ({page}) => {
   await page.addInitScript(() => {for(const method of ['getItem','setItem','removeItem']) Storage.prototype[method] = () => {throw new DOMException('Storage blocked','SecurityError');};});
-  await open(page); await press(page,'#welcomeSettings'); await press(page,'#audioEnabled'); await press(page,'#settingsDone'); await press(page,'#start'); await press(page,'#sound'); await press(page,'#pause'); await expect(page.locator('#pauseVeil')).toBeVisible(); await press(page,'#saveExit');
+  await open(page); await press(page,'#welcomeSettings'); await press(page,'#audioEnabled'); await press(page,'#settingsDone'); await press(page,'#start');
+  if(await page.locator('#sound').isVisible())await press(page,'#sound');
+  else {await press(page,'#settings');await press(page,'#audioEnabled');await press(page,'#settingsDone');}
+  await press(page,'#pause'); await expect(page.locator('#pauseVeil')).toBeVisible(); await press(page,'#saveExit');
   await expect(page.locator('#welcome')).toBeHidden(); await expect(page.locator('#pauseVeil')).toBeVisible();
   await expect(page.locator('#toast')).toContainText(/could not save/i); await press(page,'#resume'); await expect(page.locator('#pauseVeil')).toBeHidden();
 });

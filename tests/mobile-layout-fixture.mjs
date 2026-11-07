@@ -44,7 +44,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
   if(isPortrait||isSidebar){
     const nx=navigation.left,nw=navigation.width;
     nodes.compactBuild=box(nx+6,navigation.top+2,56,44);
-    for(const [i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(nx+nw-6-188+i*48,navigation.top+2,44,44);
+    for(const [i,id]of ['pause','speed','rally','settings'].entries())nodes[id]=box(nx+nw-6-188+i*48,navigation.top+2,44,44);
     nodes.home=box(nx+6,navigation.top+50,44,44);nodes.front=box(nx+nw-50,navigation.top+50,44,44);
     nodes.minimap=box(nx+54,navigation.top+50,nw-108,44);
     if(shortCoaching){
@@ -52,7 +52,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
       // overflows rather than shrinking its tracks, so the guard rejects it.
       const inset=6,gap=4,size=44,ny=navigation.top+inset;
       nodes.compactBuild=box(nx+inset,ny,nw-2*inset,size);
-      for(const [i,id]of ['pause','speed','sound','settings'].entries())
+      for(const [i,id]of ['pause','speed','rally','settings'].entries())
         nodes[id]=box(nx+inset+(i%2)*(size+gap),ny+size+gap+Math.floor(i/2)*(size+gap),size,size);
       const mapTop=Math.max(ny+3*(size+gap),navigation.bottom-inset-(2*size+gap));
       nodes.home=box(nx+inset,mapTop,size,size);nodes.front=box(nx+inset+size+gap,mapTop,size,size);
@@ -62,7 +62,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     const targetHeight=isSidebar?Number(css.match(/\.protected-sidebar \.protected-target \{[^}]*min-height: (\d+)px/)[1]):44;
     nodes.target0=box(objective.left+6,targetY,w,targetHeight);nodes.target1=box(objective.left+12+w,targetY,w,targetHeight);
   }else{
-    for(const[i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(navigation.left+30+(i%2)*48,navigation.top+8+Math.floor(i/2)*48,44,44);
+    for(const[i,id]of ['pause','speed','rally','settings'].entries())nodes[id]=box(navigation.left+30+(i%2)*48,navigation.top+8+Math.floor(i/2)*48,44,44);
     const ny=navigation.bottom-100;
     nodes.home=box(navigation.left+19,ny,44,44);nodes.front=box(navigation.left+89,ny,44,44);nodes.minimap=box(navigation.left+8,ny+48,136,44);
     // CSS minmax(168px,1fr),52px,minmax(0,2fr),12px padding/12px gaps.
@@ -76,7 +76,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
       const step=44+Math.max(4,(navigation.height-12-5*44)/4);
       nodes.compactBuild=box(nx+6,ny+6,44,44);
       nodes.toggleCoach=box(nx+54,ny+6,44,44);
-      for(const [i,id]of ['pause','speed','sound','settings','home','front'].entries())
+      for(const [i,id]of ['pause','speed','rally','settings','home','front'].entries())
         nodes[id]=box(nx+6+(i%2)*48,ny+6+(1+Math.floor(i/2))*step,44,44);
       nodes.minimap=box(nx+6,ny+6+4*step,hold?44:92,44);
       nodes.coachResume=box(nx+54,ny+6+4*step,44,44);
@@ -91,6 +91,6 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     nodes.campaignTeaching=box(0,0,0,0);
     nodes.campaignCoach=box(0,0,0,0);
   }
-  const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild',...(protect?['target0','target1']:[]),...(teaching?[...(hold?['coachResume']:[]),'toggleCoach']:[])].map(id=>nodes[id]);
+  const controls=['pause','speed','rally','settings','home','front','minimap','compactBuild',...(protect?['target0','target1']:[]),...(teaching?[...(hold?['coachResume']:[]),'toggleCoach']:[])].map(id=>nodes[id]);
   return {nodes,canvas,controls,regions:[headerBox,objective,navigation,...(teaching&&!collapsed?[teachingBox]:[])],viewport};
 }

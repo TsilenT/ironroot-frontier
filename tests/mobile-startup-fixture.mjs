@@ -29,6 +29,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   set textContent(v){for(const child of this.children)child.parentNode=null;this.children=[];this.text=v;}get textContent(){return this.text+this.children.map(c=>c.textContent).join('');}
   set innerHTML(v){this.textContent=v;}get innerHTML(){return this.text;}
   setAttribute(n,v){this.attributes[n]=String(v);if(n.startsWith('data-'))this.dataset[n.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=String(v);}
+  getAttribute(n){return this.attributes[n]??null;}
   removeAttribute(n){delete this.attributes[n];}
   toggleAttribute(n,on){if(on??!Object.hasOwn(this.attributes,n)){this.setAttribute(n,'');return true;}this.removeAttribute(n);return false;}
   replaceChildren(...children){this.textContent='';this.append(...children);}

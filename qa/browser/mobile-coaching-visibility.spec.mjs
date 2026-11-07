@@ -31,9 +31,9 @@ async function visibleRail(page,testInfo,label,{running=false}={}){
     const box=e=>{const r=e.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
     const root=document.querySelector('#app'),style=getComputedStyle(root),r=box(root);
     const safe={left:r.left+parseFloat(style.paddingLeft),top:r.top+parseFloat(style.paddingTop),right:r.right-parseFloat(style.paddingRight),bottom:r.bottom-parseFloat(style.paddingBottom)};
-    const ids=['battle','campaignTeaching','topbar','protectedDock','protectedNavigation',...(!running?['coachResume']:[]),'toggleCoach','compactBuild','pause','speed','sound','settings','home','front','minimap'];
+    const ids=['battle','campaignTeaching','topbar','protectedDock','protectedNavigation',...(!running?['coachResume']:[]),'toggleCoach','compactBuild','pause','speed','rally','settings','home','front','minimap'];
     const nodes=Object.fromEntries(ids.map(id=>[id,box(document.getElementById(id))]));
-    const controls=[...(!running?['coachResume']:[]),'toggleCoach','compactBuild','pause','speed','sound','settings','home','front','minimap'].map(id=>{
+    const controls=[...(!running?['coachResume']:[]),'toggleCoach','compactBuild','pause','speed','rally','settings','home','front','minimap'].map(id=>{
       const e=document.getElementById(id),rect=nodes[id],hit=document.elementFromPoint((rect.left+rect.right)/2,(rect.top+rect.bottom)/2);
       return {id,...rect,hit:e===hit||e.contains(hit)};
     });

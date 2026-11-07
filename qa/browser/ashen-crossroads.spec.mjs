@@ -52,7 +52,7 @@ test('sixth trial scouts three named choices and preserves native focus and comp
     await expect(page.locator('#viewportModal')).toBeHidden();await targetGeometry(page);
     const text=await page.evaluate(inspectPhoneText,{selector:'#objectiveProgress,#objectiveTime,.protected-name,.protected-health,#gold,#income,#time'});
     expect(text).toHaveLength(11);for(const row of text)expect(row.complete,JSON.stringify(row)).toBe(true);
-    for(const id of ['compactBuild','pause','speed','sound','settings','home','front','minimap']){
+    for(const id of ['compactBuild','pause','speed','rally','settings','home','front','minimap']){
       const control=page.locator('#'+id);await expect(control).toBeVisible();
       const geometry=await control.evaluate(element=>{const r=element.getBoundingClientRect();return {width:r.width,height:r.height,within:r.left>=0&&r.right<=innerWidth+.5&&r.top>=0&&r.bottom<=innerHeight+.5,hit:element.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))};});
       expect(geometry.width,id).toBeGreaterThanOrEqual(43.5);expect(geometry.height,id).toBeGreaterThanOrEqual(43.5);expect(geometry,id).toMatchObject({within:true,hit:true});

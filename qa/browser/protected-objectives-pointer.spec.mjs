@@ -74,7 +74,7 @@ test('shared mobile field keeps controls outside the world and holds unsafe resi
     await page.setViewportSize(size);await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
     const geometry=await page.evaluate(()=>{
       const field=document.getElementById('battle').getBoundingClientRect();
-      const ids=['pause','speed','sound','settings','home','front','compactBuild','minimap'];
+      const ids=['pause','speed','rally','settings','home','front','compactBuild','minimap'];
       return {height:field.height,controls:ids.map(id=>{
         const e=document.getElementById(id),r=e.getBoundingClientRect();
         return {id,width:r.width,height:r.height,visible:r.left>=0&&r.top>=0&&r.right<=innerWidth+.5&&r.bottom<=innerHeight+.5,

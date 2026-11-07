@@ -37,7 +37,7 @@ async function collapsed(page,{held=false}={}){
     const app=document.getElementById('app'),css=getComputedStyle(app),root=rect(app);
     const viewport={left:root.left+parseFloat(css.paddingLeft),top:root.top+parseFloat(css.paddingTop),right:root.right-parseFloat(css.paddingRight),bottom:root.bottom-parseFloat(css.paddingBottom)};
     viewport.width=viewport.right-viewport.left;viewport.height=viewport.bottom-viewport.top;
-    const controls=[...document.querySelectorAll('#pause,#speed,#sound,#settings,#home,#front,#minimap,#compactBuild,[data-protected-id],#coachResume,#toggleCoach')]
+    const controls=[...document.querySelectorAll('#pause,#speed,#sound,#rally,#settings,#home,#front,#minimap,#compactBuild,[data-protected-id],#coachResume,#toggleCoach')]
       .filter(e=>e.getClientRects().length&&rect(e).width>0&&rect(e).height>0).map(e=>({...rect(e),id:e.id||e.dataset.protectedId,hit:e.contains(document.elementFromPoint(rect(e).left+rect(e).width/2,rect(e).top+rect(e).height/2))}));
     return {mobile:app.classList.contains('protected-mobile'),viewport,canvas:rect(document.getElementById('battle')),
       regions:['topbar','protectedDock','protectedNavigation'].map(id=>rect(document.getElementById(id))),controls,

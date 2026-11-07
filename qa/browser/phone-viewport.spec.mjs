@@ -22,7 +22,7 @@ async function geometry(page){
   const contains=(outer,r)=>r.left>=outer.left-.5&&r.top>=outer.top-.5&&r.right<=outer.right+.5&&r.bottom<=outer.bottom+.5;
   const overlaps=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
   const world=rect(document.getElementById('battle'));
-  const elements=[...['pause','speed','sound','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)),...document.querySelectorAll('[data-protected-id]')];
+  const elements=[...['pause','speed','rally','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)),...document.querySelectorAll('[data-protected-id]')];
   const controls=elements.map(e=>({id:e.id||e.dataset.protectedId,...rect(e),hit:e.contains(document.elementFromPoint(...[rect(e).left+rect(e).width/2,rect(e).top+rect(e).height/2]))}));
   const root=rect(document.getElementById('app'));
   const objectiveOverlap=overlaps(rect(document.getElementById('objectiveProgress')),rect(document.getElementById('objectiveTime')));

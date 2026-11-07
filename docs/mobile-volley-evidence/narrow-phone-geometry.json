@@ -1,0 +1,590 @@
+[
+  {
+    "kind": "skirmish",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":416,"width":320,"height":344},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["438","+5 /s","00:03","Destroy the enemy citadel.","3 roads"]
+  },
+  {
+    "kind": "skirmish",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":416,"width":320,"height":344},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["439","+5 /s","00:03","Destroy the enemy citadel.","3 roads"]
+  },
+  {
+    "kind": "skirmish",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":320,"bottom":290,"width":320,"height":242},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["443","+5 /s","00:04","Destroy the enemy citadel.","3 roads"]
+  },
+  {
+    "kind": "skirmish",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":48,"right":320,"bottom":290,"width":320,"height":242},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["445","+5 /s","00:05","Destroy the enemy citadel.","3 roads"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":300,"width":320,"height":228},
+    "controls": [
+      {"id":"4","width":151,"height":45.578125},
+      {"id":"5","width":151,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["526","+10 /s","00:00","10.0/15 gold/s · 2/2 protected","02:30 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":300,"width":320,"height":228},
+    "controls": [
+      {"id":"4","width":151,"height":45.578125},
+      {"id":"5","width":151,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["530","+10 /s","00:01","10.0/15 gold/s · 2/2 protected","02:29 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":568},
+    "hidden": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":388,"width":320,"height":316},
+    "controls": [
+      {"id":"4","width":151,"height":45.578125},
+      {"id":"5","width":151,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":164,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["536","+10 /s","00:01","10.0/15 gold/s · 2/2 protected","02:29 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":568},
+    "hidden": true,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":388,"width":320,"height":316},
+    "controls": [
+      {"id":"4","width":151,"height":45.578125},
+      {"id":"5","width":151,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":164,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["539","+10 /s","00:01","10.0/15 gold/s · 2/2 protected","02:29 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":326,"width":216,"height":278},
+    "controls": [
+      {"id":"4","width":151,"height":44},
+      {"id":"5","width":151,"height":44},
+      {"id":"compactBuild","width":92,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["548","+10 /s","00:02","10.0/15 gold/s · 2/2 protected","02:28 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":326,"width":216,"height":278},
+    "controls": [
+      {"id":"4","width":151,"height":44},
+      {"id":"5","width":151,"height":44},
+      {"id":"compactBuild","width":92,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["553","+10 /s","00:03","10.0/15 gold/s · 2/2 protected","02:27 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":430},
+    "hidden": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":370,"width":216,"height":322},
+    "controls": [
+      {"id":"4","width":151,"height":44},
+      {"id":"5","width":151,"height":44},
+      {"id":"compactBuild","width":44,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["560","+10 /s","00:04","10.0/15 gold/s · 2/2 protected","02:26 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "protected",
+    "viewport": {"width":320,"height":430},
+    "hidden": true,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":370,"width":216,"height":322},
+    "controls": [
+      {"id":"4","width":151,"height":44},
+      {"id":"5","width":151,"height":44},
+      {"id":"compactBuild","width":44,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["563","+10 /s","00:04","10.0/15 gold/s · 2/2 protected","02:26 remaining","North gold mine","100% HP","South gold mine","100% HP"]
+  },
+  {
+    "kind": "ashen",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":388,"width":320,"height":316},
+    "controls": [
+      {"id":"watchtower-1950-0","width":98.65625,"height":45.578125},
+      {"id":"barracks-2090-1","width":98.671875,"height":45.578125},
+      {"id":"aerie-2230-2","width":98.65625,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["667","+5 /s","00:03","0/2 targets destroyed","03:57 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
+  },
+  {
+    "kind": "ashen",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":388,"width":320,"height":316},
+    "controls": [
+      {"id":"watchtower-1950-0","width":98.65625,"height":45.578125},
+      {"id":"barracks-2090-1","width":98.671875,"height":45.578125},
+      {"id":"aerie-2230-2","width":98.65625,"height":45.578125},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["669","+5 /s","00:03","0/2 targets destroyed","03:57 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
+  },
+  {
+    "kind": "ashen",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Ready","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":320,"bottom":274,"width":320,"height":226},
+    "controls": [
+      {"id":"watchtower-1950-0","width":98.65625,"height":44},
+      {"id":"barracks-2090-1","width":98.671875,"height":44},
+      {"id":"aerie-2230-2","width":98.65625,"height":44},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["672","+5 /s","00:04","0/2 targets destroyed","03:56 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
+  },
+  {
+    "kind": "ashen",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "armed": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(86, 81, 56)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676},
+      {"text":"Cancel","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":6.389328337327676}
+    ],
+    "field": {"left":0,"top":48,"right":320,"bottom":274,"width":320,"height":226},
+    "controls": [
+      {"id":"watchtower-1950-0","width":98.65625,"height":44},
+      {"id":"barracks-2090-1","width":98.671875,"height":44},
+      {"id":"aerie-2230-2","width":98.65625,"height":44},
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44}
+    ],
+    "labels": ["674","+5 /s","00:04","0/2 targets destroyed","03:56 remaining","Pinewatch","North · 100%","Stonegate","Middle · 100%","Ember Roost","South · 100%"]
+  },
+  {
+    "kind": "first-build",
+    "viewport": {"width":320,"height":568},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Build","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":328,"width":320,"height":256},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":212,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
+  },
+  {
+    "kind": "first-build",
+    "viewport": {"width":320,"height":568},
+    "hidden": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Build","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":72,"right":320,"bottom":416,"width":320,"height":344},
+    "controls": [
+      {"id":"compactBuild","width":56,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":164,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
+  },
+  {
+    "kind": "first-build",
+    "viewport": {"width":320,"height":430},
+    "hidden": false,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Build","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":342,"width":216,"height":294},
+    "controls": [
+      {"id":"compactBuild","width":92,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
+  },
+  {
+    "kind": "first-build",
+    "viewport": {"width":320,"height":430},
+    "hidden": true,
+    "width": 44,
+    "height": 44,
+    "parent": "battleTools",
+    "background": "rgb(36, 60, 48)",
+    "hit": true,
+    "text": [
+      {"text":"Volley","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"◆ 75","font":12,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794},
+      {"text":"Build","font":14,"color":"rgb(241, 230, 190)","inside":true,"contrast":9.524981658397794}
+    ],
+    "field": {"left":0,"top":48,"right":216,"bottom":386,"width":216,"height":338},
+    "controls": [
+      {"id":"compactBuild","width":44,"height":44},
+      {"id":"pause","width":44,"height":44},
+      {"id":"speed","width":44,"height":44},
+      {"id":"rally","width":44,"height":44},
+      {"id":"settings","width":44,"height":44},
+      {"id":"home","width":44,"height":44},
+      {"id":"minimap","width":92,"height":44},
+      {"id":"front","width":44,"height":44},
+      {"id":"toggleCoach","width":44,"height":44}
+    ],
+    "labels": ["420","+5 /s","00:00","0/1 targets","03:00 remaining"]
+  }
+]
