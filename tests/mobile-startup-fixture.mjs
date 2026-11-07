@@ -1,17 +1,17 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
-import {Game,BUILDINGS,SPELL,UNITS,upgradeCost} from '../dist/engine.js';
+import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
 import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS];
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
-import {supportsFlightOrders} from '../dist/flight-orders.js';
-import {flightOrderModel,flightRoadName,flightRouteRows,flightWarningSummary} from '../dist/flight-orders-view.js';
+import {supportsAutonomousAir} from '../dist/autonomous-air.js';
+import {airRulesGuide,airBuildingDescription} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
-import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
+import {CURRENT_CHALLENGES as CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
 import {layout,box} from './mobile-layout-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
@@ -64,12 +64,12 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const fixture=campaignFixture('protected');
  const c={$,document,window:{innerWidth:width,innerHeight:height,addEventListener(){},matchMedia:q=>({matches:q.includes('orientation: landscape')?width>height&&height<=500:width<=height&&width<=700})},
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
-  battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
-  supportsFlightOrders,flightOrderModel,flightRoadName,flightRouteRows,flightWarningSummary,
-  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
+  battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,
+  supportsAutonomousAir,airRulesGuide,airBuildingDescription,
+  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
-  game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:null,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
+  game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,
   inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){log.interruptions++;},closeSelectionArmed:false,

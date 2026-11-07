@@ -4,7 +4,7 @@ import {encodeBattle,decodeBattle} from '../../dist/battle-codec.js';
 import {createBackup,parseBackup,BACKUP_STORAGE_KEYS as K} from '../../dist/backup.js';
 import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import {flightFixture,flightCampaignFixture,staggeredFlightFixture,FLIGHT_RULES,HISTORICAL_FLIGHTLESS_RULES,AIR_PHASES} from './flight-order-fixtures.mjs';
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,5);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,6);
 let fixtures=0,continuations=0;
 for(const rulesetId of FLIGHT_RULES)for(const mapId of ['classic','twin-span','long-march'])for(const side of [0,1])for(const phase of AIR_PHASES){
  const f=flightFixture({rulesetId,mapId,side,phase,home:1250});
@@ -29,4 +29,4 @@ for(const revision of [1,2,3]){
  for(let i=0;i<80;i++){a.update(.05);b.update(.05);assert.deepEqual(a.serialize(),b.serialize());continuations++;}
  fixtures++;
 }
-console.log(`Validated ${fixtures} authored flight UI checkpoints, ${continuations} exact continuation comparisons, backup admission, historical revisions and protocol 5.`);
+console.log(`Validated ${fixtures} authored flight UI checkpoints, ${continuations} exact continuation comparisons, backup admission, historical revisions under profile protocol ${CURRENT_PROFILE_PROTOCOL_VERSION}.`);

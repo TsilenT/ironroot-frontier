@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import test from 'node:test';
 import {Game,BUILDINGS,LANES} from '../dist/engine.js';
+import {readHistoricalProduction} from './engine-validation-source.mjs';
 const baselineSource=await readFile(new URL('./fixtures/engine-v0.8.js',import.meta.url),'utf8');
 const dataURL=source=>'data:text/javascript;base64,'+Buffer.from(source).toString('base64');
 const baselineURL=dataURL(baselineSource);
@@ -66,7 +67,11 @@ test('Classic historical non-grid placement and restore remain unchanged',()=>{
 test('all 12 campaign factories and five trials retain identities, simulation and deadline outcomes',async()=>{
   for(const [file,list,factory,evaluate] of [['campaign','CAMPAIGN_MISSIONS','createCampaignMission','evaluateCampaignMission'],['challenges','CHALLENGES','createChallenge','evaluateChallenge']]){
     const current=await import(`../dist/${file}.js`);
-    const authored=await readFile(new URL(file==='campaign'?'./fixtures/campaign-v0.9.js':`../dist/${file}.js`,import.meta.url),'utf8');
+    // Use independently pinned published authorship, never current code whose
+    // new policy imports and factories cannot belong to the historical oracle.
+    const authored=file==='campaign'
+      ?await readFile(new URL('./fixtures/campaign-v0.9.js',import.meta.url),'utf8')
+      :readHistoricalProduction('challenges.js').toString('utf8');
     if(file==='campaign')assert.equal(createHash('sha256').update(authored).digest('hex'),'8130181e93cd24a4cc0b73b33285892c48c4e29a6a8c5a0d1a39942eed5101b8','frozen original campaign oracle');
     const legacy=await import(dataURL(authored.replace("from './engine.js'",`from '${baselineURL}'`)));
     assert.equal(legacy[list].length,file==='campaign'?12:5);

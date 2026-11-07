@@ -1,6 +1,9 @@
 /** Isolated, in-memory lessons over the unchanged real engine. No progression or persistence. */
 import {Game, BUILDINGS, upgradeCost} from './engine.js';
 
+export const CURRENT_TRAINING_RULESET_ID='frontier-authored-air-local';
+export const createCurrentTrainingSession=(options={})=>new TrainingSession({...options,rulesetId:CURRENT_TRAINING_RULESET_ID});
+
 const freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
 const site=(x,label,type,side=0)=>({x,y:450,label,type,side});
 const build=(id,type,x,title,prompt)=>({id,kind:'build',type,title,prompt,sites:[site(x,`${BUILDINGS[type].name} site`,type)],successText:`${BUILDINGS[type].name} placed for ${BUILDINGS[type].cost} gold.`});
@@ -68,11 +71,12 @@ function observeEngine(game){
 export class TrainingSession {
   #game; #lessonIndex=0; #stepIndex=0; #status='instruction'; #paused=false; #recovering=false;
   #attemptId=0; #feedback=''; #results=new Map(); #evidence={}; #placed=new Map(); #stepStartedAt=0;
-  #seed; #targetIds=[]; #lastResult=null; #observed;
-  constructor({seed=12012,lessonId=TRAINING_LESSONS[0].id}={}) {
+  #seed; #rulesetId; #targetIds=[]; #lastResult=null; #observed;
+  constructor({seed=12012,lessonId=TRAINING_LESSONS[0].id,rulesetId}={}) {
     if(!Number.isInteger(seed)||seed<0||seed>4294967295)throw new Error('Training seed must be an unsigned 32-bit integer.');
     if(!lessonById(lessonId))throw new Error('Unknown training lesson: '+String(lessonId));
-    this.#seed=seed;this.#load(lessonId);
+    if(rulesetId!==undefined&&rulesetId!==CURRENT_TRAINING_RULESET_ID)throw new Error('Unsupported practice ruleset.');
+    this.#seed=seed;this.#rulesetId=rulesetId;this.#load(lessonId);
   }
   get game(){return this.#game;}
   get lesson(){return TRAINING_LESSONS[this.#lessonIndex];}
@@ -81,7 +85,7 @@ export class TrainingSession {
     const lesson=lessonById(id);if(!lesson)return this.#reject('Choose one of the listed training lessons.');
     this.#lessonIndex=TRAINING_LESSONS.indexOf(lesson);this.#stepIndex=0;this.#status='instruction';this.#paused=false;this.#recovering=false;
     this.#attemptId++;this.#feedback='';this.#evidence={};this.#placed=new Map();this.#results.delete(id);this.#targetIds=[];this.#lastResult=null;this.#stepStartedAt=0;
-    const game=new Game({seed:this.#seed,ai:false,difficulty:'normal',mapId:'classic'}),s=game.state;
+    const game=new Game({seed:this.#seed,ai:false,difficulty:'normal',mapId:'classic',...(this.#rulesetId?{rulesetId:this.#rulesetId}:{} )}),s=game.state;
     // Replace the constructor's normal starting barracks only. Authored practice forces are disclosed above.
     s.buildings=[];s.units=[];s.projectiles=[];s.effects=[];s.stats={kills:[0,0],built:[0,0],damage:[0,0]};s.gold=[lesson.startingGold,0];
     for(const [type,x] of lesson.playerBuildings)game._place(type,x,450,0);

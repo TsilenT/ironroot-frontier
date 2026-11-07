@@ -56,7 +56,7 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await expect(page.locator('#campaignCoach')).toBeHidden();
-  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-flight-open'}});
+  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-air-local-open'}});
 });
 
 test('opening guidance uses real build cards, normal gold costs, and real battlefield construction', async ({ page }) => {
@@ -88,11 +88,12 @@ test('opening guidance uses real build cards, normal gold costs, and real battle
   Game.restore(saved.game);
 });
 
-test('legacy introductory All buildings and hint controls remain reversible without changing its seven-building rules', async ({ page }) => {
+test('optional introductory All buildings and hint controls remain reversible with its seven-building roster', async ({ page }) => {
   // Explicit revision-one saved lesson reveals the retained legacy chapter.
   const game = createCampaignMission('first-watch');
   await seed(page, { format: 'ironroot-save', version: 3, scenario: { kind: 'campaign', id: 'first-watch', revision: 1 }, game: game.serialize() });
   await press(page, '#pause'); await press(page, '#saveExit'); await startRunning(page);
+  expect(await readSave(page)).toMatchObject({scenario:{kind:'campaign',id:'first-watch',revision:4},game:{rulesetId:'frontier-authored-air-local'}});
   await press(page, '#allBuildings');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(7);

@@ -2,7 +2,6 @@
 // No style mutation, app-state injection or relaxed clipping thresholds.
 import {expect} from '@playwright/test';
 import {test,press,saved} from './map-browser-helpers.mjs';
-import {expectReachable} from './training-browser-helpers.mjs';
 import {fullyContained} from './flight-pause-layout-geometry.mjs';
 
 async function initialAction(page,selector) {
@@ -27,32 +26,28 @@ async function initialAction(page,selector) {
   return measurement;
 }
 
-test('320×568 pause initially fits Air routes and every action, then keeps expanded information and keyboard return usable',async({page},info)=>{
+test('320×568 pause initially fits every action without Air routes and keeps keyboard focus and nested-menu return usable',async({page},info)=>{
   await page.setViewportSize({width:320,height:568});
   await page.goto('/');await page.evaluate(()=>document.fonts.ready);
   await press(page,'[data-mode="skirmish"]');await press(page,'#start');await press(page,'#pause');
   await expect(page.locator('#resume')).toBeFocused();
-  await expect(page.locator('#pauseFlights')).toHaveJSProperty('open',false);
+  await expect(page.locator('#pauseFlights,#pauseFlightList,#flightOrders')).toHaveCount(0);
   const measurements={};
-  for(const selector of ['#resume','#pauseSettings','#help','#pauseFlights > summary','#saveExit','#restartBattle'])
+  for(const selector of ['#resume','#pauseSettings','#help','#saveExit','#restartBattle'])
     measurements[selector]=await initialAction(page,selector);
   await info.attach('initial-pause-strict-bounds',{body:JSON.stringify(measurements,null,2),contentType:'application/json'});
   const before=await saved(page);
   await page.keyboard.press('Shift+Tab');await expect(page.locator('#restartBattle')).toBeFocused();
   await page.keyboard.press('Tab');await expect(page.locator('#resume')).toBeFocused();
-  const toggle=page.locator('#pauseFlights > summary');
   for(let repeat=0;repeat<2;repeat++){
-    await toggle.focus();await page.keyboard.press('Enter');
-    await expect(page.locator('#pauseFlights')).toHaveJSProperty('open',true);
-    await expect(page.locator('#pauseFlightList')).toHaveText('No gryphons are changing roads.');
-    await expect(page.locator('#pauseFlights')).toContainText('Select an aerie after resuming to change future launches.');
-    await expectReachable(page,'#restartBattle');
-    await expectReachable(page,'#pauseFlights > summary');await page.keyboard.press('Space');
-    await expect(page.locator('#pauseFlights')).toHaveJSProperty('open',false);
+    await press(page,'#pauseSettings');await expect(page.locator('#settingsModal')).toBeVisible();
+    await press(page,'#settingsDone');await expect(page.locator('#pauseSettings')).toBeFocused();
+    expect(await saved(page)).toEqual(before);
+    await page.locator('#help').focus();await page.keyboard.press('Space');
+    await expect(page.locator('#helpModal')).toBeVisible();
+    await page.keyboard.press('Escape');await expect(page.locator('#help')).toBeFocused();
+    expect(await saved(page)).toEqual(before);await expect(page.locator('#pauseVeil')).toBeVisible();
   }
-  await press(page,'#pauseSettings');await expect(page.locator('#settingsModal')).toBeVisible();
-  await press(page,'#settingsDone');await expect(page.locator('#pauseSettings')).toBeFocused();
-  expect(await saved(page)).toEqual(before);
   await page.keyboard.press('Escape');await expect(page.locator('#pauseVeil')).toBeHidden();
   await expect(page.locator('#pause')).toBeFocused();
 });

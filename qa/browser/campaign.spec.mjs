@@ -72,7 +72,7 @@ test('campaign locked mission cannot launch and an unlocked mission can',async (
   expect(await snapshot(page)).toBeNull();
   await chooseMission(page,'emberwatch'); await expect(page.locator('#start')).toBeEnabled();
   await startRunning(page); await expect(page.locator('#welcome')).toBeHidden();
-  const save=await pause(page); expect(save.scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
+  const save=await pause(page); expect(save.scenario).toEqual({kind:'campaign',id:'emberwatch',revision:4});
 });
 
 test('campaign chapter and mission navigation focuses the new heading for keyboard users',async ({page})=>{
@@ -132,7 +132,7 @@ test('campaign victory awards stars once and Continue unlocks the next mission',
   await expect(page.locator('#start')).toBeEnabled();
   await expect(page.locator('#campaignProgressText')).toContainText('1/19 missions');
   await startRunning(page); const save=await pause(page);
-  expect(save.scenario).toEqual({kind:'campaign',id:'three-roads',revision:2});
+  expect(save.scenario).toEqual({kind:'campaign',id:'three-roads',revision:4});
   expect(Game.restore(save.game).buildings.wardenLodge).toBeTruthy();
 });
 
@@ -185,14 +185,14 @@ test('campaign briefing and launch remain reachable across viewport changes',asy
     expect(bounds.x+bounds.width).toBeLessThanOrEqual(viewport.width+1);
   }
   await startRunning(page); await expect(page.locator('#welcome')).toBeHidden();
-  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
+  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:4});
 });
 
 // Known regression from independent UI review: a stale paused tab used to write
 // over a newer battle during beforeunload. Keep this assertion red until fixed.
 test('closing a stale paused campaign tab preserves the newer shared-context skirmish save',async ({page,context})=>{
   await openCampaign(page); await startRunning(page);
-  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:2});
+  expect((await pause(page)).scenario).toEqual({kind:'campaign',id:'emberwatch',revision:4});
 
   const newer=await context.newPage(),errors=[];
   newer.on('pageerror',error=>errors.push(error.message));

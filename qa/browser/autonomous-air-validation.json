@@ -1,0 +1,112 @@
+{
+  "status": "prepared; browser launch blocked before page creation",
+  "runtimeDate": "2026-11-07",
+  "logicalCases": {
+    "automaticAir": 12,
+    "strictPauseLayout": 1
+  },
+  "projects": [
+    "phone",
+    "narrow-phone",
+    "landscape",
+    "desktop"
+  ],
+  "discoveredInstances": 52,
+  "node": {
+    "version": "24.22.1",
+    "scopedSyntaxAndFixtures": "passed",
+    "paidCheckpoints": 3,
+    "exactContinuationComparisons": 360,
+    "archivedHarnessAndStrictGeometryTests": {
+      "passed": 8,
+      "failed": 0
+    }
+  },
+  "fullBrowserPackageCheck": {
+    "status": "passed after current-contract validator correction",
+    "verifiedLog": "/tmp/automatic-air-browser-preflight-final.log",
+    "initialFailure": "validate-campaign-progression-fixtures.mjs:21 expected fresh Emberwatch revision 2; corrected to current revision 4",
+    "independentScopedCheck": "passed again after final harness edits"
+  },
+  "browserAttempt": {
+    "playwrightVersion": "1.57.0",
+    "requiredPinnedVersion": "1.65.0",
+    "executable": "/usr/bin/chromium",
+    "chromiumSandbox": true,
+    "startTimeAsReported": "2026-11-07T13:47:26.658Z",
+    "qaServerStarted": true,
+    "testBodiesExecuted": 0,
+    "browserPasses": 0,
+    "failedAtLaunch": 3,
+    "interruptedAtLaunch": 1,
+    "notRun": 48,
+    "reason": "FATAL:chrome/browser/process_singleton_posix.cc:297 Check failed: . socket() failed: Operation not permitted (1)",
+    "secondaryStartupError": "chrome_crashpad_handler: --database is required",
+    "retriedWithSecurityWorkaround": false,
+    "rawResultPath": "qa/browser/test-results/automatic-air-results.json",
+    "failedLaunchResults": [
+      {
+        "title": "wings-of-ash: paid planning aerie is one-shot and Back/Forward keeps the automatic-air teaching hold",
+        "project": "phone",
+        "status": "failed",
+        "durationMs": 3,
+        "errorExcerpt": [
+          "Error: browserType.launch: Target page, context or browser has been closed",
+          "[pid=60][err] [60:60:1107/084727.856371:ERROR:third_party/crashpad/crashpad/util/file/filesystem_posix.cc:63] mkdir : No such file or directory (2)",
+          "[pid=60][err] chrome_crashpad_handler: --database is required",
+          "[pid=60][err] [60:60:1107/084727.861679:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)"
+        ]
+      },
+      {
+        "title": "stonegate: paid planning aerie is one-shot and Back/Forward keeps the automatic-air teaching hold",
+        "project": "phone",
+        "status": "failed",
+        "durationMs": 3,
+        "errorExcerpt": [
+          "Error: browserType.launch: Target page, context or browser has been closed",
+          "[pid=57][err] [57:57:1107/084727.856206:ERROR:third_party/crashpad/crashpad/util/file/filesystem_posix.cc:63] mkdir : No such file or directory (2)",
+          "[pid=57][err] chrome_crashpad_handler: --database is required",
+          "[pid=57][err] [57:57:1107/084727.859754:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)"
+        ]
+      },
+      {
+        "title": "classic: fully paid gryphon pursues and damages an adjacent-road enemy without any order",
+        "project": "phone",
+        "status": "failed",
+        "durationMs": 3,
+        "errorExcerpt": [
+          "Error: browserType.launch: Target page, context or browser has been closed",
+          "[pid=119][err] [119:119:1107/084728.619731:ERROR:third_party/crashpad/crashpad/util/file/filesystem_posix.cc:63] mkdir : No such file or directory (2)",
+          "[pid=119][err] chrome_crashpad_handler: --database is required",
+          "[pid=119][err] [119:119:1107/084728.623278:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)"
+        ]
+      },
+      {
+        "title": "twin-span: fully paid gryphon pursues and damages an adjacent-road enemy without any order",
+        "project": "phone",
+        "status": "interrupted",
+        "durationMs": 3,
+        "errorExcerpt": []
+      }
+    ]
+  },
+  "sourceHashes": {
+    "qa/browser/flight-orders.spec.mjs": "637ac64acff9814f1c1d84176a8547a30bbadc820bd9e9ffcea25b2e20b4dbe7",
+    "qa/browser/flight-pause-layout.spec.mjs": "91db5502d371166b00928f04ab9c7d1ea49f4b93946929af2a4be94d087e2ec2",
+    "qa/browser/autonomous-air-fixtures.mjs": "83e65e43eab589706fe5af35c4cbe02d723334ff49cb41fff4670b9bf792ab39",
+    "qa/browser/autonomous-air-fixtures.node.mjs": "571f9e72369b6d445f1f58721a5c8b7f75dc86dffa0785a9362cfd1c53416f30",
+    "qa/historical/manual-flight/flight-orders.spec.mjs.txt": "0676b67c0f12bc0e707ec70441761d12647be354ef44acfe9ff9b407782beb38",
+    "dist/app.js": "ecdf722e5e218dde6020e01f4b994b7a5c95e7e8cb382adc31b953ba83fada04",
+    "dist/index.html": "d34b4558ecd7aa3e2878a5c3cb7bf9d8059deb6457dc7d44b2cd402b96efd5b5",
+    "dist/styles.css": "1fcea6976fc4e1bc506280d2355562145af1eb7ceea0f9e14ee2c8666e47b54a",
+    "dist/engine.js": "f4c4fa4bd4d23efbd7f122428520672fbfcac0ce723e850c96a1f3369effd6c1",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "dist/campaign.js": "9702e35cc4f6eaeeeccc7985f4a854168e4e49cda17df0c277cc2833850b7686"
+  },
+  "limits": [
+    "No DOM/input/layout assertions executed in a browser here.",
+    "No physical-device, non-Chromium, human balance or difficulty claim.",
+    "Discovery used existing installed Playwright 1.57.0 only. Pinned 1.65.0 runner must repeat checks and execute the prepared cases."
+  ]
+}

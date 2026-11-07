@@ -7,7 +7,7 @@ import { createStorage, createSaveSession, readHistoryState, createHistorySessio
 import { createBackup, parseBackup, restoreBackup, MAX_BACKUP_BYTES, BACKUP_STORAGE_KEYS as K } from '../dist/backup.js';
 import { CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS, createCampaignProgress, getProgressionCampaignOverview as getCampaignOverview, readCampaignProgress, readCampaignProgressState, mergeCampaignProgress, writeCampaignProgress } from '../dist/campaign.js';
 
-import { Game } from '../dist/engine.js';
+import { Game, DEFAULT_SKIRMISH_RULESET_ID } from '../dist/engine.js';
 import { encodeBattle, decodeBattle, scenarioForBattle } from '../dist/battle-codec.js';
 import { getBattleWriteFailure } from '../dist/persistence.js';
 import { CHALLENGES } from '../dist/challenges.js';
@@ -324,10 +324,10 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 });
 
 
-test('UI: actual application startup protects current flight profiles with protocol 5 before ordinary storage', () => {
+test('UI: actual application startup protects current automatic-air profiles with protocol 6 before ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage,CURRENT_PROFILE_PROTOCOL_VERSION}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,5);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,6);
   assert.equal(JSON.parse(r.data.get(KEY)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });
@@ -409,5 +409,5 @@ for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start 
   const profile=createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});Object.assign(fresh.c,{decodeBattle,storage:createStorage(()=>profile.storage),SAVE:K.battle,downloadBackup(){},mode:'skirmish',selectedMap:'twin-span'});
   vm.runInContext(app.slice(app.indexOf('function updateResume()'),app.indexOf('\nupdateResume();')),fresh.c);fresh.c.updateResume();
   assert.equal(fresh.c.resumeProblem,null);fresh.c.start();assert.equal(fresh.c.started,true);assert.equal(fresh.c.paused,false);
-  assert.equal(fresh.c.game.map.id,'twin-span');assert.equal(fresh.c.game.ruleset.id,'frontier-rootwarden-open');assert.equal(fresh.log.claims,1);
+  assert.equal(fresh.c.game.map.id,'twin-span');assert.equal(fresh.c.game.ruleset.id,DEFAULT_SKIRMISH_RULESET_ID);assert.equal(fresh.log.claims,1);
 });

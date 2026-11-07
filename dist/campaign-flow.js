@@ -1,5 +1,6 @@
 import { BUILDINGS, buildSites } from './engine.js';
 import { currentIncome } from './campaign.js';
+import { supportsAutonomousAir } from './autonomous-air.js';
 
 // Presentation only: no technology locks or new fields in campaign/battle saves.
 // Optional opening missions use smaller presentation defaults.
@@ -44,8 +45,13 @@ export function drawCampaignGuidance(renderer, game, ui) {
 /** Fresh openings pause for teaching, never for a mid-battle hint.
  * Roadside Watch enters building directly and starts after its first paid barracks.
  * UI-only state: restored saves and completed replays run normally. */
-export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false, flightOrders = false } = {}) {
+export function campaignTeaching(id, { resumed = false, completed = false, learnedBasics = false, flightOrders = false, autonomousAir = false } = {}) {
   if (resumed || completed) return null;
+  if (autonomousAir && ['wings-of-ash', 'stonegate'].includes(id)) return {
+    title: id === 'wings-of-ash' ? 'Watch the neighboring roads' : 'Cover the siege engines',
+    text: (id === 'wings-of-ash' ? 'Against the veteran flyers, lead with archers. ' : 'For the middle defenses, bring siege with troops ahead. ') +
+      'Gryphons spot nearby enemies on their own, including on an adjacent road, and fly toward them to fight at their normal range. Archers stay on their road; archers and towers can hit flyers within range. Rootwardens cannot attack air.',
+  };
   if (flightOrders && ['wings-of-ash', 'stonegate'].includes(id)) return {
     title: id === 'wings-of-ash' ? 'Take control of the sky' : 'Find a way past the towers',
     text: (id === 'wings-of-ash' ? 'Against the veteran flyers, lead with archers. ' : 'For the middle defenses, bring siege. ') +
@@ -62,7 +68,8 @@ export function campaignTeaching(id, { resumed = false, completed = false, learn
     'winter-stores': ['Fund the relief', 'Keep both marked mines standing as you add and upgrade mines to reach the income goal, leaving enough gold for troops to defend them.'],
   };
   if (!Object.hasOwn(lessons, id) || (id === 'emberwatch' && learnedBasics)) return null;
-  return { title: lessons[id][0], text: lessons[id][1],
+  return { title: lessons[id][0], text: lessons[id][1] + (id === 'open-three-roads' && autonomousAir
+    ? ' Gryphons also spot nearby enemies on an adjacent road and fly over to engage on their own. Archers stay on their road and shoot only when flyers are within range.' : ''),
     ...(id === 'roadside-watch' ? { startAfterBuild: 'barracks' } : {}) };
 }
 
@@ -129,6 +136,7 @@ export function recommendCampaignSite(game, type, preferredLane = null) {
 export function campaignCoach(game, id, choice = {}) {
   if (!['roadside-watch','shield-at-the-fork','open-three-roads','first-watch','forked-road','emberwatch','three-roads','winter-stores','wings-of-ash','stonegate'].includes(id)) return null;
   const definitions = game.buildings || BUILDINGS;
+  const automaticAir = supportsAutonomousAir(game.ruleset);
   const own = game.state.buildings.filter(b => b.side === 0 && b.hp > 0);
   const build = (type, title, text, preferredLane = null) => {
     const recommendation = recommendCampaignSite(game, type, preferredLane);
@@ -160,7 +168,7 @@ export function campaignCoach(game, id, choice = {}) {
     }
     if (id === 'open-three-roads') {
       if (!own.some(b => b.lane === 0 && (game.units || {})[definitions[b.type]?.unit]?.canAttackAir))
-        return build('archery', 'Answer the northern flyers', 'Place an archery range on the north road to hit the flyers that Rootwardens cannot reach.', 0);
+        return build('archery', 'Answer the northern flyers', 'Place an archery range on the north road to hit the flyers that Rootwardens cannot reach.' + (automaticAir ? ' Gryphons may also approach enemies on the neighboring road; archers stay on their own road and need the flyer within range.' : ''), 0);
       if (!own.some(b => ['foundry','aerie'].includes(b.type) && b.lane === 1))
         return build('foundry', 'Reach the middle fortifications', 'Try a foundry with a troop screen to break structures, or choose a different route if you prefer.', 1);
       if (!own.some(b => b.lane === 2 && definitions[b.type]?.unit))
@@ -203,7 +211,7 @@ export function campaignCoach(game, id, choice = {}) {
     }
     if (id === 'wings-of-ash') {
       const lane = [0, game.map.lanes.length - 1].find(lane => !own.some(b => b.lane === lane && (game.units || {})[definitions[b.type]?.unit]?.canAttackAir));
-      if (lane !== undefined) return build('archery', 'Answer the flyers', 'Cover both outer roads with archers to hit the gryphons that ground-only troops cannot stop.', lane);
+      if (lane !== undefined) return build('archery', 'Answer the flyers', 'Cover both outer roads with archers to hit the gryphons that ground-only troops cannot stop.' + (automaticAir ? ' Gryphons choose nearby enemies themselves and may approach from a neighboring road. Archers and towers can intercept them within range.' : ''), lane);
     }
     if (id === 'stonegate' && !own.some(b => b.type === 'foundry'))
       return build('foundry', 'Bring siege support', 'Choose Foundry below for siege engines that outrange towers, keeping warriors ahead to protect them.');

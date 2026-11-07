@@ -1,4 +1,4 @@
-import { BUILDINGS as LEGACY_BUILDINGS, Game, SPELL, UNITS as LEGACY_UNITS, upgradeCost as legacyUpgradeCost } from './engine.js';
+import { BUILDINGS as LEGACY_BUILDINGS, Game, SPELL, UNITS as LEGACY_UNITS, upgradeCost as legacyUpgradeCost, supportsAutonomousAir } from './engine.js';
 
 /** Read-only presentation data. This module never changes engine definitions. */
 function freeze(value) {
@@ -61,6 +61,7 @@ export function createCodex(context = null) {
   const initial = baseline.state;
   const buildingCap = baseline.map.buildLimit;
   const endgame = baseline.ruleset?.endgame;
+  const automaticAir = supportsAutonomousAir(baseline.ruleset);
 
   const unitCopy = {
     get warrior() { return {
@@ -82,6 +83,7 @@ export function createCodex(context = null) {
       mechanics: [
         `Deals ${percent(RULES.archerVsAir - 1)} extra damage to flyers: ${num(UNITS.archer.damage * RULES.archerVsAir)} per level-1 hit.`,
         `Deals only ${percent(RULES.archerVsWarrior)} of normal damage to warriors: ${num(UNITS.archer.damage * RULES.archerVsWarrior)} per level-1 hit.`,
+        ...(automaticAir ? ['Archers stay on their road, but can shoot a flyer between roads when it comes within range.'] : []),
       ],
     }; },
     get siege() { return {
@@ -120,10 +122,17 @@ export function createCodex(context = null) {
     get gryphon() { return {
       role: 'Flying raider',
       silhouette: 'Broad wings, hooked beak and a body held above its shadow.',
-      advantages: 'Attacks ground and air troops while flying out of reach of warriors, siege engines and wizards.',
+      advantages: automaticAir
+        ? 'Seeks nearby enemies on its own, including troops on an adjacent road, while staying out of reach of warriors, siege engines and wizards.'
+        : 'Attacks ground and air troops while flying out of reach of warriors, siege engines and wizards.',
       cautions: 'Bring support when attacking buildings: gryphons deal reduced structure damage, archers have an anti-air bonus, and watchtowers and citadels can also hit them.',
       mechanics: [
         `Deals ${percent(RULES.gryphonVsStructure)} of normal damage to structures: ${num(UNITS.gryphon.damage * RULES.gryphonVsStructure)} per level-1 hit before overtime.`,
+        ...(automaticAir ? [
+          `Notices troops within ${num(baseline.ruleset.movement.autonomousAir.perception)} world units on its current or a neighboring road, then flies into its normal ${num(UNITS.gryphon.range)} attack range.`,
+          `Keeps pursuing a living nearby target up to ${num(baseline.ruleset.movement.autonomousAir.retention)} world units away; after losing it, seeks another nearby enemy or advances along the nearest road.`,
+          'A detour can reach an exposed enemy or draw the gryphon away from the army it was supporting; archers and towers can hit it throughout the flight.',
+        ] : []),
       ],
     }; },
   };
