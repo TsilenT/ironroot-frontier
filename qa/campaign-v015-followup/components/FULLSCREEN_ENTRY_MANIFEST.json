@@ -1,0 +1,95 @@
+{
+  "frozenAtUTC": "2026-11-07T00:16:07.755332+00:00",
+  "scope": "Optional entry control only; source merge input, not release approval",
+  "patch": {
+    "path": "qa/fullscreen-entry/fullscreen-entry.patch",
+    "sha256": "73ca00a246adcfa91c180e6965e2f19fe2b2a88e52e12c78855e55cfd78889eb",
+    "baselineApplyAndEveryOutputHash": "verified"
+  },
+  "changedSourceFiles": [
+    {
+      "path": "dist/app.js",
+      "status": "modified",
+      "baseSha256": "ba40cbc4fcff7063aa530bcd0a210169dbf0df81690a06c4299981abff7bc3ba",
+      "sha256": "42552fcd29981e9d950ca4309f2d6b920de6e969943f20d2d29bfecd402b1c7a",
+      "bytes": 147769
+    },
+    {
+      "path": "dist/index.html",
+      "status": "modified",
+      "baseSha256": "100a7542a335e3740d9b6ad0fad6e9199c541538083c0efdbb6a7f85f03952e6",
+      "sha256": "3386f65ca0a2545d4fc8ff3ad70a80366da6061ac6d1fb21ccd1e377cb6cd129",
+      "bytes": 45232
+    },
+    {
+      "path": "dist/styles.css",
+      "status": "modified",
+      "baseSha256": "b2a0baa83f196fa91d0b9c1b5636a8ac14e5b44fe9649fef35c448f19d4f9ab5",
+      "sha256": "1f47d8951d6cff5947537b851071488dddb83f936aa985c854ed31dd49d51bff",
+      "bytes": 102616
+    },
+    {
+      "path": "qa/browser/package.json",
+      "status": "modified",
+      "baseSha256": "b489d52b7c553a0f311664fba49e7f97ec4356ea85e86949323ce54326344d12",
+      "sha256": "a5e9a0aa7b2f1fbcb46635a09db44e1d1c18da0fbc0c9125d6ce1d9aa43a040a",
+      "bytes": 3309
+    },
+    {
+      "path": "tests/fullscreen-entry.test.mjs",
+      "status": "added",
+      "baseSha256": null,
+      "sha256": "8310e76725dc1cbfe05923f0b800c5e3a440ddffa72efc7fc1bcb3447585af5a",
+      "bytes": 8247
+    },
+    {
+      "path": "qa/browser/fullscreen-entry.spec.mjs",
+      "status": "added",
+      "baseSha256": null,
+      "sha256": "76e2292619a79a84b8ede50c97934cb979a5cf19a178a30fd588f9dcc9e8a9ae",
+      "bytes": 12080
+    },
+    {
+      "path": "docs/FULLSCREEN_ENTRY_QA.md",
+      "status": "added",
+      "baseSha256": null,
+      "sha256": "0c54189bf4d8c62b3bbe4f7396c36b0cabe5d30292fd6f3f1532773bf42d5f1b",
+      "bytes": 4334
+    }
+  ],
+  "verification": {
+    "nodeVersion": "24.22.1",
+    "focusedNode": {
+      "passed": 15,
+      "failed": 0
+    },
+    "allNode": {
+      "total": 1002,
+      "passed": 1001,
+      "failed": 0,
+      "skipped": 1,
+      "skipReason": "Existing optional desktop dependencies not installed"
+    },
+    "gameSyntax": "passed",
+    "runtimeFiles": 45,
+    "browserSyntaxFixtures": "passed",
+    "browserDiscovery": {
+      "version": "1.57.0",
+      "cases": 11,
+      "profileInstances": 44,
+      "execution": false
+    },
+    "browserExecution": "not attempted; local shell Chromium socket startup restricted; pinned 1.65 cloud gate pending",
+    "visualOrPhysicalDeviceClaim": false
+  },
+  "evidenceFiles": [
+    "qa/fullscreen-entry/focused-node.log",
+    "qa/fullscreen-entry/node-tests.log",
+    "qa/fullscreen-entry/game-syntax.log",
+    "qa/fullscreen-entry/runtime-check.json",
+    "qa/fullscreen-entry/browser-syntax-fixtures.log",
+    "qa/fullscreen-entry/browser-discovery.log",
+    "qa/fullscreen-entry/patch-apply.log"
+  ],
+  "excluded": "qa/fullscreen-entry/base and apply-check are private patch-construction artifacts, not source/runtime; temporary node_modules adapter link removed."
+}

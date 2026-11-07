@@ -21,6 +21,7 @@ function harness() {
         rect:box(0,0,44,44), clip:'visible', attributes:{},
         classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:k=>classes.delete(k),toggle(k,on){on?classes.add(k):classes.delete(k);}},
         setAttribute(k,v){this.attributes[k]=v;},
+        insertBefore(child){child.parentNode=this;child.parentElement=this;},
         closest(selector){for(let e=this;e;e=e.parentElement)if((selector.includes('.hidden')&&e.classList.contains('hidden'))||(selector.includes('[inert]')&&e.inert))return e;return null;},
         contains(other){for(let e=other;e;e=e.parentElement)if(e===this)return true;return false;},
         getClientRects(){return this.closest('.hidden,[inert]') || ($('commandDeck').contains(this)&&!$('app').classList.contains('compact-build-open')) ? [] : [this.rect];},
@@ -47,7 +48,7 @@ function harness() {
       querySelectorAll:s=>s==='.build-card'?cards:s==='.coach-highlight'?[...nodes.values()].filter(n=>n.classList.contains('coach-highlight')):[]},
     window:{innerWidth:320,innerHeight:568},getComputedStyle:n=>({visibility:'visible',overflowX:n.clip,overflowY:'visible'}),
     renderer:{width:320,height:250,scale:.32,camera:450,snap:p=>p},
-    updateSelection(){},sound(){},toast(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
+    updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
   };
   createContext(c);
   for (const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function updateSelection()'),section('function updateCompactBuildControl()','function canFocusProtectedObjective()'),section('function activateBattlePoint(','function resetBattleGesture(')]) runInContext(code,c);

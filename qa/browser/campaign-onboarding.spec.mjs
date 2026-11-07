@@ -68,7 +68,8 @@ test('opening guidance uses real build cards, normal gold costs, and real battle
   await expect(page.locator('#coachTitle')).toHaveText('Build a barracks');
   await press(page, '[data-type="barracks"]');
   await placeAt(page, 550, 450);
-  await press(page, '#cancelBuild'); // Repeated placement stays armed until explicitly cancelled.
+  await expect(page.locator('#battle')).not.toHaveClass(/placing/); // Successful placement finishes the order.
+  await openBuildControls(page);
   await expect(page.locator('#coachTitle')).toHaveText('Add archers');
   await press(page, '[data-type="archery"]');
   await expect(page.locator('#coachText')).toContainText('gold ring');

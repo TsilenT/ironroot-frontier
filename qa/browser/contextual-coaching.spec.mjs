@@ -20,12 +20,35 @@ async function fresh(page,id='roadside-watch'){
   await press(page,'#start');await expect(page.locator('#coachingModal')).toBeVisible();
 }
 async function place(page,type,x,y=450){
-  await press(page,`[data-type="${type}"]`);await press(page,'#home');
-  const r=await page.locator('#battle').boundingBox(),scale=Math.max(.32,r.height/900),half=r.width/(2*scale),camera=half>=1600?1600:Math.max(half,450);
-  const p={x:r.x+r.width/2+(x-camera)*scale,y:r.y+r.height/2+(y-450)*scale};
-  if(await page.evaluate(()=>navigator.maxTouchPoints>0))await page.touchscreen.tap(p.x,p.y);else await page.mouse.click(p.x,p.y);
+  await press(page,`[data-type="${type}"]`);
+  const touch=await page.evaluate(()=>navigator.maxTouchPoints>0);
+  const map=Game.restore((await saved(page)).game).map;
+  const mini=page.locator('#minimap'),m=await mini.boundingBox();
+  // Use the ordinary minimap to expose the site. Home cannot show forward
+  // sites on a portrait screen. Observe the delivered native activation so
+  // compatibility-click pixel quantization is not mistaken for camera drift.
+  await mini.evaluate(element=>{
+    window.__qaPlacementMinimap=null;
+    element.addEventListener('click',event=>{
+      window.__qaPlacementMinimap={x:event.clientX,trusted:event.isTrusted,target:event.target.id};
+    },{once:true,passive:true});
+  });
+  const aim={x:m.x+m.width*x/map.width,y:m.y+m.height/2};
+  if(touch)await page.touchscreen.tap(aim.x,aim.y);else await page.mouse.click(aim.x,aim.y);
+  const activation=await page.evaluate(()=>window.__qaPlacementMinimap);
+  expect(activation).toMatchObject({trusted:true,target:'minimap'});
+  expect(Math.abs(activation.x-aim.x)).toBeLessThanOrEqual(1);
+  const r=await page.locator('#battle').boundingBox(),scale=Math.max(.32,r.height/map.height),half=r.width/(2*scale);
+  const target=(activation.x-m.x)/m.width*map.width;
+  const camera=half>=map.width/2?map.width/2:Math.max(half,Math.min(map.width-half,target));
+  const p={x:r.x+r.width/2+(x-camera)*scale,y:r.y+r.height/2+(y-map.height/2)*scale};
+  expect(p.x).toBeGreaterThan(r.x);expect(p.x).toBeLessThan(r.x+r.width);
+  expect(p.y).toBeGreaterThan(r.y);expect(p.y).toBeLessThan(r.y+r.height);
+  expect(await page.evaluate(({x,y})=>document.elementFromPoint(x,y)?.id,p)).toBe('battle');
+  if(touch)await page.touchscreen.tap(p.x,p.y);else await page.mouse.click(p.x,p.y);
   await expect(page.locator('#toast')).toContainText('raised');
-  if((await page.locator('#buildPrompt').textContent()).startsWith('PLACE'))await press(page,'#cancelBuild');
+  await expect(page.locator('#battle')).not.toHaveClass(/placing/);
+  await expect(page.locator('#app')).not.toHaveClass(/compact-build-open/);
 }
 
 test('reading and paid construction stop both armies, clocks and income until explicit Resume',async({page})=>{
@@ -105,7 +128,9 @@ test('visibility interruption while planning requires explicit resume and cannot
 });
 
 test('keyboard focus stays in the teaching dialog and Space on its buttons does not leak into battle',async({page})=>{
-  await fresh(page);await page.keyboard.press('Shift+Tab');await expect(page.locator('#coachingPlay')).toBeFocused();
+  await fresh(page);await page.keyboard.press('Shift+Tab');await expect(page.locator('.coaching-copy')).toBeFocused();
+  await page.keyboard.press('Shift+Tab');await expect(page.locator('#coachingPlay')).toBeFocused();
+  await page.keyboard.press('Tab');await expect(page.locator('.coaching-copy')).toBeFocused();
   await page.keyboard.press('Tab');await expect(page.locator('#coachingPlan')).toBeFocused();
   await page.keyboard.press('Space');await expect(page.locator('#coachingModal')).toBeHidden();
   await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');

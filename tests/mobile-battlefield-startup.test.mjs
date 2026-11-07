@@ -4,9 +4,11 @@ import {readFileSync} from 'node:fs';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 
-test('actual first protected launch and restore reveal and populate HUD before geometry measurement',()=>{
+test('uncoached protected launch and restore reveal and populate HUD before geometry measurement',()=>{
  for(const restored of [false,true])for(const [width,height]of [[320,430],[667,300],[740,320],[393,659],[920,420],[320,480],[390,500],[320,568],[568,320],[844,390]]){
   const h=startupHarness({width,height});
+  // A completed mission keeps hints disabled, isolating the unchanged shell.
+  h.c.campaignProgress.missions['winter-stores']={completed:true,stars:1,bestTime:60};
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),true,'actual markup starts with a hidden HUD');
   const original=h.start(restored);
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),false);

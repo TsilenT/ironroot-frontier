@@ -21,7 +21,7 @@ Campaign integration adds a separate requirement: restart the exact active scena
 
 The user approved creation of navigation and teaching draft PRs after the earlier denied attempts. PR #6 is now represented by the locally adapted navigation work. PR #7 teaching is now adapted and merged into the new three-mission opening. Hide hints preserves the planning hold, paid construction uses the ordinary engine path, and explicit Start/Resume releases it only after existing safety guards pass. No remote merge or publication of this combined work has occurred.
 
-## Verification state
+## Historical intermediate verification
 
 Before this integration, campaign progression passed 920 Node tests with one optional skip. After the phone, navigation and initial menu signature/layout integration, 43 focused presentation, campaign UI, restart identity, phone and HTML tests passed. The navigation/menu/phone intermediate aggregate passed 951 tests with one optional skip, and syntax/runtime/browser-fixture checks. The amended restart/focus delta then passed 26 focused tests. No combined browser run, final teaching-inclusive aggregate, remote commit, PR update or deployment is claimed. The initial PR #5 component evidence remains historical, not proof of this combined state.
 
@@ -36,3 +36,10 @@ The stable isolated v0.15.0 native review is recorded in CAMPAIGN_V015_NATIVE_RE
 A later unbounded aggregate run terminated the combat-feedback child before reporting its cases; it produced no assertion detail. The unchanged file passed all eight tests in isolation, and the project test command now bounds execution to four concurrent files. The bounded complete run passed 973 tests with one optional skip and zero failures. This is test scheduling, not a removed assertion or fabricated pass. The bounded final result is separate from that earlier interrupted child. The native browser also lost its tabs around this period; no cause is established, so it is not labeled a game defect or linked causally to the Node runner.
 
 The independent restart review also strengthened a newly prepared browser test: comparisons now use the codec's decoded identity rather than a nonexistent envelope property, and the suite adds an explicitly unfinished profile to require renewed teaching. These are real coverage fixes, not executed browser-pass claims. Protocol-upgrade browser cases now include ready v3 → v4 alongside absent/v1/v2 profiles.
+
+
+## Exact first PR gate and user-feedback revision
+
+Draft PR #8 combined all four parents at `9342331450b4e631b70fe96b8238ffb6fb207cdf`. Its exact cloud run passed 973 Node tests (one optional skip) and 1,050 browser cases, but failed 113 browser cases with 33 intentional skips. The 113 failures have not been relabeled as passes; their old scenario/teaching/roster/profile assumptions and placement-coordinate error are recorded in CAMPAIGN_V015_QA_TRIAGE.md. Subsequent ordinary native-minimap portrait runs completed the third paid mission and replay, closing the earlier native error-9 coverage gap for Chromium emulation, not for physical devices.
+
+The next local revision incorporates the user's request for one-shot successful building placement, mouse-only Shift repeat and persistent mobile teaching outside the Build drawer. It also preserves the original failed tests' downstream recovery, save and paid-state assertions. A new exact-source gate is required after those behavior changes and their layout/keyboard review. No merge or public update is implied.

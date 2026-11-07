@@ -305,7 +305,7 @@ test('rotation to portrait closes the shared drawer without rebuilding protected
 test('drawer transitions use a distinct held-input scope and reject battlefield spending until closed',()=>{
   assert.match(app,/classList\.contains\('compact-build-open'\) \? 'compact-build'/);
   assert.match(app,/classList\.contains\('protected-compact'\) \? `compact-battle:\$\{mobileLayout\}`/);
-  assert.match(app,/function activateBattlePoint\(w\) \{\s*if \(!canInteract\(\) \|\| \$\('app'\)\.classList\.contains\('compact-build-open'\)\) return;/);
+  assert.match(app,/function activateBattlePoint\(w, \{ repeatBuild = false \} = \{\}\) \{\s*if \(!canInteract\(\) \|\| \$\('app'\)\.classList\.contains\('compact-build-open'\)\) return;/);
   const guard=createInputScopeGuard('compact-battle'),pointer={pointerId:71,pointerType:'touch',isPrimary:true};
   guard.pointerDown(pointer);guard.setScope('compact-build');guard.setScope('compact-battle');
   assert.equal(guard.pointerEnd(pointer),true);

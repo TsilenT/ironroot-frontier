@@ -116,7 +116,8 @@ test('fresh observed Holdfast start ordinary build upgrade and native 2x play re
   const point=await homePoint(page,MAPS.classic,270,450);
   await press(page,'[data-type="archery"]');await tapPoint(page,point);
   await expect(page.locator('#toast')).toContainText('Archery range raised');
-  await press(page,'#cancelBuild');await tapPoint(page,point);await press(page,'#upgrade');
+  await expect(page.locator('#battle')).not.toHaveClass(/placing/);
+  await tapPoint(page,point);await press(page,'#upgrade');
   await expect(page.locator('#selectionDetail')).toContainText('Level 2');await press(page,'#closeSelection');
   const intermediate=await pause(page);
   expect(intermediate.challengeId).toBe('holdfast');expect(intermediate.game.state.stats.built[0]).toBe(2);

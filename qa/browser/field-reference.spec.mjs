@@ -13,7 +13,10 @@ async function press(page,selector){
   else await target.click();
 }
 async function guide(page){
-  await page.goto('/');await press(page,'#welcomeHelp');
+  await page.goto('/');
+  // Field trials deliberately retain the complete five-unit legacy reference.
+  // Fresh campaign and skirmish rosters have different scopes in v0.15.
+  await press(page,'[data-mode="challenges"]');await press(page,'#welcomeHelp');
   await expect(page.locator('#helpModal')).toBeVisible();
   await expect(page.locator('#closeHelp')).toBeFocused();
 }
@@ -89,8 +92,10 @@ test('field reference disclosures show every unit structure and exact counter ec
 });
 
 test('field reference native Space and focus keep a paused battle read-only',async ({page})=>{
-  await page.goto('/');await press(page,'#start');await press(page,'#pause');
+  await page.goto('/');await press(page,'[data-mode="challenges"]');
+  await press(page,'#start');await press(page,'#pause');
   const before=await page.evaluate(key=>localStorage.getItem(key),SAVE);
+  expect(JSON.parse(before)).toMatchObject({campaignId:null,challengeId:'shieldbreaker',game:{version:1}});
   const time=await page.locator('#time').innerText();
   await press(page,'#help');await expect(page.locator('#closeHelp')).toBeFocused();
   await toggle(page,'#rosterGuide',true);
@@ -154,4 +159,19 @@ test('field reference renders five distinct nonempty original portrait canvases'
     portraits.push(pixels.url);
   }
   expect(new Set(portraits).size).toBe(5);
+});
+
+test('fresh campaign field reference contains only its two unlocked units and no mine economy',async ({page})=>{
+  await page.goto('/');
+  await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  await press(page,'#welcomeHelp');await toggle(page,'#rosterGuide',true);
+  expect(await page.locator('[data-codex-unit]').evaluateAll(cards=>cards.map(card=>card.dataset.codexUnit)))
+    .toEqual(['warrior','archer']);
+  await expect(page.locator('[data-codex-structure]')).toHaveCount(0);
+  await expect(page.locator('#codexScope')).toContainText('Starting resources and forces come from the mission briefing');
+  await toggle(page,'.codex-economy',true);
+  await stat(page.locator('#economyCodex'),'Reference gold','420');
+  await stat(page.locator('#economyCodex'),'Mine cap','0');
+  await expect(page.locator('#economyCodex')).toContainText('no gold mines available');
+  expect(await page.evaluate(key=>localStorage.getItem(key),SAVE)).toBeNull();
 });

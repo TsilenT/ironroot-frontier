@@ -1,6 +1,7 @@
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
+import { createMenuHistory } from './menu-history.js';
 import {
   GamepadInput,
   moveCursor,
@@ -186,6 +187,10 @@ let campaignPage = 'mission', briefingMission = null;
 // A teaching hold stops simulation, while ordinary battle commands remain available.
 // Manual, visibility, viewport and storage pauses keep their existing guards.
 let coachingHold = false;
+let navigationAttempt = 0, navigationGame = null;
+var menuHistory = null;
+let navigationAway = false;
+function syncMenuHistory() { if (!navigationAway && !document.hidden) menuHistory?.sync(); }
 const labels = {
   barracks: ['Barracks', 'Shielded warriors', '9s / wave'],
   archery: ['Archery', 'Ranged support', '10s / wave'],
@@ -497,8 +502,29 @@ function updateCampaignDeck() {
   const open = $('app').classList.contains('compact-build-open');
   $('campaignCoach').classList.toggle('hidden', !show);
   $('toggleCoach').classList.toggle('hidden', !hint);
-  $('toggleCoach').textContent = coachEnabled ? 'Hide hints' : 'Show hints';
+  $('toggleCoach').textContent = compact ? coachEnabled ? 'Hide' : 'Show' : coachEnabled ? 'Hide hints' : 'Show hints';
+  $('toggleCoach').setAttribute('aria-label', coachEnabled ? 'Hide hints' : 'Show hints');
+  $('toggleCoach').title = coachEnabled ? 'Hide hints' : 'Show hints';
   $('toggleCoach').setAttribute('aria-pressed', String(coachEnabled));
+  const teaching = $('campaignTeaching');
+  // Any enabled applicable hint belongs outside the mobile drawer, including
+  // a restored tutorial. Latch it so Hide/Show remains reachable. This is only
+  // presentation: resumed battles never gain a teaching hold from their hints.
+  if (coachingHold || (coachEnabled && hint)) teaching.classList.add('coach-started');
+  const available = started && !objectiveOutcome && game.state.winner === null &&
+    (coachingHold || (!!hint && teaching.classList.contains('coach-started')));
+  const rail = compact && available;
+  const layoutChanged = $('app').classList.contains('mobile-coaching') !== rail;
+  $('app').classList.toggle('mobile-coaching', rail);
+  const parent = rail ? $('app') : $('commandDeck');
+  if (teaching.parentNode !== parent) parent.insertBefore(teaching, rail ? $('commandDeck') : $('deckHeading'));
+  teaching.classList.toggle('hidden', !rail && !show && !coachingHold && !hint);
+  $('coachResume').textContent = compact ? game.state.time === 0 ? 'Start' : 'Resume'
+    : game.state.time === 0 ? 'Start battle' : 'Resume battle';
+  $('coachResume').setAttribute('aria-label', game.state.time === 0 ? 'Start battle' : 'Resume battle');
+  $('coachRailStatus').classList.toggle('hidden', !rail || show);
+  $('coachRailStatus').textContent = coachingHold ? 'Paused. Start when ready.' : 'Hints hidden. Battle continues.';
+
   let highlighted = show ? document.querySelector(hint.control) : null;
   let text = hint?.text || '';
   if (show && coachingHold && ui.build && game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost)
@@ -518,10 +544,25 @@ function updateCampaignDeck() {
   ui.coachSite = show ? hint.site : null;
   ui.coachBuilding = show ? hint.buildingId : null;
   if (show) {
+    let next = hint.title;
+    if (ui.spell) next = 'Tap enemy troops to fire Arrow volley.';
+    else if (ui.build) next = hint.site ? 'Tap a green site. Gold ring suggested.'
+      : game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost
+        ? 'Need more gold. Resume to earn income.' : 'No suggested site. Choose another site or building.';
+    else if (hint.buildType) next = `${ui.selected ? 'Close details, then Build → ' : compact && !open ? 'Build → ' : 'Choose '}${(game.buildings || BUILDINGS)[hint.buildType].name}.`;
+    else if (hint.control === '#upgrade') next = 'Upgrade the selected building.';
+    else if (hint.buildingId) next = 'Tap your marked building to manage it.';
+    else if (hint.control === '#front') next = coachingHold ? 'Start when ready. Front follows your army.' : 'Use Front to follow your army.';
+    if (show && point && !guidancePointVisible(renderer, game, point) && !open) next = 'Pan or use the minimap to find the marked site.';
+    if (coachingHold) next = 'Paused. ' + next;
+    if ($('coachNext').textContent !== next || $('coachTitle').textContent !== hint.title || $('coachText').textContent !== text)
+      $('campaignCoach').scrollTop = 0;
+    $('coachNext').textContent = next;
     if ($('coachTitle').textContent !== hint.title) $('coachTitle').textContent = hint.title;
     if ($('coachText').textContent !== text) $('coachText').textContent = text;
     highlighted?.classList.add('coach-highlight');
   }
+  if (layoutChanged) syncProtectedLayout();
 }
 $('allBuildings').onclick = () => {
   if (!canInteract()) return;
@@ -536,6 +577,8 @@ $('allBuildings').onclick = () => {
 $('toggleCoach').onclick = () => {
   if (!canInteract()) return;
   coachEnabled = !coachEnabled;
+  if (coachEnabled) $('campaignTeaching').classList.add('coach-started');
+  if (!coachEnabled && $('campaignCoach').contains(document.activeElement)) $('toggleCoach').focus({ preventScroll: true });
   updateCampaignDeck();
 };
 function beginCampaignCoaching({ manual = false } = {}) {
@@ -565,11 +608,12 @@ function planWithCoaching() {
   $('coachingModal').classList.add('hidden');
   syncDialogs();
   if (!canInteract() || viewportPause.active) return;
-  setCompactBuildOpen(true);
+  setCompactBuildOpen(false);
   updateHUD();
   const hint = campaignCoach(game, currentCampaign, ui);
   const target = hint && document.querySelector(hint.control);
   if (coachControlVisible(target)) target.focus({ preventScroll: true });
+  else if ($('app').classList.contains('protected-compact')) $('compactBuild').focus({ preventScroll: true });
   else $('battle').focus();
 }
 $('coachingPlan').onclick = planWithCoaching;
@@ -911,6 +955,7 @@ function start(
   $('battleLimitWarning').classList.add('hidden');
   $('resume').disabled = false;
   coachingHold = false;
+  $('campaignTeaching').classList.remove('coach-started');
   $('coachingModal').classList.add('hidden');
   currentCampaign = cid;
   expandedBuilds = !!campaignProgress.missions[cid]?.completed;
@@ -1019,6 +1064,7 @@ function start(
   if (game.limitReason) holdBattleSafety(game.limitReason);
   beginCampaignCoaching();
   save();
+  globalThis.queueMicrotask?.(syncMenuHistory);
 }
 function beginProtectedObjectives() {
   protectedMonitor = currentCampaign
@@ -1090,9 +1136,9 @@ function syncProtectedLayout() {
   const landscape = !!window.matchMedia?.('(max-height: 500px) and (orientation: landscape)').matches;
   const portrait = !!window.matchMedia?.('(max-width: 700px) and (orientation: portrait)').matches;
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
-  const sidebar = landscape && viewport.height < 360;
+  const sidebar = landscape && (viewport.height < 360 || $('app').classList.contains('mobile-coaching'));
   const shortPortrait = portrait && viewport.height < 560;
-  const next = sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary';
+  const next = (sidebar ? 'sidebar' : shortPortrait ? 'portrait-short' : landscape ? 'landscape' : portrait ? 'portrait' : 'ordinary') + ($('app').classList.contains('mobile-coaching') ? ':coaching' : '');
   const fitted = fitMobileViewport($('app'), viewport, landscape || portrait);
   const changed = mobileLayout !== next;
   const focused = document.activeElement;
@@ -1726,13 +1772,14 @@ $('battle').addEventListener('pointerup', (e) => {
   ui.dragging = false;
   $('battle').classList.remove('dragging');
   if (panOnly || moved || !canInteract()) return;
-  activateBattlePoint(w);
+  // Repeat is an explicit mouse gesture, never a touch/pen or controller modifier.
+  activateBattlePoint(w, { repeatBuild: e.pointerType === 'mouse' && e.shiftKey });
 });
 $('battle').addEventListener('mouseup', (e) => {
   // pointerup only fires after the final button in a chord is released.
   if (pointer?.button === e.button) resetBattleGesture();
 });
-function activateBattlePoint(w) {
+function activateBattlePoint(w, { repeatBuild = false } = {}) {
   if (!canInteract() || $('app').classList.contains('compact-build-open')) return;
   if (ui.build) {
     const bounds = buildBounds(game.map, 0);
@@ -1753,9 +1800,10 @@ function activateBattlePoint(w) {
       toast(
         `${(game.buildings || BUILDINGS)[ui.build].name} raised. ${(game.buildings || BUILDINGS)[ui.build].unit ? 'First troops in a moment.' : 'Your frontier grows.'}`,
       );
-      if (game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build].cost) {
+      if (!repeatBuild || game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build].cost) {
         ui.build = null;
         syncChoice();
+        setCompactBuildOpen(false);
       }
     } else {
       toast(result.reason);
@@ -1860,6 +1908,8 @@ window.addEventListener('keydown', (e) => {
     !$('viewportModal').classList.contains('hidden')
   )
     return;
+  // Space/Page/arrow keys scroll the focused lesson; they are not battle commands.
+  if ($('campaignCoach').contains(e.target)) return;
   if (e.code === 'Space' && !nativeSpaceTarget(e.target)) {
     e.preventDefault();
     toggleBattlePause();
@@ -2235,6 +2285,7 @@ function setMode(value) {
         : 'BEGIN SKIRMISH <span>→</span>';
   renderChallenge();
   renderCampaign();
+  globalThis.queueMicrotask?.(syncMenuHistory);
 }
 function updateSkirmishRules() {
   const rules = getRuleset(selectedRuleset, 1);
@@ -2261,6 +2312,7 @@ function showCampaignPage(page, focusId) {
   renderCampaign();
   $('campaignConfig').scrollTop = 0;
   if (focusId) $(focusId).focus({ preventScroll: true });
+  globalThis.queueMicrotask?.(syncMenuHistory);
 }
 function selectCampaignMission(id) {
   const mission = CAMPAIGN_MISSIONS.find(m => m.id === id);
@@ -2549,29 +2601,34 @@ $('welcomeSettings').onclick = showSettings;
 $('pauseSettings').onclick = showSettings;
 $('closeSettings').onclick = hideSettings;
 $('settingsDone').onclick = hideSettings;
-// Fullscreen must start synchronously inside the button's user gesture. Target
-// the document root so sibling dialogs, pause controls and status remain visible.
+// Fullscreen is optional and must start synchronously inside a button gesture.
+// Target the document root so sibling dialogs and pause controls stay visible.
 const fullscreenRoot = document.documentElement;
 const fullscreenButtons = [...document.querySelectorAll('[data-fullscreen]')];
+const fullscreenStatuses = [...document.querySelectorAll('[data-fullscreen-status]')];
+const fullscreenAppView = window.matchMedia('(display-mode: standalone), (display-mode: fullscreen)');
 let fullscreenPending = false;
+let fullscreenFailure = '';
 function fullscreenElement() {
   return document.fullscreenElement || document.webkitFullscreenElement;
 }
 function fullscreenAPI() {
   if (typeof fullscreenRoot.requestFullscreen === 'function') return {
     enabled: document.fullscreenEnabled === true,
-    enter: () => fullscreenRoot.requestFullscreen(),
-    exit: () => document.exitFullscreen(),
+    enter: () => fullscreenRoot.requestFullscreen({ navigationUI: 'hide' }),
+    exit: typeof document.exitFullscreen === 'function' ? () => document.exitFullscreen() : null,
   };
   if (typeof fullscreenRoot.webkitRequestFullscreen === 'function') return {
     enabled: document.webkitFullscreenEnabled === true,
     enter: () => fullscreenRoot.webkitRequestFullscreen(),
-    exit: () => document.webkitExitFullscreen(),
+    exit: typeof document.webkitExitFullscreen === 'function' ? () => document.webkitExitFullscreen() : null,
   };
   return { enabled: false };
 }
 function syncFullscreenControls() {
-  const active = !!fullscreenElement(), available = fullscreenAPI().enabled;
+  const active = !!fullscreenElement(), api = fullscreenAPI();
+  const available = active ? !!api.exit : api.enabled;
+  const appView = fullscreenAppView.matches || navigator.standalone === true;
   const label = active ? 'Exit fullscreen' : 'Enter fullscreen';
   for (const button of fullscreenButtons) {
     // Keep keyboard focus during an asynchronous request. Native disabled
@@ -2581,29 +2638,37 @@ function syncFullscreenControls() {
     button.setAttribute('aria-pressed', String(active));
     button.setAttribute('aria-label', label);
     button.title = label;
-    if (button === $('settingsFullscreen')) button.textContent = label;
+    button.textContent = label;
   }
-  if (!available) $('fullscreenStatus').textContent =
-    'Fullscreen is unavailable in this browser or embedded view. Keep playing in this window, or use your browser’s fullscreen option if available.';
+  const status = fullscreenFailure || (active
+    ? 'Fullscreen is on. Use Exit fullscreen or your browser’s exit control.'
+    : appView
+      ? available
+        ? 'App view is already active. Fullscreen is optional; system controls may remain.'
+        : 'App view is already active. Extra fullscreen is unavailable; keep playing here.'
+      : available
+        ? 'Optional. Fullscreen can hide browser bars; system controls may remain.'
+        : 'Fullscreen is unavailable here. Keep playing in this window.');
+  for (const node of fullscreenStatuses) node.textContent = status;
 }
 function fullscreenFailed() {
   const message = fullscreenElement()
     ? 'Could not leave fullscreen. Use your browser’s exit fullscreen control.'
     : 'Could not enter fullscreen. Try again or keep playing in this window.';
-  $('fullscreenStatus').textContent = message;
-  if ($('settingsModal').classList.contains('hidden')) toast(message);
+  const changed = fullscreenFailure !== message;
+  fullscreenFailure = message;
+  syncFullscreenControls();
+  if (changed && $('settingsModal').classList.contains('hidden') && $('welcome').classList.contains('hidden')) toast(message);
 }
 for (const button of fullscreenButtons) button.addEventListener('click', async () => {
-  const api = fullscreenAPI();
-  if (fullscreenPending || !api.enabled) return;
+  const api = fullscreenAPI(), active = !!fullscreenElement();
+  if (fullscreenPending || (active ? !api.exit : !api.enabled)) return;
   fullscreenPending = true;
+  fullscreenFailure = '';
   syncFullscreenControls();
   try {
     // No await before the API call: transient user activation must survive.
-    await (fullscreenElement() ? api.exit() : api.enter());
-    $('fullscreenStatus').textContent = fullscreenElement()
-      ? 'Fullscreen is on. Esc or Exit fullscreen returns to the window.'
-      : 'Fullscreen is off. You can keep playing in this window.';
+    await (active ? api.exit() : api.enter());
   } catch {
     fullscreenFailed();
   } finally {
@@ -2613,12 +2678,13 @@ for (const button of fullscreenButtons) button.addEventListener('click', async (
 });
 for (const name of ['fullscreenchange', 'webkitfullscreenchange']) document.addEventListener(name, () => {
   resetBattleGesture();
+  fullscreenFailure = '';
   syncFullscreenControls();
-  $('fullscreenStatus').textContent = fullscreenElement()
-    ? 'Fullscreen is on. Esc or Exit fullscreen returns to the window.'
-    : 'Fullscreen is off. You can keep playing in this window.';
 });
 for (const name of ['fullscreenerror', 'webkitfullscreenerror']) document.addEventListener(name, fullscreenFailed);
+const syncFullscreenAppView = () => { fullscreenFailure = ''; syncFullscreenControls(); };
+if (fullscreenAppView.addEventListener) fullscreenAppView.addEventListener('change', syncFullscreenAppView);
+else fullscreenAppView.addListener?.(syncFullscreenAppView);
 syncFullscreenControls();
 $('audioEnabled').onchange = () => {
   soundOn = $('audioEnabled').checked;
@@ -2755,6 +2821,7 @@ function dialogDefaultFocus(layer) {
 }
 function syncDialogs() {
   syncInputScope();
+  globalThis.queueMicrotask?.(syncMenuHistory);
   // A safety/recovery interruption takes precedence over a destructive prompt.
   if (!$('restartModal').classList.contains('hidden') &&
       (recoveryHold || profileGate || viewportPause.active || battleSafetyReason)) {
@@ -2877,9 +2944,12 @@ function syncViewportSafety() {
       ...[...protectedControls.values()].map(c => c.button.id)].filter(Boolean).map(id => $(id).getBoundingClientRect());
     // Protected buttons use stable authored IDs in data attributes, not DOM IDs.
     for (const {button} of protectedControls.values()) if (!button.id) controls.push(button.getBoundingClientRect());
+    const teaching = $('app').classList.contains('mobile-coaching');
+    if (teaching) for (const id of ['coachResume', 'toggleCoach'])
+      if (!$(id).classList.contains('hidden')) controls.push($(id).getBoundingClientRect());
     const safeContent = insetViewportRect(viewport, getComputedStyle($('app')));
     geometry = inspectMobileGeometry({viewport:safeContent,canvas:$('battle').getBoundingClientRect(),
-      regions:['topbar','protectedDock','protectedNavigation'].map(id => $(id).getBoundingClientRect()),controls});
+      regions:['topbar','protectedDock','protectedNavigation', ...(teaching ? ['campaignTeaching'] : [])].map(id => $(id).getBoundingClientRect()),controls});
   }
   const wasActive = viewportPause.active;
   const changed = viewportPause.measure(!geometry.safe);
@@ -3463,3 +3533,170 @@ document.addEventListener('keydown', () => {
 });
 
 syncProfileSafety();
+
+
+// Browser/Android/PWA Back is history navigation, not a key binding. The finite
+// trail exposes real parents and a paused battle boundary. No popstate handler
+// pushes entries, restores a saved battle, restarts, or resumes simulation.
+function menuNavigationTrail() {
+  if (started && game !== navigationGame) { navigationGame = game; navigationAttempt++; }
+  const route = (kind, key = kind, extra = {}) => ({kind, key, ...extra});
+  const trail = [route('title', `title:${mode}`, {mode, page: 'story'})];
+  if (mode === 'campaign') {
+    if (started || campaignPage !== 'story') trail.push(route('title', `chapter:${selectedChapter}`, {
+      mode, page: 'chapter', chapter: selectedChapter, mission: selectedCampaign,
+    }));
+    if (started || campaignPage === 'mission') trail.push(route('title', `mission:${selectedCampaign}`, {
+      mode, page: 'mission', chapter: selectedChapter, mission: selectedCampaign,
+    }));
+  }
+  if (started) {
+    const ended = game.state.winner !== null || !!objectiveOutcome;
+    trail.push(route(ended ? 'ended' : 'pause', `${ended ? 'ended' : 'battle'}:${navigationAttempt}`, {attempt: navigationAttempt}));
+    if (!ended && !paused && !coachingHold && $('coachingModal').classList.contains('hidden'))
+      trail.push(route('play', `play:${navigationAttempt}`, {attempt: navigationAttempt}));
+  }
+  for (const id of ['coachingModal', 'viewportModal', 'helpModal', 'settingsModal', 'resultModal', 'backupModal', 'restartModal']) {
+    if (!$(id).classList.contains('hidden')) trail.push(route(id, `${navigationAttempt}:${id}`, {attempt: started ? navigationAttempt : null}));
+  }
+  if (started && !activeDialog && $('app').classList.contains('compact-build-open'))
+    trail.push(route('build', `build:${navigationAttempt}`, {attempt: navigationAttempt}));
+  if (started && !activeDialog && game.state.buildings.some(b => b.id === ui.selected && b.side === 0))
+    trail.push(route('selection', `selection:${navigationAttempt}:${ui.selected}`, {attempt: navigationAttempt, buildingId: ui.selected}));
+  if (!$('resultModal').classList.contains('hidden') && $('resultReport').querySelector('details')?.open)
+    trail.push(route('report', `report:${navigationAttempt}`, {attempt: started ? navigationAttempt : null}));
+  return trail;
+}
+function closeNavigationLayers(keep = null) {
+  // Preserve mandatory recovery/viewport holds. Closing a menu via browser Back
+  // never implicitly resumes a running battle, even if its visible Done does.
+  if (keep !== 'report') {
+    const report = $('resultReport').querySelector('details');
+    if (report) report.open = false;
+  }
+  const retained = keep === 'backupModal' ? ['settingsModal', 'backupModal'] :
+    keep === 'report' ? ['resultModal'] : [keep];
+  if (!retained.includes('restartModal')) $('restartModal').classList.add('hidden');
+  if (!retained.includes('backupModal') && !$('backupModal').classList.contains('hidden')) hideBackup();
+  if (!retained.includes('settingsModal') && !$('settingsModal').classList.contains('hidden')) {
+    settingsWasPaused = true; hideSettings();
+  }
+  if (!retained.includes('helpModal') && !$('helpModal').classList.contains('hidden')) {
+    helpWasPaused = true; hideHelp();
+  }
+  if (!retained.includes('resultModal')) $('resultModal').classList.add('hidden');
+  if (keep !== 'coachingModal') $('coachingModal').classList.add('hidden');
+  if (keep !== 'selection' && !activeDialog && ui.selected != null) { ui.selected = null; updateSelection(); }
+  setCompactBuildOpen(keep === 'build' || keep === 'selection');
+}
+function applyMenuNavigation(route, {direction = 'back'} = {}) {
+  const returnToPlanning = coachingHold && (
+    !$('coachingModal').classList.contains('hidden') ||
+    (!paused && ($('app').classList.contains('compact-build-open') || ui.selected != null)) ||
+    (!$('settingsModal').classList.contains('hidden') && !settingsWasPaused) ||
+    (!$('helpModal').classList.contains('hidden') && !helpWasPaused));
+  interruptMobileInput();
+  // Only this retained attempt can be inspected. Previous attempts and reload
+  // markers cannot reconstruct a Game or take ownership of a checkpoint.
+  if (route.attempt != null && (!started || route.attempt !== navigationAttempt)) {
+    if (started) pause(true);
+    syncDialogs(); return;
+  }
+  if (route.kind === 'title') {
+    closeNavigationLayers();
+    if (started && game.state.winner === null && !objectiveOutcome) {
+      pause(true);
+      $('saveExit').onclick();
+      if (started) { syncDialogs(); return; }
+    } else showTitle();
+    // The route is an in-memory snapshot of an authored selection, not input
+    // from event.state. Validate against the current roster before rendering.
+    if (!['campaign', 'skirmish', 'challenges'].includes(route.mode)) return;
+    if (route.mission && !CAMPAIGN_MISSIONS.some(m => m.id === route.mission && m.chapterId === route.chapter)) return;
+    if (route.mission) { selectedCampaign = route.mission; selectedChapter = route.chapter; }
+    campaignPage = ['story', 'chapter', 'mission'].includes(route.page) ? route.page : 'story';
+    setMode(route.mode);
+    syncDialogs();
+    if (route.mode === 'campaign') $(`campaign${campaignPage[0].toUpperCase() + campaignPage.slice(1)}Title`).focus({preventScroll: true});
+    return;
+  }
+  closeNavigationLayers(route.kind);
+  if (returnToPlanning && ['pause', 'play'].includes(route.kind)) {
+    // A teaching hold is already frozen. Back dismisses reading/options into
+    // planning; only the player's explicit Start/Resume releases that hold.
+    pause(false);
+  } else if (route.kind === 'pause' || (direction === 'forward' && started && game.state.winner === null && !objectiveOutcome)) pause(true);
+  if (route.kind === 'ended') {
+    pauseControl('menu'); $('pause').onclick = showTitle;
+  } else if (route.kind === 'settingsModal') {
+    if (started) pause(true);
+    settingsWasPaused = true; syncSettings();
+    $('settingsDone').textContent = started ? 'Back to pause menu' : 'Done';
+    $('settingsModal').classList.remove('hidden');
+  } else if (route.kind === 'helpModal') {
+    if (started) pause(true);
+    helpWasPaused = true; $('helpModal').classList.remove('hidden');
+  } else if (route.kind === 'restartModal') {
+    // Forward reopens only the confirmation, never its destructive action.
+    if (started) pause(true);
+    $('restartBattle').onclick();
+  } else if (route.kind === 'backupModal') {
+    // Cancel invalidates the import read. Forward cannot revive that payload.
+    $('settingsModal').classList.remove('hidden');
+  } else if (route.kind === 'resultModal' || route.kind === 'report') {
+    if (resultShown) {
+      if (!started) $('welcome').classList.add('hidden');
+      $('resultModal').classList.remove('hidden');
+    }
+    const report = $('resultReport').querySelector('details');
+    if (route.kind === 'report' && report && resultShown) report.open = true;
+  } else if (route.kind === 'selection') {
+    const building = game.state.buildings.find(b => b.id === route.buildingId && b.side === 0);
+    ui.selected = building?.id ?? null; updateSelection();
+  } else if (route.kind === 'coachingModal' && coachingHold) {
+    $('coachingModal').classList.remove('hidden');
+  }
+  syncDialogs();
+}
+function unknownMenuNavigation() {
+  // Reloads/foreign states have no trusted route. Dismiss the current top
+  // layer using the live UI, or stop combat. Never trust their payload.
+  const trail = menuNavigationTrail();
+  if (trail.length > 1) applyMenuNavigation(trail.at(-2));
+  else if (started) pause(true);
+}
+menuHistory = createMenuHistory({
+  history: window.history,
+  listen(handler) {
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  },
+  read: menuNavigationTrail, apply: applyMenuNavigation, unknown: unknownMenuNavigation,
+});
+for (const event of ['click', 'keyup', 'change', 'toggle'])
+  document.addEventListener(event, () => queueMicrotask(syncMenuHistory), true);
+for (const id of ['app', 'selectionPanel'])
+  new MutationObserver(syncMenuHistory).observe($(id), {attributes: true, attributeFilter: ['class']});
+
+// A cached document can return without rerunning module initialization. Freeze
+// before it leaves, and reconcile the existing entry on return without adding
+// another guard or assuming that the browser actually retained the document.
+window.addEventListener('pagehide', () => {
+  navigationAway = true;
+  interruptMobileInput();
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+});
+window.addEventListener('pageshow', event => {
+  navigationAway = false;
+  if (!event.persisted) return;
+  interruptMobileInput();
+  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+  syncDialogs();
+  menuHistory.reconcile();
+});
+
+// Background-tab and page-departure pauses must not issue history.go() while
+// the browser is navigating elsewhere. Reconcile once the page is visible.
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && !navigationAway) menuHistory.reconcile();
+});

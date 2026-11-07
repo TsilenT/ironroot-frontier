@@ -97,7 +97,13 @@ for(const scenario of [{kind:'campaign',id:'first-watch',label:'mission'},{kind:
     const game=scenario.kind==='campaign'?createCampaignMission(scenario.id):createChallenge(scenario.id);for(let i=0;i<60;i++)game.update(1/30);
     const battle=encodeBattle(game,scenarioForBattle(scenario.kind==='trial'?scenario.id:null,scenario.kind==='campaign'?scenario.id:null));
     await seedOnce(page,{[SAVE]:JSON.stringify(battle)});await press(page,'#resumeSaved');await pause(page);const before=await domains(page);
-    await expect(page.locator('#restartBattle')).toHaveText(`Restart ${scenario.label}…`);await press(page,'#restartBattle');await press(page,'#confirmRestart');const restarted=await pause(page);
+    await expect(page.locator('#restartBattle')).toHaveText(`Restart ${scenario.label}…`);await press(page,'#restartBattle');await press(page,'#confirmRestart');
+    // A confirmed restart is a fresh attempt: the unfinished legacy opening
+    // offers teaching again. Choose Start through its real dialog before pause.
+    if(scenario.kind==='campaign'){
+      await expect(page.locator('#coachingModal')).toBeVisible();await press(page,'#coachingPlay');
+    }
+    const restarted=await pause(page);
     expect(restarted.identity??[restarted.campaignId,restarted.challengeId]).toEqual(battle.identity??[battle.campaignId,battle.challengeId]);
     expect(restarted.game.state.time).toBeLessThan(game.state.time);expect(await domains(page)).toEqual(before);
     await press(page,'#saveExit');await page.reload();await press(page,'#resumeSaved');const loaded=await pause(page);

@@ -19,7 +19,7 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=re
 export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const section=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
  const nodes=new Map(),log={measures:[],saves:0,claims:0,resizes:0,interruptions:0};let document;
- const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
+ const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),teaching:!!nodes.get('app')?.classList.contains('mobile-coaching'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
  class Element {
   constructor(tag='div'){this.tagName=tag.toUpperCase();this.id='';this.children=[];this.parentNode=null;this.classes=new Set();this.attributes={};this.style={};this.dataset={};this.disabled=false;this.open=false;this.scrollTop=0;this.text='';this.inert=false;this.scrollWidth=0;this.clientWidth=0;this.classList={contains:n=>this.classes.has(n),add:n=>this.classes.add(n),remove:n=>this.classes.delete(n),toggle:(n,on)=>on?this.classes.add(n):this.classes.delete(n)};}
   set className(v){this.classes=new Set(v.split(/\s+/));}get className(){return [...this.classes].join(' ');}
