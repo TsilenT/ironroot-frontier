@@ -1,0 +1,29 @@
+✔ uncoached protected launch and restore reveal and populate HUD before geometry measurement (158.203324ms)
+✔ removing synchronous HUD initialization reproduces hidden-control false holds on fresh start and restore (54.163448ms)
+✔ coached protected launch and restore fit 320×430 and 320×400 without hiding any controls (58.556825ms)
+✔ real first launch and restore still hold insufficient geometry after HUD initialization (62.926687ms)
+✔ same-page skirmish to protected launch does not reuse the skirmish-hidden HUD or invent a hold (28.235112ms)
+✔ character evidence accepts the entire nested critical-health string, not just a visible parent box (3.034847ms)
+✔ hidden, clipped, transparent and zero-size nested status text are individually rejected (3.792613ms)
+✔ line-box overflow remains a failure rather than being renamed a successful glyph check (0.899924ms)
+✔ paused HUD expectations derive from the authoritative saved clock, including a just-crossed second (0.179515ms)
+✔ passive replay accepts real spawned-unit/RNG changes after Resume and compares full simulation state (6.446279ms)
+✔ passive replay rejects seed, state, progression and sub-tick remainder corruption (7.39759ms)
+✔ held-release browser contract compares baseline buildings/costs and requires one fresh paid build (0.57072ms)
+✔ the measured old 568x320 field reproduces clipped originals and Front/Pause overlap (15.654634ms)
+✔ CSS budget and the real unchanged renderer keep every original model/badge inside the battle-first canvas (87.07617ms)
+✔ all six rail buttons retain 44px hit targets, remain separate and never cover the canvas (0.5297ms)
+✔ native canvas-local pointer coordinates still round-trip through the frozen renderer beside the rail (3.890377ms)
+✔ build overlay is anchored to the whole grid rather than the 60px objective row (0.253734ms)
+✔ short coached portrait replaces the bottom navigation tracks with a real side rail (9.07633ms)
+✔ 320x430 resumed protected coaching fits the unchanged safety contract without a screen-pause latch (5.329595ms)
+✔ short coached rail respects bottom safe areas and still rejects genuinely tiny geometry (9.289284ms)
+✔ shared short-coached fixture exposes teaching controls and rejects the 370px rail overlap (3.999958ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 513.079518

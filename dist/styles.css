@@ -3769,6 +3769,11 @@ body.gamepad-active a:focus {
 .protected-short-portrait #objectiveProgress { grid-column: 1; grid-row: 1; line-height: 12px; }
 .protected-short-portrait #objectiveTime { grid-column: 2; grid-row: 1; line-height: 12px; }
 .protected-short-portrait .protected-targets { grid-column: 1 / -1; grid-row: 2; }
+.protected-mobile.protected-short-portrait .protected-target {
+  /* Two readable lines plus the 3px gap and borders need 32.6px. Keep
+     vertical padding within the 44px row instead of forcing/clipping height. */
+  padding: 4px 5px 7px;
+}
 .protected-mobile.protected-short-portrait.mobile-ordinary .protected-dock .objective-hud { grid-template-rows: minmax(0,1fr); padding: 4px 6px; align-items: center; }
 .protected-short-portrait.mobile-ordinary #objectiveProgress, .protected-short-portrait.mobile-ordinary #objectiveTime { grid-row: 1; }
 
