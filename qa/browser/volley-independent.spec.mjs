@@ -80,11 +80,15 @@ test.describe('independent: native history readiness', () => {
           await page.goto('/');
         } else await seedOnce(page,fixture);
         if (serviceWorkers === 'allow') {
+          // app.js intentionally skips registration on localhost. Register the
+          // unchanged shipped worker in this secure loopback context; this is
+          // real worker/cache control, not production-origin certification.
+          await page.evaluate(() => navigator.serviceWorker.register('/service-worker.js', {updateViaCache:'none'}));
           await page.evaluate(() => navigator.serviceWorker.ready);
           await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL)).toMatch(/\/service-worker\.js$/);
           const keys = await page.evaluate(() => caches.keys());
           expect(keys).toContain('ironroot-v0.18.2');
-          detail.shippingWorker = {controller:await page.evaluate(() => navigator.serviceWorker.controller.scriptURL),cacheKeys:keys};
+          detail.shippingWorker = {controller:await page.evaluate(() => navigator.serviceWorker.controller.scriptURL),cacheKeys:keys,registration:'explicit loopback QA registration; app skips localhost'};
         }
         const persistent = await profile(page);
         await press(page,'#resumeSaved');
