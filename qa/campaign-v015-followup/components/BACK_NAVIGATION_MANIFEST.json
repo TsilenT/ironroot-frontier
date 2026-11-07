@@ -1,0 +1,104 @@
+{
+  "scope": "Unreleased v0.15 Back/menu navigation only. No publication, release-version change or external repository write.",
+  "patch": "back-navigation.patch",
+  "patch_sha256": "f387d854caf06d0c1d1fdf05e2f925d78ddab1b64bc41f6e858f639e5d916b0f",
+  "files": [
+    {
+      "path": "README.md",
+      "action": "modified",
+      "base_sha256": "248ddddd0f15eddff348cd651bf3cdfdca0d442e95690f8bc94f221fca1dce6f",
+      "output_sha256": "cdea2b639d6ee1c421f4fbe63a2bc97349b96b0bfe16c1c812656061455587d7",
+      "bytes": 8382,
+      "base_path": "back-navigation-baseline/README.md"
+    },
+    {
+      "path": "dist/app.js",
+      "action": "modified",
+      "base_sha256": "835aa8274c675533f588efd7a300c75bf60f2fd2d8ffc9d9a836789343dae528",
+      "output_sha256": "1abd305ee295a4aae2ce07fbdc7d3e63dc6cd81afc8b5d5079f6a242a9ea58d3",
+      "bytes": 152657,
+      "base_path": "back-navigation-baseline/app.js"
+    },
+    {
+      "path": "dist/menu-history.js",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "4602e1d1f124023357969cf695d7002ea7dec4966fc26b765701f960e3086568",
+      "bytes": 6142,
+      "base_path": null
+    },
+    {
+      "path": "dist/service-worker.js",
+      "action": "modified",
+      "base_sha256": "3b62f7ea88673de407509e73be5bab0c345d0ce84f8552beef7eeab3430b9a98",
+      "output_sha256": "9b1127a3e92aed4b66fa8ddebd212a98c9318ea3353bc9edfb2b5b678216f037",
+      "bytes": 2453,
+      "base_path": "back-navigation-baseline/service-worker.js"
+    },
+    {
+      "path": "docs/BACK_NAVIGATION.md",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "cf18ce0845ddc98cc4cdb2b5088a53ceec8c92212ed9e09c2feb76496d6d6667",
+      "bytes": 5889,
+      "base_path": null
+    },
+    {
+      "path": "qa/browser/back-navigation.spec.mjs",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "7992bb7755ada2c1b5854563fc9c45447ac271dcd55a4b3d6ddc4ad391c8f2bd",
+      "bytes": 18529,
+      "base_path": null
+    },
+    {
+      "path": "qa/browser/package.json",
+      "action": "modified",
+      "base_sha256": "8a27955c8c3334c05e1e79eac2a0946d971c572c0bb779575d7776a693cbe74f",
+      "output_sha256": "f540b616793ba408ee095b438b8f6fde76d9fae10c0ff3b650546a69396c1911",
+      "bytes": 3256,
+      "base_path": "back-navigation-baseline/browser-package.json"
+    },
+    {
+      "path": "tests/menu-history-fixture.mjs",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "58e17cd70f0970f4aea4e606c5e7c53981a084c42b39023d62b45c39fdd57fec",
+      "bytes": 1746,
+      "base_path": null
+    },
+    {
+      "path": "tests/menu-history.test.mjs",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "34b88afb53f9dc82d2d87e8de93599db24d2dc9464eca1f2ce49d1d7213d1e6d",
+      "bytes": 6435,
+      "base_path": null
+    },
+    {
+      "path": "tests/menu-navigation-app.test.mjs",
+      "action": "added",
+      "base_sha256": null,
+      "output_sha256": "6bd2a711ec649158409f2e33e2e6ff5f1dfa30a002961f0a51ea6adc66d31741",
+      "bytes": 16612,
+      "base_path": null
+    }
+  ],
+  "browser_execution": "Not run. Existing local native Chromium socket-permission restriction was not retried or bypassed. 25 prepared cases across four configured browser projects require the authorized runner.",
+  "verification": {
+    "focused_node": "35 passed, 0 failed",
+    "aggregate_node": "1014 total: 1013 passed, 0 failed, 1 optional desktop-dependency skip",
+    "browser_static_and_fixture_check": "passed: npm --prefix qa/browser run check",
+    "runtime_syntax": "passed: node scripts/check.mjs",
+    "offline_inventory": "passed: 46 runtime files, module cached under unchanged v0.15.0",
+    "independent_review": "Both exact Last report and five Back/Forward/Resume cycle regressions independently rechecked against app 1abd305ee295 and menu-history 4602e1d1f124.",
+    "patch_replay": "passed: conventional patch applies to supplied baseline; all 10 replay outputs match manifest hashes"
+  },
+  "validation_logs": {
+    "node": "back-navigation-node-verified.log",
+    "focused": "back-navigation-focused-final.log",
+    "browser_static_and_fixtures": "back-navigation-browser-check-final.log",
+    "runtime_syntax": "back-navigation-syntax.log",
+    "runtime_inventory": "back-navigation-runtime.json"
+  }
+}

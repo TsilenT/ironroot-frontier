@@ -84,7 +84,9 @@ for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed'])
   for(const [from,to]of [['function selectBuild(','function cancel()'],["$('rally').onclick =",'function pauseControl('],['function showHelp()','const mapDescriptions ='],['function activateBattlePoint(','function resetBattleGesture()']])
     runInContext(source.slice(source.indexOf(from),source.indexOf(to,source.indexOf(from))),h.c);
   h.c.buildBounds=buildBounds;h.c.renderer.snap=point=>point;h.c.selectBuild('wardenLodge');h.c.activateBattlePoint({x:550,y:450});
-  assert.equal(h.c.ui.build,'wardenLodge','normal remaining gold keeps placement armed');
+  assert.equal(h.c.ui.build,null,'a successful normal placement finishes the order');
+  h.c.selectBuild('wardenLodge');
+  assert.equal(h.c.ui.build,'wardenLodge','a distinct order can remain armed through help');
   assert.equal(h.c.game.state.gold[0],210);assert.equal(h.c.game.state.buildings.filter(b=>b.type==='wardenLodge').length,1);
   for(let tick=0;tick<26;tick++)h.c.game.update(.05);
   h.c.pause(true);h.c.updateHUD();h.$('help').onclick();

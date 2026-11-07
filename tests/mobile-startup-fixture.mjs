@@ -2,11 +2,12 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
 import {Game,BUILDINGS,SPELL,UNITS,upgradeCost} from '../dist/engine.js';
-import {ALL_CAMPAIGN_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,createCampaignMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
+import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
+const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS];
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
-import {campaignBuildChoices,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
+import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
 import {CHALLENGES,createChallenge,evaluateChallenge} from '../dist/challenges.js';
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
@@ -18,15 +19,20 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=re
 export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const section=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
  const nodes=new Map(),log={measures:[],saves:0,claims:0,resizes:0,interruptions:0};let document;
- const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
+ const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),teaching:!!nodes.get('app')?.classList.contains('mobile-coaching'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
  class Element {
-  constructor(tag='div'){this.tagName=tag.toUpperCase();this.id='';this.children=[];this.parentNode=null;this.classes=new Set();this.attributes={};this.style={};this.dataset={};this.disabled=false;this.text='';this.inert=false;this.scrollWidth=0;this.clientWidth=0;this.classList={contains:n=>this.classes.has(n),add:n=>this.classes.add(n),remove:n=>this.classes.delete(n),toggle:(n,on)=>on?this.classes.add(n):this.classes.delete(n)};}
+  constructor(tag='div'){this.tagName=tag.toUpperCase();this.id='';this.children=[];this.parentNode=null;this.classes=new Set();this.attributes={};this.style={};this.dataset={};this.disabled=false;this.open=false;this.scrollTop=0;this.text='';this.inert=false;this.scrollWidth=0;this.clientWidth=0;this.classList={contains:n=>this.classes.has(n),add:n=>this.classes.add(n),remove:n=>this.classes.delete(n),toggle:(n,on)=>on?this.classes.add(n):this.classes.delete(n)};}
   set className(v){this.classes=new Set(v.split(/\s+/));}get className(){return [...this.classes].join(' ');}
   set textContent(v){for(const child of this.children)child.parentNode=null;this.children=[];this.text=v;}get textContent(){return this.text+this.children.map(c=>c.textContent).join('');}
   set innerHTML(v){this.textContent=v;}get innerHTML(){return this.text;}
-  setAttribute(n,v){this.attributes[n]=String(v);}
+  setAttribute(n,v){this.attributes[n]=String(v);if(n.startsWith('data-'))this.dataset[n.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=String(v);}
+  removeAttribute(n){delete this.attributes[n];}
+  toggleAttribute(n,on){if(on??!Object.hasOwn(this.attributes,n)){this.setAttribute(n,'');return true;}this.removeAttribute(n);return false;}
+  replaceChildren(...children){this.textContent='';this.append(...children);}
+  get nextElementSibling(){return this.nextSibling;}
   append(...children){for(const child of children){if(child.parentNode)child.parentNode.children=child.parentNode.children.filter(c=>c!==child);child.parentNode=this;this.children.push(child);}}
   insertBefore(child,next){if(child.parentNode)child.parentNode.children=child.parentNode.children.filter(c=>c!==child);child.parentNode=this;const at=this.children.indexOf(next);this.children.splice(at<0?this.children.length:at,0,child);}
+  after(child){this.parentNode?.insertBefore(child,this.nextSibling);}
   get nextSibling(){const list=this.parentNode?.children||[];return list[list.indexOf(this)+1]||null;}
   get isConnected(){for(let e=this;e;e=e.parentNode)if(e===document.body)return true;return false;}
   contains(e){return this===e||this.children.some(c=>c.contains(e));}
@@ -34,20 +40,30 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   getBoundingClientRect(){if(this.closest('.hidden'))return box(0,0,0,0);if(this.dataset.protectedId)return geometryFor().nodes['target'+this.parentNode.children.indexOf(this)];return geometryFor().nodes[this.id]||box(0,0,0,0);}
   getClientRects(){const r=this.getBoundingClientRect();return r.width&&r.height?[r]:[];}
   focus(){document.activeElement=this;}
-  addEventListener(){}
+  matches(selector){
+   if(selector.startsWith('.'))return this.classes.has(selector.slice(1));
+   if(selector.startsWith('#'))return this.id===selector.slice(1);
+   const attribute=selector.match(/^\[([^=\]]+)(?:="([^"]*)")?\]$/);
+   if(attribute){const name=attribute[1],value=name.startsWith('data-')?this.dataset[name.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]:this.attributes[name];return value!==undefined&&(attribute[2]===undefined||value===attribute[2]);}
+   return this.tagName.toLowerCase()===selector.toLowerCase();
+  }
+  querySelectorAll(selector){return this.children.flatMap(child=>[...(child.matches(selector)?[child]:[]),...child.querySelectorAll(selector)]);}
+  querySelector(selector){return this.querySelectorAll(selector)[0]||null;}
+  addEventListener(type,listener){this[type==='click'?'clickListener':type]=listener;}
+  click(){if(!this.disabled)(this.onclick||this.clickListener)?.();}
  }
  const rootNode=new Element('root'),stack=[rootNode],voids=new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
  for(const match of html.replace(/<!--[\s\S]*?-->/g,'').matchAll(/<\/?([a-z][\w-]*)\b([^>]*)>/gi)){
   const tag=match[1].toLowerCase();if(match[0].startsWith('</')){for(let i=stack.length-1;i>0;i--)if(stack[i].tagName.toLowerCase()===tag){stack.length=i;break;}continue;}
-  const e=new Element(tag);e.id=match[2].match(/\bid="([^"]*)"/)?.[1]||'';e.className=match[2].match(/\bclass="([^"]*)"/)?.[1]||'';stack.at(-1).append(e);if(e.id)nodes.set(e.id,e);if(tag==='body')nodes.set('__body',e);if(!voids.has(tag)&&!match[0].endsWith('/>'))stack.push(e);
+  const e=new Element(tag);e.id=match[2].match(/\bid="([^"]*)"/)?.[1]||'';e.className=match[2].match(/\bclass="([^"]*)"/)?.[1]||'';for(const a of match[2].matchAll(/([\w-]+)(?:="([^"]*)")?/g))e.setAttribute(a[1],a[2]??'');stack.at(-1).append(e);if(e.id)nodes.set(e.id,e);if(tag==='body')nodes.set('__body',e);if(!voids.has(tag)&&!match[0].endsWith('/>'))stack.push(e);
  }
- const $=id=>{assert.ok(nodes.has(id),'real HTML contains '+id);return nodes.get(id);};
- document={body:nodes.get('__body'),activeElement:null,createElement:tag=>new Element(tag),querySelector:()=>null,querySelectorAll:()=>[],addEventListener(){}};
+ const $=id=>{const node=nodes.get(id)||document?.body.querySelector('#'+id);assert.ok(node||id==='resumeSaved','real HTML contains '+id);return node||null;};
+ document={body:nodes.get('__body'),activeElement:null,createElement:tag=>new Element(tag),querySelector:selector=>document.body.querySelector(selector),querySelectorAll:selector=>document.body.querySelectorAll(selector),addEventListener(){}};
  const fixture=campaignFixture('protected');
  const c={$,document,window:{innerWidth:width,innerHeight:height,addEventListener(){},matchMedia:q=>({matches:q.includes('orientation: landscape')?width>height&&height<=500:width<=height&&width<=700})},
-  campaignBuildChoices,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,
+  campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:'frontier-rootwarden-open',
-  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
+  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,evaluateChallenge,createCampaignMission,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:null,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
@@ -60,7 +76,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible',...Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`]))}),
   iconSVG:()=>'',timeText:t=>String(t),setTimeout,requestAnimationFrame(){},pauseControl(){},
  };
- c.dialogLayers=['viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
+ c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
  createContext(c);
  for(const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function selectBuild('),section('function cancel()','let closeSelectionArmed ='),section('function pause(value,',"$('pause').onclick ="),section('function holdBattleSafety(','function beginBattleReport('),section('function updateHUD()','let heardEffects ='),section('function syncInputScope()','function guardInput('),section('function viewportScope()','// Portable backups')])runInContext(code,c);

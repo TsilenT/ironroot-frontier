@@ -53,6 +53,6 @@ createServer(async (req, res) => {
   }
   const path = resolve(selectedRoot, '.' + pathname.replace(/\/$/, '/index.html'));
   if (!path.startsWith(selectedRoot + '/')) {res.writeHead(403).end(); return;}
-  try {res.writeHead(200, {'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': 'no-store'}); res.end(await readFile(path));}
+  try {const body = await readFile(path); res.writeHead(200, {'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': 'no-store'}); res.end(body);}
   catch {res.writeHead(404).end();}
 }).listen(4187, '127.0.0.1');

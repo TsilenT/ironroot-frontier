@@ -38,7 +38,7 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
   const dialogLayers = [new Element(),new Element()];
   for(const layer of dialogLayers)layer.classes.add('hidden');
   const context = {
-    visibleViewportRect,fitMobileViewport,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,updateCampaignDeck(){},
+    visibleViewportRect,fitMobileViewport,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,updateCampaignDeck(){},
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
     canInteract:()=>state.canInteract,updateSelection(){},
@@ -305,7 +305,7 @@ test('rotation to portrait closes the shared drawer without rebuilding protected
 test('drawer transitions use a distinct held-input scope and reject battlefield spending until closed',()=>{
   assert.match(app,/classList\.contains\('compact-build-open'\) \? 'compact-build'/);
   assert.match(app,/classList\.contains\('protected-compact'\) \? `compact-battle:\$\{mobileLayout\}`/);
-  assert.match(app,/function activateBattlePoint\(w\) \{\s*if \(!canInteract\(\) \|\| \$\('app'\)\.classList\.contains\('compact-build-open'\)\) return;/);
+  assert.match(app,/function activateBattlePoint\(w, \{ repeatBuild = false \} = \{\}\) \{\s*if \(!canInteract\(\) \|\| \$\('app'\)\.classList\.contains\('compact-build-open'\)\) return;/);
   const guard=createInputScopeGuard('compact-battle'),pointer={pointerId:71,pointerType:'touch',isPrimary:true};
   guard.pointerDown(pointer);guard.setScope('compact-build');guard.setScope('compact-battle');
   assert.equal(guard.pointerEnd(pointer),true);

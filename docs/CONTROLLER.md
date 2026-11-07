@@ -47,7 +47,7 @@ configuration rather than silently assuming Xbox positions.
 
 Rally is also an ordinary focusable card, so all seven building cards and rally
 are available through D-pad navigation. Selection arms a command only. A separate
-A press places a building or casts the strike. Holding A must never repeatedly
+A press places one building and ends that build order, or casts the strike. Select a building again for another order. Holding A must never repeatedly
 buy, upgrade, salvage, or accept dialogs.
 
 ## Public API

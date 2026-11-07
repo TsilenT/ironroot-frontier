@@ -18,7 +18,7 @@ test('dialog controls exclude zero-size, inert/hidden and invisible controls but
 test('modal fallback never selects a hidden preferred control',()=>{
   const summary=control(),primary=control({rect:false}),layer={querySelectorAll:()=>[summary,primary],querySelector:()=>primary};
   assert.equal(runInNewContext(focusSource+'\ndialogDefaultFocus(layer)',{layer,getComputedStyle:e=>({visibility:e.visibility})}),summary);
-  assert.match(app,/const target = dialogDefaultFocus\(next\)/);assert.match(app,/dialogDefaultFocus\(activeDialog\)\?\.focus/);
+  assert.match(app,/target \|\| dialogDefaultFocus\(next\)/);assert.match(app,/dialogDefaultFocus\(activeDialog\)\?\.focus/);
   assert.match(app,/const items = dialogControls\(activeDialog\)/);
 });
 function reportReveal(){

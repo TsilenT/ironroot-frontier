@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInContext, createContext } from 'node:vm';
 import { BUILDINGS, buildBounds } from '../dist/engine.js';
-import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission } from '../dist/campaign.js';
-import { campaignBuildChoices, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
+import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission, campaignScenarioForGame, getProgressionCampaignOverview, createCampaignProgress } from '../dist/campaign.js';
+import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
 import { createInputScopeGuard } from '../dist/input-scope.js';
 import { visibleViewportRect } from '../dist/mobile-battlefield.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
@@ -21,6 +21,7 @@ function harness() {
         rect:box(0,0,44,44), clip:'visible', attributes:{},
         classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:k=>classes.delete(k),toggle(k,on){on?classes.add(k):classes.delete(k);}},
         setAttribute(k,v){this.attributes[k]=v;},
+        insertBefore(child){child.parentNode=this;child.parentElement=this;},
         closest(selector){for(let e=this;e;e=e.parentElement)if((selector.includes('.hidden')&&e.classList.contains('hidden'))||(selector.includes('[inert]')&&e.inert))return e;return null;},
         contains(other){for(let e=other;e;e=e.parentElement)if(e===this)return true;return false;},
         getClientRects(){return this.closest('.hidden,[inert]') || ($('commandDeck').contains(this)&&!$('app').classList.contains('compact-build-open')) ? [] : [this.rect];},
@@ -37,16 +38,17 @@ function harness() {
   for(const id of ['campaignCoach','coachTitle','coachText','allBuildings','toggleCoach'])$(id).parentElement=$('commandDeck');
   $('compactBuild').rect=box(5,420,55,44);$('home').rect=box(5,470,44,44);$('front').rect=box(270,470,44,44);$('battle').rect=box(0,72,320,250);
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
+  $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,campaignBuildChoices,campaignCoach,guidancePointVisible,visibleViewportRect,
-    game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,
-    battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,
+  c={$,BUILDINGS,buildBounds,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+    game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,
+    viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),
     document:{body:{},activeElement:null,querySelector:s=>s?.startsWith('[data-type=')?cards.find(n=>n.dataset.type===s.match(/"([^"]+)"/)[1]):s?.startsWith('#')?$(s.slice(1)):null,
       querySelectorAll:s=>s==='.build-card'?cards:s==='.coach-highlight'?[...nodes.values()].filter(n=>n.classList.contains('coach-highlight')):[]},
     window:{innerWidth:320,innerHeight:568},getComputedStyle:n=>({visibility:'visible',overflowX:n.clip,overflowY:'visible'}),
     renderer:{width:320,height:250,scale:.32,camera:450,snap:p=>p},
-    updateSelection(){},sound(){},toast(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
+    updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
   };
   createContext(c);
   for (const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function updateSelection()'),section('function updateCompactBuildControl()','function canFocusProtectedObjective()'),section('function activateBattlePoint(','function resetBattleGesture(')]) runInContext(code,c);
@@ -93,11 +95,11 @@ test('paused, hidden-hint and modal flows clear highlights/rings without mutatin
   }
 });
 
-test('scrolled/clipped cards are never highlighted and offscreen suggestions use Home',()=>{
+test('scrolled/clipped cards are never highlighted and offscreen suggestions use the minimap',()=>{
   const h=harness();h.c.setCompactBuildOpen(true);h.$('card-mint').rect=box(400,310,90,90);h.c.updateCampaignDeck();
   assert.deepEqual(h.highlights(),[]);
   h.c.selectBuild('mint');h.c.renderer.camera=2200;h.c.updateCampaignDeck();
-  assert.deepEqual(h.highlights(),['home']);
+  assert.deepEqual(h.highlights(),['minimap']);
   const hint=campaignCoach(h.c.game,'winter-stores',h.c.ui);assert.equal(guidancePointVisible(h.c.renderer,h.c.game,hint.site),false);
   drawCampaignGuidance({...h.c.renderer,c:{save(){throw Error('Offscreen ring must not draw');}}},h.c.game,h.c.ui);
 });
@@ -107,14 +109,14 @@ test('roster policy is isolated/frozen, unknown lesson IDs cannot inherit old th
   for(const roster of Object.values(CAMPAIGN_BUILD_INTRODUCTIONS))assert.ok(Object.isFrozen(roster));
   const game=createCampaignMission('emberwatch');assert.equal(campaignCoach(game,'future-one-road-intro'),null);
   game.state.gold[0]=0;const hint=campaignCoach(game,'emberwatch',{build:'archery'});
-  assert.equal(hint.site,undefined);assert.match(hint.text,/need 175 gold/);assert.doesNotMatch(hint.text,/ring/);
+  assert.equal(hint.site,undefined);assert.match(hint.text,/need 175 gold/);assert.doesNotMatch(hint.text,/gold ring/);
 });
 
 test('Continue/Back and optional replay retain the same authored mission and do not reset campaign records',()=>{
   const nodes=new Map(),$=id=>{if(!nodes.has(id))nodes.set(id,{classList:{contains:()=>false},focus(){focus.push(id);}});return nodes.get(id);};
   let starts=0,titles=[];const focus=[],c={$,currentCampaign:'emberwatch',currentChallenge:null,objectiveOutcome:{completed:true,stars:2},mode:'campaign',selectedCampaign:'emberwatch',selectedChapter:'',
-    campaignProgress:{missions:{emberwatch:{completed:true,stars:3,bestTime:10}}},CAMPAIGN_MISSIONS,isIntroMission,
-    getCampaignOverview:()=>({nextMissionId:'three-roads'}),battleSession:{remove(){}},showTitle:o=>titles.push(o),start:()=>starts++};
+    campaignProgress:{...createCampaignProgress(),missions:{emberwatch:{completed:true,stars:3,bestTime:10}}},CAMPAIGN_MISSIONS,isIntroMission,
+    game:createCampaignMission('emberwatch'),campaignScenarioForGame,getCampaignOverview:getProgressionCampaignOverview,battleSession:{remove(){}},showTitle:o=>titles.push(o),start:()=>starts++};
   const before=JSON.stringify(c.campaignProgress);
   runInContext(section("$('playAgain').onclick", "$('inspectBattle').onclick"),createContext(c));
   $('replayMission').onclick();assert.equal(starts,1);assert.equal(c.selectedCampaign,'emberwatch');

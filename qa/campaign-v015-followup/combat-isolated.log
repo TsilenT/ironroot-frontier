@@ -1,0 +1,16 @@
+✔ labelled combat-feedback snapshots cover six roles, both teams and motion modes at three scales (89.763658ms)
+✔ native 0.22/0.16 timers begin at contact or recoil and settle monotonically, without a windup (0.962156ms)
+✔ reduced motion holds distinct static live states without new bob, blur, flash, opacity or clock dependence (69.472638ms)
+✔ ground markers, shadows and left-to-right damaged health remain exact in every action pose (10.168373ms)
+✔ contact/recoil stays within conservative original-silhouette bounds without extra draw shapes (19.521647ms)
+✔ historical source still produces unchanged readability hashes; portraits and Rootwarden bytes are retained (94.844467ms)
+✔ real fire events show damage/contact immediately and drawing preserves engine, RNG, geometry and minimap (3119.656193ms)
+✔ pose sampling has no import, random, mutation, storage, events or clock dependencies (0.89087ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3686.652572

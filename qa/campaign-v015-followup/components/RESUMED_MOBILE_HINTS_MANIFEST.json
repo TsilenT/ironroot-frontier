@@ -1,0 +1,85 @@
+{
+  "scope": "Separate follow-up delta against frozen VISIBLE_MOBILE_TEACHING_MANIFEST.json. Enabled real campaign hints appear outside mobile Build on resume, with no new teaching hold. No version/cache, engine, save, CSS or placement-policy change.",
+  "createdAtUtc": "2026-11-07T00:15:07.475940+00:00",
+  "baseManifest": {
+    "path": "VISIBLE_MOBILE_TEACHING_MANIFEST.json",
+    "sha256": "9ab61c04f8cdeb865dfbf253537c5f7373b1f266c79f2019f508836cd49fdd42",
+    "patchSha256": "fe620be05144ca5d66098631fb4a8a04e4c8cca7ca9bb7a52586f8e7d0e06de7"
+  },
+  "patch": {
+    "path": "/workspace/shared/ironroot-visible-teaching-work/RESUMED_MOBILE_HINTS.delta.patch",
+    "sha256": "d3348688dddf8c839bf804d103b7684c1bf476ec0a7adabd47a5a9b274c51a81"
+  },
+  "files": [
+    {
+      "path": "dist/app.js",
+      "baseSha256": "9e6d9062c1b8105aa15515c313a55ab338671e7db71b3dea96299cef9153f5f8",
+      "sha256": "2e8d92353445f3bb0af050861c50e973a169f0c711e53605bbd4e44e71c6446e",
+      "bytes": 146688
+    },
+    {
+      "path": "tests/campaign-teaching-integration.test.mjs",
+      "baseSha256": "b5997feef04547251c2fc7cbcb71c5cb63c8b2ce7fea180b147c1aad130fd63d",
+      "sha256": "9fcb925fd565df6ef49c433796c6aabce1ba50bef0707e8f8b90d8a9e0062dfc",
+      "bytes": 23026
+    },
+    {
+      "path": "tests/mobile-battlefield-startup.test.mjs",
+      "baseSha256": "214b8cb625df1359436ae709882ba91dfeb9c57df0934b596bbe2cffb3b53f6f",
+      "sha256": "91031e73fbc7df26aefe513c8805e53cda79cef93e42e4596fac91bc1c4d2616",
+      "bytes": 4018
+    },
+    {
+      "path": "tests/phone-viewport-fit.test.mjs",
+      "baseSha256": "f80acbf2fda3a788e0fb5d05bb334757a9e58db5fa1923584a1543b5aeb01ef4",
+      "sha256": "0544fdc149bfca09c96269654052c33b748257720e86f3efc25a6d48ed1aa566",
+      "bytes": 10104
+    },
+    {
+      "path": "qa/browser/mobile-coaching-visibility.spec.mjs",
+      "baseSha256": "2fd25eecec6560f5721d24c9bd6b51cec412156650246eb6f5ca39e9d8ab1c87",
+      "sha256": "f0d2e7e817c34b1818952a1b78fbd76e3e46071517d47d61bc5ff6450fad8759",
+      "bytes": 14186
+    },
+    {
+      "path": "docs/VISIBLE_MOBILE_CAMPAIGN_TEACHING.md",
+      "baseSha256": "f5d9654b0ec678156dde8d0778d77bea48aa13bf2d05cdd622ff4324f5db8a69",
+      "sha256": "78a7fd463af7038c25d638354d0979ce9db61b02b2de59140bdbddff8c20b858",
+      "bytes": 6469
+    }
+  ],
+  "validation": {
+    "fullNode": {
+      "tests": 990,
+      "passed": 989,
+      "failed": 0,
+      "skipped": 1,
+      "log": "qa/visible-teaching-resume-aggregate.tap"
+    },
+    "focused": {
+      "tests": 55,
+      "passed": 55,
+      "failed": 0,
+      "log": "qa/visible-teaching-resume-focused.tap"
+    },
+    "syntax": {
+      "passed": true,
+      "log": "qa/visible-teaching-resume-syntax.log"
+    },
+    "runtime": {
+      "passed": true,
+      "log": "qa/visible-teaching-resume-runtime.json"
+    },
+    "browserSourceAndFixtures": {
+      "passed": true,
+      "log": "qa/visible-teaching-resume-browser-check.log"
+    },
+    "nativeBrowser": {
+      "status": "not_run",
+      "preparedSpec": "qa/browser/mobile-coaching-visibility.spec.mjs",
+      "newCases": 2
+    }
+  },
+  "geometryBoundary": "Only genuine applicable guidance can add a rail. Uncoached protected layouts keep their original budgets. A guided protected mission at320x430 has182px of world and must retain the existing212px geometry pause;740x320 fits. The follow-up never creates a coachingHold for resumed or completed battles.",
+  "publication": "None. Frozen preview and parent combined source were not edited."
+}

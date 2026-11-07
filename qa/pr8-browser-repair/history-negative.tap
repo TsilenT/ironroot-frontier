@@ -1,0 +1,99 @@
+✖ practice return keeps the campaign selection in one entry, then Back leaves to practice (1.939333ms)
+✖ Options opened after practice return has its own parent, without duplicating campaign ancestry (0.425146ms)
+✖ visible campaign Back after practice return still navigates Chapter and Story before leaving (0.719599ms)
+✖ starting a battle after practice return still supplies finite paused and title boundaries (0.326571ms)
+✔ normal direct load retains Story and Chapter ancestry (0.939783ms)
+✔ practice return recognition is same-origin exact sibling path, including subdirectory hosting (0.272951ms)
+✔ app passes the read-only return hint without changing storage, URLs or the practice document (0.61189ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 3
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.601502
+
+✖ failing tests:
+
+test at ../../../tmp/ironroot-history-negative-v3hcls7u/test.mjs:15:1
+✖ practice return keeps the campaign selection in one entry, then Back leaves to practice (1.939333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 2
+  
+      at TestContext.<anonymous> (file:///tmp/ironroot-history-negative-v3hcls7u/test.mjs:16:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/ironroot-history-negative-v3hcls7u/test.mjs:19:1
+✖ Options opened after practice return has its own parent, without duplicating campaign ancestry (0.425146ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 3
+  
+      at TestContext.<anonymous> (file:///tmp/ironroot-history-negative-v3hcls7u/test.mjs:21:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/ironroot-history-negative-v3hcls7u/test.mjs:24:1
+✖ visible campaign Back after practice return still navigates Chapter and Story before leaving (0.719599ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 2
+  
+      at TestContext.<anonymous> (file:///tmp/ironroot-history-negative-v3hcls7u/test.mjs:26:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at ../../../tmp/ironroot-history-negative-v3hcls7u/test.mjs:28:1
+✖ starting a battle after practice return still supplies finite paused and title boundaries (0.326571ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  6 !== 4
+  
+      at TestContext.<anonymous> (file:///tmp/ironroot-history-negative-v3hcls7u/test.mjs:30:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 6,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
