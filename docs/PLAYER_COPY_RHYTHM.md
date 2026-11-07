@@ -30,7 +30,7 @@ The [exported-data comparison](../qa/writing-rhythm/data-parity.json) preserves 
 
 Copy assertions now expect the authored wording. Practice feedback proofs still require both the attributable hit and target defeat and reject incomplete messages. Existing frozen campaign hashes remain unchanged; an explicit prose-only reversal restores the reviewed wording changes before those hashes are checked. Historical fixture bytes, mechanical assertions, browser geometry assertions, timeouts and skip declarations were not changed.
 
-The final full Node suite passed 1,229 tests with one pre-existing optional desktop-tooling skip. Syntax, the 49-file runtime inventory and browser fixture/harness checks passed.
+The final full Node suite passed 1,239 tests with one pre-existing optional desktop-tooling skip. Syntax, the 49-file runtime inventory and browser fixture/harness checks passed.
 
 The first focused browser matrix finished with 72 passes and eight failures. A clean exact-base comparison reproduced all four income-occlusion failures; its other 24 cases passed. The final writing matrix finished with 23 passes and one unchanged field-guide scrolling timeout on phone. Every final dialogue/hint/fullscreen check and one-time flight-warning announcement passed on all four profiles. The timeout remains unresolved, and the complete integrated browser release gate is still required.
 
@@ -38,6 +38,16 @@ See [validation results](../qa/writing-rhythm/validation.json) for exact command
 
 ## Mobile prompt amendment
 
-The shared mobile composer prefixes build instructions with “Open Build, then”. The two Shield at the Fork hints now start with “Build a Warden lodge…” and “Place an archery range…” so that prefix forms a complete instruction. The composer and all battle values are unchanged.
+The first mobile prompt amendment (`85b68b9305f97e795768fed3ed88d75bb2604720`) addressed two instructions used by the shared composer, which prefixes build instructions with “Open Build, then”. The two Shield at the Fork hints now start with “Build a Warden lodge…” and “Place an archery range…” so that prefix forms a complete instruction. The composer and all battle values are unchanged.
 
 Five new integration cases check the complete closed-drawer and open-drawer strings at both stages, including the real paid Warden-lodge purchase. All 62 focused Node checks passed. The existing real paid-planning browser case now also pins both complete strings and passed on all four profiles at two workers. The [amendment source audit](../qa/writing-rhythm/amendment-source-audit.json) verifies exactly two changed text tokens against `93f8e43bb1ae36c4ee3fb65a5dbce392586ac502`; every other JavaScript byte is unchanged.
+
+## Mine and tower prompt amendment
+
+The remaining mine and tower instructions now also assemble as complete mobile prompts: “Open Build, then build a gold mine behind your front line…”, “Open Build, then build a mine behind your troops to add 2.5 gold per second…”, and “Open Build, then place a watchtower ahead of production…”. These are three text-only changes; the composer, normal prices and income, building sites and battle rules are unchanged.
+
+Ten new integration cases cover the complete prompts with Build open and closed at five mobile sizes. They use actual paid construction to reach each hint and confirm that reading the prompts preserves gold and the stopped clock. The Forked Road case uses its supported legacy mission and an explicit manual teaching replay.
+
+All 72 focused Node checks passed, and the eight browser cases passed on all four profiles at two workers. The first browser run exposed a new-test checkpoint assumption: planning changes had not yet been saved when the test read storage. The test now uses the ordinary Options pause/save action before checking the exact 140-gold cost, zero-time state and three paid buildings. The original assertions remain intact. See the [three-token source audit](../qa/writing-rhythm/mine-tower-source-audit.json) and [browser results](../qa/writing-rhythm/mine-tower-browser.json).
+
+The final full Node suite passed 1,239 tests with one pre-existing optional desktop-tooling skip. Syntax, the 49-file runtime inventory and browser fixture/harness checks passed. Against the previous writing commit, the source audit verifies exactly three changed string tokens and 48 other runtime files that are byte-identical.

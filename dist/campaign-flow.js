@@ -155,7 +155,7 @@ export function campaignCoach(game, id, choice = {}) {
       if (!own.some(b => b.lane === 1 && definitions[b.type]?.unit))
         return build('barracks', 'Watch the other road', 'Build a force on the south road to meet the troops still coming from that camp.', 1);
       if (!own.some(b => b.type === 'mint'))
-        return build('mint', 'Fund reinforcements', 'A gold mine behind your front line can fund more troop buildings as the battle goes on.', 1);
+        return build('mint', 'Fund reinforcements', 'Build a gold mine behind your front line to fund more troop buildings as the battle goes on.', 1);
       return { key: 'fork-front', title: 'Keep both roads supplied', text: 'Keep both the northern screen and the south road supplied to win access to siege, wizards and gryphons. You can collect the optional bonus stars on a replay.', control: '#front' };
     }
     if (id === 'open-three-roads') {
@@ -173,9 +173,9 @@ export function campaignCoach(game, id, choice = {}) {
         return build('barracks', uncovered === 0 ? 'Cover the first road' : 'Cover the other road',
           'Start each road with a barracks and add archers for support, or choose another force that can cover both roads.', uncovered);
       if (!own.some(b => b.type === 'mint'))
-        return build('mint', 'Build a gold mine', 'A mine behind your troops adds 2.5 gold per second to fund later reinforcements.');
+        return build('mint', 'Build a gold mine', 'Build a mine behind your troops to add 2.5 gold per second for later reinforcements.');
       if (!own.some(b => b.type === 'watchtower'))
-        return build('watchtower', 'Hold a road', 'A watchtower ahead of production fires at nearby enemies, but you still need marching troops to clear a distant camp.');
+        return build('watchtower', 'Hold a road', 'Place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.');
       return { key: 'roads', title: 'Watch both roads', text: 'Check both roads on the minimap as your troops move toward the marked barracks.', control: '#front' };
     }
     if (id === 'emberwatch') {

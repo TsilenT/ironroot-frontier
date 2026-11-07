@@ -44,6 +44,18 @@ function harness(index = 0, options = {}) {
   } };
 }
 
+function assertCompleteBuildPrompt(h,open,closed) {
+  const {c,$}=h,before=c.game.serialize();
+  c.setCompactBuildOpen(false); c.updateCampaignDeck();
+  assert.equal(c.ui.build,null);
+  assert.equal($('coachText').textContent,closed);
+  c.setCompactBuildOpen(true); c.updateCampaignDeck();
+  assert.equal($('coachText').textContent,open);
+  c.setCompactBuildOpen(false); c.updateCampaignDeck();
+  assert.equal($('coachText').textContent,closed);
+  assert.deepEqual(c.game.serialize(),before,'reading and toggling Build preserve the actual battle');
+}
+
 for (const [index, mission] of ONBOARDING_MISSIONS.entries()) {
   if(index > 0) test(`${mission.name}: real shared-bar building is paid while clock, AI, income and production stay frozen`, () => {
     const h = harness(index), { c, $ } = h;
@@ -169,6 +181,34 @@ test('opening suggestions use the bound roster, Rootwarden screens, forward towe
 });
 
 for (const [width,height] of [[320,480],[320,568],[390,650],[740,320],[844,390]]) {
+  test(`Shield at the Fork assembles its complete mobile mine prompt at ${width}x${height}`, () => {
+    const h=harness(1,{width,height}),{c,$}=h;
+    $('coachingPlan').onclick();
+    for(const [type,lane] of [['wardenLodge',0],['archery',0],['barracks',1]])h.buy(type,lane);
+    assert.equal(c.game.state.gold[0],215); assert.equal(c.game.state.time,0);
+    assertCompleteBuildPrompt(h,
+      'Build a gold mine behind your front line to fund more troop buildings as the battle goes on.',
+      'Open Build, then build a gold mine behind your front line to fund more troop buildings as the battle goes on.');
+  });
+
+  test(`Forked Road assembles its complete mobile mine and tower prompts at ${width}x${height}`, () => {
+    const h=harness(0,{width,height}),{c,$}=h;
+    c.campaignProgress.missions['first-watch']={...completed};
+    c.start(createCampaignMission('forked-road'),null,'forked-road');
+    c.beginCampaignCoaching({manual:true}); $('coachingPlan').onclick();
+    assert.equal(c.coachingHold,true);
+    h.buy('barracks',0); h.buy('barracks',1);
+    assert.equal(c.game.state.gold[0],330);
+    assertCompleteBuildPrompt(h,
+      'Build a mine behind your troops to add 2.5 gold per second for later reinforcements.',
+      'Open Build, then build a mine behind your troops to add 2.5 gold per second for later reinforcements.');
+    h.buy('mint');
+    assert.equal(c.game.state.gold[0],140); assert.equal(c.game.state.time,0);
+    assertCompleteBuildPrompt(h,
+      'Place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.',
+      'Open Build, then place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.');
+  });
+
   test(`Shield at the Fork assembles complete mobile build prompts at ${width}x${height}`, () => {
     const h = harness(1,{width,height}), {c,$} = h;
     $('coachingPlan').onclick();
