@@ -1,3 +1,4 @@
+import {beforeRhythmCopy} from './writing-rhythm-copy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -16,9 +17,9 @@ const scenario=(game,id)=>scenarioForBattle(null,id,game);
 const saved=(game,id,progress=full())=>encodeBattle(game,scenario(game,id),{campaignProgress:progress});
 const fingerprint=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
-test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes',()=>{
-  assert.equal(fingerprint(campaign.CAMPAIGN_PROGRESS_MISSIONS),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
-  assert.equal(fingerprint(campaign.PROGRESSION_CAMPAIGN_MISSIONS),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
+test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes outside reviewed prose',()=>{
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS)),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.PROGRESSION_CAMPAIGN_MISSIONS)),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
 });
 
 test('current flight campaign is thirteen explicit immutable revisions after the unchanged opening and Embers',()=>{

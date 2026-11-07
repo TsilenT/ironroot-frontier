@@ -2,7 +2,7 @@ import {startLegacyTeaching} from './campaign-teaching-helpers.mjs';
 import {test as base,expect} from '@playwright/test';
 import {openBuildControls,prepareBuildControl} from './shared-build-controls.mjs';
 import {Game} from '../../dist/engine.js';
-import {createCampaignProgress, ONBOARDING_MISSIONS} from '../../dist/campaign.js';
+import {createCampaignProgress, createCampaignMission, ONBOARDING_MISSIONS} from '../../dist/campaign.js';
 import {progressionProfile} from './campaign-progression-fixtures.mjs';
 const SAVE='ironroot.battle.v1', PROGRESS='ironroot.campaign.v1';
 const test=base.extend({page:async({page},use)=>{const errors=[];page.on('pageerror',e=>errors.push(e.message));await use(page);expect(errors).toEqual([]);}});
@@ -205,7 +205,18 @@ for(const [id,purchases,gold] of [
 ])test(id+' allows real paid planning across every road with its earned roster',async({page})=>{
   await fresh(page,id);const before=await saved(page),rules=Game.restore(before.game).ruleset.id;
   await press(page,'#coachingPlan');
-  for(const [type,x,y]of purchases)await place(page,type,x,y);
+  const forkPrompts=[
+    {open:'Build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.',closed:'Open Build, then build a Warden lodge toward the front of the north road to train Rootwardens who take hits but deal little damage.'},
+    {open:'Place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.',closed:'Open Build, then place an archery range behind the northern Warden lodge to add damage while the Rootwardens hold the front.'},
+    {open:'Build a gold mine behind your front line to fund more troop buildings as the battle goes on.',closed:'Open Build, then build a gold mine behind your front line to fund more troop buildings as the battle goes on.'},
+  ];
+  const compact=await page.locator('#app').evaluate(e=>e.classList.contains('protected-compact'));
+  if(id==='shield-at-the-fork')await expect(page.locator('#coachText')).toHaveText(forkPrompts[0][compact?'closed':'open']);
+  for(const [type,x,y]of purchases){
+    await place(page,type,x,y);
+    if(id==='shield-at-the-fork'&&type==='wardenLodge')await expect(page.locator('#coachText')).toHaveText(forkPrompts[1][compact?'closed':'open']);
+    if(id==='shield-at-the-fork'&&type==='barracks')await expect(page.locator('#coachText')).toHaveText(forkPrompts[2][compact?'closed':'open']);
+  }
   await expect(page.locator('#time')).toHaveText('00:00');
   await expect(page.locator('#gold')).toHaveText(String(gold));
   await page.waitForTimeout(1100);await expect(page.locator('#time')).toHaveText('00:00');
@@ -215,6 +226,45 @@ for(const [id,purchases,gold] of [
   expect(own.map(b=>[b.type,b.x,b.y])).toEqual(purchases);
   expect(after.game.state.gold[0]).toBeCloseTo(gold+5*after.game.state.time,1);
   expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),PROGRESS)).toEqual(progressionProfile(ONBOARDING_MISSIONS.findIndex(m=>m.id===id)));
+});
+
+test('Forked Road mine and tower hints assemble complete prompts after real paid planning',async({page})=>{
+  test.setTimeout(60000);
+  // Declared legacy checkpoint and prerequisite record, not browser-played wins.
+  const progress=createCampaignProgress();
+  progress.missions['first-watch']={completed:true,stars:1,bestTime:60};
+  const battle={format:'ironroot-save',version:3,scenario:{kind:'campaign',id:'forked-road',revision:1},game:createCampaignMission('forked-road').serialize()};
+  await page.goto('/');
+  await page.evaluate(({battle,progress})=>{
+    localStorage.setItem('ironroot.battle.v1',JSON.stringify(battle));
+    localStorage.setItem('ironroot.campaign.v1',JSON.stringify(progress));
+  },{battle,progress});
+  await page.reload(); await press(page,'#resumeSaved'); await press(page,'#pause');
+  await press(page,'#restartBattle'); await press(page,'#confirmRestart');
+  await expect(page.locator('#coachingModal')).toBeVisible();
+  await press(page,'#coachingPlan');
+  await place(page,'barracks',970,340); await place(page,'barracks',970,560);
+  const compact=await page.locator('#app').evaluate(e=>e.classList.contains('protected-compact'));
+  await expect(page.locator('#coachText')).toHaveText(compact
+    ?'Open Build, then build a mine behind your troops to add 2.5 gold per second for later reinforcements.'
+    :'Build a mine behind your troops to add 2.5 gold per second for later reinforcements.');
+  await openBuildControls(page);
+  await expect(page.locator('#coachText')).toHaveText('Build a mine behind your troops to add 2.5 gold per second for later reinforcements.');
+  await place(page,'mint',410,340);
+  await expect(page.locator('#coachText')).toHaveText(compact
+    ?'Open Build, then place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.'
+    :'Place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.');
+  // Planning does not promise an immediate checkpoint after each purchase.
+  // Options uses the ordinary pause/save path before observing persistence.
+  await press(page,'#settings'); const built=await saved(page); await press(page,'#settingsDone');
+  await openBuildControls(page);
+  await expect(page.locator('#coachText')).toHaveText('Place a watchtower ahead of production to fire at nearby enemies, but use marching troops to clear a distant camp.');
+  await expect(page.locator('#time')).toHaveText('00:00'); await expect(page.locator('#gold')).toHaveText('140');
+  expect(await saved(page)).toEqual(built);
+  expect(built.game.state.gold[0]).toBe(140); expect(built.game.state.time).toBe(0);
+  expect(built.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y])).toEqual([['barracks',970,340],['barracks',970,560],['mint',410,340]]);
+  expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),PROGRESS)).toEqual(progress);
+  Game.restore(built.game);
 });
 
 test('restart of an unfinished opening keeps its exact roster and offers fresh teaching at zero',async({page})=>{

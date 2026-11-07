@@ -89,7 +89,7 @@ async function airDisclosure(page,envelope) {
   else {
     const lines=text.split('\n');expect(lines).toHaveLength(rows.length);
     for(const row of rows){
-      const prefix=`${row.side?'Enemy':'Your'} ${row.count} ${row.count===1?'gryphon':'gryphons'}: ${road(row.from)} to ${road(row.to)}.`;
+      const prefix=`${row.side?'Enemy':'Your'} ${row.count} ${row.count===1?'gryphon':'gryphons'}: ${road(row.from)} to ${road(row.to)} ·`;
       const suffix=row.phase==='approach'?'Approaching the crossing.':row.phase==='transit'?'Crossing now; cannot attack.':null;
       if(suffix)expect(lines).toContain(prefix+' '+suffix);
       else {
@@ -113,7 +113,7 @@ for(const id of ['wings-of-ash','stonegate'])test(`${id}: real paid planning aer
   expect(purchase.game.state.units).toHaveLength(0);expect(purchase.game.state.time).toBe(0);
   await inspect(page,purchase,aerie.id);
   await expect(page.locator('#flightOrders')).toHaveAttribute('aria-label','Aerie flight orders');
-  await expect(page.locator('#flightOrderHelp')).toContainText('Airborne gryphons keep their route');
+  await expect(page.locator('#flightOrderHelp')).toContainText('gryphons already in the air keep their route');
   const handle=await page.locator('#flightSouth').elementHandle();
   for(const [key,lane] of [['North',0],['South',2],['Hold',1],['North',0],['North',0]]) {
     await readyFlightOrder(page,purchase,aerie.id,key);await press(page,'#flight'+key);
@@ -283,7 +283,7 @@ test('enemy unlaunched plans are private: no selection controls, Air routes entr
 test('an enemy committed warning is accessible and Air routes disclosure never resumes battle',async({page})=>{
   const fixture=flightFixture({side:1,phase:'warning',home:1250});await seedFixture(page,fixture);
   await expect(page.locator('#flightAlert')).toHaveAttribute('role','status');await expect(page.locator('#flightAlert')).toHaveAttribute('aria-live','polite');
-  await expect(page.locator('#flightAlert')).toContainText('Enemy gryphons are about to cross toward north road');
+  await expect(page.locator('#flightAlert')).toContainText('Enemy gryphons are about to cross toward the north road');
   const stopped=await pause(page);const rows=await airDisclosure(page,stopped);expect(rows.some(r=>r.side===1&&r.from===1&&r.to===0)).toBe(true);
   await page.keyboard.press('Space');await expect(page.locator('#pauseFlights')).toHaveJSProperty('open',false);
   await page.keyboard.press('Enter');await expect(page.locator('#pauseFlights')).toHaveJSProperty('open',true);
@@ -366,9 +366,9 @@ test('native pause retains an approaching enemy warning, then Resume announces i
       .observe(document.getElementById('flightAlert'),{childList:true,subtree:true,characterData:true});
   });
   await page.waitForTimeout(700);expect(await saved(page)).toEqual(stopped);await expect(page.locator('#flightAlert')).toBeEmpty();
-  await press(page,'#resume');await expect(page.locator('#flightAlert')).toContainText('Enemy gryphons are about to cross toward north road');
+  await press(page,'#resume');await expect(page.locator('#flightAlert')).toContainText('Enemy gryphons are about to cross toward the north road');
   const announced=await pause(page);expect(unit(announced,fixture.unitId).airRoute).toMatchObject({from:1,to:0});
   await page.waitForTimeout(300);expect(await saved(page)).toEqual(announced);
   await press(page,'#resume');await page.waitForTimeout(350);await pause(page);
-  expect(await page.evaluate(()=>window.__qaFlightAnnouncements)).toEqual(['Enemy gryphons are about to cross toward north road. Archers can hit them in the air.']);
+  expect(await page.evaluate(()=>window.__qaFlightAnnouncements)).toEqual(['Enemy gryphons are about to cross toward the north road, and your archers can hit them along the way.']);
 });

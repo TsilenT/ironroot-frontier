@@ -31,7 +31,7 @@ export function flightOrderModel(game, building) {
     options,
     current: current === source ? `Next launch: hold ${flightRoadName(game.map, source).toLowerCase()}.`
       : `Next launch: shift to ${flightRoadName(game.map, current).toLowerCase()}.`,
-    detail: 'Orders affect future launches. Airborne gryphons keep their route. Crossing takes time and leaves them open to archers.',
+    detail: 'New orders apply to future launches, while gryphons already in the air keep their route. Crossing between roads takes time and leaves them exposed to archers.',
   };
 }
 
@@ -52,7 +52,7 @@ export function flightRouteRows(game) {
   return [...groups.values()].sort((a, b) => a.side - b.side || a.from - b.from ||
     a.to - b.to || a.phase.localeCompare(b.phase)).map(row => ({...row,
       text: `${row.side ? 'Enemy' : 'Your'} ${row.count} ${row.count === 1 ? 'gryphon' : 'gryphons'}: ` +
-        `${flightRoadName(game.map, row.from)} to ${flightRoadName(game.map, row.to)}. ` +
+        `${flightRoadName(game.map, row.from)} to ${flightRoadName(game.map, row.to)} · ` +
         (row.phase === 'approach' ? 'Approaching the crossing.' : row.phase === 'warning'
           ? `Next crossing starts in ${flightWarningTime(row.remaining)} seconds.` : 'Crossing now; cannot attack.'),
     }));
@@ -63,6 +63,6 @@ export function flightWarningSummary(game, units) {
   const destinations = [...new Set(units.filter(u => u.side === 1 && u.hp > 0 &&
     u.type === 'gryphon' && u.airRoute?.phase === 'warning').map(u => u.airRoute.to))];
   if (!destinations.length) return '';
-  return `Enemy gryphons are about to cross toward ${destinations.sort((a,b) => a-b)
-    .map(lane => flightRoadName(game.map, lane).toLowerCase()).join(' and ')}. Archers can hit them in the air.`;
+  return `Enemy gryphons are about to cross toward the ${destinations.sort((a,b) => a-b)
+    .map(lane => flightRoadName(game.map, lane).toLowerCase()).join(' and ')}, and your archers can hit them along the way.`;
 }
