@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { Game } from '../dist/engine.js';
+import { supportsCitadelOptions } from '../dist/citadel-options.js';
 import { decodeBattle, encodeBattle } from '../dist/battle-codec.js';
 import { CHALLENGES, createChallenge } from '../dist/challenges.js';
 import {
@@ -45,7 +46,7 @@ function exercise(data, progress = createCampaignProgress()) {
     },
   };
   runInNewContext(fn + '\nupdateResume();', {
-    JSON, decodeBattle, resumeProblem:null,
+    JSON, decodeBattle, supportsCitadelOptions, resumeProblem:null,
     $: (id) => elements.get(id),
     storage,
     SAVE: 'battle',
@@ -195,9 +196,10 @@ test('new intro Resume labels name their authored mission without a skirmish sud
   }
 });
 test('fresh versioned skirmish Resume labels retain their actual endgame selection',()=>{
-  for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed']){
+  for(const rulesetId of ['frontier-rootwarden-open','frontier-rootwarden-timed','frontier-citadel-open','frontier-citadel-bridge-timed']){
     const game=new Game({rulesetId,ai:false}),result=exercise(encodeBattle(game));
     assert.ok(result.button.textContent.includes(game.ruleset.endgame.name.toUpperCase()));
+    assert.equal(result.button.textContent.includes('CITADEL CHOICES'),supportsCitadelOptions(game.ruleset));
     result.button.onclick();assert.equal(result.starts[0][0].ruleset.id,rulesetId);
   }
 });

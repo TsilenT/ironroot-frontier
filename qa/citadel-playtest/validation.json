@@ -1,0 +1,216 @@
+{
+  "runtimeCommit": "6fff421ae36bc86c2864ba1adde8cd2a4361affe",
+  "baseMain": "5ec1f967a1c8c8f9861f68b8fef3cf99c4fa460d",
+  "finalFullSuite": "/tmp/citadel-all-tests-final.log",
+  "logs": [
+    {
+      "localPath": "/tmp/citadel-all-tests-initial.log",
+      "sha256": "54ae8762ac1a7589c77dd9650e6368826645349899e5a63a9e4eb10196c14786",
+      "bytes": 194140,
+      "summary": [
+        "\u2139 Verified 132 actual starting buildings across 16 missions against aggregate, road and positioned SVG text.",
+        "\u2139 tests 1468",
+        "\u2139 suites 0",
+        "\u2139 pass 1462",
+        "\u2139 fail 5",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 1",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 92860.065921"
+      ],
+      "failedCases": [
+        "\u2716 frozen live precursor includes unchanged route helpers and all nine rule identities (15.299567ms)",
+        "\u2716 bridge contract is opt-in through frozen whole rulesets with existing automatic flyers and endgame rules (4.262488ms)",
+        "\u2716 actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold (5.166914ms)",
+        "\u2716 exact released 0.15 runtime upgrades without rewriting domains or permitting stale recovery (53.964894ms)",
+        "\u2716 critical dialogs and battlefield expose accessible descriptions (1.705372ms)",
+        "\u2716 frozen live precursor includes unchanged route helpers and all nine rule identities (15.299567ms)",
+        "\u2716 bridge contract is opt-in through frozen whole rulesets with existing automatic flyers and endgame rules (4.262488ms)",
+        "\u2716 actual start and input entry points check geometry before gameplay and normal dialogs outrank the hold (5.166914ms)",
+        "\u2716 exact released 0.15 runtime upgrades without rewriting domains or permitting stale recovery (53.964894ms)",
+        "\u2716 critical dialogs and battlefield expose accessible descriptions (1.705372ms)"
+      ]
+    },
+    {
+      "localPath": "/tmp/citadel-all-tests-expanded.log",
+      "sha256": "a19949c4989db86153740e678a692a2e0f0639073d436539d9a3ecc1a674919f",
+      "bytes": 171724,
+      "summary": [
+        "\u2139 Verified 132 actual starting buildings across 16 missions against aggregate, road and positioned SVG text.",
+        "\u2139 tests 1492",
+        "\u2139 suites 0",
+        "\u2139 pass 1480",
+        "\u2139 fail 11",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 1",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 106763.063298"
+      ],
+      "failedCases": [
+        "\u2716 real start selects current skirmish and optional lesson rules without reinterpreting a restored battle (153.042222ms)",
+        "\u2716 fresh open skirmish selects automatic air and refuses old route-rule choices (68.87411ms)",
+        "\u2716 fresh timed skirmish selects automatic air and refuses old route-rule choices (29.2537ms)",
+        "\u2716 actual open setup binds the opted-in identity and changes do not alter a running battle (250.151774ms)",
+        "\u2716 actual timed setup binds the opted-in identity and changes do not alter a running battle (149.281248ms)",
+        "\u2716 engine build paths, restores and scenario admission reject unavailable rosters without charging gold (23.188726ms)",
+        "\u2716 opening locked mission clicks cannot launch or charge; hidden expansion cannot bypass engine roster (56.94546ms)",
+        "\u2716 Story \u2192 Chapter \u2192 Mission moves focus, folds only new briefings, and keeps a fresh profile unchanged (52.040177ms)",
+        "\u2716 all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts (10.380039ms)",
+        "\u2716 flight is earned stage three, while old opening replay identity and historical records remain unchanged (11.193897ms)",
+        "\u2716 fresh versioned skirmish Resume labels retain their actual endgame selection (20.154805ms)",
+        "\u2716 real start selects current skirmish and optional lesson rules without reinterpreting a restored battle (153.042222ms)",
+        "\u2716 fresh open skirmish selects automatic air and refuses old route-rule choices (68.87411ms)",
+        "\u2716 fresh timed skirmish selects automatic air and refuses old route-rule choices (29.2537ms)",
+        "\u2716 actual open setup binds the opted-in identity and changes do not alter a running battle (250.151774ms)",
+        "\u2716 actual timed setup binds the opted-in identity and changes do not alter a running battle (149.281248ms)",
+        "\u2716 engine build paths, restores and scenario admission reject unavailable rosters without charging gold (23.188726ms)",
+        "\u2716 opening locked mission clicks cannot launch or charge; hidden expansion cannot bypass engine roster (56.94546ms)",
+        "\u2716 Story \u2192 Chapter \u2192 Mission moves focus, folds only new briefings, and keeps a fresh profile unchanged (52.040177ms)",
+        "\u2716 all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts (10.380039ms)",
+        "\u2716 flight is earned stage three, while old opening replay identity and historical records remain unchanged (11.193897ms)",
+        "\u2716 fresh versioned skirmish Resume labels retain their actual endgame selection (20.154805ms)"
+      ]
+    },
+    {
+      "localPath": "/tmp/citadel-authored-regressions.log",
+      "sha256": "0d056f36c310ed3e2724aed77c48144d6ca0268f51f59f28a056143095813ff0",
+      "bytes": 44492,
+      "summary": [
+        "\u2139 tests 320",
+        "\u2139 suites 0",
+        "\u2139 pass 312",
+        "\u2139 fail 8",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 68096.687276"
+      ],
+      "failedCases": [
+        "\u2716 real start selects current skirmish and optional lesson rules without reinterpreting a restored battle (120.029752ms)",
+        "\u2716 fresh open skirmish selects automatic air and refuses old route-rule choices (48.233203ms)",
+        "\u2716 fresh timed skirmish selects automatic air and refuses old route-rule choices (42.456729ms)",
+        "\u2716 engine build paths, restores and scenario admission reject unavailable rosters without charging gold (13.965576ms)",
+        "\u2716 opening locked mission clicks cannot launch or charge; hidden expansion cannot bypass engine roster (59.884887ms)",
+        "\u2716 Story \u2192 Chapter \u2192 Mission moves focus, folds only new briefings, and keeps a fresh profile unchanged (68.661357ms)",
+        "\u2716 all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts (11.064555ms)",
+        "\u2716 flight is earned stage three, while old opening replay identity and historical records remain unchanged (41.574375ms)",
+        "\u2716 real start selects current skirmish and optional lesson rules without reinterpreting a restored battle (120.029752ms)",
+        "\u2716 fresh open skirmish selects automatic air and refuses old route-rule choices (48.233203ms)",
+        "\u2716 fresh timed skirmish selects automatic air and refuses old route-rule choices (42.456729ms)",
+        "\u2716 engine build paths, restores and scenario admission reject unavailable rosters without charging gold (13.965576ms)",
+        "\u2716 opening locked mission clicks cannot launch or charge; hidden expansion cannot bypass engine roster (59.884887ms)",
+        "\u2716 Story \u2192 Chapter \u2192 Mission moves focus, folds only new briefings, and keeps a fresh profile unchanged (68.661357ms)",
+        "\u2716 all sixteen historical continuation descriptors and factories stay exact revision 2 despite current automatic-air starts (11.064555ms)",
+        "\u2716 flight is earned stage three, while old opening replay identity and historical records remain unchanged (41.574375ms)"
+      ]
+    },
+    {
+      "localPath": "/tmp/citadel-all-tests-final.log",
+      "sha256": "87873b5a4b9346e94b5dca4d37507fcaebedee1bdfc720bbeb61ae19b78b656b",
+      "bytes": 159237,
+      "summary": [
+        "\u2139 Verified 132 actual starting buildings across 16 missions against aggregate, road and positioned SVG text.",
+        "\u2139 tests 1493",
+        "\u2139 suites 0",
+        "\u2139 pass 1492",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 1",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 97729.711086"
+      ],
+      "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-current-ui-final.log",
+      "sha256": "03cf0fb6f9379f3a3ba3b141f54ff28b937673b2b0af9e3d9ee5028f0208b69c",
+      "bytes": 2817,
+      "summary": [
+        "\u2139 tests 25",
+        "\u2139 suites 0",
+        "\u2139 pass 25",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 1198.210165"
+      ],
+      "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-unlock-copy-final.log",
+      "sha256": "20c3dcc74b7b127a09e1bc6be3206c8f956efe521cc775d880acdbe86acdb7bc",
+      "bytes": 1934,
+      "summary": [
+        "\u2139 tests 15",
+        "\u2139 suites 0",
+        "\u2139 pass 15",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 1815.112768"
+      ],
+      "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-map-ui-final.log",
+      "sha256": "2d06c3b516f21a500b455ea4b2893137ae22969de197034144c208520ad081f9",
+      "bytes": 809,
+      "summary": [
+        "\u2139 tests 7",
+        "\u2139 suites 0",
+        "\u2139 pass 7",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 263.003198"
+      ],
+      "failedCases": []
+    },
+    {
+      "localPath": "/tmp/citadel-render-final.log",
+      "sha256": "781de9d06a8aedd377701820d9b46fb9dd1238ba790dcc888b25993cf48b2cbc",
+      "bytes": 4869,
+      "summary": [
+        "\u2139 tests 47",
+        "\u2139 suites 0",
+        "\u2139 pass 47",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 974.88982"
+      ],
+      "failedCases": []
+    }
+  ],
+  "corrections": [
+    "Updated current rules/scenario/profile expectations while retaining historical fixtures and assertions.",
+    "Added the real supportsCitadelOptions dependency to narrow Resume-function test VMs.",
+    "Corrected locked-opening UI copy to use its actual preceding mission, excluding onboarding and introductory missions from the continuation gate.",
+    "Clamped epsilon full-health and wait indicators at exact engine boundaries.",
+    "Native Home captures revealed clipped status labels at the left edge. Clamp the whole badge to a four-screen-pixel viewport margin, and omit badges for offscreen citadels.",
+    "The first new renderer test incorrectly expected an offscreen base in a wide viewport that showed the whole map. Restrict that offscreen assertion to the narrow viewport; all edge-fitting cases remain."
+  ],
+  "limits": [
+    "One optional desktop-tooling minimatch compatibility test is skipped because desktop build dependencies are not installed. Browser/runtime checks are unaffected.",
+    "Actual Chromium/browser evidence is reported separately.",
+    "No human enjoyment, physical-device, Safari/Firefox or physical-controller certification."
+  ],
+  "fullSuiteScope": "Runtime at 6fff421, before the subsequent render-only status-label viewport clamp. Final-source focused renderer checks pass; final remote full CI is recorded in the PR.",
+  "checks": {
+    "syntax": "pass",
+    "runtimeInventory": "runtime-final.json",
+    "focusedRenderer": {
+      "passed": 47,
+      "failed": 0
+    },
+    "fullLocal": {
+      "passed": 1492,
+      "failed": 0,
+      "skipped": 1
+    }
+  }
+}

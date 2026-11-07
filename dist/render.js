@@ -1269,7 +1269,9 @@ export class Renderer {
     c.fillText(b.side ? 'IRON CITADEL' : 'HOME CITADEL', 0, 87);
     this.health(-54, 65, 108, b.hp / b.maxHp, co.bright);
     const status = game && citadelOptionStatus(game, b.side);
-    if (status?.choice && b.hp > 0) {
+    const visibleLeft = this.camera - this.width / (2 * this.scale);
+    const visibleRight = this.camera + this.width / (2 * this.scale);
+    if (status?.choice && b.hp > 0 && b.x >= visibleLeft && b.x <= visibleRight) {
       const label = status.choice === 'arrows' ? 'EXTRA ARROW'
         : status.blockedByDecay ? 'REGEN · DECAY'
           : status.fullHealth ? 'REGEN · FULL'
@@ -1277,10 +1279,14 @@ export class Renderer {
       const size = Math.max(13, 11 / this.scale);
       c.font = `bold ${size}px "DM Sans",sans-serif`;
       const width = c.measureText(label).width + 14;
+      // Keep the complete status readable at either world edge on short phones.
+      const margin = 4 / this.scale;
+      const badgeX = Math.max(visibleLeft - b.x + width / 2 + margin,
+        Math.min(visibleRight - b.x - width / 2 - margin, 0));
       c.fillStyle = '#142d2deb';
-      c.fillRect(-width / 2, 94, width, size + 10);
+      c.fillRect(badgeX - width / 2, 94, width, size + 10);
       c.fillStyle = status.healingActive ? '#bcf1cf' : '#d7e9ed';
-      c.fillText(label, 0, 99 + size);
+      c.fillText(label, badgeX, 99 + size);
     }
     c.restore();
   }
