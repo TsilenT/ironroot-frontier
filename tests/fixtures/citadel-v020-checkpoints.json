@@ -1,0 +1,664 @@
+{
+  "sourceCommit": "cd63f7c543b7c8425dc304105e229ff09d01e043",
+  "scope": "Generated from exact released v0.20 engine. Controlled positive damage and enemy placement isolate persisted counters; purchases use normal paid engine actions. Not human gameplay or balance evidence.",
+  "engineSha256": "d7a31da2c31b85dfee252cc3d40f7f2fa79a6c1340e17faa8a1c008ac17187d2",
+  "citadelSha256": "0605dbc173d935b16e70fe6b533bb4f3fa333f2b85ebf0213899cefac82ce942",
+  "cases": [
+    {
+      "label": "arrows",
+      "game": {
+        "version": 3,
+        "rulesetId": "frontier-citadel-open",
+        "rulesetRevision": 1,
+        "mapId": "classic",
+        "mapRevision": 1,
+        "difficulty": "normal",
+        "seed": 1733185519,
+        "ai": false,
+        "nextId": 29,
+        "aiTimer": 0,
+        "accumulator": 0,
+        "tick": 2020,
+        "state": {
+          "time": 100.9999999999964,
+          "gold": [
+            755,
+            943
+          ],
+          "income": [
+            5,
+            5
+          ],
+          "bases": [
+            {
+              "id": "base0",
+              "type": "base",
+              "side": 0,
+              "hp": 5850,
+              "maxHp": 6000,
+              "cooldown": 0.5499999999999994,
+              "x": 110,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            },
+            {
+              "id": "base1",
+              "type": "base",
+              "side": 1,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 3090,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            }
+          ],
+          "buildings": [
+            {
+              "id": 1,
+              "type": "barracks",
+              "side": 0,
+              "x": 410,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.08888888888886154,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 2,
+              "type": "barracks",
+              "side": 1,
+              "x": 2790,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.08888888888886154,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            }
+          ],
+          "units": [
+            {
+              "id": 21,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1584.3727613520796,
+              "y": 449.05708602330145,
+              "lane": 1,
+              "hp": 138,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 22,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1615.692831928129,
+              "y": 449.4275308506291,
+              "lane": 1,
+              "hp": 138,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 24,
+              "type": "siege",
+              "flying": false,
+              "side": 1,
+              "x": 336.14387699808975,
+              "y": 445.5917825257381,
+              "lane": 1,
+              "hp": 48,
+              "maxHp": 240,
+              "level": 1,
+              "cooldown": 8.999999999999844,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 25,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1085.187508092643,
+              "y": 439.2400697355745,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 26,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2114.8045884033163,
+              "y": 443.47891662809866,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 27,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 406.80253069178525,
+              "y": 446.2943387785044,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -0.6520620112773032,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 28,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2690.8000937537145,
+              "y": 454.3647771744636,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -0.7192922600079329,
+              "attack": 0,
+              "hit": 0
+            }
+          ],
+          "projectiles": [],
+          "effects": [
+            {
+              "x": 1584.3727613520796,
+              "y": 449.05708602330145,
+              "type": "hit",
+              "side": 1,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            },
+            {
+              "x": 1615.692831928129,
+              "y": 449.4275308506291,
+              "type": "hit",
+              "side": 0,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            }
+          ],
+          "frontline": 960.2583191750847,
+          "winner": null,
+          "spellCooldown": [
+            0,
+            0
+          ],
+          "overtime": false,
+          "stats": {
+            "kills": [
+              10,
+              9
+            ],
+            "built": [
+              1,
+              1
+            ],
+            "damage": [
+              2094,
+              1812
+            ]
+          },
+          "citadelOptions": {
+            "sides": [
+              {
+                "choice": "arrows",
+                "purchasedAt": 89.99999999999703,
+                "purchasedTick": 1800,
+                "lastDamageAt": 87.99999999999714,
+                "healedTotal": 0,
+                "extraShots": 8
+              },
+              {
+                "choice": null,
+                "purchasedAt": null,
+                "purchasedTick": null,
+                "lastDamageAt": null,
+                "healedTotal": 0,
+                "extraShots": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "regen",
+      "game": {
+        "version": 3,
+        "rulesetId": "frontier-citadel-open",
+        "rulesetRevision": 1,
+        "mapId": "classic",
+        "mapRevision": 1,
+        "difficulty": "normal",
+        "seed": 4076450187,
+        "ai": false,
+        "nextId": 27,
+        "aiTimer": 0,
+        "accumulator": 0,
+        "tick": 2020,
+        "state": {
+          "time": 100.9999999999964,
+          "gold": [
+            753,
+            943
+          ],
+          "income": [
+            5,
+            5
+          ],
+          "bases": [
+            {
+              "id": "base0",
+              "type": "base",
+              "side": 0,
+              "hp": 5858.999999999978,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 110,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            },
+            {
+              "id": "base1",
+              "type": "base",
+              "side": 1,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 3090,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            }
+          ],
+          "buildings": [
+            {
+              "id": 1,
+              "type": "barracks",
+              "side": 0,
+              "x": 410,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.08888888888886154,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 2,
+              "type": "barracks",
+              "side": 1,
+              "x": 2790,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.08888888888886154,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            }
+          ],
+          "units": [
+            {
+              "id": 21,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1584.3727613520796,
+              "y": 449.05708602330145,
+              "lane": 1,
+              "hp": 138,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 22,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1615.692831928129,
+              "y": 449.4275308506291,
+              "lane": 1,
+              "hp": 138,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 23,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1085.1913447276647,
+              "y": 458.9563793167606,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 24,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2114.800018232745,
+              "y": 450.41106597068926,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 25,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 509.1989802524613,
+              "y": 435.60471604002396,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -0.7833345867227764,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 26,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2690.800374563536,
+              "y": 441.27566320599635,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -0.6101754958275706,
+              "attack": 0,
+              "hit": 0
+            }
+          ],
+          "projectiles": [],
+          "effects": [
+            {
+              "x": 1584.3727613520796,
+              "y": 449.05708602330145,
+              "type": "hit",
+              "side": 1,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            },
+            {
+              "x": 1615.692831928129,
+              "y": 449.4275308506291,
+              "type": "hit",
+              "side": 0,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            }
+          ],
+          "frontline": 1600.0327966401042,
+          "winner": null,
+          "spellCooldown": [
+            0,
+            0
+          ],
+          "overtime": false,
+          "stats": {
+            "kills": [
+              9,
+              9
+            ],
+            "built": [
+              1,
+              1
+            ],
+            "damage": [
+              1662,
+              1812
+            ]
+          },
+          "citadelOptions": {
+            "sides": [
+              {
+                "choice": "regen",
+                "purchasedAt": 89.99999999999703,
+                "purchasedTick": 1800,
+                "lastDamageAt": 87.99999999999714,
+                "healedTotal": 9.00000000000001,
+                "extraShots": 0
+              },
+              {
+                "choice": null,
+                "purchasedAt": null,
+                "purchasedTick": null,
+                "lastDamageAt": null,
+                "healedTotal": 0,
+                "extraShots": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "unbought-early",
+      "game": {
+        "version": 3,
+        "rulesetId": "frontier-citadel-open",
+        "rulesetRevision": 1,
+        "mapId": "classic",
+        "mapRevision": 1,
+        "difficulty": "normal",
+        "seed": 156148671,
+        "ai": false,
+        "nextId": 5,
+        "aiTimer": 0,
+        "accumulator": 0,
+        "tick": 100,
+        "state": {
+          "time": 4.99999999999999,
+          "gold": [
+            445,
+            445
+          ],
+          "income": [
+            5,
+            5
+          ],
+          "bases": [
+            {
+              "id": "base0",
+              "type": "base",
+              "side": 0,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 110,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            },
+            {
+              "id": "base1",
+              "type": "base",
+              "side": 1,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 3090,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            }
+          ],
+          "buildings": [
+            {
+              "id": 1,
+              "type": "barracks",
+              "side": 0,
+              "x": 410,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.4222222222222213,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 2,
+              "type": "barracks",
+              "side": 1,
+              "x": 2790,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.4222222222222213,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            }
+          ],
+          "units": [
+            {
+              "id": 3,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 701.1988027862458,
+              "y": 443.44582893046163,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 4,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2498.8031687301336,
+              "y": 439.33704441795555,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            }
+          ],
+          "projectiles": [],
+          "effects": [],
+          "frontline": 1600.0009857581897,
+          "winner": null,
+          "spellCooldown": [
+            0,
+            0
+          ],
+          "overtime": false,
+          "stats": {
+            "kills": [
+              0,
+              0
+            ],
+            "built": [
+              1,
+              1
+            ],
+            "damage": [
+              0,
+              0
+            ]
+          },
+          "citadelOptions": {
+            "sides": [
+              {
+                "choice": null,
+                "purchasedAt": null,
+                "purchasedTick": null,
+                "lastDamageAt": null,
+                "healedTotal": 0,
+                "extraShots": 0
+              },
+              {
+                "choice": null,
+                "purchasedAt": null,
+                "purchasedTick": null,
+                "lastDamageAt": null,
+                "healedTotal": 0,
+                "extraShots": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

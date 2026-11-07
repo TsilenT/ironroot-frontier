@@ -12,10 +12,9 @@ test('fresh Skirmish always has choices, independently of bridge and endgame',()
     assert.equal(!!g.state.bridgeControl,bridge);assert.equal(g.ruleset.endgame.forcedDecay,timed);
   }
 });
-test('readiness disclosure agrees with exact engine time/tick gate and ordinary gold',()=>{
-  const g=viewGame(89.95);assert.match(citadelStatusText(g),/1s/);assert.equal(g.canBuyCitadelOption('arrows').ok,false);
-  g.tick=1800;g.state.time=90-1e-10;assert.equal(g.canBuyCitadelOption('arrows').ok,true);
-  assert.equal(citadelOptionStatus(g).readyWait,0);assert.match(citadelStatusText(g),/Choose one option/);
+test('availability disclosure starts at time zero and reflects ordinary gold',()=>{
+  const g=viewGame(0);assert.equal(g.canBuyCitadelOption('arrows').ok,true);
+  assert.match(citadelStatusText(g),/Choose one option/);assert.doesNotMatch(citadelStatusText(g),/available in|1:30/i);
   g.state.gold[0]=189;assert.match(citadelStatusText(g),/Need 190 gold/);
 });
 test('regen text preserves purchase wait at full health, actual damage wait, paused readiness and decay',()=>{
