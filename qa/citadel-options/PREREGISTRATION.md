@@ -21,12 +21,11 @@ Only current non-bridge open/timed Skirmish rules and public maps are admitted.
 - Shot: multiply each ordinary single base shot by 1.25: 40 before overtime,
   22.5 after. A modest +25% single-target effect, with no extra target or rate.
 - Regen: restore 3 HP/sec only on fixed steps beginning at least 8 seconds after
-  both purchase and last actual citadel damage. No immediate heal; cap total
-  lifetime restoration at 600. Never exceed existing maximum HP, resurrect,
+  both purchase and last actual citadel damage. No immediate heal; cap
+  each recovery at ordinary maximum HP, with NO lifetime allowance. Never resurrect,
   heal an ended game, or heal at/after 420 in timed mode. Damage resets the delay.
-  The short disengagement requirement supplies counterplay; the finite 600 cap
-  bounds this first repair hypothesis to the prior HP quantity without raising
-  max HP. It is not a permanent unlimited regeneration design.
+  The short disengagement requirement supplies counterplay. This is recurring
+  regeneration throughout an open match, with no increase to maximum HP.
 - Arrows: one additional shot at 50% of ordinary base damage (16 or 9) per existing
   firing cycle, aimed at the nearest different living enemy strictly inside 310.
   No second target means no second shot. It cannot hit the first target twice.
@@ -37,8 +36,8 @@ Only current non-bridge open/timed Skirmish rules and public maps are admitted.
 No tuning after outcomes. Full HP, range, production, income, spells and ordinary
 end conditions remain unchanged. No forced ending is introduced. The 190/90
 benchmark gives a direct spending comparison; these are hypotheses, not balanced
-prices or a user mandate. Stronger shots and arrows have lasting effects while
-regen has a finite restoration budget; report that asymmetry.
+prices or a user mandate. All three effects persist throughout the match, with the stated regeneration
+counterplay and timed-mode exclusion.
 
 ## Paid comparison: 120 games, 24 shared-history choice groups
 
@@ -102,7 +101,7 @@ terminal times. Report unused upgrades and threats that never reach the citadel.
 Synthetic fixtures are explicitly separate from paid cases: no/one/many targets,
 warrior/siege/gryphon (and archer breakpoint), ranged boundary, same-target
 exclusion, overtime damage, cooldown parity, out-of-combat delay reset, continuous
-siege versus interruption, HP and lifetime caps, dead/ended/safety-limit guards,
+siege versus interruption, HP caps and recurring restoration, dead/ended/safety-limit guards,
 strict admission/restore and disabled parity. A long controlled open/timed regen
 fixture checks consumption/stall risk without claiming paid-match balance.
 Accounting regression must assert a 75-gold gross Volley plus immediate bounties.
@@ -111,3 +110,15 @@ Recommendation distinguishes narrower targeted benefit, generalized automatic
 purchase, recovery versus delayed loss, and inconclusive sensitivity. Preserve
 negative/null cases. Propose a design/PR only if evidence supports useful choice;
 otherwise retain a negative/inconclusive QA report. No release, merge or UI work.
+
+## Pre-outcome amendment: recurring regeneration
+
+The parent corrected the hypothesis before any paid outcome run: the initial
+600-HP lifetime reserve represented finite slow repair, not the recurring regen
+Steve requested. It is removed for that semantic reason, not for a desired
+outcome. 3 HP/sec, eight seconds without damage, ordinary max HP, no resurrection,
+and no healing at/after timed decay remain fixed. All other parameters and the
+120-case matrix remain unchanged. No paid games ran under the finite version.
+Its ten passing synthetic preflight tests and output files are retained under
+superseded-finite-reserve, with the original source available in its Git commit.
+Those fixtures are not evidence for the corrected recurring mechanic.

@@ -44,8 +44,8 @@ test('regen waits eight complete seconds after purchase and damage, continuous d
  const g=fixture();g.state.bases[0].hp=5000;g.purchase('regen');advance(g,160);assert.equal(g.state.bases[0].hp,5000);g.update(.05);close(g.state.bases[0].hp,5000.15);
  g._damage(g.state.bases[0],20,1);const healed=g.purchases[0].healed;for(let i=0;i<800;i++){if(i%100===0)g._damage(g.state.bases[0],1,1);g.update(.05);}close(g.purchases[0].healed,healed);advance(g,240);assert.ok(g.purchases[0].healed>healed);
 });
-test('regen total cap, max HP, no resurrection or terminal healing, timed decay exclusion',()=>{
- const g=fixture();g.state.bases[0].hp=5000;g.purchase('regen');advance(g,6000);close(g.purchases[0].healed,600);close(g.state.bases[0].hp,5600);advance(g,6000);close(g.state.bases[0].hp,5600);
+test('recurring regen exceeds 600 total, respects max HP, terminal and timed decay exclusions',()=>{
+ const g=fixture();g.state.bases[0].hp=5000;g.purchase('regen');advance(g,8000);close(g.purchases[0].healed,1000);close(g.state.bases[0].hp,6000);g._damage(g.state.bases[0],1000,1);advance(g,8000);close(g.purchases[0].healed,2000);close(g.state.bases[0].hp,6000);
  const full=fixture();full.state.bases[0].hp=5999;full.purchase('regen');advance(full,400);close(full.state.bases[0].hp,6000);close(full.purchases[0].healed,1);
  const dead=fixture();dead.purchase('regen');dead.state.bases[0].hp=0;dead.update(.05);assert.equal(dead.state.bases[0].hp,0);assert.equal(dead.state.winner,1);
  const timed=fixture(true);timed.state.bases[0].hp=5000;timed.purchase('regen');timed.tick=8399;timed.state.time=419.95;advance(timed,40);assert.equal(timed.purchases[0].healed,0);assert.ok(timed.state.bases[0].hp<5000);
@@ -61,10 +61,10 @@ test('observer records gross Volley cost and immediate/between-step bounties, no
 test('controlled long open/timed regeneration: interrupted and continuous attrition, no forced open end',()=>{
  const rows=[];
  for(const timed of [false,true])for(const pattern of ['continuous','interrupted']){
-  const g=fixture(timed);g.purchase('regen');let budgetExhaustedAt=null;
-  while(g.tick<36000&&g.state.winner===null){if((g.tick-1800)%(pattern==='continuous'?120:400)===0)g._damage(g.state.bases[0],pattern==='continuous'?10:30,1);g.update(.05);if(g.purchases[0].healed>=600)budgetExhaustedAt??=g.state.time;}
-  if(pattern==='continuous')assert.equal(g.purchases[0].healed,0);if(!timed)assert.equal(g.state.winner,null);
-  rows.push({timed,pattern,time:g.state.time,winner:g.state.winner,hp:g.state.bases.map(b=>b.hp),restored:g.purchases[0].healed,budgetExhaustedAt});
+  const g=fixture(timed);g.purchase('regen');
+  while(g.tick<36000&&g.state.winner===null){if((g.tick-1800)%(pattern==='continuous'?120:400)===0)g._damage(g.state.bases[0],pattern==='continuous'?10:30,1);g.update(.05);}
+  if(pattern==='continuous')assert.equal(g.purchases[0].healed,0);if(!timed){assert.equal(g.state.winner,null);if(pattern==='interrupted')assert.ok(g.purchases[0].healed>600);}
+  rows.push({timed,pattern,time:g.state.time,winner:g.state.winner,hp:g.state.bases.map(b=>b.hp),restored:g.purchases[0].healed});
  }
  writeFileSync('qa/citadel-options/controlled-regen.json',JSON.stringify({scope:'synthetic no-production attrition fixtures; no paid-match claims',rows},null,2)+'\n');
 });

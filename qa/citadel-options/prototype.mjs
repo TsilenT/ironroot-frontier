@@ -1,5 +1,5 @@
 import {Game, MAPS, validateEngineFields} from '../../dist/engine.js';
-export const CONTRACT=Object.freeze({id:'qa-citadel-options-v1',cost:190,atTick:1800,shotMultiplier:1.25,extraMultiplier:.5,regenRate:3,regenDelay:8,regenBudget:600});
+export const CONTRACT=Object.freeze({id:'qa-citadel-options-v1',cost:190,atTick:1800,shotMultiplier:1.25,extraMultiplier:.5,regenRate:3,regenDelay:8});
 export const KINDS=Object.freeze(['shot','regen','arrows']);
 const ALLOWED=['frontier-air-local-open','frontier-air-local-timed'];
 const fail=()=>{throw Error('Invalid experimental citadel option snapshot');};
@@ -44,10 +44,10 @@ export class OptionGame extends Game {
     if(this.state.winner!==null||this.limitReason||(this.ruleset.endgame.forcedDecay&&this.state.time>=420-1e-8))return;
     for(const side of [0,1]){
       const p=this.purchases[side],b=this.state.bases[side];
-      if(p?.kind!=='regen'||b.hp<=0||p.healed>=600)continue;
+      if(p?.kind!=='regen'||b.hp<=0)continue;
       const start=Math.max(p.time,this.lastBaseDamage[side]??0)+8;
       if(this.state.time-dt<start-1e-8)continue;
-      const heal=Math.min(3*dt,600-p.healed,b.maxHp-b.hp);
+      const heal=Math.min(3*dt,b.maxHp-b.hp);
       b.hp+=heal;p.healed+=heal;
     }
   }
@@ -63,7 +63,7 @@ export class OptionGame extends Game {
         if(!s.enabled)fail();keys(p,['kind','time','tick','goldBefore','hpBefore','healed']);
         if(!KINDS.includes(p.kind))fail();num(p.time,90-1e-8,s.engine.state.time);num(p.tick,1800,s.engine.tick);
         if(!Number.isInteger(p.tick)||Math.abs(p.time-p.tick*.05)>1e-4)fail();
-        num(p.goldBefore,190,1e12);num(p.hpBefore,Number.MIN_VALUE,6000);num(p.healed,0,p.kind==='regen'?600:0);
+        num(p.goldBefore,190,1e12);num(p.hpBefore,Number.MIN_VALUE,6000);num(p.healed,0,p.kind==='regen'?1e12:0);
         if(p.kind==='regen'&&p.healed>Math.max(0,s.engine.state.time-p.time-8)*3+1e-5)fail();
       }
     }

@@ -1,0 +1,18 @@
+✔ all options pay equal normal cost, once per side, no immediate HP/rule change (6.278716ms)
+✔ insufficient/time/dead/ended/invalid/disabled/safety guard mutations rejected (1.200584ms)
+✔ protected/bridge identity exclusion and strict snapshot admission/restore (22.240308ms)
+✔ shot damage on each target class; extra arrow distinct target only; overtime preserved (4.548355ms)
+✔ second arrow uses nearest DIFFERENT living enemy strictly inside range; unchanged cadence (8.911151ms)
+✔ regen waits eight complete seconds after purchase and damage, continuous damage denies it (6.601069ms)
+✔ regen total cap, max HP, no resurrection or terminal healing, timed decay exclusion (33.573828ms)
+✔ disabled parity with released engine during paid normal-AI actions (757.696967ms)
+✔ observer records gross Volley cost and immediate/between-step bounties, no netting (1.914319ms)
+✔ controlled long open/timed regeneration: interrupted and continuous attrition, no forced open end (140.164832ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1120.156144
