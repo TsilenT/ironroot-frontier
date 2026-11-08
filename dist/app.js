@@ -2134,6 +2134,11 @@ function activateBattlePoint(w, { repeatBuild = false } = {}) {
       toast(result.reason);
       sound('error');
     }
+  } else if (citadelDialogSafe() && renderer.hitCitadel(w, battleView(), 0)) {
+    // The home citadel owns its upgrades, just as production buildings own
+    // theirs. Placement/spells above and drag/cancel guards stay authoritative.
+    showCitadelOptions();
+    sound('click');
   } else {
     const b = battleView().state.buildings
       .filter((b) => b.side === 0)
@@ -2902,7 +2907,7 @@ $('skipIntroduction').onclick = () => {
   showCampaignPage('mission', 'campaignMissionTitle');
 };
 setMode(mode);
-// Citadel choices reuse the pause menu without changing camera controls.
+// Clicking the home citadel opens its upgrades. The pause menu remains an accessible shortcut.
 var citadelNoticeGame = null, citadelNoticePhase = null;
 var citadelUnsavedGame = null;
 function updateCitadelSaveWarning() {
@@ -2929,7 +2934,7 @@ function updateCitadelUI() {
   const view = battleView();
   const text = citadelStatusText(game, 0, {paused});
   $('pauseCitadelStatus').textContent = text;
-  $('citadelBattleStatus').textContent = text;
+  $('citadelBattleStatus').textContent = `${text} Select your home citadel to view upgrades, or open Citadel upgrades in the pause menu.`;
   $('citadelPlayerStatus').textContent = `${Math.ceil(game.state.bases[0].hp)} / ${game.state.bases[0].maxHp} HP. ${text}`;
   $('citadelEnemyStatus').textContent = view.fog ? observedEnemyCitadelText(view) : `${Math.ceil(game.state.bases[1].hp)} / ${game.state.bases[1].maxHp} HP. ${citadelStatusText(game, 1, {paused})}`;
   $('citadelAIPolicy').textContent = game.ai ? CITADEL_AI_TEXT : 'This battle uses a fixed enemy formation. It does not buy citadel choices or make other new spending decisions. The same 190-gold cost and effects apply to either side; no side receives extra gold.';
@@ -3513,7 +3518,11 @@ function keepDialogFocus() {
     activeDialog.contains(document.activeElement)
   )
     return;
-  dialogDefaultFocus(activeDialog)?.focus();
+  // Pointer taps on labels/text can leave focus on the body (notably when
+  // their input is disabled). Repair the focus trap without moving a reader
+  // away from the control they just tapped in a scrolled mobile dialog.
+  // Explicit dialog entry and keyboard Tab navigation still reveal focus.
+  dialogDefaultFocus(activeDialog)?.focus({ preventScroll: true });
 }
 for (const event of ['focusin', 'focusout', 'click']) {
   document.addEventListener(event, () => {
