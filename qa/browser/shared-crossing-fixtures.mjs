@@ -15,7 +15,9 @@ export const ID = 'shared-crossing';
 export function sharedCrossingProgress() {
   const progress = createCampaignProgress();
   for (const [index, mission] of getProgressionCampaignOverview(progress).missions.entries()) {
-    if (mission.id !== ID) progress.missions[mission.id] = { completed: true, stars: 3, bestTime: 60 + index };
+    // Only predecessors are synthetic prerequisites; never award downstream missions.
+    if (mission.id === ID) break;
+    progress.missions[mission.id] = { completed: true, stars: 3, bestTime: 60 + index };
   }
   return progress;
 }

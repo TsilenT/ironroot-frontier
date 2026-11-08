@@ -1,0 +1,1026 @@
+{
+  "selected": "supply-road",
+  "setup": {
+    "id": "last-ascent-local-prototype",
+    "revision": 1,
+    "variant": "supply-road",
+    "label": "Exposed supply road",
+    "mapId": "classic",
+    "rulesetId": "frontier-citadel-open",
+    "difficulty": "normal",
+    "startingGold": [
+      1050,
+      120
+    ],
+    "startingHealth": [
+      3800,
+      6000
+    ],
+    "maxHealth": [
+      6000,
+      6000
+    ],
+    "startingInvestment": [
+      1225,
+      2225
+    ],
+    "startingIncome": [
+      7.5,
+      12.5
+    ],
+    "formations": [
+      [
+        {
+          "type": "barracks",
+          "home": 690,
+          "lane": 0,
+          "level": 1,
+          "side": 0,
+          "x": 690,
+          "y": 260,
+          "invested": 140
+        },
+        {
+          "type": "barracks",
+          "home": 690,
+          "lane": 1,
+          "level": 1,
+          "side": 0,
+          "x": 690,
+          "y": 450,
+          "invested": 140
+        },
+        {
+          "type": "barracks",
+          "home": 690,
+          "lane": 2,
+          "level": 1,
+          "side": 0,
+          "x": 690,
+          "y": 640,
+          "invested": 140
+        },
+        {
+          "type": "archery",
+          "home": 550,
+          "lane": 1,
+          "level": 1,
+          "side": 0,
+          "x": 550,
+          "y": 450,
+          "invested": 175
+        },
+        {
+          "type": "watchtower",
+          "home": 830,
+          "lane": 0,
+          "level": 1,
+          "side": 0,
+          "x": 830,
+          "y": 260,
+          "invested": 220
+        },
+        {
+          "type": "watchtower",
+          "home": 830,
+          "lane": 2,
+          "level": 1,
+          "side": 0,
+          "x": 830,
+          "y": 640,
+          "invested": 220
+        },
+        {
+          "type": "mint",
+          "home": 270,
+          "lane": 1,
+          "level": 1,
+          "side": 0,
+          "x": 270,
+          "y": 450,
+          "invested": 190
+        }
+      ],
+      [
+        {
+          "type": "barracks",
+          "home": 1250,
+          "lane": 0,
+          "level": 1,
+          "side": 1,
+          "x": 1950,
+          "y": 260,
+          "invested": 140
+        },
+        {
+          "type": "barracks",
+          "home": 1250,
+          "lane": 1,
+          "level": 1,
+          "side": 1,
+          "x": 1950,
+          "y": 450,
+          "invested": 140
+        },
+        {
+          "type": "barracks",
+          "home": 1250,
+          "lane": 2,
+          "level": 1,
+          "side": 1,
+          "x": 1950,
+          "y": 640,
+          "invested": 140
+        },
+        {
+          "type": "archery",
+          "home": 1110,
+          "lane": 0,
+          "level": 1,
+          "side": 1,
+          "x": 2090,
+          "y": 260,
+          "invested": 175
+        },
+        {
+          "type": "archery",
+          "home": 270,
+          "lane": 1,
+          "level": 1,
+          "side": 1,
+          "x": 2930,
+          "y": 450,
+          "invested": 175
+        },
+        {
+          "type": "archery",
+          "home": 1110,
+          "lane": 2,
+          "level": 1,
+          "side": 1,
+          "x": 2090,
+          "y": 640,
+          "invested": 175
+        },
+        {
+          "type": "watchtower",
+          "home": 970,
+          "lane": 0,
+          "level": 1,
+          "side": 1,
+          "x": 2230,
+          "y": 260,
+          "invested": 220
+        },
+        {
+          "type": "foundry",
+          "home": 970,
+          "lane": 1,
+          "level": 1,
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "invested": 270
+        },
+        {
+          "type": "watchtower",
+          "home": 970,
+          "lane": 2,
+          "level": 1,
+          "side": 1,
+          "x": 2230,
+          "y": 640,
+          "invested": 220
+        },
+        {
+          "type": "mint",
+          "home": 270,
+          "lane": 0,
+          "level": 1,
+          "side": 1,
+          "x": 2930,
+          "y": 260,
+          "invested": 190
+        },
+        {
+          "type": "mint",
+          "home": 1110,
+          "lane": 1,
+          "level": 1,
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "invested": 190
+        },
+        {
+          "type": "mint",
+          "home": 270,
+          "lane": 2,
+          "level": 1,
+          "side": 1,
+          "x": 2930,
+          "y": 640,
+          "invested": 190
+        }
+      ]
+    ],
+    "briefing": "The central enemy mine is forward, behind its barracks; its supporting archers begin farther back. The other two mines are in the rear. The company arrives battered below an entrenched garrison. Break its citadel while yours survives. The enemy starts with paid forward production, defenses and three real gold mines. You may sacrifice buildings and citadel health, or win by any effective route. Existing factories do not pay unit wages: destroying mines reduces later purchases, not every existing wave.",
+    "warning": "At 5:00 the existing engine accelerates production ×1.65, multiplies troop damage to structures ×1.75, and lowers citadel shots from 32 to 18. There is no forced citadel drain or mission deadline in this experiment. A test cap is a censored stall, not a loss.",
+    "setup": "Initial formations use ordinary build and upgrade calls from a temporary authoring bank, then the bank is replaced by the declared opening treasuries. Only initial player citadel HP is authored. No combat-state edits, hidden grants, stat multipliers, rubberbanding, required unit, or health-floor objective.",
+    "controls": "All eight building types, automatic flyers and the existing 190-gold citadel choices are available. Flyers choose targets automatically and do not accept flight orders.",
+    "scope": "Isolated local QA only. No campaign registration, progression, stars, profile writes, new ruleset or engine changes."
+  },
+  "distinctCalibrationRuns": 72,
+  "heldoutRuns": 8,
+  "sourceSHA256": {
+    "dist/engine.js": "38b21ea9fdb402958f03e0c4c90622c1e1a454dc6c18fd3b1ed5f308a53e7561",
+    "dist/rulesets.js": "8ab85f3fa9766cfb9de4aa2286eb4998fb7b9ede8e9b36c8f98b0b03a5b8608a",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "qa/last-ascent/scenario.mjs": "712a14199d4082927096c91e3403c0269c23fe7577d76604b52f285ef8fcee62",
+    "qa/last-ascent/policies.mjs": "3d4f8448d3b3aadaab377082c1da7a9be03578d32ed6f8d2b133d865afd8dba1",
+    "qa/last-ascent/simulate.mjs": "7cbf5441d722f24bd671906ad3bca2f0819549542570003fc4e456845869d3a7",
+    "qa/last-ascent/mechanics.test.mjs": "97337dd9bf2a13829127d796c7225c8f2beb37fe59fda0ccb2c0d86a689882a4"
+  },
+  "calibration": {
+    "ramparts/supported-race": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        119.65,
+        123.4,
+        107.3
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.55,
+        5.55,
+        5.55
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/screened-siege": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        123.75,
+        127.65,
+        122.65
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.6,
+        5.6,
+        5.6
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/warden-ranged": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        116.2,
+        117.6,
+        124.1
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.55,
+        5.55,
+        5.55
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/distributed-cheap": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        105.7,
+        105.35,
+        110.6
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.55,
+        5.55,
+        5.55
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/economy-first": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        90.7,
+        93.25,
+        95.95
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.6,
+        5.6,
+        5.6
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/air-heavy": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        79.3,
+        78.6,
+        79
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        4.5,
+        4.5,
+        4.5
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/adaptive-defense": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        115.85,
+        123.3,
+        101.55
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.6,
+        5.6,
+        5.6
+      ],
+      "maxLedgerError": 0
+    },
+    "ramparts/idle": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        74,
+        74.6,
+        75.6
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        11.05,
+        11.05,
+        11.05
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/supported-race": {
+      "runs": 3,
+      "won": 1,
+      "lost": 2,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        158.25,
+        156.3,
+        139.3
+      ],
+      "finalPlayerHP": [
+        0,
+        2523,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        2,
+        0
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/screened-siege": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        139.3,
+        160.45,
+        218.6
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        4.5,
+        4.5,
+        4.5
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/warden-ranged": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        136.75,
+        146.35,
+        158.3
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.7
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/distributed-cheap": {
+      "runs": 3,
+      "won": 3,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        102.65,
+        109.9,
+        114.45
+      ],
+      "finalPlayerHP": [
+        3800,
+        3800,
+        3800
+      ],
+      "enemyMinesLost": [
+        2,
+        2,
+        3
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/economy-first": {
+      "runs": 3,
+      "won": 2,
+      "lost": 1,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        168.4,
+        202.45,
+        124.65
+      ],
+      "finalPlayerHP": [
+        3954.05,
+        0,
+        3813.8
+      ],
+      "enemyMinesLost": [
+        1,
+        0,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/air-heavy": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        95.3,
+        94.45,
+        97.35
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        4.6,
+        4.6,
+        4.6
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/adaptive-defense": {
+      "runs": 3,
+      "won": 2,
+      "lost": 1,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        203.25,
+        188.7,
+        194.85
+      ],
+      "finalPlayerHP": [
+        4385.6,
+        4341.95,
+        0
+      ],
+      "enemyMinesLost": [
+        3,
+        3,
+        0
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "foothold/idle": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        100.55,
+        99.2,
+        99.5
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        10.1,
+        10.1,
+        10.1
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/supported-race": {
+      "runs": 3,
+      "won": 1,
+      "lost": 2,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        141.1,
+        134.7,
+        128.7
+      ],
+      "finalPlayerHP": [
+        0,
+        3800,
+        0
+      ],
+      "enemyMinesLost": [
+        2,
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/screened-siege": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        150.45,
+        158.3,
+        213.8
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        1
+      ],
+      "firstContact": [
+        4.5,
+        4.5,
+        4.5
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/warden-ranged": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        149.9,
+        142,
+        135.3
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.7
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/distributed-cheap": {
+      "runs": 3,
+      "won": 3,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        124.3,
+        112.25,
+        117.2
+      ],
+      "finalPlayerHP": [
+        3800,
+        3800,
+        3800
+      ],
+      "enemyMinesLost": [
+        2,
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/economy-first": {
+      "runs": 3,
+      "won": 3,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        215.65,
+        169.65,
+        146
+      ],
+      "finalPlayerHP": [
+        3972.8,
+        3239,
+        3800
+      ],
+      "enemyMinesLost": [
+        2,
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/air-heavy": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        102.2,
+        103.45,
+        106.7
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        4.6,
+        4.6,
+        4.6
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/adaptive-defense": {
+      "runs": 3,
+      "won": 3,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        128.1,
+        147.05,
+        127.8
+      ],
+      "finalPlayerHP": [
+        4160.15,
+        4217,
+        4159.25
+      ],
+      "enemyMinesLost": [
+        2,
+        3,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/idle": {
+      "runs": 3,
+      "won": 0,
+      "lost": 3,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        91.9,
+        86.6,
+        90.7
+      ],
+      "finalPlayerHP": [
+        0,
+        0,
+        0
+      ],
+      "enemyMinesLost": [
+        0,
+        0,
+        0
+      ],
+      "firstContact": [
+        10.1,
+        10.1,
+        10.1
+      ],
+      "maxLedgerError": 0
+    }
+  },
+  "heldout": {
+    "supply-road/supported-race": {
+      "runs": 2,
+      "won": 1,
+      "lost": 1,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        128.4,
+        126.05
+      ],
+      "finalPlayerHP": [
+        3800,
+        0
+      ],
+      "enemyMinesLost": [
+        2,
+        1
+      ],
+      "firstContact": [
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/distributed-cheap": {
+      "runs": 2,
+      "won": 2,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        121.1,
+        123.1
+      ],
+      "finalPlayerHP": [
+        3800,
+        3800
+      ],
+      "enemyMinesLost": [
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/economy-first": {
+      "runs": 2,
+      "won": 2,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        216.95,
+        137.15
+      ],
+      "finalPlayerHP": [
+        4039.7,
+        2510
+      ],
+      "enemyMinesLost": [
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    },
+    "supply-road/adaptive-defense": {
+      "runs": 2,
+      "won": 2,
+      "lost": 0,
+      "draw": 0,
+      "stall": 0,
+      "durations": [
+        120.6,
+        145.3
+      ],
+      "finalPlayerHP": [
+        4137.65,
+        4211.75
+      ],
+      "enemyMinesLost": [
+        2,
+        2
+      ],
+      "firstContact": [
+        5.65,
+        5.65
+      ],
+      "maxLedgerError": 0
+    }
+  },
+  "conclusion": "Multiple synthetic purchase routes are viable. Nail-biting human difficulty and an early economy raid are not established. No further tuning in this pass.",
+  "limitations": [
+    "One fixed geometry, not held-out layouts",
+    "Automatic batch purchases, not human speed",
+    "Adaptive policy uses normal AI every four seconds versus enemy five to eight seconds",
+    "Occupied authored slots skip recipe items; transaction logs are authoritative",
+    "No browser or human playtest by this worker",
+    "No organic five-minute encounter in the cohort; escalation separately tested",
+    "No campaign registration, award or profile integration"
+  ]
+}

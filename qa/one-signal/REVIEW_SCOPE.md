@@ -1,0 +1,11 @@
+# One Signal source/release scope
+
+Candidate v0.23.0 adds the second Chapter 6 mission after Shared Crossing, for 21 current main-path missions and 63 optional stars. Its normal adaptive enemy uses ordinary costs and income, beginning with a disclosed authored force and zero treasury. Only one of the two original named signal posts must survive to 3:30, or survive an enemy-citadel victory; keeping both is an optional medal. The player's own citadel must also survive. Original signals cannot be salvaged or replaced to recover the objective.
+
+New identity frontier-campaign-one-signal@1 / one-signal-is-enough@1 and profile fence14 are additive. Existing mission descriptors, historical fixtures, progress/settings/history and generic engine combat remain unchanged. Named objective cards and accessible loss/last-signal warnings reuse existing layout; the full permitted-loss message is an accessibility announcement, not a new visible banner. Visible cards retain the lost signal and show the remaining count/last signal.
+
+A native acceptance pass found an inherited navigation mismatch: result Replay launched immediately while Restart returned to briefing. The candidate sends Replay through the same guarded briefing flow, preserving deliberate replay's earned roster selection and historical legacy launch policy. Explicit Begin is required, and progress is not discarded. This change is reviewed separately from the new mission rules.
+
+The Last Ascent checkpoint is private developer/source material only, preserving three setups and 80 unique paid configurations. It is not registered in campaign, not included in dist, and not presented as the finished Chapter 10 difficulty. No new map topology, special unit, spell or campaign fog is included. The longer-chapter/adaptive-enemy direction is recorded as design space, not extra delivered content.
+
+Native desktop uses clearly labeled synthetic prerequisite records and ordinary paid-engine checkpoints in a temporary sessionStorage adapter. Those checks do not certify real localStorage migration, browser-earned wins, phone/PWA/non-Chromium layout, full Playwright coverage or human balance. Existing experimental fog limitations remain unchanged. Release approval and exact remote/CI verification are separate steps.

@@ -57,8 +57,8 @@ test('Common Ground gates Chapter 6; briefing and scouting disclose the real for
   await seedOnce(page, priorProfile()); const unlocked = await earned(page);
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Shared Crossing');
   await expect(page.locator('#campaignChapterNav')).toContainText('The River Compact');
-  await expect(page.locator('#campaignMissionPosition')).toHaveText('Mission 1 of 1');
-  await expect(page.locator('#campaignProgressText')).toHaveText('19/20 missions · 57/60 stars');
+  await expect(page.locator('#campaignMissionPosition')).toHaveText('Mission 1 of 2');
+  await expect(page.locator('#campaignProgressText')).toHaveText('19/21 missions · 57/63 stars');
   await expect(page.locator('#start')).toBeEnabled();
   const briefing = missionBriefing(MISSION), report = getMissionScouting(MISSION);
   await expect(page.locator('#campaignGoal')).toHaveText(briefing.goal);
@@ -153,7 +153,7 @@ test('paid-engine control checkpoint pauses exactly, survives save/reload, and r
   await info.attach('paid-control-persistence', { body: JSON.stringify({ held, resumed, restart }, null, 2), contentType: 'application/json' });
 });
 
-for (const action of ['skirmish', 'replay']) test(`paid-engine control victory preserves prior records and offers ${action} from the new finale`, async ({ page }, info) => {
+for (const action of ['continue', 'replay']) test(`paid-engine control victory preserves prior records and offers ${action} after the Chapter 6 opener`, async ({ page }, info) => {
   test.setTimeout(35000);
   const fixture = sharedCrossingFixtures().terminal, initial = priorProfile(fixture.envelope);
   info.annotations.push({ type: 'fixture', description: 'Ordinary paid-engine last active tick (59.95/60 seconds), not a browser-played victory or injected completion.' });
@@ -165,10 +165,14 @@ for (const action of ['skirmish', 'replay']) test(`paid-engine control victory p
   await press(page, '#resumeSaved'); await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
   await expect(page.locator('#resultCopy')).toContainText('shared supply route is open');
   await expect(page.locator('.result-stars')).toHaveText('★'.repeat(fixture.outcome.stars) + '☆'.repeat(3 - fixture.outcome.stars));
-  await expect(page.locator('#playAgain')).toHaveText('SKIRMISHES →'); await expect(page.locator('#playAgain')).toBeFocused();
-  await expect(page.locator('#replayMission')).toHaveText('Replay mission'); await expect(page.locator('#replayMission')).toBeVisible();
+  await expect(page.locator('#playAgain')).toHaveText('CONTINUE CAMPAIGN →'); await expect(page.locator('#playAgain')).toBeFocused();
+  await expect(page.locator('#replayMission')).toHaveText('Replay for more stars');
+  if (fixture.outcome.stars < 3) await expect(page.locator('#replayMission')).toBeVisible();
+  else await expect(page.locator('#replayMission')).toBeHidden();
   const after = await domains(page), expected = recordCampaignResult(fixture.progress, ID, Game.restore(fixture.finalGame));
-  expect(JSON.parse(after[K.campaign])).toEqual(expected); expect(getProgressionCampaignOverview(expected).completed).toBe(true);
+  expect(JSON.parse(after[K.campaign])).toEqual(expected); expect(getProgressionCampaignOverview(expected).completed).toBe(false);
+  expect(getProgressionCampaignOverview(expected).nextMissionId).toBe('one-signal-is-enough');
+  expect(expected.missions['one-signal-is-enough']).toBeUndefined();
   for (const key of [K.settings, K.trials]) expect(after[key]).toBe(initial[key]);
   expect(after[K.battle]).toBeNull();
   const history = JSON.parse(after[K.history]); expect(history).toHaveLength(2);
@@ -178,18 +182,23 @@ for (const action of ['skirmish', 'replay']) test(`paid-engine control victory p
   await page.waitForTimeout(250); expect(await domains(page)).toEqual(after);
   await screenshot(page, info, `shared-crossing-control-result-${action}`);
   if (action === 'replay') {
-    await press(page, '#replayMission'); const replay = await pause(page); identity(replay);
+    if (fixture.outcome.stars < 3) await press(page, '#replayMission');
+    else {
+      await press(page, '#resultMenu'); await choose(page);
+    }
+    await expect(page.locator('#start')).toHaveText('REPLAY MISSION →'); await press(page, '#start');
+    const replay = await pause(page); identity(replay);
     expect(replay.game.state.campaignControl.heldSeconds).toBe(0);
     expect(replay.game.state.stats.built[0]).toBe(1); expect(await earned(page)).toEqual(Object.fromEntries(Object.entries(after).filter(([key]) => key !== K.battle)));
   } else {
-    await page.keyboard.press('Enter'); await expect(page.locator('#skirmishConfig')).toBeVisible();
-    await expect(page.locator('#start')).toHaveText('BEGIN SKIRMISH →'); expect(await domains(page)).toEqual(after);
+    await page.keyboard.press('Enter'); await expect(page.locator('#campaignMissionTitle')).toHaveText('One Signal Is Enough');
+    await expect(page.locator('#start')).toHaveText('BEGIN MISSION →'); expect(await domains(page)).toEqual(after);
     await openBackup(page); const backup = parseBackup(await downloadBackup(page));
     expect(backup.data.campaign).toEqual(expected); expect(backup.data.history).toEqual(history);
     expect(backup.data.settings).toEqual(JSON.parse(initial[K.settings])); expect(backup.data.trials).toEqual(JSON.parse(initial[K.trials]));
     await press(page, '#settingsDone'); await page.reload(); expect(await domains(page)).toEqual(after);
     await choose(page); await expect(page.locator('#start')).toHaveText('REPLAY MISSION →');
     const summary = getProgressionCampaignOverview(expected);
-    await expect(page.locator('#campaignProgressText')).toHaveText(`${summary.cleared}/20 missions · ${summary.stars}/60 stars`);
+    await expect(page.locator('#campaignProgressText')).toHaveText(`${summary.cleared}/21 missions · ${summary.stars}/63 stars`);
   }
 });

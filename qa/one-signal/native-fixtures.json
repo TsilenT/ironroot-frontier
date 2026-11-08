@@ -1,0 +1,462 @@
+{
+  "scope": "Synthetic prerequisite records; battle checkpoints use ordinary paid commands and fixed ticks with ledger checks. Only app storage prefix and index QA navigation differ. Not browser-earned wins or production-profile persistence evidence.",
+  "receipts": {
+    "loss": {
+      "route": "northSacrifice",
+      "at": 52.999999999999126,
+      "spent": 925,
+      "income": 397.49999999999886,
+      "actions": [
+        {
+          "time": 0,
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "cost": 210
+        },
+        {
+          "time": 2.000000000000001,
+          "type": "foundry",
+          "x": 1110,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 3.999999999999994,
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 5.999999999999987,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 1,
+          "cost": 175
+        }
+      ],
+      "targets": [
+        {
+          "name": "Ridge Signal",
+          "originalId": 3,
+          "hp": 1000
+        },
+        {
+          "name": "River Signal",
+          "originalId": 4,
+          "hp": null
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "battleSha256": "e9353ed3cdc6aa29235ab34be2ad132be8046ad7d84fb259d1323a5fcb14b0e9"
+    },
+    "finish": {
+      "route": "northSacrifice",
+      "at": 138.99999999999736,
+      "spent": 2121,
+      "income": 1042.5000000000182,
+      "actions": [
+        {
+          "time": 0,
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "cost": 210
+        },
+        {
+          "time": 2.000000000000001,
+          "type": "foundry",
+          "x": 1110,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 3.999999999999994,
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 5.999999999999987,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 1,
+          "cost": 175
+        },
+        {
+          "time": 57.99999999999884,
+          "type": "archery",
+          "x": 550,
+          "lane": 2,
+          "level": 1,
+          "cost": 175
+        },
+        {
+          "time": 59.99999999999873,
+          "type": "watchtower",
+          "x": 410,
+          "lane": 2,
+          "level": 1,
+          "cost": 220
+        },
+        {
+          "time": 61.999999999998614,
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 0,
+          "level": 2,
+          "cost": 147
+        },
+        {
+          "time": 65.9999999999984,
+          "type": "foundry",
+          "x": 1110,
+          "lane": 0,
+          "level": 2,
+          "cost": 189
+        },
+        {
+          "time": 81.99999999999748,
+          "type": "watchtower",
+          "x": 970,
+          "lane": 0,
+          "level": 2,
+          "cost": 154
+        },
+        {
+          "time": 105.99999999999612,
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "level": 2,
+          "cost": 189
+        },
+        {
+          "time": 119.99999999999532,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 2,
+          "cost": 122
+        }
+      ],
+      "targets": [
+        {
+          "name": "Ridge Signal",
+          "originalId": 3,
+          "hp": 1400
+        },
+        {
+          "name": "River Signal",
+          "originalId": 4,
+          "hp": null
+        }
+      ],
+      "cores": [
+        4965.119999999981,
+        661.1999999999969
+      ],
+      "battleSha256": "dcf1f4b5d107ae028c5e83bd5b0c772622b5688cb27a26adb800894b57c3892b"
+    },
+    "evacuation": {
+      "route": "southRanged",
+      "at": 208.00000000001305,
+      "spent": 3181,
+      "income": 1914.999999999999,
+      "actions": [
+        {
+          "time": 0,
+          "type": "archery",
+          "x": 1110,
+          "lane": 2,
+          "level": 1,
+          "cost": 175
+        },
+        {
+          "time": 2.000000000000001,
+          "type": "watchtower",
+          "x": 970,
+          "lane": 2,
+          "level": 1,
+          "cost": 220
+        },
+        {
+          "time": 3.999999999999994,
+          "type": "wardenLodge",
+          "x": 690,
+          "lane": 0,
+          "level": 1,
+          "cost": 210
+        },
+        {
+          "time": 5.999999999999987,
+          "type": "foundry",
+          "x": 550,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 7.99999999999998,
+          "type": "foundry",
+          "x": 410,
+          "lane": 0,
+          "level": 1,
+          "cost": 270
+        },
+        {
+          "time": 26.000000000000234,
+          "type": "barracks",
+          "x": 830,
+          "lane": 2,
+          "level": 1,
+          "cost": 140
+        },
+        {
+          "time": 45.999999999999524,
+          "type": "archery",
+          "x": 690,
+          "lane": 2,
+          "level": 1,
+          "cost": 175
+        },
+        {
+          "time": 65.9999999999984,
+          "type": "mint",
+          "x": 270,
+          "lane": 2,
+          "level": 1,
+          "cost": 190
+        },
+        {
+          "time": 85.99999999999726,
+          "type": "sanctum",
+          "x": 550,
+          "lane": 2,
+          "level": 1,
+          "cost": 230
+        },
+        {
+          "time": 97.99999999999658,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 2,
+          "level": 2,
+          "cost": 154
+        },
+        {
+          "time": 109.9999999999959,
+          "type": "archery",
+          "x": 1110,
+          "lane": 2,
+          "level": 2,
+          "cost": 122
+        },
+        {
+          "time": 121.99999999999521,
+          "type": "watchtower",
+          "x": 970,
+          "lane": 0,
+          "level": 2,
+          "cost": 154
+        },
+        {
+          "time": 133.99999999999622,
+          "type": "watchtower",
+          "x": 970,
+          "lane": 2,
+          "level": 2,
+          "cost": 154
+        },
+        {
+          "time": 143.9999999999985,
+          "type": "barracks",
+          "x": 830,
+          "lane": 2,
+          "level": 2,
+          "cost": 98
+        },
+        {
+          "time": 156.00000000000122,
+          "type": "wardenLodge",
+          "x": 690,
+          "lane": 0,
+          "level": 2,
+          "cost": 147
+        },
+        {
+          "time": 166.0000000000035,
+          "type": "archery",
+          "x": 690,
+          "lane": 2,
+          "level": 2,
+          "cost": 122
+        },
+        {
+          "time": 182.00000000000713,
+          "type": "foundry",
+          "x": 550,
+          "lane": 0,
+          "level": 2,
+          "cost": 189
+        },
+        {
+          "time": 196.00000000001032,
+          "type": "sanctum",
+          "x": 550,
+          "lane": 2,
+          "level": 2,
+          "cost": 161
+        }
+      ],
+      "targets": [
+        {
+          "name": "Ridge Signal",
+          "originalId": 3,
+          "hp": 1400
+        },
+        {
+          "name": "River Signal",
+          "originalId": 4,
+          "hp": 1134.2
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "battleSha256": "2ee8836f469d2ceb0044fea07bc2bd4117bcdf8b73d96c72be230d0dedd079f8"
+    }
+  },
+  "source": {
+    "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "app.js": "05c6fca17f931e0fabc273eeb4fe56252e756d71c7ac5d1cb06c8712b0f7770b",
+    "audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "battle-codec.js": "054d751a29e0bfcab2844954b81aafe5c772f543e15c88737ec18eebcdcb4f7d",
+    "battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "bridge-control.js": "ac7b04fd5e2e83dbc2c8ce9ebacd90c8eedab639e2e4b8a9146f3ccd853a1edf",
+    "campaign-control-view.js": "c947fe2ea4d0de34fd952d834eec747d6bfb494f9a76968b69f7f2e165d07cba",
+    "campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "campaign-presentation.js": "51f62b8f8dab4c677a4136dff395214a5dd5558788153f15fbfd6737c6a6dd56",
+    "campaign.js": "8faf0fdb8526e8ebc6bdf0684daa661c711681478404bcc48116f2b325562c5e",
+    "challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "engine.js": "38b21ea9fdb402958f03e0c4c90622c1e1a454dc6c18fd3b1ed5f308a53e7561",
+    "flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "fog-view.js": "12f09d2c0e30b260ebfa8f431d218f1881be528b8a8b0c9c4617cb7cb6cf24db",
+    "fog.js": "282748a4d11def874c73b4f9960703454f364da9cffa8603b7fde68a261ff2be",
+    "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "index.html": "2b998169d4695fbd61f3914a908a4216fbc24846f4b0084d23213fff57722fd7",
+    "input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "profile-session.js": "cc61a94ec5b27dade11d415d29e274f1e20e973034992d0d357319d21b31a1f1",
+    "protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "render.js": "5b08ecd1fee9e1ddaf9308caa09aa0ee86d8e4e975b3480df6dcd9930bf19efd",
+    "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "report-view.js": "183071ca9837df6ea23cd1b4a76d583c2d84975cc32da35004f0a4dcfa6ca223",
+    "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "rulesets.js": "0be00745a247aee8145ed441684f06924c39763429faea289b733e1d3e267a4b",
+    "scouting.js": "bc03dc9a1f42922ffc919cfda9c28c896554cf66a86100e372f204ee02387fde",
+    "service-worker.js": "f0bd36b05a7ac55b361000fcee112d2419f6ce4b6152667916da1bce5a2bb0ce",
+    "styles.css": "1ef35bf952b3d4d37cd2883ff537d4af7f57f2ff478f5a2f77ca6b745f8e35e5",
+    "training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  },
+  "preview": {
+    "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "app.js": "b63023a6b2962c12ca81eb044e296b9c9df42ef2db9455314672b26761cedc7e",
+    "audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "battle-codec.js": "054d751a29e0bfcab2844954b81aafe5c772f543e15c88737ec18eebcdcb4f7d",
+    "battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "bridge-control.js": "ac7b04fd5e2e83dbc2c8ce9ebacd90c8eedab639e2e4b8a9146f3ccd853a1edf",
+    "campaign-control-view.js": "c947fe2ea4d0de34fd952d834eec747d6bfb494f9a76968b69f7f2e165d07cba",
+    "campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "campaign-presentation.js": "51f62b8f8dab4c677a4136dff395214a5dd5558788153f15fbfd6737c6a6dd56",
+    "campaign.js": "8faf0fdb8526e8ebc6bdf0684daa661c711681478404bcc48116f2b325562c5e",
+    "challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "engine.js": "38b21ea9fdb402958f03e0c4c90622c1e1a454dc6c18fd3b1ed5f308a53e7561",
+    "flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "fog-view.js": "12f09d2c0e30b260ebfa8f431d218f1881be528b8a8b0c9c4617cb7cb6cf24db",
+    "fog.js": "282748a4d11def874c73b4f9960703454f364da9cffa8603b7fde68a261ff2be",
+    "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "index.html": "7ce6a94405f483b8f3c71d1dd15ed2a86221855585d015ed73c573cf9e6728ae",
+    "input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "profile-session.js": "cc61a94ec5b27dade11d415d29e274f1e20e973034992d0d357319d21b31a1f1",
+    "protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "render.js": "5b08ecd1fee9e1ddaf9308caa09aa0ee86d8e4e975b3480df6dcd9930bf19efd",
+    "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "report-view.js": "183071ca9837df6ea23cd1b4a76d583c2d84975cc32da35004f0a4dcfa6ca223",
+    "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "rulesets.js": "0be00745a247aee8145ed441684f06924c39763429faea289b733e1d3e267a4b",
+    "scouting.js": "bc03dc9a1f42922ffc919cfda9c28c896554cf66a86100e372f204ee02387fde",
+    "service-worker.js": "f0bd36b05a7ac55b361000fcee112d2419f6ce4b6152667916da1bce5a2bb0ce",
+    "styles.css": "1ef35bf952b3d4d37cd2883ff537d4af7f57f2ff478f5a2f77ca6b745f8e35e5",
+    "training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  }
+}
