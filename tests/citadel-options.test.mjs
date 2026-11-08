@@ -17,7 +17,7 @@ function unit(g,side,type='archer',x=210,y=450){g._spawn({type:producers[type],s
 const record=(g,side=0)=>g.state.citadelOptions.sides[side];
 
 test('new immutable identities preserve unit, building, economy and endgame definitions',()=>{
- assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
+ assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),['frontier-campaign-shared-crossing',FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
  const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID);assert.equal(candidate.qaOnly,undefined);assert.equal(candidate.experimental,true);assert.equal(candidate.skirmishOnly,true);assert.equal(candidate.endgame.forcedDecay,false);assert.equal(candidate.economy.policy,'legacy');assert.equal(candidate.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(candidate)&&Object.isFrozen(candidate.fog));
  const fog=getRuleset(FOG_RULESET_ID);assert.equal(fog.qaOnly,true);assert.equal(fog.experimental,true);assert.equal(fog.skirmishOnly,true);assert.equal(fog.endgame.forcedDecay,false);assert.equal(fog.economy.policy,'legacy');assert.equal(fog.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(fog)&&Object.isFrozen(fog.fog));
  for(const k of ['units','buildings','spell','movement','endgame','economy','citadel'])assert.deepEqual(fog[k],getRuleset('frontier-citadel-open')[k]);

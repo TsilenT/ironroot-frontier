@@ -209,14 +209,14 @@ test('maximum valid memory is retained exactly without truncation or knowledge s
   assert.deepEqual(parseBackup(createBackup(backend(), { createdAt: date, battle: saved })).data.battle, saved);
 });
 
-test('protocol12 changes only marker bytes and fences exact pinned protocol11 stale and reopened writers', () => {
+test('current protocol changes only marker bytes and fences exact pinned protocol11 stale and reopened writers', () => {
   const source = readFileSync(new URL('./fixtures/profile-session-v0202.js', import.meta.url));
   assert.equal(createHash('sha256').update(source).digest('hex'), '3a008d9e0fae2f1d15929ab888482b67cacb501b6a4141c5109104b30660a64e');
-  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 12);
+  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 13);
   const domains = entries(earned()), raw = backend([[MARKER, marker(11)], ...domains, ['unrelated', 'untouched']]);
   const stale = previous(raw); assert.ok(stale.status().canWrite);
   const writer = current(raw); assert.ok(writer.status().canWrite);
-  assert.deepEqual(raw.writes, [['set', MARKER, marker(12)]]);
+  assert.deepEqual(raw.writes, [['set', MARKER, marker(13)]]);
   for (const [key, value] of domains) assert.equal(raw.data.get(key), value);
   // Exercise the old writer against actual candidate-domain bytes, not just a new marker.
   const storage = createStorage(() => writer.storage), game = remembered();
@@ -235,11 +235,11 @@ test('protocol12 changes only marker bytes and fences exact pinned protocol11 st
   assert.deepEqual([...raw.data], before); assert.deepEqual(raw.writes, []);
 });
 
-test('protocol12 never rewrites unfinished/future markers and blocks unverifiable upgrades without changing earned data', () => {
-  for (const prior of [marker(11, 'restoring'), marker(11, 'failed'), marker(13)]) {
+test('current protocol never rewrites unfinished/future markers and blocks unverifiable upgrades without changing earned data', () => {
+  for (const prior of [marker(11, 'restoring'), marker(11, 'failed'), marker(14)]) {
     const raw = backend([[MARKER, prior], ...entries(earned())]), before = [...raw.data], profile = current(raw);
     assert.equal(profile.status().canWrite, false); assert.deepEqual(raw.writes, []); assert.deepEqual([...raw.data], before);
-    if (prior === marker(13)) assert.equal(profile.beginImport({ recover: true }).code, 'unsupported-protocol');
+    if (prior === marker(14)) assert.equal(profile.beginImport({ recover: true }).code, 'unsupported-protocol');
   }
   for (const fault of ['drop', 'throw', 'readback']) {
     const raw = backend([[MARKER, marker(11)], ...entries(earned())]), before = domainBytes(raw);
@@ -285,10 +285,10 @@ test('fog backup restore retains both knowledge records, every earned domain and
   const result = parseBackup(createBackup(reloaded.storage, { createdAt: date })); assert.deepEqual(result.data, data);
   const restored = decodeBattle(result.data.battle).game; assert.deepEqual(restored.serialize(), game.serialize());
   advance(game, 200); advance(restored, 200); assert.deepEqual(restored.serialize(), game.serialize());
-  assert.equal(raw.data.get('unrelated'), 'untouched'); assert.equal(JSON.parse(raw.data.get(MARKER)).version, 12);
+  assert.equal(raw.data.get('unrelated'), 'untouched'); assert.equal(JSON.parse(raw.data.get(MARKER)).version, 13);
 });
 
-test('failed fog backup replacement rolls back each of five domains exactly and retains protocol12 fencing', () => {
+test('failed fog backup replacement rolls back each of five domains exactly and retains current protocol fencing', () => {
   const replacement = { ...earned(), battle: encodeBattle(remembered()) };
   replacement.settings.volume = .7; replacement.history.push(row(fresh()));
   const text = createBackup(backend(entries(replacement)), { createdAt: date });
@@ -309,7 +309,7 @@ test('failed fog backup replacement rolls back each of five domains exactly and 
     assert.equal(result.ok, false, `${failedKey}/${fault}`); assert.equal(result.rollback.complete, true, `${failedKey}/${fault}`);
     for (const [key, value] of original) assert.equal(raw.data.get(key), value);
     assert.ok(writer.finishImport({ outcome: 'rolled-back' }).ok); assert.ok(writer.status().canWrite); assert.equal(stale.status().canWrite, false);
-    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 12); assert.equal(previous(raw).beginImport({ recover: true }).code, 'unsupported-protocol');
+    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 13); assert.equal(previous(raw).beginImport({ recover: true }).code, 'unsupported-protocol');
     assert.equal(raw.data.get('unrelated'), 'untouched');
   }
 });

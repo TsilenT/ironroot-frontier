@@ -30,8 +30,8 @@ test('published v0.19 campaign-revision-four and trial-revision-two descriptors 
 test('every campaign and field-trial fresh attempt has citadel eligibility with unchanged deployment, roster and objective data',()=>{
  const progress=full(),before=structuredClone(progress);
  for(const old of campaign.CAMPAIGN_PROGRESS_MISSIONS){
-  const g=campaign.createProgressionCampaignMission(old.id,progress),ref=campaign.campaignScenarioForGame(g,old.id),descriptor=campaign.getCampaignMission(old.id,5);
-  assert.equal(ref.revision,5);assert.ok(g.state.citadelOptions);assert.equal(g.ruleset.id,campaign.isIntroMission(old.id)?AUTHORED_CITADEL_RULESET_ID:CITADEL_CAMPAIGN_RULESET_IDS[2]);
+  const g=campaign.createProgressionCampaignMission(old.id,progress),ref=campaign.campaignScenarioForGame(g,old.id),descriptor=campaign.getCampaignMission(old.id,old.id==='shared-crossing'?1:5);
+  assert.equal(ref.revision,old.id==='shared-crossing'?1:5);assert.ok(g.state.citadelOptions);assert.equal(g.ruleset.id,old.id==='shared-crossing'?'frontier-campaign-shared-crossing':campaign.isIntroMission(old.id)?AUTHORED_CITADEL_RULESET_ID:CITADEL_CAMPAIGN_RULESET_IDS[2]);
   for(const field of ['mapId','seed','difficulty','ai','timeLimit','startingGold','startingHealth','prerequisites','objectives','medals','playerBuildings','enemyBuildings'])assert.deepEqual(descriptor[field],old[field],old.id+'/'+field);
   const gold=g.state.gold[0];at(g,90);assert.ok(g.buyCitadelOption('regen').ok);assert.equal(g.state.gold[0],gold-190);assert.equal(g.state.bases[0].hp,old.startingHealth);
   const envelope=encodeBattle(g,ref,{campaignProgress:progress});assert.deepEqual(decodeBattle(envelope,{campaignProgress:progress}).game.serialize(),g.serialize());

@@ -6,7 +6,7 @@ import {getProgressionCampaignOverview as getCampaignOverview,createCampaignProg
 import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {TRIAL_ID,ROUTES,playRoads,assertRoute} from './ashen-crossroads-policies.mjs';
 
-test('current-only optional trial preserves the historical five and campaign 19/57',()=>{
+test('current-only optional trial preserves the historical five and additive current campaign catalog',()=>{
   const g=createCurrentChallenge(TRIAL_ID),c=getChallengeForGame(g,TRIAL_ID);
   assert.equal(CHALLENGES.length,5);assert.equal(CURRENT_CHALLENGES.length,6);
   assert.throws(()=>getChallenge(TRIAL_ID,1),/Unknown challenge/);
@@ -14,7 +14,7 @@ test('current-only optional trial preserves the historical five and campaign 19/
   assert.equal(Object.keys(g.buildings).length,7);assert.equal(g.ai,false);
   assert.equal(g.state.gold[0],650);assert.equal(g.state.bases[0].hp,6000);
   assert.deepEqual(restartChallenge(g,TRIAL_ID).serialize(),g.serialize());
-  const overview=getCampaignOverview(createCampaignProgress());assert.equal(overview.total,19);assert.equal(overview.maxStars,57);
+  const overview=getCampaignOverview(createCampaignProgress());assert.equal(overview.total,20);assert.equal(overview.maxStars,60);
   assert.equal(requiredChallengeTargets(c),2);
   for(const old of CHALLENGES.filter(c=>c.mode==='destroy'))assert.equal(requiredChallengeTargets(old),old.markedTargets.length);
 });
