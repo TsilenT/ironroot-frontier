@@ -1,0 +1,138 @@
+66:import { GameAudio } from './audio.js';
+271:  reducedMotion: renderer.reducedMotion,
+298:renderer.reducedMotion = preferences.reducedMotion;
+299:renderer.vfx.setPreferences({
+304:  audio.unlock().then((ok) => {
+310:  audio.play(name, options);
+386:      const p = renderer.worldToScreen(t.x, t.y);
+387:      return {top:p.y-112*renderer.scale,bottom:p.y+50*renderer.scale};
+413:  audio.setMuted(!soundOn);
+459:    game.state.winner === null &&
+478:  if (game.state.gold[0] < (game.buildings || BUILDINGS)[type].cost) {
+491:    if (site) { renderer.camera = site.x; renderer.clampCamera(); }
+528:  const cooldown = game.state.spellCooldown[0];
+545:  const hint = started && !objectiveOutcome && game.state.winner === null ? campaignCoach(game, currentCampaign, ui) : null;
+560:  const available = started && !objectiveOutcome && game.state.winner === null &&
+582:  $('coachResume').textContent = compact ? game.state.time === 0 ? 'Start' : 'Resume'
+583:    : game.state.time === 0 ? 'Start battle' : 'Resume battle';
+584:  $('coachResume').setAttribute('aria-label', game.state.time === 0 ? 'Start battle' : 'Resume battle');
+589:  if (show && coachingHold && ui.build && game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost)
+595:  const point = hint?.site || game.state.buildings.find(b => b.id === hint?.buildingId && b.hp > 0);
+614:      : game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build]?.cost
+662:  if (!lesson || !started || game.state.winner !== null || objectiveOutcome ||
+714:  const b = game.state.buildings.find(
+727:    `<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span><span>${d.unit ? `${(d.spawnTime / (1 + 0.22 * (b.level - 1)) / (game.state.overtime ? 1.65 : 1)).toFixed(1)}s / wave` : d.range ? `Range ${d.range}` : `+${(2.5 * (1 + 0.5 * (b.level - 1))).toFixed(1)} gold /s`}</span>`;
+733:    game.state.gold[0] < cost ||
+735:    game.state.winner !== null;
+739:    paused || game.state.winner !== null || ui.protectedTargets?.includes(b.id);
+791:  if (game.state.spellCooldown[0] > 0) {
+793:      `Arrow volley ready in ${Math.ceil(game.state.spellCooldown[0])} seconds.`,
+797:  if (game.state.gold[0] < SPELL.cost) {
+839:  if (!started || game.state.winner !== null || objectiveOutcome) return;
+909:  renderer.camera = 450;
+910:  renderer.clampCamera();
+914:  renderer.camera = game.state.frontline;
+915:  renderer.clampCamera();
+921:  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+927:  if (started && game.state.winner === null) pause(helpWasPaused);
+979:  if (!reason || !started || game.state.winner !== null || objectiveOutcome) return;
+1082:  padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
+1091:  renderer.vfx?.reset();
+1121:  renderer.setMap(game.map);
+1122:  renderer.setTheme?.(
+1130:  renderer.camera = restored && !fresh ? game.state.frontline : 450;
+1131:  renderer.clampCamera();
+1280:    renderer.resize();
+1337:  renderer.resize();
+1338:  renderer.camera = target.x;
+1339:  renderer.clampCamera();
+1385:    ended:!started || game.state.winner !== null || !!objectiveOutcome,
+1578:  renderer.vfx?.reset();
+1669:    game.state.winner !== null ||
+1743:  if (resultShown || (game.state.winner === null && !objectiveOutcome)) return;
+1746:  const draw = game.state.winner === 'draw',
+1748:    won = authored ? objectiveOutcome?.completed : game.state.winner === 0;
+1796:  $('resultTime').textContent = timeText(game.state.time);
+1797:  $('resultKills').textContent = game.state.stats.kills[0];
+1798:  $('resultBuilt').textContent = game.state.stats.built[0];
+1842:    time: game.state.time,
+1843:    kills: game.state.stats.kills[0],
+1844:    built: game.state.stats.built[0],
+1852:      bestTime: Math.min(old?.bestTime || Infinity, game.state.time),
+1908:  ui.pointer = renderer.screenToWorld(p.x, p.y);
+1932:  ui.pointer = renderer.screenToWorld(p.x, p.y);
+1940:    renderer.pan(p.x - pointer.lastX);
+1958:    w = renderer.screenToWorld(p.x, p.y);
+1991:    const type = ui.build, goldBefore = game.state.gold[0];
+1992:    const snap = renderer.snap(w),
+1999:          game.state.gold[0] === goldBefore - (game.buildings || BUILDINGS)[type].cost &&
+2010:      if (!repeatBuild || game.state.gold[0] < (game.buildings || BUILDINGS)[ui.build].cost) {
+2031:    const b = game.state.buildings
+2072:    renderer.pan(
+2084:  renderer.camera = ((e.clientX - r.left) / r.width) * game.map.width;
+2085:  renderer.clampCamera();
+2105:    else if (started && game.state.winner === null && !objectiveOutcome && !ui.build && !ui.spell && !ui.selected) pause(true);
+2140:    renderer.pan(75);
+2145:    renderer.pan(-75);
+2155:  if (document.hidden) audio.setScene('paused');
+2157:  if (document.hidden && started && !paused && game.state.winner === null)
+2181:      game.state.winner === null &&
+2209:    game.state.winner === null &&
+2222:new ResizeObserver(() => { renderer.resize(); positionToast(); syncViewportSafety(); }).observe($('battle'));
+2228:  const s = game.state;
+2331:  const ended = game.state.winner !== null || objectiveOutcome;
+2332:  audio.setScene(
+2338:          ? game.state.winner === 0 || objectiveOutcome?.completed
+2344:  const s = game.state;
+2345:  audio.setIntensity(
+2354:  const half = renderer.width / (2 * renderer.scale);
+2358:    if (Math.abs(e.x - renderer.camera) > half + 100) continue;
+2368:        pan: Math.max(-1, Math.min(1, (e.x - renderer.camera) / half)),
+2375:    if (Math.abs(p.x - renderer.camera) > half + 100) continue;
+2378:        pan: Math.max(-1, Math.min(1, (p.x - renderer.camera) / half)),
+2394:  if (started && !paused && !coachingHold && game.state.winner === null && !objectiveOutcome) {
+2420:      renderer.camera +=
+2421:        (game.state.frontline - renderer.camera) * Math.min(1, dt * 3);
+2431:    paused || coachingHold || !started || game.state.winner !== null || !!objectiveOutcome;
+2445:  renderer.draw(game, ui, dt);
+2738:    game.state.winner === null && !objectiveOutcome && !recoveryHold && !profileGate &&
+2753:  $('citadelPlayerStatus').textContent = `${Math.ceil(game.state.bases[0].hp)} / ${game.state.bases[0].maxHp} HP. ${text}`;
+2754:  $('citadelEnemyStatus').textContent = `${Math.ceil(game.state.bases[1].hp)} / ${game.state.bases[1].maxHp} HP. ${citadelStatusText(game, 1, {paused})}`;
+2758:      : own.canBuy ? `Ready. You have ${Math.floor(game.state.gold[0])} gold. Choose one for 190 gold.`
+2759:        : `${own.reason} You have ${Math.floor(game.state.gold[0])} gold.`;
+2825:  $('pauseContext').textContent = `${mission ? 'Campaign' : trial ? 'Field trial' : 'Skirmish'} · ${timeText(game.state.time)} · ${speed}× speed`;
+2828:  $('pauseBridgeDetails').classList.toggle('hidden', !game.state.bridgeControl);
+2829:  if (game.state.bridgeControl) {
+2859:  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+2869:  if (!started || !paused || game.state.winner !== null || objectiveOutcome ||
+2994:  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+2995:  $('settingsContext').textContent = started && !objectiveOutcome && game.state.winner === null
+2997:  $('settingsDone').textContent = started && !objectiveOutcome && game.state.winner === null
+3012:  if (started && game.state.winner === null && !objectiveOutcome)
+3157:  audio.setMusicEnabled(preferences.music);
+3163:  audio.setSfxEnabled(preferences.sfx);
+3172:  audio.setVolume(preferences.volume);
+3178:  renderer.reducedMotion = preferences.reducedMotion;
+3179:  renderer.vfx?.setPreferences({
+3187:  renderer.vfx?.setPreferences({
+3215:    : game.state.winner !== null || objectiveOutcome ? 'ended'
+3394:  const relevant = started && game.state.winner === null && !objectiveOutcome;
+3405:      renderer.resize();
+3558:      started && game.state.winner === null && !objectiveOutcome
+3620:      game.state.winner === null &&
+3666:      `${overview.cleared}/${overview.total} campaign missions · ${overview.stars}/${overview.maxStars} stars · ${Object.keys(parsed.data.trials).length}/${CHALLENGES.length} trial records. ${battle ? `Saved battle: ${battleName} at ${timeText(battle.game.state.time)}.` : 'No battle in this file. Your current saved battle will be removed.'}`;
+3748:  padPoint = { x: renderer.width / 2, y: renderer.height / 2 };
+3858:    { width: renderer.width, height: renderer.height },
+3862:    ui.pointer = renderer.screenToWorld(padPoint.x, padPoint.y);
+3886:      ui.pointer = renderer.screenToWorld(padPoint.x, padPoint.y);
+3927:        game.state.gold[0],
+3974:      { width: renderer.width, height: renderer.height },
+3978:      renderer.pan(-frame.camera.x * 850 * frame.dt);
+3981:    if (padActive) ui.pointer = renderer.screenToWorld(padPoint.x, padPoint.y);
+4031:    const ended = game.state.winner !== null || !!objectiveOutcome;
+4041:  if (started && !activeDialog && game.state.buildings.some(b => b.id === ui.selected && b.side === 0))
+4094:    if (started && game.state.winner === null && !objectiveOutcome) {
+4115:  } else if (route.kind === 'pause' || (direction === 'forward' && started && game.state.winner === null && !objectiveOutcome)) pause(true);
+4143:    const building = game.state.buildings.find(b => b.id === route.buildingId && b.side === 0);
+4177:  if (started && game.state.winner === null && !objectiveOutcome) pause(true);
+4184:  if (started && game.state.winner === null && !objectiveOutcome) pause(true);

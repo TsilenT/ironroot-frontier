@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Ironroot · Experimental fog Skirmish</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="app">
+    <header><div><strong>Ironroot</strong><span class="badge">Fog prototype</span></div><button id="setupButton" type="button">New / restart</button></header>
+    <section class="hud" aria-label="Battle status">
+      <span id="gold">Gold —</span><span id="homeHP">Home —</span><span id="enemyHP">Enemy HP unknown</span><span id="clock">0:00</span>
+    </section>
+    <nav class="tools" aria-label="Battle controls">
+      <button id="pause" type="button" disabled>Pause</button><button id="home" type="button">Home</button><button id="front" type="button">Front</button>
+      <button id="zoomOut" type="button" aria-label="Zoom out">−</button><button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button id="sound" type="button" aria-pressed="false">Sound off</button><button id="help" type="button" aria-label="Controls and prototype limits">?</button>
+    </nav>
+    <section class="field" aria-label="Battlefield">
+      <canvas id="battle" tabindex="0" aria-label="Known battlefield. Drag to pan. Select a building or Volley below, then tap the field."></canvas>
+      <div id="pauseVeil" hidden><strong id="pauseText">Paused</strong><button id="resume" type="button">Resume</button></div>
+      <span id="modeLabel">Classic · Open-ended · No bridge income</span>
+    </section>
+    <div class="mapRow"><canvas id="minimap" tabindex="0" role="slider" aria-label="Camera position on known terrain" aria-valuemin="0" aria-valuemax="3200" aria-valuenow="600"></canvas><span id="contacts">Bright: visible<br>Dashed: last seen</span></div>
+    <output id="notice" role="status" aria-live="polite">Choose New battle to begin. Nothing is saved.</output>
+    <section class="actions" aria-label="Orders">
+      <button id="buildMenu" type="button">Build</button><button id="volley" type="button">Volley · 75</button><button id="citadel" type="button">Citadel</button><button id="cancel" type="button" disabled>Cancel</button>
+    </section>
+    <section id="selection" class="selection" hidden><span id="selectionText"></span><button id="upgrade" type="button">Upgrade</button><button id="sell" type="button">Sell</button></section>
+    <p id="accessibleState" class="sr-only"></p>
+  </main>
+  <dialog id="setup" aria-labelledby="setupTitle">
+    <h1 id="setupTitle">Experimental Skirmish</h1>
+    <p>Classic map. Open-ended battle. No bridge income. Ordinary gold costs and automatic troops.</p>
+    <label class="check"><input id="fogEnabled" type="checkbox"> Fog of war for the next New battle</label>
+    <p class="hint">Off by default. A running battle keeps its rules. Restart keeps the same fog setting and seed.</p>
+    <div class="formRow"><label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option></select></label><label>Seed<input id="seed" type="number" min="1" max="4294967295" value="123"></label></div>
+    <p class="hint">Session only. Closing this page loses the battle. This prototype does not read or write profiles.</p>
+    <div class="dialogActions"><button id="start" type="button">New battle</button><button id="restart" type="button" disabled>Restart current</button><button id="closeSetup" type="button">Cancel</button></div>
+  </dialog>
+  <dialog id="buildDialog" aria-labelledby="buildTitle"><h2 id="buildTitle">Choose a building</h2><p>Choose, then tap a marked site. Dragging pans without building.</p><div id="buildList"></div><button id="closeBuild" type="button">Cancel</button></dialog>
+  <dialog id="citadelDialog" aria-labelledby="citadelTitle"><h2 id="citadelTitle">Your citadel</h2><p id="citadelState"></p><p>Spend 190 gold once. Extra Arrow adds a half-damage shot at a different nearby target. Regeneration restores 3 HP/s after an eight-second purchase and damage wait.</p><div class="dialogActions"><button id="arrows" type="button">Extra Arrow · 190</button><button id="regen" type="button">Regeneration · 190</button><button id="closeCitadel" type="button">Close</button></div></dialog>
+  <dialog id="helpDialog" aria-labelledby="helpTitle"><h2 id="helpTitle">Known ground, local sight</h2><p>Terrain and both citadel locations are always known. Bright enemies are visible now. Dashed boxes are last-seen buildings, with no current health or production. Unseen troops leave no marker.</p><p>Drag the field or tap the minimap to pan. Home returns to your citadel. Front follows your foremost ground troop, or your forward production. Panning never scouts. Volley needs a visible center; damage beyond it does not reveal hidden targets.</p><p>Keyboard: arrows pan, +/− zoom, H home, F front, Space pause. Escape cancels an order or closes a panel before pausing. No live reveal or debug controls.</p><p>Prototype limits: Classic only, no saves, no campaign, no bridge income. Fog projectiles are suppressed; camera shake is disabled. This checks feasibility, not balance or device performance.</p><button id="closeHelp" type="button">Close</button></dialog>
+  <script type="module" src="./shell.js"></script>
+</body>
+</html>

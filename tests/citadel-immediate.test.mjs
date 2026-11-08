@@ -72,10 +72,10 @@ const domainBytes=()=>Object.entries(earned()).map(([d,v])=>[K[d],'  '+JSON.stri
 const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});
 const old=r=>protocolTen.createProfileSession(()=>r,{requiredProtocolVersion:10});
 
-test('protocol 11 marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
+test('current protocol marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains',()=>{
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
  const domains=domainBytes(),r=storage([[MARKER,marker(10)],...domains,['unrelated','untouched']]),stale=old(r);assert.ok(stale.status().canWrite);
- assert.ok(current(r).status().canWrite);assert.deepEqual(r.writes,[['set',MARKER]]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),JSON.parse(marker(11)));
+ assert.ok(current(r).status().canWrite);assert.deepEqual(r.writes,[['set',MARKER]]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),JSON.parse(marker(CURRENT_PROFILE_PROTOCOL_VERSION)));
  for(const [k,v] of domains)assert.equal(r.data.get(k),v);const before=[...r.data];r.writes.length=0;
  for(const client of [stale,old(r)]){
   assert.equal(client.status().canWrite,false);
@@ -86,9 +86,9 @@ test('protocol 11 marker-only upgrade fences actual released protocol-10 stale a
 });
 
 test('protocol-10 interrupted and unverified upgrades preserve earned domains; future protocol recovery is fenced',()=>{
- for(const prior of [marker(10,'restoring'),marker(10,'failed'),marker(12)]){
+ for(const prior of [marker(10,'restoring'),marker(10,'failed'),marker(CURRENT_PROFILE_PROTOCOL_VERSION+1)]){
   const r=storage([[MARKER,prior],...domainBytes()]),before=[...r.data],p=current(r);assert.equal(p.status().canWrite,false);assert.deepEqual([...r.data],before);assert.deepEqual(r.writes,[]);
-  if(prior===marker(12))assert.equal(p.beginImport({recover:true}).code,'unsupported-protocol');
+  if(prior===marker(CURRENT_PROFILE_PROTOCOL_VERSION+1))assert.equal(p.beginImport({recover:true}).code,'unsupported-protocol');
  }
  for(const fault of ['drop','throw','readback']){
   const domains=domainBytes(),r=storage([[MARKER,marker(10)],...domains]),read=r.getItem,write=r.setItem;let blocked=false;
@@ -117,6 +117,7 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 function modal(g=fresh()){
  const nodes=new Map(),calls={sounds:0,saves:0,toasts:[],saved:null},$=id=>{if(!nodes.has(id)){const classes=new Set(['citadelModal'].includes(id)?['hidden']:[]);nodes.set(id,{textContent:'',disabled:false,focus(){calls.focus=id;},classList:{contains:n=>classes.has(n),add:n=>classes.add(n),remove:n=>classes.delete(n),toggle(n,on){if(on)classes.add(n);else classes.delete(n);}}});}return nodes.get(id);};
  const c=createContext({game:g,$,started:true,paused:true,coachingHold:false,firstBuildHold:false,document:{hidden:false},objectiveOutcome:null,recoveryHold:null,profileGate:null,viewportPause:{active:false},battleSafetyReason:null,battleSession:{status:()=> 'current'},supportsCitadelOptions,citadelOptionStatus,citadelStatusText,CITADEL_AI_TEXT,syncProfileSafety(){},cancel(){},setCompactBuildOpen(){},syncDialogs(){},sound(){calls.sounds++;},toast:t=>calls.toasts.push(t),saveOK:true});
+ c.battleView=()=>c.game; c.refreshPresentation=()=>c.game;
  c.dialogLayers=[$('pauseModal'),$('citadelModal')];c.pause=(on)=>{c.paused=on;};
  c.save=()=>{calls.saves++;if(c.saveOK){calls.saved=encodeBattle(c.game);c.citadelUnsavedGame=null;return true;}return false;};
  runInContext(app.slice(app.indexOf('var citadelNoticeGame ='),app.indexOf('// The pause menu is a top-level dialog')),c);

@@ -1,0 +1,43 @@
+{
+  "scope": "Local main-app experimental fog integration. Not publication approval.",
+  "baseline": "0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7",
+  "candidateVersion": "0.21.0",
+  "ruleset": "frontier-fog-skirmish-open@1",
+  "restrictions": [
+    "standard Skirmish only",
+    "Classic revision 1",
+    "open endgame",
+    "bridge income off",
+    "default-off session-only setup"
+  ],
+  "tests": {
+    "total": 1618,
+    "pass": 1617,
+    "fail": 0,
+    "skip": 1,
+    "durationMs": 58127.12686,
+    "logSha256": "a374c0b1f63bca118bd54cc6fb5cde29ef774be4c853abc622a194e3e083c4c0",
+    "originalFailureLogSha256": "37177aa3447f441a5d2de3182745c19cefc54ca41a0f7fdbc9dd32359bc7b28f"
+  },
+  "syntax": "passed",
+  "runtime": {
+    "files": 56,
+    "bytes": 1072222,
+    "allHashesMatched": true,
+    "manifestSha256": "0c90a1b86ad601e0bef35a11d549066fa0997fad269fb6627351300de345ab51"
+  },
+  "independentReview": {
+    "sourceChecks": 23,
+    "reportSha256": "ef9e12b05cc6eb039f2e28980343f9ac4b11222bf8086bf2db8759ad1530a845"
+  },
+  "native": "Pending actual-app desktop pass. Prototype desktop evidence is separate.",
+  "limits": [
+    "Native responsive emulation explicitly denied; no retry or workaround.",
+    "No native phone/PWA, non-Chromium or gamepad certification.",
+    "No actual main-app paid full-match or dense-memory readability result yet.",
+    "Prior ~36% Node step optimization is not device FPS evidence.",
+    "Offline update/cold-start not natively verified.",
+    "Symmetric information tests do not establish AI/player gameplay balance."
+  ],
+  "publication": "No PR, remote source write, merge or deployment for fog."
+}

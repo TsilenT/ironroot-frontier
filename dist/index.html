@@ -103,9 +103,10 @@
           </button>
         </div>
         <div class="map-note" id="mapNote">
-          <span class="key">DRAG</span> to explore
+          <span id="mapDefaultNote"><span class="key">DRAG</span> to explore
           <span class="note-dot">·</span> <span class="key">TAP</span> a
-          building to manage it
+          building to manage it</span>
+          <span id="fogMemoryHint" class="hidden">Dashed markers: last seen · Details in Pause</span>
         </div>
         <div id="toast" class="toast" role="status"></div>
         <div class="selection-panel hidden" id="selectionPanel">
@@ -202,6 +203,11 @@
         <div class="pause-briefing">
           <h3 id="pauseBattleName"></h3>
           <p id="pauseObjective"></p>
+          <details id="pauseFogDetails" class="bridge-details fog-memory-details hidden">
+            <summary id="pauseFogSummary">Last-seen buildings</summary>
+            <p>Dashed markers are old observations, not confirmed current buildings. Crowded labels are omitted from the field. Positions run left to right along the known map.</p>
+            <ul id="pauseFogList" aria-label="Last-seen building details"></ul>
+          </details>
           <details id="pauseBridgeDetails" class="bridge-details hidden">
             <summary>Bridge control · experimental</summary>
             <p id="pauseBridgeStatus"></p>
@@ -291,6 +297,11 @@
             <span>Bridge control income <small>Experimental · off by default</small></span>
           </label>
           <p id="skirmishBridgeDescription" class="rules-description"></p>
+          <label class="skirmish-bridge-label" for="skirmishFog">
+            <input type="checkbox" id="skirmishFog" aria-describedby="skirmishFogDescription" />
+            <span>Fog of war <small>Experimental · off by default</small></span>
+          </label>
+          <p id="skirmishFogDescription" class="rules-description"></p>
           <p class="rules-description">Citadel choices are available through Pause → Citadel choices. Spend 190 gold once on Extra Arrow or Regeneration, or keep the gold for your army.</p>
           <p class="rules-description">Saved battles keep their original rules.</p>
           <details class="map-picker" id="mapPicker">
@@ -392,7 +403,7 @@
         </button>
         <p class="save-status hidden" id="saveStatus" role="status"></p>
         <button id="exportUnreadableBattle" class="text-button hidden">Download original save</button>
-        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.20.3</p>
+        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.21.0</p>
         <div class="welcome-links">
           <a class="text-button training-link" id="welcomeTraining" href="./training.html" aria-label="Optional guided practice. Learn without changing your saved battle">Guided practice (optional) →</a>
           <button class="text-button" id="welcomeFullscreen" type="button" data-fullscreen aria-pressed="false" aria-describedby="welcomeFullscreenStatus">Enter fullscreen</button>
@@ -462,8 +473,8 @@
         </div>
         <div class="guide-tip">
           <b>A war of attrition.</b> Towers can be worn down by continuous
-          waves. After 5 minutes, production accelerates. After 7, both citadels
-          begin to crumble.
+          waves. After 5 minutes, production accelerates. Only in timed endgame,
+          both citadels begin to crumble after 7 minutes. Open endgame has no timed citadel decay.
         </div>
         <p class="controls">
           <b>Mouse:</b> Left-click to place once or select · Shift-click to keep building · Drag or middle mouse drag to pan · Right-click to cancel placement<br />

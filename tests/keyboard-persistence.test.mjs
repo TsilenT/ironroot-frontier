@@ -155,9 +155,9 @@ test('actual retained-session and dirty full-backup handlers export the page key
 });
 
 test('current protocol advances only a verified marker and the old real protocol-six source remains pinned',()=>{
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);assert.equal(OLD_PROTOCOL,6);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);assert.equal(OLD_PROTOCOL,6);
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v017.js',import.meta.url))).digest('hex'),'980297cd20ab3ca653d132c1acb71bd7c793bed482bbaba05b53d078acbd45d0');
-  for(const prior of [null,1,2,3,4,5,6,7,8,9,10,11]){
+  for(const prior of [null,1,2,3,4,5,6,7,8,9,10,11,12]){
     const r=raw([[K.settings,JSON.stringify(settings)],[K.campaign,'  retained campaign bytes\n'],...(prior===null?[]:[[MARKER,marker(prior)]])]),before=domainBytes(r);
     const p=current(r);assert.equal(p.status().canWrite,true);assert.equal(JSON.parse(r.data.get(MARKER)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
     assert.deepEqual(domainBytes(r),before);assert.ok(r.calls.every(([,key])=>key===MARKER));

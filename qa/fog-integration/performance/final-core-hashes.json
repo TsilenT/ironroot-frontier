@@ -1,0 +1,20 @@
+{
+  "phase1ManifestSha256": "5210aacd8b2ec3e53ea711ed5d5495d79bec6fe3eab10d3036eae71da37863d3",
+  "frozenFilesReverified": 1004,
+  "frozenDrift": [],
+  "runtimeChangesFromPhase1": [
+    "dist/engine.js",
+    "dist/fog.js"
+  ],
+  "sha256": {
+    "dist/engine.js": "7e06668bb88dd0ce7af4d207fc05b8c6305e32dc8ff1f64e72ea86b064aaefad",
+    "dist/fog.js": "432f07edef4c4c0adc5d55504ee93ab472a51ca0fb59d8bce35316bc035f5dc8",
+    "dist/rulesets.js": "e2ec2f20bac8e86623f00ced773e4285b7d363bb42b681249354eead54fdc51f",
+    "dist/battle-codec.js": "61bcb09789a80cf06eb1d56fa5a1e9e85c1c32e3a5490c85027b32c06687c8c8",
+    "tests/fog-phase1-parity.test.mjs": "6ca4c105af4241842300b5a46a86008b0e74ea67cdeb7b37447daaa9a62b416d",
+    "tests/helpers/fog-performance-workloads.mjs": "e8da44bfaf01189594afff02432239ffe934f7d1f6216ae85a27b8f3535710cc",
+    "tests/helpers/profile-fog-core.mjs": "32809ebdb024e113cb2dec2a181c89acf1b71e693709871a7288bb9a442775e1",
+    "tests/helpers/confirm-fog-step-profile.mjs": "b03fa6f21cea800466147652c8957dfbb243b622c21f69db1fcfb9d9a4f1fa6c",
+    "tests/fixtures/fog-phase1/SOURCE.json": "eed4fb64ef78e5d2deedabb2d1b35dc5108e47d3467cd033f34c70af904ac488"
+  }
+}

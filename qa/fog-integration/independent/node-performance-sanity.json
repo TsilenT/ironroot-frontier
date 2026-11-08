@@ -1,0 +1,135 @@
+{
+  "kind": "Synthetic Node CPU sanity only; no browser/mobile FPS, balance or fairness claim",
+  "environment": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCPUs": 9
+  },
+  "workload": "Native caps of 140 troops / 48 structures / 256 initial effects. Synthetic dense combat setup; paid economy and AI excluded. Fresh restored snapshot outside each timed sample; five warmed samples per task. Twenty direct fixed steps equal 1 simulated second.",
+  "measuredPassWallMs": 1671.569,
+  "results": [
+    {
+      "name": "fog",
+      "initial": {
+        "units": 140,
+        "buildings": 48,
+        "effects": 256,
+        "projectiles": 0,
+        "visibleUnits": 140,
+        "visibleBuildings": 24
+      },
+      "finalAfterSteps": {
+        "units": 108,
+        "buildings": 48,
+        "effects": 2,
+        "projectiles": 0
+      },
+      "finalAfterEvents": {
+        "effects": 128,
+        "sideBudgets": [
+          128,
+          128
+        ]
+      },
+      "timings": {
+        "observations": {
+          "operationsPerSample": 250,
+          "samplesMs": [
+            85.024,
+            70.034,
+            89.002,
+            77.534,
+            108.176
+          ],
+          "medianMs": 85.024,
+          "medianMsPerOperation": 0.34009
+        },
+        "fixedSteps": {
+          "operationsPerSample": 20,
+          "samplesMs": [
+            53.82,
+            42.212,
+            41.94,
+            45.9,
+            47.763
+          ],
+          "medianMs": 45.9,
+          "medianMsPerOperation": 2.295
+        },
+        "effectIngestion": {
+          "operationsPerSample": 1000,
+          "samplesMs": [
+            32.612,
+            22.517,
+            18.462,
+            18.692,
+            17.994
+          ],
+          "medianMs": 18.692,
+          "medianMsPerOperation": 0.01869
+        }
+      }
+    },
+    {
+      "name": "released_no_fog",
+      "initial": {
+        "units": 140,
+        "buildings": 48,
+        "effects": 256,
+        "projectiles": 0,
+        "visibleUnits": 140,
+        "visibleBuildings": 48
+      },
+      "finalAfterSteps": {
+        "units": 108,
+        "buildings": 48,
+        "effects": 189,
+        "projectiles": 0
+      },
+      "finalAfterEvents": {
+        "effects": 256,
+        "sideBudgets": null
+      },
+      "timings": {
+        "observations": {
+          "operationsPerSample": 250,
+          "samplesMs": [
+            123.677,
+            156.984,
+            117.535,
+            111.403,
+            99.998
+          ],
+          "medianMs": 117.535,
+          "medianMsPerOperation": 0.47014
+        },
+        "fixedSteps": {
+          "operationsPerSample": 20,
+          "samplesMs": [
+            22.88,
+            14.908,
+            16.045,
+            13.024,
+            11.84
+          ],
+          "medianMs": 14.908,
+          "medianMsPerOperation": 0.74539
+        },
+        "effectIngestion": {
+          "operationsPerSample": 1000,
+          "samplesMs": [
+            0.443,
+            0.464,
+            0.276,
+            1.735,
+            0.167
+          ],
+          "medianMs": 0.443,
+          "medianMsPerOperation": 0.00044
+        }
+      }
+    }
+  ]
+}

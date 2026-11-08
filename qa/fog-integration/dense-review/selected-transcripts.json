@@ -1,0 +1,4133 @@
+{
+  "scope": "Synthetic local model only. Exact unmodified FogRenderer.drawMemories and Renderer geometry; alternative measured Linux fonts and stock fixed-width test stub. Not native, mobile, paid-gameplay, DOM, browser, accessibility-device or performance evidence.",
+  "sourceHashes": {
+    "dist/fog-view.js": "7113a4c118585d7472f914ef5ca1a98b369ee61a8945230bf51ce5e6b634b723",
+    "dist/render.js": "f3e668dc607485fc7ab368bd7df916b8b7389d4f7c75482975d342c75dca291d",
+    "dist/engine.js": "5045c0d3ab142cba0fe6d9466c031d6922dd5a2dff9a64363d3b0c6b6c8a1729",
+    "dist/fog.js": "282748a4d11def874c73b4f9960703454f364da9cffa8603b7fde68a261ff2be",
+    "dist/rulesets.js": "c8e0e2c4e738be79b51b1d5202ece6a936cbfaa22004d9ab1e1e52cb78abf051",
+    "dist/app.js": "07e2b793bac55d8c3a8e564c493904d525871ffcf53f1457d8486143d56280a7",
+    "tests/renderer-canvas.mjs": "ad8f8f2e7b1212429fb474406674d0b6c0d366cfbb84dc3fbed4866ca7704608",
+    "tests/fog-memory-scene.test.mjs": "94f676ae3231fc30baf2e82aafa029d24f93643ee59d6caba4b276c35571b664",
+    "tests/fog-view.test.mjs": "8d3dbdc699c8e59ab9adb71e4c44914a61238c239eae6f8731bed0904a94975a"
+  },
+  "results": [
+    {
+      "id": "prior-desktop-field-z1-snapped-same-road",
+      "width": 1139,
+      "height": 398,
+      "zoom": 1,
+      "layout": "snapped-same-road",
+      "camera": 2230,
+      "scope": "default-zoom model",
+      "family": "dejavu",
+      "scale": 0.44222222222222224,
+      "actualCamera": 1912.1859296482412,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 1950,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 2090,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 5,
+          "type": "foundry",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 6,
+          "type": "aerie",
+          "x": 2370,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 140,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 1950,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 586.2222222222222,
+            "y": 199
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 648.1333333333333,
+            "y": 199
+          },
+          "label": {
+            "title": "Archery range \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Archery range, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 5,
+          "type": "foundry",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 710.0444444444445,
+            "y": 199
+          },
+          "label": {
+            "title": "Siege foundry \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Siege foundry, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 6,
+          "type": "aerie",
+          "side": 1,
+          "x": 2370,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 771.9555555555555,
+            "y": 199
+          },
+          "label": {
+            "title": "Gryphon aerie \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Gryphon aerie, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 517.0386284722222,
+          "y": 202,
+          "w": 138.3671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 584.7895833333333,
+          "y": 202,
+          "w": 126.6875,
+          "h": 29
+        },
+        {
+          "memoryId": 5,
+          "seq": 56,
+          "x": 647.3979600694445,
+          "y": 202,
+          "w": 125.29296875,
+          "h": 29
+        },
+        {
+          "memoryId": 6,
+          "seq": 76,
+          "x": 708.6625868055555,
+          "y": 202,
+          "w": 126.5859375,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 570.7444444444444,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 632.6555555555556,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 5,
+          "seq": 46,
+          "x": 694.5666666666667,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 6,
+          "seq": 66,
+          "x": 756.4777777777778,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        }
+      ],
+      "badgeOverlaps": [
+        {
+          "earlier": 3,
+          "later": 4,
+          "w": 70.61623263888885,
+          "h": 29
+        },
+        {
+          "earlier": 3,
+          "later": 5,
+          "w": 8.007855902777692,
+          "h": 29
+        },
+        {
+          "earlier": 4,
+          "later": 5,
+          "w": 64.07912326388885,
+          "h": 29
+        },
+        {
+          "earlier": 4,
+          "later": 6,
+          "w": 2.8144965277778056,
+          "h": 29
+        },
+        {
+          "earlier": 5,
+          "later": 6,
+          "w": 64.02834201388896,
+          "h": 29
+        }
+      ],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            570.7444444444444,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            586.2222222222222,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            572.2651909722222,
+            179.2722222222222,
+            600.2651909722222,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            517.0386284722222,
+            202,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            586.2222222222222,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            523.0386284722222,
+            206,
+            649.2886284722222,
+            214
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            586.2222222222222,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            545.7944878472222,
+            218.75,
+            626.5444878472222,
+            227
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            632.6555555555556,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "AR 1",
+            648.1333333333333,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 28.4609375,
+            "bbox": [
+              0,
+              -8,
+              28.5,
+              0
+            ]
+          },
+          "inkBox": [
+            633.9028645833333,
+            179.5222222222222,
+            662.4028645833333,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Archery range \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            584.7895833333333,
+            202,
+            126.6875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Archery range \u00b7 L1",
+            648.1333333333333,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          },
+          "inkBox": [
+            590.7895833333333,
+            205.75,
+            705.5395833333333,
+            216.5
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            648.1333333333333,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            607.7055989583333,
+            218.75,
+            688.4555989583333,
+            227
+          ]
+        },
+        {
+          "seq": 46,
+          "method": "fillRect",
+          "args": [
+            694.5666666666667,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 52,
+          "method": "fillText",
+          "args": [
+            "SF 1",
+            710.0444444444445,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 26.91796875,
+            "bbox": [
+              0,
+              -8.25,
+              27,
+              0
+            ]
+          },
+          "inkBox": [
+            696.5854600694445,
+            179.2722222222222,
+            723.5854600694445,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 53,
+          "method": "measureText",
+          "args": [
+            "Siege foundry \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 113.29296875,
+            "bbox": [
+              0,
+              -8.25,
+              113.25,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 54,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 56,
+          "method": "fillRect",
+          "args": [
+            647.3979600694445,
+            202,
+            125.29296875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 58,
+          "method": "fillText",
+          "args": [
+            "Siege foundry \u00b7 L1",
+            710.0444444444445,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 113.29296875,
+            "bbox": [
+              0,
+              -8.25,
+              113.25,
+              2.5
+            ]
+          },
+          "inkBox": [
+            653.3979600694445,
+            205.75,
+            766.6479600694445,
+            216.5
+          ]
+        },
+        {
+          "seq": 61,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            710.0444444444445,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            669.6167100694445,
+            218.75,
+            750.3667100694445,
+            227
+          ]
+        },
+        {
+          "seq": 66,
+          "method": "fillRect",
+          "args": [
+            756.4777777777778,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6
+        },
+        {
+          "seq": 72,
+          "method": "fillText",
+          "args": [
+            "GA 1",
+            771.9555555555555,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6,
+          "metric": {
+            "width": 29.01953125,
+            "bbox": [
+              0,
+              -8.25,
+              29,
+              0
+            ]
+          },
+          "inkBox": [
+            757.4457899305555,
+            179.2722222222222,
+            786.4457899305555,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 73,
+          "method": "measureText",
+          "args": [
+            "Gryphon aerie \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6,
+          "result": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 74,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 76,
+          "method": "fillRect",
+          "args": [
+            708.6625868055555,
+            202,
+            126.5859375,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6
+        },
+        {
+          "seq": 78,
+          "method": "fillText",
+          "args": [
+            "Gryphon aerie \u00b7 L1",
+            771.9555555555555,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6,
+          "metric": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          },
+          "inkBox": [
+            714.6625868055555,
+            205.75,
+            829.1625868055555,
+            216.5
+          ]
+        },
+        {
+          "seq": 81,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            771.9555555555555,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 6,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            731.5278211805555,
+            218.75,
+            812.2778211805555,
+            227
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prior-desktop-field-z1-snapped-neighbor-roads",
+      "width": 1139,
+      "height": 398,
+      "zoom": 1,
+      "layout": "snapped-neighbor-roads",
+      "camera": 2230,
+      "scope": "default-zoom model",
+      "family": "dejavu",
+      "scale": 0.44222222222222224,
+      "actualCamera": 1912.1859296482412,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 2230,
+          "y": 260,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "watchtower",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 5,
+          "type": "aerie",
+          "x": 2230,
+          "y": 640,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 190,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2230,
+          "y": 260,
+          "lane": 0,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 710.0444444444445,
+            "y": 114.97777777777777
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "watchtower",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 710.0444444444445,
+            "y": 199
+          },
+          "label": {
+            "title": "Watchtower \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Watchtower, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 5,
+          "type": "aerie",
+          "side": 1,
+          "x": 2230,
+          "y": 640,
+          "lane": 2,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 710.0444444444445,
+            "y": 283.02222222222224
+          },
+          "label": {
+            "title": "Gryphon aerie \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Gryphon aerie, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 640.8608506944445,
+          "y": 117.97777777777777,
+          "w": 138.3671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 653.4760850694445,
+          "y": 202,
+          "w": 113.13671875,
+          "h": 29
+        },
+        {
+          "memoryId": 5,
+          "seq": 56,
+          "x": 646.7514756944445,
+          "y": 286.02222222222224,
+          "w": 126.5859375,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 694.5666666666667,
+          "y": 84.02222222222221,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 694.5666666666667,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 5,
+          "seq": 46,
+          "x": 694.5666666666667,
+          "y": 252.0666666666667,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        }
+      ],
+      "badgeOverlaps": [],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            694.5666666666667,
+            84.02222222222221,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            710.0444444444445,
+            103.5
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            696.0874131944445,
+            95.25,
+            724.0874131944445,
+            103.5
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            640.8608506944445,
+            117.97777777777777,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            710.0444444444445,
+            129.97777777777776
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            646.8608506944445,
+            121.97777777777776,
+            773.1108506944445,
+            129.97777777777776
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            710.0444444444445,
+            142.97777777777776
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            669.6167100694445,
+            134.72777777777776,
+            750.3667100694445,
+            142.97777777777776
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            694.5666666666667,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "WT 1",
+            710.0444444444445,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 31.1171875,
+            "bbox": [
+              0,
+              -8,
+              31,
+              0
+            ]
+          },
+          "inkBox": [
+            694.4858506944445,
+            179.5222222222222,
+            725.4858506944445,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Watchtower \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            653.4760850694445,
+            202,
+            113.13671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Watchtower \u00b7 L1",
+            710.0444444444445,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          },
+          "inkBox": [
+            659.4760850694445,
+            205.75,
+            760.7260850694445,
+            214
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            710.0444444444445,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            669.6167100694445,
+            218.75,
+            750.3667100694445,
+            227
+          ]
+        },
+        {
+          "seq": 46,
+          "method": "fillRect",
+          "args": [
+            694.5666666666667,
+            252.0666666666667,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 52,
+          "method": "fillText",
+          "args": [
+            "GA 1",
+            710.0444444444445,
+            271.5444444444445
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 29.01953125,
+            "bbox": [
+              0,
+              -8.25,
+              29,
+              0
+            ]
+          },
+          "inkBox": [
+            695.5346788194445,
+            263.2944444444445,
+            724.5346788194445,
+            271.5444444444445
+          ]
+        },
+        {
+          "seq": 53,
+          "method": "measureText",
+          "args": [
+            "Gryphon aerie \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 54,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 56,
+          "method": "fillRect",
+          "args": [
+            646.7514756944445,
+            286.02222222222224,
+            126.5859375,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 58,
+          "method": "fillText",
+          "args": [
+            "Gryphon aerie \u00b7 L1",
+            710.0444444444445,
+            298.02222222222224
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          },
+          "inkBox": [
+            652.7514756944445,
+            289.77222222222224,
+            767.2514756944445,
+            300.52222222222224
+          ]
+        },
+        {
+          "seq": 61,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            710.0444444444445,
+            311.02222222222224
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            669.6167100694445,
+            302.77222222222224,
+            750.3667100694445,
+            311.02222222222224
+          ]
+        }
+      ]
+    },
+    {
+      "id": "short-field-model-z1-snapped-neighbor-roads",
+      "width": 320,
+      "height": 125,
+      "zoom": 1,
+      "layout": "snapped-neighbor-roads",
+      "camera": 2230,
+      "scope": "default-zoom model",
+      "family": "dejavu",
+      "scale": 0.32,
+      "actualCamera": 2230,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 2230,
+          "y": 260,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "watchtower",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 5,
+          "type": "aerie",
+          "x": 2230,
+          "y": 640,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 190,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2230,
+          "y": 260,
+          "lane": 0,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 160,
+            "y": 1.6999999999999957
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "watchtower",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 160,
+            "y": 62.5
+          },
+          "label": {
+            "title": "Watchtower \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Watchtower, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 5,
+          "type": "aerie",
+          "side": 1,
+          "x": 2230,
+          "y": 640,
+          "lane": 2,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 160,
+            "y": 123.30000000000001
+          },
+          "label": {
+            "title": "Gryphon aerie \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Gryphon aerie, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 90.81640625,
+          "y": 4.699999999999996,
+          "w": 138.3671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 103.431640625,
+          "y": 65.5,
+          "w": 113.13671875,
+          "h": 29
+        },
+        {
+          "memoryId": 5,
+          "seq": 56,
+          "x": 96.70703125,
+          "y": 126.30000000000001,
+          "w": 126.5859375,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 147,
+          "y": -22.300000000000004,
+          "w": 26,
+          "h": 24
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 147,
+          "y": 38.5,
+          "w": 26,
+          "h": 24
+        },
+        {
+          "memoryId": 5,
+          "seq": 46,
+          "x": 147,
+          "y": 99.30000000000001,
+          "w": 26,
+          "h": 24
+        }
+      ],
+      "badgeOverlaps": [],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [
+        {
+          "memoryId": 5,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 30.30000000000001
+        }
+      ],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            147,
+            -22.300000000000004,
+            26,
+            24
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            160,
+            -6.300000000000004
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            146.04296875,
+            -14.550000000000004,
+            174.04296875,
+            -6.300000000000004
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            90.81640625,
+            4.699999999999996,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            160,
+            16.699999999999996
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            96.81640625,
+            8.699999999999996,
+            223.06640625,
+            16.699999999999996
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            160,
+            29.699999999999996
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            119.572265625,
+            21.449999999999996,
+            200.322265625,
+            29.699999999999996
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            147,
+            38.5,
+            26,
+            24
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "WT 1",
+            160,
+            54.5
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 31.1171875,
+            "bbox": [
+              0,
+              -8,
+              31,
+              0
+            ]
+          },
+          "inkBox": [
+            144.44140625,
+            46.5,
+            175.44140625,
+            54.5
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Watchtower \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            103.431640625,
+            65.5,
+            113.13671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Watchtower \u00b7 L1",
+            160,
+            77.5
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          },
+          "inkBox": [
+            109.431640625,
+            69.25,
+            210.681640625,
+            77.5
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            160,
+            90.5
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            119.572265625,
+            82.25,
+            200.322265625,
+            90.5
+          ]
+        },
+        {
+          "seq": 46,
+          "method": "fillRect",
+          "args": [
+            147,
+            99.30000000000001,
+            26,
+            24
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 52,
+          "method": "fillText",
+          "args": [
+            "GA 1",
+            160,
+            115.30000000000001
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 29.01953125,
+            "bbox": [
+              0,
+              -8.25,
+              29,
+              0
+            ]
+          },
+          "inkBox": [
+            145.490234375,
+            107.05000000000001,
+            174.490234375,
+            115.30000000000001
+          ]
+        },
+        {
+          "seq": 53,
+          "method": "measureText",
+          "args": [
+            "Gryphon aerie \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 54,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 56,
+          "method": "fillRect",
+          "args": [
+            96.70703125,
+            126.30000000000001,
+            126.5859375,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5
+        },
+        {
+          "seq": 58,
+          "method": "fillText",
+          "args": [
+            "Gryphon aerie \u00b7 L1",
+            160,
+            138.3
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 114.5859375,
+            "bbox": [
+              0,
+              -8.25,
+              114.5,
+              2.5
+            ]
+          },
+          "inkBox": [
+            102.70703125,
+            130.05,
+            217.20703125,
+            140.8
+          ]
+        },
+        {
+          "seq": 61,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            160,
+            151.3
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 5,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            119.572265625,
+            143.05,
+            200.322265625,
+            151.3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prior-desktop-field-z1-snapped-common-pair",
+      "width": 1139,
+      "height": 398,
+      "zoom": 1,
+      "layout": "snapped-common-pair",
+      "camera": 2230,
+      "scope": "default-zoom model",
+      "family": "dejavu",
+      "scale": 0.44222222222222224,
+      "actualCamera": 1912.1859296482412,
+      "builds": [
+        {
+          "id": 3,
+          "type": "watchtower",
+          "x": 2090,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "barracks",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 140,
+      "memories": [
+        {
+          "id": 3,
+          "type": "watchtower",
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 648.1333333333333,
+            "y": 199
+          },
+          "label": {
+            "title": "Watchtower \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Watchtower, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "barracks",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 710.0444444444445,
+            "y": 199
+          },
+          "label": {
+            "title": "Barracks \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Barracks, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 591.5649739583333,
+          "y": 202,
+          "w": 113.13671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 658.7710069444445,
+          "y": 202,
+          "w": 102.546875,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 632.6555555555556,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 694.5666666666667,
+          "y": 168.04444444444445,
+          "w": 30.955555555555556,
+          "h": 30.955555555555556
+        }
+      ],
+      "badgeOverlaps": [
+        {
+          "earlier": 3,
+          "later": 4,
+          "w": 45.930685763888846,
+          "h": 29
+        }
+      ],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            632.6555555555556,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "WT 1",
+            648.1333333333333,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 31.1171875,
+            "bbox": [
+              0,
+              -8,
+              31,
+              0
+            ]
+          },
+          "inkBox": [
+            632.5747395833333,
+            179.5222222222222,
+            663.5747395833333,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Watchtower \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            591.5649739583333,
+            202,
+            113.13671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Watchtower \u00b7 L1",
+            648.1333333333333,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 101.13671875,
+            "bbox": [
+              0,
+              -8.25,
+              101.25,
+              0
+            ]
+          },
+          "inkBox": [
+            597.5649739583333,
+            205.75,
+            698.8149739583333,
+            214
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            648.1333333333333,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            607.7055989583333,
+            218.75,
+            688.4555989583333,
+            227
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            694.5666666666667,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "BR 1",
+            710.0444444444445,
+            187.5222222222222
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 28.33203125,
+            "bbox": [
+              0,
+              -8,
+              28.25,
+              0
+            ]
+          },
+          "inkBox": [
+            695.8784288194445,
+            179.5222222222222,
+            724.1284288194445,
+            187.5222222222222
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Barracks \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 80.95703125,
+            "bbox": [
+              0,
+              -8.25,
+              81,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            658.7710069444445,
+            202,
+            102.546875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Barracks \u00b7 L1",
+            710.0444444444445,
+            214
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.95703125,
+            "bbox": [
+              0,
+              -8.25,
+              81,
+              0
+            ]
+          },
+          "inkBox": [
+            669.5659288194445,
+            205.75,
+            750.5659288194445,
+            214
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            710.0444444444445,
+            227
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            669.6167100694445,
+            218.75,
+            750.3667100694445,
+            227
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compact-snapped-edge-pair-left",
+      "width": 390,
+      "height": 350,
+      "zoom": 1,
+      "layout": "snapped-edge-pair",
+      "edge": "left",
+      "camera": 2090,
+      "scope": "ordinary snapped-site geometry",
+      "family": "dejavu",
+      "scale": 0.3888888888888889,
+      "actualCamera": 2591.4285714285716,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 2090,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 140,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": -5.684341886080802e-14,
+            "y": 175
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 54.4444444444444,
+            "y": 175
+          },
+          "label": {
+            "title": "Archery range \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Archery range, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 4,
+          "y": 178,
+          "w": 138.3671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 4,
+          "y": 178,
+          "w": 126.6875,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": -13.611111111111168,
+          "y": 147.77777777777777,
+          "w": 27.22222222222222,
+          "h": 27.22222222222222
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 40.833333333333286,
+          "y": 147.77777777777777,
+          "w": 27.22222222222222,
+          "h": 27.22222222222222
+        }
+      ],
+      "badgeOverlaps": [
+        {
+          "earlier": 3,
+          "later": 4,
+          "w": 126.6875,
+          "h": 29
+        }
+      ],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            -13.611111111111168,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            -5.684341886080802e-14,
+            165.38888888888889
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            -13.957031250000057,
+            157.13888888888889,
+            14.042968749999943,
+            165.38888888888889
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            4,
+            178,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            73.18359375,
+            190
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            10,
+            182,
+            136.25,
+            190
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            73.18359375,
+            203
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            32.755859375,
+            194.75,
+            113.505859375,
+            203
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            40.833333333333286,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "AR 1",
+            54.4444444444444,
+            165.38888888888889
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 28.4609375,
+            "bbox": [
+              0,
+              -8,
+              28.5,
+              0
+            ]
+          },
+          "inkBox": [
+            40.2139756944444,
+            157.38888888888889,
+            68.7139756944444,
+            165.38888888888889
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Archery range \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            4,
+            178,
+            126.6875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Archery range \u00b7 L1",
+            67.34375,
+            190
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          },
+          "inkBox": [
+            10,
+            181.75,
+            124.75,
+            192.5
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            67.34375,
+            203
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            26.916015625,
+            194.75,
+            107.666015625,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compact-snapped-edge-pair-right",
+      "width": 390,
+      "height": 350,
+      "zoom": 1,
+      "layout": "snapped-edge-pair",
+      "edge": "right",
+      "camera": 2090,
+      "scope": "ordinary snapped-site geometry",
+      "family": "dejavu",
+      "scale": 0.3888888888888889,
+      "actualCamera": 1728.5714285714284,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 2090,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 140,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 335.5555555555556,
+            "y": 175
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 390.00000000000006,
+            "y": 175
+          },
+          "label": {
+            "title": "Archery range \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Archery range, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 247.6328125,
+          "y": 178,
+          "w": 138.3671875,
+          "h": 29
+        },
+        {
+          "memoryId": 4,
+          "seq": 36,
+          "x": 259.3125,
+          "y": 178,
+          "w": 126.6875,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 321.9444444444445,
+          "y": 147.77777777777777,
+          "w": 27.22222222222222,
+          "h": 27.22222222222222
+        },
+        {
+          "memoryId": 4,
+          "seq": 26,
+          "x": 376.38888888888897,
+          "y": 147.77777777777777,
+          "w": 27.22222222222222,
+          "h": 27.22222222222222
+        }
+      ],
+      "badgeOverlaps": [
+        {
+          "earlier": 3,
+          "later": 4,
+          "w": 126.6875,
+          "h": 29
+        }
+      ],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            321.9444444444445,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            335.5555555555556,
+            165.38888888888889
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            321.5985243055556,
+            157.13888888888889,
+            349.5985243055556,
+            165.38888888888889
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            247.6328125,
+            178,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            316.81640625,
+            190
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            253.6328125,
+            182,
+            379.8828125,
+            190
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            316.81640625,
+            203
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            276.388671875,
+            194.75,
+            357.138671875,
+            203
+          ]
+        },
+        {
+          "seq": 26,
+          "method": "fillRect",
+          "args": [
+            376.38888888888897,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 32,
+          "method": "fillText",
+          "args": [
+            "AR 1",
+            390.00000000000006,
+            165.38888888888889
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 28.4609375,
+            "bbox": [
+              0,
+              -8,
+              28.5,
+              0
+            ]
+          },
+          "inkBox": [
+            375.76953125000006,
+            157.38888888888889,
+            404.26953125000006,
+            165.38888888888889
+          ]
+        },
+        {
+          "seq": 33,
+          "method": "measureText",
+          "args": [
+            "Archery range \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 36,
+          "method": "fillRect",
+          "args": [
+            259.3125,
+            178,
+            126.6875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4
+        },
+        {
+          "seq": 38,
+          "method": "fillText",
+          "args": [
+            "Archery range \u00b7 L1",
+            322.65625,
+            190
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 114.6875,
+            "bbox": [
+              0,
+              -8.25,
+              114.75,
+              2.5
+            ]
+          },
+          "inkBox": [
+            265.3125,
+            181.75,
+            380.0625,
+            192.5
+          ]
+        },
+        {
+          "seq": 41,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            322.65625,
+            203
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 4,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            282.228515625,
+            194.75,
+            362.978515625,
+            203
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compact-snapped-edge-pair-off-right",
+      "width": 390,
+      "height": 350,
+      "zoom": 1,
+      "layout": "snapped-edge-pair",
+      "edge": "off-right",
+      "camera": 2090,
+      "scope": "ordinary snapped-site geometry",
+      "family": "dejavu",
+      "scale": 0.3888888888888889,
+      "actualCamera": 1690.9999999999998,
+      "builds": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "x": 2090,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 2230,
+          "y": 450,
+          "canBuild": {
+            "ok": true
+          },
+          "buildOK": true,
+          "markedSite": true
+        }
+      ],
+      "minimumSeparation": 140,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2090,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 350.16666666666674,
+            "y": 175
+          },
+          "label": {
+            "title": "Arcane sanctum \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Arcane sanctum, level 1, at 2:05. Current health and production unknown."
+          }
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "side": 1,
+          "x": 2230,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125,
+          "screen": {
+            "x": 404.6111111111112,
+            "y": 175
+          },
+          "label": {
+            "title": "Archery range \u00b7 L1",
+            "when": "Last seen 2:05",
+            "description": "Last seen Archery range, level 1, at 2:05. Current health and production unknown."
+          }
+        }
+      ],
+      "badges": [
+        {
+          "memoryId": 3,
+          "seq": 16,
+          "x": 247.6328125,
+          "y": 178,
+          "w": 138.3671875,
+          "h": 29
+        }
+      ],
+      "markers": [
+        {
+          "memoryId": 3,
+          "seq": 6,
+          "x": 336.55555555555566,
+          "y": 147.77777777777777,
+          "w": 27.22222222222222,
+          "h": 27.22222222222222
+        }
+      ],
+      "badgeOverlaps": [],
+      "crossRowMarkerBadgeOverlaps": [],
+      "clipping": [],
+      "calls": [
+        {
+          "seq": 6,
+          "method": "fillRect",
+          "args": [
+            336.55555555555566,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ],
+          "style": {
+            "font": "10px sans-serif",
+            "textAlign": "start",
+            "fillStyle": "#182a29db",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 12,
+          "method": "fillText",
+          "args": [
+            "AS 1",
+            350.16666666666674,
+            165.38888888888889
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 27.9140625,
+            "bbox": [
+              0,
+              -8.25,
+              28,
+              0
+            ]
+          },
+          "inkBox": [
+            336.20963541666674,
+            157.13888888888889,
+            364.20963541666674,
+            165.38888888888889
+          ]
+        },
+        {
+          "seq": 13,
+          "method": "measureText",
+          "args": [
+            "Arcane sanctum \u00b7 L1"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 14,
+          "method": "measureText",
+          "args": [
+            "Last seen 2:05"
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#ece6d6",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "result": {
+            "width": 90.546875,
+            "bbox": [
+              0,
+              -8.25,
+              90.5,
+              0
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "method": "fillRect",
+          "args": [
+            247.6328125,
+            178,
+            138.3671875,
+            29
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#122720f2",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3
+        },
+        {
+          "seq": 18,
+          "method": "fillText",
+          "args": [
+            "Arcane sanctum \u00b7 L1",
+            316.81640625,
+            190
+          ],
+          "style": {
+            "font": "bold 11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#f3ead7",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 126.3671875,
+            "bbox": [
+              0,
+              -8,
+              126.25,
+              0
+            ]
+          },
+          "inkBox": [
+            253.6328125,
+            182,
+            379.8828125,
+            190
+          ]
+        },
+        {
+          "seq": 21,
+          "method": "fillText",
+          "args": [
+            "Last seen 2:05",
+            316.81640625,
+            203
+          ],
+          "style": {
+            "font": "11px sans-serif",
+            "textAlign": "center",
+            "fillStyle": "#d1d9c9",
+            "strokeStyle": "#d4cec0",
+            "lineWidth": 1.5
+          },
+          "memoryId": 3,
+          "metric": {
+            "width": 80.85546875,
+            "bbox": [
+              0,
+              -8.25,
+              80.75,
+              0
+            ]
+          },
+          "inkBox": [
+            276.388671875,
+            194.75,
+            357.138671875,
+            203
+          ]
+        }
+      ]
+    }
+  ]
+}

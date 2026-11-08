@@ -1,3 +1,4 @@
+import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -372,6 +373,7 @@ test('actual controller focus-toggle closes the drawer and returns from HUD to b
 
 test('portrait reuses navigation nodes and opens inspection intentionally, while the next Build returns to cards',()=>{
   const h=harness({portrait:true});
+  h.context.supportsFog=supportsFog;h.context.battleView=()=>h.context.game;h.context.refreshPresentation=()=>h.context.game;
   assert.equal(h.$('battleTools').parentNode,h.$('protectedNavigation'));
   assert.equal(h.$('mapControls').parentNode,h.$('protectedNavigation'));
   assert.equal(h.$('compactBuild').nextSibling,h.$('battleTools'));

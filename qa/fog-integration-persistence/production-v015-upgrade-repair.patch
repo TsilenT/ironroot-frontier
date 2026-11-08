@@ -1,0 +1,11 @@
+--- qa/fog-integration-persistence/before/qa/browser/validate-production-v015-upgrade.mjs	2026-11-07 21:41:15.611469935 -0500
++++ qa/browser/validate-production-v015-upgrade.mjs	2026-11-07 21:41:15.629327717 -0500
+@@ -8,7 +8,7 @@
+ import {getCampaignRoster,createProgressionCampaignMission,campaignScenarioForGame} from '../../dist/campaign.js';
+ import {shellManifest,candidateIdentity,requireDistinctUpgrade} from './update-fixtures.mjs';
+ export async function validateProductionV015Upgrade(){
+-  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);
++  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);
+   const prior=await shellManifest(PRODUCTION_V015_ROOT);
+   assert.throws(()=>requireDistinctUpgrade(prior,prior),/BLOCKED/);
+   requireDistinctUpgrade(prior,await candidateIdentity());

@@ -1,0 +1,1546 @@
+{
+  "scope": "Two actual renderer passes with substitute metrics and real legal synthetic build/observation; not complete-frame/native/device evidence. Detects bounding-ink rectangles, not pixel coverage.",
+  "results": [
+    {
+      "family": "dejavu",
+      "type": "barracks",
+      "width": 1139,
+      "height": 398,
+      "scale": 0.44222222222222224,
+      "camera": 1912.1859296482412,
+      "memories": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 1070.888671875,
+            "y": 232.16666666666669
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1017.447265625,
+            223.16666666666669,
+            1124.447265625,
+            232.41666666666669
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 1070.888671875,
+            "y": 244.9911111111111
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1006.77734375,
+            235.9911111111111,
+            1135.02734375,
+            245.2411111111111
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 911.2103732638889,
+          "y": 202,
+          "w": 92.95703125,
+          "h": 29
+        }
+      ],
+      "overlaps": [],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -44.0205912374372,
+          "y": 75,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -44.0205912374372,
+          "y": 104,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            942.2111111111111,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "BR1",
+          "x": 957.6888888888889,
+          "y": 187.5222222222222,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Barracks · L1",
+          "x": 957.6888888888889,
+          "y": 214,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 957.6888888888889,
+          "y": 227,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "dejavu",
+      "type": "barracks",
+      "width": 390,
+      "height": 350,
+      "scale": 0.3888888888888889,
+      "camera": 2698.5714285714284,
+      "memories": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 321.888671875,
+            "y": 204.16666666666666
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            268.447265625,
+            195.16666666666666,
+            375.447265625,
+            204.41666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 321.888671875,
+            "y": 215.44444444444446
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            257.77734375,
+            206.44444444444446,
+            386.02734375,
+            215.69444444444446
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 184.0770399305556,
+          "y": 178,
+          "w": 92.95703125,
+          "h": 29
+        }
+      ],
+      "overlaps": [
+        {
+          "text": "ENEMY CITADEL",
+          "w": 8.5868055555556,
+          "h": 9.25,
+          "badge": {
+            "x": 184.0770399305556,
+            "y": 178,
+            "w": 92.95703125,
+            "h": 29
+          },
+          "inkBox": [
+            268.447265625,
+            195.16666666666666,
+            375.447265625,
+            204.41666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "w": 19.2567274305556,
+          "h": 0.5555555555555429,
+          "badge": {
+            "x": 184.0770399305556,
+            "y": 178,
+            "w": 92.95703125,
+            "h": 29
+          },
+          "inkBox": [
+            257.77734375,
+            206.44444444444446,
+            386.02734375,
+            215.69444444444446
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -65.14341517857142,
+          "y": 75,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -65.14341517857142,
+          "y": 104,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            216.94444444444449,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "BR1",
+          "x": 230.5555555555556,
+          "y": 165.38888888888889,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Barracks · L1",
+          "x": 230.5555555555556,
+          "y": 190,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 230.5555555555556,
+          "y": 203,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "dejavu",
+      "type": "sanctum",
+      "width": 1139,
+      "height": 398,
+      "scale": 0.44222222222222224,
+      "camera": 1912.1859296482412,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 1070.888671875,
+            "y": 232.16666666666669
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1017.447265625,
+            223.16666666666669,
+            1124.447265625,
+            232.41666666666669
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 1070.888671875,
+            "y": 244.9911111111111
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1006.77734375,
+            235.9911111111111,
+            1135.02734375,
+            245.2411111111111
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 888.5052951388889,
+          "y": 202,
+          "w": 138.3671875,
+          "h": 29
+        }
+      ],
+      "overlaps": [
+        {
+          "text": "ENEMY CITADEL",
+          "w": 9.425217013888869,
+          "h": 7.833333333333314,
+          "badge": {
+            "x": 888.5052951388889,
+            "y": 202,
+            "w": 138.3671875,
+            "h": 29
+          },
+          "inkBox": [
+            1017.447265625,
+            223.16666666666669,
+            1124.447265625,
+            232.41666666666669
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -44.0205912374372,
+          "y": 75,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -44.0205912374372,
+          "y": 104,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            942.2111111111111,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "AS1",
+          "x": 957.6888888888889,
+          "y": 187.5222222222222,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Arcane sanctum · L1",
+          "x": 957.6888888888889,
+          "y": 214,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 957.6888888888889,
+          "y": 227,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "dejavu",
+      "type": "sanctum",
+      "width": 390,
+      "height": 350,
+      "scale": 0.3888888888888889,
+      "camera": 2698.5714285714284,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 321.888671875,
+            "y": 204.16666666666666
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            268.447265625,
+            195.16666666666666,
+            375.447265625,
+            204.41666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 321.888671875,
+            "y": 215.44444444444446
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            257.77734375,
+            206.44444444444446,
+            386.02734375,
+            215.69444444444446
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 161.3719618055556,
+          "y": 178,
+          "w": 138.3671875,
+          "h": 29
+        }
+      ],
+      "overlaps": [
+        {
+          "text": "ENEMY CITADEL",
+          "w": 31.2918836805556,
+          "h": 9.25,
+          "badge": {
+            "x": 161.3719618055556,
+            "y": 178,
+            "w": 138.3671875,
+            "h": 29
+          },
+          "inkBox": [
+            268.447265625,
+            195.16666666666666,
+            375.447265625,
+            204.41666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "w": 41.9618055555556,
+          "h": 0.5555555555555429,
+          "badge": {
+            "x": 161.3719618055556,
+            "y": 178,
+            "w": 138.3671875,
+            "h": 29
+          },
+          "inkBox": [
+            257.77734375,
+            206.44444444444446,
+            386.02734375,
+            215.69444444444446
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -65.14341517857142,
+          "y": 75,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -65.14341517857142,
+          "y": 104,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            216.94444444444449,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "AS1",
+          "x": 230.5555555555556,
+          "y": 165.38888888888889,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Arcane sanctum · L1",
+          "x": 230.5555555555556,
+          "y": 190,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 230.5555555555556,
+          "y": 203,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "noto",
+      "type": "barracks",
+      "width": 1139,
+      "height": 398,
+      "scale": 0.44222222222222224,
+      "camera": 1912.1859296482412,
+      "memories": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 1076.33984375,
+            "y": 232.16666666666669
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1029.23828125,
+            223.16666666666669,
+            1123.48828125,
+            232.16666666666669
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 1076.33984375,
+            "y": 244.9911111111111
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1017.6796875,
+            235.9911111111111,
+            1134.9296875,
+            244.9911111111111
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 915.0892795138889,
+          "y": 202,
+          "w": 85.19921875,
+          "h": 29
+        }
+      ],
+      "overlaps": [],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -31.69382066582915,
+          "y": 75,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -31.69382066582915,
+          "y": 104,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            942.2111111111111,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "BR1",
+          "x": 957.6888888888889,
+          "y": 187.5222222222222,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Barracks · L1",
+          "x": 957.6888888888889,
+          "y": 214,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 957.6888888888889,
+          "y": 227,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "noto",
+      "type": "barracks",
+      "width": 390,
+      "height": 350,
+      "scale": 0.3888888888888889,
+      "camera": 2698.5714285714284,
+      "memories": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 327.3398437500001,
+            "y": 204.16666666666666
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            280.2382812500001,
+            195.16666666666666,
+            374.4882812500001,
+            204.16666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 327.3398437500001,
+            "y": 215.44444444444446
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            268.6796875000001,
+            206.44444444444446,
+            385.9296875000001,
+            215.44444444444446
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 187.9559461805556,
+          "y": 178,
+          "w": 85.19921875,
+          "h": 29
+        }
+      ],
+      "overlaps": [
+        {
+          "text": "HEALTH UNKNOWN",
+          "w": 4.475477430555486,
+          "h": 0.5555555555555429,
+          "badge": {
+            "x": 187.9559461805556,
+            "y": 178,
+            "w": 85.19921875,
+            "h": 29
+          },
+          "inkBox": [
+            268.6796875000001,
+            206.44444444444446,
+            385.9296875000001,
+            215.44444444444446
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -51.126116071428555,
+          "y": 75,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -51.126116071428555,
+          "y": 104,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            216.94444444444449,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "BR1",
+          "x": 230.5555555555556,
+          "y": 165.38888888888889,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Barracks · L1",
+          "x": 230.5555555555556,
+          "y": 190,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 230.5555555555556,
+          "y": 203,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "noto",
+      "type": "sanctum",
+      "width": 1139,
+      "height": 398,
+      "scale": 0.44222222222222224,
+      "camera": 1912.1859296482412,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 1076.33984375,
+            "y": 232.16666666666669
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1029.23828125,
+            223.16666666666669,
+            1123.48828125,
+            232.16666666666669
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 1076.33984375,
+            "y": 244.9911111111111
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            1017.6796875,
+            235.9911111111111,
+            1134.9296875,
+            244.9911111111111
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 896.4877170138889,
+          "y": 202,
+          "w": 122.40234375,
+          "h": 29
+        }
+      ],
+      "overlaps": [],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -31.69382066582915,
+          "y": 75,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -31.69382066582915,
+          "y": 104,
+          "font": "bold 27.135678391959797px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            942.2111111111111,
+            168.04444444444445,
+            30.955555555555556,
+            30.955555555555556
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "AS1",
+          "x": 957.6888888888889,
+          "y": 187.5222222222222,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Arcane sanctum · L1",
+          "x": 957.6888888888889,
+          "y": 214,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 957.6888888888889,
+          "y": 227,
+          "font": "11px sans-serif"
+        }
+      ]
+    },
+    {
+      "family": "noto",
+      "type": "sanctum",
+      "width": 390,
+      "height": 350,
+      "scale": 0.3888888888888889,
+      "camera": 2698.5714285714284,
+      "memories": [
+        {
+          "id": 3,
+          "type": "sanctum",
+          "side": 1,
+          "x": 2790,
+          "y": 450,
+          "lane": 1,
+          "level": 1,
+          "observedAt": 125
+        }
+      ],
+      "baseText": [
+        {
+          "text": "ENEMY CITADEL",
+          "point": {
+            "x": 327.3398437500001,
+            "y": 204.16666666666666
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            280.2382812500001,
+            195.16666666666666,
+            374.4882812500001,
+            204.16666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "point": {
+            "x": 327.3398437500001,
+            "y": 215.44444444444446
+          },
+          "fontCSS": 12,
+          "inkBox": [
+            268.6796875000001,
+            206.44444444444446,
+            385.9296875000001,
+            215.44444444444446
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "x": 169.3543836805556,
+          "y": 178,
+          "w": 122.40234375,
+          "h": 29
+        }
+      ],
+      "overlaps": [
+        {
+          "text": "ENEMY CITADEL",
+          "w": 11.518446180555486,
+          "h": 9,
+          "badge": {
+            "x": 169.3543836805556,
+            "y": 178,
+            "w": 122.40234375,
+            "h": 29
+          },
+          "inkBox": [
+            280.2382812500001,
+            195.16666666666666,
+            374.4882812500001,
+            204.16666666666666
+          ]
+        },
+        {
+          "text": "HEALTH UNKNOWN",
+          "w": 23.077039930555486,
+          "h": 0.5555555555555429,
+          "badge": {
+            "x": 169.3543836805556,
+            "y": 178,
+            "w": 122.40234375,
+            "h": 29
+          },
+          "inkBox": [
+            268.6796875000001,
+            206.44444444444446,
+            385.9296875000001,
+            215.44444444444446
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "mode": "base",
+          "method": "translate",
+          "args": [
+            3090,
+            450
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "strokeRect",
+          "args": [
+            -57,
+            -88,
+            114,
+            125
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "ENEMY CITADEL",
+          "x": -51.126116071428555,
+          "y": 75,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "base",
+          "method": "fillText",
+          "text": "HEALTH UNKNOWN",
+          "x": -51.126116071428555,
+          "y": 104,
+          "font": "bold 30.857142857142858px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "setTransform",
+          "args": [
+            1.5,
+            0,
+            0,
+            1.5,
+            0,
+            0
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "strokeRect",
+          "args": [
+            216.94444444444449,
+            147.77777777777777,
+            27.22222222222222,
+            27.22222222222222
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "setLineDash",
+          "args": [
+            []
+          ]
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "AS1",
+          "x": 230.5555555555556,
+          "y": 165.38888888888889,
+          "font": "bold 10px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Arcane sanctum · L1",
+          "x": 230.5555555555556,
+          "y": 190,
+          "font": "bold 11px sans-serif"
+        },
+        {
+          "mode": "memories",
+          "method": "fillText",
+          "text": "Last seen 2:05",
+          "x": 230.5555555555556,
+          "y": 203,
+          "font": "11px sans-serif"
+        }
+      ]
+    }
+  ]
+}
