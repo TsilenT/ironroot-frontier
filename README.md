@@ -1,3 +1,9 @@
+## v0.27.0 candidate: False Quiet
+
+Chapter 7, The Unlit Roads, begins with False Quiet. Two authored starting garrisons vary the contacts behind one charted central fort. Resume, Restart and result Replay preserve the selected layout; a new campaign attempt selects again. The opponent adapts using ordinary paid purchases and the same fog boundary. Blind supported pushes remain valid. Current campaign: 25 main-path missions / 75 optional stars. Existing progress remains earned; profile protocol 18 fences older tabs.
+
+Validation and limits: [False Quiet prototype](docs/FALSE_QUIET_PROTOTYPE.md), [persistence](docs/FALSE_QUIET_PERSISTENCE.md), and [UI review](docs/FALSE_QUIET_UI_REVIEW.md). This is the first Chapter 7 slice, not the end of the planned Chapter 7–10 work.
+
 # Ironroot Frontier
 
 A single-player real-time strategy tug-of-war for desktop and mobile browsers. Build an army, defend your economy and push along the battlefield lanes.
