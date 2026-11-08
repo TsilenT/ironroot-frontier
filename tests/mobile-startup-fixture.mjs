@@ -1,10 +1,11 @@
+import {signalProtectionSummary} from '../dist/campaign-presentation.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
 import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
 import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,SHARED_CROSSING_CHAPTER,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS, SHARED_CROSSING_CHAPTER];
-import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
+import {createProtectedObjectiveMonitor,protectedLossDetails,isProtectedCampaignBuilding} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
@@ -77,9 +78,9 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   controlProgressLabel,controlProgressDescription,CONTROL_MAP_LEGEND,
   supportsFog,observe,observationFacade,observationHUD,ObservationAudio,FogRenderer,fogSetupAllowed,observedEnemyCitadelText,
   fogAudio:new ObservationAudio({ownCommandSounds:false}),fogRenderer:null,presentation:null,presentationGame:null,
-  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,
+  Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,isProtectedCampaignBuilding,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
-  viewportPause:createViewportPause(),mobileLayout:'ordinary',protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
+  viewportPause:createViewportPause(),mobileLayout:'ordinary',signalProtectionSummary,performance:{now:()=>0},protectedAnnouncementUntil:0,protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,

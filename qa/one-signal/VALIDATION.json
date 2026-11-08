@@ -1,0 +1,26 @@
+{
+  "sourceBase": "e0f0a72b68874040f9ea043a57845ef9b68cb80c",
+  "version": "0.23.0",
+  "node": {
+    "passed": 1727,
+    "failed": 0,
+    "optionalSkipped": 1,
+    "durationMs": 116489.369409,
+    "localOnlyLog": "qa/one-signal/root-final.log"
+  },
+  "nativeSourceMatchesFinalRuntime": true,
+  "runtimeFiles": 57,
+  "runtimeBytes": 1112126,
+  "runtimeInventory": "qa/one-signal/runtime-final.json",
+  "fullBrowserMatrixRun": false,
+  "physicalDeviceRun": false,
+  "deployed": false,
+  "browserDependencyFreePreflightPassed": true,
+  "finalHarnessAdaptation": {
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "localOnlyLog": "qa/one-signal/final-harness-adaptation.log"
+  },
+  "evidencePolicy": "New screenshots, raw simulation rows and terminal logs are local-only and omitted; runtime/tests/fixtures and concise summaries are retained. No historical base paths removed."
+}

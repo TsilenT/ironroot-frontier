@@ -1,10 +1,11 @@
+import {signalProtectionSummary} from '../dist/campaign-presentation.js';
 import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
-import { CAMPAIGN_MISSIONS, createCampaignMission, getCampaignTargets } from '../dist/campaign.js';
-import { createProtectedObjectiveMonitor, protectedLossDetails } from '../dist/protected-objectives.js';
+import { CAMPAIGN_MISSIONS, createCampaignMission, getCampaignTargets, campaignScenarioForGame, getCampaignMission, evaluateCampaignMission } from '../dist/campaign.js';
+import { createProtectedObjectiveMonitor, protectedLossDetails, isProtectedCampaignBuilding } from '../dist/protected-objectives.js';
 import { createObjectiveAlertPolicy } from '../dist/objective-alerts.js';
 import { BUILDINGS, SPELL } from '../dist/engine.js';
 import { campaignBuildChoices } from '../dist/campaign-flow.js';
@@ -35,11 +36,11 @@ class Element {
 function harness({mission='common-ground',landscape=false,compact=false,portrait=false}={}) {
   const elements = new Map(), documentListeners = {}, windowListeners = {};
   const $ = id => {if(!elements.has(id)){const el=new Element();el.id=id;elements.set(id,el);}return elements.get(id);};
-  const state = {landscape,compact,portrait,scopeUpdates:0,layoutUpdates:0,canInteract:true,clamped:0,cancelled:0,reset:0,toasts:[],ui:{build:'mint',spell:true,selected:1},started:true};
+  const state = {now:0,landscape,compact,portrait,scopeUpdates:0,layoutUpdates:0,canInteract:true,clamped:0,cancelled:0,reset:0,toasts:[],ui:{build:'mint',spell:true,selected:1},started:true};
   const dialogLayers = [new Element(),new Element()];
   for(const layer of dialogLayers)layer.classes.add('hidden');
   const context = {
-    visibleViewportRect,fitMobileViewport,insetViewportRect,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
+    campaignScenarioForGame,getCampaignMission,signalProtectionSummary,isProtectedCampaignBuilding,protectedAnnouncementUntil:0,performance:{now:()=>state.now*1000},visibleViewportRect,fitMobileViewport,insetViewportRect,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
     getComputedStyle:()=>({paddingTop:'0px',paddingRight:'0px',paddingBottom:'0px',paddingLeft:'0px'}),
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
@@ -432,4 +433,57 @@ test('fixed-step observations precede objective evaluation and warning flush fol
   assert.ok(frame.indexOf('flushProtectedWarnings(now / 1000)')>frame.indexOf('updateAudio();'));
   assert.ok(frame.indexOf('flushProtectedWarnings(now / 1000)')>frame.indexOf('updateHUD();'));
   assert.match(app,/function sound\(name, options\) \{\s*audio\.play\(name, options\);/);
+});
+
+test('One Signal keeps stable original controls after a permitted loss and delays the named last-signal warning',()=>{
+  const h=harness({mission:'one-signal-is-enough'}), buttons=h.buttons();
+  assert.equal(buttons.length,2);assert.equal(h.$('objectiveIdentity').textContent,'NORMAL · KEEP 1 SIGNAL');
+  const targets=getCampaignTargets(h.context.game,h.context.currentCampaign).filter(t=>t.kind==='protect');
+  targets[0].building.hp=0;targets[1].building.hp=targets[1].building.maxHp*.2;
+  h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();
+  assert.deepEqual(h.buttons(),buttons);assert.equal(buttons[0].disabled,true);assert.equal(buttons[1].disabled,false);
+  assert.equal(evaluateCampaignMission(h.context.game,h.context.currentCampaign).failed,false);
+  const permitted=h.$('protectedAlert').textContent;
+  assert.match(permitted,/remains; the evacuation can continue/);
+  h.api.flushProtectedWarnings(0);h.api.updateProtectedObjectives();h.api.flushProtectedWarnings(2.49);
+  assert.equal(h.$('protectedAlert').textContent,permitted);assert.equal(h.state.sounds,undefined);
+  h.api.flushProtectedWarnings(2.5);
+  const last=h.context.protectedMonitor.read()[1];
+  assert.equal(h.$('protectedAlert').textContent,`Last signal at critical health: ${last.label} (20% HP). Losing it fails the mission.`);
+  assert.equal(h.state.sounds.length,1);
+  h.api.updateProtectedObjectives();h.api.flushProtectedWarnings(100);assert.equal(h.state.sounds.length,1);
+  targets[1].building.hp=0;h.context.protectedMonitor.observe();h.api.updateProtectedObjectives();
+  h.context.objectiveOutcome=evaluateCampaignMission(h.context.game,h.context.currentCampaign);
+  assert.equal(h.context.objectiveOutcome.failed,true);h.api.flushProtectedWarnings(101);
+  assert.ok(h.buttons().every(button=>button.disabled));assert.equal(h.state.sounds.length,1);
+  h.api.finishProtectedObjectives();assert.equal(h.$('resultProtectedLoss').children.length,2);
+});
+
+test('restored One Signal absence retains unknown loss time and the surviving original name',()=>{
+  const h=harness({mission:'one-signal-is-enough'});
+  const target=getCampaignTargets(h.context.game,h.context.currentCampaign).find(t=>t.kind==='protect');
+  h.context.game.state.time=77.15;h.context.game.tick=1543;
+  h.context.game.state.buildings=h.context.game.state.buildings.filter(b=>b.id!==target.originalId);
+  h.api.beginProtectedObjectives();h.api.updateProtectedObjectives();
+  const summary=h.context.currentSignalProtection();
+  assert.match(summary.permittedLossMessage,/was already missing when this view began; its loss time is unknown/);
+  assert.match(summary.permittedLossMessage,/remains; the evacuation can continue/);
+  assert.equal(h.$('protectedAlert').textContent,summary.permittedLossMessage);
+  h.api.flushProtectedWarnings(0);assert.equal(h.$('protectedAlert').textContent,summary.permittedLossMessage);
+  h.api.finishProtectedObjectives();assert.match(h.$('resultProtectedLoss').children[0].textContent,/Loss time unknown/);
+  assert.equal(evaluateCampaignMission(h.context.game,h.context.currentCampaign).failed,false);
+});
+
+test('actual salvage handler resolves current originals even when rendered target IDs are stale',()=>{
+  const h=harness({mission:'one-signal-is-enough'});
+  const targets=getCampaignTargets(h.context.game,h.context.currentCampaign).filter(t=>t.kind==='protect');
+  let sells=0;const sell=h.context.game.sell.bind(h.context.game);h.context.game.sell=id=>{sells++;return sell(id);};
+  Object.assign(h.context,{battleSession:{status:()=> 'current'},refreshPresentation(){},updateHUD(){}});
+  const handler=app.slice(app.indexOf("$('sell').onclick ="),app.indexOf('let closeSelectionArmed'));
+  runInNewContext(handler,h.context);
+  for(const target of targets){h.context.ui.selected=target.originalId;h.context.ui.protectedTargets=[];
+    const before=JSON.stringify(h.context.game.serialize());h.$('sell').onclick();
+    assert.equal(sells,0);assert.equal(JSON.stringify(h.context.game.serialize()),before);
+    assert.equal(h.state.toasts.at(-1),'Original mission objectives cannot be salvaged.');
+  }
 });

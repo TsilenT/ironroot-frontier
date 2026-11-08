@@ -101,16 +101,19 @@ test('control render draws three physical capture zones and owner/contest text w
 
 test('current chapter list includes the prototype without changing earned legacy totals',()=>{
   const p=createCampaignProgress(),before=JSON.stringify(p),o=getProgressionCampaignOverview(p);
-  assert.equal(o.total,20);assert.equal(o.maxStars,60);assert.equal(o.chapters.at(-1).number,6);
-  assert.equal(o.chapters.at(-1).total,1);assert.equal(o.chapters.at(-1).unlocked,false);
+  assert.equal(o.total,21);assert.equal(o.maxStars,63);assert.equal(o.chapters.at(-1).number,6);
+  assert.equal(o.chapters.at(-1).total,2);assert.equal(o.chapters.at(-1).unlocked,false);
   assert.equal(JSON.stringify(p),before);
 });
 
 
 test('current continuation rewards name the next mission without rewriting published descriptors',()=>{
   const before=JSON.stringify(getCampaignMission('common-ground',5));
+  const sharedBefore=JSON.stringify(getCampaignMission('shared-crossing',1));
   assert.equal(getCampaignLaunchMission('common-ground',createCampaignProgress()).reward,'Unlocks Shared Crossing');
-  assert.equal(getCampaignLaunchMission('shared-crossing',createCampaignProgress()).reward,'Completes the Chapter 6 preview');
+  assert.equal(getCampaignLaunchMission('shared-crossing',createCampaignProgress()).reward,'Unlocks One Signal Is Enough');
   assert.equal(JSON.stringify(getCampaignMission('common-ground',5)),before);
+  assert.equal(JSON.stringify(getCampaignMission('shared-crossing',1)),sharedBefore);
+  assert.equal(getCampaignMission('shared-crossing',1).reward,'Unlocks the campaign epilogue');
   assert.equal(getCampaignMission('common-ground',5).reward,'Unlocks the campaign epilogue');
 });

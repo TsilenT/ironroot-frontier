@@ -162,6 +162,11 @@ for (const stars of [1, 2, 3]) test(`${stars}-star result offers the correct opt
     await expect(page.locator('#replayMission')).toBeVisible();
     await press(page, '#replayMission');
     await expect(page.locator('#resultModal')).toBeHidden();
+    await expect(page.locator('#welcome')).toBeVisible();
+    await expect(page.locator('#campaignMissionTitle')).toHaveText('Emberwatch');
+    expect(await readSave(page)).toBeNull();
+    await page.waitForTimeout(200);expect(await readSave(page)).toBeNull();
+    await press(page,'#start');
     await expect(page.locator('#opponentLabel')).toHaveText('EMBERWATCH');
     await openBuildControls(page);
     await expect(page.locator('.build-card:visible')).toHaveCount(7);

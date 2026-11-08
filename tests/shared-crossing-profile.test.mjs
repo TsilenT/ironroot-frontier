@@ -66,34 +66,34 @@ function assertBlocked(profile, raw) {
   assert.ok(raw.reads.every(key => key === MARKER), 'barrier must reject before touching a save domain');
 }
 
-// Current expectations intentionally advance to 13. Historical clients are exact
-// source fixtures; the future-marker regression moves to 14, never into support.
-test('protocol13 pins the exact prior protocol12 module and retains all storage and format identities', () => {
+// Current expectations intentionally advance to 14. Historical clients are exact
+// source fixtures; the future-marker regression moves to 15, never into support.
+test('protocol14 pins the exact prior protocol12 module and retains all storage and format identities', () => {
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0210.js', import.meta.url))).digest('hex'), '724cefd400aa4b90d4ba131147730b9441fb8c6d96a494c253ef659eb97d9508');
   assert.equal(protocolTwelve.CURRENT_PROFILE_PROTOCOL_VERSION, 12);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 13);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 14);
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, { campaign: 'ironroot.campaign.v1', trials: 'ironroot.trials.v1', settings: 'ironroot.settings.v1', history: 'ironroot.history.v1', battle: 'ironroot.battle.v1' });
-  for (let requiredProtocolVersion = 1; requiredProtocolVersion <= 13; requiredProtocolVersion++) {
+  for (let requiredProtocolVersion = 1; requiredProtocolVersion <= 14; requiredProtocolVersion++) {
     const raw = backend();
     const profile = createProfileSession(() => raw, { requiredProtocolVersion, newEpoch: () => 'supported' });
     assert.ok(profile.status().canWrite);
   }
-  assert.throws(() => createProfileSession(() => backend(), { requiredProtocolVersion: 14 }), TypeError);
+  assert.throws(() => createProfileSession(() => backend(), { requiredProtocolVersion: 15 }), TypeError);
   const raw = backend(), legacy = createProfileSession(() => raw, { newEpoch: () => 'legacy-default' });
   assert.deepEqual(raw.writes, []); assert.ok(legacy.beginImport().ok);
   assert.equal(JSON.parse(raw.data.get(MARKER)).version, 1);
 });
 
 test('construction upgrades only a ready marker and repeated construction never reads or rewrites earned domains', () => {
-  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) {
+  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]) {
     // Deliberately opaque bytes prove the marker barrier does not normalize saves.
     const domains = keys.map(key => [key, `  opaque retained ${key} bytes\n`]);
     const raw = backend([...(prior === null ? [] : [[MARKER, marker(prior)]]), ...domains, ['unrelated', 'untouched']]);
     const before = domainBytes(raw), profile = current(raw);
     assert.ok(profile.status().canWrite);
-    assert.deepEqual(JSON.parse(raw.data.get(MARKER)), { format: 'ironroot-profile', version: 13, epoch: prior === null ? 'shared-crossing-import' : 'retained-earned-profile', phase: 'ready' });
-    assert.deepEqual(raw.writes.map(write => write[1]), prior === 13 ? [] : [MARKER]);
+    assert.deepEqual(JSON.parse(raw.data.get(MARKER)), { format: 'ironroot-profile', version: 14, epoch: prior === null ? 'shared-crossing-import' : 'retained-earned-profile', phase: 'ready' });
+    assert.deepEqual(raw.writes.map(write => write[1]), prior === 14 ? [] : [MARKER]);
     assert.deepEqual(domainBytes(raw), before); assert.ok(raw.reads.every(key => key === MARKER));
     raw.reads.length = 0; raw.writes.length = 0;
     for (let i = 0; i < 3; i++) assert.ok(current(raw).status().canWrite);
@@ -109,7 +109,7 @@ test('exact protocol12 open and reopened clients cannot erase new campaign stars
   const oldPreferences = createPreferenceSession(oldStorage, K.settings, { canWrite: () => stale.status().canWrite }); oldPreferences.stage({ sound: true });
   const oldHistory = createHistorySession(oldStorage, K.history, { canWrite: () => stale.status().canWrite }); oldHistory.retain(row(new Game({ ai: false })));
   const beforeUpgrade = domainBytes(raw), writer = current(raw);
-  assert.ok(writer.status().canWrite); assert.deepEqual(raw.writes, [['set', MARKER, marker(13)]]); assert.deepEqual(domainBytes(raw), beforeUpgrade);
+  assert.ok(writer.status().canWrite); assert.deepEqual(raw.writes, [['set', MARKER, marker(14)]]); assert.deepEqual(domainBytes(raw), beforeUpgrade);
   const before = [...raw.data]; raw.writes.length = 0;
   for (const old of [stale, previous(raw)]) {
     assertBlocked(old, raw);
@@ -123,13 +123,13 @@ test('exact protocol12 open and reopened clients cannot erase new campaign stars
   assert.deepEqual(parseBackup(createBackup(writer.storage, { createdAt: date })).data, data);
 });
 
-test('unfinished and future14 markers are never automatically upgraded or downgraded', () => {
-  for (const version of [12, 13, 14]) for (const phase of ['ready', 'restoring', 'failed']) {
-    if (phase === 'ready' && version <= 13) continue;
+test('unfinished and future15 markers are never automatically upgraded or downgraded', () => {
+  for (const version of [12, 14, 15]) for (const phase of ['ready', 'restoring', 'failed']) {
+    if (phase === 'ready' && version <= 14) continue;
     const raw = backend([[MARKER, marker(version, phase)], ...entries(earned())]), before = [...raw.data], profile = current(raw);
     assert.equal(profile.status().canWrite, false); assert.deepEqual(raw.writes, []); assert.deepEqual([...raw.data], before);
     assertBlocked(profile, raw);
-    if (version === 14) {
+    if (version === 15) {
       assert.equal(profile.beginImport({ recover: true }).code, 'unsupported-protocol');
       assert.deepEqual([...raw.data], before); assert.deepEqual(raw.writes, []);
     }
@@ -145,7 +145,7 @@ test('failed, uncertain and competing upgrades keep all five domains closed unti
       if (key !== MARKER) return set(key, value);
       if (fault === 'drop') return;
       if (fault === 'throw') throw Error('quota');
-      set(key, fault === 'competing' ? marker(13, 'ready', 'another-tab') : value);
+      set(key, fault === 'competing' ? marker(14, 'ready', 'another-tab') : value);
       unreadable = fault === 'readback';
     };
     const profile = current(raw); assertBlocked(profile, raw);
@@ -157,11 +157,11 @@ test('failed, uncertain and competing upgrades keep all five domains closed unti
 });
 
 test('initial unavailable storage and marker reads cannot become silently writable after access returns', () => {
-  for (const fault of ['backend', 'marker-read']) for (const prior of [12, 13]) {
+  for (const fault of ['backend', 'marker-read']) for (const prior of [12, 14]) {
     const raw = backend([[MARKER, marker(prior)], ...entries(earned())]), before = [...raw.data], get = raw.getItem;
     let unavailable = true;
     raw.getItem = key => { if (unavailable && fault === 'marker-read' && key === MARKER) throw Error('denied'); return get(key); };
-    const profile = createProfileSession(() => { if (unavailable && fault === 'backend') throw Error('denied'); return raw; }, { requiredProtocolVersion: 13 });
+    const profile = createProfileSession(() => { if (unavailable && fault === 'backend') throw Error('denied'); return raw; }, { requiredProtocolVersion: 14 });
     assert.equal(profile.status().initiallyUnavailable, true); assertBlocked(profile, raw);
     unavailable = false; assertBlocked(profile, raw);
     assert.equal(profile.beginImport({ recover: true }).ok, false); assert.deepEqual([...raw.data], before);
@@ -172,7 +172,7 @@ test('initial unavailable storage and marker reads cannot become silently writab
 test('a marker upgrade that throws after writing is accepted only after exact readback', () => {
   const raw = backend([[MARKER, marker(12)], ...entries(earned())]), before = domainBytes(raw), set = raw.setItem;
   raw.setItem = (key, value) => { set(key, value); if (key === MARKER) throw Error('after write'); };
-  assert.ok(current(raw).status().canWrite); assert.deepEqual(raw.writes, [['set', MARKER, marker(13)]]);
+  assert.ok(current(raw).status().canWrite); assert.deepEqual(raw.writes, [['set', MARKER, marker(14)]]);
   assert.deepEqual(domainBytes(raw), before); assertBlocked(previous(raw), raw);
 });
 
@@ -214,11 +214,11 @@ test('valid campaign backup replacement retains five domains and fences stale cu
   assert.deepEqual([...raw.data], before); assert.deepEqual(raw.writes, []);
   const loaded = current(raw); assert.ok(loaded.status().canWrite);
   assert.deepEqual(parseBackup(createBackup(loaded.storage, { createdAt: date })).data, data);
-  assert.equal(JSON.parse(raw.data.get(MARKER)).version, 13); assert.equal(raw.data.get('unrelated'), 'untouched');
+  assert.equal(JSON.parse(raw.data.get(MARKER)).version, 14); assert.equal(raw.data.get('unrelated'), 'untouched');
   assertBlocked(previous(raw), raw);
 });
 
-test('failed replacement rolls back exact bytes across all five domains while keeping protocol13 fencing', () => {
+test('failed replacement rolls back exact bytes across all five domains while keeping protocol14 fencing', () => {
   const replacement = earned(); replacement.settings.volume = .7; replacement.history = [];
   const text = createBackup(backend(entries(replacement)), { createdAt: date });
   for (const failedKey of keys) for (const fault of ['throw-before', 'throw-after', 'drop']) {
@@ -238,11 +238,11 @@ test('failed replacement rolls back exact bytes across all five domains while ke
     assert.equal(restored.ok, false, `${failedKey}/${fault}`); assert.equal(restored.rollback.complete, true, `${failedKey}/${fault}`);
     assert.deepEqual(domainBytes(raw), before); assert.ok(importer.finishImport({ outcome: 'rolled-back' }).ok);
     assert.ok(importer.status().canWrite); assert.equal(stale.status().canWrite, false);
-    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 13); assertBlocked(previous(raw), raw);
+    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 14); assertBlocked(previous(raw), raw);
   }
 });
 
-test('historical v0.7 and v0.9 backups still import under protocol13 without new progress or checkpoint synthesis', () => {
+test('historical v0.7 and v0.9 backups still import under protocol14 without new progress or checkpoint synthesis', () => {
   for (const fixture of ['backup-v0.7-format.json', 'backup-v0.9-format.json']) {
     const text = readFileSync(new URL(`./fixtures/${fixture}`, import.meta.url), 'utf8'), expected = parseBackup(text);
     const raw = backend([[MARKER, marker(12)], ...entries(earned()), ['unrelated', 'untouched']]), importer = current(raw);
@@ -251,7 +251,7 @@ test('historical v0.7 and v0.9 backups still import under protocol13 without new
     assert.deepEqual(exported, expected);
     assert.equal(exported.data.campaign.missions[id], undefined);
     assert.equal(exported.data.battle?.game.state.campaignControl, undefined);
-    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 13); assert.equal(raw.data.get('unrelated'), 'untouched');
+    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 14); assert.equal(raw.data.get('unrelated'), 'untouched');
     assertBlocked(previous(raw), raw);
   }
 });
