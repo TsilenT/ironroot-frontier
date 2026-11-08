@@ -41,7 +41,7 @@ function assertRejectsUnchanged(saved, mutations, read = Game.restore) {
 
 test('Lanterns adds one frozen campaign fog identity without changing any historical descriptor bytes', () => {
   assert.equal(LANTERNS_RULESET_ID, 'frontier-campaign-lanterns');
-  const oldRules = Object.fromEntries(Object.entries(RULESETS).filter(([id]) => ![LANTERNS_RULESET_ID, 'frontier-campaign-borrowed-ground', 'frontier-campaign-river-between'].includes(id)));
+  const oldRules = Object.fromEntries(Object.entries(RULESETS).filter(([id]) => ![LANTERNS_RULESET_ID, 'frontier-campaign-borrowed-ground', 'frontier-campaign-river-between','frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b'].includes(id)));
   assert.equal(createHash('sha256').update(JSON.stringify(oldRules)).digest('hex'), '7977e413ed6a0e7fde83f2af4d024c8b5e277c01c9c4e4bba67cef57d2606e1f');
   const rules = getRuleset(LANTERNS_RULESET_ID);
   assert.equal(rules.revision, 1); assert.equal(rules.campaignOnly, true);
@@ -54,13 +54,13 @@ test('Lanterns adds one frozen campaign fog identity without changing any histor
   assert.equal(DEFAULT_SKIRMISH_RULESET_ID, 'frontier-citadel-open');
 });
 
-test('fog recognizes only the three exact registry objects, never campaign flags or forged policy copies', () => {
-  assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(rules => rules.id).sort(), [LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID].sort());
-  for (const id of [LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID]) {
+test('fog recognizes only the five exact registry objects, never campaign flags or forged policy copies', () => {
+  assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(rules => rules.id).sort(), ['frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID].sort());
+  for (const id of ['frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID]) {
     const rules = getRuleset(id); assert.ok(supportsFog(rules));
     for (const forged of [{ ...rules }, Object.freeze({ ...rules }), Object.create(rules), { id, revision: 1, fog: FOG }, { ...rules, revision: 2 }, { ...rules, id: 'arbitrary-campaign-fog' }]) assert.equal(supportsFog(forged), false);
   }
-  for (const rules of Object.values(RULESETS).filter(rules => rules.campaignOnly && rules.id !== LANTERNS_RULESET_ID)) {
+  for (const rules of Object.values(RULESETS).filter(rules => rules.campaignOnly && rules.id !== LANTERNS_RULESET_ID && !rules.id.startsWith('frontier-campaign-false-quiet-'))) {
     assert.equal(supportsFog(rules), false); assert.equal(supportsFog({ ...rules, fog: FOG }), false);
   }
 });
@@ -174,7 +174,7 @@ test('identity-only admission rejects Lanterns under old scenarios and preserves
   assertRejectsUnchanged(skirmish, [data => { data.scenario = clone(scenario); }, data => { data.map.id = 'long-march'; }], validateBattleIdentity);
 });
 
-const earnedProgress = () => ({ ...campaign.createCampaignProgress(), missions: Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(mission => ![scenario.id, 'borrowed-ground', 'a-river-between-us'].includes(mission.id)).map(mission => [mission.id, { completed: true, stars: 2, bestTime: 60 }])) });
+const earnedProgress = () => ({ ...campaign.createCampaignProgress(), missions: Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(mission => ![scenario.id, 'borrowed-ground', 'a-river-between-us', 'false-quiet'].includes(mission.id)).map(mission => [mission.id, { completed: true, stars: 2, bestTime: 60 }])) });
 function campaignWithMemories() {
   const game = campaign.createProgressionCampaignMission(scenario.id, earnedProgress());
   assert.deepEqual(game.state.fog.sides.map(side => side.structures), [[], []], 'authored setup must not retain discarded default-building knowledge');

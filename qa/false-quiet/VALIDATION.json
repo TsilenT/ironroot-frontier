@@ -1,0 +1,69 @@
+{
+  "status": "ready for remote independent review and release gates; not yet published",
+  "version": "0.27.0",
+  "mission": "false-quiet@1",
+  "rulesets": [
+    "frontier-campaign-false-quiet-a@1",
+    "frontier-campaign-false-quiet-b@1"
+  ],
+  "profileProtocol": 18,
+  "scope": "One Chapter 7 opening encounter; The Road We Know and later chapters excluded from release.",
+  "gameplay": {
+    "normalAdaptiveAI": true,
+    "ordinaryPaidEconomy": true,
+    "finiteDeadlineSeconds": 600,
+    "prototypeRuns": 132,
+    "productionParityPairs": 8
+  },
+  "preCacheFixChecks": {
+    "aggregateTests": 1982,
+    "passed": 1981,
+    "failed": 0,
+    "skipped": 1,
+    "focusedFalseQuiet": 29,
+    "syntax": "passed",
+    "sourceReleasePreflight": "passed"
+  },
+  "reviews": {
+    "source": "docs/FALSE_QUIET_REVIEW.md",
+    "desktopUI": "docs/FALSE_QUIET_UI_REVIEW.md",
+    "persistence": "docs/FALSE_QUIET_PERSISTENCE.md",
+    "paidPrototype": "docs/FALSE_QUIET_PROTOTYPE.md"
+  },
+  "limits": [
+    "Synthetic policy outcomes are not estimated human win rates.",
+    "Native gameplay checks continue paid checkpoints, not complete from-zero browser wins.",
+    "Native core-win/defeat, touch/mobile, real-profile imports, offline installation and deployed operation not established by this pass.",
+    "No Chapter 8\u201310 content added or released."
+  ],
+  "combinedChecks": {
+    "aggregateTests": 1986,
+    "passed": 1985,
+    "failed": 0,
+    "skipped": 1,
+    "syntax": "passed",
+    "sourceReleasePreflight": "passed",
+    "runtimeFiles": 58,
+    "browserFixturePreflight": "passed; browser specs not executed by this check",
+    "portablePaidLedgerVerification": {
+      "status": "passed",
+      "recomputedProductionRuns": 132,
+      "requiresUnshippedRawLogs": false
+    }
+  },
+  "serviceWorkerRepair": {
+    "scope": "new install fetches shell with cache reload requests; no saved-data changes",
+    "nativeWarmCache": {
+      "oldInstallStaleAssets": 4,
+      "fixedCorrectAssets": 57,
+      "expectedAssets": 57,
+      "storageProbe": "unchanged"
+    },
+    "modelTests": 4,
+    "evidence": "docs/SERVICE_WORKER_CACHE_REFRESH.md",
+    "deployment": "unverified until released"
+  },
+  "nativeGameplayRuntimeHash": "203db672de722053d4fe0e04c658371585e438a715e1ac640d2f26e9bb5f328e",
+  "nativeGameplayPostChange": "Final combined runtime differs only in independently tested service-worker install freshness. Preview intentionally disabled worker installation.",
+  "combinedRuntimeHash": "dfde3f14fa73a2f54a3cbfb86c0e403341252c88cb52d824eef8d542c6c8f621"
+}

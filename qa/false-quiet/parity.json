@@ -1,0 +1,146 @@
+[
+  {
+    "variant": "ground-heavy",
+    "policy": "scout-adapt-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-a",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 89.35,
+    "finalHP": [
+      3465,
+      6000
+    ],
+    "spending": [
+      1630,
+      770
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "ground-heavy",
+    "policy": "screened-siege-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-a",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 77.5,
+    "finalHP": [
+      5601,
+      6000
+    ],
+    "spending": [
+      1485,
+      680
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "ground-heavy",
+    "policy": "direct-rush-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-a",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 58.45,
+    "finalHP": [
+      6000,
+      6000
+    ],
+    "spending": [
+      1400,
+      465
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "ground-heavy",
+    "policy": "broad-novice",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-a",
+    "outcome": "lost",
+    "route": "player-citadel",
+    "duration": 179.2,
+    "finalHP": [
+      0,
+      4979
+    ],
+    "spending": [
+      3120,
+      1580
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "air-flank",
+    "policy": "scout-adapt-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-b",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 138.25,
+    "finalHP": [
+      183,
+      5176
+    ],
+    "spending": [
+      2110,
+      1175
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "air-flank",
+    "policy": "screened-siege-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-b",
+    "outcome": "lost",
+    "route": "player-citadel",
+    "duration": 168.6,
+    "finalHP": [
+      0,
+      5305
+    ],
+    "spending": [
+      2355,
+      1425
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "air-flank",
+    "policy": "direct-rush-5s",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-b",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 81.95,
+    "finalHP": [
+      5202,
+      6000
+    ],
+    "spending": [
+      1575,
+      735
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  },
+  {
+    "variant": "air-flank",
+    "policy": "broad-novice",
+    "seed": 7301,
+    "productionRuleset": "frontier-campaign-false-quiet-b",
+    "outcome": "won",
+    "route": "original-fort",
+    "duration": 155.5,
+    "finalHP": [
+      2136,
+      1816
+    ],
+    "spending": [
+      2735,
+      1305
+    ],
+    "matched": "Outcome/time/HP/gold/spending/casualties/contact/sight/every transaction/decisions/ledger"
+  }
+]

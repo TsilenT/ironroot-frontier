@@ -9,15 +9,11 @@ import { advanceObjectiveBattle } from '../../dist/objectives.js';
 import { CURRENT_PROFILE_PROTOCOL_VERSION } from '../../dist/profile-session.js';
 import { ID, MISSION, priorProfile, sharedCrossingFixtures } from './shared-crossing-fixtures.mjs';
 
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 17);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 18);
 const overview = getProgressionCampaignOverview(createCampaignProgress());
-assert.equal(overview.total, 24); assert.equal(overview.maxStars, 72); assert.equal(overview.chapters.length, 7);
-assert.equal(overview.missions.at(-5).id, ID);
-assert.equal(overview.missions.at(-4).id, 'one-signal-is-enough');
-assert.equal(overview.missions.at(-3).id, 'lanterns-on-the-water');
-assert.equal(overview.missions.at(-2).id, 'borrowed-ground');
-assert.equal(overview.missions.at(-1).id, 'a-river-between-us');
-assert.equal(overview.chapters.at(-1).total, 5);
+assert.equal(overview.total, 25); assert.equal(overview.maxStars, 75); assert.equal(overview.chapters.length, 8);
+assert.deepEqual(overview.missions.filter(m=>m.chapterId==='river-compact').map(m=>m.id), [ID,'one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us']);
+assert.equal(overview.chapters.find(c=>c.id==='river-compact').total, 5);
 const fixtures = sharedCrossingFixtures();
 assert.deepEqual(sharedCrossingFixtures({ rebuild: true }), fixtures, 'independent paid simulations are deterministic');
 for (const [kind, fixture] of Object.entries(fixtures)) {

@@ -39,18 +39,18 @@ function authoredRows(mission) {
 test('current briefings retain exact rosters and lists; only the 19 revised historical missions have a records notice', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
-  assert.equal(missions.length, 24);
+  assert.equal(missions.length, 25);
   let notices = 0;
   for (const mission of missions) {
     const automatic = mission.scenarioRevision >= 3;
-    assert.equal(mission.scenarioRevision, ['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us'].includes(mission.id) ? 1 : 5, mission.id);
+    assert.equal(mission.scenarioRevision, ['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet'].includes(mission.id) ? 1 : 5, mission.id);
     const rows = renderBriefing(mission);
     assert.deepEqual(rows, [...authoredRows(mission), ...(automatic ? [RECORDS_NOTICE] : [])], mission.id);
     assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, automatic ? 1 : 0, mission.id);
     if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
   assert.equal(notices, 19);
-  assert.equal(missions.length - notices, 5, 'Shared Crossing, One Signal, Lanterns, Borrowed Ground and A River Between Us have no earlier records revisions');
+  assert.equal(missions.length - notices, 6, 'The six additive missions have no earlier records revisions');
   assert.equal(JSON.stringify(progress), bytes);
 });
 
