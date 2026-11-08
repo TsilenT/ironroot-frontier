@@ -1,0 +1,8 @@
+{
+  "reason": "Two original canvas-text assertions rendered the enemy citadel off-camera or into reserved controls. Point only those fixtures at the citadel in the existing 1180x466 desktop field, adding explicit projected-X bounds. All original assertions and iteration statements retained verbatim.",
+  "beforeSha256": "e34c630a017788feae20f11ead379cac73191dd9be9be9917248736e3dd3cc88",
+  "afterSha256": "6f837156c5778da9beb5b83e4cd7dc93509a52080a31eac3e3c25f4845172f1d",
+  "beforeAssertions": 50,
+  "afterAssertions": 52,
+  "loopCount": 5
+}

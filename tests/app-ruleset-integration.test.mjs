@@ -7,6 +7,7 @@ import {createCampaignProgress,getProgressionCampaignOverview as getCampaignOver
 import {decodeBattle,encodeBattle,scenarioForBattle} from '../dist/battle-codec.js';
 import {createStorage,createSaveSession,writeBattle,getBattleWriteFailure} from '../dist/persistence.js';
 import * as keyboard from '../dist/keyboard.js';
+import {supportsFog} from '../dist/fog.js';
 import {supportsCitadelOptions} from '../dist/citadel-options.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
@@ -65,7 +66,7 @@ test('actual save rejects an invalid candidate before storage and holds the in-m
 test('Resume uses the shared decoder, discloses new endgame rules and retains unsupported original bytes',()=>{
  for(const invalid of [false,true]){
   const $=dom(),game=openGame(),raw=invalid?'{"format":"ironroot-save","version":99}':JSON.stringify(encodeBattle(game,scenarioForBattle()));
-  let writes=0,download=null,restored=null;const c={$,supportsCitadelOptions,SAVE:'ironroot.battle.v1',resumeProblem:null,decodeBattle,campaignProgress:createCampaignProgress(),CAMPAIGN_MISSIONS,CHALLENGES:[],
+  let writes=0,download=null,restored=null;const c={$,supportsFog,supportsCitadelOptions,SAVE:'ironroot.battle.v1',resumeProblem:null,decodeBattle,campaignProgress:createCampaignProgress(),CAMPAIGN_MISSIONS,CHALLENGES:[],
    storage:{get:()=>raw,set(){writes++;}},timeText:String,downloadBackup:text=>download=text,start:g=>restored=g};
   createContext(c);runInContext(part('function updateResume()','\nupdateResume();')+'\nupdateResume();',c);
   assert.equal(writes,0);

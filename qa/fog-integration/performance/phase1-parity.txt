@@ -1,0 +1,14 @@
+✔ frozen phase1 performance oracle has the exact captured source hashes (1.758797ms)
+✔ fresh event-audience scan exactly matches phase1 at boundaries, overlaps and after same-tick mutations (33.092271ms)
+✔ sparse, crowded marching and crowded combat maintain exact phase1 states and observations (3039.826327ms)
+✔ bounded paid AI/action/restore scripts retain phase1 serialized RNG and observation parity (1230.724304ms)
+✔ same-tick spawn/move/death/build/sell/Volley and event saturation retain phase1 audiences (39.621043ms)
+✔ queued simultaneous lethal/overkill hits preserve pre-death audiences and resolution order (1.728865ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4462.750606

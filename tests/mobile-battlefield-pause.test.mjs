@@ -1,3 +1,4 @@
+import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -32,6 +33,7 @@ function harness(w=568,h=210){
  };
  c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
  c.syncDialogs=()=>c.syncInputScope();
+ c.supportsFog=supportsFog;c.battleView=()=>c.game;c.refreshPresentation=()=>c.game;c.battleFront=()=>c.game.state.frontline;
  createContext(c);
  for(const source of [section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
  return {c,$,log,resize(width,height,nextInsets={}){w=width;h=height;insets=nextInsets;c.window.innerWidth=width;c.window.innerHeight=height;c.mobileLayout=width>height?'landscape':'portrait';},frame:now=>c.frame(now),sync:()=>c.syncViewportSafety()};

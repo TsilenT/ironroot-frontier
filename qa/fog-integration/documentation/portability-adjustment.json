@@ -1,0 +1,14 @@
+{
+  "file": "docs/FOG_SKIRMISH_INTEGRATION.md",
+  "before_sha256": "06eb58769bdb017676d41d330c2af8407305f05ef07e5385ff03334c657507c6",
+  "after_sha256": "2d2ed750c62dce75db6b842bc7c9ba431eea33cc078c13baa1feb9b956a11fa9",
+  "path_replacements": {
+    "../app-evidence/": "qa/fog-integration/app/",
+    "../final-combined-evidence/": "qa/fog-integration/aggregate/",
+    "../native-main/NATIVE_MAIN_QA.md": "qa/fog-integration/native-main/NATIVE_MAIN_QA.md",
+    "../readability-followup/NATIVE_DENSE_QA.md": "qa/fog-integration/native-dense/NATIVE_DENSE_QA.md",
+    "../final-paid-native/FINAL_PAID_ATTEMPT.md": "qa/fog-integration/native-paid/FINAL_PAID_ATTEMPT.md"
+  },
+  "independent_review_reference": "qa/fog-integration/independent/FINAL_COMBINED_REVIEW.md",
+  "destination_status": "Parent is assembling the local review overlay; these repository-relative evidence destinations are not yet present in the working tree."
+}

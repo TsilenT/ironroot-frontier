@@ -1,0 +1,19 @@
+{
+  "scope": "Local candidate core identity only, no public or release admission",
+  "candidate": "frontier-fog-skirmish-open",
+  "revision": 1,
+  "targetedTests": {
+    "total": 49,
+    "pass": 49,
+    "fail": 0,
+    "skip": 0
+  },
+  "sha256": {
+    "dist/fog.js": "282748a4d11def874c73b4f9960703454f364da9cffa8603b7fde68a261ff2be",
+    "dist/rulesets.js": "c8e0e2c4e738be79b51b1d5202ece6a936cbfaa22004d9ab1e1e52cb78abf051",
+    "dist/engine.js": "5045c0d3ab142cba0fe6d9466c031d6922dd5a2dff9a64363d3b0c6b6c8a1729",
+    "tests/fog-skirmish-identity.test.mjs": "d0d015bfc0463d2f7f9d957305e3fccbb3a9c2f341f2b1fe5164f731ee9186f4",
+    "tests/citadel-options.test.mjs": "aafa9616c014f0bc64cf38a7b88c899932f09f72f38ceb7bb1b17c101397eb4c",
+    "docs/FOG_SKIRMISH_CORE.md": "196098fc9352fa5a755265421dff87b61db8af19d5a79dd374ae1d4dcc21cd43"
+  }
+}

@@ -1,0 +1,84 @@
+--- phase2/dist/fog.js
++++ local-integration/dist/fog.js
+@@ -1,7 +1,7 @@
+ /** Experimental, deterministic known-terrain observation. No DOM, RNG or profile access. */
+-export const FOG_RULESET_ID='frontier-fog-experimental-open';
+-export const FOG=Object.freeze({policy:'known-terrain-fog-v1',ordinaryRadius:320,flyerRadius:420,baseRadius:360,maxMemories:64,maxEffectsPerSide:128});
+-export const supportsFog=ruleset=>ruleset?.id===FOG_RULESET_ID&&ruleset?.fog?.policy===FOG.policy;
++import { RULESETS, FOG, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID } from './rulesets.js';
++export { FOG, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID } from './rulesets.js';
++export const supportsFog=ruleset=>!!ruleset&&(ruleset.id===FOG_RULESET_ID||ruleset.id===FOG_SKIRMISH_RULESET_ID)&&RULESETS[ruleset.id]===ruleset&&ruleset.revision===1&&ruleset.fog?.policy===FOG.policy;
+ const clone=value=>JSON.parse(JSON.stringify(value));
+ const sideOK=side=>side===0||side===1;
+ const eventViews=new WeakMap();
+@@ -103,7 +103,7 @@
+ export function validateFog(fog,{map,ruleset,state,nextId},fail){
+   const shape=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
+   const number=(n,min,max,integer=false)=>typeof n==='number'&&Number.isFinite(n)&&n>=min&&n<=max&&(!integer||Number.isSafeInteger(n));
+-  if(map.id!=='classic'||ruleset.endgame.forcedDecay||ruleset.economy.policy!=='legacy')fail('fog supports only Classic open-ended without bridge income');
++  if(map.id!=='classic'||map.revision!==1||ruleset.endgame.forcedDecay||ruleset.economy.policy!=='legacy'||ruleset.campaignOnly||ruleset.authoredOnly)fail('fog supports only Classic open-ended without bridge income');
+   if(!Array.isArray(state.effects)||state.effects.some(e=>!Number.isInteger(e.fogSeen)||e.fogSeen<1||e.fogSeen>3)||[0,1].some(side=>state.effects.filter(e=>e.fogSeen&(1<<side)).length>FOG.maxEffectsPerSide))fail('invalid fog effect budget');
+   if(!Array.isArray(state.projectiles)||state.projectiles.length)fail('fog prototype does not retain projectiles');
+   if(!shape(fog,['version','sides'])||fog.version!==1||!Array.isArray(fog.sides)||fog.sides.length!==2)fail('invalid fog state');
+--- phase2/dist/rulesets.js
++++ local-integration/dist/rulesets.js
+@@ -1,7 +1,8 @@
+ import { BRIDGE_CONTROL } from './bridge-control.js';
+ import { CITADEL_OPTIONS } from './citadel-options.js';
+-import { FOG, FOG_RULESET_ID } from './fog.js';
+-export { FOG_RULESET_ID } from './fog.js';
++export const FOG_RULESET_ID='frontier-fog-experimental-open';
++export const FOG_SKIRMISH_RULESET_ID='frontier-fog-skirmish-open';
++export const FOG=Object.freeze({policy:'known-terrain-fog-v1',ordinaryRadius:320,flyerRadius:420,baseRadius:360,maxMemories:64,maxEffectsPerSide:128});
+ /** Immutable whole-rule identities. Never mutate a bound game's definitions. */
+ export function deepFreeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(deepFreeze);Object.freeze(value);}return value;}
+ export const SPELL = deepFreeze({cost:75,cooldown:25,radius:170,damage:92});
+@@ -73,6 +74,7 @@
+ });
+ export const RULESETS=deepFreeze({
+   [FOG_RULESET_ID]:deepFreeze({...citadelEntry(FOG_RULESET_ID,false),name:'Fog of war (experimental) · Open-ended',experimental:true,qaOnly:true,fog:FOG}),
++  [FOG_SKIRMISH_RULESET_ID]:deepFreeze({...citadelEntry(FOG_SKIRMISH_RULESET_ID,false),name:'Fog of war (experimental) · Open-ended',experimental:true,fog:FOG}),
+   [CITADEL_CAMPAIGN_RULESET_IDS[0]]:deepFreeze({...campaignEntry(CITADEL_CAMPAIGN_RULESET_IDS[0],'Campaign · First company + citadel choices',watchBuildings),citadel:CITADEL_OPTIONS}),
+   [CITADEL_CAMPAIGN_RULESET_IDS[1]]:deepFreeze({...campaignEntry(CITADEL_CAMPAIGN_RULESET_IDS[1],'Campaign · Warden company + citadel choices',forkBuildings),citadel:CITADEL_OPTIONS}),
+   [CITADEL_CAMPAIGN_RULESET_IDS[2]]:deepFreeze({...autonomousAirEntry(CITADEL_CAMPAIGN_RULESET_IDS[2],'Campaign · Automatic flyers + citadel choices',false,true),citadel:CITADEL_OPTIONS}),
+--- phase2/dist/engine.js
++++ local-integration/dist/engine.js
+@@ -4,7 +4,7 @@
+ import { supportsBridgeControl, createBridgeControl, advanceBridgeControl, bridgeIncome, validateBridgeControl } from './bridge-control.js';
+ import { supportsCitadelOptions, createCitadelOptions, canBuyCitadelOption, buyCitadelOption, advanceCitadelRegeneration, chooseAICitadelOption, validateCitadelOptions } from './citadel-options.js';
+ import { supportsFog, createFog, refreshFog, observe, isPointVisible, eventAudience, appendFogEffect, decisionSnapshot, validateFog } from './fog.js';
+-export { FOG_RULESET_ID } from './fog.js';
++export { FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID } from './fog.js';
+ export { supportsAutonomousAir } from './autonomous-air.js';
+ export { supportsFlightOrders, flightGateHome, flightGateX } from './flight-orders.js';
+ export { BUILDINGS, UNITS, SPELL, RULESETS, getRuleset, LEGACY_RULESET_ID, DEFAULT_SKIRMISH_RULESET_ID } from './rulesets.js';
+@@ -42,7 +42,7 @@
+       schemaVersion:{value:rulesetId!==undefined||!Object.hasOwn(MAPS,mapId)?3:mapId==='classic'?1:2}
+     });
+     const map=this.map;
+-    if(supportsFog(ruleset)&&map.id!=='classic')throw new Error('Experimental fog requires Classic open-ended Skirmish');
++    if(supportsFog(ruleset)&&(map.id!=='classic'||map.revision!==1||ruleset.endgame.forcedDecay||ruleset.economy.policy!=='legacy'||ruleset.campaignOnly||ruleset.authoredOnly))throw new Error('Experimental fog requires Classic open-ended Skirmish');
+     if(supportsBridgeControl(ruleset)&&!Object.hasOwn(MAPS,map.id))throw new Error('Bridge income requires a Skirmish battlefield');
+     if(supportsCitadelOptions(ruleset)&&ruleset.skirmishOnly&&!Object.hasOwn(MAPS,map.id))throw new Error('Citadel choices require a Skirmish battlefield');
+     this.difficulty=['easy','normal','hard'].includes(difficulty)?difficulty:'normal';
+--- phase2/tests/citadel-options.test.mjs
++++ local-integration/tests/citadel-options.test.mjs
+@@ -1,7 +1,7 @@
+ import test from 'node:test';
+ import assert from 'node:assert/strict';
+ import {createHash} from 'node:crypto';
+-import {Game, RULESETS, getRuleset, FOG_RULESET_ID} from '../dist/engine.js';
++import {Game, RULESETS, getRuleset, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID} from '../dist/engine.js';
+ import {CITADEL_OPTIONS, supportsCitadelOptions, citadelOptionStatus, chooseAICitadelOption} from '../dist/citadel-options.js';
+ import {encodeBattle, decodeBattle} from '../dist/battle-codec.js';
+ const campaignIds=['frontier-campaign-citadel-watch','frontier-campaign-citadel-fork','frontier-campaign-citadel-open','frontier-authored-citadel'];
+@@ -17,7 +17,8 @@
+ const record=(g,side=0)=>g.state.citadelOptions.sides[side];
+ 
+ test('new immutable identities preserve unit, building, economy and endgame definitions',()=>{
+- assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[FOG_RULESET_ID,...campaignIds,...ids]);
++ assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
++ const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID);assert.equal(candidate.qaOnly,undefined);assert.equal(candidate.experimental,true);assert.equal(candidate.skirmishOnly,true);assert.equal(candidate.endgame.forcedDecay,false);assert.equal(candidate.economy.policy,'legacy');assert.equal(candidate.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(candidate)&&Object.isFrozen(candidate.fog));
+  const fog=getRuleset(FOG_RULESET_ID);assert.equal(fog.qaOnly,true);assert.equal(fog.experimental,true);assert.equal(fog.skirmishOnly,true);assert.equal(fog.endgame.forcedDecay,false);assert.equal(fog.economy.policy,'legacy');assert.equal(fog.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(fog)&&Object.isFrozen(fog.fog));
+  for(const k of ['units','buildings','spell','movement','endgame','economy','citadel'])assert.deepEqual(fog[k],getRuleset('frontier-citadel-open')[k]);
+  assert.equal(new Game({rulesetId:FOG_RULESET_ID,mapId:'classic'}).map.id,'classic');

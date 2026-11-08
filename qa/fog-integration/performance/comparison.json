@@ -1,0 +1,425 @@
+[
+  {
+    "workload": "sparse",
+    "task": "fixedSteps",
+    "medianMsPerOperation": {
+      "phase1": 0.063413,
+      "current": 0.050988,
+      "released": 0.047828
+    },
+    "currentVsPhase1": 0.8040587716057928,
+    "speedupPhase1OverCurrent": 1.2436901820036006,
+    "currentVsReleased": 1.0660739851749477,
+    "spreadPercent": {
+      "phase1": 85.65659162060398,
+      "current": 113.75524633247099,
+      "released": 116.19538417228823
+    },
+    "initial": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 0,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "sparse",
+    "task": "observations",
+    "medianMsPerOperation": {
+      "phase1": 0.026293,
+      "current": 0.021004,
+      "released": 0.037413
+    },
+    "currentVsPhase1": 0.7988594939700933,
+    "speedupPhase1OverCurrent": 1.2517845848339342,
+    "currentVsReleased": 0.5614108544266999,
+    "spreadPercent": {
+      "phase1": 52.25852484233768,
+      "current": 46.167037664161,
+      "released": 66.84576559378775
+    },
+    "initial": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "sparse",
+    "task": "effectIngestion",
+    "medianMsPerOperation": {
+      "phase1": 0.006987,
+      "current": 0.004432,
+      "released": 0.000137
+    },
+    "currentVsPhase1": 0.6343926920130978,
+    "speedupPhase1OverCurrent": 1.5763107182504459,
+    "currentVsReleased": 32.40251404509423,
+    "spreadPercent": {
+      "phase1": 79.19053034344763,
+      "current": 150.0602666034356,
+      "released": 60.421882938643954
+    },
+    "initial": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "sparse",
+    "task": "sightSnapshot",
+    "medianMsPerOperation": {
+      "phase1": 0.001301,
+      "current": 0.001269
+    },
+    "currentVsPhase1": 0.975972459553291,
+    "speedupPhase1OverCurrent": 1.0246190762982252,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 78.38178732270045,
+      "current": 78.63203457747058
+    },
+    "initial": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "sparse",
+    "task": "eventAudience",
+    "medianMsPerOperation": {
+      "phase1": 0.001731,
+      "current": 0.00104
+    },
+    "currentVsPhase1": 0.6010943011408078,
+    "speedupPhase1OverCurrent": 1.6636324751409475,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 63.890777884023606,
+      "current": 55.67776693755896
+    },
+    "initial": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 12,
+      "buildings": 6,
+      "effects": 8,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_march",
+    "task": "fixedSteps",
+    "medianMsPerOperation": {
+      "phase1": 1.416801,
+      "current": 1.023572,
+      "released": 0.908436
+    },
+    "currentVsPhase1": 0.7224528375930793,
+    "speedupPhase1OverCurrent": 1.3841733992375136,
+    "currentVsReleased": 1.1267403184889813,
+    "spreadPercent": {
+      "phase1": 70.19139630820412,
+      "current": 113.1092320107729,
+      "released": 45.99084779127985
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 0,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_march",
+    "task": "observations",
+    "medianMsPerOperation": {
+      "phase1": 0.214827,
+      "current": 0.234193,
+      "released": 0.451123
+    },
+    "currentVsPhase1": 1.09014534073036,
+    "speedupPhase1OverCurrent": 0.9173088785849731,
+    "currentVsReleased": 0.5191326870184525,
+    "spreadPercent": {
+      "phase1": 59.649661674136084,
+      "current": 51.76373561490893,
+      "released": 52.81150209389839
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_march",
+    "task": "effectIngestion",
+    "medianMsPerOperation": {
+      "phase1": 0.018751,
+      "current": 0.008601,
+      "released": 0.000102
+    },
+    "currentVsPhase1": 0.45866857422408647,
+    "speedupPhase1OverCurrent": 2.180223490767086,
+    "currentVsReleased": 83.94540556620784,
+    "spreadPercent": {
+      "phase1": 48.22479594101375,
+      "current": 30.719949269061622,
+      "released": 185.82750559967448
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_march",
+    "task": "sightSnapshot",
+    "medianMsPerOperation": {
+      "phase1": 0.015998,
+      "current": 0.018597
+    },
+    "currentVsPhase1": 1.1624463431186256,
+    "speedupPhase1OverCurrent": 0.8602547600753662,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 45.41220655023313,
+      "current": 39.49321577045415
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_march",
+    "task": "eventAudience",
+    "medianMsPerOperation": {
+      "phase1": 0.015429,
+      "current": 0.005502
+    },
+    "currentVsPhase1": 0.35662625770639034,
+    "speedupPhase1OverCurrent": 2.804056006507793,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 82.1736549911829,
+      "current": 78.38544847078965
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_combat",
+    "task": "fixedSteps",
+    "medianMsPerOperation": {
+      "phase1": 1.213585,
+      "current": 0.957733,
+      "released": 0.413014
+    },
+    "currentVsPhase1": 0.7891763529785425,
+    "speedupPhase1OverCurrent": 1.2671438978445795,
+    "currentVsReleased": 2.3188886568546097,
+    "spreadPercent": {
+      "phase1": 32.49789631615544,
+      "current": 60.85411444046642,
+      "released": 76.86497725559784
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 93,
+      "buildings": 48,
+      "effects": 13,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_combat",
+    "task": "observations",
+    "medianMsPerOperation": {
+      "phase1": 0.308768,
+      "current": 0.303021,
+      "released": 0.470294
+    },
+    "currentVsPhase1": 0.9813878539280676,
+    "speedupPhase1OverCurrent": 1.0189651278008345,
+    "currentVsReleased": 0.6443223808243369,
+    "spreadPercent": {
+      "phase1": 40.551213699554516,
+      "current": 45.55839952885113,
+      "released": 25.162990892620492
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_combat",
+    "task": "effectIngestion",
+    "medianMsPerOperation": {
+      "phase1": 0.017918,
+      "current": 0.008852,
+      "released": 7.3e-05
+    },
+    "currentVsPhase1": 0.4940357443184652,
+    "speedupPhase1OverCurrent": 2.024145037075253,
+    "currentVsReleased": 120.44013442584972,
+    "spreadPercent": {
+      "phase1": 10.895580842732462,
+      "current": 7.776152553031156,
+      "released": 73.83874391239331
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_combat",
+    "task": "sightSnapshot",
+    "medianMsPerOperation": {
+      "phase1": 0.013944,
+      "current": 0.013651
+    },
+    "currentVsPhase1": 0.9789777694415279,
+    "speedupPhase1OverCurrent": 1.021473654678047,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 23.031904424670028,
+      "current": 15.443668227993653
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  },
+  {
+    "workload": "crowded_combat",
+    "task": "eventAudience",
+    "medianMsPerOperation": {
+      "phase1": 0.014249,
+      "current": 0.005235
+    },
+    "currentVsPhase1": 0.3674038821896723,
+    "speedupPhase1OverCurrent": 2.721800308804984,
+    "currentVsReleased": null,
+    "spreadPercent": {
+      "phase1": 16.762856998486754,
+      "current": 36.082918991790585
+    },
+    "initial": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    },
+    "final": {
+      "units": 140,
+      "buildings": 48,
+      "effects": 256,
+      "projectiles": 0
+    }
+  }
+]

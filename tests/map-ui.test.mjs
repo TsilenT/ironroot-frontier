@@ -1,3 +1,4 @@
+import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -46,7 +47,7 @@ function exercise(data, progress = createCampaignProgress()) {
     },
   };
   runInNewContext(fn + '\nupdateResume();', {
-    JSON, decodeBattle, supportsCitadelOptions, resumeProblem:null,
+    JSON, decodeBattle, supportsCitadelOptions, supportsFog, resumeProblem:null,
     $: (id) => elements.get(id),
     storage,
     SAVE: 'battle',

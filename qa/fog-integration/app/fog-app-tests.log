@@ -1,0 +1,24 @@
+✔ actual setup starts unchecked and never persists the fog choice; incompatible combinations cannot claim or write (33.636481ms)
+✔ actual supported setup locks incompatible controls without rewriting choices; live identity does not follow checkbox (39.63637ms)
+✔ all ordinary map/endgame/bridge combinations retain existing identity, settings and stock renderer (229.020478ms)
+✔ actual HUD, aria, citadel dialog, Front, field, minimap and music ignore hidden opponent changes (40.839804ms)
+✔ current enemy HP/choice turns unknown on sight loss without carrying timers or old aria (39.454898ms)
+✔ own citadel remains honestly purchasable with unseen enemy HP and pays once through actual modal handler (16.277876ms)
+✔ actual paid command rejects hidden/lost-sight Volley, keeps invalid build free, and spends valid cost once (21.087699ms)
+✔ fog command sounds occur once; paused and off-camera events are consumed rather than replayed (18.728009ms)
+✔ fog restore preserves knowledge while restart resets it and renderer switches clear transient consumers (28.264873ms)
+✔ a live journal cannot reveal full information; completed report identifies fog context (2.023085ms)
+✔ fog setup cannot override unsupported or pending fullscreen availability (18.030409ms)
+✔ actual frame follow cannot move ended ordinary, fog, or authored-objective battles (66.689024ms)
+✔ actual upgrade and sale obey pause, refresh observation and avoid duplicate fog command audio (14.481034ms)
+✔ Help and Options close preserve pause after blur/hidden/page departure, but normal close still resumes (113.897889ms)
+✔ one actual paused frame shares one detached observation across HUD, field/minimap and audio (30.621213ms)
+✔ actual Resume, history and backup preview labels derive Fog from identity and preview does not write (23.695043ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 936.343056

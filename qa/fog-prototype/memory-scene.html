@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ironroot · Synthetic building-memory QA</title><link rel="stylesheet" href="./memory-scene.css"></head>
+<body><main>
+  <header><h1>Building memory</h1><strong>Synthetic QA · not a played match</strong></header>
+  <p class="intro">A fixed, manually stepped scene using the real observation and renderer. No live match, profile or storage. The field and text below receive only your side's observation.</p>
+  <section class="controls" aria-label="Synthetic scene controls">
+    <button id="previous" type="button">Previous</button><label>Scene<select id="stage"></select></label><button id="next" type="button">Next</button>
+    <button id="animation" type="button" aria-pressed="true">Animation paused</button><button id="sceneCamera" type="button">Scene</button><button id="homeCamera" type="button">Home</button><button id="enemyCamera" type="button">Enemy citadel</button>
+  </section>
+  <div class="field"><canvas id="memoryBattle" tabindex="0" aria-label="Synthetic observed battlefield" aria-describedby="observation"></canvas><span id="sceneTag">Synthetic scene</span></div>
+  <section class="map"><canvas id="memoryMinimap" tabindex="0" aria-label="Known terrain and observed contacts minimap"></canvas><span>Solid actors: current<br>Dashed boxes: last seen</span></section>
+  <section class="reading"><h2 id="stageTitle">Before contact</h2><ul id="observation" aria-live="polite"></ul><p>Drag the field or click the minimap to pan. Pausing and panning never advance this sequence or reveal anything. Dashed memories carry no current health or production.</p></section>
+  <footer>Desktop QA only. This scene does not certify phone layouts, paid play, balance or combat performance.</footer>
+</main><script type="module" src="./memory-scene.js"></script></body></html>
