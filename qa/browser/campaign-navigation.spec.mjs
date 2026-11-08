@@ -44,7 +44,7 @@ test('a focused briefing leads through story, chapter and mission with keyboard 
   await page.locator('#campaignStoryNav').focus(); await page.keyboard.press('Enter');
   await expect(page.locator('#campaignStoryTitle')).toBeFocused();
   await expect(page.locator('#start')).toBeHidden();
-  await expect(page.locator('#campaignChapters button')).toHaveCount(6);
+  await expect(page.locator('#campaignChapters button')).toHaveCount(7);
   await page.locator('[data-chapter="opening-roads"]').focus(); await page.keyboard.press('Space');
   await expect(page.locator('#campaignChapterTitle')).toBeFocused();
   await expect(page.locator('#campaignChapterStory')).toContainText('New buildings join you after each win');
@@ -92,7 +92,7 @@ test('quick mission navigation crosses chapters and closes optional details for 
   await expect(page.locator('#campaignConfig')).toHaveJSProperty('scrollTop', 0);
 });
 
-test('all 19 current briefings retain authored rules and prominent mandatory objectives', async ({page}) => {
+test('all 20 current briefings retain authored rules and prominent mandatory objectives', async ({page}) => {
   test.setTimeout(60000); await page.goto('/');
   for (const mission of missions) {
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);
@@ -125,7 +125,7 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await expect(page.locator('#campaignMissionStatus')).toHaveText('★★★ · Complete');
   await press(page, '#campaignStoryNav');
   await press(page, '.campaign-progress summary');
-  await expect(page.locator('#campaignProgressText')).toHaveText('19/19 missions · 57/57 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('20/20 missions · 60/60 stars');
   await expect(page.locator('#campaignIntroProgressText')).toContainText('8/8 buildings');
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);

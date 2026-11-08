@@ -73,7 +73,7 @@ const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PRO
 const old=r=>protocolTen.createProfileSession(()=>r,{requiredProtocolVersion:10});
 
 test('current protocol marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,13);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
  const domains=domainBytes(),r=storage([[MARKER,marker(10)],...domains,['unrelated','untouched']]),stale=old(r);assert.ok(stale.status().canWrite);
  assert.ok(current(r).status().canWrite);assert.deepEqual(r.writes,[['set',MARKER]]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),JSON.parse(marker(CURRENT_PROFILE_PROTOCOL_VERSION)));
  for(const [k,v] of domains)assert.equal(r.data.get(k),v);const before=[...r.data];r.writes.length=0;
@@ -99,7 +99,7 @@ test('protocol-10 interrupted and unverified upgrades preserve earned domains; f
 
 test('fresh campaign and trial identities allow affordable time-zero choice while earned rosters and revisions stay intact',()=>{
  const progress=earned().campaign;
- for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id),gold=g.state.gold[0];assert.equal(g.state.time,0);assert.equal(ref.revision,5);assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
+ for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id),gold=g.state.gold[0];assert.equal(g.state.time,0);assert.equal(ref.revision,m.id==='shared-crossing'?1:5);assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
  for(const t of CURRENT_CHALLENGES){const g=createCurrentChallenge(t.id),ref=challengeScenarioForGame(g,t.id),gold=g.state.gold[0];assert.equal(ref.revision,3);assert.equal(g.state.time,0);assert.ok(g.buyCitadelOption('arrows').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref)).game.serialize(),g.serialize());}
 });
 
