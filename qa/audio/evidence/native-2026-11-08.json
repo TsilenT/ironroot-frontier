@@ -1,0 +1,1137 @@
+{
+  "expectedSourceSha256": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+  "sourceSha256": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "subjectiveListening": false,
+  "productionOrProfileStorageUsed": false,
+  "offline": [
+    {
+      "kind": "battle",
+      "sampleRate": 48000,
+      "seconds": 287.44445833333333,
+      "metrics": {
+        "peak": 0.18363562,
+        "peakDbFS": -14.72086138,
+        "rms": 0.03698975,
+        "dc": -0.00008686,
+        "maxAdjacentDelta": 0.09915427,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 20,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "paused",
+        "musicScene": "paused",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 1,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 4888,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 1,
+        "peakVoices": 20
+      },
+      "renderMs": 4997,
+      "schedulerMs": 377.2,
+      "pumps": 2245,
+      "changes": [],
+      "sections": [
+        {
+          "peak": 0.18017517,
+          "peakDbFS": -14.88610118,
+          "rms": 0.03491238,
+          "dc": -0.00006515,
+          "maxAdjacentDelta": 0.0186829,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.17805719,
+          "peakDbFS": -14.98880951,
+          "rms": 0.03906518,
+          "dc": -0.00010539,
+          "maxAdjacentDelta": 0.01804409,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.16896734,
+          "peakDbFS": -15.44394484,
+          "rms": 0.03522901,
+          "dc": -0.00007377,
+          "maxAdjacentDelta": 0.00548632,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.18363172,
+          "peakDbFS": -14.72104605,
+          "rms": 0.03922108,
+          "dc": -0.0001077,
+          "maxAdjacentDelta": 0.01908036,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "tail": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "loopWindow": {
+        "peak": 0.16522409,
+        "peakDbFS": -15.63853262,
+        "rms": 0.04140648,
+        "dc": -0.00025061,
+        "maxAdjacentDelta": 0.01733857,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "pass": true
+    },
+    {
+      "kind": "menu",
+      "sampleRate": 48000,
+      "seconds": 145.22222916666666,
+      "metrics": {
+        "peak": 0.08890966,
+        "peakDbFS": -21.02102142,
+        "rms": 0.02057673,
+        "dc": -0.00000307,
+        "maxAdjacentDelta": 0.04347623,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 10,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "paused",
+        "musicScene": "paused",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 1,
+        "intensity": 0.25,
+        "energy": "calm",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 566,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 0,
+        "peakVoices": 10
+      },
+      "renderMs": 1804,
+      "schedulerMs": 67.5,
+      "pumps": 1134,
+      "changes": [],
+      "sections": [
+        {
+          "peak": 0.07848619,
+          "peakDbFS": -22.10413514,
+          "rms": 0.02070872,
+          "dc": -0.00000213,
+          "maxAdjacentDelta": 0.00206938,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.08890966,
+          "peakDbFS": -21.02102142,
+          "rms": 0.02096668,
+          "dc": -0.0000039,
+          "maxAdjacentDelta": 0.00216055,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.08154395,
+          "peakDbFS": -21.77216486,
+          "rms": 0.02073779,
+          "dc": -0.00000388,
+          "maxAdjacentDelta": 0.00237948,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.07760122,
+          "peakDbFS": -22.20262939,
+          "rms": 0.02073066,
+          "dc": -0.0000021,
+          "maxAdjacentDelta": 0.00172224,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "tail": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "pass": true
+    },
+    {
+      "kind": "journey",
+      "sampleRate": 48000,
+      "seconds": 145.22222916666666,
+      "metrics": {
+        "peak": 0.18069115,
+        "peakDbFS": -14.86126223,
+        "rms": 0.03304099,
+        "dc": -0.00005832,
+        "maxAdjacentDelta": 0.01962923,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 20,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "paused",
+        "musicScene": "paused",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 1,
+        "intensity": 0.95,
+        "energy": "critical",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 1950,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 1,
+        "peakVoices": 20
+      },
+      "renderMs": 2381,
+      "schedulerMs": 168,
+      "pumps": 1134,
+      "changes": [
+        {
+          "time": 17.152,
+          "event": "request battle off-grid"
+        }
+      ],
+      "sections": [
+        {
+          "peak": 0.14529808,
+          "peakDbFS": -16.75480257,
+          "rms": 0.0266684,
+          "dc": -0.00001592,
+          "maxAdjacentDelta": 0.00732984,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.15308416,
+          "peakDbFS": -16.30139495,
+          "rms": 0.03262702,
+          "dc": -0.00005047,
+          "maxAdjacentDelta": 0.01351965,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.1614724,
+          "peakDbFS": -15.83803426,
+          "rms": 0.03427826,
+          "dc": -0.00006345,
+          "maxAdjacentDelta": 0.00514519,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.18069115,
+          "peakDbFS": -14.86126223,
+          "rms": 0.03870152,
+          "dc": -0.00010479,
+          "maxAdjacentDelta": 0.01855497,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "tail": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "pass": true
+    },
+    {
+      "kind": "stress",
+      "sampleRate": 48000,
+      "seconds": 145.22222916666666,
+      "metrics": {
+        "peak": 0.74883687,
+        "peakDbFS": -2.51225556,
+        "rms": 0.20298588,
+        "dc": -0.00245143,
+        "maxAdjacentDelta": 0.45447408,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 48,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 1,
+        "musicVolume": 1,
+        "sfxVolume": 1,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "paused",
+        "musicScene": "paused",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 1,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 14,
+        "scheduling": false,
+        "musicNotes": 2450,
+        "soundEffects": 5111,
+        "droppedEffects": 16435,
+        "transitions": 1,
+        "peakVoices": 48
+      },
+      "renderMs": 6180,
+      "schedulerMs": 1119.1,
+      "pumps": 1134,
+      "changes": [],
+      "sections": [
+        {
+          "peak": 0.72941262,
+          "peakDbFS": -2.7405346,
+          "rms": 0.20301035,
+          "dc": -0.00245821,
+          "maxAdjacentDelta": 0.45160989,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.74883687,
+          "peakDbFS": -2.51225556,
+          "rms": 0.20327271,
+          "dc": -0.00247187,
+          "maxAdjacentDelta": 0.4515382,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.72668773,
+          "peakDbFS": -2.77304346,
+          "rms": 0.20248827,
+          "dc": -0.00240852,
+          "maxAdjacentDelta": 0.45124806,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0.7199145,
+          "peakDbFS": -2.85438163,
+          "rms": 0.20299954,
+          "dc": -0.00246773,
+          "maxAdjacentDelta": 0.45447408,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "tail": {
+        "peak": 0.69335783,
+        "peakDbFS": -3.18085157,
+        "rms": 0.20119062,
+        "dc": -0.00182248,
+        "maxAdjacentDelta": 0.44223052,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "pass": true
+    },
+    {
+      "kind": "cues",
+      "sampleRate": 48000,
+      "seconds": 57,
+      "metrics": {
+        "peak": 0.3312791,
+        "peakDbFS": -9.59611927,
+        "rms": 0.02091885,
+        "dc": -0.00002991,
+        "maxAdjacentDelta": 0.11967656,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 11,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": false,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "menu",
+        "pendingScene": "battle",
+        "section": "Hearth",
+        "bar": 0,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 0,
+        "soundEffects": 19,
+        "droppedEffects": 0,
+        "transitions": 0,
+        "peakVoices": 11
+      },
+      "renderMs": 316,
+      "schedulerMs": 9.1,
+      "pumps": 445,
+      "changes": [],
+      "cues": [
+        {
+          "name": "click",
+          "peak": 0.02617547,
+          "peakDbFS": -31.64211051,
+          "rms": 0.00138296,
+          "dc": 2.2e-7,
+          "maxAdjacentDelta": 0.00221671,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "error",
+          "peak": 0.09677611,
+          "peakDbFS": -20.28463718,
+          "rms": 0.00592915,
+          "dc": -0.00001381,
+          "maxAdjacentDelta": 0.00138637,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "build",
+          "peak": 0.17660502,
+          "peakDbFS": -15.05993931,
+          "rms": 0.01893475,
+          "dc": -0.0000364,
+          "maxAdjacentDelta": 0.00710865,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "upgrade",
+          "peak": 0.2461452,
+          "peakDbFS": -12.17617245,
+          "rms": 0.02344252,
+          "dc": -0.00000207,
+          "maxAdjacentDelta": 0.03650907,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "sell",
+          "peak": 0.16814357,
+          "peakDbFS": -15.4863947,
+          "rms": 0.01624112,
+          "dc": -4.1e-7,
+          "maxAdjacentDelta": 0.00969848,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "spawn",
+          "peak": 0.04472093,
+          "peakDbFS": -26.98978364,
+          "rms": 0.00242259,
+          "dc": 2.2e-7,
+          "maxAdjacentDelta": 0.00701931,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "sword",
+          "peak": 0.09467244,
+          "peakDbFS": -20.47552846,
+          "rms": 0.00319143,
+          "dc": -0.0000016,
+          "maxAdjacentDelta": 0.02477345,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "arrow",
+          "peak": 0.02894905,
+          "peakDbFS": -30.76731472,
+          "rms": 0.00093832,
+          "dc": 1.7e-7,
+          "maxAdjacentDelta": 0.01010641,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "siege",
+          "peak": 0.24898778,
+          "peakDbFS": -12.07643937,
+          "rms": 0.0380068,
+          "dc": -0.00015264,
+          "maxAdjacentDelta": 0.11967656,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "magic",
+          "peak": 0.09578938,
+          "peakDbFS": -20.37365272,
+          "rms": 0.00879052,
+          "dc": 7e-7,
+          "maxAdjacentDelta": 0.01060103,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "gryphon",
+          "peak": 0.03780725,
+          "peakDbFS": -28.44849856,
+          "rms": 0.00253509,
+          "dc": 3e-8,
+          "maxAdjacentDelta": 0.00647126,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "strike",
+          "peak": 0.3312791,
+          "peakDbFS": -9.59611927,
+          "rms": 0.05465954,
+          "dc": -0.00026184,
+          "maxAdjacentDelta": 0.03594324,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "collapse",
+          "peak": 0.16283327,
+          "peakDbFS": -15.76513693,
+          "rms": 0.0198658,
+          "dc": -0.00009619,
+          "maxAdjacentDelta": 0.00832143,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "warning",
+          "peak": 0.06585687,
+          "peakDbFS": -23.62797874,
+          "rms": 0.00830257,
+          "dc": -1.2e-7,
+          "maxAdjacentDelta": 0.00306745,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "start",
+          "peak": 0.15820087,
+          "peakDbFS": -16.01582238,
+          "rms": 0.01957701,
+          "dc": -3.3e-7,
+          "maxAdjacentDelta": 0.00705782,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "victory",
+          "peak": 0.19341864,
+          "peakDbFS": -14.27003363,
+          "rms": 0.0356323,
+          "dc": -0.00000105,
+          "maxAdjacentDelta": 0.01664701,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "defeat",
+          "peak": 0.12590836,
+          "peakDbFS": -17.99890867,
+          "rms": 0.0207144,
+          "dc": -0.00000221,
+          "maxAdjacentDelta": 0.00474841,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "pause",
+          "peak": 0.05931224,
+          "peakDbFS": -24.53711358,
+          "rms": 0.00367643,
+          "dc": 4.4e-7,
+          "maxAdjacentDelta": 0.00334141,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "resume",
+          "peak": 0.0593685,
+          "peakDbFS": -24.52887813,
+          "rms": 0.00367751,
+          "dc": -0.00000134,
+          "maxAdjacentDelta": 0.00258852,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "kind": "controls",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0.4704504,
+        "peakDbFS": -6.54972313,
+        "rms": 0.08005523,
+        "dc": -0.00056665,
+        "maxAdjacentDelta": 0.13377631,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 28,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "battle",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 3,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 13,
+        "scheduling": true,
+        "musicNotes": 146,
+        "soundEffects": 84,
+        "droppedEffects": 51,
+        "transitions": 1,
+        "peakVoices": 28
+      },
+      "renderMs": 270,
+      "schedulerMs": 30.5,
+      "pumps": 93,
+      "changes": [
+        {
+          "time": 2.048,
+          "event": "mute"
+        },
+        {
+          "time": 4.096,
+          "event": "unmute"
+        },
+        {
+          "time": 6.016,
+          "event": "zero"
+        },
+        {
+          "time": 8.064,
+          "event": "pause"
+        },
+        {
+          "time": 10.112,
+          "event": "resume"
+        }
+      ],
+      "silenceWindows": [
+        {
+          "peak": 0,
+          "peakDbFS": -240,
+          "rms": 0,
+          "dc": 0,
+          "maxAdjacentDelta": 0,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0,
+          "peakDbFS": -240,
+          "rms": 0,
+          "dc": 0,
+          "maxAdjacentDelta": 0,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "peak": 0,
+          "peakDbFS": -240,
+          "rms": 0,
+          "dc": 0,
+          "maxAdjacentDelta": 0,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "kind": "muted",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 0,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": true,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "battle",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 0,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 0,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 0,
+        "peakVoices": 0
+      },
+      "renderMs": 28,
+      "schedulerMs": 0.4,
+      "pumps": 93,
+      "changes": [],
+      "pass": true
+    },
+    {
+      "kind": "zero",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 18,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "battle",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 5,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 4,
+        "scheduling": true,
+        "musicNotes": 206,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 1,
+        "peakVoices": 18
+      },
+      "renderMs": 170,
+      "schedulerMs": 18.9,
+      "pumps": 93,
+      "changes": [],
+      "pass": true
+    },
+    {
+      "kind": "musicOnly",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0.16948625,
+        "peakDbFS": -15.41731036,
+        "rms": 0.03511459,
+        "dc": -0.00006963,
+        "maxAdjacentDelta": 0.01856354,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 18,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": false,
+        "scene": "battle",
+        "musicScene": "battle",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 5,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 4,
+        "scheduling": true,
+        "musicNotes": 206,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 1,
+        "peakVoices": 18
+      },
+      "renderMs": 205,
+      "schedulerMs": 16.7,
+      "pumps": 93,
+      "changes": [],
+      "pass": true
+    },
+    {
+      "kind": "sfxOnly",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0.43296382,
+        "peakDbFS": -7.2709679,
+        "rms": 0.10995666,
+        "dc": -0.00113431,
+        "maxAdjacentDelta": 0.12290255,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 15,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": false,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "menu",
+        "pendingScene": "battle",
+        "section": "Hearth",
+        "bar": 0,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 5,
+        "scheduling": false,
+        "musicNotes": 0,
+        "soundEffects": 171,
+        "droppedEffects": 108,
+        "transitions": 0,
+        "peakVoices": 15
+      },
+      "renderMs": 282,
+      "schedulerMs": 37.8,
+      "pumps": 93,
+      "changes": [],
+      "pass": true
+    },
+    {
+      "kind": "bothOff",
+      "sampleRate": 48000,
+      "seconds": 12,
+      "metrics": {
+        "peak": 0,
+        "peakDbFS": -240,
+        "rms": 0,
+        "dc": 0,
+        "maxAdjacentDelta": 0,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 0,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": false,
+        "sfxEnabled": false,
+        "scene": "battle",
+        "musicScene": "menu",
+        "pendingScene": "battle",
+        "section": "Hearth",
+        "bar": 0,
+        "intensity": 1,
+        "energy": "critical",
+        "activeVoices": 0,
+        "scheduling": false,
+        "musicNotes": 0,
+        "soundEffects": 0,
+        "droppedEffects": 0,
+        "transitions": 0,
+        "peakVoices": 0
+      },
+      "renderMs": 28,
+      "schedulerMs": 0,
+      "pumps": 93,
+      "changes": [],
+      "pass": true
+    },
+    {
+      "kind": "priorityDuck",
+      "seconds": 32,
+      "sampleRate": 48000,
+      "metrics": {
+        "peak": 0.42480817,
+        "peakDbFS": -7.4361427,
+        "rms": 0.04314247,
+        "dc": -0.00008645,
+        "maxAdjacentDelta": 0.05518133,
+        "clipped": 0,
+        "nonfinite": 0
+      },
+      "maxVoices": 23,
+      "state": {
+        "available": true,
+        "unlocked": true,
+        "muted": false,
+        "volume": 0.65,
+        "musicVolume": 0.7,
+        "sfxVolume": 0.85,
+        "musicEnabled": true,
+        "sfxEnabled": true,
+        "scene": "battle",
+        "musicScene": "battle",
+        "pendingScene": null,
+        "section": "Hearth",
+        "bar": 14,
+        "intensity": 0.7,
+        "energy": "engaged",
+        "activeVoices": 4,
+        "scheduling": true,
+        "musicNotes": 494,
+        "soundEffects": 5,
+        "droppedEffects": 0,
+        "transitions": 1,
+        "peakVoices": 23
+      },
+      "cues": [
+        {
+          "name": "warning",
+          "hold": 0.85,
+          "at": 4.096,
+          "accepted": true,
+          "masterBefore": 0.42899999022483826,
+          "masterAfter": 0.42899999022483826,
+          "sfxBefore": 0.8500000238418579,
+          "sfxAfter": 0.8500000238418579,
+          "heldRatio": 0.5199999809837055,
+          "recoveredRatio": 1,
+          "pass": true
+        },
+        {
+          "name": "strike",
+          "hold": 0.85,
+          "at": 9.088,
+          "accepted": true,
+          "masterBefore": 0.42899999022483826,
+          "masterAfter": 0.42899999022483826,
+          "sfxBefore": 0.8500000238418579,
+          "sfxAfter": 0.8500000238418579,
+          "heldRatio": 0.5199999808236235,
+          "recoveredRatio": 1,
+          "pass": true
+        },
+        {
+          "name": "start",
+          "hold": 0.85,
+          "at": 14.08,
+          "accepted": true,
+          "masterBefore": 0.42899999022483826,
+          "masterAfter": 0.42899999022483826,
+          "sfxBefore": 0.8500000238418579,
+          "sfxAfter": 0.8500000238418579,
+          "heldRatio": 0.5199999808455484,
+          "recoveredRatio": 1,
+          "pass": true
+        },
+        {
+          "name": "victory",
+          "hold": 2.7,
+          "at": 19.072,
+          "accepted": true,
+          "masterBefore": 0.42899999022483826,
+          "masterAfter": 0.42899999022483826,
+          "sfxBefore": 0.8500000238418579,
+          "sfxAfter": 0.8500000238418579,
+          "heldRatio": 0.5199999807780309,
+          "recoveredRatio": 1,
+          "pass": true
+        },
+        {
+          "name": "defeat",
+          "hold": 1.8,
+          "at": 26.112,
+          "accepted": true,
+          "masterBefore": 0.42899999022483826,
+          "masterAfter": 0.42899999022483826,
+          "sfxBefore": 0.8500000238418579,
+          "sfxAfter": 0.8500000238418579,
+          "heldRatio": 0.5199999814448827,
+          "recoveredRatio": 1,
+          "pass": true
+        }
+      ],
+      "diagnosticTaps": "channels 2/3 capture mono pre/post-duck, output metrics use original stereo 0/1",
+      "pass": true
+    }
+  ],
+  "live": {
+    "startedAt": "2026-11-08T02:57:50.329Z",
+    "checks": [
+      {
+        "name": "lazy context and gesture unlock",
+        "pass": true,
+        "state": "running"
+      },
+      {
+        "name": "menu PCM",
+        "pass": true,
+        "peak": 0.07503613084554672
+      },
+      {
+        "name": "menu to battle preserves transport",
+        "pass": true,
+        "transitions": 1,
+        "peak": 0.10158310830593109
+      },
+      {
+        "name": "cancel-before-downbeat",
+        "pass": true
+      },
+      {
+        "name": "warning ducks only music",
+        "pass": true,
+        "duck": 0.5199999809265137,
+        "master": 0.42899999022483826,
+        "sfx": 0.8500000238418579
+      },
+      {
+        "name": "mute silence and cleanup",
+        "pass": true,
+        "peak": 0,
+        "voices": 0
+      },
+      {
+        "name": "zero volume silence",
+        "pass": true,
+        "peak": 0
+      },
+      {
+        "name": "music off keeps SFX",
+        "pass": true,
+        "peak": 0.40246063470840454
+      },
+      {
+        "name": "both buses off silence",
+        "pass": true,
+        "peak": 0
+      },
+      {
+        "name": "SFX off keeps music",
+        "pass": true,
+        "peak": 0.0195408184081316
+      },
+      {
+        "name": "pause/resume transport",
+        "pass": true,
+        "oldStep": 25,
+        "newStep": 35,
+        "peak": 0.08124779909849167
+      },
+      {
+        "name": "battle to menu transition",
+        "pass": true,
+        "transitions": 2
+      },
+      {
+        "name": "victory music silence",
+        "pass": true,
+        "peak": 0
+      },
+      {
+        "name": "defeat music silence",
+        "pass": true,
+        "peak": 0
+      },
+      {
+        "name": "destroy cleanup",
+        "pass": true,
+        "voices": 0,
+        "scheduling": false
+      }
+    ],
+    "pass": true,
+    "completedAt": "2026-11-08T02:58:02.961Z"
+  },
+  "errors": [],
+  "offlineStartedAt": "2026-11-08T02:57:17.198Z",
+  "offlinePass": true,
+  "offlineCompletedAt": "2026-11-08T02:57:35.146Z"
+}

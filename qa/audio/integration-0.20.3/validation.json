@@ -1,0 +1,64 @@
+{
+  "sourceVersion": "0.20.3",
+  "preparedDateUTC": "2026-11-08",
+  "baseMain": "fdbd86c31ec2225009faa572f66ed4ccc4970315",
+  "reviewedRuntimeBaseline": "0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7",
+  "originalExperiment": "604de18910d7ddceda648d8156283b42c321e8ba",
+  "originalExperimentParent": "24edddab2cff33b3f91b396bc855193f87421ba3",
+  "audioSourceSha256": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+  "rootTests": {
+    "command": "npm test",
+    "tests": 1532,
+    "pass": 1531,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 1,
+    "todo": 0,
+    "duration_ms": 59508.657605
+  },
+  "focusedTests": {
+    "command": "node --test tests/audio.test.mjs tests/audio-integration.test.mjs tests/desktop.test.mjs",
+    "tests": 27,
+    "pass": 26,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 1,
+    "todo": 0,
+    "duration_ms": 318.421167
+  },
+  "syntax": {
+    "command": "npm run check",
+    "pass": true
+  },
+  "runtime": {
+    "command": "npm run check:release",
+    "pass": true,
+    "files": 54,
+    "totalBytes": 1042284
+  },
+  "nativeSignal": {
+    "freshAtUTC": "2026-11-08T02:57:35.146Z",
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "pass": true,
+    "pcmCases": 12,
+    "liveControls": 15,
+    "sourceUnchangedAfterVerification": true,
+    "redundantRerunAfterMetadataBump": false,
+    "evidence": "../evidence/native-2026-11-08.json"
+  },
+  "subjectiveListening": false,
+  "scopeExcludes": [
+    "optional fog runtime",
+    "compact mobile Volley PR #14",
+    "profile/save schema changes",
+    "remote writes",
+    "publication"
+  ],
+  "skipReason": "Optional desktop build dependencies are not installed.",
+  "limitations": [
+    "No actual listening pass.",
+    "No physical-device, Safari or Firefox certification.",
+    "Low-severity lookahead may start layer mix ramps early; note attacks remain on-grid.",
+    "This preparation does not verify a later merge, deployment, installed update or combined fog/music runtime."
+  ]
+}
