@@ -1,10 +1,14 @@
 # Ironroot Frontier audio
 
+## Reviewed v0.20.3 source integration
+
+This module is reviewed for the isolated v0.20.3 source integration. The last verified live baseline at preparation, v0.20.2 from `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7`, uses the 16-bar score. Exact-source fresh technical evidence and limits are in [AUDIO_INTEGRATION_0_20_3.md](AUDIO_INTEGRATION_0_20_3.md). No actual listening pass was performed.
+
 ## Original score and sound design
 
 `dist/audio.js` contains a self-contained Web Audio score and sound-effects engine. It makes no network requests, downloads no audio, and requires no build step or dependencies. All instruments and effects are synthesized at runtime.
 
-**The Long Reach** is an original 16-bar, 108 BPM D-minor fantasy battle theme, about 35.6 seconds per cycle. Warm triangle-wave melody, a quiet filtered overtone, plucked arpeggios, stereo chord pads, bass, and synthesized hand-drum-style percussion create a compact, coherent sound palette. The arrangement grows with battle intensity rather than simply getting louder. Menu music is lighter; pause and result scenes fade the score out.
+**The Long Reach — Hearth to Standard** is an isolated 64-bar, 108 BPM D-minor prototype, about 142.2 seconds per cycle. Four written sections develop the existing 16-bar motif through two new melodic/harmonic answers and a final reprise. Menu and battle share a transport; a requested transition changes the arrangement at the next bar. Menu uses a lower, sparse melody; battle adds bass, percussion, arpeggios and a final answering voice according to intensity. Pause and result scenes fade the score out. See [the audio direction, measurements and integration plan](AUDIO_DIRECTION.md).
 
 This is procedural game music, not a recording of acoustic instruments. The composition, note patterns, sound design, and synthesis code were created for Ironroot Frontier. No sample packs, recordings, third-party compositions, commercial audio assets, or external audio libraries are used. No third-party audio attribution or asset-license obligations were introduced. Project licensing governs the source code; no separate audio license is imposed by this module.
 
@@ -33,7 +37,7 @@ audio.play('start');
 - `setMusicEnabled(boolean)` and `setSfxEnabled(boolean)` act independently. Disabling music stops music scheduling while preserving sound effects.
 - `setVolume(0..1)`, `setMusicVolume(0..1)`, `setSfxVolume(0..1)` clamp invalid/out-of-range values safely and ramp gain changes.
 - `setScene('menu' | 'battle' | 'paused' | 'victory' | 'defeat')` is idempotent. Calling it every frame does not restart music. Result scenes silence the score; the game should separately play the corresponding result cue once.
-- `setIntensity(0..1)` smoothly changes arrangement layers. A value based on active combat, enemy pressure, or overtime is suitable. Do not change musical tempo with game speed.
+- `setIntensity(0..1)` changes arrangement layers with hysteresis at energy boundaries and smooth mix ramps. A value based on active combat, enemy pressure, or overtime is suitable. Do not change musical tempo with game speed.
 - `play(name, { pan: -1..1, volume: 0..1 })` returns whether a recognized SFX was accepted. Stereo panning gracefully falls back to mono routing in browsers without StereoPannerNode.
 - `getState()` returns diagnostic state and counts without exposing the graph to game logic.
 - `destroy()` stops scheduling, releases nodes, and closes the context. Repeated cleanup is safe.
@@ -68,13 +72,13 @@ Combat cues should be triggered for new events, not every animation frame. The m
 
 Run `node --test tests/audio.test.mjs` and `node --check dist/audio.js`.
 
-The automated graph tests cover lazy initialization, unsupported-audio fallback, repeated unlock, same-scene idempotency, independent music/SFX toggles, master mute, volume bounds, every sound and alias, effect burst limiting, paused/results scenes, stalled scheduling, two complete score cycles, and cleanup.
+The automated graph tests cover lazy initialization, unsupported-audio fallback, repeated unlock, same-scene idempotency, independent music/SFX toggles, master mute, volume bounds, every sound and alias, effect burst limiting, paused/results scenes, stalled scheduling, two complete 64-bar score cycles, queued transitions, energy hysteresis, priority-cue ducking, and cleanup.
 
 Browser checks additionally need real user activation, PCM rendering, independent music/SFX controls, pause/resume, saved preferences, and a console review. Automated graph tests alone do not establish audible quality, real-device latency, hardware playback, or Safari/iOS behavior. Do not describe the score as listened to unless an actual listening pass was performed.
 
 The offline shell must cache `./audio.js` and the application must import it. Because the module has no external assets, caching that file is sufficient for offline audio.
 
-### Browser verification, 6 November 2026
+### Historical 16-bar baseline verification, 6 November 2026
 
 Verified in real Chromium 156 on Linux through the managed HTTP preview using `tests/audio-browser.html` as a temporary developer fixture, removed from the public build afterward:
 

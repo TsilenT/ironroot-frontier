@@ -1,0 +1,235 @@
+{
+  "legacy24kHz": {
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "music": {
+      "peak": 0.1825114,
+      "peakDbFS": -14.77419987,
+      "rms": 0.0371625,
+      "dc": -6.127e-05,
+      "maxAdjacentDelta": 0.09957227,
+      "clipped": 0,
+      "nonfinite": 0
+    },
+    "sfx": {
+      "peak": 0.37814957,
+      "peakDbFS": -8.4467278,
+      "rms": 0.0210823,
+      "dc": -2.823e-05,
+      "maxAdjacentDelta": 0.11856743,
+      "clipped": 0,
+      "nonfinite": 0,
+      "cues": [
+        {
+          "name": "click",
+          "peak": 0.02648196,
+          "peakDbFS": -31.54099628,
+          "rms": 0.00140517,
+          "dc": 2.2e-07,
+          "maxAdjacentDelta": 0.00450852,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "error",
+          "peak": 0.09662715,
+          "peakDbFS": -20.29801695,
+          "rms": 0.0059303,
+          "dc": -1.372e-05,
+          "maxAdjacentDelta": 0.00270769,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "build",
+          "peak": 0.18411361,
+          "peakDbFS": -14.69828228,
+          "rms": 0.01897125,
+          "dc": -3.24e-05,
+          "maxAdjacentDelta": 0.01630005,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "upgrade",
+          "peak": 0.24576095,
+          "peakDbFS": -12.18974255,
+          "rms": 0.02343898,
+          "dc": -2.07e-06,
+          "maxAdjacentDelta": 0.0474663,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "sell",
+          "peak": 0.15987864,
+          "peakDbFS": -15.92419102,
+          "rms": 0.01622193,
+          "dc": 2.8e-07,
+          "maxAdjacentDelta": 0.02027273,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "spawn",
+          "peak": 0.047346,
+          "peakDbFS": -26.49433488,
+          "rms": 0.00244503,
+          "dc": 2.1e-07,
+          "maxAdjacentDelta": 0.0112903,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "sword",
+          "peak": 0.09332842,
+          "peakDbFS": -20.59972138,
+          "rms": 0.00334913,
+          "dc": -1.72e-06,
+          "maxAdjacentDelta": 0.04756405,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "arrow",
+          "peak": 0.03587624,
+          "peakDbFS": -28.90386235,
+          "rms": 0.00113131,
+          "dc": 1.6e-07,
+          "maxAdjacentDelta": 0.01900482,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "siege",
+          "peak": 0.26272902,
+          "peakDbFS": -11.60983912,
+          "rms": 0.03830917,
+          "dc": -0.00013551,
+          "maxAdjacentDelta": 0.11856743,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "magic",
+          "peak": 0.09677819,
+          "peakDbFS": -20.28444995,
+          "rms": 0.00880397,
+          "dc": 7e-07,
+          "maxAdjacentDelta": 0.02157496,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "gryphon",
+          "peak": 0.04216468,
+          "peakDbFS": -27.50102391,
+          "rms": 0.00266628,
+          "dc": 3e-08,
+          "maxAdjacentDelta": 0.01330468,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "strike",
+          "peak": 0.37814957,
+          "peakDbFS": -8.4467278,
+          "rms": 0.05549142,
+          "dc": -0.0002694,
+          "maxAdjacentDelta": 0.08564422,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "collapse",
+          "peak": 0.17406572,
+          "peakDbFS": -15.18573478,
+          "rms": 0.02026389,
+          "dc": -7.931e-05,
+          "maxAdjacentDelta": 0.02209832,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "warning",
+          "peak": 0.06572531,
+          "peakDbFS": -23.64534692,
+          "rms": 0.00829975,
+          "dc": -1.2e-07,
+          "maxAdjacentDelta": 0.00614392,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "start",
+          "peak": 0.16044132,
+          "peakDbFS": -15.89367525,
+          "rms": 0.019576,
+          "dc": 7.8e-07,
+          "maxAdjacentDelta": 0.01333001,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "victory",
+          "peak": 0.19624193,
+          "peakDbFS": -14.14416387,
+          "rms": 0.03558755,
+          "dc": -1.34e-06,
+          "maxAdjacentDelta": 0.03446801,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "defeat",
+          "peak": 0.12563173,
+          "peakDbFS": -18.01801287,
+          "rms": 0.02071203,
+          "dc": -2.21e-06,
+          "maxAdjacentDelta": 0.00951409,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "pause",
+          "peak": 0.05925475,
+          "peakDbFS": -24.54553651,
+          "rms": 0.00367648,
+          "dc": 4.5e-07,
+          "maxAdjacentDelta": 0.00667757,
+          "clipped": 0,
+          "nonfinite": 0
+        },
+        {
+          "name": "resume",
+          "peak": 0.05935758,
+          "peakDbFS": -24.5304763,
+          "rms": 0.00367752,
+          "dc": -1.33e-06,
+          "maxAdjacentDelta": 0.00517267,
+          "clipped": 0,
+          "nonfinite": 0
+        }
+      ]
+    },
+    "stressMix": {
+      "peak": 0.76435852,
+      "peakDbFS": -2.33405778,
+      "rms": 0.20268914,
+      "dc": -0.0021156,
+      "maxAdjacentDelta": 0.52450662,
+      "clipped": 0,
+      "nonfinite": 0
+    },
+    "muted": {
+      "peak": 0,
+      "peakDbFS": -240,
+      "rms": 0,
+      "dc": 0,
+      "maxAdjacentDelta": 0,
+      "clipped": 0,
+      "nonfinite": 0
+    },
+    "pass": true
+  },
+  "errors": []
+}

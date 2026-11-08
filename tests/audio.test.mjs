@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {GameAudio, SOUND_NAMES, AUDIO_CREDITS} from '../dist/audio.js';
+import {GameAudio, SOUND_NAMES, AUDIO_CREDITS, AUDIO_SECTIONS} from '../dist/audio.js';
 
 // These graph doubles test our Web Audio API usage without browser dependencies.
 class Param {
@@ -73,8 +73,16 @@ test('pause and result scenes stop music; resume creates one scheduler',async()=
 test('scheduler skips background backlog rather than flooding voices',async()=>{
   const {a,c}=await setup();try{c.advance(60);const before=a.stats.musicNotes;a._schedule();assert.ok(a.stats.musicNotes-before<20);assert.ok(a.nextStepTime>60);assert.ok(a.voices.size<=80);}finally{await a.destroy();}
 });
-test('full 16-bar score cycles with valid envelopes and adaptive layers',async()=>{
-  const {a,c}=await setup();try{a._stopScheduler();a.setScene('battle');a._stopScheduler();for(let i=0;i<256;i++){c.advance(60/AUDIO_CREDITS.bpm/2);a.setIntensity((i%32)/31);a._musicStep(i,c.currentTime+.01);assert.ok(a.voices.size<=80);}assert.ok(a.stats.musicNotes>600);c.advance(5);assert.equal(a.voices.size,0);}finally{await a.destroy();}
+test('two full 64-bar cycles retain bounded voices and written development',async()=>{
+  const {a,c}=await setup();try{
+    assert.equal(AUDIO_CREDITS.bars,64);assert.ok(AUDIO_CREDITS.seconds>142&&AUDIO_CREDITS.seconds<143);assert.equal(AUDIO_SECTIONS.length,4);
+    a.setScene('paused');a.setScene('battle');a._stopScheduler();
+    for(let i=0;i<1024;i++){c.advance(60/AUDIO_CREDITS.bpm/2);a.setIntensity((i%32)/31);a._musicStep(i,c.currentTime+.01);assert.ok(a.voices.size<=80);}
+    assert.ok(a.stats.musicNotes>2500);c.advance(5);assert.equal(a.voices.size,0);
+    const phrases=[];a._tone=(at,f,d,v,o)=>phrases.at(-1).push([f,d,v,o.layer]);a._noise=()=>{};
+    for(let section=0;section<4;section++){phrases.push([]);for(let beat=0;beat<128;beat++)a._musicStep(section*128+beat,c.currentTime+beat);}
+    assert.notDeepEqual(phrases[0],phrases[1]);assert.notDeepEqual(phrases[1],phrases[2]);assert.notDeepEqual(phrases[2],phrases[3]);
+  }finally{await a.destroy();}
 });
 test('destroy closes context and makes repeated cleanup and unlock safe',async()=>{
   const {a,c}=await setup();a.play('strike');await a.destroy();assert.equal(c.state,'closed');assert.equal(a.voices.size,0);assert.equal(a.timer,null);assert.equal(a.play('click'),false);assert.equal(await a.unlock(),false);a.setMuted(false);a.setScene('battle');await a.destroy();assert.equal(a.timer,null);
@@ -82,4 +90,31 @@ test('destroy closes context and makes repeated cleanup and unlock safe',async()
 
 test('important rally and result cues are not lost in crowded combat',async()=>{
   const {a,c}=await setup({musicEnabled:false});try{for(const name of ['strike','victory','defeat','warning','start']){c.advance(4);for(let i=0;i<24;i++)a._tone(c.currentTime,220,1,.1);assert.equal(a._voiceCount('sfx'),24);assert.equal(a.play(name),true,name);assert.ok(a._voiceCount('sfx')<24);}}finally{await a.destroy();}
+});
+
+test('menu-to-battle waits for the downbeat without restarting transport',async()=>{
+  const {a,c}=await setup();try{
+    const timer=a.timer,step=a.step,voices=a.voices.size;
+    a.setScene('battle');assert.equal(a.timer,timer);assert.equal(a.step,step);assert.equal(a.voices.size,voices);assert.equal(a.pendingScene,'battle');assert.equal(a.musicScene,'menu');
+    a._musicStep(7,.3);assert.equal(a.musicScene,'menu');a._musicStep(8,.6);assert.equal(a.musicScene,'battle');assert.equal(a.pendingScene,null);assert.equal(a.stats.transitions,1);
+    a.setScene('menu');a.setScene('battle');assert.equal(a.pendingScene,null);
+    a.step=141;a.setScene('paused');assert.equal(a.step,144);c.advance(2);a.setScene('battle');assert.ok(a.step>=144);assert.equal(a.musicScene,'battle');
+  }finally{await a.destroy();}
+});
+
+test('energy hysteresis and stable frame updates avoid automation churn',async()=>{
+  const {a}=await setup();try{
+    a.setIntensity(.39);assert.equal(a.energy,'calm');a.setIntensity(.41);assert.equal(a.energy,'engaged');a.setIntensity(.35);assert.equal(a.energy,'engaged');
+    a.setIntensity(.8);assert.equal(a.energy,'critical');a.setIntensity(.68);assert.equal(a.energy,'critical');a.setIntensity(.59);assert.equal(a.energy,'engaged');a.setIntensity(.27);assert.equal(a.energy,'calm');
+    const count=a.layers.drums.gain.events.length;for(let i=0;i<1000;i++)a.setIntensity(.27+i%2*.005);assert.equal(a.layers.drums.gain.events.length,count);
+  }finally{await a.destroy();}
+});
+
+test('priority cues duck only music, preserving the user gain and SFX bus',async()=>{
+  const {a,c}=await setup();try{
+    const master=a.master.gain.value,sfx=a.sfx.gain.value;
+    assert.equal(a.play('warning'),true);assert.equal(a.master.gain.value,master);assert.equal(a.sfx.gain.value,sfx);
+    assert.ok(a.musicDuck.gain.events.some(([type,value])=>type==='linear'&&value===.52));assert.equal(a.musicDuck.gain.value,1);
+    c.advance(3);a.setMuted(true);assert.equal(a.play('warning'),false);
+  }finally{await a.destroy();}
 });
