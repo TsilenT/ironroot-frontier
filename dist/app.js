@@ -2412,7 +2412,7 @@ function updateFogMemoryDetails(view) {
     const item = document.createElement('li'); item.textContent = text;
     item.setAttribute('tabindex', '0'); return item;
   }));
-  $('pauseFogSummary').textContent = `Last-seen buildings (${details.length})`;
+  $('pauseFogSummary').textContent = `Last-seen details (${details.length})`;
   if (!shown) panel.open = false;
   if (hadFocus) (shown ? $('pauseFogSummary') : paused ? $('resume') : $('pause')).focus();
 }

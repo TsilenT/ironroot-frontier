@@ -1,0 +1,21 @@
+{
+  "replacements": 3,
+  "otherBytesUnchanged": true,
+  "browserExecution": false,
+  "files": [
+    {
+      "path": "qa/browser/offline-shell.spec.mjs",
+      "changes": 2,
+      "baseSHA256": "234ae4836a54bd10c9dba56ec413a30f8b1efe63f1e5d75bbd57c2dd4fb171a7",
+      "recoveredSHA256": "8521c97a2ee64de9d12e9fa9b3d3448110647d62264abdc17d19c73256069de3",
+      "onlyFreshRulesetLiterals": true
+    },
+    {
+      "path": "qa/browser/service-worker-update.spec.mjs",
+      "changes": 1,
+      "baseSHA256": "1cdde9b14d51781dada3884b3d5a752322e97fc59f6788b3ba03e41ee4397bbe",
+      "recoveredSHA256": "4a4438cfca9704550e0103306d9be93db3ec1b4b5b73a6e507aadbed14524ecd",
+      "onlyFreshRulesetLiterals": true
+    }
+  ]
+}

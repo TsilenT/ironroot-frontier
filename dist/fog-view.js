@@ -4,6 +4,20 @@ import { BattleVFX } from './vfx.js';
 import { buildBounds } from './engine.js';
 
 const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+// Each internally owned mask keeps only the last exact raster inputs, never a
+// Game, observation or observer reference. A lost mask cannot become a hit.
+function maskRaster(mask) {
+  const cache = { inputs: null, observers: [], lost: false };
+  const invalidate = () => { cache.inputs = null; cache.observers = []; };
+  mask.addEventListener?.('contextlost', () => { cache.lost = true; invalidate(); });
+  mask.addEventListener?.('contextrestored', () => { cache.lost = false; invalidate(); });
+  return cache;
+}
+function sameMaskRaster(cache, inputs, observers) {
+  if (!cache?.inputs || cache.lost || cache.inputs.length !== inputs.length || !cache.inputs.every((value, i) => Object.is(value, inputs[i])) || cache.observers.length !== observers.length * 3) return false;
+  return observers.every((o, i) => Object.is(cache.observers[i * 3], o.x) && Object.is(cache.observers[i * 3 + 1], o.y) && Object.is(cache.observers[i * 3 + 2], o.radius));
+}
 export function memoryLabel(view, memory) {
   const seconds = Math.floor(memory.observedAt), time = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
   const name = view.buildings[memory.type]?.name || 'Building';
@@ -30,6 +44,28 @@ export function layoutMemoryBadges(view, { width, height, scale, project, measur
     glyph.badge = badge; admitted.push(badge);
   }
   return glyphs;
+}
+/** Only the text may shift; crowded/off-camera citadels retain their true marker. */
+export function layoutCitadelLabels(view, base, { width, height, scale, project, measure }) {
+  const p = project(base.x, base.y);
+  if (p.x < 0 || p.x > width) return null;
+  const remembered = view.fog.rememberedCitadel?.choice;
+  const labels = ['ENEMY CITADEL', 'HEALTH UNKNOWN', ...(remembered ? [`LAST SEEN: ${remembered === 'arrows' ? 'EXTRA ARROW' : 'REGEN'}`] : [])];
+  const font = Math.max(15, 12 / scale), lineHeight = Math.max(29, font * 1.4);
+  const w = Math.max(...labels.map(text => measure(text, font, true))) * scale + 8;
+  // Match the memory badges' conservative HUD/tools/map clearances. Include
+  // the whole last-seen line and font ascent/descent, not just its baseline.
+  if (w > width - 68) return null;
+  const x = clamp(p.x, 4 + w / 2, width - 64 - w / 2);
+  const top = p.y + (75 - font) * scale - 2;
+  const bottom = p.y + (75 + (labels.length - 1) * lineHeight + font / 4) * scale + 2;
+  const rect = { x: x - w / 2, y: top, width: w, height: bottom - top };
+  if (top < 84 || bottom > height - 90) return null;
+  // Existing memory placement wins: never move or suppress a stale badge.
+  const glyphs = view.fog.memories.length ? layoutMemoryBadges(view, { width, height, scale, project,
+    measure: (text, bold) => measure(text, 11, bold) }) : [];
+  if (glyphs.some(g => intersects(rect, g.rect, 2) || (g.badge && intersects(rect, g.badge, 2)))) return null;
+  return { labels, font, lineHeight, x: (x - p.x) / scale, rect };
 }
 export function pointInObservation(view, x, y) {
   return !view.fog.enabled || view.fog.observers.some(o => Math.hypot(x - o.x, y - o.y) <= o.radius + 1e-8);
@@ -58,11 +94,21 @@ export function observationFacade(observation) {
 export function observationHUD(view) {
   const s = view.state, side = view.fog.side, home = s.bases[side], enemy = s.bases[1 - side];
   const visibleEnemies = s.units.filter(u => u.side !== side).length;
+  const memoryDetails = view.fog.enabled ? orderedMemories(view).map(m => `${memoryLabel(view, m).description} Road ${m.lane + 1}, position ${Math.round(m.x)} along the known map.`) : [];
+  const remembered = view.fog.rememberedCitadel;
+  // Keep omitted world text available in Pause, but never turn a current
+  // contact into a constantly changing last-seen entry. Use no private state.
+  if (view.fog.enabled && !Number.isFinite(enemy.hp) && remembered && !Array.isArray(remembered)
+      && ['arrows', 'regen'].includes(remembered.choice) && Number.isFinite(remembered.observedAt)
+      && remembered.observedAt >= 0 && remembered.observedAt <= s.time) {
+    const seconds = Math.floor(remembered.observedAt), time = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+    memoryDetails.push(`Last seen enemy citadel with ${remembered.choice === 'arrows' ? 'Extra Arrow' : 'Regeneration'} at ${time}. Current health and upgrade unknown.`);
+  }
   return {
     gold: Math.floor(s.gold[side]), income: s.income[side], cooldown: Math.ceil(s.spellCooldown[side]),
     homeHP: Math.ceil(home.hp), enemyHP: Number.isFinite(enemy.hp) ? Math.ceil(enemy.hp) : null,
     ownTroops: s.units.filter(u => u.side === side).length, visibleEnemies,
-    memoryDetails: view.fog.enabled ? orderedMemories(view).map(m => `${memoryLabel(view, m).description} Road ${m.lane + 1}, position ${Math.round(m.x)} along the known map.`) : [],
+    memoryDetails,
     memories: view.fog.memories.length, frontX: view.fog.frontX,
     time: `${Math.floor(s.time / 60)}:${String(Math.floor(s.time % 60)).padStart(2, '0')}`,
     description: `${view.fog.enabled ? 'Fog on. Known terrain.' : 'Fog off.'} ${s.units.filter(u => u.side === side).length} allied troops; ${visibleEnemies} ${view.fog.enabled ? 'currently visible ' : ''}enemy troops. ${view.fog.memories.length} last-seen buildings. Enemy citadel health ${Number.isFinite(enemy.hp) ? Math.ceil(enemy.hp) : 'unknown'}. ${view.fog.memories.map(m => memoryLabel(view, m).description).join(' ')}`.trim(),
@@ -126,10 +172,22 @@ export class FogRenderer extends Renderer {
     this.vfx = new ObservedVFX({ reducedMotion: this.reducedMotion, quality: 'low' });
     this.mask = document.createElement('canvas');
     this.miniMask = document.createElement('canvas');
+    this.maskRaster = maskRaster(this.mask);
+    this.miniMaskRaster = maskRaster(this.miniMask);
   }
-  resetObservation() { this.vfx.reset(); this.rootwardenMotion.clear(); }
+  invalidateMasks() {
+    // Renderer calls the virtual resize during super(), before these exist.
+    for (const cache of [this.maskRaster, this.miniMaskRaster]) {
+      if (cache) { cache.inputs = null; cache.observers = []; }
+    }
+  }
+  resize() { super.resize(); this.invalidateMasks(); }
+  resetObservation() { this.vfx.reset(); this.rootwardenMotion.clear(); this.invalidateMasks(); }
   draw(view, ui, dt) {
     if (!view?.fog || typeof view.canBuild !== 'function') throw new Error('Renderer accepts an observation façade only.');
+    // Includes ordinary rendering and the genuine terminal reveal. The app's
+    // battle/restore reset path also calls resize(), even at unchanged sizes.
+    if (!view.fog.enabled) this.invalidateMasks();
     this.activeGame = view; this.buildings = view.buildings; this.units = view.units;
     this.vfx.observation = view;
     const safeUI = { ...ui, selected: view.state.buildings.some(b => b.side === view.fog.side && b.id === ui.selected) ? ui.selected : null };
@@ -150,14 +208,13 @@ export class FogRenderer extends Renderer {
       c.save(); c.translate(base.x, base.y); c.strokeStyle = '#ded3bb'; c.fillStyle = '#b1ad9e';
       c.lineWidth = 3; c.setLineDash([8, 6]); c.strokeRect(-57, -88, 114, 125); c.setLineDash([]);
       c.fillRect(-62, -99, 24, 20); c.fillRect(38, -99, 24, 20);
-      c.textAlign = 'center'; c.font = `bold ${Math.max(15, 12 / this.scale)}px sans-serif`;
-      const remembered = view.fog.rememberedCitadel?.choice;
-      const labels = ['ENEMY CITADEL', 'HEALTH UNKNOWN', ...(remembered ? [`LAST SEEN: ${remembered === 'arrows' ? 'EXTRA ARROW' : 'REGEN'}`] : [])];
-      const left = this.camera - this.width / (2 * this.scale), right = this.camera + this.width / (2 * this.scale);
-      const half = Math.max(...labels.map(text => c.measureText(text).width)) / 2 + 4 / this.scale;
-      // Labels belong to the known marker, but must not clip at a world edge.
-      const labelX = base.x >= left && base.x <= right ? clamp(0, left - base.x + half, right - base.x - half) : 0;
-      c.fillStyle = '#fff4df'; labels.forEach((text, i) => c.fillText(text, labelX, 75 + i * 29));
+      const label = layoutCitadelLabels(view, base, { width: this.width, height: this.height, scale: this.scale,
+        project: (x, y) => this.worldToScreen(x, y),
+        measure: (text, size, bold) => { c.font = `${bold ? 'bold ' : ''}${size}px sans-serif`; return c.measureText(text).width; } });
+      if (label) {
+        c.textAlign = 'center'; c.font = `bold ${label.font}px sans-serif`; c.fillStyle = '#fff4df';
+        label.labels.forEach((text, i) => c.fillText(text, label.x, 75 + i * label.lineHeight));
+      }
       c.restore();
       return;
     }
@@ -172,19 +229,33 @@ export class FogRenderer extends Renderer {
   }
   drawMask(c, mask, width, height, view, mini) {
     const w = Math.max(1, Math.round(width * this.dpr)), h = Math.max(1, Math.round(height * this.dpr));
-    if (mask.width !== w || mask.height !== h) { mask.width = w; mask.height = h; }
-    const m = mask.getContext('2d');
-    m.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); m.clearRect(0, 0, width, height);
-    m.globalCompositeOperation = 'source-over'; m.fillStyle = '#102522a6'; m.fillRect(0, 0, width, height);
-    m.globalCompositeOperation = 'destination-out'; m.fillStyle = '#000';
-    for (const o of view.fog.observers) {
-      const p = mini ? { x: o.x / view.map.width * width, y: o.y / view.map.height * height } : this.worldToScreen(o.x, o.y);
-      m.beginPath();
-      if (mini) m.ellipse(p.x, p.y, o.radius / view.map.width * width, o.radius / view.map.height * height, 0, 0, Math.PI * 2);
-      else m.arc(p.x, p.y, o.radius * this.scale, 0, Math.PI * 2);
-      m.fill();
+    const cache = mask === this.mask ? this.maskRaster : mask === this.miniMask ? this.miniMaskRaster : null;
+    if (mask.width !== w || mask.height !== h) {
+      mask.width = w; mask.height = h;
+      if (cache) cache.inputs = null;
     }
-    m.globalCompositeOperation = 'source-over';
+    const m = mask.getContext('2d'), observers = view.fog.observers;
+    const inputs = [mini, width, height, w, h, this.dpr, view.fog.side, view.fog.enabled, view.fog.revealed, view.map.width, view.map.height,
+      ...(mini ? [] : [this.width, this.height, this.camera, this.scale])];
+    const lost = cache?.lost || m.isContextLost?.();
+    if (lost || !sameMaskRaster(cache, inputs, observers)) {
+      m.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); m.clearRect(0, 0, width, height);
+      m.globalCompositeOperation = 'source-over'; m.fillStyle = '#102522a6'; m.fillRect(0, 0, width, height);
+      m.globalCompositeOperation = 'destination-out'; m.fillStyle = '#000';
+      for (const o of observers) {
+        const p = mini ? { x: o.x / view.map.width * width, y: o.y / view.map.height * height } : this.worldToScreen(o.x, o.y);
+        m.beginPath();
+        if (mini) m.ellipse(p.x, p.y, o.radius / view.map.width * width, o.radius / view.map.height * height, 0, 0, Math.PI * 2);
+        else m.arc(p.x, p.y, o.radius * this.scale, 0, Math.PI * 2);
+        m.fill();
+      }
+      m.globalCompositeOperation = 'source-over';
+      if (cache) {
+        cache.inputs = lost ? null : inputs;
+        cache.observers = lost ? [] : observers.flatMap(o => [o.x, o.y, o.radius]);
+      }
+    }
+    // Reusing raster pixels never skips compositing onto the fresh frame.
     c.save(); c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0); c.drawImage(mask, 0, 0, width, height); c.restore();
   }
   drawMemories(view, mini) {

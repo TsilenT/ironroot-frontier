@@ -1,0 +1,484 @@
+TAP version 13
+# Subtest: actual setup starts unchecked and never persists the fog choice; incompatible combinations cannot claim or write
+ok 1 - actual setup starts unchecked and never persists the fog choice; incompatible combinations cannot claim or write
+  ---
+  duration_ms: 56.896208
+  type: 'test'
+  ...
+# Subtest: actual supported setup locks incompatible controls without rewriting choices; live identity does not follow checkbox
+ok 2 - actual supported setup locks incompatible controls without rewriting choices; live identity does not follow checkbox
+  ---
+  duration_ms: 58.167935
+  type: 'test'
+  ...
+# Subtest: all ordinary map/endgame/bridge combinations retain existing identity, settings and stock renderer
+ok 3 - all ordinary map/endgame/bridge combinations retain existing identity, settings and stock renderer
+  ---
+  duration_ms: 305.031146
+  type: 'test'
+  ...
+# Subtest: actual HUD, aria, citadel dialog, Front, field, minimap and music ignore hidden opponent changes
+ok 4 - actual HUD, aria, citadel dialog, Front, field, minimap and music ignore hidden opponent changes
+  ---
+  duration_ms: 55.242744
+  type: 'test'
+  ...
+# Subtest: current enemy HP/choice turns unknown on sight loss without carrying timers or old aria
+ok 5 - current enemy HP/choice turns unknown on sight loss without carrying timers or old aria
+  ---
+  duration_ms: 60.208292
+  type: 'test'
+  ...
+# Subtest: own citadel remains honestly purchasable with unseen enemy HP and pays once through actual modal handler
+ok 6 - own citadel remains honestly purchasable with unseen enemy HP and pays once through actual modal handler
+  ---
+  duration_ms: 18.644305
+  type: 'test'
+  ...
+# Subtest: actual paid command rejects hidden/lost-sight Volley, keeps invalid build free, and spends valid cost once
+ok 7 - actual paid command rejects hidden/lost-sight Volley, keeps invalid build free, and spends valid cost once
+  ---
+  duration_ms: 34.860133
+  type: 'test'
+  ...
+# Subtest: fog command sounds occur once; paused and off-camera events are consumed rather than replayed
+ok 8 - fog command sounds occur once; paused and off-camera events are consumed rather than replayed
+  ---
+  duration_ms: 26.565606
+  type: 'test'
+  ...
+# Subtest: fog restore preserves knowledge while restart resets it and renderer switches clear transient consumers
+ok 9 - fog restore preserves knowledge while restart resets it and renderer switches clear transient consumers
+  ---
+  duration_ms: 62.821511
+  type: 'test'
+  ...
+# Subtest: a live journal cannot reveal full information; completed report identifies fog context
+ok 10 - a live journal cannot reveal full information; completed report identifies fog context
+  ---
+  duration_ms: 3.506905
+  type: 'test'
+  ...
+# Subtest: fog setup cannot override unsupported or pending fullscreen availability
+ok 11 - fog setup cannot override unsupported or pending fullscreen availability
+  ---
+  duration_ms: 12.583374
+  type: 'test'
+  ...
+# Subtest: actual frame follow cannot move ended ordinary, fog, or authored-objective battles
+ok 12 - actual frame follow cannot move ended ordinary, fog, or authored-objective battles
+  ---
+  duration_ms: 78.518537
+  type: 'test'
+  ...
+# Subtest: actual upgrade and sale obey pause, refresh observation and avoid duplicate fog command audio
+ok 13 - actual upgrade and sale obey pause, refresh observation and avoid duplicate fog command audio
+  ---
+  duration_ms: 30.158088
+  type: 'test'
+  ...
+# Subtest: Help and Options close preserve pause after blur/hidden/page departure, but normal close still resumes
+ok 14 - Help and Options close preserve pause after blur/hidden/page departure, but normal close still resumes
+  ---
+  duration_ms: 156.939251
+  type: 'test'
+  ...
+# Subtest: one actual paused frame shares one detached observation across HUD, field/minimap and audio
+ok 15 - one actual paused frame shares one detached observation across HUD, field/minimap and audio
+  ---
+  duration_ms: 27.057979
+  type: 'test'
+  ...
+# Subtest: actual Resume, history and backup preview labels derive Fog from identity and preview does not write
+ok 16 - actual Resume, history and backup preview labels derive Fog from identity and preview does not write
+  ---
+  duration_ms: 57.00907
+  type: 'test'
+  ...
+# Subtest: actual Pause memory disclosure preserves frozen details and focus, then clears on re-observation, terminal and ordinary reset
+ok 17 - actual Pause memory disclosure preserves frozen details and focus, then clears on re-observation, terminal and ordinary reset
+  ---
+  duration_ms: 71.254183
+  type: 'test'
+  ...
+# Subtest: Regeneration full-health toast is neutral and does not change purchase or recovery mechanics
+ok 18 - Regeneration full-health toast is neutral and does not change purchase or recovery mechanics
+  ---
+  duration_ms: 43.356765
+  type: 'test'
+  ...
+# Subtest: shared guide distinguishes timed decay from open endgame without changing rules
+ok 19 - shared guide distinguishes timed decay from open endgame without changing rules
+  ---
+  duration_ms: 1.224641
+  type: 'test'
+  ...
+# Subtest: enemy citadel prose is actionable, clearly stale when remembered, and never reads hidden option counters
+ok 20 - enemy citadel prose is actionable, clearly stale when remembered, and never reads hidden option counters
+  ---
+  duration_ms: 15.80428
+  type: 'test'
+  ...
+# Subtest: fog identity is explicit, immutable, Classic-only, and default remains unchanged
+ok 21 - fog identity is explicit, immutable, Classic-only, and default remains unchanged
+  ---
+  duration_ms: 4.526019
+  type: 'test'
+  ...
+# Subtest: inclusive circular boundaries are symmetric and use living observers and real coordinates
+ok 22 - inclusive circular boundaries are symmetric and use living observers and real coordinates
+  ---
+  duration_ms: 1.94209
+  type: 'test'
+  ...
+# Subtest: build/sale and observer death refresh contact; moving enemy leaves no remembered troop
+ok 23 - build/sale and observer death refresh contact; moving enemy leaves no remembered troop
+  ---
+  duration_ms: 2.207835
+  type: 'test'
+  ...
+# Subtest: building memory freezes type/level/time, survives hidden upgrade/death/sale, and empty re-observation clears
+ok 24 - building memory freezes type/level/time, survives hidden upgrade/death/sale, and empty re-observation clears
+  ---
+  duration_ms: 1.663803
+  type: 'test'
+  ...
+# Subtest: replacement is a new observation and never recycles a stale memory target ID
+ok 25 - replacement is a new observation and never recycles a stale memory target ID
+  ---
+  duration_ms: 2.894948
+  type: 'test'
+  ...
+# Subtest: memory is bounded with deterministic oldest/id eviction
+ok 26 - memory is bounded with deterministic oldest/id eviction
+  ---
+  duration_ms: 5.460034
+  type: 'test'
+  ...
+# Subtest: observation is detached and read-only, hides private enemy fields/resources and unseen citadel status
+ok 27 - observation is detached and read-only, hides private enemy fields/resources and unseen citadel status
+  ---
+  duration_ms: 0.979633
+  type: 'test'
+  ...
+# Subtest: hidden state differential preserves view, Front, AI choices, Volley and RNG before physical interaction
+ok 28 - hidden state differential preserves view, Front, AI choices, Volley and RNG before physical interaction
+  ---
+  duration_ms: 17.794363
+  type: 'test'
+  ...
+# Subtest: hidden structures cannot steer movement or get direct attacks; known enemy citadel remains destination
+ok 29 - hidden structures cannot steer movement or get direct attacks; known enemy citadel remains destination
+  ---
+  duration_ms: 18.79673
+  type: 'test'
+  ...
+# Subtest: Volley rejects hidden centers without any mutation and visible-center splash stays ordinary without impact leaks
+ok 30 - Volley rejects hidden centers without any mutation and visible-center splash stays ordinary without impact leaks
+  ---
+  duration_ms: 1.089316
+  type: 'test'
+  ...
+# Subtest: hidden events never replay on later reveal, observable events retain stable presentation IDs
+ok 31 - hidden events never replay on later reveal, observable events retain stable presentation IDs
+  ---
+  duration_ms: 0.389639
+  type: 'test'
+  ...
+# Subtest: flyers acquire at 300, retain through 420 and release beyond without expanding attack permissions
+ok 32 - flyers acquire at 300, retain through 420 and release beyond without expanding attack permissions
+  ---
+  duration_ms: 1.573892
+  type: 'test'
+  ...
+# Subtest: both sides capture memory symmetrically and citadel choice remembers no hidden counters
+ok 33 - both sides capture memory symmetrically and citadel choice remembers no hidden counters
+  ---
+  duration_ms: 0.690241
+  type: 'test'
+  ...
+# Subtest: serialize/restore preserves memory and exact deterministic continuation across normal frame batches
+ok 34 - serialize/restore preserves memory and exact deterministic continuation across normal frame batches
+  ---
+  duration_ms: 222.814502
+  type: 'test'
+  ...
+# Subtest: malformed/oversized/recycled knowledge and cross-identity fog fields reject without changing input
+ok 35 - malformed/oversized/recycled knowledge and cross-identity fog fields reject without changing input
+  ---
+  duration_ms: 18.563837
+  type: 'test'
+  ...
+# Subtest: terminal observation reveals only after an actual ended state; pause/draw frequency never reveals
+ok 36 - terminal observation reveals only after an actual ended state; pause/draw frequency never reveals
+  ---
+  duration_ms: 0.852081
+  type: 'test'
+  ...
+# Subtest: all existing rules retain exact default state/RNG under paired native paid scripts
+ok 37 - all existing rules retain exact default state/RNG under paired native paid scripts
+  ---
+  duration_ms: 791.894621
+  type: 'test'
+  ...
+# Subtest: fog AI citadel purchase uses own observed threats/health while unknown enemy base stays unknown
+ok 38 - fog AI citadel purchase uses own observed threats/health while unknown enemy base stays unknown
+  ---
+  duration_ms: 1.717627
+  type: 'test'
+  ...
+# Subtest: hidden event saturation cannot evict visible effects, and fog output remains bounded
+ok 39 - hidden event saturation cannot evict visible effects, and fog output remains bounded
+  ---
+  duration_ms: 18.642246
+  type: 'test'
+  ...
+# Subtest: nonfog and terminal observer events have stable presentation IDs without changing simulation events
+ok 40 - nonfog and terminal observer events have stable presentation IDs without changing simulation events
+  ---
+  duration_ms: 1.202605
+  type: 'test'
+  ...
+# Subtest: experimental identity rejects every ordinary codec entry while direct engine restore stays legal
+ok 41 - experimental identity rejects every ordinary codec entry while direct engine restore stays legal
+  ---
+  duration_ms: 14.962116
+  type: 'test'
+  ...
+# Subtest: normal profile write and backup import reject experimental fog before any storage mutation
+ok 42 - normal profile write and backup import reject experimental fog before any storage mutation
+  ---
+  duration_ms: 7.29251
+  type: 'test'
+  ...
+# Subtest: ordinary current Skirmish still round-trips through the untouched profile format
+ok 43 - ordinary current Skirmish still round-trips through the untouched profile format
+  ---
+  duration_ms: 2.107752
+  type: 'test'
+  ...
+# Subtest: NEW: hits still composite once; in-place observer changes/order miss; snapshots contain primitives only
+ok 44 - NEW: hits still composite once; in-place observer changes/order miss; snapshots contain primitives only
+  ---
+  duration_ms: 39.001819
+  type: 'test'
+  ...
+# Subtest: NEW: all field mask inputs invalidate, while minimap ignores camera/field projection; rounding is exact
+ok 45 - NEW: all field mask inputs invalidate, while minimap ignores camera/field projection; rounding is exact
+  ---
+  duration_ms: 25.118833
+  type: 'test'
+  ...
+# Subtest: NEW: constructor/resize/reset/fog transitions invalidate; only owned masks receive loss listeners
+ok 46 - NEW: constructor/resize/reset/fog transitions invalidate; only owned masks receive loss listeners
+  ---
+  duration_ms: 71.716803
+  type: 'test'
+  ...
+# Subtest: NEW: citadel labels clear reserved controls or omit text, preserving the true marker and stale badges
+ok 47 - NEW: citadel labels clear reserved controls or omit text, preserving the true marker and stale badges
+  ---
+  duration_ms: 5.682623
+  type: 'test'
+  ...
+# Subtest: NEW: Pause keeps building entries and frozen valid choice/time; current or ordinary contacts suppress stale citadel
+ok 48 - NEW: Pause keeps building entries and frozen valid choice/time; current or ordinary contacts suppress stale citadel
+  ---
+  duration_ms: 1.347284
+  type: 'test'
+  ...
+# Subtest: NEW: hidden changes cannot affect field/minimap/HUD or detached observation; drawing does not mutate engine
+ok 49 - NEW: hidden changes cannot affect field/minimap/HUD or detached observation; drawing does not mutate engine
+  ---
+  duration_ms: 43.106287
+  type: 'test'
+  ...
+# Subtest: NEW: recovered Pause adapter counts citadel plus buildings, preserves focus, and clears stale ARIA on transitions
+ok 50 - NEW: recovered Pause adapter counts citadel plus buildings, preserves focus, and clears stale ARIA on transitions
+  ---
+  duration_ms: 4.350817
+  type: 'test'
+  ...
+# Subtest: supported fog retains existing v3 battle and v2 backup formats with exact identity and both memories
+ok 51 - supported fog retains existing v3 battle and v2 backup formats with exact identity and both memories
+  ---
+  duration_ms: 109.448076
+  type: 'test'
+  ...
+# Subtest: identity-only history cannot pair fog with another map, campaign, trial or lesson
+ok 52 - identity-only history cannot pair fog with another map, campaign, trial or lesson
+  ---
+  duration_ms: 54.697309
+  type: 'test'
+  ...
+# Subtest: unknown, QA, forged-scenario and raw v3 inputs reject without rewriting input or profile bytes
+ok 53 - unknown, QA, forged-scenario and raw v3 inputs reject without rewriting input or profile bytes
+  ---
+  duration_ms: 31.547436
+  type: 'test'
+  ...
+# Subtest: strict malformed, oversized and recycled knowledge fails before write across save and backup boundaries
+ok 54 - strict malformed, oversized and recycled knowledge fails before write across save and backup boundaries
+  ---
+  duration_ms: 103.53928
+  type: 'test'
+  ...
+# Subtest: non-JSON knowledge never invokes a getter and non-fog identities cannot smuggle fog fields
+ok 55 - non-JSON knowledge never invokes a getter and non-fog identities cannot smuggle fog fields
+  ---
+  duration_ms: 3.746485
+  type: 'test'
+  ...
+# Subtest: scenario validation rejects unknown fields and accessors before selection for fog and legacy games
+ok 56 - scenario validation rejects unknown fields and accessors before selection for fog and legacy games
+  ---
+  duration_ms: 4.116305
+  type: 'test'
+  ...
+# Subtest: maximum valid memory is retained exactly without truncation or knowledge synthesis
+ok 57 - maximum valid memory is retained exactly without truncation or knowledge synthesis
+  ---
+  duration_ms: 17.782061
+  type: 'test'
+  ...
+# Subtest: protocol12 changes only marker bytes and fences exact pinned protocol11 stale and reopened writers
+ok 58 - protocol12 changes only marker bytes and fences exact pinned protocol11 stale and reopened writers
+  ---
+  duration_ms: 6.391141
+  type: 'test'
+  ...
+# Subtest: protocol12 never rewrites unfinished/future markers and blocks unverifiable upgrades without changing earned data
+ok 59 - protocol12 never rewrites unfinished/future markers and blocks unverifiable upgrades without changing earned data
+  ---
+  duration_ms: 5.670912
+  type: 'test'
+  ...
+# Subtest: normal fog save/export preserves every earned byte and preference including true bridge selection
+ok 60 - normal fog save/export preserves every earned byte and preference including true bridge selection
+  ---
+  duration_ms: 6.803027
+  type: 'test'
+  ...
+# Subtest: fog backup restore retains both knowledge records, every earned domain and unrelated keys while fencing current stale tabs
+ok 61 - fog backup restore retains both knowledge records, every earned domain and unrelated keys while fencing current stale tabs
+  ---
+  duration_ms: 54.018664
+  type: 'test'
+  ...
+# Subtest: failed fog backup replacement rolls back each of five domains exactly and retains protocol12 fencing
+ok 62 - failed fog backup replacement rolls back each of five domains exactly and retains protocol12 fencing
+  ---
+  duration_ms: 47.988637
+  type: 'test'
+  ...
+# Subtest: fog history uses its immutable identity for deduplication without changing plain rows
+ok 63 - fog history uses its immutable identity for deduplication without changing plain rows
+  ---
+  duration_ms: 1.872381
+  type: 'test'
+  ...
+# Subtest: restart keeps supported fog identity but resets memory, time, purchases and resources without changing earned data
+ok 64 - restart keeps supported fog identity but resets memory, time, purchases and resources without changing earned data
+  ---
+  duration_ms: 2.256758
+  type: 'test'
+  ...
+# Subtest: paid fog citadel checkpoint failure is retryable without a duplicate charge or lost prior save
+ok 65 - paid fog citadel checkpoint failure is retryable without a duplicate charge or lost prior save
+  ---
+  duration_ms: 5.303211
+  type: 'test'
+  ...
+# Subtest: a stale same-protocol battle slot cannot overwrite a newer fog or ordinary checkpoint
+ok 66 - a stale same-protocol battle slot cannot overwrite a newer fog or ordinary checkpoint
+  ---
+  duration_ms: 8.422766
+  type: 'test'
+  ...
+# Subtest: every existing ordinary map/endgame/bridge combination retains its save identity and earned-profile round trip
+ok 67 - every existing ordinary map/endgame/bridge combination retains its save identity and earned-profile round trip
+  ---
+  duration_ms: 48.744154
+  type: 'test'
+  ...
+# Subtest: façade rejects raw game, has no action closure, and validates paid sites from observation alone
+ok 68 - façade rejects raw game, has no action closure, and validates paid sites from observation alone
+  ---
+  duration_ms: 8.884424
+  type: 'test'
+  ...
+# Subtest: unknown enemy health remains unknown in HUD and canvas; raw Game cannot render
+ok 69 - unknown enemy health remains unknown in HUD and canvas; raw Game cannot render
+  ---
+  duration_ms: 37.640414
+  type: 'test'
+  ...
+# Subtest: hidden enemy changes cannot affect field, minimap, HUD, Front or audio
+ok 70 - hidden enemy changes cannot affect field, minimap, HUD, Front or audio
+  ---
+  duration_ms: 29.283488
+  type: 'test'
+  ...
+# Subtest: stale structures draw dashed memories without live HP or production; hidden sale does not clear glyph
+ok 71 - stale structures draw dashed memories without live HP or production; hidden sale does not clear glyph
+  ---
+  duration_ms: 14.288899
+  type: 'test'
+  ...
+# Subtest: hidden citadel preserves only a labelled last-seen choice
+ok 72 - hidden citadel preserves only a labelled last-seen choice
+  ---
+  duration_ms: 10.08742
+  type: 'test'
+  ...
+# Subtest: visible contacts use current renderer models but hidden troop dots are absent from minimap
+ok 73 - visible contacts use current renderer models but hidden troop dots are absent from minimap
+  ---
+  duration_ms: 18.025491
+  type: 'test'
+  ...
+# Subtest: audio IDs survive detached frames; paused or off-camera events are never replayed later
+ok 74 - audio IDs survive detached frames; paused or off-camera events are never replayed later
+  ---
+  duration_ms: 1.435909
+  type: 'test'
+  ...
+# Subtest: hidden-at-creation events do not play when the camera or sight reaches them
+ok 75 - hidden-at-creation events do not play when the camera or sight reaches them
+  ---
+  duration_ms: 0.536941
+  type: 'test'
+  ...
+# Subtest: VFX dedupes detached effects and removes particles/shake on lost sight
+ok 76 - VFX dedupes detached effects and removes particles/shake on lost sight
+  ---
+  duration_ms: 19.971124
+  type: 'test'
+  ...
+# Subtest: safe frame geometry stays finite across compact and desktop field sizes
+ok 77 - safe frame geometry stays finite across compact and desktop field sizes
+  ---
+  duration_ms: 69.047623
+  type: 'test'
+  ...
+# Subtest: mask uses one composited union of sight, independent of camera/input and overlapping circles
+ok 78 - mask uses one composited union of sight, independent of camera/input and overlapping circles
+  ---
+  duration_ms: 18.897339
+  type: 'test'
+  ...
+# Subtest: ordinary fog-off observation still produces event audio and VFX
+ok 79 - ordinary fog-off observation still produces event audio and VFX
+  ---
+  duration_ms: 17.937816
+  type: 'test'
+  ...
+1..79
+# tests 79
+# suites 0
+# pass 79
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4522.216358

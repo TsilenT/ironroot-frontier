@@ -1,0 +1,34 @@
+{
+  "scope": "NEW recovery sanity suite plus explicit on-camera correction to two existing positive-text fixtures; no runtime changes",
+  "newBehaviorTests": 7,
+  "existingFocusedTests": 72,
+  "finalPassed": 79,
+  "finalFailed": 0,
+  "finalSkipped": 0,
+  "provenanceCheck": "Exact three source SHA checks moved out of original eighth test into dated QA script; separately passed.",
+  "aggregateRun": false,
+  "nativePixelsOrPerformanceClaims": false,
+  "modifiedBaselineTests": [
+    "tests/fog-view.test.mjs"
+  ],
+  "newFiles": [
+    "tests/fog-recovery-sanity.test.mjs",
+    "tests/fog-recovery-canvas.mjs"
+  ],
+  "files": {
+    "tests/fog-recovery-sanity.test.mjs": "a6da5d5621ac4897fe0dfe4c743f2df786e48d73dcc23b0fec71ca32feb93ad5",
+    "tests/fog-recovery-canvas.mjs": "1a0c599ac29a0f90f1b98bbdfe688483b5b87299679737a71e59a4119b2f61fd",
+    "tests/fog-view.test.mjs": "6f837156c5778da9beb5b83e4cd7dc93509a52080a31eac3e3c25f4845172f1d",
+    "qa/fog-recovery-2026-11-08/verify-recovered-runtime.mjs": "e6cbb49272008b81dc75cb9192dccbac554dcdf60c3b32ab988582decbaa86de"
+  },
+  "evidence": {
+    "firstExistingRun": "existing-focused.tap",
+    "prior80Run": "final-focused80.tap",
+    "finalFocusedRun": "final-portable79.tap",
+    "sourceIdentityCheck": "source-identity-check.txt",
+    "fixtureCorrection": "label-fixture-correction.patch",
+    "fixtureCorrectionReceipt": "label-fixture-correction.json",
+    "runtimePreflight": "verified-runtime.json"
+  },
+  "command": "node --test --test-concurrency=1 --test-reporter=tap tests/fog-core.test.mjs tests/fog-profile-isolation.test.mjs tests/fog-skirmish-profile.test.mjs tests/fog-view.test.mjs tests/fog-app-integration.test.mjs tests/fog-recovery-sanity.test.mjs"
+}
