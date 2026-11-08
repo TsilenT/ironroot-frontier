@@ -11,7 +11,7 @@ const oldIDs=Object.keys(Phase1Rules);
 
 test('candidate is a distinct frozen fog identity; every existing identity including QA is unchanged',()=>{
  assert.equal(FOG_SKIRMISH_RULESET_ID,'frontier-fog-skirmish-open');assert.notEqual(FOG_SKIRMISH_RULESET_ID,FOG_RULESET_ID);
- assert.deepEqual(Object.keys(RULESETS).filter(id=>id!==FOG_SKIRMISH_RULESET_ID&&id!=='frontier-campaign-shared-crossing'&&id!=='frontier-campaign-one-signal'),oldIDs);
+ assert.deepEqual(Object.keys(RULESETS).filter(id=>id!==FOG_SKIRMISH_RULESET_ID&&id!=='frontier-campaign-shared-crossing'&&id!=='frontier-campaign-one-signal'&&id!=='frontier-campaign-lanterns'),oldIDs);
  const signal=getRuleset('frontier-campaign-one-signal');assert.equal(signal.revision,1);assert.equal(signal.campaignOnly,true);assert.equal(supportsFog(signal),false);assert.deepEqual(mechanics(signal),mechanics(getRuleset('frontier-campaign-citadel-open')));
  for(const id of oldIDs)assert.deepEqual(RULESETS[id],Phase1Rules[id],id+' immutable definition');
  const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID),qa=getRuleset(FOG_RULESET_ID),ordinary=getRuleset(DEFAULT_SKIRMISH_RULESET_ID);
@@ -22,9 +22,9 @@ test('candidate is a distinct frozen fog identity; every existing identity inclu
  assert.throws(()=>{candidate.fog.flyerRadius=999;},TypeError);assert.throws(()=>{candidate.endgame.forcedDecay=true;},TypeError);
 });
 
-test('fog recognition requires exact registry objects, one of two IDs, revision and policy',()=>{
- assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(r=>r.id),[FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID]);
- for(const id of [FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID]){
+test('fog recognition requires exact registry objects, one of three IDs, revision and policy',()=>{
+ assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(r=>r.id),['frontier-campaign-lanterns',FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID]);
+ for(const id of ['frontier-campaign-lanterns',FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID]){
   const r=getRuleset(id);assert.equal(supportsFog(r),true);
   for(const forged of [{...r},Object.freeze({...r}),Object.create(r),{id,revision:1,fog:FOG},{...r,id:'arbitrary-fog'},{...r,revision:2},{...r,fog:{...FOG,policy:'future-fog'}}])assert.equal(supportsFog(forged),false);
  }
