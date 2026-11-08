@@ -11,7 +11,7 @@ const oldIDs=Object.keys(Phase1Rules);
 
 test('candidate is a distinct frozen fog identity; every existing identity including QA is unchanged',()=>{
  assert.equal(FOG_SKIRMISH_RULESET_ID,'frontier-fog-skirmish-open');assert.notEqual(FOG_SKIRMISH_RULESET_ID,FOG_RULESET_ID);
- assert.deepEqual(Object.keys(RULESETS).filter(id=>id!==FOG_SKIRMISH_RULESET_ID),oldIDs);
+ assert.deepEqual(Object.keys(RULESETS).filter(id=>id!==FOG_SKIRMISH_RULESET_ID&&id!=='frontier-campaign-shared-crossing'),oldIDs);
  for(const id of oldIDs)assert.deepEqual(RULESETS[id],Phase1Rules[id],id+' immutable definition');
  const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID),qa=getRuleset(FOG_RULESET_ID),ordinary=getRuleset(DEFAULT_SKIRMISH_RULESET_ID);
  assert.equal(candidate.revision,1);assert.equal(candidate.experimental,true);assert.equal(candidate.skirmishOnly,true);assert.equal(candidate.qaOnly,undefined);assert.equal(qa.qaOnly,true);

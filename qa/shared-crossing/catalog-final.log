@@ -1,0 +1,35 @@
+✔ current briefings retain exact rosters and lists; only the 19 revised historical missions have a records notice (52.061705ms)
+✔ historical revision-one and revision-two descriptors keep their exact briefing without the flight records notice (55.695498ms)
+✔ repeated briefing selection removes old notices and never duplicates the current revision notice (10.462658ms)
+✔ browser expectations require exact mission labels and the complete ordered briefing including notice presence or absence (1.195806ms)
+✔ fresh title, briefing, real start, deck and field guide agree on the two-building opening (253.819108ms)
+✔ opening locked mission clicks cannot launch or charge; hidden expansion cannot bypass engine roster (162.839183ms)
+✔ actual Continue walks the 2 → 5 → 8 opening, records wins once and separates earned rewards from replay (397.747836ms)
+✔ Resume preserves a two-building battle after a later unlock; deliberate replay adopts earned tier (81.792066ms)
+✔ returning main progress keeps full roster; legacy-intro-only records retain stars without skipping new opening (147.894144ms)
+✔ restored legacy main mission retries and replays legacy identity without roster reinterpretation (32.101906ms)
+✔ briefing, scouting and field guide match the launch roster and reject a mismatched scout context (88.18657ms)
+✔ ordinary export uses the live campaign scenario identity and roundtrips lower-tier ongoing saves (300.108104ms)
+✔ ordinary export refuses unsafe stored campaign bytes or unsupported in-memory battle without replacing anything (396.189384ms)
+✔ paid UI commands win all three lessons, restore midbattle, and Continue starts automatic-air Emberwatch (2081.488717ms)
+✔ Story → Chapter → Mission moves focus, folds only new briefings, and keeps a fresh profile unchanged (36.495027ms)
+✔ quick navigation visits all 19 current missions in progression order, without exposing a legacy skip (85.811123ms)
+✔ completed opening replay advertises the earned roster without changing stars, while returning players keep their next mission (159.262006ms)
+✔ legacy lessons remain separate, and their return action goes to the required current opening (33.292475ms)
+✔ mode switches restore their launch button and saved-title return resets a stale Story page to a mission (86.213867ms)
+✔ published revision-one and revision-two descriptors retain frozen v0.15 exact hashes outside reviewed prose (12.537782ms)
+✔ historical flight campaign keeps thirteen explicit immutable revisions after the original opening and Embers (5.342712ms)
+✔ exact revision resolver rejects forged campaignOnly identities and cross-revision targets (39.382171ms)
+✔ flight is earned stage three, while old opening replay identity and historical records remain unchanged (14.695106ms)
+✔ all thirteen historical manual-flight attempts roundtrip battle/history/backup and restart the exact authored identity (421.327174ms)
+✔ protected identities, deadlines and historical progress remain exact under flight revisions (35.22363ms)
+✔ flight route phases survive backup and deterministic continuation without producer retasking (123.82283ms)
+✔ mismatched identities, forbidden old fields and lab schema four reject before storage access (19.353303ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4938.325794

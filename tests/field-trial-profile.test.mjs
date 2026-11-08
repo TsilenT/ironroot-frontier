@@ -43,7 +43,7 @@ const backup = (value = data()) => createBackup(raw(), {createdAt:date, ...value
 // Existing protocol clients are executed from the exact reviewed base source,
 // not modeled by the new implementation with a smaller version argument.
 test('current protocol pins the exact old seven source and retains the legacy default', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 12);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 13);
   assert.equal(protocolSeven.CURRENT_PROFILE_PROTOCOL_VERSION, 7);
   assert.equal(createHash('sha256').update(protocolSevenSource).digest('hex'), protocolSevenHash);
   const r = raw(), p = createProfileSession(() => r, {newEpoch:() => 'default'});
@@ -53,7 +53,7 @@ test('current protocol pins the exact old seven source and retains the legacy de
 });
 
 test('absent and all prior ready markers upgrade alone before any profile domain is accessed', () => {
-  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
+  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) {
     const r = raw([...entries(data(false)), ...(prior === null ? [] : [[MARKER, marker(prior)]])]);
     const before = bytes(r), p = current(r);
     assert.equal(p.status().canWrite, true);
@@ -65,7 +65,7 @@ test('absent and all prior ready markers upgrade alone before any profile domain
     assert.ok(r.calls.every(([, key]) => key === MARKER));
     for (const [key, value] of before) assert.equal(p.storage.getItem(key), value);
     const overview = getCampaignOverview(JSON.parse(p.storage.getItem(K.campaign)));
-    assert.equal(overview.total, 19); assert.equal(overview.maxStars, 57);
+    assert.equal(overview.total, 20); assert.equal(overview.maxStars, 60);
   }
 });
 

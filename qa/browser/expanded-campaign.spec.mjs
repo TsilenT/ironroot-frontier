@@ -60,9 +60,9 @@ test('existing twelve missions and 36 stars remain version 1 and unlock chapter 
   // Re-entering the mode is another render while Chapter 5 stays selected.
   await press(page,'[data-mode="skirmish"]');await press(page,'[data-mode="campaign"]');
   await expectSelectedChapterVisible(page);await expect(page.locator('#campaignMissionTitle')).toHaveText('Open Horizon');
-  await expect(page.locator('[data-chapter]')).toHaveCount(6);
+  await expect(page.locator('[data-chapter]')).toHaveCount(7);
   await expect(page.locator('[data-mission]')).toHaveCount(4);
-  await expect(page.locator('#campaignProgressText')).toHaveText('12/19 missions · 36/57 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('12/20 missions · 36/60 stars');
   await expect(page.locator('#start')).toBeEnabled();
   await press(page,'#start');const fresh=await pause(page);expect(fresh.scenario).toEqual({kind:'campaign',id:'open-horizon',revision:4});expect(fresh.game.rulesetId).toBe('frontier-campaign-air-local');expect(Game.restore(fresh.game).buildings.wardenLodge).toBeTruthy();
   await press(page,'#saveExit');await page.reload();
@@ -94,7 +94,7 @@ test('frontier unlock branches after Open Horizon then converges only after both
     }else if(id==='far-beacon'){
       await chooseMission(page,'common-ground');await expect(page.locator('#start')).toBeEnabled();
     }else{
-      await expect(page.locator('#campaignProgressText')).toContainText('16/19 missions');
+      await expect(page.locator('#campaignProgressText')).toContainText('16/20 missions');
       await expect(page.locator('#campaignChapterStory')).toContainText(CAMPAIGN_CHAPTERS.find(chapter=>chapter.id==='frontier').epilogue);
     }
   }
