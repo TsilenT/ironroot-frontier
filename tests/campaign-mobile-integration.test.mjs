@@ -51,7 +51,7 @@ function harness() {
       querySelectorAll:s=>s==='.build-card'?cards:s==='.coach-highlight'?[...nodes.values()].filter(n=>n.classList.contains('coach-highlight')):[]},
     window:{innerWidth:320,innerHeight:568,listeners:new Map(),addEventListener(type,handler){const handlers=this.listeners.get(type)||[];handlers.push(handler);this.listeners.set(type,handlers);}},getComputedStyle:n=>({visibility:'visible',overflowX:n.clip,overflowY:'visible'}),
     renderer:{width:320,height:250,scale:.32,camera:450,snap:p=>p},
-    updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
+    citadelDialogSafe(){return false;},updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
   };
   c.supportsFog=supportsFog;c.battleView=()=>c.game;c.refreshPresentation=()=>c.game;
   createContext(c);
