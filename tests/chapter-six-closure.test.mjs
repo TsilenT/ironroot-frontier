@@ -11,7 +11,7 @@ import {startupHarness} from './mobile-startup-fixture.mjs';
 
 const chapterId = 'river-compact', river = 'a-river-between-us';
 const ids = ['shared-crossing', 'one-signal-is-enough', 'lanterns-on-the-water', 'borrowed-ground', river];
-const rewards = ['Unlocks One Signal Is Enough', 'Unlocks Lanterns on the Water', 'Unlocks Borrowed Ground', 'Unlocks A River Between Us', 'Completes The River Compact'];
+const rewards = ['Unlocks One Signal Is Enough', 'Unlocks Lanterns on the Water', 'Unlocks Borrowed Ground', 'Unlocks A River Between Us', 'Unlocks False Quiet'];
 const rawBytes = new Map(ids.map(id => [id, JSON.stringify(campaign.getCampaignMission(id))]));
 const chapterBytes = JSON.stringify(campaign.SHARED_CROSSING_CHAPTER);
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -130,7 +130,7 @@ test('the released chapter stays five missions with the exact order, rewards and
     const overview = campaign.getProgressionCampaignOverview(progress);
     const chapter = overview.chapters.find(c => c.id === chapterId);
     assert.deepEqual(overview.missions.filter(m => m.chapterId === chapterId).map(m => m.id), ids);
-    assert.equal(overview.total, 24); assert.equal(overview.maxStars, 72);
+    assert.equal(overview.total, 25); assert.equal(overview.maxStars, 75);
     assert.equal(chapter.total, 5); assert.equal(chapter.maxStars, 15);
     assert.equal(chapter.cleared, index); assert.equal(chapter.completed, false);
     assert.equal(overview.nextMissionId, id);
@@ -140,7 +140,7 @@ test('the released chapter stays five missions with the exact order, rewards and
     progress.missions[id] = {completed:true, stars:1, bestTime:120};
   }
   const final = campaign.getProgressionCampaignOverview(progress), chapter = final.chapters.find(c => c.id === chapterId);
-  assert.equal(final.completed, true); assert.equal(final.nextMissionId, null);
+  assert.equal(final.completed, false); assert.equal(final.nextMissionId, 'false-quiet');
   assert.equal(chapter.completed, true); assert.equal(chapter.cleared, 5);
   assert.equal(chapter.epilogue, CURRENT_RIVER_COMPACT_EPILOGUE);
   assert.match(chapter.epilogue, /lantern-lit banks.*borrowed yard.*crossings and signal fires/);
@@ -182,25 +182,26 @@ for (const [index, id] of ids.entries()) test(`${id} fresh, restart and replay b
   assert.equal(JSON.stringify(raw), rawBytes.get(id));
 });
 
-for (const stars of [1, 3]) test(`finale ${stars}-star result offers Skirmishes and an optional replay without adding a mission`, () => {
+for (const stars of [1, 3]) test(`Chapter 6 ${stars}-star result continues into Chapter 7 and retains optional replay`, () => {
   const h = harness(), {c, $} = h;
   if (stars === 1) { setTime(c.game, 250); c.game.state.bases[0].hp = 1; }
   c.game.state.bases[1].hp = 0;
   assert.equal(finish(h).stars, stars);
-  assert.equal($('playAgain').innerHTML, 'SKIRMISHES <span>→</span>');
-  assert.equal($('replayMission').textContent, 'Replay mission');
-  assert.equal($('replayMission').classList.contains('hidden'), false);
+  assert.equal($('playAgain').innerHTML, 'CONTINUE CAMPAIGN <span>→</span>');
+  assert.equal($('replayMission').textContent, 'Replay for more stars');
+  assert.equal($('replayMission').classList.contains('hidden'), stars === 3);
   assert.equal($('campaignChapterStory').textContent, CURRENT_RIVER_COMPACT_EPILOGUE);
   const records = plain(c.campaignProgress), game = c.game;
   $('playAgain').onclick();
-  assert.equal(c.mode, 'skirmish'); assert.equal(c.started, false); assert.equal(c.game, game);
-  assert.deepEqual(h.uiLog.titles.at(-1), {mode:'skirmish', focusStart:true});
+  assert.equal(c.mode, 'campaign'); assert.equal(c.started, false); assert.equal(c.game, game);
+  assert.deepEqual(h.uiLog.titles.at(-1), {mode:'campaign', focusStart:true});
+  if (stars === 3) { assert.equal(c.selectedCampaign, 'false-quiet'); return; }
   $('replayMission').onclick();
   assert.equal(c.mode, 'campaign'); assert.equal(c.selectedCampaign, river); assert.equal(c.started, false);
   assert.equal(c.briefingRestart.campaign, river);
   assert.equal(c.briefingRestart.game.state.time, 0);
   assert.deepEqual(c.campaignProgress, records);
-  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, river);
+  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, 'false-quiet');
 });
 
 test('current presentation never rewrites published chapter or mission descriptors', () => {
