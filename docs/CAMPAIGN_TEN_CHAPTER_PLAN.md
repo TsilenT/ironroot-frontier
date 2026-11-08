@@ -1,4 +1,4 @@
-> Current development status: Shared Crossing, One Signal Is Enough and Lanterns on the Water are released as Chapter 6’s first three encounters in live v0.24.1 (22 main-path missions / 66 optional stars). Borrowed Ground is the next local prototype, using a twelve-site campaign yard to test keeping, upgrading or replacing inherited defenses against an adaptive opponent. The Last Ascent remains isolated and is not admitted to campaign progression or established as the final difficulty. Remaining encounters below are proposals.
+> Current development status: Shared Crossing, One Signal Is Enough, Lanterns on the Water and Borrowed Ground are released as Chapter 6’s first four encounters in live v0.25.0 (23 main-path missions / 69 optional stars). A River Between Us is the next local prototype, combining a visible command-post assault and cumulative bridge control against an adaptive opponent. Chapter 10 and the Last Ascent remain isolated, unadmitted to progression and expressly excluded from release. Remaining encounters below are proposals.
 
 # Campaign expansion: Chapters 6–10
 
