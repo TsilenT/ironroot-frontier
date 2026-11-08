@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInContext, createContext } from 'node:vm';
-import { BUILDINGS, buildBounds } from '../dist/engine.js';
+import { BUILDINGS, SPELL, buildBounds } from '../dist/engine.js';
 import { createCampaignMission, CAMPAIGN_MISSIONS, isIntroMission, campaignScenarioForGame, getProgressionCampaignOverview, createCampaignProgress } from '../dist/campaign.js';
 import { campaignBuildChoices, campaignTeaching, campaignCoach, guidancePointVisible, drawCampaignGuidance, CAMPAIGN_BUILD_INTRODUCTIONS } from '../dist/campaign-flow.js';
 import { supportsAutonomousAir } from '../dist/autonomous-air.js';
@@ -42,7 +42,7 @@ function harness() {
   $('app').classList.add('protected-compact');$('app').classList.add('protected-mobile');
   $('coachingModal').classList.add('hidden');
   const dialogLayers=[$('welcome'),$('settingsModal')];for(const layer of dialogLayers)layer.classList.add('hidden');
-  c={$,BUILDINGS,buildBounds,supportsAutonomousAir,airBuildingDescription,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
+  c={$,BUILDINGS,SPELL,buildBounds,supportsAutonomousAir,airBuildingDescription,campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,visibleViewportRect,
     battleSession:{status:()=> 'current'},game:createCampaignMission('winter-stores'),currentCampaign:'winter-stores',expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
     viewportPause:{active:false},battleSafetyReason:null,started:true,paused:false,recoveryHold:null,profileGate:null,objectiveOutcome:null,follow:false,padHud:false,
     ui:{build:null,spell:false,selected:null},dialogLayers,inputScope:createInputScopeGuard('compact-battle:portrait'),
