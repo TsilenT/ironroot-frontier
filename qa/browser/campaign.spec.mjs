@@ -130,7 +130,7 @@ test('campaign victory awards stars once and Continue unlocks the next mission',
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Three Roads');
   await expect(page.locator('[data-mission="three-roads"]')).toHaveClass(/active/);
   await expect(page.locator('#start')).toBeEnabled();
-  await expect(page.locator('#campaignProgressText')).toContainText('1/22 missions');
+  await expect(page.locator('#campaignProgressText')).toContainText('1/23 missions');
   await startRunning(page); const save=await pause(page);
   expect(save.scenario).toEqual({kind:'campaign',id:'three-roads',revision:4});
   expect(Game.restore(save.game).buildings.wardenLodge).toBeTruthy();
