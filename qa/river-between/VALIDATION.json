@@ -1,0 +1,121 @@
+{
+  "scope": "Local v0.26.0 candidate; remote CI, merge and publication are separate gates.",
+  "baseCommit": "46b3e17a17d23cd6d3333044e0485ed5d9120979",
+  "baseTree": "4b004c8f4b35a85dc6ecb80b7c70724317c637a6",
+  "mission": "a-river-between-us@1",
+  "ruleset": "frontier-campaign-river-between@1",
+  "map": "classic@1",
+  "version": "0.26.0",
+  "profileProtocol": 17,
+  "node": {
+    "discovered": 1936,
+    "passed": 1935,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "Optional desktop build tooling unavailable",
+    "durationMs": 125749.38369,
+    "scope": "Final stable local aggregate, including preserved publisher tests."
+  },
+  "initialAggregate": {
+    "discovered": 1935,
+    "passed": 1929,
+    "failed": 5,
+    "skipped": 1,
+    "durationMs": 135171.192764,
+    "findings": [
+      "Exact current campaign catalog count including historical intro entries.",
+      "Opening title current campaign total.",
+      "Current citadel ruleset identity list.",
+      "Historical fog fingerprint accidentally included new additive River ruleset.",
+      "Historical Lanterns progress fixture accidentally completed dependent River before Lanterns."
+    ],
+    "disposition": "Narrow fixture corrections; affected six-file rerun 62/62, independent comparison found no removed assertions or changed historical hashes/fixtures. One additional mission test was finalized before final aggregate. Raw logs stay outside source."
+  },
+  "focused": {
+    "control": 7,
+    "mission": 6,
+    "profile": 9,
+    "UI": 11,
+    "profileAndLegacy": 132,
+    "correctedAffectedFixtures": 62,
+    "scope": "Overlapping checks within the aggregate, not extra unique totals."
+  },
+  "syntax": "passed",
+  "runtime": {
+    "files": 58,
+    "bytes": 1148489,
+    "inventory": "qa/river-between/runtime-final.json"
+  },
+  "browserPreflight": "Source, syntax and developer fixture validation passed. No Playwright matrix execution.",
+  "nativeDesktop": {
+    "status": "Passed bounded independent desktop acceptance",
+    "viewport": "1180x757",
+    "scope": "Supported managed preview with synthetic prerequisites and namespaced sessionStorage; production profile untouched.",
+    "checks": [
+      "Briefing, scouting and Field Guide show both goals, named original post and actual roster.",
+      "Fresh paid foundry placement and build cancel work; HUD and Pause rules are readable.",
+      "Restored 84.25-second paid checkpoint has 60/60 banked and live command post; battle and contested bridge ownership continue.",
+      "Same-tab reload resumes saved 01:36 with both objective statuses preserved.",
+      "Ordinary resumed 2x play reached displayed 02:09 compound victory; report showed both 60.0/60 and original post 1/1, both citadels 6000.",
+      "Replay resets goals and camp; restart Cancel retains paused attempt, confirmed restart returns briefing, Back returns Chapter 6, fresh Begin resets correctly."
+    ],
+    "artifacts": "Synthetic screenshots stay outside source in sibling local-evidence/ui.",
+    "limits": "Checkpoint continuation, not full from-zero browser victory. No physical phone/PWA/non-Chromium or full browser matrix."
+  },
+  "paidEvidence": {
+    "formationCount": 1,
+    "seeds": [
+      6501,
+      719,
+      51017
+    ],
+    "policies": 5,
+    "runs": 15,
+    "maxCommandsPerDecision": 1,
+    "decisionSeconds": 5,
+    "northFirstCompoundWins": 3,
+    "crossingsFirstCompoundWins": 2,
+    "crossingsFirstCoreWins": 1,
+    "infantryCoreWins": 3,
+    "northOnly": {
+      "compoundWins": 1,
+      "coreWins": 1,
+      "losses": 1
+    },
+    "idleLosses": 3,
+    "defaultObjectiveTimes": {
+      "northFirst": {
+        "post": 91.75,
+        "control": 117.25
+      },
+      "crossingsFirst": {
+        "post": 130.05,
+        "control": 84.25
+      }
+    },
+    "enemyPaidCommandsRange": [
+      5,
+      15
+    ],
+    "ledgerTolerance": 1e-06,
+    "limits": "Policy names describe intent, not guaranteed objective order on every seed. Feasible routes and separated goals, not human difficulty or optimal balance."
+  },
+  "independentReview": [
+    "docs/RIVER_CONTROL_REVIEW.md",
+    "docs/RIVER_UI_REVIEW.md",
+    "docs/RIVER_SCENARIO_REVIEW.md"
+  ],
+  "preservation": [
+    "Historical ruleset fingerprints and seeded old simulations unchanged.",
+    "New endOnGoal:false applies only to this exact mission identity; old Shared Crossing remains terminal at its goal.",
+    "Marker-only protocol17 retains five profile domains; exact released protocol16 fixture pinned.",
+    "All unlisted remote base paths and automatic deployment files must be retained by sparse overlay.",
+    "Chapter10/LastAscent remains isolated, unadmitted and excluded from release."
+  ],
+  "limits": [
+    "No physical phone/PWA/non-Chromium or full browser matrix.",
+    "No sustained performance, subjective audio or complete screen-reader/controller pass.",
+    "Paid-checkpoint browser continuation is not a full from-zero earned mission.",
+    "No new AI algorithm, fog, bridge income, hidden reserves or required unit."
+  ]
+}
