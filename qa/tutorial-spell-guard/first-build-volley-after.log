@@ -1,0 +1,27 @@
+✔ card cannot replace the first barracks or spend/resume (114.082538ms)
+✔ shared handler cannot replace the first barracks or spend/resume (58.873163ms)
+✔ default shortcut cannot replace the first barracks or spend/resume (48.865615ms)
+✔ remapped shortcut cannot replace the first barracks or spend/resume (45.776598ms)
+✔ controller rally action cannot replace the first barracks or spend/resume (65.223743ms)
+✔ first-build card is immediately disabled with visible and accessible guidance, then resets after placement (60.824983ms)
+✔ no placement retains the hold and a later legal barracks enables a paid cast (63.705855ms)
+✔ invalid territory retains the hold and a later legal barracks enables a paid cast (31.211177ms)
+✔ occupied site retains the hold and a later legal barracks enables a paid cast (30.467879ms)
+✔ unaffordable retains the hold and a later legal barracks enables a paid cast (38.501769ms)
+✔ released entry routes retain remapping, toggle, cancellation, affordability and cooldown checks (51.040474ms)
+✔ arming still respects the paused safety boundary after release (34.451226ms)
+✔ arming still respects the hidden safety boundary after release (28.651442ms)
+✔ arming still respects the viewport safety boundary after release (25.802137ms)
+✔ arming still respects the recovery safety boundary after release (34.011089ms)
+✔ arming still respects the profile safety boundary after release (27.205631ms)
+✔ arming still respects the limit safety boundary after release (28.287802ms)
+✔ arming still respects the coaching dialog safety boundary after release (31.653141ms)
+✔ later planning lessons still allow their ordinary paid volley without releasing teaching (30.975931ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1039.119577
