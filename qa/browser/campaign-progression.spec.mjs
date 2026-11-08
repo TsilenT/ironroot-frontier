@@ -19,7 +19,7 @@ async function seedCheckpoint(page, fixture, progress = fixture.progress) {
 test('fresh campaign exposes two real buildings, a matching guide and no All-buildings bypass', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
-  await expect(page.locator('#campaignProgressText')).toHaveText('0/22 missions · 0/66 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('0/23 missions · 0/69 stars');
   await expect(page.locator('#campaignIntroProgressText')).toContainText('2/8 buildings');
   await expect(page.locator('[data-chapter="first-roads"]')).toHaveCount(0);
   await press(page, '#campaignChapterNav'); await press(page, '[data-mission="shield-at-the-fork"]');

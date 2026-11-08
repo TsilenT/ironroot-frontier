@@ -1,4 +1,4 @@
-> Current development status, 8 November 2026: Shared Crossing is live in v0.22.0 as Chapter 6’s first mission (20 main-path missions / 60 optional stars). One Signal Is Enough is the next local candidate, not yet released. The Last Ascent has an isolated, independently reviewed 80-run prototype and one desktop attempt, but is not admitted to campaign progression or established as the final difficulty. See `qa/last-ascent/ACCEPTANCE.md`. Remaining encounters are proposals.
+> Current development status: Shared Crossing, One Signal Is Enough and Lanterns on the Water are released as Chapter 6’s first three encounters in live v0.24.1 (22 main-path missions / 66 optional stars). Borrowed Ground is the next local prototype, using a twelve-site campaign yard to test keeping, upgrading or replacing inherited defenses against an adaptive opponent. The Last Ascent remains isolated and is not admitted to campaign progression or established as the final difficulty. Remaining encounters below are proposals.
 
 # Campaign expansion: Chapters 6–10
 
@@ -20,7 +20,7 @@ Preserve the existing chapters, earned progress, and the defeat of Vey. Do not b
 
 These are working sizes, not content quotas. Steve explicitly allows 10–15 missions in a chapter where teaching, story, strategic variants and payoffs earn that space; there is no target to pad toward. Cut an encounter if it plays like another with different names. Additional side stories can sit inside a chapter without becoming mandatory filler or permanent stat rewards.
 
-Future missions default to adaptive opponents: the intended direction is 90% or more, not static factories presented as intelligent enemies. The current One Signal candidate replaces its initial fixed test with ordinary economy-respecting adaptive AI. Shared Crossing’s released fixed setup remains an explicit exception, not silently relabeled. Mission-specific AI can have disclosed priorities or reserves, but must spend real resources and respect information. Crossing/converging/diverging roads, five-road or lane-free maps, special campaign units and campaign spells are separate experimental hooks; none is implied implemented by this plan and no single mission needs to contain all of them.
+Future missions default to adaptive opponents: the intended direction is 90% or more, not static factories presented as intelligent enemies. Released One Signal and Lanterns use ordinary economy-respecting adaptive AI. Borrowed Ground follows that approach. Shared Crossing’s released fixed setup remains an explicit exception, not silently relabeled. Mission-specific AI can have disclosed priorities or reserves, but must spend real resources and respect information. Crossing/converging/diverging roads, five-road or lane-free maps, special campaign units and campaign spells are separate experimental hooks; none is implied implemented by this plan and no single mission needs to contain all of them.
 
 | Chapter | Working size | Distinct player problem | Difficulty rhythm / fog |
 | --- | --- | --- | --- |
@@ -178,8 +178,8 @@ The proposed distribution is one of five Chapter 6 missions, two of four Chapter
 ## Implementation order and review gates
 
 1. **Shared Crossing vertical slice**, not a whole chapter dump: one new campaign objective, no fog, ordinary costs and units, explicit persistent ownership. This answers whether control adds a useful decision before committing an arc to it.
-2. **One Signal Is Enough, current candidate:** only if both defended-post strategies are viable and the permitted loss is clearly communicated. Reuse ordinary protected-asset alerts, but update minimum-survivor semantics everywhere. Use adaptive enemy spending rather than the initial fixed-garrison sketch.
-3. **Lanterns on the Water:** one explicit campaign-fog ruleset and mission on Classic, with scouting/objective/HUD isolation and AI symmetry checked. Keep the rest of the campaign unchanged.
+2. **One Signal Is Enough, released:** only if both defended-post strategies are viable and the permitted loss is clearly communicated. Reuse ordinary protected-asset alerts, but update minimum-survivor semantics everywhere. Use adaptive enemy spending rather than the initial fixed-garrison sketch.
+3. **Lanterns on the Water, released:** one explicit campaign-fog ruleset and mission on Classic, with scouting/objective/HUD isolation and AI symmetry checked. Keep the rest of the campaign unchanged.
 4. Author the remaining Chapter 6 encounters after these slices establish which ideas work. Keep the reserve system for Chapter 9, where its trigger must give a real preparation decision rather than adding one more unfamiliar rule to Chapter 6.
 5. **Prototype a Chapter 10 finale early**, before filling Chapters 7–9, to establish a concrete difficulty destination. Then build intermediate missions that teach and combine the decisions needed there. This avoids writing a lot of content whose difficulty leads nowhere.
 

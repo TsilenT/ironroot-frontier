@@ -9,13 +9,14 @@ import { advanceObjectiveBattle } from '../../dist/objectives.js';
 import { CURRENT_PROFILE_PROTOCOL_VERSION } from '../../dist/profile-session.js';
 import { ID, MISSION, priorProfile, sharedCrossingFixtures } from './shared-crossing-fixtures.mjs';
 
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 15);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 16);
 const overview = getProgressionCampaignOverview(createCampaignProgress());
-assert.equal(overview.total, 22); assert.equal(overview.maxStars, 66); assert.equal(overview.chapters.length, 7);
-assert.equal(overview.missions.at(-3).id, ID);
-assert.equal(overview.missions.at(-2).id, 'one-signal-is-enough');
-assert.equal(overview.missions.at(-1).id, 'lanterns-on-the-water');
-assert.equal(overview.chapters.at(-1).total, 3);
+assert.equal(overview.total, 23); assert.equal(overview.maxStars, 69); assert.equal(overview.chapters.length, 7);
+assert.equal(overview.missions.at(-4).id, ID);
+assert.equal(overview.missions.at(-3).id, 'one-signal-is-enough');
+assert.equal(overview.missions.at(-2).id, 'lanterns-on-the-water');
+assert.equal(overview.missions.at(-1).id, 'borrowed-ground');
+assert.equal(overview.chapters.at(-1).total, 4);
 const fixtures = sharedCrossingFixtures();
 assert.deepEqual(sharedCrossingFixtures({ rebuild: true }), fixtures, 'independent paid simulations are deterministic');
 for (const [kind, fixture] of Object.entries(fixtures)) {
