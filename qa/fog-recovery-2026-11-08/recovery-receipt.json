@@ -1,0 +1,147 @@
+{
+  "status": "partial_exact_recovery_only",
+  "pr": 22,
+  "url": "https://github.com/TsilenT/ironroot-frontier/pull/22",
+  "currentHead": "20c57fa69dac330115ed3cd0d9137d224f0b2f42",
+  "draft": true,
+  "main": "f8eec7afb417a2d6616388c524f733e7853e8fa8",
+  "lostManifestSHA256": "173ccb851da37252c67564c8555091574630c386a1a13f82392446f1251aa351",
+  "expectedFullTree": "bf71633e88a322f9766dfee5efbd4eaea61e644f",
+  "expectedFiles": 135,
+  "expectedBytes": 4199702,
+  "verifiedRemoteGroups": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "verifiedGroupTrees": {
+    "0": "085d58485f515abb29a29b9fff005c453ce4753e",
+    "2": "43fa9a37e6c4e3055ae33e14dc2455707cfb8dfa",
+    "3": "aeb7a6130a29ad6bd0f83d575f6673216b4e483f"
+  },
+  "knownFiles": [
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "461d1b64344468a531c32f51e8215850846cb43e",
+      "size": 15083,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/461d1b64344468a531c32f51e8215850846cb43e"
+    },
+    {
+      "path": "dist/fog-view.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ca997b50deb7c53c73ce2ee2119aa987f5434dd",
+      "size": 18915,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/9ca997b50deb7c53c73ce2ee2119aa987f5434dd"
+    },
+    {
+      "path": "dist/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f02bf92109a1f3e7667ccd831c914dd2c818c00",
+      "size": 51562,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/1f02bf92109a1f3e7667ccd831c914dd2c818c00"
+    },
+    {
+      "path": "docs/FOG_ACCEPTANCE_UPDATE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c949c23b5058598026a5a48d61665d00731c429",
+      "size": 5871,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/7c949c23b5058598026a5a48d61665d00731c429"
+    },
+    {
+      "path": "docs/FOG_ACCEPTANCE_UPDATE_2026_11_08.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b552ed7b5e304905fe214cfbf2e39da39aaf6a9f",
+      "size": 14066,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/b552ed7b5e304905fe214cfbf2e39da39aaf6a9f"
+    },
+    {
+      "path": "qa/browser/offline-shell.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec12b5dbdefbc98feaebd9c001b9e3b66bb25e8a",
+      "size": 5450,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/ec12b5dbdefbc98feaebd9c001b9e3b66bb25e8a"
+    },
+    {
+      "path": "qa/browser/service-worker-update.spec.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6de0fe5f27f0c5ec17c21a4d20c87c5f6d8bcd3d",
+      "size": 7179,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/6de0fe5f27f0c5ec17c21a4d20c87c5f6d8bcd3d"
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c9da53967ec79ba8ad48de2b304f7377223c674",
+      "size": 4076,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/8c9da53967ec79ba8ad48de2b304f7377223c674"
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/SHA256SUMS",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab0981b6c2a733971a6ffddb03b9db1db4c4aa62",
+      "size": 15615,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/ab0981b6c2a733971a6ffddb03b9db1db4c4aa62"
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/combined-native-smoke/COMBINED_SOURCE_SMOKE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a50934eaccc12c05c9f38cedeb869c65c3bd4b07",
+      "size": 4438,
+      "url": "https://api.github.com/repos/TsilenT/ironroot-frontier/git/blobs/a50934eaccc12c05c9f38cedeb869c65c3bd4b07"
+    },
+    {
+      "path": "dist/app.js",
+      "sha": "366042f58073878de031c9fbd41b2acba7953ee9",
+      "size": 195067
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/combined-native-smoke/native/01-preserved-detail.jpg",
+      "sha": "c125b00a80b7f11a6d8d50fdeb1ea0eefab9dcda",
+      "size": 54859
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/combined-native-smoke/native/02-known-label-clear.jpg",
+      "sha": "512d37fe8be60877c299cbb5ae984503dff48473",
+      "size": 91324
+    },
+    {
+      "path": "qa/fog-acceptance-update-2026-11-08/combined-native-smoke/native/03-final-title.jpg",
+      "sha": "333d62fcaa297c563298e23b3e7690bbe0365623",
+      "size": 59097
+    }
+  ],
+  "locallyRecovered": [
+    "README.md",
+    "dist/fog-view.js",
+    "dist/index.html",
+    "docs/FOG_ACCEPTANCE_UPDATE.md",
+    "docs/FOG_ACCEPTANCE_UPDATE_2026_11_08.md",
+    "qa/browser/offline-shell.spec.mjs",
+    "qa/browser/service-worker-update.spec.mjs",
+    "qa/fog-acceptance-update-2026-11-08/README.md",
+    "qa/fog-acceptance-update-2026-11-08/SHA256SUMS",
+    "qa/fog-acceptance-update-2026-11-08/combined-native-smoke/COMBINED_SOURCE_SMOKE.md",
+    "dist/app.js"
+  ],
+  "binaryLimitation": "3 known screenshot blobs exist, but connector fetch_blob fails UTF-8 decode. No alternate transport attempted.",
+  "uncertainOperation": "Group7 create_tree retry was interrupted before outcome returned; host became stale; expected group tree hash/payload no longer available. Do not repeat until reconciled.",
+  "group9Status": "Known denied before interruption; retry loop had not reached group9 in observed outputs. Do not assume completed.",
+  "noNewCommitOrRef": true,
+  "blocker": "Exact union/source/evidence/upload files absent after host reset; builder and reviewer found no surviving archive. Recovered subset is not the complete tested candidate.",
+  "next": "Builder to propose a separately reviewed/retested recovery using exact runtime plus existing PR22 source, without claiming lost evidence re-created."
+}

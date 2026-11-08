@@ -12,8 +12,8 @@ function troop(game, x, y = 450, side = 0) {
   const u = { id: game.nextId++, type: 'warrior', side, x, y, lane: 1, hp: 180, maxHp: 180, level: 1, cooldown: 0, attack: 0, flying: false };
   game.state.units.push(u); return u;
 }
-function render(view, width = 390, height = 300) {
-  installCanvas(); const r = makeRenderer(FogRenderer, width, height); r.camera = 1600; r.clampCamera();
+function render(view, width = 390, height = 300, camera = 1600) {
+  installCanvas(); const r = makeRenderer(FogRenderer, width, height); r.camera = camera; r.clampCamera();
   r.canvas.reset(); r.mini.reset(); r.draw(view, ui, .05); return r;
 }
 
@@ -28,7 +28,9 @@ test('façade rejects raw game, has no action closure, and validates paid sites 
 });
 
 test('unknown enemy health remains unknown in HUD and canvas; raw Game cannot render', () => {
-  const game = make(), view = project(game), model = observationHUD(view), r = render(view);
+  const game = make(), view = project(game), model = observationHUD(view), r = render(view, 1180, 466, game.state.bases[1].x);
+  const enemyScreenX = r.worldToScreen(game.state.bases[1].x, game.state.bases[1].y).x;
+  assert.ok(enemyScreenX >= 0 && enemyScreenX <= r.width, 'positive text fixture puts the enemy citadel on-camera');
   assert.equal(model.enemyHP, null); assert.match(model.description, /health unknown/);
   assert.ok(r.canvas.calls.some(c => c[0] === 'fillText' && c[1] === 'HEALTH UNKNOWN'));
   assert.throws(() => r.draw(game, ui, .05), /observation/);
@@ -65,7 +67,9 @@ test('stale structures draw dashed memories without live HP or production; hidde
 test('hidden citadel preserves only a labelled last-seen choice', () => {
   const game = make(), scout = troop(game, 2800); game.state.citadelOptions.sides[1].choice = 'regen'; refreshFog(game);
   scout.x = 800; refreshFog(game); game.state.citadelOptions.sides[1].healedTotal = 999;
-  const r = render(project(game));
+  const r = render(project(game), 1180, 466, game.state.bases[1].x);
+  const enemyScreenX = r.worldToScreen(game.state.bases[1].x, game.state.bases[1].y).x;
+  assert.ok(enemyScreenX >= 0 && enemyScreenX <= r.width, 'positive text fixture puts the enemy citadel on-camera');
   assert.ok(r.canvas.calls.some(c => c[0] === 'fillText' && c[1] === 'LAST SEEN: REGEN'));
   const text = r.canvas.calls.filter(c => c[0] === 'fillText').map(c => c[1]).join(' ');
   assert.doesNotMatch(text, /999|REGEN ·|WAIT/);
