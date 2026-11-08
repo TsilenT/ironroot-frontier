@@ -1,0 +1,50 @@
+Shared Crossing native desktop QA
+Date: 2026-11-08, approximately 09:46-09:52 UTC
+
+Result
+The tested desktop flow passed its bounded navigation, briefing, paid-placement, and same-tab reload checks. The ordinary paid attempt lost at 01:33. No player bridge capture or nonzero supply progress was observed. This is not a claim about human balance or a successful native victory test.
+
+Scope and identity
+Preview: /workspace/shared/ironroot-shared-crossing/preview
+Supported launch: sites-preview start; returned http://127.0.0.1:4173/.
+Fixture receipt: ../preview/FIXTURE_RECEIPT.json.
+Engine SHA-256: 38b21ea9fdb402958f03e0c4c90622c1e1a454dc6c18fd3b1ed5f308a53e7561.
+The fixture explicitly seeds prior campaign completions and muted settings through a namespaced tab sessionStorage adapter. Its title/footer identify it as synthetic QA. The actual app/render/engine were used; the app storage prefix and index title/footer differ from source. The real localStorage profile was not read, imported, cleared, or changed. Reload evidence covers this same-tab synthetic adapter, not real localStorage, cross-tab persistence, or existing-user save migration.
+Native Chromium window 1212 x 886. Native AX was unavailable (X11 fallback only), so testing used documented native input and fresh screenshots. No DOM/DevTools/mobile emulation, production tabs, state injection, network writes, or runtime source edits occurred.
+
+Observed flow
+1. Title opened Chapter 6, The River Compact, mission 1 of 1, Shared Crossing, Ready to play. Main goal displayed any two bridges or enemy citadel destruction; 4:30 limit, 60 total seconds, contested progress pauses, secured time retained, no bridge gold bonus.
+2. Expanded exact rules described 1,100 starting gold; 6,000 HP each citadel; one starting middle Gold mine; six fixed enemy buildings; all eight paid building types; two-second continuous uncontested ground capture; flyers deny but cannot capture; empty ownership persists; no income or capture bounty; both sides capture, only player has supply victory; own citadel must survive.
+3. Scout showed three center outlined capture zones, one friendly middle mine, and two enemy building markers on each road.
+4. Started and immediately paused at 00:00. Pause named Shared Crossing. Expanded Supply crossings said 0.0 of 60 seconds, 0 uncontested bridges owned, 2 required; all roads unowned; retained time, no gold, and map letter legend Y/E/dash/X were present.
+5. Live field showed named NORTH/MIDDLE/SOUTH UNOWNED, GROUND 2s zones. HUD read 0/60s · 0/2 clear, 04:30 remaining. Income was ordinary +7.5/s. The minimap displayed bridge ownership glyphs; later all three were E when enemy-held.
+6. Paid ordinary placements: middle and south Barracks at the forward legal sites, then two middle Foundries and two south Archery ranges in the next two rearward sites. Six placements completed by 00:26. This was native UI timing, not the reference simulation's near-instant build policy. All costs used normal funds.
+7. Pause at 00:26 → Options → browser Alt+Left returned to Pause at the unchanged 00:26. No unintended resume occurred.
+8. Resumed; bought a second mine on the middle road near home at approximately 00:52. Paused, saved and returned to title. Title showed Resume mission · Shared Crossing · 00:52.
+9. Normal browser reload returned to the same Chapter 6 briefing with the same 00:52 Resume entry. Resume and immediate pause showed Shared Crossing at 00:52. Supply panel retained 0.0/60, 0 uncontested, all three roads enemy-owned. Resumed field retained the surviving paid formation, two mines, normal +10/s income, 90% home citadel, enemy 100%, 159 gold, 3 army, 03:38 remaining. One south Archery range had already been destroyed before this checkpoint.
+10. Bought one further middle Archery range. At 01:04, HUD showed 100 gold, +10/s, 2 army, home 80%, enemy 100%, 0/60s · 0/2 clear, 03:26 remaining. Changed speed through the ordinary UI from 1x to 1.5x.
+11. The attempt ended while running. Last battle report explicitly showed Shared Crossing, Defeat, 1:33 battle time. Its identity included frontier-campaign-shared-crossing @ 1 and campaign · shared-crossing @ 1. The report counted 9 player buildings placed (including the starting mine) and 6 enemy buildings, with units defeated 14 player / 26 enemy.
+12. Inspect battlefield confirmed home citadel 0%, enemy 100%, 01:33, 02:57 remaining, Your citadel fell, all three bridges ENEMY HELD, 369 gold, ordinary base +5/s, 0 army. No final nonzero control counter was visible or previously observed.
+13. Returned to title. Began a separate fresh attempt only to test Restart, immediately paused at 00:00, clicked Restart mission, verified its confirmation explaining return to briefing and preserved campaign progress, confirmed, and observed the same Chapter 6 Shared Crossing Ready to play briefing. Final state is safe Title with no running combat.
+
+Counterstate evidence and limits
+At 00:17 all three bridges visibly became ENEMY HELD; 0/60s, 0/2 clear, 678 gold, +7.5/s, 2 army.
+At 00:26 live field: 132 gold, +7.5/s, 5 army, 0/60s, 0/2 clear, 04:04 remaining.
+At 00:37: 219 gold, +7.5/s, 4 army, home 99%, 0/60s, 0/2 clear, 03:53 remaining.
+At 00:43: 266 gold, +7.5/s, 1 army, home 97%, 0/60s, 0/2 clear, 03:47 remaining.
+The native attempt did not establish player capture timing, contested/nonzero accumulated progress retention, control victory, core victory, or deadline behavior. It did observe enemy ownership, idle persistence of enemy-held zones, ordinary income, paid combat/economy, defeat, and the interruption flows above. No physical phone, offline/update, accessibility, sustained performance, audio listening, or balance certification is implied.
+The briefing in this frozen preview still said Unlocks the campaign epilogue; the lead already queued a copy correction after this pass. That future copy is not covered by these screenshots.
+
+Screenshots
+01-shared-crossing-briefing.png: initial Chapter 6 briefing and main goal.
+02-exact-rules.png: funds, roster, deployment and capture rules.
+03-scout-three-capture-zones.png: three center zones and deployment.
+04-paused-supply-rules.png: initial 0.0/60 and unowned roads.
+05-paid-six-building-front.png: paid formation, enemy ownership and HUD.
+06-reload-resume-identity.png: post-reload title with Shared Crossing 00:52 Resume.
+07-restored-control-state.png: restored 00:52 and all enemy-owned roads.
+08-paid-attempt-defeat.png: 1:33 Defeat and bound identity.
+09-ended-battlefield.png: final citadel loss and enemy-held crossings.
+
+Cleanup
+CUA completion summary was sent immediately after final UI outcome. sites-preview stop succeeded; status confirmed stopped. Browser is free for other work and remains at the synthetic Title screen. All evidence is outside public dist.

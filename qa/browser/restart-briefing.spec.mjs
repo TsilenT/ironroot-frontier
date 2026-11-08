@@ -7,6 +7,7 @@ import {reportFixture} from './battle-report-fixtures.mjs';
 import {installPad,padButton} from './map-controller-helpers.mjs';
 import {createProgressionCampaignMission,getCampaignLaunchMission,getProgressionCampaignOverview,evaluateCampaignMission} from '../../dist/campaign.js';
 import {prerequisiteProgress} from './expanded-campaign-fixtures.mjs';
+import {sharedCrossingProgress} from './shared-crossing-fixtures.mjs';
 import {imminentHit} from './campaign-fixtures.mjs';
 import {finishFirstBuild} from './campaign-teaching-helpers.mjs';
 import {encodeBattle,decodeBattle,scenarioForBattle} from '../../dist/battle-codec.js';
@@ -19,7 +20,7 @@ const values=tier=>({[PROGRESS]:JSON.stringify(progressionProfile(tier)),
   'ironroot.settings.v1':JSON.stringify({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low'}),
   'ironroot.history.v1':JSON.stringify([{won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:60,kills:0,built:1,date:'2026-11-06T11:00:00.000Z'}])});
 function currentVictory(id) {
-  const progress=prerequisiteProgress(id),game=createProgressionCampaignMission(id,progress);
+  const progress=id==='shared-crossing'?sharedCrossingProgress():prerequisiteProgress(id),game=createProgressionCampaignMission(id,progress);
   // Explicitly synthetic living combatant; normal fixed-step combat earns the result.
   imminentHit(game,game.state.bases[1]);
   const envelope=encodeBattle(game,scenarioForBattle(null,id,game),{campaignProgress:progress});
@@ -198,7 +199,7 @@ test('native keyboard Restart and held Enter confirm cannot also activate Begin'
 for(const activation of ['keyboard','controller'])test(`current finale offers Skirmish setup and optional three-star Replay via ${activation}`,async({page},info)=>{
   if(activation==='controller')await installPad(page);
   const id=getProgressionCampaignOverview(progressionProfile(3)).missions.at(-1).id;
-  expect(id).toBe('common-ground');expect(id).not.toBe('ironroot');
+  expect(id).toBe('shared-crossing');expect(id).not.toBe('common-ground');
   const fixture=currentVictory(id);expect(fixture.outcome.stars).toBe(3);
   await seedOnce(page,{...values(3),[PROGRESS]:JSON.stringify(fixture.progress),[SAVE]:JSON.stringify(fixture.envelope)});
   await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
@@ -215,13 +216,26 @@ for(const activation of ['keyboard','controller'])test(`current finale offers Sk
   await press(page,'#lastResult');await page.locator('#replayMission').focus();
   if(activation==='keyboard')await page.keyboard.press('Enter');else await padButton(page,0);
   await expect(page.locator('#welcome')).toBeHidden();const replay=await saved(page);
-  expect(replay.scenario.id).toBe(id);expect(replay.scenario.revision).toBe(4);expect(replay.game.state.time).toBe(0);
+  expect(replay.scenario.id).toBe(id);expect(replay.scenario.revision).toBe(1);expect(replay.game.state.time).toBe(0);
   expect(await domains(page)).toEqual(profile);
   // Retire the replay before reload: no old Resume should be manufactured.
   await confirm(page);await briefing(page);await page.reload();
   await expect(page.locator('#skirmishConfig')).toBeVisible();expect(await saved(page)).toBeNull();
-  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignMissionTitle')).toHaveText('Common Ground');
+  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignMissionTitle')).toHaveText('Shared Crossing');
   await expect(page.locator('#start')).toHaveText('REPLAY MISSION →');expect(await domains(page)).toEqual(profile);
+});
+
+test('Common Ground now continues to the Chapter 6 briefing instead of Skirmishes',async({page})=>{
+  const fixture=currentVictory('common-ground');
+  await seedOnce(page,{...values(3),[PROGRESS]:JSON.stringify(fixture.progress),[SAVE]:JSON.stringify(fixture.envelope)});
+  await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
+  await expect(page.locator('#playAgain')).toHaveText('CONTINUE CAMPAIGN →');
+  await expect(page.locator('#replayMission')).toBeHidden();
+  const earned=await domains(page);expect(JSON.parse(earned[PROGRESS]).missions['common-ground'].stars).toBe(3);
+  await press(page,'#playAgain');await expect(page.locator('#campaignMissionTitle')).toHaveText('Shared Crossing');
+  await expect(page.locator('#campaignChapterNav')).toContainText('Chapter 6');
+  await expect(page.locator('#start')).toHaveText('BEGIN MISSION →');await expect(page.locator('#start')).toBeFocused();
+  expect(await saved(page)).toBeNull();expect(await domains(page)).toEqual(earned);
 });
 
 test('Ironroot is an earlier story victory and still continues to Open Horizon',async({page})=>{

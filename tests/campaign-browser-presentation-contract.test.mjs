@@ -36,21 +36,21 @@ function authoredRows(mission) {
   return ['Available here: ' + Object.values(rules.buildings).map(b => b.name).join(', ') + '.', ...mission.briefing];
 }
 
-test('all 19 current briefings retain the exact roster and authored list with one records notice for all 19 current citadel revisions', () => {
+test('current briefings retain exact rosters and lists; only the 19 revised historical missions have a records notice', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
-  assert.equal(missions.length, 19);
+  assert.equal(missions.length, 20);
   let notices = 0;
   for (const mission of missions) {
     const automatic = mission.scenarioRevision >= 3;
-    assert.equal(mission.scenarioRevision, 5, mission.id);
+    assert.equal(mission.scenarioRevision, mission.id === 'shared-crossing' ? 1 : 5, mission.id);
     const rows = renderBriefing(mission);
     assert.deepEqual(rows, [...authoredRows(mission), ...(automatic ? [RECORDS_NOTICE] : [])], mission.id);
     assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, automatic ? 1 : 0, mission.id);
     if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
   assert.equal(notices, 19);
-  assert.equal(missions.length - notices, 0, 'restricted opening rosters also have a new combat revision');
+  assert.equal(missions.length - notices, 1, 'new Shared Crossing has no earlier records revision');
   assert.equal(JSON.stringify(progress), bytes);
 });
 

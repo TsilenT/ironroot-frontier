@@ -2,14 +2,15 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
 import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
-import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
-const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS];
+import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,ALL_CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,SHARED_CROSSING_CHAPTER,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
+const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...ALL_CAMPAIGN_CHAPTERS, SHARED_CROSSING_CHAPTER];
 import {createProtectedObjectiveMonitor,protectedLossDetails} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible} from '../dist/campaign-flow.js';
 import {supportsAutonomousAir} from '../dist/autonomous-air.js';
-import {bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT} from '../dist/bridge-control.js';
+import {bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT} from '../dist/bridge-control.js';
+import {controlProgressLabel,controlProgressDescription,CONTROL_MAP_LEGEND} from '../dist/campaign-control-view.js';
 import {skirmishRulesetId,fogSetupAllowed,observedEnemyCitadelText} from '../dist/citadel-view.js';
 import {airRulesGuide,airBuildingDescription} from '../dist/flight-orders-view.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
@@ -72,7 +73,8 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,briefingRestart:null,
   progressDirty:false,saveTimer:0,updateResume(){},setMode(){},activeDialog:null,writeBattle:()=>true,
-  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},
+  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},
+  controlProgressLabel,controlProgressDescription,CONTROL_MAP_LEGEND,
   supportsFog,observe,observationFacade,observationHUD,ObservationAudio,FogRenderer,fogSetupAllowed,observedEnemyCitadelText,
   fogAudio:new ObservationAudio({ownCommandSounds:false}),fogRenderer:null,presentation:null,presentationGame:null,
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,createObjectiveAlertPolicy,

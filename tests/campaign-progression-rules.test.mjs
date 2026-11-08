@@ -21,8 +21,8 @@ const full=()=>progressThrough('open-three-roads');
 const returning=()=>({...createCampaignProgress(),missions:{emberwatch:{...record}}});
 const envelope=(game,id,progress)=>encodeBattle(game,scenarioForBattle(null,id,game),{campaignProgress:progress});
 
-test('catalog preserves the exact legacy entry points while adding a compact nineteen-mission path',()=>{
-  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,21);
+test('catalog preserves the exact legacy entry points while retaining the compact opening and adding Shared Crossing',()=>{
+  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,22);
   assert.equal(PROGRESSION_CAMPAIGN_MISSIONS.length,16);
   for(const original of CAMPAIGN_MISSIONS){
     assert.equal(getCampaignMission(original.id),original);
@@ -31,7 +31,7 @@ test('catalog preserves the exact legacy entry points while adding a compact nin
     assert.equal(next.rulesetId,'frontier-campaign-open');assert.equal(next.scenarioRevision,2);
   }
   const overview=getProgressionCampaignOverview(createCampaignProgress());
-  assert.equal(overview.total,19);assert.equal(overview.maxStars,57);assert.equal(overview.nextMissionId,'roadside-watch');
+  assert.equal(overview.total,20);assert.equal(overview.maxStars,60);assert.equal(overview.nextMissionId,'roadside-watch');
   assert.equal(overview.legacyIntroduction.total,2);assert.equal(overview.missions.filter(m=>m.unlocked).length,1);
 });
 

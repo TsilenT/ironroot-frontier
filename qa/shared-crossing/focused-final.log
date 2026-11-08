@@ -1,0 +1,40 @@
+✔ new immutable campaign identity is isolated from all published missions, maps and Skirmish economy (5.364662ms)
+✔ only current progression gains the chapter and Common Ground unlock; old progress/star values survive exactly (4.848213ms)
+✔ capture symmetry and ground-only eligibility; air denies either side but never captures (0.880618ms)
+✔ two captures at different sub-tick boundaries count only their overlapping eligible time (0.317869ms)
+✔ any pair qualifies; a third bridge is optional and does not multiply the clock (0.390803ms)
+✔ contested or lost pair pauses without reset, retained empty ownership resumes after an aborted takeover (0.598911ms)
+✔ units are sampled by live actual position, not lane metadata; invalid entities do not capture or deny (0.39987ms)
+✔ actual engine captures, preserves exact resumed time and ordinary income without retroactive credit (45.885269ms)
+✔ terminal control/deadline engine steps freeze exactly without repeated evaluator or accumulator side effects (5.954582ms)
+✔ same-step core destruction outranks control, player core death fails, including simultaneous destruction (2.119958ms)
+✔ campaign-only save extension strictly rejects malformed state and cannot leak under old identities (6.580289ms)
+✔ paid pair routes and uninterrupted vs repeatedly restored runs remain deterministic across seeds (8805.924042ms)
+✔ new mission rejects off-grid and mismatched clocks before they can cross the exact deadline (6.85728ms)
+✔ protocol13 pins the exact prior protocol12 module and retains all storage and format identities (7.84797ms)
+✔ construction upgrades only a ready marker and repeated construction never reads or rewrites earned domains (3.392255ms)
+✔ exact protocol12 open and reopened clients cannot erase new campaign stars, options, history or checkpoints (56.704417ms)
+✔ unfinished and future14 markers are never automatically upgraded or downgraded (60.654698ms)
+✔ failed, uncertain and competing upgrades keep all five domains closed until a fresh verified construction (17.707484ms)
+✔ initial unavailable storage and marker reads cannot become silently writable after access returns (23.738345ms)
+✔ a marker upgrade that throws after writing is accepted only after exact readback (4.663152ms)
+✔ new campaign records and exact scenario identity round-trip without changing campaign, save or backup schemas (23.77069ms)
+✔ valid campaign backup replacement retains five domains and fences stale current pending saves (37.111814ms)
+✔ failed replacement rolls back exact bytes across all five domains while keeping protocol13 fencing (144.444576ms)
+✔ historical v0.7 and v0.9 backups still import under protocol13 without new progress or checkpoint synthesis (63.011161ms)
+✔ control copy distinguishes cumulative progress, contest and completion without payout promises (4.588785ms)
+✔ actual HUD and Pause at 320×430 use control rather than gold, and reset on ordinary play (127.783849ms)
+✔ actual HUD and Pause at 390×650 use control rather than gold, and reset on ordinary play (30.307596ms)
+✔ actual HUD and Pause at 844×390 use control rather than gold, and reset on ordinary play (29.137948ms)
+✔ actual HUD and Pause at 1180×768 use control rather than gold, and reset on ordinary play (23.423985ms)
+✔ shared-crossing briefing and scout map show the real route objective and three capture zones (3.709403ms)
+✔ control render draws three physical capture zones and owner/contest text without color dependence (13.3802ms)
+✔ current chapter list includes the prototype without changing earned legacy totals (3.19103ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9218.27287

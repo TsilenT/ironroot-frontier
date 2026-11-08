@@ -1,7 +1,7 @@
 import { BUILDINGS, UNITS, SPELL, getRuleset, LEGACY_RULESET_ID } from './rulesets.js';
 import { supportsFlightOrders, flightGateHome, flightGateX } from './flight-orders.js';
 import { supportsAutonomousAir, autonomousAirTarget, retainedAirTarget, releaseAirTarget } from './autonomous-air.js';
-import { supportsBridgeControl, createBridgeControl, advanceBridgeControl, bridgeIncome, validateBridgeControl } from './bridge-control.js';
+import { supportsBridgeControl, createBridgeControl, advanceBridgeControl, bridgeIncome, validateBridgeControl, supportsCampaignControl, createCampaignControl, advanceCampaignControl, campaignControlEnded, validateCampaignControl } from './bridge-control.js';
 import { supportsCitadelOptions, createCitadelOptions, canBuyCitadelOption, buyCitadelOption, advanceCitadelRegeneration, chooseAICitadelOption, validateCitadelOptions } from './citadel-options.js';
 import { supportsFog, createFog, refreshFog, observe, isPointVisible, eventAudience, appendFogEffect, decisionSnapshot, validateFog } from './fog.js';
 export { FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID } from './fog.js';
@@ -43,12 +43,14 @@ export class Game {
     });
     const map=this.map;
     if(supportsFog(ruleset)&&(map.id!=='classic'||map.revision!==1||ruleset.endgame.forcedDecay||ruleset.economy.policy!=='legacy'||ruleset.campaignOnly||ruleset.authoredOnly))throw new Error('Experimental fog requires Classic open-ended Skirmish');
+    if(supportsCampaignControl(ruleset)&&(map.id!=='classic'||map.revision!==1))throw new Error('Campaign control requires Classic');
     if(supportsBridgeControl(ruleset)&&!Object.hasOwn(MAPS,map.id))throw new Error('Bridge income requires a Skirmish battlefield');
     if(supportsCitadelOptions(ruleset)&&ruleset.skirmishOnly&&!Object.hasOwn(MAPS,map.id))throw new Error('Citadel choices require a Skirmish battlefield');
     this.difficulty=['easy','normal','hard'].includes(difficulty)?difficulty:'normal';
     this.seed=seed>>>0; this.ai=ai;this.nextId=1;this.aiTimer=this.difficulty==='easy'?7:0;this.accumulator=0;this.tick=0;this.damageQueue=null;
     this.state={time:0,gold:[420,420],income:[5,5],bases:[{id:'base0',type:'base',side:0,hp:6000,maxHp:6000,cooldown:0,x:110,y:450},{id:'base1',type:'base',side:1,hp:6000,maxHp:6000,cooldown:0,x:map.width-110,y:450}],buildings:[],units:[],projectiles:[],effects:[],frontline:map.width/2,winner:null,spellCooldown:[0,0],overtime:false,stats:{kills:[0,0],built:[0,0],damage:[0,0]}};
     if(supportsBridgeControl(ruleset))this.state.bridgeControl=createBridgeControl(map);
+    if(supportsCampaignControl(ruleset))this.state.campaignControl=createCampaignControl(map);
     if(supportsCitadelOptions(ruleset))this.state.citadelOptions=createCitadelOptions();
     if(supportsFog(ruleset))this.state.fog=createFog();
     for(let side=0;side<2;side++)this._place('barracks',worldX(map,side,410),map.lanes[map.startingLane],side);
@@ -131,8 +133,9 @@ export class Game {
   }
   _damage(target,amount,side){if(this.damageQueue){this.damageQueue.push([target,amount,side]);return;}if(target.hp<=0)return;const seen=supportsFog(this.ruleset)&&amount>=target.hp?eventAudience(this,target.x,target.y):undefined;const damage=Math.min(target.hp,amount);target.hp=Math.max(0,target.hp-amount);this.state.stats.damage[side]+=damage;if(damage>0&&target.type==='base'&&supportsCitadelOptions(this.ruleset))this.state.citadelOptions.sides[target.side].lastDamageAt=this.state.time;target.hit=0.16;if(target.hp===0){if(supportsAutonomousAir(this.ruleset))for(const u of this.state.units)if(u.airTargetId===target.id)releaseAirTarget(u);if(this.units[target.type]){this.state.stats.kills[side]++;this.state.gold[side]+=2;}this._effect(target.x,target.y,'death',target.side,0.7,this.units[target.type]?18:52,seen);}}
   _fire(attacker,target,damage,type,citadelExtra=false){const s=this.state;attacker.attack=0.22;this._damage(target,damage,attacker.side);if(type!=='warrior'&&type!=='rootwarden'&&s.projectiles.length<256&&!supportsFog(this.ruleset))s.projectiles.push({x:attacker.x,y:attacker.y,sx:attacker.x,sy:attacker.y,tx:target.x,ty:target.y,side:attacker.side,type,sourceAir:!!this.units[attacker.type]?.flying,targetAir:!!this.units[target.type]?.flying,...(citadelExtra?{citadelExtra:true}:{}),...(supportsFog(this.ruleset)?{fogSeen:eventAudience(this,attacker.x,attacker.y)&eventAudience(this,target.x,target.y)}:{}),life:0.28,maxLife:0.28});else this._effect(target.x,target.y,'hit',attacker.side,0.2,16);}
-  update(dt){if(!Number.isFinite(dt)||dt<=0||this.state.winner!==null)return;const limit=this._limitFor(dt);if(limit)return {ok:false,code:'save-safety-limit',reason:limit};this.accumulator+=Math.min(dt,0.25);while(this.accumulator>=0.05){this._step(0.05);this.accumulator-=0.05;if(this.state.winner!==null)break;}}
+  update(dt){if(!Number.isFinite(dt)||dt<=0||this.state.winner!==null||campaignControlEnded(this))return;const limit=this._limitFor(dt);if(limit)return {ok:false,code:'save-safety-limit',reason:limit};this.accumulator+=Math.min(dt,0.25);while(this.accumulator>=0.05){this._step(0.05);this.accumulator-=0.05;if(this.state.winner!==null||campaignControlEnded(this))break;}}
   _step(dt){
+    if(campaignControlEnded(this))return;
     const s=this.state;this.tick++;this.damageQueue=[];s.time+=dt;s.overtime=s.time>=300;
     const fog=supportsFog(this.ruleset);if(fog)refreshFog(this);
     const contacts=fog?decisionSnapshot(this):null,canSee=(side,e)=>!contacts||contacts[side].has(e.id);
@@ -193,6 +196,13 @@ export class Game {
     if(s.units.length){const left=s.units.filter(u=>u.side===0),right=s.units.filter(u=>u.side===1);const a=left.length?Math.max(...left.map(u=>u.x)):110;const b=right.length?Math.min(...right.map(u=>u.x)):this.map.width-110;s.frontline=clamp((a+b)/2,110,this.map.width-110);}
     if(this.ruleset.endgame.forcedDecay&&s.time>420){for(const b of s.bases)b.hp=Math.max(0,b.hp-dt*(20+(s.time-420)*0.3));}
     if(s.bases[0].hp<=0||s.bases[1].hp<=0){if(s.bases[0].hp===0&&s.bases[1].hp===0)s.winner='draw';else s.winner=s.bases[0].hp<=0?1:0;if(fog)refreshFog(this);return;}
+    if(supportsCampaignControl(this.ruleset)){
+      // Core loss/win above takes precedence on the same tick. Never count after
+      // mission termination, beyond its deadline, or in a rendering/evaluation call.
+      const eligibleDt=Math.min(dt,Math.max(0,this.ruleset.campaignControl.timeLimit-(s.time-dt)));
+      advanceCampaignControl(s.campaignControl,this.map,s.units,eligibleDt,this.units,this.ruleset.campaignControl);
+      if(campaignControlEnded(this))return;
+    }
     if(supportsCitadelOptions(this.ruleset))advanceCitadelRegeneration(this,dt);
     if(fog)refreshFog(this);
     if(this.ai){this.aiTimer-=dt;if(this.aiTimer<=0){this._ai();this.aiTimer=(this.difficulty==='easy'?14:this.difficulty==='hard'?3:5)+this.random()*3;}}
@@ -322,6 +332,13 @@ function validateSave(data){
       num(s.income[side],5,20+share,'bridge-mode total income');
     }
   }else if(Object.hasOwn(s,'bridgeControl'))fail('bridge control is outside this ruleset');
+  if(supportsCampaignControl(ruleset)){
+    // This fixed-tick mission must not admit an off-grid clock that can step
+    // past its deadline. Historical identities retain their exact admission.
+    if(Math.abs(s.time-data.tick*.05)>1e-7)fail('campaign control time does not match tick');
+    validateCampaignControl(s.campaignControl,map,s.time,fail,ruleset.campaignControl);
+  }
+  else if(Object.hasOwn(s,'campaignControl'))fail('campaign control is outside this ruleset');
   if(supportsCitadelOptions(ruleset)){
     if(ruleset.skirmishOnly&&!Object.hasOwn(MAPS,map.id))fail('citadel choices require a Skirmish battlefield');
     validateCitadelOptions(s.citadelOptions,s.time,data.tick,fail);
@@ -388,7 +405,7 @@ export function validateEngineFields(data){
 }
 function strictFields(value,required,optional,fail){if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(k=>!required.includes(k)&&!optional.includes(k))||required.some(k=>!Object.hasOwn(value,k)))fail('unknown field or missing required field');}
 function strictStateFields(s,fail,ruleset){
-  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[])],[],fail);
+  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCampaignControl(ruleset)?['campaignControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[])],[],fail);
   strictFields(s.stats,['kills','built','damage'],[],fail);
   const entity=['id','type','side','hp','maxHp','cooldown','x','y'],flight=supportsFlightOrders(ruleset),autoAir=supportsAutonomousAir(ruleset);
   for(const [name,required,optional] of [

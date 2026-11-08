@@ -1,0 +1,66 @@
+{
+  "base": "772d7d90897b8ad27d48ede574dc62aaacbd77ad",
+  "exactUnchangedFiles": [
+    {
+      "path": "BASELINE_0_10.json",
+      "gitBlob": "13a2b143f720bc3c55c932927f76a41976f10d0a",
+      "sha256": "cb6fac7612498496c4f1e542666dbb83e40eba9c0732a5ccb4b7ffd828083caa"
+    },
+    {
+      "path": "BASELINE_0_11.json",
+      "gitBlob": "8302d19146d97555bba490b57de921bf04e48d00",
+      "sha256": "a60bc0bdd49f474f1689b520a2e7fef7d45730806a9bb34482367c5d1548f1c6"
+    },
+    {
+      "path": "BASELINE_V012_FROZEN.json",
+      "gitBlob": "1b9b32c845841bdfc08e5aa5f308b8f8bdc57012",
+      "sha256": "5c8eeb27e0f1f55bded7808e9af6f54b06e5488b90c88eb2cecd107ab27c403f"
+    },
+    {
+      "path": "QA_REPAIR_VALIDATION.json",
+      "gitBlob": "9fe5e89328fddacce5dc4fb05544a86e225f7dd3",
+      "sha256": "96dc472716940109ba8c2eb00b914e26f28cc9695d7183c4f2a320bbb994ab00"
+    },
+    {
+      "path": "desktop/.gitignore",
+      "gitBlob": "97d3a471129b75d4ee4fd1d94bc33fd22decb8ad",
+      "sha256": "b8fc5e97d9d84500dfb47a45500d76089f6a31f8ebb3a6593f2893c828c29d96"
+    },
+    {
+      "path": "desktop/main.cjs",
+      "gitBlob": "f641227baf25aaada34374bc673e7fdd7601d8d6",
+      "sha256": "8cf2b422f2f89bf2270c10c13cc815f6b6e1417a0a874879d6275136bb21f59c"
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "gitBlob": "2ab9d21f1308bcfc498034b6242e356fb87ac939",
+      "sha256": "d37238d9d9a216fd8aa410877f1a015d0959d866be145c293d11a2e73b9c7fc0"
+    },
+    {
+      "path": "desktop/package.json",
+      "gitBlob": "2590eda0dfcb8f8bc75c79b3f666d17e0ab95523",
+      "sha256": "b4d6e5c3b44e2236750028eccb8a629f75734462f6018b04ab81d559466a83ba"
+    },
+    {
+      "path": "desktop/scripts/stage.mjs",
+      "gitBlob": "022f12274e25904ebf3564536606a1415d417e89",
+      "sha256": "6b933f57de35b7d53d65186f4b081dae6f4db1ffd2e848c54515e5296f45001c"
+    },
+    {
+      "path": "desktop/security.cjs",
+      "gitBlob": "5a1ea923183d07a8cae9bcc4bf2210cbd0cb5701",
+      "sha256": "9f8aa662900be6ba5a72e7a82a36b57c67b82901e340d5073203a2f89b8f3c66"
+    },
+    {
+      "path": "qa/flight-production-engine/outcome-ledger.json",
+      "gitBlob": "6ff62eba6256f3d0e470e227103cd6957d6b44f8",
+      "sha256": "a93da32b6c83b8f1add7db93b72416cd1c9cfc5fe6b7e0c199280f9e9a866a9b",
+      "provenance": "Fetched immutable GitHub blob6ff62eba from private project through authorized read connector; current base overlay leaves this path unchanged."
+    },
+    {
+      "path": "qa/flight-production-engine/validation.json",
+      "gitBlob": "50f0b077b9db9d834f2a9aef389c7c57f899a075",
+      "sha256": "0bceec5d5facab07f8aa93aec228ebcc4cbc6b5e0eddec4da6a7a4b3c9e66f9d"
+    }
+  ]
+}

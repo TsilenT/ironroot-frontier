@@ -29,7 +29,7 @@ test('historical optional lesson descriptors preserve air identity without chang
 test('both optional lessons keep seven expanded building choices, automatic flyers and separate records',()=>{
   const p=campaign.createCampaignProgress();p.missions['first-watch']={completed:true,stars:3,bestTime:60};
   const before=structuredClone(p),overview=campaign.getProgressionCampaignOverview(p);
-  assert.equal(overview.total,19);assert.equal(overview.cleared,0);assert.equal(overview.roster.stage,1);
+  assert.equal(overview.total,20);assert.equal(overview.cleared,0);assert.equal(overview.roster.stage,1);
   assert.equal(overview.legacyIntroduction.cleared,1);assert.equal(overview.legacyIntroduction.stars,3);
   for(const mission of overview.legacyIntroduction.missions){
     const game=campaign.createProgressionCampaignMission(mission.id,p);

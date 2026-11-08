@@ -47,7 +47,7 @@ function uiHarness({ campaignProgress = progress(), width = 390, height = 650 } 
   const storage = createStorage(() => raw);
   Object.assign(c, campaign, {
     CAMPAIGN_MISSIONS: campaign.CAMPAIGN_PROGRESS_MISSIONS,
-    CAMPAIGN_CHAPTERS: [campaign.ONBOARDING_CHAPTER, ...campaign.ALL_CAMPAIGN_CHAPTERS],
+    CAMPAIGN_CHAPTERS: [campaign.ONBOARDING_CHAPTER, ...campaign.ALL_CAMPAIGN_CHAPTERS, campaign.SHARED_CROSSING_CHAPTER],
     getCampaignOverview: campaign.getProgressionCampaignOverview,
     campaignProgress, selectedCampaign: campaign.CAMPAIGN_PROGRESS_MISSIONS[0].id,
     selectedChapter: null, mode: 'campaign', labels: {}, campaignPage: 'mission', briefingMission: null, missionBriefing,
@@ -101,11 +101,11 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   const h = uiHarness(); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'roadside-watch');
   assert.equal(h.$('campaignMissionTitle').textContent, 'Roadside Watch');
-  assert.equal(h.$('campaignCount').textContent, '19');
+  assert.equal(h.$('campaignCount').textContent, '20');
   assert.match(h.$('campaignIntroProgressText').textContent, /2\/8 buildings/);
   assert.equal(h.$('start').disabled, false);
   assert.equal(h.$('skipIntroduction').classList.contains('hidden'), true);
-  assert.deepEqual(h.$('campaignChapters').children.map(node => node.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(chapter => chapter.id)]);
+  assert.deepEqual(h.$('campaignChapters').children.map(node => node.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(chapter => chapter.id), campaign.SHARED_CROSSING_CHAPTER.id]);
   assert.match(h.$('campaignBriefing').innerHTML, /^<li>Available here: Barracks, Archery range\.<\/li>/);
   assert.deepEqual(codexUnits(h), ['warrior', 'archer']);
   assert.deepEqual(codexStructures(h), []);
@@ -360,7 +360,7 @@ test('Story → Chapter → Mission moves focus, folds only new briefings, and k
   assert.equal(h.$('campaignStoryNav').attributes['aria-current'], 'page');
   assert.equal(hidden('campaignChapterNav'), true); assert.equal(hidden('campaignMissionPosition'), true);
   assert.equal(hidden('start'), true); assert.equal(hidden('campaignStoryPage'), false);
-  assert.deepEqual(h.$('campaignChapters').children.map(n => n.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(c => c.id)]);
+  assert.deepEqual(h.$('campaignChapters').children.map(n => n.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(c => c.id), campaign.SHARED_CROSSING_CHAPTER.id]);
   choose('campaignChapters', 'chapter', 'opening-roads');
   assert.equal(h.c.document.activeElement.id, 'campaignChapterTitle');
   assert.equal(h.$('campaignChapterNav').attributes['aria-current'], 'page');

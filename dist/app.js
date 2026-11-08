@@ -8,7 +8,8 @@ import { supportsCitadelOptions, citadelOptionStatus, CITADEL_AI_TEXT } from './
 import { skirmishRulesetId, citadelStatusText, fogSetupAllowed, observedEnemyCitadelText } from './citadel-view.js';
 import { supportsFog, observe } from './fog.js';
 import { FogRenderer, observationFacade, observationHUD, ObservationAudio } from './fog-view.js';
-import { bridgeIncome, bridgeStatus, bridgeSummary, BRIDGE_RULES_TEXT } from './bridge-control.js';
+import { bridgeIncome, bridgeStatus, bridgeSummary, BRIDGE_RULES_TEXT, supportsCampaignControl, campaignControlStatus, CAMPAIGN_CONTROL_RULES_TEXT } from './bridge-control.js';
+import { controlProgressLabel, controlProgressDescription, CONTROL_MAP_LEGEND } from './campaign-control-view.js';
 import { airRulesGuide, airBuildingDescription } from './flight-orders-view.js';
 import {
   GamepadInput,
@@ -74,6 +75,7 @@ import { createObjectiveAlertPolicy } from './objective-alerts.js';
 import {
   ALL_CAMPAIGN_CHAPTERS as LEGACY_CAMPAIGN_CHAPTERS,
   ONBOARDING_CHAPTER,
+  SHARED_CROSSING_CHAPTER,
   CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,
   isIntroMission,
   createCampaignMission,
@@ -93,7 +95,7 @@ import {
   getProgressionCampaignOverview as getCampaignOverview,
   isMissionUnlocked,
 } from './campaign.js';
-const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...LEGACY_CAMPAIGN_CHAPTERS];
+const CAMPAIGN_CHAPTERS = [ONBOARDING_CHAPTER, ...LEGACY_CAMPAIGN_CHAPTERS, SHARED_CROSSING_CHAPTER];
 const $ = (id) => document.getElementById(id);
 const ordinaryRenderer = new Renderer($('battle'), $('minimap'));
 let renderer = ordinaryRenderer, fogRenderer = null;
@@ -2281,12 +2283,15 @@ function updateHUD() {
   const view = battleView(), s = view.state;
   updateCitadelUI();
   const bridgeMode = !!s.bridgeControl;
+  const controlMode = supportsCampaignControl(game.ruleset);
+  const crossing = controlMode ? campaignControlStatus(game) : null;
   $('app').classList.toggle('bridge-income', bridgeMode);
+  $('objectiveProgress').removeAttribute('aria-label');
   const bridgeRate = bridgeMode ? bridgeIncome(game)[0] : 0;
   const bridgeLabel = bridgeMode ? `Bridges +${bridgeRate.toFixed(2)} /s` : '';
-  $('bridgeBattleStatus').classList.toggle('hidden', !bridgeMode);
-  if (bridgeMode) {
-    const status = bridgeSummary(game);
+  $('bridgeBattleStatus').classList.toggle('hidden', !bridgeMode && !controlMode);
+  if (bridgeMode || controlMode) {
+    const status = (controlMode ? controlProgressDescription(crossing) + ' ' : '') + bridgeSummary(game);
     if ($('bridgeBattleStatus').textContent !== status) $('bridgeBattleStatus').textContent = status;
     $('minimap').setAttribute('aria-describedby', 'bridgeBattleStatus');
   } else $('minimap').removeAttribute('aria-describedby');
@@ -2354,7 +2359,9 @@ function updateHUD() {
       currentCampaign && !outcome.completed && !outcome.failed
         ? outcome.objectives
             .map((o) =>
-              o.type === 'destroy'
+              o.type === 'control'
+                ? controlProgressLabel(crossing)
+                : o.type === 'destroy'
                 ? `${o.value}/${o.target} targets`
                 : o.type === 'protect'
                   ? `${o.value}/${o.target} protected`
@@ -2368,6 +2375,7 @@ function updateHUD() {
             )
             .join(' · ')
         : outcome.label;
+    if (controlMode) $('objectiveProgress').setAttribute('aria-label', controlProgressDescription(crossing));
     $('objectiveTime').textContent =
       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
   }
@@ -2937,10 +2945,13 @@ function syncPauseMenu() {
   $('pauseContext').textContent = `${mission ? 'Campaign' : trial ? 'Field trial' : supportsFog(game.ruleset) ? 'Skirmish · Fog' : 'Skirmish'} · ${timeText(game.state.time)} · ${speed}× speed`;
   updateCitadelUI();
   $('pauseObjective').textContent = mission?.objective || trial?.objective || 'Destroy the enemy citadel.';
-  $('pauseBridgeDetails').classList.toggle('hidden', !game.state.bridgeControl);
-  if (game.state.bridgeControl) {
-    $('pauseBridgeStatus').textContent = bridgeSummary(game);
-    $('pauseBridgeRules').textContent = BRIDGE_RULES_TEXT;
+  const controlMode = supportsCampaignControl(game.ruleset);
+  $('pauseBridgeDetails').classList.toggle('hidden', !game.state.bridgeControl && !controlMode);
+  if (game.state.bridgeControl || controlMode) {
+    $('pauseBridgeTitle').textContent = controlMode ? 'Supply crossings' : 'Bridge control · experimental';
+    $('pauseBridgeStatus').textContent = (controlMode ? controlProgressDescription(campaignControlStatus(game)) + ' ' : '') + bridgeSummary(game);
+    $('pauseBridgeRules').textContent = controlMode ? CAMPAIGN_CONTROL_RULES_TEXT : BRIDGE_RULES_TEXT;
+    $('pauseBridgeLegend').textContent = controlMode ? CONTROL_MAP_LEGEND : 'Map labels: Y = you, E = enemy, — = unowned, X = payout blocked. An arrow points to the side attempting a ground capture. Bridges are numbered from the top road.';
   }
   $('restartBattle').textContent = `Restart ${noun}…`;
   $('restartTitle').textContent = `Restart ${noun}?`;
