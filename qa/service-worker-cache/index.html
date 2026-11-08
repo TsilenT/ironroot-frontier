@@ -1,0 +1,48 @@
+<!doctype html><meta charset="utf-8"><title>Ironroot HTTP cache regression</title>
+<style>body{font:16px system-ui;max-width:1000px;margin:24px auto;background:#111;color:#eee}button{font:inherit;padding:12px}pre{white-space:pre-wrap}iframe{width:1px;height:1px;position:absolute;opacity:0;pointer-events:none}</style>
+<h1>Ironroot HTTP cache regression</h1>
+<p>Isolated loopback origin. This compares actual release shells with a warm one-hour HTTP cache. No production profile is accessed or cleared. Run once per fresh browser origin.</p>
+<button id="run">Run warm-cache comparison</button><pre id="status">Ready.</pre>
+<script type="module">
+const status=document.querySelector('#status'), button=document.querySelector('#run');
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const digest=async response=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await response.arrayBuffer())),b=>b.toString(16).padStart(2,'0')).join('');
+async function settled(registration, prior) {
+  const until=performance.now()+30000;
+  while (performance.now()<until) { if(registration.active && registration.active!==prior && registration.active.state==='activated')return;await sleep(50); }
+  throw Error('Changed worker did not activate within 30 seconds.');
+}
+button.onclick=async()=>{
+ button.disabled=true;
+ const results=[];
+ try {
+  const {expected}=await (await fetch('/expected')).json();
+  for(const mode of ['default','reload']){
+   status.textContent=JSON.stringify(results,null,2)+'\nInstalling '+mode+' prior shell...';
+   const scope='/'+mode+'/';
+   // Seed an isolated storage probe only, never game progress or paid state.
+   localStorage.setItem('ironroot-qa-cache-probe', JSON.stringify({mission:'storage-probe', time:7}));
+   const before=localStorage.getItem('ironroot-qa-cache-probe');
+   // Warm the browser HTTP cache independently from CacheStorage installation.
+   for (const file of Object.keys(expected)) await (await fetch(scope+file)).arrayBuffer();
+   const reg=await navigator.serviceWorker.register(scope+'service-worker.js',{scope,updateViaCache:'none'});
+   await settled(reg, null);
+   const prior=reg.active;
+   await fetch(scope+'advance',{method:'POST'});
+   status.textContent=JSON.stringify(results,null,2)+'\nUpdating '+mode+' worker...';
+   const started=performance.now();await reg.update();await settled(reg,prior);
+   const cache=await caches.open('ironroot-qa-'+mode+'-current');
+   const mismatches=[];
+   for (const [file,sha] of Object.entries(expected)) {
+    const response=await cache.match(scope+file);
+    if(!response || await digest(response)!==sha)mismatches.push(file);
+   }
+   const dataPreserved=before===localStorage.getItem('ironroot-qa-cache-probe');
+   results.push({mode,expectedFiles:Object.keys(expected).length,mismatches,dataPreserved,updateMs:Math.round(performance.now()-started)});
+  }
+  const {requests}=await (await fetch('/expected')).json();
+  const result={pass:results[0].mismatches.length>0&&results[1].mismatches.length===0&&results.every(r=>r.dataPreserved),results,currentNetworkFetches:requests.filter(r=>r.phase==='current'&&r.file!=='service-worker.js').map(({mode,file,cacheControl})=>({mode,file,cacheControl}))};
+  status.textContent=JSON.stringify(result,null,2);
+ } catch(error) {status.textContent=JSON.stringify({results,error:String(error)},null,2);}
+};
+</script>

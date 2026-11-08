@@ -66,12 +66,12 @@ function assertBlocked(profile, raw) {
   assert.ok(raw.reads.every(key => key === MARKER), 'barrier must reject before touching a save domain');
 }
 
-// Current expectations intentionally advance to 17. Historical clients are exact
-// source fixtures; the future-marker regression moves to 18, never into support.
-test('protocol17 pins the exact prior protocol12 module and retains all storage and format identities', () => {
+// Current expectations intentionally advance to 18. Historical clients are exact
+// source fixtures; the future-marker regression moves to 19, never into support.
+test('protocol18 pins the exact prior protocol12 module and retains all storage and format identities', () => {
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0210.js', import.meta.url))).digest('hex'), '724cefd400aa4b90d4ba131147730b9441fb8c6d96a494c253ef659eb97d9508');
   assert.equal(protocolTwelve.CURRENT_PROFILE_PROTOCOL_VERSION, 12);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 17);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 18);
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, { campaign: 'ironroot.campaign.v1', trials: 'ironroot.trials.v1', settings: 'ironroot.settings.v1', history: 'ironroot.history.v1', battle: 'ironroot.battle.v1' });
   for (let requiredProtocolVersion = 1; requiredProtocolVersion <= CURRENT_PROFILE_PROTOCOL_VERSION; requiredProtocolVersion++) {
@@ -86,7 +86,7 @@ test('protocol17 pins the exact prior protocol12 module and retains all storage 
 });
 
 test('construction upgrades only a ready marker and repeated construction never reads or rewrites earned domains', () => {
-  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]) {
+  for (const prior of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) {
     // Deliberately opaque bytes prove the marker barrier does not normalize saves.
     const domains = keys.map(key => [key, `  opaque retained ${key} bytes\n`]);
     const raw = backend([...(prior === null ? [] : [[MARKER, marker(prior)]]), ...domains, ['unrelated', 'untouched']]);
@@ -123,7 +123,7 @@ test('exact protocol12 open and reopened clients cannot erase new campaign stars
   assert.deepEqual(parseBackup(createBackup(writer.storage, { createdAt: date })).data, data);
 });
 
-test('unfinished and future18 markers are never automatically upgraded or downgraded', () => {
+test('unfinished and future19 markers are never automatically upgraded or downgraded', () => {
   for (const version of [12, CURRENT_PROFILE_PROTOCOL_VERSION, CURRENT_PROFILE_PROTOCOL_VERSION + 1]) for (const phase of ['ready', 'restoring', 'failed']) {
     if (phase === 'ready' && version <= CURRENT_PROFILE_PROTOCOL_VERSION) continue;
     const raw = backend([[MARKER, marker(version, phase)], ...entries(earned())]), before = [...raw.data], profile = current(raw);
@@ -218,7 +218,7 @@ test('valid campaign backup replacement retains five domains and fences stale cu
   assertBlocked(previous(raw), raw);
 });
 
-test('failed replacement rolls back exact bytes across all five domains while keeping protocol17 fencing', () => {
+test('failed replacement rolls back exact bytes across all five domains while keeping protocol18 fencing', () => {
   const replacement = earned(); replacement.settings.volume = .7; replacement.history = [];
   const text = createBackup(backend(entries(replacement)), { createdAt: date });
   for (const failedKey of keys) for (const fault of ['throw-before', 'throw-after', 'drop']) {
@@ -242,7 +242,7 @@ test('failed replacement rolls back exact bytes across all five domains while ke
   }
 });
 
-test('historical v0.7 and v0.9 backups still import under protocol17 without new progress or checkpoint synthesis', () => {
+test('historical v0.7 and v0.9 backups still import under protocol18 without new progress or checkpoint synthesis', () => {
   for (const fixture of ['backup-v0.7-format.json', 'backup-v0.9-format.json']) {
     const text = readFileSync(new URL(`./fixtures/${fixture}`, import.meta.url), 'utf8'), expected = parseBackup(text);
     const raw = backend([[MARKER, marker(12)], ...entries(earned()), ['unrelated', 'untouched']]), importer = current(raw);

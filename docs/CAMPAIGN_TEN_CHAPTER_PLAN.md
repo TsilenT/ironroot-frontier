@@ -1,4 +1,5 @@
-> Current development status: all five planned Chapter 6 encounters are released in live v0.26.0: Shared Crossing, One Signal Is Enough, Lanterns on the Water, Borrowed Ground and A River Between Us (24 main-path missions / 72 optional stars). The first remains a disclosed fixed deployment; the other four use adaptive, economy-respecting opponents. A bounded presentation-only closure pass is in progress. The planned chapter arc is complete; additional encounters require a distinct worthwhile decision, not a length quota. Chapter 10 and Last Ascent remain isolated, unadmitted to progression and expressly excluded from release. Chapters 7–10 below remain proposals.
+> Current development status: Chapter 6 is complete in v0.26.1. Chapter 7 starts with the reviewed False Quiet candidate: one charted fort, two persisted starting garrisons, selective fog and ordinary paid adaptive opponents (25 main-path missions / 75 optional stars). The rest of Chapters 7–10 remain active planned work, not released content. Last Ascent remains an isolated difficulty prototype, not a progression shortcut.
+
 
 # Campaign expansion: Chapters 6–10
 

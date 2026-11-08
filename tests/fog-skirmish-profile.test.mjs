@@ -212,7 +212,7 @@ test('maximum valid memory is retained exactly without truncation or knowledge s
 test('current protocol changes only marker bytes and fences exact pinned protocol11 stale and reopened writers', () => {
   const source = readFileSync(new URL('./fixtures/profile-session-v0202.js', import.meta.url));
   assert.equal(createHash('sha256').update(source).digest('hex'), '3a008d9e0fae2f1d15929ab888482b67cacb501b6a4141c5109104b30660a64e');
-  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 17);
+  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 18);
   const domains = entries(earned()), raw = backend([[MARKER, marker(11)], ...domains, ['unrelated', 'untouched']]);
   const stale = previous(raw); assert.ok(stale.status().canWrite);
   const writer = current(raw); assert.ok(writer.status().canWrite);

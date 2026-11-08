@@ -1,0 +1,398 @@
+{
+  "scope": "Corrected final formation. Excludes obsolete safe-economy rows in regression/held-out and all superseded files. One paid action/5s including spells for -5s and broad-novice.",
+  "policies": {
+    "air-heavy": {
+      "runs": 12,
+      "wins": 2,
+      "variants": {
+        "ground-heavy": 0,
+        "air-flank": 2
+      },
+      "duration": [
+        110.45,
+        244.4
+      ],
+      "playerSpend": [
+        2205,
+        4066
+      ],
+      "enemySpend": [
+        985,
+        2320
+      ],
+      "playerCasualties": [
+        32,
+        170
+      ],
+      "enemyCasualties": [
+        28,
+        161
+      ],
+      "winningHP": [
+        6000,
+        6000
+      ],
+      "routes": {
+        "player-citadel": 10,
+        "original-fort": 2
+      }
+    },
+    "broad-budget": {
+      "runs": 12,
+      "wins": 12,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 6
+      },
+      "duration": [
+        73.85,
+        154.65
+      ],
+      "playerSpend": [
+        1780,
+        3015
+      ],
+      "enemySpend": [
+        605,
+        1360
+      ],
+      "playerCasualties": [
+        40,
+        134
+      ],
+      "enemyCasualties": [
+        33,
+        68
+      ],
+      "winningHP": [
+        6000,
+        6000
+      ],
+      "routes": {
+        "original-fort": 12
+      }
+    },
+    "broad-novice": {
+      "runs": 12,
+      "wins": 6,
+      "variants": {
+        "ground-heavy": 4,
+        "air-flank": 2
+      },
+      "duration": [
+        125.35,
+        209.7
+      ],
+      "playerSpend": [
+        2415,
+        3200
+      ],
+      "enemySpend": [
+        1175,
+        1850
+      ],
+      "playerCasualties": [
+        80,
+        135
+      ],
+      "enemyCasualties": [
+        55,
+        105
+      ],
+      "winningHP": [
+        708,
+        6000
+      ],
+      "routes": {
+        "player-citadel": 6,
+        "original-fort": 6
+      }
+    },
+    "direct-rush": {
+      "runs": 12,
+      "wins": 12,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 6
+      },
+      "duration": [
+        39.55,
+        69.35
+      ],
+      "playerSpend": [
+        1225,
+        1475
+      ],
+      "enemySpend": [
+        355,
+        570
+      ],
+      "playerCasualties": [
+        14,
+        40
+      ],
+      "enemyCasualties": [
+        8,
+        26
+      ],
+      "winningHP": [
+        5517,
+        6000
+      ],
+      "routes": {
+        "original-fort": 12
+      }
+    },
+    "direct-rush-5s": {
+      "runs": 12,
+      "wins": 12,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 6
+      },
+      "duration": [
+        51.65,
+        87.8
+      ],
+      "playerSpend": [
+        1400,
+        1575
+      ],
+      "enemySpend": [
+        390,
+        735
+      ],
+      "playerCasualties": [
+        14,
+        50
+      ],
+      "enemyCasualties": [
+        15,
+        34
+      ],
+      "winningHP": [
+        5202,
+        6000
+      ],
+      "routes": {
+        "original-fort": 12
+      }
+    },
+    "idle": {
+      "runs": 12,
+      "wins": 0,
+      "variants": {
+        "ground-heavy": 0,
+        "air-flank": 0
+      },
+      "duration": [
+        92.35,
+        98.7
+      ],
+      "playerSpend": [
+        0,
+        0
+      ],
+      "enemySpend": [
+        740,
+        915
+      ],
+      "playerCasualties": [
+        12,
+        17
+      ],
+      "enemyCasualties": [
+        17,
+        26
+      ],
+      "winningHP": [],
+      "routes": {
+        "player-citadel": 12
+      }
+    },
+    "safe-economy": {
+      "runs": 12,
+      "wins": 0,
+      "variants": {
+        "ground-heavy": 0,
+        "air-flank": 0
+      },
+      "duration": [
+        110.7,
+        132.95
+      ],
+      "playerSpend": [
+        2175,
+        2435
+      ],
+      "enemySpend": [
+        835,
+        1190
+      ],
+      "playerCasualties": [
+        28,
+        37
+      ],
+      "enemyCasualties": [
+        30,
+        55
+      ],
+      "winningHP": [],
+      "routes": {
+        "player-citadel": 12
+      }
+    },
+    "scout-adapt": {
+      "runs": 12,
+      "wins": 12,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 6
+      },
+      "duration": [
+        57.15,
+        96.4
+      ],
+      "playerSpend": [
+        1390,
+        1660
+      ],
+      "enemySpend": [
+        530,
+        835
+      ],
+      "playerCasualties": [
+        26,
+        62
+      ],
+      "enemyCasualties": [
+        23,
+        50
+      ],
+      "winningHP": [
+        480,
+        6000
+      ],
+      "routes": {
+        "original-fort": 12
+      }
+    },
+    "scout-adapt-5s": {
+      "runs": 12,
+      "wins": 9,
+      "variants": {
+        "ground-heavy": 5,
+        "air-flank": 4
+      },
+      "duration": [
+        70.25,
+        164.55
+      ],
+      "playerSpend": [
+        1380,
+        2285
+      ],
+      "enemySpend": [
+        605,
+        1525
+      ],
+      "playerCasualties": [
+        23,
+        108
+      ],
+      "enemyCasualties": [
+        21,
+        80
+      ],
+      "winningHP": [
+        183,
+        5874
+      ],
+      "routes": {
+        "original-fort": 9,
+        "player-citadel": 3
+      }
+    },
+    "screened-siege": {
+      "runs": 12,
+      "wins": 12,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 6
+      },
+      "duration": [
+        59.75,
+        88.7
+      ],
+      "playerSpend": [
+        1450,
+        1700
+      ],
+      "enemySpend": [
+        465,
+        785
+      ],
+      "playerCasualties": [
+        31,
+        49
+      ],
+      "enemyCasualties": [
+        25,
+        35
+      ],
+      "winningHP": [
+        5013,
+        6000
+      ],
+      "routes": {
+        "original-fort": 12
+      }
+    },
+    "screened-siege-5s": {
+      "runs": 12,
+      "wins": 7,
+      "variants": {
+        "ground-heavy": 6,
+        "air-flank": 1
+      },
+      "duration": [
+        67.25,
+        170
+      ],
+      "playerSpend": [
+        1485,
+        2355
+      ],
+      "enemySpend": [
+        605,
+        1550
+      ],
+      "playerCasualties": [
+        27,
+        104
+      ],
+      "enemyCasualties": [
+        18,
+        113
+      ],
+      "winningHP": [
+        618,
+        6000
+      ],
+      "routes": {
+        "original-fort": 7,
+        "player-citadel": 5
+      }
+    }
+  },
+  "firstContact": [
+    4.2,
+    6.8
+  ],
+  "firstSight": [
+    2.3,
+    4.55
+  ],
+  "totalRuns": 132,
+  "maxLedgerError": 0
+}
