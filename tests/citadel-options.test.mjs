@@ -17,7 +17,7 @@ function unit(g,side,type='archer',x=210,y=450){g._spawn({type:producers[type],s
 const record=(g,side=0)=>g.state.citadelOptions.sides[side];
 
 test('new immutable identities preserve unit, building, economy and endgame definitions',()=>{
- assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),['frontier-campaign-one-signal','frontier-campaign-shared-crossing',FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
+ assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),['frontier-campaign-lanterns','frontier-campaign-one-signal','frontier-campaign-shared-crossing',FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
  const signal=getRuleset('frontier-campaign-one-signal');assert.equal(signal.revision,1);assert.equal(signal.campaignOnly,true);assert.ok(Object.isFrozen(signal));
  for(const k of ['units','buildings','spell','movement','combat','ai','endgame','economy','citadel','limits'])assert.deepEqual(signal[k],getRuleset('frontier-campaign-citadel-open')[k],`One Signal ${k}`);
  const signalGame=new Game({rulesetId:signal.id,ai:false});assert.deepEqual(Game.restore(signalGame.serialize()).serialize(),signalGame.serialize());

@@ -1,3 +1,4 @@
+import {hasChartedIntelligence,chartedObjectiveTargets} from '../dist/campaign-intelligence.js';
 import {signalProtectionSummary} from '../dist/campaign-presentation.js';
 import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
@@ -15,7 +16,7 @@ import { createInputScopeGuard } from '../dist/input-scope.js';
 const app = readFileSync(new URL('../dist/app.js', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../dist/styles.css', import.meta.url), 'utf8');
-const source = app.slice(app.indexOf('function objectiveFocusTargets()'), app.indexOf('function beginBattleReport('));
+const source = app.slice(app.indexOf('function chartedMission()'), app.indexOf('function beginBattleReport('));
 class Element {
   constructor(tag = 'div') {
     this.tagName = tag.toUpperCase(); this.children = []; this.attributes = {}; this.listeners = {}; this.dataset = {}; this.style = {};
@@ -40,7 +41,7 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
   const dialogLayers = [new Element(),new Element()];
   for(const layer of dialogLayers)layer.classes.add('hidden');
   const context = {
-    campaignScenarioForGame,getCampaignMission,signalProtectionSummary,isProtectedCampaignBuilding,protectedAnnouncementUntil:0,performance:{now:()=>state.now*1000},visibleViewportRect,fitMobileViewport,insetViewportRect,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
+    campaignScenarioForGame,getCampaignMission,hasChartedIntelligence,chartedObjectiveTargets,signalProtectionSummary,isProtectedCampaignBuilding,protectedAnnouncementUntil:0,performance:{now:()=>state.now*1000},visibleViewportRect,fitMobileViewport,insetViewportRect,campaignBuildChoices,expandedBuilds:false,resumedBattle:true,coachEnabled:false,coachingHold:false,firstBuildHold:false,updateCampaignDeck(){},
     getComputedStyle:()=>({paddingTop:'0px',paddingRight:'0px',paddingBottom:'0px',paddingLeft:'0px'}),
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,

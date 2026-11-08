@@ -21,7 +21,9 @@ const values=tier=>({[PROGRESS]:JSON.stringify(progressionProfile(tier)),
   'ironroot.settings.v1':JSON.stringify({sound:false,music:false,sfx:true,volume:.25,reducedMotion:true,quality:'low'}),
   'ironroot.history.v1':JSON.stringify([{won:false,draw:false,challengeId:null,campaignId:null,difficulty:'easy',time:60,kills:0,built:1,date:'2026-11-06T11:00:00.000Z'}])});
 function currentVictory(id) {
-  const progress=id==='one-signal-is-enough'?oneSignalProgress():id==='shared-crossing'?sharedCrossingProgress():prerequisiteProgress(id),game=createProgressionCampaignMission(id,progress);
+  const progress=['one-signal-is-enough','lanterns-on-the-water'].includes(id)?oneSignalProgress():id==='shared-crossing'?sharedCrossingProgress():prerequisiteProgress(id);
+  if(id==='lanterns-on-the-water')progress.missions['one-signal-is-enough']={completed:true,stars:3,bestTime:60};
+  const game=createProgressionCampaignMission(id,progress);
   // Explicitly synthetic living combatant; normal fixed-step combat earns the result.
   imminentHit(game,game.state.bases[1]);
   const envelope=encodeBattle(game,scenarioForBattle(null,id,game),{campaignProgress:progress});
@@ -200,7 +202,7 @@ test('native keyboard Restart and held Enter confirm cannot also activate Begin'
 for(const activation of ['keyboard','controller'])test(`current finale offers Skirmish setup and optional three-star Replay via ${activation}`,async({page},info)=>{
   if(activation==='controller')await installPad(page);
   const id=getProgressionCampaignOverview(progressionProfile(3)).missions.at(-1).id;
-  expect(id).toBe('one-signal-is-enough');expect(id).not.toBe('common-ground');
+  expect(id).toBe('lanterns-on-the-water');expect(id).not.toBe('common-ground');
   const fixture=currentVictory(id);expect(fixture.outcome.stars).toBe(3);
   await seedOnce(page,{...values(3),[PROGRESS]:JSON.stringify(fixture.progress),[SAVE]:JSON.stringify(fixture.envelope)});
   await press(page,'#resumeSaved');await expect(page.locator('#resultTitle')).toHaveText('MISSION COMPLETE');
@@ -216,7 +218,7 @@ for(const activation of ['keyboard','controller'])test(`current finale offers Sk
   await expect(page.locator('#skirmishConfig')).toBeVisible();expect(await saved(page)).toBeNull();
   await press(page,'#lastResult');await page.locator('#replayMission').focus();
   if(activation==='keyboard')await page.keyboard.press('Enter');else await padButton(page,0);
-  await briefing(page);await expect(page.locator('#campaignMissionTitle')).toHaveText('One Signal Is Enough');
+  await briefing(page);await expect(page.locator('#campaignMissionTitle')).toHaveText('Lanterns on the Water');
   await page.waitForTimeout(250);expect(await saved(page)).toBeNull();expect(await domains(page)).toEqual(profile);
   await begin(page);await expect(page.locator('#welcome')).toBeHidden();const replay=await saved(page);
   expect(replay.game).toEqual(createProgressionCampaignMission(id,fixture.progress).serialize());
@@ -225,7 +227,7 @@ for(const activation of ['keyboard','controller'])test(`current finale offers Sk
   // Retire the replay before reload: no old Resume should be manufactured.
   await confirm(page);await briefing(page);await page.reload();
   await expect(page.locator('#skirmishConfig')).toBeVisible();expect(await saved(page)).toBeNull();
-  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignMissionTitle')).toHaveText('One Signal Is Enough');
+  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignMissionTitle')).toHaveText('Lanterns on the Water');
   await expect(page.locator('#start')).toHaveText('REPLAY MISSION →');expect(await domains(page)).toEqual(profile);
 });
 
