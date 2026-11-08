@@ -24,7 +24,7 @@ const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PRO
 const old=r=>protocolEight.createProfileSession(()=>r,{requiredProtocolVersion:8});
 
 test('current protocol advances only the marker and fences real v0.18.1 clients before they erase bridge choice or earned history',()=>{
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,15);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,16);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
   const domains=entries(earned()),r=storage([[MARKER,marker(8)],...domains]),stale=old(r);
   assert.equal(stale.status().canWrite,true);
   const ready=current(r);assert.equal(ready.status().canWrite,true);

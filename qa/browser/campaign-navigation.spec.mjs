@@ -92,7 +92,7 @@ test('quick mission navigation crosses chapters and closes optional details for 
   await expect(page.locator('#campaignConfig')).toHaveJSProperty('scrollTop', 0);
 });
 
-test('all 20 current briefings retain authored rules and prominent mandatory objectives', async ({page}) => {
+test('all current briefings retain authored rules and prominent mandatory objectives', async ({page}) => {
   test.setTimeout(60000); await page.goto('/');
   for (const mission of missions) {
     await expect(page.locator('#campaignMissionTitle')).toHaveText(mission.name);
@@ -125,7 +125,7 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await expect(page.locator('#campaignMissionStatus')).toHaveText('★★★ · Complete');
   await press(page, '#campaignStoryNav');
   await press(page, '.campaign-progress summary');
-  await expect(page.locator('#campaignProgressText')).toHaveText('22/22 missions · 66/66 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('23/23 missions · 69/69 stars');
   await expect(page.locator('#campaignIntroProgressText')).toContainText('8/8 buildings');
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);

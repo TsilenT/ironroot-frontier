@@ -101,7 +101,7 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   const h = uiHarness(); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'roadside-watch');
   assert.equal(h.$('campaignMissionTitle').textContent, 'Roadside Watch');
-  assert.equal(h.$('campaignCount').textContent, '22');
+  assert.equal(h.$('campaignCount').textContent, '23');
   assert.match(h.$('campaignIntroProgressText').textContent, /2\/8 buildings/);
   assert.equal(h.$('start').disabled, false);
   assert.equal(h.$('skipIntroduction').classList.contains('hidden'), true);
@@ -389,7 +389,7 @@ test('Story → Chapter → Mission moves focus, folds only new briefings, and k
   assert.deepEqual([...h.data], before); assert.deepEqual(h.c.game.serialize(), state); assert.deepEqual(h.uiLog.writes, []);
 });
 
-test('quick navigation visits all 19 current missions in progression order, without exposing a legacy skip', () => {
+test('quick navigation visits all current missions in progression order, without exposing a legacy skip', () => {
   const h = uiHarness(); h.c.renderCampaign();
   const overview = campaign.getProgressionCampaignOverview(h.c.campaignProgress), before = [...h.data];
   for (const [index, mission] of overview.missions.entries()) {
