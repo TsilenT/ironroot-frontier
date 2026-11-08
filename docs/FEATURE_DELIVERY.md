@@ -2,9 +2,9 @@
 
 As of 8 November 2026 (UTC). A passing simulation or a branch is not a shipped feature.
 
-## Last verified live v0.20.2
+## Live v0.20.3
 
-Last verified at the 8 November audit of private main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. Released source merge: `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` ([PR #19](https://github.com/TsilenT/ironroot-frontier/pull/19)). Public commit: `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`. The browser build is at https://ironroot.stevets.ai/. All 54 published runtime files match that source; the public repository adds only deployment metadata. The cache is `ironroot-v0.20.2` and the profile protocol is 11.
+The 8 November release handoff identifies v0.20.3 as live at https://ironroot.stevets.ai/, from private main `f8eec7afb417a2d6616388c524f733e7853e8fa8` ([PR #21](https://github.com/TsilenT/ironroot-frontier/pull/21)), tree `92da8b6c80560ad52240890acabcc24d38ff9080`. The cache is `ironroot-v0.20.3` and the profile protocol remains 11. This local documentation reconciliation relies on that handoff and approved source documents, not a fresh remote/deployment check. The v0.21.0 fog working tree is a separate unpublished candidate, described below.
 
 - Campaign starts with three required teaching battles: one, two, then three roads. Victories grow the usable building roster from two to five to eight, with no unlock-bypass toggle.
 - The Rootwarden joins the second teaching battle and remains available in later new campaign attempts. Old saves and restarts keep their original rules and roster.
@@ -25,8 +25,9 @@ Last verified at the 8 November audit of private main `fdbd86c31ec2225009faa572f
 - **Persistent bridge income (PR #16, v0.19.0):** an experimental Skirmish option, off by default. Ground troops capture; ownership lingers after they leave, while opponents contest income. See [BRIDGE_CONTROL.md](BRIDGE_CONTROL.md).
 - **Citadel choices (PRs #17–18, v0.20.0–0.20.1):** eligible Campaign, Field Trial and Skirmish attempts offer one 190-gold Extra Arrow or Regeneration choice. PR #18 removed the original 90-second wait. Regeneration still has an eight-second damage-recovery delay and does not heal instantly. Guided Practice is excluded. See [CITADEL_CHOICES.md](CITADEL_CHOICES.md) and [CITADEL_IMMEDIATE_PURCHASE.md](CITADEL_IMMEDIATE_PURCHASE.md).
 - **First-barracks Volley guard (PR #19, v0.20.2):** Volley cannot replace the required barracks order during forced teaching. A successful paid placement restores ordinary Volley. This narrow guard does not include the held compact-toolbar PR #14. See [TUTORIAL_SPELL_GUARD.md](TUTORIAL_SPELL_GUARD.md).
+- **Longer music (PR #21, v0.20.3):** the 64-bar / 142.22-second four-section score replaces the 16-bar / 35.56-second loop. Hearth, The Road, The Crossing and The Standard develop the theme; priority cues duck only music, and the same 19 SFX sequences/aliases and existing settings remain. The exact original experiment source passed 12 fresh native Chromium PCM cases and 15 live controls. No actual listening assessment was performed. [AUDIO_INTEGRATION_0_20_3.md](AUDIO_INTEGRATION_0_20_3.md) retains pre-release technical evidence and the transition-lookahead caveat; its preparation-time release statements are historical.
 
-The v0.20.2 source gate recorded 1,523 Node passes and one optional tooling skip, 195 focused checks and an independent 19-case review. Head CI, merged CI and Pages deployment passed. Live desktop checks covered the forced first-barracks guard, invalid/paid placement, an actual Volley cast, save/reload and retained progress/settings/history. This is not a new full browser-matrix pass.
+The preceding v0.20.2 release came from source merge `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` and public commit `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`; all 54 runtime files matched that source. Its historical source gate recorded 1,523 Node passes and one optional tooling skip, 195 focused checks and an independent 19-case review. Head CI, merged CI and Pages deployment passed. Live desktop checks covered the forced first-barracks guard, invalid/paid placement, an actual Volley cast, save/reload and retained progress/settings/history. Those results are not a new full browser-matrix pass for the music release or the fog candidate.
 
 Live smoke was desktop. Earlier portrait checks were emulated source QA, not physical-phone evidence. These results do not certify physical phones, installed PWAs, hardware controllers, non-Chromium browsers or the desktop package.
 
@@ -46,18 +47,32 @@ That released source passed **1,280 Node tests / one optional skip** and **1,611
 
 ## Merged follow-up history
 
-Automatic flyers and PR #9 prose shipped in v0.17. The writing-only head `477d529f28da56873ed6461da7a1277c08d349bf` previously passed 1,298 Node and 511 focused browser checks with 13 intentional exclusions; those remain historical stage results, not a separate deployment. [AUTOMATIC_AIR_INTEGRATION.md](AUTOMATIC_AIR_INTEGRATION.md) retains earlier candidate evidence, including its then-pending checks.
+Automatic flyers and PR #9 prose shipped in v0.17.0, from source merge `342d8b594091d323f2c0e92d9a170de0fcbdc2b9` and public commit `b2d3cbb550b929a8813c0a251fb6792bfcc4d59f`. The writing-only head `477d529f28da56873ed6461da7a1277c08d349bf` previously passed 1,298 Node and 511 focused browser checks with 13 intentional exclusions; those remain historical stage results, not a separate deployment. [AUTOMATIC_AIR_INTEGRATION.md](AUTOMATIC_AIR_INTEGRATION.md) retains earlier candidate evidence, including its then-pending checks.
 
 PR #10 merged at `3548031a3e8d8e04c7b81784d6c0fe174b1522fe`. Its opt-in deterministic tests do not change runtime behavior and did not create a game release.
 
 The former keyboard candidate is merged and shipped, as listed above. Full keyboard-only battlefield placement, gamepad remapping and Steam certification remain outside that increment.
 
+## Local fog candidate, not shipped
+
+The v0.21.0 working tree began on released v0.20.2 and now includes the approved PR #20 documentation and PR #21 audio changes from current main. It retains its own `ironroot-v0.21.0` cache/version; no fog PR, merge, deployment or release approval is implied.
+
+- Fog is unchecked by default and session-only in New Skirmish. Only Classic revision 1, open endgame and bridge income off are admitted. Campaign, Field Trials, Guided Practice and existing fog-off combinations retain their rules; earned progress and settings remain preserved.
+- The candidate identity is `frontier-fog-skirmish-open`, revision 1. Profile protocol 12 fences older clients while reusing existing saves/profile formats; the old `frontier-fog-experimental-open` QA identity remains rejected by normal save/history/backup admission. No fog preference or in-progress battle migration is added.
+- Field, minimap, HUD and audio share a detached observation. Remembered buildings expose frozen last-seen information rather than current health/production; unseen enemy citadel health and upgrade remain unknown unless an upgrade was previously observed and explicitly marked last seen.
+- Final combined automated evidence is **1,634 passed, zero failed, one optional skip** (1,635 discovered), with syntax and exact 56-file / 1,081,989-byte runtime closure passing. This is local source validation, not release acceptance.
+- The first native desktop main-app pass covered paid construction/citadel purchase/Volley, basic save/reload/Resume, restart, fog/ordinary switching and displayed settings/progress preservation. Later source changes are not retroactively covered by that pass. The later native dense-memory fixture verified bounded renderer readability and frozen detail transitions; it was synthetic, not a played match or main-app Pause disclosure test.
+- The final bounded paid native attempt on the combined source ended naturally in defeat at 01:18, with zero last-seen enemy buildings. The terminal message was observed, and the six displayed options and rendered campaign totals matched before/after; the reloaded title had Fog unchecked, bridge income off and no unfinished Resume checkpoint. This single weakly defended attempt is not a balance/fairness conclusion. Native nonempty Pause disclosure access and memory save/reload/Resume were not reached and remain unverified.
+- Native mobile/compact validation is blocked. Genuine background-event handling, sustained browser/device performance, offline/update acceptance, terminal reveal/history inspection and relevant input/accessibility hardware remain unverified. Listening and broader gameplay fairness/balance acceptance are also open. A possible long stale-badge/known-citadel-title overlap remains documented and is not claimed fixed.
+
+[FOG_SKIRMISH_INTEGRATION.md](FOG_SKIRMISH_INTEGRATION.md) distinguishes the source/evidence stages and remaining gates. Historical reports retain their original scope and counts.
+
 ## Explicitly unmerged or deferred
 
-- **Longer music:** reviewed for isolated v0.20.3 source integration, based on main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. The exact original experiment source passed 12 fresh native Chromium PCM cases and 15 live controls; no actual listening assessment was performed. See [AUDIO_INTEGRATION_0_20_3.md](AUDIO_INTEGRATION_0_20_3.md). The commit-bound v0.20.2 live baseline, optional fog and held PR #14 remain separate; acceptance/release observations are recorded in that dated report.
-- **Optional fog:** a local prototype/integration is under review, intended as a default-off Skirmish option. It is not shipped; mobile, performance and fairness acceptance remain open.
 - **AI expansion and balance:** earlier selected economy/rush patches are incorporated. Recent support/reserve/ranged-first/tower experiments were rejected without a production change. Broad AI replacement is not selected; a better synthetic result against one opening would not establish overall difficulty or fun.
-- **Compact mobile Volley ([PR #14](https://github.com/TsilenT/ironroot-frontier/pull/14)):** the only open feature PR at this audit, still draft at `cc51c38dacc7f6bfb42d3cf891c09d9997903267`. Its exact CI is green, but two recorded strict pre-Resume history-length failures remain unresolved and later assertions were not reached. It is based on v0.18.1 and must be reconciled with current main and revalidated before release. The shipped tutorial guard is separate.
+- **Compact mobile Volley ([PR #14](https://github.com/TsilenT/ironroot-frontier/pull/14)):** held and unshipped; the 8 November audit recorded its draft head as `cc51c38dacc7f6bfb42d3cf891c09d9997903267`. That audit recorded green exact-head CI, but two recorded strict pre-Resume history-length failures remain unresolved and later assertions were not reached. It is based on v0.18.1 and must be reconciled with current main and revalidated before release. The shipped tutorial guard is separate.
+- **Ward:** unshipped and not included in the live music release or this fog candidate.
+- **Campaign expansion:** Chapter 6 and the ten-chapter design are queued after fog/music work. They are not implemented by this candidate; the existing campaign and progress remain intact.
 - **Citadel research:** the +600-HP reinforcement experiment was not selected. The separate shot/regen/arrows research informed the shipped Extra Arrow/Regeneration choices, but its QA-only branch is retained as evidence, not a pending runtime merge. A Stronger Shot alternative was not selected.
 - **Manual and fixed lane routing:** manual controls were removed in shipped v0.17, following the player’s clarified intent. Fixed-gateway and forced-return prototypes are not selected.
 - **Native desktop/Steam readiness:** packaging, device/input coverage, accessibility and store/business requirements remain open. The game is not advertised as Steam-ready.

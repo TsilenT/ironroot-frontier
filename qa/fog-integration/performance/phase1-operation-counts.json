@@ -1,0 +1,29 @@
+[
+  {
+    "workload": "sparse",
+    "steps": 40,
+    "damageApplications": 0,
+    "lethalApplications": 0,
+    "effectCalls": 0,
+    "freshEffectAudience": 0,
+    "audienceObserverObjectAllocations": 0
+  },
+  {
+    "workload": "crowded_march",
+    "steps": 40,
+    "damageApplications": 0,
+    "lethalApplications": 0,
+    "effectCalls": 0,
+    "freshEffectAudience": 0,
+    "audienceObserverObjectAllocations": 0
+  },
+  {
+    "workload": "crowded_combat",
+    "steps": 40,
+    "damageApplications": 854,
+    "lethalApplications": 47,
+    "effectCalls": 275,
+    "freshEffectAudience": 228,
+    "audienceObserverObjectAllocations": 185509
+  }
+]

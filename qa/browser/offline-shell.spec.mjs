@@ -59,7 +59,7 @@ test('real service-worker cache supports offline nonclassic play save resume fie
     await press(page,'#pause');await expect(page.locator('#pauseVeil')).toBeVisible();
     const saved=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
     expect(saved).toMatchObject({format:'ironroot-save',version:3,scenario:{kind:'skirmish',id:'standard',revision:1}});
-    expect(saved.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-air-local-open',rulesetRevision:1});
+    expect(saved.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-citadel-open',rulesetRevision:1});
     expect(Game.restore(saved.game).map.width).toBe(4000);
     await press(page,'#help');
     await press(page,'#rosterGuideToggle');
@@ -73,7 +73,7 @@ test('real service-worker cache supports offline nonclassic play save resume fie
     expect(again?.fromServiceWorker()).toBe(true);
     await press(page,'#resumeSaved');await press(page,'#pause');
     const resumed=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE);
-    expect(resumed.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-air-local-open',rulesetRevision:1});
+    expect(resumed.game).toMatchObject({version:3,mapId:'long-march',mapRevision:1,rulesetId:'frontier-citadel-open',rulesetRevision:1});
     expect(resumed.game.state.time).toBeGreaterThanOrEqual(saved.game.state.time);
     expect(resumed.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]))
       .toEqual(saved.game.state.buildings.filter(b=>b.side===0).map(b=>[b.type,b.x,b.y,b.level]));

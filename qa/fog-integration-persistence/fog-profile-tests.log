@@ -1,0 +1,25 @@
+✔ supported fog retains existing v3 battle and v2 backup formats with exact identity and both memories (77.591595ms)
+✔ identity-only history cannot pair fog with another map, campaign, trial or lesson (37.413128ms)
+✔ unknown, QA, forged-scenario and raw v3 inputs reject without rewriting input or profile bytes (25.191756ms)
+✔ strict malformed, oversized and recycled knowledge fails before write across save and backup boundaries (79.068513ms)
+✔ non-JSON knowledge never invokes a getter and non-fog identities cannot smuggle fog fields (2.880098ms)
+✔ scenario validation rejects unknown fields and accessors before selection for fog and legacy games (3.638624ms)
+✔ maximum valid memory is retained exactly without truncation or knowledge synthesis (13.77673ms)
+✔ protocol12 changes only marker bytes and fences exact pinned protocol11 stale and reopened writers (7.769262ms)
+✔ protocol12 never rewrites unfinished/future markers and blocks unverifiable upgrades without changing earned data (3.174681ms)
+✔ normal fog save/export preserves every earned byte and preference including true bridge selection (6.317515ms)
+✔ fog backup restore retains both knowledge records, every earned domain and unrelated keys while fencing current stale tabs (29.140987ms)
+✔ failed fog backup replacement rolls back each of five domains exactly and retains protocol12 fencing (34.944667ms)
+✔ fog history uses its immutable identity for deduplication without changing plain rows (1.156121ms)
+✔ restart keeps supported fog identity but resets memory, time, purchases and resources without changing earned data (1.679371ms)
+✔ paid fog citadel checkpoint failure is retryable without a duplicate charge or lost prior save (2.468612ms)
+✔ a stale same-protocol battle slot cannot overwrite a newer fog or ordinary checkpoint (3.487702ms)
+✔ every existing ordinary map/endgame/bridge combination retains its save identity and earned-profile round trip (43.75862ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 526.215451

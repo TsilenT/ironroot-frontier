@@ -1,0 +1,41 @@
+{
+  "scope": "Read-only independent local source/runtime closure; not native or release approval",
+  "manifest_sha256": "c2dc3f4baac0dd180cf8265091d31610335dfda3518cba8a4b0422a94bd5437c",
+  "runtime_manifest_sha256": "0c90a1b86ad601e0bef35a11d549066fa0997fad269fb6627351300de345ab51",
+  "runtime_files": 56,
+  "cache": "ironroot-v0.21.0",
+  "source_files": {
+    "dist/app.js": "07e2b793bac55d8c3a8e564c493904d525871ffcf53f1457d8486143d56280a7",
+    "dist/index.html": "73346a0e4233ba6e591ede1c26acec6b129779934b386ff32da0c35b8a569bdb",
+    "dist/styles.css": "54f948d22f698a372bd087d4d0f1f9ce26056a9054e1bef0b156e8962cfb16c7",
+    "dist/citadel-view.js": "800fabeddd4416d3d8bdf40fd9ec3070dd9d1d56ef5e5775fd5536c62203eb00",
+    "dist/fog-view.js": "7113a4c118585d7472f914ef5ca1a98b369ee61a8945230bf51ce5e6b634b723",
+    "dist/service-worker.js": "5ca4db2db4b23830f1fcee61bd841d869e920aa413143c0ed3bbc40319362cc3",
+    "package.json": "5c7d30331e852561c075715c2658e37b2fed8ec1340b68434c2c9540411b2834",
+    "desktop/package.json": "b4d6e5c3b44e2236750028eccb8a629f75734462f6018b04ab81d559466a83ba",
+    "desktop/package-lock.json": "d37238d9d9a216fd8aa410877f1a015d0959d866be145c293d11a2e73b9c7fc0",
+    "README.md": "a3853db9df6181b4a51715288226d83b0849ce4c6fed447d1482f3828641d376",
+    "docs/FOG_SKIRMISH_INTEGRATION.md": "2be08057807ca65e728a5fe657c63d8b1b49fa948980e19dbbb69dc0d145b737",
+    "tests/fog-app-integration.test.mjs": "a11cf1527b1f55b86817a8debfbb1c93705e0baebdceef9e459a5d0a631e593a",
+    "tests/mobile-startup-fixture.mjs": "077f72a985686bad1e8986d05432d66625140adae33ed2234b1487077e523cc2",
+    "tests/app-ruleset-integration.test.mjs": "6e5b7ffcd7dac70d7ab4f41ec31fd230d8181371ca3aad18af6f6216d6d74dcf",
+    "tests/citadel-immediate.test.mjs": "a9759a325120bd5aa362f3a386372eb52a34d2667a5e8300b87771bd41a462b6",
+    "tests/profile-session.test.mjs": "127d47486a7a19697732a9fbe16791ebe21a48f257e739ebd647e0c8879daa25",
+    "tests/campaign-mobile-integration.test.mjs": "7f1c6f7516469972341b3c717290174b648d2ec11926c2633349b57dcbc3605b",
+    "tests/campaign-ui-polish.test.mjs": "87febe68d4b0ac9a3201670a723487dc7a831e97426da70ce73a0a9c29da1eab",
+    "tests/map-ui.test.mjs": "75ae5a0e666a1490d8de1169596dd0c2947a0945f86440b7ba13d1e9fcc64d2b",
+    "tests/mobile-battlefield-pause.test.mjs": "a1ab5891b233f22e39f81f4d057b3e39f98394ae0db144f10acce7fe81a0561e",
+    "tests/persistence-recovery.test.mjs": "0c3e89353e11257255b1fca0004ba2ce1860d212a69dca1eb7cea68b48cb7492",
+    "tests/protected-objectives-ui.test.mjs": "f8e36f63f116a11915d9a357923dbd0f1d3025ce2091fe7043f0fb05a2987b53"
+  },
+  "all_source_and_evidence_hashes_match": true,
+  "cache_and_runtime_exactly_match": true,
+  "audio_runtime_unchanged_from_phase2": true,
+  "additional_core_persistence_hashes": {
+    "dist/engine.js": "5045c0d3ab142cba0fe6d9466c031d6922dd5a2dff9a64363d3b0c6b6c8a1729",
+    "dist/fog.js": "282748a4d11def874c73b4f9960703454f364da9cffa8603b7fde68a261ff2be",
+    "dist/rulesets.js": "c8e0e2c4e738be79b51b1d5202ece6a936cbfaa22004d9ab1e1e52cb78abf051",
+    "dist/battle-codec.js": "054d751a29e0bfcab2844954b81aafe5c772f543e15c88737ec18eebcdcb4f7d",
+    "dist/profile-session.js": "724cefd400aa4b90d4ba131147730b9441fb8c6d96a494c253ef659eb97d9508"
+  }
+}
