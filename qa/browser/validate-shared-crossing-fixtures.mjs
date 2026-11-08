@@ -9,10 +9,12 @@ import { advanceObjectiveBattle } from '../../dist/objectives.js';
 import { CURRENT_PROFILE_PROTOCOL_VERSION } from '../../dist/profile-session.js';
 import { ID, MISSION, priorProfile, sharedCrossingFixtures } from './shared-crossing-fixtures.mjs';
 
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 13);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 14);
 const overview = getProgressionCampaignOverview(createCampaignProgress());
-assert.equal(overview.total, 20); assert.equal(overview.maxStars, 60); assert.equal(overview.chapters.length, 7);
-assert.equal(overview.missions.at(-1).id, ID);
+assert.equal(overview.total, 21); assert.equal(overview.maxStars, 63); assert.equal(overview.chapters.length, 7);
+assert.equal(overview.missions.at(-2).id, ID);
+assert.equal(overview.missions.at(-1).id, 'one-signal-is-enough');
+assert.equal(overview.chapters.at(-1).total, 2);
 const fixtures = sharedCrossingFixtures();
 assert.deepEqual(sharedCrossingFixtures({ rebuild: true }), fixtures, 'independent paid simulations are deterministic');
 for (const [kind, fixture] of Object.entries(fixtures)) {
@@ -45,7 +47,10 @@ for (const [kind, fixture] of Object.entries(fixtures)) {
     const earned = recordCampaignResult(progress, ID, game);
     for (const [id, record] of Object.entries(progress.missions)) assert.deepEqual(earned.missions[id], record);
     assert.equal(earned.missions[ID].stars, result.stars); assert.equal(earned.missions[ID].bestTime, game.state.time);
-    assert.equal(getProgressionCampaignOverview(earned).completed, true);
+    const continued = getProgressionCampaignOverview(earned);
+    assert.equal(continued.completed, false); assert.equal(continued.nextMissionId, 'one-signal-is-enough');
+    assert.equal(continued.cleared, 20); assert.equal(earned.missions['one-signal-is-enough'], undefined);
+    assert.equal(continued.missions.find(mission => mission.id === 'one-signal-is-enough').unlocked, true);
   } else {
     assert.ok(campaignControlStatus(Game.restore(envelope.game)).seconds >= 12);
     assert.ok(campaignControlStatus(Game.restore(envelope.game)).seconds < 60);

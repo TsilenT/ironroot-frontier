@@ -70,7 +70,7 @@ test('paid checkpoints earn 2 → 5 → 8 in one persistent profile, then Contin
   }
 });
 
-test('newer profile progress does not upgrade a saved two-building battle, while deliberate replay uses eight', async ({ page }) => {
+test('newer profile progress does not upgrade a saved two-building battle, while deliberate Replay uses eight after explicit Begin', async ({ page }) => {
   const fixture = progressionFixture('roadside-watch', { terminal: true, ranged: false }), progress = progressionProfile(2);
   await seedCheckpoint(page, fixture, progress);
   const admitted = decodeBattle(fixture.envelope, { campaignProgress: progress });
@@ -82,7 +82,11 @@ test('newer profile progress does not upgrade a saved two-building battle, while
   // A terminal checkpoint completes before the drawer can be opened. The
   // constructed deck itself still proves which immutable roster was resumed.
   expect(await page.locator('.build-card').evaluateAll(cards => cards.map(card => card.dataset.type))).toEqual(['barracks', 'archery']);
-  await press(page, '#replayMission'); await openBuildControls(page);
+  await press(page, '#replayMission');
+  await expect(page.locator('#welcome')).toBeVisible();
+  await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
+  expect(await page.evaluate(()=>localStorage.getItem('ironroot.battle.v1'))).toBeNull();
+  await press(page,'#start'); await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await expect(page.locator('[data-type="wardenLodge"]')).toBeVisible();
   const replay = await pause(page);

@@ -118,13 +118,13 @@ test('roster policy is isolated/frozen, unknown lesson IDs cannot inherit old th
 
 test('Continue/Back and optional replay retain the same authored mission and do not reset campaign records',()=>{
   const nodes=new Map(),$=id=>{if(!nodes.has(id))nodes.set(id,{classList:{contains:()=>false},focus(){focus.push(id);}});return nodes.get(id);};
-  let starts=0,titles=[];const focus=[],c={$,currentCampaign:'emberwatch',currentChallenge:null,objectiveOutcome:{completed:true,stars:2},mode:'campaign',selectedCampaign:'emberwatch',selectedChapter:'',
+  let starts=0,titles=[],briefings=[];const focus=[],c={$,currentCampaign:'emberwatch',currentChallenge:null,objectiveOutcome:{completed:true,stars:2},mode:'campaign',selectedCampaign:'emberwatch',selectedChapter:'',
     campaignProgress:{...createCampaignProgress(),missions:{emberwatch:{completed:true,stars:3,bestTime:10}}},CAMPAIGN_MISSIONS,isIntroMission,
-    game:createCampaignMission('emberwatch'),campaignScenarioForGame,getCampaignOverview:getProgressionCampaignOverview,battleSession:{remove(){}},showTitle:o=>titles.push(o),start:()=>starts++};
+    game:createCampaignMission('emberwatch'),campaignScenarioForGame,getCampaignOverview:getProgressionCampaignOverview,battleSession:{remove(){}},showTitle:o=>titles.push(o),start:()=>starts++,returnToBriefing:id=>briefings.push(id)};
   const before=JSON.stringify(c.campaignProgress);
   runInContext(section("$('playAgain').onclick", "$('inspectBattle').onclick"),createContext(c));
-  $('replayMission').onclick();assert.equal(starts,1);assert.equal(c.selectedCampaign,'emberwatch');
-  c.objectiveOutcome.stars=3;$('replayMission').onclick();assert.equal(starts,1,'no replay CTA at three stars');
+  $('replayMission').onclick();assert.equal(starts,0);assert.deepEqual(briefings,['resultRestartStatus']);assert.equal(c.selectedCampaign,'emberwatch');
+  c.objectiveOutcome.stars=3;$('replayMission').onclick();assert.equal(starts,0,'no automatic start');assert.equal(briefings.length,1,'no replay CTA at three stars');
   $('playAgain').onclick();assert.equal(c.selectedCampaign,'three-roads');assert.equal(titles.at(-1).focusStart,true);
   $('resultMenu').onclick();assert.equal(titles.at(-1).focusStart,true);
   assert.equal(JSON.stringify(c.campaignProgress),before);

@@ -22,7 +22,10 @@ test('mandatory protection, hold, income and citadel health stay outside the opt
     assert.equal(!!brief.protection, mission.objectives.some(o => o.type === 'protect'), mission.id);
     if (brief.protection) {
       assert.match(brief.protection, /even if you destroy the enemy citadel/);
-      assert.match(brief.protection, /salvaging.*fails.*replacing it does not count/);
+      if (mission.id === 'one-signal-is-enough') {
+        assert.match(brief.protection, /losing the last fails/);
+        assert.match(brief.protection, /cannot be salvaged/);
+      } else assert.match(brief.protection, /salvaging.*fails.*replacing it does not count/);
     }
     for (const objective of mission.objectives) {
       if (objective.type === 'income') assert.ok(brief.facts.some(f => f.includes(`${objective.amount} gold/sec at`)), mission.id);
