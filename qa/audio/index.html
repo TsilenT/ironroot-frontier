@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Long Reach audio lab</title>
+<style>body{font:16px system-ui;max-width:60rem;margin:2rem auto;padding:1rem;background:#182423;color:#eee}button,select{font:inherit;margin:.4rem;padding:.6rem}pre{white-space:pre-wrap}label{display:block}a{color:#bde2cc}</style>
+<h1>The Long Reach — audio lab</h1><p>Isolated original 64-bar prototype. Playback starts with an explicit button. No third-party samples. These diagnostics do not establish sound quality.</p>
+<button id="unlock">Enable audio</button><button id="menu">Menu</button><button id="battle">Battle</button><button id="pause">Pause</button><button id="mute">Mute all</button><button id="unmute">Unmute</button>
+<label>Intensity <input id="intensity" type="range" min="0" max="1" step=".01" value=".25"></label>
+<label>Master volume <input id="volume" type="range" min="0" max="1" step=".01" value=".5"></label>
+<label><input id="music" type="checkbox" checked>Music</label><label><input id="sfx" type="checkbox" checked>Effects</label>
+<button id="warning">Warning cue</button><button id="strike">Rally cue</button><button id="victory">Victory</button><button id="defeat">Defeat</button>
+<label>Signal render <select id="scenario"><option>journey</option><option>battle</option><option>menu</option><option>stress</option><option>cues</option><option>controls</option><option>muted</option><option>zero</option><option>musicOnly</option><option>sfxOnly</option><option>bothOff</option></select></label>
+<button id="render">Render and download WAV</button><button id="destroy">Destroy audio</button><pre id="state"></pre><pre id="result"></pre>
+<script type="module">
+import {GameAudio} from '../../dist/audio.js';
+import {renderScenario} from './render.mjs';
+const audio=new GameAudio({muted:false,volume:.5});
+window.audioLab={audio,renderScenario};
+if(new URLSearchParams(location.search).get('autoplay')==='probe')audio.unlock().then(ok=>window.autoplayResult=ok);
+const bind=(id,fn)=>document.getElementById(id).onclick=fn;
+bind('unlock',()=>audio.unlock());bind('menu',()=>audio.setScene('menu'));bind('battle',()=>audio.setScene('battle'));bind('pause',()=>audio.setScene('paused'));bind('mute',()=>audio.setMuted(true));bind('unmute',()=>audio.setMuted(false));bind('destroy',()=>audio.destroy());
+for(const name of ['warning','strike'])bind(name,()=>audio.play(name));
+for(const name of ['victory','defeat'])bind(name,()=>{audio.setScene(name);audio.play(name);});
+for(const id of ['intensity','volume'])document.getElementById(id).oninput=e=>audio[id==='volume'?'setVolume':'setIntensity'](Number(e.target.value));
+for(const id of ['music','sfx'])document.getElementById(id).onchange=e=>audio[id==='music'?'setMusicEnabled':'setSfxEnabled'](e.target.checked);
+bind('render',async()=>{document.getElementById('result').textContent='Rendering…';document.getElementById('result').textContent=JSON.stringify(await renderScenario(document.getElementById('scenario').value,{exportWav:true}),null,2);});
+setInterval(()=>document.getElementById('state').textContent=JSON.stringify(audio.getState(),null,2),250);
+</script></html>

@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ironroot music technical review</title>
+<style>body{font:16px/1.45 system-ui;background:#13201e;color:#eef5ed;margin:0;padding:24px;max-width:1200px}h1{font-size:26px}button,a{font:inherit;margin:6px 8px 6px 0;padding:12px}button{border:1px solid #bad4c4;border-radius:6px;background:#e7eecf;color:#13201e;cursor:pointer}button:disabled{opacity:.45}a{color:#cee5cd}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1412;padding:18px;font:13px/1.4 monospace;border:1px solid #587064}#status{font-weight:bold}table{border-collapse:collapse;font-size:14px}th,td{border:1px solid #587064;padding:6px;text-align:left}.ok{color:#bff4b7}.fail{color:#ffb1a6}</style></head><body>
+<h1>Ironroot music: technical review</h1>
+<p>Isolated exact 64-bar prototype. These checks measure Web Audio PCM and control behavior. No subjective listening claim. This page never imports profiles, touches saved game data or registers a service worker.</p>
+<p id="identity">Checking exact source hash…</p>
+<button id="offline" disabled>Run full PCM suite</button><button id="live" disabled>Run live control checks</button><button id="export" disabled>Download results JSON</button><a href="./index.html">Original audio lab</a>
+<p id="status" role="status">Preparing…</p><table><thead><tr><th>Case</th><th>Seconds</th><th>Peak</th><th>RMS</th><th>Clipped / invalid</th><th>Peak voices</th><th>Result</th></tr></thead><tbody id="rows"></tbody></table>
+<h2>Live checks</h2><pre id="liveResult">Not run. Click the live button to authorize this test page's AudioContext.</pre>
+<h2>Complete results</h2><pre id="results">No checks run yet.</pre><script type="module" src="./native-review.mjs"></script></body></html>

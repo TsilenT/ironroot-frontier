@@ -1,0 +1,35 @@
+✔ all existing SFX preserve the released v0.20.2 synthesis sequence (9.703953ms)
+✔ cancel-and-hold gain automation preserves independent master and SFX controls (3.294228ms)
+✔ written 64-bar score repeats deterministically with overlapping pad tails at the seam (17.510764ms)
+✔ fresh native PCM evidence belongs to the checked-in exact audio source (1.230552ms)
+✔ music candidate browser cache and desktop metadata share the package version (1.520277ms)
+✔ audio is lazy, muted by default, and unavailable Web Audio is harmless (1.679341ms)
+✔ successful gesture unlock starts one music scheduler (4.539251ms)
+✔ repeating the same scene does not restart the track or timer (2.793822ms)
+✔ master mute, independent music/SFX toggles, and clamped volume work (2.103336ms)
+✔ all sound cues and legacy aliases create valid bounded graphs (4.362511ms)
+✔ SFX burst limiting prevents combat clipping storms (2.994247ms)
+✔ pause and result scenes stop music; resume creates one scheduler (1.110535ms)
+✔ scheduler skips background backlog rather than flooding voices (0.928637ms)
+✔ two full 64-bar cycles retain bounded voices and written development (182.190875ms)
+✔ destroy closes context and makes repeated cleanup and unlock safe (1.700663ms)
+✔ important rally and result cues are not lost in crowded combat (1.248778ms)
+✔ menu-to-battle waits for the downbeat without restarting transport (0.586964ms)
+✔ energy hysteresis and stable frame updates avoid automation churn (0.736393ms)
+✔ priority cues duck only music, preserving the user gain and SFX bus (0.979872ms)
+✔ only the fixed offline origin is trusted (1.197512ms)
+✔ asset resolution rejects traversal, unsupported types, workers and malformed encodings (0.547446ms)
+✔ real asset reads refuse symlink escape, missing files and directories (12.898304ms)
+✔ CSP prohibits remote code, network connections, workers and framing (0.362394ms)
+✔ desktop backup export fails honestly before creating any download side effect (5.325058ms)
+✔ desktop isolation and package safety contracts remain explicit (4.379656ms)
+﹣ installed desktop tooling preserves the scoped minimatch compatibility contracts (0.925292ms) # Optional desktop build dependencies are not installed; run npm ci in desktop/ to include this check.
+✔ main process wires a sandboxed persistent window and denies privileged actions (5.389478ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 318.421167
