@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { Game, MAPS, INTRO_MAPS, RULESETS, buildSites } from '../dist/engine.js';
+import { supportsFog } from '../dist/fog.js';
 import { Game as FrozenGame } from './fixtures/autonomous-air-baseline/engine.js';
 import { RULESETS as FrozenRules } from './fixtures/autonomous-air-baseline/rulesets.js';
 const serialized=g=>JSON.stringify(g.serialize());
@@ -14,7 +15,33 @@ test('frozen live precursor includes unchanged route helpers and all nine rule i
   for(const [file,hash] of Object.entries(hashes))assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/autonomous-air-baseline/'+file,import.meta.url))).digest('hex'),hash);
   for(const [id,rules] of Object.entries(FrozenRules))assert.deepEqual(RULESETS[id],rules);
   const citadelGate='    if(supportsCitadelOptions(this.ruleset)){const choice=chooseAICitadelOption(this,side);if(choice)this.buyCitadelOption(choice,side);}'+'\n';
-  const aiSource=Game.prototype._ai.toString();
+  // Normalize only reviewed, exact fog additions. Every literal must occur once;
+  // unexpected AI edits still fail the unchanged predecessor source oracle below.
+  const fogPrelude=`    const observation=supportsFog(this.ruleset)?observe(this,side):null;
+    const strategyEnemies=observation?[...observation.state.buildings.filter(b=>b.side!==side),...observation.fog.memories]:null;
+`;
+  const fogCitadelGate=`    if(supportsCitadelOptions(this.ruleset)){
+      let choice=null;
+      if(!observation)choice=chooseAICitadelOption(this,side);
+      // Eligibility is an authoritative action guard; the choice uses only own state and contacts.
+      else if(this.canBuyCitadelOption('arrows',side).ok){
+        const ownBase=observation.state.bases[side],record=observation.state.citadelOptions.sides[side];
+        if(observation.state.units.filter(u=>u.side!==side&&u.hp>0&&Math.hypot(u.x-ownBase.x,u.y-ownBase.y)<310).length>=2)choice='arrows';
+        else if(ownBase.maxHp-ownBase.hp>=150&&(record.lastDamageAt===null||this.state.time>=record.lastDamageAt+this.ruleset.citadel.regenDelay-1e-8))choice='regen';
+      }
+      if(choice)this.buyCitadelOption(choice,side);
+    }
+`;
+  const fogTransforms=[
+    ['observation prelude',fogPrelude,''],
+    ['observation-aware citadel choice',fogCitadelGate,citadelGate],
+    ['observed troops',"    const s=observation?{...this.state,units:observation.state.units}:this.state,hard=this.difficulty==='hard',easy=this.difficulty==='easy';","    const s=this.state,hard=this.difficulty==='hard',easy=this.difficulty==='easy';"],
+    ['observed structures',"      const own=s.buildings.filter(b=>b.side===side),enemy=strategyEnemies??s.buildings.filter(b=>b.side!==side);","      const own=s.buildings.filter(b=>b.side===side),enemy=s.buildings.filter(b=>b.side!==side);"]
+  ];
+  let aiSource=Game.prototype._ai.toString();
+  for(const [label,before,after] of fogTransforms){assert.equal(aiSource.split(before).length,2,`exactly one reviewed fog ${label}`);aiSource=aiSource.replace(before,after);}
+  assert.ok(Object.values(FrozenRules).every(r=>!supportsFog(r)),'the observation branches are unreachable in every frozen identity');
+  assert.ok(Object.keys(FrozenRules).every(id=>!supportsFog(RULESETS[id])),'current bindings of frozen identities cannot enable fog');
   assert.equal(aiSource.split(citadelGate).length,2,'exactly one new ruleset-gated citadel purchase precedes ordinary AI spending');
   assert.ok(Object.values(FrozenRules).every(r=>r.citadel===undefined),'the citadel branch is unreachable in every frozen identity');
   assert.equal(aiSource.replace(citadelGate,''),FrozenGame.prototype._ai.toString(),'all ordinary AI source remains exact after removing only the new gated purchase');

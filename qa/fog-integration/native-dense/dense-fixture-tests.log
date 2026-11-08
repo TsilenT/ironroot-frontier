@@ -1,0 +1,32 @@
+✔ real snapped adjacent sites retain all true glyphs and admit only unobscured badges (29.656857ms)
+✔ edge, multi-road and short-field layouts never clip admitted badges or cover later glyphs (1162.455264ms)
+✔ hidden upgrades, damage and sales cannot change badge decisions, text, glyphs, minimap or accessible details (11.241303ms)
+✔ label layout is deterministic without mutating the observation and ignores incoming record order (9.678313ms)
+✖ separate dense QA sequence uses legal sites and preserves hidden-state identity through replacement (30.697438ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1406.803766
+
+✖ failing tests:
+
+test at tests/fog-memory-density.test.mjs:44:1
+✖ separate dense QA sequence uses legal sites and preserves hidden-state identity through replacement (30.697438ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-fog-integration/work/tests/fog-memory-density.test.mjs:48:109)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {Game, RULESETS, getRuleset} from '../dist/engine.js';
+import {Game, RULESETS, getRuleset, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID} from '../dist/engine.js';
 import {CITADEL_OPTIONS, supportsCitadelOptions, citadelOptionStatus, chooseAICitadelOption} from '../dist/citadel-options.js';
 import {encodeBattle, decodeBattle} from '../dist/battle-codec.js';
 const campaignIds=['frontier-campaign-citadel-watch','frontier-campaign-citadel-fork','frontier-campaign-citadel-open','frontier-authored-citadel'];
@@ -17,7 +17,12 @@ function unit(g,side,type='archer',x=210,y=450){g._spawn({type:producers[type],s
 const record=(g,side=0)=>g.state.citadelOptions.sides[side];
 
 test('new immutable identities preserve unit, building, economy and endgame definitions',()=>{
- assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[...campaignIds,...ids]);
+ assert.deepEqual(Object.values(RULESETS).filter(supportsCitadelOptions).map(r=>r.id),[FOG_RULESET_ID,FOG_SKIRMISH_RULESET_ID,...campaignIds,...ids]);
+ const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID);assert.equal(candidate.qaOnly,undefined);assert.equal(candidate.experimental,true);assert.equal(candidate.skirmishOnly,true);assert.equal(candidate.endgame.forcedDecay,false);assert.equal(candidate.economy.policy,'legacy');assert.equal(candidate.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(candidate)&&Object.isFrozen(candidate.fog));
+ const fog=getRuleset(FOG_RULESET_ID);assert.equal(fog.qaOnly,true);assert.equal(fog.experimental,true);assert.equal(fog.skirmishOnly,true);assert.equal(fog.endgame.forcedDecay,false);assert.equal(fog.economy.policy,'legacy');assert.equal(fog.citadel,CITADEL_OPTIONS);assert.ok(Object.isFrozen(fog)&&Object.isFrozen(fog.fog));
+ for(const k of ['units','buildings','spell','movement','endgame','economy','citadel'])assert.deepEqual(fog[k],getRuleset('frontier-citadel-open')[k]);
+ assert.equal(new Game({rulesetId:FOG_RULESET_ID,mapId:'classic'}).map.id,'classic');
+ for(const mapId of ['long-march','twin-span','intro-one-road','intro-two-road'])assert.throws(()=>new Game({rulesetId:FOG_RULESET_ID,mapId}),/fog requires Classic/);
  assert.deepEqual(CITADEL_OPTIONS,{policy:'citadel-choice-v1',cost:190,extraDamageMultiplier:.5,regenRate:3,regenDelay:8});
  for(const id of ids){const g=new Game({rulesetId:id}),off=getRuleset(id.includes('bridge')?id.replace('citadel-',''):id.replace('citadel','air-local'));
   assert.equal(g.ruleset.skirmishOnly,true);assert.ok(Object.isFrozen(g.ruleset));assert.ok(Object.isFrozen(g.ruleset.citadel));

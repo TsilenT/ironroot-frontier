@@ -1,0 +1,67 @@
+✔ actual setup starts unchecked and never persists the fog choice; incompatible combinations cannot claim or write (54.155619ms)
+✔ actual supported setup locks incompatible controls without rewriting choices; live identity does not follow checkbox (35.68655ms)
+✔ all ordinary map/endgame/bridge combinations retain existing identity, settings and stock renderer (283.378797ms)
+✔ actual HUD, aria, citadel dialog, Front, field, minimap and music ignore hidden opponent changes (45.374386ms)
+✔ current enemy HP/choice turns unknown on sight loss without carrying timers or old aria (77.200405ms)
+✔ own citadel remains honestly purchasable with unseen enemy HP and pays once through actual modal handler (23.876541ms)
+✔ actual paid command rejects hidden/lost-sight Volley, keeps invalid build free, and spends valid cost once (23.115719ms)
+✔ fog command sounds occur once; paused and off-camera events are consumed rather than replayed (23.186353ms)
+✔ fog restore preserves knowledge while restart resets it and renderer switches clear transient consumers (64.355054ms)
+✔ a live journal cannot reveal full information; completed report identifies fog context (1.855421ms)
+✔ fog setup cannot override unsupported or pending fullscreen availability (8.523797ms)
+✔ actual frame follow cannot move ended ordinary, fog, or authored-objective battles (51.954572ms)
+✔ actual upgrade and sale obey pause, refresh observation and avoid duplicate fog command audio (41.565971ms)
+✔ Help and Options close preserve pause after blur/hidden/page departure, but normal close still resumes (140.197829ms)
+✔ one actual paused frame shares one detached observation across HUD, field/minimap and audio (92.388869ms)
+✔ actual Resume, history and backup preview labels derive Fog from identity and preview does not write (51.33721ms)
+✔ synthetic sequence distinguishes unseen, current, stale, empty and replacement observations (21.69652ms)
+✔ memory text includes frozen type, level and observation time, never live health or production (4.927761ms)
+✔ field memory labels include frozen time and stay inside the horizontal viewport (98.52712ms)
+✔ known enemy citadel unknown-health text stays inside the right-edge viewport (13.081046ms)
+✔ off-camera memories retain minimap markers without teleporting field labels to an edge (15.461214ms)
+✔ hidden change produces identical field/minimap glyphs despite changed hostile live state (40.945605ms)
+✔ pause, panning and repeated rendering cannot change memory or clear stale structure (65.887913ms)
+✔ synthetic page is separate from paid shell, labelled, and has no profile or live-game mutation hook (1.896962ms)
+✔ façade rejects raw game, has no action closure, and validates paid sites from observation alone (6.67929ms)
+✔ unknown enemy health remains unknown in HUD and canvas; raw Game cannot render (16.597335ms)
+✔ hidden enemy changes cannot affect field, minimap, HUD, Front or audio (29.454982ms)
+✖ stale structures draw dashed memories without live HP or production; hidden sale does not clear glyph (40.501276ms)
+✔ hidden citadel preserves only a labelled last-seen choice (23.436999ms)
+✔ visible contacts use current renderer models but hidden troop dots are absent from minimap (16.278227ms)
+✔ audio IDs survive detached frames; paused or off-camera events are never replayed later (1.194546ms)
+✔ hidden-at-creation events do not play when the camera or sight reaches them (0.497167ms)
+✔ VFX dedupes detached effects and removes particles/shake on lost sight (41.511983ms)
+✔ safe frame geometry stays finite across compact and desktop field sizes (115.124168ms)
+✔ mask uses one composited union of sight, independent of camera/input and overlapping circles (9.663212ms)
+✔ ordinary fog-off observation still produces event audio and VFX (9.937932ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 35
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1384.247968
+
+✖ failing tests:
+
+test at tests/fog-view.test.mjs:54:1
+✖ stale structures draw dashed memories without live HP or production; hidden sale does not clear glyph (40.501276ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.canvas.calls.some(c => c[0] === 'fillText' && c[1].startsWith('Last seen ')))
+  
+      at TestContext.<anonymous> (file:///workspace/shared/ironroot-fog-integration/work/tests/fog-view.test.mjs:61:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

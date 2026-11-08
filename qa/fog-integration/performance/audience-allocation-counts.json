@@ -1,0 +1,25 @@
+{
+  "method": "Instrumented engine call counts plus source-level circle construction count. Not V8 heap allocation bytes; other observation/sightSnapshot allocations remain.",
+  "rows": [
+    {
+      "version": "phase1",
+      "workload": "crowded_combat",
+      "fixedSteps": 40,
+      "damageApplications": 854,
+      "lethalApplications": 47,
+      "freshEffectAudience": 228,
+      "audienceCalls": 1082,
+      "observerCircleObjectsInAudiencePath": 185509
+    },
+    {
+      "version": "current",
+      "workload": "crowded_combat",
+      "fixedSteps": 40,
+      "damageApplications": 854,
+      "lethalApplications": 47,
+      "freshEffectAudience": 228,
+      "audienceCalls": 275,
+      "observerCircleObjectsInAudiencePath": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+PASS hidden state differential: both sides whole observable data
+PASS observation is detached, no action/serialize methods, reads preserve simulation
+PASS memory stays frozen across hidden upgrade/sale/rebuild and clears on re-observation
+PASS hidden-at-birth event does not replay after scout arrives; visible event IDs stable
+PASS hidden Volley rejects without spending; visible edge splash does not emit hidden victim coords
+FAIL citadel AI buys arrows for visible local attackers despite unseen enemy base 
+  Expected values to be strictly equal:
+
+null !== 'arrows'
+
+FAIL citadel AI buys regeneration for damaged quiet home with unseen enemy base 
+  Expected values to be strictly equal:
+
+null !== 'regen'
+
+PASS both-side memories restore exactly and deterministically continue
+PASS strict fog memory corruption rejects without input mutation
+{"checks":9,"failures":2}

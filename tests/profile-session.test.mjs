@@ -324,10 +324,10 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 });
 
 
-test('UI: actual application startup protects the current profile with protocol 11 before ordinary storage', () => {
+test('UI: actual application startup protects the current profile with protocol 12 before ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage,CURRENT_PROFILE_PROTOCOL_VERSION}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);
   assert.equal(JSON.parse(r.data.get(KEY)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });
@@ -378,7 +378,7 @@ const corruptMaps=[...invalidMapFixtures(),...NEW_MAP_IDS.flatMap(id=>['campaign
 for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start with modal isolation until explicit backup replacement',async()=>{
   const r=uiRaw(),bytes=JSON.stringify(envelope);r.data.set(K.battle,bytes);r.data.set('qa.unrelated','keep me');
   const h=harness(r),{$,c}=h;
-  c.started=false;c.paused=false;c.resumeProblem=null;c.activeDialog=null;c.dialogFocus=new WeakMap();c.syncInputScope=()=>{};c.syncSettings=()=>{};c.syncPauseMenu=()=>{};
+  c.mode='campaign';c.started=false;c.paused=false;c.resumeProblem=null;c.activeDialog=null;c.dialogFocus=new WeakMap();c.syncInputScope=()=>{};c.syncSettings=()=>{};c.syncPauseMenu=()=>{};
   c.dialogLayers=['coachingModal','viewportModal','welcome','helpModal','settingsModal','resultModal','backupModal'].map($);
   for(const layer of c.dialogLayers){
     layer.classList.add('hidden');layer.inert=false;layer.aria={};

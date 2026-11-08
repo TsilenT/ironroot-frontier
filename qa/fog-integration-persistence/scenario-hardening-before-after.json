@@ -1,0 +1,21 @@
+{
+  "before": {
+    "identity": "accepted",
+    "encode": "accepted",
+    "decode": "accepted"
+  },
+  "after": {
+    "identity": {
+      "rejected": true,
+      "message": "Saved battle contains an unknown field or is missing a required field."
+    },
+    "encode": {
+      "rejected": true,
+      "message": "Saved battle contains an unknown field or is missing a required field."
+    },
+    "decode": {
+      "rejected": true,
+      "message": "Saved battle contains an unknown field or is missing a required field."
+    }
+  }
+}

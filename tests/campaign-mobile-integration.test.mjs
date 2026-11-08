@@ -1,3 +1,4 @@
+import {supportsFog} from '../dist/fog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -52,6 +53,7 @@ function harness() {
     renderer:{width:320,height:250,scale:.32,camera:450,snap:p=>p},
     updateSelection(){},sound(){},toast(){},syncProtectedLayout(){},syncInputScope(){c.inputScope.setScope($('app').classList.contains('compact-build-open')?'compact-build':'compact-battle:portrait');},
   };
+  c.supportsFog=supportsFog;c.battleView=()=>c.game;c.refreshPresentation=()=>c.game;
   createContext(c);
   for (const code of [section('function controlIsVisible(','function dialogControls('),section('function canInteract()','function updateSelection()'),section('function updateCompactBuildControl()','function canFocusProtectedObjective()'),section('function activateBattlePoint(','function resetBattleGesture(')]) runInContext(code,c);
   c.updateCampaignDeck();

@@ -1,0 +1,46 @@
+✔ one source-derived budget supports short portrait and reviewed landscape with all persistent controls outside the world (265.836312ms)
+✔ insufficient geometry pauses instead of imposing an arbitrary portrait height rule (0.765686ms)
+✔ actual clipped, overlapping or undersized controls are rejected even with enough nominal height (0.646171ms)
+✔ focus feedback chooses a band clear of originals, including Middle-road protected structures (0.468359ms)
+✔ fallback actions stay 44px, explain scrollably, and offline shell includes the inert geometry module (0.851803ms)
+✔ uncoached protected launch and restore reveal and populate HUD before geometry measurement (275.922547ms)
+✔ removing synchronous HUD initialization reproduces hidden-control false holds on fresh start and restore (110.283258ms)
+✔ coached protected launch and restore fit 320×430 and 320×400 without hiding any controls (127.783968ms)
+✔ real first launch and restore still hold insufficient geometry after HUD initialization (112.841563ms)
+✔ same-page skirmish to protected launch does not reuse the skirmish-hidden HUD or invent a hold (47.114323ms)
+✔ first inset phone launch and restore use 304x535 content and retain the 200x383 coached field (116.123797ms)
+✔ mobile shell padding is read on the first desktop-to-phone transition, not a later resize (43.614294ms)
+✔ negative outer-height selection reproduces the inset startup classification defect (40.900206ms)
+✔ 560px content boundary is exact, and visual zoom does not change outer fitting or orientation predicates (178.480257ms)
+✔ padding-only add, move and removal cancel held gestures once, then leave stable fresh input usable (11991.033499ms)
+✔ content signatures compare effective numeric bounds, preserve fractional fitting, and reset across desktop (1.138915ms)
+✔ manual pauses survive padding-only changes without gaining a screen-size latch or resuming themselves (62.364424ms)
+✔ 370px safety stays blocked across hidden-hint HUD cycles; 400px recovery still requires explicit Resume (209.08568ms)
+✔ removing the pinned action cell reproduces false Ready once the hint becomes hidden (39.773628ms)
+✔ teaching pins are direct-child-only and viewport painting order matches logical dialog precedence (7.97978ms)
+✔ verified restart keeps its ownership state when current (29.689898ms)
+✔ verified restart keeps its ownership state when stale (8.277729ms)
+✔ 650px layout and shorter/offset/fractional visible viewports share exact fitted root and safety bounds (219.124045ms)
+✔ negative fit mutation reproduces the original clipping and one-pixel-offset false holds (97.066784ms)
+✔ fractional CSS serialization cannot repeatedly interrupt a stable viewport (1.171783ms)
+✔ safe fitting invalidates held pointers and activation keys once, but leaves the next fresh gesture usable (4457.357353ms)
+✔ pinch-sized or genuinely tiny visible viewports keep the unchanged world and 44px control guard (85.619501ms)
+✔ safe-area padding remains inside the fitted root, including shifted visual viewport and sidebar (24.056284ms)
+✔ switching back to desktop removes mobile inline fit and re-entry restores it without changing saves (48.109435ms)
+✔ safe content rect subtracts finite nonnegative CSS padding once and clamps exhausted space (0.257458ms)
+✔ protected sidebar overflow into reserved safe area pauses even when it fits the outer viewport (9.120327ms)
+✔ measured phone, landscape and desktop vertical bounds clear bottom dock without requiring below ordering (4.488404ms)
+✔ every required visibility signal rejects hidden, fading or expired feedback (0.490632ms)
+✔ viewport, canvas and ancestor clipping independently reject escaped feedback (0.92461ms)
+✔ objective and each target/navigation control retain at least seven CSS pixels separation (0.891983ms)
+✔ all four separation directions work without removing viewport/field checks (1.091686ms)
+✔ nonfinite, inverted, absent and inconsistent rectangles cannot pass (0.692049ms)
+✔ sampler measures the inner overflow clip, not its outside border (6.478622ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13006.321587

@@ -1,0 +1,2 @@
+PASS AI hidden-state build/upgrade/cast/citadel decision differential: 12 paired scenarios
+Fixture note: initial attempt accidentally spawned visible events at x1552 before moving the synthetic units. Corrected fixture creates units/events in hidden home territory, then positions hidden units at x1600. This was a fixture correction, not an implementation finding.

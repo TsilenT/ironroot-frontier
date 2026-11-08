@@ -1,0 +1,22 @@
+{
+  "scope": "Test-only current-protocol expectation repair; no runtime or historical fixture change.",
+  "file": "qa/browser/validate-production-v015-upgrade.mjs",
+  "line": 11,
+  "before": "assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,11);",
+  "after": "assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,12);",
+  "reason": "Candidate intentionally advances existing profile marker from 11 to 12. This helper imports the current candidate constant, not a historical fixture constant.",
+  "before_sha256": "3ff0d0be13cc30a989ab0201d433d4c36ec4dc8bca8505167d47c3da01c3b333",
+  "after_sha256": "1c13a5cbf241f7f61553203212a4beb5862b64ca8199097659fdf9879985a5c1",
+  "affected_test": {
+    "command": "node --test --test-concurrency=4 tests/production-v015-upgrade.test.mjs",
+    "pass": 2,
+    "fail": 0,
+    "skip": 0
+  },
+  "direct_helper": "Passed: 46 exact historical runtime files, 907887 bytes, four earned profiles, full old read/write/recovery fence, and fresh citadel identity assertions. Browser takeover unrun.",
+  "audit": "All current-protocol references in nonfixture JavaScript scanned. No remaining current helper equals 11. Remaining 11 references are archived before copies or intentional pinned old-client assertions.",
+  "runtime_hashes_unchanged": true,
+  "failed_aggregate_sha256": "37177aa3447f441a5d2de3182745c19cefc54ca41a0f7fdbc9dd32359bc7b28f",
+  "failed_aggregate_unchanged": true,
+  "limits": "Node only. No browser, profile, runtime, historical fixture, PR, remote or deployment changes. Full final aggregate rerun belongs to assembly owner."
+}
