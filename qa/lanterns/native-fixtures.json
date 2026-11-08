@@ -1,0 +1,238 @@
+{
+  "scope": "Developer-only synthetic prerequisites plus ordinary paid-engine checkpoints. Not browser-earned wins or production-profile persistence evidence.",
+  "mission": "lanterns-on-the-water",
+  "syntheticPrerequisiteRecords": 18,
+  "storage": "sessionStorage only, per-fixture ironroot.lanterns.native namespace",
+  "fixtureNames": [
+    "fresh",
+    "stale",
+    "dispatch",
+    "finish"
+  ],
+  "receipts": {
+    "fresh": {
+      "route": null,
+      "seed": 6301,
+      "time": 0,
+      "targets": [
+        {
+          "name": "North Customs House",
+          "originalId": 8,
+          "alive": true,
+          "displayState": "charted",
+          "locationInSight": false,
+          "actualHpForQA": 1000
+        },
+        {
+          "name": "River Customs House",
+          "originalId": 9,
+          "alive": true,
+          "displayState": "charted",
+          "locationInSight": false,
+          "actualHpForQA": 1000
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "ledger": {
+        "spending": [
+          0,
+          0
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          0,
+          0
+        ],
+        "purchases": [
+          0,
+          0
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": null,
+      "note": "No saved battle; open the unlocked mission briefing. Prior records are synthetic."
+    },
+    "stale": {
+      "route": "scout-commit",
+      "seed": 6301,
+      "time": 25.6,
+      "targets": [
+        {
+          "name": "North Customs House",
+          "originalId": 8,
+          "alive": true,
+          "displayState": "last seen",
+          "locationInSight": false,
+          "actualHpForQA": 1000,
+          "lastSeen": 23.6
+        },
+        {
+          "name": "River Customs House",
+          "originalId": 9,
+          "alive": true,
+          "displayState": "visible",
+          "locationInSight": true,
+          "actualHpForQA": 1000
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "ledger": {
+        "spending": [
+          1090,
+          175
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          256,
+          192
+        ],
+        "purchases": [
+          6,
+          1
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "f6274e7f7345694cd9522640c1cf1a7417188c3f22a7ff2ccc24ccbd357501ca",
+      "note": "An original survives outside sight, last observed at least two seconds earlier. No memory injection."
+    },
+    "dispatch": {
+      "route": "scout-commit",
+      "seed": 6301,
+      "time": 83,
+      "targets": [
+        {
+          "name": "North Customs House",
+          "originalId": 8,
+          "alive": false,
+          "displayState": "dispatch-confirmed destroyed",
+          "locationInSight": true,
+          "actualHpForQA": null
+        },
+        {
+          "name": "River Customs House",
+          "originalId": 9,
+          "alive": true,
+          "displayState": "visible",
+          "locationInSight": true,
+          "actualHpForQA": 684
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "ledger": {
+        "spending": [
+          1780,
+          715
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          870,
+          622.5
+        ],
+        "purchases": [
+          9,
+          6
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "60fea49641760d8cddbabef291f396087282059814a533fbbc27ce30b7b6d871",
+      "note": "One original is confirmed destroyed. Its chart location remains in sight; this is not evidence of an unseen destruction event."
+    },
+    "finish": {
+      "route": "scout-commit",
+      "seed": 6301,
+      "time": 97,
+      "targets": [
+        {
+          "name": "North Customs House",
+          "originalId": 8,
+          "alive": false,
+          "displayState": "dispatch-confirmed destroyed",
+          "locationInSight": true,
+          "actualHpForQA": null
+        },
+        {
+          "name": "River Customs House",
+          "originalId": 9,
+          "alive": true,
+          "displayState": "visible",
+          "locationInSight": true,
+          "actualHpForQA": 307
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "ledger": {
+        "spending": [
+          2010,
+          715
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          1045,
+          727.5
+        ],
+        "purchases": [
+          10,
+          6
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "b8c992376a2763a4a2e49dcf47f2376937643f5c2aaa6859249f254947e7eaf8",
+      "note": "Active paid checkpoint near a natural original-post victory. No HP or objective edits.",
+      "continuation": {
+        "result": "original-post victory",
+        "time": 99.7,
+        "secondsAfterCheckpoint": 2.7,
+        "additionalPlayerCommands": 0
+      }
+    }
+  },
+  "completionTime": 99.7,
+  "sourceRuntimeSha256": "6c760b4ffea13e93e4ee5ab720f76e1e4fb1c3dafe8a5a4add64895b21e7ba74",
+  "previewPrepared": true,
+  "preview": {
+    "directory": "/workspace/shared/ironroot-lanterns/preview",
+    "runtimeFiles": 58,
+    "runtimeSha256": "5935e92a455ce8f94473d20eb04c16824eaeab5ba983a3e6144f429d27441a5f",
+    "changedFiles": [
+      "app.js",
+      "index.html"
+    ],
+    "differences": "Namespaced session storage and fixture navigation/disclosure only; service-worker installation disabled. Every other runtime file is byte-identical."
+  }
+}

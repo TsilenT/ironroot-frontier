@@ -277,7 +277,7 @@ const deferred=()=>{let resolve,reject;return{promise:new Promise((a,b)=>{resolv
 async function choose(h,text){h.$('backupFile').files=[{size:text.length,text:async()=>text}];await h.$('backupFile').onchange();}
 
 test('UI: late older successful file read cannot replace the newer confirmed import', async () => {
-  const h=harness(),a=deferred();h.$('backupFile').files=[{size:100,text:()=>a.promise}];const pending=h.$('backupFile').onchange();await choose(h,payload(2));a.resolve(payload(1));await pending;assert.ok(h.$('backupSummary').textContent.includes('1/21 campaign missions'));assert.ok(h.$('backupSummary').textContent.includes('2/63 stars'));h.$('confirmImport').onclick();assert.equal(h.c.reloaded,true);assert.equal(JSON.parse(h.r.data.get(K.campaign)).missions.emberwatch.stars,2);
+  const h=harness(),a=deferred();h.$('backupFile').files=[{size:100,text:()=>a.promise}];const pending=h.$('backupFile').onchange();await choose(h,payload(2));a.resolve(payload(1));await pending;assert.ok(h.$('backupSummary').textContent.includes('1/22 campaign missions'));assert.ok(h.$('backupSummary').textContent.includes('2/66 stars'));h.$('confirmImport').onclick();assert.equal(h.c.reloaded,true);assert.equal(JSON.parse(h.r.data.get(K.campaign)).missions.emberwatch.stars,2);
 });
 
 test('UI: late older file failure cannot invalidate a newer parsed backup', async () => {
@@ -324,10 +324,10 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 });
 
 
-test('UI: actual application startup protects the current profile with protocol 14 before ordinary storage', () => {
+test('UI: actual application startup protects the current profile with protocol 15 before ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage,CURRENT_PROFILE_PROTOCOL_VERSION}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,14);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,15);
   assert.equal(JSON.parse(r.data.get(KEY)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });

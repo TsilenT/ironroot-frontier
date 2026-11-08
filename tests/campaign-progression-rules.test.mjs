@@ -21,8 +21,8 @@ const full=()=>progressThrough('open-three-roads');
 const returning=()=>({...createCampaignProgress(),missions:{emberwatch:{...record}}});
 const envelope=(game,id,progress)=>encodeBattle(game,scenarioForBattle(null,id,game),{campaignProgress:progress});
 
-test('catalog preserves the exact legacy entry points while retaining the compact opening and adding Shared Crossing and One Signal',()=>{
-  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,23);
+test('catalog preserves the exact legacy entry points while retaining the compact opening and adding Shared Crossing, One Signal and Lanterns',()=>{
+  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,24);
   assert.equal(PROGRESSION_CAMPAIGN_MISSIONS.length,16);
   for(const original of CAMPAIGN_MISSIONS){
     assert.equal(getCampaignMission(original.id),original);
@@ -31,7 +31,7 @@ test('catalog preserves the exact legacy entry points while retaining the compac
     assert.equal(next.rulesetId,'frontier-campaign-open');assert.equal(next.scenarioRevision,2);
   }
   const overview=getProgressionCampaignOverview(createCampaignProgress());
-  assert.equal(overview.total,21);assert.equal(overview.maxStars,63);assert.equal(overview.nextMissionId,'roadside-watch');
+  assert.equal(overview.total,22);assert.equal(overview.maxStars,66);assert.equal(overview.nextMissionId,'roadside-watch');
   const signal=overview.missions.find(m=>m.id==='one-signal-is-enough');
   assert.ok(signal);assert.equal(signal.scenarioRevision,1);assert.equal(signal.rulesetId,'frontier-campaign-one-signal');
   assert.equal(signal.unlocked,false,'optional signal mission retains its prerequisite');

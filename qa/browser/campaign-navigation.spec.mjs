@@ -125,7 +125,7 @@ test('browsing and replay selection preserve existing progress bytes', async ({p
   await expect(page.locator('#campaignMissionStatus')).toHaveText('★★★ · Complete');
   await press(page, '#campaignStoryNav');
   await press(page, '.campaign-progress summary');
-  await expect(page.locator('#campaignProgressText')).toHaveText('20/20 missions · 60/60 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('22/22 missions · 66/66 stars');
   await expect(page.locator('#campaignIntroProgressText')).toContainText('8/8 buildings');
   await press(page, '#campaignReturnMission');
   expect(await profile(page)).toEqual([null, bytes]);
