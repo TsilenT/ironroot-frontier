@@ -1,11 +1,12 @@
 import {supportsFog} from '../dist/fog.js';
+import {hasChartedIntelligence,chartedObjectiveTargets} from '../dist/campaign-intelligence.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext,createContext} from 'node:vm';
 import {createViewportPause,inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect} from '../dist/mobile-battlefield.js';
 import {createInputScopeGuard} from '../dist/input-scope.js';
-import {createCampaignMission,getCampaignTargets,evaluateCampaignMission,CAMPAIGN_MISSIONS} from '../dist/campaign.js';
+import {createCampaignMission,getCampaignTargets,evaluateCampaignMission,CAMPAIGN_MISSIONS,getCampaignMission,campaignScenarioForGame} from '../dist/campaign.js';
 import {drawCampaignGuidance} from '../dist/campaign-flow.js';
 import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {layout,box} from './mobile-layout-fixture.mjs';
@@ -25,7 +26,7 @@ function harness(w=568,h=210){
   getComputedStyle:()=>Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`])),
   window:{innerWidth:w,innerHeight:h,visualViewport:{addEventListener(){}}},document:{},ui:{build:'mint',spell:true,selected:7},
   last:0,lastProfileCheck:0,syncProfileSafety(){},updateController(){assert.equal(c.paused||!c.viewportPause.active,true);},speed:1,follow:false,saveTimer:0,hudTimer:0,toastTimer:0,
-  currentCampaign:'winter-stores',currentChallenge:null,CAMPAIGN_MISSIONS,CHALLENGES:[],evaluateCampaignMission,getCampaignTargets,
+  currentCampaign:'winter-stores',currentChallenge:null,CAMPAIGN_MISSIONS,getCampaignMission,campaignScenarioForGame,hasChartedIntelligence,chartedObjectiveTargets,CHALLENGES:[],evaluateCampaignMission,getCampaignTargets,
   advanceObjectiveBattle(...args){log.advances.push(args[1]);return advanceObjectiveBattle(...args);},sampleBattleReport(){},finish(){},
   renderer:{camera:450,draw(){},resize(){}},syncProtectedLayout(){},requestAnimationFrame(){},updateHUD(){},
   audio:{setScene:x=>log.scene.push(x),setIntensity(){}},heardEffects:new WeakSet(),heardProjectiles:new WeakSet(),sound(){},
@@ -35,7 +36,7 @@ function harness(w=568,h=210){
  c.syncDialogs=()=>c.syncInputScope();
  c.supportsFog=supportsFog;c.battleView=()=>c.game;c.refreshPresentation=()=>c.game;c.battleFront=()=>c.game.state.frontline;
  createContext(c);
- for(const source of [section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
+ for(const source of [section('function chartedMission()', 'function objectiveFocusTargets()'),section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
  return {c,$,log,resize(width,height,nextInsets={}){w=width;h=height;insets=nextInsets;c.window.innerWidth=width;c.window.innerHeight=height;c.mobileLayout=width>height?'landscape':'portrait';},frame:now=>c.frame(now),sync:()=>c.syncViewportSafety()};
 }
 

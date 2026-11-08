@@ -1,0 +1,86 @@
+{
+  "scope": "Local v0.24.0 candidate, not publication approval or a remote CI claim",
+  "baseCommit": "02fcb4f823c067b4495ea40e93d0a4ceec64b1e6",
+  "baseTree": "70b0d6c833fd9a9c2a08d46c401ff7229d3e4958",
+  "mission": "lanterns-on-the-water@1",
+  "ruleset": "frontier-campaign-lanterns@1",
+  "version": "0.24.0",
+  "profileProtocol": 15,
+  "node": {
+    "discovered": 1787,
+    "passed": 1786,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "Optional desktop build dependencies absent",
+    "durationMs": 112063.773683,
+    "scope": "Full aggregate before final report-rule explanatory wording only; final changed report renderer and app-source assertions passed40 focused checks afterward. Exact remote CI still required."
+  },
+  "initialAggregate": {
+    "passed": 1784,
+    "failed": 2,
+    "skipped": 1,
+    "findings": [
+      "Frame-only VM missing actual chart resolver binding",
+      "Old current-profile assertion expected14 instead of15"
+    ],
+    "disposition": "Fixture corrections preserve original safety/migration assertions; original failed log retained locally"
+  },
+  "syntax": "passed",
+  "runtime": {
+    "files": 58,
+    "bytes": 1133099,
+    "inventory": "qa/lanterns/runtime-final.json"
+  },
+  "focused": {
+    "newAndAffected": 113,
+    "independentBoundary": 23,
+    "finalCopyReportHistorical": 33,
+    "profileAffectedPassed": 285,
+    "profileOptionalSkipped": 1,
+    "finalReportScope": 40
+  },
+  "browserPreflight": "passed source/syntax/fixture validation, including25 embedded Node checks; no browser matrix executed",
+  "native": {
+    "surface": "Native Chromium desktop1180x757",
+    "scope": "Synthetic prerequisites, isolated sessionStorage, ordinary paid-engine checkpoints, no production profile",
+    "passed": [
+      "briefing/scouting known-chart unknown-force disclosure",
+      "fresh chart focus without added sight",
+      "legal paid140gold barracks at1x",
+      "Pause/Back/save/reload",
+      "surviving last-seen original memory retained",
+      "original dispatch credit and stale ghost absence",
+      "near-win checkpoint continuation, terminal full information, report scope",
+      "Replay to briefing and fresh unknown view",
+      "corrected replay route label after reload"
+    ],
+    "copyRepair": "Report totals and rule-summary prose source/Node verified; authored deadlines explicitly remain applicable. No additional native terminal result was created just for wording.",
+    "report": "docs/LANTERNS_DESKTOP_QA.md"
+  },
+  "paidEvidence": {
+    "formations": 1,
+    "initialGames": 10,
+    "seeds": [
+      6301,
+      719,
+      51017
+    ],
+    "scoutPostWins": "3/3",
+    "broadPostWins": "3/3",
+    "centralCoreWins": "1/3",
+    "idle": "loss",
+    "productionParityRuns": 3,
+    "restoredProductionRuns": 2,
+    "ledgerMaxError": "<1e-6 gold on both sides",
+    "claim": "Bounded synthetic feasibility, not human balance; no mandated composition or forced narrow victory"
+  },
+  "review": "docs/LANTERNS_REVIEW.md",
+  "limitations": [
+    "No full Playwright matrix, physical phone/PWA/non-Chromium or sustained-performance validation",
+    "No full browser-earned mission win or real production-profile migration in this acceptance",
+    "Native unseen original destruction, replacement, deadline defeat and core victory not run; focused source/engine tests cover those semantics",
+    "Historical experimental fog performance/device limitations remain open",
+    "Scout policy selected north on tied observations in all three seeds; not evidence varied scouting determines road choice"
+  ],
+  "evidencePolicy": "New screenshots, raw simulation/action traces and terminal logs remain local-only; preserve historical repo paths; include concise summaries, code and essential tests/fixtures."
+}

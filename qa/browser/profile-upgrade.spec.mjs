@@ -48,7 +48,7 @@ for(const priorVersion of [null,...Array.from({length:CURRENT_PROFILE_PROTOCOL_V
   const current=await marker(page);expect(current).toMatchObject({format:'ironroot-profile',version:CURRENT_PROFILE_PROTOCOL_VERSION,phase:'ready'});
   if(!absent)expect(current.epoch).toBe('qa-legacy-profile');else expect(current.epoch).toMatch(/^[a-zA-Z0-9-]{1,80}$/);
   expect(await page.evaluate(()=>window.__qaProtocol.attempts.length)).toBe(1);await expect(page.locator('#profileRecovery')).toBeHidden();
-  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/20 missions · 36/60 stars');
+  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/22 missions · 36/66 stars');
   expect((await dataBytes(page))[CAMPAIGN_STORAGE_KEY]).toBe(bytes);await page.reload();expect(await marker(page)).toEqual(current);
   expect((await dataBytes(page))[CAMPAIGN_STORAGE_KEY]).toBe(bytes);
 });
@@ -69,7 +69,7 @@ for(const fault of ['deny','silent-drop','readback','competing'])test('profile m
   await page.keyboard.press('Escape');await expect(page.locator('#settingsModal')).toBeVisible();await expect(page.locator('#closeSettings')).toBeDisabled();
   await Promise.all([page.waitForEvent('load'),press(page,'#profileReload')]);
   expect((await marker(page)).version).toBe(CURRENT_PROFILE_PROTOCOL_VERSION);await expect(page.locator('#profileRecovery')).toBeHidden();
-  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/20 missions · 36/60 stars');
+  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/22 missions · 36/66 stars');
   expect((await dataBytes(page))[CAMPAIGN_STORAGE_KEY]).toBe(bytes);
 });
 
@@ -85,7 +85,7 @@ test('marker write that throws after persisting succeeds only because readback v
   await bootWithProtocol(page,{fault:'throw-after',values:{[CAMPAIGN_STORAGE_KEY]:JSON.stringify(progressThrough())}});
   expect(await marker(page)).toEqual(JSON.parse(readyMarker(CURRENT_PROFILE_PROTOCOL_VERSION)));await expect(page.locator('#profileRecovery')).toBeHidden();
   expect(await page.evaluate(()=>window.__qaProtocol.attempts)).toEqual([readyMarker(CURRENT_PROFILE_PROTOCOL_VERSION)]);
-  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/20 missions · 36/60 stars');
+  await press(page,'[data-mode="campaign"]');await expect(page.locator('#campaignProgressText')).toHaveText('12/22 missions · 36/66 stars');
 });
 
 for(const phase of ['restoring','failed'])test('v1 '+phase+' marker is not upgraded or mistaken for a completed recovery',async ({page})=>{

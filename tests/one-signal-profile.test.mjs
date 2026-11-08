@@ -16,14 +16,14 @@ function backend(entries=[]){const data=new Map(entries),writes=[];return {data,
 function progress(){return {...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};}
 function checkpoint(lost=0){const campaign=progress(),game=createProgressionCampaignMission(id,campaign);for(const t of getCampaignTargets(game,id).slice(0,lost))game.state.buildings=game.state.buildings.filter(b=>b.id!==t.originalId);return {campaign,game,scenario:campaignScenarioForGame(game,id)};}
 
-test('protocol14 fences exact released protocol13 without touching earned domain bytes',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,14);assert.equal(previous.CURRENT_PROFILE_PROTOCOL_VERSION,13);
+test('current protocol fences exact released protocol13 without touching earned domain bytes',()=>{
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,15);assert.equal(previous.CURRENT_PROFILE_PROTOCOL_VERSION,13);
  assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0220.js',import.meta.url))).digest('hex'),'b98558379a2ad6de0241f6ecfc060c92b21edc477a9186715d4990dec9d82d73');
- for(const prior of [1,7,12,13,14]){
+ for(const prior of [1,7,12,13,14,CURRENT_PROFILE_PROTOCOL_VERSION]){
   const domains=Object.values(K).map(k=>[k,` opaque earned ${k}\n`]),raw=backend([[MARKER,marker(prior)],...domains]);
   const old=previous.createProfileSession(()=>raw,{requiredProtocolVersion:13});raw.writes.length=0;
-  const current=createProfileSession(()=>raw,{requiredProtocolVersion:14});assert.ok(current.status().canWrite);
-  assert.deepEqual(raw.writes,prior===14?[]:[MARKER]);assert.deepEqual(Object.values(K).map(k=>[k,raw.getItem(k)]),domains);raw.writes.length=0;
+  const current=createProfileSession(()=>raw,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});assert.ok(current.status().canWrite);
+  assert.deepEqual(raw.writes,prior===CURRENT_PROFILE_PROTOCOL_VERSION?[]:[MARKER]);assert.deepEqual(Object.values(K).map(k=>[k,raw.getItem(k)]),domains);raw.writes.length=0;
   for(const stale of [old,previous.createProfileSession(()=>raw,{requiredProtocolVersion:13})]){
    assert.equal(stale.status().canWrite,false);
    for(const key of Object.values(K)){assert.throws(()=>stale.storage.getItem(key));assert.throws(()=>stale.storage.setItem(key,'{}'));assert.throws(()=>stale.storage.removeItem(key));}

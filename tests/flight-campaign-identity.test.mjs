@@ -18,7 +18,7 @@ const saved=(game,id,progress=full())=>encodeBattle(game,scenario(game,id),{camp
 const fingerprint=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
 test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes outside reviewed prose',()=>{
-  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>!['shared-crossing','one-signal-is-enough'].includes(m.id)))),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>!['shared-crossing','one-signal-is-enough','lanterns-on-the-water'].includes(m.id)))),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
   assert.equal(fingerprint(beforeRhythmCopy(campaign.PROGRESSION_CAMPAIGN_MISSIONS)),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
 });
 
@@ -63,7 +63,7 @@ test('flight is earned stage three, while old opening replay identity and histor
   assert.equal(campaign.CAMPAIGN_RULESET_STAGES['frontier-campaign-flight'],3);
   for(const p of tiers){assert.equal(campaign.isMissionUnlocked(p,'wings-of-ash',3),false);assert.throws(()=>campaign.createProgressionCampaignMission('wings-of-ash',p),/locked/);}
   const p=full(),before=JSON.stringify(p),overview=campaign.getProgressionCampaignOverview(p);
-  assert.equal(overview.total,21);assert.equal(overview.cleared,21);assert.equal(overview.stars,42);
+  assert.equal(overview.total,22);assert.equal(overview.cleared,22);assert.equal(overview.stars,44);
   assert.equal(JSON.stringify(campaign.normalizeCampaignProgress(p)),before);
   for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-citadel-open');
   const old=campaign.createCampaignMission('roadside-watch',{revision:1,progress:tiers[0]});
