@@ -58,7 +58,7 @@ test('Common Ground gates Chapter 6; briefing and scouting disclose the real for
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Shared Crossing');
   await expect(page.locator('#campaignChapterNav')).toContainText('The River Compact');
   await expect(page.locator('#campaignMissionPosition')).toHaveText('Mission 1 of 3');
-  await expect(page.locator('#campaignProgressText')).toHaveText('19/23 missions · 57/69 stars');
+  await expect(page.locator('#campaignProgressText')).toHaveText('19/24 missions · 57/72 stars');
   await expect(page.locator('#start')).toBeEnabled();
   const briefing = missionBriefing(MISSION), report = getMissionScouting(MISSION);
   await expect(page.locator('#campaignGoal')).toHaveText(briefing.goal);
@@ -199,6 +199,6 @@ for (const action of ['continue', 'replay']) test(`paid-engine control victory p
     await press(page, '#settingsDone'); await page.reload(); expect(await domains(page)).toEqual(after);
     await choose(page); await expect(page.locator('#start')).toHaveText('REPLAY MISSION →');
     const summary = getProgressionCampaignOverview(expected);
-    await expect(page.locator('#campaignProgressText')).toHaveText(`${summary.cleared}/23 missions · ${summary.stars}/69 stars`);
+    await expect(page.locator('#campaignProgressText')).toHaveText(`${summary.cleared}/24 missions · ${summary.stars}/72 stars`);
   }
 });

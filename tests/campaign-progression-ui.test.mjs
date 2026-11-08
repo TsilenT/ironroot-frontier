@@ -101,7 +101,7 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   const h = uiHarness(); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'roadside-watch');
   assert.equal(h.$('campaignMissionTitle').textContent, 'Roadside Watch');
-  assert.equal(h.$('campaignCount').textContent, '23');
+  assert.equal(h.$('campaignCount').textContent, '24');
   assert.match(h.$('campaignIntroProgressText').textContent, /2\/8 buildings/);
   assert.equal(h.$('start').disabled, false);
   assert.equal(h.$('skipIntroduction').classList.contains('hidden'), true);

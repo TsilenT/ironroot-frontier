@@ -27,7 +27,7 @@ function assertLegal(game){
 test('Borrowed Yard adds one frozen campaign map without changing any published geometry or rules',()=>{
   assert.equal(hash(MAPS),'098b998e3976ed83ccc71878da86a99462bfd3ffcfdf0e19ac89c6ea48394730');
   assert.equal(hash(INTRO_MAPS),'eddc76629a903c0dd5d1fed4c78b54dc21ef99269269d6e3185d34eaf0284742');
-  assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!==RULES))),'68011b3b9db67c3ae73d38aff72c6cf39d01603b1fc7729b875151758e053123');
+  assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!==RULES&&id!=='frontier-campaign-river-between'))),'68011b3b9db67c3ae73d38aff72c6cf39d01603b1fc7729b875151758e053123');
   assert.deepEqual(Object.keys(MAPS),['classic','long-march','twin-span']);assert.equal(Object.hasOwn(MAPS,MAP),false);
   assert.deepEqual(Object.keys(CAMPAIGN_MAPS),[MAP]);assert.ok(Object.isFrozen(CAMPAIGN_MAPS));
   const map=getMap(MAP);assert.equal(map,CAMPAIGN_MAPS[MAP]);

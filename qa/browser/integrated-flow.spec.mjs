@@ -31,7 +31,7 @@ test('intro-only progress defaults to the new opening and explicitly selected Fo
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Roadside Watch');
   await press(page,'#campaignStoryNav');await press(page,'[data-chapter="first-roads"]');await press(page,'[data-mission="forked-road"]');
   await expect(page.locator('#campaignMissionTitle')).toHaveText('Forked Road');
-  await expect(page.locator('#campaignProgressText')).toContainText('0/23 missions · 0/69 stars');
+  await expect(page.locator('#campaignProgressText')).toContainText('0/24 missions · 0/72 stars');
   await startRunning(page, press);await openBuildControls(page);
   expect(await page.locator('.build-card:visible').evaluateAll(cards=>cards.map(card=>card.dataset.type))).toEqual(['barracks','archery','watchtower','mint']);
   await press(page,'[data-type="barracks"]');
@@ -87,7 +87,7 @@ for(const [id,nextId,title,cards] of [['first-watch','forked-road','Forked Road'
   const progress=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),campaignKey);
   expect(progress.missions[id]).toMatchObject({completed:true,stars:3});
   await press(page,'#playAgain');await expect(page.locator('#campaignMissionTitle')).toHaveText(title);await expect(page.locator('#start')).toBeFocused();
-  await expect(page.locator('#campaignProgressText')).toContainText('0/23 missions · 0/69 stars');
+  await expect(page.locator('#campaignProgressText')).toContainText('0/24 missions · 0/72 stars');
   await startRunning(page, press);await openBuildControls(page);await expect(page.locator('.build-card:visible')).toHaveCount(cards);
   await expect(page.locator('[data-type="wardenLodge"]')).toHaveCount(0);
   const after=await pause(page);expect(after.scenario?.id??after.campaignId).toBe(nextId);expect(Game.restore(after.game).ruleset.id).toBe(nextId==='roadside-watch'?'frontier-campaign-watch':'frontier-authored-air-local');
