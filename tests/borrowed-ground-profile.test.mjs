@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeBorrowed = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => includeBorrowed || m.id !== id).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'a-river-between-us' && (includeBorrowed || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeBorrowed = true) {
@@ -57,8 +57,8 @@ function assertBlocked(profile, raw) {
   assert.ok(raw.reads.every(key => key === MARKER), 'reject before reading any earned domain');
 }
 
-test('protocol16 pins the exact current v0.24.1 protocol15 source without changing storage or default format identities', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 16); assert.equal(protocolFifteen.CURRENT_PROFILE_PROTOCOL_VERSION, 15);
+test('protocol17 pins the exact current v0.24.1 protocol15 source without changing storage or default format identities', () => {
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 17); assert.equal(protocolFifteen.CURRENT_PROFILE_PROTOCOL_VERSION, 15);
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0241.js', import.meta.url))).digest('hex'), '0b337448ccd44c6acade10b99ec2bd5566f8847171190528e77daf9df34094a2');
   const priorSource = readFileSync(new URL('./fixtures/profile-session-v0241.js', import.meta.url), 'utf8');
   const markerOnlySource = priorSource
@@ -66,7 +66,7 @@ test('protocol16 pins the exact current v0.24.1 protocol15 source without changi
     .replace('explicit result identities from older writers.', 'explicit result identities from older writers; protocol 16 fences Borrowed Ground campaign progress, checkpoints and explicit result identities from older writers.')
     .replace('13, 14, 15].includes', '13, 14, 15, 16].includes')
     .replace('13, 14 or 15.', '13, 14, 15 or 16.');
-  assert.equal(readFileSync(new URL('../dist/profile-session.js', import.meta.url), 'utf8'), markerOnlySource, 'only protocol admission and its description advance; barrier logic stays exact');
+  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0250.js', import.meta.url), 'utf8'), markerOnlySource, 'only protocol admission and its description advance; barrier logic stays exact');
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, {campaign:'ironroot.campaign.v1', trials:'ironroot.trials.v1', settings:'ironroot.settings.v1', history:'ironroot.history.v1', battle:'ironroot.battle.v1'});
   for (let version = 1; version <= CURRENT_PROFILE_PROTOCOL_VERSION; version++) {
@@ -112,7 +112,7 @@ test('actual open and reopened v0.24.1 writers cannot discard Borrowed Ground st
   assert.deepEqual(parseBackup(createBackup(writer.storage, {createdAt:date})).data, data);
 });
 
-test('unfinished, future17 and failed or unverifiable upgrades retain all five domains', () => {
+test('unfinished, future18 and failed or unverifiable upgrades retain all five domains', () => {
   for (const version of [15, CURRENT_PROFILE_PROTOCOL_VERSION, CURRENT_PROFILE_PROTOCOL_VERSION + 1]) for (const phase of ['ready', 'restoring', 'failed']) {
     if (phase === 'ready' && version <= CURRENT_PROFILE_PROTOCOL_VERSION) continue;
     const raw = backend([[MARKER, marker(version, phase)], ...entries(earned())]), before = [...raw.data], profile = current(raw);
@@ -140,10 +140,10 @@ test('old earned progress stays exact, unlocks Borrowed Ground and records expli
   const old = earned(false), raw = backend([[MARKER, marker(15)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 23); assert.equal(overview.maxStars, 69); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
-  assert.equal(overview.chapters.at(-1).total, 4);
+  assert.equal(overview.total, 24); assert.equal(overview.maxStars, 72); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.chapters.at(-1).total, 5);
   assert.equal(getCampaignLaunchMission('lanterns-on-the-water', old.campaign).reward, 'Unlocks Borrowed Ground');
-  assert.equal(getCampaignLaunchMission(id, old.campaign).reward, 'Completes the current Chapter 6 route');
+  assert.equal(getCampaignLaunchMission(id, old.campaign).reward, 'Unlocks A River Between Us');
   assert.equal(old.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(old.campaign), old.campaign);
   const game = createProgressionCampaignMission(id, old.campaign), scenario = campaignScenarioForGame(game, id);
   assert.deepEqual(scenario, {kind:'campaign', id, revision:1}); assert.equal(game.ruleset.id, BORROWED_GROUND_RULESET_ID);
@@ -154,7 +154,7 @@ test('old earned progress stays exact, unlocks Borrowed Ground and records expli
   assert.throws(() => validateHistoryRow({...identityless, campaignId:id}), /unknown campaign/);
   for (const [mission, value] of Object.entries(old.campaign.missions)) assert.deepEqual(recorded.missions[mission], value);
   assert.deepEqual(recorded.missions[id], {completed:true, stars:3, bestTime:0});
-  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, true); assert.equal(final.nextMissionId, null);
+  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, false); assert.equal(final.nextMissionId, 'a-river-between-us');
   assert.ok(writeCampaignProgress(createStorage(() => profile.storage), recorded));
   assert.equal(JSON.parse(raw.data.get(K.campaign)).version, 1);
   const data = earned(); assert.equal(data.battle.version, 3); assert.equal(data.battle.game.version, 3);
@@ -178,7 +178,7 @@ test('verified Borrowed Ground backup replacement retains all domains and fences
   assert.equal(JSON.parse(raw.data.get(MARKER)).version, CURRENT_PROFILE_PROTOCOL_VERSION); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(previous(raw), raw);
 });
 
-test('replacement faults in each save domain roll back exact prior bytes while retaining protocol16 fencing', () => {
+test('replacement faults in each save domain roll back exact prior bytes while retaining protocol17 fencing', () => {
   const replacement = earned(), text = createBackup(backend(entries(replacement)), {createdAt:date});
   for (const failedKey of keys) for (const fault of ['throw-before', 'throw-after', 'drop']) {
     const raw = backend([[MARKER, marker(15)], ...entries(earned(false)), ['unrelated', 'untouched']]);

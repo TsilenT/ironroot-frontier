@@ -91,7 +91,7 @@ for(const scenario of HISTORICAL_SCENARIOS)test('production 0.12 '+scenario+' re
     for(const file of Object.keys(candidate.hashes))expect(served.has(basePath+file),file+' served by active worker').toBe(true);
     for(const face of await loadFontFaces(modern)){expect(face.loaded).toHaveLength(1);expect(face.loaded[0].status).toBe('loaded');}
     for(const file of FONT_FILES)expect(served.has(basePath+file)).toBe(true);
-    await expect(modern.locator('#campaignProgressText')).toContainText(scenario==='far-beacon'?'13/23 missions · 39/69 stars':'16/23 missions · 48/69 stars');
+    await expect(modern.locator('#campaignProgressText')).toContainText(scenario==='far-beacon'?'13/24 missions · 39/72 stars':'16/24 missions · 48/72 stars');
     await press(modern,'#resumeSaved');const resumed=await pause(modern);
     expect(resumed.version).toBe(2);expect(resumed.campaignId).toBe(historical.campaignId);
     expect(resumed.game.version).toBe(historical.game.version);
