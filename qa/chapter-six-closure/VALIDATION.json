@@ -1,0 +1,76 @@
+{
+  "scope": "Presentation-only closure of the five released Chapter 6 encounters. Local candidate, not publication verification.",
+  "baseCommit": "62e57ef294a4ed4b6936db6095704d7f3cc9e2e0",
+  "baseTree": "0b4ac190809971e86e82a34b14b46661e62cb0fe",
+  "version": "0.26.1",
+  "profileProtocol": 17,
+  "catalog": {
+    "mainMissions": 24,
+    "stars": 72,
+    "chapterSixMissions": 5,
+    "changed": false
+  },
+  "changes": [
+    "Capstone victory prose distinguishes the actual citadel alternative from the compound objective route. Banked control does not imply currently held crossings.",
+    "Restart/Replay retain current navigation reward and Shared Crossing subtitle while historical battle mechanics stay bound.",
+    "Current Chapter 6 epilogue summarizes the finished arc; obsolete preview copy is removed without mutating published descriptors."
+  ],
+  "mechanics": "No simulation, AI, economy, difficulty, objective, map, unlock, save-schema or profile change.",
+  "validationStatus": "Final local checks passed; remote CI, exact-head review and publication remain separate gates.",
+  "node": {
+    "discovered": 1953,
+    "passed": 1952,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "Optional desktop build tooling unavailable",
+    "durationMs": 134664.624799,
+    "scope": "Final stable whole-root aggregate including retained publisher tests."
+  },
+  "browser": {
+    "status": "Bounded independent native desktop acceptance passed",
+    "scope": "Supported managed preview, synthetic prior/completed progress, namespaced sessionStorage only, no real-profile access; actual paid engine checkpoints resumed through normal updates.",
+    "checks": [
+      "Shared Crossing fresh and Restart briefings omit the preview subtitle and name One Signal as the next mission; an ordinary paid mine upgrade was observed.",
+      "Lanterns and Borrowed replay followed by Restart retain their current next-mission rewards.",
+      "A paid compound checkpoint at 130.00 seconds resumes to an ordinary win at 130.05 seconds; prose reports the destroyed post and 60 banked seconds, both goals are met, and both cores have 6,000 HP.",
+      "A paid core checkpoint at 187.70 seconds resumes to an ordinary win at 187.75 seconds; prose reports the citadel win, the post remains standing, its objective reads Not met 0/1, and core HP is 4,214 versus zero.",
+      "Primary Skirmishes opens Skirmish setup; a synthetic completed Chapter 6 profile shows 5/5 and the full epilogue.",
+      "Optional River Replay shows the current completion reward and starts fresh at 0/60 seconds with the post standing, full cores and 1,050 opening gold."
+    ],
+    "sourceRuntimeSha256": "da17e2f510965be65402829d57645edfc40e8b5a3c47867b3779bdd8327008bc",
+    "previewStopped": true,
+    "browserFree": true,
+    "limits": "Desktop only. Synthetic prior progress and paid-checkpoint continuation do not establish a browser-earned full campaign or from-zero win. No physical phone/PWA, full matrix, performance or subjective balance claim. The native runs did not reproduce lost crossings at victory; that boundary is covered by the focused production-code tests.",
+    "viewport": "1180x757"
+  },
+  "independentReview": {
+    "status": "No blocker found",
+    "report": "docs/CHAPTER_SIX_INDEPENDENT_REVIEW.md",
+    "focusedCases": 17,
+    "rawCampaignExportsCompared": 28,
+    "rawExportSha256": "7b76b17efb9c3e8bce3816ea91ed0702335014a5f106c05e4e971e2587a59d12",
+    "initialChapterSixGamesIdentical": 5,
+    "scope": "Read-only exact-base comparisons and focused tests; no aggregate/browser claim."
+  },
+  "limitations": [
+    "No new balance evidence or claim of human difficulty/enjoyment.",
+    "No full browser matrix, physical phone/PWA, non-Chromium or performance certification.",
+    "Chapter 10/Last Ascent remain isolated and excluded."
+  ],
+  "evidencePolicy": "Concise summaries and essential test/fixture code only. New screenshots and raw logs remain local outside source.",
+  "focused": {
+    "passed": 159,
+    "failed": 0,
+    "skipped": 0,
+    "newClosureCases": 17,
+    "scope": "Overlapping subset of final aggregate, not extra unique tests."
+  },
+  "syntax": "passed",
+  "runtime": {
+    "scope": "local source-dist validation only, not publication approval",
+    "runtimeFiles": 58,
+    "totalBytes": 1149666,
+    "files": "See runtime-final.json for every file hash."
+  },
+  "browserPreflight": "Passed source/syntax and fixture validation; not Playwright execution."
+}
