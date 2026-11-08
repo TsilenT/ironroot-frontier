@@ -1,14 +1,52 @@
-name: Validate Ironroot
-on: [push, pull_request]
+name: Validate and publish Ironroot
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# The source checkout and source API reads never receive write permission.
 permissions:
   contents: read
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
       - run: npm test
       - run: npm run check
+      - run: npm run check:release
+
+  publish:
+    needs: test
+    if: >-
+      github.repository == 'TsilenT/ironroot-frontier' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: ironroot-public-runtime-main
+      cancel-in-progress: false
+    steps:
+      # Re-check out exactly the tested commit in a clean, separate job.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: npm run check:release
+      - name: Publish validated runtime only
+        run: node scripts/publish-runtime.mjs
+        env:
+          SOURCE_READ_TOKEN: ${{ github.token }}
+          IRONROOT_PUBLISH_TOKEN: ${{ secrets.IRONROOT_PUBLISH_TOKEN }}
