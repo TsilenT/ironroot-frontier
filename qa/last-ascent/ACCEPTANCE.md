@@ -1,0 +1,11 @@
+# Last Ascent checkpoint
+
+This is a developer-only Chapter 10 experiment, not a campaign entry or a shipped finale. The live v0.22 runtime was unchanged throughout the experiment. The scenario, paid policies and all three setups are frozen here; the later One Signal mission is separate work.
+
+The independent mechanics review passed all 23 checks, verified 80 unique paid configurations and both spending ledgers, and reproduced two held-out winning routes. See `PROTOTYPE.md` for setup and outcome summaries, including failures and limitations. Bulky raw cohorts and terminal logs remain local-only; the scenario, policies, reproducible runners, mechanics tests and concise JSON summaries are included. Cheap distributed coverage won all five sampled seeds without further citadel damage. A central-first route had a natural loss with the enemy citadel on 5.28 HP. Neither result establishes the intended final difficulty, and no result was forced to be close.
+
+The separate ordinary desktop UI attempt lost at 2:37. It showed visible enemy deployment, actual economic spending and a readable middle siege breakthrough, but slow tool input left substantial cash unused. It verified pause/options/Back, same-tab temporary save/reload/resume, fresh setup and restart. See `native-ui/REPORT.md`; its screenshots remain local-only and are not in this PR. This was not a human playtest or phone/PWA certification. Briefing disclosure was reachable but too dependent on nested scrolling; generic dialogs still called the encounter a skirmish.
+
+Independent recommendation: retain the selected supply-road setup without further numerical tuning until contrasting actual-player attempts establish whether the opening and strategic choices are understandable. Do not integrate it as the Chapter 10 finale yet. In particular, an early mine-raiding route has not been demonstrated: destroying mines reduces future income, not existing factory waves.
+
+The checkpoint adds the mechanics suite to normal Node CI. Its preview generator is developer-only and now rejects the source root as an output path before writing; this safety guard and version-independent preview footer do not change the scenario or recorded gameplay. Generated preview files must never enter the public runtime. The ordinary game source, campaign progression and user data are not modified by this experiment.

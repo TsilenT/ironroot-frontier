@@ -1,10 +1,10 @@
-> Status update: Shared Crossing now has a local, reviewed-rule prototype in this change. The remaining new encounters below are proposals, not implemented content. Existing 19 main-path missions are preserved; this candidate adds one for 20 total. Counts for the eventual 43-mission route remain provisional.
+> Current development status, 8 November 2026: Shared Crossing is live in v0.22.0 as Chapter 6’s first mission (20 main-path missions / 60 optional stars). One Signal Is Enough is the next local candidate, not yet released. The Last Ascent has an isolated, independently reviewed 80-run prototype and one desktop attempt, but is not admitted to campaign progression or established as the final difficulty. See `qa/last-ascent/ACCEPTANCE.md`. Remaining encounters are proposals.
 
 # Campaign expansion: Chapters 6–10
 
-Status: design proposal, 8 November 2026. No new mission, rule, map, AI behavior, or campaign fog mode has been implemented or playtested for this proposal.
+Status: evolving campaign plan, 8 November 2026. The status above distinguishes delivered content, current implementation and unimplemented ideas; the source audit below records the starting point for the original planning pass.
 
-## What exists and what has been done
+## Original source audit and planning provenance
 
 The source inspected is the recovered fog candidate whose runtime matches merged main `772d7d90897b8ad27d48ede574dc62aaacbd77ad`, tree `589e8c06f0564e595540d24503b9cf17e3fc7bed`. Fog has merged as an optional experimental Skirmish rule; that does not make campaign fog available. Public deployment is separate.
 
@@ -18,7 +18,9 @@ Steve's latest direction is to make Chapter 10 a hard, uphill, nail-biting concl
 
 Preserve the existing chapters, earned progress, and the defeat of Vey. Do not bring him back merely to justify more combat. The next arc follows the settlements' effort to keep the reopened roads free when a coalition of holdout garrisons closes the upland supply route. Rowan, Sera, Iona, and Bram have different practical priorities within that effort: keeping people supplied, learning what is ahead, protecting the shared crossings, and breaking fortified positions.
 
-These are working sizes, not content quotas. Cut an encounter if it plays like another with different names. Additional side stories can sit inside a chapter without becoming mandatory filler or permanent stat rewards.
+These are working sizes, not content quotas. Steve explicitly allows 10–15 missions in a chapter where teaching, story, strategic variants and payoffs earn that space; there is no target to pad toward. Cut an encounter if it plays like another with different names. Additional side stories can sit inside a chapter without becoming mandatory filler or permanent stat rewards.
+
+Future missions default to adaptive opponents: the intended direction is 90% or more, not static factories presented as intelligent enemies. The current One Signal candidate replaces its initial fixed test with ordinary economy-respecting adaptive AI. Shared Crossing’s released fixed setup remains an explicit exception, not silently relabeled. Mission-specific AI can have disclosed priorities or reserves, but must spend real resources and respect information. Crossing/converging/diverging roads, five-road or lane-free maps, special campaign units and campaign spells are separate experimental hooks; none is implied implemented by this plan and no single mission needs to contain all of them.
 
 | Chapter | Working size | Distinct player problem | Difficulty rhythm / fog |
 | --- | --- | --- | --- |
@@ -176,8 +178,8 @@ The proposed distribution is one of five Chapter 6 missions, two of four Chapter
 ## Implementation order and review gates
 
 1. **Shared Crossing vertical slice**, not a whole chapter dump: one new campaign objective, no fog, ordinary costs and units, explicit persistent ownership. This answers whether control adds a useful decision before committing an arc to it.
-2. **Lanterns on the Water:** one explicit campaign-fog ruleset and mission on Classic, with scouting/objective/HUD isolation and AI symmetry checked. Keep the rest of the campaign unchanged.
-3. **One Signal Is Enough:** only if both defended-post strategies are viable and the permitted loss is clearly communicated. Reuse ordinary protected-asset alerts, but update minimum-survivor semantics everywhere.
+2. **One Signal Is Enough, current candidate:** only if both defended-post strategies are viable and the permitted loss is clearly communicated. Reuse ordinary protected-asset alerts, but update minimum-survivor semantics everywhere. Use adaptive enemy spending rather than the initial fixed-garrison sketch.
+3. **Lanterns on the Water:** one explicit campaign-fog ruleset and mission on Classic, with scouting/objective/HUD isolation and AI symmetry checked. Keep the rest of the campaign unchanged.
 4. Author the remaining Chapter 6 encounters after these slices establish which ideas work. Keep the reserve system for Chapter 9, where its trigger must give a real preparation decision rather than adding one more unfamiliar rule to Chapter 6.
 5. **Prototype a Chapter 10 finale early**, before filling Chapters 7–9, to establish a concrete difficulty destination. Then build intermediate missions that teach and combine the decisions needed there. This avoids writing a lot of content whose difficulty leads nowhere.
 
@@ -197,7 +199,7 @@ Tests should include paid concentrated pressure, screened siege, Rootwarden/rang
 - `dist/campaign.js:495–499`: progress validates finite mission completion times and prerequisites. New lengths and branch transitions must preserve existing records. A genuinely unlimited mission also needs a supported deadline representation and result-time validation; it is not an existing authored option.
 - `dist/challenges.js:65–85`: the existing Ashen Crossroads trial already supports any two of three destruction targets. Port its validated idea to a campaign objective instead of assuming campaign already has that feature.
 
-No runtime files, saves, profiles, Git branches, or deployments were changed for this design pass.
+The original design pass changed no runtime files or profiles. Subsequent implementation is tracked separately in the status at the top; proposals below the delivered/current slice are not a shipping commitment.
 
 ## Independent design review
 

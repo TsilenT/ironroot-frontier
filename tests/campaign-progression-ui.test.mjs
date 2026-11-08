@@ -101,7 +101,7 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   const h = uiHarness(); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'roadside-watch');
   assert.equal(h.$('campaignMissionTitle').textContent, 'Roadside Watch');
-  assert.equal(h.$('campaignCount').textContent, '20');
+  assert.equal(h.$('campaignCount').textContent, '21');
   assert.match(h.$('campaignIntroProgressText').textContent, /2\/8 buildings/);
   assert.equal(h.$('start').disabled, false);
   assert.equal(h.$('skipIntroduction').classList.contains('hidden'), true);
@@ -167,7 +167,7 @@ test('actual Continue walks the 2 → 5 → 8 opening, records wins once and sep
   assert.equal(h.c.campaignProgress.missions['roadside-watch'].stars, 1, 'replay may not fabricate bonus stars');
 });
 
-test('Resume preserves a two-building battle after a later unlock; deliberate replay adopts earned tier', () => {
+test('Resume preserves a two-building battle after a later unlock; deliberate replay adopts earned tier after explicit Begin', () => {
   const h = uiHarness(); launch(h);
   const before = h.c.game.serialize();
   const bytes = encodeBattle(h.c.game, scenarioForBattle(null, 'roadside-watch', h.c.game), { campaignProgress: h.c.campaignProgress });
@@ -183,7 +183,11 @@ test('Resume preserves a two-building battle after a later unlock; deliberate re
   assert.equal(h.$('allBuildings').classList.contains('hidden'), true);
   injectResultBoundary(h); assert.equal(h.c.objectiveOutcome.stars, 1);
   assert.equal(h.$('replayMission').classList.contains('hidden'), false);
+  const earned=JSON.stringify(h.c.campaignProgress);
   h.$('replayMission').onclick();
+  assert.equal(h.c.started,false);assert.equal(h.c.selectedCampaign,'roadside-watch');
+  assert.equal(JSON.stringify(h.c.campaignProgress),earned);
+  h.$('start').onclick();
   assert.equal(h.c.currentCampaign, 'roadside-watch');
   assert.equal(h.c.game.ruleset.id, 'frontier-campaign-citadel-open');
   assert.equal(cardTypes(h).length, 8);
@@ -214,7 +218,9 @@ test('restored legacy main mission retries and replays legacy identity without r
   h.c.objectiveOutcome = { failed: true }; h.$('playAgain').onclick();
   assert.equal(h.c.started,false); h.$('start').onclick();
   assert.equal(h.c.game.ruleset.id, 'frontier-legacy'); assert.deepEqual(h.c.game.serialize(), before);
-  injectResultBoundary(h); h.$('replayMission').onclick();
+  h.c.game.state.time=101; // Miss the speed medal so the optional Replay CTA is eligible.
+  injectResultBoundary(h);assert.equal(h.c.objectiveOutcome.stars,2);h.$('replayMission').onclick();
+  assert.equal(h.c.started,false);h.$('start').onclick();assert.deepEqual(h.c.game.serialize(),before);
   assert.equal(h.c.game.ruleset.id, 'frontier-legacy'); assert.deepEqual(cardTypes(h), Object.keys(BUILDINGS));
 });
 
