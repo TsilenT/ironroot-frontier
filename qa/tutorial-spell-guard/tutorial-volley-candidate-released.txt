@@ -1,0 +1,18 @@
+Browser tab: 84, Title: "Ironroot Frontier · RTS", URL: "http://127.0.0.1:4173/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 46, 117-119, 131, 133-134
+~			121 text 280
+~			125 text BATTLE TIME
+~			130 text Barracks raised. First troops in a moment.
++			131 text Choose one option · 190 gold.
+~				132 text 0/1 targets
++				133 text 03:00 remaining
++					134 text Add archers
++					135 text Place an Archery range behind your barracks so its archers can fire from behind the warriors.
++				136 text ARROW VOLLEY · TAP ENEMY TROOPS
++				137 text Damages enemy troops in a wide area.
++			138 button Pause to learn, ID: coachReplay
+~			101 button Description: Arrow volley. Area damage to troops., ID: rally
++					139 text ◆ 75
++					140 text 25s cooldown
+The focused UI element is 18 image ID: battle, Description: Battlefield. Choose a building, then a green build slot to place it once. Hold Shift with a mouse click to keep building. Drag or middle mouse drag to explore. Right-click or Escape cancels placement. Pan left: Left arrow. Pan right: Right arrow. Battle keyboard controls are in Options.
