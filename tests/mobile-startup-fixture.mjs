@@ -75,7 +75,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,briefingRestart:null,
   progressDirty:false,saveTimer:0,updateResume(){},setMode(){},activeDialog:null,writeBattle:()=>true,
-  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},
+  supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},citadelDialogSafe(){return false;},
   controlProgressLabel,controlProgressDescription,CONTROL_MAP_LEGEND,
   supportsFog,observe,observeObjectiveResult,hasChartedIntelligence,chartedObjectiveTargets,chartedObjectiveObservation,observationFacade,observationHUD,ObservationAudio,FogRenderer,fogSetupAllowed,observedEnemyCitadelText,
   fogAudio:new ObservationAudio({ownCommandSounds:false}),fogRenderer:null,presentation:null,presentationGame:null,

@@ -219,6 +219,12 @@ export class FogRenderer extends Renderer {
       c.restore();
       return;
     }
+    // Own upgrades use the shared badge/picking geometry, but only the detached
+    // own observation. Enemy rendering never receives private status helpers.
+    if (base.side === view.fog.side) {
+      super.drawBase(base, view);
+      return;
+    }
     // The stock status helper expects private timers and counters. Never give it
     // a partial enemy record, even while that enemy citadel is visible.
     super.drawBase(base, null);
