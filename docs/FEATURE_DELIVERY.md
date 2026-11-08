@@ -2,9 +2,9 @@
 
 As of 8 November 2026 (UTC). A passing simulation or a branch is not a shipped feature.
 
-## Live v0.20.2
+## Last verified live v0.20.2
 
-Released source merge: `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` ([PR #19](https://github.com/TsilenT/ironroot-frontier/pull/19)). Public commit: `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`. The browser build is at https://ironroot.stevets.ai/. All 54 published runtime files match that source; the public repository adds only deployment metadata. The cache is `ironroot-v0.20.2` and the profile protocol is 11.
+Last verified at the 8 November audit of private main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. Released source merge: `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` ([PR #19](https://github.com/TsilenT/ironroot-frontier/pull/19)). Public commit: `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`. The browser build is at https://ironroot.stevets.ai/. All 54 published runtime files match that source; the public repository adds only deployment metadata. The cache is `ironroot-v0.20.2` and the profile protocol is 11.
 
 - Campaign starts with three required teaching battles: one, two, then three roads. Victories grow the usable building roster from two to five to eight, with no unlock-bypass toggle.
 - The Rootwarden joins the second teaching battle and remains available in later new campaign attempts. Old saves and restarts keep their original rules and roster.
@@ -54,7 +54,7 @@ The former keyboard candidate is merged and shipped, as listed above. Full keybo
 
 ## Explicitly unmerged or deferred
 
-- **Longer music:** the 64-bar experiment has technical PCM checks but no completed listening assessment. Review is underway; it is not selected for release yet.
+- **Longer music:** reviewed for isolated v0.20.3 source integration, based on main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. The exact original experiment source passed 12 fresh native Chromium PCM cases and 15 live controls; no actual listening assessment was performed. See [AUDIO_INTEGRATION_0_20_3.md](AUDIO_INTEGRATION_0_20_3.md). The commit-bound v0.20.2 live baseline, optional fog and held PR #14 remain separate; acceptance/release observations are recorded in that dated report.
 - **Optional fog:** a local prototype/integration is under review, intended as a default-off Skirmish option. It is not shipped; mobile, performance and fairness acceptance remain open.
 - **AI expansion and balance:** earlier selected economy/rush patches are incorporated. Recent support/reserve/ranged-first/tower experiments were rejected without a production change. Broad AI replacement is not selected; a better synthetic result against one opening would not establish overall difficulty or fun.
 - **Compact mobile Volley ([PR #14](https://github.com/TsilenT/ironroot-frontier/pull/14)):** the only open feature PR at this audit, still draft at `cc51c38dacc7f6bfb42d3cf891c09d9997903267`. Its exact CI is green, but two recorded strict pre-Resume history-length failures remain unresolved and later assertions were not reached. It is based on v0.18.1 and must be reconciled with current main and revalidated before release. The shipped tutorial guard is separate.

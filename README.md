@@ -2,15 +2,23 @@
 
 A single-player real-time strategy tug-of-war for desktop and mobile browsers. Build an army, defend your economy and push along the battlefield lanes.
 
-## Current release
+## Last verified live baseline
 
-**v0.20.2 is live** at https://ironroot.stevets.ai/, from private source merge `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` ([PR #19](https://github.com/TsilenT/ironroot-frontier/pull/19)) and public commit `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`. The 54 runtime files match the released source and use `ironroot-v0.20.2`.
+Release status in this section was last verified on 8 November 2026 against private main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. Source version changes below do not by themselves verify a newer deployment.
+
+**v0.20.2 was verified live** at https://ironroot.stevets.ai/, from private source merge `0cdd1f5f3ff35c538c36b6cfe30848b2cfb632e7` ([PR #19](https://github.com/TsilenT/ironroot-frontier/pull/19)) and public commit `f2ad682fa35aec7c5f1cbbea9b2d10b94d931399`. The 54 runtime files match the released source and use `ironroot-v0.20.2`.
 
 Arrow volley cannot replace the selected barracks during forced first-barracks teaching. The existing card explains the temporary lock and becomes available after a successful paid barracks placement. Later planning lessons and ordinary paid Volley behavior are unchanged. See [the tutorial guard validation](docs/TUTORIAL_SPELL_GUARD.md).
 
 The release includes immediate 190-gold Citadel choices, optional default-off Skirmish bridge income, restart/briefing improvements, Ashen Crossroads and remappable Battle keyboard controls. [FEATURE_DELIVERY.md](docs/FEATURE_DELIVERY.md) distinguishes shipped work, held PR #14 and retained experiments. Historical candidate reports remain unchanged.
 
 Head CI, merged CI and Pages deployment passed. Live desktop smoke covered the tutorial guard, paid construction and Volley, save/reload and preserved progress/settings/history. This was not a new full browser matrix; physical-device, installed-PWA, controller and non-Chromium certification remain open.
+
+## Reviewed v0.20.3 source
+
+The **v0.20.3 longer-music integration** is based on private main `fdbd86c31ec2225009faa572f66ed4ccc4970315`. Its source scope is separate from the commit-bound live baseline above. It integrates the original 64-bar **The Long Reach — Hearth to Standard** experiment from `604de18910d7ddceda648d8156283b42c321e8ba`: about 2 minutes 22 seconds rather than 36 seconds, with two new middle sections, a developed reprise, simpler menu voicing, preserved musical position and priority-cue music ducking. Existing SFX and audio settings remain compatible.
+
+The exact audio source passed fresh native Chromium technical verification: 12 PCM scenarios and 15 live controls. No actual listening pass was performed; these measurements do not establish musical quality, fatigue or physical-device behavior. See [AUDIO_INTEGRATION_0_20_3.md](docs/AUDIO_INTEGRATION_0_20_3.md). This isolated source version uses `ironroot-v0.20.3`; optional fog and held PR #14 are not included.
 
 ## Game features
 
@@ -72,6 +80,6 @@ Fonts are bundled under OFL 1.1 with notices in `dist/FONTS-NOTICES.txt`. No ext
 
 ## Release boundaries
 
-The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. The released v0.20.2 build uses `ironroot-v0.20.2`. Its exact inventory is [the tutorial-guard runtime manifest](qa/tutorial-spell-guard/runtime-inventory.json). Earlier [v0.20 runtime evidence](qa/citadel-playtest/runtime-final.json) is retained unchanged and is historical. PR #14 remains held and separate; this documentation correction changes no runtime assets and requires no game deployment. Never publish changed assets under an old cache identity.
+The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. The released v0.20.2 build uses `ironroot-v0.20.2`. Its exact inventory is [the tutorial-guard runtime manifest](qa/tutorial-spell-guard/runtime-inventory.json). Earlier [v0.20 runtime evidence](qa/citadel-playtest/runtime-final.json) is retained unchanged and is historical. PR #14 remains held and separate. The reviewed v0.20.3 source changes only audio and release metadata at runtime and uses its own `ironroot-v0.20.3` cache identity. Acceptance and release observations are recorded in [the dated integration report](docs/AUDIO_INTEGRATION_0_20_3.md). Optional fog remains separate. Never publish changed assets under an old cache identity.
 
 There is no network PvP, account service or authoritative server. Physical mobile/controller testing, full nonvisual battlefield access and desktop/store certification remain separate work. Automated balance simulations do not establish human difficulty or mobile performance. See `docs/DESKTOP.md` for the optional desktop shell.
