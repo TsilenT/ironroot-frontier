@@ -40,7 +40,7 @@ test('owned live adjacent orders are free, consume no RNG, and reject every malf
     for(let to=Math.max(0,lane-1);to<=Math.min(lane+1,g.map.lanes.length-1);to++){const before=g.serialize();assert.equal(g.setFlightPlan(aerie.id,to,side).ok,true);const after=g.serialize();before.state.buildings[0].flightPlan=to;assert.deepEqual(after,before);}
     const b=g._place('archery',worldX(g.map,side,970),g.map.lanes[lane],side);rejectsUnchanged(g,()=>g.setFlightPlan(b.id,lane,side));aerie.hp=0;rejectsUnchanged(g,()=>g.setFlightPlan(aerie.id,lane,side));
   }
-  for(const id of Object.keys(RULESETS).filter(id=>!ids.includes(id))){const g=new Game({rulesetId:id,ai:false});rejectsUnchanged(g,()=>g.setFlightPlan(1,0));}
+  for(const id of Object.keys(RULESETS).filter(id=>!ids.includes(id))){const g=new Game({rulesetId:id,ai:false,...(id==='frontier-campaign-borrowed-ground'?{mapId:'borrowed-yard'}:{})});rejectsUnchanged(g,()=>g.setFlightPlan(1,0));}
 });
 
 test('all maps/sides/adjacent routes finish once, use exact mirrored gates and speed, and resume every phase',()=>{

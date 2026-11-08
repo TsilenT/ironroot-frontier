@@ -1,0 +1,103 @@
+{
+  "scope": "Local v0.25.0 Borrowed Ground candidate; not an exact remote CI or publication claim.",
+  "baseCommit": "870d3576346397e684c7d30a91f57980fda9a103",
+  "baseTree": "e2bf62d9688238c385ae0b71239fa38444c28964",
+  "mission": "borrowed-ground@1",
+  "map": "borrowed-yard@1",
+  "ruleset": "frontier-campaign-borrowed-ground@1",
+  "version": "0.25.0",
+  "profileProtocol": 16,
+  "node": {
+    "discovered": 1833,
+    "passed": 1832,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "Optional desktop build dependencies absent",
+    "durationMs": 108010.948979,
+    "scope": "Final local aggregate on unchanged runtime and corrected test fixtures."
+  },
+  "initialAggregate": {
+    "discovered": 1833,
+    "passed": 1829,
+    "failed": 3,
+    "skipped": 1,
+    "durationMs": 124254.9521,
+    "findings": [
+      "Non-flight rejection fixture instantiated new Borrowed rules with default Classic map.",
+      "Pre-Lanterns rules snapshot accidentally included the new additive Borrowed identity.",
+      "Pre-Lanterns progress fixture invented Borrowed completion without its Lanterns prerequisite."
+    ],
+    "disposition": "Three fixture corrections independently reviewed; original hashes and rejection/preservation assertions retained. Corrected targeted suites 22/22 and final aggregate passed. Original failed log remains local-only."
+  },
+  "focused": {
+    "newMissionMapProfileUI": {
+      "passed": 38,
+      "failed": 0
+    },
+    "independentUIAndLegacy": {
+      "passed": 52,
+      "failed": 0
+    },
+    "campaignRestartAndMission": {
+      "passed": 45,
+      "failed": 0
+    },
+    "scope": "Overlapping focused suites, not additional unique aggregate counts."
+  },
+  "syntax": "passed",
+  "runtime": {
+    "files": 58,
+    "bytes": 1141127,
+    "inventory": "qa/borrowed-ground/runtime-final.json"
+  },
+  "browserPreflight": "Source/fixture validators passed; no Playwright execution or matrix.",
+  "nativeDesktop": {
+    "status": "Passed bounded independent desktop acceptance",
+    "scope": "Isolated managed preview at 1180x757, namespaced sessionStorage and synthetic prerequisite records; production tab/profile untouched.",
+    "checks": [
+      "Briefing, disclosed rules, hint, nine-versus-eight scouting and twelve-site Field Guide readable.",
+      "Paid tower upgrade cost 154; ordinary tower salvage refunded 110 and replacement barracks cost 140.",
+      "Keyboard 8 selects Warden Lodge during battle.",
+      "Back pauses; save/title/reload retains the 00:45 attempt and purchases. Cancel restart retains the attempt; confirmed restart returns to briefing, and explicit Begin resets the original camp.",
+      "Paid 15.05-second rebuilt checkpoint restores outer barracks replacements.",
+      "Paid 192-second checkpoint resumes at 1/2 and naturally completes 2/2 at 194.45 seconds without new commands. Report identity and checkpoint recording scope correct.",
+      "Replay returns to briefing, then starts at 00:00 with zero targets and the original camp."
+    ],
+    "minorFollowup": "Title-only Field Guide keyboard help lists seven default building bindings before launch; actual in-battle Warden binding 8 verified.",
+    "artifacts": "Nine synthetic screenshots remain local-only; no screenshot upload required.",
+    "limits": "Checkpoint continuation is not a full browser-earned victory. No physical phone/PWA, non-Chromium or browser matrix claim."
+  },
+  "paidEvidence": {
+    "formationCount": 1,
+    "seeds": [
+      6401,
+      719,
+      51017
+    ],
+    "policies": 4,
+    "activeRuns": 12,
+    "idleRuns": 1,
+    "decisionSeconds": 5,
+    "maxCommandsPerDecision": 1,
+    "keepMassWins": 3,
+    "selectiveSalvageWins": 3,
+    "keepSupportWins": 2,
+    "greedyMinesWins": 0,
+    "limits": "Feasibility only, not human difficulty or exhaustive balance. Every sampled win retained 6,000 HP; no forced close outcome. Raw runs stay outside repository."
+  },
+  "independentReview": [
+    "docs/BORROWED_MAP_REVIEW.md",
+    "docs/BORROWED_REVIEW.md"
+  ],
+  "reviewFixes": [
+    "Mission title Field Guide now uses the actual mission map and roster instead of an invalid default-map combination.",
+    "Borrowed-only evaluator upper deadline prevents post-600s result credit; historical outcomes unchanged."
+  ],
+  "limits": [
+    "No full browser matrix or physical phone/PWA/non-Chromium pass.",
+    "No sustained rendering performance, listening, screen-reader or physical-controller certification.",
+    "Native fixture victory was a paid-checkpoint continuation, not a full browser-earned victory.",
+    "Old historical/source paths must be preserved by sparse overlay.",
+    "No fog, bridge income, new AI algorithm or required salvage/unit in this mission."
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "scope": "Developer-only synthetic prerequisites plus ordinary paid-engine checkpoints. Not browser-earned wins or production-profile persistence evidence.",
+  "mission": "borrowed-ground",
+  "syntheticPrerequisiteRecords": 19,
+  "storage": "sessionStorage only, per-fixture ironroot.borrowed.native namespace",
+  "fixtureNames": [
+    "fresh",
+    "rebuilt",
+    "finish"
+  ],
+  "receipts": {
+    "fresh": {
+      "route": null,
+      "seed": 6401,
+      "time": 0,
+      "targets": [
+        {
+          "name": "North Roadblock",
+          "originalId": 12,
+          "alive": true,
+          "hp": 1000
+        },
+        {
+          "name": "South Roadblock",
+          "originalId": 13,
+          "alive": true,
+          "hp": 1000
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "buildings": [
+        {
+          "id": 3,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 4,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 1,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 5,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 2,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 6,
+          "type": "barracks",
+          "x": 970,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 7,
+          "type": "barracks",
+          "x": 970,
+          "lane": 1,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 8,
+          "type": "barracks",
+          "x": 970,
+          "lane": 2,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 9,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 10,
+          "type": "archery",
+          "x": 690,
+          "lane": 2,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 11,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "ledger": {
+        "spending": [
+          0,
+          0
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          0,
+          0
+        ],
+        "purchases": [
+          0,
+          0
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": null,
+      "note": "No saved battle. Open the unlocked mission briefing; all prior records are synthetic."
+    },
+    "rebuilt": {
+      "route": "selective-salvage",
+      "seed": 6401,
+      "time": 15.05,
+      "targets": [
+        {
+          "name": "North Roadblock",
+          "originalId": 12,
+          "alive": true,
+          "hp": 1000
+        },
+        {
+          "name": "South Roadblock",
+          "originalId": 13,
+          "alive": true,
+          "hp": 1000
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "buildings": [
+        {
+          "id": 4,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 1,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 6,
+          "type": "barracks",
+          "x": 970,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 7,
+          "type": "barracks",
+          "x": 970,
+          "lane": 1,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 8,
+          "type": "barracks",
+          "x": 970,
+          "lane": 2,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 9,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 10,
+          "type": "archery",
+          "x": 690,
+          "lane": 2,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 11,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 32,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 44,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 2,
+          "level": 1,
+          "hp": 700
+        }
+      ],
+      "ledger": {
+        "spending": [
+          280,
+          140
+        ],
+        "refunds": [
+          220,
+          0
+        ],
+        "income": [
+          112.875,
+          112.875
+        ],
+        "purchases": [
+          4,
+          1
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "8eb15d1791ab73e65f917e02863a9f8bd289f0eb9ddcf4ff70f9024e9608c00c",
+      "note": "Two outer towers were normally salvaged at0s/5s for110gold each; their forward plots now hold paid barracks placed at10s/15s. No HP or objective edits."
+    },
+    "finish": {
+      "route": "selective-salvage",
+      "seed": 6401,
+      "time": 192,
+      "targets": [
+        {
+          "name": "North Roadblock",
+          "originalId": 12,
+          "alive": false,
+          "hp": null
+        },
+        {
+          "name": "South Roadblock",
+          "originalId": 13,
+          "alive": true,
+          "hp": 46.28
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "buildings": [
+        {
+          "id": 4,
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 1,
+          "level": 1,
+          "hp": 669
+        },
+        {
+          "id": 6,
+          "type": "barracks",
+          "x": 970,
+          "lane": 0,
+          "level": 2,
+          "hp": 980
+        },
+        {
+          "id": 7,
+          "type": "barracks",
+          "x": 970,
+          "lane": 1,
+          "level": 2,
+          "hp": 980
+        },
+        {
+          "id": 8,
+          "type": "barracks",
+          "x": 970,
+          "lane": 2,
+          "level": 2,
+          "hp": 980
+        },
+        {
+          "id": 9,
+          "type": "archery",
+          "x": 690,
+          "lane": 0,
+          "level": 2,
+          "hp": 658
+        },
+        {
+          "id": 10,
+          "type": "archery",
+          "x": 690,
+          "lane": 2,
+          "level": 2,
+          "hp": 658
+        },
+        {
+          "id": 11,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 32,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "level": 2,
+          "hp": 980
+        },
+        {
+          "id": 44,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 2,
+          "level": 2,
+          "hp": 980
+        },
+        {
+          "id": 54,
+          "type": "foundry",
+          "x": 410,
+          "lane": 0,
+          "level": 2,
+          "hp": 910
+        },
+        {
+          "id": 60,
+          "type": "foundry",
+          "x": 410,
+          "lane": 2,
+          "level": 2,
+          "hp": 910
+        },
+        {
+          "id": 102,
+          "type": "sanctum",
+          "x": 690,
+          "lane": 1,
+          "level": 2,
+          "hp": 728
+        }
+      ],
+      "ledger": {
+        "spending": [
+          2323,
+          1810
+        ],
+        "refunds": [
+          220,
+          0
+        ],
+        "income": [
+          1440,
+          1440
+        ],
+        "purchases": [
+          17,
+          15
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "8e5de4c8bce09e49b8c3a0dcda43ea29c2c07f70d838eec51b6d1a9e99ad16d4",
+      "note": "Active paid checkpoint near a natural original-roadblock victory. No HP or objective edits.",
+      "continuation": {
+        "result": "original-roadblock victory",
+        "time": 194.45,
+        "secondsAfterCheckpoint": 2.45,
+        "additionalPlayerCommands": 0
+      }
+    }
+  },
+  "completionTime": 194.45,
+  "sourceRuntimeSha256": "b290af28815926fbdb90e76d8fc77cf64b97d567327928acc8197dd514db6ed8",
+  "previewPrepared": true,
+  "preview": {
+    "directory": "/workspace/shared/ironroot-borrowed-ground/preview",
+    "runtimeFiles": 58,
+    "runtimeSha256": "cf6cd8ba4ae2059e66f7e85d5018e63a7693aece8ca18c2bb5d19a8cd0d62c9c",
+    "changedFiles": [
+      "app.js",
+      "index.html"
+    ],
+    "differences": "Namespaced session storage and fixture navigation/disclosure only; service-worker installation disabled. Every other runtime file is byte-identical."
+  }
+}
