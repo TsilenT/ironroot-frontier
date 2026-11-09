@@ -6,6 +6,10 @@ import {createDoomsday,describeDoomsday,evaluateDoomsday} from './scenario.mjs';
 import {createPolicy,describePolicy,POLICY_IDS} from './policies.mjs';
 import {runDoomsday,PACES} from './simulate.mjs';
 import {observeRun} from '../last-ascent/simulate.mjs';
+import {spawnSync} from 'node:child_process';
+import {mkdtemp,symlink,rm} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
 
 test('normal control exactly reproduces the previous supply-road save',()=>{
   assert.deepEqual(createDoomsday({variant:'control-normal'}).serialize(),createLastAscent().serialize());
@@ -51,4 +55,13 @@ test('invalid identities, seeds and timing fail explicitly',()=>{
   assert.throws(()=>createPolicy('missing'),RangeError);assert.throws(()=>createPolicy('race',{decisionSeconds:0}),RangeError);
   assert.throws(()=>runDoomsday({pace:'missing'}),RangeError);assert.throws(()=>runDoomsday({cap:Infinity}),RangeError);
   assert.equal(PACES.delayed.maxActions,1);
+});
+test('preview refuses source root, source descendants and symlink aliases before copying',async t=>{
+  const root=fileURLToPath(new URL('../..',import.meta.url)),temp=await mkdtemp('/tmp/doomsday-guard-');
+  t.after(()=>rm(temp,{recursive:true,force:true}));
+  const alias=path.join(temp,'source');await symlink(root,alias);
+  for(const output of [root,path.join(root,'qa'),alias,path.join(alias,'new-preview')]){
+    const r=spawnSync(process.execPath,[fileURLToPath(new URL('./prepare-preview.mjs',import.meta.url)),output],{encoding:'utf8'});
+    assert.notEqual(r.status,0);assert.match(r.stderr,/Doomsday preview must stay outside repository/);
+  }
 });

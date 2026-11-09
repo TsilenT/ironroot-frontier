@@ -18,7 +18,8 @@ const dest=path.join(output,'dist');
 let app=await readFile(path.join(dest,'app.js'),'utf8');
 app=app.replace("createLastAscent as qaCreateLastAscent,describeLastAscent as qaDescribe} from './last-ascent-scenario.mjs'","createDoomsday as qaCreateLastAscent,describeDoomsday as qaDescribe} from './doomsday-scenario.mjs'");
 app=app.replace("const qaVariant=\"supply-road\",qaSeed=101;",`const qaVariant=${JSON.stringify(variant)},qaSeed=(()=>{const value=new URLSearchParams(location.search).get('seed');const n=value===null?101:Number(value);return Number.isSafeInteger(n)&&n>=0&&n<=0xffffffff?n:101;})();`);
-app=app.replace("let difficulty = 'normal',",`let difficulty = ${JSON.stringify(description.difficulty)},`);
+assert.ok(app.includes('let difficulty = "normal",'));
+app=app.replace('let difficulty = "normal",',`let difficulty = ${JSON.stringify(description.difficulty)},`);
 app=app.replace("prefix='ironroot.last-ascent.lab.'","prefix='ironroot.doomsday.lab.'");
 app=app.replace("'serviceWorker' in navigator &&","false && 'serviceWorker' in navigator &&");
 // Replace the older long briefing with a compact summary and optional details.
