@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeReed = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => includeReed || m.id !== id).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='the-archers-quay'&&(includeReed || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeReed = true) {
@@ -58,18 +58,18 @@ function assertBlocked(profile, raw) {
 }
 
 test('protocol20 pins exact recovered profile19 and changes only admission and descriptive copy', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 20);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 21);
   assert.equal(protocolNineteen.CURRENT_PROFILE_PROTOCOL_VERSION, 19);
   const source = readFileSync(new URL('./fixtures/profile-session-v0280.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), '6ac7fb1530c568ca462e558c3c6ae806f1cfd62f01285a83c69e1d13609201fe');
   const expected = source.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 19', 'CURRENT_PROFILE_PROTOCOL_VERSION = 20')
     .replace('twin-span checkpoints and explicit result identities from older writers.', 'twin-span checkpoints and explicit result identities from older writers; protocol 20 fences Through the Reed Beds campaign progress, clear-view checkpoints and explicit result identities from older writers.')
     .replace('17, 18, 19].includes', '17, 18, 19, 20].includes').replace('17, 18 or 19.', '17, 18, 19 or 20.');
-  assert.equal(readFileSync(new URL('../dist/profile-session.js', import.meta.url), 'utf8'), expected);
+  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0290.js', import.meta.url), 'utf8'), expected);
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, {campaign:'ironroot.campaign.v1', trials:'ironroot.trials.v1', settings:'ironroot.settings.v1', history:'ironroot.history.v1', battle:'ironroot.battle.v1'});
   for (let version = 1; version <= 20; version++) { const raw = backend(); assert.ok(createProfileSession(() => raw, {requiredProtocolVersion:version}).status().canWrite); }
-  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:21}), TypeError);
+  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:22}), TypeError);
   const raw = backend(), legacy = createProfileSession(() => raw, {newEpoch:() => 'legacy-default'});
   assert.deepEqual(raw.writes, []); assert.ok(legacy.beginImport().ok); assert.equal(JSON.parse(raw.data.get(MARKER)).version, 1);
 });
@@ -137,8 +137,8 @@ test('old earned progress stays exact, unlocks Through the Reed Beds and records
   const old = earned(false), raw = backend([[MARKER, marker(19)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 27); assert.equal(overview.maxStars, 81); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
-  assert.equal(overview.chapters.at(-1).total, 3);
+  assert.equal(overview.total, 28); assert.equal(overview.maxStars, 84); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.chapters.find(c=>c.id==='unlit-roads').total, 3);
   assert.equal(getCampaignLaunchMission('the-road-we-know', old.campaign).reward, 'Unlocks Through the Reed Beds');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);
   assert.equal(old.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(old.campaign), old.campaign);
@@ -151,7 +151,7 @@ test('old earned progress stays exact, unlocks Through the Reed Beds and records
   assert.throws(() => validateHistoryRow({...identityless, campaignId:id}), /unknown campaign/);
   for (const [mission, value] of Object.entries(old.campaign.missions)) assert.deepEqual(recorded.missions[mission], value);
   assert.deepEqual(recorded.missions[id], {completed:true, stars:3, bestTime:0});
-  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, true); assert.equal(final.nextMissionId, null);
+  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, false); assert.equal(final.nextMissionId, 'the-archers-quay');
   assert.ok(writeCampaignProgress(createStorage(() => profile.storage), recorded));
   assert.equal(JSON.parse(raw.data.get(K.campaign)).version, 1);
   const data = earned(); assert.equal(data.battle.version, 3); assert.equal(data.battle.game.version, 3);

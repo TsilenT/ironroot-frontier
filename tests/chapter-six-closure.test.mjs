@@ -130,7 +130,7 @@ test('the released chapter stays five missions with the exact order, rewards and
     const overview = campaign.getProgressionCampaignOverview(progress);
     const chapter = overview.chapters.find(c => c.id === chapterId);
     assert.deepEqual(overview.missions.filter(m => m.chapterId === chapterId).map(m => m.id), ids);
-    assert.equal(overview.total, 27); assert.equal(overview.maxStars, 81);
+    assert.equal(overview.total, 28); assert.equal(overview.maxStars, 84);
     assert.equal(chapter.total, 5); assert.equal(chapter.maxStars, 15);
     assert.equal(chapter.cleared, index); assert.equal(chapter.completed, false);
     assert.equal(overview.nextMissionId, id);
@@ -201,7 +201,7 @@ for (const stars of [1, 3]) test(`Chapter 6 ${stars}-star result continues into 
   assert.equal(c.briefingRestart.campaign, river);
   assert.equal(c.briefingRestart.game.state.time, 0);
   assert.deepEqual(c.campaignProgress, records);
-  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, 'through-the-reed-beds');
+  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, 'the-archers-quay');
 });
 
 test('current presentation never rewrites published chapter or mission descriptors', () => {
