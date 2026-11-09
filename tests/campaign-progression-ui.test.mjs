@@ -101,11 +101,11 @@ test('fresh title, briefing, real start, deck and field guide agree on the two-b
   const h = uiHarness(); h.c.renderCampaign();
   assert.equal(h.c.selectedCampaign, 'roadside-watch');
   assert.equal(h.$('campaignMissionTitle').textContent, 'Roadside Watch');
-  assert.equal(h.$('campaignCount').textContent, '27');
+  assert.equal(h.$('campaignCount').textContent, '28');
   assert.match(h.$('campaignIntroProgressText').textContent, /2\/8 buildings/);
   assert.equal(h.$('start').disabled, false);
   assert.equal(h.$('skipIntroduction').classList.contains('hidden'), true);
-  assert.deepEqual(h.$('campaignChapters').children.map(node => node.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(chapter => chapter.id), campaign.SHARED_CROSSING_CHAPTER.id, campaign.UNLIT_ROADS_CHAPTER.id]);
+  assert.deepEqual(h.$('campaignChapters').children.map(node => node.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(chapter => chapter.id), campaign.SHARED_CROSSING_CHAPTER.id, campaign.UNLIT_ROADS_CHAPTER.id, campaign.SIEGE_COAST_CHAPTER.id]);
   assert.match(h.$('campaignBriefing').innerHTML, /^<li>Available here: Barracks, Archery range\.<\/li>/);
   assert.deepEqual(codexUnits(h), ['warrior', 'archer']);
   assert.deepEqual(codexStructures(h), []);
@@ -366,7 +366,7 @@ test('Story → Chapter → Mission moves focus, folds only new briefings, and k
   assert.equal(h.$('campaignStoryNav').attributes['aria-current'], 'page');
   assert.equal(hidden('campaignChapterNav'), true); assert.equal(hidden('campaignMissionPosition'), true);
   assert.equal(hidden('start'), true); assert.equal(hidden('campaignStoryPage'), false);
-  assert.deepEqual(h.$('campaignChapters').children.map(n => n.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(c => c.id), campaign.SHARED_CROSSING_CHAPTER.id, campaign.UNLIT_ROADS_CHAPTER.id]);
+  assert.deepEqual(h.$('campaignChapters').children.map(n => n.dataset.chapter), ['opening-roads', ...campaign.CAMPAIGN_CHAPTERS.map(c => c.id), campaign.SHARED_CROSSING_CHAPTER.id, campaign.UNLIT_ROADS_CHAPTER.id, campaign.SIEGE_COAST_CHAPTER.id]);
   choose('campaignChapters', 'chapter', 'opening-roads');
   assert.equal(h.c.document.activeElement.id, 'campaignChapterTitle');
   assert.equal(h.$('campaignChapterNav').attributes['aria-current'], 'page');

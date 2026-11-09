@@ -399,7 +399,7 @@ export const ARCHERS_QUAY_MISSIONS=[{
   objective:'Destroy the enemy citadel within 10:00. Your citadel must survive.',
   hint:'Screen siege and ranged troops on an outer road, or support a breach through the middle. Central archers can intercept nearby flyers. Archery ranges produce marching troops; they are not stationary batteries. No building or route is required.',
   difficulty:'normal',seed:8101,timeLimit:600,startingGold:1100,startingHealth:6000,enemyGold:100,ai:true,prerequisites:['through-the-reed-beds'],
-  playerBuildings:[['barracks',830,0],['barracks',830,1],['barracks',830,2],['archery',690,1],['mint',410,1]],
+  playerBuildings:[['barracks',830,0],['barracks',830,1],['barracks',830,2],['archery',690,0],['archery',690,1],['archery',690,2],['mint',410,1]],
   enemyBuildings:[['foundry',2230,0],['foundry',2230,2],['barracks',2090,0],['barracks',2090,2],['barracks',2090,1],['archery',2230,1,2],['archery',2370,1],['mint',2790,1]],
   objectives:[{id:'citadel',type:'citadel',label:'Destroy the enemy citadel'}],medals:[swift(300),intact(4500)],
   briefing:['All three roads and enemy forces are fully visible. Two middle-road archery ranges supply marching archers, with one foundry on each outer road. Archers can intercept nearby flyers, including across an adjacent road when in range; they do not cover every road permanently.',
