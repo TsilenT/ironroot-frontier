@@ -1,0 +1,849 @@
+{
+  "scope": "Fresh production-engine paid feasibility; not human difficulty or native UI evidence.",
+  "generatedAt": "2026-11-09T03:38:48.059Z",
+  "policySha256": "b63bca3503bf4ff6e1d64beb48b92ff970df1b4aec5c5995c97bbdcbd956155f",
+  "plan": {
+    "developmentSeeds": [
+      7301,
+      719,
+      51017,
+      424242
+    ],
+    "heldOutSeeds": [
+      98317,
+      620219
+    ],
+    "policies": [
+      "broad-novice",
+      "screened-siege",
+      "supported-rootwarden",
+      "air-heavy",
+      "direct-rush",
+      "north-rush",
+      "safe-economy",
+      "idle"
+    ],
+    "notes": "Policies frozen before these fresh runs. Two newly selected held-out seeds are reported separately; earlier historical seeds are not held out."
+  },
+  "totalRuns": 48,
+  "development": {
+    "broad-novice": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "won",
+          "duration": 149.6,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2740,
+            1235
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "duration": 166.35,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            3139,
+            1420
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "duration": 165,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2978,
+            1480
+          ],
+          "enemyPurchases": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 202.4,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3335,
+            1995
+          ],
+          "enemyPurchases": 13,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "screened-siege": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "won",
+          "duration": 138,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2402,
+            1125
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "duration": 149.95,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2524,
+            1205
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "duration": 143.6,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2402,
+            1265
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "duration": 171.3,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2818,
+            1415
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supported-rootwarden": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "won",
+          "duration": 149.5,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2551,
+            1315
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "duration": 143.35,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2404,
+            1225
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "duration": 146.7,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2551,
+            1315
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 203.65,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3109,
+            1765
+          ],
+          "enemyPurchases": 14,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "air-heavy": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "lost",
+          "duration": 141.05,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2530,
+            1160
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "duration": 130.55,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2280,
+            1085
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "duration": 139.5,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2455,
+            1160
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 133.8,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2280,
+            1160
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "direct-rush": {
+      "games": 4,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "lost",
+          "duration": 185.8,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3080,
+            1695
+          ],
+          "enemyPurchases": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "duration": 154.15,
+          "hp": [
+            0,
+            1632
+          ],
+          "spending": [
+            2574,
+            1310
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "duration": 156.8,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2767,
+            1605
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "duration": 170.5,
+          "hp": [
+            2764,
+            0
+          ],
+          "spending": [
+            2850,
+            1385
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "north-rush": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "won",
+          "duration": 114.55,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2165,
+            1015
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "duration": 126.25,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2305,
+            1090
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "duration": 120.95,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2165,
+            1065
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 157.25,
+          "hp": [
+            0,
+            691
+          ],
+          "spending": [
+            2555,
+            1340
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "safe-economy": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "lost",
+          "duration": 181.35,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2935,
+            1745
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "duration": 213.65,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3275,
+            1785
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "duration": 223.25,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3315,
+            2040
+          ],
+          "enemyPurchases": 14,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 205.35,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3095,
+            2012
+          ],
+          "enemyPurchases": 13,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 7301,
+          "outcome": "lost",
+          "duration": 85.95,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            680
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "duration": 84.8,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            680
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "duration": 84.75,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "duration": 86.7,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  },
+  "heldOut": {
+    "broad-novice": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 188.3,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3120,
+            1765
+          ],
+          "enemyPurchases": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 199.35,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3370,
+            2066
+          ],
+          "enemyPurchases": 15,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "screened-siege": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "won",
+          "duration": 154.3,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2622,
+            1250
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "won",
+          "duration": 164.65,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2718,
+            1440
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supported-rootwarden": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 193,
+          "hp": [
+            0,
+            2007
+          ],
+          "spending": [
+            2630,
+            1505
+          ],
+          "enemyPurchases": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 174.1,
+          "hp": [
+            0,
+            4605
+          ],
+          "spending": [
+            2490,
+            1425
+          ],
+          "enemyPurchases": 12,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "air-heavy": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 132.65,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2280,
+            1085
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 127.9,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2280,
+            1085
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "direct-rush": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 152.85,
+          "hp": [
+            0,
+            2126.76
+          ],
+          "spending": [
+            2664,
+            1310
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 155.1,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2524,
+            1375
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "north-rush": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "won",
+          "duration": 151.25,
+          "hp": [
+            1773,
+            0
+          ],
+          "spending": [
+            2555,
+            1305
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "won",
+          "duration": 116.05,
+          "hp": [
+            6000,
+            0
+          ],
+          "spending": [
+            2200,
+            1015
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "safe-economy": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 174.15,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            2970,
+            1610
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 204.85,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            3275,
+            1800
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 98317,
+          "outcome": "lost",
+          "duration": 84.9,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            680
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620219,
+          "outcome": "lost",
+          "duration": 85.25,
+          "hp": [
+            0,
+            6000
+          ],
+          "spending": [
+            0,
+            680
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}
