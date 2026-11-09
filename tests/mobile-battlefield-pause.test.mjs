@@ -1,3 +1,4 @@
+import {minorReserveView} from '../dist/minor-reserve-view.js';
 import {supportsFog} from '../dist/fog.js';
 import {hasChartedIntelligence,chartedObjectiveTargets} from '../dist/campaign-intelligence.js';
 import test from 'node:test';
@@ -17,7 +18,7 @@ function harness(w=568,h=210){
  const $=id=>{if(!elements.has(id)){const classes=new Set(['coachingModal','viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
  $('app').classList.add('protected-mobile');$('app').classList.add('protected-compact');
  const game=createCampaignMission('winter-stores'),inputScope=createInputScopeGuard('compact-battle:landscape');
- const c={keyboardCapture:null,cancelKeyboardCapture(){},battleSafetyReason:null,coachingHold:false,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
+ const c={minorReserveView,keyboardCapture:null,cancelKeyboardCapture(){},battleSafetyReason:null,coachingHold:false,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
   protectedControls:new Map([['a',{button:$('target0')}],['b',{button:$('target1')}]]),
   inputScope,controller:{reset(){log.resets++;}},resetBattleGesture(){log.interruptions++;},armedProtectedControl:{},closeSelectionArmed:true,padHud:true,
   recoveryHold:null,profileGate:null,battleSession:{status:()=>c.stale?'stale':'current'},showRecoverySettings(){c.recoveryShown=true;},showTitle(){c.titleShown=true;c.started=false;},
@@ -36,7 +37,7 @@ function harness(w=568,h=210){
  c.syncDialogs=()=>c.syncInputScope();
  c.supportsFog=supportsFog;c.battleView=()=>c.game;c.refreshPresentation=()=>c.game;c.battleFront=()=>c.game.state.frontline;
  createContext(c);
- for(const source of [section('function chartedMission()', 'function objectiveFocusTargets()'),section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
+ for(const source of [section('function currentMinorReserve()', 'function beginProtectedObjectives()'),section('function chartedMission()', 'function objectiveFocusTargets()'),section('function syncInputScope()','function guardInput('),section('function pause(value,',"$('pause').onclick ="),section('function viewportScope()','// Portable backups'),section('function hideSettings()','function syncSettings()'),section('function hideHelp()',"$('help').onclick"),section('function flushProtectedWarnings(now)','function finishProtectedObjectives('),section('function updateAudio()','function frame('),section('function frame(now)','\nupdateHUD();\nrequestAnimationFrame(frame);'),section("$('saveExit').onclick", "$('speed').onclick")])runInNewContext(source,c);
  return {c,$,log,resize(width,height,nextInsets={}){w=width;h=height;insets=nextInsets;c.window.innerWidth=width;c.window.innerHeight=height;c.mobileLayout=width>height?'landscape':'portrait';},frame:now=>c.frame(now),sync:()=>c.syncViewportSafety()};
 }
 
