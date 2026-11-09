@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeReed = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='the-archers-quay'&&(includeReed || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(includeReed || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeReed = true) {
@@ -58,7 +58,7 @@ function assertBlocked(profile, raw) {
 }
 
 test('protocol20 pins exact recovered profile19 and changes only admission and descriptive copy', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 21);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 22);
   assert.equal(protocolNineteen.CURRENT_PROFILE_PROTOCOL_VERSION, 19);
   const source = readFileSync(new URL('./fixtures/profile-session-v0280.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), '6ac7fb1530c568ca462e558c3c6ae806f1cfd62f01285a83c69e1d13609201fe');
@@ -69,7 +69,7 @@ test('protocol20 pins exact recovered profile19 and changes only admission and d
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, {campaign:'ironroot.campaign.v1', trials:'ironroot.trials.v1', settings:'ironroot.settings.v1', history:'ironroot.history.v1', battle:'ironroot.battle.v1'});
   for (let version = 1; version <= 20; version++) { const raw = backend(); assert.ok(createProfileSession(() => raw, {requiredProtocolVersion:version}).status().canWrite); }
-  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:22}), TypeError);
+  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:23}), TypeError);
   const raw = backend(), legacy = createProfileSession(() => raw, {newEpoch:() => 'legacy-default'});
   assert.deepEqual(raw.writes, []); assert.ok(legacy.beginImport().ok); assert.equal(JSON.parse(raw.data.get(MARKER)).version, 1);
 });
@@ -137,7 +137,7 @@ test('old earned progress stays exact, unlocks Through the Reed Beds and records
   const old = earned(false), raw = backend([[MARKER, marker(19)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 28); assert.equal(overview.maxStars, 84); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 29); assert.equal(overview.maxStars, 87); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(c=>c.id==='unlit-roads').total, 3);
   assert.equal(getCampaignLaunchMission('the-road-we-know', old.campaign).reward, 'Unlocks Through the Reed Beds');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);

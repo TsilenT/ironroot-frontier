@@ -1,0 +1,12 @@
+{
+  "scope": "Post-heldout verifier-only compatibility checks. Original first-open paid plan, raw54 and summaries unchanged.",
+  "checks": [
+    "Canonical-complete mirror with 129 extra canonical code paths passes",
+    "Unclassified extra code rejected",
+    "Changed dist/campaign.js rejected",
+    "Changed qa/browser/flight-order-fixtures.mjs rejected",
+    "Missing original frozen path rejected",
+    "Canonical extra symlink rejected even when target bytes match"
+  ],
+  "allPassed": true
+}

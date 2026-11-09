@@ -1,0 +1,308 @@
+{
+  "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence.",
+  "startedAt": "2026-11-09T06:06:15.464Z",
+  "finishedAt": "2026-11-09T06:06:18.022Z",
+  "baseline": {
+    "commit": "0e5123f9e4574c362de0b83d2bf7a727dbefee4c",
+    "equivalentCandidate": "d399b75cadfb70aa878a02e5fb0eb9f78b8836e2",
+    "tree": "60cc6683855b38669ecddfe330853cdda86e4c8f"
+  },
+  "harnessHashes": {
+    "qa/salt-stores/paid-policies.mjs": "577fa770569fb2522c0660929e47aee1f149fd716447783ddfa9fb2908c606ed",
+    "qa/salt-stores/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/salt-stores/scenario.mjs": "0a22b6537060c271c4c9affb9a4ac8cb039a81f51eadf50d113bd79065edf51d",
+    "qa/salt-stores/simulate.mjs": "5a7b57a95937105d96d6e43d0b2055a96ec55603de8c98f5a4a7241e577088b1",
+    "qa/salt-stores/verify-evidence.mjs": "9b687f014c44358a39a876217712998ca3df66116a3655b18a01dab68dd83242",
+    "qa/salt-stores/prepare-native.mjs": "0fe8b0bed29ea0f7685303b71d4838f75df4027bac7c46b322a41153034831d5",
+    "tests/salt-stores-mission.test.mjs": "205fedf650973a50ff762be92d2c9f339fc01e18e0ebcf3e9c06cd45babb6857",
+    "tests/salt-stores-profile.test.mjs": "769e850d556aa31e98ba4544ed289416457932f91ab4ef99434acede3b6cfa0c",
+    "tests/salt-stores-economy.test.mjs": "ac31ff8345d3c7b4c525f5c1f6cad26681ec252180f9c9568828bc3c08d2a97c",
+    "tests/salt-stores-preview.test.mjs": "48f4f442468ce4e0425e3e3ee3fb35574a6248485b000611b1fad10c6f4f1f5c",
+    "tests/salt-stores-parent-freeze.test.mjs": "4e81bf3337f6513754b5ca098d59f472304e1828900fec5280340c715ec3cfaf"
+  },
+  "combatHashes": {
+    "dist/FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "dist/app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+    "dist/audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "dist/barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "dist/barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "dist/barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "dist/barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "dist/battle-codec.js": "c23870ec96bc8c9ad34a2d67a563b08353d0bf833a455c0f0663a47c551ea4ed",
+    "dist/battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "dist/bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "dist/campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "dist/campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "dist/campaign-presentation.js": "2cc568a683e712a0641c86b74a7b04bae31468d49f7bdc19f975cdda626ad810",
+    "dist/campaign.js": "e13f589d69a2bbbc6a15281cfe1040e1e53d22ea22a086c4f68e46f8b47a394f",
+    "dist/challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "dist/citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dist/dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "dist/fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "dist/index.html": "5fdb9b443c4fdbb902ebc3ac386e8a5ee1232e7bbe0cfea96c852a771a2fe017",
+    "dist/input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "dist/intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "dist/keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "dist/manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "dist/mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "dist/profile-session.js": "2bfd3fe9525c0ffdf88ae651854e60ff689789a66db2b98750dbd7cbd561ef32",
+    "dist/protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "dist/render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "dist/report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "dist/rulesets.js": "27ab8cdec72ad31d0201f57d007395094d02df25b2001dc6842fc2cd76708be2",
+    "dist/scouting.js": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+    "dist/service-worker.js": "64ffe6dbd1ff1ff649b8c56c3f8ce3d7840c55e396c38940575b426204c27121",
+    "dist/styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "dist/training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  },
+  "formationSha256": "d31df9f52024d60a1a738b1cb506f9f2670da36dc56e942e2c74e3aaf7543d7c",
+  "plan": {
+    "evidenceEpoch": 1,
+    "developmentSeeds": [
+      8202,
+      923,
+      58031,
+      448273
+    ],
+    "heldOutSeeds": [
+      2571673,
+      3840289
+    ],
+    "policies": [
+      "northraid",
+      "southraid",
+      "directmiddle",
+      "economy",
+      "broadnovice",
+      "screenedRootwarden",
+      "dualouterraids",
+      "unsupportedair",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence."
+  },
+  "heldOut": false,
+  "totalRuns": 3,
+  "raw": {
+    "sha256": "b827846a66d95d1b3a7a6ffdf83d5eff39a5f5f0065a4dcb8ea46a49bad00f0b",
+    "bytes": 636402,
+    "filename": "ironroot-salt-quickgate-frozen-epoch1.ndjson"
+  },
+  "results": {
+    "northraid": {
+      "games": 1,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 137.34999999999698,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 63.899999999998506,
+              "tick": 1278,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.54999999999501,
+              "tick": 2511,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            108.74999999999596
+          ],
+          "deniedOriginalMineIncome": 213.12500000000114,
+          "paid": 16,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southraid": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "directmiddle": {
+      "games": 1,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 193.85000000000983,
+          "hp": [
+            5694,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 164.90000000000325,
+              "tick": 3298,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 175.3000000000056,
+              "tick": 3506,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.0500000000085,
+              "tick": 3761,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 315,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            183.1500000000074,
+            171.50000000000475
+          ],
+          "deniedOriginalMineIncome": 72.37500000001646,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "economy": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "broadnovice": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "screenedRootwarden": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "dualouterraids": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "unsupportedair": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "idle": {
+      "games": 1,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 108.79999999999596,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 86.74999999999721,
+              "tick": 1735,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}

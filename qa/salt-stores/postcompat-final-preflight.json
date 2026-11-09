@@ -1,0 +1,55 @@
+{
+  "scope": "Final post-heldout verification portability preflight. Original paid epoch1 remains immutable; not a new untouched-heldout epoch.",
+  "originalPaidFreezeSha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47",
+  "originalVerifierSha256": "3898432d0966c68911fd014c71a922de21432665deb0277c4d19767876f8a6d6",
+  "finalVerifierSha256": "b20e56b9f053dbd85c318eea1a5d7183748b1115285ce4e63e8d2a3e5b29493f",
+  "verifierCompatibilitySha256": "a2574d1b41dedbb294f15faaf7e8836941d954495f40d7438e82e69da5e65ba7",
+  "verifierDiffSha256": "90a7e2ee09754a69bb2b978aea6210d8bf654bcc455aa3c4927c2501923c212c",
+  "firstOpenEvidenceEqualitySha256": "c5bb8695f46031e52503aa5f0964dd51aa511506a9856a6b4834f50464262814",
+  "sparseAggregate": {
+    "tests": 2157,
+    "passed": 2156,
+    "failed": 0,
+    "optionalSkipped": 1
+  },
+  "canonicalCompleteMirrorAggregate": {
+    "tests": 2157,
+    "passed": 2156,
+    "failed": 0,
+    "optionalSkipped": 1
+  },
+  "focusedSalt": {
+    "sparsePassed": 50,
+    "canonicalCompletePassed": 50,
+    "failed": 0
+  },
+  "negativeVerifierProbes": {
+    "allPassed": true,
+    "proofSha256": "c2357c77aff331b6977ee87989fa5d187fc26f87d81c6b8a2add964a67b864da"
+  },
+  "runtimeMapSha256": "fccd85ea1a88a5627f30d3f9fc4cb479f2f04b9d930c321c64505097e8282ef5",
+  "firstOpenFull54EvidenceArchiveSha256": "7a9fd3521a4213a9123ef233bc3baa35d385a22af37528813d955f99266a0417",
+  "logs": [
+    {
+      "filename": "ironroot-salt-finalcompat-sparse-aggregate.log",
+      "sha256": "ee0dc90d72473da716f0d6f55970b91cd6e42b2cfdf68b94200c9ae24c06b20d",
+      "bytes": 227334
+    },
+    {
+      "filename": "ironroot-salt-finalcompat-complete-aggregate.log",
+      "sha256": "e8a59321aff5f9c52e19cba867e85de4892548d665fe02116023598ec6cf2198",
+      "bytes": 227325
+    },
+    {
+      "filename": "ironroot-salt-postcompat-focused-final.log",
+      "sha256": "0fe6c558aaf3483bda5ecababfa07f11cfe5bcd8b7c8375e9bdae34187468e5a",
+      "bytes": 5585
+    },
+    {
+      "filename": "ironroot-salt-postcompat-complete-mirror-final.log",
+      "sha256": "7090af10ddbb4ef30382d826eac4f606a5035b5b89fe581544643d6e0f0db401",
+      "bytes": 5578
+    }
+  ],
+  "allPassed": true
+}

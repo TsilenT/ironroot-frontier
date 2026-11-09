@@ -14,7 +14,7 @@ import {renderBattleReport} from '../dist/report-view.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 
 const id='a-river-between-us', mission=getCampaignMission(id,1);
-function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-archers-quay').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
+function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
 const fresh=()=>createCampaignMission(id);
 const section=(source,from,to)=>source.slice(source.indexOf(from),source.indexOf(to,source.indexOf(from)));
 const post=g=>getCampaignTargets(g,id).find(t=>t.kind==='destroy');

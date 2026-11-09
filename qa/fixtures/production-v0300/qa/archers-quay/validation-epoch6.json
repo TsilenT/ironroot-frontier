@@ -1,0 +1,1156 @@
+{
+  "evidenceEpoch": 6,
+  "status": "fresh54 paid runs complete; independent source/profile/native gates separate",
+  "freeze": {
+    "file": "source-freeze-epoch6.json",
+    "sha256": "20f9147747d9064670262d4d69fb81799acb997ff34477e0bda9ab3c79f17800",
+    "frozenAt": "2026-11-09T05:08:12.376Z"
+  },
+  "runtime": {
+    "files": 58,
+    "mapSha256": "ab769819b9f8695cd460265a58035962a9ee039e3a3e194164dd5d125c72fb1b"
+  },
+  "raw": [
+    {
+      "filename": "ironroot-archers-development-epoch6.ndjson",
+      "sha256": "da51c1f92b911a43defdd406b5a1cab9f4812aaaac5505d010bc8ef17c87933a",
+      "bytes": 610407
+    },
+    {
+      "filename": "ironroot-archers-heldout-epoch6.ndjson",
+      "sha256": "ae4b62c2a0d77ee330df0986bb1172024febf18b930647a84d8b44f5e013805f",
+      "bytes": 314796
+    }
+  ],
+  "historicalEvidenceReused": false,
+  "scenario": {
+    "startingInvestment": [
+      1135,
+      1622
+    ],
+    "startingTreasury": [
+      1100,
+      100
+    ],
+    "realIncome": [
+      7.5,
+      7.5
+    ],
+    "visibleSupport": "Three level1 starting archery ranges; outer two added in epoch6. No new combat/engine behavior."
+  },
+  "results": {
+    "northground": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 99.89999999999647,
+          "hp": [
+            4554.480000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2173,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.14999999999577,
+          "hp": [
+            4017.920000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2173,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.89999999999664,
+          "hp": [
+            4668.720000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1984,
+            880
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 101.89999999999635,
+          "hp": [
+            4609.560000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2173,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 109.59999999999592,
+          "hp": [
+            4170.080000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2173,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.34999999999667,
+          "hp": [
+            4643.720000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1984,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southground": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 103.39999999999627,
+          "hp": [
+            3984.3200000000015,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 105.49999999999615,
+          "hp": [
+            3923.2800000000016,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            910
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 100.84999999999641,
+          "hp": [
+            4107.560000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            880
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 102.04999999999634,
+          "hp": [
+            4090.4800000000014,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            825
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 103.74999999999625,
+          "hp": [
+            3978.3600000000015,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 99.49999999999649,
+          "hp": [
+            4200.640000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "middlebreach": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 102.8999999999963,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2095,
+            825
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 103.24999999999628,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2095,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 104.5999999999962,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2095,
+            865
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.04999999999612,
+          "hp": [
+            5937,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1990,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.4499999999961,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1990,
+            925
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.4499999999961,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1865,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supportedRootwarden": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.54999999999609,
+          "hp": [
+            3520.2000000000016,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2067,
+            965
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 99.3999999999965,
+          "hp": [
+            4335.800000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2067,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 95.99999999999669,
+          "hp": [
+            4482.000000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1945,
+            825
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 113.89999999999567,
+          "hp": [
+            3135.3200000000024,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2189,
+            1030
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 107.44999999999604,
+          "hp": [
+            3851.1200000000017,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2067,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.29999999999667,
+          "hp": [
+            3583.680000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1945,
+            880
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supportedair": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 100.24999999999645,
+          "hp": [
+            3798.640000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1760,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.99999999999572,
+          "hp": [
+            4013.840000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1835,
+            1005
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.39999999999667,
+          "hp": [
+            4239.280000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1760,
+            850
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 99.09999999999651,
+          "hp": [
+            4290.120000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1760,
+            850
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.59999999999609,
+          "hp": [
+            3968.720000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1835,
+            865
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 100.84999999999641,
+          "hp": [
+            3857.800000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1760,
+            820
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "unsupportedair": {
+      "games": 6,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 98.59999999999654,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            770
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 98.54999999999654,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 96.59999999999665,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 95.8999999999967,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 97.5999999999966,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 98.54999999999654,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "broadnovice": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 111.44999999999581,
+          "hp": [
+            2779.760000000004,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1770,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 103.44999999999627,
+          "hp": [
+            3302.520000000003,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1770,
+            880
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 105.79999999999613,
+          "hp": [
+            3802.1600000000026,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1770,
+            890
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 113.74999999999568,
+          "hp": [
+            1102.2400000000052,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1845,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.29999999999576,
+          "hp": [
+            2934.8800000000037,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1845,
+            1015
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.94999999999573,
+          "hp": [
+            2908.0000000000036,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1845,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "safeeconomy": {
+      "games": 6,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 180.60000000000682,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            4038,
+            1670
+          ],
+          "enemyPurchases": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 312.40000000003675,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            6939,
+            3386
+          ],
+          "enemyPurchases": 26,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 286.1500000000308,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            6331,
+            2595
+          ],
+          "enemyPurchases": 19,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 273.65000000002794,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            6100,
+            2885
+          ],
+          "enemyPurchases": 21,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 342.1000000000435,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            7686,
+            3690
+          ],
+          "enemyPurchases": 25,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 404.2000000000576,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            8113,
+            4705
+          ],
+          "enemyPurchases": 32,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 6,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 85.39999999999729,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 85.94999999999726,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.29999999999724,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.29999999999724,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.14999999999725,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.44999999999723,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  },
+  "airContribution": [
+    {
+      "seed": 8101,
+      "won": true,
+      "duration": 100.24999999999645,
+      "ownHP": 3798.640000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 9,
+      "appliedUnitDamage": 85,
+      "unitKills": 0,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 40,
+      "centralArcherAppliedDamage": 999.9999999999995,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 99.89999999999647,
+        "ownHP": 4554.480000000001
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    },
+    {
+      "seed": 923,
+      "won": true,
+      "duration": 112.99999999999572,
+      "ownHP": 4013.840000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 11,
+      "appliedUnitDamage": 161.8,
+      "unitKills": 1,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 39,
+      "centralArcherAppliedDamage": 986.1799999999994,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 112.14999999999577,
+        "ownHP": 4017.920000000002
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    },
+    {
+      "seed": 61019,
+      "won": true,
+      "duration": 96.39999999999667,
+      "ownHP": 4239.280000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 9,
+      "appliedUnitDamage": 113.25000000000001,
+      "unitKills": 1,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 30,
+      "centralArcherAppliedDamage": 749.9999999999997,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 96.89999999999664,
+        "ownHP": 4668.720000000001
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    },
+    {
+      "seed": 424243,
+      "won": true,
+      "duration": 99.09999999999651,
+      "ownHP": 4290.120000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 9,
+      "appliedUnitDamage": 102,
+      "unitKills": 0,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 38,
+      "centralArcherAppliedDamage": 957.6199999999995,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 101.89999999999635,
+        "ownHP": 4609.560000000001
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    },
+    {
+      "seed": 982453,
+      "won": true,
+      "duration": 106.59999999999609,
+      "ownHP": 3968.720000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 10,
+      "appliedUnitDamage": 96.25000000000001,
+      "unitKills": 1,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 35,
+      "centralArcherAppliedDamage": 874.9999999999993,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 109.59999999999592,
+        "ownHP": 4170.080000000002
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    },
+    {
+      "seed": 620237,
+      "won": true,
+      "duration": 100.84999999999641,
+      "ownHP": 3857.800000000002,
+      "paidAeries": 2,
+      "aerieSpending": 500,
+      "gryphonsSpawned": 9,
+      "appliedUnitDamage": 102,
+      "unitKills": 0,
+      "appliedStructureDamage": 0,
+      "appliedCoreDamage": 0,
+      "centralArcherHits": 35,
+      "centralArcherAppliedDamage": 874.9999999999994,
+      "groundRouteForContext": {
+        "policy": "northground",
+        "duration": 96.34999999999667,
+        "ownHP": 4643.720000000001
+      },
+      "interpretation": "Ground does all core damage. Air survives in this mixed army but marginal outgoing damage and500gold cost do not establish a distinct effective air route. Context comparison is not an ablation."
+    }
+  ],
+  "limitations": [
+    "Automated fixed policies establish paid feasibility, not human difficulty.",
+    "Mixed-army air wins do not validate a useful separate air assault route.",
+    "Synthetic prior progress and canonical-old-source saves do not certify real-player migration.",
+    "Native review, remote CI, release approval, physical devices and browser matrix remain separate."
+  ],
+  "aggregate": {
+    "passed": 2105,
+    "failed": 0,
+    "optionalSkipped": 1,
+    "log": "ironroot-archers-final-tests.log",
+    "fixtureHashRegressionFocusedPassed": 42
+  }
+}

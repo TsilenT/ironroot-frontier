@@ -1,0 +1,560 @@
+{
+  "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence.",
+  "generatedAt": "2026-11-09T05:08:56.670Z",
+  "startedAt": "2026-11-09T05:08:38.822Z",
+  "baseline": {
+    "commit": "853cde8c74d77f68be92329db17d8a6dc6e00aae",
+    "tree": "c776e89acec9bc759a161ae8869aa6e59325d501",
+    "equivalentSourceCommit": "544514e69260f18843df167663fd87f9428a3814"
+  },
+  "policySha256": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+  "harnessHashes": {
+    "qa/archers-quay/paid-policies.mjs": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+    "qa/archers-quay/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/archers-quay/scenario.mjs": "d9578b2685fdeafc42d85f925ee556583896f7314d39cd45eda02d5f7340f2d4",
+    "qa/archers-quay/simulate.mjs": "caec3dd0b0f760deb8c9d272a994bbbaf2ba9c7997f9c11b18a9d0003cf8a757",
+    "qa/archers-quay/verify-evidence.mjs": "a9af74f80f9490e193e70dd65605e3b9e5f9e8846ee47e0448ecbd6933fef294"
+  },
+  "combatHashes": {
+    "dist/campaign.js": "e6b325ae322130aaaf51ed82d9ed8d5505f9516fd0420fbf4d766acff1f80c1b",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+  },
+  "formationSha256": "2c639736e85711a5fd03ebffd1c4d309994a955235c5e4e9c66b5b468c0c3025",
+  "plan": {
+    "evidenceEpoch": 6,
+    "status": "frozen-before-held-out-runs",
+    "frozenAt": "2026-11-09T05:08:12.376Z",
+    "baseline": {
+      "commit": "853cde8c74d77f68be92329db17d8a6dc6e00aae",
+      "tree": "c776e89acec9bc759a161ae8869aa6e59325d501",
+      "equivalentSourceCommit": "544514e69260f18843df167663fd87f9428a3814"
+    },
+    "developmentSeeds": [
+      8101,
+      923,
+      61019,
+      424243
+    ],
+    "heldOutSeeds": [
+      982453,
+      620237
+    ],
+    "policies": [
+      "northground",
+      "southground",
+      "middlebreach",
+      "supportedRootwarden",
+      "supportedair",
+      "unsupportedair",
+      "broadnovice",
+      "safeeconomy",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence.",
+    "policySha256": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+    "harnessHashes": {
+      "qa/archers-quay/paid-policies.mjs": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+      "qa/archers-quay/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+      "qa/archers-quay/scenario.mjs": "d9578b2685fdeafc42d85f925ee556583896f7314d39cd45eda02d5f7340f2d4",
+      "qa/archers-quay/simulate.mjs": "caec3dd0b0f760deb8c9d272a994bbbaf2ba9c7997f9c11b18a9d0003cf8a757",
+      "qa/archers-quay/verify-evidence.mjs": "a9af74f80f9490e193e70dd65605e3b9e5f9e8846ee47e0448ecbd6933fef294"
+    },
+    "combatHashes": {
+      "dist/campaign.js": "e6b325ae322130aaaf51ed82d9ed8d5505f9516fd0420fbf4d766acff1f80c1b",
+      "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+      "dist/rulesets.js": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+      "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+      "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+      "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+    },
+    "formationSha256": "2c639736e85711a5fd03ebffd1c4d309994a955235c5e4e9c66b5b468c0c3025",
+    "formation": {
+      "scenario": {
+        "id": "the-archers-quay",
+        "revision": 1
+      },
+      "ruleset": {
+        "id": "frontier-campaign-archers-quay",
+        "revision": 1
+      },
+      "map": {
+        "id": "classic",
+        "revision": 1
+      },
+      "seed": 8101,
+      "startingGold": [
+        1100,
+        100
+      ],
+      "startingHP": [
+        6000,
+        6000
+      ],
+      "startingIncome": [
+        7.5,
+        7.5
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          830,
+          0
+        ],
+        [
+          "barracks",
+          830,
+          1
+        ],
+        [
+          "barracks",
+          830,
+          2
+        ],
+        [
+          "archery",
+          690,
+          0
+        ],
+        [
+          "archery",
+          690,
+          1
+        ],
+        [
+          "archery",
+          690,
+          2
+        ],
+        [
+          "mint",
+          410,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "foundry",
+          2230,
+          0
+        ],
+        [
+          "foundry",
+          2230,
+          2
+        ],
+        [
+          "barracks",
+          2090,
+          0
+        ],
+        [
+          "barracks",
+          2090,
+          2
+        ],
+        [
+          "barracks",
+          2090,
+          1
+        ],
+        [
+          "archery",
+          2230,
+          1,
+          2
+        ],
+        [
+          "archery",
+          2370,
+          1
+        ],
+        [
+          "mint",
+          2790,
+          1
+        ]
+      ],
+      "deadline": 600,
+      "escalation": 300,
+      "ai": true,
+      "difficulty": "normal",
+      "fog": false
+    }
+  },
+  "heldOut": true,
+  "totalRuns": 18,
+  "raw": {
+    "sha256": "ae4b62c2a0d77ee330df0986bb1172024febf18b930647a84d8b44f5e013805f",
+    "bytes": 314796,
+    "filename": "ironroot-archers-heldout-epoch6.ndjson"
+  },
+  "results": {
+    "northground": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 109.59999999999592,
+          "hp": [
+            4170.080000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2173,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.34999999999667,
+          "hp": [
+            4643.720000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1984,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southground": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 103.74999999999625,
+          "hp": [
+            3978.3600000000015,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 99.49999999999649,
+          "hp": [
+            4200.640000000001,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1895,
+            815
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "middlebreach": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.4499999999961,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1990,
+            925
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.4499999999961,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1865,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supportedRootwarden": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 107.44999999999604,
+          "hp": [
+            3851.1200000000017,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2067,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 96.29999999999667,
+          "hp": [
+            3583.680000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1945,
+            880
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supportedair": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 106.59999999999609,
+          "hp": [
+            3968.720000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1835,
+            865
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 100.84999999999641,
+          "hp": [
+            3857.800000000002,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1760,
+            820
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "unsupportedair": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 97.5999999999966,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 98.54999999999654,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1750,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "broadnovice": {
+      "games": 2,
+      "wins": 2,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.29999999999576,
+          "hp": [
+            2934.8800000000037,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1845,
+            1015
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 112.94999999999573,
+          "hp": [
+            2908.0000000000036,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1845,
+            955
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "safeeconomy": {
+      "games": 2,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 342.1000000000435,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            7686,
+            3690
+          ],
+          "enemyPurchases": 25,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 404.2000000000576,
+          "hp": [
+            6000,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            8113,
+            4705
+          ],
+          "enemyPurchases": 32,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 2,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 982453,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.14999999999725,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 620237,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 86.44999999999723,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            820
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}

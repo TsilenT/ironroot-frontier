@@ -8,7 +8,7 @@ import {CITADEL_CAMPAIGN_RULESET_IDS} from '../../dist/rulesets.js';
 import {getCampaignRoster,createProgressionCampaignMission,campaignScenarioForGame} from '../../dist/campaign.js';
 import {shellManifest,candidateIdentity,requireDistinctUpgrade} from './update-fixtures.mjs';
 export async function validateProductionV015Upgrade(){
-  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,21);
+  const manifest=await validateProductionV015();assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,22);
   const prior=await shellManifest(PRODUCTION_V015_ROOT);
   assert.throws(()=>requireDistinctUpgrade(prior,prior),/BLOCKED/);
   requireDistinctUpgrade(prior,await candidateIdentity());

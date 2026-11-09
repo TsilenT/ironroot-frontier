@@ -67,13 +67,13 @@ test('released bought records are state-equivalent and unbought early checkpoint
 
 const marker=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',version,epoch:'keep-earned-epoch',phase});
 const storage=entries=>{const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(['set',k]);data.set(k,v);},removeItem(k){writes.push(['remove',k]);data.delete(k);}};};
-const earned=()=>({campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-archers-quay').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},trials:Object.fromEntries(CURRENT_CHALLENGES.map((c,i)=>[c.id,{completed:true,bestTime:70+i}])),settings:{sound:false,music:false,sfx:true,volume:.3,reducedMotion:true,quality:'low',keyboard:{version:1,bindings:{build1:'KeyQ',volley:null}},skirmishBridgeIncome:true},history:[{won:true,draw:false,difficulty:'normal',time:101,kills:0,built:0,date,identity:identityOf(Game.restore(released.cases[0].game))}],battle:encodeBattle(Game.restore(released.cases[0].game))});
+const earned=()=>({campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},trials:Object.fromEntries(CURRENT_CHALLENGES.map((c,i)=>[c.id,{completed:true,bestTime:70+i}])),settings:{sound:false,music:false,sfx:true,volume:.3,reducedMotion:true,quality:'low',keyboard:{version:1,bindings:{build1:'KeyQ',volley:null}},skirmishBridgeIncome:true},history:[{won:true,draw:false,difficulty:'normal',time:101,kills:0,built:0,date,identity:identityOf(Game.restore(released.cases[0].game))}],battle:encodeBattle(Game.restore(released.cases[0].game))});
 const domainBytes=()=>Object.entries(earned()).map(([d,v])=>[K[d],'  '+JSON.stringify(v)+'\n']);
 const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION});
 const old=r=>protocolTen.createProfileSession(()=>r,{requiredProtocolVersion:10});
 
 test('current protocol marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,21);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,22);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
  const domains=domainBytes(),r=storage([[MARKER,marker(10)],...domains,['unrelated','untouched']]),stale=old(r);assert.ok(stale.status().canWrite);
  assert.ok(current(r).status().canWrite);assert.deepEqual(r.writes,[['set',MARKER]]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),JSON.parse(marker(CURRENT_PROFILE_PROTOCOL_VERSION)));
  for(const [k,v] of domains)assert.equal(r.data.get(k),v);const before=[...r.data];r.writes.length=0;
@@ -99,7 +99,7 @@ test('protocol-10 interrupted and unverified upgrades preserve earned domains; f
 
 test('fresh campaign and trial identities allow affordable time-zero choice while earned rosters and revisions stay intact',()=>{
  const progress=earned().campaign;
- for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id),gold=g.state.gold[0];assert.equal(g.state.time,0);assert.equal(ref.revision,['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay'].includes(m.id)?1:5);assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
+ for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id),gold=g.state.gold[0];assert.equal(g.state.time,0);assert.equal(ref.revision,['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)?1:5);assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
  for(const t of CURRENT_CHALLENGES){const g=createCurrentChallenge(t.id),ref=challengeScenarioForGame(g,t.id),gold=g.state.gold[0];assert.equal(ref.revision,3);assert.equal(g.state.time,0);assert.ok(g.buyCitadelOption('arrows').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref)).game.serialize(),g.serialize());}
 });
 
