@@ -14,7 +14,7 @@ export function policyAction(g,id,notes=[]){
  const own=g.state.buildings.filter(b=>b.side===0&&b.hp>0),occupied=(x,lane)=>own.some(b=>Math.hypot(b.x-x,b.y-g.map.lanes[lane])<108);
  // All active policies share the same opening, including replacement of lost rear works.
  for(const[type,x,lane]of OPENING)if(!occupied(x,lane))return g.build(type,x,g.map.lanes[lane],0);
- if(id!=='rear')for(const gate of g.state.bramBreach.gates.filter(b=>b.openedTick!==null).sort((a,b)=>a.openedTick-b.openedTick||a.lane-b.lane)){
+ if(id!=='rear'&&own.length<g.map.buildLimit)for(const gate of g.state.bramBreach.gates.filter(b=>b.openedTick!==null).sort((a,b)=>a.openedTick-b.openedTick||a.lane-b.lane)){
   const safety=padSafety(g,gate.lane);
   if(id==='cautious'&&!safety.safe){notes.push({tick:g.tick,lane:gate.lane,kind:'delay',safety});continue;}
   for(const[type,x]of[['foundry',2510],['barracks',2370]])if(!occupied(x,gate.lane))return g.build(type,x,g.map.lanes[gate.lane],0);
