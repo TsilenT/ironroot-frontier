@@ -73,3 +73,32 @@ test('strict QA envelope fails closed on malformed event and wrong identity',()=
 test('normal battle codec rejects QA envelope; raw engine has no new state field',()=>{
  const g=createReserve();assert.throws(()=>decodeBattle(g.serialize()));const raw=Game.prototype.serialize.call(g);assert.equal(Object.hasOwn(raw.state,'reserve'),false);assert.deepEqual(Game.restore(raw).serialize(),raw);
 });
+
+test('paused paid Volley may free capped reserve slots; immediate save and next tick remain exact',()=>{
+ for(const occupied of [69,70]){
+  const g=createReserve();isolate(g);for(let i=0;i<occupied;i++){const u=ordinaryUnit(g,'archer',1,3010,2);u.hp=20;}killPost(g);step(g);untilDue(g);delete g._ai;
+  const beforeReleases=g.reserve.releases.length,paidBefore=g.state.gold[0],tick=g.tick,ids=g.nextId;
+  const target=g.state.units.find(u=>u.side===1&&u.lane===2);assert.equal(g.cast(target.x,target.y,0).ok,true);assert.equal(g.state.gold[0],paidBefore-g.ruleset.spell.cost+2*occupied);
+  assert.equal(g.reserve.releases.length,beforeReleases);assert.equal(g.tick,tick);assert.equal(g.nextId,ids);
+  assert.ok(g.state.units.filter(u=>u.side===1&&u.hp>0).length<70);
+  const restored=MinorReserveGame.restore(JSON.stringify(g.serialize()));assert.deepEqual(restored.serialize(),g.serialize());
+  step(g);step(restored);assert.deepEqual(restored.serialize(),g.serialize());assert.equal(g.reserve.releases.length,6);assert.equal(g.state.units.some(u=>u.hp<=0),false);
+  mirror(g,10);
+ }
+});
+
+test('original post ID cannot be reused by a unit and release IDs retain allocation order',()=>{
+ const moved=createReserve().serialize();moved.engine.state.buildings.find(b=>b.id===moved.reserve.postId).y+=5;assert.throws(()=>MinorReserveGame.restore(moved),/identity changed/);
+ const g=createReserve();killPost(g);step(g,121);const swapped=g.serialize();[swapped.reserve.releases[0].unitId,swapped.reserve.releases[1].unitId]=[swapped.reserve.releases[1].unitId,swapped.reserve.releases[0].unitId];assert.throws(()=>MinorReserveGame.restore(swapped),/arrival/);
+ const reused=g.serialize();const oldId=reused.engine.state.units[0].id;reused.engine.state.units[0].id=reused.reserve.postId;
+ // This fixture does not alter any recorded reserve release identity.
+ assert.equal(reused.reserve.releases.some(r=>r.unitId===oldId),false);assert.throws(()=>MinorReserveGame.restore(reused),/reused original/);
+});
+test('deadline and core termination reject all public paid QA commands without state changes',()=>{
+ for(const reason of ['deadline','player-core','enemy-core']){
+  const g=createReserve();if(reason==='deadline'){g.tick=12000;g.state.time=600;}else g.state.bases[reason==='player-core'?0:1].hp=0;
+  const before=g.serialize(),id=g.state.buildings.find(b=>b.side===0).id;
+  for(const result of [g.canBuild('barracks',970,260),g.build('barracks',970,260),g.upgrade(id),g.sell(id),g.cast(1600,450),g.canBuyCitadelOption('regen'),g.buyCitadelOption('regen')]){assert.equal(result.ok,false);assert.match(result.reason,/ended/);}
+  assert.deepEqual(g.serialize(),before);
+ }
+});

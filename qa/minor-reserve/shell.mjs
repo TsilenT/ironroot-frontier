@@ -38,7 +38,10 @@ function frame(now){
  const dt=Math.min(.25,(now-last)/1000);last=now;if(!ui.paused)game.update(dt);
  const own=game.state.buildings.filter(b=>b.side===0),key=own.map(b=>b.id+':'+b.level).join(',');
  if(key!==ownedKey){ownedKey=key;const prior=$('owned').value;$('owned').replaceChildren(...own.map(b=>{const o=document.createElement('option');o.value=b.id;o.textContent=game.buildings[b.type].name+' '+['north','middle','south'][b.lane]+' x'+b.x+' L'+b.level;return o;}));if(own.some(b=>String(b.id)===prior))$('owned').value=prior;}
- const r=reserveStatus(game),outcome=evaluateReserve(game),s=game.state;
+ const r=reserveStatus(game),outcome=evaluateReserve(game),s=game.state,ended=outcome.completed||outcome.failed;
+ if(ended){ui.paused=true;clear();$('pause').textContent='Ended';}
+ $('pause').disabled=ended;$('owned').disabled=ended;
+ for(const button of [...$('builds').children,...['upgrade','sell','arrows','regen','volley'].map($)])button.disabled=ended;
  const message=r.phase==='armed'?'Original North Command Post standing.':r.phase==='warning'?'Reserve warned: '+r.warningSeconds.toFixed(1)+'s.':r.phase==='arriving'?'Reserve arriving: '+r.remaining+' waiting for cap space.':r.phase==='complete'?'One contingent released. No further reserves.':'Baseline control: reserve disabled.';
  $('status').textContent=Math.floor(s.time/60)+':'+String(Math.floor(s.time%60)).padStart(2,'0')+' · Gold '+Math.floor(s.gold[0])+' · Citadels '+Math.ceil(s.bases[0].hp)+' / '+Math.ceil(s.bases[1].hp)+' · '+(outcome.completed?'Won.':outcome.failed?'Ended: '+outcome.reason+'.':message);
  ui.targets=r.phase==='armed'?[game.reserve.postId]:[];renderer.draw(game,ui,dt);requestAnimationFrame(frame);

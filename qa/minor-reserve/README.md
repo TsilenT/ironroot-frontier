@@ -1,89 +1,127 @@
 # Wake the Reserve: isolated Chapter 9 hypothesis
 
-QA only, not a campaign mission or release. Based on Shared Watch commit
-65ee1438435a9e8a4cb6b8b6930ac87ca17518b7, tree
-b6ee01ff93f43176a889d7fb3c226cf5ef442643. All 1,351 materialized
-blobs matched the complete 2,399-file inventory. The 1,048 inventory-only
-omissions remain omitted, not deleted. No original source byte was edited.
+QA only. The mechanism checkpoint was preserved on draft PR44, parent commit
+c0f8f46609d05eaccc3040dd19c8477db1102c83, tree
+b043e937d848f9906e1385c69961130e88fac9fa. Its complete inventory has 2,405
+files: 1,357 materialized and 1,048 retained inventory-only omissions. The original
+encounter uses unchanged Shared Watch engine source from commit
+65ee1438435a9e8a4cb6b8b6930ac87ca17518b7. Checkpoint002 remains immutable.
 
-## Encounter and creative intent
+No dist file, scenario catalog, ruleset, profile/release version or prerequisite
+changes. This incremental slice modifies five QA/test/doc files and adds four
+runner/policy/observer/test files. Generated records stay external. No natural
+baseline case or browser interaction has run.
 
-Clear-view ordinary core assault, healthy 6,000 HP citadels, normal paid adaptive
-AI, 10-minute deadline and normal 5-minute escalation. Both sides start with three
-level-one barracks, one archery and one real mine. Player gold 900, enemy 100.
-An additional ordinary northern enemy watchtower is the optional original
-**North Command Post**. All numbers are unbalanced new hypotheses.
+## Minor event, distinct from the finale
 
-Destroying that original post gives one six-second warning, then releases four
-ordinary level-one warriors and two ordinary level-one archers from the enemy
-rear on north. They move, acquire targets, attack and die through the unchanged
-engine. No wipe, huge footprint, boss health, universal lane reach, core clamp,
-new treasury income or repeat reinforcement exists. Existing factories and paid
-AI continue. The 70-unit cap defers individual arrivals; factories keep their
-normal earlier position in the tick, so a reserve may wait behind normal output.
+Destroy the enemy citadel within ten minutes while yours survives. Both sides
+start with three ordinary barracks, one archery, one mine and healthy 6,000 HP
+citadels. The opening purse is 900/100 gold; normal paid adaptive AI, factories,
+income and five-minute escalation continue. These are unbalanced hypotheses.
 
-The post is optional: bypass north, strike early, or prepare support before
-releasing it. Destroying the citadel first remains a win. This puts an ordinary
-minor reversal under understandable player-controlled timing. A low-citadel
-trigger would tend to deliver its rear troops after a local fight was already
-settled and overlap the separate finale experiment. The post offers a better
-first hypothesis, not proof that the contingent arrives in time to matter.
+The enemy also has an ordinary northern watchtower, the original North Command
+Post. Destroying it warns for six seconds, then releases one finite contingent:
+four ordinary level-one warriors and two ordinary level-one archers at the enemy
+rear on north. They march, target, attack and die through the existing engine.
+The 70-unit cap defers arrivals; ordinary factory output retains its earlier
+position in the tick. There are no treasury grants, repeat top-ups, stat buffs,
+core clamps, army wipes, boss geometry or universal lane reach.
 
-## Isolation and ordering
+The post is optional: bypass north, strike early, or prepare support first. Its
+controllable timing offers a better first local reversal hypothesis than a
+low-citadel trigger, which overlaps the finale experiment. Natural arrivals must
+still be shown to reach a contested fight. They need not change the winner,
+force a purchase or be harmless. No damage threshold is an objective.
 
-Only this QA folder and tests/minor-reserve-qa.test.mjs are new. No dist file,
-scenario catalog, ruleset, profile version, release version or prerequisite is
-changed. MinorReserveGame subclasses the existing Game only inside QA. Its
-separate JSON envelope contains an unchanged engine snapshot plus the exact
-original post ID, trigger tick and at most six ordinary unit release records.
-The production battle codec rejects that envelope. No normal save slot is used.
+## Mechanism and review corrections
 
-After each actual fixed engine tick: resolve ordinary simultaneous damage and
-citadel outcomes; stop at a terminal result/deadline; then detect original-post
-destruction, warn or drain available queue slots. Arrivals first fight on the
-following ordinary tick. Replacements do not reset the original ID. Restore
-checks the fixed clock, exact local identity, original and released entity
-identities, warning ordering, complete/due-cap consistency and strict JSON fields.
-Terminal ordering deliberately does not create posthumous reserves or revive a
-lost battle. One surviving player HP can win; no purchase or damage threshold
-is an objective.
+MinorReserveGame is a QA subclass using private _step/_spawn methods, not an
+approved engine extension. Its separate strict JSON envelope holds an unchanged
+engine snapshot plus the original post ID, trigger tick and at most six ordinary
+release records. The production battle codec rejects that envelope.
 
-The subclass relies on private engine methods _step and _spawn. This is a small
-reversible authoring boundary, not an approved engine extension. Production
-admission would require a reviewed immutable QA/campaign ruleset and validated
-engine state, exact campaign identity and codec/history/backup admission,
-progression/profile fencing, truthful briefing and a real visible warning.
-Simply copying this subclass into the production app would be insufficient.
+Each actual fixed tick resolves ordinary movement/simultaneous damage and core
+outcomes before the reserve event. Core termination and the deadline suppress
+new triggers/arrivals; released troops first fight on the next ordinary tick.
+Replacements never rearm the original ID. Restore validates the fixed clock,
+authored original identity/location and monotonic release IDs.
 
-## Checks and manual entry
+Review found that paid Volley can free cap slots between ticks while dead unit
+records remain. Due incomplete queues therefore require 70 total enemy unit
+records, not 70 living records. Saving neither advances nor drains the queue;
+the next ordinary tick removes corpses and drains available slots. Full/partial
+cap, payment/kill-income and exact JSON continuation have focused regression.
+The original post ID cannot be reused by a unit, and same-type release records
+cannot be reordered. QA commands reject all spending/salvage after core/deadline
+termination; the shell disables those controls while retaining camera, explicit
+save/restore and restart.
 
-Run node --test tests/minor-reserve-qa.test.mjs. Its synthetic fixtures cover
-real troop movement/targeting/damage; exact warning, original replacement,
-partial cap queue, saved continuation, paid economy, terminal precedence and
-malformed envelopes. Synthetic combat fixtures are not balance evidence.
+Production admission would still require reviewed immutable identity/state,
+codec/history/backup integration, progression/profile fencing, briefing and real
+warning UX. Copying this subclass into the production app is insufficient.
+
+## Exact baseline hypotheses, not yet executed
+
+PLAN.json and policies.mjs declare exactly three cases at seed 9104 with reserve
+disabled: north-supported, south-bypass, idle. The two paid plans mirror each
+other: buy rear archers, a Warden screen and rear siege before economy,
+opposite-road support and further sustained pressure. All sites are statically
+checked against the inherited camp. No front-first siege, regeneration loop,
+health-based repair or hidden-state decision is used.
+
+A player decision occurs at tick zero and every 100 ticks (five seconds),
+including rejection/no-op boundaries. Failed planned builds retry next cadence;
+only success advances the plan. Afterwards, upgrade surviving owned producers
+by level, primary/middle/opposite road, declared type priority, rearward x and ID.
+No player salvage, Volley or citadel purchase is part of these policies. Idle
+issues no commands. Exact build lists and ties are executable source, not prose
+that can be reinterpreted after outcomes.
+
+The runner records all player/AI command attempts, ordinary payment/income/kill
+reconciliation, actual births/fires/effective damage, unattributed splash,
+original structure/post loss, first core contact and five-second force summaries.
+Natural 30/90-second and first original-loss checkpoints restore independent game
+and policy shadows for the next ten actual ticks. Terminal tails stay terminal.
+A paid win only establishes a route for independent review. Every loss/rejection
+and any idle win remains visible. If neither paid route wins, stop before adding
+reserve difficulty or searching new seeds.
+
+## Guarded preparation and execution
+
+Run focused tests with:
+node --test tests/minor-reserve-qa.test.mjs tests/minor-reserve-runner.test.mjs
+
+The source binding requires the verified external PR44 inventory
+ironroot-minor-reserve-remote-c0f8f466-inventory.json, SHA256
+0d302f73cc35e1652a799915d9e7012ff278076b93a64700cd3963bafd8139b2.
+Only five declared parent modifications and four new files are accepted. All ten
+working-file hashes, present/omitted source digests, plan, workspace, Node binary,
+arguments and OS environment are bound. Use the workspace root as cwd.
+
+The dedicated external ironroot-minor-reserve-baseline-evidence directory must
+exist beside this workspace. Then prepare a NEW external freeze with:
+node qa/minor-reserve/run.mjs --freeze NEW_EXTERNAL_PENDING_FREEZE
+
+This command runs no encounter. An independent reviewer/coordinator must provide
+an approved packet with format minor-reserve-baseline-approved-v1, status
+approved, named reviewer, actual authorization, the unchanged pending freeze and
+an exact invocation array binding the Node binary, absolute runner path,
+--run-approved, absolute approval file and fresh external output directory.
+Only then may the exact approved invocation run. There are no seed/case overrides,
+resume, overwrite or silent retry paths. Source is checked between cases and
+after completion. SIGINT/SIGTERM or OUTPUT.stop stops at the next 100-tick check
+or case boundary and retains partial records. Output must remain under the
+external evidence directory, never the repo.
+
+A later enabled/disabled paired check needs a separate freeze and authorization.
+No broad matrix, heldouts, seed search, release or remote write is authorized by
+this source checkpoint.
+
+## Manual shell, not browser-certified
 
 Serve the repository root with python3 -m http.server 8000 and open
-/qa/minor-reserve/ in a browser. Use the camera/minimap, select a building then
-click a legal site, and use ordinary upgrade/salvage/citadel/volley commands.
-Start is paused. Save/restore works only through explicit QA JSON text, with no
-profile, localStorage, automatic storage or network write. This thin shell has
-not been browser-tested and is not the production UX.
-
-## Smallest next experiment
-
-No natural encounter balance case has run. PLAN.json records the proposed
-baseline-first bound: one authored seed, at most three disabled-reserve cases,
-ordinary paid commands on a five-second cadence. First establish a supported
-credible route and retain every result/rejection. If no route wins, stop and
-report rather than adding reserve difficulty or searching silently. An idle win
-is a weakness to review, not an arbitrary automatic failure.
-
-Only after review of that baseline may a separate frozen enabled-versus-disabled
-north attack and bypass check run. Inspect actual release, first contact, local
-losses, target/fire context, core damage, paid spending and final outcome. The
-reserve should have a real opportunity to join its local fight. It need not
-reverse the winner, be harmless or force a particular purchase. If it arrives
-too late or never reaches any contested position, revisit its location/warning
-or the encounter instead of declaring a tactical beat from spawn count alone.
-No seed search, heldouts, broad matrices, release or campaign admission is
-permitted by this checkpoint. Logs/results/checkpoints stay outside the repo.
+/qa/minor-reserve/. Start is paused. Use the camera/minimap, select a building
+then click a legal site, and use ordinary paid commands. Explicit JSON text
+save/restore never touches a real save slot. There is no profile, localStorage,
+automatic storage or network write. The shell has not been browser-tested and
+is not the production UX or human difficulty evidence.

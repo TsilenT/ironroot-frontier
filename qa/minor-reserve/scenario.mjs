@@ -45,6 +45,13 @@ export class MinorReserveGame extends Game{
   s.gold=[...DESIGN.startingGold];s.bases.forEach((b,side)=>b.hp=DESIGN.startingHealth[side]);
   s.income=[7.5,7.5];s.effects=[];
  }
+ _qaCommand(method,args){if(terminal(this))return {ok:false,reason:'This QA encounter has ended.'};return method.apply(this,args);}
+ canBuild(...args){return this._qaCommand(super.canBuild,args);}
+ upgrade(...args){return this._qaCommand(super.upgrade,args);}
+ sell(...args){return this._qaCommand(super.sell,args);}
+ cast(...args){return this._qaCommand(super.cast,args);}
+ canBuyCitadelOption(...args){return this._qaCommand(super.canBuyCitadelOption,args);}
+ buyCitadelOption(...args){return this._qaCommand(super.buyCitadelOption,args);}
  update(dt){if(terminal(this))return;return super.update(dt);}
  _step(dt){
   if(terminal(this))return;
@@ -80,23 +87,25 @@ export class MinorReserveGame extends Game{
   if(engine.ruleset.id!==DESIGN.rulesetId||engine.map.id!==DESIGN.mapId||engine.difficulty!==DESIGN.difficulty||engine.ai!==true)fail('wrong engine identity');
   if(Math.abs(engine.state.time-engine.tick*.05)>Math.min(.001,1e-7+engine.state.time*1e-9)||engine.tick>DESIGN.timeLimit*20)fail('invalid fixed clock');
   const game=new MinorReserveGame({seed:engine.seed,reserveEnabled:r.enabled});
-  if(r.postId!==game.reserve.postId)fail('wrong original post');
+  if(r.postId!==game.reserve.postId||r.postId>=engine.nextId||engine.state.units.some(u=>u.id===r.postId))fail('wrong or reused original post');
   const livePost=engine.state.buildings.find(b=>b.id===r.postId&&b.hp>0);
-  if(livePost&&(livePost.type!==DESIGN.post.type||livePost.side!==1||livePost.x!==DESIGN.post.x||livePost.lane!==DESIGN.post.lane))fail('original post identity changed');
+  if(livePost&&(livePost.type!==DESIGN.post.type||livePost.side!==1||livePost.x!==DESIGN.post.x||livePost.y!==engine.map.lanes[DESIGN.post.lane]||livePost.lane!==DESIGN.post.lane))fail('original post identity changed');
   if(r.triggerTick===null){if(r.releases.length||(r.enabled&&!livePost&&!terminal(engine)))fail('untriggered state lost its original post');}
   else{
    if(!r.enabled||!Number.isSafeInteger(r.triggerTick)||r.triggerTick<1||r.triggerTick>engine.tick||r.triggerTick>=DESIGN.timeLimit*20||livePost)fail('invalid trigger');
   }
   if(!r.enabled&&(r.triggerTick!==null||r.releases.length))fail('disabled reserve contains event state');
-  const ids=new Set();let lastTick=-1;
+  const ids=new Set();let lastTick=-1,lastUnitId=r.postId;
   r.releases.forEach((release,index)=>{
    fields(release,['unitId','tick'],fail);
-   if(!Number.isSafeInteger(release.unitId)||release.unitId<=r.postId||release.unitId>=engine.nextId||ids.has(release.unitId)||!Number.isSafeInteger(release.tick)||release.tick<r.triggerTick+DESIGN.warningTicks||release.tick>engine.tick||release.tick>=DESIGN.timeLimit*20||release.tick<lastTick)fail('invalid arrival record');
-   ids.add(release.unitId);lastTick=release.tick;
+   if(!Number.isSafeInteger(release.unitId)||release.unitId<=lastUnitId||release.unitId>=engine.nextId||ids.has(release.unitId)||!Number.isSafeInteger(release.tick)||release.tick<r.triggerTick+DESIGN.warningTicks||release.tick>engine.tick||release.tick>=DESIGN.timeLimit*20||release.tick<lastTick)fail('invalid arrival record');
+   ids.add(release.unitId);lastTick=release.tick;lastUnitId=release.unitId;
    const live=engine.state.units.find(u=>u.id===release.unitId);
    if(engine.state.buildings.some(b=>b.id===release.unitId)||(live&&(live.type!==DESIGN.reserve[index]||live.side!==1||live.level!==1||live.lane!==DESIGN.arrivalLane)))fail('arrival provenance changed');
   });
-  if(r.triggerTick!==null&&engine.tick>=r.triggerTick+DESIGN.warningTicks&&r.releases.length<DESIGN.reserve.length&&!terminal(engine)&&engine.state.units.filter(u=>u.side===1&&u.hp>0).length<70)fail('uncapped due queue was not drained');
+  // A legal between-tick paid Volley can free living cap slots while dead unit
+  // records remain until the next fixed tick. Saving must not advance the queue.
+  if(r.triggerTick!==null&&engine.tick>=r.triggerTick+DESIGN.warningTicks&&r.releases.length<DESIGN.reserve.length&&!terminal(engine)&&engine.state.units.filter(u=>u.side===1).length<70)fail('uncapped due queue was not drained');
   for(const key of ENGINE_KEYS)game[key]=engine[key];
   game.reserve=structuredClone(r);return game;
  }
