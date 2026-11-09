@@ -1,0 +1,46 @@
+{
+  "id": "shared-watch-known-case-epoch1",
+  "status": "proposed-awaiting-independent-review-and-coordinator-authorization",
+  "scope": "One new QA-only Chapter 8 fifth-slot hypothesis. No balance, campaign admission, held-out, difficulty or player-win-rate claim.",
+  "numericStatus": "All new formation, policy and acceptance numbers are fresh design hypotheses.",
+  "knownSeeds": [
+    8405,
+    448273,
+    8303
+  ],
+  "heldOutSeeds": [],
+  "caseOrder": [
+    "central-watch",
+    "distributed-mobile",
+    "no-new-support-siege",
+    "watch-only",
+    "idle",
+    "north-watch-control",
+    "omit-watch-control",
+    "central-archery-control"
+  ],
+  "cases": 24,
+  "initialState": "prototype.mjs DESIGN; construction RNG runs normally, no seed reassignment after construction, original factories level 1/full HP and no initial troops; one real mine per side; ordinary paid normal adaptive AI throughout.",
+  "actions": "prototype.mjs POLICIES and createPolicy. One attempted player action per 100 fixed ticks (5 seconds), first at tick zero. No free units, buffs, income writes, reserve floors, forced enemy purchases or AI timers. Original static watch is never upgraded or rebuilt.",
+  "controls": "Three controls replay each seed's central-watch successful player commands at exactly the same ticks and coordinates except the watch substitution. They do not spend the saved 220/45 gold or adapt to failures. Every rejection is retained. North placement costs exactly 220 and changes only the watch's lane. Central archery is explicitly a cheaper substitute, not matched spend.",
+  "openingWindow": {
+    "maximumSeconds": 90,
+    "stopAtFirstOriginalEnemyProducerLoss": true,
+    "ratioDefinition": "No unit-count closure. A player count >=12 and >=2 times max(enemy count,1) is logged only as a descriptive warning, never automatic closure. Per-watch-shot type/level/HP and original production context plus simultaneous multi-road ground pressure and the placement consequence support independent contested-opening audit.",
+    "stopAtEnemyCoreFirstDamage": true
+  },
+  "keepAll": [
+    "central-watch and distributed-mobile each win by core in at least two of the three known cases, including intended default seed8405. Isolated stress-seed losses are retained data, not automatic rejection. Successful main routes pay for foundry and ranged/screen support before their first enemy-core damage.",
+    "idle and watch-only each fail in at least two of three cases, including default8405. This tests inherited-army and one-click triviality. no-new-support-siege is a diagnostic: inherited infantry can screen its siege, so it is not forced to lose.",
+    "At least two winning central-watch cases, including default8405, jointly demonstrate all three positive causal witness conditions below. Do not combine unrelated seeds to manufacture replication.",
+    "Witness A: the same original paid central watch deals >=60 effective damage to ground troops born on EACH outer road strictly before the opening cutoff. Per-shot raw living force types, levels, HP and original producer status are retained for independent audit; a clear already-settled opening is not credited merely because a count heuristic passes.",
+    "Witness B: at least one opening shot has actual living ground candidates from any two or more roads simultaneously within ordinary Euclidean range, and an unchosen other-road candidate then deals effective harm to a player troop/structure strictly before the next original watch shot and opening cutoff. The two outer roads need not synchronize in one shot. One shared stream has an observed cost.",
+    "Witness C: replaying the same 220-gold watch on north, with every other successful donor command at its exact original tick, causes an actual southern player producer loss by min(180 seconds, donor terminal time, control terminal time) at a type/x/lane the central donor does not lose by that horizon. The control can still win. Damage totals, lower final HP or trivial speed changes alone cannot satisfy this gate.",
+    "Omission and cheaper central-archery replays are diagnostic, not forced-loss gates. Prominently flag when cheaper archery also wins without additional southern producer loss in >=2 winning-donor cases; that is a dominance concern requiring trace review, not campaign readiness or automatic proof from a win alone.",
+    "All ordinary-price ledgers reconcile within1e-6; no out-of-band gold writes; five-second player cadence holds; normal enemy paid actions occur. Initial/final serialize-restore round trips hold, and active checkpoints at30 and90 seconds (when the case survives beyond them) continue byte-equivalently through the next10 fixed ticks with the same legal commands.",
+    "Full raw successes and failures, traces, environment/source freeze and concise summary stay external. No case selection, seed search, silent tuning, engine changes or admission after outcomes. Independent audit may reject settled-play credit from the declared force context but must state that limitation honestly."
+  ],
+  "decision": "Known-case feasibility only. If an operational gate fails, report it plainly and CUT epoch1; isolated stress-seed losses within the declared tolerance are retained. A cheaper-substitute warning means review before further validation. Any gameplay or gate revision requires a new numbered plan, fresh review and explicit authorization before more battles.",
+  "limits": "Known-case causal feasibility only. Passing would still require independent review, separate validation, production admission/compatibility/native interactive pacing checks and canonical full-tree aggregate gates before release.",
+  "execution": "Freeze binds actual node version/platform/architecture/executable and this workspace. Approval packet also binds exact CLI invocation. Verify unchanged closure before/after each case. OUTPUT_DIRECTORY.stop is checked every100 fixed ticks and between cases; SIGINT/SIGTERM stops between cases. Retain completed raw cases, mark matrix incomplete, never retry automatically."
+}
