@@ -1,4 +1,6 @@
-> Current development status: Chapter 6 is complete in v0.26.1. Chapter 7 starts with the reviewed False Quiet candidate: one charted fort, two persisted starting garrisons, selective fog and ordinary paid adaptive opponents (25 main-path missions / 75 optional stars). The rest of Chapters 7–10 remain active planned work, not released content. Last Ascent remains an isolated difficulty prototype, not a progression shortcut.
+> Current integration status (9 November2026): reserved v0.34 adds Shared Watch as Chapter8's fifth mission after Archer's Quay, Salt in the Stores, The Hammer Turns and The Long Screen. Current route32 missions/96 optional stars; Chapter7 remains three missions. This is candidate integration, not release certification. Chapters9/10 each still need at least five distinct, independently earned encounters and are not admitted here. Boss/Last Ascent and other prototypes remain isolated.
+>
+> The remaining document preserves the original planning provenance. Long Haul, Harbor Lights and Bram's Breach below are historical unbuilt proposals, not five additional delivered coastal missions. Bram's separate forward-camp experiment was cut. Shared Watch now tests optional nearby middle/south ground safety versus advancing support; it must not be counted again as Chapter9's overlapping watch concept. Replace that future candidate rather than duplicating the decision. Fog placements are hypotheses, not a quota.
 
 
 # Campaign expansion: Chapters 6–10

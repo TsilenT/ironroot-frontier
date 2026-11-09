@@ -1,4 +1,12 @@
-## The Long Screen (v0.33)
+## The Shared Watch (v0.34 candidate)
+
+The current route has32 missions/96 optional stars. Chapter8 now has five distinct missions, ending with The Shared Watch after The Long Screen. Chapter7 remains three missions. Chapters9/10 are not admitted here.
+
+Choose ordinary paid nearby middle/south ground safety or support that can defend and advance. The middle watch has limited neighboring-road reach and one shared firing stream, not three batteries. No tower, road or unit is required. Destroy the enemy citadel by10:00 while yours survives;1HP progresses. Public launch/restart seed8405 is fixed. The180s and4500HP medals are optional.
+
+This is an integration candidate, not release certification. The original broad QA epoch remains CUT; a later explicitly outcome-informed narrow feasibility plan passed independent scripted/context review. Human difficulty, native understanding/pacing, full compatibility and exact release gates remain separate. Only source/tests/essential small fixtures and concise docs belong here; generated results/logs/reviews/screenshots stay external. See docs/SHARED_WATCH_INTEGRATION.md.
+
+## Historical v0.33: The Long Screen
 
 Current main progression has 31 missions / 93 stars. Chapter 7 remains three missions; Chapter 8 is a partial four-mission route. The Long Screen follows The Hammer Turns. No Chapter 9 or Chapter 10 mission is admitted by this update.
 

@@ -26,7 +26,7 @@ const old = r => protocolSeven.createProfileSession(() => r, {requiredProtocolVe
 const bytes = r => keys.map(key => [key, r.data.get(key) ?? null]);
 const writes = r => r.calls.filter(([op]) => op !== 'get');
 function data(withNew = true) {
-  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m => [m.id, {completed:true, stars:2, bestTime:60}]))};
+  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map(m => [m.id, {completed:true, stars:2, bestTime:60}]))};
   const trials = Object.fromEntries(CHALLENGES.map(c => [c.id, {completed:true, bestTime:75}]));
   const settings = {sound:false, music:false, sfx:true, volume:.3, reducedMotion:true, quality:'low', keyboard:{version:1, bindings:{build1:'KeyQ', volley:null}}};
   const history = [{won:true, draw:false, challengeId:'shieldbreaker', campaignId:null, difficulty:'normal', time:75, kills:12, built:5, date}];
@@ -43,7 +43,7 @@ const backup = (value = data()) => createBackup(raw(), {createdAt:date, ...value
 // Existing protocol clients are executed from the exact reviewed base source,
 // not modeled by the new implementation with a smaller version argument.
 test('current protocol pins the exact old seven source and retains the legacy default', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 24);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 25);
   assert.equal(protocolSeven.CURRENT_PROFILE_PROTOCOL_VERSION, 7);
   assert.equal(createHash('sha256').update(protocolSevenSource).digest('hex'), protocolSevenHash);
   const r = raw(), p = createProfileSession(() => r, {newEpoch:() => 'default'});
@@ -65,7 +65,7 @@ test('absent and all prior ready markers upgrade alone before any profile domain
     assert.ok(r.calls.every(([, key]) => key === MARKER));
     for (const [key, value] of before) assert.equal(p.storage.getItem(key), value);
     const overview = getCampaignOverview(JSON.parse(p.storage.getItem(K.campaign)));
-    assert.equal(overview.total, 31); assert.equal(overview.maxStars, 93);
+    assert.equal(overview.total, 32); assert.equal(overview.maxStars, 96);
   }
 });
 
