@@ -1,0 +1,250 @@
+{
+  "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence.",
+  "startedAt": "2026-11-09T05:54:10.924Z",
+  "finishedAt": "2026-11-09T05:54:12.936Z",
+  "baseline": {
+    "commit": "d399b75cadfb70aa878a02e5fb0eb9f78b8836e2",
+    "tree": "60cc6683855b38669ecddfe330853cdda86e4c8f"
+  },
+  "harnessHashes": {
+    "qa/salt-stores/paid-policies.mjs": "577fa770569fb2522c0660929e47aee1f149fd716447783ddfa9fb2908c606ed",
+    "qa/salt-stores/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/salt-stores/scenario.mjs": "e21d06829ef5be36c517b229681207562f33a97bb2d746650ae7662ad6ff4804",
+    "qa/salt-stores/simulate.mjs": "2855f8db8eb1d43c8ef29ba074ea1e0c1e39914f5ad2c50a975d0d13e5d2989c",
+    "qa/salt-stores/verify-evidence.mjs": "1e2cddbf9be4628076f0cc28d3ed127f285b4988a61bfb5ce8ba1fee0ad49548"
+  },
+  "combatHashes": {
+    "dist/campaign.js": "e13f589d69a2bbbc6a15281cfe1040e1e53d22ea22a086c4f68e46f8b47a394f",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "27ab8cdec72ad31d0201f57d007395094d02df25b2001dc6842fc2cd76708be2",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+  },
+  "formationSha256": "d31df9f52024d60a1a738b1cb506f9f2670da36dc56e942e2c74e3aaf7543d7c",
+  "plan": {
+    "evidenceEpoch": 1,
+    "developmentSeeds": [
+      8202,
+      923,
+      58031,
+      448273
+    ],
+    "heldOutSeeds": [
+      2571673,
+      3840289
+    ],
+    "policies": [
+      "northraid",
+      "southraid",
+      "directmiddle",
+      "economy",
+      "broadnovice",
+      "screenedRootwarden",
+      "dualouterraids",
+      "unsupportedair",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence."
+  },
+  "heldOut": false,
+  "totalRuns": 3,
+  "raw": {
+    "sha256": "ba0cd2986dfa7f42db2b10d4d59f5964a3a10945db5912e3746a84820cd90afe",
+    "bytes": 428410,
+    "filename": "ironroot-salt-quickgate-epoch1.ndjson"
+  },
+  "results": {
+    "northraid": {
+      "games": 1,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 137.34999999999698,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 63.899999999998506,
+              "tick": 1278,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.54999999999501,
+              "tick": 2511,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            108.74999999999596
+          ],
+          "deniedOriginalMineIncome": 213.12500000000114,
+          "paid": 16,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southraid": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "directmiddle": {
+      "games": 1,
+      "wins": 1,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 193.85000000000983,
+          "hp": [
+            5694,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 164.90000000000325,
+              "tick": 3298,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 175.3000000000056,
+              "tick": 3506,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.0500000000085,
+              "tick": 3761,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 315,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            183.1500000000074,
+            171.50000000000475
+          ],
+          "deniedOriginalMineIncome": 72.37500000001646,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "economy": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "broadnovice": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "screenedRootwarden": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "dualouterraids": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "unsupportedair": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "idle": {
+      "games": 1,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 108.79999999999596,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 86.74999999999721,
+              "tick": 1735,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,4 +1,10 @@
-## v0.30.0 candidate: The Archer’s Quay
+## v0.31.0 WIP candidate: Salt in the Stores
+
+Chapter 8 continues with optional raids against three real enemy mines or a supported direct core siege. Destroy the enemy citadel by 10:00 while yours survives. Mines fund later paid works; surviving factories keep spawning and ordinary income remains. No mine is required. Normal 5:00 escalation is disclosed.
+
+Current catalog: 29 main missions / 87 optional stars. Profile 22 fences older writers without changing earned domain bytes. This is a new numeric design, not recovered historical source. Chapter 7 remains complete at three missions; Chapter 8 contains two of at least five planned missions. Chapters 9 and 10 also require at least five distinct missions. No Chapter 8 or campaign-completion claim. Fresh validation and independent review are pending; this WIP is not release approval.
+
+## Historical v0.30.0 candidate: The Archer’s Quay
 
 Chapter 8, The Siege Coast, begins with a fully visible Classic core assault: marching archers from central production, foundries on both outer roads, and an ordinary paid adaptive opponent. Destroy the enemy citadel by 10:00 with yours standing. No workshop or route is mandatory. Normal 5:00 escalation is disclosed.
 
