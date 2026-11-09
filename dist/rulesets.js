@@ -1,3 +1,4 @@
+import {BRAM_RULESET_ID} from './bram-forward.js';
 import {HAMMER_RULESET_ID,HAMMER_CAMPAIGN_RULESET_ID,HAMMER_AI} from './hammer-policy.js';
 import { BRIDGE_CONTROL, CAMPAIGN_CONTROL, RIVER_BETWEEN_CONTROL } from './bridge-control.js';
 import { CITADEL_OPTIONS } from './citadel-options.js';
@@ -86,6 +87,7 @@ const authoredAirEntry=id=>deepFreeze({
   movement:{policy:'autonomous-air-local-v1',autonomousAir:{perception:300,retention:420,adjacentOnly:true}}
 });
 export const RULESETS=deepFreeze({
+  [BRAM_RULESET_ID]:deepFreeze({...autonomousAirEntry(BRAM_RULESET_ID,'QA only · Bram forward camp',false,true),citadel:CITADEL_OPTIONS,qaOnly:true}),
   [HAMMER_CAMPAIGN_RULESET_ID]:deepFreeze({...autonomousAirEntry(HAMMER_CAMPAIGN_RULESET_ID,'Campaign · The Hammer Turns',false,true),citadel:CITADEL_OPTIONS,ai:HAMMER_AI}),
   [HAMMER_RULESET_ID]:deepFreeze({...autonomousAirEntry(HAMMER_RULESET_ID,'QA only · The Hammer Turns',false,true),citadel:CITADEL_OPTIONS,qaOnly:true,ai:HAMMER_AI}),
   [SALT_STORES_RULESET_ID]:deepFreeze({...autonomousAirEntry(SALT_STORES_RULESET_ID,'Campaign · Salt in the Stores',false,true),citadel:CITADEL_OPTIONS}),

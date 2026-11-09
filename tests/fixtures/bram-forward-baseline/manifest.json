@@ -1,0 +1,66 @@
+{
+  "canonicalCommit": "e1e5cf56fd67348863a385b6b3d20293aa5ef6b3",
+  "canonicalTree": "eef5bea6810e665d837b029a992536cf9c7b6fc5",
+  "canonicalInventorySHA256": "59430caf878805c3052dc8c797f4b13163ecf0daa98b587857f8a6a1cd15ec22",
+  "purpose": "Portable exact-source parity closure. Only changed engine/ruleset source is duplicated; six unchanged dependencies are hash-verified from current dist before temporary materialization. No historical app/profile/runtime duplication.",
+  "files": [
+    {
+      "path": "dist/engine.js",
+      "bytes": 47953,
+      "sha256": "6837fe338e80cf0f78d8ab1784d678d1a515667e1c397c1f9c19ddf73ab2fec6",
+      "gitBlobSHA1": "ce8e43c261bca85a3b10313f8428540dddc189bc",
+      "source": "fixture",
+      "fixture": "engine.js.source"
+    },
+    {
+      "path": "dist/rulesets.js",
+      "bytes": 14263,
+      "sha256": "d43efd6f0daf1c563a294ced5cfa961b94bd79e8adbb8ea6f3437ed5ceafa30f",
+      "gitBlobSHA1": "6e08fc34406baebfefe751fac470a04a5c863d9b",
+      "source": "fixture",
+      "fixture": "rulesets.js.source"
+    },
+    {
+      "path": "dist/hammer-policy.js",
+      "bytes": 11616,
+      "sha256": "24782c4f2e317e3c3d07ec2a616dbdd4fc617e2de4e2b5670b10746d9c8f2e8a",
+      "gitBlobSHA1": "0a1125f6b8b7071a3a3b8cb7107ce7b6a661be3b",
+      "source": "unchanged-current"
+    },
+    {
+      "path": "dist/flight-orders.js",
+      "bytes": 610,
+      "sha256": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+      "gitBlobSHA1": "e3cfc3bfcfe18732bb48d47f2d378ba250ad2fe0",
+      "source": "unchanged-current"
+    },
+    {
+      "path": "dist/autonomous-air.js",
+      "bytes": 2064,
+      "sha256": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+      "gitBlobSHA1": "e190fdc7714f580682a1f5e4695a69c1ac835c30",
+      "source": "unchanged-current"
+    },
+    {
+      "path": "dist/bridge-control.js",
+      "bytes": 10007,
+      "sha256": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+      "gitBlobSHA1": "82fd6b3cbc0a692651f005e8dd9603ec7b46e31c",
+      "source": "unchanged-current"
+    },
+    {
+      "path": "dist/citadel-options.js",
+      "bytes": 7309,
+      "sha256": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+      "gitBlobSHA1": "6fb127315ab7f40aa866228fb5a6c551ea284ee0",
+      "source": "unchanged-current"
+    },
+    {
+      "path": "dist/fog.js",
+      "bytes": 11016,
+      "sha256": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+      "gitBlobSHA1": "2bd19d2fa86aae80f83182f993cde26d5efe92a0",
+      "source": "unchanged-current"
+    }
+  ]
+}

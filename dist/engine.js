@@ -1,3 +1,4 @@
+import {BRAM_RULESET_ID,BRAM_MAP_ID,BRAM_PADS,supportsBram,initializeBram,advanceBram,bramPlacement,validateBram} from './bram-forward.js';
 import {supportsHammer,createHammerState,runHammerAI,validateHammerState} from './hammer-policy.js';
 import { BUILDINGS, UNITS, SPELL, getRuleset, LEGACY_RULESET_ID, LANTERNS_RULESET_ID, CAMPAIGN_FOG_RULESET_IDS, BORROWED_GROUND_RULESET_ID } from './rulesets.js';
 import { supportsFlightOrders, flightGateHome, flightGateX } from './flight-orders.js';
@@ -28,14 +29,16 @@ export const INTRO_MAPS=Object.freeze({
 export const CAMPAIGN_MAPS=Object.freeze({
   'borrowed-yard':Object.freeze({...mapDescriptor('borrowed-yard','Borrowed Yard',3200,[260,450,640],1),buildLimit:12,siteColumns:Object.freeze([410,690,970,1250])})
 });
-const ALL_MAPS=Object.freeze({...MAPS,...INTRO_MAPS,...CAMPAIGN_MAPS});
+export const QA_MAPS=Object.freeze({[BRAM_MAP_ID]:Object.freeze({...mapDescriptor(BRAM_MAP_ID,'QA only · Bram forward camp',4000,[340,560],0),qaOnly:true,buildLimit:16})});
+const ALL_MAPS=Object.freeze({...MAPS,...INTRO_MAPS,...CAMPAIGN_MAPS,...QA_MAPS});
 export function getMap(mapId='classic',revision=1){if(typeof mapId!=='string'||!Object.hasOwn(ALL_MAPS,mapId))throw new Error('Unknown battlefield: '+String(mapId));const map=ALL_MAPS[mapId];if(revision!==map.revision)throw new Error('Unsupported battlefield revision');return map;}
 export const homeX=(map,side,x)=>side===0?x:map.width-x;
 export const worldX=(map,side,distance)=>side===0?distance:map.width-distance;
 export const laneFor=(map,y)=>map.lanes.reduce((best,_,i)=>Math.abs(map.lanes[i]-y)<Math.abs(map.lanes[best]-y)?i:best,0);
-export const buildBounds=(map,side)=>({minX:side===0?200:map.width-1320,maxX:side===0?1320:map.width-200,minY:180,maxY:720});
-export const buildSites=(map,side)=>map.lanes.flatMap((y,lane)=>map.siteColumns.map(x=>({x:worldX(map,side,x),y,lane})));
-const isBuildSite=(map,side,x,y)=>map.siteColumns.includes(homeX(map,side,x))&&map.lanes.includes(y);
+export const buildBounds=(map,side)=>({minX:side===0?200:map.width-1320,maxX:side===0?(map.id===BRAM_MAP_ID?2510:1320):map.width-200,minY:180,maxY:720});
+const siteColumns=(map,side)=>map.id===BRAM_MAP_ID&&side===0?[...map.siteColumns,...BRAM_PADS]:map.siteColumns;
+export const buildSites=(map,side)=>map.lanes.flatMap((y,lane)=>siteColumns(map,side).map(x=>({x:worldX(map,side,x),y,lane})));
+const isBuildSite=(map,side,x,y)=>siteColumns(map,side).includes(homeX(map,side,x))&&map.lanes.includes(y);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export const upgradeCost=b=>Math.round(BUILDINGS[b.type].cost*(0.7+0.35*(b.level-1)));
 export class Game {
@@ -47,6 +50,7 @@ export class Game {
       schemaVersion:{value:rulesetId!==undefined||!Object.hasOwn(MAPS,mapId)?3:mapId==='classic'?1:2}
     });
     const map=this.map;
+    if((map.id===BRAM_MAP_ID)!==supportsBram(ruleset))throw new Error('Bram prototype requires its exact QA map/ruleset pair.');
     if((map.id==='borrowed-yard')!==(ruleset.id===BORROWED_GROUND_RULESET_ID))throw new Error('Borrowed Yard requires the Borrowed Ground campaign ruleset.');
     if(supportsFog(ruleset)&&(map.id!=='classic'||map.revision!==1||ruleset.endgame.forcedDecay||ruleset.economy.policy!=='legacy'||(ruleset.campaignOnly&&!CAMPAIGN_FOG_RULESET_IDS.includes(ruleset.id))||ruleset.authoredOnly))throw new Error('Experimental fog requires Classic open-ended Skirmish or an explicitly supported campaign mission');
     if(supportsCampaignControl(ruleset)&&(map.id!=='classic'||map.revision!==1))throw new Error('Campaign control requires Classic');
@@ -61,7 +65,7 @@ export class Game {
     if(supportsCampaignControl(ruleset))this.state.campaignControl=createCampaignControl(map);
     if(supportsCitadelOptions(ruleset))this.state.citadelOptions=createCitadelOptions();
     if(supportsFog(ruleset))this.state.fog=createFog();
-    for(let side=0;side<2;side++)this._place('barracks',worldX(map,side,410),map.lanes[map.startingLane],side);
+    if(supportsBram(ruleset))initializeBram(this);else for(let side=0;side<2;side++)this._place('barracks',worldX(map,side,410),map.lanes[map.startingLane],side);
     if(supportsFog(ruleset))refreshFog(this);
   }
   serialize(){return JSON.parse(JSON.stringify({...(this.schemaVersion===3?{version:3,rulesetId:this.ruleset.id,rulesetRevision:this.ruleset.revision,mapId:this.map.id,mapRevision:this.map.revision}:this.schemaVersion===1?{version:1}:{version:2,mapId:this.map.id,mapRevision:this.map.revision}),difficulty:this.difficulty,seed:this.seed,ai:this.ai,nextId:this.nextId,aiTimer:this.aiTimer,accumulator:this.accumulator,tick:this.tick,state:this.state}));}
@@ -95,6 +99,7 @@ export class Game {
     if(typeof type!=='string'||!Object.hasOwn(this.buildings,type)||![0,1].includes(side))return {ok:false,reason:'Unknown building.'};
     if(!Number.isFinite(x)||!Number.isFinite(y)||x<bounds.minX||x>bounds.maxX||y<bounds.minY||y>bounds.maxY)return {ok:false,reason:'Build within your territory.'};
     if(this.map.id!=='classic'&&!isBuildSite(this.map,side,x,y))return {ok:false,reason:'Choose a marked building site.'};
+    if(supportsBram(this.ruleset)&&!bramPlacement(this,x,y,side))return {ok:false,reason:'Destroy this road’s original outer watch to open its two forward pads.'};
     if(s.buildings.some(b=>b.hp>0&&Math.hypot(b.x-x,b.y-y)<108))return {ok:false,reason:'Too close to another building.'};
     if(type==='mint'&&s.buildings.filter(b=>b.side===side&&b.type==='mint').length>=3)return {ok:false,reason:'Maximum 3 gold mines per side.'};
     if(s.gold[side]<d.cost)return {ok:false,reason:`Need ${d.cost} gold.`};
@@ -193,6 +198,7 @@ export class Game {
       }
     }
     const pendingDamage=this.damageQueue;this.damageQueue=null;for(const hit of pendingDamage)this._damage(...hit);
+    if(supportsBram(this.ruleset))advanceBram(this);
     s.units=s.units.filter(u=>u.hp>0);s.buildings=s.buildings.filter(b=>b.hp>0);
     if(autoAir)for(const u of s.units)if(this.units[u.type].flying&&u.airTargetId!==null&&!retainedAirTarget(this,u,airTargets))releaseAirTarget(u);
     if(supportsBridgeControl(this.ruleset)){
@@ -327,6 +333,8 @@ function validateSave(data){
     try{ruleset=getRuleset(data.rulesetId,data.rulesetRevision);map=getMap(data.mapId,data.mapRevision);}catch{fail('unknown or unsupported ruleset/battlefield identity');}
     strictStateFields(data.state,fail,ruleset);
   }
+  if((map.id===BRAM_MAP_ID)!==supportsBram(ruleset))fail('Bram prototype requires its exact QA map/ruleset pair');
+  if(!supportsBram(ruleset)&&data.state&&Object.hasOwn(data.state,'bramBreach'))fail('Bram breach state is outside this ruleset');
   if((map.id==='borrowed-yard')!==(ruleset.id===BORROWED_GROUND_RULESET_ID))fail('Borrowed Yard requires the Borrowed Ground campaign ruleset');
   if(supportsHammer(ruleset)&&(map.id!=='classic'||map.revision!==1))fail('Hammer prototype requires Classic');
   const limits=ruleset.limits;
@@ -412,6 +420,7 @@ function validateSave(data){
   for(let side=0;side<2;side++){if(s.units.filter(u=>u.side===side).length>70||s.buildings.filter(b=>b.side===side).length>map.buildLimit||s.buildings.filter(b=>b.side===side&&b.type==='mint').length>3)fail('per-side entity limit exceeded');}
   for(const e of s.effects){obj(e,'effect');if(!['build','upgrade','sell','spawn','death','hit','blast','magic','volley'].includes(e.type))fail('unknown effect');num(e.side,0,1,'effect.side',true);num(e.x,0,map.width,'effect.x');num(e.y,0,map.height,'effect.y');num(e.maxLife,.01,2,'effect.maxLife');num(e.life,0,e.maxLife,'effect.life');num(e.radius,0,200,'effect.radius');if(supportsFog(ruleset))num(e.fogSeen,0,3,'effect.fogSeen',true);}
   for(const p of s.projectiles){obj(p,'projectile');if(supportsFog(ruleset))num(p.fogSeen,0,3,'projectile.fogSeen',true);if(Object.hasOwn(p,'citadelExtra')&&(!supportsCitadelOptions(ruleset)||p.citadelExtra!==true||p.type!=='tower'||s.citadelOptions.sides[p.side]?.choice!=='arrows'||s.citadelOptions.sides[p.side].extraShots<1||p.sx!==(p.side?map.width-110:110)||p.sy!==450))fail('invalid extra-arrow projectile');for(const field of ['sourceAir','targetAir'])if(p[field]!==undefined&&typeof p[field]!=='boolean')fail('projectile flight flags must be boolean');if(!['archer','siege','wizard','gryphon','tower'].includes(p.type))fail('unknown projectile');if(ruleset.campaignOnly&&p.type!=='tower'&&!Object.hasOwn(ruleset.units,p.type))fail('projectile is outside this campaign roster');num(p.side,0,1,'projectile.side',true);for(const k of ['x','sx','tx'])num(p[k],0,map.width,'projectile.'+k);for(const k of ['y','sy','ty'])num(p[k],0,map.height,'projectile.'+k);num(p.maxLife,.01,1,'projectile.maxLife');num(p.life,0,p.maxLife,'projectile.life');}
+  if(supportsBram(ruleset))validateBram(data,fail);
   if(s.winner==='draw'&&s.bases.some(b=>b.hp>0))fail('draw requires both cores to be destroyed');
   if(typeof s.winner==='number'&&s.bases[1-s.winner].hp>0)fail('winner has not destroyed the opposing base');
   return {map,ruleset};
@@ -425,7 +434,7 @@ export function validateEngineFields(data){
 }
 function strictFields(value,required,optional,fail){if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(k=>!required.includes(k)&&!optional.includes(k))||required.some(k=>!Object.hasOwn(value,k)))fail('unknown field or missing required field');}
 function strictStateFields(s,fail,ruleset){
-  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCampaignControl(ruleset)?['campaignControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[]),...(supportsHammer(ruleset)?['hammerCommitment']:[])],[],fail);
+  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCampaignControl(ruleset)?['campaignControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[]),...(supportsHammer(ruleset)?['hammerCommitment']:[]),...(supportsBram(ruleset)?['bramBreach']:[])],[],fail);
   strictFields(s.stats,['kills','built','damage'],[],fail);
   const entity=['id','type','side','hp','maxHp','cooldown','x','y'],flight=supportsFlightOrders(ruleset),autoAir=supportsAutonomousAir(ruleset);
   for(const [name,required,optional] of [
