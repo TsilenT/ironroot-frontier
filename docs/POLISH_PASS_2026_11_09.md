@@ -113,11 +113,15 @@ contrast and fit from actual computed colors and geometry.
 
 ## Handoff
 
-The branch is pushed. No merge or deployment was attempted. A draft PR creation
-was **denied** by automatic approval review: it regarded opening a PR on
+The branch is pushed and [draft PR #35](https://github.com/TsilenT/ironroot-frontier/pull/35)
+is open for integration review. It remains draft and unmerged. No merge or
+deployment was attempted. The runtime version/cache still need release coordination.
+
+The first draft PR creation was **denied** by automatic approval review: it regarded opening a PR on
 `TsilenT/ironroot-frontier` from `polish/interaction-review` to `main` as an
 external commitment requiring explicit user permission. The denied operation
-did not execute; it was not retried or bypassed. Reading the recent user history
-did not supply explicit PR authorization. Branch publication had already
-succeeded. The integration owner can review this checkpoint and obtain permission
-to open the prepared draft PR. Existing campaign rebuilding can continue independently.
+did not execute. The parent subsequently supplied earlier user authorization
+for cloud workers to open PRs. After verifying no matching PR existed, one retry
+successfully created draft #35 on 9 November at 04:33 UTC, initially at `355ece2`.
+This follow-up changes only the handoff documentation; the tested runtime and
+regression-test hashes are unchanged. Existing campaign rebuilding can continue independently.

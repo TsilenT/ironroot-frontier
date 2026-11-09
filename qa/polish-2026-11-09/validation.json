@@ -24,10 +24,15 @@
     "skipped": 1
   },
   "draftPr": {
-    "status": "denied",
+    "status": "created_draft",
+    "url": "https://github.com/TsilenT/ironroot-frontier/pull/35",
     "target": "TsilenT/ironroot-frontier main <- polish/interaction-review",
-    "reason": "Creating a GitHub pull request is an external commitment, and the user authorized the polish work but did not explicitly authorize opening a PR.",
-    "retried": false
+    "initialStatus": "denied",
+    "initialReason": "Creating a GitHub pull request is an external commitment, and the user authorized the polish work but did not explicitly authorize opening a PR.",
+    "retryCount": 1,
+    "createdAt": "2026-11-09T04:33:20Z",
+    "initialHead": "355ece253f88f3d10d6fd1eb2ff951e2dd40cad1",
+    "merged": false
   },
   "scope": "local source and native Chromium; emulated touch, no physical devices or listening assessment"
 }
