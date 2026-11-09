@@ -750,7 +750,7 @@ export function createCampaignMission(id,options={}) {
     if(Reflect.ownKeys(descriptors).some(k=>typeof k!=='string'||!allowed.includes(k)||!Object.hasOwn(descriptors[k],'value')||!descriptors[k].enumerable))throw new TypeError('Unknown or unsafe campaign construction option.');
   }
   const {revision=1,progress,variant,seed}=options;
-  if(seed!==undefined&&(!['the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve'].includes(id)||!Number.isSafeInteger(seed)||seed<0||seed>4294967295))throw new RangeError('A construction seed must be a uint32 and is supported only for The Hammer Turns, The Long Screen and The Shared Watch.');
+  if(seed!==undefined&&(!['the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve'].includes(id)||!Number.isSafeInteger(seed)||seed<0||seed>4294967295))throw new RangeError('A construction seed must be a uint32 and is supported only for The Hammer Turns, The Long Screen, The Shared Watch and Wake the Reserve.');
   const base=missionFor(id,revision);
   const roster=revision===CITADEL_CAMPAIGN_REVISION?CITADEL_CAMPAIGN_RULESET_IDS:CAMPAIGN_RULESET_IDS;
   const mission=[1,CITADEL_CAMPAIGN_REVISION].includes(revision)&&progress!==undefined&&isOnboardingMission(id)?{...base,rulesetId:roster[Math.max(ONBOARDING_MISSIONS.findIndex(m=>m.id===id),getCampaignRoster(progress).stage-1)]}:base;

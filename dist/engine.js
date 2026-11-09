@@ -334,8 +334,6 @@ function validateSave(data){
   }
   if((map.id==='borrowed-yard')!==(ruleset.id===BORROWED_GROUND_RULESET_ID))fail('Borrowed Yard requires the Borrowed Ground campaign ruleset');
   if(supportsHammer(ruleset)&&(map.id!=='classic'||map.revision!==1))fail('Hammer prototype requires Classic');
-  if(supportsMinorReserve(ruleset))validateMinorReserve(data.state.minorReserve,{map,tick:data.tick,nextId:data.nextId,state:data.state},fail);
-  else if(Object.hasOwn(data.state,'minorReserve'))fail('reserve state is outside this ruleset');
   const limits=ruleset.limits;
   if(!['easy','normal','hard'].includes(data.difficulty))fail('unknown difficulty');
   if(typeof data.ai!=='boolean')fail('ai must be boolean');
@@ -421,6 +419,8 @@ function validateSave(data){
   for(const p of s.projectiles){obj(p,'projectile');if(supportsFog(ruleset))num(p.fogSeen,0,3,'projectile.fogSeen',true);if(Object.hasOwn(p,'citadelExtra')&&(!supportsCitadelOptions(ruleset)||p.citadelExtra!==true||p.type!=='tower'||s.citadelOptions.sides[p.side]?.choice!=='arrows'||s.citadelOptions.sides[p.side].extraShots<1||p.sx!==(p.side?map.width-110:110)||p.sy!==450))fail('invalid extra-arrow projectile');for(const field of ['sourceAir','targetAir'])if(p[field]!==undefined&&typeof p[field]!=='boolean')fail('projectile flight flags must be boolean');if(!['archer','siege','wizard','gryphon','tower'].includes(p.type))fail('unknown projectile');if(ruleset.campaignOnly&&p.type!=='tower'&&!Object.hasOwn(ruleset.units,p.type))fail('projectile is outside this campaign roster');num(p.side,0,1,'projectile.side',true);for(const k of ['x','sx','tx'])num(p[k],0,map.width,'projectile.'+k);for(const k of ['y','sy','ty'])num(p[k],0,map.height,'projectile.'+k);num(p.maxLife,.01,1,'projectile.maxLife');num(p.life,0,p.maxLife,'projectile.life');}
   if(s.winner==='draw'&&s.bases.some(b=>b.hp>0))fail('draw requires both cores to be destroyed');
   if(typeof s.winner==='number'&&s.bases[1-s.winner].hp>0)fail('winner has not destroyed the opposing base');
+  if(supportsMinorReserve(ruleset))validateMinorReserve(s.minorReserve,{map,tick:data.tick,nextId:data.nextId,state:s},fail);
+  else if(Object.hasOwn(s,'minorReserve'))fail('reserve state is outside this ruleset');
   return {map,ruleset};
 }
 
