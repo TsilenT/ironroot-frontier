@@ -1,0 +1,17 @@
+# Bounded Hammer evidence through004
+
+All72 original development outcomes are preserved, including every loss. Only the same two known seeds and nine unchanged player scripts were used. No003 outcomes, heldouts, formation tuning or release action occurred.
+
+Epoch1, source002: Hammer player wins9/18; generic player wins0/18. The24 recorded priority-starvation decisions exposed a real defect, not a fair manufactured tradeoff. Epoch2, independently cleared source004: Hammer player wins7/18; generic remains0/18 with all18 complete final states unchanged. Four generic reactive probes wait for a visible foundry after their common opening, so the aggregate is not an opponent-strength ranking. These are deterministic scripts, not independent human trials.
+
+The corrected behavior makes16 actual paid production repairs across319Hammer decisions, with zero actual two-build/upgrade-call or one-offensive-attempt violations. The recorded old starvation signature drops24to0; this does not prove absence of every possible future priority bug. A natural second270gold foundry turns north to middle at84.10seconds in unsupportedair/170041, after the45second lock. It is not a forced wave or timed road rotation.
+
+Distinct choices are feasible on the same known seed170041. Broad coverage wins at102.55seconds with6000HP, attacking the core for0north/1265middle/4735south damage while the enemy commits north. The slower economy/screened northern advance wins at185.70seconds with6000HP and all6000core damage from north. This supports a route distinction, not human accessibility or universal strategy strength. Direct interception wins1/2; the specific oppositeflank script now loses2/2. Mixed-air wins are not proof that air caused victory.
+
+All running ledgers reconcile exactly. Separate event-integral income/final-gold arithmetic has maximum error below1.01e-10, and public-player-command replays with ordinary AI regenerate all72 final states and every player/enemy receipt exactly. No state-mutating counterfactual was used as an outcome. Authored starting assets are distinct from later paid treasury spending.
+
+Archives contain original receipts, logs, summaries, source bindings, the exact runtime/evaluator/policy dependency snapshot and audit scripts. Epoch1 SHA256:3d4f30c469edcd590f8c2b62282efcbe32083b9230b43d0e6b7d6bd8cc3a0474. Epoch2 SHA256:de637cbdbc4fb1defda2d1958003a094f752c335f7ae4dc35a0efc38e4333a07. Original raw hashes:epoch1 ef20368b75fecdf6d79b7d0270d47849574466ec3b082cfc4621a5adf7be7758;epoch2 1dcbba83b31ec2865776437a0558904f324843c1a78b9cedd3273edf826f4f2f.
+
+Extract an archive to a temporary directory. The audit-frozen.mjs entry uses the included exact dependency snapshot; package.json is separately bound to unchanged canonical module configuration. Epoch1 includes its explicit post-run preservation/report-provenance record. Original outcome/closure bytes are unchanged. The epoch2 portable adapter is prepared, not separately claimed executed; the original36-run epoch2 audit did execute and pass before preservation. comparison.json is analysis separate from immutable receipts.
+
+Source004 is still unadmitted.250focused source/state/legacy checks passed independently, but no full aggregate, native/device, real-save migration, final-head CI or release approval is implied. Historical whole-registry/frozen-source tests need explicit separation before integration, and cache identity remains deliberately incomplete. The next implementation is gated separately; no further tuning is proposed here.
