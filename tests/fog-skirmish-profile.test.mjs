@@ -34,7 +34,7 @@ const row = game => ({ won: true, draw: false, difficulty: game.difficulty, time
 function earned() {
   const game = new Game({ rulesetId: DEFAULT_SKIRMISH_RULESET_ID, ai: false, seed: 32 });
   return {
-    campaign: { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) },
+    campaign: { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) },
     trials: Object.fromEntries(CURRENT_CHALLENGES.map((c, i) => [c.id, { completed: true, bestTime: 70 + i }])),
     settings: { sound: false, music: false, sfx: true, volume: .3, reducedMotion: true, quality: 'low', keyboard: { version: 1, bindings: { build1: 'KeyQ', volley: null } }, skirmishBridgeIncome: true },
     history: [{ won: true, draw: false, challengeId: 'shieldbreaker', campaignId: null, difficulty: 'normal', time: 75, kills: 12, built: 5, date }, row(game)],
@@ -212,7 +212,7 @@ test('maximum valid memory is retained exactly without truncation or knowledge s
 test('current protocol changes only marker bytes and fences exact pinned protocol11 stale and reopened writers', () => {
   const source = readFileSync(new URL('./fixtures/profile-session-v0202.js', import.meta.url));
   assert.equal(createHash('sha256').update(source).digest('hex'), '3a008d9e0fae2f1d15929ab888482b67cacb501b6a4141c5109104b30660a64e');
-  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 25);
+  assert.equal(protocolEleven.CURRENT_PROFILE_PROTOCOL_VERSION, 11); assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 26);
   const domains = entries(earned()), raw = backend([[MARKER, marker(11)], ...domains, ['unrelated', 'untouched']]);
   const stale = previous(raw); assert.ok(stale.status().canWrite);
   const writer = current(raw); assert.ok(writer.status().canWrite);

@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeRoad = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id !== 'through-the-reed-beds' && (includeRoad || m.id !== id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id !== 'through-the-reed-beds' && (includeRoad || m.id !== id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeRoad = true) {
@@ -58,7 +58,7 @@ function assertBlocked(profile, raw) {
 }
 
 test('historical protocol19 pins exact released protocol18 and changes only admission and descriptive copy', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 25);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 26);
   assert.equal(protocolEighteen.CURRENT_PROFILE_PROTOCOL_VERSION, 18);
   const source = readFileSync(new URL('./fixtures/profile-session-v0270.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), '0371903b4df5d8227089c4e3e38fa155152cef485f201088734767cb2b12a4bc');
@@ -137,7 +137,7 @@ test('old earned progress stays exact, unlocks The Road We Know and records expl
   const old = earned(false), raw = backend([[MARKER, marker(18)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 32); assert.equal(overview.maxStars, 96); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 33); assert.equal(overview.maxStars, 99); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(c=>c.id==='unlit-roads').total, 3);
   assert.equal(getCampaignLaunchMission('false-quiet', old.campaign).reward, 'Unlocks The Road We Know');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);
