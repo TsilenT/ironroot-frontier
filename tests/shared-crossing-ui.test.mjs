@@ -101,7 +101,7 @@ test('control render draws three physical capture zones and owner/contest text w
 
 test('current chapter list includes the prototype without changing earned legacy totals',()=>{
   const p=createCampaignProgress(),before=JSON.stringify(p),o=getProgressionCampaignOverview(p);
-  assert.equal(o.total,30);assert.equal(o.maxStars,90);assert.equal(o.chapters.find(c=>c.id==='river-compact').number,6);
+  assert.equal(o.total,31);assert.equal(o.maxStars,93);assert.equal(o.chapters.find(c=>c.id==='river-compact').number,6);
   assert.equal(o.chapters.find(c=>c.id==='river-compact').total,5);assert.equal(o.chapters.find(c=>c.id==='river-compact').unlocked,false);
   assert.equal(JSON.stringify(p),before);
 });

@@ -8,7 +8,7 @@ import {Renderer} from '../dist/render.js';
 import {FogRenderer} from '../dist/fog-view.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 const ID='false-quiet';
-function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==ID)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
+function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==ID)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
 test('the actual app imports the one current chapter catalog; every playable mission has a theme',()=>{
  const source=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');assert.match(source,/CURRENT_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS/);assert.doesNotMatch(source,/const CAMPAIGN_CHAPTERS = \[/);
  for(const mission of CAMPAIGN_PROGRESS_MISSIONS)assert.ok(CURRENT_CAMPAIGN_CHAPTERS.find(c=>c.id===mission.chapterId)?.theme,mission.id);

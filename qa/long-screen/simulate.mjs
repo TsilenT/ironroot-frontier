@@ -15,6 +15,18 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 export const sha256=value=>createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
 export function evidenceClosure(){const files={};for(const name of readdirSync(path.join(root,'dist')).sort())files['dist/'+name]=sha256(readFileSync(path.join(root,'dist',name)));for(const name of ['package.json','qa/long-screen/PLAN.json','qa/long-screen/simulate.mjs','qa/salt-stores/economy.mjs'])files[name]=sha256(readFileSync(path.join(root,name)));return{files,mission:MISSION,plan:PLAN};}
 const evaluate=game=>evaluateCampaignMission(game,ID);
+/** Terminal contract and finite guard stay shared with regression tests. */
+export function advanceSimulation(game,beforeStep=()=>{},afterStep=()=>{}){
+ let steps=0;const maximum=Math.ceil(MISSION.timeLimit/.05)+2;
+ while(!evaluate(game).completed&&!evaluate(game).failed){
+  assert.ok(++steps<=maximum,'Simulation exceeded finite step guard');
+  const time=game.state.time,tick=game.tick,accumulator=game.accumulator;beforeStep();
+  advanceObjectiveBattle(game,.05,evaluate,MISSION.timeLimit);
+  assert.ok(game.state.time>time&&game.tick>tick||game.accumulator>accumulator||evaluate(game).completed||evaluate(game).failed,'Active simulation made no progress');
+  afterStep();
+ }
+ return evaluate(game);
+}
 export function run({policy,seed,validationPlan}={}){
  assert.ok(POLICY_IDS.includes(policy),'Unknown declared policy');
  if(validationPlan){assert.equal(validationPlan.status,'independent-review-approved');assert.deepEqual(validationPlan.closure,evidenceClosure(),'Validation dependencies changed after independent approval');assert.ok(validationPlan.seeds.includes(seed)&&!PLAN.developmentSeeds.includes(seed),'Validation seed must be independently declared and untouched');}
@@ -31,7 +43,7 @@ export function run({policy,seed,validationPlan}={}){
  function player(){if(policy==='idle')return;const view=observe(g,0).state;if(view.time+1e-7<next||s.winner!==null)return;next=view.time+5;const own=view.buildings.filter(b=>b.side===0&&b.hp>0);if(def.pauseAfter&&successful>=def.pauseAfter&&view.time<def.resumeAt-1e-7)return;
   for(const item of def.plan){if(own.some(b=>Math.hypot(b.x-item.x,b.y-g.map.lanes[item.lane])<108))continue;const r=g.build(item.type,item.x,g.map.lanes[item.lane],0);if(r.ok)successful++;return;}
   const eligible=own.filter(b=>b.level<3).sort((a,b)=>a.level-b.level||def.priority.indexOf(a.type)-def.priority.indexOf(b.type)||b.x-a.x||a.lane-b.lane||a.id-b.id);if(eligible[0]){const r=g.upgrade(eligible[0].id,0);if(r.ok)successful++;}}
- while(!evaluate(g).completed&&!evaluate(g).failed){player();advanceObjectiveBattle(g,.05,evaluate,MISSION.timeLimit);economy.reconcile();if(s.time+1e-7>=nextTrace){trace.push({time:s.time,hp:s.bases.map(b=>b.hp),gold:[...s.gold],income:[...s.income],buildings:s.buildings.map(b=>({id:b.id,side:b.side,type:b.type,x:b.x,lane:b.lane,hp:b.hp,level:b.level}))});nextTrace+=5;}}
+ advanceSimulation(g,player,()=>{economy.reconcile();if(s.time+1e-7>=nextTrace){trace.push({time:s.time,hp:s.bases.map(b=>b.hp),gold:[...s.gold],income:[...s.income],buildings:s.buildings.map(b=>({id:b.id,side:b.side,type:b.type,x:b.x,lane:b.lane,hp:b.hp,level:b.level}))});nextTrace+=5;}});
  const playerAttempts=attempts.filter(a=>a.side===0);for(let i=1;i<playerAttempts.length;i++)assert.ok(playerAttempts[i].time-playerAttempts[i-1].time>=5-1e-7,'Attempted player cadence <5s');
  assert.deepEqual(unexpectedGoldWrites,[],'No out-of-band treasury mutation');
  const ledger=economy.snapshot();for(const t of ledger.transactions){const expected=t.method==='build'?g.buildings[t.type].cost:t.method==='upgrade'?Math.round(g.buildings[t.type].cost*(.7+.35*(t.before.building.level-1))):t.method==='cast'?g.ruleset.spell.cost:t.method==='buyCitadelOption'?g.ruleset.citadel.cost:-Math.floor(t.before.building.invested*.5*t.before.building.hp/t.before.building.maxHp);assert.equal(t.cost,expected,'Ordinary paid price');}
