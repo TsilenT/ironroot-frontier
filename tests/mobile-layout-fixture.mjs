@@ -12,7 +12,7 @@ export const box=(left,top,width,height)=>({left,top,right:left+width,bottom:top
 // Source-derived grid fixture, not a CSS engine or native-browser evidence.
 // Root bounds deliberately come from inline style in the startup fixture, not
 // from the safety viewport: removing the real fit must reproduce the old bug.
-export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,teaching=false,collapsed=false,hold=true,root=box(0,0,width,height),viewport=root}={}){
+export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,targetCount=2,teaching=false,collapsed=false,hold=true,root=box(0,0,width,height),viewport=root}={}){
   const isPortrait=width<=height,isSidebar=!isPortrait&&(root.height<360||teaching),isShort=isPortrait&&root.height<560;
   const tokens=isSidebar?sidebar:isShort?shortPortrait:isPortrait?portrait:base;
   const header=token(tokens,'header'),dock=!protect&&(isPortrait||isSidebar)?token(isSidebar?rule('.app.protected-mobile.protected-sidebar.mobile-ordinary'):isShort?rule('.app.protected-mobile.protected-short-portrait.mobile-ordinary'):ordinary,'dock'):token(tokens,'dock');
@@ -58,9 +58,9 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
       nodes.home=box(nx+inset,mapTop,size,size);nodes.front=box(nx+inset+size+gap,mapTop,size,size);
       nodes.minimap=box(nx+inset,mapTop+size+gap,nw-2*inset,size);
     }
-    const targetY=objective.top+(isShort?16:36),w=(objective.width-18)/2;
+    const targetY=objective.top+(isShort?16:36),w=(objective.width-12-6*(targetCount-1))/targetCount;
     const targetHeight=isSidebar?Number(css.match(/\.protected-sidebar \.protected-target \{[^}]*min-height: (\d+)px/)[1]):44;
-    nodes.target0=box(objective.left+6,targetY,w,targetHeight);nodes.target1=box(objective.left+12+w,targetY,w,targetHeight);
+    for(let i=0;i<targetCount;i++)nodes[`target${i}`]=box(objective.left+6+i*(w+6),targetY,w,targetHeight);
   }else{
     for(const[i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(navigation.left+30+(i%2)*48,navigation.top+8+Math.floor(i/2)*48,44,44);
     const ny=navigation.bottom-100;
@@ -68,7 +68,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     // CSS minmax(168px,1fr),52px,minmax(0,2fr),12px padding/12px gaps.
     const first=Math.max(168,(usableWidth-76)/3),last=usableWidth-76-first;
     nodes.compactBuild=protect?box(x+12+first,objective.top+8,52,44):box(x+usableWidth-58,objective.top+8,52,44);
-    nodes.target0=box(x+70+first,objective.top+7,(last-6)/2,47);nodes.target1=box(x+76+first+(last-6)/2,objective.top+7,(last-6)/2,47);
+    for(let i=0;i<targetCount;i++)nodes[`target${i}`]=box(x+70+first+i*((last-6*(targetCount-1))/targetCount+6),objective.top+7,(last-6*(targetCount-1))/targetCount,47);
   }
   if(teaching&&collapsed){
     const nx=navigation.left,ny=navigation.top,nw=navigation.width;
@@ -91,6 +91,6 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     nodes.campaignTeaching=box(0,0,0,0);
     nodes.campaignCoach=box(0,0,0,0);
   }
-  const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild',...(protect?['target0','target1']:[]),...(teaching?[...(hold?['coachResume']:[]),'toggleCoach']:[])].map(id=>nodes[id]);
+  const controls=['pause','speed','sound','settings','home','front','minimap','compactBuild',...(protect?Array.from({length:targetCount},(_,i)=>`target${i}`):[]),...(teaching?[...(hold?['coachResume']:[]),'toggleCoach']:[])].map(id=>nodes[id]);
   return {nodes,canvas,controls,regions:[headerBox,objective,navigation,...(teaching&&!collapsed?[teachingBox]:[])],viewport};
 }
