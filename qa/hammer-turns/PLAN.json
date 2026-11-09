@@ -1,0 +1,99 @@
+{
+  "scope": "Fresh production campaign factory/evaluator feasibility. Authored public8303 is separate from declared QA constructor-seed stress openings. No generic relabeling, post-setup state mutation, script tuning or human balance claim.",
+  "validationEpoch": 1,
+  "developmentSeeds": [
+    8303,
+    170041,
+    680117,
+    910447
+  ],
+  "publicAuthoredSeed": 8303,
+  "heldOutSeeds": [
+    2193746573,
+    3481729031
+  ],
+  "heldOutStatus": "Unopened; require final dependency-aware freeze and coordinator gate before execution.",
+  "policies": [
+    "intercept",
+    "oppositeflank",
+    "centerbreach",
+    "rootwarden",
+    "broadnovice",
+    "economy",
+    "mixedair",
+    "unsupportedair",
+    "idle"
+  ],
+  "developmentRuns": 36,
+  "heldOutRuns": 18,
+  "capSeconds": 600,
+  "playerPaidCadenceSeconds": 5,
+  "formationPolicyAndPlayerScriptsUnchangedFromCleared004": true,
+  "compareGenericHere": false,
+  "numericChanges": "Only new optional medals180seconds/4500HP. Core-only completion600s; ordinary policy/formation/treasuries unchanged.",
+  "freezeBoundary": "All actual runtime files, production factory/evaluator, unchanged player/economy modules, simulator,auditor,plan and module config. Full canonical source-tree integrity is separate.",
+  "preregisteredHeldOutAdmission": {
+    "scope": "Accepted before any protected game is constructed or evaluated. This declarative rule does not change runtime, player scripts, formation, prices, economy, scheduling or authoritative evaluation.",
+    "all18Cases": {
+      "identity": "Reproduce the exact production mission/rules/map revisions and declared constructor seed. Protected seeds are QA stress openings, not randomized public starts.",
+      "attempts": "Retain every AI public-action attempt, including failed attempts, and reproduce the fixed player script deterministically.",
+      "receipts": "Retain every successful paid player/AI receipt, normal prices, income, kill gold, refunds and final treasury. The frozen independent auditor must pass.",
+      "playerFailedCallBoundary": "Failed player calls are not individually retained. They remain reproducible by exact fixed-script execution; do not claim a stored player-failure trace.",
+      "stateAndEvaluation": "Reproduce the complete final state and authoritative core outcome, reason and optional medals. Preserve own-loss/draw precedence and the normal 300-second escalation.",
+      "restoreBoundary": "Every simulator case performs an exact final Game.restore/serialize round trip. Per-case battle-codec/profile/native restore is not claimed; focused and native persistence checks are separate.",
+      "aiConstructionUpgradeAttemptMaximum": 2,
+      "aiOffensiveAttemptMaximum": 1,
+      "incompleteRun": "Any missing, errored, censored or irreproducible case pauses admission. Preserve every loss/error and completed record; do not skip or selectively replace cases."
+    },
+    "gameplayReadiness": {
+      "supportedPolicyIds": [
+        "intercept",
+        "oppositeflank",
+        "centerbreach",
+        "rootwarden",
+        "broadnovice",
+        "economy",
+        "mixedair"
+      ],
+      "excludedFromWinningQualification": [
+        "idle",
+        "unsupportedair"
+      ],
+      "requiredWitnesses": "There must exist a first-commit-road-majority winning case and an other-roads-majority winning case from different supported policy IDs across the full 18-case matrix.",
+      "winDefinition": "The authoritative campaign evaluator reports completion and the recorded core-only outcome is won; optional medal counts do not determine readiness.",
+      "firstCommittedRoad": "Use the lane of the earliest actual paid enemy commit transition in ordered side 1 AI decisions, corroborated by its successful ordinary receipt. Use that first lane even if later commitments turn or collapse; do not choose a later favorable lane.",
+      "damageDefinition": "Traverse damage entries in their recorded chronological order. Use positive applied damage with targetType === 'base', targetSide === 1 and source.side === 0. Every counted source.lane must be valid; do not invent or silently discard missing attribution.",
+      "firstCoreDamageBoundary": "Use the first such applied enemy-core damage event tick; cross-check its time against firstCoreDamage[1].",
+      "firstCommitRoadMajority": "Qualifying roads are the singleton first committed lane. Require 2 * F > T.",
+      "otherRoadsMajority": "Qualifying roads are all valid lane IDs other than the first committed lane. Require 2 * O > T.",
+      "majorityComparison": "Strict greater-than with recorded applied amounts, not attempted shots, rounded percentages or a tuned epsilon. A 50/50 tie qualifies as neither class.",
+      "minimumQualifyingPaidProductionReceipts": 2,
+      "qualifyingProductionReceipts": "Count successful side 0 build/upgrade receipt entries with cost > 0 whose frozen exact building definition has a troop-producing unit. Exclude mines and towers. The receipt lane must belong to the relevant road class.",
+      "qualifyingPurchaseDeadline": "receipt.tick must be strictly less than the first enemy-core-damage tick. Same-tick purchases do not qualify.",
+      "receiptCountingUnit": "Count receipt entries, without a distinct-building requirement. Failed or zero-cost actions do not count.",
+      "differentPoliciesRequired": true,
+      "noAdditionalGuarantees": [
+        "No win-per-seed guarantee.",
+        "No natural turn requirement.",
+        "No universal-victory guarantee.",
+        "No human-novice-ease claim."
+      ],
+      "minimumWinningCases": 2,
+      "damagePartition": "Accumulate F chronologically from entries on the first committed road and O chronologically from entries on all other valid roads. Then define T = F + O; do not compute a differently ordered independent total."
+    },
+    "paidEnemySiegePressure": {
+      "minimumWitnessCases": 1,
+      "caseScope": "A witness may be anywhere in the complete 18-case matrix, including the two scripts excluded from winning qualification.",
+      "paidProduction": "Require an earlier successful positive-cost side 1 foundry build/upgrade receipt and an ordinary side 1 siege spawn whose producerId and lane match that paid foundry.",
+      "appliedPressure": "After that ordinary spawn, require positive applied damage with source.side === 1, source.type siege, targetSide === 0 and the same recorded lane. A firing attempt alone is insufficient.",
+      "ordering": "The paid foundry receipt tick precedes the spawn tick; the spawn tick is no later than the applied-damage tick.",
+      "lineageBoundary": "Spawn records do not store unitId. Do not claim a directly logged spawn-to-specific-attacker link. Zero initial enemy siege/foundries, ordinary production-only source and exact deterministic replay establish the paid mechanism."
+    },
+    "failurePolicy": "If complete evidence or either readiness class or actual paid siege pressure is missing, pause admission and report. Do not retune against, selectively rerun, replace or silently exclude these protected seeds.",
+    "knownEvidenceProvenance": {
+      "originalAndClockRerunPlanSha256": "d25a6000a4a0a848ce7c2f813601a07b97cebaa343de3f56e429ff3649da367e",
+      "oldArchivesUnchanged": true,
+      "noRetroactivePlanClaim": "The original known36 and clock-only known36 archives used their own original PLAN bytes. Do not relabel them as runs under this later declaration."
+    }
+  }
+}

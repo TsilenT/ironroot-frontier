@@ -1,0 +1,12 @@
+{
+  "name": "ironroot-frontier",
+  "version": "0.31.0",
+  "private": true,
+  "type": "module",
+  "description": "Mobile-first RTS tug-of-war with campaign and skirmishes",
+  "scripts": {
+    "test": "node --test --test-concurrency=4 tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "check:release": "node scripts/verify-runtime.mjs"
+  }
+}

@@ -5,7 +5,7 @@ import {createBackup,parseBackup,BACKUP_STORAGE_KEYS as K} from '../../dist/back
 import {CURRENT_PROFILE_PROTOCOL_VERSION} from '../../dist/profile-session.js';
 import {flightFixture,flightCampaignFixture,staggeredFlightFixture,FLIGHT_RULES,HISTORICAL_FLIGHTLESS_RULES,AIR_PHASES} from './flight-order-fixtures.mjs';
 // Current writer fence is additive; these fixtures still retain their historical battle identities.
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,22);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,23);
 let fixtures=0,continuations=0;
 for(const rulesetId of FLIGHT_RULES)for(const mapId of ['classic','twin-span','long-march'])for(const side of [0,1])for(const phase of AIR_PHASES){
  const f=flightFixture({rulesetId,mapId,side,phase,home:1250});
