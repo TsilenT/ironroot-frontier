@@ -1,0 +1,2357 @@
+{
+  "scope": "Fresh54production-engine paid cases under one exact pre-heldout complete-source freeze. No human difficulty, full browser or physical-device claim.",
+  "evidenceEpoch": 1,
+  "historicalEvidenceReused": false,
+  "scenarioTuning": false,
+  "sourceFreezeSha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47",
+  "sourceFrozenAt": "2026-11-09T06:11:20.597Z",
+  "heldoutStartedAt": "2026-11-09T06:14:19.715Z",
+  "totalRuns": 54,
+  "developmentRuns": 36,
+  "heldoutRuns": 18,
+  "diagnosticClonesExcluded": true,
+  "allPricesIncomeAndBountiesAudited": true,
+  "maximumLedgerError": 0,
+  "results": {
+    "northraid": {
+      "games": 6,
+      "wins": 5,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 137.34999999999698,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 63.899999999998506,
+              "tick": 1278,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.54999999999501,
+              "tick": 2511,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            108.74999999999596
+          ],
+          "deniedOriginalMineIncome": 213.12500000000114,
+          "paid": 16,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 310.4000000000363,
+          "hp": [
+            0,
+            4741.1699999999955
+          ],
+          "mineLosses": [
+            {
+              "time": 148.99999999999963,
+              "tick": 2980,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 269.400000000027,
+              "tick": 5388,
+              "id": 96,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 297.5500000000334,
+              "tick": 5951,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            278.7500000000291,
+            298.1500000000335
+          ],
+          "deniedOriginalMineIncome": 403.5000000000917,
+          "paid": 33,
+          "enemyPaid": 25,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 224.1000000000167,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 185.00000000000782,
+              "tick": 3700,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 203.95000000001212,
+              "tick": 4079,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            208.35000000001313
+          ],
+          "deniedOriginalMineIncome": 148.12500000003368,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 154.85000000000096,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 70.64999999999813,
+              "tick": 1413,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            119.64999999999534
+          ],
+          "deniedOriginalMineIncome": 210.50000000000708,
+          "paid": 17,
+          "enemyPaid": 13,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "won",
+          "duration": 141.3999999999979,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 97.14999999999662,
+              "tick": 1943,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            101.54999999999637
+          ],
+          "deniedOriginalMineIncome": 110.6250000000032,
+          "paid": 16,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 133.74999999999616,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 98.79999999999653,
+              "tick": 1976,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            103.19999999999628
+          ],
+          "deniedOriginalMineIncome": 87.37499999999909,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southraid": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 143.44999999999837,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 89.59999999999705,
+              "tick": 1792,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.649999999995,
+              "tick": 2513,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            127.94999999999487
+          ],
+          "deniedOriginalMineIncome": 179.1250000000117,
+          "paid": 16,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 126.74999999999494,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 76.79999999999778,
+              "tick": 1536,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 102.49999999999632,
+              "tick": 2050,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            106.89999999999607
+          ],
+          "deniedOriginalMineIncome": 185.49999999998946,
+          "paid": 14,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 129.64999999999523,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 88.09999999999714,
+              "tick": 1762,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 106.2999999999961,
+              "tick": 2126,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            110.69999999999585
+          ],
+          "deniedOriginalMineIncome": 162.24999999999304,
+          "paid": 15,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 150.80000000000004,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 91.64999999999694,
+              "tick": 1833,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 139.44999999999746,
+              "tick": 2789,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            124.79999999999505
+          ],
+          "deniedOriginalMineIncome": 176.2500000000142,
+          "paid": 17,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "won",
+          "duration": 142.44999999999814,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 80.29999999999758,
+              "tick": 1606,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            110.69999999999585
+          ],
+          "deniedOriginalMineIncome": 155.3750000000014,
+          "paid": 16,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 137.99999999999713,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 98.79999999999653,
+              "tick": 1976,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            103.19999999999628
+          ],
+          "deniedOriginalMineIncome": 98.0000000000015,
+          "paid": 16,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "directmiddle": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 193.85000000000983,
+          "hp": [
+            5694,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 164.90000000000325,
+              "tick": 3298,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 175.3000000000056,
+              "tick": 3506,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.0500000000085,
+              "tick": 3761,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 315,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            183.1500000000074,
+            171.50000000000475
+          ],
+          "deniedOriginalMineIncome": 72.37500000001646,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 159.35000000000198,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 134.04999999999623,
+              "tick": 2681,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            142.09999999999806
+          ],
+          "deniedOriginalMineIncome": 63.25000000001438,
+          "paid": 17,
+          "enemyPaid": 15,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 181.55000000000703,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 159.10000000000193,
+              "tick": 3182,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            167.10000000000375
+          ],
+          "deniedOriginalMineIncome": 56.12500000001276,
+          "paid": 20,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 192.10000000000943,
+          "hp": [
+            5945,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 166.70000000000366,
+              "tick": 3334,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 184.9000000000078,
+              "tick": 3698,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 191.5500000000093,
+              "tick": 3831,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            188.75000000000867,
+            171.40000000000472
+          ],
+          "deniedOriginalMineIncome": 63.50000000001444,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "won",
+          "duration": 195.35000000001017,
+          "hp": [
+            5928,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 168.90000000000416,
+              "tick": 3378,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 184.5000000000077,
+              "tick": 3690,
+              "id": 54,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            188.35000000000858,
+            178.70000000000638
+          ],
+          "deniedOriginalMineIncome": 66.12500000001504,
+          "paid": 21,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 183.90000000000757,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 156.3500000000013,
+              "tick": 3127,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            163.850000000003
+          ],
+          "deniedOriginalMineIncome": 68.87500000001566,
+          "paid": 20,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "economy": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 190.10000000000898,
+          "hp": [
+            5869,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 168.00000000000395,
+              "tick": 3360,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 180.45000000000678,
+              "tick": 3609,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 185.25000000000787,
+              "tick": 3705,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 310,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            188.80000000000868,
+            175.7500000000057
+          ],
+          "deniedOriginalMineIncome": 55.25000000001256,
+          "paid": 23,
+          "enemyPaid": 16,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 196.15000000001035,
+          "hp": [
+            3048,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 174.4000000000054,
+              "tick": 3488,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 175.95000000000576,
+              "tick": 3519,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 177.75000000000617,
+              "tick": 3555,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 191.85000000000937,
+              "tick": 3837,
+              "id": 324,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            178.25000000000628,
+            182.55000000000726
+          ],
+          "deniedOriginalMineIncome": 50.50000000001148,
+          "paid": 23,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 203.450000000012,
+          "hp": [
+            5563,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 175.15000000000558,
+              "tick": 3503,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 180.45000000000678,
+              "tick": 3609,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 310,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 199.000000000011,
+              "tick": 3980,
+              "id": 326,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 202.65000000001183,
+              "tick": 4053,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            }
+          ],
+          "firstCoreDamage": [
+            190.40000000000904,
+            183.85000000000755
+          ],
+          "deniedOriginalMineIncome": 70.75000000001609,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 199.25000000001106,
+          "hp": [
+            5110,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 171.45000000000474,
+              "tick": 3429,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 174.45000000000542,
+              "tick": 3489,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 179.40000000000654,
+              "tick": 3588,
+              "id": 296,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 189.95000000000894,
+              "tick": 3799,
+              "id": 314,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 195.0500000000101,
+              "tick": 3901,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            181.55000000000703,
+            181.20000000000695
+          ],
+          "deniedOriginalMineIncome": 62.0000000000141,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "won",
+          "duration": 199.20000000001104,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 177.000000000006,
+              "tick": 3540,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 188.65000000000865,
+              "tick": 3773,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 197.40000000001064,
+              "tick": 3948,
+              "id": 313,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            182.65000000000728
+          ],
+          "deniedOriginalMineIncome": 55.50000000001262,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 204.7000000000123,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 183.70000000000752,
+              "tick": 3674,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 197.15000000001058,
+              "tick": 3943,
+              "id": 316,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 203.50000000001202,
+              "tick": 4070,
+              "id": 333,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            191.30000000000925
+          ],
+          "deniedOriginalMineIncome": 52.50000000001194,
+          "paid": 25,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "broadnovice": {
+      "games": 6,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 226.55000000001726,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 136.5999999999968,
+              "tick": 2732,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 182.45000000000724,
+              "tick": 3649,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            186.85000000000824
+          ],
+          "deniedOriginalMineIncome": 335.12500000007617,
+          "paid": 24,
+          "enemyPaid": 19,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 214.25000000001447,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 189.85000000000892,
+              "tick": 3797,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            194.25000000000992,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 22,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 203.70000000001207,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 128.54999999999498,
+              "tick": 2571,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 159.20000000000195,
+              "tick": 3184,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            179.80000000000663
+          ],
+          "deniedOriginalMineIncome": 299.125000000068,
+          "paid": 22,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 258.5500000000245,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 167.3500000000038,
+              "tick": 3347,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 177.75000000000617,
+              "tick": 3555,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            208.3000000000131
+          ],
+          "deniedOriginalMineIncome": 430.00000000009766,
+          "paid": 27,
+          "enemyPaid": 21,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "lost",
+          "duration": 259.60000000002475,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 205.75000000001253,
+              "tick": 4115,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 228.20000000001764,
+              "tick": 4564,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            210.15000000001353,
+            null
+          ],
+          "deniedOriginalMineIncome": 78.50000000001778,
+          "paid": 24,
+          "enemyPaid": 23,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "lost",
+          "duration": 231.1500000000183,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 194.25000000000992,
+              "tick": 3885,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            198.65000000001092,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 23,
+          "enemyPaid": 20,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "screenedRootwarden": {
+      "games": 6,
+      "wins": 6,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 145.7499999999989,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 67.79999999999829,
+              "tick": 1356,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 118.99999999999538,
+              "tick": 2380,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            123.39999999999513
+          ],
+          "deniedOriginalMineIncome": 261.7500000000103,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 144.39999999999858,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 44.44999999999961,
+              "tick": 889,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 126.79999999999494,
+              "tick": 2536,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            120.09999999999532
+          ],
+          "deniedOriginalMineIncome": 293.87500000000654,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 135.99999999999667,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 46.3999999999995,
+              "tick": 928,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 131.54999999999566,
+              "tick": 2631,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            99.54999999999649
+          ],
+          "deniedOriginalMineIncome": 235.12499999999548,
+          "paid": 14,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 131.6999999999957,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 51.99999999999918,
+              "tick": 1040,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 107.89999999999601,
+              "tick": 2158,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            112.29999999999576
+          ],
+          "deniedOriginalMineIncome": 258.7499999999905,
+          "paid": 14,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "won",
+          "duration": 141.04999999999782,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 67.79999999999829,
+              "tick": 1356,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 114.94999999999561,
+              "tick": 2299,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            119.34999999999536
+          ],
+          "deniedOriginalMineIncome": 248.37500000000438,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 163.60000000000295,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 65.34999999999843,
+              "tick": 1307,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 160.45000000000223,
+              "tick": 3209,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            120.24999999999531
+          ],
+          "deniedOriginalMineIncome": 253.5000000000131,
+          "paid": 16,
+          "enemyPaid": 13,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "dualouterraids": {
+      "games": 6,
+      "wins": 5,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 230.30000000001812,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 72.29999999999804,
+              "tick": 1446,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 144.4999999999986,
+              "tick": 2890,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            207.95000000001303
+          ],
+          "deniedOriginalMineIncome": 609.5000000000989,
+          "paid": 23,
+          "enemyPaid": 16,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 367.9500000000494,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 169.5000000000043,
+              "tick": 3390,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 335.75000000004206,
+              "tick": 6715,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 351.10000000004555,
+              "tick": 7022,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            356.00000000004667
+          ],
+          "deniedOriginalMineIncome": 618.7500000001405,
+          "paid": 40,
+          "enemyPaid": 31,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 240.4000000000204,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 121.79999999999522,
+              "tick": 2436,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 151.4500000000002,
+              "tick": 3029,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            200.45000000001133
+          ],
+          "deniedOriginalMineIncome": 518.8750000001136,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 169.65000000000433,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 95.59999999999671,
+              "tick": 1912,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 99.99999999999646,
+              "tick": 2000,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            126.99999999999493
+          ],
+          "deniedOriginalMineIncome": 359.2500000000387,
+          "paid": 18,
+          "enemyPaid": 13,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "lost",
+          "duration": 386.20000000005354,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 352.6000000000459,
+              "tick": 7052,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 361.0000000000478,
+              "tick": 7220,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            365.4000000000488,
+            null
+          ],
+          "deniedOriginalMineIncome": 84.0000000000191,
+          "paid": 46,
+          "enemyPaid": 37,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "won",
+          "duration": 219.6500000000157,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 72.34999999999803,
+              "tick": 1447,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 130.64999999999546,
+              "tick": 2613,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            188.60000000000863
+          ],
+          "deniedOriginalMineIncome": 590.7500000000948,
+          "paid": 22,
+          "enemyPaid": 15,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "unsupportedair": {
+      "games": 6,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 122.34999999999519,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 101.69999999999636,
+              "tick": 2034,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            106.09999999999611,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 121.29999999999525,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 103.79999999999625,
+              "tick": 2076,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            108.199999999996,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "lost",
+          "duration": 150.34999999999994,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 134.59999999999636,
+              "tick": 2692,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            138.99999999999736,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 9,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "lost",
+          "duration": 121.59999999999523,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 101.69999999999636,
+              "tick": 2034,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            106.09999999999611,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "lost",
+          "duration": 126.04999999999498,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 105.89999999999613,
+              "tick": 2118,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            110.29999999999588,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "lost",
+          "duration": 158.80000000000186,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 144.4499999999986,
+              "tick": 2889,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            148.8499999999996,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 10,
+          "enemyPaid": 14,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 6,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 108.79999999999596,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 86.74999999999721,
+              "tick": 1735,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 106.79999999999607,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 84.49999999999734,
+              "tick": 1690,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            88.89999999999709,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "lost",
+          "duration": 110.99999999999584,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 88.7499999999971,
+              "tick": 1775,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "lost",
+          "duration": 107.24999999999605,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 84.49999999999734,
+              "tick": 1690,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            88.89999999999709,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 2571673,
+          "outcome": "lost",
+          "duration": 109.44999999999592,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 86.14999999999725,
+              "tick": 1723,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 3840289,
+          "outcome": "lost",
+          "duration": 108.199999999996,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 85.94999999999726,
+              "tick": 1719,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  },
+  "rawFiles": [
+    {
+      "filename": "ironroot-salt-final-development-epoch1.ndjson",
+      "sha256": "09ecd99fa81dcf42b5e58b0791f8503ce1d9121410effc1778c400dd5153ac41",
+      "bytes": 6157491
+    },
+    {
+      "filename": "ironroot-salt-final-heldout-epoch1.ndjson",
+      "sha256": "e1e2db718d92553f95337b25a9f8d270a3c2d679c9b2f522bf79837eee67d97e",
+      "bytes": 3261921
+    }
+  ]
+}

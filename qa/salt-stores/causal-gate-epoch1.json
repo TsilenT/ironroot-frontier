@@ -1,0 +1,106 @@
+{
+  "policy": "northraid",
+  "seed": 8202,
+  "outcome": "won",
+  "duration": 137.34999999999698,
+  "ordinaryPricesVerified": true,
+  "independentIncomeVerified": true,
+  "maxLedgerError": 0,
+  "playerPaidActions": 16,
+  "enemyPaidActions": 11,
+  "originalMinesLost": [
+    {
+      "id": 8,
+      "time": 63.899999999998506,
+      "x": 1950,
+      "lane": 0
+    },
+    {
+      "id": 10,
+      "time": 125.54999999999501,
+      "x": 2790,
+      "lane": 1
+    }
+  ],
+  "outerOriginalSurvivors": [
+    {
+      "id": 9,
+      "side": 1,
+      "x": 2090,
+      "lane": 2,
+      "level": 1,
+      "hp": 380
+    }
+  ],
+  "deniedOriginalMineIncome": 213.12500000000114,
+  "paidEnemyReplacementMines": [],
+  "postLossOriginalFactorySpawns": 24,
+  "firstEnemyCoreDamage": 108.74999999999596,
+  "diagnosticClones": 11,
+  "gatePassed": true,
+  "affordabilityOnly": true,
+  "wholeOutcomeCausality": false,
+  "diagnostic": {
+    "scope": "ILLEGAL diagnostic-only exact-state counterfactual; not a legal run or outcome comparison",
+    "time": 83.34999999999741,
+    "tick": 1667,
+    "stateSha256": "27c90c726b5cbc1e25cf884264e6c8a17761f38a5b7d9a123678fd3b93661bd4",
+    "liveGold": 202.25,
+    "onlyChangedField": "state.gold[1]",
+    "restoredDeniedIncome": 48.62499999999726,
+    "cloneGoldBefore": 250.87499999999727,
+    "livePurchases": [],
+    "clonePurchases": [
+      {
+        "method": "build",
+        "args": [
+          "watchtower",
+          1950,
+          260,
+          1
+        ],
+        "beforeGold": 250.87499999999727,
+        "afterGold": 30.87499999999727,
+        "result": {
+          "ok": true,
+          "building": {
+            "id": 144,
+            "type": "watchtower",
+            "side": 1,
+            "x": 1950,
+            "y": 260,
+            "lane": 0,
+            "hp": 1000,
+            "maxHp": 1000,
+            "level": 1,
+            "progress": 0,
+            "cooldown": 0,
+            "invested": 220
+          }
+        }
+      }
+    ],
+    "liveFirstAttempt": {
+      "method": "build",
+      "args": [
+        "watchtower",
+        1950,
+        260,
+        1
+      ],
+      "gold": 202.25,
+      "result": {
+        "ok": false,
+        "reason": "Need 220 gold."
+      }
+    },
+    "enemyCoreHP": 6000
+  },
+  "laterActualPurchase": {
+    "time": 89.59999999999705,
+    "type": "watchtower",
+    "cost": 220,
+    "x": 1950,
+    "lane": 0
+  }
+}

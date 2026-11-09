@@ -7,11 +7,11 @@ import {encodeBattle,decodeBattle,validateBattleIdentity} from '../dist/battle-c
 import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {createPolicy} from '../qa/road-we-know/paid-policies.mjs';
 const ID='the-road-we-know',RULE='frontier-campaign-road-we-know',fresh=()=>c.createCampaignMission(ID),evaluate=g=>c.evaluateCampaignMission(g,ID);
-const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-archers-quay'&&(m.id!==ID&&m.id!=='through-the-reed-beds')).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))});
+const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==ID&&m.id!=='through-the-reed-beds')).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))});
 const clock=(g,t)=>{g.state.time=t;g.tick=Math.round(t/.05);};
 test('second Chapter 7 mission is gated by False Quiet and retains the current full paid rules',()=>{
  const p=progress(),m=c.getCampaignMission(ID),o=c.getProgressionCampaignOverview(p),g=fresh();
- assert.ok(Object.isFrozen(m));assert.equal(o.total,28);assert.equal(o.maxStars,84);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.find(c=>c.id==='unlit-roads').total,3);assert.deepEqual(m.prerequisites,['false-quiet']);
+ assert.ok(Object.isFrozen(m));assert.equal(o.total,29);assert.equal(o.maxStars,87);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.find(c=>c.id==='unlit-roads').total,3);assert.deepEqual(m.prerequisites,['false-quiet']);
  assert.equal(c.getCampaignLaunchMission('false-quiet',p).reward,'Unlocks The Road We Know');assert.equal(c.getCampaignMission('false-quiet').reward,'Completes the current Unlit Roads route');
  const locked=structuredClone(p);delete locked.missions['false-quiet'];assert.throws(()=>c.createProgressionCampaignMission(ID,locked));assert.equal(c.canUseCampaignRuleset(c.createCampaignProgress(),ID,1,RULE),false);assert.equal(c.canUseCampaignRuleset(p,ID,1,RULE),true);
  const prior=getRuleset('frontier-campaign-citadel-open');for(const key of Object.keys(prior).filter(k=>!['id','name'].includes(k)))assert.deepEqual(g.ruleset[key],prior[key],key);
@@ -31,6 +31,6 @@ test('real paid supported routes preserve checkpoint continuation and exact rest
 });
 test('all prior mission and whole ruleset bytes remain exact against the False Quiet parent',async()=>{
  const {createHash}=await import('node:crypto'),{RULESETS}=await import('../dist/rulesets.js');const hash=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
- assert.equal(hash(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-archers-quay'&&m.id!==ID&&m.id!=='through-the-reed-beds')),'d1c2899f3ff76da02d4afb231e5efe61bbdbf4e764329dda032e7b18eb52f5c8');
- assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!=='frontier-campaign-archers-quay'&&id!==RULE&&id!=='frontier-campaign-reed-beds'))),'8145be9199c93f688a8170f92b0185af81608b7e4321516f0de3d5ca1ae30554');
+ assert.equal(hash(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&m.id!==ID&&m.id!=='through-the-reed-beds')),'d1c2899f3ff76da02d4afb231e5efe61bbdbf4e764329dda032e7b18eb52f5c8');
+ assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==RULE&&id!=='frontier-campaign-reed-beds'))),'8145be9199c93f688a8170f92b0185af81608b7e4321516f0de3d5ca1ae30554');
 });

@@ -1,0 +1,56 @@
+{
+  "scope": "Post-heldout equality verification only; no new untouched-heldout evidence.",
+  "originalFirstOpenEvidenceUnchanged": true,
+  "artifacts": [
+    {
+      "path": "ironroot-salt-final-development-epoch1.ndjson",
+      "sha256": "09ecd99fa81dcf42b5e58b0791f8503ce1d9121410effc1778c400dd5153ac41"
+    },
+    {
+      "path": "ironroot-salt-final-heldout-epoch1.ndjson",
+      "sha256": "e1e2db718d92553f95337b25a9f8d270a3c2d679c9b2f522bf79837eee67d97e"
+    },
+    {
+      "path": "ironroot-salt-final-quickgate-epoch1.ndjson",
+      "sha256": "b827846a66d95d1b3a7a6ffdf83d5eff39a5f5f0065a4dcb8ea46a49bad00f0b"
+    },
+    {
+      "path": "ironroot-salt-final-legal-quickgate-epoch1.ndjson",
+      "sha256": "cca1cb28269682c2ad42925f651a0f8bd6d49041fef13e9b2dc3c65d365a112c"
+    },
+    {
+      "path": "ironroot-salt-final-diagnostics-epoch1.json",
+      "sha256": "f64e180d20d497df8405dd6d6545a57df8a192d7f9519f50291212eae5c7277d"
+    },
+    {
+      "path": "qa/salt-stores/VALIDATION_PLAN.json",
+      "sha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47"
+    },
+    {
+      "path": "qa/salt-stores/final-development-epoch1.json",
+      "sha256": "d9b72bc83f68477bef282e94ab1fe9d0f1e48e50229161113d642c5302c2d407"
+    },
+    {
+      "path": "qa/salt-stores/final-heldout-epoch1.json",
+      "sha256": "0bca57707da10040f8534c110648914cda3de70590e5a81dbee85cb64a454683"
+    },
+    {
+      "path": "qa/salt-stores/final-receipt-audit-epoch1.json",
+      "sha256": "865c146e419339666e5aa129be607ea61e4d640daa4ed315f286f90b026baddb"
+    },
+    {
+      "path": "qa/salt-stores/validation-epoch1.json",
+      "sha256": "a0f26a8d58f3de3b4ced06fd4bdf246a310d10ec02248844c0310f5e0c6bab09"
+    },
+    {
+      "path": "qa/salt-stores/final-quickgate-epoch1.json",
+      "sha256": "0c872deaef990010f77a0977aafd24d3187019ebdde0f42c8c5f910cbc740025"
+    },
+    {
+      "path": "qa/salt-stores/causal-gate-final-epoch1.json",
+      "sha256": "0f369f32e9d9ba41cdb0112c6da9de1cbd46033a69c9c8ba5e06808e1218f3a1"
+    }
+  ],
+  "originalPaidFreezeSha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47",
+  "postHeldoutCompatibilityBindingSha256": "a2574d1b41dedbb294f15faaf7e8836941d954495f40d7438e82e69da5e65ba7"
+}

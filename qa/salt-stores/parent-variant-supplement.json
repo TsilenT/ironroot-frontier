@@ -1,0 +1,19 @@
+{
+  "scope": "Read-only supplemental current-runtime compatibility check for both False Quiet variants; not Salt balance evidence or a change to frozen source.",
+  "reason": "The new numeric parent fixture records 100 unambiguous states. Both historical a/b variant initial hashes already exist in the unchanged Archer-parent fixture and are checked separately here.",
+  "checks": [
+    {
+      "variant": "a",
+      "initialStateSha256": "5839c227af87c5105331f9402f25cbc64e63c579659376e8c6475df95c3099ca",
+      "exactContinuationSteps": 400,
+      "codecMatchesFrozenParent": true
+    },
+    {
+      "variant": "b",
+      "initialStateSha256": "2b45657536ff3ef2668e5b3f819064c7ff759a257f68230d81afd93836cd62fc",
+      "exactContinuationSteps": 400,
+      "codecMatchesFrozenParent": true
+    }
+  ],
+  "allPassed": true
+}
