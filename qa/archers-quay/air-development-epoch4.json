@@ -1,0 +1,176 @@
+{
+  "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence.",
+  "generatedAt": "2026-11-09T05:03:44.283Z",
+  "startedAt": "2026-11-09T05:03:40.257Z",
+  "baseline": {
+    "commit": "853cde8c74d77f68be92329db17d8a6dc6e00aae",
+    "tree": "c776e89acec9bc759a161ae8869aa6e59325d501",
+    "equivalentSourceCommit": "544514e69260f18843df167663fd87f9428a3814"
+  },
+  "policySha256": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+  "harnessHashes": {
+    "qa/archers-quay/paid-policies.mjs": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+    "qa/archers-quay/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/archers-quay/scenario.mjs": "925dc677d6a38de7ca7a0c7a10e7ff93c52ee3b4191842bec13b48c54ccd8a9e",
+    "qa/archers-quay/simulate.mjs": "662fe79c6f21c87367df8c81eef4b9bf128f470fc8ab040734db4eccf07366e5",
+    "qa/archers-quay/verify-evidence.mjs": "5fa90297d08075c65d2421b91893896b1dbe9d4b5a485722097357a45b71f05c"
+  },
+  "combatHashes": {
+    "dist/campaign.js": "87f7f1aaf549b9d266be1ab5d1e6022ce6c153ff2739628669bf36542782cb97",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+  },
+  "formationSha256": "46ecf6f2f7dff277297bc9e24ad175a6d6658fb1e86e3d82eb472e0eb060516a",
+  "plan": {
+    "developmentSeeds": [
+      8101,
+      923,
+      61019,
+      424243
+    ],
+    "heldOutSeeds": [
+      982453,
+      620237
+    ],
+    "policies": [
+      "northground",
+      "southground",
+      "middlebreach",
+      "supportedRootwarden",
+      "supportedair",
+      "unsupportedair",
+      "broadnovice",
+      "safeeconomy",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence."
+  },
+  "heldOut": false,
+  "totalRuns": 4,
+  "raw": {
+    "sha256": "8744a3000e0e9d3b793db15b2cc93f05ad530ca05102cb85e535ac40fa64ebc9",
+    "bytes": 148742,
+    "filename": "ironroot-archers-air-epoch4.ndjson"
+  },
+  "results": {
+    "northground": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "southground": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "middlebreach": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "supportedRootwarden": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "supportedair": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8101,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 123.69999999999511,
+          "hp": [
+            2542.560000000004,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1875,
+            1035
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 137.79999999999708,
+          "hp": [
+            1504.0000000000045,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2065,
+            1240
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 61019,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 135.2499999999965,
+          "hp": [
+            3582.5200000000023,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1950,
+            1190
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424243,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 129.79999999999526,
+          "hp": [
+            2650.3200000000033,
+            0
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            1875,
+            1100
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "unsupportedair": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "broadnovice": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "safeeconomy": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    },
+    "idle": {
+      "games": 0,
+      "wins": 0,
+      "runs": []
+    }
+  }
+}
