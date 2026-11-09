@@ -23,7 +23,7 @@ test('Damage-resolution opening grants no money/free entity; normal paid constru
  const data=g.serialize(),restored=Game.restore(data);assert.deepEqual(restored.serialize(),data);const sale=g.sell(r.building.id);assert.equal(sale.refund,135);assert.equal(Game.restore(g.serialize()).state.bramBreach.gates[0].openedTick,1);
 });
 test('Rebuilt ordinary enemy watch never relocks original gate; restart is closed',()=>{
- const g=create(7301,false);breach(g);g.state.gold[1]=300;const r=g.build('watchtower',2750,340,1);assert.equal(r.ok,true);assert.notEqual(r.building.id,6);g.update(.05);assert.equal(g.state.bramBreach.gates[0].openedTick,1);assert.deepEqual(Game.restore(g.serialize()).serialize(),g.serialize());assert.equal(create().state.bramBreach.gates[0].openedTick,null);
+ const g=create(7301,false);breach(g);g._damage(g.state.buildings.find(b=>b.id===9),10000,0);g.update(.05);g.state.gold[1]=300;const r=g.build('watchtower',2750,340,1);assert.equal(r.ok,true);assert.notEqual(r.building.id,6);g.update(.05);assert.equal(g.state.bramBreach.gates[0].openedTick,1);assert.deepEqual(Game.restore(g.serialize()).serialize(),g.serialize());assert.equal(create().state.bramBreach.gates[0].openedTick,null);
 });
 test('Strict prototype restore rejects malformed/cross-identity gates and forward buildings',()=>{
  const initial=create().serialize();for(const mutate of[
@@ -35,7 +35,7 @@ test('Before/after synthetic breach and after purchase resume with no repeated r
  const g=create(7301,false);g.state.buildings.find(b=>b.id===6).hp=1;
  // Synthetic mechanism fixture, not an authored game outcome: one ordinary ram
  // attacks normally inside the fixed step, so restore itself never opens a gate.
- g._spawn({type:'foundry',side:0,x:2510,y:340,lane:0,level:1});g.state.units.at(-1).cooldown=0;
+ g._spawn({type:'foundry',side:0,x:1750,y:340,lane:0,level:1});g.state.units.at(-1).cooldown=0;
  const prior=g.serialize();g.update(.05);const opened=g.serialize();assert.equal(opened.state.bramBreach.gates[0].openedTick,1);
  const beforeRestored=Game.restore(prior);assert.equal(beforeRestored.state.bramBreach.gates[0].openedTick,null);beforeRestored.update(.05);assert.deepEqual(beforeRestored.serialize(),opened);
  assert.equal(g.build('foundry',2510,340).ok,true);const bought=g.serialize(),afterRestored=Game.restore(opened);assert.deepEqual(afterRestored.serialize(),opened);afterRestored.build('foundry',2510,340);assert.deepEqual(afterRestored.serialize(),bought);
@@ -49,10 +49,10 @@ test('Paid cadence includes failed attempts, and visible unsafe pads cause cauti
 
 test('Malformed old-map null state keeps its historical Invalid saved game error shape',()=>{const data=new Game().serialize();data.state=null;assert.throws(()=>Game.restore(data),/^Error: Invalid saved game:/);});
 
-test('Frozen epoch2 initial formation preserves setup order and only approved foundry/mine positions',()=>{
+test('Final exposed-watch initial formation preserves exact declared order/positions',()=>{
  const plan=JSON.parse(readFileSync(new URL('../qa/bram-forward/PLAN.json',import.meta.url),'utf8')),g=create();
  assert.deepEqual(g.state.buildings.map(b=>[b.type,b.x,b.y,b.level]),[...plan.formation.player,...plan.formation.enemy]);
  assert.deepEqual(g.state.buildings.map(b=>b.id),Array.from({length:16},(_,i)=>i+1));
- assert.deepEqual(g.state.buildings.filter(b=>[6,10,11,16].includes(b.id)).map(b=>[b.id,b.type,b.x,b.y]),[[6,'watchtower',2750,340],[10,'foundry',3730,340],[11,'watchtower',2750,560],[16,'mint',3310,340]]);
+ assert.deepEqual(g.state.buildings.filter(b=>[6,10,11,16].includes(b.id)).map(b=>[b.id,b.type,b.x,b.y]),[[6,'watchtower',2050,340],[10,'foundry',3730,340],[11,'watchtower',2050,560],[16,'mint',3310,340]]);
  assert.deepEqual(plan.seeds,[7301,9127]);assert.deepEqual(plan.policies,['rear','prompt','cautious','idle']);
 });

@@ -1,7 +1,7 @@
 import{writeFileSync,mkdirSync,readFileSync}from'node:fs';import{createHash}from'node:crypto';import{resolve}from'node:path';
 import{Game}from'../../dist/engine.js';import{policyAction,POLICY_IDS}from'./policies.mjs';import{instrument}from'./audit.mjs';
 const hash=v=>createHash('sha256').update(typeof v==='string'?v:JSON.stringify(v)).digest('hex');
-export const create=(seed=7301,ai=true)=>new Game({mapId:'qa-bram-two-roads',rulesetId:'frontier-qa-bram-forward-v1',difficulty:'normal',seed,ai});
+export const create=(seed=7301,ai=true)=>new Game({mapId:'qa-bram-exposed-watch',rulesetId:'frontier-qa-bram-exposed-watch-v1',difficulty:'normal',seed,ai});
 export function continueTo(save,policy,endTick,afterAction=false){const g=Game.restore(save);for(;g.tick<endTick&&g.state.winner===null;){if(!afterAction)policyAction(g,policy);afterAction=false;g.update(.05);}return g.serialize();}
 export function run(policy,seed){
  const g=create(seed),a=instrument(g),notes=[],checkpoints=[];let sawBreach=false,sawPurchase=false;

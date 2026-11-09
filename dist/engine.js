@@ -1,4 +1,4 @@
-import {BRAM_RULESET_ID,BRAM_MAP_ID,BRAM_PADS,supportsBram,initializeBram,advanceBram,bramPlacement,validateBram} from './bram-forward.js';
+import {BRAM_RULESET_ID,BRAM_MAP_ID,BRAM_PADS,supportsBram,initializeBram,advanceBram,bramPlacement,validateBram,isBramOriginalOutpost} from './bram-forward.js';
 import {supportsHammer,createHammerState,runHammerAI,validateHammerState} from './hammer-policy.js';
 import { BUILDINGS, UNITS, SPELL, getRuleset, LEGACY_RULESET_ID, LANTERNS_RULESET_ID, CAMPAIGN_FOG_RULESET_IDS, BORROWED_GROUND_RULESET_ID } from './rulesets.js';
 import { supportsFlightOrders, flightGateHome, flightGateX } from './flight-orders.js';
@@ -29,7 +29,7 @@ export const INTRO_MAPS=Object.freeze({
 export const CAMPAIGN_MAPS=Object.freeze({
   'borrowed-yard':Object.freeze({...mapDescriptor('borrowed-yard','Borrowed Yard',3200,[260,450,640],1),buildLimit:12,siteColumns:Object.freeze([410,690,970,1250])})
 });
-export const QA_MAPS=Object.freeze({[BRAM_MAP_ID]:Object.freeze({...mapDescriptor(BRAM_MAP_ID,'QA only · Bram forward camp',4000,[340,560],0),qaOnly:true,buildLimit:16})});
+export const QA_MAPS=Object.freeze({[BRAM_MAP_ID]:Object.freeze({...mapDescriptor(BRAM_MAP_ID,'QA only · Bram exposed watch',4000,[340,560],0),qaOnly:true,buildLimit:16})});
 const ALL_MAPS=Object.freeze({...MAPS,...INTRO_MAPS,...CAMPAIGN_MAPS,...QA_MAPS});
 export function getMap(mapId='classic',revision=1){if(typeof mapId!=='string'||!Object.hasOwn(ALL_MAPS,mapId))throw new Error('Unknown battlefield: '+String(mapId));const map=ALL_MAPS[mapId];if(revision!==map.revision)throw new Error('Unsupported battlefield revision');return map;}
 export const homeX=(map,side,x)=>side===0?x:map.width-x;
@@ -383,7 +383,7 @@ function validateSave(data){
     entity(e,kind);if(typeof e.type!=='string'||!Object.hasOwn(types,e.type))fail('unknown '+kind+' type');num(e.id,1,data.nextId-1,kind+'.id',true);if(ids.has(e.id))fail('duplicate entity id');ids.add(e.id);
     num(e.lane,0,map.lanes.length-1,kind+'.lane',true);num(e.level,1,3,kind+'.level',true);num(e.cooldown,-1,20,kind+'.cooldown');
     const maxHp=types[e.type].hp*(1+(kind==='building'?.4:.12)*(e.level-1));if(Math.abs(e.maxHp-maxHp)>.001)fail(kind+' health does not match its level');
-    if(kind==='building'){if(supportsFlightOrders(ruleset)&&e.type==='aerie'){num(e.flightPlan,0,map.lanes.length-1,'flightPlan',true);if(Math.abs(e.flightPlan-e.lane)>1)fail('flight plan is not adjacent');}num(e.progress,0,1,'progress');num(e.invested,types[e.type].cost,2000,'invested');const bounds=buildBounds(map,e.side);num(e.x,bounds.minX,bounds.maxX,'building.x');num(e.y,bounds.minY,bounds.maxY,'building.y');if(e.lane!==laneFor(map,e.y))fail('building lane does not match position');if(map.id!=='classic'){if(!isBuildSite(map,e.side,e.x,e.y))fail('building is not on an owned site');const site=e.side+':'+e.x+':'+e.y;if(occupiedSites.has(site))fail('duplicate occupied building site');occupiedSites.add(site);}}
+    if(kind==='building'){if(supportsFlightOrders(ruleset)&&e.type==='aerie'){num(e.flightPlan,0,map.lanes.length-1,'flightPlan',true);if(Math.abs(e.flightPlan-e.lane)>1)fail('flight plan is not adjacent');}num(e.progress,0,1,'progress');num(e.invested,types[e.type].cost,2000,'invested');const bounds=buildBounds(map,e.side),outpost=supportsBram(ruleset)&&isBramOriginalOutpost(e);if(!outpost)num(e.x,bounds.minX,bounds.maxX,'building.x');num(e.y,bounds.minY,bounds.maxY,'building.y');if(e.lane!==laneFor(map,e.y))fail('building lane does not match position');if(map.id!=='classic'){if(!outpost&&!isBuildSite(map,e.side,e.x,e.y))fail('building is not on an owned site');const site=e.side+':'+e.x+':'+e.y;if(occupiedSites.has(site))fail('duplicate occupied building site');occupiedSites.add(site);}}
     else {if(e.flying!==types[e.type].flying)fail('unit flight does not match its type');num(e.attack,0,1,'unit.attack');num(e.x,75,map.width-75,'unit.x');num(e.y,180,720,'unit.y');if(supportsFlightOrders(ruleset))validateAirRoute(e);if(supportsAutonomousAir(ruleset)&&types[e.type].flying)validateAirTarget(e);}
   }
   function validateAirTarget(u){

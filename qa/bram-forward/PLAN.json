@@ -1,11 +1,11 @@
 {
-  "status": "UNADMITTED QA-only prototype, development epoch 2. Fresh positional-swap boundary, not recovered specifications, approved balance or release.",
+  "status": "PROPOSAL ONLY: final exposed-watch candidate, QA-only, unadmitted and not simulated. One new structural candidate; failed keep criteria means cut, no retuning.",
   "baselineCommit": "e1e5cf56fd67348863a385b6b3d20293aa5ef6b3",
   "baselineTree": "eef5bea6810e665d837b029a992536cf9c7b6fc5",
   "baselineInventorySHA256": "59430caf878805c3052dc8c797f4b13163ecf0daa98b587857f8a6a1cd15ec22",
   "designReportSHA256": "f25004512be08038ea24aabe54951eb8d4b3a92c1134063411e1286d2612dcea",
   "map": {
-    "id": "qa-bram-two-roads",
+    "id": "qa-bram-exposed-watch",
     "revision": 1,
     "width": 4000,
     "roads": [
@@ -30,7 +30,7 @@
     ]
   },
   "rules": {
-    "id": "frontier-qa-bram-forward-v1",
+    "id": "frontier-qa-bram-exposed-watch-v1",
     "revision": 1,
     "clearView": true,
     "difficulty": "normal",
@@ -82,7 +82,7 @@
     "enemy": [
       [
         "watchtower",
-        2750,
+        2050,
         340,
         2
       ],
@@ -100,7 +100,7 @@
       ],
       [
         "watchtower",
-        3170,
+        2750,
         340,
         1
       ],
@@ -112,7 +112,7 @@
       ],
       [
         "watchtower",
-        2750,
+        2050,
         560,
         2
       ],
@@ -130,7 +130,7 @@
       ],
       [
         "watchtower",
-        3170,
+        2750,
         560,
         1
       ],
@@ -147,7 +147,7 @@
         1
       ]
     ],
-    "freshResolvedChoices": "All exact rear positions, ID/order, second-watch/support levels and mine road are new epoch-1 choices; author setup uses ordinary normal HP/invested costs and reset cached mine income."
+    "freshResolvedChoices": "New final geometric design: original L2 outposts at2050, existing L1 main watches at2750; all other005 positions/stats/IDs/setup order unchanged. No numeric/stat rescue."
   },
   "mechanism": "Only original watch IDs 6/11 resolving to zero HP opens that road's two visible pads after the damage batch. Permanent construction access, never territory/collision or safety. Normal prices/caps/refunds. A rebuilt watch never relocks. No resource grant at unlock or restore.",
   "policies": [
@@ -162,29 +162,30 @@
     9127
   ],
   "matrixOrder": "policy major in listed order, seed minor in listed order; exactly eight development games, no heldouts, no tuning within boundary",
-  "auditor": "Every paid attempt including failures, every ordinary enemy decision, every spawn and resolved damage/death, 5-second road snapshots, per-tick complete treasury reconciliation. Unit first-attack and reach-X2950 time are combat-dependent transit measures, not isolated speed effects. Enemy decisions may differ causally.",
+  "auditor": "All existing receipts/decisions/spawns/damage/losses/treasury/restore checks; add passive unitHP and living main-field count/HP byroad in every existing snapshot. Main field is inclusive X1320..2680, not territory capture. First observed main-field lead is descriptive snapshot chronology, not a post-hoc keep threshold.",
   "restore": "Capture immediately before/after first natural breach and after first successful paid forward purchase, whenever reached. Same policy continuation to the original final tick, compare exact serialized state.",
-  "goGate": "Requires useful forward-born contribution before battle effectively decided, viable no-forward win, and meaningful visible danger making delay sensible. Otherwise hold/reject. Eight games are development only, no human-ease or universal balance claim.",
+  "goGate": "KEEP for further review only if access opens while an identifiable paid-force/economy/road problem is still unresolved, forward-vs-rear investment has credible conditional consequences shown by currently available affordable decisions and outcomes, and a viable no-forward route exists. Do not require forward to dominate or be fastest. CUT if access still follows a decisive lead, has no credible strategic value, is mandatory/automatic, cannot be reached, or depends on subsidies/weak stats/disabled AI. Damage alone is insufficient. No retuning after failure.",
   "releaseBlockers": [
-    "independent code/evidence review",
-    "mechanical go/no-go",
-    "larger balance and readability study if mechanically promising",
-    "native placement/render/Scout/briefing and profile/history admission absent",
-    "no campaign catalog identity",
-    "not production-admitted, no release promise"
+    "independent structural/source/restore/preopen review",
+    "explicit coordinator approval and exact final source/plan/environment freeze before cases",
+    "single matrix and independent causal replay/keep-cut disposition",
+    "full aggregate remains NOT PASSED",
+    "native UI/Scout/briefing/profile/history/envelope/catalog absent",
+    "no production/campaign admission or release promise"
   ],
   "developmentBoundary": {
-    "epoch": 2,
-    "priorPlayedEpoch1ArchiveSHA256": "398b7db0c465e6ad50bfb72a5f02dfd3aa483ddd138862389cc376bf5b8594a6",
-    "priorCodeOnlyPortableCheckpointSHA256": "ca566490ec28d94b3475e958764e18bab11e05d023d26015a4a41769f2471143",
-    "approvedFormationChange": "Swap north foundry id10 X3310 -> X3730 and real north mint id16 X3730 -> X3310. Keep types, levels, IDs and setup order. Every other formation/mechanic/AI/price/player-policy/seed value stays fixed.",
-    "nonGameplayChangesFromEpoch1": [
-      "Null-state truthiness guard before out-of-ruleset Bram field check; invalid-save error-shape regression and strengthened synthetic uninterrupted-vs-restored fixture in checkpoint002.",
-      "Portable canonical-source parity support in checkpoint003: exact baseline engine/ruleset fixtures plus hash-verified unchanged dependencies; no sibling import and no gameplay changes.",
-      "This declarative epoch2 plan and initial-formation assertion, plus comment identifying this approved boundary."
-    ],
-    "prediction": "No assumed12-second actual delay:420/35 is unobstructed arithmetic only. Measure actual spawn-to-first-attack and natural breach timing. Changed mine exposure and ordinary AI responses are confounds.",
-    "noRescueAdjustment": true,
-    "failureHandling": "Stop at any first-set error or unexpected setting difference, preserve completed outcomes and error logs, report without unreported retry. No further adjustment or heldouts in this boundary."
+    "candidate": "bram-exposed-watch-final",
+    "proposedDevelopmentEpoch": 4,
+    "formationRevision": 3,
+    "policyRevision": 3,
+    "status": "proposal, not approved for case opening",
+    "actualDurable005Parent": "70b0141a761b887f2cf271c873eb4705196b0f73",
+    "actualParentTree": "c7612bc8ad8b5677ba70ed8aac5d0ea67f2f961c",
+    "actualParentInventorySHA256": "6875626283b37f834f984093688f162a88ba040423fd80dac1d9c10b552291c2",
+    "onlyGameplayChange": "Tower geometry: original L2 watches id6/11 X2750\u21922050; existing L1 second watches id9/14 X3170\u21922750. Map width/roads/pads/rear producers/economics/caps/AI/roster and005 corrected policies remain unchanged.",
+    "identity": "New private QA map/rules IDs, revision1. Old005 QA saves are not reinterpreted; old frozen source remains available.",
+    "authoredOutposts": "Only exact original gate ID/type/side/road/coordinate/ordinary-level tuples admit outside rear bounds on restore. No new build rights, build site or build bounds.",
+    "nonGameplayAudit": "Existing5s snapshots additionally record per-road total unit HP and living main-field count/HP in declared ordinary rear-territory gap X1320\u20132680; no action, random or serialized state change.",
+    "stopAndCut": "One eight-case matrix of the same two known seeds only after independent preopen review and explicit coordinator authorization. No hidden retry, rescue adjustment, protected seed or heldout; failed keep criteria cuts candidate."
   }
 }

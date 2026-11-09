@@ -1,14 +1,17 @@
-/** QA-only, unadmitted forward-camp prototype. Fresh design epoch 2, approved positional-swap boundary. */
-export const BRAM_RULESET_ID='frontier-qa-bram-forward-v1';
-export const BRAM_MAP_ID='qa-bram-two-roads';
+/** QA-only, unadmitted forward-camp prototype. Fresh final exposed-watch proposal; untested geometry, ordinary stats. */
+export const BRAM_RULESET_ID='frontier-qa-bram-exposed-watch-v1';
+export const BRAM_MAP_ID='qa-bram-exposed-watch';
 export const BRAM_PADS=Object.freeze([2370,2510]);
-export const BRAM_GATES=Object.freeze([{id:6,lane:0,x:2750,y:340},{id:11,lane:1,x:2750,y:560}].map(Object.freeze));
+export const BRAM_GATES=Object.freeze([{id:6,lane:0,x:2050,y:340},{id:11,lane:1,x:2050,y:560}].map(Object.freeze));
 export const supportsBram=rules=>rules.id===BRAM_RULESET_ID&&rules.revision===1;
+// Only the immutable original watches may restore outside ordinary rear sites.
+// This predicate is never used by canBuild/buildSites/buildBounds.
+export function isBramOriginalOutpost(b){return b.side===1&&b.type==='watchtower'&&[2,3].includes(b.level)&&BRAM_GATES.some(g=>b.id===g.id&&b.lane===g.lane&&b.x===g.x&&b.y===g.y);}
 export function initializeBram(game){
   const s=game.state;
   const put=(type,x,y,side,level=1)=>{const b=game._place(type,x,y,side);if(level===2){b.level=2;b.hp=b.maxHp=game.buildings[type].hp*1.4;b.invested+=Math.round(game.buildings[type].cost*.7);}return b;};
   put('barracks',1110,340,0);put('archery',970,340,0);put('barracks',1110,560,0);put('archery',970,560,0);put('mint',410,340,0);
-  for(const y of [340,560]){put('watchtower',2750,y,1,2);put('barracks',2890,y,1);put('archery',3030,y,1);put('watchtower',3170,y,1);put(y===340?'foundry':'aerie',y===340?3730:3310,y,1);}
+  for(const y of [340,560]){put('watchtower',2050,y,1,2);put('barracks',2890,y,1);put('archery',3030,y,1);put('watchtower',2750,y,1);put(y===340?'foundry':'aerie',y===340?3730:3310,y,1);}
   put('mint',3310,340,1);s.gold=[1100,100];s.income=[7.5,7.5];s.effects=[];
   s.bramBreach={revision:1,gates:BRAM_GATES.map(g=>({id:g.id,lane:g.lane,openedTick:null}))};
 }

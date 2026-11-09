@@ -1,20 +1,14 @@
-# Bram forward camp: private WIP
+# Bram final exposed-watch proposal
 
-Unadmitted QA-only epoch 1. No campaign/profile/catalog or native placement UI integration, no release promise. Every numeric/design choice is fresh. PLAN.json freezes formation, policies, seeds, auditor and go/no-go boundary. Normal AI is unchanged. No live workspace or remote is edited.
+Unadmitted QA-only, not simulated. Read EXPOSED_WATCH_PROPOSAL.md and PLAN.json for the one final structural candidate, exact new private identities, unchanged005 policies/economics, audit-only metric and operational keep/cut contract. The source is isolated; no Screen rebase or live/canonical runtime change occurs.
 
-Code surface: dist/bram-forward.js owns a two-gate transition and exact state validation. The two existing engine files gain exact QA map/rules identities, static marked sites, guarded construction, post-damage sampling and strict restore hooks. The implementation deliberately does not add general territory control.
+OriginalL2 watches at2050 are exact authored outposts, never new build rights. ExistingL1 main watches move to2750. All other initial state and ordinary gameplay definitions remain exact005. Old005 private QA saves are explicitly rejected on this new experimental branch, not reinterpreted. They remain supported by preserved005 source. All admitted public identities remain unchanged.
 
-Run focused checks from the source root:
+Run synthetic/focused checks from the source root:
 
-    node --test tests/bram-forward*.test.mjs
+    node --test tests/bram-exposed-watch.test.mjs tests/bram-cap-policy.test.mjs tests/bram-forward*.test.mjs tests/engine.test.mjs
     npm run check
 
-The portable parity test pins the canonical e1e5cf56 engine/ruleset source fixtures and verifies the six unchanged current dependencies against their canonical SHA256 and Git blob hashes before temporary materialization. It needs no sibling checkout. The fixture manifest records the exact commit, tree and inventory hash. Omitted source paths must never be treated as deletions.
+Portable parity support verifies exact canonical source dependencies and needs no sibling checkout. Tests cover authored-outpost admission without expanded rights, crossed/old identity rejection, malformed state, replacement permanence, synthetic restore continuity and read-only audit parity. They are not development outcomes. Full aggregate remains NOT PASSED.
 
-Before running development games, create and preserve a full source-file hash manifest and immutable source archive outside this directory. Then run:
-
-    node qa/bram-forward/simulate.mjs /absolute/path/outside/source
-
-Exactly four policies by two declared seeds. Never write generated outcomes/logs/screenshots into this source. Keep every outcome, failed attempt, receipt, natural-breach checkpoint and restore comparison. No heldouts. Revision requires a separately named boundary preserving this epoch.
-
-Interpretation limitations: source-attributed direct and splash damage are tracked, but shorter observed time to first attack is not isolated travel causality. The unchanged paid AI may make different decisions after seeing new forward production. Compare its actual decisions and both roads. Eight development games cannot establish balance or human ease. Native UI/readability/profile/save-envelope admission and independent mechanical review remain blockers even for a positive mechanic result.
+Do not run development cases before independent preopen review, exact external source/plan/environment/runner freeze and explicit coordinator authorization. Keep every generated freeze, output, log and report outside this source. Only one same-known-seed eight-case matrix may later be authorized. Failed criteria cuts the candidate; no tuning/rescue loop or forced fifth mission. Ordinary source/docs from earlier policy work are retained as history, not as the current experiment's identity.
