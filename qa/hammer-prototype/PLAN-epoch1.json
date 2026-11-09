@@ -1,0 +1,65 @@
+{
+  "scope": "Unadmitted exploratory Hammer prototype. New numeric design, not reconstruction, production validation or human balance. No heldout runs in phase one.",
+  "epoch": 1,
+  "declaredBeforeExploration": true,
+  "developmentSeeds": [
+    8303,
+    170041
+  ],
+  "matrix": {
+    "policies": [
+      "intercept",
+      "oppositeflank",
+      "centerbreach",
+      "rootwarden",
+      "broadnovice",
+      "economy",
+      "mixedair",
+      "unsupportedair",
+      "idle"
+    ],
+    "opponents": [
+      "hammer",
+      "generic"
+    ],
+    "runs": 36,
+    "capSeconds": 600,
+    "playerPaidCadenceSeconds": 5
+  },
+  "timing": {
+    "lockSeconds": 45,
+    "lockTicks": 900,
+    "collapseCooldownSeconds": 20,
+    "collapseCooldownTicks": 400,
+    "switchMargin": 2,
+    "normalDecisionCadence": "Unchanged 5 + random()*3 seconds; two construction/upgrade attempts; ordinary separate citadel/Volley checks."
+  },
+  "supportScore": {
+    "formula": "2*min(2,forwardScreenProducerLevels) + min(2,forwardArcheryLevels) + min(3,ownScreenHealthEquivalents) + min(3,ownArcherHealthEquivalents) - 2*min(3,observedEnemyGroundHealthEquivalents) - 3*min(2,observedEnemyAirHealthEquivalents)",
+    "ownTroopWindowHomeDistance": [
+      550,
+      1900
+    ],
+    "enemyThreatHomeDistanceStrictlyBelow": 1550,
+    "healthEquivalent": "hp / bound unit base hp; production levels count only living forward producers; foundries never add support score."
+  },
+  "eligibility": "At least one living forward warrior/Rootwarden producer and one living forward archery range on candidate road; every other road retains living forward mobile production. New foundry behind screen; cap two living foundries overall.",
+  "activation": "Successful ordinary foundry build. A later turn to an existing foundry requires an ordinary paid foundry upgrade; if already maxed, a paid screen/range upgrade or an additional needed screen/range producer may finance that turn. No fabricated turn if no useful legal paid investment remains.",
+  "collapse": "At ordinary AI decision only: last committed-road foundry destroyed, OR last forward screen producer lost, OR last forward archery range lost. Losing one of several category members does not collapse it. Clear lane/lock and start 20s cooldown. No producer remaining means ordinary paid reconstruction can continue during cooldown, but no siege reselection until it expires and full support eligibility is restored.",
+  "lockVersusCooldown": "Lock prevents discretionary switching for 45s after a funded commitment while allowing paid emergency defense. Cooldown prevents new selection for 20s after actual collapse; it is not an extra lock and grants nothing.",
+  "turnCriteria": "After lock expiry, challenger score at least current score+2; unsupported current road first collapses. No forced periodic change. Title means opportunity to turn paid investment; not guaranteed alternating waves.",
+  "restore": "Restore copies validated state and RNG only; neither restore nor emergency calls selection out of normal scheduling, grants actions, resets timers or changes treasury.",
+  "warning": "Foundry becomes visible immediately; ordinary first spawn about1.2s later plus normal travel. No construction countdown.",
+  "evidenceBoundary": "Outcome runs use production APIs only after disclosed authored setup; all failed runs retained. Full action/income/bounty/refund ledger. Runtime plus actual simulator/evaluator/policy/config dependency closure is distinct from full repository integrity. Heldouts forbidden in phase one.",
+  "preExplorationAmendments": [
+    {
+      "reason": "Independent WIP001 review found second-producer count alone insufficient and impossible emergency build blocked all spending. No outcome or heldout run preceded these changes.",
+      "secondSupportProducer": "Only genuinely unmet current local demand: ground health equivalents > own screen equivalents for a second screen, air health equivalents > own archer equivalents for a second range. Same-road maxed foundry and all ordinary turn conditions required.",
+      "fullRoadEmergency": "Prefer a legal useful on-road defensive upgrade when new construction has no legal site; if neither exists, skip the impossible emergency rather than block all spending. No extra action or reset."
+    },
+    {
+      "reason": "Independent WIP001 review found malformed early absolute deadlines admitted. No outcome run preceded this fix.",
+      "saveAdmission": "Nonzero absolute lock deadline must be >=900 and cooldown deadline >=400, and within current tick plus its duration. Expired legitimate deadlines remain admitted; no reconstruction or selection occurs on restore."
+    }
+  ]
+}
