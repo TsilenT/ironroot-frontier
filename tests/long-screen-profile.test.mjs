@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {Game, DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
 import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import * as actual24 from './fixtures/profile-session-v0330.js';
 import * as actual23 from './fixtures/profile-session-v0320.js';
 import {verifyHistoricalRuntime, historicalRoot} from '../qa/hammer-prototype/historical-runtime.mjs';
 import {createStorage, createSaveSession, createHistorySession, createPreferenceSession, writeBattle} from '../dist/persistence.js';
@@ -33,7 +34,7 @@ const opaque = () => keys.map(key => [key, `  retained opaque ${key} bytes\n`]);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario = campaignScenarioForGame(game, id)) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeScreen = false) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => includeScreen || m.id !== id).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (includeScreen || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence data, not evidence of a played or balanced match. */
 function earned(includeScreen = true) {
@@ -61,26 +62,26 @@ function assertBlocked(profile, raw) {
 // The only executable historical addition is the actual Hammer profile writer.
 // Its hash and Salt22 derivation remain independent literal source oracles.
 test('Screen profile24 is exactly four marker-only substitutions from immutable actual Hammer23', () => {
-  assert.equal(VERSION, 24); assert.equal(actual23.CURRENT_PROFILE_PROTOCOL_VERSION, 23);
+  assert.equal(VERSION, 25); assert.equal(actual24.CURRENT_PROFILE_PROTOCOL_VERSION, 24); assert.equal(actual23.CURRENT_PROFILE_PROTOCOL_VERSION, 23);
   const source = readFileSync(new URL('./fixtures/profile-session-v0320.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), 'a6dc605e9ac55138c6fc0d54fb57229fba8f7972ad480a09ed1f32eec911d430');
   const expected = source.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 23', 'CURRENT_PROFILE_PROTOCOL_VERSION = 24')
     .replace('paid siege commitments and explicit result identities from older writers.', 'paid siege commitments and explicit result identities from older writers; protocol 24 fences The Long Screen progress, clear-view checkpoints and explicit result identities from older writers.')
     .replace('21, 22, 23].includes', '21, 22, 23, 24].includes').replace('21, 22 or 23.', '21, 22, 23 or 24.');
-  assert.equal(readFileSync(new URL('../dist/profile-session.js', import.meta.url), 'utf8'), expected);
-  for (let version = 1; version <= 24; version++) {
+  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0330.js', import.meta.url), 'utf8'), expected);
+  for (let version = 1; version <= 25; version++) {
     const raw = backend(); assert.ok(createProfileSession(() => raw, {requiredProtocolVersion:version}).status().canWrite);
   }
-  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:25}), TypeError);
+  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:26}), TypeError);
 });
 
-test('Screen upgrades absent and every ready protocol1 through24 without reading or rewriting opaque earned bytes', () => {
-  for (const version of [null, ...Array.from({length:24}, (_, i) => i + 1)]) {
+test('Screen upgrades absent and every ready protocol1 through25 without reading or rewriting opaque earned bytes', () => {
+  for (const version of [null, ...Array.from({length:25}, (_, i) => i + 1)]) {
     const raw = backend([...(version === null ? [] : [[MARKER, marker(version)]]), ...opaque(), ['unrelated', 'untouched']]);
     const before = domains(raw), profile = current(raw);
     assert.ok(profile.status().canWrite);
-    assert.deepEqual(JSON.parse(raw.data.get(MARKER)), {format:'ironroot-profile', version:24, epoch:version === null ? 'long-screen-import' : 'earned-profile', phase:'ready'});
-    assert.deepEqual(raw.writes.map(write => write[1]), version === 24 ? [] : [MARKER]);
+    assert.deepEqual(JSON.parse(raw.data.get(MARKER)), {format:'ironroot-profile', version:25, epoch:version === null ? 'long-screen-import' : 'earned-profile', phase:'ready'});
+    assert.deepEqual(raw.writes.map(write => write[1]), version === 25 ? [] : [MARKER]);
     assert.deepEqual(domains(raw), before); assert.ok(raw.reads.every(key => key === MARKER));
     raw.reads.length = 0; raw.writes.length = 0;
     assert.ok(current(raw).status().canWrite); assert.deepEqual(raw.writes, []); assert.ok(raw.reads.every(key => key === MARKER));
@@ -112,10 +113,10 @@ test('actual open and reopened Hammer23 and Salt22 writers cannot discard any of
 
 test('future malformed restoring and failed Screen markers never grant partial domain access', () => {
   for (const version of [1,22,23,24,25,99]) for (const phase of ['ready','restoring','failed']) {
-    if (phase === 'ready' && version <= 24) continue;
+    if (phase === 'ready' && version <= 25) continue;
     const raw = backend([[MARKER, marker(version, phase)], ...opaque()]), before = [...raw.data], profile = current(raw);
     assertBlocked(profile, raw); assert.deepEqual([...raw.data], before);
-    if (version > 24) assert.equal(profile.beginImport({recover:true}).code, 'unsupported-protocol');
+    if (version > 25) assert.equal(profile.beginImport({recover:true}).code, 'unsupported-protocol');
   }
   for (const invalid of ['{', '{}', '[]', marker(0), marker('24'), JSON.stringify({...JSON.parse(marker(24)), extra:true})]) {
     const raw = backend([[MARKER, invalid], ...opaque()]), before = [...raw.data]; assertBlocked(current(raw), raw); assert.deepEqual([...raw.data], before);
@@ -149,8 +150,8 @@ test('old earned Hammer progress stays exact and one-star completion unlocks Scr
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, data);
   assert.equal(data.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(data.campaign), data.campaign);
   const overview = getProgressionCampaignOverview(data.campaign), chapter = overview.chapters.find(c => c.id === 'siege-coast');
-  assert.equal(overview.total, 31); assert.equal(overview.maxStars, 93); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
-  assert.equal(chapter.total, 4); assert.equal(chapter.maxStars, 12); assert.equal(chapter.completed, false);
+  assert.equal(overview.total, 32); assert.equal(overview.maxStars, 96); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(chapter.total, 5); assert.equal(chapter.maxStars, 15); assert.equal(chapter.completed, false);
   assert.deepEqual(getCampaignMission(id).prerequisites, ['the-hammer-turns']);
   assert.equal(getCampaignLaunchMission('the-hammer-turns', data.campaign).reward, 'Unlocks The Long Screen');
   const campaign = structuredClone(data.campaign); campaign.missions['the-hammer-turns'].stars = 1;
@@ -187,7 +188,7 @@ test('genuine current Screen checkpoint save restore restart and result retain e
   assert.ok(writeCampaignProgress(storage, recorded)); assert.equal(JSON.parse(raw.data.get(K.campaign)).version, 1);
   const history = createHistorySession(storage, K.history, {canWrite:() => profile.status().canWrite}); history.retain(result); assert.ok(history.retry());
   assert.deepEqual(JSON.parse(raw.data.get(K.history)), [result]);
-  const finished = getProgressionCampaignOverview(recorded); assert.equal(finished.completed, true); assert.equal(finished.nextMissionId, null);
+  const finished = getProgressionCampaignOverview(recorded); assert.equal(finished.completed, false); assert.equal(finished.nextMissionId, 'the-shared-watch');
 });
 
 for (const [label, mutate] of [
@@ -245,10 +246,10 @@ test('Screen backup replacement fences pending current owners until reload and r
   assert.equal(writeBattle(slot, K.battle, createCampaignMission(id), null, id, {campaignProgress:data.campaign}), false);
   assert.deepEqual([...raw.data], before); assert.deepEqual(raw.writes, []);
   assert.deepEqual(parseBackup(createBackup(current(raw).storage, {createdAt:date})).data, data);
-  assert.equal(JSON.parse(raw.data.get(MARKER)).version, 24); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(hammer(raw), raw);
+  assert.equal(JSON.parse(raw.data.get(MARKER)).version, 25); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(hammer(raw), raw);
 });
 
-test('Screen replacement faults roll back every domain exact byte and retain profile24 fencing', () => {
+test('Screen replacement faults roll back every domain exact byte and retain profile25 fencing', () => {
   const text = createBackup(backend(entries(earned())), {createdAt:date});
   for (const failedKey of keys) for (const fault of ['throw-before','throw-after','drop']) {
     const raw = backend([[MARKER, marker(23)], ...opaque(), ['unrelated', 'untouched']]), before = domains(raw), profile = current(raw), stale = current(raw, 'stale');
@@ -260,7 +261,7 @@ test('Screen replacement faults roll back every domain exact byte and retain pro
     const result = restoreBackup(profile.importStorage, text);
     assert.equal(result.ok, false, `${failedKey}/${fault}`); assert.equal(result.rollback.complete, true); assert.deepEqual(domains(raw), before);
     assert.ok(profile.finishImport({outcome:'rolled-back'}).ok); assert.ok(profile.status().canWrite); assert.equal(stale.status().canWrite, false);
-    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 24); assertBlocked(hammer(raw), raw);
+    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 25); assertBlocked(hammer(raw), raw);
   }
 });
 
@@ -297,7 +298,7 @@ test('historical backup restore does not invent Screen progress checkpoint or re
     const actual = parseBackup(createBackup(current(raw).storage, {createdAt:expected.createdAt})); assert.deepEqual(actual, expected);
     assert.equal(actual.data.campaign.missions[id], undefined); assert.notEqual(actual.data.battle?.scenario?.id, id);
     assert.ok(actual.data.history.every(result => result.identity?.ruleset.id !== rulesetId));
-    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 24); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(hammer(raw), raw);
+    assert.equal(JSON.parse(raw.data.get(MARKER)).version, 25); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(hammer(raw), raw);
   }
 });
 
@@ -320,7 +321,7 @@ test('ownership lost during Screen replacement prevents rollback over a competin
   assert.equal(owner.finishImport({outcome:'rolled-back'}).ok, false); assert.deepEqual([...raw.data], competingBytes); assert.deepEqual(raw.writes, []);
 });
 
-test('incomplete Screen rollback keeps profile24 failed until explicit verified recovery', () => {
+test('incomplete Screen rollback keeps profile25 failed until explicit verified recovery', () => {
   const text = createBackup(backend(entries(earned())), {createdAt:date});
   const raw = backend([[MARKER, marker(23)], ...opaque()]), owner = current(raw); assert.ok(owner.beginImport().ok);
   const set = raw.setItem; let writes = 0;
@@ -334,7 +335,7 @@ test('incomplete Screen rollback keeps profile24 failed until explicit verified 
   const result = restoreBackup(owner.importStorage, text);
   assert.equal(result.ok, false); assert.equal(result.rollback.complete, false); assert.deepEqual(result.rollback.unrestoredKeys, [K.campaign]);
   assert.ok(owner.finishImport({outcome:'failed'}).ok); assert.equal(owner.status().phase, 'failed');
-  assert.deepEqual(JSON.parse(raw.data.get(MARKER)), {format:'ironroot-profile', version:24, epoch:'long-screen-import', phase:'failed'});
+  assert.deepEqual(JSON.parse(raw.data.get(MARKER)), {format:'ironroot-profile', version:25, epoch:'long-screen-import', phase:'failed'});
   assertBlocked(owner, raw); assertBlocked(hammer(raw), raw);
   raw.setItem = set;
   const recovery = current(raw, 'verified-recovery');

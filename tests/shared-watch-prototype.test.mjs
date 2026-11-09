@@ -9,7 +9,7 @@ import {getCampaignMission} from '../dist/campaign.js';
 import {DESIGN,POLICIES,createPrototype,createPolicy,evaluatePrototype} from '../qa/shared-watch/prototype.mjs';
 import {PLAN,ROOT,freeze,verifyApproval,summarize,instrumentCombat,placementConsequence,decide,validateOutputDirectory,stopFileRequested,verifyInvocation} from '../qa/shared-watch/experiment.mjs';
 
-test('new QA factory is deterministic, full-roster, legal, healthy and unadmitted without advancing a tick',()=>{
+test('new QA factory is deterministic, full-roster, legal, healthy and distinct from admitted identity without advancing a tick',()=>{
  const g=createPrototype(),save=g.serialize();assert.equal(g.tick,0);assert.equal(g.state.time,0);assert.deepEqual(g.state.units,[]);
  assert.deepEqual(save,createPrototype().serialize());assert.deepEqual(Game.restore(save).serialize(),save);
  assert.equal(g.map.id,'classic');assert.equal(g.difficulty,'normal');assert.equal(g.ai,true);assert.equal(g.aiTimer,0);
@@ -17,7 +17,7 @@ test('new QA factory is deterministic, full-roster, legal, healthy and unadmitte
  assert.equal(Object.keys(g.buildings).length,8);assert.equal(g.ruleset.ai.policy,'legacy');assert.equal(g.ruleset.endgame.forcedDecay,false);
  const screen=getRuleset(LONG_SCREEN_RULESET_ID),{id,name,...actual}=g.ruleset,{id:screenId,name:screenName,...expected}=screen;assert.deepEqual(actual,expected);
  for(const b of g.state.buildings){assert.equal(b.level,1);assert.equal(b.hp,b.maxHp);assert.equal(b.invested,g.buildings[b.type].cost);assert.ok(buildSites(g.map,b.side).some(site=>site.x===b.x&&site.y===b.y));}
- assert.deepEqual(g.state.stats.built,[5,7]);assert.throws(()=>getCampaignMission('the-shared-watch'));
+ assert.deepEqual(g.state.stats.built,[5,7]);assert.equal(getCampaignMission('the-shared-watch').rulesetId,'frontier-campaign-shared-watch');assert.notEqual(g.ruleset.id,getCampaignMission('the-shared-watch').rulesetId); // QA identity never aliases admitted content.
  for(const seed of [-1,4294967296,NaN,1.5])assert.throws(()=>createPrototype({seed}));
 });
 

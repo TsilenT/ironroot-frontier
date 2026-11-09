@@ -14,7 +14,7 @@ import {protocolNine} from './fixtures/profile-session-v019-source.mjs';
 import {protocolTen} from './fixtures/profile-session-v020-source.mjs';
 
 // Replay the immutable Hammer23 writer against the actual Salt22 closure.
-// Live Screen24 behavior is covered separately in long-screen-profile.test.mjs.
+// Live Watch25 behavior is covered separately in shared-watch-profile.test.mjs.
 verifyHistoricalRuntime();
 const actual22 = await import(new URL('dist/profile-session.js', historicalRoot));
 const date = '2026-11-09T00:00:00.000Z', keys = Object.values(K);
@@ -33,7 +33,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const opaque = () => keys.map(key => [key, `  retained opaque ${key} bytes\n`]);
 const row = game => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:0, built:0, date, identity:identityOf(game, campaignScenarioForGame(game, 'the-hammer-turns'))});
 function earned() {
-  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-long-screen').map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id !== 'the-long-screen')).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
   const game = createCampaignMission('the-hammer-turns');
   assert.ok(game.buyCitadelOption('arrows').ok);
   for (let i = 0; i < 40; i++) game.update(.05);

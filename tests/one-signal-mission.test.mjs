@@ -9,7 +9,7 @@ function remove(g,index){const id=getCampaignTargets(g,MISSION_ID)[index].origin
 function clock(g,time){g.state.time=time;g.tick=Math.round(time/.05);}
 test('minimum survivor mission adds progression without rewriting prior descriptors',()=>{
  const g=fresh(),m=getCampaignMission(MISSION_ID);assert.ok(Object.isFrozen(m));assert.equal(m.timeLimit,210);assert.deepEqual(getCampaignTargets(g,MISSION_ID).map(t=>t.name),['Ridge Signal','River Signal']);
- assert.equal(getProgressionCampaignOverview(campaignProgress()).total,31);assert.equal(getProgressionCampaignOverview(campaignProgress()).nextMissionId,MISSION_ID);
+ assert.equal(getProgressionCampaignOverview(campaignProgress()).total,32);assert.equal(getProgressionCampaignOverview(campaignProgress()).nextMissionId,MISSION_ID);
  assert.equal(getCampaignLaunchMission('shared-crossing',campaignProgress()).reward,'Unlocks One Signal Is Enough');assert.equal(getCampaignMission('shared-crossing').reward,'Unlocks the campaign epilogue');
 });
 test('either original can be lost; last signal and own core losses override every win',()=>{
