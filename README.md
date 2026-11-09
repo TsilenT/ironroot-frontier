@@ -1,4 +1,12 @@
-## v0.31.0 candidate: Salt in the Stores
+## v0.32.0 candidate: The Hammer Turns
+
+Chapter 8's third mission faces ordinary paid siege concentration with defensive repairs. Watch real construction and marching troops, then confront that road or attack elsewhere. Destroy the enemy citadel by 10:00 with yours surviving. Turns are conditional, not scheduled; no road, target or unit is mandatory. Optional medals are 3:00 and 4,500 HP; 1 HP can still win. Normal 5:00 escalation remains.
+
+The catalog has 30 missions / 90 stars. Chapter 7 remains complete at three missions; Chapter 8 has three of at least five planned missions. Chapters 9 and 10 require at least five distinctive missions each and are not admitted here. Public launch/Restart use authored 8303; other construction seeds are QA stress inputs, not randomized public starts.
+
+This lean change includes runtime, runnable tests/harnesses, necessary compatibility fixtures and concise documentation. Generated Hammer result archives, logs, screenshots and reviews are preserved outside the repository, not bundled here. Run npm test, npm run check, npm run check:release and qa/browser's npm run check. See [mission/build](docs/HAMMER_TURNS_BUILD.md) and [persistence](docs/HAMMER_TURNS_PERSISTENCE.md). Exact lean-tree validation, remote-head CI and release remain separate gates.
+
+## Historical v0.31.0 candidate: Salt in the Stores
 
 Chapter 8 continues with optional raids against three real enemy mines or a supported direct core siege. Destroy the enemy citadel by 10:00 while yours survives. Mines fund later paid works; surviving factories keep spawning and ordinary income remains. No mine is required. Normal 5:00 escalation is disclosed.
 

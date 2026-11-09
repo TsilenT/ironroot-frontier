@@ -1,0 +1,1347 @@
+{
+  "scope": "Historical Salt58-asset runtime and execution/static/dynamic dependency closure for11 original frozen harness/test sources, plus pinned original evidence. Not the former594-path whole-repository scan, a current-runtime source freeze or a new heldout epoch.",
+  "originalWholeRepositoryScan": "Confirmed separately by11 unchanged tests in untouched Salt source; not rerun by this adapter.",
+  "runtimeRoot": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc",
+  "roots": [
+    "qa/salt-stores/paid-policies.mjs",
+    "qa/salt-stores/economy.mjs",
+    "qa/salt-stores/scenario.mjs",
+    "qa/salt-stores/simulate.mjs",
+    "qa/salt-stores/verify-evidence.mjs",
+    "qa/salt-stores/prepare-native.mjs",
+    "tests/salt-stores-mission.test.mjs",
+    "tests/salt-stores-profile.test.mjs",
+    "tests/salt-stores-economy.test.mjs",
+    "tests/salt-stores-preview.test.mjs",
+    "tests/salt-stores-parent-freeze.test.mjs"
+  ],
+  "runtimeFiles": [
+    "dist/FONTS-NOTICES.txt",
+    "dist/app.js",
+    "dist/audio.js",
+    "dist/autonomous-air.js",
+    "dist/backup.js",
+    "dist/barlow-condensed-latin-500.woff2",
+    "dist/barlow-condensed-latin-600.woff2",
+    "dist/barlow-condensed-latin-700.woff2",
+    "dist/barlow-condensed-latin-800.woff2",
+    "dist/battle-codec.js",
+    "dist/battle-report.js",
+    "dist/bridge-control.js",
+    "dist/campaign-control-view.js",
+    "dist/campaign-flow.js",
+    "dist/campaign-intelligence.js",
+    "dist/campaign-onboarding.js",
+    "dist/campaign-presentation.js",
+    "dist/campaign.js",
+    "dist/challenges.js",
+    "dist/citadel-options.js",
+    "dist/citadel-view.js",
+    "dist/codex.js",
+    "dist/combat-feedback.js",
+    "dist/controller.js",
+    "dist/dm-sans-latin-400-700.woff2",
+    "dist/engine.js",
+    "dist/flight-orders-view.js",
+    "dist/flight-orders.js",
+    "dist/flight-visuals.js",
+    "dist/fog-view.js",
+    "dist/fog.js",
+    "dist/history-codec.js",
+    "dist/icon.svg",
+    "dist/index.html",
+    "dist/input-scope.js",
+    "dist/intro-campaign.js",
+    "dist/keyboard.js",
+    "dist/manifest.webmanifest",
+    "dist/menu-history.js",
+    "dist/mobile-battlefield.js",
+    "dist/objective-alerts.js",
+    "dist/objectives.js",
+    "dist/persistence.js",
+    "dist/profile-session.js",
+    "dist/protected-objectives.js",
+    "dist/render.js",
+    "dist/report-view.css",
+    "dist/report-view.js",
+    "dist/rootwarden-art.js",
+    "dist/rulesets.js",
+    "dist/scouting.js",
+    "dist/service-worker.js",
+    "dist/styles.css",
+    "dist/training-app.js",
+    "dist/training.css",
+    "dist/training.html",
+    "dist/training.js",
+    "dist/vfx.js"
+  ],
+  "dynamicDependencies": {
+    "profile fixture JSON reads": [
+      "tests/fixtures/backup-v0.7-format.json",
+      "tests/fixtures/backup-v0.9-format.json",
+      "tests/fixtures/salt-parent-v0300.json"
+    ],
+    "frozen plan binding and evidence reads": [
+      "qa/salt-stores/VALIDATION_PLAN.json",
+      "qa/salt-stores/verifier-compatibility.json",
+      "qa/salt-stores/frozen-verifier-epoch1.txt",
+      "qa/salt-stores/canonical-extra-source.json",
+      "qa/salt-stores/verifier-only-diff.patch",
+      "qa/salt-stores/final-development-epoch1.json",
+      "qa/salt-stores/final-heldout-epoch1.json",
+      "qa/salt-stores/final-receipt-audit-epoch1.json",
+      "qa/salt-stores/validation-epoch1.json",
+      "qa/salt-stores/final-quickgate-epoch1.json",
+      "qa/salt-stores/causal-gate-final-epoch1.json",
+      "qa/salt-stores/native-fixtures.json",
+      "qa/salt-stores/legacy-archer-profile.json"
+    ],
+    "original source and self hash reads": [
+      "tests/salt-stores-economy.test.mjs",
+      "tests/salt-stores-evidence.test.mjs",
+      "tests/salt-stores-freeze-compat.test.mjs",
+      "tests/salt-stores-preview.test.mjs"
+    ],
+    "parent-freeze manifest and its explicit read-only file inventory": [
+      "qa/fixtures/production-v0300/historical-manifest.json",
+      "qa/fixtures/production-v0300/dist/FONTS-NOTICES.txt",
+      "qa/fixtures/production-v0300/dist/app.js",
+      "qa/fixtures/production-v0300/dist/audio.js",
+      "qa/fixtures/production-v0300/dist/autonomous-air.js",
+      "qa/fixtures/production-v0300/dist/backup.js",
+      "qa/fixtures/production-v0300/dist/barlow-condensed-latin-500.woff2",
+      "qa/fixtures/production-v0300/dist/barlow-condensed-latin-600.woff2",
+      "qa/fixtures/production-v0300/dist/barlow-condensed-latin-700.woff2",
+      "qa/fixtures/production-v0300/dist/barlow-condensed-latin-800.woff2",
+      "qa/fixtures/production-v0300/dist/battle-codec.js",
+      "qa/fixtures/production-v0300/dist/battle-report.js",
+      "qa/fixtures/production-v0300/dist/bridge-control.js",
+      "qa/fixtures/production-v0300/dist/campaign-control-view.js",
+      "qa/fixtures/production-v0300/dist/campaign-flow.js",
+      "qa/fixtures/production-v0300/dist/campaign-intelligence.js",
+      "qa/fixtures/production-v0300/dist/campaign-onboarding.js",
+      "qa/fixtures/production-v0300/dist/campaign-presentation.js",
+      "qa/fixtures/production-v0300/dist/campaign.js",
+      "qa/fixtures/production-v0300/dist/challenges.js",
+      "qa/fixtures/production-v0300/dist/citadel-options.js",
+      "qa/fixtures/production-v0300/dist/citadel-view.js",
+      "qa/fixtures/production-v0300/dist/codex.js",
+      "qa/fixtures/production-v0300/dist/combat-feedback.js",
+      "qa/fixtures/production-v0300/dist/controller.js",
+      "qa/fixtures/production-v0300/dist/dm-sans-latin-400-700.woff2",
+      "qa/fixtures/production-v0300/dist/engine.js",
+      "qa/fixtures/production-v0300/dist/flight-orders-view.js",
+      "qa/fixtures/production-v0300/dist/flight-orders.js",
+      "qa/fixtures/production-v0300/dist/flight-visuals.js",
+      "qa/fixtures/production-v0300/dist/fog-view.js",
+      "qa/fixtures/production-v0300/dist/fog.js",
+      "qa/fixtures/production-v0300/dist/history-codec.js",
+      "qa/fixtures/production-v0300/dist/icon.svg",
+      "qa/fixtures/production-v0300/dist/index.html",
+      "qa/fixtures/production-v0300/dist/input-scope.js",
+      "qa/fixtures/production-v0300/dist/intro-campaign.js",
+      "qa/fixtures/production-v0300/dist/keyboard.js",
+      "qa/fixtures/production-v0300/dist/manifest.webmanifest",
+      "qa/fixtures/production-v0300/dist/menu-history.js",
+      "qa/fixtures/production-v0300/dist/mobile-battlefield.js",
+      "qa/fixtures/production-v0300/dist/objective-alerts.js",
+      "qa/fixtures/production-v0300/dist/objectives.js",
+      "qa/fixtures/production-v0300/dist/persistence.js",
+      "qa/fixtures/production-v0300/dist/profile-session.js",
+      "qa/fixtures/production-v0300/dist/protected-objectives.js",
+      "qa/fixtures/production-v0300/dist/render.js",
+      "qa/fixtures/production-v0300/dist/report-view.css",
+      "qa/fixtures/production-v0300/dist/report-view.js",
+      "qa/fixtures/production-v0300/dist/rootwarden-art.js",
+      "qa/fixtures/production-v0300/dist/rulesets.js",
+      "qa/fixtures/production-v0300/dist/scouting.js",
+      "qa/fixtures/production-v0300/dist/service-worker.js",
+      "qa/fixtures/production-v0300/dist/styles.css",
+      "qa/fixtures/production-v0300/dist/training-app.js",
+      "qa/fixtures/production-v0300/dist/training.css",
+      "qa/fixtures/production-v0300/dist/training.html",
+      "qa/fixtures/production-v0300/dist/training.js",
+      "qa/fixtures/production-v0300/dist/vfx.js",
+      "qa/fixtures/production-v0300/package.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/README.md",
+      "qa/fixtures/production-v0300/qa/archers-quay/VALIDATION_PLAN.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/air-development-epoch4.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/economy.mjs",
+      "qa/fixtures/production-v0300/qa/archers-quay/epoch-001.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/epoch-002.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/epoch-003.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/epoch-004.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/epoch-005.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch2.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch3.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-development-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-development.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/fresh-heldout-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/legacy-reed-profile.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/native-fixtures.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/paid-policies.mjs",
+      "qa/fixtures/production-v0300/qa/archers-quay/prepare-native.mjs",
+      "qa/fixtures/production-v0300/qa/archers-quay/receipt-audit-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/runtime.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/scenario.mjs",
+      "qa/fixtures/production-v0300/qa/archers-quay/simulate.mjs",
+      "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch4.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch5.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/validation-epoch6.json",
+      "qa/fixtures/production-v0300/qa/archers-quay/verify-evidence.mjs",
+      "qa/fixtures/production-v0300/scripts/verify-runtime.mjs",
+      "qa/fixtures/production-v0300/tests/archers-quay-economy.test.mjs",
+      "qa/fixtures/production-v0300/tests/archers-quay-mission.test.mjs",
+      "qa/fixtures/production-v0300/tests/archers-quay-preview.test.mjs",
+      "qa/fixtures/production-v0300/tests/archers-quay-profile.test.mjs",
+      "qa/fixtures/production-v0300/tests/fixtures/archer-parent-v0290.json",
+      "qa/fixtures/production-v0300/tests/fixtures/backup-v0.7-format.json",
+      "qa/fixtures/production-v0300/tests/fixtures/backup-v0.9-format.json",
+      "qa/fixtures/production-v0300/tests/fixtures/profile-session-v0290.js"
+    ]
+  },
+  "files": {
+    "dist/FONTS-NOTICES.txt": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/FONTS-NOTICES.txt",
+      "sha256": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/app.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/app.js",
+      "sha256": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/audio.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/audio.js",
+      "sha256": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/autonomous-air.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/autonomous-air.js",
+      "sha256": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/backup.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/backup.js",
+      "sha256": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/barlow-condensed-latin-500.woff2": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/barlow-condensed-latin-500.woff2",
+      "sha256": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/barlow-condensed-latin-600.woff2": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/barlow-condensed-latin-600.woff2",
+      "sha256": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/barlow-condensed-latin-700.woff2": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/barlow-condensed-latin-700.woff2",
+      "sha256": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/barlow-condensed-latin-800.woff2": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/barlow-condensed-latin-800.woff2",
+      "sha256": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/battle-codec.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/battle-codec.js",
+      "sha256": "c23870ec96bc8c9ad34a2d67a563b08353d0bf833a455c0f0663a47c551ea4ed",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/battle-report.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/battle-report.js",
+      "sha256": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/bridge-control.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/bridge-control.js",
+      "sha256": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign-control-view.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign-control-view.js",
+      "sha256": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign-flow.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign-flow.js",
+      "sha256": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign-intelligence.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign-intelligence.js",
+      "sha256": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign-onboarding.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign-onboarding.js",
+      "sha256": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign-presentation.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign-presentation.js",
+      "sha256": "2cc568a683e712a0641c86b74a7b04bae31468d49f7bdc19f975cdda626ad810",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/campaign.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/campaign.js",
+      "sha256": "e13f589d69a2bbbc6a15281cfe1040e1e53d22ea22a086c4f68e46f8b47a394f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/challenges.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/challenges.js",
+      "sha256": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/citadel-options.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/citadel-options.js",
+      "sha256": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/citadel-view.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/citadel-view.js",
+      "sha256": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/codex.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/codex.js",
+      "sha256": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/combat-feedback.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/combat-feedback.js",
+      "sha256": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/controller.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/controller.js",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/dm-sans-latin-400-700.woff2": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/dm-sans-latin-400-700.woff2",
+      "sha256": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/engine.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/engine.js",
+      "sha256": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/flight-orders-view.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/flight-orders-view.js",
+      "sha256": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/flight-orders.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/flight-orders.js",
+      "sha256": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/flight-visuals.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/flight-visuals.js",
+      "sha256": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/fog-view.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/fog-view.js",
+      "sha256": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/fog.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/fog.js",
+      "sha256": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/history-codec.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/history-codec.js",
+      "sha256": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/icon.svg": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/icon.svg",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/index.html": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/index.html",
+      "sha256": "5fdb9b443c4fdbb902ebc3ac386e8a5ee1232e7bbe0cfea96c852a771a2fe017",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/input-scope.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/input-scope.js",
+      "sha256": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/intro-campaign.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/intro-campaign.js",
+      "sha256": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/keyboard.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/keyboard.js",
+      "sha256": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/manifest.webmanifest": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/manifest.webmanifest",
+      "sha256": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/menu-history.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/menu-history.js",
+      "sha256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/mobile-battlefield.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/mobile-battlefield.js",
+      "sha256": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/objective-alerts.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/objective-alerts.js",
+      "sha256": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/objectives.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/objectives.js",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/persistence.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/persistence.js",
+      "sha256": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/profile-session.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/profile-session.js",
+      "sha256": "2bfd3fe9525c0ffdf88ae651854e60ff689789a66db2b98750dbd7cbd561ef32",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/protected-objectives.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/protected-objectives.js",
+      "sha256": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/render.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/render.js",
+      "sha256": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/report-view.css": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/report-view.css",
+      "sha256": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/report-view.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/report-view.js",
+      "sha256": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/rootwarden-art.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/rootwarden-art.js",
+      "sha256": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/rulesets.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/rulesets.js",
+      "sha256": "27ab8cdec72ad31d0201f57d007395094d02df25b2001dc6842fc2cd76708be2",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/scouting.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/scouting.js",
+      "sha256": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/service-worker.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/service-worker.js",
+      "sha256": "64ffe6dbd1ff1ff649b8c56c3f8ce3d7840c55e396c38940575b426204c27121",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/styles.css": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/styles.css",
+      "sha256": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/training-app.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/training-app.js",
+      "sha256": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/training.css": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/training.css",
+      "sha256": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/training.html": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/training.html",
+      "sha256": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "dist/training.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/training.js",
+      "sha256": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "dist/vfx.js": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/dist/vfx.js",
+      "sha256": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "package.json": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/package.json",
+      "sha256": "54120a54dd21c80b5d93f8613efac28da121807712e2b1ddbedfb2639ec52d4c",
+      "mode": "100644",
+      "kind": "configuration"
+    },
+    "qa/fixtures/production-v0300/dist/FONTS-NOTICES.txt": {
+      "path": "qa/fixtures/production-v0300/dist/FONTS-NOTICES.txt",
+      "sha256": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/app.js": {
+      "path": "qa/fixtures/production-v0300/dist/app.js",
+      "sha256": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/audio.js": {
+      "path": "qa/fixtures/production-v0300/dist/audio.js",
+      "sha256": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/autonomous-air.js": {
+      "path": "qa/fixtures/production-v0300/dist/autonomous-air.js",
+      "sha256": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/backup.js": {
+      "path": "qa/fixtures/production-v0300/dist/backup.js",
+      "sha256": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/barlow-condensed-latin-500.woff2": {
+      "path": "qa/fixtures/production-v0300/dist/barlow-condensed-latin-500.woff2",
+      "sha256": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/barlow-condensed-latin-600.woff2": {
+      "path": "qa/fixtures/production-v0300/dist/barlow-condensed-latin-600.woff2",
+      "sha256": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/barlow-condensed-latin-700.woff2": {
+      "path": "qa/fixtures/production-v0300/dist/barlow-condensed-latin-700.woff2",
+      "sha256": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/barlow-condensed-latin-800.woff2": {
+      "path": "qa/fixtures/production-v0300/dist/barlow-condensed-latin-800.woff2",
+      "sha256": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/battle-codec.js": {
+      "path": "qa/fixtures/production-v0300/dist/battle-codec.js",
+      "sha256": "0514664707813f4a17fa8a99121e1610d8bfe2be5e679b44014ccab56d2d8443",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/battle-report.js": {
+      "path": "qa/fixtures/production-v0300/dist/battle-report.js",
+      "sha256": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/bridge-control.js": {
+      "path": "qa/fixtures/production-v0300/dist/bridge-control.js",
+      "sha256": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign-control-view.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign-control-view.js",
+      "sha256": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign-flow.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign-flow.js",
+      "sha256": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign-intelligence.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign-intelligence.js",
+      "sha256": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign-onboarding.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign-onboarding.js",
+      "sha256": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign-presentation.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign-presentation.js",
+      "sha256": "003fd4d6427fb6e7649d4f772352155c69a630184da5179b8d2c548fd9e65edd",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/campaign.js": {
+      "path": "qa/fixtures/production-v0300/dist/campaign.js",
+      "sha256": "e6b325ae322130aaaf51ed82d9ed8d5505f9516fd0420fbf4d766acff1f80c1b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/challenges.js": {
+      "path": "qa/fixtures/production-v0300/dist/challenges.js",
+      "sha256": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/citadel-options.js": {
+      "path": "qa/fixtures/production-v0300/dist/citadel-options.js",
+      "sha256": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/citadel-view.js": {
+      "path": "qa/fixtures/production-v0300/dist/citadel-view.js",
+      "sha256": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/codex.js": {
+      "path": "qa/fixtures/production-v0300/dist/codex.js",
+      "sha256": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/combat-feedback.js": {
+      "path": "qa/fixtures/production-v0300/dist/combat-feedback.js",
+      "sha256": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/controller.js": {
+      "path": "qa/fixtures/production-v0300/dist/controller.js",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/dm-sans-latin-400-700.woff2": {
+      "path": "qa/fixtures/production-v0300/dist/dm-sans-latin-400-700.woff2",
+      "sha256": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/engine.js": {
+      "path": "qa/fixtures/production-v0300/dist/engine.js",
+      "sha256": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/flight-orders-view.js": {
+      "path": "qa/fixtures/production-v0300/dist/flight-orders-view.js",
+      "sha256": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/flight-orders.js": {
+      "path": "qa/fixtures/production-v0300/dist/flight-orders.js",
+      "sha256": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/flight-visuals.js": {
+      "path": "qa/fixtures/production-v0300/dist/flight-visuals.js",
+      "sha256": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/fog-view.js": {
+      "path": "qa/fixtures/production-v0300/dist/fog-view.js",
+      "sha256": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/fog.js": {
+      "path": "qa/fixtures/production-v0300/dist/fog.js",
+      "sha256": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/history-codec.js": {
+      "path": "qa/fixtures/production-v0300/dist/history-codec.js",
+      "sha256": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/icon.svg": {
+      "path": "qa/fixtures/production-v0300/dist/icon.svg",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/index.html": {
+      "path": "qa/fixtures/production-v0300/dist/index.html",
+      "sha256": "161b2471c424842d8c597e69cc3ac3df5e4d3a73cfdb70c0a243bbfe6d97d174",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/input-scope.js": {
+      "path": "qa/fixtures/production-v0300/dist/input-scope.js",
+      "sha256": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/intro-campaign.js": {
+      "path": "qa/fixtures/production-v0300/dist/intro-campaign.js",
+      "sha256": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/keyboard.js": {
+      "path": "qa/fixtures/production-v0300/dist/keyboard.js",
+      "sha256": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/manifest.webmanifest": {
+      "path": "qa/fixtures/production-v0300/dist/manifest.webmanifest",
+      "sha256": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/menu-history.js": {
+      "path": "qa/fixtures/production-v0300/dist/menu-history.js",
+      "sha256": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/mobile-battlefield.js": {
+      "path": "qa/fixtures/production-v0300/dist/mobile-battlefield.js",
+      "sha256": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/objective-alerts.js": {
+      "path": "qa/fixtures/production-v0300/dist/objective-alerts.js",
+      "sha256": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/objectives.js": {
+      "path": "qa/fixtures/production-v0300/dist/objectives.js",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/persistence.js": {
+      "path": "qa/fixtures/production-v0300/dist/persistence.js",
+      "sha256": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/profile-session.js": {
+      "path": "qa/fixtures/production-v0300/dist/profile-session.js",
+      "sha256": "f6792d61a96b3591df4fc3b2fb19b62ec1bdb806ab1d39670f07068e5dc4586f",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/protected-objectives.js": {
+      "path": "qa/fixtures/production-v0300/dist/protected-objectives.js",
+      "sha256": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/render.js": {
+      "path": "qa/fixtures/production-v0300/dist/render.js",
+      "sha256": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/report-view.css": {
+      "path": "qa/fixtures/production-v0300/dist/report-view.css",
+      "sha256": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/report-view.js": {
+      "path": "qa/fixtures/production-v0300/dist/report-view.js",
+      "sha256": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/rootwarden-art.js": {
+      "path": "qa/fixtures/production-v0300/dist/rootwarden-art.js",
+      "sha256": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/rulesets.js": {
+      "path": "qa/fixtures/production-v0300/dist/rulesets.js",
+      "sha256": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/scouting.js": {
+      "path": "qa/fixtures/production-v0300/dist/scouting.js",
+      "sha256": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/service-worker.js": {
+      "path": "qa/fixtures/production-v0300/dist/service-worker.js",
+      "sha256": "06533a6f863fef7362f6f284c1a1ac7df9fdd0fd7ddbfb08b82c07b5ffebb603",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/styles.css": {
+      "path": "qa/fixtures/production-v0300/dist/styles.css",
+      "sha256": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/training-app.js": {
+      "path": "qa/fixtures/production-v0300/dist/training-app.js",
+      "sha256": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/training.css": {
+      "path": "qa/fixtures/production-v0300/dist/training.css",
+      "sha256": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/training.html": {
+      "path": "qa/fixtures/production-v0300/dist/training.html",
+      "sha256": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/training.js": {
+      "path": "qa/fixtures/production-v0300/dist/training.js",
+      "sha256": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/dist/vfx.js": {
+      "path": "qa/fixtures/production-v0300/dist/vfx.js",
+      "sha256": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/historical-manifest.json": {
+      "path": "qa/fixtures/production-v0300/historical-manifest.json",
+      "sha256": "064608e02686122730379031b5154bdb6e42b37f58bdfee6fa904dfe77caf285",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/package.json": {
+      "path": "qa/fixtures/production-v0300/package.json",
+      "sha256": "f48ecb03dab0a342f5bc5920a6068c5aa1d6c8fd9e5965dbd4955da3448c43eb",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/README.md": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/README.md",
+      "sha256": "3c7fb97ec9cb9f1e6e78747f344fd29cb214be38d9e9635e9d1c0f1e0b07ccad",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/VALIDATION_PLAN.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/VALIDATION_PLAN.json",
+      "sha256": "20f9147747d9064670262d4d69fb81799acb997ff34477e0bda9ab3c79f17800",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/air-development-epoch4.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/air-development-epoch4.json",
+      "sha256": "e9a9f3c95ef6d271b04a668b7c1814f1fb2b373ae5bc77bd5b8a60d4c094b607",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/economy.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/economy.mjs",
+      "sha256": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/epoch-001.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/epoch-001.json",
+      "sha256": "96f010bb110f0f564082e8aec7b6ce5ea09f4662883d4832b848eff163332585",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/epoch-002.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/epoch-002.json",
+      "sha256": "31a03d35ba91283fd127cd9e377bd319121057c0d98c2c331534fccfff4aa4a5",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/epoch-003.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/epoch-003.json",
+      "sha256": "7330474ac1fbacac8ae30ae0cf6b97e75fe5dbdc1d062e04919eacb066850e2c",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/epoch-004.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/epoch-004.json",
+      "sha256": "716425b4c8ca5625722ecb6bffca934f1102e1b08c52ec9dfa1b73ab56d31d1d",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/epoch-005.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/epoch-005.json",
+      "sha256": "d5988be861d23f096d53330389ebe88eeaa0f644a895c19da8af6538d7d2f1f6",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch2.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch2.json",
+      "sha256": "39581e2405d633501a912b67d9f26248b44a705381d0aaeaca897ed9f4f2ac7a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch3.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored-epoch3.json",
+      "sha256": "12288be6e3ee37ccbe66c00c4deb31d791644094814ccbe71cb68940382af5ba",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-authored.json",
+      "sha256": "df5cc15cef8ab73729b4d845f0a86a9a7464188c9515113150389aca6dfabbe9",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-development-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-development-epoch6.json",
+      "sha256": "b731d0276068c843eac60ad8e67c5c63cc15a36e78d845e5deab86c6d7ccb438",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-development.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-development.json",
+      "sha256": "3e7c3458687c4e6f66f59d3a70a66066dff3c73c5aa8401ad3e60e604cc108e6",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/fresh-heldout-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/fresh-heldout-epoch6.json",
+      "sha256": "52b822f8399ca32d47dec1476d9a31478c64b043de2893ee2028863c606e9022",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/legacy-reed-profile.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/legacy-reed-profile.json",
+      "sha256": "fd4d05eb55fec068261b896f934b5fe40e1201ac4fa7f8eeeafeb196de0a705b",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/native-fixtures.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/native-fixtures.json",
+      "sha256": "b3a6110aaba26ec954ccfdc6ca7c621e397f6bcc8dfd0c3f8c0ba2b4b5ee8f16",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/paid-policies.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/paid-policies.mjs",
+      "sha256": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/prepare-native.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/prepare-native.mjs",
+      "sha256": "38a8618505bf6088ab649b7cda4b214b3b87469765a52ee78b51061952a96aba",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/receipt-audit-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/receipt-audit-epoch6.json",
+      "sha256": "579b1bbd6248c8f5e2b95d71fb5c078420f8f0002d3cd1ca289d175598013ce7",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/runtime.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/runtime.json",
+      "sha256": "9de78ce72c7ce420bb8ad1264ff3101bfd0012ff802a8ec9ab1762da5fb5ac64",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/scenario.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/scenario.mjs",
+      "sha256": "d9578b2685fdeafc42d85f925ee556583896f7314d39cd45eda02d5f7340f2d4",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/simulate.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/simulate.mjs",
+      "sha256": "caec3dd0b0f760deb8c9d272a994bbbaf2ba9c7997f9c11b18a9d0003cf8a757",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch4.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch4.json",
+      "sha256": "18f1fd78aa5ef5b3699ceaf5d6b1838966a3aaf2ad24e82938e8e2623d2e3a3a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/source-freeze-epoch6.json",
+      "sha256": "20f9147747d9064670262d4d69fb81799acb997ff34477e0bda9ab3c79f17800",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch5.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch5.json",
+      "sha256": "9f50b55cc6b75c8af8f8bb8fc76649487743a70b6632c86048842e13d225928a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/support-development-epoch6.json",
+      "sha256": "2d2e93a975d53045a4e6458edf23e3ab63720b359177267031525af151dc4785",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/validation-epoch6.json": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/validation-epoch6.json",
+      "sha256": "2949e9ec5b208788788400b8161ca12596004129e148847ad1d004649a1134a5",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/qa/archers-quay/verify-evidence.mjs": {
+      "path": "qa/fixtures/production-v0300/qa/archers-quay/verify-evidence.mjs",
+      "sha256": "a9af74f80f9490e193e70dd65605e3b9e5f9e8846ee47e0448ecbd6933fef294",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/scripts/verify-runtime.mjs": {
+      "path": "qa/fixtures/production-v0300/scripts/verify-runtime.mjs",
+      "sha256": "91e24d994c666a7ff352e6163077118182b2f32e74138af461db7f8e062fff7d",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/archers-quay-economy.test.mjs": {
+      "path": "qa/fixtures/production-v0300/tests/archers-quay-economy.test.mjs",
+      "sha256": "4f1f6331d235dd43ca887d2be8389ccf0b7bce53b8008741bbca9b0b7c83ae41",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/archers-quay-mission.test.mjs": {
+      "path": "qa/fixtures/production-v0300/tests/archers-quay-mission.test.mjs",
+      "sha256": "2bb1e0aec4120e61fb4efec94182c19a8cb3f90708cc2b1bb60701e60405f588",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/archers-quay-preview.test.mjs": {
+      "path": "qa/fixtures/production-v0300/tests/archers-quay-preview.test.mjs",
+      "sha256": "0f02d16da8ed69a11cc1974f87180a3523d5e168aed980850f7648e30f4cc915",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/archers-quay-profile.test.mjs": {
+      "path": "qa/fixtures/production-v0300/tests/archers-quay-profile.test.mjs",
+      "sha256": "1e2f429dee57db08f86c3ece7d6ea7211d11e53498275f65ad922978adc7c53e",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/fixtures/archer-parent-v0290.json": {
+      "path": "qa/fixtures/production-v0300/tests/fixtures/archer-parent-v0290.json",
+      "sha256": "c4437634aa5c1b278abc49789d4e43ebd0a9898793668069cbeee9cd7f985c17",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/fixtures/backup-v0.7-format.json": {
+      "path": "qa/fixtures/production-v0300/tests/fixtures/backup-v0.7-format.json",
+      "sha256": "664277f521806cc555563a5f7e9416be5068f14c82ac3170f232ba15f359b706",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/fixtures/backup-v0.9-format.json": {
+      "path": "qa/fixtures/production-v0300/tests/fixtures/backup-v0.9-format.json",
+      "sha256": "c2ae1820b8da902e0c275ebf0900242ab8945db5feb67e47d1be95c94a0313f8",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/fixtures/production-v0300/tests/fixtures/profile-session-v0290.js": {
+      "path": "qa/fixtures/production-v0300/tests/fixtures/profile-session-v0290.js",
+      "sha256": "b3fbb144c23d977f94c2a1938f08e14c9c90fcbd0d1c113fbb3474f20e6f3804",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/VALIDATION_PLAN.json": {
+      "path": "qa/salt-stores/VALIDATION_PLAN.json",
+      "sha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/canonical-extra-source.json": {
+      "path": "qa/salt-stores/canonical-extra-source.json",
+      "sha256": "04358c5df2fdb4498cb59a691909e7c5a59a497eb0d32e7117a31a603645f69e",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/causal-gate-final-epoch1.json": {
+      "path": "qa/salt-stores/causal-gate-final-epoch1.json",
+      "sha256": "0f369f32e9d9ba41cdb0112c6da9de1cbd46033a69c9c8ba5e06808e1218f3a1",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/economy.mjs": {
+      "path": "qa/salt-stores/economy.mjs",
+      "sha256": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "qa/salt-stores/final-development-epoch1.json": {
+      "path": "qa/salt-stores/final-development-epoch1.json",
+      "sha256": "d9b72bc83f68477bef282e94ab1fe9d0f1e48e50229161113d642c5302c2d407",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/final-heldout-epoch1.json": {
+      "path": "qa/salt-stores/final-heldout-epoch1.json",
+      "sha256": "0bca57707da10040f8534c110648914cda3de70590e5a81dbee85cb64a454683",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/final-quickgate-epoch1.json": {
+      "path": "qa/salt-stores/final-quickgate-epoch1.json",
+      "sha256": "0c872deaef990010f77a0977aafd24d3187019ebdde0f42c8c5f910cbc740025",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/final-receipt-audit-epoch1.json": {
+      "path": "qa/salt-stores/final-receipt-audit-epoch1.json",
+      "sha256": "865c146e419339666e5aa129be607ea61e4d640daa4ed315f286f90b026baddb",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/frozen-verifier-epoch1.txt": {
+      "path": "qa/salt-stores/frozen-verifier-epoch1.txt",
+      "sha256": "3898432d0966c68911fd014c71a922de21432665deb0277c4d19767876f8a6d6",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/legacy-archer-profile.json": {
+      "path": "qa/salt-stores/legacy-archer-profile.json",
+      "sha256": "254875f2426855cb3cb2db291c80b15f2d8bdb8548829cb0be4dba5b2bf0f20d",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/native-fixtures.json": {
+      "path": "qa/salt-stores/native-fixtures.json",
+      "sha256": "cc72b2dd1f6bbf1d5c6480ea36aa217005f99970f3a58c7c81596004c5e2e86a",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/paid-policies.mjs": {
+      "path": "qa/salt-stores/paid-policies.mjs",
+      "sha256": "577fa770569fb2522c0660929e47aee1f149fd716447783ddfa9fb2908c606ed",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "qa/salt-stores/prepare-native.mjs": {
+      "path": "qa/salt-stores/prepare-native.mjs",
+      "sha256": "f4b8dc9fbca9fbd8785c66011804b16e7eaab66ab752b11722fcba1fec061241",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "qa/salt-stores/scenario.mjs": {
+      "path": "qa/salt-stores/scenario.mjs",
+      "sha256": "0a22b6537060c271c4c9affb9a4ac8cb039a81f51eadf50d113bd79065edf51d",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "qa/salt-stores/simulate.mjs": {
+      "path": "qa/salt-stores/simulate.mjs",
+      "sha256": "b20e56b9f053dbd85c318eea1a5d7183748b1115285ce4e63e8d2a3e5b29493f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "qa/salt-stores/validation-epoch1.json": {
+      "path": "qa/salt-stores/validation-epoch1.json",
+      "sha256": "a0f26a8d58f3de3b4ced06fd4bdf246a310d10ec02248844c0310f5e0c6bab09",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/verifier-compatibility.json": {
+      "path": "qa/salt-stores/verifier-compatibility.json",
+      "sha256": "a2574d1b41dedbb294f15faaf7e8836941d954495f40d7438e82e69da5e65ba7",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/verifier-only-diff.patch": {
+      "path": "qa/salt-stores/verifier-only-diff.patch",
+      "sha256": "90a7e2ee09754a69bb2b978aea6210d8bf654bcc455aa3c4927c2501923c212c",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "qa/salt-stores/verify-evidence.mjs": {
+      "path": "qa/salt-stores/verify-evidence.mjs",
+      "sha256": "9b687f014c44358a39a876217712998ca3df66116a3655b18a01dab68dd83242",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "scripts/verify-runtime.mjs": {
+      "path": "scripts/verify-runtime.mjs",
+      "sha256": "91e24d994c666a7ff352e6163077118182b2f32e74138af461db7f8e062fff7d",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/fixtures/backup-v0.7-format.json": {
+      "path": "tests/fixtures/backup-v0.7-format.json",
+      "sha256": "664277f521806cc555563a5f7e9416be5068f14c82ac3170f232ba15f359b706",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "tests/fixtures/backup-v0.9-format.json": {
+      "path": "tests/fixtures/backup-v0.9-format.json",
+      "sha256": "c2ae1820b8da902e0c275ebf0900242ab8945db5feb67e47d1be95c94a0313f8",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "tests/fixtures/profile-session-v0300.js": {
+      "path": "tests/fixtures/profile-session-v0300.js",
+      "sha256": "f6792d61a96b3591df4fc3b2fb19b62ec1bdb806ab1d39670f07068e5dc4586f",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/fixtures/salt-parent-v0300.json": {
+      "path": "tests/fixtures/salt-parent-v0300.json",
+      "sha256": "9c644e60d23ee464e5fb829b4b3eec0b01f53e3503858604f7ace59492d65b81",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "tests/salt-stores-economy.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-evidence-tests-9175feb0c54c985e59b1edd5b9767cd616f52f3258af2b009a777644d868e32e/tests/salt-stores-economy.test.mjs",
+      "sha256": "ac31ff8345d3c7b4c525f5c1f6cad26681ec252180f9c9568828bc3c08d2a97c",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/salt-stores-evidence.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-evidence-tests-9175feb0c54c985e59b1edd5b9767cd616f52f3258af2b009a777644d868e32e/tests/salt-stores-evidence.test.mjs",
+      "sha256": "946fda4edcfdf06795ec2d9d80f02f0b49bfb27c2b369c936715a0b0f24ec9b5",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "tests/salt-stores-freeze-compat.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-evidence-tests-9175feb0c54c985e59b1edd5b9767cd616f52f3258af2b009a777644d868e32e/tests/salt-stores-freeze-compat.test.mjs",
+      "sha256": "573587311ca23480c3e6c029d61147e3ffa37d24dbb5fbf85b952a7faa2cd772",
+      "mode": "100644",
+      "kind": "fixture-data"
+    },
+    "tests/salt-stores-mission.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-runtime-a24e2e3b3ed715420f0693f85fec73c3d820cb0578b2747b8b98660911dc9efc/tests/salt-stores-mission.test.mjs",
+      "sha256": "205fedf650973a50ff762be92d2c9f339fc01e18e0ebcf3e9c06cd45babb6857",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/salt-stores-parent-freeze.test.mjs": {
+      "path": "tests/salt-stores-parent-freeze.test.mjs",
+      "sha256": "4e81bf3337f6513754b5ca098d59f472304e1828900fec5280340c715ec3cfaf",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/salt-stores-preview.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-evidence-tests-9175feb0c54c985e59b1edd5b9767cd616f52f3258af2b009a777644d868e32e/tests/salt-stores-preview.test.mjs",
+      "sha256": "48f4f442468ce4e0425e3e3ee3fb35574a6248485b000611b1fad10c6f4f1f5c",
+      "mode": "100644",
+      "kind": "execution"
+    },
+    "tests/salt-stores-profile.test.mjs": {
+      "path": "qa/hammer-prototype/history/salt-profile22-dd0c603ebb401f22414d32897882d4a30c3451ad9d9cf407bf98617140b82465/tests/salt-stores-profile.test.mjs",
+      "sha256": "0344228125b32d7f3cc467247fb7fb134353f40d819ffddf0bad60599115b36a",
+      "mode": "100644",
+      "kind": "execution"
+    }
+  },
+  "originalTestCopies": {
+    "tests/salt-stores-economy.test.mjs": "ac31ff8345d3c7b4c525f5c1f6cad26681ec252180f9c9568828bc3c08d2a97c",
+    "tests/salt-stores-evidence.test.mjs": "946fda4edcfdf06795ec2d9d80f02f0b49bfb27c2b369c936715a0b0f24ec9b5",
+    "tests/salt-stores-freeze-compat.test.mjs": "573587311ca23480c3e6c029d61147e3ffa37d24dbb5fbf85b952a7faa2cd772",
+    "tests/salt-stores-preview.test.mjs": "48f4f442468ce4e0425e3e3ee3fb35574a6248485b000611b1fad10c6f4f1f5c"
+  },
+  "baselineConfirmation": {
+    "checks": 11,
+    "passed": 11,
+    "stdoutSha256": "7014e01f5636ef4511fddd11c5dcf118d57d33130abb7f0dc2ad9bb28759fb20"
+  }
+}

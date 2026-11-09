@@ -1,0 +1,21 @@
+/** Current Salt paid fixtures with an explicit bounded historical-evidence guard, not a renewed old whole-repository freeze. */
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import * as c from '../../dist/campaign.js';
+import {encodeBattle,decodeBattle} from '../../dist/battle-codec.js';
+import {runSaltStores} from '../salt-stores/simulate.mjs';
+import {hash,ID} from '../salt-stores/scenario.mjs';
+import {verifyHistoricalSaltEvidence as verifyFrozen,historicalSaltURL} from './historical-salt-evidence.mjs';
+export function syntheticPrerequisites(){return c.normalizeCampaignProgress({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});}
+export function buildFixtures(){verifyFrozen();const progress=syntheticPrerequisites(),profiles={},receipts={},completionTime={};const profile=battle=>({'ironroot.campaign.v1':JSON.stringify(progress),'ironroot.settings.v1':JSON.stringify({sound:false,music:false,sfx:false,volume:.3,reducedMotion:false,quality:'high'}),...(battle?{'ironroot.battle.v1':JSON.stringify(battle)}:{})});profiles.locked={...profile(null),'ironroot.campaign.v1':JSON.stringify(c.createCampaignProgress())};receipts.locked={time:0,note:'Empty synthetic profile; Salt is locked.'};profiles.briefing=profile(null);receipts.briefing={time:0,note:'Synthetic prerequisite records, never browser-earned wins.'};
+ for(const[variant,policy]of[['raid','northraid'],['direct','directmiddle']]){const run=runSaltStores({policy,seed:8202,onStep({game,outcome,economy}){if(outcome.completed||outcome.failed)return;const t=game.state.time,name=variant==='raid'&&!profiles['paid-opening-raid']&&t>=25-1e-7?'paid-opening-raid':!profiles['terminal-near-'+variant]&&game.state.bases[1].hp<=1000?'terminal-near-'+variant:null;if(!name)return;const battle=encodeBattle(game,c.campaignScenarioForGame(game,ID),{campaignProgress:progress});assert.deepEqual(decodeBattle(battle,{campaignProgress:progress}).game.serialize(),game.serialize());profiles[name]=profile(battle);receipts[name]={policy,seed:8202,time:t,cores:game.state.bases.map(b=>b.hp),gold:[...game.state.gold],ledger:economy.snapshot(),originalEnemyMines:game.state.buildings.filter(b=>b.side===1&&b.type==='mint').map(b=>({id:b.id,x:b.x,lane:b.lane,hp:b.hp})),battleSha256:hash(battle),note:'Natural ordinary-paid active engine checkpoint; no terminal, gold or HP edit. Previous records are synthetic.'};}});assert.equal(run.outcome,'won');assert.ok(profiles['terminal-near-'+variant]);completionTime[variant]=run.duration;}
+ const game=c.createCampaignMission(ID),fresh=encodeBattle(game,c.campaignScenarioForGame(game,ID),{campaignProgress:progress});profiles['fresh-raid']=profile(fresh);receipts['fresh-raid']={time:0,cores:game.state.bases.map(b=>b.hp),gold:[...game.state.gold],battleSha256:hash(fresh),note:'Exact authored tick-zero setup.'};const legacy=JSON.parse(readFileSync(new URL('../salt-stores/legacy-archer-profile.json',import.meta.url)));profiles['legacy-archer']=legacy.profile;receipts['legacy-archer']={time:legacy.time,note:legacy.scope,battleSha256:legacy.battleSha256,baseCommit:legacy.baseCommit};return{profiles,receipts,completionTime,syntheticPrerequisiteRecords:Object.keys(progress.missions).length};
+}
+
+// This copies no gameplay or timing policy. Keep the original generator bodies
+// exact except for the explicit legacy-data URL relocation and guard binding.
+const original = readFileSync(historicalSaltURL('qa/salt-stores/prepare-native.mjs'),'utf8');
+const originalPrerequisites = original.slice(original.indexOf('export function syntheticPrerequisites()'),original.indexOf('\nexport function buildFixtures()')).replace('export ','').trim();
+const originalBuilder = original.slice(original.indexOf('export function buildFixtures()'),original.indexOf('\nexport async function prepareNative(')).replace('export ','').replace("new URL('./legacy-archer-profile.json',import.meta.url)","new URL('../salt-stores/legacy-archer-profile.json',import.meta.url)").trim();
+assert.equal(syntheticPrerequisites.toString(),originalPrerequisites);
+assert.equal(buildFixtures.toString(),originalBuilder);
