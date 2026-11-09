@@ -46,13 +46,28 @@ function fundRoad(g,side,road){
  if(road.ranged.length<2&&road.air>road.ownRanged)return buildAction(g,side,'archery',road.lane);
  return null;
 }
+function defensiveOptions(road,air=false){
+ const candidates=air?[...road.ranged,...road.buildings.filter(b=>b.type==='watchtower')]:[...road.screen,...road.ranged,...road.buildings.filter(b=>b.type==='watchtower')];
+ return candidates.filter(b=>b.level<3).sort((a,b)=>a.level-b.level||a.id-b.id).map(upgradeAction);
+}
+function affordableCandidate(g,side,candidates){
+ const legal=candidates.filter(x=>x.action);return legal.find(x=>cost(g,x.action)<=g.state.gold[side])??legal[0]??null;
+}
 function emergency(g,side,roads){
- const ranked=roads.slice().sort((a,b)=>b.air-a.air||b.ground-a.ground||a.lane-b.lane);
+ const ranked=roads.slice().sort((a,b)=>b.air-a.air||b.ground-a.ground||a.lane-b.lane),candidates=[];
+ const offer=(actions,reason)=>{for(const action of actions)if(action)candidates.push({action,reason});};
  for(const r of ranked){
-  if(r.air>0&&r.ranged.length<2){const action=buildAction(g,side,'archery',r.lane)??(r.ranged.filter(b=>b.level<3).sort((a,b)=>a.level-b.level||a.id-b.id).map(upgradeAction)[0]??null);if(action)return{action,reason:'visible-air'};}
-  if(r.foes.some(u=>!g.units[u.type].flying&&home(g,side,u.x)<1250)&&!r.buildings.some(b=>b.type==='watchtower')&&r.production>0){const action=buildAction(g,side,'watchtower',r.lane)??([...r.screen,...r.ranged].filter(b=>b.level<3).sort((a,b)=>a.level-b.level||a.id-b.id).map(upgradeAction)[0]??null);if(action)return{action,reason:'ground-incursion'};}
+  if(r.air>0&&r.ranged.length<2)offer([buildAction(g,side,'archery',r.lane),...defensiveOptions(r,true)],'visible-air');
+  if(r.ground>0&&r.production===0)offer([buildAction(g,side,'barracks',r.lane),...defensiveOptions(r)],'empty-road-incursion');
+  else if(r.foes.some(u=>!g.units[u.type].flying&&home(g,side,u.x)<1250)&&!r.buildings.some(b=>b.type==='watchtower')&&r.production>0)offer([buildAction(g,side,'watchtower',r.lane),...defensiveOptions(r)],'ground-incursion');
  }
- return null;
+ return affordableCandidate(g,side,candidates);
+}
+function basicRepair(g,side,roads){
+ const ranked=roads.slice().sort((a,b)=>(b.ground+b.air)-(a.ground+a.air)||a.production-b.production||a.lane-b.lane),candidates=[];
+ const offer=(r,type,air)=>{const action=buildAction(g,side,type,r.lane);if(action)candidates.push({action});if(!action||r.foes.length)for(const alternative of defensiveOptions(r,air))candidates.push({action:alternative});};
+ for(const r of ranked){if(!r.screen.length)offer(r,'barracks',false);if(!r.ranged.length)offer(r,'archery',true);}
+ return affordableCandidate(g,side,candidates)?.action??null;
 }
 function upkeep(g,side,road){
  if(!road.screen.length)return buildAction(g,side,'barracks',road.lane);
@@ -65,39 +80,43 @@ function upkeep(g,side,road){
  return support[0]?upgradeAction(support[0]):null;
 }
 function maintain(g,side,roads,committed){
- const ranked=roads.filter(r=>r.lane!==committed).sort((a,b)=>(b.ground+b.air)-(a.ground+a.air)||a.production-b.production||a.lane-b.lane);
- for(const r of ranked){if(!r.screen.length)return buildAction(g,side,'barracks',r.lane);if(!r.ranged.length)return buildAction(g,side,'archery',r.lane);}
- for(const r of ranked)if(r.foes.length){const b=[...r.screen,...r.ranged].filter(b=>b.level<3).sort((a,b)=>a.level-b.level||a.id-b.id)[0];if(b)return upgradeAction(b);}
- return null;
+ const ranked=roads.filter(r=>r.lane!==committed).sort((a,b)=>(b.ground+b.air)-(a.ground+a.air)||a.production-b.production||a.lane-b.lane),candidates=[];
+ for(const r of ranked)for(const action of r.air>0?defensiveOptions(r,true):r.ground>0?defensiveOptions(r):[])candidates.push({action});
+ return affordableCandidate(g,side,candidates)?.action??null;
 }
+
+const eligible=(road,roads)=>road.screen.length&&road.ranged.length&&roads.every(x=>x.lane===road.lane||x.production>0);
+
 export function runHammerAI(g,side=1){
- const s=g.state,r=s.hammerCommitment.sides[side],report={tick:g.tick,side,before:{...r},transitions:[],attempts:[],roads:[],actions:0};
- let roads=hammerRoads(g,side),current=r.lane===null?null:roads[r.lane];
+ const s=g.state,r=s.hammerCommitment.sides[side],report={tick:g.tick,side,before:{...r},transitions:[],attempts:[],roads:[],actions:0,apiAttempts:0,offensiveAttempts:0};
+ let roads=hammerRoads(g,side),current=r.lane===null?null:roads[r.lane],offensiveUsed=false;
  if(current&&(!current.foundries.length||!current.screen.length||!current.ranged.length)){
   const reason=!current.foundries.length?'foundry-lost':!current.screen.length?'last-screen-lost':'last-range-lost';
   report.transitions.push({type:'collapse',lane:r.lane,reason});r.lane=null;r.lockUntilTick=0;r.cooldownUntilTick=g.tick+HAMMER_AI.cooldownTicks;
  }
  const choice=chooseAICitadelOption(g,side);if(choice)g.buyCitadelOption(choice,side);
- const execute=(a,reason)=>{if(!a)return false;const before=s.gold[side],out=a.method==='build'?g.build(a.type,a.x,a.y,side):g.upgrade(a.id,side);report.attempts.push({reason,action:{...a},cost:before-s.gold[side],ok:out.ok,denial:out.reason??null});if(out.ok)report.actions++;return out.ok;};
+ const execute=(a,reason)=>{if(!a)return false;report.apiAttempts++;const before=s.gold[side],out=a.method==='build'?g.build(a.type,a.x,a.y,side):g.upgrade(a.id,side);report.attempts.push({reason,action:{...a},cost:before-s.gold[side],ok:out.ok,denial:out.reason??null});if(out.ok)report.actions++;return out.ok;};
  for(let action=0;action<2;action++){
   roads=hammerRoads(g,side);const urgent=emergency(g,side,roads);
   if(urgent){if(!execute(urgent.action,'emergency:'+urgent.reason))break;continue;}
-  current=r.lane===null?null:roads[r.lane];
-  let chosen=null,payment=null;
-  if(g.tick>=r.cooldownUntilTick&&(!current||g.tick>=r.lockUntilTick)){
-   const candidates=roads.filter(t=>t.screen.length&&t.ranged.length&&roads.every(x=>x.lane===t.lane||x.production>0)).map(t=>({road:t,payment:fundRoad(g,side,t)})).filter(x=>x.payment&&(!current||(x.road.lane!==current.lane&&x.road.score>=current.score+HAMMER_AI.switchMargin)));
+  const repair=basicRepair(g,side,roads);if(repair){if(!execute(repair,'basic-road-repair'))break;continue;}
+  current=r.lane===null?null:roads[r.lane];let chosen=null,payment=null;
+  if(!offensiveUsed&&g.tick>=r.cooldownUntilTick&&(!current||g.tick>=r.lockUntilTick)){
+   const candidates=roads.filter(t=>eligible(t,roads)).map(t=>({road:t,payment:fundRoad(g,side,t)})).filter(x=>x.payment&&(!current||(x.road.lane!==current.lane&&x.road.score>=current.score+HAMMER_AI.switchMargin)));
    if(candidates.length){const best=Math.max(...candidates.map(x=>x.road.score)),ties=candidates.filter(x=>Math.abs(x.road.score-best)<1e-9);const selected=ties.length===1?ties[0]:ties[Math.floor(g.random()*ties.length)];chosen=selected.road;payment=selected.payment;}
   }
-  if(chosen){const previous=r.lane;if(!execute(payment,current?'funded-turn':'funded-commitment'))break;r.lane=chosen.lane;r.lockUntilTick=g.tick+HAMMER_AI.lockTicks;r.cooldownUntilTick=0;report.transitions.push({type:previous===null?'commit':'turn',from:previous,lane:r.lane,payment:{...payment}});continue;}
-  if(current){const a=upkeep(g,side,current);if(a){if(!execute(a,'commitment-upkeep'))break;continue;}}
+  if(chosen){offensiveUsed=true;report.offensiveAttempts++;const previous=r.lane;if(!execute(payment,current?'funded-turn':'funded-commitment'))continue;r.lane=chosen.lane;r.lockUntilTick=g.tick+HAMMER_AI.lockTicks;r.cooldownUntilTick=0;report.transitions.push({type:previous===null?'commit':'turn',from:previous,lane:r.lane,payment:{...payment}});continue;}
+  if(current&&!offensiveUsed){const a=upkeep(g,side,current);if(a){offensiveUsed=true;report.offensiveAttempts++;execute(a,'commitment-upkeep');continue;}}
   const a=maintain(g,side,roads,r.lane);if(!a)break;
-  // Healthy defense must not drain the intended ordinary siege purchase. Emergencies above may.
-  if(r.lane===null&&g.tick>=r.cooldownUntilTick&&s.gold[side]-cost(g,a)<g.buildings.foundry.cost){report.attempts.push({reason:'save-for-siege',action:{...a},cost:0,ok:false,denial:'Treasury reserved, not an added resource.'});break;}
+  // Only nonessential upkeep may wait for a genuinely eligible siege purchase.
+  // Basic coverage and real emergencies have already bypassed this reservation.
+  if(r.lane===null&&g.tick>=r.cooldownUntilTick&&roads.some(t=>eligible(t,roads)&&fundRoad(g,side,t))&&s.gold[side]-cost(g,a)<g.buildings.foundry.cost){report.attempts.push({reason:'save-for-siege',action:{...a},cost:0,ok:false,denial:'Treasury reserved, not an added resource.'});break;}
   if(!execute(a,'other-road-maintenance'))break;
  }
  if(s.gold[side]>=g.ruleset.spell.cost&&s.spellCooldown[side]<=0){const enemies=s.units.filter(u=>u.side!==side&&alive(u)&&home(g,side,u.x)<1650);let target=null,best=3;for(const u of enemies){const n=enemies.filter(e=>Math.hypot(e.x-u.x,e.y-u.y)<g.ruleset.spell.radius).length;if(n>best){best=n;target=u;}}if(target)g.cast(target.x,target.y,side);}
  report.after={...r};report.roads=hammerRoads(g,side).map(({lane,score,ownScreen,ownRanged,ground,air,production})=>({lane,score,ownScreen,ownRanged,ground,air,production}));return report;
 }
+
 export function validateHammerState(value,map,tick,fail){
  const shape=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
  if(!shape(value,['sides'])||!Array.isArray(value.sides)||value.sides.length!==2)fail('invalid Hammer commitment');

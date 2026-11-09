@@ -1,0 +1,84 @@
+{
+  "scope": "Declared WIP003 defense-priority correction. Same36 known development cases and formation, no heldouts or difficulty claim.",
+  "epoch": 2,
+  "declaredBeforeExploration": true,
+  "developmentSeeds": [
+    8303,
+    170041
+  ],
+  "matrix": {
+    "policies": [
+      "intercept",
+      "oppositeflank",
+      "centerbreach",
+      "rootwarden",
+      "broadnovice",
+      "economy",
+      "mixedair",
+      "unsupportedair",
+      "idle"
+    ],
+    "opponents": [
+      "hammer",
+      "generic"
+    ],
+    "runs": 36,
+    "capSeconds": 600,
+    "playerPaidCadenceSeconds": 5
+  },
+  "timing": {
+    "lockSeconds": 45,
+    "lockTicks": 900,
+    "collapseCooldownSeconds": 20,
+    "collapseCooldownTicks": 400,
+    "switchMargin": 2,
+    "normalDecisionCadence": "Unchanged 5 + random()*3 seconds; two construction/upgrade attempts; ordinary separate citadel/Volley checks."
+  },
+  "supportScore": {
+    "formula": "2*min(2,forwardScreenProducerLevels) + min(2,forwardArcheryLevels) + min(3,ownScreenHealthEquivalents) + min(3,ownArcherHealthEquivalents) - 2*min(3,observedEnemyGroundHealthEquivalents) - 3*min(2,observedEnemyAirHealthEquivalents)",
+    "ownTroopWindowHomeDistance": [
+      550,
+      1900
+    ],
+    "enemyThreatHomeDistanceStrictlyBelow": 1550,
+    "healthEquivalent": "hp / bound unit base hp; production levels count only living forward producers; foundries never add support score."
+  },
+  "eligibility": "At least one living forward warrior/Rootwarden producer and one living forward archery range on candidate road; every other road retains living forward mobile production. New foundry behind screen; cap two living foundries overall.",
+  "activation": "Successful ordinary foundry build. A later turn to an existing foundry requires an ordinary paid foundry upgrade; if already maxed, a paid screen/range upgrade or an additional needed screen/range producer may finance that turn. No fabricated turn if no useful legal paid investment remains.",
+  "collapse": "At ordinary AI decision only: last committed-road foundry destroyed, OR last forward screen producer lost, OR last forward archery range lost. Losing one of several category members does not collapse it. Clear lane/lock and start 20s cooldown. No producer remaining means ordinary paid reconstruction can continue during cooldown, but no siege reselection until it expires and full support eligibility is restored.",
+  "lockVersusCooldown": "Lock prevents discretionary switching for 45s after a funded commitment while allowing paid emergency defense. Cooldown prevents new selection for 20s after actual collapse; it is not an extra lock and grants nothing.",
+  "turnCriteria": "After lock expiry, challenger score at least current score+2; unsupported current road first collapses. No forced periodic change. Title means opportunity to turn paid investment; not guaranteed alternating waves.",
+  "restore": "Restore copies validated state and RNG only; neither restore nor emergency calls selection out of normal scheduling, grants actions, resets timers or changes treasury.",
+  "warning": "Foundry becomes visible immediately; ordinary first spawn about1.2s later plus normal travel. No construction countdown.",
+  "evidenceBoundary": "Outcome runs use production APIs only after disclosed authored setup; all failed runs retained. Full action/income/bounty/refund ledger. Runtime plus actual simulator/evaluator/policy/config dependency closure is distinct from full repository integrity. Heldouts forbidden in phase one.",
+  "preExplorationAmendments": [
+    {
+      "reason": "Independent WIP001 review found second-producer count alone insufficient and impossible emergency build blocked all spending. No outcome or heldout run preceded these changes.",
+      "secondSupportProducer": "Only genuinely unmet current local demand: ground health equivalents > own screen equivalents for a second screen, air health equivalents > own archer equivalents for a second range. Same-road maxed foundry and all ordinary turn conditions required.",
+      "fullRoadEmergency": "Prefer a legal useful on-road defensive upgrade when new construction has no legal site; if neither exists, skip the impossible emergency rather than block all spending. No extra action or reset."
+    },
+    {
+      "reason": "Independent WIP001 review found malformed early absolute deadlines admitted. No outcome run preceded this fix.",
+      "saveAdmission": "Nonzero absolute lock deadline must be >=900 and cooldown deadline >=400, and within current tick plus its duration. Expired legitimate deadlines remain admitted; no reconstruction or selection occurs on restore."
+    }
+  ],
+  "preservedEpoch1RawSha256": "ef20368b75fecdf6d79b7d0270d47849574466ec3b082cfc4621a5adf7be7758",
+  "changesDeclaredBeforeRerun": [
+    "Observed empty-road ground incursion requests ordinary barracks or useful on-road defensive upgrade, ahead of optional siege upkeep.",
+    "Basic forward screen/range coverage repair has priority before commitment selection or270-gold reservation, including before any commitment and while no road is eligible.",
+    "Read-only emergency planning prefers an affordable true emergency over an unaffordable candidate; full geometry falls back to a legal useful defensive upgrade or skips the impossible candidate. It never adds paid attempts.",
+    "At most one offensive commitment/turn/upkeep API attempt per ordinary decision. A failed offensive attempt consumes that slot; the remaining attempt may repair/basic defend or buy a threat-appropriate other-road support upgrade, never a second offensive purchase. No useful defense means spare slot remains unused.",
+    "Actual successful or failed build/upgrade API attempts total at most2. No re-selection/RNG draw after a failed offensive attempt in the same decision. Standard paid citadel/Volley checks unchanged.",
+    "Evidence road-damage labels explicitly distinguish player attacks on enemy core from enemy attacks on player core."
+  ],
+  "preRunReviewFixes": [
+    {
+      "sourceCheckpoint": "003",
+      "outcomesRun": 0,
+      "reason": "Independent226check pass did not cover three affordable-alternative suppression cases.003 remains preserved and no outcomes ran.",
+      "generalFix": "Enumerate useful legal candidate builds/upgrades across prioritized roads before affordability selection. Choose the first affordable candidate, retaining priority among affordable choices; if none is affordable retain the preferred waiting action. Use exact bound game.upgradeCost/build cost, read-only checks only. An expensive preferred build/upgrade cannot hide an affordable useful alternative.",
+      "basicRepairScope": "Without an observed local threat, a legal producer replacement is the basic repair; an upgrade which cannot restore that missing category is not offered merely to spend money. Defensive upgrade alternatives are useful when local enemies are observed or construction has no legal room.",
+      "unchanged": "Formation, all prices/stats/income,45s lock,20s cooldown,switch score,one-offensive/two-total API budgets,ordinary scheduler,citadel/Volley rules,player scripts and36known development cases."
+    }
+  ]
+}
