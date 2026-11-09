@@ -1,0 +1,16 @@
+Title: Polish control states, labels, and mode-count readability
+Base: main
+Head: polish/interaction-review
+Draft: yes
+
+Several choices showed selection only through color, the speed button's accessible name hid its current value, and mode-count badges used 7–8px text below the contrast threshold. This patch exposes selected/armed states for opponent, trial, building and Volley controls; names current and next battle speed; makes both count badges 10px at 6.56:1 contrast; and aligns three menu instructions with the visible Options label.
+
+The changes are isolated from campaign rebuilding and held mobile Volley PR #14. Runtime changes are limited to app.js, index.html and styles.css. Engine, mission data, audio synthesis, save/profile schemas, version and cache are unchanged. Assign the next release version/cache during integration before publishing.
+
+Validation: 2,008 Node checks passed, zero failed, one optional installed-desktop-tooling skip. The focused Chromium suite passed 29 cases, with three intentional mouse-only exclusions on touch projects. All 45 bounded post-fix axe screen scans reported no violations or uncaught browser errors; this is not full accessibility certification. Settings persisted through native input/reload on desktop and an emulated phone. No physical-device, listening, human-balance, production-update or non-Chromium pass is claimed.
+
+Ranked findings, before/after screenshots, initial test-observer failures and exact runtime hashes: docs/POLISH_PASS_2026_11_09.md and qa/polish-2026-11-09/.
+
+Follow-up: compact build drawers hide their horizontal-scroll hint despite overflowing. Retain this as a separate usability improvement.
+
+This text is prepared for review only. Automatic approval review denied opening the draft PR because explicit user permission was required. No PR, merge or deployment has been performed by this task.

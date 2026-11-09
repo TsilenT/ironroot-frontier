@@ -1,0 +1,212 @@
+[
+  {
+    "name": "desktop",
+    "label": "briefing",
+    "focus": "",
+    "scroll": 1180,
+    "viewport": 1180,
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#campaignCount"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #d9b974, background color: #44563a, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "desktop",
+    "label": "settings",
+    "focus": "closeSettings",
+    "scroll": 1180,
+    "viewport": 1180,
+    "axe": []
+  },
+  {
+    "name": "desktop",
+    "label": "teaching",
+    "focus": "battle",
+    "scroll": 1180,
+    "viewport": 1180,
+    "axe": []
+  },
+  {
+    "name": "desktop",
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "label": "briefing",
+    "focus": "",
+    "scroll": 390,
+    "viewport": 390,
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#campaignCount"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #d9b974, background color: #44563a, font size: 5.3pt (7px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "phone",
+    "label": "settings",
+    "focus": "closeSettings",
+    "scroll": 390,
+    "viewport": 390,
+    "axe": []
+  },
+  {
+    "name": "phone",
+    "label": "teaching",
+    "focus": "battle",
+    "scroll": 390,
+    "viewport": 390,
+    "axe": []
+  },
+  {
+    "name": "phone",
+    "errors": []
+  },
+  {
+    "name": "narrow",
+    "label": "briefing",
+    "focus": "",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#campaignCount"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #d9b974, background color: #44563a, font size: 5.3pt (7px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "narrow",
+    "label": "settings",
+    "focus": "closeSettings",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": []
+  },
+  {
+    "name": "narrow",
+    "label": "teaching",
+    "focus": "battle",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": []
+  },
+  {
+    "name": "narrow",
+    "errors": []
+  },
+  {
+    "name": "short",
+    "label": "briefing",
+    "focus": "",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#campaignCount"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #d9b974, background color: #44563a, font size: 5.3pt (7px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "short",
+    "label": "settings",
+    "focus": "closeSettings",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": []
+  },
+  {
+    "name": "short",
+    "label": "teaching",
+    "focus": "battle",
+    "scroll": 320,
+    "viewport": 320,
+    "axe": []
+  },
+  {
+    "name": "short",
+    "errors": []
+  },
+  {
+    "name": "landscape",
+    "label": "briefing",
+    "focus": "",
+    "scroll": 844,
+    "viewport": 844,
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#campaignCount"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #d9b974, background color: #44563a, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "landscape",
+    "label": "settings",
+    "focus": "closeSettings",
+    "scroll": 844,
+    "viewport": 844,
+    "axe": []
+  },
+  {
+    "name": "landscape",
+    "label": "teaching",
+    "focus": "battle",
+    "scroll": 844,
+    "viewport": 844,
+    "axe": []
+  },
+  {
+    "name": "landscape",
+    "errors": []
+  }
+]

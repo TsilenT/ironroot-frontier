@@ -1,0 +1,56 @@
+[WebServer] (node:6311) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 2 workers
+
+(node:6344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6345) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [phone] › first-build-start.spec.mjs:17:1 › first lesson has no choice; real paid barracks automatically starts combat and ends placement (12.0s)
+  ✓   2 [phone] › first-build-start.spec.mjs:32:1 › other choice, invalid territory, Pause and Options cannot skip the first paid barracks (19.0s)
+  ✓   3 [phone] › first-build-start.spec.mjs:49:1 › reload of the UI-only first hold resumes the existing checkpoint normally (7.3s)
+  -   4 [phone] › first-build-start.spec.mjs:57:1 › mouse Shift repeats remain deliberate across the automatic transition
+  ✓   5 [phone] › polish-state.spec.mjs:15:1 › opponent and trial selections expose the visible choice through mode changes and native keys (19.5s)
+  ✓   6 [phone] › polish-state.spec.mjs:33:1 › construction and volley expose armed, switched, cancelled and paid-completion states (26.7s)
+  ✓   8 [phone] › polish-state.spec.mjs:71:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (11.8s)
+  ✓   7 [phone] › polish-state.spec.mjs:55:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (19.5s)
+(node:7923) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7917) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 [narrow-phone] › first-build-start.spec.mjs:17:1 › first lesson has no choice; real paid barracks automatically starts combat and ends placement (14.6s)
+  ✓   9 [narrow-phone] › first-build-start.spec.mjs:32:1 › other choice, invalid territory, Pause and Options cannot skip the first paid barracks (18.9s)
+  -  12 [narrow-phone] › first-build-start.spec.mjs:57:1 › mouse Shift repeats remain deliberate across the automatic transition
+  ✓  11 [narrow-phone] › first-build-start.spec.mjs:49:1 › reload of the UI-only first hold resumes the existing checkpoint normally (9.8s)
+  ✓  13 [narrow-phone] › polish-state.spec.mjs:15:1 › opponent and trial selections expose the visible choice through mode changes and native keys (15.6s)
+  ✓  14 [narrow-phone] › polish-state.spec.mjs:33:1 › construction and volley expose armed, switched, cancelled and paid-completion states (25.1s)
+  ✓  15 [narrow-phone] › polish-state.spec.mjs:55:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (16.9s)
+(node:9098) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  16 [narrow-phone] › polish-state.spec.mjs:71:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (9.1s)
+(node:9269) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [landscape] › first-build-start.spec.mjs:17:1 › first lesson has no choice; real paid barracks automatically starts combat and ends placement (14.2s)
+  ✓  19 [landscape] › first-build-start.spec.mjs:49:1 › reload of the UI-only first hold resumes the existing checkpoint normally (9.7s)
+  -  20 [landscape] › first-build-start.spec.mjs:57:1 › mouse Shift repeats remain deliberate across the automatic transition
+  ✓  18 [landscape] › first-build-start.spec.mjs:32:1 › other choice, invalid territory, Pause and Options cannot skip the first paid barracks (20.3s)
+  ✓  21 [landscape] › polish-state.spec.mjs:15:1 › opponent and trial selections expose the visible choice through mode changes and native keys (19.0s)
+  ✓  22 [landscape] › polish-state.spec.mjs:33:1 › construction and volley expose armed, switched, cancelled and paid-completion states (24.3s)
+  ✓  23 [landscape] › polish-state.spec.mjs:55:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (12.5s)
+(node:10856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  24 [landscape] › polish-state.spec.mjs:71:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (7.1s)
+(node:10900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  25 [desktop] › first-build-start.spec.mjs:17:1 › first lesson has no choice; real paid barracks automatically starts combat and ends placement (7.5s)
+  ✓  26 [desktop] › first-build-start.spec.mjs:32:1 › other choice, invalid territory, Pause and Options cannot skip the first paid barracks (7.7s)
+  ✓  27 [desktop] › first-build-start.spec.mjs:49:1 › reload of the UI-only first hold resumes the existing checkpoint normally (4.1s)
+  ✓  28 [desktop] › first-build-start.spec.mjs:57:1 › mouse Shift repeats remain deliberate across the automatic transition (3.6s)
+  ✓  29 [desktop] › polish-state.spec.mjs:15:1 › opponent and trial selections expose the visible choice through mode changes and native keys (6.4s)
+  ✓  30 [desktop] › polish-state.spec.mjs:33:1 › construction and volley expose armed, switched, cancelled and paid-completion states (6.4s)
+  ✓  32 [desktop] › polish-state.spec.mjs:71:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (2.7s)
+  ✓  31 [desktop] › polish-state.spec.mjs:55:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (4.9s)
+
+  3 skipped
+  29 passed (3.4m)

@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-09",
+  "base": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+  "implementation": "2fff5789240fbb7fe6b039bb5a0cb95c41e739f9",
+  "testedFiles": {
+    "dist/app.js": "ac233ea01456a482c9b8a68f2adfe432722d06aafd811398a4346a9aefef5fa4",
+    "dist/index.html": "e4396b5cfeba3cd544fa9922a4b1986186b699e0e431462584d6e24ab83d7536",
+    "dist/styles.css": "9297ddf34ba8be7b96142e1fa236d12cddcf6c5df6201ed92c1cc0dcc2c5cd20",
+    "qa/browser/polish-state.spec.mjs": "d47fa8f3333a7eb2df2af4f99b3d213fd2882be1b7d64d3e12ad6c5ac67e4806"
+  },
+  "browserStats": {
+    "startTime": "2026-11-09T04:25:29.934Z",
+    "duration": 202323.26499999998,
+    "expected": 29,
+    "skipped": 3,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "axeBeforeScreenStates": 43,
+  "axeAfterScreenStates": 45,
+  "fullNode": {
+    "passed": 2008,
+    "failed": 0,
+    "skipped": 1
+  },
+  "draftPr": {
+    "status": "denied",
+    "target": "TsilenT/ironroot-frontier main <- polish/interaction-review",
+    "reason": "Creating a GitHub pull request is an external commitment, and the user authorized the polish work but did not explicitly authorize opening a PR.",
+    "retried": false
+  },
+  "scope": "local source and native Chromium; emulated touch, no physical devices or listening assessment"
+}

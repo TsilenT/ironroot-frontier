@@ -1,0 +1,173 @@
+[WebServer] (node:3815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 2 workers
+
+(node:3855) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [phone] › polish-state.spec.mjs:14:1 › opponent and trial selections expose the visible choice through mode changes and native keys (19.0s)
+  ✘   2 [phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states (23.7s)
+(node:4509) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [phone] › polish-state.spec.mjs:54:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (10.4s)
+(node:4646) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [phone] › polish-state.spec.mjs:70:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (4.5s)
+(node:4788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 [narrow-phone] › polish-state.spec.mjs:14:1 › opponent and trial selections expose the visible choice through mode changes and native keys (6.0s)
+  ✓   7 [narrow-phone] › polish-state.spec.mjs:54:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (4.5s)
+  ✘   6 [narrow-phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states (7.6s)
+(node:5024) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 [narrow-phone] › polish-state.spec.mjs:70:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (2.9s)
+(node:5172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [landscape] › polish-state.spec.mjs:14:1 › opponent and trial selections expose the visible choice through mode changes and native keys (7.6s)
+  ✓  11 [landscape] › polish-state.spec.mjs:54:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (5.7s)
+  ✘  10 [landscape] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states (10.8s)
+(node:5430) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 [landscape] › polish-state.spec.mjs:70:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (3.3s)
+(node:5570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 [desktop] › polish-state.spec.mjs:14:1 › opponent and trial selections expose the visible choice through mode changes and native keys (6.0s)
+  ✓  15 [desktop] › polish-state.spec.mjs:54:1 › speed names follow the full cycle and reset on resumed battle while its opponent stays selected (5.1s)
+  ✘  14 [desktop] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states (7.8s)
+  ✓  16 [desktop] › polish-state.spec.mjs:70:1 › mode counts remain readable and fit when selected, unselected and keyboard focused (2.0s)
+
+
+  1) [phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+
+    Test timeout of 20000ms exceeded.
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 1
+    Received length: 2
+    Received array:  [{"cooldown": 0, "hit": 0, "hp": 700, "id": 1, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.8722222222222172, "side": 0, "type": "barracks", "x": 410, "y": 450}, {"cooldown": 0, "hit": 0, "hp": 700, "id": 10, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.8944444444444444, "side": 0, "type": "barracks", "x": 550, "y": 450}]
+
+      49 |   await expect(page.locator('.build-card[aria-pressed="true"]')).toHaveCount(0);
+      50 |   await press(page,'#pause');
+    > 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);
+         |                                                                                               ^
+      52 | });
+      53 |
+      54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{
+        at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [narrow-phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 1
+    Received length: 2
+    Received array:  [{"cooldown": 0, "hit": 0, "hp": 700, "id": 1, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.37222222222222145, "side": 0, "type": "barracks", "x": 410, "y": 450}, {"cooldown": 0, "hit": 0, "hp": 700, "id": 5, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.8944444444444444, "side": 0, "type": "barracks", "x": 550, "y": 450}]
+
+      49 |   await expect(page.locator('.build-card[aria-pressed="true"]')).toHaveCount(0);
+      50 |   await press(page,'#pause');
+    > 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);
+         |                                                                                               ^
+      52 | });
+      53 |
+      54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{
+        at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [landscape] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 1
+    Received length: 2
+    Received array:  [{"cooldown": 0, "hit": 0, "hp": 700, "id": 1, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.616666666666665, "side": 0, "type": "barracks", "x": 410, "y": 450}, {"cooldown": 0, "hit": 0, "hp": 700, "id": 5, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.8944444444444444, "side": 0, "type": "barracks", "x": 550, "y": 450}]
+
+      49 |   await expect(page.locator('.build-card[aria-pressed="true"]')).toHaveCount(0);
+      50 |   await press(page,'#pause');
+    > 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);
+         |                                                                                               ^
+      52 | });
+      53 |
+      54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{
+        at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 1
+    Received length: 2
+    Received array:  [{"cooldown": 0, "hit": 0, "hp": 700, "id": 1, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.3499999999999993, "side": 0, "type": "barracks", "x": 410, "y": 450}, {"cooldown": 0, "hit": 0, "hp": 700, "id": 5, "invested": 140, "lane": 1, "level": 1, "maxHp": 700, "progress": 0.9055555555555554, "side": 0, "type": "barracks", "x": 550, "y": 450}]
+
+      49 |   await expect(page.locator('#toast')).toContainText('Barracks raised');
+      50 |   await expect(page.locator('.build-card[aria-pressed="true"]')).toHaveCount(0);
+    > 51 |   await press(page,'#pause');
+         |                              ^
+      52 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks'&&b.x===550&&b.y===450)).toHaveLength(1);
+      53 | });
+      54 |
+        at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+    [narrow-phone] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+    [landscape] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+    [desktop] › polish-state.spec.mjs:32:1 › construction and volley expose armed, switched, cancelled and paid-completion states
+  12 passed (1.2m)

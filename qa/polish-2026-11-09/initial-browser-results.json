@@ -1,0 +1,872 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/ironroot-frontier/qa/browser/node_modules/.bin/playwright",
+      "test",
+      "polish-state.spec.mjs",
+      "--workers=2"
+    ],
+    "configFile": "/workspace/ironroot-frontier/qa/browser/playwright.config.mjs",
+    "rootDir": "/workspace/ironroot-frontier/qa/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "narrow-phone",
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "landscape",
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      },
+      {
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 650
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "narrow-phone",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 320,
+            "height": 568
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "narrow-phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "landscape",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "isMobile": true,
+          "hasTouch": true,
+          "deviceScaleFactor": 2
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/ironroot-frontier/qa/browser/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "desktop",
+        "testDir": "/workspace/ironroot-frontier/qa/browser",
+        "snapshotDir": "/workspace/ironroot-frontier/qa/browser",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 20000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4187",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium"
+          },
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1180,
+            "height": 757
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 2,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:4187",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "polish-state.spec.mjs",
+      "file": "polish-state.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "opponent and trial selections expose the visible choice through mode changes and native keys",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19022,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:23:37.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5984,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:08.876Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:21.363Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:36.468Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "308b7dcd0dbd19d384ed-521b6908283f734c3b2f",
+          "file": "polish-state.spec.mjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "construction and volley expose armed, switched, cancelled and paid-completion states",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 23655,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                        "column": 95,
+                        "line": 51
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8722222222222172, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 10, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n\n  49 |   await expect(page.locator('.build-card[aria-pressed=\"true\"]')).toHaveCount(0);\n  50 |   await press(page,'#pause');\n> 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);\n     |                                                                                               ^\n  52 | });\n  53 |\n  54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:23:37.633Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-phone/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 7581,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.37222222222222145, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.37222222222222145, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                      "column": 95,
+                      "line": 51
+                    },
+                    "snippet": " \u001b[90m 49 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.build-card[aria-pressed=\"true\"]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m   \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m\u001b[32m'#pause'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m   expect((\u001b[36mawait\u001b[39m saved(page))\u001b[33m.\u001b[39mgame\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mbuildings\u001b[33m.\u001b[39mfilter(b\u001b[33m=>\u001b[39mb\u001b[33m.\u001b[39mside\u001b[33m===\u001b[39m\u001b[35m0\u001b[39m\u001b[33m&&\u001b[39mb\u001b[33m.\u001b[39mtype\u001b[33m===\u001b[39m\u001b[32m'barracks'\u001b[39m))\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m\n \u001b[90m 54 |\u001b[39m test(\u001b[32m'speed names follow the full cycle and reset on resumed battle while its opponent stays selected'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                        "column": 95,
+                        "line": 51
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.37222222222222145, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n\n  49 |   await expect(page.locator('.build-card[aria-pressed=\"true\"]')).toHaveCount(0);\n  50 |   await press(page,'#pause');\n> 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);\n     |                                                                                               ^\n  52 | });\n  53 |\n  54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:11.781Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-narrow-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                    "column": 95,
+                    "line": 51
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10795,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.616666666666665, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.616666666666665, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                      "column": 95,
+                      "line": 51
+                    },
+                    "snippet": " \u001b[90m 49 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.build-card[aria-pressed=\"true\"]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m   \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m\u001b[32m'#pause'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m   expect((\u001b[36mawait\u001b[39m saved(page))\u001b[33m.\u001b[39mgame\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mbuildings\u001b[33m.\u001b[39mfilter(b\u001b[33m=>\u001b[39mb\u001b[33m.\u001b[39mside\u001b[33m===\u001b[39m\u001b[35m0\u001b[39m\u001b[33m&&\u001b[39mb\u001b[33m.\u001b[39mtype\u001b[33m===\u001b[39m\u001b[32m'barracks'\u001b[39m))\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m\n \u001b[90m 54 |\u001b[39m test(\u001b[32m'speed names follow the full cycle and reset on resumed battle while its opponent stays selected'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                        "column": 95,
+                        "line": 51
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.616666666666665, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.8944444444444444, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n\n  49 |   await expect(page.locator('.build-card[aria-pressed=\"true\"]')).toHaveCount(0);\n  50 |   await press(page,'#pause');\n> 51 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks')).toHaveLength(1);\n     |                                                                                               ^\n  52 | });\n  53 |\n  54 | test('speed names follow the full cycle and reset on resumed battle while its opponent stays selected',async({page})=>{\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:23.304Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-landscape/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                    "column": 95,
+                    "line": 51
+                  }
+                }
+              ],
+              "status": "unexpected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 7828,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.3499999999999993, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.9055555555555554, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.3499999999999993, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.9055555555555554, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95",
+                    "location": {
+                      "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                      "column": 95,
+                      "line": 51
+                    },
+                    "snippet": " \u001b[90m 49 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#toast'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Barracks raised'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.build-card[aria-pressed=\"true\"]'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m   \u001b[36mawait\u001b[39m press(page\u001b[33m,\u001b[39m\u001b[32m'#pause'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m   expect((\u001b[36mawait\u001b[39m saved(page))\u001b[33m.\u001b[39mgame\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mbuildings\u001b[33m.\u001b[39mfilter(b\u001b[33m=>\u001b[39mb\u001b[33m.\u001b[39mside\u001b[33m===\u001b[39m\u001b[35m0\u001b[39m\u001b[33m&&\u001b[39mb\u001b[33m.\u001b[39mtype\u001b[33m===\u001b[39m\u001b[32m'barracks'\u001b[39m\u001b[33m&&\u001b[39mb\u001b[33m.\u001b[39mx\u001b[33m===\u001b[39m\u001b[35m550\u001b[39m\u001b[33m&&\u001b[39mb\u001b[33m.\u001b[39my\u001b[33m===\u001b[39m\u001b[35m450\u001b[39m))\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 54 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                        "column": 95,
+                        "line": 51
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected length: \u001b[32m1\u001b[39m\nReceived length: \u001b[31m2\u001b[39m\nReceived array:  \u001b[31m[{\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 1, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.3499999999999993, \"side\": 0, \"type\": \"barracks\", \"x\": 410, \"y\": 450}, {\"cooldown\": 0, \"hit\": 0, \"hp\": 700, \"id\": 5, \"invested\": 140, \"lane\": 1, \"level\": 1, \"maxHp\": 700, \"progress\": 0.9055555555555554, \"side\": 0, \"type\": \"barracks\", \"x\": 550, \"y\": 450}]\u001b[39m\n\n  49 |   await expect(page.locator('#toast')).toContainText('Barracks raised');\n  50 |   await expect(page.locator('.build-card[aria-pressed=\"true\"]')).toHaveCount(0);\n> 51 |   await press(page,'#pause');\n     |                              ^\n  52 |   expect((await saved(page)).game.state.buildings.filter(b=>b.side===0&&b.type==='barracks'&&b.x===550&&b.y===450)).toHaveLength(1);\n  53 | });\n  54 |\n    at /workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs:51:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:38.948Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/ironroot-frontier/qa/browser/test-results/polish-state-construction--cd9bb--and-paid-completion-states-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/ironroot-frontier/qa/browser/polish-state.spec.mjs",
+                    "column": 95,
+                    "line": 51
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "308b7dcd0dbd19d384ed-3e81facd84b19d40f249",
+          "file": "polish-state.spec.mjs",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "speed names follow the full cycle and reset on resumed battle while its opponent stays selected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:23:57.698Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:15.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:29.278Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5127,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:42.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "308b7dcd0dbd19d384ed-a32c4323158593ba632c",
+          "file": "polish-state.spec.mjs",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "mode counts remain readable and fit when selected, unselected and keyboard focused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:06.158Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "badge-contrast-and-geometry",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJtb2RlIjogImNhbXBhaWduIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTM4LjQ2ODc1LAogICAgInJpZ2h0IjogMTU4Ljc4MTI1LAogICAgInRhYnNMZWZ0IjogMzEsCiAgICAidGFic1JpZ2h0IjogMzU5LAogICAgInZpZXdwb3J0IjogMzkwCiAgfSwKICB7CiAgICAibW9kZSI6ICJjYW1wYWlnbiIsCiAgICAiaWQiOiAiNiIsCiAgICAiY29sb3IiOiAicmdiKDIzOCwgMjMzLCAyMTcpIiwKICAgICJiYWNrZ3JvdW5kIjogInJnYig2OCwgODYsIDU4KSIsCiAgICAiY29udHJhc3QiOiA2LjU1NTMxOTYxODkyOTEzNywKICAgICJmb250IjogMTAsCiAgICAibGVmdCI6IDI5OC44OTA2MjUsCiAgICAicmlnaHQiOiAzMTMuMjUsCiAgICAidGFic0xlZnQiOiAzMSwKICAgICJ0YWJzUmlnaHQiOiAzNTksCiAgICAidmlld3BvcnQiOiAzOTAKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTM4LjkyMTg3NSwKICAgICJyaWdodCI6IDE1OS4yMzQzNzUsCiAgICAidGFic0xlZnQiOiA0MCwKICAgICJ0YWJzUmlnaHQiOiAzNTAsCiAgICAidmlld3BvcnQiOiAzOTAKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICI2IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMjg2LjA2MjUsCiAgICAicmlnaHQiOiAzMDAuNDIxODc1LAogICAgInRhYnNMZWZ0IjogNDAsCiAgICAidGFic1JpZ2h0IjogMzUwLAogICAgInZpZXdwb3J0IjogMzkwCiAgfSwKICB7CiAgICAibW9kZSI6ICJjaGFsbGVuZ2VzIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTM4LjkyMTg3NSwKICAgICJyaWdodCI6IDE1OS4yMzQzNzUsCiAgICAidGFic0xlZnQiOiAzNSwKICAgICJ0YWJzUmlnaHQiOiAzNTUsCiAgICAidmlld3BvcnQiOiAzOTAKICB9LAogIHsKICAgICJtb2RlIjogImNoYWxsZW5nZXMiLAogICAgImlkIjogIjYiLAogICAgImNvbG9yIjogInJnYigyMzgsIDIzMywgMjE3KSIsCiAgICAiYmFja2dyb3VuZCI6ICJyZ2IoNjgsIDg2LCA1OCkiLAogICAgImNvbnRyYXN0IjogNi41NTUzMTk2MTg5MjkxMzcsCiAgICAiZm9udCI6IDEwLAogICAgImxlZnQiOiAyODYuMDYyNSwKICAgICJyaWdodCI6IDMwMC40MjE4NzUsCiAgICAidGFic0xlZnQiOiAzNSwKICAgICJ0YWJzUmlnaHQiOiAzNTUsCiAgICAidmlld3BvcnQiOiAzOTAKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "narrow-phone",
+              "projectName": "narrow-phone",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2902,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:19.765Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "badge-contrast-and-geometry",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJtb2RlIjogImNhbXBhaWduIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTAzLjQ2ODc1LAogICAgInJpZ2h0IjogMTIzLjc4MTI1LAogICAgInRhYnNMZWZ0IjogMzEsCiAgICAidGFic1JpZ2h0IjogMjg5LAogICAgInZpZXdwb3J0IjogMzIwCiAgfSwKICB7CiAgICAibW9kZSI6ICJjYW1wYWlnbiIsCiAgICAiaWQiOiAiNiIsCiAgICAiY29sb3IiOiAicmdiKDIzOCwgMjMzLCAyMTcpIiwKICAgICJiYWNrZ3JvdW5kIjogInJnYig2OCwgODYsIDU4KSIsCiAgICAiY29udHJhc3QiOiA2LjU1NTMxOTYxODkyOTEzNywKICAgICJmb250IjogMTAsCiAgICAibGVmdCI6IDI2My44OTA2MjUsCiAgICAicmlnaHQiOiAyNzguMjUsCiAgICAidGFic0xlZnQiOiAzMSwKICAgICJ0YWJzUmlnaHQiOiAyODksCiAgICAidmlld3BvcnQiOiAzMjAKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTAzLjkyMTg3NSwKICAgICJyaWdodCI6IDEyNC4yMzQzNzUsCiAgICAidGFic0xlZnQiOiA0MCwKICAgICJ0YWJzUmlnaHQiOiAyODAsCiAgICAidmlld3BvcnQiOiAzMjAKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICI2IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMjUxLjA2MjUsCiAgICAicmlnaHQiOiAyNjUuNDIxODc1LAogICAgInRhYnNMZWZ0IjogNDAsCiAgICAidGFic1JpZ2h0IjogMjgwLAogICAgInZpZXdwb3J0IjogMzIwCiAgfSwKICB7CiAgICAibW9kZSI6ICJjaGFsbGVuZ2VzIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMTAzLjkyMTg3NSwKICAgICJyaWdodCI6IDEyNC4yMzQzNzUsCiAgICAidGFic0xlZnQiOiAzNSwKICAgICJ0YWJzUmlnaHQiOiAyODUsCiAgICAidmlld3BvcnQiOiAzMjAKICB9LAogIHsKICAgICJtb2RlIjogImNoYWxsZW5nZXMiLAogICAgImlkIjogIjYiLAogICAgImNvbG9yIjogInJnYigyMzgsIDIzMywgMjE3KSIsCiAgICAiYmFja2dyb3VuZCI6ICJyZ2IoNjgsIDg2LCA1OCkiLAogICAgImNvbnRyYXN0IjogNi41NTUzMTk2MTg5MjkxMzcsCiAgICAiZm9udCI6IDEwLAogICAgImxlZnQiOiAyNTEuMDYyNSwKICAgICJyaWdodCI6IDI2NS40MjE4NzUsCiAgICAidGFic0xlZnQiOiAzNSwKICAgICJ0YWJzUmlnaHQiOiAyODUsCiAgICAidmlld3BvcnQiOiAzMjAKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape",
+              "projectName": "landscape",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3340,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:34.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "badge-contrast-and-geometry",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJtb2RlIjogImNhbXBhaWduIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMzY1LjQ2ODc1LAogICAgInJpZ2h0IjogMzg1Ljc4MTI1LAogICAgInRhYnNMZWZ0IjogNDMsCiAgICAidGFic1JpZ2h0IjogODAxLAogICAgInZpZXdwb3J0IjogODQ0CiAgfSwKICB7CiAgICAibW9kZSI6ICJjYW1wYWlnbiIsCiAgICAiaWQiOiAiNiIsCiAgICAiY29sb3IiOiAicmdiKDIzOCwgMjMzLCAyMTcpIiwKICAgICJiYWNrZ3JvdW5kIjogInJnYig2OCwgODYsIDU4KSIsCiAgICAiY29udHJhc3QiOiA2LjU1NTMxOTYxODkyOTEzNywKICAgICJmb250IjogMTAsCiAgICAibGVmdCI6IDUyNy44OTA2MjUsCiAgICAicmlnaHQiOiA1NDIuMjUsCiAgICAidGFic0xlZnQiOiA0MywKICAgICJ0YWJzUmlnaHQiOiA4MDEsCiAgICAidmlld3BvcnQiOiA4NDQKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogMzQ4LjQ4NDM3NSwKICAgICJyaWdodCI6IDM2OC43OTY4NzUsCiAgICAidGFic0xlZnQiOiAxNzYsCiAgICAidGFic1JpZ2h0IjogNjY4LAogICAgInZpZXdwb3J0IjogODQ0CiAgfSwKICB7CiAgICAibW9kZSI6ICJza2lybWlzaCIsCiAgICAiaWQiOiAiNiIsCiAgICAiY29sb3IiOiAicmdiKDIzOCwgMjMzLCAyMTcpIiwKICAgICJiYWNrZ3JvdW5kIjogInJnYig2OCwgODYsIDU4KSIsCiAgICAiY29udHJhc3QiOiA2LjU1NTMxOTYxODkyOTEzNywKICAgICJmb250IjogMTAsCiAgICAibGVmdCI6IDU1MC45NTMxMjUsCiAgICAicmlnaHQiOiA1NjUuMzEyNSwKICAgICJ0YWJzTGVmdCI6IDE3NiwKICAgICJ0YWJzUmlnaHQiOiA2NjgsCiAgICAidmlld3BvcnQiOiA4NDQKICB9LAogIHsKICAgICJtb2RlIjogImNoYWxsZW5nZXMiLAogICAgImlkIjogImNhbXBhaWduQ291bnQiLAogICAgImNvbG9yIjogInJnYigyMzgsIDIzMywgMjE3KSIsCiAgICAiYmFja2dyb3VuZCI6ICJyZ2IoNjgsIDg2LCA1OCkiLAogICAgImNvbnRyYXN0IjogNi41NTUzMTk2MTg5MjkxMzcsCiAgICAiZm9udCI6IDEwLAogICAgImxlZnQiOiAzNDguNDg0Mzc1LAogICAgInJpZ2h0IjogMzY4Ljc5Njg3NSwKICAgICJ0YWJzTGVmdCI6IDE3NiwKICAgICJ0YWJzUmlnaHQiOiA2NjgsCiAgICAidmlld3BvcnQiOiA4NDQKICB9LAogIHsKICAgICJtb2RlIjogImNoYWxsZW5nZXMiLAogICAgImlkIjogIjYiLAogICAgImNvbG9yIjogInJnYigyMzgsIDIzMywgMjE3KSIsCiAgICAiYmFja2dyb3VuZCI6ICJyZ2IoNjgsIDg2LCA1OCkiLAogICAgImNvbnRyYXN0IjogNi41NTUzMTk2MTg5MjkxMzcsCiAgICAiZm9udCI6IDEwLAogICAgImxlZnQiOiA1NTAuOTUzMTI1LAogICAgInJpZ2h0IjogNTY1LjMxMjUsCiAgICAidGFic0xlZnQiOiAxNzYsCiAgICAidGFic1JpZ2h0IjogNjY4LAogICAgInZpZXdwb3J0IjogODQ0CiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2012,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T04:24:47.975Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "badge-contrast-and-geometry",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJtb2RlIjogImNhbXBhaWduIiwKICAgICJpZCI6ICJjYW1wYWlnbkNvdW50IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogNTMzLjQ2ODc1LAogICAgInJpZ2h0IjogNTUzLjc4MTI1LAogICAgInRhYnNMZWZ0IjogMjE1LAogICAgInRhYnNSaWdodCI6IDk2NSwKICAgICJ2aWV3cG9ydCI6IDExODAKICB9LAogIHsKICAgICJtb2RlIjogImNhbXBhaWduIiwKICAgICJpZCI6ICI2IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogNjk1Ljg5MDYyNSwKICAgICJyaWdodCI6IDcxMC4yNSwKICAgICJ0YWJzTGVmdCI6IDIxNSwKICAgICJ0YWJzUmlnaHQiOiA5NjUsCiAgICAidmlld3BvcnQiOiAxMTgwCiAgfSwKICB7CiAgICAibW9kZSI6ICJza2lybWlzaCIsCiAgICAiaWQiOiAiY2FtcGFpZ25Db3VudCIsCiAgICAiY29sb3IiOiAicmdiKDIzOCwgMjMzLCAyMTcpIiwKICAgICJiYWNrZ3JvdW5kIjogInJnYig2OCwgODYsIDU4KSIsCiAgICAiY29udHJhc3QiOiA2LjU1NTMxOTYxODkyOTEzNywKICAgICJmb250IjogMTAsCiAgICAibGVmdCI6IDUxNi40ODQzNzUsCiAgICAicmlnaHQiOiA1MzYuNzk2ODc1LAogICAgInRhYnNMZWZ0IjogMzQ0LAogICAgInRhYnNSaWdodCI6IDgzNiwKICAgICJ2aWV3cG9ydCI6IDExODAKICB9LAogIHsKICAgICJtb2RlIjogInNraXJtaXNoIiwKICAgICJpZCI6ICI2IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogNzE4Ljk1MzEyNSwKICAgICJyaWdodCI6IDczMy4zMTI1LAogICAgInRhYnNMZWZ0IjogMzQ0LAogICAgInRhYnNSaWdodCI6IDgzNiwKICAgICJ2aWV3cG9ydCI6IDExODAKICB9LAogIHsKICAgICJtb2RlIjogImNoYWxsZW5nZXMiLAogICAgImlkIjogImNhbXBhaWduQ291bnQiLAogICAgImNvbG9yIjogInJnYigyMzgsIDIzMywgMjE3KSIsCiAgICAiYmFja2dyb3VuZCI6ICJyZ2IoNjgsIDg2LCA1OCkiLAogICAgImNvbnRyYXN0IjogNi41NTUzMTk2MTg5MjkxMzcsCiAgICAiZm9udCI6IDEwLAogICAgImxlZnQiOiA1MTYuNDg0Mzc1LAogICAgInJpZ2h0IjogNTM2Ljc5Njg3NSwKICAgICJ0YWJzTGVmdCI6IDM0NCwKICAgICJ0YWJzUmlnaHQiOiA4MzYsCiAgICAidmlld3BvcnQiOiAxMTgwCiAgfSwKICB7CiAgICAibW9kZSI6ICJjaGFsbGVuZ2VzIiwKICAgICJpZCI6ICI2IiwKICAgICJjb2xvciI6ICJyZ2IoMjM4LCAyMzMsIDIxNykiLAogICAgImJhY2tncm91bmQiOiAicmdiKDY4LCA4NiwgNTgpIiwKICAgICJjb250cmFzdCI6IDYuNTU1MzE5NjE4OTI5MTM3LAogICAgImZvbnQiOiAxMCwKICAgICJsZWZ0IjogNzE4Ljk1MzEyNSwKICAgICJyaWdodCI6IDczMy4zMTI1LAogICAgInRhYnNMZWZ0IjogMzQ0LAogICAgInRhYnNSaWdodCI6IDgzNiwKICAgICJ2aWV3cG9ydCI6IDExODAKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "308b7dcd0dbd19d384ed-cecd1aa8de889ec62730",
+          "file": "polish-state.spec.mjs",
+          "line": 70,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-09T04:23:35.596Z",
+    "duration": 74512.479,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}
