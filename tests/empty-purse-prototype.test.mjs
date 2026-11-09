@@ -128,3 +128,15 @@ test('synthetic raw-serialization failure preserves other draft components with 
  const saved=JSON.parse(readFileSync(path.join(t,'bad-partial.json'))).draft;assert.equal(saved.tick,0);assert.equal(saved.scope,'synthetic-only');assert.match(saved.bad.captureError,/circular/i);assert.equal(existsSync(path.join(t,'bad-verified.json')),false);
  }finally{rmSync(t,{recursive:true,force:true});}
 });
+
+
+test('epoch2 changes only first-sanctum lane mechanically and preserves exact PR45 starting state',()=>{
+ assert.equal(DESIGN.epoch,2);assert.equal(PLAN.epoch,2);assert.equal(DESIGN.baselineCommit,'8cc9ac48f32fc6029a1efed028409bfbe621e11c');assert.equal(DESIGN.baselineTree,'adc90d1bf1d8c5a3aaa54ab24ae86140cf80594e');
+ const {epoch,baselineCommit,baselineTree,baselineInventorySha256,...mechanics}=DESIGN;
+ const normalized=structuredClone(SUPPORT_PLAN);assert.deepEqual(normalized[0],{method:'build',type:'sanctum',x:690,lane:0});normalized[0].lane=1;
+ assert.equal(sha256ForTest({design:mechanics,policies:POLICIES,supportPlan:normalized}),'efa0fde99a7e9ecc0de2e62aa6e5b2301ecb5f2c91998b36a0bbd496003b438e');
+ assert.equal(sha256ForTest(createPrototype().serialize()),'e7bcb0be8bc00d6db9012506b116dff6531e679e1ef2c216cf2aac58bdb2dd31');
+ assert.deepEqual(PLAN.knownSeeds,[9102,923,6401]);assert.deepEqual(PLAN.caseOrder,['retain-income','salvage-one-mine','idle']);assert.match(PLAN.seedDisclosure,/opened in epoch1/);
+ const g=createPrototype();for(const b of g.state.buildings)assert.ok(Math.hypot(b.x-690,b.y-g.map.lanes[0])>=108);
+ assert.equal(g.tick,0);assert.equal(g.state.time,0);
+});

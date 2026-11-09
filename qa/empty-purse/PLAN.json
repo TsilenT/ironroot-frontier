@@ -1,17 +1,41 @@
 {
   "format": "empty-purse-pending-plan-v1",
   "status": "UNEXECUTED: independent source review and coordinator approval required before any tick",
-  "epoch": 1,
-  "knownSeeds": [9102, 923, 6401],
-  "caseOrder": ["retain-income", "salvage-one-mine", "idle"],
+  "epoch": 2,
+  "knownSeeds": [
+    9102,
+    923,
+    6401
+  ],
+  "caseOrder": [
+    "retain-income",
+    "salvage-one-mine",
+    "idle"
+  ],
   "loopOrder": "seed-major, policy-minor, exactly as listed",
   "cases": 9,
   "heldOutSeeds": [],
-  "seedDisclosure": "All seeds are disclosed known/scripted inputs. No untouched-heldout claim.",
+  "seedDisclosure": "All seeds were opened in epoch1 run001. This is an outcome-informed revision on disclosed known inputs, with no untouched-heldout claim.",
   "fixedStep": 0.05,
   "timeLimit": 600,
   "playerAttemptCadence": 5,
-  "tracesAtSeconds": [0, 5, 10, 15, 20, 30, 45, 60, 90, 120, 180, 240, 300, 450, 600],
+  "tracesAtSeconds": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    30,
+    45,
+    60,
+    90,
+    120,
+    180,
+    240,
+    300,
+    450,
+    600
+  ],
   "observations": [
     "Ordinary two-side prices, full-precision income, refunds, kill gold, spending and conservation via existing Salt instrumentation.",
     "First paid support construction, support-unit births, and first effective damage by those support units.",
