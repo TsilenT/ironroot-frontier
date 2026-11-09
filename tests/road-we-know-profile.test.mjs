@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeRoad = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => includeRoad || m.id !== id).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'through-the-reed-beds' && (includeRoad || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeRoad = true) {
@@ -57,19 +57,19 @@ function assertBlocked(profile, raw) {
   assert.ok(raw.reads.every(key => key === MARKER), 'reject before reading any earned domain');
 }
 
-test('protocol19 pins exact released protocol18 and changes only admission and descriptive copy', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 19);
+test('historical protocol19 pins exact released protocol18 and changes only admission and descriptive copy', () => {
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 20);
   assert.equal(protocolEighteen.CURRENT_PROFILE_PROTOCOL_VERSION, 18);
   const source = readFileSync(new URL('./fixtures/profile-session-v0270.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), '0371903b4df5d8227089c4e3e38fa155152cef485f201088734767cb2b12a4bc');
   const expected = source.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 18', 'CURRENT_PROFILE_PROTOCOL_VERSION = 19')
     .replace('paid fog variants, checkpoints and explicit result identities from older writers.', 'paid fog variants, checkpoints and explicit result identities from older writers; protocol 19 fences The Road We Know campaign progress, twin-span checkpoints and explicit result identities from older writers.')
     .replace('16, 17, 18].includes', '16, 17, 18, 19].includes').replace('16, 17 or 18.', '16, 17, 18 or 19.');
-  assert.equal(readFileSync(new URL('../dist/profile-session.js', import.meta.url), 'utf8'), expected);
+  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0280.js', import.meta.url), 'utf8'), expected);
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, {campaign:'ironroot.campaign.v1', trials:'ironroot.trials.v1', settings:'ironroot.settings.v1', history:'ironroot.history.v1', battle:'ironroot.battle.v1'});
-  for (let version = 1; version <= 19; version++) { const raw = backend(); assert.ok(createProfileSession(() => raw, {requiredProtocolVersion:version}).status().canWrite); }
-  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:20}), TypeError);
+  for (let version = 1; version <= CURRENT_PROFILE_PROTOCOL_VERSION; version++) { const raw = backend(); assert.ok(createProfileSession(() => raw, {requiredProtocolVersion:version}).status().canWrite); }
+  assert.throws(() => createProfileSession(() => backend(), {requiredProtocolVersion:CURRENT_PROFILE_PROTOCOL_VERSION + 1}), TypeError);
   const raw = backend(), legacy = createProfileSession(() => raw, {newEpoch:() => 'legacy-default'});
   assert.deepEqual(raw.writes, []); assert.ok(legacy.beginImport().ok); assert.equal(JSON.parse(raw.data.get(MARKER)).version, 1);
 });
@@ -109,7 +109,7 @@ test('actual open and reopened v0.27.0 writers cannot discard The Road We Know s
   assert.deepEqual(parseBackup(createBackup(writer.storage, {createdAt:date})).data, data);
 });
 
-test('unfinished, future20 and failed or unverifiable upgrades retain all five domains', () => {
+test('unfinished, future21 and failed or unverifiable upgrades retain all five domains', () => {
   for (const version of [18, CURRENT_PROFILE_PROTOCOL_VERSION, CURRENT_PROFILE_PROTOCOL_VERSION + 1]) for (const phase of ['ready', 'restoring', 'failed']) {
     if (phase === 'ready' && version <= CURRENT_PROFILE_PROTOCOL_VERSION) continue;
     const raw = backend([[MARKER, marker(version, phase)], ...entries(earned())]), before = [...raw.data], profile = current(raw);
@@ -137,8 +137,8 @@ test('old earned progress stays exact, unlocks The Road We Know and records expl
   const old = earned(false), raw = backend([[MARKER, marker(18)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 26); assert.equal(overview.maxStars, 78); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
-  assert.equal(overview.chapters.at(-1).total, 2);
+  assert.equal(overview.total, 27); assert.equal(overview.maxStars, 81); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.chapters.at(-1).total, 3);
   assert.equal(getCampaignLaunchMission('false-quiet', old.campaign).reward, 'Unlocks The Road We Know');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);
   assert.equal(old.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(old.campaign), old.campaign);
@@ -151,7 +151,7 @@ test('old earned progress stays exact, unlocks The Road We Know and records expl
   assert.throws(() => validateHistoryRow({...identityless, campaignId:id}), /unknown campaign/);
   for (const [mission, value] of Object.entries(old.campaign.missions)) assert.deepEqual(recorded.missions[mission], value);
   assert.deepEqual(recorded.missions[id], {completed:true, stars:3, bestTime:0});
-  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, true); assert.equal(final.nextMissionId, null);
+  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, false); assert.equal(final.nextMissionId, 'through-the-reed-beds');
   assert.ok(writeCampaignProgress(createStorage(() => profile.storage), recorded));
   assert.equal(JSON.parse(raw.data.get(K.campaign)).version, 1);
   const data = earned(); assert.equal(data.battle.version, 3); assert.equal(data.battle.game.version, 3);

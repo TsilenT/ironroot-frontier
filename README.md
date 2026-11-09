@@ -1,4 +1,10 @@
-## v0.28.0 reconstructed candidate: The Road We Know
+## v0.29.0 reconstructed WIP: Through the Reed Beds
+
+Chapter 7 closes with a fully visible Classic mission: destroy any two of three original named positions, or the enemy citadel, within 10:00 while yours survives. The normal adaptive enemy pays ordinary prices. Strong outer-pair and core-bypass wins remain legal, replacements do not restore original targets, and 1 HP on your own citadel is enough.
+
+Current catalog: 27 main missions / 81 optional stars. Profile20 fences older writers without migrating earned domain bytes. This completes Chapter 7 only, leading toward the planned coast; Chapters8–10 are not admitted and the ten-chapter campaign is not finished. This WIP is reconstructed from verified merged Road6b6cf964, not recovered lost bytes. Fresh validation is still in progress; see [the rebuild record](docs/REED_BEDS_REBUILD.md) and [persistence boundary](docs/REED_BEDS_PERSISTENCE.md). No release, publication or human-difficulty claim is made.
+
+## Historical v0.28.0 reconstructed candidate: The Road We Know
 
 The second Chapter 7 mission is a clear-view Twin Span assault after False Quiet. Choose where to commit against visible defenses and an ordinary paid adaptive enemy. Destroy the enemy citadel within 10:00 while yours survives; the normal 5:00 escalation is disclosed. No fog, mandatory building targets, reserve waves, free reinforcements or forced citadel drain are added. Strong supported wins remain valid.
 
