@@ -1,4 +1,12 @@
-## v0.27.0 candidate: False Quiet
+## v0.28.0 reconstructed candidate: The Road We Know
+
+The second Chapter 7 mission is a clear-view Twin Span assault after False Quiet. Choose where to commit against visible defenses and an ordinary paid adaptive enemy. Destroy the enemy citadel within 10:00 while yours survives; the normal 5:00 escalation is disclosed. No fog, mandatory building targets, reserve waves, free reinforcements or forced citadel drain are added. Strong supported wins remain valid.
+
+Current catalog: 26 main-path missions / 78 optional stars. Profile protocol 19 fences old tabs without migrating earned domain bytes. This completes only the currently available route: Chapter 7 and the campaign remain unfinished, with Through the Reed Beds still planned. No later mission or Chapter 10 release is included.
+
+This candidate is reconstructed from verified private main `ddb47b2dfcb87cfe90e6c0e35e16cab6c058736f`, using recoverable authored source. It is not recovery of the lost workspace. Fresh checks and limitations are recorded in [the rebuild report](docs/ROAD_WE_KNOW_REBUILD.md) and [persistence boundary](docs/ROAD_WE_KNOW_PERSISTENCE.md). [Bounded native desktop review](docs/ROAD_REBUILT_UI_REVIEW.md) passed the exercised selection, purchase, restart, save/resume and checkpoint-continuation flows; its explicit limits remain. Publication remains a separate gate. Historical notes below describe earlier releases and validation, not evidence for this rebuilt candidate.
+
+## Historical v0.27.0 candidate: False Quiet
 
 Chapter 7, The Unlit Roads, begins with False Quiet. Two authored starting garrisons vary the contacts behind one charted central fort. Resume, Restart and result Replay preserve the selected layout; a new campaign attempt selects again. The opponent adapts using ordinary paid purchases and the same fog boundary. Blind supported pushes remain valid. Current campaign: 25 main-path missions / 75 optional stars. Existing progress remains earned; profile protocol 18 fences older tabs.
 

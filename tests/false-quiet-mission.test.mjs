@@ -15,7 +15,7 @@ const clock=(g,time)=>{g.state.time=time;g.tick=Math.round(time/.05);};
 
 test('False Quiet adds exactly one Chapter 7 mission and two immutable layout identities',()=>{
  const p=progress(),old=structuredClone(p),m=c.getCampaignMission(ID),o=c.getProgressionCampaignOverview(p);
- assert.equal(o.total,25);assert.equal(o.maxStars,75);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.at(-1).number,7);assert.deepEqual(o.chapters.at(-1).total,1);
+ assert.equal(o.total,26);assert.equal(o.maxStars,78);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.at(-1).number,7);assert.deepEqual(o.chapters.at(-1).total,2);
  assert.deepEqual(m.prerequisites,['a-river-between-us']);assert.equal(c.getCampaignLaunchMission('a-river-between-us',p).reward,'Unlocks False Quiet');assert.ok(Object.isFrozen(m));assert.deepEqual(p,old);
  for(const [i,variant]of ['a','b'].entries()){const g=fresh(variant);assert.equal(g.ruleset.id,FALSE_QUIET_RULESET_IDS[i]);assert.equal(g.ai,true);assert.equal(g.difficulty,'normal');assert.equal(g.ruleset.endgame.forcedDecay,false);assert.equal(c.getCampaignRevisionForRuleset(ID,g.ruleset.id),1);assert.equal(c.canUseCampaignRuleset(p,ID,1,g.ruleset.id),true);assert.equal(c.canUseCampaignRuleset(c.createCampaignProgress(),ID,1,g.ruleset.id),false);}
  assert.throws(()=>fresh('c'));assert.throws(()=>fresh('__proto__'));assert.throws(()=>c.createCampaignMission('lanterns-on-the-water',{variant:'b'}));
@@ -40,5 +40,5 @@ test('one original fort or core wins at one HP; replacements do not revoke victo
 test('real paid five-second routes remain deterministic across admitted saved checkpoints for both layouts',()=>{
  const p=progress();for(const variant of ['a','b']){let g=fresh(variant),policy=createPolicy('direct-rush-5s'),nextSave=10,saves=0,enemyPurchases=0;const initialEnemy=g.state.stats.built[1];let outcome=evalMission(g);
  while(!outcome.completed&&!outcome.failed){policy.step(g);outcome=advanceObjectiveBattle(g,.05,evalMission,600);if(g.state.time>=nextSave&&!outcome.completed&&!outcome.failed){const original=g.serialize();g=decodeBattle(encodeBattle(g,c.campaignScenarioForGame(g,ID),{campaignProgress:p}),{campaignProgress:p}).game;assert.deepEqual(g.serialize(),original);nextSave+=10;saves++;}}
- assert.equal(outcome.completed,true);assert.ok(g.state.stats.built[1]>initialEnemy);assert.ok(saves>=4);const recorded=c.recordCampaignResult(p,ID,g);assert.equal(recorded.missions[ID].completed,true);for(const [id,row]of Object.entries(p.missions))assert.deepEqual(recorded.missions[id],row);assert.equal(c.getProgressionCampaignOverview(recorded).completed,true);assert.throws(()=>encodeBattle(g,c.campaignScenarioForGame(g,ID),{campaignProgress:p}));}
+ assert.equal(outcome.completed,true);assert.ok(g.state.stats.built[1]>initialEnemy);assert.ok(saves>=4);const recorded=c.recordCampaignResult(p,ID,g);assert.equal(recorded.missions[ID].completed,true);for(const [id,row]of Object.entries(p.missions))assert.deepEqual(recorded.missions[id],row);assert.equal(c.getProgressionCampaignOverview(recorded).completed,false);assert.throws(()=>encodeBattle(g,c.campaignScenarioForGame(g,ID),{campaignProgress:p}));}
 });

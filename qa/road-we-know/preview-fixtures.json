@@ -1,0 +1,427 @@
+{
+  "scope": "Developer-only synthetic prerequisites plus ordinary paid-engine checkpoints. Not browser-earned wins or production-profile persistence evidence.",
+  "mission": "the-road-we-know",
+  "syntheticPrerequisiteRecords": 22,
+  "storage": "sessionStorage only, per-fixture ironroot.road-we-know.native namespace",
+  "fixtureNames": [
+    "briefing",
+    "fresh-main",
+    "paid-opening-main",
+    "terminal-near-main"
+  ],
+  "receipts": {
+    "briefing": {
+      "time": 0,
+      "note": "Synthetic prior progress unlocks The Road We Know. No saved battle; open the mission briefing."
+    },
+    "fresh-main": {
+      "variant": "main",
+      "rulesetId": "frontier-campaign-road-we-know",
+      "route": "screened-siege",
+      "seed": 7301,
+      "time": 0,
+      "targets": [],
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        1000,
+        120
+      ],
+      "buildings": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "x": 1110,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 970,
+          "lane": 0,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 5,
+          "type": "watchtower",
+          "x": 830,
+          "lane": 1,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 6,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "ledger": {
+        "spending": [
+          0,
+          0
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          0,
+          0
+        ],
+        "purchases": [
+          0,
+          0
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "406a71eda06ff6d4d1723d070a6de828955771c9d3c50313eacc003f96c67def",
+      "note": "Exact authored zero-time saved battle. Resume enters this layout. Synthetic prior records are not browser-earned."
+    },
+    "paid-opening-main": {
+      "variant": "main",
+      "rulesetId": "frontier-campaign-road-we-know",
+      "route": "screened-siege",
+      "seed": 7301,
+      "time": 25,
+      "targets": [],
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        295.5,
+        104.5
+      ],
+      "buildings": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "x": 1110,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 970,
+          "lane": 0,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 5,
+          "type": "watchtower",
+          "x": 830,
+          "lane": 1,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 6,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 13,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 21,
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "level": 1,
+          "hp": 650
+        },
+        {
+          "id": 25,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 1,
+          "level": 1,
+          "hp": 679
+        },
+        {
+          "id": 33,
+          "type": "archery",
+          "x": 1110,
+          "lane": 1,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 41,
+          "type": "archery",
+          "x": 970,
+          "lane": 1,
+          "level": 1,
+          "hp": 470
+        }
+      ],
+      "ledger": {
+        "spending": [
+          900,
+          215
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          187.5,
+          187.5
+        ],
+        "purchases": [
+          5,
+          2
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "2d1727ca222f537bd28f91a1b28702c66577a58f7b4589757e492366859db40c",
+      "note": "Natural 25-second paid screened-siege checkpoint; one action per five seconds including spells."
+    },
+    "terminal-near-main": {
+      "variant": "main",
+      "rulesetId": "frontier-campaign-road-we-know",
+      "route": "screened-siege",
+      "seed": 7301,
+      "time": 137.45,
+      "targets": [],
+      "cores": [
+        6000,
+        657
+      ],
+      "gold": [
+        45.375,
+        73.375
+      ],
+      "buildings": [
+        {
+          "id": 3,
+          "type": "barracks",
+          "x": 1110,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 4,
+          "type": "archery",
+          "x": 970,
+          "lane": 0,
+          "level": 2,
+          "hp": 658
+        },
+        {
+          "id": 5,
+          "type": "watchtower",
+          "x": 830,
+          "lane": 1,
+          "level": 1,
+          "hp": 1000
+        },
+        {
+          "id": 6,
+          "type": "mint",
+          "x": 410,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 13,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "level": 1,
+          "hp": 700
+        },
+        {
+          "id": 21,
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "level": 2,
+          "hp": 910
+        },
+        {
+          "id": 25,
+          "type": "barracks",
+          "x": 1250,
+          "lane": 1,
+          "level": 1,
+          "hp": 679
+        },
+        {
+          "id": 33,
+          "type": "archery",
+          "x": 1110,
+          "lane": 1,
+          "level": 2,
+          "hp": 658
+        },
+        {
+          "id": 41,
+          "type": "archery",
+          "x": 970,
+          "lane": 1,
+          "level": 1,
+          "hp": 470
+        },
+        {
+          "id": 48,
+          "type": "foundry",
+          "x": 690,
+          "lane": 0,
+          "level": 2,
+          "hp": 910
+        },
+        {
+          "id": 82,
+          "type": "sanctum",
+          "x": 550,
+          "lane": 0,
+          "level": 1,
+          "hp": 520
+        },
+        {
+          "id": 114,
+          "type": "mint",
+          "x": 270,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 142,
+          "type": "mint",
+          "x": 270,
+          "lane": 1,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "ledger": {
+        "spending": [
+          2402,
+          1125
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "income": [
+          1315.375,
+          974.375
+        ],
+        "purchases": [
+          13,
+          9
+        ],
+        "maxError": [
+          0,
+          0
+        ]
+      },
+      "battleSha256": "6adcc64e844caf3b75b78482211036c40905008711d89e4eee142b2b7eede3cd",
+      "note": "Enemy citadel naturally below 700 HP, still alive. Continue ordinary simulation; no victory state edits."
+    }
+  },
+  "completionTime": {
+    "main": 138
+  },
+  "sourceRuntimeSha256": "95ab414c37edb00dc0294c9ec20a3c6ada609da71fd669be0836a81ad67def0a",
+  "sourceFileHashes": {
+    "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "app.js": "9dadb68892756d5159cbfd6127067c49c0a6af77a180156549823c69bc07d941",
+    "audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "battle-codec.js": "186df63d9b30850a1f81ca214b23ce61a476a2b12c02d9d50a42b4cff9c6dc19",
+    "battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "campaign-presentation.js": "7cef1d7e1ac89190a138e825f9fe6c22a582438b337c7e424c353ad973925aee",
+    "campaign.js": "806767a01859990f0549b21deb4a83b9aade8690f903b74a5f44220d83d1f66a",
+    "challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "index.html": "acb73a9fe8c5ab2176a13d718ffba042cb68e4b0ff167962bccf7e498830ceab",
+    "input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "profile-session.js": "6ac7fb1530c568ca462e558c3c6ae806f1cfd62f01285a83c69e1d13609201fe",
+    "protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "rulesets.js": "d7bcc76853f1e03d2bd7d92575b1559df4180f597045f9db789a6e89b4096230",
+    "scouting.js": "5d35c941681c5fdc38893fc3ffaf7c59c9191c37af210a25bd9c1880847dd630",
+    "service-worker.js": "a0990a61487c34c97ae24defe23349dda98bc9c0d35f57b1212f8e1c1f75bded",
+    "styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  },
+  "previewPrepared": true,
+  "preview": {
+    "directory": "/workspace/scratch/d86b57250ea4/ironroot-road-preview",
+    "runtimeFiles": 58,
+    "runtimeSha256": "9689d42084a13b5d7f6ccc9acbc29a1b246c1e1ff6d4c774ea558d0ddd5f0903",
+    "changedFiles": [
+      "app.js",
+      "index.html"
+    ],
+    "differences": "Namespaced session storage and fixture navigation/disclosure only; service-worker installation disabled. Every other runtime file is byte-identical."
+  }
+}
