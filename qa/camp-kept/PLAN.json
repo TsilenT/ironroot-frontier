@@ -1,0 +1,28 @@
+{
+ "format":"camp-kept-preopen-plan-v1",
+ "epoch":1,
+ "status":"unopened-awaiting-independent-review-and-coordinator-authorization",
+ "knownSeeds":[9101,9102],
+ "healthControls":["wounded","full"],
+ "policies":["counterattack","regen-income","arrows-income","greedy-recovery","idle"],
+ "cases":20,
+ "caseOrder":"seed, then health control, then policy, in the arrays' order",
+ "claimsToTest":[
+  "The wounded citadel creates understandable recovery pressure alongside a supported immediate counterattack, using normal paid construction and citadel choices.",
+  "Regeneration is optional and slow. Whether its actual healing meaningfully offsets delayed offense is unknown; nominal healing alone is not evidence of a useful choice.",
+  "Full-health controls test whether the wound changes practical survival margin, losses, completion, or tolerance of the greedy opening. Fixed policies do not establish what a human would choose."
+ ],
+ "record":["every successful paid transaction and failed player attempt","first actual damage/contact and first core damage","initial building losses and their timing","five-second core HP, healing, gold, income and force-count trace","minimum core HP, actual healing, spending, outcome, elapsed time","ordinary economy ledger and final save roundtrip"],
+ "interpretation":[
+  "Inspect all twenty cases, including losses. No seed search, automatic retries, heldout claim or best-case-only report.",
+  "Check ordinary prices, income, kill gold and no extra funding. The factory authors inherited assets only before tick zero.",
+  "Compare the same policy and seed across health controls. These are total-effect controls: ordinary enemy AI may react differently once battles diverge.",
+  "Compare recovery and counterattack purchase timing, damage, losses, healing and results. They have different commitments, so this is not an isolated causal estimate of regeneration.",
+  "The equal-price arrows-income control tests an alternative to regeneration within the same scripted build order. It is not a mandatory-win or no-regen-loss gate.",
+  "A no-regen win is welcome. Idle winning is a warning to inspect pressure, not an automatic rejection. A scripted loss alone does not prove human difficulty.",
+  "If the wound only changes the displayed final HP, or recovery heals a token amount without affecting risk or pacing, do not call the recovery choice established. Revise the design or narrow the claim before admission.",
+  "No arbitrary HP, healing or win-rate threshold. The reviewer should explain concrete risk, timing or loss differences and limitations."
+ ],
+ "stop":"Stop on source drift, ledger/price error, invalid restore, or coordinator request. Keep partial results outside source and do not retry without review.",
+ "nextGates":["independent preopen review of exact source and plan","coordinator permission before any gameplay case","bounded twenty-case prototype inspection","independent interpretation and understandable interactive pacing review","wait for canonical Chapter8 fifth mission before unlock or production admission","separate production identity, persistence, catalog, release and aggregate checks"]
+}
