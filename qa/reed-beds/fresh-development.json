@@ -1,0 +1,805 @@
+{
+  "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence.",
+  "generatedAt": "2026-11-09T04:14:54.944Z",
+  "startedAt": "2026-11-09T04:14:40.923Z",
+  "baseline": {
+    "commit": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+    "tree": "50c098a436ddee2e36d629a2e7d36e6887ae6b25"
+  },
+  "policySha256": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+  "harnessHashes": {
+    "qa/reed-beds/paid-policies.mjs": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+    "qa/reed-beds/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/reed-beds/scenario.mjs": "27d0f76b03b72fb54ccddcfcb22936356e45355e317d3b31a48582b2308e76bd",
+    "qa/reed-beds/simulate.mjs": "7a5fa68874372f08881dc7eb97fc9216cf1ac5cbe5eb5192e7757874f71cf1f6"
+  },
+  "combatHashes": {
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "59920c69e37805167c72b98a2997fd054825734393f147bfe3b18cabd86e5b67",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+  },
+  "formationSha256": "d98e3640c1671225edb4fbb704fd56d1d7a1495d125e810fa2d448a5f0aba994",
+  "plan": {
+    "developmentSeeds": [
+      7307,
+      719,
+      51017,
+      424242
+    ],
+    "heldOutSeeds": [
+      982451,
+      620231
+    ],
+    "policies": [
+      "outer-pair",
+      "north-middle",
+      "middle-south",
+      "screened-siege",
+      "supported-rootwarden",
+      "core-rush",
+      "air-core",
+      "broad-novice",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence."
+  },
+  "heldOut": false,
+  "totalRuns": 36,
+  "raw": {
+    "sha256": "bee79a334f0c7aad4dda1eea1ff1bfc9c273f5390cabb807ee4e3b55396faa86",
+    "bytes": 419883,
+    "filename": "ironroot-reed-fresh-development.ndjson"
+  },
+  "results": {
+    "outer-pair": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 65.69999999999841,
+          "hp": [
+            6000,
+            5832
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1550,
+            585
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 64.34999999999849,
+          "hp": [
+            6000,
+            5752
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1550,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 65.69999999999841,
+          "hp": [
+            6000,
+            5613
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1550,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 69.89999999999817,
+          "hp": [
+            6000,
+            5588
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1780,
+            510
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "north-middle": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "watchtower+foundry",
+          "duration": 81.49999999999751,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "watchtower",
+            "foundry"
+          ],
+          "spending": [
+            1780,
+            725
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "watchtower+foundry",
+          "duration": 87.44999999999717,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "foundry",
+            "watchtower"
+          ],
+          "spending": [
+            2010,
+            785
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "watchtower+foundry",
+          "duration": 71.1499999999981,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "foundry",
+            "watchtower"
+          ],
+          "spending": [
+            1780,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "watchtower+foundry",
+          "duration": 78.2999999999977,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "foundry",
+            "watchtower"
+          ],
+          "spending": [
+            1780,
+            660
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "middle-south": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "foundry+sanctum",
+          "duration": 79.64999999999762,
+          "hp": [
+            6000,
+            5151
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "foundry"
+          ],
+          "spending": [
+            1780,
+            660
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "foundry+sanctum",
+          "duration": 76.84999999999778,
+          "hp": [
+            6000,
+            5486
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "foundry"
+          ],
+          "spending": [
+            1780,
+            660
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "foundry+sanctum",
+          "duration": 75.54999999999785,
+          "hp": [
+            6000,
+            5178
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "foundry"
+          ],
+          "spending": [
+            1780,
+            660
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "foundry+sanctum",
+          "duration": 99.79999999999647,
+          "hp": [
+            6000,
+            165
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "foundry"
+          ],
+          "spending": [
+            2199,
+            800
+          ],
+          "enemyPurchases": 6,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "screened-siege": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 67.19999999999833,
+          "hp": [
+            6000,
+            5815
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1590,
+            585
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 67.29999999999832,
+          "hp": [
+            6000,
+            5517
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1590,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 62.74999999999857,
+          "hp": [
+            6000,
+            5811
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1590,
+            495
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 61.74999999999863,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1590,
+            510
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "supported-rootwarden": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 66.74999999999835,
+          "hp": [
+            6000,
+            5841
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1650,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 65.34999999999843,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1650,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 63.59999999999852,
+          "hp": [
+            6000,
+            6000
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1650,
+            570
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 69.54999999999819,
+          "hp": [
+            6000,
+            5963
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            1650,
+            495
+          ],
+          "enemyPurchases": 4,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "core-rush": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 138.64999999999728,
+          "hp": [
+            1986,
+            0
+          ],
+          "targetsDestroyed": [
+            "sanctum"
+          ],
+          "spending": [
+            2525,
+            1115
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 151.30000000000015,
+          "hp": [
+            798,
+            0
+          ],
+          "targetsDestroyed": [
+            "sanctum"
+          ],
+          "spending": [
+            2665,
+            1255
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 140.4499999999977,
+          "hp": [
+            0,
+            4927
+          ],
+          "targetsDestroyed": [
+            "sanctum"
+          ],
+          "spending": [
+            2525,
+            1255
+          ],
+          "enemyPurchases": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "enemy-citadel",
+          "duration": 125.44999999999501,
+          "hp": [
+            2649,
+            0
+          ],
+          "targetsDestroyed": [
+            "sanctum"
+          ],
+          "spending": [
+            2385,
+            1145
+          ],
+          "enemyPurchases": 9,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "air-core": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 138.04999999999714,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2555,
+            1100
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 134.04999999999623,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2427,
+            1100
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 140.4499999999977,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2602,
+            1265
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 140.29999999999765,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            2602,
+            1330
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "broad-novice": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 114.19999999999565,
+          "hp": [
+            6000,
+            746.8000000000002
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            2385,
+            990
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 100.19999999999645,
+          "hp": [
+            6000,
+            3965
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            2165,
+            865
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 103.14999999999628,
+          "hp": [
+            6000,
+            389
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            2165,
+            940
+          ],
+          "enemyPurchases": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "won",
+          "route": "watchtower+sanctum",
+          "duration": 115.29999999999559,
+          "hp": [
+            6000,
+            426.72000000000025
+          ],
+          "targetsDestroyed": [
+            "sanctum",
+            "watchtower"
+          ],
+          "spending": [
+            2438,
+            1005
+          ],
+          "enemyPurchases": 8,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 7307,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 90.99999999999697,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            770
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 719,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 91.49999999999694,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            770
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 51017,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 91.09999999999697,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            785
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 424242,
+          "outcome": "lost",
+          "route": "player-citadel",
+          "duration": 90.94999999999698,
+          "hp": [
+            0,
+            6000
+          ],
+          "targetsDestroyed": [],
+          "spending": [
+            0,
+            785
+          ],
+          "enemyPurchases": 5,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}

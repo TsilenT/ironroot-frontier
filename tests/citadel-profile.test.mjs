@@ -34,7 +34,7 @@ function purchased(rulesetId,kind){
 }
 
 test('current protocol upgrades only marker bytes, fences exact live v0.19 writers and preserves earned domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 19);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 20);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
  assert.equal(createHash('sha256').update(protocolNineSource).digest('hex'),protocolNineHash);
  const value=earned();
  const domains=entries(value),r=raw([[MARKER,marker(9)],...domains]),stale=old(r);assert.ok(stale.status().canWrite);
