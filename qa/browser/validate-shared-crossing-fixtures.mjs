@@ -9,9 +9,9 @@ import { advanceObjectiveBattle } from '../../dist/objectives.js';
 import { CURRENT_PROFILE_PROTOCOL_VERSION } from '../../dist/profile-session.js';
 import { ID, MISSION, priorProfile, sharedCrossingFixtures } from './shared-crossing-fixtures.mjs';
 
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 23);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 24);
 const overview = getProgressionCampaignOverview(createCampaignProgress());
-assert.equal(overview.total, 30); assert.equal(overview.maxStars, 90); assert.equal(overview.chapters.length, 9);
+assert.equal(overview.total, 31); assert.equal(overview.maxStars, 93); assert.equal(overview.chapters.length, 9);
 assert.deepEqual(overview.missions.filter(m=>m.chapterId==='river-compact').map(m=>m.id), [ID,'one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us']);
 assert.equal(overview.chapters.find(c=>c.id==='river-compact').total, 5);
 const fixtures = sharedCrossingFixtures();
