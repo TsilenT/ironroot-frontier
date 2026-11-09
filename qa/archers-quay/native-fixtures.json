@@ -1,0 +1,1788 @@
+{
+  "scope": "Synthetic prior records plus ordinary paid-engine checkpoints. Not browser-earned wins or production persistence evidence.",
+  "mission": "the-archers-quay",
+  "storage": "sessionStorage only; namespaced by ironroot.archers-quay.native and fixture",
+  "syntheticPrerequisiteRecords": 29,
+  "fixtureNames": [
+    "locked",
+    "briefing",
+    "paid-opening-main",
+    "terminal-near-main",
+    "terminal-near-air",
+    "fresh-main",
+    "legacy-reed"
+  ],
+  "receipts": {
+    "locked": {
+      "time": 0,
+      "note": "Fresh empty profile; Archer is locked."
+    },
+    "briefing": {
+      "time": 0,
+      "note": "Synthetic prerequisite records, not browser-earned."
+    },
+    "paid-opening-main": {
+      "policy": "northground",
+      "seed": 8101,
+      "time": 25.00000000000022,
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        304.5,
+        75.5
+      ],
+      "ledger": {
+        "startingGold": [
+          1100,
+          100
+        ],
+        "startingCachedIncome": [
+          7.5,
+          7.5
+        ],
+        "startingActualIncome": [
+          7.5,
+          7.5
+        ],
+        "grossIncome": [
+          187.5,
+          187.5
+        ],
+        "killGold": [
+          12,
+          18
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "spending": [
+          995,
+          230
+        ],
+        "maxError": [
+          0,
+          0
+        ],
+        "ticks": 500,
+        "transactions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              260,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 18,
+            "x": 1250,
+            "lane": 0,
+            "before": {
+              "gold": 1100,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 960,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 18,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 260,
+                "lane": 0,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 4.99999999999999,
+            "tick": 100,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              640,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 33,
+            "x": 1250,
+            "lane": 2,
+            "before": {
+              "gold": 997.5,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 857.5,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 33,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 640,
+                "lane": 2,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 10.000000000000007,
+            "tick": 200,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              260,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 36,
+            "x": 1110,
+            "lane": 0,
+            "before": {
+              "gold": 895,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 625,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 36,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 260,
+                "lane": 0,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 15.000000000000078,
+            "tick": 300,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              640,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 49,
+            "x": 1110,
+            "lane": 2,
+            "before": {
+              "gold": 666.5,
+              "kills": 2,
+              "building": null
+            },
+            "after": {
+              "gold": 396.5,
+              "kills": 2
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 49,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 640,
+                "lane": 2,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 20.00000000000015,
+            "tick": 400,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "archery",
+              970,
+              260,
+              0
+            ],
+            "cost": 175,
+            "type": "archery",
+            "id": 62,
+            "x": 970,
+            "lane": 0,
+            "before": {
+              "gold": 440,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 265,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 62,
+                "type": "archery",
+                "side": 0,
+                "x": 970,
+                "y": 260,
+                "lane": 0,
+                "hp": 470,
+                "maxHp": 470,
+                "level": 1,
+                "progress": 0.88,
+                "cooldown": 0,
+                "invested": 175
+              }
+            }
+          },
+          {
+            "time": 22.05000000000018,
+            "tick": 441,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "sanctum",
+              1950,
+              260,
+              1
+            ],
+            "cost": 230,
+            "type": "sanctum",
+            "id": 68,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 275.375,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 45.375,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 68,
+                "type": "sanctum",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 520,
+                "maxHp": 520,
+                "level": 1,
+                "progress": 0.9142857142857143,
+                "cooldown": 0,
+                "invested": 230
+              }
+            }
+          }
+        ]
+      },
+      "battleSha256": "23abd9f6ee18fe6e002642a7e58643513f176eb59bc6dc7f469915f0ef2d7c95",
+      "note": "Natural active ordinary-paid checkpoint; continue simulation without terminal edits."
+    },
+    "terminal-near-main": {
+      "policy": "northground",
+      "seed": 8101,
+      "time": 97.79999999999659,
+      "cores": [
+        4592.560000000001,
+        990
+      ],
+      "gold": [
+        189.25,
+        112.5
+      ],
+      "ledger": {
+        "startingGold": [
+          1100,
+          100
+        ],
+        "startingCachedIncome": [
+          7.5,
+          7.5
+        ],
+        "startingActualIncome": [
+          7.5,
+          7.5
+        ],
+        "grossIncome": [
+          979.25,
+          733.5
+        ],
+        "killGold": [
+          94,
+          94
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "spending": [
+          1984,
+          815
+        ],
+        "maxError": [
+          0,
+          0
+        ],
+        "ticks": 1956,
+        "transactions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              260,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 18,
+            "x": 1250,
+            "lane": 0,
+            "before": {
+              "gold": 1100,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 960,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 18,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 260,
+                "lane": 0,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 4.99999999999999,
+            "tick": 100,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              640,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 33,
+            "x": 1250,
+            "lane": 2,
+            "before": {
+              "gold": 997.5,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 857.5,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 33,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 640,
+                "lane": 2,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 10.000000000000007,
+            "tick": 200,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              260,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 36,
+            "x": 1110,
+            "lane": 0,
+            "before": {
+              "gold": 895,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 625,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 36,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 260,
+                "lane": 0,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 15.000000000000078,
+            "tick": 300,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              640,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 49,
+            "x": 1110,
+            "lane": 2,
+            "before": {
+              "gold": 666.5,
+              "kills": 2,
+              "building": null
+            },
+            "after": {
+              "gold": 396.5,
+              "kills": 2
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 49,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 640,
+                "lane": 2,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 20.00000000000015,
+            "tick": 400,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "archery",
+              970,
+              260,
+              0
+            ],
+            "cost": 175,
+            "type": "archery",
+            "id": 62,
+            "x": 970,
+            "lane": 0,
+            "before": {
+              "gold": 440,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 265,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 62,
+                "type": "archery",
+                "side": 0,
+                "x": 970,
+                "y": 260,
+                "lane": 0,
+                "hp": 470,
+                "maxHp": 470,
+                "level": 1,
+                "progress": 0.88,
+                "cooldown": 0,
+                "invested": 175
+              }
+            }
+          },
+          {
+            "time": 22.05000000000018,
+            "tick": 441,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "sanctum",
+              1950,
+              260,
+              1
+            ],
+            "cost": 230,
+            "type": "sanctum",
+            "id": 68,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 275.375,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 45.375,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 68,
+                "type": "sanctum",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 520,
+                "maxHp": 520,
+                "level": 1,
+                "progress": 0.9142857142857143,
+                "cooldown": 0,
+                "invested": 230
+              }
+            }
+          },
+          {
+            "time": 25.00000000000022,
+            "tick": 500,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "mint",
+              270,
+              260,
+              0
+            ],
+            "cost": 190,
+            "type": "mint",
+            "id": 71,
+            "x": 270,
+            "lane": 0,
+            "before": {
+              "gold": 304.5,
+              "kills": 6,
+              "building": null
+            },
+            "after": {
+              "gold": 114.5,
+              "kills": 6
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 71,
+                "type": "mint",
+                "side": 0,
+                "x": 270,
+                "y": 260,
+                "lane": 0,
+                "hp": 380,
+                "maxHp": 380,
+                "level": 1,
+                "progress": 0,
+                "cooldown": 0,
+                "invested": 190
+              }
+            }
+          },
+          {
+            "time": 29.050000000000278,
+            "tick": 581,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              1651.4273931318294,
+              641.696593476463,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 109.875,
+              "kills": 11,
+              "building": null
+            },
+            "after": {
+              "gold": 38.875,
+              "kills": 13
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 31.750000000000316,
+            "tick": 635,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "mint",
+              270,
+              640,
+              0
+            ],
+            "cost": 190,
+            "type": "mint",
+            "id": 86,
+            "x": 270,
+            "lane": 2,
+            "before": {
+              "gold": 190,
+              "kills": 10,
+              "building": null
+            },
+            "after": {
+              "gold": 0,
+              "kills": 10
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 86,
+                "type": "mint",
+                "side": 0,
+                "x": 270,
+                "y": 640,
+                "lane": 2,
+                "hp": 380,
+                "maxHp": 380,
+                "level": 1,
+                "progress": 0,
+                "cooldown": 0,
+                "invested": 190
+              }
+            }
+          },
+          {
+            "time": 51.449999999999214,
+            "tick": 1029,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              550,
+              260,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 121,
+            "x": 550,
+            "lane": 0,
+            "before": {
+              "gold": 270.25,
+              "kills": 22,
+              "building": null
+            },
+            "after": {
+              "gold": 0.25,
+              "kills": 22
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 121,
+                "type": "foundry",
+                "side": 0,
+                "x": 550,
+                "y": 260,
+                "lane": 0,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 56.9999999999989,
+            "tick": 1140,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "watchtower",
+              1950,
+              260,
+              1
+            ],
+            "cost": 220,
+            "type": "watchtower",
+            "id": 130,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 278.5,
+              "kills": 28,
+              "building": null
+            },
+            "after": {
+              "gold": 58.5,
+              "kills": 28
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 130,
+                "type": "watchtower",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 1000,
+                "maxHp": 1000,
+                "level": 1,
+                "progress": 0,
+                "cooldown": 0,
+                "invested": 220
+              }
+            }
+          },
+          {
+            "time": 64.1999999999985,
+            "tick": 1284,
+            "side": 0,
+            "method": "cast",
+            "args": [
+              369.6287422935825,
+              449.8676074801666,
+              0
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 150.25,
+              "kills": 26,
+              "building": null
+            },
+            "after": {
+              "gold": 93.25,
+              "kills": 35
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 64.69999999999847,
+            "tick": 1294,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              1941.482551967871,
+              261.39097417295125,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 118.25,
+              "kills": 29,
+              "building": null
+            },
+            "after": {
+              "gold": 59.25,
+              "kills": 37
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 73.39999999999797,
+            "tick": 1468,
+            "side": 0,
+            "method": "upgrade",
+            "args": [
+              36,
+              0
+            ],
+            "cost": 189,
+            "type": "foundry",
+            "id": 36,
+            "x": 1110,
+            "lane": 0,
+            "before": {
+              "gold": 189.25,
+              "kills": 37,
+              "building": {
+                "id": 36,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 260,
+                "lane": 0,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.658823529411754,
+                "cooldown": 0,
+                "invested": 270,
+                "hit": 0
+              }
+            },
+            "after": {
+              "gold": 0.25,
+              "kills": 37
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 36,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 260,
+                "lane": 0,
+                "hp": 909.9999999999999,
+                "maxHp": 909.9999999999999,
+                "level": 2,
+                "progress": 0.658823529411754,
+                "cooldown": 0,
+                "invested": 459,
+                "hit": 0
+              }
+            }
+          },
+          {
+            "time": 77.74999999999773,
+            "tick": 1555,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 155,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 159.125,
+              "kills": 38,
+              "building": null
+            },
+            "after": {
+              "gold": 19.125,
+              "kills": 38
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 155,
+                "type": "barracks",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 89.19999999999708,
+            "tick": 1784,
+            "side": 0,
+            "method": "cast",
+            "args": [
+              369.54507434448044,
+              448.64367217320864,
+              0
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 166.25,
+              "kills": 41,
+              "building": null
+            },
+            "after": {
+              "gold": 99.25,
+              "kills": 45
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 90.34999999999701,
+            "tick": 1807,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              3030.7704134830196,
+              386.2633172286125,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 117.625,
+              "kills": 40,
+              "building": null
+            },
+            "after": {
+              "gold": 50.625,
+              "kills": 44
+            },
+            "result": {
+              "ok": true
+            }
+          }
+        ]
+      },
+      "battleSha256": "0084bfbbf100b63c1bfa023aaa6c38e902a45a06c2811809b55f314eafe8543e",
+      "note": "Natural active ordinary-paid checkpoint; continue simulation without terminal edits."
+    },
+    "terminal-near-air": {
+      "policy": "supportedair",
+      "seed": 8101,
+      "time": 98.04999999999657,
+      "cores": [
+        4038.000000000002,
+        960
+      ],
+      "gold": [
+        99.75,
+        136.375
+      ],
+      "ledger": {
+        "startingGold": [
+          1100,
+          100
+        ],
+        "startingCachedIncome": [
+          7.5,
+          7.5
+        ],
+        "startingActualIncome": [
+          7.5,
+          7.5
+        ],
+        "grossIncome": [
+          675.75,
+          735.375
+        ],
+        "killGold": [
+          84,
+          116
+        ],
+        "refunds": [
+          0,
+          0
+        ],
+        "spending": [
+          1760,
+          815
+        ],
+        "maxError": [
+          0,
+          0
+        ],
+        "ticks": 1961,
+        "transactions": [
+          {
+            "time": 0,
+            "tick": 0,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              260,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 18,
+            "x": 1250,
+            "lane": 0,
+            "before": {
+              "gold": 1100,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 960,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 18,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 260,
+                "lane": 0,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 4.99999999999999,
+            "tick": 100,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "barracks",
+              1250,
+              640,
+              0
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 33,
+            "x": 1250,
+            "lane": 2,
+            "before": {
+              "gold": 997.5,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 857.5,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 33,
+                "type": "barracks",
+                "side": 0,
+                "x": 1250,
+                "y": 640,
+                "lane": 2,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 10.000000000000007,
+            "tick": 200,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              260,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 36,
+            "x": 1110,
+            "lane": 0,
+            "before": {
+              "gold": 895,
+              "kills": 0,
+              "building": null
+            },
+            "after": {
+              "gold": 625,
+              "kills": 0
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 36,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 260,
+                "lane": 0,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 15.000000000000078,
+            "tick": 300,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "foundry",
+              1110,
+              640,
+              0
+            ],
+            "cost": 270,
+            "type": "foundry",
+            "id": 49,
+            "x": 1110,
+            "lane": 2,
+            "before": {
+              "gold": 666.5,
+              "kills": 2,
+              "building": null
+            },
+            "after": {
+              "gold": 396.5,
+              "kills": 2
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 49,
+                "type": "foundry",
+                "side": 0,
+                "x": 1110,
+                "y": 640,
+                "lane": 2,
+                "hp": 650,
+                "maxHp": 650,
+                "level": 1,
+                "progress": 0.9294117647058824,
+                "cooldown": 0,
+                "invested": 270
+              }
+            }
+          },
+          {
+            "time": 20.00000000000015,
+            "tick": 400,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "archery",
+              970,
+              260,
+              0
+            ],
+            "cost": 175,
+            "type": "archery",
+            "id": 62,
+            "x": 970,
+            "lane": 0,
+            "before": {
+              "gold": 440,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 265,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 62,
+                "type": "archery",
+                "side": 0,
+                "x": 970,
+                "y": 260,
+                "lane": 0,
+                "hp": 470,
+                "maxHp": 470,
+                "level": 1,
+                "progress": 0.88,
+                "cooldown": 0,
+                "invested": 175
+              }
+            }
+          },
+          {
+            "time": 22.05000000000018,
+            "tick": 441,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "sanctum",
+              1950,
+              260,
+              1
+            ],
+            "cost": 230,
+            "type": "sanctum",
+            "id": 68,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 275.375,
+              "kills": 5,
+              "building": null
+            },
+            "after": {
+              "gold": 45.375,
+              "kills": 5
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 68,
+                "type": "sanctum",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 520,
+                "maxHp": 520,
+                "level": 1,
+                "progress": 0.9142857142857143,
+                "cooldown": 0,
+                "invested": 230
+              }
+            }
+          },
+          {
+            "time": 25.00000000000022,
+            "tick": 500,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "aerie",
+              550,
+              260,
+              0
+            ],
+            "cost": 250,
+            "type": "aerie",
+            "id": 71,
+            "x": 550,
+            "lane": 0,
+            "before": {
+              "gold": 304.5,
+              "kills": 6,
+              "building": null
+            },
+            "after": {
+              "gold": 54.5,
+              "kills": 6
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 71,
+                "type": "aerie",
+                "side": 0,
+                "x": 550,
+                "y": 260,
+                "lane": 0,
+                "hp": 550,
+                "maxHp": 550,
+                "level": 1,
+                "progress": 0.92,
+                "cooldown": 0,
+                "invested": 250
+              }
+            }
+          },
+          {
+            "time": 29.050000000000278,
+            "tick": 581,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              1651.4273931318294,
+              641.696593476463,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 109.875,
+              "kills": 11,
+              "building": null
+            },
+            "after": {
+              "gold": 38.875,
+              "kills": 13
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 47.59999999999943,
+            "tick": 952,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "aerie",
+              410,
+              260,
+              0
+            ],
+            "cost": 250,
+            "type": "aerie",
+            "id": 116,
+            "x": 410,
+            "lane": 0,
+            "before": {
+              "gold": 250,
+              "kills": 19,
+              "building": null
+            },
+            "after": {
+              "gold": 0,
+              "kills": 19
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 116,
+                "type": "aerie",
+                "side": 0,
+                "x": 410,
+                "y": 260,
+                "lane": 0,
+                "hp": 550,
+                "maxHp": 550,
+                "level": 1,
+                "progress": 0.92,
+                "cooldown": 0,
+                "invested": 250
+              }
+            }
+          },
+          {
+            "time": 54.799999999999024,
+            "tick": 1096,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "watchtower",
+              1950,
+              260,
+              1
+            ],
+            "cost": 220,
+            "type": "watchtower",
+            "id": 128,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 272,
+              "kills": 33,
+              "building": null
+            },
+            "after": {
+              "gold": 52,
+              "kills": 33
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 128,
+                "type": "watchtower",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 1000,
+                "maxHp": 1000,
+                "level": 1,
+                "progress": 0,
+                "cooldown": 0,
+                "invested": 220
+              }
+            }
+          },
+          {
+            "time": 61.84999999999862,
+            "tick": 1237,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              1858.956310235408,
+              262.5695813816575,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 106.875,
+              "kills": 34,
+              "building": null
+            },
+            "after": {
+              "gold": 49.875,
+              "kills": 43
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 67.79999999999829,
+            "tick": 1356,
+            "side": 0,
+            "method": "cast",
+            "args": [
+              369.6532066894546,
+              449.60487711082226,
+              0
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 150.25,
+              "kills": 26,
+              "building": null
+            },
+            "after": {
+              "gold": 93.25,
+              "kills": 35
+            },
+            "result": {
+              "ok": true
+            }
+          },
+          {
+            "time": 78.59999999999768,
+            "tick": 1572,
+            "side": 1,
+            "method": "build",
+            "args": [
+              "barracks",
+              1950,
+              260,
+              1
+            ],
+            "cost": 140,
+            "type": "barracks",
+            "id": 161,
+            "x": 1950,
+            "lane": 0,
+            "before": {
+              "gold": 179.5,
+              "kills": 45,
+              "building": null
+            },
+            "after": {
+              "gold": 39.5,
+              "kills": 45
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 161,
+                "type": "barracks",
+                "side": 1,
+                "x": 1950,
+                "y": 260,
+                "lane": 0,
+                "hp": 700,
+                "maxHp": 700,
+                "level": 1,
+                "progress": 0.8666666666666667,
+                "cooldown": 0,
+                "invested": 140
+              }
+            }
+          },
+          {
+            "time": 85.54999999999728,
+            "tick": 1711,
+            "side": 0,
+            "method": "build",
+            "args": [
+              "mint",
+              270,
+              260,
+              0
+            ],
+            "cost": 190,
+            "type": "mint",
+            "id": 175,
+            "x": 270,
+            "lane": 0,
+            "before": {
+              "gold": 190,
+              "kills": 39,
+              "building": null
+            },
+            "after": {
+              "gold": 0,
+              "kills": 39
+            },
+            "result": {
+              "ok": true,
+              "building": {
+                "id": 175,
+                "type": "mint",
+                "side": 0,
+                "x": 270,
+                "y": 260,
+                "lane": 0,
+                "hp": 380,
+                "maxHp": 380,
+                "level": 1,
+                "progress": 0,
+                "cooldown": 0,
+                "invested": 190
+              }
+            }
+          },
+          {
+            "time": 89.94999999999703,
+            "tick": 1799,
+            "side": 1,
+            "method": "cast",
+            "args": [
+              3029.326220685052,
+              385.7442513350628,
+              1
+            ],
+            "cost": 75,
+            "type": "volley",
+            "id": null,
+            "x": null,
+            "lane": null,
+            "before": {
+              "gold": 130.625,
+              "kills": 48,
+              "building": null
+            },
+            "after": {
+              "gold": 67.625,
+              "kills": 54
+            },
+            "result": {
+              "ok": true
+            }
+          }
+        ]
+      },
+      "battleSha256": "77edd0903f1d951bbcaa3b5b816341492c5a836a1c4f34b59097b17e44234fe2",
+      "note": "Natural active ordinary-paid checkpoint; continue simulation without terminal edits."
+    },
+    "fresh-main": {
+      "time": 0,
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        1100,
+        100
+      ],
+      "battleSha256": "3f6582de0847b67db664d2913f74752550548b3c632ba46e55cead973fed07c8",
+      "note": "Exact tick-zero authored setup."
+    },
+    "legacy-reed": {
+      "time": 10.000000000000007,
+      "note": "Synthetic profile20 prerequisite records and10s ordinary paid Reed checkpoint, generated by exact canonical Reed source. Not real-player migration evidence.",
+      "battleSha256": "c488dd7cc91258d2463289570eae7c9b401540434e8883d1b3fb3266837f2d03",
+      "baseCommit": "853cde8c74d77f68be92329db17d8a6dc6e00aae"
+    }
+  },
+  "completionTime": {
+    "main": 99.89999999999647,
+    "air": 100.24999999999645
+  },
+  "sourceRuntimeSha256": "ab769819b9f8695cd460265a58035962a9ee039e3a3e194164dd5d125c72fb1b",
+  "sourceFileHashes": {
+    "FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+    "audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "battle-codec.js": "0514664707813f4a17fa8a99121e1610d8bfe2be5e679b44014ccab56d2d8443",
+    "battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "campaign-presentation.js": "003fd4d6427fb6e7649d4f772352155c69a630184da5179b8d2c548fd9e65edd",
+    "campaign.js": "e6b325ae322130aaaf51ed82d9ed8d5505f9516fd0420fbf4d766acff1f80c1b",
+    "challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "index.html": "161b2471c424842d8c597e69cc3ac3df5e4d3a73cfdb70c0a243bbfe6d97d174",
+    "input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "profile-session.js": "f6792d61a96b3591df4fc3b2fb19b62ec1bdb806ab1d39670f07068e5dc4586f",
+    "protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "rulesets.js": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+    "scouting.js": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+    "service-worker.js": "06533a6f863fef7362f6f284c1a1ac7df9fdd0fd7ddbfb08b82c07b5ffebb603",
+    "styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  },
+  "previewPrepared": true,
+  "preview": {
+    "directory": "/workspace/scratch/d86b57250ea4/ironroot-archers-quay-preview",
+    "runtimeFiles": 58,
+    "runtimeSha256": "27161949441b28bafbe98efa80b5a54206cabed2ac694c4a9e14daa717e0fb95",
+    "changedFiles": [
+      "app.js",
+      "index.html"
+    ],
+    "differences": "Namespaced temporary session storage and fixture disclosure/navigation only. No service worker. Other56 assets byte-identical."
+  }
+}
