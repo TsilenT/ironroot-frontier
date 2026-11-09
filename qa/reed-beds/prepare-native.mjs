@@ -1,6 +1,7 @@
 // Developer-only paid checkpoints. Default regenerates metadata only.
 // --write-preview explicitly creates an isolated session-storage-only runtime outside source.
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import { cp, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
@@ -38,7 +39,9 @@ export function buildFixtures(){
   }
   assert.ok(outcome.completed,'Paid route must win naturally');completionTime[variant]=game.state.time;
  }
- assert.deepEqual(Object.keys(profiles).sort(),['briefing','fresh-main','paid-opening-main','terminal-near-core','terminal-near-main']);
+ const legacy=JSON.parse(readFileSync(new URL('./legacy-road-profile.json',import.meta.url),'utf8'));
+ profiles['legacy-road']=legacy.profile;receipts['legacy-road']={time:legacy.time,battleSha256:legacy.battleSha256,note:legacy.scope,baseCommit:legacy.baseCommit,paidOpening:legacy.paidOpening};
+ assert.deepEqual(Object.keys(profiles).sort(),['briefing','fresh-main','legacy-road','paid-opening-main','terminal-near-core','terminal-near-main']);
  return {profiles,receipts,completionTime,syntheticPrerequisiteRecords:Object.keys(progress.missions).length};
 }
 
@@ -72,7 +75,7 @@ export async function prepareNative({ output = path.resolve(root, '../preview'),
     await writeFile(path.join(output, 'dist/app.js'), prefix + app);
     let html = await readFile(path.join(root, 'dist/index.html'), 'utf8');
     assert.ok(html.includes('<div class="welcome-rule"></div>'));
-    html = html.replace('<div class="welcome-rule"></div>', '<p style="font-size:12px">LOCAL QA: synthetic prior progress and paid-engine checkpoints, not browser-earned wins. Temporary tab storage only.</p><nav aria-label="QA fixture"><a href="?fixture=briefing">Briefing</a> · <a href="?fixture=fresh-main">Fresh</a> · <a href="?fixture=paid-opening-main">Paid opening</a> · <a href="?fixture=terminal-near-main">Near two-target victory</a> · <a href="?fixture=terminal-near-core">Near core victory</a></nav><div class="welcome-rule"></div>');
+    html = html.replace('<div class="welcome-rule"></div>', '<p style="font-size:12px">LOCAL QA: synthetic prior progress and paid-engine checkpoints, not browser-earned wins. Temporary tab storage only.</p><nav aria-label="QA fixture"><a href="?fixture=briefing">Briefing</a> · <a href="?fixture=fresh-main">Fresh</a> · <a href="?fixture=paid-opening-main">Paid opening</a> · <a href="?fixture=terminal-near-main">Near two-target victory</a> · <a href="?fixture=terminal-near-core">Near core victory</a> · <a href="?fixture=legacy-road">Synthetic v0.28 Road save</a></nav><div class="welcome-rule"></div>');
     html = html.replace(/Campaign · Skirmish · Field trials · v[0-9.]+/, 'LOCAL QA · Through the Reed Beds · no real profile access');
     await writeFile(path.join(output, 'dist/index.html'), html);
     const preview = await runtimeHashes(path.join(output, 'dist'));

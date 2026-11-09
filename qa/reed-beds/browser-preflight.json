@@ -1,0 +1,830 @@
+{
+  "scope": "Source/browser-fixture/static preflight only; no browser/server/native startup, remote writes, source workspace edits or Road edits.",
+  "candidateVersion": "0.29.0",
+  "sourceFreezeFingerprint": "456446cebee6c569822f741b57a4a02c06959a773b4009d597eab0488a381af7",
+  "sourceFreezePathsVerified": 502,
+  "canonicalParentCommit": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+  "canonicalTree": "50c098a436ddee2e36d629a2e7d36e6887ae6b25",
+  "canonicalMaterialization": {
+    "localCopies": 45,
+    "connectorReads": 117,
+    "uniquePaths": 159,
+    "allIndependentlyGitBlobVerified": true,
+    "missingRequiredDependencies": []
+  },
+  "sourceCandidateOverlays": [
+    {
+      "path": "tests/reed-beds-preview.test.mjs",
+      "before": {
+        "sha256": "307e5076ae228331db55c20765c087c1d8cb3c0a63f6c0c93c7073b33cc61004",
+        "gitBlobSha1": "455cabc5d505abdd365dd32804ef3d27e766b0b9"
+      },
+      "after": {
+        "sha256": "7169a507cfb14d741a28e56bdd457c4e14755b2f831ff553982b941e7bb915ee",
+        "gitBlobSha1": "eb4cf0b8f0855fbf2cf01c0b2590e3463b98994b"
+      },
+      "source": "../ironroot-rebuild-reed/tests/reed-beds-preview.test.mjs"
+    },
+    {
+      "path": "tests/keyboard-persistence.test.mjs",
+      "before": {
+        "sha256": "9b09bd712905a54a2b4d3fc0aef65d6a3ca3156b73e474cde96965dc00ce4be3",
+        "gitBlobSha1": "becb59862a223f5afded3397a8b9ff8e671fffbf"
+      },
+      "after": {
+        "sha256": "8dac00ad47275ea8419ba37d1a1d4b02200c71ae49811fc686abadaeb97893eb",
+        "gitBlobSha1": "ff48169baceab8dc08506082207e9dc88857ba01"
+      },
+      "source": "../ironroot-rebuild-reed/tests/keyboard-persistence.test.mjs"
+    },
+    {
+      "path": "qa/browser/validate-production-v015-upgrade.mjs",
+      "before": {
+        "sha256": "f071cc187707c3cca9beace7d45c84570df3de7ce1f5d03814d2d82f4ee3d989",
+        "gitBlobSha1": "31ae17f7b693530bc5afc32480f66c9717060aec"
+      },
+      "after": {
+        "sha256": "9e2772f2221c1d8e777d8abddbfb5246e4a6b08df13712faa1e83a86c790bea5",
+        "gitBlobSha1": "24365849e1e7085de4bbb15cc77deea2d855359e"
+      },
+      "source": "../ironroot-rebuild-reed/qa/browser/validate-production-v015-upgrade.mjs"
+    },
+    {
+      "path": "qa/browser/validate-flight-order-fixtures.mjs",
+      "before": {
+        "sha256": "5b4d1d9fdcc3517d1717f2dc6dafa0afb9220baaad3c5ac40941e6abbb4315fe",
+        "gitBlobSha1": "04410a074d2f101b6a3139001e24333df36dad90"
+      },
+      "after": {
+        "sha256": "baa9b84fdaf29a139a9c7752489553b89ef71b257add01c585913ce2b303316b",
+        "gitBlobSha1": "7794394ba46db6c3a5557a391b582c6799129101"
+      },
+      "source": "../ironroot-rebuild-reed/qa/browser/validate-flight-order-fixtures.mjs"
+    },
+    {
+      "path": "qa/browser/validate-shared-crossing-fixtures.mjs",
+      "before": {
+        "sha256": "568ba236adf205d48494053ed2ccc7ae6473e470cf682ebc54d43a70014eb8a9",
+        "gitBlobSha1": "93de5b905807b6ff0fa540d25cd25578b8408b0f"
+      },
+      "after": {
+        "sha256": "91ccd738c7685d9377447b3dd89dad293adee084ea9a8b648a04d9afbfc12c3d",
+        "gitBlobSha1": "cbb2e91583b7908eff2af45909fdd0b7f30f53f7"
+      },
+      "source": "../ironroot-rebuild-reed/qa/browser/validate-shared-crossing-fixtures.mjs"
+    },
+    {
+      "path": "qa/reed-beds/prepare-native.mjs",
+      "before": {
+        "sha256": "249f41d2e2fc5fc2f65dc37f755ffa27a1e0c7507a128cec0d452f81b4a16c1d",
+        "gitBlobSha1": "18f1526f85f1e66719c07df3d56297f7488e6ecf"
+      },
+      "after": {
+        "sha256": "00995328bb9ceb80f9013e04b006f8b67854796040758772672bde47b62403ef",
+        "gitBlobSha1": "88f6ffa451ab04b3a350d188a3da65fed2c18586"
+      },
+      "source": "../ironroot-rebuild-reed/qa/reed-beds/prepare-native.mjs"
+    },
+    {
+      "path": "qa/reed-beds/legacy-road-profile.json",
+      "before": null,
+      "after": {
+        "sha256": "717b9d8e033e54613529251f81c836a0651577f7b7261144bda37c69af6b4f72",
+        "gitBlobSha1": "6bbb290afc2e547164baa44fbaee74aef6ce9435"
+      },
+      "source": "../ironroot-rebuild-reed/qa/reed-beds/legacy-road-profile.json"
+    },
+    {
+      "path": "tests/reed-beds-flow.test.mjs",
+      "before": null,
+      "after": {
+        "sha256": "12daf8d65f4924994c9822092245a149fdf9b1e728ece03221001aa6db64d07d",
+        "gitBlobSha1": "e7570cdde43191910d96500b1a93014dc132d269"
+      },
+      "source": "../ironroot-rebuild-reed/tests/reed-beds-flow.test.mjs"
+    }
+  ],
+  "passed": [
+    {
+      "label": "source-check",
+      "command": "npm run check",
+      "exitCode": 0,
+      "elapsedSeconds": 3.83
+    },
+    {
+      "label": "source-release-check",
+      "command": "npm run check:release",
+      "exitCode": 0,
+      "elapsedSeconds": 0.23
+    },
+    {
+      "label": "browser-check",
+      "command": "npm --prefix qa/browser run check",
+      "exitCode": 0,
+      "elapsedSeconds": 16.4
+    },
+    {
+      "label": "source-targeted-final-tests",
+      "command": "node --test tests/reed-beds-preview.test.mjs tests/reed-beds-flow.test.mjs tests/keyboard-persistence.test.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 1.61
+    },
+    {
+      "label": "browser-check:upgrade",
+      "command": "npm --prefix qa/browser run check:upgrade",
+      "exitCode": 0,
+      "elapsedSeconds": 0.39
+    },
+    {
+      "label": "browser-check:harness",
+      "command": "npm --prefix qa/browser run check:harness",
+      "exitCode": 0,
+      "elapsedSeconds": 0.84
+    },
+    {
+      "label": "browser-check:upgrade:v015",
+      "command": "npm --prefix qa/browser run check:upgrade:v015",
+      "exitCode": 0,
+      "elapsedSeconds": 1.21
+    },
+    {
+      "label": "browser-check:automatic-air",
+      "command": "npm --prefix qa/browser run check:automatic-air",
+      "exitCode": 0,
+      "elapsedSeconds": 0.51
+    },
+    {
+      "label": "browser-check:shared-crossing",
+      "command": "npm --prefix qa/browser run check:shared-crossing",
+      "exitCode": 0,
+      "elapsedSeconds": 2.02
+    },
+    {
+      "label": "browser-syntax:accessibility-backup.spec.mjs",
+      "command": "node --check qa/browser/accessibility-backup.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.1
+    },
+    {
+      "label": "browser-syntax:ashen-crossroads-fixtures.mjs",
+      "command": "node --check qa/browser/ashen-crossroads-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.09
+    },
+    {
+      "label": "browser-syntax:ashen-crossroads.spec.mjs",
+      "command": "node --check qa/browser/ashen-crossroads.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:autonomous-air-fixtures.mjs",
+      "command": "node --check qa/browser/autonomous-air-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:autonomous-air-fixtures.node.mjs",
+      "command": "node --check qa/browser/autonomous-air-fixtures.node.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.2
+    },
+    {
+      "label": "browser-syntax:back-navigation.spec.mjs",
+      "command": "node --check qa/browser/back-navigation.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.14
+    },
+    {
+      "label": "browser-syntax:battle-report-fixtures.mjs",
+      "command": "node --check qa/browser/battle-report-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.11
+    },
+    {
+      "label": "browser-syntax:battle-report-legacy-fixtures.mjs",
+      "command": "node --check qa/browser/battle-report-legacy-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:battle-report.spec.mjs",
+      "command": "node --check qa/browser/battle-report.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:bridge-control.spec.mjs",
+      "command": "node --check qa/browser/bridge-control.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.49
+    },
+    {
+      "label": "browser-syntax:build-completion.spec.mjs",
+      "command": "node --check qa/browser/build-completion.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.13
+    },
+    {
+      "label": "browser-syntax:campaign-fixtures.mjs",
+      "command": "node --check qa/browser/campaign-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.14
+    },
+    {
+      "label": "browser-syntax:campaign-navigation.spec.mjs",
+      "command": "node --check qa/browser/campaign-navigation.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:campaign-onboarding.spec.mjs",
+      "command": "node --check qa/browser/campaign-onboarding.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.14
+    },
+    {
+      "label": "browser-syntax:campaign-progression-fixtures.mjs",
+      "command": "node --check qa/browser/campaign-progression-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.11
+    },
+    {
+      "label": "browser-syntax:campaign-progression.spec.mjs",
+      "command": "node --check qa/browser/campaign-progression.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.14
+    },
+    {
+      "label": "browser-syntax:campaign-restart-identity.spec.mjs",
+      "command": "node --check qa/browser/campaign-restart-identity.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:campaign-teaching-helpers.mjs",
+      "command": "node --check qa/browser/campaign-teaching-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.14
+    },
+    {
+      "label": "browser-syntax:campaign.spec.mjs",
+      "command": "node --check qa/browser/campaign.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.1
+    },
+    {
+      "label": "browser-syntax:canvas-observation.mjs",
+      "command": "node --check qa/browser/canvas-observation.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:citadel-click.spec.mjs",
+      "command": "node --check qa/browser/citadel-click.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.09
+    },
+    {
+      "label": "browser-syntax:citadel-options.spec.mjs",
+      "command": "node --check qa/browser/citadel-options.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:contextual-coaching.spec.mjs",
+      "command": "node --check qa/browser/contextual-coaching.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:desktop-input.spec.mjs",
+      "command": "node --check qa/browser/desktop-input.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:expanded-campaign-fixtures.mjs",
+      "command": "node --check qa/browser/expanded-campaign-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:expanded-campaign.spec.mjs",
+      "command": "node --check qa/browser/expanded-campaign.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:field-reference.spec.mjs",
+      "command": "node --check qa/browser/field-reference.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.1
+    },
+    {
+      "label": "browser-syntax:first-build-start.spec.mjs",
+      "command": "node --check qa/browser/first-build-start.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:flight-order-fixtures.mjs",
+      "command": "node --check qa/browser/flight-order-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:flight-orders.spec.mjs",
+      "command": "node --check qa/browser/flight-orders.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:flight-pause-layout-geometry.mjs",
+      "command": "node --check qa/browser/flight-pause-layout-geometry.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:flight-pause-layout.spec.mjs",
+      "command": "node --check qa/browser/flight-pause-layout.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.11
+    },
+    {
+      "label": "browser-syntax:font-browser-helpers.mjs",
+      "command": "node --check qa/browser/font-browser-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.25
+    },
+    {
+      "label": "browser-syntax:fonts.spec.mjs",
+      "command": "node --check qa/browser/fonts.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:fullscreen-entry.spec.mjs",
+      "command": "node --check qa/browser/fullscreen-entry.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:harness-contracts.node.mjs",
+      "command": "node --check qa/browser/harness-contracts.node.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:hidden-coaching.spec.mjs",
+      "command": "node --check qa/browser/hidden-coaching.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:integrated-flow.spec.mjs",
+      "command": "node --check qa/browser/integrated-flow.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:keyboard-contrast.spec.mjs",
+      "command": "node --check qa/browser/keyboard-contrast.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:keyboard-controls.spec.mjs",
+      "command": "node --check qa/browser/keyboard-controls.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:legacy-profile-fixtures.mjs",
+      "command": "node --check qa/browser/legacy-profile-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:map-browser-helpers.mjs",
+      "command": "node --check qa/browser/map-browser-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:map-controller-helpers.mjs",
+      "command": "node --check qa/browser/map-controller-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:map-fixtures.mjs",
+      "command": "node --check qa/browser/map-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:maps.spec.mjs",
+      "command": "node --check qa/browser/maps.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:minimap-input-contract.mjs",
+      "command": "node --check qa/browser/minimap-input-contract.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:mobile-coaching-visibility.spec.mjs",
+      "command": "node --check qa/browser/mobile-coaching-visibility.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:mobile-safety-evidence.mjs",
+      "command": "node --check qa/browser/mobile-safety-evidence.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:objective-alert-browser-helpers.mjs",
+      "command": "node --check qa/browser/objective-alert-browser-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:objective-alert-fixtures.mjs",
+      "command": "node --check qa/browser/objective-alert-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:objective-alerts.spec.mjs",
+      "command": "node --check qa/browser/objective-alerts.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.05
+    },
+    {
+      "label": "browser-syntax:offline-shell.spec.mjs",
+      "command": "node --check qa/browser/offline-shell.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:onboarding-fixtures.mjs",
+      "command": "node --check qa/browser/onboarding-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:passive-continuation.mjs",
+      "command": "node --check qa/browser/passive-continuation.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:pause-menu.spec.mjs",
+      "command": "node --check qa/browser/pause-menu.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:phone-text-evidence.mjs",
+      "command": "node --check qa/browser/phone-text-evidence.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:phone-viewport.spec.mjs",
+      "command": "node --check qa/browser/phone-viewport.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:player-copy-rhythm.spec.mjs",
+      "command": "node --check qa/browser/player-copy-rhythm.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:playwright.config.mjs",
+      "command": "node --check qa/browser/playwright.config.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:portrait-income.spec.mjs",
+      "command": "node --check qa/browser/portrait-income.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:practice-history.spec.mjs",
+      "command": "node --check qa/browser/practice-history.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:production-upgrade.spec.mjs",
+      "command": "node --check qa/browser/production-upgrade.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:production-v012-fixtures.mjs",
+      "command": "node --check qa/browser/production-v012-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:production-v015-fixtures.mjs",
+      "command": "node --check qa/browser/production-v015-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.19
+    },
+    {
+      "label": "browser-syntax:production-v015-upgrade.spec.mjs",
+      "command": "node --check qa/browser/production-v015-upgrade.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:profile-reload-navigation.spec.mjs",
+      "command": "node --check qa/browser/profile-reload-navigation.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:profile-reload-observation.mjs",
+      "command": "node --check qa/browser/profile-reload-observation.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:profile-upgrade.spec.mjs",
+      "command": "node --check qa/browser/profile-upgrade.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:protected-objectives-pointer.spec.mjs",
+      "command": "node --check qa/browser/protected-objectives-pointer.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:regression.spec.mjs",
+      "command": "node --check qa/browser/regression.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:restart-briefing.spec.mjs",
+      "command": "node --check qa/browser/restart-briefing.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.05
+    },
+    {
+      "label": "browser-syntax:server.mjs",
+      "command": "node --check qa/browser/server.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:service-worker-update.spec.mjs",
+      "command": "node --check qa/browser/service-worker-update.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:shared-build-controls.mjs",
+      "command": "node --check qa/browser/shared-build-controls.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:shared-crossing-fixtures.mjs",
+      "command": "node --check qa/browser/shared-crossing-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:shared-crossing.spec.mjs",
+      "command": "node --check qa/browser/shared-crossing.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:short-coached-portrait.spec.mjs",
+      "command": "node --check qa/browser/short-coached-portrait.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:skirmish-fog-scroll.spec.mjs",
+      "command": "node --check qa/browser/skirmish-fog-scroll.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:storage-recovery.spec.mjs",
+      "command": "node --check qa/browser/storage-recovery.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:synthetic-gamepad-helpers.mjs",
+      "command": "node --check qa/browser/synthetic-gamepad-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:synthetic-gamepad-provider.mjs",
+      "command": "node --check qa/browser/synthetic-gamepad-provider.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:toast-geometry.mjs",
+      "command": "node --check qa/browser/toast-geometry.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:training-browser-helpers.mjs",
+      "command": "node --check qa/browser/training-browser-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:training-fixtures.mjs",
+      "command": "node --check qa/browser/training-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:training.spec.mjs",
+      "command": "node --check qa/browser/training.spec.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:update-fixtures.mjs",
+      "command": "node --check qa/browser/update-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:validate-battle-report-fixtures.mjs",
+      "command": "node --check qa/browser/validate-battle-report-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-campaign-fixtures.mjs",
+      "command": "node --check qa/browser/validate-campaign-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-campaign-progression-fixtures.mjs",
+      "command": "node --check qa/browser/validate-campaign-progression-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:validate-codex-fixtures.mjs",
+      "command": "node --check qa/browser/validate-codex-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:validate-expanded-campaign-fixtures.mjs",
+      "command": "node --check qa/browser/validate-expanded-campaign-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-flight-order-fixtures.mjs",
+      "command": "node --check qa/browser/validate-flight-order-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-legacy-profile-fixtures.mjs",
+      "command": "node --check qa/browser/validate-legacy-profile-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-map-fixtures.mjs",
+      "command": "node --check qa/browser/validate-map-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:validate-objective-alert-fixtures.mjs",
+      "command": "node --check qa/browser/validate-objective-alert-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.09
+    },
+    {
+      "label": "browser-syntax:validate-production-upgrade.mjs",
+      "command": "node --check qa/browser/validate-production-upgrade.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.18
+    },
+    {
+      "label": "browser-syntax:validate-production-v015-upgrade.mjs",
+      "command": "node --check qa/browser/validate-production-v015-upgrade.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:validate-shared-crossing-fixtures.mjs",
+      "command": "node --check qa/browser/validate-shared-crossing-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    },
+    {
+      "label": "browser-syntax:validate-training-fixtures.mjs",
+      "command": "node --check qa/browser/validate-training-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08
+    },
+    {
+      "label": "browser-syntax:validate-update-fixtures.mjs",
+      "command": "node --check qa/browser/validate-update-fixtures.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.06
+    },
+    {
+      "label": "browser-syntax:worker-update-helpers.mjs",
+      "command": "node --check qa/browser/worker-update-helpers.mjs",
+      "exitCode": 0,
+      "elapsedSeconds": 0.07
+    }
+  ],
+  "initialFailuresRemedied": [
+    {
+      "label": "source-test",
+      "command": "npm test",
+      "exitCode": 1,
+      "elapsedSeconds": 160.71
+    },
+    {
+      "label": "browser-check",
+      "command": "npm --prefix qa/browser run check",
+      "exitCode": 1,
+      "elapsedSeconds": 9.36
+    },
+    {
+      "label": "source-targeted-final-tests",
+      "command": "node --test tests/reed-beds-preview.test.mjs tests/keyboard-persistence.test.mjs",
+      "exitCode": 1,
+      "elapsedSeconds": 1.37
+    }
+  ],
+  "finalBrowserAggregate": {
+    "label": "browser-check",
+    "command": "npm --prefix qa/browser run check",
+    "exitCode": 0,
+    "elapsedSeconds": 16.4
+  },
+  "finalComponentFailures": [],
+  "unrun": [
+    {
+      "command": "npm test (final source-freeze snapshot)",
+      "reason": "Initial mirror aggregate ran once with old protocol19 assertions:2050 pass/2 fail/1 skip. Final5 QA/test/3 fixture-prep overlays are hash-verified; targeted final tests pass. Parent finalaggregate2064pass/0fail/1skip is separate evidence, not this worker run."
+    },
+    {
+      "command": "npm --prefix qa/browser test",
+      "reason": "Browser startup excluded from assignment; no Playwright/native coverage claimed."
+    },
+    {
+      "command": "npm --prefix qa/browser run list",
+      "reason": "@playwright/test1.65.0 dependency not installed in mirror; discovery not required for fixture/static check."
+    },
+    {
+      "command": "npm --prefix qa/browser run test:deterministic-fast",
+      "reason": "Browser execution excluded; deterministic-fast lane was not materialized or run."
+    },
+    {
+      "command": "npm --prefix qa/browser run test:deterministic-real",
+      "reason": "Browser execution excluded; deterministic-fast lane was not materialized or run."
+    }
+  ],
+  "logs": [
+    "PREFLIGHT_RUN.log",
+    "PREFLIGHT_BROWSER_FINAL.log",
+    "PREFLIGHT_COMPONENTS_FINAL.log"
+  ],
+  "proofs": [
+    "PREFLIGHT_MATERIALIZATION.json",
+    "PREFLIGHT_SOURCE_SNAPSHOT.json",
+    "PREFLIGHT_SOURCE_OVERLAY.json",
+    "PREFLIGHT_SOURCE_OVERLAY.patch",
+    "PREFLIGHT_FINAL_SOURCE_FREEZE.json"
+  ]
+}

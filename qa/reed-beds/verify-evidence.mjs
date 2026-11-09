@@ -17,7 +17,7 @@ export function auditRun(run){
   if(t.method==='build'){expected=rules.buildings[t.args[0]].cost;assert.equal(t.result.building.level,1);assert.equal(t.result.building.id,t.id);}
   else if(t.method==='upgrade'){expected=Math.round(rules.buildings[t.before.building.type].cost*(.7+.35*(t.before.building.level-1)));assert.equal(t.result.building.level,t.before.building.level+1);}
   else if(t.method==='cast')expected=rules.spell.cost;
-  else if(t.method==='buyCitadelOption')expected=CITADEL_OPTIONS[t.args[0]].cost;
+  else if(t.method==='buyCitadelOption')expected=CITADEL_OPTIONS.cost;
   else if(t.method==='sell')expected=-Math.floor(t.before.building.invested*.5*t.before.building.hp/t.before.building.maxHp);
   else assert.fail('Unrecognized receipt method');
   close(t.cost,expected,'ordinary engine price');if(t.cost>=0)spending[t.side]+=t.cost;else refunds[t.side]-=t.cost;

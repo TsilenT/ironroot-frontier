@@ -1,0 +1,818 @@
+{
+  "commit": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+  "tree": "50c098a436ddee2e36d629a2e7d36e6887ae6b25",
+  "canonicalCopied": [
+    {
+      "path": "docs/campaign-balance.json",
+      "sha": "9d27d880cfe62663ce46deccb695e36c68a6f0c0",
+      "source": "ironroot/docs/campaign-balance.json"
+    },
+    {
+      "path": "qa/battlefield-engine-results.json",
+      "sha": "9ec71fcce6eda254ad5c0ba48567ccc3e66989c0",
+      "source": "ironroot/qa/battlefield-engine-results.json"
+    },
+    {
+      "path": "qa/browser/.gitignore",
+      "sha": "945fcd0d86c1b95fa8612428db05ff311b02bf34",
+      "source": "ironroot/qa/browser/.gitignore"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/app.js",
+      "sha": "e0f2f7619face3abc024f07f10832186155572f4",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/app.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/audio.js",
+      "sha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/audio.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/backup.js",
+      "sha": "454a49cc6cd6ba541ce1054a155ee4b2b778bde5",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/backup.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/campaign.js",
+      "sha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/campaign.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/challenges.js",
+      "sha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/challenges.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/controller.js",
+      "sha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/controller.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/engine.js",
+      "sha": "5d5f2660fa77a06ab737c81e106bddd31c7c0bee",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/engine.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/icon.svg",
+      "sha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/icon.svg"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/index.html",
+      "sha": "c4e08645c4ca8118e9ada5b499b122fea443f6cb",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/index.html"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/manifest.webmanifest",
+      "sha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/manifest.webmanifest"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/objectives.js",
+      "sha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/objectives.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/persistence.js",
+      "sha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/persistence.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/profile-session.js",
+      "sha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/profile-session.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/render.js",
+      "sha": "2b6299d980c2640d9d8b1d316aa2e9aa2337a702",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/render.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/service-worker.js",
+      "sha": "222a855986ac17fc5aa737a14da92873a774202c",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/service-worker.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/styles.css",
+      "sha": "0c58625c38544d1dac2f2b5bdb34cc5ba4d035de",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/styles.css"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/vfx.js",
+      "sha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-dist/vfx.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-package.json",
+      "sha": "b5e97851588ce5b7425d9ac6c9b0d933acbdcfb6",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-package.json"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-sha256.json",
+      "sha": "f288ef8eab63d99b28cda7d5db3468b1468e28f4",
+      "source": "ironroot/qa/browser/fixtures/0.7.0-sha256.json"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/app.js",
+      "sha": "a74c3ba2ea974458737cccd36e038c921c422828",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/app.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/audio.js",
+      "sha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/audio.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/backup.js",
+      "sha": "454a49cc6cd6ba541ce1054a155ee4b2b778bde5",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/backup.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/campaign.js",
+      "sha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/campaign.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/challenges.js",
+      "sha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/challenges.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/codex.js",
+      "sha": "62a47abdcea4117028be84ed7ac6df53db90e06a",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/codex.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/controller.js",
+      "sha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/controller.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/engine.js",
+      "sha": "36b095a117f47cab38c84218e520f5073e2e09f9",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/engine.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/icon.svg",
+      "sha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/icon.svg"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/index.html",
+      "sha": "927640ec66262002cd2f96fac7844dd14fedf777",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/index.html"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/manifest.webmanifest",
+      "sha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/manifest.webmanifest"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/objectives.js",
+      "sha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/objectives.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/persistence.js",
+      "sha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/persistence.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/profile-session.js",
+      "sha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/profile-session.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/render.js",
+      "sha": "de824c0097ec516352fffa9187f4f278616b0d05",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/render.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/service-worker.js",
+      "sha": "b0575eecba5203c7c4bb0e2248ef2319d6bfe5da",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/service-worker.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/styles.css",
+      "sha": "4afc29bc54e9da5122aa388b157c30fbc0e01235",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/styles.css"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/vfx.js",
+      "sha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-dist/vfx.js"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-sha256.json",
+      "sha": "789154fc7bdd31db55af34822a8df450397e32c3",
+      "source": "ironroot/qa/browser/fixtures/0.8.0-sha256.json"
+    },
+    {
+      "path": "qa/browser/font-browser-helpers.mjs",
+      "sha": "923d26e26cb56aa212457aedf4f375d38cf2e91d",
+      "source": "ironroot/qa/browser/font-browser-helpers.mjs"
+    },
+    {
+      "path": "qa/browser/validate-codex-fixtures.mjs",
+      "sha": "0e53c8265d6abf2b4a8741bcb18ed84dbff6612d",
+      "source": "ironroot/qa/browser/validate-codex-fixtures.mjs"
+    },
+    {
+      "path": "qa/browser/validate-map-fixtures.mjs",
+      "sha": "e286dc9062ebd19b75d4f8948c570064c8b5ae97",
+      "source": "ironroot/qa/browser/validate-map-fixtures.mjs"
+    },
+    {
+      "path": "qa/maps-balance.mjs",
+      "sha": "6acc9c6bb5c1f4d47488d41e0a62988680f87dfa",
+      "source": "ironroot/qa/maps-balance.mjs"
+    }
+  ],
+  "canonicalConnectorFetched": [
+    {
+      "path": "qa/browser/ashen-crossroads-fixtures.mjs",
+      "sha": "6f4626c36bf183d886744ed53b90e6505b36b296",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/ashen-crossroads.spec.mjs",
+      "sha": "0059a6d40fec054fd18e9ba7f7114da726c44c8d",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/autonomous-air-coverage.md",
+      "sha": "8b692a79c0945995ebfde5310773209d53355843",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/autonomous-air-fixtures.mjs",
+      "sha": "ef52f7deee8148b4c68f8c5753307d2d1d9ce32c",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/autonomous-air-fixtures.node.mjs",
+      "sha": "832ff9872b412b6198c842b4f634d42a35d0562b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/autonomous-air-validation.json",
+      "sha": "8d83da9305eccd5d75e5618d0bb7cd992aeabca2",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/back-navigation.spec.mjs",
+      "sha": "b7c09909bc9a630e91052b854bc4d565617d25ad",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/battle-report-fixtures.mjs",
+      "sha": "92e253b5f6d754b485a000458f9b938353c271d1",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/battle-report.spec.mjs",
+      "sha": "63d2df6f5995a607224dc1d36a9029f9b8b785de",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/bridge-control.spec.mjs",
+      "sha": "2f680d0c58bb783ba4cf6ff9ee64541b159c26b1",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/campaign-onboarding.spec.mjs",
+      "sha": "fac17f43508d8d5ac5f25647a534c2a901ee97fe",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/campaign-progression-fixtures.mjs",
+      "sha": "01221ba1e65709a5bfeb78d0312c2c57de73006b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/campaign-progression.spec.mjs",
+      "sha": "867a1f79be5a2f94f4064e708d4d22de03a6436e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/campaign-restart-identity.spec.mjs",
+      "sha": "b29f0b9bddf975b194ac8182f61fca77645d4d43",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/campaign.spec.mjs",
+      "sha": "0e03a8ca219d382a0954d09b806b4e587cc94b74",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/citadel-click.spec.mjs",
+      "sha": "907bdbeb426205181c353791ff2a8d927bc824bd",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/citadel-options.spec.mjs",
+      "sha": "12d52e968ee33687ab59a94be63c751ba1c64612",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/contextual-coaching.spec.mjs",
+      "sha": "d21a34c9e8aafde32d36aa2093a3f3cb7332886e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/desktop-input.spec.mjs",
+      "sha": "8ece1e23ab50df0d6ab334dfc465edfeb6fd51cf",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/field-reference.spec.mjs",
+      "sha": "b65b9e4752ba4e979427498e230e398bfa1af7e4",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/first-build-start.spec.mjs",
+      "sha": "2203cfe0cae5f7faa4cbcf7af32ea42177f904dc",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/flight-order-fixtures.mjs",
+      "sha": "414ef786bc2809e0f791b2cb7ed517d7fad9700c",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/flight-orders.spec.mjs",
+      "sha": "d124bf116c48a16f8a6a9c3a669a40ffa54b9a88",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/flight-pause-layout.spec.mjs",
+      "sha": "1da3296516ff2a0a8dee8b18b27dbb0cce0df099",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/font-browser-helpers.mjs",
+      "sha": "923d26e26cb56aa212457aedf4f375d38cf2e91d",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fonts.spec.mjs",
+      "sha": "3fecee70b95f0251f57f65b187b0c72a5765f2e2",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fullscreen-entry.spec.mjs",
+      "sha": "387f48e17ba22b117358a1017e58b883a7288af4",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/harness-contracts.node.mjs",
+      "sha": "6545da10689e1cca743ee3d07a1e864c5181a1b3",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/hidden-coaching.spec.mjs",
+      "sha": "e97093b6c0cc92de1d4b8122cc6e4d41582d8766",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/integrated-flow.spec.mjs",
+      "sha": "d9102857914515a16f9d4cc4da83cd7652d29fa0",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/keyboard-contrast.spec.mjs",
+      "sha": "1a5c233570ed59e64afb8535d2877193b68025e6",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/keyboard-controls.spec.mjs",
+      "sha": "ae03c312469675c15d0a8da59907e54903ad1df4",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/mobile-coaching-visibility.spec.mjs",
+      "sha": "c326cc5a9e5720f089324dff0d5c511c538d0f6f",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/objective-alert-browser-helpers.mjs",
+      "sha": "169fff22ab6777fa9aad8a99c1bfbd5677a19501",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/objective-alert-fixtures.mjs",
+      "sha": "d9acd30c0a3136c70609063fffe250a37d5fec63",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/objective-alerts.spec.mjs",
+      "sha": "d974bccda3046082af532b7308077e218a9388af",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/offline-shell.spec.mjs",
+      "sha": "ec12b5dbdefbc98feaebd9c001b9e3b66bb25e8a",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/package-lock.json",
+      "sha": "f4396228a2a508ced45782e0f1d3a09e9f4790b0",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/package.json",
+      "sha": "1de30ad9d5353814eb6f2999561bbdde1ebd3631",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/pause-menu.spec.mjs",
+      "sha": "999f3fa9296ddb2ee81d958fd49add6fa05ec29b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/player-copy-rhythm.spec.mjs",
+      "sha": "2f4ec752bddacc043ec0ef87ccfa87b35263bc50",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/playwright.config.mjs",
+      "sha": "78ea71ddca77e6d3c7acc7df6809f58edec8d4c8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/portrait-income.spec.mjs",
+      "sha": "bf38e90f10d7a9af3a7a491f3a95213b52c16b3a",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/practice-history.spec.mjs",
+      "sha": "4e4f00c9c18d88369b6e8f587136f1768bb807a8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/production-upgrade.spec.mjs",
+      "sha": "05403e2003166bbeb5ea072159355283ce922c1e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/production-v015-upgrade.spec.mjs",
+      "sha": "97d94ef8affcc2b6bcad306a1d91431c85a91228",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/profile-reload-navigation.spec.mjs",
+      "sha": "3d616b2f5cc97fd9a0e6e2da40267a6567d2c1ab",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/profile-upgrade.spec.mjs",
+      "sha": "f58f2284a85fafabc1b3e8abb972040984a3e019",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/protected-objectives-pointer.spec.mjs",
+      "sha": "315c18a0c140f1e72598a1d217817a8418933819",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/restart-briefing.spec.mjs",
+      "sha": "3a7bdefb177147f8845795b15c6f26831fa34cd5",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/service-worker-update.spec.mjs",
+      "sha": "6de0fe5f27f0c5ec17c21a4d20c87c5f6d8bcd3d",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/shared-crossing-fixtures.mjs",
+      "sha": "eaba819c781ec79186632f3e7385c618fe5ff522",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/shared-crossing.spec.mjs",
+      "sha": "de4f1852e37e82ba5b722e897706e94c4123a702",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/short-coached-portrait.spec.mjs",
+      "sha": "3235d270cb8d9e96a1583aa4bef25d60f6f9bf78",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/skirmish-fog-scroll.spec.mjs",
+      "sha": "19469f8c23aaff3a5127bf1b2625c1296d40992b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/storage-recovery.spec.mjs",
+      "sha": "8434cf23e243bb52497b7fc93f38b8de1550e2a5",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-battle-report-fixtures.mjs",
+      "sha": "23ddfc8a708043fd5f45cc6e2e45556150aa0245",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-campaign-fixtures.mjs",
+      "sha": "95f25d182011c6f8bdc71085abb1883979867a00",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-campaign-progression-fixtures.mjs",
+      "sha": "4dba7a6b0a604590384e0b4350ef9d16cb202558",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-codex-fixtures.mjs",
+      "sha": "0e53c8265d6abf2b4a8741bcb18ed84dbff6612d",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-expanded-campaign-fixtures.mjs",
+      "sha": "05f7ee1165c45a5641983ef7c9171a1b2ec4d7c9",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-legacy-profile-fixtures.mjs",
+      "sha": "fb084993ca4e104257a52e2e5de15f19b81e8a02",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-map-fixtures.mjs",
+      "sha": "e286dc9062ebd19b75d4f8948c570064c8b5ae97",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-objective-alert-fixtures.mjs",
+      "sha": "39bb6ed552e787b7cf2c95cc98e51da3324aa5f9",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-production-upgrade.mjs",
+      "sha": "d40585a6882d9882a96116a24b4c1697b342e9b2",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-training-fixtures.mjs",
+      "sha": "ad93a1adfd5992df5cfc8255aaf32b6f0ebf1f26",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/validate-update-fixtures.mjs",
+      "sha": "871db1cff39aefa618da2b7c9322516ba93c8c31",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/FONTS-NOTICES.txt",
+      "sha": "5d3386dd213a643c3f7ab824c34a957ef72d5baf",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/app.js",
+      "sha": "c9d05818ca8a37e2e559e27ea08bbfecf703dd5e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/audio.js",
+      "sha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/backup.js",
+      "sha": "3692edad7212ca545c2d5128bb29d0c10954b252",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-500.woff2",
+      "sha": "5f79c08b05c1f3a35b4813356a0e6f54c7b58113",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-600.woff2",
+      "sha": "e232649650f0acbc95f8ca4593a85a59052b6110",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-700.woff2",
+      "sha": "6a30d67a15e8b01fbe6f5c659244b2869d05ec1a",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-800.woff2",
+      "sha": "65d98f9f3b2a598adc45dafe83b0f46a7403d200",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/campaign.js",
+      "sha": "45ff4d5dfd284ab67a1cfb1550d5d2f17e963ef5",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/challenges.js",
+      "sha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/codex.js",
+      "sha": "ce0b49ed449398a8cdcb7a132dba058b65063381",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/controller.js",
+      "sha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/dm-sans-latin-400-700.woff2",
+      "sha": "24fae42657d84bcc71d6ab960c8fadc6bbb007b8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/engine.js",
+      "sha": "940988d859e24cee49e9af7d2113b71b5ff446a7",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/icon.svg",
+      "sha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/index.html",
+      "sha": "06c981447cfe08235c08430963bdafaa9472c7b8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/input-scope.js",
+      "sha": "8bcfc6ad4740a09f71c56be4caea9cf7fca7880e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/manifest.webmanifest",
+      "sha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/objectives.js",
+      "sha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/persistence.js",
+      "sha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/profile-session.js",
+      "sha": "dddf56e970123fa7ad3ea59b57405742487aa556",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/render.js",
+      "sha": "80c99b6042390fe3cf6588781ddc373c5afc1228",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/scouting.js",
+      "sha": "782f1dfb66dd4aa210ae1145f8c9a11e9581f21e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/service-worker.js",
+      "sha": "a2d1194307a7a98bc9eaccb2771ea62166316570",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/styles.css",
+      "sha": "58dd91d1c01a34b4d5afbf59fbfec8c17ec1ed4e",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/vfx.js",
+      "sha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/FONTS-NOTICES.txt",
+      "sha": "5d3386dd213a643c3f7ab824c34a957ef72d5baf",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/app.js",
+      "sha": "e55814ea20630d08baf07a679da0db4e1b6554fd",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/audio.js",
+      "sha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/backup.js",
+      "sha": "742bbf57613103bc9d421b6ad007d7a94db9f493",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-500.woff2",
+      "sha": "5f79c08b05c1f3a35b4813356a0e6f54c7b58113",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-600.woff2",
+      "sha": "e232649650f0acbc95f8ca4593a85a59052b6110",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-700.woff2",
+      "sha": "6a30d67a15e8b01fbe6f5c659244b2869d05ec1a",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-800.woff2",
+      "sha": "65d98f9f3b2a598adc45dafe83b0f46a7403d200",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/campaign.js",
+      "sha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/challenges.js",
+      "sha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/codex.js",
+      "sha": "ce0b49ed449398a8cdcb7a132dba058b65063381",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/controller.js",
+      "sha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/dm-sans-latin-400-700.woff2",
+      "sha": "24fae42657d84bcc71d6ab960c8fadc6bbb007b8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/engine.js",
+      "sha": "940988d859e24cee49e9af7d2113b71b5ff446a7",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/icon.svg",
+      "sha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/index.html",
+      "sha": "172f980ab70821485288ee5a6bc54a58c3819ded",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/manifest.webmanifest",
+      "sha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/objectives.js",
+      "sha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/persistence.js",
+      "sha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/profile-session.js",
+      "sha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/render.js",
+      "sha": "80c99b6042390fe3cf6588781ddc373c5afc1228",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/service-worker.js",
+      "sha": "11b0cd0fc9841ea4e76ed410dbbb77562b711343",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/styles.css",
+      "sha": "40471e7aa6bd4e1d4cb5c87d00e1d77f13519ed8",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/vfx.js",
+      "sha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "source": "GitHub fetch_file exact canonical commit 6b6cf964097a815b214933c7e74bb3f23b72d5d5"
+    }
+  ]
+}

@@ -200,6 +200,8 @@ test('replacement faults in each save domain roll back exact prior bytes while r
 test('historical backups retain exact normalized data without inventing Through the Reed Beds progress or identities', () => {
   for (const fixture of ['backup-v0.7-format.json', 'backup-v0.9-format.json']) {
     const text = readFileSync(new URL(`./fixtures/${fixture}`, import.meta.url), 'utf8'), expected = parseBackup(text);
+    assert.deepEqual(expected.data.history.map(validateHistoryRow), expected.data.history);
+    if (expected.data.battle) assert.deepEqual(decodeBattle(expected.data.battle, {campaignProgress:expected.data.campaign}).game.serialize(), expected.data.battle.game);
     const raw = backend([[MARKER, marker(19)], ...entries(earned()), ['unrelated', 'untouched']]), importer = current(raw);
     assert.ok(importer.beginImport().ok); assert.ok(restoreBackup(importer.importStorage, text).ok); assert.ok(importer.finishImport({outcome:'restored'}).ok);
     const exported = parseBackup(createBackup(current(raw).storage, {createdAt:expected.createdAt}));

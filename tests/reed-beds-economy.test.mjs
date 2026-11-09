@@ -28,7 +28,7 @@ test('Reed mine income is accrued from actual paid mines on engine ticks, not a 
  const {game:g}=exactScenario(),e=instrumentEconomy(g),r=g.build('mint',270,g.map.lanes[0],0);assert.ok(r.ok);assert.equal(g.state.income[0],7.5);assert.equal(actualIncome(g,0),10);g.update(.05);assert.equal(g.state.income[0],10);assert.equal(e.ledger.grossIncome[0],.5);e.reconcile();
 });
 test('Reed authored paid outer-pair victory and single-target core bypass independently audit',()=>{
- for(const policy of ['outer-pair','core-rush']){const run=runReedBeds({policy});assert.equal(run.outcome,'won');assert.ok(auditRun(run).independentIncomeVerified);assert.ok(run.enemyPurchases>0);if(policy==='outer-pair')assert.deepEqual(run.targetLosses.map(t=>t.type),['sanctum','watchtower']);else{assert.equal(run.route,'enemy-citadel');assert.equal(run.targetLosses.length,1);}}
+ for(const policy of ['outer-pair','core-rush','broad-novice']){const run=runReedBeds({policy});assert.equal(run.outcome,'won');assert.ok(auditRun(run).independentIncomeVerified);assert.ok(run.enemyPurchases>0);if(policy==='outer-pair')assert.deepEqual(run.targetLosses.map(t=>t.type),['sanctum','watchtower']);else if(policy==='core-rush'){assert.equal(run.route,'enemy-citadel');assert.equal(run.targetLosses.length,1);}}
 });
 test('Reed paid checkpoint summaries stop while active near the second original target, not just near the core',()=>{
  const result=paidCheckpoints(),near=result.checkpoints['terminal-near'];assert.equal(near.originalTargets.filter(t=>!t.alive).length,1);assert.ok(near.originalTargets.some(t=>t.alive&&t.hp<=150));assert.ok(near.cores[1]>0);assert.ok(near.paidActions>0);assert.ok(near.maxLedgerError.every(n=>n<1e-6));
