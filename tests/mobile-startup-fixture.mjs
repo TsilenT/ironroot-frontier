@@ -1,4 +1,5 @@
 import {signalProtectionSummary} from '../dist/campaign-presentation.js';
+import {minorReserveView} from '../dist/minor-reserve-view.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
@@ -28,7 +29,7 @@ const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=re
 export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
  const section=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
  const nodes=new Map(),log={measures:[],saves:0,claims:0,resizes:0,interruptions:0};let document;
- const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,targetCount:Math.max(1,nodes.get('protectedTargets')?.children.length||2),protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),teaching:!!nodes.get('app')?.classList.contains('mobile-coaching'),collapsed:!!nodes.get('app')?.classList.contains('coach-collapsed'),hold:!nodes.get('coachResume')?.classList.contains('hidden'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
+ const geometryFor=()=>{const style=nodes.get('app')?.style||{};return layout(width,height,{...insets,targetCount:nodes.get('app')?.classList.contains('minor-reserve-battle')?1:Math.max(1,nodes.get('protectedTargets')?.children.length||2),protect:!nodes.get('app')?.classList.contains('mobile-ordinary'),teaching:!!nodes.get('app')?.classList.contains('mobile-coaching'),collapsed:!!nodes.get('app')?.classList.contains('coach-collapsed'),hold:!nodes.get('coachResume')?.classList.contains('hidden'),root:box(parseFloat(style.left)||0,parseFloat(style.top)||0,style.width?parseFloat(style.width):width,style.height?parseFloat(style.height):height)});};
  class Element {
   constructor(tag='div'){this.tagName=tag.toUpperCase();this.id='';this.children=[];this.parentNode=null;this.classes=new Set();this.attributes={};this.style={};this.dataset={};this.disabled=false;this.open=false;this.scrollTop=0;this.text='';this.inert=false;this.scrollWidth=0;this.clientWidth=0;this.classList={contains:n=>this.classes.has(n),add:n=>this.classes.add(n),remove:n=>this.classes.delete(n),toggle:(n,on)=>on?this.classes.add(n):this.classes.delete(n)};}
   set className(v){this.classes=new Set(v.split(/\s+/));}get className(){return [...this.classes].join(' ');}
@@ -46,7 +47,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   get isConnected(){for(let e=this;e;e=e.parentNode)if(e===document.body)return true;return false;}
   contains(e){return this===e||this.children.some(c=>c.contains(e));}
   closest(selector){for(let e=this;e;e=e.parentNode){if(selector.includes('.hidden')&&e.classes.has('hidden'))return e;if(selector.includes('[inert]')&&e.inert)return e;if(selector==='[data-protected-id]'&&e.dataset.protectedId)return e;}return null;}
-  getBoundingClientRect(){if(this.closest('.hidden'))return box(0,0,0,0);if(this.dataset.protectedId)return geometryFor().nodes['target'+this.parentNode.children.indexOf(this)];return geometryFor().nodes[this.id]||box(0,0,0,0);}
+  getBoundingClientRect(){if(this.closest('.hidden'))return box(0,0,0,0);if(this.id==='focusMinorReserve')return geometryFor().nodes.target0;if(this.dataset.protectedId)return geometryFor().nodes['target'+this.parentNode.children.indexOf(this)];return geometryFor().nodes[this.id]||box(0,0,0,0);}
   getClientRects(){const r=this.getBoundingClientRect();return r.width&&r.height?[r]:[];}
   focus(){document.activeElement=this;}
   scrollIntoView(){}
@@ -80,7 +81,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   fogAudio:new ObservationAudio({ownCommandSounds:false}),fogRenderer:null,presentation:null,presentationGame:null,
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,getCampaignTargets,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,isProtectedCampaignBuilding,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
-  viewportPause:createViewportPause(),mobileLayout:'ordinary',signalProtectionSummary,performance:{now:()=>0},protectedAnnouncementUntil:0,protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,
+  viewportPause:createViewportPause(),mobileLayout:'ordinary',signalProtectionSummary,minorReserveView,performance:{now:()=>0},protectedAnnouncementUntil:0,protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,armedReserveControl:null,lastReservePhase:null,
   game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,
