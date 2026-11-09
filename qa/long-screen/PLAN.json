@@ -1,0 +1,434 @@
+{
+  "validationEpoch": "screen-actual-hammer-integration-001",
+  "scope": "Actual production factory/evaluator feasibility; not human balance or native certification. All frozen F2 policies/formation retained. Generated receipts are external.",
+  "missionId": "the-long-screen",
+  "publicAuthoredSeed": 8404,
+  "developmentSeeds": [
+    8303,
+    448273,
+    8404
+  ],
+  "policyDefinitions": {
+    "sustainedarchers": {
+      "plan": [
+        {
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 970,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 550,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 270,
+          "lane": 1
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "priority": [
+        "archery",
+        "foundry",
+        "wardenLodge",
+        "barracks",
+        "sanctum",
+        "aerie",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "screenedsiege": {
+      "plan": [
+        {
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "sanctum",
+          "x": 970,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 550,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 270,
+          "lane": 1
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "priority": [
+        "foundry",
+        "sanctum",
+        "archery",
+        "wardenLodge",
+        "barracks",
+        "aerie",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "wizardground": {
+      "plan": [
+        {
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "sanctum",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "sanctum",
+          "x": 970,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 550,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 270,
+          "lane": 1
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "priority": [
+        "sanctum",
+        "foundry",
+        "archery",
+        "wardenLodge",
+        "barracks",
+        "aerie",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "northrace": {
+      "plan": [
+        {
+          "type": "aerie",
+          "x": 1250,
+          "lane": 0
+        },
+        {
+          "type": "aerie",
+          "x": 1110,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 970,
+          "lane": 0
+        },
+        {
+          "type": "foundry",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "barracks",
+          "x": 550,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "priority": [
+        "aerie",
+        "foundry",
+        "archery",
+        "barracks",
+        "wardenLodge",
+        "sanctum",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "delayedarchers": {
+      "plan": [
+        {
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 970,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 550,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 270,
+          "lane": 1
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "delay": 15,
+      "priority": [
+        "archery",
+        "foundry",
+        "wardenLodge",
+        "barracks",
+        "sanctum",
+        "aerie",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "recoveryarchers": {
+      "plan": [
+        {
+          "type": "wardenLodge",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "foundry",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "sanctum",
+          "x": 970,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 550,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 270,
+          "lane": 1
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "pauseAfter": 3,
+      "resumeAt": 30,
+      "priority": [
+        "archery",
+        "foundry",
+        "sanctum",
+        "wardenLodge",
+        "barracks",
+        "aerie",
+        "mint",
+        "watchtower"
+      ]
+    },
+    "groundcontainrace": {
+      "plan": [
+        {
+          "type": "watchtower",
+          "x": 1250,
+          "lane": 1
+        },
+        {
+          "type": "archery",
+          "x": 1110,
+          "lane": 1
+        },
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0
+        },
+        {
+          "type": "foundry",
+          "x": 1110,
+          "lane": 0
+        },
+        {
+          "type": "archery",
+          "x": 970,
+          "lane": 0
+        },
+        {
+          "type": "sanctum",
+          "x": 690,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 0
+        },
+        {
+          "type": "mint",
+          "x": 270,
+          "lane": 2
+        },
+        {
+          "type": "archery",
+          "x": 690,
+          "lane": 2
+        }
+      ],
+      "priority": [
+        "foundry",
+        "archery",
+        "barracks",
+        "sanctum",
+        "watchtower",
+        "wardenLodge",
+        "aerie",
+        "mint"
+      ]
+    },
+    "idle": {
+      "plan": [],
+      "priority": []
+    }
+  },
+  "developmentRuns": 24,
+  "heldOutSeeds": [],
+  "heldOutGate": "Independent reviewer chooses untouched cases after source freeze. No heldout claimed by this plan.",
+  "frozenF2FormationSha256": "224ae65ee0c0aad61ecd2ea5ded56a43da56bb62b1376785d6f0c7f3690b9094",
+  "frozenF2PlanSha256": "14ec187c64107ea41b6fe0bebdfd07fe61eb649bf58434c81b86755080ed34bb",
+  "commandCadence": "One attempted command per five simulated seconds, including failures; no direct orders, spells, or player citadel purchases. Build first missing planned site, waiting when unaffordable. Destroyed sites may be rebuilt. After all planned sites exist, upgrade lowest level first then policy type priority, then largest x, smallest lane, id. Recovery purchases first three listed buildings, waits until30s and changes to its listed archer emphasis."
+}
