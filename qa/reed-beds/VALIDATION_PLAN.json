@@ -1,0 +1,159 @@
+{
+  "status": "frozen-before-held-out-runs",
+  "frozenAt": "2026-11-09T04:14:40.360Z",
+  "baseline": {
+    "commit": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+    "tree": "50c098a436ddee2e36d629a2e7d36e6887ae6b25"
+  },
+  "developmentSeeds": [
+    7307,
+    719,
+    51017,
+    424242
+  ],
+  "heldOutSeeds": [
+    982451,
+    620231
+  ],
+  "policies": [
+    "outer-pair",
+    "north-middle",
+    "middle-south",
+    "screened-siege",
+    "supported-rootwarden",
+    "core-rush",
+    "air-core",
+    "broad-novice",
+    "idle"
+  ],
+  "historicalEvidenceReused": false,
+  "scope": "Fresh production-engine paid feasibility only; not human difficulty or native UI evidence.",
+  "policySha256": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+  "harnessHashes": {
+    "qa/reed-beds/paid-policies.mjs": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+    "qa/reed-beds/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/reed-beds/scenario.mjs": "27d0f76b03b72fb54ccddcfcb22936356e45355e317d3b31a48582b2308e76bd",
+    "qa/reed-beds/simulate.mjs": "7a5fa68874372f08881dc7eb97fc9216cf1ac5cbe5eb5192e7757874f71cf1f6"
+  },
+  "combatHashes": {
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "59920c69e37805167c72b98a2997fd054825734393f147bfe3b18cabd86e5b67",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5"
+  },
+  "formationSha256": "d98e3640c1671225edb4fbb704fd56d1d7a1495d125e810fa2d448a5f0aba994",
+  "formation": {
+    "scenario": {
+      "id": "through-the-reed-beds",
+      "revision": 1
+    },
+    "ruleset": {
+      "id": "frontier-campaign-reed-beds",
+      "revision": 1
+    },
+    "map": {
+      "id": "classic",
+      "revision": 1
+    },
+    "seed": 7307,
+    "startingGold": [
+      1100,
+      100
+    ],
+    "startingHP": [
+      6000,
+      6000
+    ],
+    "startingIncome": [
+      7.5,
+      7.5
+    ],
+    "playerBuildings": [
+      [
+        "barracks",
+        830,
+        0
+      ],
+      [
+        "barracks",
+        830,
+        1
+      ],
+      [
+        "barracks",
+        830,
+        2
+      ],
+      [
+        "mint",
+        410,
+        1
+      ]
+    ],
+    "enemyBuildings": [
+      [
+        "watchtower",
+        2230,
+        0,
+        2
+      ],
+      [
+        "archery",
+        2370,
+        0
+      ],
+      [
+        "foundry",
+        2230,
+        1
+      ],
+      [
+        "barracks",
+        2090,
+        1
+      ],
+      [
+        "sanctum",
+        2230,
+        2
+      ],
+      [
+        "archery",
+        2090,
+        2
+      ],
+      [
+        "mint",
+        2790,
+        1
+      ]
+    ],
+    "targets": [
+      {
+        "type": "watchtower",
+        "x": 2230,
+        "lane": 0,
+        "originalId": 7
+      },
+      {
+        "type": "foundry",
+        "x": 2230,
+        "lane": 1,
+        "originalId": 9
+      },
+      {
+        "type": "sanctum",
+        "x": 2230,
+        "lane": 2,
+        "originalId": 11
+      }
+    ],
+    "deadline": 600,
+    "escalation": 300,
+    "ai": true,
+    "difficulty": "normal",
+    "fog": false
+  }
+}
