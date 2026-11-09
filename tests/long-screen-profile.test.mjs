@@ -300,3 +300,46 @@ test('historical backup restore does not invent Screen progress checkpoint or re
     assert.equal(JSON.parse(raw.data.get(MARKER)).version, 24); assert.equal(raw.data.get('unrelated'), 'untouched'); assertBlocked(hammer(raw), raw);
   }
 });
+
+test('ownership lost during Screen replacement prevents rollback over a competing profile', () => {
+  const text = createBackup(backend(entries(earned())), {createdAt:date});
+  const raw = backend([[MARKER, marker(23)], ...opaque()]), owner = current(raw); assert.ok(owner.beginImport().ok);
+  const set = raw.setItem; let competingBytes = null;
+  raw.setItem = (key, value) => {
+    set(key, value);
+    if (key !== K.campaign || competingBytes) return;
+    // Simulate another tab taking ownership immediately after the first write.
+    raw.data.set(MARKER, marker(24, 'restoring', 'competing-owner'));
+    for (const domainKey of keys) raw.data.set(domainKey, `newer owner ${domainKey}`);
+    competingBytes = [...raw.data]; raw.reads.length = 0; raw.writes.length = 0;
+  };
+  const result = restoreBackup(owner.importStorage, text);
+  assert.equal(result.ok, false); assert.equal(result.code, 'rollback-incomplete'); assert.equal(result.rollback.complete, false);
+  assert.deepEqual(result.rollback.unverifiedKeys, keys); assert.deepEqual([...raw.data], competingBytes); assert.deepEqual(raw.writes, []);
+  assert.ok(raw.reads.every(key => key === MARKER));
+  assert.equal(owner.finishImport({outcome:'rolled-back'}).ok, false); assert.deepEqual([...raw.data], competingBytes); assert.deepEqual(raw.writes, []);
+});
+
+test('incomplete Screen rollback keeps profile24 failed until explicit verified recovery', () => {
+  const text = createBackup(backend(entries(earned())), {createdAt:date});
+  const raw = backend([[MARKER, marker(23)], ...opaque()]), owner = current(raw); assert.ok(owner.beginImport().ok);
+  const set = raw.setItem; let writes = 0;
+  raw.setItem = (key, value) => {
+    if (key === K.campaign && ++writes <= 2) {
+      if (writes === 1) set(key, value);
+      throw Error('persistent quota fault');
+    }
+    set(key, value);
+  };
+  const result = restoreBackup(owner.importStorage, text);
+  assert.equal(result.ok, false); assert.equal(result.rollback.complete, false); assert.deepEqual(result.rollback.unrestoredKeys, [K.campaign]);
+  assert.ok(owner.finishImport({outcome:'failed'}).ok); assert.equal(owner.status().phase, 'failed');
+  assert.deepEqual(JSON.parse(raw.data.get(MARKER)), {format:'ironroot-profile', version:24, epoch:'long-screen-import', phase:'failed'});
+  assertBlocked(owner, raw); assertBlocked(hammer(raw), raw);
+  raw.setItem = set;
+  const recovery = current(raw, 'verified-recovery');
+  assert.equal(recovery.beginImport().code, 'recovery-confirmation-required');
+  assert.ok(recovery.beginImport({recover:true}).ok); assert.ok(restoreBackup(recovery.importStorage, text).ok);
+  assert.ok(recovery.finishImport({outcome:'restored'}).ok); assert.equal(recovery.status().canWrite, false);
+  assert.deepEqual(parseBackup(createBackup(current(raw).storage, {createdAt:date})).data, earned()); assertBlocked(hammer(raw), raw);
+});

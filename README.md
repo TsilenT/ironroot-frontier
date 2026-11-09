@@ -1,4 +1,12 @@
-## v0.32.0 candidate: The Hammer Turns
+## The Long Screen (v0.33)
+
+Current main progression has 31 missions / 93 stars. Chapter 7 remains three missions; Chapter 8 is a partial four-mission route. The Long Screen follows The Hammer Turns. No Chapter 9 or Chapter 10 mission is admitted by this update.
+
+The fully visible encounter uses ordinary paid adaptive AI. Choose a supported central demolition or buy time in the middle while an outer ground attack advances. The central lodge is optional. Rootwardens have ordinary high health and low melee damage, without projectile resistance, collision shielding or healing. Public seed 8404 is fixed; the 3:00 and 4,500 HP stars are optional.
+
+Reproducible tests and legal-command harnesses are in the repository; generated run records, logs, screenshots and review reports stay outside it. See `docs/LONG_SCREEN_BUILD.md` for identity and verification boundaries.
+
+## Historical v0.32.0 candidate: The Hammer Turns
 
 Chapter 8's third mission faces ordinary paid siege concentration with defensive repairs. Watch real construction and marching troops, then confront that road or attack elsewhere. Destroy the enemy citadel by 10:00 with yours surviving. Turns are conditional, not scheduled; no road, target or unit is mandatory. Optional medals are 3:00 and 4,500 HP; 1 HP can still win. Normal 5:00 escalation remains.
 

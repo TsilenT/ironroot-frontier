@@ -9,13 +9,13 @@ import {encodeBattle,decodeBattle,identityOf} from '../dist/battle-codec.js';
 import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {createPolicy} from '../qa/false-quiet/paid-policies.mjs';
 const ID='false-quiet',fresh=variant=>c.createCampaignMission(ID,{variant}),evalMission=g=>c.evaluateCampaignMission(g,ID);
-function progress(){return c.normalizeCampaignProgress({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==ID)).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))});}
+function progress(){return c.normalizeCampaignProgress({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==ID)).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))});}
 function remove(g){const t=c.getCampaignTargets(g,ID)[0];g.state.buildings=g.state.buildings.filter(b=>b.id!==t.originalId);return t;}
 const clock=(g,time)=>{g.state.time=time;g.tick=Math.round(time/.05);};
 
 test('False Quiet adds exactly one Chapter 7 mission and two immutable layout identities',()=>{
  const p=progress(),old=structuredClone(p),m=c.getCampaignMission(ID),o=c.getProgressionCampaignOverview(p);
- assert.equal(o.total,30);assert.equal(o.maxStars,90);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.find(c=>c.id==='unlit-roads').number,7);assert.deepEqual(o.chapters.find(c=>c.id==='unlit-roads').total,3);
+ assert.equal(o.total,31);assert.equal(o.maxStars,93);assert.equal(o.nextMissionId,ID);assert.equal(o.chapters.find(c=>c.id==='unlit-roads').number,7);assert.deepEqual(o.chapters.find(c=>c.id==='unlit-roads').total,3);
  assert.deepEqual(m.prerequisites,['a-river-between-us']);assert.equal(c.getCampaignLaunchMission('a-river-between-us',p).reward,'Unlocks False Quiet');assert.ok(Object.isFrozen(m));assert.deepEqual(p,old);
  for(const [i,variant]of ['a','b'].entries()){const g=fresh(variant);assert.equal(g.ruleset.id,FALSE_QUIET_RULESET_IDS[i]);assert.equal(g.ai,true);assert.equal(g.difficulty,'normal');assert.equal(g.ruleset.endgame.forcedDecay,false);assert.equal(c.getCampaignRevisionForRuleset(ID,g.ruleset.id),1);assert.equal(c.canUseCampaignRuleset(p,ID,1,g.ruleset.id),true);assert.equal(c.canUseCampaignRuleset(c.createCampaignProgress(),ID,1,g.ruleset.id),false);}
  assert.throws(()=>fresh('c'));assert.throws(()=>fresh('__proto__'));assert.throws(()=>c.createCampaignMission('lanterns-on-the-water',{variant:'b'}));
