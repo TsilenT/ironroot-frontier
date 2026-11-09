@@ -1,0 +1,82 @@
+{
+  "scope": "Fresh Road reconstruction only; no publication approval",
+  "baseCommit": "ddb47b2dfcb87cfe90e6c0e35e16cab6c058736f",
+  "baseTree": "6f571f0bde6d8b330962e1cb1f43b8718fcc069e",
+  "version": "0.28.0",
+  "profileProtocol": 19,
+  "mainMissions": 26,
+  "maxStars": 78,
+  "checks": {
+    "full": {
+      "tests": 2009,
+      "passed": 2008,
+      "failed": 0,
+      "skipped": 1,
+      "skipReason": "Optional installed desktop tooling dependencies absent",
+      "logSha256": "dd687254e2e80a7c5e9c60e83198afb125b4a17fa19c9b2277b1ebaa79e27815"
+    },
+    "focusedRoad": {
+      "passed": 23,
+      "failed": 0
+    },
+    "profiles": {
+      "passed": 229,
+      "failed": 0
+    },
+    "syntax": "passed",
+    "runtimeInventory": "passed",
+    "nativeUI": {
+      "status": "bounded desktop PASS",
+      "report": "docs/ROAD_REBUILT_UI_REVIEW.md",
+      "reportSha256": "d7ecb6b4613a3fb9f175156163f05430d7460b907973257d123e1e98be68507f",
+      "sourceRuntimeUnchanged": true,
+      "scope": [
+        "Ready-state selection and readable briefing/scout",
+        "Fresh paid Extra Arrow purchase",
+        "Restart Cancel, browser Back and confirm",
+        "Save/reload/Resume in isolated sessionStorage",
+        "Natural paid near-checkpoint continuation to three-star win at 138s",
+        "Replay, chapter and Skirmish navigation"
+      ],
+      "notRun": [
+        "Native locked state and actual prerequisite completion-to-unlock",
+        "From-zero browser victory and loss/deadline/escalation playthroughs",
+        "Phone, touch, mobile emulation and audio",
+        "Production profile migration and browser-restart/cross-tab durability",
+        "Service-worker/cache upgrade certification",
+        "Full browser/device matrix"
+      ],
+      "cleanup": "Owned QA tabs closed and managed preview stopped",
+      "inheritedBehavior": "Begin Mission starts a new attempt without overwrite confirmation; Resume separately passed"
+    },
+    "remoteCI": "not checked in this source-only validation"
+  },
+  "runtimeFiles": 58,
+  "runtimeMapSha256": "95ab414c37edb00dc0294c9ec20a3c6ada609da71fd669be0836a81ad67def0a",
+  "paidRuns": 48,
+  "successfulReceipts": 1166,
+  "rawReceiptsSha256": "b4320313938313ba77d987300f62885fbb6618b0d70d1c1351235fd323e43f3c",
+  "compactEvidence": {
+    "fresh-feasibility.json": "b17ae5069d7cd0b5cb8ea5374b5282da2b8c8d29eac8c950cfb486ea1adc998f",
+    "receipt-audit.json": "a9e19becac457c77313eeed92e037e40a47cc373c171aeb580d60da55416f6f6",
+    "preview-fixtures.json": "cc737e10a1b68e68de9786b03d1efbe63db75993692cbc05ea526aa5ef1be170",
+    "independent-evidence.json": "aee89d5a3865f3d5878bb7a82d9436ea16e54fe0456f535462c68c450ab2df8b"
+  },
+  "historicalPassClaimsReused": false,
+  "oldSourceCompared": true,
+  "noLaterMission": true,
+  "noDeletion": true,
+  "documentationAddendum": {
+    "checkpoint": "003",
+    "runtimePoliciesTestsUnchanged": true,
+    "frozenFilesVerified": 342,
+    "fullAggregateRerun": false,
+    "aggregateExplanation": "Earlier fresh aggregate remains applicable to unchanged frozen source; this addendum changes documentation and evidence status only.",
+    "syntaxAndReleasePreflight": "passed on unchanged runtime",
+    "preflightEvidenceSha256": {
+      "syntax.log": "2557f54cce31ca3e5bfa1e62b504bcdc92246b0256c072c212cc51720e2bb10e",
+      "release-preflight.log": "e58e8cd0f2d41bc1d9a7d5828397d83548bd4766ebc0eca42b383510eaaf6e2c",
+      "frozen-source-check.json": "cd1f616275a27a5141b4449ffee3fbabebd6c7b4891feeb414ff97f3971e9c8f"
+    }
+  }
+}
