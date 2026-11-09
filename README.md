@@ -1,8 +1,8 @@
-## v0.29.0 reconstructed WIP: Through the Reed Beds
+## v0.29.0 reconstructed candidate: Through the Reed Beds
 
 Chapter 7 closes with a fully visible Classic mission: destroy any two of three original named positions, or the enemy citadel, within 10:00 while yours survives. The normal adaptive enemy pays ordinary prices. Strong outer-pair and core-bypass wins remain legal, replacements do not restore original targets, and 1 HP on your own citadel is enough.
 
-Current catalog: 27 main missions / 81 optional stars. Profile20 fences older writers without migrating earned domain bytes. This completes Chapter 7 only, leading toward the planned coast; Chapters8–10 are not admitted and the ten-chapter campaign is not finished. This WIP is reconstructed from verified merged Road6b6cf964, not recovered lost bytes. Fresh validation is still in progress; see [the rebuild record](docs/REED_BEDS_REBUILD.md) and [persistence boundary](docs/REED_BEDS_PERSISTENCE.md). No release, publication or human-difficulty claim is made.
+Current catalog: 27 main missions / 81 optional stars. Profile20 fences older writers without migrating earned domain bytes. This completes Chapter 7 only, leading toward the planned coast; Chapters8–10 are not admitted and the ten-chapter campaign is not finished. This candidate is reconstructed from verified merged Road6b6cf964, not recovered lost bytes. Fresh source, paid feasibility, static preflight and bounded desktop checks passed; see [the rebuild record](docs/REED_BEDS_REBUILD.md) and [persistence boundary](docs/REED_BEDS_PERSISTENCE.md). See also [bounded native review](docs/REED_REBUILT_UI_REVIEW.md). Remote CI and release approval remain separate; no human-difficulty or real-save migration certification is claimed.
 
 ## Historical v0.28.0 reconstructed candidate: The Road We Know
 

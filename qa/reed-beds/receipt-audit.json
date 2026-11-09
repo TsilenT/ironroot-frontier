@@ -1,0 +1,843 @@
+{
+  "scope": "Independent arithmetic audit of fresh detached action-time receipts and mine events. Does not establish native UI behavior or human difficulty.",
+  "generatedAt": "2026-11-09T04:15:53.056Z",
+  "rawFiles": [
+    {
+      "filename": "ironroot-reed-fresh-development.ndjson",
+      "sha256": "bee79a334f0c7aad4dda1eea1ff1bfc9c273f5390cabb807ee4e3b55396faa86",
+      "bytes": 419883
+    },
+    {
+      "filename": "ironroot-reed-fresh-held-out.ndjson",
+      "sha256": "15ea8caefd410a204d0b75796da072a953ace85293eed10a57a46c62ea0ad453",
+      "bytes": 206282
+    }
+  ],
+  "runs": 54,
+  "allPassed": true,
+  "maximumLedgerError": 0,
+  "audits": [
+    {
+      "policy": "outer-pair",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 65.69999999999841,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "outer-pair",
+      "seed": 719,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 64.34999999999849,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "outer-pair",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 65.69999999999841,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "outer-pair",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 69.89999999999817,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 81.49999999999751,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        7,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 719,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 87.44999999999717,
+      "playerPaidActions": 10,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        9,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 71.1499999999981,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        9,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 78.2999999999977,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        9,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 79.64999999999762,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 719,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 76.84999999999778,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 75.54999999999785,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 99.79999999999647,
+      "playerPaidActions": 11,
+      "enemySuccessfulActions": 6,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 67.19999999999833,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 719,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 67.29999999999832,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 62.74999999999857,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 61.74999999999863,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 66.74999999999835,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 719,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 65.34999999999843,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 63.59999999999852,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 69.54999999999819,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "enemy-citadel",
+      "duration": 138.64999999999728,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 9,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 719,
+      "outcome": "won",
+      "route": "enemy-citadel",
+      "duration": 151.30000000000015,
+      "playerPaidActions": 16,
+      "enemySuccessfulActions": 10,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 51017,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 140.4499999999977,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 10,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "enemy-citadel",
+      "duration": 125.44999999999501,
+      "playerPaidActions": 14,
+      "enemySuccessfulActions": 9,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 7307,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 138.04999999999714,
+      "playerPaidActions": 13,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 719,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 134.04999999999623,
+      "playerPaidActions": 13,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 51017,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 140.4499999999977,
+      "playerPaidActions": 13,
+      "enemySuccessfulActions": 8,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 424242,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 140.29999999999765,
+      "playerPaidActions": 13,
+      "enemySuccessfulActions": 8,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 7307,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 114.19999999999565,
+      "playerPaidActions": 17,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 719,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 100.19999999999645,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 51017,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 103.14999999999628,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 424242,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 115.29999999999559,
+      "playerPaidActions": 17,
+      "enemySuccessfulActions": 8,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 7307,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 90.99999999999697,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 719,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 91.49999999999694,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 51017,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 91.09999999999697,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 424242,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 90.94999999999698,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "outer-pair",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 60.09999999999872,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "outer-pair",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 65.14999999999844,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 75.54999999999785,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        9,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "north-middle",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "watchtower+foundry",
+      "duration": 77.49999999999774,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 6,
+      "targetsDestroyed": [
+        9,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 79.44999999999763,
+      "playerPaidActions": 9,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "middle-south",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "foundry+sanctum",
+      "duration": 92.3499999999969,
+      "playerPaidActions": 10,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        11,
+        9
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 59.39999999999876,
+      "playerPaidActions": 7,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 59.549999999998754,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 4,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 66.04999999999839,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 3,
+      "targetsDestroyed": [
+        7,
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 66.69999999999835,
+      "playerPaidActions": 8,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "enemy-citadel",
+      "duration": 135.6499999999966,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 10,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "core-rush",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "enemy-citadel",
+      "duration": 135.09999999999647,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 9,
+      "targetsDestroyed": [
+        11
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 982451,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 133.4999999999961,
+      "playerPaidActions": 12,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "air-core",
+      "seed": 620231,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 150.95000000000007,
+      "playerPaidActions": 14,
+      "enemySuccessfulActions": 9,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 982451,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 103.04999999999629,
+      "playerPaidActions": 16,
+      "enemySuccessfulActions": 7,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 620231,
+      "outcome": "won",
+      "route": "watchtower+sanctum",
+      "duration": 100.89999999999641,
+      "playerPaidActions": 15,
+      "enemySuccessfulActions": 6,
+      "targetsDestroyed": [
+        11,
+        7
+      ],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 982451,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 91.34999999999695,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    },
+    {
+      "policy": "idle",
+      "seed": 620231,
+      "outcome": "lost",
+      "route": "player-citadel",
+      "duration": 89.44999999999706,
+      "playerPaidActions": 0,
+      "enemySuccessfulActions": 5,
+      "targetsDestroyed": [],
+      "maxLedgerError": 0,
+      "independentIncomeVerified": true,
+      "ordinaryPricesVerified": true
+    }
+  ]
+}

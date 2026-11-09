@@ -14,7 +14,7 @@ function game(time=62,held=60){const g=new Game({rulesetId:rule.id,ai:false});g.
 const digest=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 
 test('immutable compound rule is isolated from all published rule snapshots',()=>{
- assert.equal(digest(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!==rule.id&&id!=='frontier-campaign-road-we-know'&&!id.startsWith('frontier-campaign-false-quiet-')))), 'abe214bcff857c20b2cd1a5a2589615de24151f98d71a7d95868d466d400738f');
+ assert.equal(digest(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>id!==rule.id&&id!=='frontier-campaign-road-we-know'&&id!=='frontier-campaign-reed-beds'&&!id.startsWith('frontier-campaign-false-quiet-')))), 'abe214bcff857c20b2cd1a5a2589615de24151f98d71a7d95868d466d400738f');
  assert.deepEqual(rule.campaignControl,{...CAMPAIGN_CONTROL,timeLimit:600,endOnGoal:false});
  assert.equal(rule.campaignControl,RIVER_BETWEEN_CONTROL);assert.ok(Object.isFrozen(rule.campaignControl));
  assert.equal(rule.economy.policy,'legacy');assert.equal(rule.fog,undefined);assert.equal(rule.ai.policy,'legacy');assert.equal(rule.campaignOnly,true);

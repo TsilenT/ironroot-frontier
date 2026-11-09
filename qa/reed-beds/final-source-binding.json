@@ -1,0 +1,109 @@
+{
+  "scope": "Fresh final-evaluator binding verification of the existing frozen 54-run matrix. This is a deterministic rerun, not 54 new held-out samples or human/native UI evidence.",
+  "startedAt": "2026-11-09T04:19:40.554Z",
+  "completedAt": "2026-11-09T04:19:57.317Z",
+  "originalFreezePreserved": true,
+  "originalPlan": {
+    "file": "VALIDATION_PLAN.json",
+    "sha256": "d90afd773d17a182f9dc66fdd2ba6c85d3fc0bae6474f4a6e949664780733e4b",
+    "frozenAt": "2026-11-09T04:14:40.360Z"
+  },
+  "policySha256": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+  "formationSha256": "d98e3640c1671225edb4fbb704fd56d1d7a1495d125e810fa2d448a5f0aba994",
+  "finalEvaluator": {
+    "file": "dist/campaign.js",
+    "sha256": "f7ca6747229778f7583c4a3ab78efd3c90a4ce6ab13465327457a1ed1f819bea",
+    "unchangedThroughRerun": true,
+    "checkpoint001ByteIdentical": true
+  },
+  "checkpoint001": {
+    "overlaySha256": "9715de75fcd3568155b321384df3dcf40e9b30baea252fcedf1e23cba843ad30",
+    "archiveSha256": "226fcdef73aba1f23a86cf65a27d3a18b69b6642f160070f47d802bb08b142bc",
+    "checkpointReceiptSha256": "bd311047e6dda1695f732d27fab94d626dff09e703db647668cc7006f7138bbc",
+    "campaignSha256": "f7ca6747229778f7583c4a3ab78efd3c90a4ce6ab13465327457a1ed1f819bea",
+    "overlayContentVerified": true,
+    "archiveBytesVerified": true
+  },
+  "finalCombatHashes": {
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/rulesets.js": "59920c69e37805167c72b98a2997fd054825734393f147bfe3b18cabd86e5b67",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "dist/campaign.js": "f7ca6747229778f7583c4a3ab78efd3c90a4ce6ab13465327457a1ed1f819bea"
+  },
+  "originalRawFiles": [
+    {
+      "filename": "ironroot-reed-fresh-development.ndjson",
+      "sha256": "bee79a334f0c7aad4dda1eea1ff1bfc9c273f5390cabb807ee4e3b55396faa86",
+      "bytes": 419883
+    },
+    {
+      "filename": "ironroot-reed-fresh-held-out.ndjson",
+      "sha256": "15ea8caefd410a204d0b75796da072a953ace85293eed10a57a46c62ea0ad453",
+      "bytes": 206282
+    }
+  ],
+  "rerunRaw": {
+    "filename": "ironroot-reed-final-source-rerun.ndjson",
+    "sha256": "c7b76b7a33e21555a9a535bfd9ce99348e96e76a4a9a62f496e5a22b05602b78",
+    "bytes": 626165,
+    "byteIdenticalToConcatenatedOriginalRaw": true
+  },
+  "verification": {
+    "runs": 54,
+    "exactRunMatches": 54,
+    "exactReceiptMatches": 54,
+    "independentAuditsPassed": 54,
+    "maximumLedgerError": 0,
+    "allOrdinaryPricesAndMineEventIncomeVerified": true
+  },
+  "results": {
+    "outer-pair": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "north-middle": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "middle-south": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "screened-siege": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "supported-rootwarden": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "core-rush": {
+      "games": 6,
+      "wins": 5,
+      "losses": 1
+    },
+    "air-core": {
+      "games": 6,
+      "wins": 0,
+      "losses": 6
+    },
+    "broad-novice": {
+      "games": 6,
+      "wins": 6,
+      "losses": 0
+    },
+    "idle": {
+      "games": 6,
+      "wins": 0,
+      "losses": 6
+    }
+  }
+}

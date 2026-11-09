@@ -1,0 +1,188 @@
+{
+  "scope": "Fresh ordinary paid-engine checkpoint summaries, not browser-earned wins. Near-terminal means one original destroyed and another original at ≤150 HP; evaluator remains active.",
+  "mission": "through-the-reed-beds",
+  "checkpoints": {
+    "paid-opening": {
+      "policy": "outer-pair",
+      "seed": 7307,
+      "time": 25.00000000000022,
+      "rulesetId": "frontier-campaign-reed-beds",
+      "originalTargets": [
+        {
+          "name": "North Reed Watch",
+          "originalId": 7,
+          "type": "watchtower",
+          "lane": 0,
+          "alive": true,
+          "hp": 1400
+        },
+        {
+          "name": "Middle Iron Works",
+          "originalId": 9,
+          "type": "foundry",
+          "lane": 1,
+          "alive": true,
+          "hp": 650
+        },
+        {
+          "name": "South Ember Hall",
+          "originalId": 11,
+          "type": "sanctum",
+          "lane": 2,
+          "alive": true,
+          "hp": 520
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        304.5,
+        157.5
+      ],
+      "paidActions": 5,
+      "spending": [
+        995,
+        140
+      ],
+      "grossIncome": [
+        187.5,
+        187.5
+      ],
+      "killGold": [
+        12,
+        10
+      ],
+      "maxLedgerError": [
+        0,
+        0
+      ],
+      "battleSha256": null
+    },
+    "one-target": {
+      "policy": "outer-pair",
+      "seed": 7307,
+      "time": 46.94999999999947,
+      "rulesetId": "frontier-campaign-reed-beds",
+      "originalTargets": [
+        {
+          "name": "North Reed Watch",
+          "originalId": 7,
+          "type": "watchtower",
+          "lane": 0,
+          "alive": true,
+          "hp": 1400
+        },
+        {
+          "name": "Middle Iron Works",
+          "originalId": 9,
+          "type": "foundry",
+          "lane": 1,
+          "alive": true,
+          "hp": 650
+        },
+        {
+          "name": "South Ember Hall",
+          "originalId": 11,
+          "type": "sanctum",
+          "lane": 2,
+          "alive": false,
+          "hp": 0
+        }
+      ],
+      "cores": [
+        6000,
+        6000
+      ],
+      "gold": [
+        170.125,
+        110.125
+      ],
+      "paidActions": 7,
+      "spending": [
+        1360,
+        370
+      ],
+      "grossIncome": [
+        390.125,
+        352.125
+      ],
+      "killGold": [
+        40,
+        28
+      ],
+      "maxLedgerError": [
+        0,
+        0
+      ],
+      "battleSha256": null
+    },
+    "terminal-near": {
+      "policy": "outer-pair",
+      "seed": 7307,
+      "time": 64.29999999999849,
+      "rulesetId": "frontier-campaign-reed-beds",
+      "originalTargets": [
+        {
+          "name": "North Reed Watch",
+          "originalId": 7,
+          "type": "watchtower",
+          "lane": 0,
+          "alive": true,
+          "hp": 141
+        },
+        {
+          "name": "Middle Iron Works",
+          "originalId": 9,
+          "type": "foundry",
+          "lane": 1,
+          "alive": true,
+          "hp": 650
+        },
+        {
+          "name": "South Ember Hall",
+          "originalId": 11,
+          "type": "sanctum",
+          "lane": 2,
+          "alive": false,
+          "hp": 0
+        }
+      ],
+      "cores": [
+        6000,
+        5895
+      ],
+      "gold": [
+        200,
+        45.25
+      ],
+      "paidActions": 8,
+      "spending": [
+        1550,
+        585
+      ],
+      "grossIncome": [
+        602,
+        482.25
+      ],
+      "killGold": [
+        48,
+        48
+      ],
+      "maxLedgerError": [
+        0,
+        0
+      ],
+      "battleSha256": null
+    }
+  },
+  "completion": {
+    "route": "watchtower+sanctum",
+    "time": 65.69999999999841,
+    "cores": [
+      6000,
+      5832
+    ]
+  }
+}

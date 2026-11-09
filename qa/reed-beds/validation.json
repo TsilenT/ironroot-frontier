@@ -1,0 +1,84 @@
+{
+  "scope": "Fresh source validation of reconstructed Reed; native UI, remote CI and publication separate. Not recovered historical outcomes.",
+  "baseCommit": "6b6cf964097a815b214933c7e74bb3f23b72d5d5",
+  "baseTree": "50c098a436ddee2e36d629a2e7d36e6887ae6b25",
+  "codeTestFingerprint": "456446cebee6c569822f741b57a4a02c06959a773b4009d597eab0488a381af7",
+  "runtimeMapSha256": "071c399eaa1e83f56d4503048c4974e65cd5939c71284c468403d84d1d03cc1d",
+  "aggregate": {
+    "command": "npm test",
+    "discovered": 2065,
+    "passed": 2064,
+    "failed": 0,
+    "skipped": 1,
+    "durationMs": 102481.563086,
+    "logFilename": "ironroot-reed-full-tests-final-epoch2.log",
+    "logSha256": "6448ac9b0a6be42985baf90aa4e048e0c848ff85aa5a0c6c462e163b7ed2c149"
+  },
+  "syntax": {
+    "command": "npm run check",
+    "passed": true
+  },
+  "sourceRuntime": {
+    "command": "npm run check:release",
+    "passed": true,
+    "files": 58,
+    "bytes": 1171830
+  },
+  "paidFeasibility": {
+    "independentSamples": 54,
+    "development": 36,
+    "heldOut": 18,
+    "allReceiptAuditsPassed": true,
+    "maxLedgerError": 0,
+    "finalEvaluatorRerun": "Separate deterministic rerun of same54samples exactly reproduced all full receipts; not additional held-outs."
+  },
+  "independentReview": {
+    "status": "passed, no blocking source findings",
+    "report": "docs/REED_BEDS_SOURCE_REVIEW.md",
+    "sha256": "fe464fc6a73cbfc9ee3d058ef4ca3b3c8e80c57d3f823855c8d95ae069e2a987",
+    "aggregate": {
+      "discovered": 2065,
+      "passed": 2064,
+      "failed": 0,
+      "skipped": 1
+    },
+    "focusedPassed": 141
+  },
+  "browserFixturePreflight": {
+    "status": "passed",
+    "report": "qa/reed-beds/browser-preflight.json",
+    "sha256": "0c3fe5b0c78cf0978c6435a04c8cae19f6eccd4a657670cea830badfba89d446",
+    "command": "npm --prefix qa/browser run check",
+    "additionalBrowserCheckScripts": 5,
+    "browserRootSyntaxModules": 101,
+    "requiredCanonicalFilesVerified": 159,
+    "nativeOrPlaywrightRun": false
+  },
+  "nativeUi": {
+    "status": "passed exercised bounded desktop scope",
+    "report": "docs/REED_REBUILT_UI_REVIEW.md",
+    "sha256": "7a5f05e905d0cccc8d4c7fb1de70675ea6c1e99af87d1eb5fa42e12a8aeca001",
+    "screenshots": 8,
+    "runtimeMapSha256": "071c399eaa1e83f56d4503048c4974e65cd5939c71284c468403d84d1d03cc1d",
+    "productionSaveMigrationCertified": false,
+    "fromZeroHumanVictory": false,
+    "temporaryGuard": "Withdrawn and exact502-file verified freeze restored before finalization; completed native evidence uses original reviewed bytes.",
+    "cleanup": "Owned QA tab closed and managed preview stopped."
+  },
+  "priorAggregateEpoch": {
+    "command": "npm test",
+    "discovered": 2065,
+    "passed": 2064,
+    "failed": 0,
+    "skipped": 1,
+    "durationMs": 133708.208543,
+    "logFilename": "ironroot-reed-full-tests-final.log",
+    "logSha256": "0305c848edfde6d4f470c0eecd0ec4f80cd7f24efce6ad25bc6a35fc76b44c6e"
+  },
+  "deliveryParent": {
+    "commit": "f949c77f339f527c6db75522269ed780517787ac",
+    "tree": "4221e2d051c4bcc5ec0136370d02743dde651b83",
+    "fullPathsIndependentlyReconciled": 2034,
+    "runtimeMatchesCheckpoint001": true
+  }
+}
