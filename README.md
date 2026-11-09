@@ -1,3 +1,11 @@
+## Wake the Reserve (v0.35 integration candidate)
+
+Chapter 9 begins with one of at least five planned missions, after The Shared Watch. The catalog contains 33 missions / 99 optional stars. Chapter 9 remains unfinished and Chapter 10 is not admitted. Destroy the enemy citadel by 10:00 while yours survives; optional medals never gate progression.
+
+Breaking the original north watch post starts a six-second warning before one finite reserve of four ordinary warriors and two archers. Enemy factories and paid adaptive AI continue normally. The post and reserve are not victory targets. Public launch/Restart seed 9104 and exact known-case dynamics remain reviewed, without a new seed search or human-difficulty claim.
+
+This WIP checkpoint preserves source/tests, not generated results. Profile 26, strict saved reserve identity, truthful HUD/briefing/Scout and known-case parity are integrated; full aggregate, independent persistence/native review and exact release gates are pending. See docs/WAKE_RESERVE_BUILD.md.
+
 ## The Shared Watch (v0.34 candidate)
 
 The current route has32 missions/96 optional stars. Chapter8 now has five distinct missions, ending with The Shared Watch after The Long Screen. Chapter7 remains three missions. Chapters9/10 are not admitted here.

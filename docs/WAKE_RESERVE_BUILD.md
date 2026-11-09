@@ -1,0 +1,13 @@
+# Wake the Reserve, v0.35 integration checkpoint
+
+This candidate begins Chapter 9, The Broken Line, after The Shared Watch. It is one admitted-candidate mission of at least five planned, not Chapter 9 completion or Chapter 10 admission. The catalog contains 33 missions and 99 optional stars. Public launch and Restart use the reviewed seed 9104.
+
+Destroy the enemy citadel within ten minutes while yours survives. One HP and the primary star progress. The three-minute and 4,500 HP stars are optional. Destroying the original northern watch post starts a disclosed six-second warning, then a single finite authored reserve of four ordinary warriors and two ordinary archers enters the north road. The normal enemy economy, factories, adaptive decisions, prices, troop movement, per-side cap and five-minute escalation continue. The reserve adds no treasury or paid spending and is not a victory target. Replacement posts never retrigger it. This finite troop mechanic replaces the historical planning proposal for a locked-gold reserve.
+
+The production opening and both known paid routes are tick-for-tick mirrors of the enabled, independently reviewed QA prototype. The separate four-case enabled/disabled comparison established local reserve contact and losses, not a winner reversal or human difficulty: both supported routes still won without player citadel damage. No new seed search or tuning is part of this integration.
+
+Production ruleset frontier-campaign-wake-reserve revision 1 is restricted to Classic revision 1 and this exact campaign scenario revision 1. Exact original post identity, trigger tick, ordered finite release IDs/ticks and capped queue are saved and validated. Core terminal ordering precedes reserve work; the ten-minute deadline stops advancement and commands. Interrupted capped release resumes after ordinary room becomes available. The HUD, map cue, briefing, Scout and hints disclose the reserve.
+
+Profile protocol 26 fences older writers without changing opaque earned campaign, trials, settings, history or battle domain bytes. Tests include the actual previous protocol 25 implementation, five-domain backup continuation, battle/history identity, deterministic restart and strict restore. Existing sparse repository omissions must be retained, not interpreted as deletions.
+
+This is a WIP preservation checkpoint, not release certification. Focused production/profile checks passed before preservation. Complete aggregate, compatibility review, rendered/native review, exact remote CI and publication remain separate gates. Only source, runnable tests, essential small fixtures and this concise record are included. Generated result archives, logs, screenshots, reviews and packaging records remain outside the repository.
