@@ -1,8 +1,9 @@
 /** Isolated, exact-identity siege commitment experiment. Never selected by old rules. */
 import {chooseAICitadelOption} from './citadel-options.js';
 export const HAMMER_RULESET_ID='frontier-hammer-prototype';
+export const HAMMER_CAMPAIGN_RULESET_ID='frontier-campaign-hammer-turns';
 export const HAMMER_AI=Object.freeze({policy:'siege-road-commitment-v1',lockTicks:900,cooldownTicks:400,switchMargin:2,maxFoundries:2});
-export const supportsHammer=rules=>rules?.id===HAMMER_RULESET_ID&&rules.revision===1&&rules.ai?.policy===HAMMER_AI.policy;
+export const supportsHammer=rules=>(rules?.id===HAMMER_RULESET_ID||rules?.id===HAMMER_CAMPAIGN_RULESET_ID)&&rules.revision===1&&rules.ai?.policy===HAMMER_AI.policy;
 export const createHammerState=()=>({sides:[0,1].map(()=>({lane:null,lockUntilTick:0,cooldownUntilTick:0}))});
 const home=(g,side,x)=>side===0?x:g.map.width-x;
 const world=(g,side,x)=>side===0?x:g.map.width-x;

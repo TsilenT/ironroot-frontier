@@ -354,7 +354,14 @@ function validateSave(data){
     if(ruleset.skirmishOnly&&!Object.hasOwn(MAPS,map.id))fail('citadel choices require a Skirmish battlefield');
     validateCitadelOptions(s.citadelOptions,s.time,data.tick,fail);
   }else if(Object.hasOwn(s,'citadelOptions'))fail('citadel choices are outside this ruleset');
-  if(supportsHammer(ruleset))validateHammerState(s.hammerCommitment,map,data.tick,fail);
+  if(supportsHammer(ruleset)){
+    // New tick-based commitment timers need a consistent clock. Published legacy
+    // identities retain their historical off-grid admission. Bound roundoff well
+    // below one fixed tick while allowing ordinary drift through the time limit.
+    const clockTolerance=Math.min(.001,1e-7+s.time*1e-9);
+    if(Math.abs(s.time-data.tick*.05)>clockTolerance)fail('Hammer time does not match its fixed tick');
+    validateHammerState(s.hammerCommitment,map,data.tick,fail);
+  }
   else if(Object.hasOwn(s,'hammerCommitment'))fail('Hammer commitment is outside this ruleset');
   if(supportsFog(ruleset))validateFog(s.fog,{map,ruleset,state:s,nextId:data.nextId},fail);
   else if(Object.hasOwn(s,'fog'))fail('fog knowledge is outside this ruleset');

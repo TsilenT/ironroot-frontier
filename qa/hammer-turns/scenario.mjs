@@ -1,0 +1,6 @@
+import assert from'node:assert/strict';import{createCampaignMission,getCampaignMission,evaluateCampaignMission,campaignScenarioForGame,getCampaignTargets}from'../../dist/campaign.js';
+export const ID='the-hammer-turns',MISSION=getCampaignMission(ID);
+/** Seed injection enters the real constructor before placement; never patches live state. */
+export function createScenario({opponent='hammer',seed=MISSION.seed}={}){assert.equal(opponent,'hammer','Actual-identity campaign never relabels a generic game');const g=seed===MISSION.seed?createCampaignMission(ID):createCampaignMission(ID,{seed});assert.equal(g.seed,seed);assert.equal(g.tick,0);assert.equal(g.state.time,0);assert.equal(g.ruleset.id,'frontier-campaign-hammer-turns');assert.equal(g.ruleset.qaOnly,undefined);assert.deepEqual(campaignScenarioForGame(g,ID),{kind:'campaign',id:ID,revision:1});assert.deepEqual(g.state.gold,[1100,320]);assert.deepEqual(g.state.income,[7.5,5]);assert.equal(getCampaignTargets(g,ID).length,0);return g;}
+export function actualOutcome(g){return evaluateCampaignMission(g,ID);}
+export function evaluate(g){const v=actualOutcome(g);return{ended:v.completed||v.failed,outcome:v.completed?'won':v.failed?'lost':'running',reason:v.completed?'enemy-citadel':v.failed?(g.state.bases[0].hp<=0||g.state.winner===1||g.state.winner==='draw'?'own-citadel':'deadline'):null,stars:v.stars};}
