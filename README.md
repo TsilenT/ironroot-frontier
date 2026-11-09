@@ -1,3 +1,9 @@
+## v0.30.0 WIP: The Archer’s Quay
+
+Chapter 8, The Siege Coast, begins with a fully visible Classic core assault: marching archers from central production, foundries on both outer roads, and an ordinary paid adaptive opponent. Destroy the enemy citadel by 10:00 with yours standing. No workshop or route is mandatory. Normal 5:00 escalation is disclosed.
+
+Current catalog: 28 main missions / 84 optional stars. Profile21 fences old writers while preserving earned domain bytes. This is a new numeric design from the historical concept, not an exact reconstruction. Chapter 7 remains three missions; Chapter 8 currently contains one. No later mission, Chapter 10 admission, deployment or human-difficulty claim. Fresh paid validation and independent review are pending; see [Archer candidate](docs/ARCHERS_QUAY_BUILD.md).
+
 ## v0.29.0 reconstructed candidate: Through the Reed Beds
 
 Chapter 7 closes with a fully visible Classic mission: destroy any two of three original named positions, or the enemy citadel, within 10:00 while yours survives. The normal adaptive enemy pays ordinary prices. Strong outer-pair and core-bypass wins remain legal, replacements do not restore original targets, and 1 HP on your own citadel is enough.
