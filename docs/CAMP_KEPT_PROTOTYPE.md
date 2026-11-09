@@ -1,36 +1,34 @@
-# The Camp We Kept: isolated Chapter 9 opener hypothesis
+# The Camp We Kept: epoch 2 affordability hypothesis
 
-This small QA-only prototype is not admitted campaign content. No runtime, mission catalog, ruleset identity, version, prerequisite, profile or release field is edited. Chapter 8's fifth mission must become canonical before future unlock wiring is chosen. Chapter 10 and the boss experiment stay separate.
+QA only, unopened. This is a fresh outcome-informed experiment, not a production mission or a repair validated by results. No catalog, runtime, ruleset identity, version, prerequisite, profile or remote change is included. Chapter 8's release remains separate and higher priority. No Chapter 10 admission.
 
-## Source facts and new design
+## Durable parent and preservation
 
-Baseline is canonical Long Screen commit `e3ef4e160b6d223484820dbe102961ef7d31e39b`, tree `9e764d661d2942af123ed0f65c277c2a728e06e6`. The full inventory's SHA256 is `9f10fdb5a4b59dfb227f0e7202c1f9e0bd29a56e497d424764a0d408bd9cfe07`. All 1328 locally present tracked files were verified against their Git blob IDs before copying to this isolated workspace; 1048 inventory-only files remain omitted, not deleted. No AGENTS.md is present in the complete inventory. Repository README run guidance and the engineering skill were read.
+Parent is PR 43 head `0e58a1a132163b1872e131398b047a3f0de41411`, tree `4f3e4975f9e4588235b8af55611cdfb02f145d0b`. Its complete inventory SHA256 is `a20e47d6a7c3a8ebaed01ed435c8ff979e60e84ee741c9eb9d461aeed1e816e9`. All 1333 present parent blobs were verified before copying into a new isolated workspace. The other 1048 inventory entries remain omitted, not deleted. The complete inventory has no AGENTS.md. The engineering skill and inherited repository run guidance apply.
 
-Existing mechanics, unchanged: 6000 maximum core HP; a single 190-gold citadel choice; regeneration at 3 HP/s after both the purchase wait and 8 quiet seconds, with no instant heal; ordinary building costs, baseline-plus-mine income, factory spawns, paid adaptive AI, 70-unit side cap and 5:00 escalation. All eight earned building types remain available. No fog, new engine system, damaged factories, magic drain or free arrivals are introduced. Core loss/draw takes precedence; 1 HP may win. The QA evaluator ends at 10:00 and is not a production mission evaluator.
+Epoch 1 source, freeze and all failed records remain unchanged. Its reviewed closure is `7b2cec52788cb261abdcb06b5a1676bc1375779551d0fd5ff7a2ed8eee358390`. The sealed independent outcome review SHA256 is `698f4247a4d40f8d64f1557253ce01db1b3b5d9538c5d48af59f339bc19d41a7`. All twenty epoch 1 cases lost, including full-health controls, with no enemy citadel damage. Valid accounting and restore do not establish a useful recovery choice or prove that no human can win.
 
-The new numeric hypothesis deliberately differs from the planning slate's tentative 4000 HP / 600 gold: Classic, normal paid AI, 2700/6000 player HP and 700 gold, one intact mine and three intact producers. The opponent has a real mine, six ordinary producers and 100 gold. Middle ground pressure and an exposed southern air/ground road make leaving the perimeter alone an explicit risk to inspect. All placements, budgets, health, seed and timings are new untested design, not reconstructed historical values. Ordinary built-in near-ready opening factory progress is retained.
+Timing correction, explicitly retained rather than hidden by rewriting the old report: counterattack's foundry at 0 seconds and southern archery at 5 precede contact. The sanctum at 10 follows first contact. First siege damage was at 7.60/7.75 seconds. Its factory is forward of the inherited warrior/archer factories, so the unchanged first command sequence has not established a screened siege.
 
-## Question and limits
+## Exactly one mechanical change
 
-Can the player reinforce an inherited force for an immediate middle counterattack, or spend the same purse on anti-air, income and a longer recovery? The wound is a risk budget, not an instruction to click Regeneration. Regeneration can restore at most 156 HP by 1:00 and 516 by 3:00 after a tick-zero purchase without any further damage; damage interrupts it. Those are upper-bound arithmetic examples, not a claim that healing is useful in this encounter. Extra Arrow and an attack without any citadel option are legal alternatives.
+Starting player gold changes from **700 to 1100**. Everything else remains the same: 2700/6000 player core HP, formation and intact assets, 100 enemy gold, normal paid adaptive AI, ordinary prices and income, all eight earned buildings, Classic map, 10:00 deadline, 5:00 escalation, seed pair 9101/9102, five policies, wounded/full-health controls and twenty-case order. Epoch/provenance fields, assertions and this plan/documentation change only to identify that new experiment. The runner and engine remain byte-identical to the parent.
 
-`qa/camp-kept/PLAN.json` fixes 20 known cases before the first tick: two seeds, the wounded scenario and an otherwise identical full-health control, and five fixed paid policies. They cover immediate supported offense, regeneration plus income, same-price Extra Arrow plus income, deliberately greedy recovery, and inactivity. The controls measure risk and pacing, not human strategy preference or a win-rate target. No route or building is mandatory. No-regen wins are welcome. Do not infer a useful recovery choice merely from nonzero healing or a larger final HP number.
+The extra disclosed purse may let the unchanged plans reach their delayed support before the observed southern-archery losses. It cannot cure the initial front-first siege exposure because the first zero/five/ten-second commands stay unchanged. It might merely mask weak placements or the scripts' refusal to rebuild. This is a narrow affordability question, not a promise of balance or a reason to require regeneration.
 
-The runner records actual payments and attempts, first damage, core damage and healing, inherited-building losses, five-second observations, minima, result and a final save roundtrip. Its reused ledger reconciles income, kill gold, spending and refunds each fixed tick. Source and plan drift stop the run. Raw results stay outside the source directory. Fixed policies have limited judgment and different spending orders; any comparison must preserve that limitation. Full-health pairs are total-effect comparisons, including ordinary AI responses after divergence.
+Regeneration is still one mutually exclusive 190-gold choice, 3 HP/s after the purchase wait and eight quiet seconds, with no instant heal. Nominal healing alone is not success. No-regeneration wins remain welcome, no route is mandatory, and a 1-HP core win is legal. Core loss/draw takes precedence. No fog, drain, reserve, free arrival or engine system is added.
 
-## Before opening
+## Unopened validation plan
 
-Only no-tick structural tests are allowed initially:
+`qa/camp-kept/PLAN.json` retains exactly twenty known cases: two seeds, two health conditions, counterattack, regeneration-income, arrows-income, greedy recovery and idle. These known seeds are reused openly, not called heldout evidence. Record ordinary payments/failed attempts, contact, losses, core damage/healing, five-second observations, minima, outcome and final save roundtrip. Compare actual payment timing and camp losses against epoch 1, while retaining both setups' failures and policy limits. No arbitrary win-rate, healing threshold, mandatory regeneration or forced-loss gate is added.
+
+Before review, run only:
 
 - `node --test tests/camp-kept-prototype.test.mjs`
-- `node qa/camp-kept/experiment.mjs --freeze /absolute/external/freeze.json`
+- `node --check qa/camp-kept/prototype.mjs`
+- `node --check qa/camp-kept/experiment.mjs`
+- `node qa/camp-kept/experiment.mjs --freeze /absolute/external/new-freeze.json`
 
-Send the exact frozen packet to the coordinator for independent preopen review. Do not execute any case until that review and explicit coordinator permission are recorded in an external approval packet with format `camp-kept-reviewed-run-v1`, status `reviewed-and-authorized`, named `independentReviewer`, exact `coordinatorAuthorization`, and the unchanged `freeze` object. Then the only registered opening is:
+Independent preopen review and separate exact coordinator authorization are required before the unchanged guarded `--run-reviewed` command may execute any case. A new external approval must include the exact new freeze, named independent reviewer and coordinator authorization, using the existing `camp-kept-reviewed-run-v1` format and `reviewed-and-authorized` status. All results go into a new empty external directory. Stop on drift, ledger/price/restore error or coordinator request; retain partial data without automatic retry. The existing stop file is output-directory plus `.stop` and is checked every 100 fixed ticks and between cases; SIGINT/SIGTERM also request a stop.
 
-- `node qa/camp-kept/experiment.mjs --run-reviewed /absolute/external/approval.json /absolute/external/new-empty-results`
-
-The stop file is the output directory path plus `.stop`; it is checked every 100 fixed ticks and between cases. SIGINT/SIGTERM also request a stop. Completed cases and a stopped marker are retained outside source; no retries or source tuning are automatic. Do not run the broad aggregate while this unopened prototype is awaiting review, because some preexisting tests simulate unrelated missions. Broad checks belong to later integration, not this no-tick checkpoint.
-
-## Remaining gates
-
-First inspect every preregistered case, then obtain an independent interpretation and a bounded interactive pacing check. If the wound merely changes the health display, or recovery only produces nominal healing with no concrete risk/timing effect, revise the encounter or narrow the claim. Do not manufacture forced losses, mandatory regeneration or arbitrary acceptance thresholds. Production identity, catalog, continuation, persistence, UI, source-complete aggregates and release remain separate, unperformed gates. A synthetic prototype success would establish feasibility only.
+Only source, executable tests, plan and concise docs belong in the incremental checkpoint. Gameplay, browser pacing, aggregate checks, production identity/catalog/persistence, the future Chapter 8 prerequisite, remote CI and release all remain unperformed separate gates.

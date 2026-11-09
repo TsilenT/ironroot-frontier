@@ -3,11 +3,11 @@ import {Game} from '../../dist/engine.js';
 import {deepFreeze,CITADEL_CAMPAIGN_RULESET_IDS} from '../../dist/rulesets.js';
 import {actualIncome} from '../salt-stores/economy.mjs';
 export const DESIGN=deepFreeze({
- id:'camp-kept-prototype',epoch:1,title:'The Camp We Kept',
- baselineCommit:'e3ef4e160b6d223484820dbe102961ef7d31e39b',baselineTree:'9e764d661d2942af123ed0f65c277c2a728e06e6',
- numericStatus:'New untested design hypotheses, not recovered historical numbers or balance evidence.',
+ id:'camp-kept-prototype',epoch:2,title:'The Camp We Kept',
+ baselineCommit:'0e58a1a132163b1872e131398b047a3f0de41411',baselineTree:'4f3e4975f9e4588235b8af55611cdfb02f145d0b',
+ numericStatus:'Outcome-informed epoch2: only starting gold changes mechanically, from 700 to 1100; not balance evidence.',
  mapId:'classic',rulesetId:CITADEL_CAMPAIGN_RULESET_IDS[2],difficulty:'normal',ai:true,
- seed:9101,timeLimit:600,startingHealth:2700,startingGold:700,enemyGold:100,cadenceSeconds:5,
+ seed:9101,timeLimit:600,startingHealth:2700,startingGold:1100,enemyGold:100,cadenceSeconds:5,
  playerBuildings:[['barracks',830,0],['barracks',830,1],['archery',690,1],['mint',410,1]],
  enemyBuildings:[['barracks',2090,0],['archery',2370,0],['barracks',1950,1],['foundry',2230,1],['aerie',1950,2],['barracks',2230,2],['mint',2790,1]],
 });

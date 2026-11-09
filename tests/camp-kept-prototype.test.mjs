@@ -15,7 +15,7 @@ test('new factory is deterministic, ordinary full-roster, intact, paid-AI and un
  assert.equal(g.tick,0);assert.equal(g.state.time,0);assert.deepEqual(g.state.units,[]);assert.deepEqual(g.state.effects,[]);
  assert.equal(g.map.id,'classic');assert.equal(g.difficulty,'normal');assert.equal(g.ai,true);assert.equal(g.aiTimer,0);
  assert.equal(Object.keys(g.buildings).length,8);assert.equal(Object.keys(g.units).length,6);assert.equal(g.ruleset.ai.policy,'legacy');assert.equal(g.ruleset.endgame.forcedDecay,false);assert.equal(g.ruleset.endgame.escalationAt,300);
- assert.deepEqual(g.state.gold,[700,100]);assert.deepEqual(g.state.income,[7.5,7.5]);assert.deepEqual(g.state.bases.map(b=>[b.hp,b.maxHp]),[[2700,6000],[6000,6000]]);
+ assert.deepEqual(g.state.gold,[1100,100]);assert.deepEqual(g.state.income,[7.5,7.5]);assert.deepEqual(g.state.bases.map(b=>[b.hp,b.maxHp]),[[2700,6000],[6000,6000]]);
  assert.deepEqual(g.state.stats.built,[4,7]);assert.deepEqual(g.state.stats.kills,[0,0]);assert.deepEqual(g.state.stats.damage,[0,0]);
  for(const b of g.state.buildings){assert.equal(b.level,1);assert.equal(b.hp,b.maxHp);assert.equal(b.invested,g.buildings[b.type].cost);assert.ok(buildSites(g.map,b.side).some(site=>site.x===b.x&&site.y===b.y));}
  assert.throws(()=>getCampaignMission('the-camp-we-kept'));assert.equal(g.state.fog,undefined);assert.equal(g.state.campaignControl,undefined);assert.equal(g.state.hammerCommitment,undefined);
@@ -29,7 +29,7 @@ test('full-health control changes exactly one initial HP field; only declared se
 
 test('first paid commands are affordable, normal-price and distinct without ticking',()=>{
  for(const [policy,method,cost] of [['counterattack','build',270],['regen-income','citadel',190],['arrows-income','citadel',190],['greedy-recovery','build',190]]){
-  const g=createPrototype(),p=createPolicy(policy),r=p.step(g);assert.ok(r.ok);assert.equal(r.action.method,method);assert.equal(r.tick,0);assert.equal(g.state.gold[0],700-cost);assert.equal(p.step(g),null);assert.equal(g.tick,0);
+  const g=createPrototype(),p=createPolicy(policy),r=p.step(g);assert.ok(r.ok);assert.equal(r.action.method,method);assert.equal(r.tick,0);assert.equal(g.state.gold[0],1100-cost);assert.equal(p.step(g),null);assert.equal(g.tick,0);
  }
  const g=createPrototype(),before=g.serialize();assert.equal(createPolicy('idle').step(g),null);assert.deepEqual(g.serialize(),before);assert.throws(()=>createPolicy('unknown'));
 });
