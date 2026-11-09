@@ -35,7 +35,7 @@ test('new immutable campaign identity is isolated from all published missions, m
 test('only current progression gains the chapter and Common Ground unlock; old progress/star values survive exactly',()=>{
   const progress=campaignProgress(),before=structuredClone(progress);
   assert.deepEqual(normalizeCampaignProgress(progress),before);
-  const overview=getProgressionCampaignOverview(progress);assert.equal(overview.total,29);assert.equal(overview.maxStars,87);assert.equal(overview.chapters.find(c=>c.id==='river-compact').total,5);assert.equal(overview.nextMissionId,'shared-crossing');
+  const overview=getProgressionCampaignOverview(progress);assert.equal(overview.total,30);assert.equal(overview.maxStars,90);assert.equal(overview.chapters.find(c=>c.id==='river-compact').total,5);assert.equal(overview.nextMissionId,'shared-crossing');
   assert.equal(isMissionUnlocked(progress,'shared-crossing'),true);
   delete progress.missions['common-ground'];assert.equal(isMissionUnlocked(progress,'shared-crossing'),false);
   progress.missions['shared-crossing']={completed:true,stars:3,bestTime:70};assert.equal(normalizeCampaignProgress(progress).missions['shared-crossing'],undefined);

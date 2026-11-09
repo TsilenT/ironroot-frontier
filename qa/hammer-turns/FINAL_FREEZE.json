@@ -1,0 +1,888 @@
+{
+  "scope": "Final dependency freeze before first heldout; coordinator gate remains required.",
+  "createdAt": "2026-11-09T10:51:14.793Z",
+  "plan": {
+    "scope": "Fresh production campaign factory/evaluator feasibility. Authored public8303 is separate from declared QA constructor-seed stress openings. No generic relabeling, post-setup state mutation, script tuning or human balance claim.",
+    "validationEpoch": 1,
+    "developmentSeeds": [
+      8303,
+      170041,
+      680117,
+      910447
+    ],
+    "publicAuthoredSeed": 8303,
+    "heldOutSeeds": [
+      2193746573,
+      3481729031
+    ],
+    "heldOutStatus": "Unopened; require final dependency-aware freeze and coordinator gate before execution.",
+    "policies": [
+      "intercept",
+      "oppositeflank",
+      "centerbreach",
+      "rootwarden",
+      "broadnovice",
+      "economy",
+      "mixedair",
+      "unsupportedair",
+      "idle"
+    ],
+    "developmentRuns": 36,
+    "heldOutRuns": 18,
+    "capSeconds": 600,
+    "playerPaidCadenceSeconds": 5,
+    "formationPolicyAndPlayerScriptsUnchangedFromCleared004": true,
+    "compareGenericHere": false,
+    "numericChanges": "Only new optional medals180seconds/4500HP. Core-only completion600s; ordinary policy/formation/treasuries unchanged.",
+    "freezeBoundary": "All actual runtime files, production factory/evaluator, unchanged player/economy modules, simulator,auditor,plan and module config. Full canonical source-tree integrity is separate.",
+    "preregisteredHeldOutAdmission": {
+      "scope": "Accepted before any protected game is constructed or evaluated. This declarative rule does not change runtime, player scripts, formation, prices, economy, scheduling or authoritative evaluation.",
+      "all18Cases": {
+        "identity": "Reproduce the exact production mission/rules/map revisions and declared constructor seed. Protected seeds are QA stress openings, not randomized public starts.",
+        "attempts": "Retain every AI public-action attempt, including failed attempts, and reproduce the fixed player script deterministically.",
+        "receipts": "Retain every successful paid player/AI receipt, normal prices, income, kill gold, refunds and final treasury. The frozen independent auditor must pass.",
+        "playerFailedCallBoundary": "Failed player calls are not individually retained. They remain reproducible by exact fixed-script execution; do not claim a stored player-failure trace.",
+        "stateAndEvaluation": "Reproduce the complete final state and authoritative core outcome, reason and optional medals. Preserve own-loss/draw precedence and the normal 300-second escalation.",
+        "restoreBoundary": "Every simulator case performs an exact final Game.restore/serialize round trip. Per-case battle-codec/profile/native restore is not claimed; focused and native persistence checks are separate.",
+        "aiConstructionUpgradeAttemptMaximum": 2,
+        "aiOffensiveAttemptMaximum": 1,
+        "incompleteRun": "Any missing, errored, censored or irreproducible case pauses admission. Preserve every loss/error and completed record; do not skip or selectively replace cases."
+      },
+      "gameplayReadiness": {
+        "supportedPolicyIds": [
+          "intercept",
+          "oppositeflank",
+          "centerbreach",
+          "rootwarden",
+          "broadnovice",
+          "economy",
+          "mixedair"
+        ],
+        "excludedFromWinningQualification": [
+          "idle",
+          "unsupportedair"
+        ],
+        "requiredWitnesses": "There must exist a first-commit-road-majority winning case and an other-roads-majority winning case from different supported policy IDs across the full 18-case matrix.",
+        "winDefinition": "The authoritative campaign evaluator reports completion and the recorded core-only outcome is won; optional medal counts do not determine readiness.",
+        "firstCommittedRoad": "Use the lane of the earliest actual paid enemy commit transition in ordered side 1 AI decisions, corroborated by its successful ordinary receipt. Use that first lane even if later commitments turn or collapse; do not choose a later favorable lane.",
+        "damageDefinition": "Traverse damage entries in their recorded chronological order. Use positive applied damage with targetType === 'base', targetSide === 1 and source.side === 0. Every counted source.lane must be valid; do not invent or silently discard missing attribution.",
+        "firstCoreDamageBoundary": "Use the first such applied enemy-core damage event tick; cross-check its time against firstCoreDamage[1].",
+        "firstCommitRoadMajority": "Qualifying roads are the singleton first committed lane. Require 2 * F > T.",
+        "otherRoadsMajority": "Qualifying roads are all valid lane IDs other than the first committed lane. Require 2 * O > T.",
+        "majorityComparison": "Strict greater-than with recorded applied amounts, not attempted shots, rounded percentages or a tuned epsilon. A 50/50 tie qualifies as neither class.",
+        "minimumQualifyingPaidProductionReceipts": 2,
+        "qualifyingProductionReceipts": "Count successful side 0 build/upgrade receipt entries with cost > 0 whose frozen exact building definition has a troop-producing unit. Exclude mines and towers. The receipt lane must belong to the relevant road class.",
+        "qualifyingPurchaseDeadline": "receipt.tick must be strictly less than the first enemy-core-damage tick. Same-tick purchases do not qualify.",
+        "receiptCountingUnit": "Count receipt entries, without a distinct-building requirement. Failed or zero-cost actions do not count.",
+        "differentPoliciesRequired": true,
+        "noAdditionalGuarantees": [
+          "No win-per-seed guarantee.",
+          "No natural turn requirement.",
+          "No universal-victory guarantee.",
+          "No human-novice-ease claim."
+        ],
+        "minimumWinningCases": 2,
+        "damagePartition": "Accumulate F chronologically from entries on the first committed road and O chronologically from entries on all other valid roads. Then define T = F + O; do not compute a differently ordered independent total."
+      },
+      "paidEnemySiegePressure": {
+        "minimumWitnessCases": 1,
+        "caseScope": "A witness may be anywhere in the complete 18-case matrix, including the two scripts excluded from winning qualification.",
+        "paidProduction": "Require an earlier successful positive-cost side 1 foundry build/upgrade receipt and an ordinary side 1 siege spawn whose producerId and lane match that paid foundry.",
+        "appliedPressure": "After that ordinary spawn, require positive applied damage with source.side === 1, source.type siege, targetSide === 0 and the same recorded lane. A firing attempt alone is insufficient.",
+        "ordering": "The paid foundry receipt tick precedes the spawn tick; the spawn tick is no later than the applied-damage tick.",
+        "lineageBoundary": "Spawn records do not store unitId. Do not claim a directly logged spawn-to-specific-attacker link. Zero initial enemy siege/foundries, ordinary production-only source and exact deterministic replay establish the paid mechanism."
+      },
+      "failurePolicy": "If complete evidence or either readiness class or actual paid siege pressure is missing, pause admission and report. Do not retune against, selectively rerun, replace or silently exclude these protected seeds.",
+      "knownEvidenceProvenance": {
+        "originalAndClockRerunPlanSha256": "d25a6000a4a0a848ce7c2f813601a07b97cebaa343de3f56e429ff3649da367e",
+        "oldArchivesUnchanged": true,
+        "noRetroactivePlanClaim": "The original known36 and clock-only known36 archives used their own original PLAN bytes. Do not relabel them as runs under this later declaration."
+      }
+    }
+  },
+  "closure": {
+    "scope": "Actual runtime and complete declared simulator/evaluator/player-policy/auditor/config dependency closure; full repository integrity is separate.",
+    "files": {
+      "dist/FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+      "dist/app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+      "dist/audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+      "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+      "dist/backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+      "dist/barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+      "dist/barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+      "dist/barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+      "dist/barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+      "dist/battle-codec.js": "9bc22ccd40b2d2a2eb8960720198ab6183e94aad4ae82f05cb734e06d05a8bdb",
+      "dist/battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+      "dist/bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+      "dist/campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+      "dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+      "dist/campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+      "dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+      "dist/campaign-presentation.js": "17d7e598d5ea640f4e40a8b040e52715dcabd8b1a72c76bdaf4f6edbe983cfa0",
+      "dist/campaign.js": "0a2389879804fe8984e5cfa7b5b6bedface26c1f2504b135980fc4703d0499f9",
+      "dist/challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+      "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+      "dist/citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+      "dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+      "dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+      "dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+      "dist/dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+      "dist/engine.js": "6837fe338e80cf0f78d8ab1784d678d1a515667e1c397c1f9c19ddf73ab2fec6",
+      "dist/flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+      "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+      "dist/flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+      "dist/fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+      "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+      "dist/hammer-policy.js": "24782c4f2e317e3c3d07ec2a616dbdd4fc617e2de4e2b5670b10746d9c8f2e8a",
+      "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+      "dist/icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+      "dist/index.html": "2006452e2e32222c96b816fd94c1d2acfa8fa92daf8571fcf42eb533a37dc99a",
+      "dist/input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+      "dist/intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+      "dist/keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+      "dist/manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+      "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+      "dist/mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+      "dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+      "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+      "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+      "dist/profile-session.js": "a6dc605e9ac55138c6fc0d54fb57229fba8f7972ad480a09ed1f32eec911d430",
+      "dist/protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+      "dist/render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+      "dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+      "dist/report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+      "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+      "dist/rulesets.js": "d43efd6f0daf1c563a294ced5cfa961b94bd79e8adbb8ea6f3437ed5ceafa30f",
+      "dist/scouting.js": "1aa83c6c9d75f606fcac3a537674c18c8d76782592cf98a0bd059e6ff9d54fa3",
+      "dist/service-worker.js": "2e675c1c2e21dd7c7eb2a27f57bdbb61ad33540ea161f5cf2f9cd7cfd610cb8d",
+      "dist/styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+      "dist/training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+      "dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+      "dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+      "dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+      "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+      "package.json": "7a253ac2aaa6fedd9bb26f1da8790b550d61a9cec134b558350378157282224e",
+      "qa/hammer-turns/PLAN.json": "8bcf236be46f69b0b9be16c0703c80328cac360bd9c51edc797b31ff60579027",
+      "qa/hammer-turns/scenario.mjs": "06da59791983595ad2d1fc2a22fdf6d0b3ec3a22552734383981dc1c1dfb52dd",
+      "qa/hammer-turns/simulate.mjs": "b30ba227cb789594be6efb1eaa960c5e6b442667a939d5dde99030c23fb64a15",
+      "qa/hammer-turns/audit.mjs": "ba7b854e75f46fcb6ae206bc0808dcb5afd93d9289b20795fd44f5861ecf5013",
+      "qa/hammer-prototype/paid-policies.mjs": "a36b0fd22bc9d18f2ba6ef4d36d1dbd16e27241c15040e949aed29456f1e1758",
+      "qa/hammer-prototype/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f"
+    },
+    "policyDefinitions": [
+      {
+        "id": "intercept",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "sanctum",
+            "x": 550,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 410,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 2
+          }
+        ],
+        "adaptation": "Choose from first visible foundry; no private policy state."
+      },
+      {
+        "id": "oppositeflank",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "sanctum",
+            "x": 550,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 410,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 2
+          }
+        ],
+        "adaptation": "Choose from first visible foundry; no private policy state."
+      },
+      {
+        "id": "centerbreach",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 1
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 1
+          },
+          {
+            "type": "archery",
+            "x": 690,
+            "lane": 1
+          },
+          {
+            "type": "sanctum",
+            "x": 550,
+            "lane": 1
+          },
+          {
+            "type": "foundry",
+            "x": 410,
+            "lane": 1
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 0
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "rootwarden",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "wardenLodge",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "sanctum",
+            "x": 550,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "foundry",
+            "x": 410,
+            "lane": 0
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "broadnovice",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 2
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 1
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 1
+          },
+          {
+            "type": "foundry",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 690,
+            "lane": 2
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "economy",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "watchtower",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "watchtower",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "sanctum",
+            "x": 550,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 410,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          },
+          {
+            "type": "barracks",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "archery",
+            "x": 1110,
+            "lane": 2
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "mixedair",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 830,
+            "lane": 2
+          },
+          {
+            "type": "aerie",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "barracks",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "foundry",
+            "x": 690,
+            "lane": 0
+          },
+          {
+            "type": "archery",
+            "x": 550,
+            "lane": 0
+          },
+          {
+            "type": "aerie",
+            "x": 410,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 0
+          },
+          {
+            "type": "mint",
+            "x": 270,
+            "lane": 2
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "unsupportedair",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [
+          {
+            "type": "aerie",
+            "x": 1250,
+            "lane": 1
+          },
+          {
+            "type": "aerie",
+            "x": 1110,
+            "lane": 1
+          },
+          {
+            "type": "aerie",
+            "x": 690,
+            "lane": 1
+          },
+          {
+            "type": "aerie",
+            "x": 1250,
+            "lane": 0
+          },
+          {
+            "type": "aerie",
+            "x": 1110,
+            "lane": 0
+          },
+          {
+            "type": "aerie",
+            "x": 1250,
+            "lane": 2
+          },
+          {
+            "type": "aerie",
+            "x": 1110,
+            "lane": 2
+          }
+        ],
+        "adaptation": null
+      },
+      {
+        "id": "idle",
+        "cadence": "One successful paid player action per 5s, no spells or citadel choice in this bounded first matrix. Ordinary public build/upgrade APIs only. Fixed plans skip occupied sites and wait on first empty unaffordable site; rebuilt sites are paid again.",
+        "information": "Player observation only. Intercept/oppositeflank remember the lane of the first visible foundry; they never read enemy commitment, gold or planned purchases.",
+        "upgradeOrder": [
+          "foundry",
+          "archery",
+          "barracks",
+          "sanctum",
+          "wardenLodge",
+          "aerie",
+          "mint"
+        ],
+        "initialPlan": [],
+        "adaptation": null
+      }
+    ],
+    "mission": {
+      "id": "the-hammer-turns",
+      "chapterId": "siege-coast",
+      "number": 27,
+      "name": "The Hammer Turns",
+      "subtitle": "Read the siege commitment and choose your answer",
+      "scenarioRevision": 1,
+      "mapId": "classic",
+      "mapRevision": 1,
+      "rulesetId": "frontier-campaign-hammer-turns",
+      "rulesetRevision": 1,
+      "description": "The coastal commander has infantry and archers on every road, but no siege foundry yet. New paid construction shows where the hammer will fall, while the other roads remain defended.",
+      "dialogue": {
+        "speaker": "Engineer Bram",
+        "text": "Watch where they build the foundry. We can meet its army with support, or spend our coin on another road."
+      },
+      "victoryText": "The enemy citadel falls and the siege crews abandon their works. The company has another foothold, but more of the Siege Coast remains ahead.",
+      "objective": "Destroy the enemy citadel within 10:00. Your citadel must survive.",
+      "hint": "Watch newly built enemy foundries. Confront the supported siege road or build a supported attack elsewhere, while covering the other approaches. No road, unit or foundry target is required.",
+      "difficulty": "normal",
+      "seed": 8303,
+      "timeLimit": 600,
+      "startingGold": 1100,
+      "startingHealth": 6000,
+      "enemyGold": 320,
+      "ai": true,
+      "prerequisites": [
+        "salt-in-the-stores"
+      ],
+      "playerBuildings": [
+        [
+          "barracks",
+          970,
+          0
+        ],
+        [
+          "barracks",
+          970,
+          1
+        ],
+        [
+          "barracks",
+          970,
+          2
+        ],
+        [
+          "archery",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          1
+        ]
+      ],
+      "enemyBuildings": [
+        [
+          "barracks",
+          2090,
+          0
+        ],
+        [
+          "barracks",
+          2090,
+          1
+        ],
+        [
+          "barracks",
+          2090,
+          2
+        ],
+        [
+          "archery",
+          2230,
+          0
+        ],
+        [
+          "archery",
+          2230,
+          1
+        ],
+        [
+          "archery",
+          2230,
+          2
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "citadel",
+          "type": "citadel",
+          "label": "Destroy the enemy citadel"
+        }
+      ],
+      "medals": [
+        {
+          "id": "swift",
+          "type": "time",
+          "label": "Win in 3:00 or less",
+          "seconds": 180
+        },
+        {
+          "id": "intact",
+          "type": "health",
+          "label": "Keep at least 4,500 citadel HP",
+          "amount": 4500
+        }
+      ],
+      "briefing": [
+        "Classic: 3,200-unit battlefield, 3 lanes, 24 building sites per side",
+        "1,100 starting gold; your citadel starts at 6,000 HP; enemy citadel starts at 6,000 HP",
+        "Your deployment: North: 1 × level-1 Barracks; Middle: 1 × level-1 Barracks, 1 × level-1 Archery range, 1 × level-1 Gold mine; South: 1 × level-1 Barracks",
+        "Enemy deployment: North: 1 × level-1 Barracks, 1 × level-1 Archery range; Middle: 1 × level-1 Barracks, 1 × level-1 Archery range; South: 1 × level-1 Barracks, 1 × level-1 Archery range",
+        "Normal adaptive enemy starts with 320 gold and ordinary income; it pays for buildings, upgrades and arrow volleys",
+        "All three roads are fully visible. The enemy starts with infantry and archery production on each road, no siege foundry and no mine. Its ordinary 5 gold/sec and 320-gold treasury pay for later works. Your real mine gives 7.5 gold/sec including ordinary income.",
+        "Destroy the enemy citadel by 10:00 while yours survives; 1 HP is enough. No road, building target or unit is mandatory. The 3:00 and 4,500 HP bonus stars are optional.",
+        "The enemy may commit paid siege investment to a supported road while maintaining basic defense elsewhere. A funded commitment normally stays for 45 seconds. Losing its last foundry, forward screen producer or forward archery range ends the commitment and starts a 20-second reselection cooldown; rebuilding support can take longer. A later turn needs a supported alternative, a real advantage and a useful ordinary paid purchase. Turns are possible, not guaranteed periodic waves.",
+        "New buildings appear immediately. Their first ordinary troops follow about 1.2 seconds later, then travel normally. There is no special construction countdown or hidden-intent marker. Emergency defense shares the same treasury and at most two construction/upgrade attempts per normal decision; it can delay siege investment. No free units, income subsidy, reserve wave or forced drain is added.",
+        "All eight earned buildings, automatic adjacent-road flyers and normal paid citadel choices are available. At 5:00 ordinary escalation speeds production ×1.65, multiplies troop structure damage ×1.75 and lowers citadel shot damage from 32 to 18."
+      ],
+      "deployment": {
+        "player": "North: 1 × level-1 Barracks; Middle: 1 × level-1 Barracks, 1 × level-1 Archery range, 1 × level-1 Gold mine; South: 1 × level-1 Barracks",
+        "enemy": "North: 1 × level-1 Barracks, 1 × level-1 Archery range; Middle: 1 × level-1 Barracks, 1 × level-1 Archery range; South: 1 × level-1 Barracks, 1 × level-1 Archery range"
+      },
+      "mode": "citadel",
+      "markedTargets": [],
+      "protectedTargets": [],
+      "reward": "More of the Siege Coast remains ahead"
+    }
+  },
+  "executionEnvironment": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  }
+}

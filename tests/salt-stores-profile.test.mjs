@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeSalt = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => includeSalt || m.id !== id).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-hammer-turns' && (includeSalt || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeSalt = true) {
@@ -57,14 +57,16 @@ function assertBlocked(profile, raw) {
   assert.ok(raw.reads.every(key => key === MARKER), 'reject before reading any earned domain');
 }
 
-test('profile22 changes only admission and descriptive copy from exact actual Archer profile21',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,22);assert.equal(protocolTwentyOne.CURRENT_PROFILE_PROTOCOL_VERSION,21);
+test('profile23 changes only admission and descriptive copy from exact actual Salt22 and Archer21',()=>{
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,23);assert.equal(protocolTwentyOne.CURRENT_PROFILE_PROTOCOL_VERSION,21);
  const source=readFileSync(new URL('./fixtures/profile-session-v0300.js',import.meta.url),'utf8'),f=JSON.parse(readFileSync(new URL('./fixtures/salt-parent-v0300.json',import.meta.url)));
  assert.equal(createHash('sha256').update(source).digest('hex'),f.profile21);
  const expected=source.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 21','CURRENT_PROFILE_PROTOCOL_VERSION = 22').replace('visible coastal checkpoints and explicit result identities from older writers.','visible coastal checkpoints and explicit result identities from older writers; protocol 22 fences Salt in the Stores progress, coastal economy checkpoints and explicit result identities from older writers.').replace('19, 20, 21].includes','19, 20, 21, 22].includes').replace('19, 20 or 21.','19, 20, 21 or 22.');
- assert.equal(readFileSync(new URL('../dist/profile-session.js',import.meta.url),'utf8'),expected);
- for(let version=1;version<=22;version++){const raw=backend();assert.ok(createProfileSession(()=>raw,{requiredProtocolVersion:version}).status().canWrite);}
- assert.throws(()=>createProfileSession(()=>backend(),{requiredProtocolVersion:23}),TypeError);
+ // The unchanged literal profile22 source assertion also executes in the separate historical runner.
+ const expected23=expected.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 22','CURRENT_PROFILE_PROTOCOL_VERSION = 23').replace('coastal economy checkpoints and explicit result identities from older writers.','coastal economy checkpoints and explicit result identities from older writers; protocol 23 fences The Hammer Turns progress, paid siege commitments and explicit result identities from older writers.').replace('20, 21, 22].includes','20, 21, 22, 23].includes').replace('20, 21 or 22.','20, 21, 22 or 23.');
+ assert.equal(readFileSync(new URL('../dist/profile-session.js',import.meta.url),'utf8'),expected23);
+ for(let version=1;version<=23;version++){const raw=backend();assert.ok(createProfileSession(()=>raw,{requiredProtocolVersion:version}).status().canWrite);}
+ assert.throws(()=>createProfileSession(()=>backend(),{requiredProtocolVersion:24}),TypeError);
 });
 
 test('every supported ready profile upgrades only its marker and never normalizes earned bytes', () => {
@@ -130,8 +132,8 @@ test('old earned progress stays exact, unlocks Salt in the Stores and records ex
   const old = earned(false), raw = backend([[MARKER, marker(21)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 29); assert.equal(overview.maxStars, 87); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
-  assert.equal(overview.chapters.at(-1).total, 2);
+  assert.equal(overview.total, 30); assert.equal(overview.maxStars, 90); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.chapters.at(-1).total, 3);
   assert.equal(getCampaignLaunchMission('the-archers-quay', old.campaign).reward, 'Unlocks Salt in the Stores');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);
   assert.equal(old.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(old.campaign), old.campaign);
@@ -144,7 +146,7 @@ test('old earned progress stays exact, unlocks Salt in the Stores and records ex
   assert.throws(() => validateHistoryRow({...identityless, campaignId:id}), /unknown campaign/);
   for (const [mission, value] of Object.entries(old.campaign.missions)) assert.deepEqual(recorded.missions[mission], value);
   assert.deepEqual(recorded.missions[id], {completed:true, stars:3, bestTime:0});
-  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, true); assert.equal(final.nextMissionId, null);
+  const final = getProgressionCampaignOverview(recorded); assert.equal(final.completed, false); assert.equal(final.nextMissionId, 'the-hammer-turns');
   assert.ok(writeCampaignProgress(createStorage(() => profile.storage), recorded));
   assert.equal(JSON.parse(raw.data.get(K.campaign)).version, 1);
   const data = earned(); assert.equal(data.battle.version, 3); assert.equal(data.battle.game.version, 3);
