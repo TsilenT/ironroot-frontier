@@ -1,0 +1,31 @@
+{
+  "scope": "Final local source/evidence preflight. Not native browser, remote CI or release approval.",
+  "aggregate": {
+    "tests": 2156,
+    "passed": 2155,
+    "failed": 0,
+    "optionalSkipped": 1,
+    "sha256": "68fd761aead3e87cf04d60bbc8836b8d6d7327cb894771e0a04f3851d9335850",
+    "bytes": 226948
+  },
+  "focusedSalt": {
+    "passed": 49,
+    "failed": 0,
+    "sha256": "ba07d44269486f3925641eae5e76c615cd3c279a7bd6a970355f59274f9f9317"
+  },
+  "syntax": {
+    "passed": true,
+    "sha256": "894bba0554bc8c4c5ac82d39bb408fd67ec8b508f5997d28773769dc2bab08a1"
+  },
+  "runtime": {
+    "runtimeFiles": 58,
+    "runtimeMapSha256": "fccd85ea1a88a5627f30d3f9fc4cb479f2f04b9d930c321c64505097e8282ef5"
+  },
+  "browserFixturePreflight": {
+    "allPassed": true,
+    "canonicalDependencies": 159,
+    "browserRootModules": 101,
+    "proofSha256": "c5288405cba6c1f70ebf10485d937727486dc31cd204e87fbfa1613fbc645c30"
+  },
+  "sourceFreezeSha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47"
+}

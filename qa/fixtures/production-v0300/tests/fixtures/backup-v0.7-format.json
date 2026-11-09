@@ -1,0 +1,650 @@
+{
+  "format": "ironroot-backup",
+  "version": 1,
+  "createdAt": "2026-11-06T00:00:00.000Z",
+  "data": {
+    "campaign": {
+      "format": "ironroot-campaign",
+      "version": 1,
+      "missions": {
+        "emberwatch": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "three-roads": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "winter-stores": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "wings-of-ash": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "stonegate": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "long-vigil": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "cold-forge": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "black-ledger": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "furnace-heart": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "crown-foothold": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "last-light": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "ironroot": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        }
+      }
+    },
+    "trials": {
+      "shieldbreaker": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "skyguard": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "siegecraft": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "goldrush": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "holdfast": {
+        "completed": true,
+        "bestTime": 75
+      }
+    },
+    "settings": {
+      "sound": true,
+      "music": false,
+      "sfx": true,
+      "volume": 0.7,
+      "reducedMotion": false,
+      "quality": "high"
+    },
+    "history": [
+      {
+        "won": true,
+        "draw": false,
+        "challengeId": null,
+        "campaignId": "ironroot",
+        "difficulty": "hard",
+        "time": 180,
+        "kills": 26,
+        "built": 11,
+        "date": "2026-11-06T00:00:00.000Z"
+      }
+    ],
+    "battle": {
+      "format": "ironroot-save",
+      "version": 2,
+      "challengeId": null,
+      "campaignId": "ironroot",
+      "game": {
+        "version": 1,
+        "difficulty": "hard",
+        "seed": 2165450114,
+        "ai": true,
+        "nextId": 32,
+        "aiTimer": 3.4625494315289,
+        "accumulator": 0.023,
+        "tick": 241,
+        "state": {
+          "time": 12.050000000000036,
+          "gold": [
+            1490.375,
+            70.375
+          ],
+          "income": [
+            7.5,
+            7.5
+          ],
+          "bases": [
+            {
+              "id": "base0",
+              "type": "base",
+              "side": 0,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 110,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            },
+            {
+              "id": "base1",
+              "type": "base",
+              "side": 1,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 3090,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            }
+          ],
+          "buildings": [
+            {
+              "id": 3,
+              "type": "barracks",
+              "side": 0,
+              "x": 970,
+              "y": 450,
+              "lane": 1,
+              "hp": 979.9999999999999,
+              "maxHp": 979.9999999999999,
+              "level": 2,
+              "progress": 0.50011111111111,
+              "cooldown": 0,
+              "invested": 238,
+              "hit": 0
+            },
+            {
+              "id": 4,
+              "type": "archery",
+              "side": 0,
+              "x": 830,
+              "y": 450,
+              "lane": 1,
+              "hp": 658,
+              "maxHp": 658,
+              "level": 2,
+              "progress": 0.350099999999999,
+              "cooldown": 0,
+              "invested": 297,
+              "hit": 0
+            },
+            {
+              "id": 5,
+              "type": "mint",
+              "side": 0,
+              "x": 410,
+              "y": 260,
+              "lane": 0,
+              "hp": 380,
+              "maxHp": 380,
+              "level": 1,
+              "progress": 0,
+              "cooldown": 0,
+              "invested": 190,
+              "hit": 0
+            },
+            {
+              "id": 6,
+              "type": "watchtower",
+              "side": 0,
+              "x": 1110,
+              "y": 260,
+              "lane": 0,
+              "hp": 1000,
+              "maxHp": 1000,
+              "level": 1,
+              "progress": 0,
+              "cooldown": -1,
+              "invested": 220,
+              "hit": 0
+            },
+            {
+              "id": 7,
+              "type": "watchtower",
+              "side": 0,
+              "x": 1110,
+              "y": 640,
+              "lane": 2,
+              "hp": 1000,
+              "maxHp": 1000,
+              "level": 1,
+              "progress": 0,
+              "cooldown": -1,
+              "invested": 220,
+              "hit": 0
+            },
+            {
+              "id": 8,
+              "type": "watchtower",
+              "side": 1,
+              "x": 1950,
+              "y": 450,
+              "lane": 1,
+              "hp": 1400,
+              "maxHp": 1400,
+              "level": 2,
+              "progress": 0,
+              "cooldown": -1,
+              "invested": 374,
+              "hit": 0
+            },
+            {
+              "id": 9,
+              "type": "barracks",
+              "side": 1,
+              "x": 2230,
+              "y": 450,
+              "lane": 1,
+              "hp": 979.9999999999999,
+              "maxHp": 979.9999999999999,
+              "level": 2,
+              "progress": 0.50011111111111,
+              "cooldown": 0,
+              "invested": 238,
+              "hit": 0
+            },
+            {
+              "id": 10,
+              "type": "archery",
+              "side": 1,
+              "x": 2370,
+              "y": 450,
+              "lane": 1,
+              "hp": 658,
+              "maxHp": 658,
+              "level": 2,
+              "progress": 0.350099999999999,
+              "cooldown": 0,
+              "invested": 297,
+              "hit": 0
+            },
+            {
+              "id": 11,
+              "type": "barracks",
+              "side": 1,
+              "x": 2370,
+              "y": 260,
+              "lane": 0,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.20555555555555272,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 12,
+              "type": "barracks",
+              "side": 1,
+              "x": 2370,
+              "y": 640,
+              "lane": 2,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.20555555555555272,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 13,
+              "type": "aerie",
+              "side": 1,
+              "x": 2650,
+              "y": 260,
+              "lane": 0,
+              "hp": 550,
+              "maxHp": 550,
+              "level": 1,
+              "progress": 0.7233333333333315,
+              "cooldown": 0,
+              "invested": 250,
+              "hit": 0
+            },
+            {
+              "id": 14,
+              "type": "sanctum",
+              "side": 1,
+              "x": 2650,
+              "y": 640,
+              "lane": 2,
+              "hp": 520,
+              "maxHp": 520,
+              "level": 1,
+              "progress": 0.7749999999999976,
+              "cooldown": 0,
+              "invested": 230,
+              "hit": 0
+            },
+            {
+              "id": 15,
+              "type": "mint",
+              "side": 1,
+              "x": 2930,
+              "y": 450,
+              "lane": 1,
+              "hp": 380,
+              "maxHp": 380,
+              "level": 1,
+              "progress": 0,
+              "cooldown": 0,
+              "invested": 190,
+              "hit": 0
+            },
+            {
+              "id": 24,
+              "type": "barracks",
+              "side": 1,
+              "x": 2090,
+              "y": 450,
+              "lane": 1,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.5611111111111097,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            }
+          ],
+          "units": [
+            {
+              "id": 16,
+              "type": "archer",
+              "flying": false,
+              "side": 1,
+              "x": 1788.4093106395196,
+              "y": 452.4590009287293,
+              "lane": 1,
+              "hp": 72.80000000000001,
+              "maxHp": 72.80000000000001,
+              "level": 2,
+              "cooldown": 0.24999999999999967,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 17,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1615.6467530885193,
+              "y": 457.1948580542037,
+              "lane": 1,
+              "hp": 110.09599999999998,
+              "maxHp": 201.60000000000002,
+              "level": 2,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 18,
+              "type": "archer",
+              "flying": false,
+              "side": 0,
+              "x": 1411.4648511247947,
+              "y": 444.46343029129355,
+              "lane": 1,
+              "hp": 72.80000000000001,
+              "maxHp": 72.80000000000001,
+              "level": 2,
+              "cooldown": 0.24999999999999967,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 19,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1584.3530998211393,
+              "y": 456.6345109916957,
+              "lane": 1,
+              "hp": 110.09599999999998,
+              "maxHp": 201.60000000000002,
+              "level": 2,
+              "cooldown": 0.95,
+              "attack": 0.11999999999999998,
+              "hit": 0.06
+            },
+            {
+              "id": 20,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1627.6193375414296,
+              "y": 263.86305003945404,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 21,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1627.600059415343,
+              "y": 639.7858817177153,
+              "lane": 2,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 22,
+              "type": "gryphon",
+              "flying": true,
+              "side": 1,
+              "x": 1690.6006655352576,
+              "y": 260.70165526517684,
+              "lane": 0,
+              "hp": 125,
+              "maxHp": 125,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 23,
+              "type": "wizard",
+              "flying": false,
+              "side": 1,
+              "x": 2037.8184916780397,
+              "y": 632.4879180290052,
+              "lane": 2,
+              "hp": 90,
+              "maxHp": 90,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 25,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1718.9606910390964,
+              "y": 446.6404215428077,
+              "lane": 1,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 26,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 1945.2042848509682,
+              "y": 444.1333050818314,
+              "lane": 1,
+              "hp": 201.60000000000002,
+              "maxHp": 201.60000000000002,
+              "level": 2,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 27,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1254.798908919972,
+              "y": 447.8896018420895,
+              "lane": 1,
+              "hp": 201.60000000000002,
+              "maxHp": 201.60000000000002,
+              "level": 2,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 28,
+              "type": "archer",
+              "flying": false,
+              "side": 1,
+              "x": 2153.8049818836844,
+              "y": 440.8885267525469,
+              "lane": 1,
+              "hp": 72.80000000000001,
+              "maxHp": 72.80000000000001,
+              "level": 2,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 29,
+              "type": "archer",
+              "flying": false,
+              "side": 0,
+              "x": 1046.1887415555739,
+              "y": 460.4578099733311,
+              "lane": 1,
+              "hp": 72.80000000000001,
+              "maxHp": 72.80000000000001,
+              "level": 2,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 30,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2203.6025649737358,
+              "y": 252.8014142110472,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 31,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2203.6037659778713,
+              "y": 648.722648784892,
+              "lane": 2,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            }
+          ],
+          "projectiles": [],
+          "effects": [
+            {
+              "x": 1584.3530998211393,
+              "y": 456.6345109916957,
+              "type": "hit",
+              "side": 1,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            },
+            {
+              "x": 1615.6467530885193,
+              "y": 457.1948580542037,
+              "type": "hit",
+              "side": 0,
+              "life": 0.10000000000000002,
+              "maxLife": 0.2,
+              "radius": 16
+            }
+          ],
+          "frontline": 1599.9999264548292,
+          "winner": null,
+          "spellCooldown": [
+            0,
+            0
+          ],
+          "overtime": false,
+          "stats": {
+            "kills": [
+              0,
+              0
+            ],
+            "built": [
+              5,
+              9
+            ],
+            "damage": [
+              91.50400000000002,
+              91.50400000000002
+            ]
+          }
+        }
+      }
+    }
+  }
+}

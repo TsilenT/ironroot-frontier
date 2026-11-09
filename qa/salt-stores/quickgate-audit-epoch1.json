@@ -1,0 +1,133 @@
+{
+  "scope": "Fresh Salt-specific independent price, bounty, refund, mine-lifecycle income, same-clock deficit, replacement and postloss-spawn arithmetic. Diagnostic clones do not certify legal outcomes.",
+  "generatedAt": "2026-11-09T05:58:17.270Z",
+  "rawFiles": [
+    {
+      "filename": "ironroot-salt-quickgate-epoch1.ndjson",
+      "sha256": "ba0cd2986dfa7f42db2b10d4d59f5964a3a10945db5912e3746a84820cd90afe",
+      "bytes": 428410
+    }
+  ],
+  "runs": 3,
+  "allPassed": true,
+  "maximumLedgerError": 0,
+  "audits": [
+    {
+      "policy": "northraid",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 137.34999999999698,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 63.899999999998506,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 125.54999999999501,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 213.12500000000114,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 24,
+      "firstEnemyCoreDamage": 108.74999999999596,
+      "diagnosticClones": 11
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 193.85000000000983,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 20,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 164.90000000000325,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 72.37500000001646,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 171.50000000000475,
+      "diagnosticClones": 5
+    },
+    {
+      "policy": "idle",
+      "seed": 8202,
+      "outcome": "lost",
+      "duration": 108.79999999999596,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    }
+  ]
+}

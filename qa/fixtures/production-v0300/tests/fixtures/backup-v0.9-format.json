@@ -1,0 +1,300 @@
+{
+  "format": "ironroot-backup",
+  "version": 1,
+  "createdAt": "2026-11-06T00:00:00.000Z",
+  "data": {
+    "campaign": {
+      "format": "ironroot-campaign",
+      "version": 1,
+      "missions": {
+        "emberwatch": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "three-roads": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "winter-stores": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "wings-of-ash": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "stonegate": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "long-vigil": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "cold-forge": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "black-ledger": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "furnace-heart": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "crown-foothold": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "last-light": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        },
+        "ironroot": {
+          "completed": true,
+          "stars": 3,
+          "bestTime": 60
+        }
+      }
+    },
+    "trials": {
+      "shieldbreaker": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "skyguard": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "siegecraft": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "goldrush": {
+        "completed": true,
+        "bestTime": 75
+      },
+      "holdfast": {
+        "completed": true,
+        "bestTime": 75
+      }
+    },
+    "settings": {
+      "sound": true,
+      "music": false,
+      "sfx": true,
+      "volume": 0.7,
+      "reducedMotion": false,
+      "quality": "high"
+    },
+    "history": [
+      {
+        "won": true,
+        "draw": false,
+        "challengeId": null,
+        "campaignId": "ironroot",
+        "difficulty": "hard",
+        "time": 180,
+        "kills": 26,
+        "built": 11,
+        "date": "2026-11-06T00:00:00.000Z"
+      },
+      {
+        "won": false,
+        "draw": true,
+        "challengeId": null,
+        "campaignId": null,
+        "difficulty": "normal",
+        "time": 400,
+        "kills": 20,
+        "built": 15,
+        "date": "2026-11-06T00:00:00.000Z",
+        "mapId": "long-march"
+      }
+    ],
+    "battle": {
+      "format": "ironroot-save",
+      "version": 2,
+      "challengeId": null,
+      "campaignId": null,
+      "game": {
+        "version": 2,
+        "mapId": "twin-span",
+        "mapRevision": 1,
+        "difficulty": "normal",
+        "seed": 3924875047,
+        "ai": false,
+        "nextId": 7,
+        "aiTimer": 0,
+        "accumulator": 0.023,
+        "tick": 241,
+        "state": {
+          "time": 12.050000000000036,
+          "gold": [
+            480.25,
+            480.25
+          ],
+          "income": [
+            5,
+            5
+          ],
+          "bases": [
+            {
+              "id": "base0",
+              "type": "base",
+              "side": 0,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 110,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            },
+            {
+              "id": "base1",
+              "type": "base",
+              "side": 1,
+              "hp": 6000,
+              "maxHp": 6000,
+              "cooldown": -1,
+              "x": 3090,
+              "y": 450,
+              "hit": 0,
+              "attack": 0
+            }
+          ],
+          "buildings": [
+            {
+              "id": 1,
+              "type": "barracks",
+              "side": 0,
+              "x": 410,
+              "y": 340,
+              "lane": 0,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.20555555555555272,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            },
+            {
+              "id": 2,
+              "type": "barracks",
+              "side": 1,
+              "x": 2790,
+              "y": 340,
+              "lane": 0,
+              "hp": 700,
+              "maxHp": 700,
+              "level": 1,
+              "progress": 0.20555555555555272,
+              "cooldown": 0,
+              "invested": 140,
+              "hit": 0
+            }
+          ],
+          "units": [
+            {
+              "id": 3,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 1152.3994058819335,
+              "y": 342.1421742194297,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 4,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2047.6001271579314,
+              "y": 340.9910366975398,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 5,
+              "type": "warrior",
+              "flying": false,
+              "side": 0,
+              "x": 576.3989853542478,
+              "y": 330.83571675485047,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            },
+            {
+              "id": 6,
+              "type": "warrior",
+              "flying": false,
+              "side": 1,
+              "x": 2623.6019202819366,
+              "y": 352.6074266583325,
+              "lane": 0,
+              "hp": 180,
+              "maxHp": 180,
+              "level": 1,
+              "cooldown": -1,
+              "attack": 0,
+              "hit": 0
+            }
+          ],
+          "projectiles": [],
+          "effects": [],
+          "frontline": 1599.9997665199326,
+          "winner": null,
+          "spellCooldown": [
+            0,
+            0
+          ],
+          "overtime": false,
+          "stats": {
+            "kills": [
+              0,
+              0
+            ],
+            "built": [
+              1,
+              1
+            ],
+            "damage": [
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}
