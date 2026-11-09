@@ -1,0 +1,1012 @@
+{
+  "scope": "Static and scripted browser-fixture preflight in a separate current Salt mirror, not native browser execution, Playwright discovery, physical-device or update-lifecycle certification. Frozen author source unchanged.",
+  "sourceFreezeSha256": "4175ae15ba68bacfd92e700fc3f33c00e07e2b6c6389906727aea54cd35f0a47",
+  "canonicalCommit": "0e5123f9e4574c362de0b83d2bf7a727dbefee4c",
+  "canonicalTree": "60cc6683855b38669ecddfe330853cdda86e4c8f",
+  "copiedCanonicalDependencies": 159,
+  "rejectedStaleCachePaths": [],
+  "canonicalDependencyProof": [
+    {
+      "path": "docs/campaign-balance.json",
+      "gitBlobSha": "9d27d880cfe62663ce46deccb695e36c68a6f0c0",
+      "mode": "100644",
+      "sha256": "a82dd396f58e30c7d99227bceb9d739b692613960fb4c1477e349fabc492494e"
+    },
+    {
+      "path": "qa/battlefield-engine-results.json",
+      "gitBlobSha": "9ec71fcce6eda254ad5c0ba48567ccc3e66989c0",
+      "mode": "100644",
+      "sha256": "25893f7b5c62d6aa1c4d5698f71ca85e17dcdf8477d4901a06d55a2265214db5"
+    },
+    {
+      "path": "qa/browser/.gitignore",
+      "gitBlobSha": "945fcd0d86c1b95fa8612428db05ff311b02bf34",
+      "mode": "100644",
+      "sha256": "a305958521f5e61b8274ed12814e86b9028f06fab15092ed08e355d1845684bc"
+    },
+    {
+      "path": "qa/browser/ashen-crossroads-fixtures.mjs",
+      "gitBlobSha": "6f4626c36bf183d886744ed53b90e6505b36b296",
+      "mode": "100644",
+      "sha256": "da8290b17c373a681160517221a583635ef451b3fc1b525d58ad8240a2305908"
+    },
+    {
+      "path": "qa/browser/ashen-crossroads.spec.mjs",
+      "gitBlobSha": "0059a6d40fec054fd18e9ba7f7114da726c44c8d",
+      "mode": "100644",
+      "sha256": "f7c6441c0b4d66574a957caf21e7bc473513e78f81ae9c311a9c3e893444d228"
+    },
+    {
+      "path": "qa/browser/autonomous-air-coverage.md",
+      "gitBlobSha": "8b692a79c0945995ebfde5310773209d53355843",
+      "mode": "100644",
+      "sha256": "55047f77408abd0e64c06d5483293cca8208c4faca02af756c9f01f0c2ea231c"
+    },
+    {
+      "path": "qa/browser/autonomous-air-fixtures.mjs",
+      "gitBlobSha": "ef52f7deee8148b4c68f8c5753307d2d1d9ce32c",
+      "mode": "100644",
+      "sha256": "83e65e43eab589706fe5af35c4cbe02d723334ff49cb41fff4670b9bf792ab39"
+    },
+    {
+      "path": "qa/browser/autonomous-air-fixtures.node.mjs",
+      "gitBlobSha": "832ff9872b412b6198c842b4f634d42a35d0562b",
+      "mode": "100644",
+      "sha256": "571f9e72369b6d445f1f58721a5c8b7f75dc86dffa0785a9362cfd1c53416f30"
+    },
+    {
+      "path": "qa/browser/autonomous-air-validation.json",
+      "gitBlobSha": "8d83da9305eccd5d75e5618d0bb7cd992aeabca2",
+      "mode": "100644",
+      "sha256": "9e8f94c851346203ae0ee841a2cfa2e2e1b929b139db2e6eb3e350c654a5b52b"
+    },
+    {
+      "path": "qa/browser/back-navigation.spec.mjs",
+      "gitBlobSha": "b7c09909bc9a630e91052b854bc4d565617d25ad",
+      "mode": "100644",
+      "sha256": "7a50d58498d0f7c79bfa513f3941ee9a6a261d47a3dee1e8ecb206d9c7c512bf"
+    },
+    {
+      "path": "qa/browser/battle-report-fixtures.mjs",
+      "gitBlobSha": "92e253b5f6d754b485a000458f9b938353c271d1",
+      "mode": "100644",
+      "sha256": "28f2388a5a7d8af9d3d0b10c35f55b315a4bd25fda630da284f7465560b47af1"
+    },
+    {
+      "path": "qa/browser/battle-report.spec.mjs",
+      "gitBlobSha": "63d2df6f5995a607224dc1d36a9029f9b8b785de",
+      "mode": "100644",
+      "sha256": "1cffe045695b3c3db025f703a01d96e3463ddd23b26ee92de9551c949574e622"
+    },
+    {
+      "path": "qa/browser/bridge-control.spec.mjs",
+      "gitBlobSha": "2f680d0c58bb783ba4cf6ff9ee64541b159c26b1",
+      "mode": "100644",
+      "sha256": "e4939f574d1ce23571035681faf850ac5fa826b8e15f1d722b75f1cddcef734e"
+    },
+    {
+      "path": "qa/browser/campaign-onboarding.spec.mjs",
+      "gitBlobSha": "fac17f43508d8d5ac5f25647a534c2a901ee97fe",
+      "mode": "100644",
+      "sha256": "0ded621a0c6320cdaab0faf0556300abfec3ed76d1277bc118fd308f653fcc80"
+    },
+    {
+      "path": "qa/browser/campaign-progression-fixtures.mjs",
+      "gitBlobSha": "01221ba1e65709a5bfeb78d0312c2c57de73006b",
+      "mode": "100644",
+      "sha256": "f28b4c22e77cf058cf1e32d0b0c6011bc10ea2a57048d180a080155535923430"
+    },
+    {
+      "path": "qa/browser/campaign-progression.spec.mjs",
+      "gitBlobSha": "867a1f79be5a2f94f4064e708d4d22de03a6436e",
+      "mode": "100644",
+      "sha256": "825d9e841179f225b5b22777b469dcfeb1bf9b7fc1c11010054f95b99948e375"
+    },
+    {
+      "path": "qa/browser/campaign-restart-identity.spec.mjs",
+      "gitBlobSha": "b29f0b9bddf975b194ac8182f61fca77645d4d43",
+      "mode": "100644",
+      "sha256": "7293dda5257b18291d2307dfe9ef61eb7617b48e3406816d65b7d08f11b3f96f"
+    },
+    {
+      "path": "qa/browser/campaign.spec.mjs",
+      "gitBlobSha": "0e03a8ca219d382a0954d09b806b4e587cc94b74",
+      "mode": "100644",
+      "sha256": "e25ba5afa454be355002bb5e28a96890e5d780961874b6a216786ed4cb725ddd"
+    },
+    {
+      "path": "qa/browser/citadel-click.spec.mjs",
+      "gitBlobSha": "907bdbeb426205181c353791ff2a8d927bc824bd",
+      "mode": "100644",
+      "sha256": "24122e113947844b46b7ce6a0bedf98690bb6e5e4f1d0b9f65ce28bb5e1573d4"
+    },
+    {
+      "path": "qa/browser/citadel-options.spec.mjs",
+      "gitBlobSha": "12d52e968ee33687ab59a94be63c751ba1c64612",
+      "mode": "100644",
+      "sha256": "7c0dfe63f2d0fef1d8d293656c16cd901966d0697cc540dec6c3b819f077eb3c"
+    },
+    {
+      "path": "qa/browser/contextual-coaching.spec.mjs",
+      "gitBlobSha": "d21a34c9e8aafde32d36aa2093a3f3cb7332886e",
+      "mode": "100644",
+      "sha256": "d64907ce1e502334871e5210861ec79c79341c327d85f30b5ee745a655c26e03"
+    },
+    {
+      "path": "qa/browser/desktop-input.spec.mjs",
+      "gitBlobSha": "8ece1e23ab50df0d6ab334dfc465edfeb6fd51cf",
+      "mode": "100644",
+      "sha256": "b5c2a7078e507e2e646864c000279305ff294029739d88058ddd4e8911b974d7"
+    },
+    {
+      "path": "qa/browser/field-reference.spec.mjs",
+      "gitBlobSha": "b65b9e4752ba4e979427498e230e398bfa1af7e4",
+      "mode": "100644",
+      "sha256": "bc28bb8a43df26ad93449672f8ff9b4dd7e0774609af3be0d1b1d3e59ada8544"
+    },
+    {
+      "path": "qa/browser/first-build-start.spec.mjs",
+      "gitBlobSha": "2203cfe0cae5f7faa4cbcf7af32ea42177f904dc",
+      "mode": "100644",
+      "sha256": "f0dafcd105bfa1a267892283871983ada3b9f7db08586bb63f468762b01e5cc2"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/FONTS-NOTICES.txt",
+      "gitBlobSha": "5d3386dd213a643c3f7ab824c34a957ef72d5baf",
+      "mode": "100644",
+      "sha256": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/app.js",
+      "gitBlobSha": "c9d05818ca8a37e2e559e27ea08bbfecf703dd5e",
+      "mode": "100644",
+      "sha256": "da20894b4778a5a493e4d462339fefc0f768cadb336e03f06324d40d44298ac9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/audio.js",
+      "gitBlobSha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "mode": "100644",
+      "sha256": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/backup.js",
+      "gitBlobSha": "3692edad7212ca545c2d5128bb29d0c10954b252",
+      "mode": "100644",
+      "sha256": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-500.woff2",
+      "gitBlobSha": "5f79c08b05c1f3a35b4813356a0e6f54c7b58113",
+      "mode": "100644",
+      "sha256": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-600.woff2",
+      "gitBlobSha": "e232649650f0acbc95f8ca4593a85a59052b6110",
+      "mode": "100644",
+      "sha256": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-700.woff2",
+      "gitBlobSha": "6a30d67a15e8b01fbe6f5c659244b2869d05ec1a",
+      "mode": "100644",
+      "sha256": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/barlow-condensed-latin-800.woff2",
+      "gitBlobSha": "65d98f9f3b2a598adc45dafe83b0f46a7403d200",
+      "mode": "100644",
+      "sha256": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/campaign.js",
+      "gitBlobSha": "45ff4d5dfd284ab67a1cfb1550d5d2f17e963ef5",
+      "mode": "100644",
+      "sha256": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/challenges.js",
+      "gitBlobSha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "mode": "100644",
+      "sha256": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/codex.js",
+      "gitBlobSha": "ce0b49ed449398a8cdcb7a132dba058b65063381",
+      "mode": "100644",
+      "sha256": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/controller.js",
+      "gitBlobSha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "mode": "100644",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/dm-sans-latin-400-700.woff2",
+      "gitBlobSha": "24fae42657d84bcc71d6ab960c8fadc6bbb007b8",
+      "mode": "100644",
+      "sha256": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/engine.js",
+      "gitBlobSha": "940988d859e24cee49e9af7d2113b71b5ff446a7",
+      "mode": "100644",
+      "sha256": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/icon.svg",
+      "gitBlobSha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "mode": "100644",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/index.html",
+      "gitBlobSha": "06c981447cfe08235c08430963bdafaa9472c7b8",
+      "mode": "100644",
+      "sha256": "3dbd81fce5e99d3b7dbc8676beb9981d46252bcf095082ebb11115002d8d0fe5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/input-scope.js",
+      "gitBlobSha": "8bcfc6ad4740a09f71c56be4caea9cf7fca7880e",
+      "mode": "100644",
+      "sha256": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/manifest.webmanifest",
+      "gitBlobSha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "mode": "100644",
+      "sha256": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/objectives.js",
+      "gitBlobSha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "mode": "100644",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/persistence.js",
+      "gitBlobSha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "mode": "100644",
+      "sha256": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/profile-session.js",
+      "gitBlobSha": "dddf56e970123fa7ad3ea59b57405742487aa556",
+      "mode": "100644",
+      "sha256": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/render.js",
+      "gitBlobSha": "80c99b6042390fe3cf6588781ddc373c5afc1228",
+      "mode": "100644",
+      "sha256": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/scouting.js",
+      "gitBlobSha": "782f1dfb66dd4aa210ae1145f8c9a11e9581f21e",
+      "mode": "100644",
+      "sha256": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/service-worker.js",
+      "gitBlobSha": "a2d1194307a7a98bc9eaccb2771ea62166316570",
+      "mode": "100644",
+      "sha256": "e395c18d4fa3b8930cbeaadca728d8ab6f992e348601a5808b837508c40ce2f6"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/styles.css",
+      "gitBlobSha": "58dd91d1c01a34b4d5afbf59fbfec8c17ec1ed4e",
+      "mode": "100644",
+      "sha256": "466fde2a29e5090515c518ec61dce2ade329d3fef11c54b4ba3cca715b8e632d"
+    },
+    {
+      "path": "qa/browser/fixtures/0.10.0-qa-baseline-dist/vfx.js",
+      "gitBlobSha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "mode": "100644",
+      "sha256": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/app.js",
+      "gitBlobSha": "e0f2f7619face3abc024f07f10832186155572f4",
+      "mode": "100644",
+      "sha256": "ce45b51195c0b3fd9bb92f599a9fe1304078ad39d2d8142bdce7bb4949b26019"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/audio.js",
+      "gitBlobSha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "mode": "100644",
+      "sha256": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/backup.js",
+      "gitBlobSha": "454a49cc6cd6ba541ce1054a155ee4b2b778bde5",
+      "mode": "100644",
+      "sha256": "cc82a7a073184eff43e6465ea652fae7ab9cd3afee93e49653c4d9fd1b896fbc"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/campaign.js",
+      "gitBlobSha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "mode": "100644",
+      "sha256": "8130181e93cd24a4cc0b73b33285892c48c4e29a6a8c5a0d1a39942eed5101b8"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/challenges.js",
+      "gitBlobSha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "mode": "100644",
+      "sha256": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/controller.js",
+      "gitBlobSha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "mode": "100644",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/engine.js",
+      "gitBlobSha": "5d5f2660fa77a06ab737c81e106bddd31c7c0bee",
+      "mode": "100644",
+      "sha256": "404a6d420960d2ce352a94aa13cae2e85263d2dec151269d4a210f8cdce3ffc9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/icon.svg",
+      "gitBlobSha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "mode": "100644",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/index.html",
+      "gitBlobSha": "c4e08645c4ca8118e9ada5b499b122fea443f6cb",
+      "mode": "100644",
+      "sha256": "8f5fce18732b08e068bb43d58e8c18a757f9c24a84629d034aedc57f2b4587bc"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/manifest.webmanifest",
+      "gitBlobSha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "mode": "100644",
+      "sha256": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/objectives.js",
+      "gitBlobSha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "mode": "100644",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/persistence.js",
+      "gitBlobSha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "mode": "100644",
+      "sha256": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/profile-session.js",
+      "gitBlobSha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "mode": "100644",
+      "sha256": "1696d6e852cc7793fc6cf210a35a8385d10f4e9fef520fb8b97192b2279981a9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/render.js",
+      "gitBlobSha": "2b6299d980c2640d9d8b1d316aa2e9aa2337a702",
+      "mode": "100644",
+      "sha256": "a8296b7337f1d2508decd607526d211c91c4f898e47705e3a729f29a718ce7b5"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/service-worker.js",
+      "gitBlobSha": "222a855986ac17fc5aa737a14da92873a774202c",
+      "mode": "100644",
+      "sha256": "fc109a8e26737f97d3c035ccef8c755f7e37b9c68d27fce7680bf6285fd0c0d0"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/styles.css",
+      "gitBlobSha": "0c58625c38544d1dac2f2b5bdb34cc5ba4d035de",
+      "mode": "100644",
+      "sha256": "59c1748f172cc297116baffa6ebd35541723d86830019c9d1a80b89d8fb73a45"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-dist/vfx.js",
+      "gitBlobSha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "mode": "100644",
+      "sha256": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-package.json",
+      "gitBlobSha": "b5e97851588ce5b7425d9ac6c9b0d933acbdcfb6",
+      "mode": "100644",
+      "sha256": "07fb56c9484baf49433c5499af9a2f086503ef185df67cec21fe6b7bedb7f3dc"
+    },
+    {
+      "path": "qa/browser/fixtures/0.7.0-sha256.json",
+      "gitBlobSha": "f288ef8eab63d99b28cda7d5db3468b1468e28f4",
+      "mode": "100644",
+      "sha256": "74c1699def14367d1883e6697046a45622bcc013bae8b017f132b39755d13c8e"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/app.js",
+      "gitBlobSha": "a74c3ba2ea974458737cccd36e038c921c422828",
+      "mode": "100644",
+      "sha256": "ccba7fe0323536ea17807eec6cf389fa396ebfc992bc4b297ecb7073db1fc7cf"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/audio.js",
+      "gitBlobSha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "mode": "100644",
+      "sha256": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/backup.js",
+      "gitBlobSha": "454a49cc6cd6ba541ce1054a155ee4b2b778bde5",
+      "mode": "100644",
+      "sha256": "cc82a7a073184eff43e6465ea652fae7ab9cd3afee93e49653c4d9fd1b896fbc"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/campaign.js",
+      "gitBlobSha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "mode": "100644",
+      "sha256": "8130181e93cd24a4cc0b73b33285892c48c4e29a6a8c5a0d1a39942eed5101b8"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/challenges.js",
+      "gitBlobSha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "mode": "100644",
+      "sha256": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/codex.js",
+      "gitBlobSha": "62a47abdcea4117028be84ed7ac6df53db90e06a",
+      "mode": "100644",
+      "sha256": "118a653abff3c4f753e0ff52d670a9797688778a83dee5a28a70cee242827ed9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/controller.js",
+      "gitBlobSha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "mode": "100644",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/engine.js",
+      "gitBlobSha": "36b095a117f47cab38c84218e520f5073e2e09f9",
+      "mode": "100644",
+      "sha256": "0e94556092df4c5b74f6002bfb8e70fe8477b9e66363e17485b6c083373bd889"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/icon.svg",
+      "gitBlobSha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "mode": "100644",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/index.html",
+      "gitBlobSha": "927640ec66262002cd2f96fac7844dd14fedf777",
+      "mode": "100644",
+      "sha256": "38116f1acdc7836ce656685e06bc15b45b5ef5750915b76397b10703788be09f"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/manifest.webmanifest",
+      "gitBlobSha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "mode": "100644",
+      "sha256": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/objectives.js",
+      "gitBlobSha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "mode": "100644",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/persistence.js",
+      "gitBlobSha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "mode": "100644",
+      "sha256": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/profile-session.js",
+      "gitBlobSha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "mode": "100644",
+      "sha256": "1696d6e852cc7793fc6cf210a35a8385d10f4e9fef520fb8b97192b2279981a9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/render.js",
+      "gitBlobSha": "de824c0097ec516352fffa9187f4f278616b0d05",
+      "mode": "100644",
+      "sha256": "ef5ebcbed466bdd829ab34b12adaddf262d4627d31bd1ddbd4c99dd793701251"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/service-worker.js",
+      "gitBlobSha": "b0575eecba5203c7c4bb0e2248ef2319d6bfe5da",
+      "mode": "100644",
+      "sha256": "c32881c893ebba1f89459bc5371a79a7a6fe88542c4bef04e5f17f63b9a85748"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/styles.css",
+      "gitBlobSha": "4afc29bc54e9da5122aa388b157c30fbc0e01235",
+      "mode": "100644",
+      "sha256": "7b75c579c23c6d5a9be84180a34148b8f50f709d32187a83682e0782362f9361"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-dist/vfx.js",
+      "gitBlobSha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "mode": "100644",
+      "sha256": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    },
+    {
+      "path": "qa/browser/fixtures/0.8.0-sha256.json",
+      "gitBlobSha": "789154fc7bdd31db55af34822a8df450397e32c3",
+      "mode": "100644",
+      "sha256": "81ebe91440cabb155f96ac1e0189fa495decc14b2d65a263776e3963f3118028"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/FONTS-NOTICES.txt",
+      "gitBlobSha": "5d3386dd213a643c3f7ab824c34a957ef72d5baf",
+      "mode": "100644",
+      "sha256": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/app.js",
+      "gitBlobSha": "e55814ea20630d08baf07a679da0db4e1b6554fd",
+      "mode": "100644",
+      "sha256": "59f480f175417e21c1bd78474235d50570fb5d741a6f37e0267acf2cb88ccd76"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/audio.js",
+      "gitBlobSha": "bddef65feba76d77fbdd20d78fc77c5405692059",
+      "mode": "100644",
+      "sha256": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/backup.js",
+      "gitBlobSha": "742bbf57613103bc9d421b6ad007d7a94db9f493",
+      "mode": "100644",
+      "sha256": "2358ce6a35bb87a4f1ffa466ff335f070c24f48899ea2e91b12255f5f1390ed0"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-500.woff2",
+      "gitBlobSha": "5f79c08b05c1f3a35b4813356a0e6f54c7b58113",
+      "mode": "100644",
+      "sha256": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-600.woff2",
+      "gitBlobSha": "e232649650f0acbc95f8ca4593a85a59052b6110",
+      "mode": "100644",
+      "sha256": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-700.woff2",
+      "gitBlobSha": "6a30d67a15e8b01fbe6f5c659244b2869d05ec1a",
+      "mode": "100644",
+      "sha256": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/barlow-condensed-latin-800.woff2",
+      "gitBlobSha": "65d98f9f3b2a598adc45dafe83b0f46a7403d200",
+      "mode": "100644",
+      "sha256": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/campaign.js",
+      "gitBlobSha": "ed3902380b600a6690e4aef68136cd4a6c15c494",
+      "mode": "100644",
+      "sha256": "8130181e93cd24a4cc0b73b33285892c48c4e29a6a8c5a0d1a39942eed5101b8"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/challenges.js",
+      "gitBlobSha": "910c5819aaa4492d8d640ee82c067564d0f727f9",
+      "mode": "100644",
+      "sha256": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/codex.js",
+      "gitBlobSha": "ce0b49ed449398a8cdcb7a132dba058b65063381",
+      "mode": "100644",
+      "sha256": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/controller.js",
+      "gitBlobSha": "f87be2ca66bad2ce9b9a1170162403468e7cdad2",
+      "mode": "100644",
+      "sha256": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/dm-sans-latin-400-700.woff2",
+      "gitBlobSha": "24fae42657d84bcc71d6ab960c8fadc6bbb007b8",
+      "mode": "100644",
+      "sha256": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/engine.js",
+      "gitBlobSha": "940988d859e24cee49e9af7d2113b71b5ff446a7",
+      "mode": "100644",
+      "sha256": "e47a168c099c2a4e1f45b238d5224cb44a02433a7cff06adbfb87095c4d56bc7"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/icon.svg",
+      "gitBlobSha": "1b2734b6130e43cb6d473d7c4cb1ce47a293e67b",
+      "mode": "100644",
+      "sha256": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/index.html",
+      "gitBlobSha": "172f980ab70821485288ee5a6bc54a58c3819ded",
+      "mode": "100644",
+      "sha256": "86e0c81e75ad792333bea6315bbc67f383b6734762e3ab345398e0e33fe24405"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/manifest.webmanifest",
+      "gitBlobSha": "05c7bb376c5a60bff91d01044888b56a2afa37d3",
+      "mode": "100644",
+      "sha256": "8ec10e5c5b6577ba8df0f1296c387b7794dcc8c62f5853dcbfb2c374d835d06e"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/objectives.js",
+      "gitBlobSha": "5f33886370dd12f9d846b24e4708315006a0fe8c",
+      "mode": "100644",
+      "sha256": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/persistence.js",
+      "gitBlobSha": "9a3de2fa17d1bf9a60fbd2f60e1f741f52285e04",
+      "mode": "100644",
+      "sha256": "8ce2338429ad1ade80cccae5c6987b76b3ec448f8018cc5dd8bd1b2229192512"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/profile-session.js",
+      "gitBlobSha": "2750fce1875b6f496eb871b6376cc26d0f3bb9ab",
+      "mode": "100644",
+      "sha256": "1696d6e852cc7793fc6cf210a35a8385d10f4e9fef520fb8b97192b2279981a9"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/render.js",
+      "gitBlobSha": "80c99b6042390fe3cf6588781ddc373c5afc1228",
+      "mode": "100644",
+      "sha256": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/service-worker.js",
+      "gitBlobSha": "11b0cd0fc9841ea4e76ed410dbbb77562b711343",
+      "mode": "100644",
+      "sha256": "ff814ca812af001dfccd6dfc9509f46d4b571cda6abf9b60117458a890e2e44f"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/styles.css",
+      "gitBlobSha": "40471e7aa6bd4e1d4cb5c87d00e1d77f13519ed8",
+      "mode": "100644",
+      "sha256": "7f8c58c269825af740aa706e6335d7a5d3a889f60bf6ce90bd6eb052000e44f7"
+    },
+    {
+      "path": "qa/browser/fixtures/0.9.0-qa-baseline-dist/vfx.js",
+      "gitBlobSha": "2daed91f893f40d4f3eb3b5c3a90afa605588413",
+      "mode": "100644",
+      "sha256": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95"
+    },
+    {
+      "path": "qa/browser/flight-order-fixtures.mjs",
+      "gitBlobSha": "414ef786bc2809e0f791b2cb7ed517d7fad9700c",
+      "mode": "100644",
+      "sha256": "9a2cc98cf7a14b102ceea8a4d03dda0e77e6a76283cb8307f4c24f175d14339b"
+    },
+    {
+      "path": "qa/browser/flight-orders.spec.mjs",
+      "gitBlobSha": "d124bf116c48a16f8a6a9c3a669a40ffa54b9a88",
+      "mode": "100644",
+      "sha256": "637ac64acff9814f1c1d84176a8547a30bbadc820bd9e9ffcea25b2e20b4dbe7"
+    },
+    {
+      "path": "qa/browser/flight-pause-layout.spec.mjs",
+      "gitBlobSha": "1da3296516ff2a0a8dee8b18b27dbb0cce0df099",
+      "mode": "100644",
+      "sha256": "91db5502d371166b00928f04ab9c7d1ea49f4b93946929af2a4be94d087e2ec2"
+    },
+    {
+      "path": "qa/browser/font-browser-helpers.mjs",
+      "gitBlobSha": "923d26e26cb56aa212457aedf4f375d38cf2e91d",
+      "mode": "100644",
+      "sha256": "281bbbc9dfec6742fe449f4e597536a3f1933bcb75ee32d6be909e97d0d4f744"
+    },
+    {
+      "path": "qa/browser/fonts.spec.mjs",
+      "gitBlobSha": "3fecee70b95f0251f57f65b187b0c72a5765f2e2",
+      "mode": "100644",
+      "sha256": "9351fdfde4c435b6a2a95a069fa1b547be6f16bd36df6c6c603f49e8f728aff4"
+    },
+    {
+      "path": "qa/browser/fullscreen-entry.spec.mjs",
+      "gitBlobSha": "387f48e17ba22b117358a1017e58b883a7288af4",
+      "mode": "100644",
+      "sha256": "76e2292619a79a84b8ede50c97934cb979a5cf19a178a30fd588f9dcc9e8a9ae"
+    },
+    {
+      "path": "qa/browser/harness-contracts.node.mjs",
+      "gitBlobSha": "6545da10689e1cca743ee3d07a1e864c5181a1b3",
+      "mode": "100644",
+      "sha256": "ddec6978752fa0377d7fcd0c114211b87c7897476f764101e6a22e5b331d92d1"
+    },
+    {
+      "path": "qa/browser/hidden-coaching.spec.mjs",
+      "gitBlobSha": "e97093b6c0cc92de1d4b8122cc6e4d41582d8766",
+      "mode": "100644",
+      "sha256": "94c34f478e37976b369b16e911d7a19cb8c3b92cb04d3129908c5d4d3950534c"
+    },
+    {
+      "path": "qa/browser/integrated-flow.spec.mjs",
+      "gitBlobSha": "d9102857914515a16f9d4cc4da83cd7652d29fa0",
+      "mode": "100644",
+      "sha256": "c4890ee8a5c23e510226992e1c505b9b53935311121e2dd06f42901c61979129"
+    },
+    {
+      "path": "qa/browser/keyboard-contrast.spec.mjs",
+      "gitBlobSha": "1a5c233570ed59e64afb8535d2877193b68025e6",
+      "mode": "100644",
+      "sha256": "e16a3123fdb2bc09c8d96d857336aa3c27abdb6e364eae24ffd054bba8e17cf8"
+    },
+    {
+      "path": "qa/browser/keyboard-controls.spec.mjs",
+      "gitBlobSha": "ae03c312469675c15d0a8da59907e54903ad1df4",
+      "mode": "100644",
+      "sha256": "af1ec3b4362df459c124159b5dcdbf686e45e8ca916f46ce8991d4ff48d79add"
+    },
+    {
+      "path": "qa/browser/mobile-coaching-visibility.spec.mjs",
+      "gitBlobSha": "c326cc5a9e5720f089324dff0d5c511c538d0f6f",
+      "mode": "100644",
+      "sha256": "a023f243f53624cb396778bf501b555024ed4e8bb30e65e02402dede9d3ca45a"
+    },
+    {
+      "path": "qa/browser/objective-alert-browser-helpers.mjs",
+      "gitBlobSha": "169fff22ab6777fa9aad8a99c1bfbd5677a19501",
+      "mode": "100644",
+      "sha256": "ed789509f63aa39639889760379add307a6f720b1e93a7c0a45fa0cb24d0deda"
+    },
+    {
+      "path": "qa/browser/objective-alert-fixtures.mjs",
+      "gitBlobSha": "d9acd30c0a3136c70609063fffe250a37d5fec63",
+      "mode": "100644",
+      "sha256": "1dd2bd9373285da4303f4d511341930656a2ba4de33844d2c1e068d9a387e316"
+    },
+    {
+      "path": "qa/browser/objective-alerts.spec.mjs",
+      "gitBlobSha": "d974bccda3046082af532b7308077e218a9388af",
+      "mode": "100644",
+      "sha256": "ba613fd0cb5c2fde2207344973e66db092a090b4f5e322a7e43d73a49f583ba5"
+    },
+    {
+      "path": "qa/browser/offline-shell.spec.mjs",
+      "gitBlobSha": "ec12b5dbdefbc98feaebd9c001b9e3b66bb25e8a",
+      "mode": "100644",
+      "sha256": "8521c97a2ee64de9d12e9fa9b3d3448110647d62264abdc17d19c73256069de3"
+    },
+    {
+      "path": "qa/browser/package-lock.json",
+      "gitBlobSha": "f4396228a2a508ced45782e0f1d3a09e9f4790b0",
+      "mode": "100644",
+      "sha256": "9ab3a302ad8eb137ffc8fe10334a71a8fccbc635f635fed7dd399c72cc208828"
+    },
+    {
+      "path": "qa/browser/package.json",
+      "gitBlobSha": "1de30ad9d5353814eb6f2999561bbdde1ebd3631",
+      "mode": "100644",
+      "sha256": "17ff10aa38da969a3dcb4560820f2fdca80c28cfa58cbe5003d98a9b2b93407f"
+    },
+    {
+      "path": "qa/browser/pause-menu.spec.mjs",
+      "gitBlobSha": "999f3fa9296ddb2ee81d958fd49add6fa05ec29b",
+      "mode": "100644",
+      "sha256": "2df0f28dd6551ddaa355c3a280b01e16fe20391a3ad6ee6e67617431a203a9ba"
+    },
+    {
+      "path": "qa/browser/player-copy-rhythm.spec.mjs",
+      "gitBlobSha": "2f4ec752bddacc043ec0ef87ccfa87b35263bc50",
+      "mode": "100644",
+      "sha256": "ece1a590a25dec4e9109e9cad9862b720eda2582b5538ca42c8eef55db88fa75"
+    },
+    {
+      "path": "qa/browser/playwright.config.mjs",
+      "gitBlobSha": "78ea71ddca77e6d3c7acc7df6809f58edec8d4c8",
+      "mode": "100644",
+      "sha256": "7ed06455fcb4c8fd7f9dab839a809b05e8da62697b52bd9115e48a1675ba3dab"
+    },
+    {
+      "path": "qa/browser/portrait-income.spec.mjs",
+      "gitBlobSha": "bf38e90f10d7a9af3a7a491f3a95213b52c16b3a",
+      "mode": "100644",
+      "sha256": "f01b816ce75c02dbaf3ed2b8a7bcbfab543b158e8fae074622f6c8d27995f49b"
+    },
+    {
+      "path": "qa/browser/practice-history.spec.mjs",
+      "gitBlobSha": "4e4f00c9c18d88369b6e8f587136f1768bb807a8",
+      "mode": "100644",
+      "sha256": "74818df07527a0b3feb9996dbeacb15390cc9235be6a3d2ce01e45bc4d1c7c78"
+    },
+    {
+      "path": "qa/browser/production-upgrade.spec.mjs",
+      "gitBlobSha": "05403e2003166bbeb5ea072159355283ce922c1e",
+      "mode": "100644",
+      "sha256": "a428c5794d15cf66e59bab8fa67b68d0c0d37ad3dd91b5fe68729ee9af776336"
+    },
+    {
+      "path": "qa/browser/production-v015-upgrade.spec.mjs",
+      "gitBlobSha": "97d94ef8affcc2b6bcad306a1d91431c85a91228",
+      "mode": "100644",
+      "sha256": "9da7a1fa79a393918f57b1e915dc95b441af6ee969420c4a800947b227b11c0e"
+    },
+    {
+      "path": "qa/browser/profile-reload-navigation.spec.mjs",
+      "gitBlobSha": "3d616b2f5cc97fd9a0e6e2da40267a6567d2c1ab",
+      "mode": "100644",
+      "sha256": "a50cc9ab621ec23b5c7c15640a6ae316981dfe2c30679053ecb60c5cef712896"
+    },
+    {
+      "path": "qa/browser/profile-upgrade.spec.mjs",
+      "gitBlobSha": "f58f2284a85fafabc1b3e8abb972040984a3e019",
+      "mode": "100644",
+      "sha256": "2fe4ff01c7f636ec90e234b1f3eb04f46f46251314055e9af1c838ce9c3d8edc"
+    },
+    {
+      "path": "qa/browser/protected-objectives-pointer.spec.mjs",
+      "gitBlobSha": "315c18a0c140f1e72598a1d217817a8418933819",
+      "mode": "100644",
+      "sha256": "296b7787dd3c908bf4798feecd704be850fe4fde5e46d50aa39b5d87403319eb"
+    },
+    {
+      "path": "qa/browser/restart-briefing.spec.mjs",
+      "gitBlobSha": "3a7bdefb177147f8845795b15c6f26831fa34cd5",
+      "mode": "100644",
+      "sha256": "c817c6467d12a5b1c4a5c69670900e73f5f43b1d39fca2968605dfa8d3748703"
+    },
+    {
+      "path": "qa/browser/service-worker-update.spec.mjs",
+      "gitBlobSha": "6de0fe5f27f0c5ec17c21a4d20c87c5f6d8bcd3d",
+      "mode": "100644",
+      "sha256": "4a4438cfca9704550e0103306d9be93db3ec1b4b5b73a6e507aadbed14524ecd"
+    },
+    {
+      "path": "qa/browser/shared-crossing-fixtures.mjs",
+      "gitBlobSha": "eaba819c781ec79186632f3e7385c618fe5ff522",
+      "mode": "100644",
+      "sha256": "923989683c48d30f6cea16b09bae6be094bb9c949029d8220bff21c7c12c6a5e"
+    },
+    {
+      "path": "qa/browser/shared-crossing.spec.mjs",
+      "gitBlobSha": "de4f1852e37e82ba5b722e897706e94c4123a702",
+      "mode": "100644",
+      "sha256": "70c7db2817aed234628fb6c7fea2be60937124ba841939eb88b77cb68d5a1e11"
+    },
+    {
+      "path": "qa/browser/short-coached-portrait.spec.mjs",
+      "gitBlobSha": "3235d270cb8d9e96a1583aa4bef25d60f6f9bf78",
+      "mode": "100644",
+      "sha256": "1651fadbb2a74542280c3918d4b1800724cbd8e2e971e25fc52a52b1956f7389"
+    },
+    {
+      "path": "qa/browser/skirmish-fog-scroll.spec.mjs",
+      "gitBlobSha": "19469f8c23aaff3a5127bf1b2625c1296d40992b",
+      "mode": "100644",
+      "sha256": "14567085f1d1b096b032a070edc09b30de918b56d7c3e3125819d7dfc860ed99"
+    },
+    {
+      "path": "qa/browser/storage-recovery.spec.mjs",
+      "gitBlobSha": "8434cf23e243bb52497b7fc93f38b8de1550e2a5",
+      "mode": "100644",
+      "sha256": "e1bbfe70f8901ea96078856f2bf8199fe257098fa118ca5269ab6601f9c50392"
+    },
+    {
+      "path": "qa/browser/validate-battle-report-fixtures.mjs",
+      "gitBlobSha": "23ddfc8a708043fd5f45cc6e2e45556150aa0245",
+      "mode": "100644",
+      "sha256": "f78c999f23b6351f2f6aa54e8dcd72d75c5b7e52286b24da9ebd9c3cc5e439a3"
+    },
+    {
+      "path": "qa/browser/validate-campaign-fixtures.mjs",
+      "gitBlobSha": "95f25d182011c6f8bdc71085abb1883979867a00",
+      "mode": "100644",
+      "sha256": "70f07df112c0847f7e1aa56fc753ac6d9e9735c1e29c3c2f688ec4dd53652201"
+    },
+    {
+      "path": "qa/browser/validate-campaign-progression-fixtures.mjs",
+      "gitBlobSha": "4dba7a6b0a604590384e0b4350ef9d16cb202558",
+      "mode": "100644",
+      "sha256": "e3ab8f06fbabc6384c62894e6fcb86f0c472f6d9d5da04778e389e54d0551ab7"
+    },
+    {
+      "path": "qa/browser/validate-codex-fixtures.mjs",
+      "gitBlobSha": "0e53c8265d6abf2b4a8741bcb18ed84dbff6612d",
+      "mode": "100644",
+      "sha256": "563d7abab6b192e57d72331024372ddd3e8b1b730f684fd857ad6d693f7197be"
+    },
+    {
+      "path": "qa/browser/validate-expanded-campaign-fixtures.mjs",
+      "gitBlobSha": "05f7ee1165c45a5641983ef7c9171a1b2ec4d7c9",
+      "mode": "100644",
+      "sha256": "51405a764f254e0fe1cbfcde4749fb374e10d2f433582bf6ff961e754d727ab4"
+    },
+    {
+      "path": "qa/browser/validate-legacy-profile-fixtures.mjs",
+      "gitBlobSha": "fb084993ca4e104257a52e2e5de15f19b81e8a02",
+      "mode": "100644",
+      "sha256": "cf8d285a0f906cbef67edd4d8c66abebd23f02be4b06f6b968e025ec483f5a26"
+    },
+    {
+      "path": "qa/browser/validate-map-fixtures.mjs",
+      "gitBlobSha": "e286dc9062ebd19b75d4f8948c570064c8b5ae97",
+      "mode": "100644",
+      "sha256": "22f01febfeb2af48221048c54d9d8030adbd23e71564cc9f9e2814d93c9cede4"
+    },
+    {
+      "path": "qa/browser/validate-objective-alert-fixtures.mjs",
+      "gitBlobSha": "39bb6ed552e787b7cf2c95cc98e51da3324aa5f9",
+      "mode": "100644",
+      "sha256": "8c7c75d46ca0910dc5a49b0438ad62d56b521aa1677a191dd55da15e2c4f47d2"
+    },
+    {
+      "path": "qa/browser/validate-production-upgrade.mjs",
+      "gitBlobSha": "d40585a6882d9882a96116a24b4c1697b342e9b2",
+      "mode": "100644",
+      "sha256": "915b9c3b6a5f92ed8743d81783795eeab8a1eaed60e925a81d92e1e112615c1e"
+    },
+    {
+      "path": "qa/browser/validate-training-fixtures.mjs",
+      "gitBlobSha": "ad93a1adfd5992df5cfc8255aaf32b6f0ebf1f26",
+      "mode": "100644",
+      "sha256": "7f55c0f66dd5c536e4a2b265b74a5c129361fcb4f7b3d4718c68717d88f4afcd"
+    },
+    {
+      "path": "qa/browser/validate-update-fixtures.mjs",
+      "gitBlobSha": "871db1cff39aefa618da2b7c9322516ba93c8c31",
+      "mode": "100644",
+      "sha256": "e37e9946f48dbe56a4487a877afada7ad7d12db3c9094ed719028cdc8aa27cac"
+    },
+    {
+      "path": "qa/maps-balance.mjs",
+      "gitBlobSha": "6acc9c6bb5c1f4d47488d41e0a62988680f87dfa",
+      "mode": "100644",
+      "sha256": "c83b64eb3194a559a8fd8046b082419f68ce8f15fbafd036a1222e9c90d77e9c"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm --prefix qa/browser run check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix qa/browser run check:upgrade",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix qa/browser run check:harness",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix qa/browser run check:upgrade:v015",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix qa/browser run check:automatic-air",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix qa/browser run check:shared-crossing",
+      "exitCode": 0
+    }
+  ],
+  "allBrowserRootModuleSyntax": {
+    "modules": 101,
+    "exitCode": 0
+  },
+  "logs": [
+    {
+      "filename": "check-first.log",
+      "sha256": "a0a86a88a7868460d4e8e34bcdbf6005fd00a3dd098d65c1e32f55b4beafa852",
+      "bytes": 14310
+    },
+    {
+      "filename": "supplemental.log",
+      "sha256": "bb458baa75931cf032af10a79344eed356b3efbb48e08c1e0584f333a009654f",
+      "bytes": 3261
+    },
+    {
+      "filename": "all-browser-root-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "allPassed": true
+}

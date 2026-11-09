@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {readFileSync,writeFileSync,mkdirSync,realpathSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {readFileSync,writeFileSync,mkdirSync,realpathSync,readdirSync,lstatSync} from 'node:fs';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {Game} from '../../dist/engine.js';
@@ -8,13 +9,34 @@ import {advanceObjectiveBattle} from '../../dist/objectives.js';
 import {createPolicy,POLICY_IDS,describePolicy} from './paid-policies.mjs';
 import {instrumentEconomy,verifyPlayerCadence} from './economy.mjs';
 import {ID,BASELINE,exactScenario,hash} from './scenario.mjs';
+import {inspectRuntime} from '../../scripts/verify-runtime.mjs';
 export const VALIDATION_PLAN=Object.freeze({evidenceEpoch:1,developmentSeeds:[8202,923,58031,448273],heldOutSeeds:[2571673,3840289],policies:[...POLICY_IDS],historicalEvidenceReused:false,scope:'Fresh production-engine paid feasibility, not human difficulty or native UI evidence.'});
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const harnessFiles=['qa/salt-stores/paid-policies.mjs','qa/salt-stores/economy.mjs','qa/salt-stores/scenario.mjs','qa/salt-stores/simulate.mjs','qa/salt-stores/verify-evidence.mjs'];
-const combatFiles=['dist/campaign.js','dist/engine.js','dist/rulesets.js','dist/objectives.js','dist/fog.js','dist/autonomous-air.js','dist/citadel-options.js'];
-export function fingerprint(){return{harnessHashes:Object.fromEntries(harnessFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),combatHashes:Object.fromEntries(combatFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),formationSha256:exactScenario().formationSha256};}
+const harnessFiles=['qa/salt-stores/paid-policies.mjs','qa/salt-stores/economy.mjs','qa/salt-stores/scenario.mjs','qa/salt-stores/simulate.mjs','qa/salt-stores/verify-evidence.mjs','qa/salt-stores/prepare-native.mjs','tests/salt-stores-mission.test.mjs','tests/salt-stores-profile.test.mjs','tests/salt-stores-economy.test.mjs','tests/salt-stores-preview.test.mjs','tests/salt-stores-parent-freeze.test.mjs'];
+const combatFiles=Object.keys(inspectRuntime(path.join(root,'dist')).files).map(n=>'dist/'+n);
+
+function sourceHashes(dir=root,relative=''){const out={};for(const e of readdirSync(dir,{withFileTypes:true})){const rel=relative?relative+'/'+e.name:e.name;if(e.isDirectory())Object.assign(out,sourceHashes(path.join(dir,e.name),rel));else if(/\.(?:js|mjs|html|css)$/.test(e.name)||rel==='package.json'||rel==='desktop/package.json'||rel==='desktop/package-lock.json'||(rel.startsWith('tests/fixtures/')&&e.name.endsWith('.json')))out[rel]=hash(readFileSync(path.join(dir,e.name)));}return Object.fromEntries(Object.entries(out).sort(([a],[b])=>a.localeCompare(b,'en')));}
+export function fingerprint(){return{sourceHashes:sourceHashes(),harnessHashes:Object.fromEntries(harnessFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),combatHashes:Object.fromEntries(combatFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),formationSha256:exactScenario().formationSha256};}
 export function freezePlan(){const frozen={...VALIDATION_PLAN,status:'frozen-before-held-out-runs',frozenAt:new Date().toISOString(),baseline:BASELINE,...fingerprint(),formation:exactScenario().formation,policyDefinitions:POLICY_IDS.map(describePolicy)};writeFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json'),JSON.stringify(frozen,null,2)+'\n');return frozen;}
-export function verifyFrozen(){const p=JSON.parse(readFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json'),'utf8'));for(const[k,v]of Object.entries(fingerprint()))assert.deepEqual(p[k],v,'Frozen input changed: '+k);return p;}
+export function verifyFrozen(){
+ const raw=readFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json')),p=JSON.parse(raw),binding=JSON.parse(readFileSync(path.join(root,'qa/salt-stores/verifier-compatibility.json')));
+ assert.equal(hash(raw),binding.originalPaidFreezeSha256,'Original first-open paid freeze must stay exact');
+ const original=readFileSync(path.join(root,'qa/salt-stores/frozen-verifier-epoch1.txt'),'utf8'),current=readFileSync(path.join(root,'qa/salt-stores/simulate.mjs'),'utf8');
+ assert.equal(hash(original),p.harnessHashes['qa/salt-stores/simulate.mjs']);assert.equal(hash(current),binding.finalVerifierSha256);
+ const boundary=s=>[s.slice(0,s.indexOf('export function verifyFrozen()')),s.slice(s.indexOf('\nexport function runSaltStores'))];
+ const[oldPrefix,oldPaid]=boundary(original),[newPrefix,newPaid]=boundary(current);
+ assert.equal(newPrefix,oldPrefix.replace('realpathSync,readdirSync','realpathSync,readdirSync,lstatSync').replace("import assert from 'node:assert/strict';","import assert from 'node:assert/strict';\nimport {createHash} from 'node:crypto';"),'Only verifier imports may differ');
+ assert.equal(newPaid,oldPaid,'Paid simulator, summaries and CLI remain exact original bytes');
+ const check=(table,label)=>{for(const[f,want]of Object.entries(table)){const got=hash(readFileSync(path.join(root,f)));assert.equal(got,f==='qa/salt-stores/simulate.mjs'?binding.finalVerifierSha256:want,label+': '+f);}};
+ check(p.combatHashes,'Frozen runtime changed');check(p.harnessHashes,'Frozen paid harness changed');check(p.sourceHashes,'Original frozen source path missing or changed');
+ assert.equal(exactScenario().formationSha256,p.formationSha256);
+ const canonicalRaw=readFileSync(path.join(root,'qa/salt-stores/canonical-extra-source.json'));assert.equal(hash(canonicalRaw),binding.canonicalExtraInventorySha256);const canonical=JSON.parse(canonicalRaw).files,all=sourceHashes();
+ for(const[f,sha]of Object.entries(all))if(!Object.hasOwn(p.sourceHashes,f)){
+  if(Object.hasOwn(binding.postHeldoutVerificationFiles,f)){assert.equal(sha,binding.postHeldoutVerificationFiles[f]);continue;}
+  const expected=canonical[f];assert.ok(expected,'Unclassified extra source path: '+f);const fileStat=lstatSync(path.join(root,f));assert.ok(fileStat.isFile()&&!fileStat.isSymbolicLink(),'Extra canonical source must be a regular file: '+f);const data=readFileSync(path.join(root,f)),blob=createHash('sha1').update(Buffer.concat([Buffer.from('blob '+data.length+'\0'),data])).digest('hex'),mode=fileStat.mode&0o111?'100755':'100644';assert.equal(blob,expected.sha,'Extra canonical blob changed: '+f);assert.equal(mode,expected.mode,'Extra canonical mode changed: '+f);
+ }
+ return p;
+}
 export function runSaltStores({policy='northraid',seed=8202,cap=600,diagnosticClones=false,onStep=null}={}){
  assert.ok(Number.isSafeInteger(seed)&&seed>=0&&seed<=0xffffffff);
  const{game:g,mission,formationSha256}=exactScenario(),s=g.state;g.seed=seed;
@@ -29,7 +51,7 @@ export function runSaltStores({policy='northraid',seed=8202,cap=600,diagnosticCl
  if(diagnosticClones&&side===1&&call.deniedOriginalMineIncome>0&&call.enemyCoreHP>1000&&call.attempts.some(a=>!a.result.ok&&a.gold<this.buildings[a.args[0]].cost)){
   const clone=Game.restore(state),beforeHash=hash(clone.serialize()),cloneReceipts=[];clone.state.gold[1]+=call.deniedOriginalMineIncome;assert.equal(hash(state),beforeHash);const counterfactual=clone.serialize();counterfactual.state.gold[1]=state.state.gold[1];assert.deepEqual(counterfactual,state,'Only restored denied income may differ');
   for(const method of ['build','upgrade','cast','buyCitadelOption']){const orig=clone[method];clone[method]=function(...args){const before=this.state.gold[1],out=orig.apply(this,args);if(out.ok)cloneReceipts.push({method,args,beforeGold:before,afterGold:this.state.gold[1],result:structuredClone(out)});return out;};}
-  clone._ai(1);diagnostics.push({scope:'ILLEGAL diagnostic-only exact-state counterfactual; not a legal run or outcome comparison',time:call.time,tick:call.tick,stateSha256:beforeHash,liveGold:call.gold,onlyChangedField:'state.gold[1]',restoredDeniedIncome:call.deniedOriginalMineIncome,cloneGoldBefore:state.state.gold[1]+call.deniedOriginalMineIncome,livePurchases:call.purchases,clonePurchases:cloneReceipts,liveFirstAttempt:call.attempts[0],enemyCoreHP:call.enemyCoreHP});
+  clone._ai(1);diagnostics.push({scope:'ILLEGAL diagnostic-only exact-state counterfactual; not a legal run or outcome comparison',time:call.time,tick:call.tick,stateSha256:beforeHash,exactLiveState:state,liveGold:call.gold,onlyChangedField:'state.gold[1]',restoredDeniedIncome:call.deniedOriginalMineIncome,cloneGoldBefore:state.state.gold[1]+call.deniedOriginalMineIncome,livePurchases:call.purchases,clonePurchases:cloneReceipts,liveFirstAttempt:call.attempts[0],enemyCoreHP:call.enemyCoreHP});
  }
  };
  let outcome=evaluateCampaignMission(g,ID),nextTrace=0;const trace=[];

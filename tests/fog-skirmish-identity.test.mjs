@@ -11,7 +11,7 @@ const oldIDs=Object.keys(Phase1Rules);
 
 test('candidate is a distinct frozen fog identity; every existing identity including QA is unchanged',()=>{
  assert.equal(FOG_SKIRMISH_RULESET_ID,'frontier-fog-skirmish-open');assert.notEqual(FOG_SKIRMISH_RULESET_ID,FOG_RULESET_ID);
- assert.deepEqual(Object.keys(RULESETS).filter(id=>id!=='frontier-campaign-archers-quay'&&id!==FOG_SKIRMISH_RULESET_ID&&id!=='frontier-campaign-shared-crossing'&&id!=='frontier-campaign-one-signal'&&id!=='frontier-campaign-lanterns'&&id!=='frontier-campaign-borrowed-ground'&&id!=='frontier-campaign-river-between'&&id!=='frontier-campaign-road-we-know'&&id!=='frontier-campaign-reed-beds'&&!id.startsWith('frontier-campaign-false-quiet-')),oldIDs);
+ assert.deepEqual(Object.keys(RULESETS).filter(id=>id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==FOG_SKIRMISH_RULESET_ID&&id!=='frontier-campaign-shared-crossing'&&id!=='frontier-campaign-one-signal'&&id!=='frontier-campaign-lanterns'&&id!=='frontier-campaign-borrowed-ground'&&id!=='frontier-campaign-river-between'&&id!=='frontier-campaign-road-we-know'&&id!=='frontier-campaign-reed-beds'&&!id.startsWith('frontier-campaign-false-quiet-')),oldIDs);
  const signal=getRuleset('frontier-campaign-one-signal');assert.equal(signal.revision,1);assert.equal(signal.campaignOnly,true);assert.equal(supportsFog(signal),false);assert.deepEqual(mechanics(signal),mechanics(getRuleset('frontier-campaign-citadel-open')));
  for(const id of oldIDs)assert.deepEqual(RULESETS[id],Phase1Rules[id],id+' immutable definition');
  const candidate=getRuleset(FOG_SKIRMISH_RULESET_ID),qa=getRuleset(FOG_RULESET_ID),ordinary=getRuleset(DEFAULT_SKIRMISH_RULESET_ID);

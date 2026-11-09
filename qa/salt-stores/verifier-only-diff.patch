@@ -1,0 +1,37 @@
+--- original-epoch1/simulate.mjs
++++ post-heldout-compatibility/simulate.mjs
+@@ -1,5 +1,6 @@
+ import assert from 'node:assert/strict';
+-import {readFileSync,writeFileSync,mkdirSync,realpathSync,readdirSync} from 'node:fs';
++import {createHash} from 'node:crypto';
++import {readFileSync,writeFileSync,mkdirSync,realpathSync,readdirSync,lstatSync} from 'node:fs';
+ import {pathToFileURL,fileURLToPath} from 'node:url';
+ import path from 'node:path';
+ import {Game} from '../../dist/engine.js';
+@@ -17,7 +18,25 @@
+ function sourceHashes(dir=root,relative=''){const out={};for(const e of readdirSync(dir,{withFileTypes:true})){const rel=relative?relative+'/'+e.name:e.name;if(e.isDirectory())Object.assign(out,sourceHashes(path.join(dir,e.name),rel));else if(/\.(?:js|mjs|html|css)$/.test(e.name)||rel==='package.json'||rel==='desktop/package.json'||rel==='desktop/package-lock.json'||(rel.startsWith('tests/fixtures/')&&e.name.endsWith('.json')))out[rel]=hash(readFileSync(path.join(dir,e.name)));}return Object.fromEntries(Object.entries(out).sort(([a],[b])=>a.localeCompare(b,'en')));}
+ export function fingerprint(){return{sourceHashes:sourceHashes(),harnessHashes:Object.fromEntries(harnessFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),combatHashes:Object.fromEntries(combatFiles.map(f=>[f,hash(readFileSync(path.join(root,f)))])),formationSha256:exactScenario().formationSha256};}
+ export function freezePlan(){const frozen={...VALIDATION_PLAN,status:'frozen-before-held-out-runs',frozenAt:new Date().toISOString(),baseline:BASELINE,...fingerprint(),formation:exactScenario().formation,policyDefinitions:POLICY_IDS.map(describePolicy)};writeFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json'),JSON.stringify(frozen,null,2)+'\n');return frozen;}
+-export function verifyFrozen(){const p=JSON.parse(readFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json'),'utf8'));for(const[k,v]of Object.entries(fingerprint()))assert.deepEqual(p[k],v,'Frozen input changed: '+k);return p;}
++export function verifyFrozen(){
++ const raw=readFileSync(path.join(root,'qa/salt-stores/VALIDATION_PLAN.json')),p=JSON.parse(raw),binding=JSON.parse(readFileSync(path.join(root,'qa/salt-stores/verifier-compatibility.json')));
++ assert.equal(hash(raw),binding.originalPaidFreezeSha256,'Original first-open paid freeze must stay exact');
++ const original=readFileSync(path.join(root,'qa/salt-stores/frozen-verifier-epoch1.txt'),'utf8'),current=readFileSync(path.join(root,'qa/salt-stores/simulate.mjs'),'utf8');
++ assert.equal(hash(original),p.harnessHashes['qa/salt-stores/simulate.mjs']);assert.equal(hash(current),binding.finalVerifierSha256);
++ const boundary=s=>[s.slice(0,s.indexOf('export function verifyFrozen()')),s.slice(s.indexOf('\nexport function runSaltStores'))];
++ const[oldPrefix,oldPaid]=boundary(original),[newPrefix,newPaid]=boundary(current);
++ assert.equal(newPrefix,oldPrefix.replace('realpathSync,readdirSync','realpathSync,readdirSync,lstatSync').replace("import assert from 'node:assert/strict';","import assert from 'node:assert/strict';\nimport {createHash} from 'node:crypto';"),'Only verifier imports may differ');
++ assert.equal(newPaid,oldPaid,'Paid simulator, summaries and CLI remain exact original bytes');
++ const check=(table,label)=>{for(const[f,want]of Object.entries(table)){const got=hash(readFileSync(path.join(root,f)));assert.equal(got,f==='qa/salt-stores/simulate.mjs'?binding.finalVerifierSha256:want,label+': '+f);}};
++ check(p.combatHashes,'Frozen runtime changed');check(p.harnessHashes,'Frozen paid harness changed');check(p.sourceHashes,'Original frozen source path missing or changed');
++ assert.equal(exactScenario().formationSha256,p.formationSha256);
++ const canonicalRaw=readFileSync(path.join(root,'qa/salt-stores/canonical-extra-source.json'));assert.equal(hash(canonicalRaw),binding.canonicalExtraInventorySha256);const canonical=JSON.parse(canonicalRaw).files,all=sourceHashes();
++ for(const[f,sha]of Object.entries(all))if(!Object.hasOwn(p.sourceHashes,f)){
++  if(Object.hasOwn(binding.postHeldoutVerificationFiles,f)){assert.equal(sha,binding.postHeldoutVerificationFiles[f]);continue;}
++  const expected=canonical[f];assert.ok(expected,'Unclassified extra source path: '+f);const fileStat=lstatSync(path.join(root,f));assert.ok(fileStat.isFile()&&!fileStat.isSymbolicLink(),'Extra canonical source must be a regular file: '+f);const data=readFileSync(path.join(root,f)),blob=createHash('sha1').update(Buffer.concat([Buffer.from('blob '+data.length+'\0'),data])).digest('hex'),mode=fileStat.mode&0o111?'100755':'100644';assert.equal(blob,expected.sha,'Extra canonical blob changed: '+f);assert.equal(mode,expected.mode,'Extra canonical mode changed: '+f);
++ }
++ return p;
++}
+ export function runSaltStores({policy='northraid',seed=8202,cap=600,diagnosticClones=false,onStep=null}={}){
+  assert.ok(Number.isSafeInteger(seed)&&seed>=0&&seed<=0xffffffff);
+  const{game:g,mission,formationSha256}=exactScenario(),s=g.state;g.seed=seed;

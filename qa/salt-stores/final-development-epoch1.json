@@ -1,0 +1,2353 @@
+{
+  "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence.",
+  "startedAt": "2026-11-09T06:11:22.968Z",
+  "finishedAt": "2026-11-09T06:11:50.501Z",
+  "baseline": {
+    "commit": "0e5123f9e4574c362de0b83d2bf7a727dbefee4c",
+    "equivalentCandidate": "d399b75cadfb70aa878a02e5fb0eb9f78b8836e2",
+    "tree": "60cc6683855b38669ecddfe330853cdda86e4c8f"
+  },
+  "sourceHashes": {
+    "desktop/package-lock.json": "410c5c57f8d57076afae696161d738aa3c74b8f60644584a5fcf6779dcdc9e42",
+    "desktop/package.json": "a265e0ec655c239fd746eb2e21b3b78892162adec55e2a46034532846200aa28",
+    "desktop/scripts/stage.mjs": "6b933f57de35b7d53d65186f4b081dae6f4db1ffd2e848c54515e5296f45001c",
+    "dist/app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+    "dist/audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "dist/battle-codec.js": "c23870ec96bc8c9ad34a2d67a563b08353d0bf833a455c0f0663a47c551ea4ed",
+    "dist/battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "dist/bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "dist/campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "dist/campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "dist/campaign-presentation.js": "2cc568a683e712a0641c86b74a7b04bae31468d49f7bdc19f975cdda626ad810",
+    "dist/campaign.js": "e13f589d69a2bbbc6a15281cfe1040e1e53d22ea22a086c4f68e46f8b47a394f",
+    "dist/challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "dist/citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "dist/fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/index.html": "5fdb9b443c4fdbb902ebc3ac386e8a5ee1232e7bbe0cfea96c852a771a2fe017",
+    "dist/input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "dist/intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "dist/keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "dist/mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "dist/profile-session.js": "2bfd3fe9525c0ffdf88ae651854e60ff689789a66db2b98750dbd7cbd561ef32",
+    "dist/protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "dist/render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "dist/report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "dist/rulesets.js": "27ab8cdec72ad31d0201f57d007395094d02df25b2001dc6842fc2cd76708be2",
+    "dist/scouting.js": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+    "dist/service-worker.js": "64ffe6dbd1ff1ff649b8c56c3f8ce3d7840c55e396c38940575b426204c27121",
+    "dist/styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "dist/training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "package.json": "54120a54dd21c80b5d93f8613efac28da121807712e2b1ddbedfb2639ec52d4c",
+    "qa/archers-quay/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/archers-quay/paid-policies.mjs": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+    "qa/archers-quay/prepare-native.mjs": "38a8618505bf6088ab649b7cda4b214b3b87469765a52ee78b51061952a96aba",
+    "qa/archers-quay/scenario.mjs": "d9578b2685fdeafc42d85f925ee556583896f7314d39cd45eda02d5f7340f2d4",
+    "qa/archers-quay/simulate.mjs": "caec3dd0b0f760deb8c9d272a994bbbaf2ba9c7997f9c11b18a9d0003cf8a757",
+    "qa/archers-quay/verify-evidence.mjs": "a9af74f80f9490e193e70dd65605e3b9e5f9e8846ee47e0448ecbd6933fef294",
+    "qa/audio/render.mjs": "3a7f8782f6b4d9084d803f0a1e35a517ba49459333386d6e5e1628898eaf96f4",
+    "qa/borrowed-ground/paid-policies.mjs": "810f552aa69897325ed51c0c5bcee14aabadcab6a39258a939e9147d71a534d1",
+    "qa/borrowed-ground/scenario.mjs": "d2c58b1a82ba172c7a85595e9fbb6bcfd2c749633a611f748dfe21c53a7224da",
+    "qa/borrowed-ground/simulate.mjs": "3319aacd090506db33e3617d440f90f567f345ee059d5828be1ae8b9e66ad27e",
+    "qa/browser/accessibility-backup.spec.mjs": "f624cf7996684a792d8cc3c63be5ef4df4222c40ffec9f41af794e2056e86799",
+    "qa/browser/battle-report-legacy-fixtures.mjs": "fd669597e7f0c78a87ded524a67b37aa29b59c492acf80a0503195b32f8eb9e5",
+    "qa/browser/build-completion.spec.mjs": "8c85da23c69ed777cdee9b863d000186047cfdce2cd7c46907a9db3e48b159f8",
+    "qa/browser/campaign-fixtures.mjs": "ac8440003ae1166b1149e3599a91acec1684baa355a3222269faa4c8a9441cc8",
+    "qa/browser/campaign-navigation.spec.mjs": "2f5c952a995048f6d02b7688553ca903a7aa3e6f6e3a8c57a05502829e78ea89",
+    "qa/browser/campaign-teaching-helpers.mjs": "b408fb461c41ccc8098cfc05296bd6b02283d89de3aa70cdae78a08054140ab1",
+    "qa/browser/canvas-observation.mjs": "a5483ead365da5bde39b9effe3a61380be06e97eb25f173a866e206d2d2ac8b9",
+    "qa/browser/expanded-campaign-fixtures.mjs": "71b07e6557155bf01aec4b8633c4cc9b944955f5e40a572bce40d0690cf24f49",
+    "qa/browser/expanded-campaign.spec.mjs": "284d9334b478bbb0ee416be78add2d890b475940356dae7bc7ef40e677761ed0",
+    "qa/browser/flight-pause-layout-geometry.mjs": "50927b199b4968775150f085b64555c6d40dc17f7793b7ca14ea068147b770cc",
+    "qa/browser/legacy-profile-fixtures.mjs": "78282b1ca6194c8d01c858268c59fccfa84cecbba3082f7727d8f9b8693caf25",
+    "qa/browser/map-browser-helpers.mjs": "4d3228901fdb68adc2e6a188f1a74515e65e80f317e776236fb6d2de1ed82763",
+    "qa/browser/map-controller-helpers.mjs": "c307a7ed8b56e1b244f2c19b07f299003144961ce42c02d4b87802f2ae11d26a",
+    "qa/browser/map-fixtures.mjs": "fe8ebf78975346f12edbdebc61d6a2348886121e473d013f6ce2b955a1019ae6",
+    "qa/browser/maps.spec.mjs": "5c1f99a3e132cc00ef1c1b8b7dec585892e42014edfdab2acf02c018638379ca",
+    "qa/browser/minimap-input-contract.mjs": "526841826c1d88677fd64a33e7e05ae343389f21af260aaed2a8d05e446c88b8",
+    "qa/browser/mobile-safety-evidence.mjs": "22e14feb9adfe31c9b5eb617a56283cae0b5ffd65cf9c350c0a9307edddaece8",
+    "qa/browser/onboarding-fixtures.mjs": "f3cac52099438b3defb1c36b348f8991c2c1a433e4f19301d510aaa2c396c1d0",
+    "qa/browser/passive-continuation.mjs": "88ff71a2f30db25f479084ef8082f925559f941410ca5ad8ee14c8afe722fc8a",
+    "qa/browser/phone-text-evidence.mjs": "f4bd92c7b898f17f58c7785e307872a89acae5eaf1d81bde9651fb8f434904f5",
+    "qa/browser/phone-viewport.spec.mjs": "c7304042747d896064757159001f0bc480029c8346213c52575464ef1753e939",
+    "qa/browser/production-v012-fixtures.mjs": "8415a506cb5b3a43a8865740167411013aad84e2e4f145ae692ababcfb999456",
+    "qa/browser/production-v015-fixtures.mjs": "5c4f7a396ff0f3244dc658d4e653587f4c240e4c23f390084a5ba7818da159cd",
+    "qa/browser/profile-reload-observation.mjs": "0c7d33b75b21b31c0c4e9d32ad6896d508cf71cc5ffe99d455c2704350afdbc3",
+    "qa/browser/regression.spec.mjs": "05ed7badb0ebfaee4439c7ae6eb9ac6e9f70cdda37a5fc9149dfda0bb8f0e9db",
+    "qa/browser/server.mjs": "33431ecb68e6bc277a256235874327d7d445974a5b1ef6db4c38d0c3f30b4b7c",
+    "qa/browser/shared-build-controls.mjs": "c51498cc4758be895562c1a7c55a1acb6bee6025796ea13dd1b13501e02b1f18",
+    "qa/browser/synthetic-gamepad-helpers.mjs": "c92b3eed232c7f01cc37a1417303ea27168ca3e4ad26e6fc5f15531d930b09c1",
+    "qa/browser/synthetic-gamepad-provider.mjs": "01ac60be5b84bfd92db375dee28de5e67b0314d4687f6a12bb0d836b981063e3",
+    "qa/browser/toast-geometry.mjs": "7424e311964373a7d8abcaf7c690b8042119b809c6abfa27957d48f173064a19",
+    "qa/browser/training-browser-helpers.mjs": "225fa153e52425891fd471ea933a59cea819c82dddc86a3a27c8db2f6a19b3fc",
+    "qa/browser/training-fixtures.mjs": "1690bad1cd71f78e5be466c5f776f92882b66b497c8e6cdc76ce063394791503",
+    "qa/browser/training.spec.mjs": "3436e3f4aaa13747572feabfed086f582f291477978144b161309c42c815f08e",
+    "qa/browser/update-fixtures.mjs": "343d0354058028878163323d4388a19f69442de9e72201a4ab9160b3c79d891c",
+    "qa/browser/validate-flight-order-fixtures.mjs": "e5ea5e5dc0cd4f7276cc77210f408c728afe9c909547003405a51a3aceda9cdf",
+    "qa/browser/validate-production-v015-upgrade.mjs": "d2e94aa18a5c7fef71d99bf2fd17c525b832de30d75b43fc55b800b8c0042995",
+    "qa/browser/validate-shared-crossing-fixtures.mjs": "03dfcb9a5c74f1592d38077d808d06e048adb27775093af009803ad7b917da52",
+    "qa/browser/worker-update-helpers.mjs": "3e3f8140f3c796e457c756b124e1eec610c808d7acf8f6713819d8a57aea8df0",
+    "qa/combat-feedback/baseline-engine.js": "fbe7bc22a6468751848b2ee27a7502c9214e3f0848b27c90e3e5eb9637e82ff0",
+    "qa/combat-feedback/baseline-render.js": "a3b95a686105c54d7bb5642f0abf234af10bac1c166b09afc830a21080da1a9e",
+    "qa/combat-feedback/baseline-rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "qa/combat-feedback/baseline-rulesets.js": "fa6ca8d0734d02ec3b2245285286974887f345166e20bd0d93c42ddb4e09e2da",
+    "qa/combat-feedback/baseline-vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "qa/combat-feedback/fixture.js": "3790c6d3ca133a41670520a0171fe0fa4e9269a8db9bcbd569fe41b268646770",
+    "qa/combat-feedback/index.html": "277c9b693922b6f2221d529763b1f57f0be5b9addbf8721d2150a80b13fa0fb8",
+    "qa/combat-feedback/scenes.js": "5569ab92f628eb13b6dff858536e1466055b7d74a9a487acb0649c913228628d",
+    "qa/false-quiet/paid-policies.mjs": "aac37b20851ba22b100f58605c216836f92f67653328695e90352f5de1cc4dc1",
+    "qa/false-quiet/parity.mjs": "3e9519a7414714f5edad009c61ce9966394e346a53c24eb54c894257303b5056",
+    "qa/false-quiet/prepare-native.mjs": "8116bb82313de6f7e16a481762a61515c7123634996469aa9603a438a17bb254",
+    "qa/false-quiet/scenario.mjs": "18cce1f392543d5f6c5e266816843f342a4fbb18b412381924940ae05a92adfb",
+    "qa/false-quiet/simulate.mjs": "b668f0706cb572f3c7d2ace50350bd90c2b96011f1d80f3c91fdce4987da82f2",
+    "qa/false-quiet/verify.mjs": "16f8d1210146b6e497f0066cb19c8b4406dbd01a53369948e2fae402da21cd06",
+    "qa/fixtures/accepted-clarity/engine.js": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+    "qa/fixtures/accepted-clarity/render.js": "9f77b130b7397f188a63dfb960a90d2b5b17d0da94c4e8bd7a1f56ba64aed99e",
+    "qa/fixtures/accepted-clarity/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "qa/fixtures/production-v012/dist/app.js": "6870ae50bc6dce23e92c31b4d5978ddff510fb94b961c6c3c05ac985bdae492f",
+    "qa/fixtures/production-v012/dist/audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+    "qa/fixtures/production-v012/dist/backup.js": "f16de6ad26420dc448b3802b480e890b91d1b1b5ebe31f0eee6012ca2b5dc331",
+    "qa/fixtures/production-v012/dist/battle-report.js": "9f1b49f561015436141bf108cbb443555540512fcffb6133ede2d7c59066852d",
+    "qa/fixtures/production-v012/dist/campaign.js": "49ec88047efdf66f88a677a3f3a4de5b0067f97fef4df8a71cef05044da66781",
+    "qa/fixtures/production-v012/dist/challenges.js": "e6f91be9cf1741fe16273baf606a500005ef66d7e7aa4b786bd0c6b48f2c7e08",
+    "qa/fixtures/production-v012/dist/codex.js": "9c7bbb31d7122d1a3feb02a45fdbe6d9a8fce851346795e01e239a92f50fca5d",
+    "qa/fixtures/production-v012/dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "qa/fixtures/production-v012/dist/engine.js": "83d315ba2a25ced0167543896c48c1d9ae0096827767e9bbe28485c5ae1810f5",
+    "qa/fixtures/production-v012/dist/index.html": "3c37a27c7492ed7e038d2ee13025b6c2869e6edbee64e0a3dada0003d5b47157",
+    "qa/fixtures/production-v012/dist/input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+    "qa/fixtures/production-v012/dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "qa/fixtures/production-v012/dist/persistence.js": "306d34d124df98265cee4c6bbd65a6413588c3f6d7d98ea2a8bed7f7659a4e89",
+    "qa/fixtures/production-v012/dist/profile-session.js": "54cc0361a71511ee0d34b9f79e73463e6856a1a99af0ff08d23fe1634f1ea04d",
+    "qa/fixtures/production-v012/dist/render.js": "d917f6ad203fbb7c018de081d147c372e349b8b4935f7bbc77f5bff472545106",
+    "qa/fixtures/production-v012/dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "qa/fixtures/production-v012/dist/report-view.js": "5a0af7eaf256aec549013934d6a224676df0449f642997e6092e108f9e59345e",
+    "qa/fixtures/production-v012/dist/scouting.js": "c17dedbb3ed6fb8755e0455bb5ba9360b1664678d1961993c56ff2dbe4aa9b04",
+    "qa/fixtures/production-v012/dist/service-worker.js": "9a79237a4fa6925cc0db86d588287eb1758355bcee20714a9bc803745ce9f88c",
+    "qa/fixtures/production-v012/dist/styles.css": "cb3451fee2369344ec40b85d8bfc8555c4801b39fc24748c6f020704af32f312",
+    "qa/fixtures/production-v012/dist/training-app.js": "956b4773d3195c911b99fa1873f7541ccdc182a97ccdf9c94b9db28c7f27f235",
+    "qa/fixtures/production-v012/dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "qa/fixtures/production-v012/dist/training.html": "fee383c2fd77a49852604227bdf9309029215a30b93c4a1ff370a5f9f285c108",
+    "qa/fixtures/production-v012/dist/training.js": "5a26edb4615a87723f317e44289e03d4444eddb7d820d2c39067abfcb548a770",
+    "qa/fixtures/production-v012/dist/vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95",
+    "qa/fixtures/production-v012/validate-fixture.mjs": "4ee640a627ff0372fec7eccd816bcaa288c84003347165d094fd80dfe86235dc",
+    "qa/fixtures/production-v015/campaign-policies.mjs": "62ec228967ac6d3582379eaa01b76785e0aa6f7e0b3d2a18f0e918c9f1c2873b",
+    "qa/fixtures/production-v015/dist/app.js": "df2d72e1bbaf7afd77fa690883e4cfde99ecb6539086e76a47c857fbb79fcc0e",
+    "qa/fixtures/production-v015/dist/audio.js": "4cd8c94c39ee9440490889a0ab1ec8c5975a5ef7550335a8310a6101e3bf89c9",
+    "qa/fixtures/production-v015/dist/backup.js": "c03d277c7129150d5a085f0a46d0a437aa23adc97abb1796ebae76b4ea471ca3",
+    "qa/fixtures/production-v015/dist/battle-codec.js": "2e675fe9b062cd1729c534919b3d8d454d904734a4cb3097989b0361c193a2ac",
+    "qa/fixtures/production-v015/dist/battle-report.js": "f5ed98159995b70c0b64342336dbf443e7f97315649a7fb5c1af95b7d493f4ea",
+    "qa/fixtures/production-v015/dist/campaign-flow.js": "237c490afa63ffa803c9fce20230f32050a4ec873ef5773618a3ff52a3a551e7",
+    "qa/fixtures/production-v015/dist/campaign-onboarding.js": "2f9fcc9839d1a844ff0ea60f71e9e80715c188cd847c9d063b6530d6f90c33af",
+    "qa/fixtures/production-v015/dist/campaign-presentation.js": "89ec3f341238252ff4deef4b5229a7589d34cc54c1d8a9bf8fd2e8a7a3b94b58",
+    "qa/fixtures/production-v015/dist/campaign.js": "8c3cd33d2c72db4d3519af9942ceb934b80eb4c967868e8e070c5afec388741e",
+    "qa/fixtures/production-v015/dist/challenges.js": "d071e8eb6b63b633b59705452e02ed090469c0f70fcc60c5da87fe1fb4c47c66",
+    "qa/fixtures/production-v015/dist/codex.js": "15e0062db3fb71801b4582ea61f777507dbdec20fd963d7d11f53c92c4460e4a",
+    "qa/fixtures/production-v015/dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "qa/fixtures/production-v015/dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "qa/fixtures/production-v015/dist/engine.js": "16320893e83d7819b3103117803845e061fdb79cbb8adc2a8e6e95d76ec168bf",
+    "qa/fixtures/production-v015/dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "qa/fixtures/production-v015/dist/index.html": "3386f65ca0a2545d4fc8ff3ad70a80366da6061ac6d1fb21ccd1e377cb6cd129",
+    "qa/fixtures/production-v015/dist/input-scope.js": "e0bcfe941db36a885b050303c69cb960bce5d9bd00e232dda3cc5f9c6aa35108",
+    "qa/fixtures/production-v015/dist/intro-campaign.js": "6d095c15ef2dd0a4fea7ed633567fe0ddf294505c866a7d97c79d993676c819b",
+    "qa/fixtures/production-v015/dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "qa/fixtures/production-v015/dist/mobile-battlefield.js": "3f8c756a8548df12cc32ed24d27d0b68b2e3c425961cb43ddd44ff588ed715e0",
+    "qa/fixtures/production-v015/dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "qa/fixtures/production-v015/dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "qa/fixtures/production-v015/dist/persistence.js": "d901660d4f324989fd13a85f0a823bb9310f61a3b7acfd4544719a9b3fecc0a5",
+    "qa/fixtures/production-v015/dist/profile-session.js": "7bbb09a46de6868406b49436de7013a1b962c446cdc67aa9ca2dbd551f3534e6",
+    "qa/fixtures/production-v015/dist/protected-objectives.js": "12679adf4901fb15ed1e2c9f8968f9d04911d6c5e2378438a6af7a98b1b25450",
+    "qa/fixtures/production-v015/dist/render.js": "fb26e8abede80e760fc3f88eec47d2e63a47b29ba371d15f19f6b9c1dbf41878",
+    "qa/fixtures/production-v015/dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "qa/fixtures/production-v015/dist/report-view.js": "1fb6831f3e3410511c4c424ac6fb5a3359e4ae1376aa6ce8b4a9883cbb04fb10",
+    "qa/fixtures/production-v015/dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "qa/fixtures/production-v015/dist/rulesets.js": "d674b36b469ade51f50eeeb45fe6253c7828578524adf96f1903ad45b72f9785",
+    "qa/fixtures/production-v015/dist/scouting.js": "cd90a6bea61db53aab9f2f2795ab978d3ddfec5c494bb953f166dfe1d7ee15e6",
+    "qa/fixtures/production-v015/dist/service-worker.js": "9b1127a3e92aed4b66fa8ddebd212a98c9318ea3353bc9edfb2b5b678216f037",
+    "qa/fixtures/production-v015/dist/styles.css": "ba3f08f7748846924117b27c9f1ea09b33e0e6ddb0feb3040240a93c979986f5",
+    "qa/fixtures/production-v015/dist/training-app.js": "37c745d3226651a85b3e634210e0c3a0c6485f73c47a44c4d3ef749f8ab2c775",
+    "qa/fixtures/production-v015/dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "qa/fixtures/production-v015/dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "qa/fixtures/production-v015/dist/training.js": "1f8964b1fa9010256358d9da5deb32e56f4c084b0a180eaf03e71ff018757c79",
+    "qa/fixtures/production-v015/dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "qa/fixtures/production-v015/onboarding-campaign-policies.mjs": "57ab268177cc6f695215df554a9c3608580ae0e6333929d5e1c54935c7138ed3",
+    "qa/fixtures/production-v0300/dist/app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+    "qa/fixtures/production-v0300/dist/audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "qa/fixtures/production-v0300/dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "qa/fixtures/production-v0300/dist/backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "qa/fixtures/production-v0300/dist/battle-codec.js": "0514664707813f4a17fa8a99121e1610d8bfe2be5e679b44014ccab56d2d8443",
+    "qa/fixtures/production-v0300/dist/battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "qa/fixtures/production-v0300/dist/bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "qa/fixtures/production-v0300/dist/campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "qa/fixtures/production-v0300/dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "qa/fixtures/production-v0300/dist/campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "qa/fixtures/production-v0300/dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "qa/fixtures/production-v0300/dist/campaign-presentation.js": "003fd4d6427fb6e7649d4f772352155c69a630184da5179b8d2c548fd9e65edd",
+    "qa/fixtures/production-v0300/dist/campaign.js": "e6b325ae322130aaaf51ed82d9ed8d5505f9516fd0420fbf4d766acff1f80c1b",
+    "qa/fixtures/production-v0300/dist/challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "qa/fixtures/production-v0300/dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "qa/fixtures/production-v0300/dist/citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "qa/fixtures/production-v0300/dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "qa/fixtures/production-v0300/dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "qa/fixtures/production-v0300/dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "qa/fixtures/production-v0300/dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "qa/fixtures/production-v0300/dist/flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "qa/fixtures/production-v0300/dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "qa/fixtures/production-v0300/dist/flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "qa/fixtures/production-v0300/dist/fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "qa/fixtures/production-v0300/dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "qa/fixtures/production-v0300/dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "qa/fixtures/production-v0300/dist/index.html": "161b2471c424842d8c597e69cc3ac3df5e4d3a73cfdb70c0a243bbfe6d97d174",
+    "qa/fixtures/production-v0300/dist/input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "qa/fixtures/production-v0300/dist/intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "qa/fixtures/production-v0300/dist/keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "qa/fixtures/production-v0300/dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "qa/fixtures/production-v0300/dist/mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "qa/fixtures/production-v0300/dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "qa/fixtures/production-v0300/dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "qa/fixtures/production-v0300/dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "qa/fixtures/production-v0300/dist/profile-session.js": "f6792d61a96b3591df4fc3b2fb19b62ec1bdb806ab1d39670f07068e5dc4586f",
+    "qa/fixtures/production-v0300/dist/protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "qa/fixtures/production-v0300/dist/render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "qa/fixtures/production-v0300/dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "qa/fixtures/production-v0300/dist/report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "qa/fixtures/production-v0300/dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "qa/fixtures/production-v0300/dist/rulesets.js": "409804e280649cd26cfc9866bd54314e920bede990f16828ae2a233742a24128",
+    "qa/fixtures/production-v0300/dist/scouting.js": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+    "qa/fixtures/production-v0300/dist/service-worker.js": "06533a6f863fef7362f6f284c1a1ac7df9fdd0fd7ddbfb08b82c07b5ffebb603",
+    "qa/fixtures/production-v0300/dist/styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "qa/fixtures/production-v0300/dist/training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "qa/fixtures/production-v0300/dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "qa/fixtures/production-v0300/dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "qa/fixtures/production-v0300/dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "qa/fixtures/production-v0300/dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393",
+    "qa/fixtures/production-v0300/qa/archers-quay/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/fixtures/production-v0300/qa/archers-quay/paid-policies.mjs": "faee91cc97b8f8a6b4176b63d0ee3a6800698ce87a337459e62902fc9f0e5801",
+    "qa/fixtures/production-v0300/qa/archers-quay/prepare-native.mjs": "38a8618505bf6088ab649b7cda4b214b3b87469765a52ee78b51061952a96aba",
+    "qa/fixtures/production-v0300/qa/archers-quay/scenario.mjs": "d9578b2685fdeafc42d85f925ee556583896f7314d39cd45eda02d5f7340f2d4",
+    "qa/fixtures/production-v0300/qa/archers-quay/simulate.mjs": "caec3dd0b0f760deb8c9d272a994bbbaf2ba9c7997f9c11b18a9d0003cf8a757",
+    "qa/fixtures/production-v0300/qa/archers-quay/verify-evidence.mjs": "a9af74f80f9490e193e70dd65605e3b9e5f9e8846ee47e0448ecbd6933fef294",
+    "qa/fixtures/production-v0300/scripts/verify-runtime.mjs": "91e24d994c666a7ff352e6163077118182b2f32e74138af461db7f8e062fff7d",
+    "qa/fixtures/production-v0300/tests/archers-quay-economy.test.mjs": "4f1f6331d235dd43ca887d2be8389ccf0b7bce53b8008741bbca9b0b7c83ae41",
+    "qa/fixtures/production-v0300/tests/archers-quay-mission.test.mjs": "2bb1e0aec4120e61fb4efec94182c19a8cb3f90708cc2b1bb60701e60405f588",
+    "qa/fixtures/production-v0300/tests/archers-quay-preview.test.mjs": "0f02d16da8ed69a11cc1974f87180a3523d5e168aed980850f7648e30f4cc915",
+    "qa/fixtures/production-v0300/tests/archers-quay-profile.test.mjs": "1e2f429dee57db08f86c3ece7d6ea7211d11e53498275f65ad922978adc7c53e",
+    "qa/fixtures/production-v0300/tests/fixtures/profile-session-v0290.js": "b3fbb144c23d977f94c2a1938f08e14c9c90fcbd0d1c113fbb3474f20e6f3804",
+    "qa/flight-production-engine/evaluation.mjs": "c4e50c94d4b57775f934759390d22426865230ab530431d4e1c84ddcfa22c87d",
+    "qa/flight-production-engine/scenarios.js": "337eb27841f7a7e77c2dba02bbc9c2a28ae2bcd16ad37d7d7092472e3fba2a6a",
+    "qa/flight-production-engine/summarize.mjs": "5ccac704ab5a3815f8729e1fd370eea6df54527d0cb19896073eff9c6ed219a0",
+    "qa/fog-prototype/controls.js": "b18c0b2e39720a067e5ce11f8f13ec6094e772d8aff289845f1ad35da5174d51",
+    "qa/fog-prototype/dense-scenarios.js": "3f1fa8fc6cdf9361b9f27cb545656b70933a6411a379d491f167677bec330e65",
+    "qa/fog-prototype/index.html": "db36b2f34bca76c10fe783bb1d3493252f4abc25f8a6e3a89a210f9846ce0d60",
+    "qa/fog-prototype/memory-scenarios.js": "1b655d31b518106b49a2b5bd2e2e37785f5209298890063ea208c938b7894277",
+    "qa/fog-prototype/memory-scene.html": "df8fb150e2d08b4b409b2d552403eba0a038dcee38a2c80b71fdd3a9048bb1b1",
+    "qa/fog-prototype/memory-scene.js": "58d8b367e40095ac8b049e4d89535e1deca7f20cd12e4e973d445958fbe0b4e0",
+    "qa/fog-prototype/shell.js": "b94d1c9913791bb7bdefaebadedac7ccd5500f4ffd15b7a7e6aace12a4edb0aa",
+    "qa/lanterns/paid-policies.mjs": "b7c121f414482db69d03fd1af67623cf4c0d2f44ef185c0ea9fba18fb6a73cd7",
+    "qa/lanterns/scenario.mjs": "19929ea35ccc4792630e4568d17bc64e2280cb595bcafa35adc012a2636b808f",
+    "qa/last-ascent/mechanics.test.mjs": "97337dd9bf2a13829127d796c7225c8f2beb37fe59fda0ccb2c0d86a689882a4",
+    "qa/last-ascent/policies.mjs": "3d4f8448d3b3aadaab377082c1da7a9be03578d32ed6f8d2b133d865afd8dba1",
+    "qa/last-ascent/prepare-preview.mjs": "85c563c99ab3032e859f66c721c896ff01a4094e2d36981135b8a6f644d03cf4",
+    "qa/last-ascent/scenario.mjs": "712a14199d4082927096c91e3403c0269c23fe7577d76604b52f285ef8fcee62",
+    "qa/last-ascent/simulate.mjs": "7cbf5441d722f24bd671906ad3bca2f0819549542570003fc4e456845869d3a7",
+    "qa/readability/baseline-render.js": "a18de2bb15cd11dc72a51712c7aa799c831b13051204c68936444a20a6f8f39d",
+    "qa/readability/baseline-vfx.js": "af55fa0311735ab05706d6be8a6d540773062f8c8be903743120c7952b4d5e95",
+    "qa/readability/fixture.js": "6feed5a3f034fdadd9e9cff978e02aa10fee37ce7f8f61c44418694192ea0807",
+    "qa/readability/index.html": "0054efff96799e20643e13ffa0f57f3421f42f62225012e476d09492d44824c4",
+    "qa/readability/scenes.js": "838f9ef944a7aed9450c1438dd687ce408cf7a2c8e937bcf134b4f6412c2ffec",
+    "qa/reed-beds/bind-final-source.mjs": "e79e0fcf015b51bf9d51a3396222af8726e85319bc70db050b472d0991f7f697",
+    "qa/reed-beds/checkpoints.mjs": "df4cdd62689149f488e0f427b94ff5d153b2111634be10ab146cea213203f5a1",
+    "qa/reed-beds/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/reed-beds/paid-policies.mjs": "38eb257d37584b3f2e011fdf059028ec8be4b7bfef23ccca15c2bb171dab8434",
+    "qa/reed-beds/prepare-native.mjs": "00995328bb9ceb80f9013e04b006f8b67854796040758772672bde47b62403ef",
+    "qa/reed-beds/scenario.mjs": "27d0f76b03b72fb54ccddcfcb22936356e45355e317d3b31a48582b2308e76bd",
+    "qa/reed-beds/simulate.mjs": "7a5fa68874372f08881dc7eb97fc9216cf1ac5cbe5eb5192e7757874f71cf1f6",
+    "qa/reed-beds/verify-evidence.mjs": "5cf1d8ec9819636b26b6062976dd14f610f52a1f46104ed974b47fe9c157c6ff",
+    "qa/river-between/paid-policies.mjs": "461a4a1e0029b1f0fdcfbed1eeac397f0970385a3d7500488e89495f5da0897d",
+    "qa/river-between/scenario.mjs": "b81b2022116a3a7779b12a02e6cc1d206bfc31f688d5e947623af2860a66f029",
+    "qa/river-between/simulate.mjs": "9cc6eefdd45894aeac765597a2ef268ceb27ab84b8f71c97d636f94f50c9f32b",
+    "qa/road-we-know/economy.mjs": "ceb9932e453dc4b7097a82ed4c4803dfb33c9fe6fa4f0daea134a45eb6c3aa35",
+    "qa/road-we-know/paid-policies.mjs": "b63bca3503bf4ff6e1d64beb48b92ff970df1b4aec5c5995c97bbdcbd956155f",
+    "qa/road-we-know/prepare-native.mjs": "87f2208b77e40c01a3b06f33aa87b6f0c229036ac425cd7b62a40f7e67b589d9",
+    "qa/road-we-know/scenario.mjs": "a868abfb923f7a97346126d6c12f8167486664deca6aeebd5663d5ad6b9dbbaf",
+    "qa/road-we-know/simulate.mjs": "55d7c3c0fba83a09401c900f84af0adabe119a53665dd75c8d27526a1fb4f83b",
+    "qa/road-we-know/verify-evidence.mjs": "3321cbda654ab4772972bb75ac4eca7b5dbe9a76f5f7f9cc3d141bbaafc86935",
+    "qa/salt-stores/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/salt-stores/paid-policies.mjs": "577fa770569fb2522c0660929e47aee1f149fd716447783ddfa9fb2908c606ed",
+    "qa/salt-stores/prepare-native.mjs": "f4b8dc9fbca9fbd8785c66011804b16e7eaab66ab752b11722fcba1fec061241",
+    "qa/salt-stores/scenario.mjs": "0a22b6537060c271c4c9affb9a4ac8cb039a81f51eadf50d113bd79065edf51d",
+    "qa/salt-stores/simulate.mjs": "3898432d0966c68911fd014c71a922de21432665deb0277c4d19767876f8a6d6",
+    "qa/salt-stores/verify-evidence.mjs": "9b687f014c44358a39a876217712998ca3df66116a3655b18a01dab68dd83242",
+    "scripts/check-intro-campaign.mjs": "20417b13359539628880ebede132b6f4d5996d0a74c98dd57d1836ace1395881",
+    "scripts/check.mjs": "74ce88a7b95edcd93cba2f4c5b7a474f22c602825ae174899c70234fdcc55658",
+    "scripts/measure-autonomous-air.mjs": "b9f1cf09bf7c6945d6f95798e5ed2355038038219873ff0da2f7e7dd47afda1e",
+    "scripts/publish-runtime.mjs": "ec5719f7e71a59d1309da96aa84a27ca417c82163176166c6e2dd2725b23bb92",
+    "scripts/verify-runtime.mjs": "91e24d994c666a7ff352e6163077118182b2f32e74138af461db7f8e062fff7d",
+    "tests/accepted-copy-parity.test.mjs": "70ecb918824037315678fd031dac023bdcb07122bcb292caf45d267742982237",
+    "tests/active-roster-views.test.mjs": "feadca81a3f6ed19cc8c701c00d874ee0b88e70984994060b4f78259d2b386fd",
+    "tests/ai-rush-audit.mjs": "ff171f856b2167eb02bb8c499ab99ec417d9dca993a1c97f8657172121b696a6",
+    "tests/ai-rush-boundaries.test.mjs": "7f54c80a9633b82b48844de4c48405bdb7d892650e81e70322c6e737b3bbca6d",
+    "tests/ai.test.mjs": "e30519d5b8f16997d089b819b08a0e80f6e0ca12c590c9d6a3174c39b1d35aa3",
+    "tests/app-ruleset-integration.test.mjs": "6e5b7ffcd7dac70d7ab4f41ec31fd230d8181371ca3aad18af6f6216d6d74dcf",
+    "tests/archers-quay-economy.test.mjs": "7d4970e6ab4496c257ae8201b36035fde33e6fc9b2e6e1c9c1c0657857c4583f",
+    "tests/archers-quay-mission.test.mjs": "b639a40b1e39df4458606e64bd9608b6028e006d504b50a90636f38103b5a5d3",
+    "tests/archers-quay-preview.test.mjs": "3fd63f4b48a1e28588c5eb702985671fec3487cb1d2311df8c9a2e8069ff0461",
+    "tests/archers-quay-profile.test.mjs": "6e06f5d8039c62a6d8c4f367489ebf46d0800e00597f9601680f61e8ea1fe966",
+    "tests/ashen-crossroads-balance.mjs": "2b63c94ad5a53a58f99287fa6ef2e0a119951f6e58356db26c2068b21f9a3968",
+    "tests/ashen-crossroads-policies.mjs": "ad978ef4406e562b6e2e604b0fe64c521087fac4272ab01e61f40f027137af0f",
+    "tests/ashen-crossroads.test.mjs": "c0cc4a63cb1a30eba3a48ef17b3c3cc7e445cf7133da936aff84156bc5ecbe56",
+    "tests/audio-browser.html": "435429fc74425c0871a3328e1e126c5709c45a5cc792878ad91f46a1fecddf24",
+    "tests/audio-integration.test.mjs": "44825d7b45633eb7bae073c4567c427ffa575cd839de7e830f9c8e80f0dd778b",
+    "tests/audio-test-doubles.mjs": "b0855cc587f169fa599b82086d9d9a69b5faa6dd5b45923388a81cda32c3abae",
+    "tests/audio.test.mjs": "072cf58b25dbe83abcec75d1d99761ab5404927ff16611a963366c50224ea26e",
+    "tests/automatic-air-campaign-smoke.mjs": "e84652b685debd5f8ae4fd833c2707eb30149b93268440d5bfbd2ffb6d8fff4c",
+    "tests/automatic-air-campaign.test.mjs": "ee2332d7edb7f069b9a1e50e6c304c1267b9825904c199c5c2479020fb7d07c7",
+    "tests/automatic-air-optional-campaign.test.mjs": "e3bc89d226c544170e0f6185086fc9fa0a1d0e2b48d12004e80128adb8570915",
+    "tests/automatic-air-ui.test.mjs": "25e7f103567102d6038c63999f5609d9486fc9e0f8e237309da35ab016b87e5b",
+    "tests/autonomous-air-authored.test.mjs": "468fa67a7e4303a43865253a7513c438931e842c8a37551b9128b65c949323fa",
+    "tests/autonomous-air-codex.test.mjs": "b790a2c5f4b2b39073f88ea1e0aa683fc6102081cdc107a3bd1acc2aeb7863c9",
+    "tests/autonomous-air-engine.test.mjs": "1c96bba8c46f449ce87c0a21f2a378aca988be4853d5bc1c5720a2009f4b26d1",
+    "tests/autonomous-air-legacy-parity.test.mjs": "8cd5a0ef4ffb4062777b7ac0df48d0e968812e572609f6ba2a7e5673612ad558",
+    "tests/autonomous-air-profile-protocol.test.mjs": "beb9c14cc6d41e9e22c695bd216f5b63ad5bf87fc09cfe986435b530a9276b05",
+    "tests/autonomous-air-save-compat.test.mjs": "8cc8595bd080c9126e956dc39a11d25f169b1349761a08fe91d6f04a49455f79",
+    "tests/backup.test.mjs": "c2c0f8a0c82efbc6f73694470094a3c6abf7ef224d53fd5eeed3f46bcc3c2b63",
+    "tests/balance.mjs": "ea61decd25f002daf2670a28d50b34c8d2f00e7dc9bbd6e1eefbba494d9f2fb7",
+    "tests/battle-report.test.mjs": "33853748714bcd4d69f7626f132e2c3f99405ef54bff616efa7ed2355766b0ef",
+    "tests/benchmark.mjs": "9611785d5b1a46062a58a610b3be79a8a28feee350d91bc14b260385100142af",
+    "tests/borrowed-app.test.mjs": "8aeb19f7bf4495389cfc31cf52531282789484a7f2f918220063bf7fd2443baa",
+    "tests/borrowed-ground-profile.test.mjs": "cd19fe93ad5a03150b88594f11e1fb427a02b4c25685d25643fcd5e099942814",
+    "tests/borrowed-map-identity.test.mjs": "80e9f7211f3f6b54b60026e4d2329c1f01699a7e3e4d78e454efa0893e1f233b",
+    "tests/borrowed-mission.test.mjs": "d7538169f72adbec78584ff1e3223a3d2a2d7ecaa284753383e82d75aa937bd4",
+    "tests/bridge-control-ui.test.mjs": "d05b8be2f1946b06d90ad35dc0f59d75ea4db2c132c8a6f734e9211469257dbb",
+    "tests/bridge-control.test.mjs": "8027fe82654e789b57a6c0f39a82ca659d85fadcd339bb787f907cafa1658441",
+    "tests/bridge-profile.test.mjs": "045c5f58077b6dee81c0de1bb25d43a5864f86f026791ddba517aa93d901df25",
+    "tests/browser-harness-regression.test.mjs": "cb0a1e4fba2ed0fd80eafb8dcadfbe03f4f21fb8675860715bbe54853f30447b",
+    "tests/browser-timing-oracles.test.mjs": "43df050fa282b1c6201469151845bb197e021c79661a6f4be81ddf255788cfa7",
+    "tests/build-completion.test.mjs": "29aa684769e15d33c4f4b47aaa173fdefe5bd2c6562c226c8fddcf577fde8b13",
+    "tests/campaign-backup-compat.test.mjs": "7b36f8457f8d9a66c45ae7c013716eccd8362c9ad5cbe205c15fb870f96adf53",
+    "tests/campaign-balance.mjs": "2174043d66b77a98101a32a61442c04d8f6ea2f65d8f65e99496bf8473c546b0",
+    "tests/campaign-browser-presentation-contract.test.mjs": "640d9b6c8a37b025588835385da5a2f34f6f2bf6e4ff2e1ea91d6a4cca9c3ddf",
+    "tests/campaign-evidence.test.mjs": "c593bf4d137bec53707354b7ff2c24cba511da7186ef7c74f8e2fd8ce57675c3",
+    "tests/campaign-expansion-balance.mjs": "5ea6f055b1917c2a1804e0dce55ad611ebd637a2198328951572f031c6041bb3",
+    "tests/campaign-expansion.test.mjs": "e74aa67893da81abd5aa1bca4c48ab1145558ae7f4ff8666514d6268f986a33c",
+    "tests/campaign-flow.test.mjs": "c87f10e841838c4ba6642a1af783fa82731309b76630d3cc7979f8c0c929b8d6",
+    "tests/campaign-mobile-integration.test.mjs": "7ac75ca295030330550153cad1579b5c67a8084fa75963454911531270833524",
+    "tests/campaign-policies.mjs": "62ec228967ac6d3582379eaa01b76785e0aa6f7e0b3d2a18f0e918c9f1c2873b",
+    "tests/campaign-presentation.test.mjs": "6caa24cee6affa45f7f838a96232c20ca68cafe3812beabcbcc0ba50a4446172",
+    "tests/campaign-profile-compat.test.mjs": "51dde5e0788f506819bfbf632e1e51a7f10615c944c5f4ec751ed0a2a7b9ef62",
+    "tests/campaign-progression-rules.test.mjs": "9013f481e441033e898f3eca74f7f944bae10d4bce0071404d3c505d83135d92",
+    "tests/campaign-progression-storage.test.mjs": "e7367e91b08970a21a0f4e06d189d1a6eca51c48144fcbc3c63a57ea4ced15bf",
+    "tests/campaign-progression-ui.test.mjs": "4f518b8425b235ea7d0a984362a634c302f41f9120ee40cb40638126c1efa6d1",
+    "tests/campaign-replay-briefing.test.mjs": "4e3bf1c42f5f509cb5785accf38b6f8b8c52996f6eb91506912f64b95ce23181",
+    "tests/campaign-restart-identity.test.mjs": "be23d263738f982c8c888ead4e2820ee600b06b468f0bf4734fc2b6b65792b52",
+    "tests/campaign-roster-balance.mjs": "8a249e7917f20b11c6ab83edf108794fe49f5dc661d84c2b997d1235e174da16",
+    "tests/campaign-roster-historical.mjs": "f9bec4300ccf23b19f5e57ee63da87db409e87dfca9376759d7368853e293e9f",
+    "tests/campaign-roster-historical.test.mjs": "78c2cc4180849f17c03f650f9000f92fc74cf45717a2fdf63b2052708e2f6813",
+    "tests/campaign-scout-label.test.mjs": "dd3204b4e2edb8f130b77e7e920ed76cf33b8d67efdf4c18a20b5371b756e313",
+    "tests/campaign-teaching-integration.test.mjs": "529b9819f90d72f4635ae4f013841ad1a9296952f4ee3af3298591b3aa506809",
+    "tests/campaign-ui-polish.test.mjs": "8ec1b84eb4f635b9626eb8a2dfc520c898aca01e81582c292803a2181fe314f8",
+    "tests/campaign.test.mjs": "545a5bdac00ec81284057fd5a77d81d9d97f01b976712a8081d176034289e82d",
+    "tests/challenges.test.mjs": "7d7d8aa0c9fa872f4b2ef3cd9b93aa43617903b7be739fcabff60ffeb6f45d09",
+    "tests/chapter-six-closure.test.mjs": "c6952f9e16ffd3049cde921fe169260379c96b599708cea86265a69bb6cea089",
+    "tests/citadel-authored.test.mjs": "de7279ace7d43de5f7146d91686204e37b4d9f7cfa6b4ffdc1e14d4af844fd0e",
+    "tests/citadel-click.test.mjs": "ad1447b221cebfc7615ba13676fda259f75f3b788d0ae8f3dc21f0fb2127cb45",
+    "tests/citadel-immediate.test.mjs": "45dd101487d1ab7f5fdba47b3708b74f70538b86dbba6a0ad9feb23d5fa3e487",
+    "tests/citadel-options.test.mjs": "1a80054b4d535fc5a6e1b7728221e6875658069914b4f912df0209591641e3cf",
+    "tests/citadel-profile.test.mjs": "4b1b411d03ed13c76250d47accfec0e7b895283056571aca1b705597568f31e7",
+    "tests/citadel-render.test.mjs": "bc557fd8188385f203cf4f687e32814b3c0febefebe7bca4cfbfe615bc691ea4",
+    "tests/citadel-view.test.mjs": "e70964dd7dc6a4b3e62339a1dfbdf4d75db3c26dc2603a2c10b416b02644614c",
+    "tests/codex-campaign-rosters.test.mjs": "6b5766e9eb438918db5eaa074a6bb7fbd4d93909a086dc6ac4e8dda0480fedac",
+    "tests/codex.test.mjs": "177a352b3e2b361eafd61322bc63bad35264a6f4f99da0dcc89afa32f90ad2e2",
+    "tests/combat-feedback-fixture.mjs": "2a54e10b1eaa2e4d9cfb429de71bc72f9bad7651cfe63d0a4c31eb9d26496b60",
+    "tests/combat-feedback-preview.test.mjs": "f81e8bc010df19fbc480a84e15147c06619dede959307edd973765fd9f7b42d8",
+    "tests/combat-feedback.test.mjs": "c8bb0f90970419cb44116abbc10dbd623468e92ce484ba28c361ad49b3394277",
+    "tests/controller.test.mjs": "2d4af092ff4e567700146a737a18c8dd1efac84abddc26db8f84e410e2801205",
+    "tests/desktop-training.test.mjs": "531f0be08bba8c6af8466b7c8f8510b063601e1cbc3d7d058a8aa3f3ff597473",
+    "tests/desktop.test.mjs": "e1992b4efa5a0a90283fb78b8d5c6c3111c48757ce6aca0c54399a3dee8e515a",
+    "tests/dialog-passive-focus.test.mjs": "6ea79e52c358c7138171d2a1b4a75f45530f5c15d1c56a0f3e0b8ae0fded04da",
+    "tests/engine-validation-source.mjs": "621e87164841c1a1e4cf5aa149d1d42b1f96e5df48407905a6ae92ae08308e5b",
+    "tests/engine.test.mjs": "5020c0cda19aca977552214821322a1b65742c81140560e234210c57945daa91",
+    "tests/false-quiet-app.test.mjs": "d18830f16618d6c85ddd52db57499b8589b02f460cd64c006bb1236bd52a9caa",
+    "tests/false-quiet-intelligence.test.mjs": "7a1956398e0c92eb7d781bd48731e5fb4ede5518ede90f7d97ce7e5644f86bf7",
+    "tests/false-quiet-mission.test.mjs": "ead679ff30933062c3bf2a53b6d1e6da1c48769414bf4a9dea8d5eab40548c66",
+    "tests/false-quiet-profile.test.mjs": "d8211bb8cdfb10695c5f65a5bdac7fe6fb47740b798c0d01fd369a852bcecc6c",
+    "tests/false-quiet-scouting.test.mjs": "9d2378daa64dc9576fe63aaba936b7546f2666494f1d9ccb8870e39326ee4ef5",
+    "tests/field-trial-profile.test.mjs": "8cd409c5efc311788b3b02a458c236177809b11b34ffe2a5509520cfcdcd6054",
+    "tests/first-build-start.test.mjs": "1ecbd442cab890c0062ffd70c2b49f630365240a4ff3704d18b4e028f47a1d76",
+    "tests/first-build-volley.test.mjs": "d69465f759a41149c83b0ef6d829b38a24da5d28d42afe4c123d5efde567c2b2",
+    "tests/fixtures/archer-parent-v0290.json": "c4437634aa5c1b278abc49789d4e43ebd0a9898793668069cbeee9cd7f985c17",
+    "tests/fixtures/audio/v0202-sfx.json": "48d108517bb33f0b6d5975b0c5f226cd1ac546e81f860025daf36c66ae7e2045",
+    "tests/fixtures/autonomous-air-baseline/engine.js": "548f1b67763e710aad5d1e1a7e70a1e39c4d93eddd3b47daf68a2b385b823168",
+    "tests/fixtures/autonomous-air-baseline/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "tests/fixtures/autonomous-air-baseline/rulesets.js": "9fa81aace334850fbe92f354e04fb3560dfb69419a9539bbb6d89534a9f6727d",
+    "tests/fixtures/backup-v0.7-format.json": "664277f521806cc555563a5f7e9416be5068f14c82ac3170f232ba15f359b706",
+    "tests/fixtures/backup-v0.9-format.json": "c2ae1820b8da902e0c275ebf0900242ab8945db5feb67e47d1be95c94a0313f8",
+    "tests/fixtures/campaign-copy-approved.json": "afed3765dcc6df75b4a8b90d62c70bdf0315474c390ad7063d2777c439851c89",
+    "tests/fixtures/campaign-v0.9.js": "8130181e93cd24a4cc0b73b33285892c48c4e29a6a8c5a0d1a39942eed5101b8",
+    "tests/fixtures/campaign-v012-semantics.json": "df8844a6ee38b3c7cd6211f4af838e3a40f193a863b8f48fdb2e2fe9c3ce3e02",
+    "tests/fixtures/citadel-v020-checkpoints.json": "2038fd94d9e0d74281f64c655054b125c69408dedc6888212cb26955c3440ac5",
+    "tests/fixtures/engine-v0.8.js": "0e94556092df4c5b74f6002bfb8e70fe8477b9e66363e17485b6c083373bd889",
+    "tests/fixtures/flight-baseline-v015/engine.js": "16320893e83d7819b3103117803845e061fdb79cbb8adc2a8e6e95d76ec168bf",
+    "tests/fixtures/flight-baseline-v015/rulesets.js": "d674b36b469ade51f50eeeb45fe6253c7828578524adf96f1903ad45b72f9785",
+    "tests/fixtures/fog-baseline/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "tests/fixtures/fog-baseline/bridge-control.js": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "tests/fixtures/fog-baseline/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "tests/fixtures/fog-baseline/engine.js": "d7a31da2c31b85dfee252cc3d40f7f2fa79a6c1340e17faa8a1c008ac17187d2",
+    "tests/fixtures/fog-baseline/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "tests/fixtures/fog-baseline/rulesets.js": "2499c436b8f106418c5f5addad31c8acc7af211db1dbf3e045e9096c7f7fbac6",
+    "tests/fixtures/fog-baseline/SOURCE.json": "49a82374fc8d36a4783e58d5f14f97bf732626078d3c238d5a02207acd7d0ab5",
+    "tests/fixtures/fog-phase1/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "tests/fixtures/fog-phase1/bridge-control.js": "1e5c3c6f797c13a44ceaca19c63730fbd5db3b518e28a5324cd630babf53823c",
+    "tests/fixtures/fog-phase1/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "tests/fixtures/fog-phase1/engine.js": "dbfb0b6f33b9076409460cecbea49484bd2c3868f5b1d9eee5785f609322c7f2",
+    "tests/fixtures/fog-phase1/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "tests/fixtures/fog-phase1/fog.js": "5bc17788cd1a5f632e62dd7b16b41ddf907a1a21954aba301850e1897fad3fd3",
+    "tests/fixtures/fog-phase1/rulesets.js": "e2ec2f20bac8e86623f00ced773e4285b7d363bb42b681249354eead54fdc51f",
+    "tests/fixtures/fog-phase1/SOURCE.json": "eed4fb64ef78e5d2deedabb2d1b35dc5108e47d3467cd033f34c70af904ac488",
+    "tests/fixtures/font-assets.json": "44f2de009a45150ddc9658e495703f13581d9579c718d2507f0bc9d2966fe583",
+    "tests/fixtures/profile-session-v0.9.js": "1696d6e852cc7793fc6cf210a35a8385d10f4e9fef520fb8b97192b2279981a9",
+    "tests/fixtures/profile-session-v014.js": "a74cc512340c902105e9026719e2d6a1e427443179a9e0d0a95c20737d708f89",
+    "tests/fixtures/profile-session-v015.js": "7bbb09a46de6868406b49436de7013a1b962c446cdc67aa9ca2dbd551f3534e6",
+    "tests/fixtures/profile-session-v016.js": "f5e50130fe10d33d0f3c8d911e465413dcb969243d12b62e27d62eb954180f19",
+    "tests/fixtures/profile-session-v017.js": "980297cd20ab3ca653d132c1acb71bd7c793bed482bbaba05b53d078acbd45d0",
+    "tests/fixtures/profile-session-v0172-source.mjs": "11c3f519335e1c13c23a92dcd50fbeae3fba852225d4dc00148e2d5036ea7646",
+    "tests/fixtures/profile-session-v0181-source.mjs": "92ec65af056a195ff175cd9fa673275420f583f4f213eb4f8dac406aaf686a23",
+    "tests/fixtures/profile-session-v019-source.mjs": "8567a093b6fd755f7272326f5bdd7ba1b5f8e975b3f3d2b08f6e51277dea07f5",
+    "tests/fixtures/profile-session-v020-source.mjs": "bf78000a12f4f05f959f44359b4697c6d2b49e5418ec38ad46f4eea6eba411cc",
+    "tests/fixtures/profile-session-v0202.js": "3a008d9e0fae2f1d15929ab888482b67cacb501b6a4141c5109104b30660a64e",
+    "tests/fixtures/profile-session-v0210.js": "724cefd400aa4b90d4ba131147730b9441fb8c6d96a494c253ef659eb97d9508",
+    "tests/fixtures/profile-session-v0220.js": "b98558379a2ad6de0241f6ecfc060c92b21edc477a9186715d4990dec9d82d73",
+    "tests/fixtures/profile-session-v0230.js": "cc61a94ec5b27dade11d415d29e274f1e20e973034992d0d357319d21b31a1f1",
+    "tests/fixtures/profile-session-v0241.js": "0b337448ccd44c6acade10b99ec2bd5566f8847171190528e77daf9df34094a2",
+    "tests/fixtures/profile-session-v0250.js": "e5405b3219aca6ab2a96495e5ac37de311c49473babce6a4bcdf5b95892c4df1",
+    "tests/fixtures/profile-session-v0261.js": "7bd923eea5a7305454f84cb4f953ec8c5ddc458c2591406e229c421b53d665f5",
+    "tests/fixtures/profile-session-v0270.js": "0371903b4df5d8227089c4e3e38fa155152cef485f201088734767cb2b12a4bc",
+    "tests/fixtures/profile-session-v0280.js": "6ac7fb1530c568ca462e558c3c6ae806f1cfd62f01285a83c69e1d13609201fe",
+    "tests/fixtures/profile-session-v0290.js": "b3fbb144c23d977f94c2a1938f08e14c9c90fcbd0d1c113fbb3474f20e6f3804",
+    "tests/fixtures/profile-session-v0300.js": "f6792d61a96b3591df4fc3b2fb19b62ec1bdb806ab1d39670f07068e5dc4586f",
+    "tests/fixtures/reed-parent-v0280.json": "2496d4874241273b544e874f2d2c07de13705b6a4de98f2f92033c00696f8d45",
+    "tests/fixtures/renderer-classic-0.8.json": "775aedb7e3e7fef715294df61a62d016d4d5934df8075c1d4b54202bd6db686c",
+    "tests/fixtures/renderer-combat-feedback.json": "76c6fdf031327125281197e8ccfd1e1717e174736c7a5a5c28331da62d64c304",
+    "tests/fixtures/renderer-readability-lab.json": "18929dc571b01f831a43cae59dbcf374ea61c766d12f0a37c6d77b0aedc4bc11",
+    "tests/fixtures/salt-parent-v0300.json": "9c644e60d23ee464e5fb829b4b3eec0b01f53e3503858604f7ace59492d65b81",
+    "tests/flight-browser-transitions.test.mjs": "3b2d413307639f05080cf7e012d9a0360dae440ed5d5c4675e78188e4827d09a",
+    "tests/flight-campaign-balance.mjs": "c5ae1c970546b20a054211323fdfa8aa03e4f3171cf70706e385873f683f446d",
+    "tests/flight-campaign-identity.test.mjs": "9a817047f2d3d61c57cedd7bc11abec5262e9184df14eb67adebbc957bef48bb",
+    "tests/flight-campaign-teaching.test.mjs": "b3c8ad0354ce2ee07d298b27067cb6e76610133b7385424f10f32ab3c3899366",
+    "tests/flight-order-engine.test.mjs": "db4881e1df2b4431b6d72da03d0cdbd4f2475abd88702d2ee84152f3f89e203c",
+    "tests/flight-order-legacy-parity.test.mjs": "f62f10e29718b3609fcdbeceae6e7976dc92bd962188995e3e0299cdd62e93c3",
+    "tests/flight-orders-view.test.mjs": "ab249fb9296056940e43c852f001676d221053b8a11eb4141f99d6beed49b431",
+    "tests/flight-pause-layout.test.mjs": "a82402083c8666e6a8a5c1424e66295c927d6d4727518994e43f8a3ad666d9dc",
+    "tests/flight-production-engine-evaluator.test.mjs": "78dc2888429f42b655eff2347714e79bb82648ed39f1592a2c9d095f3d5abfcb",
+    "tests/flight-profile-protocol.test.mjs": "8c888f82b5d106d5d5e73bbd75eb775cf14069abad4bdfd22b4d51318bfaf26a",
+    "tests/flight-visuals-layering.test.mjs": "4020dcbf3a87f15142820126405d4306ca9da45b847a84f4db0678c901920ca1",
+    "tests/flight-visuals.test.mjs": "16321290bbc89d4a3ec2d9382fdf9bad4cd3c0c67a54ab34a448cae7e61751e3",
+    "tests/fog-app-integration.test.mjs": "2eb8e9ef1aa54cac2d3ec8a0c4106f3a15494505fb8091d7af5f49ae27f62c04",
+    "tests/fog-core.test.mjs": "6e2592b52cff9213f3bdab3d58726506b90afc7016e184ad91498a6fafdc03f8",
+    "tests/fog-memory-density.test.mjs": "b67f7d3b3d253c5fd053d39a0a0f67a4e068c8b0b24ff66b6d8d38d06ceb05a3",
+    "tests/fog-memory-scene.test.mjs": "94f676ae3231fc30baf2e82aafa029d24f93643ee59d6caba4b276c35571b664",
+    "tests/fog-phase1-parity.test.mjs": "6ca4c105af4241842300b5a46a86008b0e74ea67cdeb7b37447daaa9a62b416d",
+    "tests/fog-profile-isolation.test.mjs": "783c922a7bc33a4e97edd7619badf1e052326a96854da44cc5ef05ca04558b37",
+    "tests/fog-recovery-canvas.mjs": "1a0c599ac29a0f90f1b98bbdfe688483b5b87299679737a71e59a4119b2f61fd",
+    "tests/fog-recovery-sanity.test.mjs": "a6da5d5621ac4897fe0dfe4c743f2df786e48d73dcc23b0fec71ca32feb93ad5",
+    "tests/fog-shell-contract.test.mjs": "a8ce5173e8509c6fa1f6d1546ad10fa1ca4de6ee11ce98e7dcb8846d411c24ce",
+    "tests/fog-skirmish-identity.test.mjs": "b58b019580241b9db269da10c5afdb515e84a780b6d01d9ea648e4a05e235bc3",
+    "tests/fog-skirmish-profile.test.mjs": "68b14ef5a9949071b2a355964f2fcec3944a26e20a0b3aa59ddbc47a7b01f777",
+    "tests/fog-view.test.mjs": "6f837156c5778da9beb5b83e4cd7dc93509a52080a31eac3e3c25f4845172f1d",
+    "tests/fonts.test.mjs": "6940be691435f2d3d44ccb1f6c530b55f2f2098a02326fc22625db4dc880ad07",
+    "tests/fullscreen-entry.test.mjs": "8310e76725dc1cbfe05923f0b800c5e3a440ddffa72efc7fc1bcb3447585af5a",
+    "tests/helpers/confirm-fog-step-profile.mjs": "b03fa6f21cea800466147652c8957dfbb243b622c21f69db1fcfb9d9a4f1fa6c",
+    "tests/helpers/fog-performance-workloads.mjs": "e8da44bfaf01189594afff02432239ffe934f7d1f6216ae85a27b8f3535710cc",
+    "tests/helpers/profile-fog-core.mjs": "32809ebdb024e113cb2dec2a181c89acf1b71e693709871a7288bb9a442775e1",
+    "tests/hidden-coaching.test.mjs": "ee84cb97183882679e488f0f78a6f6a3dde8356d54fd0742b19deccd7e85dfe7",
+    "tests/input-scope.test.mjs": "2887a7af54bd5f2cb06fc5411e01c4e7eaf8c73e4cbff7873293ea55effd5f27",
+    "tests/intro-campaign-policies.mjs": "ede5ecfe4a0e9f13d0f8680471466833bf5587f0e1eb7320f4dc83a7ca35f218",
+    "tests/intro-campaign.test.mjs": "0536650be52602abaa8d17c6a29a3bc9d7711c6572357233568cfa2e11fe6344",
+    "tests/keyboard-persistence.test.mjs": "fdb739414ba8fe42cf0068f586889c3a2b73a73342edbfe5a90bae308de1c3f6",
+    "tests/keyboard.test.mjs": "89d005bc16ca011b4da8344eec802baf0894e68030b27896b786ead8a59248c7",
+    "tests/lanterns-app.test.mjs": "5ed7272fa8403a079d9d830090950f91e3469024e00c530238bf03eaa1089496",
+    "tests/lanterns-fog-identity.test.mjs": "4a086dc7345748e903eb9cfa316d627295d955daa9280653ecfc11c5bc3536ba",
+    "tests/lanterns-intelligence.test.mjs": "c317be90c4508d18ae1d11dd26537cfbe00ba547c43e42c36c87d1f489ca0368",
+    "tests/lanterns-mission.test.mjs": "b4b2e82fb6029544b0a81c8e813d119d87a5dd515849ecf573ea4d6a7ff9b7f3",
+    "tests/lanterns-profile.test.mjs": "dbb92ca56ba2ca57e3f2d5d6165b945359d075c49fc7e44e3c60a5f6f154fb9d",
+    "tests/lanterns-report.test.mjs": "936a42f22cc0397bad4b9b4586c6ca672525dc83c0ad81ce709930ec30dba75b",
+    "tests/lanterns-scouting.test.mjs": "3c6156f298a731adfc235e382c6bb6b34aebfae40ed4175433064f7907647a20",
+    "tests/last-ascent-prototype.test.mjs": "22b4274b7fc262ba5b1702ba058983aa4c041510a9d15d3c6c50e611c45841d6",
+    "tests/legacy-profile-parity.test.mjs": "db3bbd94ea70849e722a103e4db3d99b853f3a63e7e7a761f502226d37340cb5",
+    "tests/legacy-runtime-parity.test.mjs": "8a7ca7b943ce35845668a609d5ec1f9e8d4b3d9577ae95c7a495ce5269b734e2",
+    "tests/map-backup.test.mjs": "0711ad62e544551203f7c5571b9bbb72c96e89a6e99810345279e0a6d618c185",
+    "tests/map-parity.test.mjs": "de0251dfba659057da1d6f588313e5d1097dbcf9d150c81265ee664c097e2312",
+    "tests/map-ui.test.mjs": "75ae5a0e666a1490d8de1169596dd0c2947a0945f86440b7ba13d1e9fcc64d2b",
+    "tests/maps-ai.test.mjs": "0dd33e5a3f6c9a1a512da232534275e4bd4a17725f90112685ec7add25eb996b",
+    "tests/maps-smoke.test.mjs": "0e6be57b82b8dea4165f17682ae284c97dc33c0fd1a29b93da0e4e08acdb795a",
+    "tests/maps.test.mjs": "493e454e45e25d9fd4d4773025c63cc873af5615bdb4f796c94e84a7e0df6d6a",
+    "tests/menu-history-fixture.mjs": "58e17cd70f0970f4aea4e606c5e7c53981a084c42b39023d62b45c39fdd57fec",
+    "tests/menu-history.test.mjs": "34b88afb53f9dc82d2d87e8de93599db24d2dc9464eca1f2ce49d1d7213d1e6d",
+    "tests/menu-navigation-app.test.mjs": "9c4e2de818553faae33c77e133d9681c34ada46c75150dfb4adb27be04643eef",
+    "tests/minimap-input-contract.test.mjs": "efebdb2f2ea609288e4c48ecd5681b92d0bd10265ccfb76bbe9bf784a0b112f3",
+    "tests/minimap-input-integration.test.mjs": "2fa34cb8c0aef614ded576774c90130c66745806584b2ff71e9150ffe4360e44",
+    "tests/mobile-battlefield-geometry.test.mjs": "dca421aa382f00f0736f0fb3cda3da1831eec352d82a42d52ec467744b2e818f",
+    "tests/mobile-battlefield-pause.test.mjs": "50bb39386e2e612dd313593df6c215dea77d430ac778479f063fb15fdc90b14f",
+    "tests/mobile-battlefield-startup.test.mjs": "b7cbb43e682a60aa200be0ac6af21b2cb54b3d3139c536748096fe4a84ad067f",
+    "tests/mobile-coach-text-inset.test.mjs": "7824394684d601df67672b70e80b024e4219c3e1685720c3faa61045b2ec3b02",
+    "tests/mobile-content-geometry.test.mjs": "037fa102d398a29216b38f6a478fd4886c8c6cd3a3ecc80fce5c8e1be01218f8",
+    "tests/mobile-fallback-safe-area.test.mjs": "33d162fb1d7b2ab7ad79c6f9a1473509d4bf7a83445baab453afcfb30a160bca",
+    "tests/mobile-layout-fixture.mjs": "e4b7e26c0ee45439d162600c5ed80b1bcb35b00cf870229488c08a9ffba4d58c",
+    "tests/mobile-safety-evidence.test.mjs": "b27ef77eeb2d437b6417caf939514f842086bcfcfe7630ed168ffc8a695fbf1a",
+    "tests/mobile-startup-fixture.mjs": "ea1d89a4cfa3f148a73993d7ec22766030163a6e78b44492749ec8f257b4ab6e",
+    "tests/objective-alerts.test.mjs": "e1a043b0645c65081442396657d164d73db136a7d213ed8979d72cfe3ab9d3fb",
+    "tests/objectives.test.mjs": "2b540e998ec0513278097b8b0f289165cc7783379ef01bbfc6fe47e6b44dbc3a",
+    "tests/onboarding-campaign-balance.mjs": "3407e3536dd4f0ca9885987c19d8238288b6332c3d02431ad1ffcb32fcf2d1cb",
+    "tests/onboarding-campaign-policies.mjs": "57ab268177cc6f695215df554a9c3608580ae0e6333929d5e1c54935c7138ed3",
+    "tests/onboarding-campaign.test.mjs": "43ac3b74e02a2d0e46115562e80c39fcd61d377c9bff34808eb9e65c38b54a1d",
+    "tests/one-signal-balance.mjs": "f0c572bb70fb31b58e3e9d063e75661eb754874afcaa9a59e86d6b19a13a2d50",
+    "tests/one-signal-mission.test.mjs": "17f23904ad10c24bdf3b424d1c87564c5f1dd6db491e260f55fe3a2833590954",
+    "tests/one-signal-policies.mjs": "fe1822f44bb1860fd8e0749fb2cdffc06ab9a2c8077a1cfa639eb4eb1225a2d0",
+    "tests/one-signal-presentation.test.mjs": "bbbe2943c9ddaaa200752ea414cf32b7cf8c3423a74bf4b8e6d9721555aeaec1",
+    "tests/one-signal-profile.test.mjs": "b8596f3708d502a1e0d865e2abb56c6dcc90066e72c66dab228087481571bcb9",
+    "tests/pause-menu-start.test.mjs": "7a334844fd429af3e1e8cc24393dccc2b042738ded54f57e8b47ab38008d29bb",
+    "tests/persistence-recovery.test.mjs": "0c3e89353e11257255b1fca0004ba2ce1860d212a69dca1eb7cea68b48cb7492",
+    "tests/persistence.test.mjs": "69450f37f1aba258b5c223e2f42c6ee0ff1e0016e18927f19a31fd6a54ecb8f2",
+    "tests/phone-browser-evidence.test.mjs": "b5a106358abdca8af3ad71b0d978cab1f29350d2f50216f337b6ed4d55e83550",
+    "tests/phone-viewport-fit.test.mjs": "0544fdc149bfca09c96269654052c33b748257720e86f3efc25a6d48ed1aa566",
+    "tests/portrait-income.test.mjs": "e7ec543c68e3f00178cfd162bf032214cb714e3cbc8a2968b3d7448b06b439f1",
+    "tests/portraits.test.mjs": "5c3c7fa8dd801ab7646ae11ac97fbfb5dcbc35636f304f666885f7e32d61a9fb",
+    "tests/practice-history-boundary.test.mjs": "934d29c74b82ec693f6e68a05ecb6a0a811d69b8e755e55548570554d809b34d",
+    "tests/production-v015-upgrade.test.mjs": "04076a764e22570795fa2790325371284d6cdd90f1071156e233a5428fe93636",
+    "tests/profile-reload-departure.test.mjs": "a7a9a9eb0f6a5fe695aa76bf62b67cfba700637468bc5ebe8baaf2fedef30c0c",
+    "tests/profile-reload-observation.test.mjs": "6c1b3f3199a96d9a78511c5f1ed16cf6f7aaeb6aa98bfbb1a1434694b398c870",
+    "tests/profile-session.test.mjs": "d184c5166ca4caaa01bb8aff26b25b05d5027050974afcfe135c8a778c341be6",
+    "tests/protected-objectives-layout.test.mjs": "5dd771dddb0402e07cd49d22135cae9c4e88461425bcec936137dbfcf29bb25e",
+    "tests/protected-objectives-pointer.test.mjs": "b3bb760bc64c1e63a6af8d70f289dbc60373e58fa9f3a8c278c13371db60dfad",
+    "tests/protected-objectives-ui.test.mjs": "bbdac149ce5597618361380e0c34092234b778f453b1d0cc2bbc2fb8f3d7a34a",
+    "tests/protected-objectives.test.mjs": "7a0ef0e9c8fc105520c08863d20b8aa5ed295ebb909d01f47d68c2aa4991bd26",
+    "tests/protected-target-intrinsic.test.mjs": "14ce9ece10ce091b8fd35a90110f450abafce5a8ce28dcd1ffc6bfb2cb81ad51",
+    "tests/publish-runtime.test.mjs": "225f971b475d1478eb9cf3a52272fba2530da3b333899797dbc7d555f176d8d4",
+    "tests/qa-server-response.test.mjs": "f3e3d61a39d77be3f352c71ab9c3f4de0aaf963fe1db4fda1f2508771f2e8f13",
+    "tests/readability-fixture.test.mjs": "534e77281ee244cea521770f8fd94db39697fd4272ea4b0a7d13cfba067a55b5",
+    "tests/readability.test.mjs": "e07bd9fbc5482daf8266f9be0a5aeb54c095a107b04e5050c2feb5e59bc2e5e7",
+    "tests/reed-beds-app.test.mjs": "1658bc7639253d2f24c3c41f977e8a443b9c0ccdecb392d2ee9e4582ec113599",
+    "tests/reed-beds-economy.test.mjs": "9ba7328847fbb971e4b6380b8ff7ce7314a56a431e271c6bc33ebcf08f9dfa52",
+    "tests/reed-beds-flow.test.mjs": "3e13564784c4613105a998174c04fc541a5bad1d77d770c96156e16fd7f45553",
+    "tests/reed-beds-mission.test.mjs": "0fccc8fc591b3aed4022a6f3b80294c03f96ad6b589c5c9c5816e15b9efda297",
+    "tests/reed-beds-preview.test.mjs": "7169a507cfb14d741a28e56bdd457c4e14755b2f831ff553982b941e7bb915ee",
+    "tests/reed-beds-profile.test.mjs": "494d5c48f32dcdf297c9ec35b789fb270429d09d1c12817b6d6387a78849caff",
+    "tests/renderer-canvas.mjs": "ad8f8f2e7b1212429fb474406674d0b6c0d366cfbb84dc3fbed4866ca7704608",
+    "tests/renderer-maps.test.mjs": "073f04b33523b49fe9c9d0e5265ae71677f6e35eca8a825f9f33e4e10183fc92",
+    "tests/renderer-scenarios.mjs": "a6c300b6a8f4c19a17bcd5d793aecfd4f9efb2b24b00585dd24df952b0414da0",
+    "tests/report-ui-integration.test.mjs": "d79b64cb17194035d8a1e5f8c9c5c7c1e04fb05d900ef30bc21e613836756049",
+    "tests/report-view.test.mjs": "55c82099a0e096c9b1fae65abc9b21db4864e6013916a9ebd8502b807b6ccc3b",
+    "tests/river-between-control.test.mjs": "44fdf87a4048fc87f382ea2dfae50bdecd6d3fb4655eb805ca183624577d9331",
+    "tests/river-between-mission.test.mjs": "12206685c3a68a163a76210951e03646d1ae2509fc291dc256a48ede109521c8",
+    "tests/river-between-profile.test.mjs": "e7be900cd2225c1ab75b95aefc53a1e6f91138650968b2e12ca3a5db40d45bf5",
+    "tests/river-between-ui.test.mjs": "21f540ab88073233f5b4d30fd1992fc94d06cb68693e7750bb8ed539d992d3ae",
+    "tests/road-we-know-app.test.mjs": "e36fe7a769d6d0840af69a36935e7796307bb64350a9b7e92126d700a3c47feb",
+    "tests/road-we-know-economy.test.mjs": "fc22aa3915e1a21c93ca7ca2d8d8432b7ced14160a7da6006c9573e2ffc90826",
+    "tests/road-we-know-mission.test.mjs": "ce36dbb442148d6b05aef1e5cd80004de0e4642b48b71bbbedf5d436b0751d03",
+    "tests/road-we-know-preview.test.mjs": "f449caea71037451602bc22048492273894f565eeddc7a49c11283d00d8eab7f",
+    "tests/road-we-know-profile.test.mjs": "81d15367cd86ecc200c9984bacee191056153259b7555121a028abdcb782fabe",
+    "tests/rootwarden-art.test.mjs": "35727551583713380c7ad36eec3e7679fa4411be4bc3e6c46a3569e8e1238ddb",
+    "tests/rootwarden-canvas.mjs": "14d3db2ecfcf185c36ab50c4fa5239df4e6dcb6038290284c038231b94cb0adf",
+    "tests/runtime-artifact.test.mjs": "ae01a08fb8de127fa1bbdd82cbcf2f29ef2f8fbd1ad29111831e8fe0abf5e9c7",
+    "tests/salt-stores-app.test.mjs": "2bc7d164f8088ec178e8446392353ad2226d7790243c19679a0b715a5b7579bf",
+    "tests/salt-stores-economy.test.mjs": "ac31ff8345d3c7b4c525f5c1f6cad26681ec252180f9c9568828bc3c08d2a97c",
+    "tests/salt-stores-evidence.test.mjs": "946fda4edcfdf06795ec2d9d80f02f0b49bfb27c2b369c936715a0b0f24ec9b5",
+    "tests/salt-stores-mission.test.mjs": "205fedf650973a50ff762be92d2c9f339fc01e18e0ebcf3e9c06cd45babb6857",
+    "tests/salt-stores-parent-freeze.test.mjs": "4e81bf3337f6513754b5ca098d59f472304e1828900fec5280340c715ec3cfaf",
+    "tests/salt-stores-preview.test.mjs": "48f4f442468ce4e0425e3e3ee3fb35574a6248485b000611b1fad10c6f4f1f5c",
+    "tests/salt-stores-profile.test.mjs": "0344228125b32d7f3cc467247fb7fb134353f40d819ffddf0bad60599115b36a",
+    "tests/save-enum-validation.test.mjs": "4c0594ecd5f0f81e206f0086a0fb31f263e6827c1bad70d1131b80fcb71d04f2",
+    "tests/scouting.test.mjs": "6d8090e70de978cb277763c9f700313151e86f6cfa6dc158648446b433ab9a7c",
+    "tests/service-worker-cache-refresh.test.mjs": "db325091928f8540b715ab090cff557beff375d41220d610f9a73576f8cdf1ff",
+    "tests/shared-crossing-balance.mjs": "713f771189ff114ddf6c33b767d55ae13bf29b1505d994e477dd2d2b9ab1fdc1",
+    "tests/shared-crossing-control.test.mjs": "1f6295db7e154fc633d4c00ea4ae6cf3f491452e4b95f915ba085bcd6b7a8f62",
+    "tests/shared-crossing-policies.mjs": "f0964b41c0ef8d4e80b5118731ff26934c3f0e0f8429d21aed629c7979536a77",
+    "tests/shared-crossing-profile.test.mjs": "c86c9208c444bb4507262bb11720531f8ff122cf6a596345e139667534bbe6dc",
+    "tests/shared-crossing-ui.test.mjs": "1c616a7e77bcbf07f194915eb75eb7fd05c9d5c59d1b10e2c65a682b2092c6f6",
+    "tests/shared-mobile-shell.test.mjs": "bb673e3bb9332f40bd59631ca8e99dae064c607df443f977dead475fe11fdc30",
+    "tests/short-coached-portrait.test.mjs": "419f886c744f838414761bd9164484486ab413d7a50611a581ed062fd9ae08f3",
+    "tests/storage-retirement-app.test.mjs": "028bd43a8282e14711fffac798e59262fd62e6e9183f4881e3e300299548ea04",
+    "tests/synthetic-gamepad-provider.test.mjs": "0c6ab1a1ed6e1a6f082b3243acd7521db80ee5a2e53dd2d9003323a2d53266b3",
+    "tests/toast-geometry.test.mjs": "ca41e936f38385cfd346b7cb3cc03cf153108977b383848fd590037838075e44",
+    "tests/toast-layout.test.mjs": "6bf2744fc427200cfcdbe43f04df88b07fa5cf79cad9ed2e6e5d71cd893bf18f",
+    "tests/training-browser-copy.test.mjs": "5d15b2c63e93b0759ae467263e31bdacd6c56d6504f7047c817129f31cfc481a",
+    "tests/training-integration.test.mjs": "9b79d29093e80a5e08e269458902dfd6e3a2b0cdc2493c12b39d5c71677b0b1e",
+    "tests/training-ui.test.mjs": "39e759eec4f08adab37d8613e051e4f886a4a2f441ecb0d8f68ec7cde039a8ea",
+    "tests/training.test.mjs": "14a7cd8f592470b412a6b98b244357f94116d17e33167c4cad969e1c6c8f8822",
+    "tests/versioned-backup-profile.test.mjs": "9692a9917e4a3bda2796a1518237ae8eda94a2350d19f662c89d8abfd8677808",
+    "tests/versioned-engine-codec.test.mjs": "60f0fbc7731950cbd6b7a3fa93905ebc777e237eacbb618852375ea901ac8837",
+    "tests/vfx.test.mjs": "054a2491650033a28a8f8c8c726724387f0ac5c760ba078ecdebe9fc9695b939",
+    "tests/web.test.mjs": "8097ca48f3c99192e126819d34a6ed4400cd110d0c3ae6f85a0b55a3e9b6759a",
+    "tests/worker-update-harness.test.mjs": "142ee88a2147cf050465c97bdbb4ed9bc5303a3095de7710851d0914769d10ab",
+    "tests/writing-rhythm-copy.mjs": "797a56a199deffc26423312bf0ab6fde083a3ee4919771fa03778cf36c39fcc0"
+  },
+  "harnessHashes": {
+    "qa/salt-stores/paid-policies.mjs": "577fa770569fb2522c0660929e47aee1f149fd716447783ddfa9fb2908c606ed",
+    "qa/salt-stores/economy.mjs": "2ae7dadde93d0c08439f0839e26511e1b915fed6da23586b1ee6e46c3716a15f",
+    "qa/salt-stores/scenario.mjs": "0a22b6537060c271c4c9affb9a4ac8cb039a81f51eadf50d113bd79065edf51d",
+    "qa/salt-stores/simulate.mjs": "3898432d0966c68911fd014c71a922de21432665deb0277c4d19767876f8a6d6",
+    "qa/salt-stores/verify-evidence.mjs": "9b687f014c44358a39a876217712998ca3df66116a3655b18a01dab68dd83242",
+    "qa/salt-stores/prepare-native.mjs": "f4b8dc9fbca9fbd8785c66011804b16e7eaab66ab752b11722fcba1fec061241",
+    "tests/salt-stores-mission.test.mjs": "205fedf650973a50ff762be92d2c9f339fc01e18e0ebcf3e9c06cd45babb6857",
+    "tests/salt-stores-profile.test.mjs": "0344228125b32d7f3cc467247fb7fb134353f40d819ffddf0bad60599115b36a",
+    "tests/salt-stores-economy.test.mjs": "ac31ff8345d3c7b4c525f5c1f6cad26681ec252180f9c9568828bc3c08d2a97c",
+    "tests/salt-stores-preview.test.mjs": "48f4f442468ce4e0425e3e3ee3fb35574a6248485b000611b1fad10c6f4f1f5c",
+    "tests/salt-stores-parent-freeze.test.mjs": "4e81bf3337f6513754b5ca098d59f472304e1828900fec5280340c715ec3cfaf"
+  },
+  "combatHashes": {
+    "dist/FONTS-NOTICES.txt": "1b111a7ccee992a329acf679d4aade1efdc98f211fb13ef6a605269ace484b30",
+    "dist/app.js": "019374518ea2f0c80c0f6942bb9da3bd192c66bb7cd38de935e49f89b315fd12",
+    "dist/audio.js": "7e5921c056ab468b5de8c97cee1b5b930ef2e501136eb08cb715822f3c7b782a",
+    "dist/autonomous-air.js": "beb98c02d34172965611380b58084a92c1906dd879b9810b26f6d974cc003567",
+    "dist/backup.js": "b7bd6722177cdeae2504be27d0c00340fa3324ccc8d1430aa30e728e0c28f7ca",
+    "dist/barlow-condensed-latin-500.woff2": "53c40631e0897eb39d3656b39229d442d33670535b14e99163c665f060ea1df4",
+    "dist/barlow-condensed-latin-600.woff2": "f79c0c3947f96fa437532d7d258d8518705da2da5b468e2b652606e02ef1b10c",
+    "dist/barlow-condensed-latin-700.woff2": "ddf5f170879b356f67210800b9b41c0b1782fec0cb013ab454170c2392fafc25",
+    "dist/barlow-condensed-latin-800.woff2": "57b803d5d5711059bfb76610a2f980ae6cacd9cb30aa9f7b6783b552fbac7ccb",
+    "dist/battle-codec.js": "c23870ec96bc8c9ad34a2d67a563b08353d0bf833a455c0f0663a47c551ea4ed",
+    "dist/battle-report.js": "0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37",
+    "dist/bridge-control.js": "597a418e987213978265ead530e5f029f1750aaace0f1c1cbeb8a377f6a482b1",
+    "dist/campaign-control-view.js": "bb126e5ba8c2a350cfb2506a42145c875c3ffa1320cb7957d5ae58cce6b8dede",
+    "dist/campaign-flow.js": "f50a565be8915217872181bd13e345c643e62f8dcc48f8da3b2315c71676316a",
+    "dist/campaign-intelligence.js": "d4ec878ce9af23fa97fa11785a4f63638c694f48600d3246ba676aa97aad3e9b",
+    "dist/campaign-onboarding.js": "7326fab1c60b302a08d66047d7ffe2c737170a84710ee630b4b7693427f70381",
+    "dist/campaign-presentation.js": "2cc568a683e712a0641c86b74a7b04bae31468d49f7bdc19f975cdda626ad810",
+    "dist/campaign.js": "e13f589d69a2bbbc6a15281cfe1040e1e53d22ea22a086c4f68e46f8b47a394f",
+    "dist/challenges.js": "ce3adb0081903ab894e05b0923eddfca33c2a95fab5641e233e009cd9cdb50e8",
+    "dist/citadel-options.js": "0efc0c70a55941d3c4bd0b30ae8c1e75cb6019fd9256d16fe7c495caeaa46db5",
+    "dist/citadel-view.js": "3fd81dfdd8e2ce2fbd4bed4aca2e487603c4566afeebbbaa0ba5141dd4bebcac",
+    "dist/codex.js": "f2c2b515e84e8c8bfd2c8f334dd9e1dd0250524bc4e7fe7498e3ad5a786f44bc",
+    "dist/combat-feedback.js": "6e6a6d7478fc7cb76ee92273101b4e5aa2b2bbf817046d279a79a9cd92f30c96",
+    "dist/controller.js": "ebf2c7b7f3fb0b053e25290e656a423325f6cb87e4dba72d3e03731ba5b54763",
+    "dist/dm-sans-latin-400-700.woff2": "ae151a07d098c4ace6d0bdef6e93dacc0f3addb796b8fcd222cf44092f9f1f40",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "dist/flight-orders-view.js": "8dd8410a880057e6c0fa3d18a14161c39c4d2098d3922c69e6ec7aab476d79ff",
+    "dist/flight-orders.js": "b69738dcd49ff416191a1c0d0f9f3170f1191b27c16235075ea6b7237815d196",
+    "dist/flight-visuals.js": "10eb5e93a6ea3ddd0ae29cecdd91e5f0833e898d60fb6376693c38a002c4e622",
+    "dist/fog-view.js": "a4a4fbbe63f676b4a86917dbefa5e89668f021dc68d82cf69620d2b3b5559145",
+    "dist/fog.js": "d0181804e55772d68eaf4b1152c85cea4ca5950149e913a9894c68613e1705fe",
+    "dist/history-codec.js": "02f4c5b0222f07e1ad2eb1b685aa7327b6ef642ea1ba0d6c3509face55e6cd02",
+    "dist/icon.svg": "ef4a88df9ac175ee761c4573a4290f712748a580f1c38512bc085f711ee2932a",
+    "dist/index.html": "5fdb9b443c4fdbb902ebc3ac386e8a5ee1232e7bbe0cfea96c852a771a2fe017",
+    "dist/input-scope.js": "e07649c53033be99d5b9b44052fd7d222c5b63890317c55f7a0b6de5f4641c3b",
+    "dist/intro-campaign.js": "1aac96f1bd6c3f0942f752919b44491351c9fd43ccda568f26e5067cd772a173",
+    "dist/keyboard.js": "4d293b170b74de614f74a185be8a524bf1fd58fa12fb603186d3b572bfbbbb4b",
+    "dist/manifest.webmanifest": "93821da0ea2bab3c8585ce6aca8e9824b74509a3bbe3ae43d6f6a0173b7914ff",
+    "dist/menu-history.js": "c9a38add0794824c5dc51809b16a3967679ed4650cb8e209ee7b11b14201e89c",
+    "dist/mobile-battlefield.js": "1c2a0d492e5bbaaca7e7788b97b18edd2d2993a967235014051e32dcd9d605b3",
+    "dist/objective-alerts.js": "5a0d0503a87911375c3ae058f73e985c8d40acf7700a045542349be5c35bc356",
+    "dist/objectives.js": "9a23b9a63a1b61a6fcb2b0a0ff806421b1a8926a0e312991f350cdd7029edbe4",
+    "dist/persistence.js": "8342b0e523d7dccb8b43f4eae065b8a028e712b4222df4eb1689206c6e4f4054",
+    "dist/profile-session.js": "2bfd3fe9525c0ffdf88ae651854e60ff689789a66db2b98750dbd7cbd561ef32",
+    "dist/protected-objectives.js": "f8b4c20d77e11e4448091d739c2e02bbe9cf9afd60cb5523e63c64ce41771eca",
+    "dist/render.js": "d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa",
+    "dist/report-view.css": "02c236714acd80c4c4d8fa3884db11bc6cd32a10a2a091dd2c273e71b0959a35",
+    "dist/report-view.js": "bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f",
+    "dist/rootwarden-art.js": "70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda",
+    "dist/rulesets.js": "27ab8cdec72ad31d0201f57d007395094d02df25b2001dc6842fc2cd76708be2",
+    "dist/scouting.js": "78aff1addde2179e0721be3bba2e64805bcea905a9014df99404ba0c75fa5e2d",
+    "dist/service-worker.js": "64ffe6dbd1ff1ff649b8c56c3f8ce3d7840c55e396c38940575b426204c27121",
+    "dist/styles.css": "4d4233398df681eae8c83bef6e3f7453463f34250d0f42c3782b75e3574daa53",
+    "dist/training-app.js": "bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f",
+    "dist/training.css": "9c0f18a28a6f492f85b97a9ba0c8de5d45dbcaf7ac66ca73e07eb013d1cd50bb",
+    "dist/training.html": "19d2ba062ff2dc9ab0b0d463c13da21db1990821f557fb71a213c77b218ab4f3",
+    "dist/training.js": "776db67782bd611d3cdf05267e7a3646fb886e131aad0a36349df53c7d62eef1",
+    "dist/vfx.js": "90a98c0899610079301c98c0c9851f44318c1e5b455cb230464a03d11dfe8393"
+  },
+  "formationSha256": "d31df9f52024d60a1a738b1cb506f9f2670da36dc56e942e2c74e3aaf7543d7c",
+  "plan": {
+    "evidenceEpoch": 1,
+    "developmentSeeds": [
+      8202,
+      923,
+      58031,
+      448273
+    ],
+    "heldOutSeeds": [
+      2571673,
+      3840289
+    ],
+    "policies": [
+      "northraid",
+      "southraid",
+      "directmiddle",
+      "economy",
+      "broadnovice",
+      "screenedRootwarden",
+      "dualouterraids",
+      "unsupportedair",
+      "idle"
+    ],
+    "historicalEvidenceReused": false,
+    "scope": "Fresh production-engine paid feasibility, not human difficulty or native UI evidence."
+  },
+  "heldOut": false,
+  "totalRuns": 36,
+  "raw": {
+    "sha256": "09ecd99fa81dcf42b5e58b0791f8503ce1d9121410effc1778c400dd5153ac41",
+    "bytes": 6157491,
+    "filename": "ironroot-salt-final-development-epoch1.ndjson"
+  },
+  "results": {
+    "northraid": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 137.34999999999698,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 63.899999999998506,
+              "tick": 1278,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.54999999999501,
+              "tick": 2511,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            108.74999999999596
+          ],
+          "deniedOriginalMineIncome": 213.12500000000114,
+          "paid": 16,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 310.4000000000363,
+          "hp": [
+            0,
+            4741.1699999999955
+          ],
+          "mineLosses": [
+            {
+              "time": 148.99999999999963,
+              "tick": 2980,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 269.400000000027,
+              "tick": 5388,
+              "id": 96,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 297.5500000000334,
+              "tick": 5951,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            278.7500000000291,
+            298.1500000000335
+          ],
+          "deniedOriginalMineIncome": 403.5000000000917,
+          "paid": 33,
+          "enemyPaid": 25,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 224.1000000000167,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 185.00000000000782,
+              "tick": 3700,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 203.95000000001212,
+              "tick": 4079,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            208.35000000001313
+          ],
+          "deniedOriginalMineIncome": 148.12500000003368,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 154.85000000000096,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 70.64999999999813,
+              "tick": 1413,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            119.64999999999534
+          ],
+          "deniedOriginalMineIncome": 210.50000000000708,
+          "paid": 17,
+          "enemyPaid": 13,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "southraid": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 143.44999999999837,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 89.59999999999705,
+              "tick": 1792,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 125.649999999995,
+              "tick": 2513,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            127.94999999999487
+          ],
+          "deniedOriginalMineIncome": 179.1250000000117,
+          "paid": 16,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 126.74999999999494,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 76.79999999999778,
+              "tick": 1536,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 102.49999999999632,
+              "tick": 2050,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            106.89999999999607
+          ],
+          "deniedOriginalMineIncome": 185.49999999998946,
+          "paid": 14,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 129.64999999999523,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 88.09999999999714,
+              "tick": 1762,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 106.2999999999961,
+              "tick": 2126,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            110.69999999999585
+          ],
+          "deniedOriginalMineIncome": 162.24999999999304,
+          "paid": 15,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 150.80000000000004,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 91.64999999999694,
+              "tick": 1833,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 139.44999999999746,
+              "tick": 2789,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            124.79999999999505
+          ],
+          "deniedOriginalMineIncome": 176.2500000000142,
+          "paid": 17,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "directmiddle": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 193.85000000000983,
+          "hp": [
+            5694,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 164.90000000000325,
+              "tick": 3298,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 175.3000000000056,
+              "tick": 3506,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.0500000000085,
+              "tick": 3761,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 315,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            183.1500000000074,
+            171.50000000000475
+          ],
+          "deniedOriginalMineIncome": 72.37500000001646,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 159.35000000000198,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 134.04999999999623,
+              "tick": 2681,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            142.09999999999806
+          ],
+          "deniedOriginalMineIncome": 63.25000000001438,
+          "paid": 17,
+          "enemyPaid": 15,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 181.55000000000703,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 159.10000000000193,
+              "tick": 3182,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            167.10000000000375
+          ],
+          "deniedOriginalMineIncome": 56.12500000001276,
+          "paid": 20,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 192.10000000000943,
+          "hp": [
+            5945,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 166.70000000000366,
+              "tick": 3334,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 184.9000000000078,
+              "tick": 3698,
+              "id": 52,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            },
+            {
+              "time": 191.5500000000093,
+              "tick": 3831,
+              "id": 75,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            188.75000000000867,
+            171.40000000000472
+          ],
+          "deniedOriginalMineIncome": 63.50000000001444,
+          "paid": 20,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "economy": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 190.10000000000898,
+          "hp": [
+            5869,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 168.00000000000395,
+              "tick": 3360,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 180.45000000000678,
+              "tick": 3609,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 185.25000000000787,
+              "tick": 3705,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 310,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            188.80000000000868,
+            175.7500000000057
+          ],
+          "deniedOriginalMineIncome": 55.25000000001256,
+          "paid": 23,
+          "enemyPaid": 16,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 196.15000000001035,
+          "hp": [
+            3048,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 174.4000000000054,
+              "tick": 3488,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 175.95000000000576,
+              "tick": 3519,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 177.75000000000617,
+              "tick": 3555,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 191.85000000000937,
+              "tick": 3837,
+              "id": 324,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            178.25000000000628,
+            182.55000000000726
+          ],
+          "deniedOriginalMineIncome": 50.50000000001148,
+          "paid": 23,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 203.450000000012,
+          "hp": [
+            5563,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 175.15000000000558,
+              "tick": 3503,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 180.45000000000678,
+              "tick": 3609,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 188.4000000000086,
+              "tick": 3768,
+              "id": 310,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 199.000000000011,
+              "tick": 3980,
+              "id": 326,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 202.65000000001183,
+              "tick": 4053,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            }
+          ],
+          "firstCoreDamage": [
+            190.40000000000904,
+            183.85000000000755
+          ],
+          "deniedOriginalMineIncome": 70.75000000001609,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 199.25000000001106,
+          "hp": [
+            5110,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 171.45000000000474,
+              "tick": 3429,
+              "id": 16,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 3,
+              "original": false,
+              "incomeRate": 5
+            },
+            {
+              "time": 174.45000000000542,
+              "tick": 3489,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 179.40000000000654,
+              "tick": 3588,
+              "id": 296,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 189.95000000000894,
+              "tick": 3799,
+              "id": 314,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 0,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 195.0500000000101,
+              "tick": 3901,
+              "id": 23,
+              "side": 0,
+              "type": "mint",
+              "x": 270,
+              "lane": 2,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            181.55000000000703,
+            181.20000000000695
+          ],
+          "deniedOriginalMineIncome": 62.0000000000141,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "broadnovice": {
+      "games": 4,
+      "wins": 3,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 226.55000000001726,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 136.5999999999968,
+              "tick": 2732,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 182.45000000000724,
+              "tick": 3649,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            186.85000000000824
+          ],
+          "deniedOriginalMineIncome": 335.12500000007617,
+          "paid": 24,
+          "enemyPaid": 19,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 214.25000000001447,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 189.85000000000892,
+              "tick": 3797,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            194.25000000000992,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 22,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 203.70000000001207,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 128.54999999999498,
+              "tick": 2571,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 159.20000000000195,
+              "tick": 3184,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            179.80000000000663
+          ],
+          "deniedOriginalMineIncome": 299.125000000068,
+          "paid": 22,
+          "enemyPaid": 17,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 258.5500000000245,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 167.3500000000038,
+              "tick": 3347,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 177.75000000000617,
+              "tick": 3555,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            208.3000000000131
+          ],
+          "deniedOriginalMineIncome": 430.00000000009766,
+          "paid": 27,
+          "enemyPaid": 21,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "screenedRootwarden": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 145.7499999999989,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 67.79999999999829,
+              "tick": 1356,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 118.99999999999538,
+              "tick": 2380,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            123.39999999999513
+          ],
+          "deniedOriginalMineIncome": 261.7500000000103,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 144.39999999999858,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 44.44999999999961,
+              "tick": 889,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 126.79999999999494,
+              "tick": 2536,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            120.09999999999532
+          ],
+          "deniedOriginalMineIncome": 293.87500000000654,
+          "paid": 15,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 135.99999999999667,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 46.3999999999995,
+              "tick": 928,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 131.54999999999566,
+              "tick": 2631,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            99.54999999999649
+          ],
+          "deniedOriginalMineIncome": 235.12499999999548,
+          "paid": 14,
+          "enemyPaid": 11,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 131.6999999999957,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 51.99999999999918,
+              "tick": 1040,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 107.89999999999601,
+              "tick": 2158,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            112.29999999999576
+          ],
+          "deniedOriginalMineIncome": 258.7499999999905,
+          "paid": 14,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "dualouterraids": {
+      "games": 4,
+      "wins": 4,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "won",
+          "duration": 230.30000000001812,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 72.29999999999804,
+              "tick": 1446,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 144.4999999999986,
+              "tick": 2890,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            207.95000000001303
+          ],
+          "deniedOriginalMineIncome": 609.5000000000989,
+          "paid": 23,
+          "enemyPaid": 16,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "won",
+          "duration": 367.9500000000494,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 169.5000000000043,
+              "tick": 3390,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 335.75000000004206,
+              "tick": 6715,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 351.10000000004555,
+              "tick": 7022,
+              "id": 10,
+              "side": 1,
+              "type": "mint",
+              "x": 2790,
+              "lane": 1,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            356.00000000004667
+          ],
+          "deniedOriginalMineIncome": 618.7500000001405,
+          "paid": 40,
+          "enemyPaid": 31,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "won",
+          "duration": 240.4000000000204,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 121.79999999999522,
+              "tick": 2436,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 151.4500000000002,
+              "tick": 3029,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            200.45000000001133
+          ],
+          "deniedOriginalMineIncome": 518.8750000001136,
+          "paid": 24,
+          "enemyPaid": 18,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "won",
+          "duration": 169.65000000000433,
+          "hp": [
+            6000,
+            0
+          ],
+          "mineLosses": [
+            {
+              "time": 95.59999999999671,
+              "tick": 1912,
+              "id": 8,
+              "side": 1,
+              "type": "mint",
+              "x": 1950,
+              "lane": 0,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            },
+            {
+              "time": 99.99999999999646,
+              "tick": 2000,
+              "id": 9,
+              "side": 1,
+              "type": "mint",
+              "x": 2090,
+              "lane": 2,
+              "level": 1,
+              "original": true,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            null,
+            126.99999999999493
+          ],
+          "deniedOriginalMineIncome": 359.2500000000387,
+          "paid": 18,
+          "enemyPaid": 13,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "unsupportedair": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 122.34999999999519,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 101.69999999999636,
+              "tick": 2034,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            106.09999999999611,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 9,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 121.29999999999525,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 103.79999999999625,
+              "tick": 2076,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            108.199999999996,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "lost",
+          "duration": 150.34999999999994,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 134.59999999999636,
+              "tick": 2692,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 2,
+              "original": false,
+              "incomeRate": 3.75
+            }
+          ],
+          "firstCoreDamage": [
+            138.99999999999736,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 9,
+          "enemyPaid": 12,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "lost",
+          "duration": 121.59999999999523,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 101.69999999999636,
+              "tick": 2034,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            106.09999999999611,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 8,
+          "enemyPaid": 10,
+          "maxLedgerError": 0
+        }
+      ]
+    },
+    "idle": {
+      "games": 4,
+      "wins": 0,
+      "runs": [
+        {
+          "seed": 8202,
+          "outcome": "lost",
+          "duration": 108.79999999999596,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 86.74999999999721,
+              "tick": 1735,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 923,
+          "outcome": "lost",
+          "duration": 106.79999999999607,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 84.49999999999734,
+              "tick": 1690,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            88.89999999999709,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 58031,
+          "outcome": "lost",
+          "duration": 110.99999999999584,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 88.7499999999971,
+              "tick": 1775,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            89.74999999999704,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        },
+        {
+          "seed": 448273,
+          "outcome": "lost",
+          "duration": 107.24999999999605,
+          "hp": [
+            0,
+            6000
+          ],
+          "mineLosses": [
+            {
+              "time": 84.49999999999734,
+              "tick": 1690,
+              "id": 7,
+              "side": 0,
+              "type": "mint",
+              "x": 410,
+              "lane": 1,
+              "level": 1,
+              "original": false,
+              "incomeRate": 2.5
+            }
+          ],
+          "firstCoreDamage": [
+            88.89999999999709,
+            null
+          ],
+          "deniedOriginalMineIncome": 0,
+          "paid": 0,
+          "enemyPaid": 7,
+          "maxLedgerError": 0
+        }
+      ]
+    }
+  }
+}

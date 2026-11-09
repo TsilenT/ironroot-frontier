@@ -1,0 +1,2045 @@
+{
+  "scope": "Fresh Salt-specific independent price, bounty, refund, mine-lifecycle income, same-clock deficit, replacement and postloss-spawn arithmetic. Diagnostic clones do not certify legal outcomes.",
+  "generatedAt": "2026-11-09T06:14:37.287Z",
+  "rawFiles": [
+    {
+      "filename": "ironroot-salt-final-development-epoch1.ndjson",
+      "sha256": "09ecd99fa81dcf42b5e58b0791f8503ce1d9121410effc1778c400dd5153ac41",
+      "bytes": 6157491
+    },
+    {
+      "filename": "ironroot-salt-final-heldout-epoch1.ndjson",
+      "sha256": "e1e2db718d92553f95337b25a9f8d270a3c2d679c9b2f522bf79837eee67d97e",
+      "bytes": 3261921
+    }
+  ],
+  "runs": 54,
+  "allPassed": true,
+  "maximumLedgerError": 0,
+  "audits": [
+    {
+      "policy": "northraid",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 137.34999999999698,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 63.899999999998506,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 125.54999999999501,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 213.12500000000114,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 24,
+      "firstEnemyCoreDamage": 108.74999999999596,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "northraid",
+      "seed": 923,
+      "outcome": "lost",
+      "duration": 310.4000000000363,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 33,
+      "enemyPaidActions": 25,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 148.99999999999963,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 403.5000000000917,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 71,
+      "firstEnemyCoreDamage": 298.1500000000335,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "northraid",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 224.1000000000167,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 185.00000000000782,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 203.95000000001212,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 148.12500000003368,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 7,
+      "firstEnemyCoreDamage": 208.35000000001313,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "northraid",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 154.85000000000096,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 17,
+      "enemyPaidActions": 13,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 70.64999999999813,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 210.50000000000708,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 34,
+      "firstEnemyCoreDamage": 119.64999999999534,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 143.44999999999837,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 12,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 89.59999999999705,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 10,
+          "time": 125.649999999995,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 179.1250000000117,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 13,
+      "firstEnemyCoreDamage": 127.94999999999487,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 923,
+      "outcome": "won",
+      "duration": 126.74999999999494,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 14,
+      "enemyPaidActions": 10,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 76.79999999999778,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 10,
+          "time": 102.49999999999632,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 185.49999999998946,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 9,
+      "firstEnemyCoreDamage": 106.89999999999607,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 129.64999999999523,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 15,
+      "enemyPaidActions": 10,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 88.09999999999714,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 10,
+          "time": 106.2999999999961,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 162.24999999999304,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 9,
+      "firstEnemyCoreDamage": 110.69999999999585,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 150.80000000000004,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 17,
+      "enemyPaidActions": 12,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 91.64999999999694,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 10,
+          "time": 139.44999999999746,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 176.2500000000142,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 14,
+      "firstEnemyCoreDamage": 124.79999999999505,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 193.85000000000983,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 20,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 164.90000000000325,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 72.37500000001646,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 171.50000000000475,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 923,
+      "outcome": "won",
+      "duration": 159.35000000000198,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 17,
+      "enemyPaidActions": 15,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 134.04999999999623,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 63.25000000001438,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 142.09999999999806,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 181.55000000000703,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 20,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 159.10000000000193,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 56.12500000001276,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 167.10000000000375,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 192.10000000000943,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 20,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 166.70000000000366,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 63.50000000001444,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 171.40000000000472,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 190.10000000000898,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 23,
+      "enemyPaidActions": 16,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 168.00000000000395,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 55.25000000001256,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 4,
+      "firstEnemyCoreDamage": 175.7500000000057,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 923,
+      "outcome": "won",
+      "duration": 196.15000000001035,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 23,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 175.95000000000576,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 50.50000000001148,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 4,
+      "firstEnemyCoreDamage": 182.55000000000726,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 203.450000000012,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 175.15000000000558,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 70.75000000001609,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 183.85000000000755,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 199.25000000001106,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 174.45000000000542,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 62.0000000000141,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 181.20000000000695,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 226.55000000001726,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 19,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 136.5999999999968,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 8,
+          "time": 182.45000000000724,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 335.12500000007617,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 31,
+      "firstEnemyCoreDamage": 186.85000000000824,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 923,
+      "outcome": "lost",
+      "duration": 214.25000000001447,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 22,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 203.70000000001207,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 22,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 128.54999999999498,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 8,
+          "time": 159.20000000000195,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 299.125000000068,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 26,
+      "firstEnemyCoreDamage": 179.80000000000663,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 258.5500000000245,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 27,
+      "enemyPaidActions": 21,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 167.3500000000038,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 9,
+          "time": 177.75000000000617,
+          "x": 2090,
+          "lane": 2
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 430.00000000009766,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 31,
+      "firstEnemyCoreDamage": 208.3000000000131,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 145.7499999999989,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 15,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 67.79999999999829,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 118.99999999999538,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 261.7500000000103,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 23,
+      "firstEnemyCoreDamage": 123.39999999999513,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 923,
+      "outcome": "won",
+      "duration": 144.39999999999858,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 15,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 44.44999999999961,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 126.79999999999494,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 293.87500000000654,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 34,
+      "firstEnemyCoreDamage": 120.09999999999532,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 135.99999999999667,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 14,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 46.3999999999995,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 131.54999999999566,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 235.12499999999548,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 29,
+      "firstEnemyCoreDamage": 99.54999999999649,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 131.6999999999957,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 14,
+      "enemyPaidActions": 10,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 51.99999999999918,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 107.89999999999601,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 258.7499999999905,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 25,
+      "firstEnemyCoreDamage": 112.29999999999576,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 8202,
+      "outcome": "won",
+      "duration": 230.30000000001812,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 23,
+      "enemyPaidActions": 16,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 72.29999999999804,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 8,
+          "time": 144.4999999999986,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 609.5000000000989,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 65,
+      "firstEnemyCoreDamage": 207.95000000001303,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 923,
+      "outcome": "won",
+      "duration": 367.9500000000494,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 40,
+      "enemyPaidActions": 31,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 169.5000000000043,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 9,
+          "time": 335.75000000004206,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 10,
+          "time": 351.10000000004555,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 618.7500000001405,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 98,
+      "firstEnemyCoreDamage": 356.00000000004667,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 58031,
+      "outcome": "won",
+      "duration": 240.4000000000204,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 121.79999999999522,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 9,
+          "time": 151.4500000000002,
+          "x": 2090,
+          "lane": 2
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 518.8750000001136,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 43,
+      "firstEnemyCoreDamage": 200.45000000001133,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 448273,
+      "outcome": "won",
+      "duration": 169.65000000000433,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 18,
+      "enemyPaidActions": 13,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 95.59999999999671,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 9,
+          "time": 99.99999999999646,
+          "x": 2090,
+          "lane": 2
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 359.2500000000387,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 25,
+      "firstEnemyCoreDamage": 126.99999999999493,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 8202,
+      "outcome": "lost",
+      "duration": 122.34999999999519,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 8,
+      "enemyPaidActions": 9,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 923,
+      "outcome": "lost",
+      "duration": 121.29999999999525,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 8,
+      "enemyPaidActions": 10,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 58031,
+      "outcome": "lost",
+      "duration": 150.34999999999994,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 9,
+      "enemyPaidActions": 12,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 448273,
+      "outcome": "lost",
+      "duration": 121.59999999999523,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 8,
+      "enemyPaidActions": 10,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 8202,
+      "outcome": "lost",
+      "duration": 108.79999999999596,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 923,
+      "outcome": "lost",
+      "duration": 106.79999999999607,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 58031,
+      "outcome": "lost",
+      "duration": 110.99999999999584,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 448273,
+      "outcome": "lost",
+      "duration": 107.24999999999605,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "northraid",
+      "seed": 2571673,
+      "outcome": "won",
+      "duration": 141.3999999999979,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 12,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 97.14999999999662,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 341.91999999999996
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 110.6250000000032,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 10,
+      "firstEnemyCoreDamage": 101.54999999999637,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "northraid",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 133.74999999999616,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 15,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 98.79999999999653,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 322.87999999999994
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 87.37499999999909,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 8,
+      "firstEnemyCoreDamage": 103.19999999999628,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 2571673,
+      "outcome": "won",
+      "duration": 142.44999999999814,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 80.29999999999758,
+          "x": 2090,
+          "lane": 2
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 155.3750000000014,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 22,
+      "firstEnemyCoreDamage": 110.69999999999585,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "southraid",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 137.99999999999713,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 12,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 98.79999999999653,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 98.0000000000015,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 10,
+      "firstEnemyCoreDamage": 103.19999999999628,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 2571673,
+      "outcome": "won",
+      "duration": 195.35000000001017,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 21,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 168.90000000000416,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 66.12500000001504,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 178.70000000000638,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "directmiddle",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 183.90000000000757,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 20,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 156.3500000000013,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 68.87500000001566,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 6,
+      "firstEnemyCoreDamage": 163.850000000003,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 2571673,
+      "outcome": "won",
+      "duration": 199.20000000001104,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 18,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 177.000000000006,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 55.50000000001262,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 4,
+      "firstEnemyCoreDamage": 182.65000000000728,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "economy",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 204.7000000000123,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 25,
+      "enemyPaidActions": 17,
+      "originalMinesLost": [
+        {
+          "id": 10,
+          "time": 183.70000000000752,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 52.50000000001194,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 4,
+      "firstEnemyCoreDamage": 191.30000000000925,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 2571673,
+      "outcome": "lost",
+      "duration": 259.60000000002475,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 24,
+      "enemyPaidActions": 23,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 228.20000000001764,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 78.50000000001778,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 14,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "broadnovice",
+      "seed": 3840289,
+      "outcome": "lost",
+      "duration": 231.1500000000183,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 23,
+      "enemyPaidActions": 20,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 2571673,
+      "outcome": "won",
+      "duration": 141.04999999999782,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 15,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 67.79999999999829,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 114.94999999999561,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 248.37500000000438,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 21,
+      "firstEnemyCoreDamage": 119.34999999999536,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "screenedRootwarden",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 163.60000000000295,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 16,
+      "enemyPaidActions": 13,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 65.34999999999843,
+          "x": 1950,
+          "lane": 0
+        },
+        {
+          "id": 10,
+          "time": 160.45000000000223,
+          "x": 2790,
+          "lane": 1
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 253.5000000000131,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 34,
+      "firstEnemyCoreDamage": 120.24999999999531,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 2571673,
+      "outcome": "lost",
+      "duration": 386.20000000005354,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 46,
+      "enemyPaidActions": 37,
+      "originalMinesLost": [
+        {
+          "id": 8,
+          "time": 352.6000000000459,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 2,
+          "hp": 498
+        }
+      ],
+      "deniedOriginalMineIncome": 84.0000000000191,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 29,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "dualouterraids",
+      "seed": 3840289,
+      "outcome": "won",
+      "duration": 219.6500000000157,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 22,
+      "enemyPaidActions": 15,
+      "originalMinesLost": [
+        {
+          "id": 9,
+          "time": 72.34999999999803,
+          "x": 2090,
+          "lane": 2
+        },
+        {
+          "id": 8,
+          "time": 130.64999999999546,
+          "x": 1950,
+          "lane": 0
+        }
+      ],
+      "outerOriginalSurvivors": [],
+      "deniedOriginalMineIncome": 590.7500000000948,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 61,
+      "firstEnemyCoreDamage": 188.60000000000863,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 2571673,
+      "outcome": "lost",
+      "duration": 126.04999999999498,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 8,
+      "enemyPaidActions": 11,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "unsupportedair",
+      "seed": 3840289,
+      "outcome": "lost",
+      "duration": 158.80000000000186,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 10,
+      "enemyPaidActions": 14,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 2571673,
+      "outcome": "lost",
+      "duration": 109.44999999999592,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 3840289,
+      "outcome": "lost",
+      "duration": 108.199999999996,
+      "ordinaryPricesVerified": true,
+      "independentIncomeVerified": true,
+      "maxLedgerError": 0,
+      "playerPaidActions": 0,
+      "enemyPaidActions": 7,
+      "originalMinesLost": [],
+      "outerOriginalSurvivors": [
+        {
+          "id": 8,
+          "side": 1,
+          "x": 1950,
+          "lane": 0,
+          "level": 1,
+          "hp": 380
+        },
+        {
+          "id": 9,
+          "side": 1,
+          "x": 2090,
+          "lane": 2,
+          "level": 1,
+          "hp": 380
+        }
+      ],
+      "deniedOriginalMineIncome": 0,
+      "paidEnemyReplacementMines": [],
+      "postLossOriginalFactorySpawns": 0,
+      "firstEnemyCoreDamage": null,
+      "diagnosticClones": 0
+    }
+  ]
+}
