@@ -1,0 +1,515 @@
+{
+  "scope": "Fresh successful action receipts from actual production campaign engine; no raw historical results reused.",
+  "rawSha256": "b4320313938313ba77d987300f62885fbb6618b0d70d1c1351235fd323e43f3c",
+  "rawBytes": 581000,
+  "runs": 48,
+  "receipts": {
+    "0/build": 540,
+    "1/build": 310,
+    "1/cast": 136,
+    "0/upgrade": 123,
+    "0/cast": 50,
+    "1/upgrade": 3,
+    "1/buyCitadelOption": 4
+  },
+  "totalReceipts": 1166,
+  "sourceHashes": {
+    "dist/campaign.js": "806767a01859990f0549b21deb4a83b9aade8690f903b74a5f44220d83d1f66a",
+    "dist/rulesets.js": "d7bcc76853f1e03d2bd7d92575b1559df4180f597045f9db789a6e89b4096230",
+    "dist/engine.js": "021907afe0ed02af2e0f78fab05bf854b5c7ea6e4d8e2587f2fe91f839992f0b",
+    "qa/road-we-know/paid-policies.mjs": "b63bca3503bf4ff6e1d64beb48b92ff970df1b4aec5c5995c97bbdcbd956155f",
+    "qa/road-we-know/economy.mjs": "ceb9932e453dc4b7097a82ed4c4803dfb33c9fe6fa4f0daea134a45eb6c3aa35",
+    "qa/road-we-know/simulate.mjs": "55d7c3c0fba83a09401c900f84af0adabe119a53665dd75c8d27526a1fb4f83b",
+    "qa/road-we-know/scenario.mjs": "a868abfb923f7a97346126d6c12f8167486664deca6aeebd5663d5ad6b9dbbaf",
+    "qa/road-we-know/VALIDATION_PLAN.json": "7feff7304906615c188d959201fbe7eaccf4fefb759bf528ab224852cd367db0"
+  },
+  "checks": [
+    "All action receipts successful and detached at action time",
+    "All build/upgrade/volley/citadel/sell prices ordinary",
+    "Every receipt reconciles gold and kill bounties",
+    "At most one paid player action per five seconds across action types",
+    "Continuous income/kill/spend ledgers remain within 1e-6"
+  ],
+  "runAudit": [
+    {
+      "policy": "broad-novice",
+      "seed": 7301,
+      "outcome": "won",
+      "rawLineSha256": "af3d33421edafca62700794640480b6e0fee814b149dafa89ffdba7708c02d83",
+      "receipts": 30,
+      "playerPaidActions": 20,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 719,
+      "outcome": "won",
+      "rawLineSha256": "bf49b7c1464daff9e015b8a40af79e7cc9249958b103cdb6d59d0256ab3b76db",
+      "receipts": 34,
+      "playerPaidActions": 23,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 51017,
+      "outcome": "won",
+      "rawLineSha256": "bb5b28d28ad94ab1a8e828de5871f665b9453c285fc719b0a1a91904ce570f1f",
+      "receipts": 34,
+      "playerPaidActions": 22,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "8ab9c9fbd3b6b153c6bc5da5d171c0ffdbb04dbcec277ff85f5d2df794a42911",
+      "receipts": 38,
+      "playerPaidActions": 25,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "0c0c5b7458822d790ca7667637bed40e466cb12b14bbb079d4bb55ea50eb7cc4",
+      "receipts": 35,
+      "playerPaidActions": 23,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "broad-novice",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "9671bf4d11a6bbd5ee541f2b4acbad20b69362c269e959974e6eaabb2978891a",
+      "receipts": 40,
+      "playerPaidActions": 25,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 7301,
+      "outcome": "won",
+      "rawLineSha256": "ef4074fb636d0968d94d19634e334df5e691614aef220677f660e6f95951b97b",
+      "receipts": 22,
+      "playerPaidActions": 13,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 719,
+      "outcome": "won",
+      "rawLineSha256": "dc6ba3e58ed89937e121228dec4a24b01af316cb40a40833cb528d3fd9ea6a12",
+      "receipts": 23,
+      "playerPaidActions": 14,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 51017,
+      "outcome": "won",
+      "rawLineSha256": "ce358798426f8849965c3f7e89aed92efb9a8ba7f9ba4aa6b8f0e291a2301edd",
+      "receipts": 23,
+      "playerPaidActions": 13,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 424242,
+      "outcome": "won",
+      "rawLineSha256": "3d7685a4733660322f42a2ff5104e0d413e9423d72b87fea754e1a748a316764",
+      "receipts": 28,
+      "playerPaidActions": 17,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 98317,
+      "outcome": "won",
+      "rawLineSha256": "f54fa3b4ea0fd41be667e03692135d28d567a2b8e3495e3da22778cc67a588f6",
+      "receipts": 25,
+      "playerPaidActions": 15,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "screened-siege",
+      "seed": 620219,
+      "outcome": "won",
+      "rawLineSha256": "03e883b2132f7778fee511a80bf5bc122e4b0d6c43f20cdb2be4e5c7100b28e1",
+      "receipts": 26,
+      "playerPaidActions": 15,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 7301,
+      "outcome": "won",
+      "rawLineSha256": "061fc534378ae38f7e9044b72fae00201778090d4e2d21ab6c606ba3ebd8fd72",
+      "receipts": 26,
+      "playerPaidActions": 15,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 719,
+      "outcome": "won",
+      "rawLineSha256": "dd9a14a61431ec7d716e0b14cbcb3cad308d0a24be47548e1edcfb0947343828",
+      "receipts": 24,
+      "playerPaidActions": 14,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 51017,
+      "outcome": "won",
+      "rawLineSha256": "4f35300473937aca2ac48e5fe6605c8ac189ee286ec005c88f35518dade4279f",
+      "receipts": 26,
+      "playerPaidActions": 15,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "f24aab8aa0e7da2ee5b56a937009e8badc3e26c042e780c40cedd243667dfcd0",
+      "receipts": 32,
+      "playerPaidActions": 18,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "ebcff608882eef7784bdc0d0b96f498655804a30ee51d52319800d144ae32d3c",
+      "receipts": 29,
+      "playerPaidActions": 17,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "supported-rootwarden",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "49f9eb6cc0e980ba6b9da437ad7844daaf09caf161446e396dce4e4651e5c428",
+      "receipts": 28,
+      "playerPaidActions": 16,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 7301,
+      "outcome": "lost",
+      "rawLineSha256": "5a88e74b886f0657f9809d211e54ef78e5d76067290fdefbd8bb1827e169efbc",
+      "receipts": 19,
+      "playerPaidActions": 12,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 719,
+      "outcome": "lost",
+      "rawLineSha256": "a2b6212e247d888c9fb89723f04f3a33bf831714be6284b55563265fbe4d2de8",
+      "receipts": 17,
+      "playerPaidActions": 11,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 51017,
+      "outcome": "lost",
+      "rawLineSha256": "257beebfde972aa9ad04f764e8960adf1a45dd976d83a304693026c0c9aefbc1",
+      "receipts": 18,
+      "playerPaidActions": 11,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "5e9c2b5860ad77ea32145e508650feb38c28c07a99b232cc2f18542dea8fc7fa",
+      "receipts": 18,
+      "playerPaidActions": 11,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "58ec5ef57da0f92728ce5cc93476dce92a161dac3ba07d20f15573cd7f201c88",
+      "receipts": 17,
+      "playerPaidActions": 11,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "air-heavy",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "e5a851e2b808a23ff6db982ec40b000afe78b5371cc4c87a198c56096f331c34",
+      "receipts": 17,
+      "playerPaidActions": 11,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 7301,
+      "outcome": "lost",
+      "rawLineSha256": "f541507431dd5e14d51bd44b58ba51cfd76842953232fc53596f8980117f7f02",
+      "receipts": 35,
+      "playerPaidActions": 23,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 719,
+      "outcome": "lost",
+      "rawLineSha256": "a65248ba579b6f5323b05478618112745b5bf87db40f1598511b492086c57dc6",
+      "receipts": 28,
+      "playerPaidActions": 18,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 51017,
+      "outcome": "lost",
+      "rawLineSha256": "361290916cfc45f31e6989df4ae3d0717442707c008a4b28f8d4f1a92b639fa4",
+      "receipts": 30,
+      "playerPaidActions": 20,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 424242,
+      "outcome": "won",
+      "rawLineSha256": "b1758e730b8ed4aa09d0e25a6ecb78e929f48aabd5c9f3d8a876bca2f79b4c12",
+      "receipts": 32,
+      "playerPaidActions": 21,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "021396bc3615e275ddbf6147cd9ace64dbdfcc0f01ed5bf8e22307a93ac744f1",
+      "receipts": 29,
+      "playerPaidActions": 19,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "direct-rush",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "b545cf751ec1392a085dde03f81777e8a25d669a26e0855f16bfd33a7730e642",
+      "receipts": 27,
+      "playerPaidActions": 18,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 7301,
+      "outcome": "won",
+      "rawLineSha256": "8ea06409e2362ddf35786f3bf1e5fc70b0c55eb9cbb21669483571975765a6e3",
+      "receipts": 22,
+      "playerPaidActions": 14,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 719,
+      "outcome": "won",
+      "rawLineSha256": "39c9fea0a5f610f3638257b393df5b528aed29aa5ad53618c1af825b6a5f2aa7",
+      "receipts": 24,
+      "playerPaidActions": 15,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 51017,
+      "outcome": "won",
+      "rawLineSha256": "ef3bd0e9717b39cb7ee1a8f12866922f243f3ad2d8f7eaf0a245808e440a5cb9",
+      "receipts": 22,
+      "playerPaidActions": 14,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "45e96552ecdeabd992822a16db249116461e29bce36190c5842f55bd8e58f33c",
+      "receipts": 28,
+      "playerPaidActions": 17,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 98317,
+      "outcome": "won",
+      "rawLineSha256": "3b63d85ca661ad70a29c686759c815fa67f23d2f4ddd990dec1d13fa2465b0a1",
+      "receipts": 28,
+      "playerPaidActions": 17,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "north-rush",
+      "seed": 620219,
+      "outcome": "won",
+      "rawLineSha256": "41681e484dda1de52e553bd9d6589f90b31e2435e7fc112fccd2c8a37f357748",
+      "receipts": 22,
+      "playerPaidActions": 14,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 7301,
+      "outcome": "lost",
+      "rawLineSha256": "76d5bae180381922d6c5e5a63c4395b41cb297553a407e89c1c19822ff3ea615",
+      "receipts": 28,
+      "playerPaidActions": 18,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 719,
+      "outcome": "lost",
+      "rawLineSha256": "83b85a2093d0e64a99deabe9b10c4acba8b5a3ec8a0878965a505f4d8d97e669",
+      "receipts": 32,
+      "playerPaidActions": 21,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 51017,
+      "outcome": "lost",
+      "rawLineSha256": "0e7d678443f521afc589583b45c0e5894b25921fa7d6940295d36ad4d62cde55",
+      "receipts": 33,
+      "playerPaidActions": 19,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "2c3229ff04c333a34129eaf2cacf1e1b59bb92d6c119a65951bac8e95c7b4af5",
+      "receipts": 32,
+      "playerPaidActions": 19,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "91a2dbf6b60746193cacaa9095ed218d86275cc0cd06b08c124c74fa64819c0d",
+      "receipts": 28,
+      "playerPaidActions": 18,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "safe-economy",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "90035f4185430d59550aca5f69c1982a27480ac5b9fb4b1dea5729f63c2cb327",
+      "receipts": 31,
+      "playerPaidActions": 21,
+      "minimumPlayerGap": 5.000000000000018,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 7301,
+      "outcome": "lost",
+      "rawLineSha256": "6b05c3880da1e121fba397f799a988faebb900f62f5bda9c2b9eb81c9976d3ca",
+      "receipts": 4,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 719,
+      "outcome": "lost",
+      "rawLineSha256": "5a93ac100b3dd1b8276ea15dacbdd2a4bd8516d731f26ee6c50892f450b7461b",
+      "receipts": 4,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 51017,
+      "outcome": "lost",
+      "rawLineSha256": "52ee77668cf74ce3c95b8522157fd0c9dc941f1aeb74e019b5cab685cc8e21d9",
+      "receipts": 5,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 424242,
+      "outcome": "lost",
+      "rawLineSha256": "67488a90387eac45eb85593d6ca2f39c535e301d951449cc7869a0d07d3336dc",
+      "receipts": 5,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 98317,
+      "outcome": "lost",
+      "rawLineSha256": "84fa53ba678b5c98d306f55834e42ad0061b81477bb9fa25d654b2035316cae3",
+      "receipts": 4,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    },
+    {
+      "policy": "idle",
+      "seed": 620219,
+      "outcome": "lost",
+      "rawLineSha256": "a781c8bd0e6a1b3afc3f2137ca0185889440c2ff140a482deb96020b6c671886",
+      "receipts": 4,
+      "playerPaidActions": 0,
+      "minimumPlayerGap": null,
+      "maxLedgerError": 0
+    }
+  ]
+}
