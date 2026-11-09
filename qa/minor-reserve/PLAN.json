@@ -1,0 +1,30 @@
+{
+  "id": "wake-the-reserve-baseline-proposal-v1",
+  "status": "proposed-not-authorized-to-run",
+  "sourceCommit": "65ee1438435a9e8a4cb6b8b6930ac87ca17518b7",
+  "sourceTree": "b6ee01ff93f43176a889d7fb3c226cf5ef442643",
+  "sourceInventorySha256": "99598b55d37e7d7c82664e5ae848ba2405e9ec244843331c410187dbc36e6123",
+  "scope": "One isolated QA minor-reinforcement hypothesis. Targeted synthetic mechanism tests only have run. No natural balance result, campaign admission, version assignment, future prerequisite, remote write or release permission.",
+  "nextStage": {
+    "name": "baseline-first",
+    "prerequisites": ["Independent review of frozen source and executable paid policies", "Explicit coordinator authorization for exact invocation and new external output path"],
+    "seed": 9104,
+    "seedReason": "Declared authored candidate seed, not selected from observed outcomes.",
+    "reserveEnabled": false,
+    "maximumCases": 3,
+    "caseOrder": ["north-supported", "south-bypass", "idle"],
+    "maximumSimulatedSecondsPerCase": 600,
+    "playerCadenceSeconds": 5,
+    "policyContract": "Only ordinary paid engine commands using own state and visible combat. Freeze exact command plans and tie-breaks before any case. No state edits, grants, treasury floors, free upgrades, automatic unit rescue or reactive hidden-state decisions.",
+    "stopRules": "Retain each result and rejection. Stop the stage on source mismatch, ledger error, restore divergence, interruption or exception. No silent retry or extra seeds. If neither supported route wins, stop and report the baseline failure before any reserve case.",
+    "review": "A credible supported paid route is necessary before adding retaliation. An idle win or a dominant route is reported for design review, not hidden or converted into a mandatory-loser requirement. Automated feasibility is not human difficulty."
+  },
+  "laterStage": {
+    "status": "separate-freeze-and-authorization-required",
+    "maximumCases": 4,
+    "proposal": "Use the same authored seed and frozen north-supported/south-bypass policies, each with reserve enabled and disabled. Inspect release timing, march to contested contact, real targeting and damage, local losses, paid purchases and final outcomes. No extra seed search.",
+    "interpretation": "The wave should have an actual opportunity to join the local fight. It may change tactics without changing the winner. No purchase is mandatory, no arbitrary damage floor, and no requirement that every surprise be harmless or that all alternatives lose. If rear arrivals miss the fight, report and revisit the design before further cases."
+  },
+  "evidence": "All generated freezes, logs, results, checkpoints and screenshots stay outside the repository. Keep source, tests and essential concise docs only.",
+  "mechanismCommand": ["node", "--test", "tests/minor-reserve-qa.test.mjs"]
+}
