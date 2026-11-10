@@ -1,3 +1,4 @@
+import {createLastEngineAudioObserver} from '../dist/final-chapter-view.js';
 import {minorReserveView} from '../dist/minor-reserve-view.js';
 import {supportsFog} from '../dist/fog.js';
 import {hasChartedIntelligence,chartedObjectiveTargets} from '../dist/campaign-intelligence.js';
@@ -18,7 +19,7 @@ function harness(w=568,h=210){
  const $=id=>{if(!elements.has(id)){const classes=new Set(['coachingModal','viewportModal','settingsModal','helpModal','backupModal','resultModal','welcome','pauseVeil'].includes(id)?['hidden']:[]);elements.set(id,{id,style:{},disabled:false,textContent:'',classList:{contains:x=>classes.has(x),add:x=>classes.add(x),remove:x=>classes.delete(x),toggle(x,on){if(on)classes.add(x);else classes.delete(x);}},getBoundingClientRect:()=>geometry().nodes[id]??box(0,0,0,0)});}return elements.get(id);};
  $('app').classList.add('protected-mobile');$('app').classList.add('protected-compact');
  const game=createCampaignMission('winter-stores'),inputScope=createInputScopeGuard('compact-battle:landscape');
- const c={minorReserveView,keyboardCapture:null,cancelKeyboardCapture(){},battleSafetyReason:null,coachingHold:false,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
+ const c={engineAudio:createLastEngineAudioObserver(),minorReserveView,keyboardCapture:null,cancelKeyboardCapture(){},battleSafetyReason:null,coachingHold:false,drawCampaignGuidance,$,game,started:true,paused:false,protectedAlerts:null,protectedMonitor:{observe(){}},objectiveOutcome:null,mobileLayout:'landscape',viewportPause:createViewportPause(),inspectMobileGeometry,visibleViewportRect,fitMobileViewport,insetViewportRect,
   protectedControls:new Map([['a',{button:$('target0')}],['b',{button:$('target1')}]]),
   inputScope,controller:{reset(){log.resets++;}},resetBattleGesture(){log.interruptions++;},armedProtectedControl:{},closeSelectionArmed:true,padHud:true,
   recoveryHold:null,profileGate:null,battleSession:{status:()=>c.stale?'stale':'current'},showRecoverySettings(){c.recoveryShown=true;},showTitle(){c.titleShown=true;c.started=false;},
