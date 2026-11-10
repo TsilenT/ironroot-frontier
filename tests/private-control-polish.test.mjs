@@ -78,5 +78,11 @@ test('private0.40 protocol31/catalog42 and all64 unmodified runtime files retain
  ];
  for(const [addition,parent] of viewAdditions){assert.equal(view.split(addition).length-1,1,'exact report presentation addition');view=view.replace(addition,parent);}
  assert.equal(createHash('sha256').update(view).digest('hex'),viewParent,'all other actual27d243 report presentation bytes');
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path)).map(([path,hash])=>[path,path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:hash]);assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+ // One post-reveal announcement sentence, against the actual30b0b57 parent.
+ const cueParent='5bb7ec2cf1f5619a5c35d6ff7e0b445ef9990420fe46b247f431922c7eac1c9c';
+ const cue='The Last Engine is emerging and can take damage. All three roads can attack its body.';
+ let engineView=read('../dist/final-chapter-view.js');assert.equal(engineView.split(cue).length-1,1);
+ engineView=engineView.replace(cue,'The Last Engine is emerging and can take damage.');
+ assert.equal(createHash('sha256').update(engineView).digest('hex'),cueParent,'all other actual30b0b57 reveal/presentation bytes');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path)).map(([path,hash])=>[path,path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });

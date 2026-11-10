@@ -10,7 +10,7 @@ export function lastEngineView(game){
  const terminal=['complete','lost','draw'].includes(goal),hp=boss?.hp??0;
  const hudLabel=objective+(boss?` Engine ${Math.ceil(hp)}/${COLOSSUS.hp} HP · ${mode}`:'');
  const accessibleLabel=objective+(boss?` Last Engine health ${Math.ceil(hp)} of ${COLOSSUS.hp} HP. ${mode==='siege'?'Siege march':mode==='approach'?'Approaching midfield':'Emerging'}.`:'');
- const phaseMessage=mode==='emerging'?'The Last Engine is emerging and can take damage.':mode==='approach'?'The Last Engine is approaching midfield.':mode==='siege'?'The Last Engine is in siege march.':'The Last Engine is defeated.';
+ const phaseMessage=mode==='emerging'?'The Last Engine is emerging and can take damage. All three roads can attack its body.':mode==='approach'?'The Last Engine is approaching midfield.':mode==='siege'?'The Last Engine is in siege march.':'The Last Engine is defeated.';
  const remaining=goal==='core'?'Destroy the enemy citadel; keep yours standing.':goal==='boss'?'Enemy citadel destroyed. Defeat the Engine; keep yours standing.':'Destroy it and the enemy citadel; keep yours standing.';
  const phaseCue=mode==='emerging'?'Emerging · damageable':mode==='approach'?'Fast approach to midfield':mode==='siege'?'Siege march · all roads can hit':'Engine defeated';
  return Object.freeze({name:'The Last Engine',mode,phaseCue,objective,hudLabel,accessibleLabel,announcementKey:mode+':'+goal,announcement:terminal?objective:phaseMessage+' '+remaining,description:terminal?objective:threat+' '+objective+' All three roads can attack its body. Volley can hit its body; rear production can replace losses. No extra deadline or forced citadel drain.',hp,maxHp:COLOSSUS.hp,focus:boss?Object.freeze({x:boss.x,y:boss.y}):null});
