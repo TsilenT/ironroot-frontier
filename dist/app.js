@@ -1261,7 +1261,7 @@ function currentMinorReserve() {
     ? minorReserveView(game, { ended: !!objectiveOutcome }) : null;
 }
 function beginProtectedObjectives() {
-  lastEngineMode = null;
+  lastEngineAnnouncementKey = null;
   protectedMonitor = currentCampaign && !chartedMission()
     ? createProtectedObjectiveMonitor(game, currentCampaign) : null;
   protectedControls.clear();
@@ -2419,7 +2419,7 @@ window.addEventListener('storage', (event) => {
 new ResizeObserver(() => { renderer.resize(); positionToast(); syncViewportSafety(); }).observe($('battle'));
 new ResizeObserver(positionToast).observe($('objectiveHUD'));
 new ResizeObserver(() => syncChoice()).observe($('buildCards'));
-let lastEngineMode = null;
+let lastEngineAnnouncementKey = null;
 let hudTimer = 0,
   lastProfileCheck = 0;
 function updateHUD() {
@@ -2527,9 +2527,9 @@ function updateHUD() {
     $('objectiveTime').textContent = authored.timeLimit === null ? 'No deadline' :
       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
     if(engineView){
-      $('objectiveProgress').textContent = engineView.objective + (engineView.mode==='defeated'?'':` Engine ${Math.ceil(engineView.hp)}/${engineView.maxHp} HP · ${engineView.mode}`);
-      $('objectiveProgress').setAttribute('aria-label',engineView.description);
-      if(engineView.mode!==lastEngineMode){$('protectedAlert').textContent=engineView.description;toast(engineView.description);lastEngineMode=engineView.mode;}
+      $('objectiveProgress').textContent = engineView.hudLabel;
+      $('objectiveProgress').setAttribute('aria-label',engineView.accessibleLabel);
+      if(engineView.announcementKey!==lastEngineAnnouncementKey){$('protectedAlert').textContent=engineView.announcement;lastEngineAnnouncementKey=engineView.announcementKey;}
     }
     const signals = currentSignalProtection();
     if (signals && !outcome.completed && !outcome.failed) {
