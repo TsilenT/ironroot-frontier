@@ -31,7 +31,10 @@ function addUnit(g, type, x, lane = 1, side = 0) {
 
 test('external lab generation leaves every production runtime byte unchanged', async () => {
   const files = await readdir(new URL('../../dist/', import.meta.url));
-  for (const name of files) assert.doesNotMatch((await readFile(new URL(`../../dist/${name}`, import.meta.url))).toString(), /frontier-qa-colossus|colossus\.js/);
+  const before=new Map(await Promise.all(files.map(async name=>[name,await readFile(new URL(`../../dist/${name}`,import.meta.url))])));
+  for(const bytes of before.values())assert.doesNotMatch(bytes.toString(),/frontier-qa-colossus/);
+  await prepareLab(path.join(temp,'source-preservation-check'));
+  for(const [name,bytes]of before)assert.deepEqual(await readFile(new URL(`../../dist/${name}`,import.meta.url)),bytes,name);
   await assert.rejects(() => prepareLab(lab), /EEXIST/);
   await assert.rejects(() => prepareLab(new URL('./unsafe-output', import.meta.url).pathname), /outside/);
 });
