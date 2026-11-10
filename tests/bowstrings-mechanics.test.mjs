@@ -1,3 +1,4 @@
+import {advanceObjectiveBattle} from '../dist/objectives.js';
 import test from 'node:test';import assert from 'node:assert/strict';import * as c from '../dist/campaign.js';import {Game,getRuleset,supportsAutonomousAir,buildSites} from '../dist/engine.js';import {encodeBattle,decodeBattle,validateBattleIdentity,identityOf} from '../dist/battle-codec.js';import {getMissionScouting,renderMissionScouting} from '../dist/scouting.js';import {missionBriefing} from '../dist/campaign-presentation.js';
 const ID='cut-the-bowstrings';const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 test('registered full-earned factory inherits two ordinary native gryphons without repeat grants or changed production progress',()=>{
@@ -26,4 +27,15 @@ test('original IDs retain demolition credit when ordinary replacements occupy th
 test('truthful preview names both marked outer targets and discloses actual starting troops without unit orders',()=>{
  const m=c.getCampaignMission(ID),b=missionBriefing(m),s=getMissionScouting(m),html=renderMissionScouting(m);assert.match(b.goal,/both original North Bow and South Bow.*10:00.*enemy citadel/);assert.match(b.facts.join(' '),/Two normal level-1 gryphons/);assert.equal(b.protection,'');assert.equal(s.map.lanes.length,3);assert.equal(s.objectives.markedCount,2);assert.equal(s.objectives.protectedCount,0);assert.equal(s.armies[1].buildings.filter(b=>b.targetKind==='destroy').length,2);assert.match(html,/North Bow/);assert.match(html,/South Bow/);assert.match(s.objectives.summary,/Two normal level-1 gryphons start aloft/);assert.match(m.briefing.join(' '),/no repeat grants, waves or unit orders/);
  const p=progress();p.missions[ID]={completed:true,stars:1,bestTime:60};const o=c.getProgressionCampaignOverview(p),ch=o.chapters.find(ch=>ch.number===9);assert.equal(o.total,37);assert.equal(o.maxStars,111);assert.equal(ch.total,5);assert.equal(ch.completed,true);assert.equal(o.completed,false);assert.equal(o.chapters.some(ch=>ch.number===10),false);assert.equal(c.getCampaignLaunchMission('three-minutes-more',p).reward,'Unlocks Cut the Bowstrings');
+});
+for(const delta of [.001,.016,.05,.1,.25])for(const end of ['targets','core','own','draw','pending'])test(`synthetic final native combat tick ${delta}/${end} binds target/core/loss/draw/deadline precedence`,()=>{
+ const g=c.createCampaignMission(ID),targets=c.getCampaignTargets(g,ID);g.state.buildings=g.state.buildings.filter(b=>targets.some(t=>t.originalId===b.id));g.state.units=[];g.state.effects=[];g.state.projectiles=[];g.state.time=599.95;g.tick=11999;g.aiTimer=30;g.state.bases.forEach(b=>{b.hp=1;b.cooldown=30;});
+ const spawn=(side,lane,x,y)=>{g._spawn({type:'barracks',side,lane,x,level:1});const u=g.state.units.at(-1);u.x=x;u.y=y;u.cooldown=0;};
+ if(['targets','own','draw'].includes(end))for(const t of targets){t.building.hp=1;spawn(0,t.lane,t.building.x,t.building.y);}
+ if(['core','draw'].includes(end))spawn(0,1,g.state.bases[1].x,g.state.bases[1].y);
+ if(['own','draw'].includes(end))spawn(1,1,g.state.bases[0].x,g.state.bases[0].y);
+ let outcome=c.evaluateCampaignMission(g,ID);for(let i=0;i<101&&!outcome.completed&&!outcome.failed;i++)outcome=advance(g,delta);
+ function advance(game,step){return advanceObjectiveBattle(game,step,x=>c.evaluateCampaignMission(x,ID),600);}
+ assert.equal(g.tick,12000);assert.ok(Math.abs(g.state.time-600)<1e-7);assert.equal(outcome.completed,['targets','core'].includes(end));assert.equal(outcome.failed,['own','draw','pending'].includes(end));
+ if(end==='core')assert.ok(c.getCampaignTargets(g,ID).every(t=>t.building),'early core alternative permits both original bows to stand');if(end==='draw')assert.equal(g.state.winner,'draw');if(outcome.completed)assert.equal(outcome.stars,1);
 });

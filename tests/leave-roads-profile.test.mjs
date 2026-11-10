@@ -11,7 +11,7 @@ const stamp=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',v
 function backend(entries=[]){const data=new Map(entries),reads=[],writes=[];return {data,reads,writes,getItem(k){reads.push(k);return data.get(k)??null;},setItem(k,v){writes.push(k);data.set(k,String(v));},removeItem(k){writes.push(k);data.delete(k);}};}
 const current=raw=>createProfileSession(()=>raw,{requiredProtocolVersion:VERSION,newEpoch:()=> 'leave-roads-profile'});
 test('profile28 is exactly four marker-only substitutions from actual tested profile27',()=>{
- assert.equal(VERSION,29);assert.equal(old27.CURRENT_PROFILE_PROTOCOL_VERSION,27);
+ assert.equal(VERSION,30);assert.equal(old27.CURRENT_PROFILE_PROTOCOL_VERSION,27);
  const source=readFileSync(new URL('./fixtures/profile-session-v0360.js',import.meta.url),'utf8');
  const provenance=JSON.parse(readFileSync(new URL('./fixtures/leave-roads-parent-v0360.json',import.meta.url)));
  assert.equal(provenance.commit,'d52acb1de3c8f4d5bba6ca886234b3b81a8add21');
@@ -20,10 +20,10 @@ test('profile28 is exactly four marker-only substitutions from actual tested pro
  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0370.js',import.meta.url),'utf8'),expected);
 });
 test('profile28 upgrades absent and ready versions1–28 without reading or rewriting earned domain bytes',()=>{
- for(const v of [null,...Array.from({length:29},(_,i)=>i+1)]){
+ for(const v of [null,...Array.from({length:30},(_,i)=>i+1)]){
   const opaque=Object.values(K).map((k,i)=>[k,'  opaque-earned-byte-'+i+'\n']),raw=backend([...(v===null?[]:[[KEY,stamp(v)]]),...opaque]);
-  assert.ok(current(raw).status().canWrite);assert.equal(JSON.parse(raw.data.get(KEY)).version,29);
-  assert.deepEqual(opaque.map(([k])=>raw.data.get(k)),opaque.map(([,v])=>v));assert.ok(raw.reads.every(k=>k===KEY));assert.deepEqual(raw.writes,v===29?[]:[KEY]);
+  assert.ok(current(raw).status().canWrite);assert.equal(JSON.parse(raw.data.get(KEY)).version,30);
+  assert.deepEqual(opaque.map(([k])=>raw.data.get(k)),opaque.map(([,v])=>v));assert.ok(raw.reads.every(k=>k===KEY));assert.deepEqual(raw.writes,v===30?[]:[KEY]);
  }
 });
 test('actual open/reopened27 writers fence every normal and import domain operation after28',()=>{
@@ -37,13 +37,13 @@ test('actual open/reopened27 writers fence every normal and import domain operat
  assert.deepEqual([...raw.data],bytes);assert.deepEqual(raw.writes,[]);assert.ok(raw.reads.every(k=>k===KEY));
 });
 test('future and interrupted markers never permit profile28 domain writes',()=>{
- for(const [version,phase] of [[30,'ready'],[27,'restoring'],[28,'failed']]){
+ for(const [version,phase] of [[31,'ready'],[27,'restoring'],[28,'failed']]){
   const raw=backend([[KEY,stamp(version,phase)],[K.campaign,'earned']]),before=[...raw.data],p=current(raw);
   assert.equal(p.status().canWrite,false);assert.throws(()=>p.storage.setItem(K.campaign,'lost'));assert.deepEqual([...raw.data],before);
  }
 });
 test('marker28 preserves actual earned Wake records and exact active reserve checkpoint in normal backup',()=>{
- const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='three-minutes-more'&&m.id!=='leave-no-road-closed').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
+ const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
  const game=createCampaignMission('wake-the-reserve'),scenario=campaignScenarioForGame(game,'wake-the-reserve');
  const post=game.state.buildings.find(b=>b.id===game.state.minorReserve.postId);game._damage(post,post.hp,0);game.update(.05);
  const data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:game.difficulty,time:60,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(game,scenario)}],battle:encodeBattle(game,scenario,{campaignProgress:progress})};
@@ -54,7 +54,7 @@ test('marker28 preserves actual earned Wake records and exact active reserve che
 });
 
 test('profile28 five-domain backup retains Road control checkpoint and all 36 earlier current/legacy records',()=>{
- const id='leave-no-road-closed',progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='three-minutes-more'&&m.id!==id).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+ const id='leave-no-road-closed',progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==id).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
  const g=createCampaignMission(id);g.state.time=20;g.tick=400;g.state.campaignControl.heldSeconds=9.5;g.state.campaignControl.bridges.forEach(b=>b.owner=0);
  const scenario=campaignScenarioForGame(g,id),data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:g.difficulty,time:500,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(g,scenario)}],battle:encodeBattle(g,scenario,{campaignProgress:progress})};
  const raw=backend([[KEY,stamp(28)],...Object.entries(K).map(([domain,key])=>[key,JSON.stringify(data[domain])])]);

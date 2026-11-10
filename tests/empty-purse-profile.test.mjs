@@ -11,7 +11,7 @@ const stamp=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',v
 function backend(entries=[]){const data=new Map(entries),reads=[],writes=[];return {data,reads,writes,getItem(k){reads.push(k);return data.get(k)??null;},setItem(k,v){writes.push(k);data.set(k,String(v));},removeItem(k){writes.push(k);data.delete(k);}};}
 const current=raw=>createProfileSession(()=>raw,{requiredProtocolVersion:VERSION,newEpoch:()=> 'empty-purse-profile'});
 test('profile27 is exactly four marker-only substitutions from actual released profile26',()=>{
- assert.equal(VERSION,29);assert.equal(old26.CURRENT_PROFILE_PROTOCOL_VERSION,26);
+ assert.equal(VERSION,30);assert.equal(old26.CURRENT_PROFILE_PROTOCOL_VERSION,26);
  const source=readFileSync(new URL('./fixtures/profile-session-v0350.js',import.meta.url),'utf8');
  const provenance=JSON.parse(readFileSync(new URL('./fixtures/empty-purse-parent-v0350.json',import.meta.url)));
  assert.equal(provenance.commit,'f415b9c8197b0eeb7fad22169b6b95a9cba4a9a1');
@@ -20,10 +20,10 @@ test('profile27 is exactly four marker-only substitutions from actual released p
  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0360.js',import.meta.url),'utf8'),expected);
 });
 test('profile27 upgrades absent and ready versions1–28 without reading or rewriting earned domain bytes',()=>{
- for(const v of [null,...Array.from({length:29},(_,i)=>i+1)]){
+ for(const v of [null,...Array.from({length:30},(_,i)=>i+1)]){
   const opaque=Object.values(K).map((k,i)=>[k,'  opaque-earned-byte-'+i+'\n']),raw=backend([...(v===null?[]:[[KEY,stamp(v)]]),...opaque]);
-  assert.ok(current(raw).status().canWrite);assert.equal(JSON.parse(raw.data.get(KEY)).version,29);
-  assert.deepEqual(opaque.map(([k])=>raw.data.get(k)),opaque.map(([,v])=>v));assert.ok(raw.reads.every(k=>k===KEY));assert.deepEqual(raw.writes,v===29?[]:[KEY]);
+  assert.ok(current(raw).status().canWrite);assert.equal(JSON.parse(raw.data.get(KEY)).version,30);
+  assert.deepEqual(opaque.map(([k])=>raw.data.get(k)),opaque.map(([,v])=>v));assert.ok(raw.reads.every(k=>k===KEY));assert.deepEqual(raw.writes,v===30?[]:[KEY]);
  }
 });
 test('actual open/reopened26 writers fence every normal and import domain operation after27',()=>{
@@ -37,13 +37,13 @@ test('actual open/reopened26 writers fence every normal and import domain operat
  assert.deepEqual([...raw.data],bytes);assert.deepEqual(raw.writes,[]);assert.ok(raw.reads.every(k=>k===KEY));
 });
 test('future and interrupted markers never permit profile27 domain writes',()=>{
- for(const [version,phase] of [[30,'ready'],[26,'restoring'],[27,'failed']]){
+ for(const [version,phase] of [[31,'ready'],[26,'restoring'],[27,'failed']]){
   const raw=backend([[KEY,stamp(version,phase)],[K.campaign,'earned']]),before=[...raw.data],p=current(raw);
   assert.equal(p.status().canWrite,false);assert.throws(()=>p.storage.setItem(K.campaign,'lost'));assert.deepEqual([...raw.data],before);
  }
 });
 test('marker27 preserves actual earned Wake records and exact active reserve checkpoint in normal backup',()=>{
- const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='three-minutes-more'&&m.id!=='leave-no-road-closed'&&m.id!=='the-empty-purse').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
+ const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed'&&m.id!=='the-empty-purse').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
  const game=createCampaignMission('wake-the-reserve'),scenario=campaignScenarioForGame(game,'wake-the-reserve');
  const post=game.state.buildings.find(b=>b.id===game.state.minorReserve.postId);game._damage(post,post.hp,0);game.update(.05);
  const data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:game.difficulty,time:60,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(game,scenario)}],battle:encodeBattle(game,scenario,{campaignProgress:progress})};
