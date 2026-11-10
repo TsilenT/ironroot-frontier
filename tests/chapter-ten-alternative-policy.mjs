@@ -7,7 +7,7 @@ export function alternativeChapterTenPolicy(recipe,prior){
   if(state.successfulBuilds>=4){
    if(recipe.defensiveUpgradeFraction){
     const candidates=v.buildings.filter(b=>b.side===0&&b.hp>0&&b.level<3&&['barracks','wardenLodge'].includes(b.type)&&b.hp/b.maxHp<recipe.defensiveUpgradeFraction).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp||a.id-b.id);
-    const injured=candidates.find(b=>v.gold[0]>=game.upgradeCost(b));if(injured)acted=game.upgrade(injured.id).ok;
+    const injured=candidates[0];if(injured&&v.gold[0]>=game.upgradeCost(injured))acted=game.upgrade(injured.id).ok;
    }
    if(!acted&&v.bases[0].hp<2100&&game.canBuyCitadelOption('regen').ok)acted=game.buyCitadelOption('regen').ok;
    if(!acted&&v.spellCooldown[0]<=0&&v.gold[0]>=game.ruleset.spell.cost){
