@@ -1,0 +1,424 @@
+{
+  "revision": 3,
+  "sourceFolder": "../../..",
+  "commandIntervalSeconds": 2,
+  "stepSeconds": 0.05,
+  "policy": "Fixed queues on two-second decision ticks, no tuning/search/replacements. At most one successful paid command per tick; retry unaffordable next item on a later tick and record/skip other build rejection. After four successful queued builds, defensive Volley uses four current visible foes west of x=1150 within native radius. Finale prioritizes paid Regen below 2100 HP, then boss Volley west of x=1500. After queue, upgrade only listed producer/mine types, lowest level then explicit type priority and ID, waiting until selected target affordable. No Fires decisions use sanitized observation only. No raw-world edits after factory; wrappers observe native damage/commands only. Analysis horizon never changes mission outcome.",
+  "cases": [
+    {
+      "id": "foothold",
+      "seed": 101,
+      "module": "foothold.mjs",
+      "name": "Foothold",
+      "queue": [
+        [
+          "foundry",
+          970,
+          1
+        ],
+        [
+          "foundry",
+          970,
+          2
+        ],
+        [
+          "barracks",
+          1250,
+          1
+        ],
+        [
+          "archery",
+          1110,
+          2
+        ],
+        [
+          "archery",
+          1110,
+          1
+        ],
+        [
+          "barracks",
+          1250,
+          2
+        ],
+        [
+          "sanctum",
+          830,
+          1
+        ],
+        [
+          "sanctum",
+          550,
+          2
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ]
+      ],
+      "upgradePriority": [],
+      "horizon": 600
+    },
+    {
+      "id": "granary",
+      "seed": 102,
+      "module": "granary/scenario.mjs",
+      "name": "Granary",
+      "queue": [
+        [
+          "foundry",
+          970,
+          0
+        ],
+        [
+          "foundry",
+          970,
+          2
+        ],
+        [
+          "barracks",
+          1250,
+          0
+        ],
+        [
+          "archery",
+          690,
+          2
+        ],
+        [
+          "archery",
+          1110,
+          0
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ],
+        [
+          "sanctum",
+          690,
+          0
+        ],
+        [
+          "sanctum",
+          550,
+          2
+        ],
+        [
+          "barracks",
+          1250,
+          2
+        ],
+        [
+          "foundry",
+          830,
+          1
+        ]
+      ],
+      "upgradePriority": [
+        "foundry",
+        "sanctum",
+        "barracks",
+        "archery",
+        "mint"
+      ],
+      "horizon": 600
+    },
+    {
+      "id": "no-fires",
+      "seed": 103,
+      "module": "no-fires/scenario.mjs",
+      "name": "Night",
+      "queue": [
+        [
+          "foundry",
+          970,
+          0
+        ],
+        [
+          "barracks",
+          1250,
+          0
+        ],
+        [
+          "archery",
+          1110,
+          0
+        ],
+        [
+          "sanctum",
+          690,
+          0
+        ],
+        [
+          "barracks",
+          1250,
+          1
+        ],
+        [
+          "archery",
+          970,
+          2
+        ],
+        [
+          "foundry",
+          830,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ],
+        [
+          "foundry",
+          690,
+          2
+        ],
+        [
+          "sanctum",
+          550,
+          2
+        ]
+      ],
+      "upgradePriority": [
+        "foundry",
+        "sanctum",
+        "barracks",
+        "archery",
+        "mint"
+      ],
+      "horizon": 600
+    },
+    {
+      "id": "crossing-control",
+      "seed": 104,
+      "module": "crossing/scenario.mjs",
+      "name": "Crossing",
+      "queue": [
+        [
+          "wardenLodge",
+          830,
+          0
+        ],
+        [
+          "wardenLodge",
+          830,
+          1
+        ],
+        [
+          "sanctum",
+          690,
+          0
+        ],
+        [
+          "sanctum",
+          690,
+          1
+        ],
+        [
+          "barracks",
+          1250,
+          0
+        ],
+        [
+          "barracks",
+          1250,
+          1
+        ],
+        [
+          "archery",
+          550,
+          0
+        ],
+        [
+          "archery",
+          550,
+          1
+        ],
+        [
+          "mint",
+          410,
+          0
+        ]
+      ],
+      "upgradePriority": [
+        "sanctum",
+        "wardenLodge",
+        "barracks",
+        "archery",
+        "mint"
+      ],
+      "horizon": 600
+    },
+    {
+      "id": "finale-splash",
+      "seed": 105,
+      "module": "finale/scenario.mjs",
+      "name": "Finale",
+      "queue": [
+        [
+          "sanctum",
+          550,
+          0
+        ],
+        [
+          "sanctum",
+          550,
+          1
+        ],
+        [
+          "sanctum",
+          550,
+          2
+        ],
+        [
+          "wardenLodge",
+          1110,
+          0
+        ],
+        [
+          "wardenLodge",
+          1110,
+          2
+        ],
+        [
+          "archery",
+          1110,
+          1
+        ],
+        [
+          "foundry",
+          970,
+          0
+        ],
+        [
+          "foundry",
+          970,
+          2
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ],
+        [
+          "wardenLodge",
+          1250,
+          1
+        ],
+        [
+          "aerie",
+          270,
+          1
+        ],
+        [
+          "archery",
+          270,
+          0
+        ],
+        [
+          "archery",
+          270,
+          2
+        ]
+      ],
+      "upgradePriority": [
+        "foundry",
+        "sanctum",
+        "wardenLodge",
+        "barracks",
+        "archery",
+        "aerie",
+        "mint"
+      ],
+      "horizon": 720
+    },
+    {
+      "id": "granary-primary",
+      "seed": 102,
+      "module": "granary/scenario.mjs",
+      "name": "Granary",
+      "queue": [
+        [
+          "wardenLodge",
+          1250,
+          0
+        ],
+        [
+          "wardenLodge",
+          1250,
+          2
+        ],
+        [
+          "sanctum",
+          970,
+          0
+        ],
+        [
+          "sanctum",
+          970,
+          2
+        ],
+        [
+          "barracks",
+          1110,
+          0
+        ],
+        [
+          "archery",
+          690,
+          0
+        ],
+        [
+          "archery",
+          690,
+          2
+        ],
+        [
+          "mint",
+          410,
+          0
+        ],
+        [
+          "mint",
+          410,
+          2
+        ]
+      ],
+      "upgradePriority": [
+        "sanctum",
+        "wardenLodge",
+        "barracks",
+        "archery",
+        "mint"
+      ],
+      "horizon": 600
+    }
+  ],
+  "remoteSourceCommit": "c5ff97670e86ad244af9a0ee2165096f1e6454c6",
+  "remoteSourceTree": "b12ff4f61b3eb40c2fde444595407377fa65b007",
+  "reviewCorrectionsBeforeAnyNaturalRun": "Fixed decision ticks and listed-type-only upgrades match retained policy semantics; added remote commit provenance and observational loss/boss counters. No natural case had executed before these corrections."
+}
