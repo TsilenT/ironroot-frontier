@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -6,7 +7,7 @@ import { Game, DEFAULT_SKIRMISH_RULESET_ID } from '../dist/engine.js';
 import { SHARED_CROSSING_RULESET_ID } from '../dist/rulesets.js';
 import { encodeBattle, decodeBattle, identityOf } from '../dist/battle-codec.js';
 import { createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K } from '../dist/backup.js';
-import { createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER } from '../dist/profile-session.js';
+import { createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER } from './fixtures/profile-session-v039.js';
 import { createStorage, createSaveSession, createHistorySession, createPreferenceSession, writeBattle } from '../dist/persistence.js';
 import { createCampaignProgress, CAMPAIGN_PROGRESS_MISSIONS, createProgressionCampaignMission, campaignScenarioForGame, normalizeCampaignProgress, recordCampaignResult, writeCampaignProgress } from '../dist/campaign.js';
 import { CURRENT_CHALLENGES } from '../dist/challenges.js';
@@ -30,7 +31,7 @@ const previous = raw => protocolTwelve.createProfileSession(() => raw, { require
 const domainBytes = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 function progress() {
-  return { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) };
+  return { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) };
 }
 const row = (game, scenario = undefined) => ({ won: true, draw: false, difficulty: game.difficulty, time: game.state.time, kills: game.state.stats.kills[0], built: game.state.stats.built[0], date, identity: identityOf(game, scenario) });
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */

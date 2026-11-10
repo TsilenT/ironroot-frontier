@@ -14,7 +14,7 @@ test('current-only optional trial preserves the historical five and additive cur
   assert.equal(Object.keys(g.buildings).length,7);assert.equal(g.ai,false);
   assert.equal(g.state.gold[0],650);assert.equal(g.state.bases[0].hp,6000);
   assert.deepEqual(restartChallenge(g,TRIAL_ID).serialize(),g.serialize());
-  const overview=getCampaignOverview(createCampaignProgress());assert.equal(overview.total,37);assert.equal(overview.maxStars,111);
+  const overview=getCampaignOverview(createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);
   assert.equal(requiredChallengeTargets(c),2);
   for(const old of CHALLENGES.filter(c=>c.mode==='destroy'))assert.equal(requiredChallengeTargets(old),old.markedTargets.length);
 });

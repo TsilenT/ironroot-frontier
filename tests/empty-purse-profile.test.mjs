@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import * as old26 from './fixtures/profile-session-v0350.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as KEY} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as KEY} from './fixtures/profile-session-v039.js';
 import {createBackup,parseBackup,BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {CAMPAIGN_PROGRESS_MISSIONS,createCampaignProgress,createCampaignMission,campaignScenarioForGame} from '../dist/campaign.js';
 import {encodeBattle,decodeBattle,identityOf} from '../dist/battle-codec.js';
@@ -43,7 +44,7 @@ test('future and interrupted markers never permit profile27 domain writes',()=>{
  }
 });
 test('marker27 preserves actual earned Wake records and exact active reserve checkpoint in normal backup',()=>{
- const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed'&&m.id!=='the-empty-purse').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
+ const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed'&&m.id!=='the-empty-purse').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
  const game=createCampaignMission('wake-the-reserve'),scenario=campaignScenarioForGame(game,'wake-the-reserve');
  const post=game.state.buildings.find(b=>b.id===game.state.minorReserve.postId);game._damage(post,post.hp,0);game.update(.05);
  const data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:game.difficulty,time:60,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(game,scenario)}],battle:encodeBattle(game,scenario,{campaignProgress:progress})};

@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Game} from '../dist/engine.js';
 import {identityOf, encodeBattle, decodeBattle} from '../dist/battle-codec.js';
 import {createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v039.js';
 import {createCampaignProgress, CAMPAIGN_PROGRESS_MISSIONS} from '../dist/campaign.js';
 import {CURRENT_CHALLENGES} from '../dist/challenges.js';
 import {protocolEight} from './fixtures/profile-session-v0181-source.mjs';
@@ -12,7 +13,7 @@ const marker=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',
 function storage(entries=[]) {const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(k);data.set(k,v);},removeItem(k){writes.push(k);data.delete(k);}};}
 function earned() {
   return {
-    campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
+    campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
     trials:Object.fromEntries(CURRENT_CHALLENGES.map((c,i)=>[c.id,{completed:true,bestTime:70+i}])),
     settings:{sound:false,music:false,sfx:true,volume:.3,reducedMotion:true,quality:'low',keyboard:{version:1,bindings:{build1:'KeyQ',volley:null}}},
     history:[{won:true,draw:false,challengeId:'shieldbreaker',campaignId:null,difficulty:'normal',time:75,kills:12,built:5,date}],

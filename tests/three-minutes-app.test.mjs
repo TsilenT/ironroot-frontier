@@ -1,6 +1,7 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import * as c from '../dist/campaign.js';import {startupHarness} from './mobile-startup-fixture.mjs';import {advanceObjectiveBattle} from '../dist/objectives.js';
 for(const [width,height]of [[320,568],[500,850],[844,390],[1180,757]])test(`Three Minutes More HUD uses actual180-second countdown and earned full roster at ${width}x${height}`,()=>{
- const {c:app,$}=startupHarness({width,height});app.campaignProgress={...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+ const {c:app,$}=startupHarness({width,height});app.campaignProgress={...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
  const g=c.createProgressionCampaignMission('three-minutes-more',app.campaignProgress),initial=g.serialize();app.start(g,null,'three-minutes-more');app.updateHUD();
  assert.equal($('objectiveTime').textContent,'180 remaining');assert.notEqual($('enemyHpText').textContent,'?');assert.equal(app.protectedControls.size,0);assert.equal(Object.keys(g.buildings).length,8);
  // Explicitly synthetic final-frame fixture. The paid route is a separate test.

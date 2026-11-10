@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -33,7 +34,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const opaque = () => keys.map(key => [key, `  retained opaque ${key} bytes\n`]);
 const row = game => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:0, built:0, date, identity:identityOf(game, campaignScenarioForGame(game, 'the-hammer-turns'))});
 function earned() {
-  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id !== 'the-long-screen')).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  const campaign = {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id !== 'the-long-screen')).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
   const game = createCampaignMission('the-hammer-turns');
   assert.ok(game.buyCitadelOption('arrows').ok);
   for (let i = 0; i < 40; i++) game.update(.05);

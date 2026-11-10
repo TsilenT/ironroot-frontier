@@ -1,6 +1,7 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 /** Synthetic registered interaction, not an additional strategy attempt. */
 import test from 'node:test';import assert from 'node:assert/strict';import * as c from '../dist/campaign.js';import {Game,getRuleset,supportsAutonomousAir} from '../dist/engine.js';import {encodeBattle,decodeBattle} from '../dist/battle-codec.js';
-const ID='cut-the-bowstrings',progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
+const ID='cut-the-bowstrings',progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 test('actual inherited flyer acquires adjacent-road enemy and retains physical combat and exact RNG through both restore paths',()=>{
  const g=c.createCampaignMission(ID);g.state.buildings=c.getCampaignTargets(g,ID).map(t=>t.building);g.state.income=[5,5];g.state.units=g.state.units.slice(0,1);g.aiTimer=30;const flyer=g.state.units[0];g._spawn({type:'wardenLodge',side:1,lane:1,x:flyer.x+150,level:1});const target=g.state.units.at(-1),hp=target.hp;
  g.update(.05);assert.equal(flyer.airTargetId,target.id);g.update(.017);assert.ok(g.accumulator>0);const snapshot=g.serialize(),identity=c.campaignScenarioForGame(g,ID);
