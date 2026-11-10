@@ -56,3 +56,41 @@ broad compatibility/aggregate gates. The known checkpoint001 CI failures include
 both the now-fixed real import cycle and separate historical fingerprint/count
 assumptions; narrow focused passes are not a claim that its aggregate was green.
 No browser, rendering or external workflow action has run.
+
+Checkpoint003 is the one bounded finale counterpush revision. Production uses a
+new exact `frontier-campaign-last-engine-r2` identity and revision-2 movement
+state; the earlier private boss module and its fixed paid evidence stay intact.
+The Engine moves at 78 world units/sec across empty enemy territory, then 26
+from midfield onward. The geographic transition does not depend on casualties.
+Its HP, pulse, emergence, body, attack damage/reach and ordinary paid economy
+remain unchanged. Explicit approach/siege tick counters are strictly validated
+and resumed with the body position. There are no scripted building deaths,
+invulnerability, mandatory core damage or required losses.
+
+The native renderer source now depicts the real cross-road body and minimap
+footprint. Reveal-only HUD/pause copy explains the approach, damageable emergence,
+physical siege and two-part victory; pre-reveal briefing/Scout remain about the
+fortress. Ending text is emitted only by the true completion transition. The app
+uses an infinite objective deadline for this encounter. Named original target
+controls cover Ramparts and Granary, and Night/Crossing accessible Scout wording
+is mission-specific. Focused source, movement, save, reveal, pacing and paid-route
+regressions pass. Rendered appearance, human difficulty and physical-device
+interaction remain unverified; no browser or rendering operation has run.
+
+The private integrated candidate now uses profile protocol31 and version/cache
+0.40.0. The exact released v0.39 protocol30 writer is retained as a literal-hash
+fixture; the fence changes marker handling only and preserves earned domains.
+Historical fixture builders explicitly stop before the five final missions;
+backup strictness and prerequisite validation have not been relaxed. Prior
+runtime assertions reverse exact additive engine hunks to a literal canonical
+v0.39 hash before applying their existing historical oracles. Runtime path guards
+retain the archived parent closure plus enumerated production additions. The
+publication filename guard admits exactly the two reviewed pure specification
+module names without allowing arbitrary spec/QA/evidence files. This is source
+validation only; no publishing operation is authorized or performed.
+
+The focused checkpoint has 135 passing tests including registered production
+routes, reveal/movement saves, profile31 and publication guard mocks. The separate
+profile compatibility set has 440 passing checks and the initial historical
+mechanics set has 194. Source syntax and the67-file cache/runtime guard pass.
+Broad aggregate compatibility remains pending; these counts do not replace it.

@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {Game,getRuleset,supportsAutonomousAir,buildSites} from '../dist/engine.js';
 import * as c from '../dist/campaign.js';import {advanceObjectiveBattle} from '../dist/objectives.js';
 import {encodeBattle,decodeBattle,validateBattleIdentity} from '../dist/battle-codec.js';
 const ID='three-minutes-more';
-export const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
+export const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 test('registered Twin Span survival factory has ordinary full roster, healthy cores and finite purses',()=>{
  const g=c.createProgressionCampaignMission(ID,progress()),m=c.getCampaignMission(ID);
  assert.equal(g.ruleset,getRuleset('frontier-campaign-three-minutes'));assert.equal(supportsAutonomousAir(g.ruleset),true);assert.ok(g.ruleset.citadel);assert.equal(Object.keys(g.buildings).length,8);

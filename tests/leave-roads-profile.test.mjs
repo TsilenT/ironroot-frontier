@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import * as old27 from './fixtures/profile-session-v0360.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as KEY} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as KEY} from './fixtures/profile-session-v039.js';
 import {createBackup,parseBackup,BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {CAMPAIGN_PROGRESS_MISSIONS,createCampaignProgress,createCampaignMission,campaignScenarioForGame} from '../dist/campaign.js';
 import {encodeBattle,decodeBattle,identityOf} from '../dist/battle-codec.js';
@@ -43,7 +44,7 @@ test('future and interrupted markers never permit profile28 domain writes',()=>{
  }
 });
 test('marker28 preserves actual earned Wake records and exact active reserve checkpoint in normal backup',()=>{
- const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
+ const progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!=='cut-the-bowstrings'&&m.id!=='leave-no-road-closed').map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};
  const game=createCampaignMission('wake-the-reserve'),scenario=campaignScenarioForGame(game,'wake-the-reserve');
  const post=game.state.buildings.find(b=>b.id===game.state.minorReserve.postId);game._damage(post,post.hp,0);game.update(.05);
  const data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:game.difficulty,time:60,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(game,scenario)}],battle:encodeBattle(game,scenario,{campaignProgress:progress})};
@@ -54,7 +55,7 @@ test('marker28 preserves actual earned Wake records and exact active reserve che
 });
 
 test('profile28 five-domain backup retains Road control checkpoint and all 36 earlier current/legacy records',()=>{
- const id='leave-no-road-closed',progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==id).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+ const id='leave-no-road-closed',progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==id).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
  const g=createCampaignMission(id);g.state.time=20;g.tick=400;g.state.campaignControl.heldSeconds=9.5;g.state.campaignControl.bridges.forEach(b=>b.owner=0);
  const scenario=campaignScenarioForGame(g,id),data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:g.difficulty,time:500,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(g,scenario)}],battle:encodeBattle(g,scenario,{campaignProgress:progress})};
  const raw=backend([[KEY,stamp(28)],...Object.entries(K).map(([domain,key])=>[key,JSON.stringify(data[domain])])]);

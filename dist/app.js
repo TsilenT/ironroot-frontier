@@ -1,3 +1,4 @@
+import {lastEngineView} from './final-chapter-view.js';
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
@@ -93,6 +94,7 @@ import {
   mergeCampaignProgress,
   writeCampaignProgress,
   recordCampaignResult,
+  campaignEndingReward,
   getProgressionCampaignOverview as getCampaignOverview,
   isMissionUnlocked,
 } from './campaign.js';
@@ -1233,7 +1235,7 @@ function chartedMission() {
 function objectiveFocusTargets() {
   const charted = chartedMission();
   if (charted) return chartedObjectiveTargets(charted, battleView(), getCampaignTargets(game, currentCampaign));
-  if (['through-the-reed-beds', 'cut-the-bowstrings'].includes(currentCampaign)) return getCampaignTargets(game, currentCampaign).map(target => ({
+  if (['through-the-reed-beds', 'cut-the-bowstrings', 'below-the-ramparts', 'the-last-granary'].includes(currentCampaign)) return getCampaignTargets(game, currentCampaign).map(target => ({
     ...target, label:target.name, road:['North','Middle','South'][target.lane],
     hp:target.building?.hp??0,maxHp:target.building?.maxHp??0,
     percent:target.building?Math.ceil(100*target.building.hp/target.building.maxHp):0,
@@ -1259,6 +1261,7 @@ function currentMinorReserve() {
     ? minorReserveView(game, { ended: !!objectiveOutcome }) : null;
 }
 function beginProtectedObjectives() {
+  lastEngineMode = null;
   protectedMonitor = currentCampaign && !chartedMission()
     ? createProtectedObjectiveMonitor(game, currentCampaign) : null;
   protectedControls.clear();
@@ -1287,11 +1290,11 @@ function beginProtectedObjectives() {
   $('minorReserveHUD').classList.toggle('hidden', !reserve);
   $('protectedTargets').classList.toggle('hidden', !targets.length);
   $('objectiveIdentity').classList.toggle('hidden', !docked);
-  $('objectiveIdentity').textContent = targets.length ? currentChallenge ? `FIELD TRIAL · ANY ${getChallengeForGame(game, currentChallenge).requiredTargets} OF ${targets.length}` : `${game.difficulty.toUpperCase()} · ${currentCampaign === 'cut-the-bowstrings' ? 'BREAK BOTH BOWS' : currentCampaign === 'through-the-reed-beds' ? 'ANY 2 OF 3' : charted ? (charted.id==='false-quiet'?'FOG · CHARTED FORT':'FOG · CHARTED POSTS') : signals ? 'KEEP 1 SIGNAL' : 'PROTECT'}` : '';
+  $('objectiveIdentity').textContent = targets.length ? currentChallenge ? `FIELD TRIAL · ANY ${getChallengeForGame(game, currentChallenge).requiredTargets} OF ${targets.length}` : `${game.difficulty.toUpperCase()} · ${currentCampaign === 'cut-the-bowstrings' ? 'BREAK BOTH BOWS' : ['through-the-reed-beds','below-the-ramparts'].includes(currentCampaign) ? 'ANY 2 OF 3' : currentCampaign === 'the-last-granary' ? 'BREAK BOTH MINES' : charted ? (charted.id==='false-quiet'?'FOG · CHARTED FORT':charted.id==='no-fires-tonight'?'FOG · CHARTED POST':'FOG · CHARTED POSTS') : signals ? 'KEEP 1 SIGNAL' : 'PROTECT'}` : '';
   if (reserve) $('objectiveIdentity').textContent = `${game.difficulty.toUpperCase()} · OPTIONAL POST`;
-  $('protectedTargets').classList.toggle('trial-targets', (!!currentChallenge || !!charted || ['through-the-reed-beds', 'cut-the-bowstrings'].includes(currentCampaign)) && !!targets.length);
+  $('protectedTargets').classList.toggle('trial-targets', (!!currentChallenge || !!charted || ['through-the-reed-beds', 'cut-the-bowstrings', 'below-the-ramparts', 'the-last-granary'].includes(currentCampaign)) && !!targets.length);
   $('protectedTargets').classList.toggle('charted-targets', !!charted && !!targets.length);
-  $('protectedTargets').setAttribute('aria-label', charted ? (charted.id==='false-quiet'?'Charted original Middle Road Fort. Health unknown outside current sight; dispatch confirms destruction. Activate the fort to focus its known location.':'Charted original customs posts. Health unknown outside current sight; dispatch confirms destruction. Activate a post to focus its known location.') : currentCampaign === 'cut-the-bowstrings' ? 'Break both original enemy archery ranges; activate a standing position to focus camera' : currentChallenge || currentCampaign === 'through-the-reed-beds' ? 'Choose any two original enemy positions; activate a standing position to focus camera' : signals ? 'Keep at least one original signal; activate a standing signal to focus camera' : 'Protected original structures; activate to focus camera');
+  $('protectedTargets').setAttribute('aria-label', charted ? (charted.id==='no-fires-tonight'?'Charted original North Command Post. Health unknown outside current sight; dispatch confirms destruction. Activate to focus its known location.':charted.id==='false-quiet'?'Charted original Middle Road Fort. Health unknown outside current sight; dispatch confirms destruction. Activate the fort to focus its known location.':'Charted original customs posts. Health unknown outside current sight; dispatch confirms destruction. Activate a post to focus its known location.') : currentCampaign === 'cut-the-bowstrings' ? 'Break both original enemy archery ranges; activate a standing position to focus camera' : currentCampaign === 'the-last-granary' ? 'Destroy both original enemy supply mines; activate a standing mine to focus camera' : currentChallenge || ['through-the-reed-beds','below-the-ramparts'].includes(currentCampaign) ? 'Choose any two original enemy positions; activate a standing position to focus camera' : signals ? 'Keep at least one original signal; activate a standing signal to focus camera' : 'Protected original structures; activate to focus camera');
   for (const target of targets) {
     const button = document.createElement('button');
     button.type = 'button';
@@ -1985,7 +1988,7 @@ function finish() {
       $('resultObjectives').append(p);
     }
   }
-  if (['through-the-reed-beds', 'cut-the-bowstrings'].includes(mission?.id)) for (const target of getCampaignTargets(game, currentCampaign)) {
+  if (['through-the-reed-beds', 'cut-the-bowstrings', 'below-the-ramparts', 'the-last-granary'].includes(mission?.id)) for (const target of getCampaignTargets(game, currentCampaign)) {
     const p=document.createElement('p');
     p.textContent=`${target.name}: ${target.building ? won ? 'standing · not needed' : 'standing' : 'original destroyed'}`;
     $('resultObjectives').append(p);
@@ -2040,11 +2043,14 @@ function finish() {
   }
   if (mission && won) {
     const priorRoster = getCampaignRoster(campaignProgress);
+    const priorProgress = campaignProgress;
     campaignProgress = recordCampaignResult(
       campaignProgress,
       currentCampaign,
       game,
     );
+    const ending = campaignEndingReward(priorProgress,campaignProgress,currentCampaign,game);
+    if(ending){$('resultEyebrow').textContent='CAMPAIGN COMPLETE';$('resultTitle').textContent=ending.title;$('resultCopy').textContent=ending.text;}
     const earnedRoster = getCampaignRoster(campaignProgress);
     const newBuildings = earnedRoster.buildings.filter(type => !priorRoster.buildings.includes(type));
     if (newBuildings.length) {
@@ -2413,6 +2419,7 @@ window.addEventListener('storage', (event) => {
 new ResizeObserver(() => { renderer.resize(); positionToast(); syncViewportSafety(); }).observe($('battle'));
 new ResizeObserver(positionToast).observe($('objectiveHUD'));
 new ResizeObserver(() => syncChoice()).observe($('buildCards'));
+let lastEngineMode = null;
 let hudTimer = 0,
   lastProfileCheck = 0;
 function updateHUD() {
@@ -2487,7 +2494,8 @@ function updateHUD() {
         (currentCampaign
           ? evaluateCampaignMission(game, currentCampaign)
           : evaluateChallenge(game, currentChallenge));
-    $('phase').textContent = authored.name.toUpperCase();
+    const engineView = lastEngineView(game);
+    $('phase').textContent = (engineView?.name || authored.name).toUpperCase();
     const label = document.createElement('small');
     label.textContent = currentCampaign ? supportsFog(game.ruleset) ? `CAMPAIGN · FOG${s.overtime ? ' · FASTER WAVES' : ''}` : 'CAMPAIGN' : 'FIELD TRIAL';
     $('phase').append(label);
@@ -2516,8 +2524,13 @@ function updateHUD() {
     if (riverControlContext() && !outcome.completed && !outcome.failed)
       $('objectiveProgress').textContent = controlProgressLabel(crossing, riverControlContext());
     if (controlMode) $('objectiveProgress').setAttribute('aria-label', controlProgressDescription(crossing, riverControlContext()));
-    $('objectiveTime').textContent =
+    $('objectiveTime').textContent = authored.timeLimit === null ? 'No deadline' :
       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
+    if(engineView){
+      $('objectiveProgress').textContent = engineView.objective + (engineView.mode==='defeated'?'':` Engine ${Math.ceil(engineView.hp)}/${engineView.maxHp} HP · ${engineView.mode}`);
+      $('objectiveProgress').setAttribute('aria-label',engineView.description);
+      if(engineView.mode!==lastEngineMode){$('protectedAlert').textContent=engineView.description;toast(engineView.description);lastEngineMode=engineView.mode;}
+    }
     const signals = currentSignalProtection();
     if (signals && !outcome.completed && !outcome.failed) {
       $('objectiveProgress').textContent = signals.hudLabel;
@@ -2662,7 +2675,7 @@ function frame(now) {
             ? evaluateCampaignMission(g, currentCampaign)
             : evaluateChallenge(g, currentChallenge);
         },
-        authored.timeLimit,
+        authored.timeLimit ?? Infinity,
       );
       if (outcome.completed || outcome.failed) objectiveOutcome = outcome;
     } else {
@@ -3092,10 +3105,11 @@ function syncPauseMenu() {
   const mission = currentCampaign && CAMPAIGN_MISSIONS.find(m => m.id === currentCampaign);
   const trial = currentChallenge && getChallengeForGame(game, currentChallenge);
   const noun = mission ? 'mission' : trial ? 'field trial' : 'battle';
-  $('pauseBattleName').textContent = mission?.name || trial?.name || game.map.name;
+  const engineView = lastEngineView(game);
+  $('pauseBattleName').textContent = engineView?.name || mission?.name || trial?.name || game.map.name;
   $('pauseContext').textContent = `${mission ? 'Campaign' : trial ? 'Field trial' : supportsFog(game.ruleset) ? 'Skirmish · Fog' : 'Skirmish'} · ${timeText(game.state.time)} · ${speed}× speed`;
   updateCitadelUI();
-  $('pauseObjective').textContent = mission?.objective || trial?.objective || 'Destroy the enemy citadel.';
+  $('pauseObjective').textContent = engineView?.description || mission?.objective || trial?.objective || 'Destroy the enemy citadel.';
   const controlMode = supportsCampaignControl(game.ruleset);
   $('pauseBridgeDetails').classList.toggle('hidden', !game.state.bridgeControl && !controlMode);
   if (game.state.bridgeControl || controlMode) {
@@ -3103,8 +3117,8 @@ function syncPauseMenu() {
     $('pauseBridgeStatus').textContent = (controlMode ? controlProgressDescription(campaignControlStatus(game), riverControlContext()) + ' ' : '') + bridgeSummary(game);
     $('pauseBridgeRules').textContent = riverControlContext()
       ? mission.objective + ' Ground troops capture after two continuous uncontested seconds. Opposing troops, including flyers, interrupt capture and deny control time. Flyers cannot capture. Empty bridges retain ownership. Either side can capture. Falling below two clear bridges pauses your total without resetting it. Once 60 seconds are secured, that goal stays complete while fighting and bridge ownership continue. Replacements do not undo destruction of the original post. Bridges grant no income or capture bounty.'
-      : controlMode ? (game.ruleset.id === 'frontier-campaign-leave-roads' ? 'Secure all three bridges for 30 cumulative seconds, or destroy the enemy citadel, by 10:00 while yours survives. Ground captures take two uncontested seconds. Enemy presence pauses earned control time without resetting it. Flyers deny but cannot capture. Empty ownership persists. No bridge income or capture bounty. Normal paid adaptive enemy and 5:00 escalation continue.' : CAMPAIGN_CONTROL_RULES_TEXT) : BRIDGE_RULES_TEXT;
-    $('pauseBridgeLegend').textContent = controlMode ? CONTROL_MAP_LEGEND : 'Map labels: Y = you, E = enemy, — = unowned, X = payout blocked. An arrow points to the side attempting a ground capture. Bridges are numbered from the top road.';
+      : controlMode ? (game.ruleset.id === 'frontier-campaign-leave-roads' ? 'Secure all three bridges for 30 cumulative seconds, or destroy the enemy citadel, by 10:00 while yours survives. Ground captures take two uncontested seconds. Enemy presence pauses earned control time without resetting it. Flyers deny but cannot capture. Empty ownership persists. No bridge income or capture bounty. Normal paid adaptive enemy and 5:00 escalation continue.' : currentCampaign === 'carry-the-crossing' ? 'Hold both clear Twin Span crossings for 60 cumulative seconds, or destroy the enemy citadel, by 10:00. Ground captures take two uncontested seconds. Flyers deny but cannot capture. Contested progress pauses without resetting. No bridge gold. Your citadel must survive; 1 HP is enough.' : CAMPAIGN_CONTROL_RULES_TEXT) : BRIDGE_RULES_TEXT;
+    $('pauseBridgeLegend').textContent = controlMode ? (currentCampaign==='carry-the-crossing'?CONTROL_MAP_LEGEND.replace('north, middle, south','north, south'):CONTROL_MAP_LEGEND) : 'Map labels: Y = you, E = enemy, — = unowned, X = payout blocked. An arrow points to the side attempting a ground capture. Bridges are numbered from the top road.';
   }
   $('restartBattle').textContent = `Restart ${noun}…`;
   $('restartTitle').textContent = `Restart ${noun}?`;

@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runInContext} from 'node:vm';
@@ -14,7 +15,7 @@ import {renderBattleReport} from '../dist/report-view.js';
 import {startupHarness} from './mobile-startup-fixture.mjs';
 
 const id='a-river-between-us', mission=getCampaignMission(id,1);
-function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
+function unlock(c){c.campaignProgress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};}
 const fresh=()=>createCampaignMission(id);
 const section=(source,from,to)=>source.slice(source.indexOf(from),source.indexOf(to,source.indexOf(from)));
 const post=g=>getCampaignTargets(g,id).find(t=>t.kind==='destroy');

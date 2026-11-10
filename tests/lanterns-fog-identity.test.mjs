@@ -1,3 +1,5 @@
+import {beforeFinalChapterRules} from './historical-catalog.mjs';
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -41,7 +43,7 @@ function assertRejectsUnchanged(saved, mutations, read = Game.restore) {
 
 test('Lanterns adds one frozen campaign fog identity without changing any historical descriptor bytes', () => {
   assert.equal(LANTERNS_RULESET_ID, 'frontier-campaign-lanterns');
-  const oldRules = Object.fromEntries(Object.entries(RULESETS).filter(([id]) => !['frontier-campaign-bowstrings','frontier-campaign-three-minutes','frontier-campaign-leave-roads','frontier-campaign-empty-purse','frontier-campaign-wake-reserve','frontier-campaign-shared-watch','frontier-campaign-long-screen','frontier-hammer-prototype','frontier-campaign-hammer-turns',LANTERNS_RULESET_ID, 'frontier-campaign-borrowed-ground', 'frontier-campaign-river-between','frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b','frontier-campaign-road-we-know','frontier-campaign-reed-beds','frontier-campaign-archers-quay','frontier-campaign-salt-stores'].includes(id)));
+  const oldRules = Object.fromEntries(Object.entries(RULESETS).filter(([id])=>beforeFinalChapterRules(id)).filter(([id]) => !['frontier-campaign-bowstrings','frontier-campaign-three-minutes','frontier-campaign-leave-roads','frontier-campaign-empty-purse','frontier-campaign-wake-reserve','frontier-campaign-shared-watch','frontier-campaign-long-screen','frontier-hammer-prototype','frontier-campaign-hammer-turns',LANTERNS_RULESET_ID, 'frontier-campaign-borrowed-ground', 'frontier-campaign-river-between','frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b','frontier-campaign-road-we-know','frontier-campaign-reed-beds','frontier-campaign-archers-quay','frontier-campaign-salt-stores'].includes(id)));
   assert.equal(createHash('sha256').update(JSON.stringify(oldRules)).digest('hex'), '7977e413ed6a0e7fde83f2af4d024c8b5e277c01c9c4e4bba67cef57d2606e1f');
   const rules = getRuleset(LANTERNS_RULESET_ID);
   assert.equal(rules.revision, 1); assert.equal(rules.campaignOnly, true);
@@ -54,13 +56,13 @@ test('Lanterns adds one frozen campaign fog identity without changing any histor
   assert.equal(DEFAULT_SKIRMISH_RULESET_ID, 'frontier-citadel-open');
 });
 
-test('fog recognizes only the five exact registry objects, never campaign flags or forged policy copies', () => {
-  assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(rules => rules.id).sort(), ['frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID].sort());
-  for (const id of ['frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID]) {
+test('fog recognizes only the six exact registry objects, never campaign flags or forged policy copies', () => {
+  assert.deepEqual(Object.values(RULESETS).filter(supportsFog).map(rules => rules.id).sort(), ['frontier-campaign-no-fires','frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID].sort());
+  for (const id of ['frontier-campaign-no-fires','frontier-campaign-false-quiet-a','frontier-campaign-false-quiet-b',LANTERNS_RULESET_ID, FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID]) {
     const rules = getRuleset(id); assert.ok(supportsFog(rules));
     for (const forged of [{ ...rules }, Object.freeze({ ...rules }), Object.create(rules), { id, revision: 1, fog: FOG }, { ...rules, revision: 2 }, { ...rules, id: 'arbitrary-campaign-fog' }]) assert.equal(supportsFog(forged), false);
   }
-  for (const rules of Object.values(RULESETS).filter(rules => rules.campaignOnly && rules.id !== LANTERNS_RULESET_ID && !rules.id.startsWith('frontier-campaign-false-quiet-'))) {
+  for (const rules of Object.values(RULESETS).filter(rules => rules.campaignOnly && rules.id !== 'frontier-campaign-no-fires' && rules.id !== LANTERNS_RULESET_ID && !rules.id.startsWith('frontier-campaign-false-quiet-'))) {
     assert.equal(supportsFog(rules), false); assert.equal(supportsFog({ ...rules, fog: FOG }), false);
   }
 });
@@ -174,7 +176,7 @@ test('identity-only admission rejects Lanterns under old scenarios and preserves
   assertRejectsUnchanged(skirmish, [data => { data.scenario = clone(scenario); }, data => { data.map.id = 'long-march'; }], validateBattleIdentity);
 });
 
-const earnedProgress = () => ({ ...campaign.createCampaignProgress(), missions: Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(mission => !['cut-the-bowstrings','three-minutes-more',scenario.id, 'leave-no-road-closed', 'the-empty-purse', 'wake-the-reserve', 'the-shared-watch', 'the-long-screen', 'the-hammer-turns', 'borrowed-ground', 'a-river-between-us', 'false-quiet', 'the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(mission.id)).map(mission => [mission.id, { completed: true, stars: 2, bestTime: 60 }])) });
+const earnedProgress = () => ({ ...campaign.createCampaignProgress(), missions: Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(mission => !['cut-the-bowstrings','three-minutes-more',scenario.id, 'leave-no-road-closed', 'the-empty-purse', 'wake-the-reserve', 'the-shared-watch', 'the-long-screen', 'the-hammer-turns', 'borrowed-ground', 'a-river-between-us', 'false-quiet', 'the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(mission.id)).map(mission => [mission.id, { completed: true, stars: 2, bestTime: 60 }])) });
 function campaignWithMemories() {
   const game = campaign.createProgressionCampaignMission(scenario.id, earnedProgress());
   assert.deepEqual(game.state.fog.sides.map(side => side.structures), [[], []], 'authored setup must not retain discarded default-building knowledge');
@@ -225,7 +227,7 @@ test('Lanterns identity history and backup reject every other campaign identity,
     ...['long-march', 'twin-span', 'intro-one-road', 'intro-two-road'].map(id => value => { value.map.id = id; }),
     value => { value.map.revision = 2; }, value => { value.ruleset.revision = 2; }, value => { value.scenario.revision = 2; },
     ...[FOG_RULESET_ID, FOG_SKIRMISH_RULESET_ID, DEFAULT_SKIRMISH_RULESET_ID, 'frontier-citadel-timed', 'frontier-citadel-bridge-open', 'frontier-campaign-citadel-open', 'frontier-campaign-one-signal'].map(id => value => { value.ruleset.id = id; }),
-    ...campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(mission => mission.id !== scenario.id).map(mission => value => { value.scenario = { kind: 'campaign', id: mission.id, revision: 1 }; }),
+    ...campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(mission => mission.id !== scenario.id).map(mission => value => { value.scenario = { kind: 'campaign', id: mission.id, revision: 1 }; }),
     value => { value.scenario = { kind: 'skirmish', id: 'standard', revision: 1 }; },
     ...CURRENT_CHALLENGES.map(trial => value => { value.scenario = { kind: 'trial', id: trial.id, revision: trial.scenarioRevision ?? 1 }; }),
     ...TRAINING_LESSONS.map(lesson => value => { value.scenario = { kind: 'lesson', id: lesson.id, revision: 1 }; }),

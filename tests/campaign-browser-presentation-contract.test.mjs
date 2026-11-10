@@ -39,7 +39,7 @@ function authoredRows(mission) {
 test('current briefings retain exact rosters and lists; only the 19 revised historical missions have a records notice', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
-  assert.equal(missions.length, 37);
+  assert.equal(missions.length, 42);
   let notices = 0;
   for (const mission of missions) {
     const automatic = mission.scenarioRevision >= 3;
@@ -56,7 +56,7 @@ test('current briefings retain exact rosters and lists; only the 19 revised hist
 
 test('historical revision-one and revision-two descriptors keep their exact briefing without the flight records notice', () => {
   const missions = [...ALL_CAMPAIGN_MISSIONS, ...ONBOARDING_MISSIONS, ...PROGRESSION_CAMPAIGN_MISSIONS];
-  assert.equal(missions.length, 37);
+  assert.equal(missions.length, 42);
   for (const mission of missions) {
     assert.ok((mission.scenarioRevision || 1) < 3);
     const rows = renderBriefing(mission);
