@@ -1,5 +1,5 @@
 // Atomic, versioned offline shell. Bump VERSION with every public build.
-const VERSION = 'ironroot-v0.39.1';
+const VERSION = 'ironroot-v0.39.2';
 const FILES = [
   './minor-reserve.js',
   './minor-reserve-view.js',

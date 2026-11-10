@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runInContext} from 'node:vm';
-import {startupHarness} from './mobile-startup-fixture.mjs';
+import {startupHarness,installBattlePointerHandlers} from './mobile-startup-fixture.mjs';
 import {historyWindow} from './menu-history-fixture.mjs';
 import {createMenuHistory} from '../dist/menu-history.js';
 import {Game,getRuleset,getMap} from '../dist/engine.js';
@@ -227,6 +227,25 @@ test('five Back → Forward → explicit Resume cycles reuse the existing pause/
   }
   h.back();assert.equal(h.c.paused,true);assert.equal(h.c.started,true);
   h.back();assert.equal(h.c.started,false);assert.equal(hidden(h,'welcome'),false);
+});
+
+test('held field gestures through Back/Forward/explicit Resume cannot revive Volley or spend from the owned checkpoint',()=>{
+ const h=harness();h.start();const {c,$}=h,field=installBattlePointerHandlers(h);
+ const from=h.source.indexOf("$('rally').onclick ="),to=h.source.indexOf('function pauseControl(',from);
+ runInContext(h.source.slice(from,to),c);
+ const game=c.game,before=JSON.stringify(game.serialize()),length=h.browser.history.length;
+ const unchanged=()=>{assert.equal(c.game,game);assert.equal(JSON.stringify(game.serialize()),before);assert.equal(c.battleSession.status(),'current');assert.equal(c.ui.spell,false);assert.equal($('rally').attributes['aria-pressed'],'false');assert.equal(JSON.stringify(JSON.parse(h.data.get(SAVE)).game),before);};
+ for(let i=0;i<3;i++){
+  $('rally').onclick();assert.equal(c.ui.spell,true);field.emit('pointerdown',1);
+  h.back();assert.equal(c.paused,true);assert.equal(field.captured.has(1),false);field.emit('pointerup',1);unchanged();
+  field.emit('pointerdown',2);h.forward();assert.equal(c.paused,true);assert.equal(field.captured.has(2),false);field.emit('pointerup',2);unchanged();
+  field.emit('pointerdown',3);c.pause(false,{explicit:true});h.sync();assert.equal(c.paused,false);assert.equal(field.captured.has(3),false);field.emit('pointerup',3);unchanged();
+  assert.equal(h.browser.history.length,length,'deterministic fixture retains its pause/play ancestry');
+ }
+ $('rally').onclick();field.emit('pointerdown',4);field.emit('pointerup',4);
+ assert.equal(game.state.gold[0],JSON.parse(before).state.gold[0]-game.ruleset.spell.cost);
+ assert.equal(game.state.spellCooldown[0],game.ruleset.spell.cooldown);assert.equal(c.ui.spell,false);
+ const after=game.serialize();field.emit('pointerup',4);assert.deepEqual(game.serialize(),after);
 });
 
 

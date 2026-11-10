@@ -845,9 +845,15 @@ $('closeSelection').onclick = (e) => {
 };
 $('cancelBuild').onclick = cancel;
 $('rally').onclick = () => {
-  if (!canInteract()) return;
+  if (!canInteract() || dialogLayers.some(layer => !layer.classList.contains('hidden'))) return;
   if (firstBuildHold) {
     toast('Build a barracks first to begin.');
+    return;
+  }
+  if (ui.spell) {
+    resetBattleGesture();
+    cancel();
+    sound('click');
     return;
   }
   if (game.state.spellCooldown[0] > 0) {
@@ -860,7 +866,8 @@ $('rally').onclick = () => {
     toast(`Need ${SPELL.cost} gold.`);
     return;
   }
-  ui.spell = !ui.spell;
+  resetBattleGesture();
+  ui.spell = true;
   ui.build = null;
   ui.selected = null;
   updateSelection();
@@ -4375,6 +4382,7 @@ function applyMenuNavigation(route, {direction = 'back'} = {}) {
     (!$('settingsModal').classList.contains('hidden') && !settingsWasPaused) ||
     (!$('helpModal').classList.contains('hidden') && !helpWasPaused));
   interruptMobileInput();
+  if (ui.spell) cancel();
   // Only this retained attempt can be inspected. Previous attempts and reload
   // markers cannot reconstruct a Game or take ownership of a checkpoint.
   if (route.attempt != null && (!started || route.attempt !== navigationAttempt)) {

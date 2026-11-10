@@ -3,7 +3,7 @@ import {minorReserveView} from '../dist/minor-reserve-view.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
-import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
+import {Game,BUILDINGS,SPELL,UNITS,upgradeCost,buildBounds,DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
 import {CAMPAIGN_PROGRESS_MISSIONS as CAMPAIGN_MISSIONS,CURRENT_CAMPAIGN_CHAPTERS as CAMPAIGN_CHAPTERS,ONBOARDING_CHAPTER,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,getCampaignTargets,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked} from '../dist/campaign.js';
 import {createProtectedObjectiveMonitor,protectedLossDetails,isProtectedCampaignBuilding} from '../dist/protected-objectives.js';
 import {createObjectiveAlertPolicy} from '../dist/objective-alerts.js';
@@ -23,6 +23,21 @@ import {CURRENT_CHALLENGES as CHALLENGES,createChallenge,createCurrentChallenge,
 import {campaignFixture} from '../qa/browser/campaign-fixtures.mjs';
 import {layout,box} from './mobile-layout-fixture.mjs';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8'),html=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
+// Install the actual field handlers over startupHarness's reset spy. These
+// capture/coordinate adapters do not create a canvas or certify hit geometry.
+export function installBattlePointerHandlers(h) {
+ const {c,$,source}=h,field=$('battle'),captured=new Set();
+ field.setPointerCapture=id=>captured.add(id);
+ field.hasPointerCapture=id=>captured.has(id);
+ field.releasePointerCapture=id=>captured.delete(id);
+ c.buildBounds=buildBounds;c.renderer.snap=p=>p;c.renderer.screenToWorld=(x,y)=>({x,y});
+ const start=source.indexOf('let pointer = null;'),end=source.indexOf("$('battle').addEventListener(\n  'wheel',",start);
+ assert.ok(start>=0&&end>start);runInContext(source.slice(start,end),c);
+ return {captured,emit(type,id=1,extra={}) {
+  const r=field.getBoundingClientRect();
+  field[type]({pointerId:id,pointerType:'touch',button:0,clientX:r.left+1600,clientY:r.top+450,preventDefault(){},...extra});
+ }};
+}
 // This is a narrow DOM/geometry fixture, not native browser layout evidence.
 // It parses the actual HTML ancestry, makes hidden descendants unmeasurable,
 // and executes the real startup, HUD, protected-control and pause functions.
