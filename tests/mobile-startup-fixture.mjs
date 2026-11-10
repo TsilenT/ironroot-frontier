@@ -1,7 +1,7 @@
 import {signalProtectionSummary} from '../dist/campaign-presentation.js';
 import {minorReserveView} from '../dist/minor-reserve-view.js';
 import {campaignEndingReward} from '../dist/campaign.js';
-import {lastEngineView} from '../dist/final-chapter-view.js';
+import {lastEngineView,createLastEngineAudioObserver} from '../dist/final-chapter-view.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
@@ -77,7 +77,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   campaignBuildChoices,campaignTeaching,campaignCoach,guidancePointVisible,expandedBuilds:false,resumedBattle:false,coachEnabled:true,coachingHold:false,firstBuildHold:false,
   battleSafetyReason:null,resumeProblem:null,selectedRuleset:DEFAULT_SKIRMISH_RULESET_ID,briefingRestart:null,
   progressDirty:false,saveTimer:0,updateResume(){},setMode(){},activeDialog:null,writeBattle:()=>true,
-  campaignEndingReward,lastEngineView,supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},citadelDialogSafe(){return false;},
+  campaignEndingReward,lastEngineView,engineAudio:createLastEngineAudioObserver(),supportsAutonomousAir,airRulesGuide,airBuildingDescription,bridgeIncome,bridgeStatus,bridgeSummary,BRIDGE_RULES_TEXT,supportsCampaignControl,campaignControlStatus,CAMPAIGN_CONTROL_RULES_TEXT,skirmishRulesetId,updateCitadelUI(){},citadelDialogSafe(){return false;},
   controlProgressLabel,controlProgressDescription,CONTROL_MAP_LEGEND,
   supportsFog,observe,observeObjectiveResult,hasChartedIntelligence,chartedObjectiveTargets,chartedObjectiveObservation,observationFacade,observationHUD,ObservationAudio,FogRenderer,fogSetupAllowed,observedEnemyCitadelText,
   fogAudio:new ObservationAudio({ownCommandSounds:false}),fogRenderer:null,presentation:null,presentationGame:null,

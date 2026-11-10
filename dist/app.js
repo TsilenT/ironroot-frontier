@@ -1,4 +1,4 @@
-import {lastEngineView} from './final-chapter-view.js';
+import {lastEngineView,createLastEngineAudioObserver} from './final-chapter-view.js';
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
@@ -102,6 +102,7 @@ const $ = (id) => document.getElementById(id);
 const ordinaryRenderer = new Renderer($('battle'), $('minimap'));
 let renderer = ordinaryRenderer, fogRenderer = null;
 const fogAudio = new ObservationAudio({ ownCommandSounds: false });
+const engineAudio = createLastEngineAudioObserver();
 let presentation = null, presentationGame = null;
 function refreshPresentation() {
   presentationGame = game;
@@ -123,7 +124,7 @@ function resetBattlePresentation() {
   renderer.zoom = zoom; renderer.reducedMotion = preferences.reducedMotion;
   renderer.vfx?.setPreferences({ reducedMotion: preferences.reducedMotion, quality: preferences.quality });
   renderer.vfx?.reset(); renderer.rootwardenMotion?.clear();
-  renderer.resize(); fogAudio.reset();
+  renderer.resize(); fogAudio.reset(); engineAudio.prime(game);
   presentation = null; presentationGame = null;
   ui.pointer = null; ui.selected = null;
   refreshPresentation();
@@ -1155,8 +1156,8 @@ function start(
   speed = 1;
   resultShown = false;
   follow = false;
-  heardEffects = new WeakSet();
-  heardProjectiles = new WeakSet();
+  heardEffects = new WeakSet(game.state.effects);
+  heardProjectiles = new WeakSet(game.state.projectiles);
   renderer.vfx?.reset();
   cancel();
   $('welcome').classList.add('hidden');
@@ -2527,6 +2528,7 @@ function updateHUD() {
     $('objectiveTime').textContent = authored.timeLimit === null ? 'No deadline' :
       `${timeText(Math.ceil(Math.max(0, authored.timeLimit - s.time)))} remaining`;
     if(engineView){
+      $('objectiveTime').textContent = engineView.phaseCue + ' · No deadline';
       $('objectiveProgress').textContent = engineView.hudLabel;
       $('objectiveProgress').setAttribute('aria-label',engineView.accessibleLabel);
       if(engineView.announcementKey!==lastEngineAnnouncementKey){$('protectedAlert').textContent=engineView.announcement;lastEngineAnnouncementKey=engineView.announcementKey;}
@@ -2599,6 +2601,9 @@ function updateAudio() {
             : 'defeat'
           : 'battle',
   );
+  const blocked=!started||paused||coachingHold||document.hidden||!!ended;
+  const audioState=audio.getState?.(),audible=!blocked&&(!audioState||audioState.unlocked&&!audioState.muted&&audioState.sfxEnabled&&audioState.volume>0&&audioState.sfxVolume>0);
+  const engineCues=engineAudio.update(game,{audible,camera:renderer.camera,width:renderer.width,scale:renderer.scale});
   if (supportsFog(game.ruleset)) {
     const result = fogAudio.update(battleView(), { camera: renderer.camera, width: renderer.width, scale: renderer.scale, paused: !started || paused || coachingHold || document.hidden || !!ended });
     if (started && !paused && !coachingHold && !ended && !document.hidden) {
@@ -2607,7 +2612,8 @@ function updateAudio() {
     }
     return;
   }
-  if (!started || paused || coachingHold || ended) return;
+  if(blocked){for(const e of game.state.effects)heardEffects.add(e);for(const p of game.state.projectiles)heardProjectiles.add(p);return;}
+  for(const cue of engineCues)sound(cue.name,{pan:cue.pan,volume:cue.volume});
   const s = game.state;
   audio.setIntensity(
     Math.min(
@@ -2622,6 +2628,7 @@ function updateAudio() {
   for (const e of s.effects) {
     if (heardEffects.has(e)) continue;
     heardEffects.add(e);
+    if(engineAudio.isImpact(game,e))continue;
     if (Math.abs(e.x - renderer.camera) > half + 100) continue;
     const name = {
       hit: 'sword',
