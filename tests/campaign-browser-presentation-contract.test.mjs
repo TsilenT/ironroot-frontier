@@ -1,3 +1,4 @@
+import {FINAL_CHAPTER_MISSION_IDS} from './historical-catalog.mjs';
 // Pure execution of the production briefing assignment plus browser-contract
 // checks. This does not execute a browser or establish native input/geometry.
 import test from 'node:test';
@@ -43,20 +44,20 @@ test('current briefings retain exact rosters and lists; only the 19 revised hist
   let notices = 0;
   for (const mission of missions) {
     const automatic = mission.scenarioRevision >= 3;
-    assert.equal(mission.scenarioRevision, ['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores','the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve','the-empty-purse','leave-no-road-closed','three-minutes-more','cut-the-bowstrings'].includes(mission.id) ? 1 : 5, mission.id);
+    assert.equal(mission.scenarioRevision, [...FINAL_CHAPTER_MISSION_IDS,'shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores','the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve','the-empty-purse','leave-no-road-closed','three-minutes-more','cut-the-bowstrings'].includes(mission.id) ? 1 : 5, mission.id);
     const rows = renderBriefing(mission);
     assert.deepEqual(rows, [...authoredRows(mission), ...(automatic ? [RECORDS_NOTICE] : [])], mission.id);
     assert.equal(rows.filter(row => row === RECORDS_NOTICE).length, automatic ? 1 : 0, mission.id);
     if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
   assert.equal(notices, 19);
-  assert.equal(missions.length - notices, 18, 'The eighteen additive missions have no earlier records revisions');
+  assert.equal(missions.length - notices, 23, 'The twenty-three additive missions have no earlier records revisions');
   assert.equal(JSON.stringify(progress), bytes);
 });
 
 test('historical revision-one and revision-two descriptors keep their exact briefing without the flight records notice', () => {
   const missions = [...ALL_CAMPAIGN_MISSIONS, ...ONBOARDING_MISSIONS, ...PROGRESSION_CAMPAIGN_MISSIONS];
-  assert.equal(missions.length, 42);
+  assert.equal(missions.length, 37);
   for (const mission of missions) {
     assert.ok((mission.scenarioRevision || 1) < 3);
     const rows = renderBriefing(mission);
