@@ -1,0 +1,13 @@
+# Leave No Road Closed: v0.37 candidate
+
+Production integration on exact tested Empty Purse PR45 head d52acb1de3c8f4d5bba6ca886234b3b81a8add21, tree cf7435a50de8a72eb484add6be8e99255acf4430. Purse was pending release at integration start and is now merged as ec8141611e50f50bce03002cdc3fb0378ab4596f with the same tree; publication verification is pending. Preserve its ancestry and PR46 head 821883c5ce77a7d6f0a9e1f93469813ccab3f7e1 rather than replacing newer runtime with the old prototype snapshot.
+
+Public identity leave-no-road-closed scenario1, frontier-campaign-leave-roads rules1, Classic1. Authored launch/Restart seed9305. Follows The Empty Purse; Chapter9 partial3/minimum5, catalog35/105, no Chapter10 or completion claim. Profile28 fences actual27 writers; prior fixture is exact tested source with provenance, not reconstructed.
+
+Opening and rules preserve frozen epoch2 formations, 900/100 gold, 6000HP, ordinary paid adaptive AI, prices, production, 5:00 escalation and earned roster. New immutable configuration uses existing cumulative-route-v1: all3 crossings for30 cumulative seconds OR enemy citadel within600 seconds with own core alive. Empty ownership persists; opposing presence pauses time; flyers deny but cannot capture. No bridge income or bounty. One HP and primary star suffice. No engine change, forced loss, replacement, purchase or route.
+
+Nine existing known 3-road policy cases are exact production parity inputs, not new balance cases. Broad/core win all3 seeds by core, cheap-third wins214927 by core and loses9305/760141. They accrue no three-road time. The separate unchanged prototype manual9305 attempt won bycontrol at visible1:54 with6000 ownHP and2001 enemyHP after interruption and resumed credit, using ordinary paid support. No own building loss/replacement observed. That evidence is not a human win-rate or native production UI claim.
+
+Runtime, catalog, identity resolver, save/history, truthful Scout/briefing/rules and profile fencing are integrated. New executable tests cover frozen opening and all nine known-policy parity cases, save continuation, wrong identities, three-road credit/interruption/no-income, optional1HP progress, deadlines and terminal precedence. Full aggregate compatibility work and native production review remain pending at this first source checkpoint. Remote CI and publication are separate gates.
+
+Generated results, logs, screenshots, external reviews and archives stay outside source. Frozen QA scenario/policies/runner remain unchanged; clean-checkout tests must not depend on sibling directories or incorrectly equate later production runtime bytes with an older historical closure.

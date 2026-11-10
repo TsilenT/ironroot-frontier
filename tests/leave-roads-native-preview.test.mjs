@@ -1,3 +1,4 @@
+import {engineBeforeReserve} from './shared-watch-engine-source.mjs';
 /** Structural preflight only. Candidate formations must NEVER receive a tick here. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -12,7 +13,6 @@ import {nativePresentation,buildingPresentation} from '../qa/leave-no-road-close
 import {NATIVE_SEEDS,createNativeSession,nativeEnded,nativeControlsDisabled,evaluateNative,setNativePaused,restartNative,advanceNative,paidNative} from '../qa/leave-no-road-closed/native-state.mjs';
 Game.prototype._step=function(){throw Error('Natural candidate tick forbidden in structural preflight');};
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const frozen=resolve(root,'../ironroot-leave-roads-epoch2');
 const bytes=p=>readFileSync(resolve(root,p));
 const hash=x=>createHash('sha256').update(x).digest('hex');
 function files(dir,prefix=''){return readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(resolve(dir,e.name),prefix+e.name+'/'):[prefix+e.name]).sort();}
@@ -27,15 +27,23 @@ function emptySynthetic({tick=0,time=0,gold=1000,onTick=()=>{}}={}){
  game.update=function(dt){calls.updates++;assert.equal(dt,.05);this.tick++;this.state.time+=dt;onTick(this);};
  return {session:{seed:9305,game,paused:true,wallAccumulator:0,outcome:evaluatePrototype(game)},calls};
 }
+function rendererBeforeReserve(){
+ let source=bytes('dist/render.js').toString();
+ {const addition="    this.drawMinorReserveLandmark(ui.minorReserve);\n", previous="";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
+ {const addition="    // The named northern post occupies this same label band at small scales.\n    if (!ui.minorReserve?.landmark || ui.minorReserve.ended)\n      c.fillText('ENEMY FRONTIER', this.map.width - 770, 145);\n", previous="    c.fillText('ENEMY FRONTIER', this.map.width - 770, 145);\n";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
+ {const addition="  }\n  drawMinorReserveLandmark(reserve) {\n    if (!reserve || reserve.ended) return;\n    const { x, y } = reserve.landmark || reserve.focus;\n    const c = this.c;\n    const label = reserve.landmark ? reserve.landmark.label\n      : reserve.phase === 'warning' ? reserve.title : 'North reserve entry \u00b7 once only';\n    c.save();\n    c.font = `600 ${Math.max(13, 10 / this.scale)}px \"DM Sans\",sans-serif`;\n    c.textAlign = 'center';\n    c.textBaseline = 'middle';\n    const width = c.measureText(label).width + 16;\n    const height = Math.max(22, 18 / this.scale);\n    const anchor = Math.max(width / 2 + 8, Math.min(this.map.width - width / 2 - 8, x));\n    c.fillStyle = '#14251ef2';\n    c.fillRect(anchor - width / 2, y - 126 - height / 2, width, height);\n    c.strokeStyle = reserve.phase === 'warning' ? '#ffd193' : '#b8ae74';\n    c.lineWidth = Math.max(1, 1 / this.scale);\n    c.strokeRect(anchor - width / 2, y - 126 - height / 2, width, height);\n    c.fillStyle = '#f5e2b5';\n    c.fillText(label, anchor, y - 126);\n    // A plain flag is a landmark, not the required-objective diamond/shield.\n    c.beginPath(); c.moveTo(x, y - 94); c.lineTo(x, y - 64); c.stroke();\n    c.fillRect(x, y - 94, 18, 10);\n    c.restore();\n", previous="";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
+ {const addition="    if (ui.minorReserve && !ui.minorReserve.ended) {\n      const reserve = ui.minorReserve;\n      const x = reserve.focus.x / this.map.width * w, y = reserve.focus.y / this.map.height * h;\n      c.save();\n      c.strokeStyle = '#ffe3a5'; c.lineWidth = 1.5;\n      c.strokeRect(x - 3.5, y - 3.5, 7, 7);\n      c.restore();\n    }\n", previous="";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
+ return source;
+}
 const methods=['build','upgrade','sell','cast','citadel'];
 
-test('hard-bound frozen scenario, runner, policies, plan and exact runtime bytes',()=>{
+test('hard-bound frozen QA source and unchanged historical engine/render primitives; no sibling checkout',()=>{
  const expected={'scenario.mjs':'7110143f2945f9cedea462f28d61523ab864df7176537f00e5f0dbeb931058e3','run.mjs':'b3dcd59cfa0db37ad03916fba10d7c9bb19b69f237ab11c274feaba9c8929399','policies.mjs':'7f0302a72831814dec13ec7512c90b524db0f306be73fed7f6a90c295f3d5980','PLAN.json':'1d7b19d889814978cd538873a9cf6b2f88102db62d0f9b0707fbdc1e4b254949'};
- for(const [name,digest] of Object.entries(expected)){const p='qa/leave-no-road-closed/'+name;assert.equal(hash(bytes(p)),digest,p);assert.equal(hash(readFileSync(resolve(frozen,p))),digest,'frozen '+p);}
- assert.deepEqual(files(resolve(root,'dist')),files(resolve(frozen,'dist')));
- for(const p of files(resolve(root,'dist')))assert.equal(hash(bytes('dist/'+p)),hash(readFileSync(resolve(frozen,'dist',p))),p);
- assert.equal(hash(bytes('dist/engine.js')),'6837fe338e80cf0f78d8ab1784d678d1a515667e1c397c1f9c19ddf73ab2fec6');
- assert.equal(hash(bytes('dist/render.js')),'d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa');
+ for(const [name,digest] of Object.entries(expected)){const p='qa/leave-no-road-closed/'+name;assert.equal(hash(bytes(p)),digest,p);}
+ // Additive campaign releases change runtime/catalog bytes; original QA source and
+ // literal historical simulation/render hashes remain fixed. Production parity is separate.
+ assert.equal(hash(engineBeforeReserve()),'6837fe338e80cf0f78d8ab1784d678d1a515667e1c397c1f9c19ddf73ab2fec6');
+ assert.equal(hash(rendererBeforeReserve()),'d3be07536a06c76a65ed93e5f29319db5889cfb1bdbdfaed00e2a29f8ef9ecaa');
 });
 
 test('single disclosed 9305 opening is exact frozen state, paused, with zero ticks',()=>{

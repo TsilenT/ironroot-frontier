@@ -30,7 +30,7 @@ const previous = raw => protocolTwelve.createProfileSession(() => raw, { require
 const domainBytes = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 function progress() {
-  return { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) };
+  return { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) };
 }
 const row = (game, scenario = undefined) => ({ won: true, draw: false, difficulty: game.difficulty, time: game.state.time, kills: game.state.stats.kills[0], built: game.state.stats.built[0], date, identity: identityOf(game, scenario) });
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
@@ -71,7 +71,7 @@ function assertBlocked(profile, raw) {
 test('protocol20 pins the exact prior protocol12 module and retains all storage and format identities', () => {
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0210.js', import.meta.url))).digest('hex'), '724cefd400aa4b90d4ba131147730b9441fb8c6d96a494c253ef659eb97d9508');
   assert.equal(protocolTwelve.CURRENT_PROFILE_PROTOCOL_VERSION, 12);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 25);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 28);
   assert.equal(MARKER, 'ironroot.profile.v1');
   assert.deepEqual(K, { campaign: 'ironroot.campaign.v1', trials: 'ironroot.trials.v1', settings: 'ironroot.settings.v1', history: 'ironroot.history.v1', battle: 'ironroot.battle.v1' });
   for (let requiredProtocolVersion = 1; requiredProtocolVersion <= CURRENT_PROFILE_PROTOCOL_VERSION; requiredProtocolVersion++) {

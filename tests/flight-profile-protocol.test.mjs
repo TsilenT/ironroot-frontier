@@ -20,7 +20,7 @@ const domainBytes=r=>keys.map(key=>[key,r.data.get(key)??null]);
 const writes=r=>r.calls.filter(([op])=>op!=='get');
 const domainCalls=r=>r.calls.filter(([,key])=>keys.includes(key));
 function flightBackup(){
-  const campaign={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))};
+  const campaign={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map(m=>[m.id,{completed:true,stars:2,bestTime:60}]))};
   const game=createCampaignMission('wings-of-ash',{revision:3}),ref=scenarioForBattle(null,'wings-of-ash',game);
   const history=[{won:false,draw:false,difficulty:game.difficulty,time:1,kills:0,built:1,date,identity:identityOf(game,ref)}];
   return createBackup(raw(),{createdAt:date,campaign,history,settings:{quality:'low'},trials:{},battle:encodeBattle(game,ref,{campaignProgress:campaign})});
