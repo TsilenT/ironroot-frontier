@@ -5,7 +5,7 @@ import {CAMPAIGN_CONTROL,createCampaignControl,validateCampaignControl,campaignC
 import {actualIncome} from '../salt-stores/economy.mjs';
 
 export const DESIGN=deepFreeze({
- id:'leave-no-road-closed',epoch:1,title:'Leave No Road Closed',status:'fresh-design-natural-cases-unopened',
+ id:'leave-no-road-closed',epoch:2,title:'Leave No Road Closed',status:'fresh-design-natural-cases-unopened',
  baselineCommit:'65ee1438435a9e8a4cb6b8b6930ac87ca17518b7',baselineTree:'b6ee01ff93f43176a889d7fb3c226cf5ef442643',
  numericStatus:'All formation, purse, seed and policy choices are new hypotheses, not balance evidence.',
  parentRulesetId:CITADEL_CAMPAIGN_RULESET_IDS[2],mapId:'classic',difficulty:'normal',ai:true,
@@ -15,7 +15,7 @@ export const DESIGN=deepFreeze({
 });
 const PARENT=new Game({rulesetId:DESIGN.parentRulesetId,ai:false}).ruleset;
 export const QA_RULES=deepFreeze(Object.fromEntries([2,3].map(required=>[required,{
- ...PARENT,id:`qa-leave-no-road-closed-e1-${required}`,name:`QA only · Leave No Road Closed · ${required} crossings`,qaOnly:true,
+ ...PARENT,id:`qa-leave-no-road-closed-e2-${required}`,name:`QA only · Leave No Road Closed · ${required} crossings`,qaOnly:true,
  campaignControl:{...CAMPAIGN_CONTROL,requiredBridges:required,seconds:DESIGN.seconds,timeLimit:DESIGN.timeLimit},
 }])));
 
@@ -57,11 +57,11 @@ export function savePrototype(game){
  if(game.ruleset!==QA_RULES[game.ruleset.campaignControl?.requiredBridges])throw Error('Not this QA hypothesis');
  const engine=game.serialize(),control=engine.state.campaignControl;
  engine.rulesetId=DESIGN.parentRulesetId;delete engine.state.campaignControl;
- return {format:'leave-roads-qa-envelope-v1',designId:DESIGN.id,epoch:1,requiredBridges:game.ruleset.campaignControl.requiredBridges,engine,control};
+ return {format:'leave-roads-qa-envelope-v1',designId:DESIGN.id,epoch:2,requiredBridges:game.ruleset.campaignControl.requiredBridges,engine,control};
 }
 export function restorePrototype(packet){
  const fields=['format','designId','epoch','requiredBridges','engine','control'];
- if(!packet||Object.getPrototypeOf(packet)!==Object.prototype||Object.keys(packet).length!==fields.length||fields.some(k=>!Object.hasOwn(packet,k))||packet.format!=='leave-roads-qa-envelope-v1'||packet.designId!==DESIGN.id||packet.epoch!==1||![2,3].includes(packet.requiredBridges))throw Error('Invalid QA envelope');
+ if(!packet||Object.getPrototypeOf(packet)!==Object.prototype||Object.keys(packet).length!==fields.length||fields.some(k=>!Object.hasOwn(packet,k))||packet.format!=='leave-roads-qa-envelope-v1'||packet.designId!==DESIGN.id||packet.epoch!==2||![2,3].includes(packet.requiredBridges))throw Error('Invalid QA envelope');
  const data=structuredClone(packet),e=data.engine;
  if(e.version!==3||e.rulesetId!==DESIGN.parentRulesetId||e.rulesetRevision!==1||e.mapId!=='classic'||e.mapRevision!==1)throw Error('Wrong QA parent identity');
  const game=Game.restore(e),fail=message=>{throw Error('Invalid QA control: '+message);};

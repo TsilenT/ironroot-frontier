@@ -5,8 +5,8 @@ const mines=[B('mint',410,0),B('mint',410,2)];
 const middle=[B('barracks',1250,1),B('foundry',830,1),B('sanctum',690,1),B('archery',550,1)];
 export const POLICIES=deepFreeze({
  'paid-three-road':{
-  intent:'Fund a real southern screen and ranged/splash support, then economy and screened siege across the roads. Reopen lost planned sites at normal prices.',
-  plan:[B('barracks',1250,2),B('archery',1110,2),B('sanctum',970,2),...mines,B('foundry',830,2),B('foundry',830,0),B('foundry',830,1),B('barracks',1250,0),B('barracks',1250,1)],
+  intent:'Outcome-informed fixed order: start the southern screen, reinforce north/middle before remaining southern support and siege, then buy each mine once. Rebuild lost ordinary combat sites.',
+  plan:[B('barracks',1250,2),B('barracks',1250,0),B('barracks',1250,1),B('foundry',830,0),B('foundry',830,1),B('archery',1110,2),B('sanctum',970,2),B('foundry',830,2),B('mint',410,0,true),B('mint',410,2,true)],
  },
  'screened-middle-core':{
   intent:'Concentrate on middle citadel pressure. Siege sits behind the inherited warrior/archer screen and a new front barracks, never unsupported at the front.',
