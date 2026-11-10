@@ -1,4 +1,12 @@
-## The Empty Purse (v0.36)
+## Leave No Road Closed (v0.37 candidate)
+
+An unreleased third Chapter 9 mission follows The Empty Purse. The catalog contains 35 missions / 105 optional stars. Chapter 9 remains three of at least five planned missions; Chapter 8 remains five, and Chapter 10 is not admitted.
+
+Secure all three bridges for 30 cumulative seconds or destroy the enemy citadel by 10:00, with yours surviving. Enemy pressure pauses earned control time without resetting it. Ordinary paid support opens the third road; no purchase, factory loss or replacement is mandatory. Existing engine, AI, prices, earned roster and 5:00 escalation remain unchanged. Profile 28 fences older writers without migrating earned domains.
+
+Known-input prototype evidence includes concentrated core victories and one agent-operated manual control victory after actual interruption/resumption. It is not human balance certification. Production parity, persistence, full compatibility, native production UI and exact source CI are separate gates. No publication is claimed. See docs/LEAVE_ROADS_BUILD.md.
+
+## Historical The Empty Purse (v0.36)
 
 Chapter 9 now has two of at least five planned missions. The Empty Purse follows Wake the Reserve; catalog 34 missions / 102 optional stars, profile 27. Chapter 8 remains five; no Chapter 10 or campaign completion is claimed.
 

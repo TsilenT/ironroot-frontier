@@ -34,7 +34,7 @@ const opaque = () => keys.map(key => [key, `  retained opaque ${key} bytes\n`]);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario = campaignScenarioForGame(game, id)) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeScreen = false) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (includeScreen || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (includeScreen || m.id !== id)).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence data, not evidence of a played or balanced match. */
 function earned(includeScreen = true) {
@@ -62,7 +62,7 @@ function assertBlocked(profile, raw) {
 // The only executable historical addition is the actual Hammer profile writer.
 // Its hash and Salt22 derivation remain independent literal source oracles.
 test('Screen profile24 is exactly four marker-only substitutions from immutable actual Hammer23', () => {
-  assert.equal(VERSION, 27); assert.equal(actual24.CURRENT_PROFILE_PROTOCOL_VERSION, 24); assert.equal(actual23.CURRENT_PROFILE_PROTOCOL_VERSION, 23);
+  assert.equal(VERSION, 28); assert.equal(actual24.CURRENT_PROFILE_PROTOCOL_VERSION, 24); assert.equal(actual23.CURRENT_PROFILE_PROTOCOL_VERSION, 23);
   const source = readFileSync(new URL('./fixtures/profile-session-v0320.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), 'a6dc605e9ac55138c6fc0d54fb57229fba8f7972ad480a09ed1f32eec911d430');
   const expected = source.replace('CURRENT_PROFILE_PROTOCOL_VERSION = 23', 'CURRENT_PROFILE_PROTOCOL_VERSION = 24')
@@ -150,7 +150,7 @@ test('old earned Hammer progress stays exact and one-star completion unlocks Scr
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, data);
   assert.equal(data.campaign.missions[id], undefined); assert.deepEqual(normalizeCampaignProgress(data.campaign), data.campaign);
   const overview = getProgressionCampaignOverview(data.campaign), chapter = overview.chapters.find(c => c.id === 'siege-coast');
-  assert.equal(overview.total, 34); assert.equal(overview.maxStars, 102); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 35); assert.equal(overview.maxStars, 105); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(chapter.total, 5); assert.equal(chapter.maxStars, 15); assert.equal(chapter.completed, false);
   assert.deepEqual(getCampaignMission(id).prerequisites, ['the-hammer-turns']);
   assert.equal(getCampaignLaunchMission('the-hammer-turns', data.campaign).reward, 'Unlocks The Long Screen');

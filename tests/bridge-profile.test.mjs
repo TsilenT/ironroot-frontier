@@ -12,7 +12,7 @@ const marker=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',
 function storage(entries=[]) {const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(k);data.set(k,v);},removeItem(k){writes.push(k);data.delete(k);}};}
 function earned() {
   return {
-    campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
+    campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
     trials:Object.fromEntries(CURRENT_CHALLENGES.map((c,i)=>[c.id,{completed:true,bestTime:70+i}])),
     settings:{sound:false,music:false,sfx:true,volume:.3,reducedMotion:true,quality:'low',keyboard:{version:1,bindings:{build1:'KeyQ',volley:null}}},
     history:[{won:true,draw:false,challengeId:'shieldbreaker',campaignId:null,difficulty:'normal',time:75,kills:12,built:5,date}],
@@ -24,7 +24,7 @@ const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PRO
 const old=r=>protocolEight.createProfileSession(()=>r,{requiredProtocolVersion:8});
 
 test('current protocol advances only the marker and fences real v0.18.1 clients before they erase bridge choice or earned history',()=>{
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 27);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 28);assert.equal(protocolEight.CURRENT_PROFILE_PROTOCOL_VERSION,8);
   const domains=entries(earned()),r=storage([[MARKER,marker(8)],...domains]),stale=old(r);
   assert.equal(stale.status().canWrite,true);
   const ready=current(r);assert.equal(ready.status().canWrite,true);

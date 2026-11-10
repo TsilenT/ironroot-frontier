@@ -13,7 +13,7 @@ import {writeBattle} from '../dist/persistence.js';
 
 const current='frontier-campaign-citadel-open',automatic='frontier-campaign-air-local', date='2026-11-07T09:00:00.000Z';
 const record={completed:true,stars:2,bestTime:60};
-const full=()=>({...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{...record}]))});
+const full=()=>({...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{...record}]))});
 const stages=()=>{
   const result=[campaign.createCampaignProgress()];
   for(const mission of campaign.ONBOARDING_MISSIONS){
@@ -27,7 +27,7 @@ const storage=()=>{const data=new Map(),calls=[];return {data,calls,getItem(k){c
 
 test('automatic-air descriptors leave all three reviewed writing catalogs byte-identical',()=>{
   const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
-  assert.equal(hash(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&!['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id))),'53266184f5cf4de840ff59446c889bed62f96a7527587be7b3bc1c581cdcb47e');
+  assert.equal(hash(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&!['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id))),'53266184f5cf4de840ff59446c889bed62f96a7527587be7b3bc1c581cdcb47e');
   assert.equal(hash(campaign.PROGRESSION_CAMPAIGN_MISSIONS),'e01353144482a6a80082d35ec51674a9fdd7a62000b5e37d1c0313d8f576f57c');
   assert.equal(hash(campaign.FLIGHT_CAMPAIGN_MISSIONS),'25a5f44ced4f379eb4b800ff8ca819282e49d6fb199e4291972e61db945370fa');
   assert.equal(campaign.AUTONOMOUS_AIR_CAMPAIGN_MISSIONS.length,19);
