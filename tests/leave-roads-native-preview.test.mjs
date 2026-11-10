@@ -1,4 +1,5 @@
 import {engineBeforeReserve} from './shared-watch-engine-source.mjs';
+import {rendererBeforeFinalChapter} from './final-chapter-render-source.mjs';
 /** Structural preflight only. Candidate formations must NEVER receive a tick here. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -28,7 +29,7 @@ function emptySynthetic({tick=0,time=0,gold=1000,onTick=()=>{}}={}){
  return {session:{seed:9305,game,paused:true,wallAccumulator:0,outcome:evaluatePrototype(game)},calls};
 }
 function rendererBeforeReserve(){
- let source=bytes('dist/render.js').toString();
+ let source=rendererBeforeFinalChapter();
  {const addition="    this.drawMinorReserveLandmark(ui.minorReserve);\n", previous="";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
  {const addition="    // The named northern post occupies this same label band at small scales.\n    if (!ui.minorReserve?.landmark || ui.minorReserve.ended)\n      c.fillText('ENEMY FRONTIER', this.map.width - 770, 145);\n", previous="    c.fillText('ENEMY FRONTIER', this.map.width - 770, 145);\n";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}
  {const addition="  }\n  drawMinorReserveLandmark(reserve) {\n    if (!reserve || reserve.ended) return;\n    const { x, y } = reserve.landmark || reserve.focus;\n    const c = this.c;\n    const label = reserve.landmark ? reserve.landmark.label\n      : reserve.phase === 'warning' ? reserve.title : 'North reserve entry \u00b7 once only';\n    c.save();\n    c.font = `600 ${Math.max(13, 10 / this.scale)}px \"DM Sans\",sans-serif`;\n    c.textAlign = 'center';\n    c.textBaseline = 'middle';\n    const width = c.measureText(label).width + 16;\n    const height = Math.max(22, 18 / this.scale);\n    const anchor = Math.max(width / 2 + 8, Math.min(this.map.width - width / 2 - 8, x));\n    c.fillStyle = '#14251ef2';\n    c.fillRect(anchor - width / 2, y - 126 - height / 2, width, height);\n    c.strokeStyle = reserve.phase === 'warning' ? '#ffd193' : '#b8ae74';\n    c.lineWidth = Math.max(1, 1 / this.scale);\n    c.strokeRect(anchor - width / 2, y - 126 - height / 2, width, height);\n    c.fillStyle = '#f5e2b5';\n    c.fillText(label, anchor, y - 126);\n    // A plain flag is a landmark, not the required-objective diamond/shield.\n    c.beginPath(); c.moveTo(x, y - 94); c.lineTo(x, y - 64); c.stroke();\n    c.fillRect(x, y - 94, 18, 10);\n    c.restore();\n", previous="";assert.equal(source.split(addition).length-1,1);source=source.replace(addition,previous);}

@@ -8,6 +8,8 @@ import {inspectRuntime} from './verify-runtime.mjs';
 export const SOURCE = Object.freeze({name: 'TsilenT/ironroot-frontier', id: 1447793733});
 export const TARGET = Object.freeze({name: 'TsilenT/ironroot-frontier-play', id: 1447794727});
 const API = 'https://api.github.com';
+// Reviewed pure production constants; other spec/QA/evidence names stay rejected.
+const PRODUCTION_SPEC_FILES = new Set(['citadel-spec.js', 'colossus-spec.js']);
 const PRESERVED = new Set(['README.md', 'CNAME', '.nojekyll']);
 const SHA = /^[0-9a-f]{40}$/;
 const LIMITS = Object.freeze({files: 256, fileBytes: 2 * 1024 * 1024, totalBytes: 16 * 1024 * 1024});
@@ -26,7 +28,7 @@ function allowedRuntimePath(path) {
   // Current runtime is deliberately flat. New directory layouts require review.
   return typeof path === 'string' && path.length <= 120 &&
     (/^[a-z][a-z0-9-]*\.(?:js|css|html|svg|woff2|webmanifest)$/.test(path) || path === 'FONTS-NOTICES.txt') &&
-    !/(?:^|-)(?:test|tests|spec|qa|evidence|secret|secrets|credentials)(?:-|\.)/i.test(path);
+    (!/(?:^|-)(?:test|tests|spec|qa|evidence|secret|secrets|credentials)(?:-|\.)/i.test(path) || PRODUCTION_SPEC_FILES.has(path));
 }
 function cacheVersion(bytes) {
   const match = bytes.toString('utf8').match(/^const VERSION = '(ironroot-v[0-9]+\.[0-9]+\.[0-9]+)';$/m);

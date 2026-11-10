@@ -57,7 +57,7 @@ test('master mute, independent music/SFX toggles, and clamped volume work',async
   }finally{await a.destroy();}
 });
 test('all sound cues and legacy aliases create valid bounded graphs',async()=>{
-  const {a,c}=await setup({musicEnabled:false});try{
+  const {a,c}=await setup({musicEnabled:false});try{a.setScene('battle');
     for(const name of [...SOUND_NAMES,'hit','warrior','archer','tower','wizard','blast','volley','death','win','lose','construction','select']){
       c.advance(4);assert.equal(a.play(name,{pan:4,volume:4}),true,name);assert.ok(a.voices.size>0);assert.ok(a.voices.size<=80);
     }
@@ -117,4 +117,29 @@ test('priority cues duck only music, preserving the user gain and SFX bus',async
     assert.ok(a.musicDuck.gain.events.some(([type,value])=>type==='linear'&&value===.52));assert.equal(a.musicDuck.gain.value,1);
     c.advance(3);a.setMuted(true);assert.equal(a.play('warning'),false);
   }finally{await a.destroy();}
+});
+
+test('Engine synthesis stays lazy and scene-bound with independent music/SFX controls',async()=>{
+ let allocated=0;const c=new Context(),a=new GameAudio({muted:false,musicEnabled:false,contextFactory:()=>{allocated++;return c;}});
+ assert.equal(a.play('engineReveal'),false);assert.equal(allocated,0);await a.unlock();try{
+  assert.equal(a.play('engineReveal'),false,'menu cannot pre-announce');a.setScene('battle');assert.equal(a.play('engineReveal'),true);assert.equal(a._voiceCount('sfx'),5);assert.equal(a.timer,null,'SFX does not enable music');assert.equal(a.play('engineReveal'),false,'full reveal is rate limited');
+  c.advance(10);a.setSfxEnabled(false);assert.equal(a.play('engineReveal'),false);a.setSfxEnabled(true);a.setMuted(true);assert.equal(a.play('engineReveal'),false);a.setMuted(false);a.setVolume(0);assert.equal(a.play('engineReveal'),false);a.setVolume(.4);a.setSfxVolume(0);assert.equal(a.play('engineReveal'),false);a.setSfxVolume(.3);assert.equal(a.play('engineReveal'),true);
+ }finally{await a.destroy();}assert.equal(a.voices.size,0);assert.equal(a.lastPlayed.size,0);
+});
+test('important reveal reserves five bounded voices in crowded combat; impacts are capped and clean up',async()=>{
+ const {a,c}=await setup({musicEnabled:false});try{a.setScene('battle');for(let i=0;i<24;i++)a._tone(0,200,2,.1);assert.equal(a.play('engineReveal'),true);assert.equal(a._voiceCount('sfx'),5);assert.ok(a.voices.size<=80);
+  c.advance(2);assert.equal(a.voices.size,0);assert.equal(a.play('engineImpact'),true);assert.equal(a._voiceCount('sfx'),3);assert.equal(a.play('engineImpact'),false);c.advance(.6);assert.equal(a.play('engineImpact'),true);a.setScene('paused');assert.equal(a.voices.size,0,'pause cancels even future scheduled Engine layers');assert.equal(a.play('engineImpact'),false);a.setScene('battle');c.advance(2);assert.equal(a.voices.size,0,'resume queues no replacement voices');
+ }finally{await a.destroy();}
+});
+for(const interrupt of ['suspension','master-zero','sfx-zero','hidden-scene'])test(`Engine voices are discarded on ${interrupt}, without a resumed backlog`,async()=>{
+ const {a,c}=await setup({musicEnabled:false});try{a.setScene('battle');assert.equal(a.play('engineReveal'),true);
+  if(interrupt==='suspension'){c.state='suspended';a.setScene('battle');assert.equal(a.play('engineImpact'),false);c.state='running';}
+  else if(interrupt==='master-zero'){a.setVolume(0);a.setVolume(.5);}
+  else if(interrupt==='sfx-zero'){a.setSfxVolume(0);a.setSfxVolume(.5);}
+  else{a.setScene('paused');a.setScene('battle');}
+  assert.equal(a.voices.size,0);c.advance(1);assert.equal(a.voices.size,0);assert.equal(a.play('engineReveal'),false,'discarded deployment is not replayed');
+ }finally{await a.destroy();}
+});
+test('gesture resume drops suspended Engine tails even before the next scene observer frame',async()=>{
+ const {a,c}=await setup({musicEnabled:false});try{a.setScene('battle');assert.equal(a.play('engineReveal'),true);assert.equal(a.voices.size,5);c.state='suspended';assert.equal(await a.unlock(),true);assert.equal(a.voices.size,0,'old delayed layers cannot play after gesture resume');c.advance(2);assert.equal(a.voices.size,0);assert.equal(a.play('engineReveal'),false,'unlock does not replay the consumed deployment');}finally{await a.destroy();}
 });

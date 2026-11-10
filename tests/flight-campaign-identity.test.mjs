@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import {beforeRhythmCopy} from './writing-rhythm-copy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,14 +12,14 @@ import {createBackup,parseBackup,restoreBackup,BACKUP_STORAGE_KEYS as K} from '.
 import {writeBattle} from '../dist/persistence.js';
 const date='2026-11-07T00:00:00.000Z';
 const record={completed:true,stars:2,bestTime:60};
-const full=()=>({...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{...record}]))});
+const full=()=>({...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay').map(m=>[m.id,{...record}]))});
 const storage=()=>{const data=new Map(),calls=[];return {data,calls,getItem(k){calls.push(['get',k]);return data.get(k)??null;},setItem(k,v){calls.push(['set',k]);data.set(k,v);},removeItem(k){calls.push(['remove',k]);data.delete(k);}};};
 const scenario=(game,id)=>scenarioForBattle(null,id,game);
 const saved=(game,id,progress=full())=>encodeBattle(game,scenario(game,id),{campaignProgress:progress});
 const fingerprint=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
 test('published revision-one and revision-two descriptors retain frozen v0.15 exact hashes outside reviewed prose',()=>{
-  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&!['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
+  assert.equal(fingerprint(beforeRhythmCopy(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&!['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))),'3b08ea9aa1e101b3a187e2fd9c184a6cfd871f2f2fc4f4c384e5f7693baba69e');
   assert.equal(fingerprint(beforeRhythmCopy(campaign.PROGRESSION_CAMPAIGN_MISSIONS)),'42f459c491b5653c42efe8eeb946d75bb11e6a04c7d74e161ea1a5cf755248d4');
 });
 
@@ -63,7 +64,7 @@ test('flight is earned stage three, while old opening replay identity and histor
   assert.equal(campaign.CAMPAIGN_RULESET_STAGES['frontier-campaign-flight'],3);
   for(const p of tiers){assert.equal(campaign.isMissionUnlocked(p,'wings-of-ash',3),false);assert.throws(()=>campaign.createProgressionCampaignMission('wings-of-ash',p),/locked/);}
   const p=full(),before=JSON.stringify(p),overview=campaign.getProgressionCampaignOverview(p);
-  assert.equal(overview.total,37);assert.equal(overview.cleared,27);assert.equal(overview.stars,54);
+  assert.equal(overview.total,42);assert.equal(overview.cleared,27);assert.equal(overview.stars,54);
   assert.equal(JSON.stringify(campaign.normalizeCampaignProgress(p)),before);
   for(const m of campaign.ONBOARDING_MISSIONS)assert.equal(campaign.getCampaignLaunchMission(m.id,p).rulesetId,'frontier-campaign-citadel-open');
   const old=campaign.createCampaignMission('roadside-watch',{revision:1,progress:tiers[0]});

@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {engineBeforeFinalChapter} from './final-chapter-engine-source.mjs';
 
 // The historical literal hash must still cover every old engine byte. Remove
 // only these exact, ruleset-gated reserve additions, never arbitrary matching lines.
 export function engineBeforeReserve() {
-  let source = readFileSync(new URL('../dist/engine.js', import.meta.url), 'utf8');
+  let source = engineBeforeFinalChapter();
   const remove = (addition, count = 1) => {
     assert.equal(source.split(addition).length - 1, count, 'Exact reserve addition: ' + addition);
     source = source.split(addition).join('');

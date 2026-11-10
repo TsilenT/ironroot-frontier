@@ -7,6 +7,7 @@ import {historyWindow} from './menu-history-fixture.mjs';
 import {createMenuHistory, seedMenuAncestors} from '../dist/menu-history.js';
 import {getRuleset, getMap} from '../dist/engine.js';
 import * as campaign from '../dist/campaign.js';
+import {lastEngineView} from '../dist/final-chapter-view.js';
 import {missionBriefing} from '../dist/campaign-presentation.js';
 import {renderMissionScouting} from '../dist/scouting.js';
 import {createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION} from '../dist/profile-session.js';
@@ -61,7 +62,7 @@ function harness(mode = 'challenges') {
     campaignProgress:campaign.createCampaignProgress(), mode, campaignPage:'mission', briefingMission:null,
     selectedCampaign:'roadside-watch', selectedChapter:'opening-roads', selectedChallenge:c.CHALLENGES[0].id,
     navigationAttempt:0, navigationGame:null, navigationAway:false, menuHistory:null,
-    getRuleset, getMap, missionBriefing, renderMissionScouting, renderChallenge(){}, updateResume(){},
+    getRuleset, getMap, missionBriefing, renderMissionScouting, lastEngineView, renderChallenge(){}, updateResume(){},
     hasLastResult:false, revealBattleReport(){}, activeDialog:null, settingsWasPaused:false, helpWasPaused:false,
     dialogFocus:new Map(), dialogDefaultFocus: layer => layer === $('settingsModal') ? $('settingsDone') : $('resume'),
     profileSession, storage, battleSession, historySession, preferenceSession, localStorage:raw,

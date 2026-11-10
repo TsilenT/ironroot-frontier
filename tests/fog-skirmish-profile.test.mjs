@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -7,7 +8,7 @@ import { refreshFog, observe, FOG } from '../dist/fog.js';
 import { encodeBattle, decodeBattle, identityOf, validateBattleIdentity } from '../dist/battle-codec.js';
 import { validateHistory, validateHistoryRow } from '../dist/history-codec.js';
 import { createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K } from '../dist/backup.js';
-import { createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER } from '../dist/profile-session.js';
+import { createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER } from './fixtures/profile-session-v039.js';
 import { createStorage, createSaveSession, createHistorySession, createPreferenceSession, readHistoryState, writeBattle } from '../dist/persistence.js';
 import { createCampaignProgress, CAMPAIGN_PROGRESS_MISSIONS, createProgressionCampaignMission, campaignScenarioForGame } from '../dist/campaign.js';
 import { CURRENT_CHALLENGES, createCurrentChallenge, challengeScenarioForGame } from '../dist/challenges.js';
@@ -34,7 +35,7 @@ const row = game => ({ won: true, draw: false, difficulty: game.difficulty, time
 function earned() {
   const game = new Game({ rulesetId: DEFAULT_SKIRMISH_RULESET_ID, ai: false, seed: 32 });
   return {
-    campaign: { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) },
+    campaign: { ...createCampaignProgress(), missions: Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m, i) => [m.id, { completed: true, stars: i % 3 + 1, bestTime: 60 + i }])) },
     trials: Object.fromEntries(CURRENT_CHALLENGES.map((c, i) => [c.id, { completed: true, bestTime: 70 + i }])),
     settings: { sound: false, music: false, sfx: true, volume: .3, reducedMotion: true, quality: 'low', keyboard: { version: 1, bindings: { build1: 'KeyQ', volley: null } }, skirmishBridgeIncome: true },
     history: [{ won: true, draw: false, challengeId: 'shieldbreaker', campaignId: null, difficulty: 'normal', time: 75, kills: 12, built: 5, date }, row(game)],
