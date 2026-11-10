@@ -25,3 +25,34 @@ routes pass. No difficulty, render quality or human balance claim. Test outputs
 and generated runtimes remain outside the repository. Source syntax/runtime
 checks are run before checkpointing. The complete chapter and its ending remain
 unfinished until the later production factory, codec, profile and story gates pass.
+
+Checkpoint002: all five actual campaign factories, sequential prerequisites,
+42/126 catalog, original binding validation, finite first-four deadlines and
+unbounded finale objective are implemented. Initial native snapshots match all
+five canonical factories apart from exact production ruleset identity. Active
+codec admission has one precise final-boss aftermath exception; terminal battles
+still reject while terminal history/backup is valid. The final receipt is the
+existing mission record, and the ending transition is idempotent. Night retains
+sanitized chart/Scout controls and clears both fog records after full setup;
+Crossing has exact two-road copy/control. Twenty-three focused checks pass,
+including the five old paid production primaries, active/terminal save behavior,
+new original-binding forgeries and nine fresh-process module import entry orders.
+The registry/citadel initialization cycle was a runtime defect: immutable citadel
+constants now live in a pure specification module, preserving public exports and
+exact object identity. Source syntax and66-file runtime/cache guards pass.
+
+Steve's later surprise/counterpush direction supersedes the earlier disclosure
+and final-boss design freeze. Before deployment the last mission is presented as
+The Last Fortress: no boss/breakout spoilers in its briefing, Scout, goal, story
+or player production codex. Actual enemy-core death still cannot award victory.
+Post-reveal presentation and one bounded counterpush revision follow this slice.
+The old finale paid win establishes integration behavior, not the requested
+building-devastation spectacle; its no-building-loss outcome is negative evidence
+for that new goal. The first four authored missions remain unchanged.
+
+Incomplete at this checkpoint: profile fence/version integration, full app/HUD
+and renderer/ending source support, revised finale counterpush validation and
+broad compatibility/aggregate gates. The known checkpoint001 CI failures include
+both the now-fixed real import cycle and separate historical fingerprint/count
+assumptions; narrow focused passes are not a claim that its aggregate was green.
+No browser, rendering or external workflow action has run.
