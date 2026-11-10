@@ -27,14 +27,49 @@ test('original force survival and destruction cannot change the information choi
  assert.deepEqual(chooseCounter(originals.map(b=>({...b,id:b.id+200,type:'aerie',level:3}))),fallback);
  assert.deepEqual(decision,{type:'archery',lane:2,x:550});
 });
-test('later-paid removal is analyst-only evidence, including unchanged choice negatives',()=>{
- const later=contact(100,'aerie',2230,2),receipt={side:1,method:'build',time:50,id:100};
- assert.equal(decisionAblation({contacts:[...originals,later]},[receipt]).changed,true);
- assert.equal(decisionAblation({contacts:originals},[receipt]).changed,false);
- assert.equal(decisionAblation({contacts:[later]},[{...receipt,time:121}]).changed,false);
+// These events and receipts are synthetic audit records; no Game is advanced.
+function eligibleInformation(contacts,paid){
+ return summarizeInformation([
+  {tick:200,time:10,lane:0,transition:'first-contact',buildings:originals.filter(b=>b.lane===0)},
+  {tick:200,time:10,lane:2,transition:'first-contact',buildings:originals.filter(b=>b.lane===2)},
+  ...[0,2].map(lane=>({tick:600,time:30,lane,transition:'visible-set-change',buildings:contacts.filter(b=>b.lane===lane)}))
+ ],paid);
+}
+const receipt=(b,time)=>({side:1,method:'build',id:b.id,lane:b.lane,time,cost:360});
+test('pre-first hidden aerie cannot borrow causality from an eligible later barracks',()=>{
+ const early=contact(100,'aerie',2230,2),later=contact(101,'barracks',2230,0),contacts=[early,later];
+ const information=eligibleInformation(contacts,[receipt(early,5),receipt(later,20)]);
+ assert.deepEqual(information.laterPaidBuildingsReobserved.map(b=>b.id),[101]);
+ const result=decisionAblation({contacts},information);
+ assert.deepEqual(result.eligibleObservationIds,[101]);assert.deepEqual(result.removedContactIds,[101]);
+ assert.deepEqual(result.eligibleNotInDecisionIds,[]);assert.equal(result.changed,false);
+ assert.deepEqual(result.actual,result.withoutEligibleContacts);
+ // Removing all paid contacts would change the choice, but is NOT this gate.
+ assert.notDeepEqual(result.actual,chooseCounter([]));
+});
+test('genuine qualifying later-paid aerie changes the causal choice when removed',()=>{
+ const later=contact(100,'aerie',2230,2),information=eligibleInformation([later],[receipt(later,20)]);
+ const result=decisionAblation({contacts:[...originals,later]},information);
+ assert.equal(result.basis,'eligible-post-snapshot-reobserved-decision-contacts');
+ assert.deepEqual(result.removedContactIds,[100]);assert.deepEqual(result.eligibleNotInDecisionIds,[]);
+ assert.deepEqual(result.actual,{type:'archery',lane:2,x:550});
+ assert.deepEqual(result.withoutEligibleContacts,chooseCounter([]));assert.equal(result.changed,true);
+});
+test('eligible later-paid contact can leave the choice unchanged',()=>{
+ const later=contact(100,'barracks',2230,0),information=eligibleInformation([later],[receipt(later,20)]);
+ const result=decisionAblation({contacts:[later]},information);
+ assert.deepEqual(result.removedContactIds,[100]);assert.equal(result.changed,false);
+});
+test('eligible observation absent from the actual decision input is not removed or causal',()=>{
+ const later=contact(100,'aerie',2230,2),information=eligibleInformation([later],[receipt(later,20)]);
+ const result=decisionAblation({contacts:originals},information);
+ assert.deepEqual(result.eligibleObservationIds,[100]);assert.deepEqual(result.removedContactIds,[]);
+ assert.deepEqual(result.eligibleNotInDecisionIds,[100]);assert.equal(result.changed,false);
+});
+test('post-snapshot eligibility still excludes pre-first purchases and post-decision sightings',()=>{
+ const later=contact(100,'aerie',2230,2),paid=[receipt(later,50)];
  const events=[{tick:200,time:10,lane:2,transition:'first-contact',buildings:originals.filter(b=>b.lane===2)},
  {tick:1200,time:60,lane:2,transition:'visible-set-change',buildings:[...originals.filter(b=>b.lane===2),later]}];
- const paid=[{...receipt,lane:2,cost:360}];
  assert.equal(summarizeInformation(events,paid).laterPaidBuildingsReobserved.length,1);
  assert.equal(summarizeInformation(events,[{...paid[0],time:5}]).laterPaidBuildingsReobserved.length,0);
  assert.equal(summarizeInformation([events[0],{...events[1],tick:2420,time:121}],paid).laterPaidBuildingsReobserved.length,0);

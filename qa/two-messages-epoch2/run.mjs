@@ -81,11 +81,15 @@ export function summarizeInformation(events,transactions){
  return {firstContacts:events.filter(e=>e.transition==='first-contact').length,gaps:events.filter(e=>e.transition==='gap').length,renewals:events.filter(e=>e.transition==='renewal').length,laterPaidBuildingsReobserved:reobserved,
   limitation:'Off-chart paid contact after a real first snapshot; no lane-wide gap is required or inferred. Analyst receipts establish purchase provenance only. Require decision ablation and common-time costs, not blind defeat.'};
 }
-export function decisionAblation(decision,transactions){
+/** Causal gate uses exactly the information premise, intersected with decision input. */
+export function decisionAblation(decision,information){
  if(!decision)return null;
- const later=new Set(transactions.filter(t=>t.side===1&&t.method==='build'&&t.time>0&&t.time<=DESIGN.decisionTime).map(t=>t.id));
- const actual=chooseCounter(decision.contacts),withoutLaterPaid=chooseCounter(decision.contacts.filter(b=>!later.has(b.id)));
- return {actual,withoutLaterPaid,changed:JSON.stringify(actual)!==JSON.stringify(withoutLaterPaid)};
+ const eligibleObservationIds=[...new Set(information.laterPaidBuildingsReobserved.map(b=>b.id))].sort((a,b)=>a-b);
+ const eligible=new Set(eligibleObservationIds),input=new Set(decision.contacts.map(b=>b.id));
+ const removedContactIds=eligibleObservationIds.filter(id=>input.has(id));
+ const eligibleNotInDecisionIds=eligibleObservationIds.filter(id=>!input.has(id));
+ const actual=chooseCounter(decision.contacts),withoutEligibleContacts=chooseCounter(decision.contacts.filter(b=>!eligible.has(b.id)));
+ return {basis:'eligible-post-snapshot-reobserved-decision-contacts',eligibleObservationIds,removedContactIds,eligibleNotInDecisionIds,actual,withoutEligibleContacts,changed:JSON.stringify(actual)!==JSON.stringify(withoutEligibleContacts)};
 }
 async function executeCase({seed,spec,checkpoint}){
  let game,player,economy,initial,phase='before-factory',beforeDecision=null;const commands=[],trace=[],losses=[],restoreChecks=[],shadows=[],observation=createObservationRecorder(),firstCoreDamage=[null,null];let steps=0;
@@ -127,7 +131,7 @@ function compareSameSeed(rows){
   assert.deepEqual(row.ledger.transactions.filter(t=>t.time<commonEnd-1e-7).map(simplify),reference.ledger.transactions.filter(t=>t.time<commonEnd-1e-7).map(simplify),'Common paid prefix diverged');
   if(row.beforeDecision&&reference.beforeDecision)assert.deepEqual(row.beforeDecision,reference.beforeDecision,'Common pre-decision game differs');
  }
- return {seed:reference.seed,commonPrefixThrough:commonEnd,identicalPaidPrefix:true,commonTimeCosts:commonCosts,cases:rows.map(r=>({policy:r.policy,reachedDecision:!!r.beforeDecision,decisionCommands:r.commands.filter(c=>c.kind==='decision'),decisionPurchases:r.ledger.transactions.filter(t=>t.side===0&&t.time>=DESIGN.decisionTime-1e-7).map(simplify),information:r.information,decisionAblation:decisionAblation(r.commands.find(c=>c.kind==='decision'),r.ledger.transactions),outcome:r.outcome,duration:r.duration,finalHP:r.finalHP,ownBuildingLosses:r.losses.filter(x=>x.side===0).length})),
+ return {seed:reference.seed,commonPrefixThrough:commonEnd,identicalPaidPrefix:true,commonTimeCosts:commonCosts,cases:rows.map(r=>({policy:r.policy,reachedDecision:!!r.beforeDecision,decisionCommands:r.commands.filter(c=>c.kind==='decision'),decisionPurchases:r.ledger.transactions.filter(t=>t.side===0&&t.time>=DESIGN.decisionTime-1e-7).map(simplify),information:r.information,decisionAblation:decisionAblation(r.commands.find(c=>c.kind==='decision'),r.information),outcome:r.outcome,duration:r.duration,finalHP:r.finalHP,ownBuildingLosses:r.losses.filter(x=>x.side===0).length})),
   verdict:'Unassessed. Require a later off-chart paid contact after the first snapshot, a choice changed by that later construction, a different sensible commitment, and a measurable avoidable cost in both seeds. Otherwise report failure; identical wins are not automatically failure or success.'};
 }
 export async function runApprovedMatrix({approval,out}){
