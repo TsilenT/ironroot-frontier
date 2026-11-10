@@ -1,0 +1,34 @@
+{
+  "epoch": 2,
+  "status": "closed-awaiting-independent-preflight-and-scoped-authorization",
+  "knownSeeds": [
+    9501,
+    9502
+  ],
+  "cases": [
+    {
+      "id": "fresh-contact",
+      "policy": "fresh-contact"
+    },
+    {
+      "id": "stale-contact",
+      "policy": "stale-contact"
+    },
+    {
+      "id": "omniscient-diagnostic",
+      "policy": "omniscient-diagnostic"
+    }
+  ],
+  "naturalCaseCount": 6,
+  "purpose": "One outcome-informed revision after six adverse epoch1 cases. Same already-known seeds 9501/9502, not heldouts. Zero epoch2 candidate ticks authorized.",
+  "commonPrefix": "Identical paid probes: barracks1250 north/south at0/5s, archery1110 north/south at10/15s, foundry970 north/south at60/65s. Same 1170 total price if successful, same 1100/100 opening gold, ordinary income and healthy6000HP. No retry. Enemy outer formations now both tower1950/barracks2090/archery2370. Every opening outer plot is publicly charted for the policy, without seeding fog contacts.",
+  "decision": "At tick2400/time120 buy at most one 270-gold counter at x550. Same original threat scores and counter mapping/ties, but exclude all publicly charted opening plots in every policy. Ignore replacements/upgrades on charted plots conservatively. Fresh reads actual view/memories, stale first real snapshots, diagnostic live contacts using the same fogged Game/AI. No later commands.",
+  "measurement": "After a real first snapshot, identify later off-chart contacts with ordinary paid enemy receipts before120s. Per-structure/set-change evidence counts; lane-wide gap is reported separately, never required or inferred. Retain full decision contacts and analyst removal-of-later-paid ablation; if removing later paid contacts leaves choices unchanged, later-information utility is not established. Compare identical predecision worlds/probes and real common-time costs, with early terminals retained separately.",
+  "falsification": [
+    "No off-chart later-paid contact after a real first snapshot by120: premise absent.",
+    "No decision difference caused by later paid contacts under removal ablation: information benefit absent.",
+    "Counter unavailable, unaffordable or prefix/world divergence: no clean comparison.",
+    "No concrete avoided waste/loss at genuine common times in both known seeds: no validated mission; retain adverse result without tuning or replacements."
+  ],
+  "boundary": "All six epoch2 natural cases CLOSED. Independent preflight and explicit scoped run authorization required; epoch1 approval/freeze/envelope rejected. No simulation, prescreen, grants, production edits or generated repository artifacts in this source checkpoint."
+}
