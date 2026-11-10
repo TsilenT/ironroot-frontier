@@ -34,3 +34,13 @@ for(let failAt=1;failAt<=5;failAt++)test(`import rollback preserves exact five-d
  const write=target.setItem.bind(target);let attempted=0,failed=false;target.setItem=(key,value)=>{if(key!==KEY&&!failed&&++attempted===failAt){failed=true;throw Error('single injected quota fault');}write(key,value);};
  const profile=current(target);assert.equal(profile.beginImport().ok,true);const result=restoreBackup(profile.importStorage,backup);assert.equal(result.ok,false);assert.equal(result.rollback.complete,true);assert.equal(profile.finishImport({outcome:'rolled-back'}).ok,true);assert.deepEqual([...target.data].filter(([key])=>key!==KEY),before);assert.equal(JSON.parse(target.data.get(KEY)).version,30);
 });
+test('partial original-target loss and same-site paid replacement retain credit through actual codec/backup continuation and fresh Restart',()=>{
+ const p=progress(),g=c.createCampaignMission('cut-the-bowstrings'),north=c.getCampaignTargets(g,'cut-the-bowstrings')[0],initial=c.createCampaignMission('cut-the-bowstrings').serialize();
+ // Explicit synthetic persistence fixture; the observed natural route is separate.
+ g._damage(north.building,north.building.hp,0);g.update(.05);assert.equal(g.build('archery',north.x,g.map.lanes[north.lane],1).ok,false,'unchanged finite enemy purse cannot afford a replacement yet');
+ g.state.gold[1]=175;const replacement=g.build('archery',north.x,g.map.lanes[north.lane],1);assert.equal(replacement.ok,true);assert.notEqual(replacement.building.id,north.originalId);g.update(.017);
+ const scenario=c.campaignScenarioForGame(g,'cut-the-bowstrings'),battle=encodeBattle(g,scenario,{campaignProgress:p}),row={won:false,draw:false,difficulty:g.difficulty,time:g.state.time,kills:0,built:g.state.stats.built[0],date:'2026-11-10T00:00:00.000Z',identity:identityOf(g,scenario)};
+ const parsed=parseBackup(createBackup(backend([]),{campaign:p,trials:{},settings:{},history:[row],battle})),r=decodeBattle(parsed.data.battle,{campaignProgress:p}).game;assert.deepEqual(parsed.data.history,[row]);assert.deepEqual(r.serialize(),g.serialize());
+ const restoredTargets=c.getCampaignTargets(r,'cut-the-bowstrings');assert.equal(restoredTargets[0].building,null);assert.ok(restoredTargets[1].building);assert.equal(c.evaluateCampaignMission(r,'cut-the-bowstrings').completed,false);assert.ok(r.state.buildings.some(b=>b.id===replacement.building.id));
+ for(let i=0;i<10;i++){g.update(.05);r.update(.05);assert.deepEqual(r.serialize(),g.serialize());}assert.deepEqual(c.createCampaignRestart(r,'cut-the-bowstrings').serialize(),initial);
+});

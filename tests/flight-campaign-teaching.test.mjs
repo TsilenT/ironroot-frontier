@@ -8,7 +8,7 @@ import {startupHarness} from './mobile-startup-fixture.mjs';
 function harness(id) {
   const h=startupHarness({width:390,height:650});
   h.c.campaignProgress=createCampaignProgress();
-  for(const m of CAMPAIGN_PROGRESS_MISSIONS)if(m.id!=='three-minutes-more'&&m.id!==id)h.c.campaignProgress.missions[m.id]={completed:true,stars:1,bestTime:60};
+  for(const m of CAMPAIGN_PROGRESS_MISSIONS)if(m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==id)h.c.campaignProgress.missions[m.id]={completed:true,stars:1,bestTime:60};
   h.c.selectedCampaign=id;h.c.start();
   return h;
 }
