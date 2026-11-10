@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeFalseQuiet = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(includeFalseQuiet || ![id, 'the-road-we-know', 'through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'three-minutes-more' && m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(includeFalseQuiet || ![id, 'the-road-we-know', 'through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeFalseQuiet = true) {
@@ -58,7 +58,7 @@ function assertBlocked(profile, raw) {
 }
 
 test('historical protocol18 pins exact released protocol17 and changes only admission and descriptive copy', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 28);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 29);
   assert.equal(protocolSeventeen.CURRENT_PROFILE_PROTOCOL_VERSION, 17);
   const source = readFileSync(new URL('./fixtures/profile-session-v0261.js', import.meta.url), 'utf8');
   assert.equal(createHash('sha256').update(source).digest('hex'), '7bd923eea5a7305454f84cb4f953ec8c5ddc458c2591406e229c421b53d665f5');
@@ -137,7 +137,7 @@ test('old earned progress stays exact, unlocks False Quiet and records explicit 
   const old = earned(false), raw = backend([[MARKER, marker(17)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 35); assert.equal(overview.maxStars, 105); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 36); assert.equal(overview.maxStars, 108); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(c=>c.id==='unlit-roads').total, 3);
   assert.equal(getCampaignLaunchMission('a-river-between-us', old.campaign).reward, 'Unlocks False Quiet');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);

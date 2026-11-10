@@ -1,3 +1,9 @@
+## Three Minutes More (v0.38 source candidate)
+
+Chapter 9’s fourth mission follows Leave No Road Closed on Twin Span’s two roads. Survive 3:00 with your citadel alive, or destroy the enemy citadel early. One HP earns the primary star. Ordinary paid defensive support, Volley and Citadel choices remain available; no original building, bridge, sale or purchase is required. The departing company is narrative context. The encounter ends before 5:00 escalation.
+
+The catalog contains 36 missions / 108 optional stars. Chapter 9 has four of at least five planned missions and remains partial; Chapter 10 is unavailable. Profile 29 fences older writers while preserving earned domain bytes. A source regression observes one paid 180-second defense on the unchanged opening with both cores intact; another paid route won by early core destruction. These are scripted feasibility observations, without human balance certification. Native review and full final-head checks remain separate. No deployment is claimed. See docs/THREE_MINUTES_MORE_BUILD.md.
+
 ## Leave No Road Closed (v0.37 candidate)
 
 An unreleased third Chapter 9 mission follows The Empty Purse. The catalog contains 35 missions / 105 optional stars. Chapter 9 remains three of at least five planned missions; Chapter 8 remains five, and Chapter 10 is not admitted.
