@@ -1,0 +1,11 @@
+# Cut the Bowstrings — private dependent source candidate
+
+Baseline: reviewed Three Minutes More85e5d8930d53deb105bf1708e54ff35fa6aa4dad (pending0.38), not a claim of publication. Main remains3227f0df/v0.37 at this checkpoint. This branch depends on PR50; its stopped ready transition is not retried or bypassed. No merge or publication while that dependency is unresolved.
+
+Checkpoint001 registers cut-the-bowstrings scenario1, frontier-campaign-bowstrings1 and Classic1. Destroy both original North Bow/South Bow archery ranges at2090 on the outer roads by600s, or destroy the enemy citadel, with own citadel alive. Replacements do not restore original-target credit;1HP earns the primary star. Normal prices, income, paid adaptive AI, unit/structure stats and6000HP cores; no fog, bridge objective, reserve, orders, phase queue or protected factory.
+
+Opening: seed9704; purses900/100. Own aeries1110 north/south, central barracks1110/archery970/mine410. Enemy original archery2090 north/south; barracks2230north, sanctum2230south, barracks2090middle, mine2790middle. One real mine each yields7.5 total income/sec while alive. Two normal level1 gryphons spawn once at timezero through native `_spawn` from the actual inherited aeries, after authored buildings. Their ordinary seeded coordinates/cooldowns, IDs/RNG and automatic-air fields serialize normally; aerie progress remains0. No recurring grant or altered cooldown. Only the new mission spawns these units.
+
+Briefing/Scout disclose both named original targets and the initial two gryphons. Native target markers and focus controls reuse the existing demolition presentation. Optional stars:180s and4500HP. Chapter9 can complete at five; the overall campaign and Chapter10 remain unfinished/unavailable.
+
+Factory/objective/identity/preview tests pass. No paid winning route or human balance is claimed yet. This is an early source checkpoint before final profile30/version0.39 and broad compatibility work; it must not be released. Gameplay traces/results/logs stay external. Parked prototypes and PR50 branch are unchanged.
