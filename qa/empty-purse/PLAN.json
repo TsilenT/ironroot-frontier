@@ -1,0 +1,56 @@
+{
+  "format": "empty-purse-pending-plan-v1",
+  "status": "UNEXECUTED: independent source review and coordinator approval required before any tick",
+  "epoch": 2,
+  "knownSeeds": [
+    9102,
+    923,
+    6401
+  ],
+  "caseOrder": [
+    "retain-income",
+    "salvage-one-mine",
+    "idle"
+  ],
+  "loopOrder": "seed-major, policy-minor, exactly as listed",
+  "cases": 9,
+  "heldOutSeeds": [],
+  "seedDisclosure": "All seeds were opened in epoch1 run001. This is an outcome-informed revision on disclosed known inputs, with no untouched-heldout claim.",
+  "fixedStep": 0.05,
+  "timeLimit": 600,
+  "playerAttemptCadence": 5,
+  "tracesAtSeconds": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    30,
+    45,
+    60,
+    90,
+    120,
+    180,
+    240,
+    300,
+    450,
+    600
+  ],
+  "observations": [
+    "Ordinary two-side prices, full-precision income, refunds, kill gold, spending and conservation via existing Salt instrumentation.",
+    "First paid support construction, support-unit births, and first effective damage by those support units.",
+    "Actual first core damage, combat building losses and HP pressure, outcomes and duration. No arbitrary damage floor.",
+    "Same-seed common-clock comparison at the latest shared scheduled trace no later than min(90 seconds, both run durations): actual mine income and own-asset damage/loss. Do not extrapolate after termination.",
+    "Ordinary dynamic AI calls and all paid commands; failed player attempts retained. Sale counts against five-second action cadence.",
+    "Separate sale removal from combat loss, and retain original mine identity and level in every sampled state."
+  ],
+  "interpretation": [
+    "Both keep and salvage are intended alternatives, not guaranteed winners or required win-rate gates.",
+    "An earlier displayed balance or construction alone is insufficient. Check actual support arrival/effective damage, observed pressure or risk and later lost income together.",
+    "No-sale loss, idle loss, universal victory, mandatory purchase or damage threshold is required. Honest inactivity wins or active losses may refute the proposed encounter.",
+    "If normal income makes the choice harmless or no actual field difference appears, report unsupported distinctiveness rather than tune by forcing selling.",
+    "Any numeric/policy/source change after opening starts a separately documented epoch; retain the old freeze and all outcomes."
+  ],
+  "stopPolicy": "Yield to the event loop and check OUT.stop/SIGINT/SIGTERM every 100 ticks and between cases. Retain a partial draft for every in-case failure; persist completed raw before post-case source verification, then a separate verified receipt. Never retry or overwrite an output directory.",
+  "pendingCommand": "node qa/empty-purse/experiment.mjs --run-approved=/ABS/approval.json --out=/ABS/new-output-directory"
+}

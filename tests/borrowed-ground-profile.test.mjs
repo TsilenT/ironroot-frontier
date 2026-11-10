@@ -29,7 +29,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeBorrowed = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id !== 'through-the-reed-beds' && m.id !== 'the-road-we-know' && m.id !== 'false-quiet' && m.id !== 'a-river-between-us' && (includeBorrowed || m.id !== id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id !== 'through-the-reed-beds' && m.id !== 'the-road-we-know' && m.id !== 'false-quiet' && m.id !== 'a-river-between-us' && (includeBorrowed || m.id !== id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeBorrowed = true) {
@@ -58,7 +58,7 @@ function assertBlocked(profile, raw) {
 }
 
 test('protocol20 pins the exact current v0.24.1 protocol15 source without changing storage or default format identities', () => {
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 26); assert.equal(protocolFifteen.CURRENT_PROFILE_PROTOCOL_VERSION, 15);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 27); assert.equal(protocolFifteen.CURRENT_PROFILE_PROTOCOL_VERSION, 15);
   assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0241.js', import.meta.url))).digest('hex'), '0b337448ccd44c6acade10b99ec2bd5566f8847171190528e77daf9df34094a2');
   const priorSource = readFileSync(new URL('./fixtures/profile-session-v0241.js', import.meta.url), 'utf8');
   const markerOnlySource = priorSource
@@ -140,7 +140,7 @@ test('old earned progress stays exact, unlocks Borrowed Ground and records expli
   const old = earned(false), raw = backend([[MARKER, marker(15)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 33); assert.equal(overview.maxStars, 99); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 34); assert.equal(overview.maxStars, 102); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(chapter => chapter.id === 'river-compact').total, 5);
   assert.equal(getCampaignLaunchMission('lanterns-on-the-water', old.campaign).reward, 'Unlocks Borrowed Ground');
   assert.equal(getCampaignLaunchMission(id, old.campaign).reward, 'Unlocks A River Between Us');
