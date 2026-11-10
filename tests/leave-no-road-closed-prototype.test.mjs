@@ -1,8 +1,9 @@
 /** No candidate natural battle is advanced. All ticking uses empty synthetic fixtures. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtempSync,rmSync,existsSync,readFileSync,writeFileSync} from 'node:fs';
+import {mkdtempSync,rmSync,existsSync,readFileSync,writeFileSync,readdirSync} from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {Game,buildSites} from '../dist/engine.js';
 import {getRuleset} from '../dist/rulesets.js';
 import {getCampaignMission} from '../dist/campaign.js';
@@ -105,7 +106,7 @@ test('QA save boundaries round-trip and continue synthetic native state, reject 
  scenarios[2].state.units=[troop(scenarios[2],1,2,'gryphon')];
  for(const g of scenarios){const save=savePrototype(g),r=restorePrototype(save);assert.deepEqual(savePrototype(r),save);for(let i=0;i<6;i++){g.update(.05);r.update(.05);assert.deepEqual(savePrototype(r),savePrototype(g));}}
  const valid=savePrototype(fixture({time:12,held:10,owned:true}));
- for(const change of [s=>s.extra=1,s=>s.epoch=2,s=>s.requiredBridges=1,s=>s.requiredBridges='3',s=>s.control.heldSeconds=30.01,s=>s.control.heldSeconds=13,s=>s.control.earned=[0,0],s=>s.control.bridges[0].progress=2,s=>s.engine.rulesetId=QA_RULES[3].id,s=>s.engine.mapId='long-march',s=>s.engine.state.time+=.01,s=>s.engine.tick++,s=>s.engine.state.campaignControl=s.control,s=>s.engine.state.time=600.05]){const bad=structuredClone(valid);change(bad);assert.throws(()=>restorePrototype(bad),String(change));}
+ for(const change of [s=>s.extra=1,s=>s.epoch=1,s=>s.requiredBridges=1,s=>s.requiredBridges='3',s=>s.control.heldSeconds=30.01,s=>s.control.heldSeconds=13,s=>s.control.earned=[0,0],s=>s.control.bridges[0].progress=2,s=>s.engine.rulesetId=QA_RULES[3].id,s=>s.engine.mapId='long-march',s=>s.engine.state.time+=.01,s=>s.engine.tick++,s=>s.engine.state.campaignControl=s.control,s=>s.engine.state.time=600.05]){const bad=structuredClone(valid);change(bad);assert.throws(()=>restorePrototype(bad),String(change));}
 });
 
 test('small proposal is frozen and run guard/output guard refuse unapproved runs without running one',()=>{
@@ -159,4 +160,354 @@ test('retention keeps completed raw before failing verification, interrupted dra
   await retainCaseArtifacts({out,stem:'complete',run:async()=>draft,verify:()=>{assert.equal(existsSync(path.join(out,'complete.json')),true);}});
   assert.equal(JSON.parse(readFileSync(path.join(out,'complete-verified.json'))).status,'case-and-source-verified');
  }finally{rmSync(out,{recursive:true,force:true});}
+});
+
+// Small structural epoch1 references, not battle results. Self-contained after recovery.
+const EPOCH1={
+  "initial": {
+    "9305-2": "95711f90a22a05232d1b1e5ba8e0365a4c8f0d370fd24cd62f054d69827fa971",
+    "9305-3": "edfbf9fbf59a96480e0923352c77b634618ee7a307f83875605995fc7216cd76",
+    "214927-2": "080ee46ff68c74ec56195a0849e3e125764b580a1858739a5714f1586fd30ef0",
+    "214927-3": "c470ab653bde152e5438a254bf96545bade5c8404a9ea9db8a19a88ef993deb5",
+    "760141-2": "1a6995434b0543dda146f71a7abdf6767314edfa3412aed906cbe264dbb5e890",
+    "760141-3": "95ef10139697321c9c9f1c28f70d8b0583b5908aa233dbc480be5443439ef86a"
+  },
+  "policies": {
+    "paid-three-road": {
+      "intent": "Fund a real southern screen and ranged/splash support, then economy and screened siege across the roads. Reopen lost planned sites at normal prices.",
+      "plan": [
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "archery",
+          "x": 1110,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "sanctum",
+          "x": 970,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 830,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 830,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 830,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 1,
+          "once": false
+        }
+      ]
+    },
+    "screened-middle-core": {
+      "intent": "Concentrate on middle citadel pressure. Siege sits behind the inherited warrior/archer screen and a new front barracks, never unsupported at the front.",
+      "plan": [
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 830,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "sanctum",
+          "x": 690,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "archery",
+          "x": 550,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 270,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "sanctum",
+          "x": 830,
+          "lane": 0,
+          "once": false
+        }
+      ]
+    },
+    "two-roads-cheap-third": {
+      "intent": "Buy one southern barracks once, then commit to north/middle support and siege. Do not replace or add further southern factories. This is the cheaper-coverage comparison, not a required loser.",
+      "plan": [
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 2,
+          "once": true
+        },
+        {
+          "type": "sanctum",
+          "x": 830,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "barracks",
+          "x": 1250,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 830,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "sanctum",
+          "x": 690,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "archery",
+          "x": 550,
+          "lane": 1,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 0,
+          "once": false
+        },
+        {
+          "type": "mint",
+          "x": 410,
+          "lane": 2,
+          "once": false
+        },
+        {
+          "type": "foundry",
+          "x": 690,
+          "lane": 0,
+          "once": false
+        }
+      ]
+    }
+  },
+  "design": {
+    "id": "leave-no-road-closed",
+    "epoch": 1,
+    "title": "Leave No Road Closed",
+    "status": "fresh-design-natural-cases-unopened",
+    "baselineCommit": "65ee1438435a9e8a4cb6b8b6930ac87ca17518b7",
+    "baselineTree": "b6ee01ff93f43176a889d7fb3c226cf5ef442643",
+    "numericStatus": "All formation, purse, seed and policy choices are new hypotheses, not balance evidence.",
+    "parentRulesetId": "frontier-campaign-citadel-open",
+    "mapId": "classic",
+    "difficulty": "normal",
+    "ai": true,
+    "seed": 9305,
+    "timeLimit": 600,
+    "seconds": 30,
+    "requiredBridges": 3,
+    "startingGold": 900,
+    "enemyGold": 100,
+    "startingHealth": 6000,
+    "cadenceTicks": 100,
+    "playerBuildings": [
+      [
+        "barracks",
+        1110,
+        0
+      ],
+      [
+        "archery",
+        970,
+        0
+      ],
+      [
+        "barracks",
+        1110,
+        1
+      ],
+      [
+        "archery",
+        970,
+        1
+      ],
+      [
+        "mint",
+        410,
+        1
+      ]
+    ],
+    "enemyBuildings": [
+      [
+        "barracks",
+        2090,
+        0
+      ],
+      [
+        "archery",
+        2370,
+        0
+      ],
+      [
+        "barracks",
+        1950,
+        1
+      ],
+      [
+        "sanctum",
+        2230,
+        1
+      ],
+      [
+        "barracks",
+        1950,
+        2
+      ],
+      [
+        "archery",
+        2230,
+        2
+      ],
+      [
+        "mint",
+        2790,
+        1
+      ]
+    ]
+  },
+  "runtimeHash": "55a554a6f4800df06a84b1ec4758e579593bb0faf9d1e7c2fcc66ed4b8e8fd5a"
+};
+
+const digest=value=>createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
+test('epoch2 permits only broad reorder and two mine once flags; literal core/cheap and implementation unchanged',()=>{
+ const source=readFileSync(path.join(ROOT,'qa/leave-no-road-closed/policies.mjs'),'utf8');
+ const oldBroad=` 'paid-three-road':{
+  intent:'Fund a real southern screen and ranged/splash support, then economy and screened siege across the roads. Reopen lost planned sites at normal prices.',
+  plan:[B('barracks',1250,2),B('archery',1110,2),B('sanctum',970,2),...mines,B('foundry',830,2),B('foundry',830,0),B('foundry',830,1),B('barracks',1250,0),B('barracks',1250,1)],
+ },
+`;
+ const normalized=source.replace(/ 'paid-three-road':\{[\s\S]*?(?= 'screened-middle-core':)/,oldBroad);
+ assert.equal(digest(normalized),'82e37ce0000abd32e55744a8f28c474199f62323ac4fc7b0f18806bc1063cc8c');
+ for(const id of ['screened-middle-core','two-roads-cheap-third'])assert.deepEqual(POLICIES[id],EPOCH1.policies[id]);
+ const strip=plan=>plan.map(({once,...site})=>site).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+ const before=EPOCH1.policies['paid-three-road'].plan,after=POLICIES['paid-three-road'].plan;
+ assert.equal(after.length,10);assert.deepEqual(strip(after),strip(before));
+ assert.deepEqual(after.map(x=>[x.type,x.x,x.lane,x.once]),[
+ ['barracks',1250,2,false],['barracks',1250,0,false],['barracks',1250,1,false],
+ ['foundry',830,0,false],['foundry',830,1,false],['archery',1110,2,false],
+ ['sanctum',970,2,false],['foundry',830,2,false],['mint',410,0,true],['mint',410,2,true]]);
+ const g=fixture();assert.equal(after.reduce((n,item)=>n+g.buildings[item.type].cost,0),2015);
+ assert.deepEqual(after.map(item=>g.buildings[item.type].cost).sort((a,b)=>a-b),before.map(item=>g.buildings[item.type].cost).sort((a,b)=>a-b));
+});
+test('epoch2 all known seed openings equal epoch1 except QA identity; runtime and runner remain exact',()=>{
+ assert.equal(DESIGN.epoch,2);assert.equal(PLAN.epoch,2);
+ assert.deepEqual({...DESIGN,epoch:1},EPOCH1.design);
+ assert.deepEqual(PLAN.knownSeeds,[9305,214927,760141]);
+ assert.deepEqual(PLAN.cases.map(c=>[c.id,c.policy,c.requiredBridges]),[
+ ['broad-three','paid-three-road',3],['core-three','screened-middle-core',3],
+ ['cheap-three','two-roads-cheap-third',3],['cheap-two-diagnostic','two-roads-cheap-third',2]]);
+ const source=readFileSync(path.join(ROOT,'qa/leave-no-road-closed/scenario.mjs'),'utf8')
+ .replaceAll('epoch:2','epoch:1').replaceAll('packet.epoch!==2','packet.epoch!==1').replaceAll('closed-e2-','closed-e1-');
+ assert.equal(digest(source),'1c06f1741aa84c02f38fcd3272547dc4f095949a2d7ff5c949aed0db6b4c735c');
+ assert.equal(digest(readFileSync(path.join(ROOT,'qa/leave-no-road-closed/run.mjs'))),'b3dcd59cfa0db37ad03916fba10d7c9bb19b69f237ab11c274feaba9c8929399');
+ const runtime=Object.fromEntries(readdirSync(path.join(ROOT,'dist')).sort().map(n=>[n,digest(readFileSync(path.join(ROOT,'dist',n)))]));
+ assert.equal(digest(runtime),EPOCH1.runtimeHash);
+ for(const seed of PLAN.knownSeeds)for(const requiredBridges of [2,3]){
+  const g=createPrototype({seed,requiredBridges}),save=savePrototype(g);
+  assert.equal(g.tick,0);assert.equal(g.ruleset.id,`qa-leave-no-road-closed-e2-${requiredBridges}`);
+  assert.equal(save.epoch,2);assert.deepEqual(savePrototype(restorePrototype(save)),save);
+  const old={...save,epoch:1};assert.equal(digest(old),EPOCH1.initial[seed+'-'+requiredBridges]);
+  assert.throws(()=>restorePrototype(old),/Invalid QA envelope/);
+ }
+});
+test('synthetic no-tick broad mines purchase once while every ordinary combat site rebuilds repeatedly',()=>{
+ // Empty synthetic worlds only, manually assigned clock/gold and explicit loss. No update/_step calls.
+ const plan=POLICIES['paid-three-road'].plan;
+ for(const [index,item] of plan.entries()){
+  const g=fixture(),p=createPolicy('paid-three-road');g.state.gold[0]=10000;
+  // Occupy every other planned location so this site is the sole missing item.
+  for(const [i,other] of plan.entries())if(i!==index)assert.ok(g.build(other.type,other.x,g.map.lanes[other.lane]).ok);
+  const purchase=p.step(g);assert.ok(purchase.ok);assert.equal(purchase.type,item.type);assert.equal(purchase.x,item.x);assert.equal(purchase.lane,item.lane);
+  assert.equal(purchase.cost,g.buildings[item.type].cost);
+  for(let repeat=1;repeat<=2;repeat++){
+   g.state.buildings=g.state.buildings.filter(b=>!(b.side===0&&b.x===item.x&&b.lane===item.lane));
+   g.tick=repeat*100;g.state.time=repeat*5;
+   const restored=createPolicy('paid-three-road',{state:p.snapshot()});
+   assert.deepEqual(restored.snapshot(),p.snapshot());
+   const next=p.step(g);
+   if(item.once){assert.ok(p.snapshot().onceCompleted.includes(index));assert.notEqual(next?.method,'build');assert.equal(g.state.buildings.some(b=>b.x===item.x&&b.lane===item.lane),false);}
+   else {assert.ok(next.ok);assert.equal(next.method,'build');assert.equal(next.type,item.type);assert.equal(next.x,item.x);assert.equal(next.lane,item.lane);assert.equal(next.cost,g.buildings[item.type].cost);}
+  }
+ }
+ const g=fixture(),p=createPolicy('paid-three-road');
+ for(const item of plan.slice(0,8)){g.state.gold[0]=10000;assert.ok(g.build(item.type,item.x,g.map.lanes[item.lane]).ok);}
+ g.state.gold[0]=0;assert.equal(p.step(g).ok,false);assert.deepEqual(p.snapshot().onceCompleted,[]);
+ g.tick=100;g.state.time=5;g.state.gold[0]=190;assert.ok(p.step(g).ok);assert.deepEqual(p.snapshot().onceCompleted,[8]);
 });
