@@ -1,0 +1,68 @@
+{
+  "id": "wake-the-reserve-baseline-executable-v1",
+  "status": "prepared-awaiting-independent-review-and-authorization",
+  "sourceCommit": "65ee1438435a9e8a4cb6b8b6930ac87ca17518b7",
+  "sourceTree": "b6ee01ff93f43176a889d7fb3c226cf5ef442643",
+  "sourceInventorySha256": "99598b55d37e7d7c82664e5ae848ba2405e9ec244843331c410187dbc36e6123",
+  "scope": "Exact three-case natural disabled-reserve baseline, not yet run. Synthetic mechanism/runner tests do not establish a paid encounter win, human difficulty or natural reserve timing. No production admission, version change or remote permission.",
+  "nextStage": {
+    "name": "baseline-first",
+    "prerequisites": [
+      "Independent review of frozen source and executable paid policies",
+      "Explicit coordinator authorization for exact invocation and new external output path"
+    ],
+    "seed": 9104,
+    "seedReason": "Declared authored candidate seed, not selected from observed outcomes.",
+    "reserveEnabled": false,
+    "maximumCases": 3,
+    "caseOrder": [
+      "north-supported",
+      "south-bypass",
+      "idle"
+    ],
+    "maximumSimulatedSecondsPerCase": 600,
+    "playerCadenceSeconds": 5,
+    "policyContract": "Only ordinary paid engine commands using own state and visible combat. Freeze exact command plans and tie-breaks before any case. No state edits, grants, treasury floors, free upgrades, automatic unit rescue or reactive hidden-state decisions.",
+    "stopRules": "Retain each result and rejection. Stop the stage on source mismatch, ledger error, restore divergence, interruption or exception. No silent retry or extra seeds. If neither supported route wins, stop and report the baseline failure before any reserve case.",
+    "review": "A credible supported paid route is necessary before adding retaliation. An idle win or a dominant route is reported for design review, not hidden or converted into a mandatory-loser requirement. Automated feasibility is not human difficulty.",
+    "policyFile": "qa/minor-reserve/policies.mjs",
+    "observerFile": "qa/minor-reserve/observe.mjs",
+    "runnerFile": "qa/minor-reserve/run.mjs",
+    "exactCadence": "One player decision at tick0, then exactly each100 fixed ticks (5seconds), including rejected commands and no-op upgrade decisions. Retry a failed planned build at the next cadence; advance the plan only after success. No player action between boundaries.",
+    "upgradeTieBreaks": "After the build plan, choose living owned producers below level3 by level ascending, primary/middle/opposite road, type priority foundry/archery/sanctum/wardenLodge/barracks, rearward x, then numericID. Upgrade once; ordinary affordability rejection is retained. No mine/tower upgrades, health-based repair cycling, sell, Volley or citadel purchase.",
+    "opening": "North and south are mirror paid hypotheses: rear archery at550, Warden screen at830, rear foundry at410, opposite-road mine at410, opposite archery at550, middle sanctum at830, primary barracks at970, primary second rear foundry at270, opposite third mine at270, opposite archery at830, middle Warden at970, primary archery at1110, middle foundry at270. Inherited formations and900/100 purse unchanged. All x coordinates are world coordinates on the player side; road indices are frozen in source.",
+    "naturalContinuation": "Initial/final JSON roundtrips; reached30s/90s and first original building loss on each side trigger independent restored game+policy shadows for the next10 actual ticks, including any cadence action. Short terminal tails are retained, never extended after battle end.",
+    "receipts": "Every attempted player/AI command including rejections; ordinary income, kill gold, costs and refunds reconciled each fixed tick; actual spawns, primary-fire/effective-damage joins, unattributed splash, original structure loss, first local/core contact and5s force summaries. All raw and partial records external.",
+    "binding": "Exact PR44 parent present/omitted source digests, five intentional tracked modifications, four new runner/policy/test files and all ten working-file hashes, plan hash, workspace, Node binary/version/arguments and OS environment, exact command invocation and fresh external destination. Independent approved packet required. Source rechecked before each case and after each completed case.",
+    "output": "Only a fresh path under the dedicated external ironroot-minor-reserve-baseline-evidence directory. No overwrite/resume/retry entrypoint. Stop-file and SIGINT/SIGTERM checked every100ticks and between cases; retain partial then stop."
+  },
+  "laterStage": {
+    "status": "separate-freeze-and-authorization-required",
+    "maximumCases": 4,
+    "proposal": "Use the same authored seed and frozen north-supported/south-bypass policies, each with reserve enabled and disabled. Inspect release timing, march to contested contact, real targeting and damage, local losses, paid purchases and final outcomes. No extra seed search.",
+    "interpretation": "The wave should have an actual opportunity to join the local fight. It may change tactics without changing the winner. No purchase is mandatory, no arbitrary damage floor, and no requirement that every surprise be harmless or that all alternatives lose. If rear arrivals miss the fight, report and revisit the design before further cases."
+  },
+  "evidence": "All generated freezes, logs, results, checkpoints and screenshots stay outside the repository. Keep source, tests and essential concise docs only.",
+  "mechanismCommand": [
+    "node",
+    "--test",
+    "tests/minor-reserve-qa.test.mjs",
+    "tests/minor-reserve-runner.test.mjs"
+  ],
+  "executionCommand": [
+    "node",
+    "qa/minor-reserve/run.mjs",
+    "--run-approved",
+    "EXTERNAL_REVIEWED_APPROVAL",
+    "NEW_EXTERNAL_DIRECTORY"
+  ],
+  "freezeCommand": [
+    "node",
+    "qa/minor-reserve/run.mjs",
+    "--freeze",
+    "NEW_EXTERNAL_PENDING_FREEZE"
+  ],
+  "parentCommit": "c0f8f46609d05eaccc3040dd19c8477db1102c83",
+  "parentTree": "b043e937d848f9906e1385c69961130e88fac9fa",
+  "parentInventorySha256": "0d302f73cc35e1652a799915d9e7012ff278076b93a64700cd3963bafd8139b2"
+}
