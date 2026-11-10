@@ -201,7 +201,7 @@ for (const stars of [1, 3]) test(`Chapter 6 ${stars}-star result continues into 
   assert.equal(c.briefingRestart.campaign, river);
   assert.equal(c.briefingRestart.game.state.time, 0);
   assert.deepEqual(c.campaignProgress, records);
-  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, 'leave-no-road-closed');
+  assert.equal(campaign.getProgressionCampaignOverview(records).missions.at(-1).id, 'three-minutes-more');
 });
 
 test('current presentation never rewrites published chapter or mission descriptors', () => {
