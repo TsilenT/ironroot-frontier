@@ -485,7 +485,7 @@ export const SHARED_WATCH_MISSIONS=[{
     'All eight earned buildings, automatic adjacent-road flyers and normal paid citadel choices are available. At 5:00 ordinary escalation speeds production ×1.65, multiplies troop structure damage ×1.75 and lowers citadel shot damage from 32 to 18. There is no fog or forced drain.'],
 }];
 
-export const BROKEN_LINE_CHAPTER=deepFreeze({id:'broken-line',number:9,name:'The Broken Line',subtitle:'Face the last local reserves',theme:'woodland',plannedMissions:5,description:'Chapter 9 begins here. Two missions are currently available; at least five are planned.',epilogue:'The first roads through the Broken Line are open. More of this chapter lies ahead.'});
+export const BROKEN_LINE_CHAPTER=deepFreeze({id:'broken-line',number:9,name:'The Broken Line',subtitle:'Face the last local reserves',theme:'woodland',plannedMissions:5,description:'Chapter 9 begins here. Three missions are currently available; at least five are planned.',epilogue:'The first roads through the Broken Line are open. More of this chapter lies ahead.'});
 export const WAKE_RESERVE_MISSIONS=[{
   id:'wake-the-reserve',chapterId:'broken-line',number:30,name:'Wake the Reserve',subtitle:'Choose when to face the northern reserve',
   scenarioRevision:1,mapId:'classic',mapRevision:1,rulesetId:MINOR_RESERVE_RULESET_ID,rulesetRevision:1,
