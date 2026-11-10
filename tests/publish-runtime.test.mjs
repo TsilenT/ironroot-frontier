@@ -52,7 +52,7 @@ function mock(snapshot, options = {}) {
     publicTree.push(entry('obsolete.js', 'export const obsolete = true;'));
   }
   targetTrees.set(targetTreeSha, {sha: targetTreeSha, truncated: false, tree: publicTree});
-  let publicHead = ORIGINAL_HEAD, sourceChecks = 0, targetChecks = 0, sourceRepoChecks = 0, targetRepoChecks = 0;
+  let publicHead = ORIGINAL_HEAD, sourceChecks = 0, targetChecks = 0, sourceRepoChecks = 0, targetRepoChecks = 0, postPatchReads = 0;
   const writes = () => calls.filter(c => c.method !== 'GET');
   const sourceApi = async (method, endpoint = '', body) => {
     calls.push({side: 'source', method, endpoint, body});
@@ -72,6 +72,10 @@ function mock(snapshot, options = {}) {
       if (!endpoint) { targetRepoChecks++; return options.targetRepo?.(targetRepoChecks) ?? repo(TARGET, false); }
       if (endpoint === '/git/ref/heads/main') {
         targetChecks++;
+        if (publicHead !== ORIGINAL_HEAD && options.postPatchHeads) {
+          const value = options.postPatchHeads[Math.min(postPatchReads++, options.postPatchHeads.length - 1)];
+          return ref(value === 'old' ? ORIGINAL_HEAD : value === 'published' ? publicHead : NEXT_SHA);
+        }
         return ref(targetChecks === options.targetChangesAt ? NEXT_SHA : publicHead);
       }
       if (endpoint === `/git/commits/${ORIGINAL_HEAD}`) return {sha: ORIGINAL_HEAD, tree: {sha: targetTreeSha}};
@@ -189,6 +193,48 @@ test('publish is runtime-only, preserves public metadata, removes obsolete files
   assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
 });
 
+test('post-PATCH read of pre-write head gets one confirmation without any write retry', async t => {
+  const m = mock(fixture(t).snapshot(), {postPatchHeads: ['old', 'published']});
+  const result = await m.run();
+  assert.equal(result.status, 'published');
+  const patch = m.calls.findIndex(c => c.method === 'PATCH');
+  assert.deepEqual(m.calls.slice(patch + 1).map(c => [c.method, c.endpoint]),
+    [['GET', '/git/ref/heads/main'], ['GET', '/git/ref/heads/main']]);
+  assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
+  assert.equal(m.writes().filter(c => c.endpoint === '/git/trees').length, 1);
+  assert.equal(m.writes().filter(c => c.endpoint === '/git/commits').length, 1);
+  assert.equal(m.writes().at(-1).body.sha, result.commit);
+});
+
+test('post-write verification stays bounded and refuses every unconfirmed or different head', async t => {
+  for (const [name, heads, reads] of [
+    ['persistent pre-write head', ['old'], 2],
+    ['pre-write then concurrent head', ['old', 'other', 'published'], 2],
+    ['concurrent then published head', ['other', 'published'], 1],
+  ]) await t.test(name, async st => {
+    const m = mock(fixture(st).snapshot(), {postPatchHeads: heads});
+    await assert.rejects(m.run, error => error.message.includes('did not verify after publication') &&
+      error.message.includes('Expected ') && error.message.includes('observed ') && error.message.includes('No writes were retried.'));
+    const patch = m.calls.findIndex(c => c.method === 'PATCH');
+    assert.equal(m.calls.length - patch - 1, reads);
+    assert.ok(m.calls.slice(patch + 1).every(c => c.method === 'GET' && c.endpoint === '/git/ref/heads/main'));
+    assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
+  });
+  for (const reread of [false, true]) await t.test(`failed ${reread ? 'confirmation' : 'initial verification'} GET does not retry writes`, async st => {
+    const snapshot = fixture(st).snapshot(), m = mock(snapshot), original = m.targetApi;let published = false, reads = 0;
+    await assert.rejects(publishRuntime({snapshot, sourceSha: SOURCE_SHA, sourceApi:m.sourceApi,
+      targetApi: async (...args) => {
+        if (published && args[0] === 'GET' && args[1] === '/git/ref/heads/main') {
+          reads++;if (!reread || reads > 1) throw Error('Mock post-write read failure');
+          await original(...args);return ref(ORIGINAL_HEAD);
+        }
+        const result = await original(...args);if(args[0] === 'PATCH')published = true;return result;
+      },
+    }), /post-write read failure/);
+    assert.equal(reads,reread ? 2 : 1);assert.equal(m.writes().filter(c => c.method === 'PATCH').length,1);
+  });
+});
+
 test('superseded source is skipped at all three freshness checkpoints', async t => {
   for (const checkpoint of [1, 2, 3]) await t.test(`checkpoint ${checkpoint}`, async st => {
     const m = mock(fixture(st).snapshot(), {supersedeAt: checkpoint});
@@ -217,7 +263,7 @@ test('concurrent public changes fail before upload or ref update and never retry
   });
   await t.test('public ref moved immediately after publication', async st => {
     const m = mock(fixture(st).snapshot(), {targetChangesAt: 4});
-    await assert.rejects(m.run, /moved after publication/);
+    await assert.rejects(m.run, /did not verify after publication/);
     assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
   });
 });
@@ -281,12 +327,17 @@ test('API stays on exact HTTPS repository, disables redirects, bounds requests, 
   assert.equal(calls[0].url, `https://api.github.com/repos/${SOURCE.name}/git/ref/heads/main`);
   assert.equal(calls[0].options.redirect, 'error');
   assert.equal(calls[0].options.headers.Authorization, 'Bearer source-secret-sentinel');
+  assert.equal(calls[0].options.headers['Cache-Control'], 'no-cache');
+  await api('GET', `/git/commits/${SOURCE_SHA}`);
+  assert.equal(calls[1].options.headers['Cache-Control'], undefined, 'immutable object reads retain their existing behavior');
+  await githubApi(TARGET.name, 'target-test-value', fakeFetch)('PATCH', '/git/refs/heads/main', {sha: NEXT_SHA, force: false});
+  assert.equal(calls[2].options.headers['Cache-Control'], undefined, 'write behavior is unchanged');
   assert.ok(calls[0].options.signal instanceof AbortSignal);
   await assert.rejects(api('POST', '/git/blobs', {}), /read-only/);
   for (const path of ['https://untrusted.invalid', '/../../elsewhere', '/git/refs/heads/other', '/git/blobs?token=x', '/actions/secrets']) {
     await assert.rejects(api('GET', path), /Unapproved/);
   }
-  assert.equal(calls.length, 1);
+  assert.equal(calls.length, 3);
   assert.throws(() => githubApi('another/repo', 'sentinel'), /Unexpected/);
   const bounded = githubApi(TARGET.name, 'test-only', fakeFetch);
   for (let i = 0; i < 300; i++) await bounded('GET');
