@@ -9,14 +9,14 @@ test('Road briefing and Scout disclose exact three-road alternative, deadline an
 });
 
 // Bind the visible chapter count to actual content, not only the global catalog.
-test('Chapter 9 copy matches four available missions and remains partial until minimum five',()=>{
+test('Chapter 9 copy matches five available missions and completes at minimum five',()=>{
  const progress=createCampaignProgress(),overview=getProgressionCampaignOverview(progress);
  const chapter=overview.chapters.find(c=>c.id==='broken-line');
- assert.equal(chapter.total,4);assert.equal(chapter.plannedMissions,5);
- const words={4:'Four',5:'five'};
- assert.ok(chapter.description.includes(`${words[chapter.total]} missions are currently available; at least ${words[chapter.plannedMissions]} are planned.`));
+ assert.equal(chapter.total,5);assert.equal(chapter.plannedMissions,5);
+ const words={5:'Five'};
+ assert.ok(chapter.description.includes(`${words[chapter.total]} missions are currently available; at least ${'five'} are planned.`));
  const missions=overview.missions.filter(m=>m.chapterId===chapter.id);assert.equal(missions.length,chapter.total);
  for(const m of overview.missions)progress.missions[m.id]={completed:true,stars:1,bestTime:60};
  const cleared=getProgressionCampaignOverview(progress).chapters.find(c=>c.id===chapter.id);
- assert.equal(cleared.cleared,4);assert.equal(cleared.completed,false);assert.equal(cleared.description,chapter.description);
+ assert.equal(cleared.cleared,5);assert.equal(cleared.completed,true);assert.equal(cleared.description,chapter.description);
 });
