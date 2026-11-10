@@ -27,7 +27,7 @@ function assertLegal(game){
 test('Borrowed Yard adds one frozen campaign map without changing any published geometry or rules',()=>{
   assert.equal(hash(MAPS),'098b998e3976ed83ccc71878da86a99462bfd3ffcfdf0e19ac89c6ea48394730');
   assert.equal(hash(INTRO_MAPS),'eddc76629a903c0dd5d1fed4c78b54dc21ef99269269d6e3185d34eaf0284742');
-  assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>!['frontier-campaign-shared-watch','frontier-campaign-long-screen','frontier-hammer-prototype','frontier-campaign-hammer-turns'].includes(id)&&id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==RULES&&id!=='frontier-campaign-river-between'&&id!=='frontier-campaign-road-we-know'&&id!=='frontier-campaign-reed-beds'&&!id.startsWith('frontier-campaign-false-quiet-')))),'68011b3b9db67c3ae73d38aff72c6cf39d01603b1fc7729b875151758e053123');
+  assert.equal(hash(Object.fromEntries(Object.entries(RULESETS).filter(([id])=>!['frontier-campaign-leave-roads','frontier-campaign-empty-purse','frontier-campaign-wake-reserve','frontier-campaign-shared-watch','frontier-campaign-long-screen','frontier-hammer-prototype','frontier-campaign-hammer-turns'].includes(id)&&id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==RULES&&id!=='frontier-campaign-river-between'&&id!=='frontier-campaign-road-we-know'&&id!=='frontier-campaign-reed-beds'&&!id.startsWith('frontier-campaign-false-quiet-')))),'68011b3b9db67c3ae73d38aff72c6cf39d01603b1fc7729b875151758e053123');
   assert.deepEqual(Object.keys(MAPS),['classic','long-march','twin-span']);assert.equal(Object.hasOwn(MAPS,MAP),false);
   assert.deepEqual(Object.keys(CAMPAIGN_MAPS),[MAP]);assert.ok(Object.isFrozen(CAMPAIGN_MAPS));
   const map=getMap(MAP);assert.equal(map,CAMPAIGN_MAPS[MAP]);
@@ -102,7 +102,7 @@ test('keeping or upgrading uses the same site; ordinary salvage frees it for pai
 
 test('engine admission pairs Borrowed Yard only with its rules and rejects malformed saved plots unchanged',()=>{
   for(const mapId of [...Object.keys(MAPS),...Object.keys(INTRO_MAPS)])assert.throws(()=>fresh({mapId}),/Borrowed Yard/);
-  for(const rulesetId of Object.keys(RULESETS).filter(id=>id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==RULES))assert.throws(()=>fresh({rulesetId}),/Borrowed Yard/);
+  for(const rulesetId of Object.keys(RULESETS).filter(id=>id!=='frontier-campaign-salt-stores'&&id!=='frontier-campaign-archers-quay'&&id!==RULES))assert.throws(()=>fresh({rulesetId}),rulesetId==='frontier-campaign-wake-reserve'?/Wake the Reserve requires Classic/:/Borrowed Yard/);
   assert.throws(()=>new Game({mapId:MAP}),/Borrowed Yard/);
   for(const options of [{mapRevision:2},{rulesetRevision:2}])assert.throws(()=>fresh(options));
   const saved=fresh().serialize();
@@ -142,7 +142,7 @@ test('campaign catalog binds exact Borrowed Ground identity and rejects Skirmish
     value=>{value.ruleset={id:'frontier-campaign-citadel-open',revision:1};},
     value=>{value.map={id:'classic',revision:1};value.ruleset={id:'frontier-campaign-citadel-open',revision:1};},
   ]){const value=identity();mutate(value);const before=structuredClone(value);assert.throws(()=>validateBattleIdentity(value));assert.deepEqual(value,before);}
-  const progress={...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==MISSION)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+  const progress={...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==MISSION)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
   assert.equal(campaign.getCampaignRevisionForRuleset(MISSION,RULES),1);
   const saved=encodeBattle(game,identity().scenario,{campaignProgress:progress}),restored=decodeBattle(saved,{campaignProgress:progress});
   assert.deepEqual(restored.game.serialize(),game.serialize());assert.deepEqual(campaign.createCampaignRestart(restored.game,MISSION).serialize(),game.serialize());

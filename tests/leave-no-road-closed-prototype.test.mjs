@@ -1,3 +1,4 @@
+import {engineBeforeReserve} from './shared-watch-engine-source.mjs';
 /** No candidate natural battle is advanced. All ticking uses empty synthetic fixtures. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -34,7 +35,7 @@ test('fresh QA formation is legal, deterministic, healthy and not runtime admiss
  assert.equal(Object.keys(g.buildings).length,8);assert.deepEqual(g.ruleset.campaignControl,{policy:'cumulative-route-v1',requiredBridges:3,seconds:30,timeLimit:600});assert.ok(Object.isFrozen(g.ruleset.campaignControl));
  const {id,name,qaOnly,campaignControl,...qa}=g.ruleset,{id:parentId,name:parentName,...parent}=getRuleset(DESIGN.parentRulesetId);assert.deepEqual(qa,parent);
  for(const b of g.state.buildings){assert.ok(buildSites(g.map,b.side).some(p=>p.x===b.x&&p.y===b.y));assert.equal(b.level,1);assert.equal(b.hp,b.maxHp);assert.equal(b.invested,g.buildings[b.type].cost);}
- assert.throws(()=>getRuleset(g.ruleset.id));assert.throws(()=>new Game({rulesetId:g.ruleset.id}));assert.throws(()=>Game.restore(g.serialize()));assert.throws(()=>getCampaignMission(DESIGN.id));
+ assert.throws(()=>getRuleset(g.ruleset.id));assert.throws(()=>new Game({rulesetId:g.ruleset.id}));assert.throws(()=>Game.restore(g.serialize()));assert.notEqual(getCampaignMission(DESIGN.id).rulesetId,g.ruleset.id); // Separate public identity, never QA admission.
  assert.deepEqual(bridgeIncome(g),[0,0]);assert.equal(g.state.bridgeControl,undefined);
  for(const seed of [-1,2**32,NaN,1.5])assert.throws(()=>createPrototype({seed}));assert.throws(()=>createPrototype({requiredBridges:1}));
 });
@@ -466,7 +467,7 @@ test('epoch2 permits only broad reorder and two mine once flags; literal core/ch
  const g=fixture();assert.equal(after.reduce((n,item)=>n+g.buildings[item.type].cost,0),2015);
  assert.deepEqual(after.map(item=>g.buildings[item.type].cost).sort((a,b)=>a-b),before.map(item=>g.buildings[item.type].cost).sort((a,b)=>a-b));
 });
-test('epoch2 all known seed openings equal epoch1 except QA identity; runtime and runner remain exact',()=>{
+test('epoch2 all known seed openings equal epoch1 except QA identity; historical engine primitive and runner remain exact',()=>{
  assert.equal(DESIGN.epoch,2);assert.equal(PLAN.epoch,2);
  assert.deepEqual({...DESIGN,epoch:1},EPOCH1.design);
  assert.deepEqual(PLAN.knownSeeds,[9305,214927,760141]);
@@ -477,8 +478,9 @@ test('epoch2 all known seed openings equal epoch1 except QA identity; runtime an
  .replaceAll('epoch:2','epoch:1').replaceAll('packet.epoch!==2','packet.epoch!==1').replaceAll('closed-e2-','closed-e1-');
  assert.equal(digest(source),'1c06f1741aa84c02f38fcd3272547dc4f095949a2d7ff5c949aed0db6b4c735c');
  assert.equal(digest(readFileSync(path.join(ROOT,'qa/leave-no-road-closed/run.mjs'))),'b3dcd59cfa0db37ad03916fba10d7c9bb19b69f237ab11c274feaba9c8929399');
- const runtime=Object.fromEntries(readdirSync(path.join(ROOT,'dist')).sort().map(n=>[n,digest(readFileSync(path.join(ROOT,'dist',n)))]));
- assert.equal(digest(runtime),EPOCH1.runtimeHash);
+ // EPOCH1.runtimeHash remains historical provenance, not a current-runtime equality.
+ // New immutable campaign identities and their UI legitimately extend dist.
+ assert.equal(digest(engineBeforeReserve()),'6837fe338e80cf0f78d8ab1784d678d1a515667e1c397c1f9c19ddf73ab2fec6');
  for(const seed of PLAN.knownSeeds)for(const requiredBridges of [2,3]){
   const g=createPrototype({seed,requiredBridges}),save=savePrototype(g);
   assert.equal(g.tick,0);assert.equal(g.ruleset.id,`qa-leave-no-road-closed-e2-${requiredBridges}`);

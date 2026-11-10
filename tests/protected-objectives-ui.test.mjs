@@ -167,7 +167,8 @@ test('already-missing app state names the original and explicitly marks historic
 
 test('portrait protected battles declare a two-row 44px toolbelt without shrinking controls',()=>{
   assert.match(css,/@media \(max-width: 700px\) and \(orientation: portrait\)[\s\S]*?\.battlefield\.protected-battle \.toolbelt \{[\s\S]*?grid-template-columns: repeat\(2, 44px\);/);
-  assert.match(app,/\$\('battlefield'\)\.classList\.toggle\('protected-battle', !!targets\.length\)/);
+  assert.match(app,/docked = !!targets\.length \|\| !!reserve/);
+  assert.match(app,/\$\('battlefield'\)\.classList\.toggle\('protected-battle', docked\)/);
 });
 
 

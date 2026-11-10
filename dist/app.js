@@ -70,6 +70,7 @@ import { GameAudio } from './audio.js';
 import { advanceObjectiveBattle } from './objectives.js';
 import { campaignBuildChoices, campaignTeaching, campaignCoach, drawCampaignGuidance, guidancePointVisible } from './campaign-flow.js';
 import { missionBriefing, signalProtectionSummary } from './campaign-presentation.js';
+import { minorReserveView } from './minor-reserve-view.js';
 import { hasChartedIntelligence, chartedObjectiveTargets, chartedObjectiveObservation } from './campaign-intelligence.js';
 import { createProtectedObjectiveMonitor, protectedLossDetails, isProtectedCampaignBuilding } from './protected-objectives.js';
 import { createObjectiveAlertPolicy } from './objective-alerts.js';
@@ -207,6 +208,7 @@ let protectedAlerts = null;
 let protectedAnnouncementUntil = 0;
 const protectedControls = new Map();
 let armedProtectedControl = null;
+let armedReserveControl = null, lastReservePhase = null;
 let battleJournal = null, lastBattleReport = null, hasLastResult = false, reportFault = false;
 let selectedMap = 'classic';
 let selectedRuleset = getRuleset(DEFAULT_SKIRMISH_RULESET_ID).endgame.forcedDecay ? 'frontier-air-local-timed' : 'frontier-air-local-open';
@@ -1252,31 +1254,41 @@ function currentSignalProtection(targets = protectedMonitor?.read() || []) {
   const scenario = campaignScenarioForGame(game, currentCampaign);
   return signalProtectionSummary(getCampaignMission(currentCampaign, scenario.revision), targets, game.state.time);
 }
+function currentMinorReserve() {
+  return currentCampaign === 'wake-the-reserve'
+    ? minorReserveView(game, { ended: !!objectiveOutcome }) : null;
+}
 function beginProtectedObjectives() {
   protectedMonitor = currentCampaign && !chartedMission()
     ? createProtectedObjectiveMonitor(game, currentCampaign) : null;
   protectedControls.clear();
   protectedAnnouncementUntil = 0;
   armedProtectedControl = null;
+  armedReserveControl = null;
+  lastReservePhase = null;
   $('protectedTargets').textContent = '';
   $('protectedAlert').textContent = '';
   $('resultProtectedLoss').textContent = '';
   $('resultProtectedLoss').classList.add('hidden');
   const targets = objectiveFocusTargets();
   const signals = currentSignalProtection(targets), charted = chartedMission();
+  const reserve = currentMinorReserve(), docked = !!targets.length || !!reserve;
   protectedAlerts = protectedMonitor && targets.length
     ? createObjectiveAlertPolicy({battleKey:protectedMonitor,targetIds:targets.map(target=>target.originalId)}) : null;
   protectedAlerts?.observe(targets,{battleKey:protectedMonitor});
   // Reserve real layout space rather than covering the target being focused.
   // Reparent only at battle start, never while a gesture/focus is active.
-  if (targets.length) $('protectedDock').append($('objectiveHUD'));
+  if (docked) $('protectedDock').append($('objectiveHUD'));
   else $('battlefield').append($('objectiveHUD'));
-  $('protectedDock').classList.toggle('hidden', !targets.length);
-  $('battlefield').classList.toggle('protected-battle', !!targets.length);
-  $('objectiveHUD').classList.toggle('protect-hud', !!targets.length);
+  $('protectedDock').classList.toggle('hidden', !docked);
+  $('battlefield').classList.toggle('protected-battle', docked);
+  $('objectiveHUD').classList.toggle('protect-hud', docked);
+  $('app').classList.toggle('minor-reserve-battle', !!reserve);
+  $('minorReserveHUD').classList.toggle('hidden', !reserve);
   $('protectedTargets').classList.toggle('hidden', !targets.length);
-  $('objectiveIdentity').classList.toggle('hidden', !targets.length);
+  $('objectiveIdentity').classList.toggle('hidden', !docked);
   $('objectiveIdentity').textContent = targets.length ? currentChallenge ? `FIELD TRIAL · ANY ${getChallengeForGame(game, currentChallenge).requiredTargets} OF ${targets.length}` : `${game.difficulty.toUpperCase()} · ${currentCampaign === 'through-the-reed-beds' ? 'ANY 2 OF 3' : charted ? (charted.id==='false-quiet'?'FOG · CHARTED FORT':'FOG · CHARTED POSTS') : signals ? 'KEEP 1 SIGNAL' : 'PROTECT'}` : '';
+  if (reserve) $('objectiveIdentity').textContent = `${game.difficulty.toUpperCase()} · OPTIONAL POST`;
   $('protectedTargets').classList.toggle('trial-targets', (!!currentChallenge || !!charted || currentCampaign === 'through-the-reed-beds') && !!targets.length);
   $('protectedTargets').classList.toggle('charted-targets', !!charted && !!targets.length);
   $('protectedTargets').setAttribute('aria-label', charted ? (charted.id==='false-quiet'?'Charted original Middle Road Fort. Health unknown outside current sight; dispatch confirms destruction. Activate the fort to focus its known location.':'Charted original customs posts. Health unknown outside current sight; dispatch confirms destruction. Activate a post to focus its known location.') : currentChallenge || currentCampaign === 'through-the-reed-beds' ? 'Choose any two original enemy positions; activate a standing position to focus camera' : signals ? 'Keep at least one original signal; activate a standing signal to focus camera' : 'Protected original structures; activate to focus camera');
@@ -1325,7 +1337,9 @@ function beginProtectedObjectives() {
   syncProtectedLayout();
 }
 function syncProtectedLayout() {
-  const protect = protectedControls.size > 0;
+  // A reserve card borrows the measured dock footprint, never a required
+  // destruction/protection target or a protected-objective control.
+  const protect = protectedControls.size > 0 || !!currentMinorReserve();
   const landscape = !!window.matchMedia?.('(max-height: 500px) and (orientation: landscape)').matches;
   const portrait = !!window.matchMedia?.('(max-width: 700px) and (orientation: portrait)').matches;
   const viewport = visibleViewportRect(window.innerWidth, window.innerHeight, window.visualViewport);
@@ -1440,9 +1454,49 @@ document.addEventListener('pointerdown', event => {
   const button = event.target.closest?.('[data-protected-id]');
   armedProtectedControl = button && $('protectedTargets').contains(button) &&
     (event.pointerType !== 'mouse' || event.button === 0) ? { button, pointerId: event.pointerId } : null;
+  armedReserveControl = event.target.closest?.('#focusMinorReserve') &&
+    (event.pointerType !== 'mouse' || event.button === 0) ? { pointerId: event.pointerId } : null;
 }, true);
-document.addEventListener('pointercancel', () => { armedProtectedControl = null; }, true);
-window.addEventListener('blur', () => { armedProtectedControl = null; });
+document.addEventListener('pointercancel', () => { armedProtectedControl = null; armedReserveControl = null; }, true);
+window.addEventListener('blur', () => { armedProtectedControl = null; armedReserveControl = null; });
+$('focusMinorReserve').onclick = event => {
+  if (event.detail !== 0 && (!armedReserveControl ||
+    (Number.isFinite(event.pointerId) && event.pointerId >= 0 &&
+      armedReserveControl.pointerId !== event.pointerId))) return;
+  armedReserveControl = null;
+  const reserve = currentMinorReserve();
+  if (!reserve || reserve.ended || !canFocusProtectedObjective()) return;
+  cancel();
+  setCompactBuildOpen(false);
+  resetBattleGesture();
+  renderer.resize();
+  renderer.camera = reserve.focus.x;
+  renderer.clampCamera();
+  follow = false;
+  $('front').style.borderColor = '';
+  toast(`Showing ${reserve.focus.label}.`);
+};
+function updateMinorReserveHUD() {
+  const reserve = currentMinorReserve();
+  $('minorReserveHUD').classList.toggle('hidden', !reserve || reserve.ended);
+  if (!reserve || reserve.ended) return;
+  const offscreen = !guidancePointVisible(renderer, game, reserve.focus);
+  const active = canFocusProtectedObjective() && !document.hidden;
+  $('minorReserveTitle').textContent = reserve.title;
+  $('minorReserveDetail').textContent = reserve.detail;
+  $('minorReserveLocation').textContent = offscreen ? 'Off-screen · focus north' : 'Focus north';
+  $('minorReserveDescription').textContent = reserve.description;
+  $('focusMinorReserve').dataset.state = reserve.phase;
+  $('focusMinorReserve').disabled = !active;
+  $('focusMinorReserve').setAttribute('aria-label', `Focus ${reserve.focus.label}${offscreen ? ', off-screen' : ''}`);
+  $('focusMinorReserve').title = reserve.description + ' Focus cancels placement.';
+  // Phase changes, not countdown ticks, enter the existing live region. A
+  // paused/resumed warning is read with its actual remaining battle time.
+  if (active && reserve.phase !== lastReservePhase) {
+    if (reserve.phase !== 'armed') $('protectedAlert').textContent = reserve.description;
+    lastReservePhase = reserve.phase;
+  }
+}
 function updateProtectedObjectives() {
   const targets = objectiveFocusTargets();
   if (!targets.length) return;
@@ -2472,6 +2526,7 @@ function updateHUD() {
     }
   }
   updateProtectedObjectives();
+  updateMinorReserveHUD();
   updateCompactBuildControl();
   if (!currentCampaign && !currentChallenge && $('app').classList.contains('protected-mobile')) {
     $('objectiveProgress').textContent = bridgeMode ? bridgeLabel : 'Destroy the enemy citadel.';
@@ -2642,6 +2697,7 @@ function frame(now) {
     .filter((t) => t.kind === 'protect' && t.building)
     .map((t) => t.building.id);
   ui.chartedTargets = chartedMission() ? objectiveFocusTargets() : [];
+  ui.minorReserve = currentMinorReserve();
   renderer.draw(battleView(), ui, dt);
   if (started && !paused && !objectiveOutcome) drawCampaignGuidance(renderer, game, ui);
   hudTimer += dt;
@@ -3047,7 +3103,7 @@ function syncPauseMenu() {
     $('pauseBridgeStatus').textContent = (controlMode ? controlProgressDescription(campaignControlStatus(game), riverControlContext()) + ' ' : '') + bridgeSummary(game);
     $('pauseBridgeRules').textContent = riverControlContext()
       ? mission.objective + ' Ground troops capture after two continuous uncontested seconds. Opposing troops, including flyers, interrupt capture and deny control time. Flyers cannot capture. Empty bridges retain ownership. Either side can capture. Falling below two clear bridges pauses your total without resetting it. Once 60 seconds are secured, that goal stays complete while fighting and bridge ownership continue. Replacements do not undo destruction of the original post. Bridges grant no income or capture bounty.'
-      : controlMode ? CAMPAIGN_CONTROL_RULES_TEXT : BRIDGE_RULES_TEXT;
+      : controlMode ? (game.ruleset.id === 'frontier-campaign-leave-roads' ? 'Secure all three bridges for 30 cumulative seconds, or destroy the enemy citadel, by 10:00 while yours survives. Ground captures take two uncontested seconds. Enemy presence pauses earned control time without resetting it. Flyers deny but cannot capture. Empty ownership persists. No bridge income or capture bounty. Normal paid adaptive enemy and 5:00 escalation continue.' : CAMPAIGN_CONTROL_RULES_TEXT) : BRIDGE_RULES_TEXT;
     $('pauseBridgeLegend').textContent = controlMode ? CONTROL_MAP_LEGEND : 'Map labels: Y = you, E = enemy, — = unowned, X = payout blocked. An arrow points to the side attempting a ground capture. Bridges are numbered from the top road.';
   }
   $('restartBattle').textContent = `Restart ${noun}…`;
@@ -3611,6 +3667,7 @@ function interruptMobileInput() {
   inputScope.interrupt();
   resetBattleGesture();
   armedProtectedControl = null;
+  armedReserveControl = null;
   closeSelectionArmed = false;
   controller.reset();
   padHud = false;
@@ -3635,7 +3692,9 @@ function syncViewportSafety() {
   panel.style.width = `${viewport.width}px`; panel.style.height = `${viewport.height}px`;
   let geometry = {safe:true,reason:''};
   if (mobile) {
+    const reserve = currentMinorReserve();
     const controls = ['pause','speed','sound','settings','home','front','minimap','compactBuild',
+      ...(reserve && !reserve.ended ? ['focusMinorReserve'] : []),
       ...[...protectedControls.values()].map(c => c.button.id)].filter(Boolean).map(id => $(id).getBoundingClientRect());
     // Protected buttons use stable authored IDs in data attributes, not DOM IDs.
     for (const {button} of protectedControls.values()) if (!button.id) controls.push(button.getBoundingClientRect());

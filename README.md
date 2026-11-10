@@ -1,4 +1,28 @@
-## The Shared Watch (v0.34 candidate)
+## Leave No Road Closed (v0.37 candidate)
+
+An unreleased third Chapter 9 mission follows The Empty Purse. The catalog contains 35 missions / 105 optional stars. Chapter 9 remains three of at least five planned missions; Chapter 8 remains five, and Chapter 10 is not admitted.
+
+Secure all three bridges for 30 cumulative seconds or destroy the enemy citadel by 10:00, with yours surviving. Enemy pressure pauses earned control time without resetting it. Ordinary paid support opens the third road; no purchase, factory loss or replacement is mandatory. Existing engine, AI, prices, earned roster and 5:00 escalation remain unchanged. Profile 28 fences older writers without migrating earned domains.
+
+Known-input prototype evidence includes concentrated core victories and one agent-operated manual control victory after actual interruption/resumption. It is not human balance certification. Production parity, persistence, full compatibility, native production UI and exact source CI are separate gates. No publication is claimed. See docs/LEAVE_ROADS_BUILD.md.
+
+## Historical The Empty Purse (v0.36)
+
+Chapter 9 now has two of at least five planned missions. The Empty Purse follows Wake the Reserve; catalog 34 missions / 102 optional stars, profile 27. Chapter 8 remains five; no Chapter 10 or campaign completion is claimed.
+
+Keep the inherited middle L3 mine for 5 gold/sec, or use ordinary health-weighted salvage (261 at full health) for earlier support. Starting cash is zero, starting total income 12.5/sec. No sale, mine survival, replacement or resource threshold is required. Destroy the enemy citadel by 10:00 while yours survives; 1 HP progresses. Normal paid adaptive AI, escalation and the earned roster remain unchanged.
+
+The local aggregate passes 3,030 tests with zero failures and one optional tooling skip. Static browser fixtures, syntax/runtime and independent persistence checks pass. Bounded native desktop and 500 px window checks cover the actual mine sale, purchases, save/reload/resume, fresh Restart and 1-HP primary-star result. Physical touch, widths below 500 px and human balance remain unverified. Publication uses exact final-commit CI. See docs/EMPTY_PURSE_BUILD.md.
+
+## Historical v0.35: Wake the Reserve
+
+Chapter 9 begins with one of at least five planned missions, after The Shared Watch. The catalog contains 33 missions / 99 optional stars. Chapter 9 remains unfinished and Chapter 10 is not admitted. Destroy the enemy citadel by 10:00 while yours survives; optional medals never gate progression.
+
+Breaking the original north watch post starts a six-second warning before one finite reserve of four ordinary warriors and two archers. Enemy factories and paid adaptive AI continue normally. The post and reserve are not victory targets. Public launch/Restart seed 9104 and exact known-case dynamics remain reviewed, without a new seed search or human-difficulty claim.
+
+Source/tests are preserved without generated results. The local aggregate and exact source-checkpoint CI pass 2,975 tests, zero failures and one optional skip; 61 focused checks, syntax, atomic runtime and complete static browser-fixture checks pass. Independent persistence and bounded native desktop/narrow-window review pass. Physical touch, widths below 500 px, human difficulty and real-user migration remain uncertified; publication requires final exact-commit CI. See docs/WAKE_RESERVE_BUILD.md.
+
+## Historical v0.34: The Shared Watch
 
 The current route has32 missions/96 optional stars. Chapter8 now has five distinct missions, ending with The Shared Watch after The Long Screen. Chapter7 remains three missions. Chapters9/10 are not admitted here.
 
