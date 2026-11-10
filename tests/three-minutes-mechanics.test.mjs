@@ -28,3 +28,20 @@ test('exact identity codec and engine restore keep registered rules and restart 
  for(let i=0;i<20;i++)g.update(.05);const r=decodeBattle(encodeBattle(g,ref,{campaignProgress:progress()}),{campaignProgress:progress()}).game;assert.equal(r.ruleset,getRuleset(g.ruleset.id));assert.equal(supportsAutonomousAir(r.ruleset),true);
  for(let i=0;i<20;i++){g.update(.05);r.update(.05);assert.deepEqual(r.serialize(),g.serialize());}assert.deepEqual(c.createCampaignRestart(r,ID).serialize(),initial);assert.deepEqual(Game.restore(g.serialize()).serialize(),g.serialize());
 });
+for(const delta of [.001,.016,.05,.1,.25])for(const end of ['alive','own-loss','enemy-loss','draw'])test(`synthetic native final combat tick ${delta}/${end} preserves loss/draw precedence`,()=>{
+ const g=c.createCampaignMission(ID);g.state.buildings=[];g.state.units=[];g.state.projectiles=[];g.state.time=179.95;g.tick=3599;g.aiTimer=30;g.state.bases.forEach(b=>{b.hp=1;b.cooldown=30;});
+ // Real units deliver ordinary damage on the final native tick. Only this
+ // fixture's position/health/time are synthetic; no substitute engine rules.
+ for(const side of end==='draw'?[0,1]:end==='own-loss'?[1]:end==='enemy-loss'?[0]:[]){const target=g.state.bases[1-side];g._spawn({type:'barracks',side,lane:0,x:target.x,level:1});const u=g.state.units.at(-1);u.x=target.x;u.y=target.y;u.cooldown=0;}
+ let outcome=c.evaluateCampaignMission(g,ID);
+ for(let i=0;i<101&&!outcome.completed&&!outcome.failed;i++)outcome=advanceObjectiveBattle(g,delta,x=>c.evaluateCampaignMission(x,ID),180);
+ assert.equal(g.tick,3600);assert.ok(Math.abs(g.state.time-180)<1e-7);assert.equal(outcome.completed,end==='alive'||end==='enemy-loss');assert.equal(outcome.failed,end==='own-loss'||end==='draw');
+ if(end==='draw')assert.equal(g.state.winner,'draw');if(outcome.completed)assert.equal(outcome.stars,1);
+});
+test('optional veterans medal counts living upgraded buildings, not the number of upgrade commands',()=>{
+ const g=c.createCampaignMission(ID);g.state.time=180;g.tick=3600;
+ const own=g.state.buildings.filter(b=>b.side===0);own[0].level=3;
+ assert.equal(c.evaluateCampaignMission(g,ID).medals.find(m=>m.id==='veterans').earned,false);
+ own[1].level=2;own[2].level=2;assert.equal(c.evaluateCampaignMission(g,ID).medals.find(m=>m.id==='veterans').earned,true);
+ own[2].hp=0;assert.equal(c.evaluateCampaignMission(g,ID).medals.find(m=>m.id==='veterans').earned,false);
+});
