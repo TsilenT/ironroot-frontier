@@ -277,7 +277,7 @@ const deferred=()=>{let resolve,reject;return{promise:new Promise((a,b)=>{resolv
 async function choose(h,text){h.$('backupFile').files=[{size:text.length,text:async()=>text}];await h.$('backupFile').onchange();}
 
 test('UI: late older successful file read cannot replace the newer confirmed import', async () => {
-  const h=harness(),a=deferred();h.$('backupFile').files=[{size:100,text:()=>a.promise}];const pending=h.$('backupFile').onchange();await choose(h,payload(2));a.resolve(payload(1));await pending;assert.ok(h.$('backupSummary').textContent.includes('1/35 campaign missions'));assert.ok(h.$('backupSummary').textContent.includes('2/105 stars'));h.$('confirmImport').onclick();assert.equal(h.c.reloaded,true);assert.equal(JSON.parse(h.r.data.get(K.campaign)).missions.emberwatch.stars,2);
+  const h=harness(),a=deferred();h.$('backupFile').files=[{size:100,text:()=>a.promise}];const pending=h.$('backupFile').onchange();await choose(h,payload(2));a.resolve(payload(1));await pending;assert.ok(h.$('backupSummary').textContent.includes('1/36 campaign missions'));assert.ok(h.$('backupSummary').textContent.includes('2/108 stars'));h.$('confirmImport').onclick();assert.equal(h.c.reloaded,true);assert.equal(JSON.parse(h.r.data.get(K.campaign)).missions.emberwatch.stars,2);
 });
 
 test('UI: late older file failure cannot invalidate a newer parsed backup', async () => {

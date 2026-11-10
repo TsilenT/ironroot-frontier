@@ -22,7 +22,7 @@ const returning=()=>({...createCampaignProgress(),missions:{emberwatch:{...recor
 const envelope=(game,id,progress)=>encodeBattle(game,scenarioForBattle(null,id,game),{campaignProgress:progress});
 
 test('catalog preserves the exact legacy entry points while retaining the compact opening and adding the five Chapter 6 missions',()=>{
-  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,37);
+  assert.equal(ALL_CAMPAIGN_MISSIONS.length,18);assert.equal(CAMPAIGN_PROGRESS_MISSIONS.length,38);
   assert.equal(PROGRESSION_CAMPAIGN_MISSIONS.length,16);
   for(const original of CAMPAIGN_MISSIONS){
     assert.equal(getCampaignMission(original.id),original);
