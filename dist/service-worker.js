@@ -1,9 +1,11 @@
 // Atomic, versioned offline shell. Bump VERSION with every public build.
 const VERSION = 'ironroot-v0.39.0';
 const FILES = [
+  './citadel-spec.js',
   './colossus.js',
   './colossus-spec.js',
   './final-chapter-identities.js',
+  './final-chapter.js',
   './minor-reserve.js',
   './minor-reserve-view.js',
   './hammer-policy.js',

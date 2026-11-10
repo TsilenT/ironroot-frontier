@@ -1,6 +1,7 @@
 import {colossusAftermathAlive} from './colossus.js';
 /** Immutable, one-purchase citadel choice contract for current battle identities. */
-export const CITADEL_OPTIONS = Object.freeze({policy:'citadel-choice-v1',cost:190,extraDamageMultiplier:0.5,regenRate:3,regenDelay:8});
+import {CITADEL_OPTIONS} from './citadel-spec.js';
+export {CITADEL_OPTIONS} from './citadel-spec.js';
 export const CITADEL_OPTIONS_RULES_TEXT = 'Citadel choices: spend 190 gold once on Extra Arrow or Regeneration. Choose only one for this battle. Extra Arrow adds one half-damage shot at a different enemy in the existing range on each firing cycle (16 damage, then 9 after 5:00). Regeneration restores 3 HP/s after 8 seconds without citadel damage and after the purchase wait, up to normal maximum health. No instant heal. Regeneration stops while timed citadel decay is active. Both sides pay the same cost.';
 export const CITADEL_RULES_TEXT = CITADEL_OPTIONS_RULES_TEXT;
 export const CITADEL_AI_TEXT = 'The enemy checks at its normal decision times. If eligible and able to pay 190 gold, it chooses Extra Arrow with at least two enemies in citadel range; otherwise it considers Regeneration when missing at least 150 HP after 8 quiet seconds, before timed decay. It does not reserve gold or receive extra resources.';

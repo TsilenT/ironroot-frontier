@@ -4,7 +4,7 @@ import {MINOR_RESERVE_RULESET_ID,MINOR_RESERVE} from './minor-reserve.js';
 export {MINOR_RESERVE_RULESET_ID} from './minor-reserve.js';
 import {HAMMER_RULESET_ID,HAMMER_CAMPAIGN_RULESET_ID,HAMMER_AI} from './hammer-policy.js';
 import { BRIDGE_CONTROL, CAMPAIGN_CONTROL, RIVER_BETWEEN_CONTROL, FINAL_CROSSING_CONTROL } from './bridge-control.js';
-import { CITADEL_OPTIONS } from './citadel-options.js';
+import { CITADEL_OPTIONS } from './citadel-spec.js';
 export {HAMMER_CAMPAIGN_RULESET_ID} from './hammer-policy.js';
 export const BOWSTRINGS_RULESET_ID='frontier-campaign-bowstrings';
 export const THREE_MINUTES_RULESET_ID='frontier-campaign-three-minutes';
