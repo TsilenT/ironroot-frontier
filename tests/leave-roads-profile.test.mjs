@@ -52,3 +52,11 @@ test('marker28 preserves actual earned Wake records and exact active reserve che
  const parsed=parseBackup(createBackup(profile.storage,{createdAt:'2026-11-10T00:00:00.000Z'}));assert.deepEqual(parsed.data,data);
  assert.deepEqual(decodeBattle(parsed.data.battle,{campaignProgress:parsed.data.campaign}).game.serialize(),game.serialize());
 });
+
+test('profile28 five-domain backup retains Road control checkpoint and all 36 earlier current/legacy records',()=>{
+ const id='leave-no-road-closed',progress={...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==id).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+ const g=createCampaignMission(id);g.state.time=20;g.tick=400;g.state.campaignControl.heldSeconds=9.5;g.state.campaignControl.bridges.forEach(b=>b.owner=0);
+ const scenario=campaignScenarioForGame(g,id),data={campaign:progress,trials:{},settings:{sound:false},history:[{won:true,draw:false,difficulty:g.difficulty,time:500,kills:0,built:0,date:'2026-11-10T00:00:00.000Z',identity:identityOf(g,scenario)}],battle:encodeBattle(g,scenario,{campaignProgress:progress})};
+ const raw=backend([[KEY,stamp(28)],...Object.entries(K).map(([domain,key])=>[key,JSON.stringify(data[domain])])]);
+ const parsed=parseBackup(createBackup(current(raw).storage,{createdAt:'2026-11-10T00:00:00.000Z'}));assert.deepEqual(parsed.data,data);assert.equal(Object.keys(parsed.data.campaign.missions).length,36);assert.deepEqual(decodeBattle(parsed.data.battle,{campaignProgress:progress}).game.serialize(),g.serialize());
+});

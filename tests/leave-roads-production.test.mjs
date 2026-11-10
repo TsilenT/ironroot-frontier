@@ -37,3 +37,13 @@ for(const time of [599.95,600,600.05])for(const result of ['alive','control','en
 for(const delta of [.001,.016,.05,.1,.25])test(`synthetic three-road final frame reaches deadline ${delta}`,()=>{
  const g=fresh();g.state.time=599.95;g.tick=11999;g.aiTimer=30;for(let i=0;i<101&&!c.evaluateCampaignMission(g,ID).failed;i++)advanceObjectiveBattle(g,delta,x=>c.evaluateCampaignMission(x,ID),600);assert.equal(c.evaluateCampaignMission(g,ID).failed,true);assert.equal(g.tick,12000);
 });
+
+test('synthetic partial capture and secured control persist through battle restore and continuation',()=>{
+ const g=fresh(),p=progress();g.state.time=20;g.tick=400;g.state.campaignControl.heldSeconds=10;
+ g.state.campaignControl.bridges.forEach(b=>b.owner=0);Object.assign(g.state.campaignControl.bridges[2],{capturing:1,progress:.5});
+ const packet=encodeBattle(g,c.campaignScenarioForGame(g,ID),{campaignProgress:p});
+ const r=decodeBattle(structuredClone(packet),{campaignProgress:p}).game;assert.deepEqual(r.serialize(),g.serialize());
+ for(let i=0;i<100;i++){g.update(.05);r.update(.05);assert.deepEqual(r.serialize(),g.serialize());}assert.ok(g.state.campaignControl.heldSeconds>10);
+ for(const heldSeconds of [-1,31,Infinity]){const corrupt=r.serialize();corrupt.state.campaignControl.heldSeconds=heldSeconds;assert.throws(()=>Game.restore(corrupt));}
+ const restart=c.createCampaignRestart(r,ID);assert.equal(restart.state.campaignControl.heldSeconds,0);assert.ok(restart.state.campaignControl.bridges.every(b=>b.owner===null&&b.capturing===null));
+});

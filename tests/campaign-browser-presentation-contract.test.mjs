@@ -50,7 +50,7 @@ test('current briefings retain exact rosters and lists; only the 19 revised hist
     if (automatic) { assert.equal(rows.at(-1), RECORDS_NOTICE); notices++; }
   }
   assert.equal(notices, 19);
-  assert.equal(missions.length - notices, 15, 'The fifteen additive missions have no earlier records revisions');
+  assert.equal(missions.length - notices, 16, 'The sixteen additive missions have no earlier records revisions');
   assert.equal(JSON.stringify(progress), bytes);
 });
 
