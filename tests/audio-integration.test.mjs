@@ -1,3 +1,4 @@
+import {audioBeforeEnginePresentation} from './final-chapter-audio-source.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -10,7 +11,7 @@ const setup=async(options={})=>{const c=new Context(),a=new GameAudio({muted:fal
 
 test('all existing SFX preserve the released v0.20.2 synthesis sequence',async()=>{
  const fixture=JSON.parse(read('./fixtures/audio/v0202-sfx.json')),{a,c}=await setup({musicEnabled:false});
- try{assert.deepEqual(Object.keys(fixture.cues),SOUND_NAMES);for(const name of SOUND_NAMES){c.advance(fixture.advanceSeconds);const events=[];a._tone=(...v)=>events.push(['tone',...v]);a._noise=(...v)=>events.push(['noise',...v]);assert.equal(a.play(name,{pan:fixture.pan,volume:fixture.volume}),true);assert.deepEqual(events,fixture.cues[name],name);}}finally{await a.destroy();}
+ try{const priorNames=Object.keys(fixture.cues);assert.deepEqual(SOUND_NAMES,[...priorNames,'engineReveal','engineImpact']);for(const name of priorNames){c.advance(fixture.advanceSeconds);const events=[];a._tone=(...v)=>events.push(['tone',...v]);a._noise=(...v)=>events.push(['noise',...v]);assert.equal(a.play(name,{pan:fixture.pan,volume:fixture.volume}),true);assert.deepEqual(events,fixture.cues[name],name);}}finally{await a.destroy();}
 });
 
 test('cancel-and-hold gain automation preserves independent master and SFX controls',async()=>{
@@ -32,9 +33,10 @@ test('written 64-bar score repeats deterministically with overlapping pad tails 
  a._musicStep(504,140);a._musicStep(512,142.22222222222223);assert.equal(seam.length,6);assert.ok(seam[0].end>seam[3].at);assert.ok(seam[0].end-seam[3].at<.081);
 });
 
-test('fresh native PCM evidence belongs to the checked-in exact audio source',()=>{
+test('historical native PCM evidence retains its exact pre-Engine source; new cues have no rendered evidence',()=>{
  const evidence=JSON.parse(read('../qa/audio/evidence/native-2026-11-08.json'));
- assert.equal(createHash('sha256').update(read('../dist/audio.js')).digest('hex'),evidence.sourceSha256);
+ assert.equal(createHash('sha256').update(audioBeforeEnginePresentation()).digest('hex'),evidence.sourceSha256);
+ assert.notEqual(createHash('sha256').update(read('../dist/audio.js')).digest('hex'),evidence.sourceSha256,'historical PCM cannot validate the revised candidate');
  assert.equal(evidence.sourceSha256,evidence.expectedSourceSha256);assert.equal(evidence.subjectiveListening,false);
  assert.equal(evidence.offlinePass,true);assert.equal(evidence.offline.length,12);assert.ok(evidence.offline.every(r=>r.pass&&r.metrics.clipped===0&&r.metrics.nonfinite===0&&r.maxVoices<=80&&r.state.peakVoices<=80));
  assert.equal(evidence.live.pass,true);assert.equal(evidence.live.checks.length,15);assert.ok(evidence.live.checks.every(c=>c.pass));assert.deepEqual(evidence.errors,[]);

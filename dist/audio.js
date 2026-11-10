@@ -185,8 +185,8 @@ export class GameAudio {
     this.stats.soundEffects++;
     if(['warning','strike','start','victory','defeat','engineReveal'].includes(name))this._duckMusic(now,name==='victory'?2.7:name==='defeat'?1.8:.85);
     const at=now+.006, p=clamp(pan,-1,1),v=clamp(volume,0,1);
-    const note=(frequency,duration,gain,options={})=>this._tone(at+(options.delay||0),frequency,duration,gain*v,{kind:'sfx',pan:p,cue:name,...options});
-    const noise=(duration,gain,options={})=>this._noise(at+(options.delay||0),duration,gain*v,{kind:'sfx',pan:p,cue:name,...options});
+    const note=(frequency,duration,gain,options={})=>this._tone(at+(options.delay||0),frequency,duration,gain*v,{kind:'sfx',pan:p,...(engineCue?{cue:name}:{}),...options});
+    const noise=(duration,gain,options={})=>this._noise(at+(options.delay||0),duration,gain*v,{kind:'sfx',pan:p,...(engineCue?{cue:name}:{}),...options});
     const bell=(frequency,delay=0,gain=.18)=>{note(frequency,.38,gain,{type:'sine',delay});note(frequency*2.756,.16,gain*.18,{type:'sine',delay});};
     switch(name) {
       case 'click':note(740,.055,.16,{type:'sine',end:510});break;
