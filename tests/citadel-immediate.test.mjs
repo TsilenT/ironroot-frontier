@@ -97,9 +97,16 @@ test('protocol-10 interrupted and unverified upgrades preserve earned domains; f
  }
 });
 
-test('fresh campaign and trial identities allow affordable time-zero choice while earned rosters and revisions stay intact',()=>{
+test('fresh campaign and trial choices respect actual affordability while earned rosters and revisions stay intact',()=>{
  const progress=earned().campaign;
- for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id),gold=g.state.gold[0];assert.equal(g.state.time,0);assert.equal(ref.revision,['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores','the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve'].includes(m.id)?1:5);assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
+ for(const m of CAMPAIGN_PROGRESS_MISSIONS){const g=createProgressionCampaignMission(m.id,progress),ref=campaignScenarioForGame(g,m.id);assert.equal(g.state.time,0);assert.equal(ref.revision,['shared-crossing','one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us','false-quiet','the-road-we-know','through-the-reed-beds','the-archers-quay','salt-in-the-stores','the-hammer-turns','the-long-screen','the-shared-watch','wake-the-reserve','the-empty-purse'].includes(m.id)?1:5);
+  if(g.state.gold[0]<190){
+   assert.equal(m.id,'the-empty-purse');assert.equal(g.ruleset.id,'frontier-campaign-empty-purse');assert.equal(g.state.gold[0],0);
+   const initial=g.serialize();assert.equal(g.buyCitadelOption('regen').ok,false);assert.deepEqual(g.serialize(),initial);
+   for(let ticks=0;g.state.gold[0]<190&&ticks<400;ticks++)g.update(.05);
+   assert.ok(g.state.gold[0]>=190);assert.ok(g.state.time>0);assert.equal(g.state.winner,null);
+  }
+  const gold=g.state.gold[0];assert.ok(g.buyCitadelOption('regen').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref,{campaignProgress:progress}),{campaignProgress:progress}).game.serialize(),g.serialize());}
  for(const t of CURRENT_CHALLENGES){const g=createCurrentChallenge(t.id),ref=challengeScenarioForGame(g,t.id),gold=g.state.gold[0];assert.equal(ref.revision,3);assert.equal(g.state.time,0);assert.ok(g.buyCitadelOption('arrows').ok);near(g.state.gold[0],gold-190);assert.deepEqual(decodeBattle(encodeBattle(g,ref)).game.serialize(),g.serialize());}
 });
 

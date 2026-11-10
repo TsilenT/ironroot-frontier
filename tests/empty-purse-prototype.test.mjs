@@ -7,7 +7,7 @@ import {spawnSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
 import {Game,buildSites} from '../dist/engine.js';
 import {getRuleset,SALT_STORES_RULESET_ID} from '../dist/rulesets.js';
-import {getCampaignMission} from '../dist/campaign.js';
+import {getCampaignMission,campaignRulesetAllowed} from '../dist/campaign.js';
 import {actualIncome,instrumentEconomy} from '../qa/salt-stores/economy.mjs';
 import {DESIGN,SUPPORT_PLAN,POLICIES,createPrototype,createPolicy,evaluatePrototype} from '../qa/empty-purse/prototype.mjs';
 import {PLAN,ROOT,freeze,verifyApproval,validateOutputPath,instrumentField,runApprovedMatrix,comparePair,retainCaseArtifacts,createRunControl} from '../qa/empty-purse/experiment.mjs';
@@ -20,7 +20,7 @@ test('QA authoring is deterministic, ordinary full roster, healthy, open and not
  assert.deepEqual(s.gold,[0,100]);assert.deepEqual(s.income,[12.5,7.5]);assert.deepEqual(s.bases.map(b=>b.hp),[6000,6000]);assert.equal(g.map.buildLimit,24);
  assert.equal(Object.keys(g.buildings).length,8);assert.equal(g.ruleset.ai.policy,'legacy');assert.equal(g.ruleset.endgame.forcedDecay,false);assert.ok(!s.fog);
  const {id,name,...rules}=g.ruleset,{id:oldId,name:oldName,...old}=getRuleset(SALT_STORES_RULESET_ID);assert.deepEqual(rules,old);
- assert.throws(()=>getCampaignMission('the-empty-purse'),/Unknown campaign/);assert.equal(getCampaignMission('the-shared-watch').rulesetId,'frontier-campaign-shared-watch');
+ assert.throws(()=>getCampaignMission(DESIGN.id),/Unknown campaign/);assert.equal(campaignRulesetAllowed('the-empty-purse',1,g.ruleset.id),false);assert.notEqual(getCampaignMission('the-empty-purse').rulesetId,g.ruleset.id);assert.equal(getCampaignMission('the-shared-watch').rulesetId,'frontier-campaign-shared-watch');
  for(const b of s.buildings){assert.equal(b.hp,b.maxHp);assert.ok(buildSites(g.map,b.side).some(site=>site.x===b.x&&site.y===b.y));}
  for(const seed of [-1,4294967296,NaN,1.5])assert.throws(()=>createPrototype({seed}),/uint32/);
 });
