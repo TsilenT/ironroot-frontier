@@ -1,68 +1,38 @@
 {
-  "format": "camp-kept-preopen-plan-v1",
-  "epoch": 2,
-  "status": "unopened-awaiting-independent-review-and-coordinator-authorization",
-  "knownSeeds": [
-    9101,
-    9102
-  ],
-  "healthControls": [
-    "wounded",
-    "full"
-  ],
-  "policies": [
-    "counterattack",
-    "regen-income",
-    "arrows-income",
-    "greedy-recovery",
-    "idle"
-  ],
-  "cases": 20,
-  "caseOrder": "seed, then health control, then policy, in the arrays' order",
-  "claimsToTest": [
-    "Whether the extra 400 disclosed starting gold lets the unchanged fixed plans pay for follow-up support earlier and sustain a credible opening, rather than only delay the same collapse.",
-    "This narrow affordability experiment cannot cure the first counterattack siege exposure: its first commands still occur at zero, five and ten seconds. Whether recovery is useful remains unknown.",
-    "The wounded/full-health and regeneration/arrows comparisons retain their original limitations. No winning policy, meaningful regeneration choice, human difficulty or production admission is assumed."
-  ],
-  "record": [
-    "every successful paid transaction and failed player attempt",
-    "first actual damage/contact and first core damage",
-    "initial building losses and their timing",
-    "five-second core HP, healing, gold, income and force-count trace",
-    "minimum core HP, actual healing, spending, outcome, elapsed time",
-    "ordinary economy ledger and final save roundtrip"
-  ],
-  "interpretation": [
-    "This is explicitly outcome-informed reuse of the same known seeds and policies. Keep all epoch1 failures and immutable records intact; these are not heldout or independent samples.",
-    "Compare payment timings and subsequent support/losses with the recorded epoch1 cases. A liquidity change may mask weak front-first placements or non-rebuilding scripts; it does not isolate all causes of collapse.",
-    "Timing correction to the immutable epoch1 explanatory report: counterattack foundry at0s and archery at5s precede contact, while the sanctum at10s follows first contact. No old report bytes are rewritten.",
-    "Inspect all twenty cases, including losses. No seed search, automatic retries, heldout claim or best-case-only report.",
-    "Check ordinary prices, income, kill gold and no extra funding. The factory authors inherited assets only before tick zero.",
-    "Compare the same policy and seed across health controls. These are total-effect controls: ordinary enemy AI may react differently once battles diverge.",
-    "Compare recovery and counterattack purchase timing, damage, losses, healing and results. They have different commitments, so this is not an isolated causal estimate of regeneration.",
-    "The equal-price arrows-income control tests an alternative to regeneration within the same scripted build order. It is not a mandatory-win or no-regen-loss gate.",
-    "A no-regen win is welcome. Idle winning is a warning to inspect pressure, not an automatic rejection. A scripted loss alone does not prove human difficulty.",
-    "If the wound only changes the displayed final HP, or recovery heals a token amount without affecting risk or pacing, do not call the recovery choice established. Revise the design or narrow the claim before admission.",
-    "No arbitrary HP, healing or win-rate threshold. The reviewer should explain concrete risk, timing or loss differences and limitations."
-  ],
-  "stop": "Stop on source drift, ledger/price error, invalid restore, or coordinator request. Keep partial results outside source and do not retry without review.",
-  "nextGates": [
-    "independent preopen review of exact source and plan",
-    "coordinator permission before any gameplay case",
-    "bounded twenty-case prototype inspection",
-    "independent interpretation and understandable interactive pacing review",
-    "wait for canonical Chapter8 fifth mission before unlock or production admission",
-    "separate production identity, persistence, catalog, release and aggregate checks"
-  ],
-  "outcomeInformedFrom": {
-    "epoch": 1,
-    "closureSHA256": "7b2cec52788cb261abdcb06b5a1676bc1375779551d0fd5ff7a2ed8eee358390",
-    "result": "All twenty declared cases lost, including full-health controls; recovery and supported-counterattack value were not established.",
-    "independentAdverseReviewSHA256": "698f4247a4d40f8d64f1557253ce01db1b3b5d9538c5d48af59f339bc19d41a7"
-  },
-  "onlyMechanicalChange": {
-    "field": "startingGold",
-    "before": 700,
-    "after": 1100
-  }
+ "format":"camp-kept-preopen-plan-v1",
+ "epoch":3,
+ "status":"unopened-awaiting-independent-review-and-coordinator-authorization",
+ "outcomeInformedFrom":{"epoch1Closure":"7b2cec52788cb261abdcb06b5a1676bc1375779551d0fd5ff7a2ed8eee358390","epoch2Closure":"ab83224cf0c8a187f602c48653a30662c3a14e0af67babc946cf3fbc8b2e1ab5","epoch2IndependentOutcomeReviewSHA256":"b1b6c0e9bf21754e76ee4bb1c872bd1278eb9cbd68d7072d58663c9087cda50e","status":"Both earlier epochs remain failed and byte-exact. New scripts are not retroactive successes."},
+ "unchangedScenario":"Epoch2 initial serialized state, including 1100 gold and 2700/6000 HP, formation, normal paid AI, engine/economy and known seeds. Only policy metadata/cadence changes.",
+ "knownSeeds":[9101,9102],
+ "healthControls":["wounded","full"],
+ "policies":["support-none","support-regen","support-arrows","idle"],
+ "cases":16,
+ "caseOrder":"seed, then health control, then policy, in the arrays' order",
+ "policyContract":[
+  "One attempted ordinary player command at most every 2 seconds from tick0. This is a disclosed scripted pace, not a human difficulty claim or UI restriction.",
+  "First add southern archeryx690, southern barracksx830, northern archeryx690 and northern sanctumx550, in that order. Inherited producers and successfully introduced additions are rebuilt when lost.",
+  "Urgent ordinary Volley may take priority when affordable/off cooldown and at least 3 living visible enemies cluster within one spell radius around an enemy inside 600 pixels of the home citadel. Aim at the largest cluster, then nearest core, then lowest unit ID.",
+  "Rebuild introduced production before development. Order missing producers by the nearest visible enemy's x within that lane/own half, then barracks/archery/sanctum/foundry, north/south/middle and frontmost. Take the first affordable repair; if none is affordable, retain the failed attempt and wait.",
+  "After four initial support additions, support-regen/arrows pay the ordinary 190 gold choice. Support-none skips it and may spend that decision on further support. All variants otherwise use identical logic; this is a real opportunity-cost comparison, not a healing-only placebo.",
+  "After current production is intact, repair introduced mines. Follow up with middle sanctumx550, southern archeryx550, north minex270, rear middle foundryx270, south minex270, rear north foundryx410 and rear south foundryx410. Rebuild each introduced asset if lost.",
+  "After that development, upgrade affordable surviving producers by lowest level, then the same visible lane/type priority and ID. No artificial ban on the player's actual UI actions; these scripts simply choose this bounded subset. No sale, new subsystem or resource buff is introduced.",
+  "Use only own state and currently player-visible units in this clear-view encounter. Do not read enemy gold, RNG/seed, future actions, prior results or hidden state. These are fresh outcome-informed scripts on reused known seeds, not heldout cases."
+ ],
+ "claimsToTest":[
+  "Whether support-first placement and ordinary rebuilding sustain the visibly pressured south/north perimeter and permit a viable route under the unchanged setup.",
+  "Whether the same support logic with no citadel purchase, regeneration or same-price arrows produces a concrete pressure/spending/survival tradeoff. No-regeneration wins are welcome; regeneration need not be mandatory.",
+  "Whether the wound changes actual risk or pacing in otherwise identical initial states. Fixed scripts cannot establish human preference, human difficulty or overall encounter balance."
+ ],
+ "record":["every successful ordinary payment and failed player attempt, with policy decision and building ID","first actual damage/contact and core damage","building losses by exact ID/type/position/original status and time","five-second HP/healing/gold/income/force traces and per-tick HP minimum","outcome, elapsed time, actual healing and damage","ordinary economy reconciliation and final save roundtrip"],
+ "interpretation":[
+  "Inspect all 16 cases including losses. No seed search, automatic retry, favorable-only report, extra policies or hidden holdouts.",
+  "Compare exact rebuilding and support timings and losses by building ID/position. More survival or some enemy damage alone does not establish a viable opener.",
+  "Compare wounded/full controls as total effects: ordinary AI/RNG paths can diverge after different legal actions and damage. Compare choices as real spending/defensive alternatives, not an isolated regeneration estimate.",
+  "Nominal healing or a larger HP display is insufficient to establish recovery value. Explain concrete risk, timing, losses or feasibility and preserve limitations. Do not impose arbitrary healing/win-rate thresholds or a mandatory-regeneration/forced-no-regen-loss gate.",
+  "Retain both prior errata: the sanctum at 10 seconds followed initial contact; in epoch 2 seed 9101 counterattack the first southern archery died at 105.60 seconds, while 96.25 seconds was a later archery. Earlier sealed reports stay unchanged.",
+  "A new successful script would show only bounded paid feasibility, not validate the earlier failed policies, human difficulty, browser pacing or production admission."
+ ],
+ "stop":"Stop on source drift, ledger/price error, invalid restore or coordinator request. Retain errors and partial data outside source; no retry without new authorization.",
+ "nextGates":["independent preopen review of exact packet and freeze","separate exact coordinator authorization before any case","one frozen16-case inspection","independent outcome/accounting review","interactive pacing and separate production identity/catalog/persistence/prerequisite/aggregate/release decisions"]
 }

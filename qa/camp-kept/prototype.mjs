@@ -3,11 +3,11 @@ import {Game} from '../../dist/engine.js';
 import {deepFreeze,CITADEL_CAMPAIGN_RULESET_IDS} from '../../dist/rulesets.js';
 import {actualIncome} from '../salt-stores/economy.mjs';
 export const DESIGN=deepFreeze({
- id:'camp-kept-prototype',epoch:2,title:'The Camp We Kept',
- baselineCommit:'0e58a1a132163b1872e131398b047a3f0de41411',baselineTree:'4f3e4975f9e4588235b8af55611cdfb02f145d0b',
- numericStatus:'Outcome-informed epoch2: only starting gold changes mechanically, from 700 to 1100; not balance evidence.',
+ id:'camp-kept-prototype',epoch:3,title:'The Camp We Kept',
+ baselineCommit:'5df8df8510dc6ca5806146e6e2023385cd7d7198',baselineTree:'4c6ebc192061e346ff57b72aa2741e474d0f5107',
+ numericStatus:'Outcome-informed epoch3 policies only; the epoch2 scenario is unchanged and remains unvalidated.',
  mapId:'classic',rulesetId:CITADEL_CAMPAIGN_RULESET_IDS[2],difficulty:'normal',ai:true,
- seed:9101,timeLimit:600,startingHealth:2700,startingGold:1100,enemyGold:100,cadenceSeconds:5,
+ seed:9101,timeLimit:600,startingHealth:2700,startingGold:1100,enemyGold:100,cadenceSeconds:2,
  playerBuildings:[['barracks',830,0],['barracks',830,1],['archery',690,1],['mint',410,1]],
  enemyBuildings:[['barracks',2090,0],['archery',2370,0],['barracks',1950,1],['foundry',2230,1],['aerie',1950,2],['barracks',2230,2],['mint',2790,1]],
 });
@@ -29,26 +29,63 @@ export function evaluatePrototype(g){
  if(s.time>=DESIGN.timeLimit-1e-7)return {completed:false,failed:true,reason:'deadline'};
  return {completed:false,failed:false,reason:null};
 }
-const B=(type,x,lane)=>({method:'build',type,x,lane}),C=choice=>({method:'citadel',choice});
-const support=[B('barracks',970,2),B('archery',690,0),B('sanctum',970,1),B('foundry',1250,1),B('archery',1110,2),B('wardenLodge',1110,0),B('aerie',970,0)];
+const slot=(type,x,lane)=>({type,x,lane});
+export const OPENING=deepFreeze([slot('archery',690,2),slot('barracks',830,2),slot('archery',690,0),slot('sanctum',550,0)]);
+export const FOLLOWUP=deepFreeze([slot('sanctum',550,1),slot('archery',550,2),slot('mint',270,0),slot('foundry',270,1),slot('mint',270,2),slot('foundry',410,0),slot('foundry',410,2)]);
 export const POLICIES=deepFreeze({
- counterattack:{description:'Fund middle siege first, then southern anti-air and ground splash; develop income after these attack commitments. No citadel purchase.',plan:[B('foundry',1110,1),B('archery',830,2),B('sanctum',1250,1),B('mint',410,0),B('mint',410,2),...support.filter(a=>!(a.type==='foundry'&&a.x===1250&&a.lane===1))]},
- 'regen-income':{description:'Buy slow citadel regeneration first, southern anti-air next, then both mines before middle siege and continued support.',plan:[C('regen'),B('archery',830,2),B('mint',410,0),B('mint',410,2),B('foundry',1110,1),...support]},
- 'arrows-income':{description:'The same recovery-income build order with the other ordinary 190-gold citadel choice. Extra Arrow can limit leaks; it cannot heal.',plan:[C('arrows'),B('archery',830,2),B('mint',410,0),B('mint',410,2),B('foundry',1110,1),...support]},
- 'greedy-recovery':{description:'A plausible over-greedy opening: both mines and regeneration before southern anti-air or added offense.',plan:[B('mint',410,0),B('mint',410,2),C('regen'),B('archery',830,2),B('foundry',1110,1),...support]},
- idle:{description:'No player actions. The inherited factories still produce, and the normal paid opponent remains active.',plan:[]},
+ 'support-none':{choice:null,description:'Support and rebuild the perimeter first; no citadel purchase. Then add rear support, income and screened rear siege.'},
+ 'support-regen':{choice:'regen',description:'The same support/rebuild policy, buying ordinary regeneration after the four initial support additions and before optional development.'},
+ 'support-arrows':{choice:'arrows',description:'The same support/rebuild policy, buying the equal-price Extra Arrow at the same decision stage.'},
+ idle:{choice:null,description:'No player actions. Inherited production and ordinary paid opponent remain active.'},
 });
-/** Fixed own-state plans, one attempt per 5 seconds from tick zero. Retry the next
- * item until paid. Never rebuild, sell, cast or inspect enemy treasury/RNG. Then
- * upgrade surviving producers by level, type priority, lane, frontmost, ID. */
+const key=a=>`${a.type}@${a.x},${a.lane}`;
+const present=(g,a)=>g.state.buildings.some(b=>b.side===0&&b.hp>0&&b.type===a.type&&b.x===a.x&&b.lane===a.lane);
+/** Fresh outcome-informed scripts, not retroactive fixes to earlier policies.
+ * One ordinary command at most every 2s. No per-step hidden-state/RNG reads.
+ * Priority: urgent visible core-area volley; rebuild introduced producers;
+ * next opening addition; optional one-time choice; introduced mine repair;
+ * next rear support/development; affordable producer upgrade. */
 export function createPolicy(id){
- const def=POLICIES[id];if(!def)throw Error('Unknown Camp policy');let index=0,nextTick=0;
- const commands=[],priority=['foundry','archery','sanctum','wardenLodge','barracks','aerie'];
+ const def=POLICIES[id];if(!def)throw Error('Unknown Camp policy');let nextTick=0,opening=0,followup=0;
+ const introduced=DESIGN.playerBuildings.map(([type,x,lane])=>slot(type,x,lane)),commands=[];
+ const typePriority=['barracks','archery','sanctum','foundry'],laneOrder=[0,2,1];
+ function remember(a){if(!introduced.some(s=>key(s)===key(a)))introduced.push({...a});}
+ function nearest(g,lane){return Math.min(Infinity,...g.state.units.filter(u=>u.side===1&&u.hp>0&&u.lane===lane&&u.x<=1600).map(u=>u.x));}
+ function order(g,a,b){const da=nearest(g,a.lane),db=nearest(g,b.lane);return (da===db?0:da-db)||typePriority.indexOf(a.type)-typePriority.indexOf(b.type)||laneOrder.indexOf(a.lane)-laneOrder.indexOf(b.lane)||b.x-a.x;}
+ function build(g,a,reason){return apply(g,{method:'build',...a,decision:reason});}
+ function repair(g,production){
+  const missing=introduced.filter(a=>(!!g.buildings[a.type].unit)===production&&!present(g,a)).sort((a,b)=>order(g,a,b));
+  if(!missing.length)return null;
+  const affordable=missing.find(a=>g.state.gold[0]>=g.buildings[a.type].cost);
+  return build(g,affordable??missing[0],production?'rebuild-production':'rebuild-income');
+ }
+ function volley(g){
+  const s=g.state,base=s.bases[0];if(s.gold[0]<g.ruleset.spell.cost||s.spellCooldown[0]>0)return null;
+  const enemies=s.units.filter(u=>u.side===1&&u.hp>0),aims=enemies.filter(u=>Math.hypot(u.x-base.x,u.y-base.y)<=600)
+   .map(u=>({u,count:enemies.filter(v=>Math.hypot(v.x-u.x,v.y-u.y)<g.ruleset.spell.radius).length}))
+   .filter(a=>a.count>=3).sort((a,b)=>b.count-a.count||Math.hypot(a.u.x-base.x,a.u.y-base.y)-Math.hypot(b.u.x-base.x,b.u.y-base.y)||a.u.id-b.u.id);
+  return aims[0]?apply(g,{method:'cast',x:aims[0].u.x,y:aims[0].u.y,decision:'visible-core-cluster'}):null;
+ }
+ function apply(g,a){let r;
+  if(a.method==='build')r=g.build(a.type,a.x,g.map.lanes[a.lane]);
+  else if(a.method==='citadel')r=g.buyCitadelOption(a.choice);
+  else if(a.method==='cast')r=g.cast(a.x,a.y);
+  else r=g.upgrade(a.id);
+  const row={tick:g.tick,time:g.state.time,action:a,ok:r.ok,reason:r.reason??null,buildingId:r.building?.id??null};commands.push(row);return row;
+ }
  return {commands,step(g){
-  const outcome=evaluatePrototype(g);if(outcome.completed||outcome.failed||id==='idle'||g.tick<nextTick)return null;
-  nextTick=g.tick+Math.round(DESIGN.cadenceSeconds/.05);let a=def.plan[index],r;
-  if(a){a={...a};r=a.method==='citadel'?g.buyCitadelOption(a.choice):g.build(a.type,a.x,g.map.lanes[a.lane]);if(r.ok)index++;}
-  else {const b=g.state.buildings.filter(b=>b.side===0&&b.hp>0&&b.level<3&&priority.includes(b.type)).sort((a,b)=>a.level-b.level||priority.indexOf(a.type)-priority.indexOf(b.type)||a.lane-b.lane||b.x-a.x||a.id-b.id)[0];if(!b)return null;a={method:'upgrade',id:b.id,type:b.type,x:b.x,lane:b.lane,fromLevel:b.level};r=g.upgrade(b.id);}
-  const row={tick:g.tick,time:g.state.time,action:a,ok:r.ok,reason:r.reason??null};commands.push(row);return row;
+  const end=evaluatePrototype(g);if(end.completed||end.failed||id==='idle'||g.tick<nextTick)return null;
+  nextTick=g.tick+Math.round(DESIGN.cadenceSeconds/.05);
+  let r=volley(g);if(r)return r;
+  r=repair(g,true);if(r)return r;
+  while(opening<OPENING.length&&present(g,OPENING[opening]))remember(OPENING[opening++]);
+  if(opening<OPENING.length){const a=OPENING[opening];r=build(g,a,'initial-support');if(r.ok){remember(a);opening++;}return r;}
+  if(def.choice!==null&&g.state.citadelOptions.sides[0].choice===null)return apply(g,{method:'citadel',choice:def.choice,decision:'after-initial-support'});
+  r=repair(g,false);if(r)return r;
+  while(followup<FOLLOWUP.length&&present(g,FOLLOWUP[followup]))remember(FOLLOWUP[followup++]);
+  if(followup<FOLLOWUP.length){const a=FOLLOWUP[followup];r=build(g,a,'rear-development');if(r.ok){remember(a);followup++;}return r;}
+  const eligible=g.state.buildings.filter(b=>b.side===0&&b.hp>0&&b.level<3&&g.buildings[b.type].unit&&g.upgradeCost(b)<=g.state.gold[0])
+   .sort((a,b)=>a.level-b.level||order(g,a,b)||a.id-b.id);
+  const b=eligible[0];return b?apply(g,{method:'upgrade',id:b.id,type:b.type,x:b.x,lane:b.lane,fromLevel:b.level,decision:'affordable-producer-upgrade'}):null;
  }};
 }

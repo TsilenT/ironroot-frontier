@@ -6,7 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {Game} from '../../dist/engine.js';
 import {advanceObjectiveBattle} from '../../dist/objectives.js';
-import {instrumentEconomy,verifyPlayerCadence} from '../salt-stores/economy.mjs';
+import {instrumentEconomy} from '../salt-stores/economy.mjs';
 import {DESIGN,POLICIES,createPrototype,createPolicy,evaluatePrototype} from './prototype.mjs';
 export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 export const PLAN=JSON.parse(readFileSync(new URL('./PLAN.json',import.meta.url)));
@@ -52,7 +52,7 @@ export function runCase({seed,health,policy,packet,stop=()=>false}){
   assert.ok(++steps<=Math.ceil(DESIGN.timeLimit/.05)+2,'Finite tick guard');const tick=g.tick;
   p.step(g);advanceObjectiveBattle(g,.05,evaluatePrototype,DESIGN.timeLimit);assert.ok(g.tick>tick,'Battle did not advance');observe();
  }
- economy.reconcile();const ledger=economy.snapshot();verifyPlayerCadence(ledger.transactions);
+ economy.reconcile();const ledger=economy.snapshot();const paid=ledger.transactions.filter(t=>t.side===0&&t.cost>0);for(let i=1;i<paid.length;i++)assert.ok(paid[i].time-paid[i-1].time>=DESIGN.cadenceSeconds-1e-7,'Declared player cadence');
  for(const t of ledger.transactions)assert.equal(t.cost,normalPrice(g,t),'Ordinary paid price');
  const final=g.serialize();assert.deepEqual(Game.restore(final).serialize(),final,'Final save roundtrip');assert.deepEqual(freeze(),packet.freeze,'Source changed while running');
  return {seed,health,policy,initial,commands:p.commands,ledger,firstContact,firstCoreDamage,coreDamage,losses,trace,minHP,healed:s.citadelOptions.sides.map(r=>r.healedTotal),outcome:evaluatePrototype(g),duration:s.time,final};

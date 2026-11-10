@@ -1,34 +1,39 @@
-# The Camp We Kept: epoch 2 affordability hypothesis
+# The Camp We Kept: epoch 3 support-first policy experiment
 
-QA only, unopened. This is a fresh outcome-informed experiment, not a production mission or a repair validated by results. No catalog, runtime, ruleset identity, version, prerequisite, profile or remote change is included. Chapter 8's release remains separate and higher priority. No Chapter 10 admission.
+QA only and unopened. Both failed earlier epochs remain byte-exact. No production identity, runtime, catalog, prerequisite, profile, version, remote operation, result upload or release change is included. Watch's publisher and runtime are untouched.
 
-## Durable parent and preservation
+## Source and retained adverse evidence
 
-Parent is PR 43 head `0e58a1a132163b1872e131398b047a3f0de41411`, tree `4f3e4975f9e4588235b8af55611cdfb02f145d0b`. Its complete inventory SHA256 is `a20e47d6a7c3a8ebaed01ed435c8ff979e60e84ee741c9eb9d461aeed1e816e9`. All 1333 present parent blobs were verified before copying into a new isolated workspace. The other 1048 inventory entries remain omitted, not deleted. The complete inventory has no AGENTS.md. The engineering skill and inherited repository run guidance apply.
+Actual parent is PR43 head `5df8df8510dc6ca5806146e6e2023385cd7d7198`, tree `4c6ebc192061e346ff57b72aa2741e474d0f5107`. Complete inventory SHA256: `bdaf05ab7a2846dc1635ce10bb599ce5c76a779702d2300fc701fee3bbaf9cfd`. All 1333 present blobs were verified before copying into a new isolated workspace; 1048 inventory-only omissions are retained, not deleted. No AGENTS.md appears in the complete inventory. The engineering skill and inherited repository guidance apply.
 
-Epoch 1 source, freeze and all failed records remain unchanged. Its reviewed closure is `7b2cec52788cb261abdcb06b5a1676bc1375779551d0fd5ff7a2ed8eee358390`. The sealed independent outcome review SHA256 is `698f4247a4d40f8d64f1557253ce01db1b3b5d9538c5d48af59f339bc19d41a7`. All twenty epoch 1 cases lost, including full-health controls, with no enemy citadel damage. Valid accounting and restore do not establish a useful recovery choice or prove that no human can win.
+The epoch2 independent adverse review SHA256 is `b1b6c0e9bf21754e76ee4bb1c872bd1278eb9cbd68d7072d58663c9087cda50e`. Both earlier twenty-case experiments lost every case, including full-health controls. More gold advanced support and some attacks, but did not establish a viable opener or useful recovery. Those results do not prove no human can win. These new scripts are explicitly informed by those failures and reused known seeds, not heldout evidence or retroactive validation.
 
-Timing correction, explicitly retained rather than hidden by rewriting the old report: counterattack's foundry at 0 seconds and southern archery at 5 precede contact. The sanctum at 10 follows first contact. First siege damage was at 7.60/7.75 seconds. Its factory is forward of the inherited warrior/archer factories, so the unchanged first command sequence has not established a screened siege.
+Retain both corrections alongside immutable old reports: the old sanctum at 10 seconds followed contact; only purchases at zero and five preceded it. In epoch2 seed9101 counterattack, first southern archery ID25 at x830 died at **105.60 seconds**. The 96.25-second loss was later archery ID112 at x1110. New result interpretation must use exact building IDs and positions.
 
-## Exactly one mechanical change
+## Unchanged encounter, fresh scripts
 
-Starting player gold changes from **700 to 1100**. Everything else remains the same: 2700/6000 player core HP, formation and intact assets, 100 enemy gold, normal paid adaptive AI, ordinary prices and income, all eight earned buildings, Classic map, 10:00 deadline, 5:00 escalation, seed pair 9101/9102, five policies, wounded/full-health controls and twenty-case order. Epoch/provenance fields, assertions and this plan/documentation change only to identify that new experiment. The runner and engine remain byte-identical to the parent.
+Initial Game serialization is unchanged from epoch2: 1100 player gold, 2700/6000 HP, intact inherited formation, 100 enemy gold, Classic, normal paid adaptive AI, original roster/costs/income, ordinary near-ready production, 5:00 escalation and 10:00 core deadline. No engine, AI or economy source changes. One mutually exclusive citadel choice still costs 190; regeneration is 3 HP/s after purchase and eight quiet seconds, with no instant heal. A 1-HP win is legal and core loss/draw takes precedence.
 
-The extra disclosed purse may let the unchanged plans reach their delayed support before the observed southern-archery losses. It cannot cure the initial front-first siege exposure because the first zero/five/ten-second commands stay unchanged. It might merely mask weak placements or the scripts' refusal to rebuild. This is a narrow affordability question, not a promise of balance or a reason to require regeneration.
+The question is now narrower: can a sensible paid support-first/rebuilding policy hold the exposed roads and develop an attack without another resource retune? The first additions are southern archery x690, southern barracks x830, northern archery x690 and northern sanctum x550. New ranged support is behind warriors rather than sending the old first siege ahead of its screen.
 
-Regeneration is still one mutually exclusive 190-gold choice, 3 HP/s after the purchase wait and eight quiet seconds, with no instant heal. Nominal healing alone is not success. No-regeneration wins remain welcome, no route is mandatory, and a 1-HP core win is legal. Core loss/draw takes precedence. No fog, drain, reserve, free arrival or engine system is added.
+Three versions use identical support logic: no citadel purchase, regeneration, or same-price arrows. The paid choice comes after those four additions and before optional development; the no-choice version may use that decision and money for the next support. This preserves a real opportunity cost, not a healing-only placebo. All initial and introduced production can be rebuilt using normal paid commands, so the scripts do not abandon a lost northern producer forever.
 
-## Unopened validation plan
+One command attempt is allowed every two seconds, openly faster than the earlier five-second scripts and still only a scripted pace, not a human-difficulty claim or a UI limit. Priority is urgent paid Volley against a visible core-area cluster; missing introduced production; next opening addition; the selected citadel choice; introduced mine repair; rear development; affordable upgrades. Missing producers are ordered by the closest visible enemy in the same lane/own half, then type, lane and position; choose an affordable repair when possible. Ordinary Volley requires at least three living enemies in its radius around a visible enemy within 600 pixels of the home core, sufficient money and no cooldown. The exact tie-breaks are in the source and plan.
 
-`qa/camp-kept/PLAN.json` retains exactly twenty known cases: two seeds, two health conditions, counterattack, regeneration-income, arrows-income, greedy recovery and idle. These known seeds are reused openly, not called heldout evidence. Record ordinary payments/failed attempts, contact, losses, core damage/healing, five-second observations, minima, outcome and final save roundtrip. Compare actual payment timing and camp losses against epoch 1, while retaining both setups' failures and policy limits. No arbitrary win-rate, healing threshold, mandatory regeneration or forced-loss gate is added.
+Once current production is intact, add middle splash and another southern archer, then one mine, rear middle siege, the other mine and rear outer siege. All are normal building sites; new siege is behind the perimeter. Successfully introduced assets remain eligible for rebuilding. Then upgrade affordable surviving producers. These are bounded choices by the scripts, not new engine restrictions on what a real player may do. No hidden enemy purse, seed/RNG, future actions or old result lookup enters decisions. Enemy-unit reads are legitimate only because this encounter is fully visible.
 
-Before review, run only:
+## Small frozen grid and limits
+
+`PLAN.json` registers sixteen cases: seeds9101/9102 × wounded/full × support-none/support-regen/support-arrows/idle, in that array order. Record paid timing, failures, exact asset identities/losses, first contact/core damage, actual healing, force/gold/HP observations, outcome, ledger and final save roundtrip. Inspect all losses. No extra policy or seed search is allowed under the opening approval.
+
+A winning no-regeneration policy is welcome. Regeneration need not be necessary, and nominal healing alone is not proof of a useful decision. Explain any concrete risk, survival, losses, spending or viable-route difference without arbitrary minimum-heal/win-rate gates. Fixed policies and known seeds cannot establish human balance or preference; full-health comparisons include ordinary later AI/RNG divergence. Any fresh success would be bounded feasibility only, not repair of old evidence or production admission.
+
+Before independent preopen and separate exact coordinator authorization, run only structural checks that never call Game.update/_step or run a case:
 
 - `node --test tests/camp-kept-prototype.test.mjs`
-- `node --check qa/camp-kept/prototype.mjs`
-- `node --check qa/camp-kept/experiment.mjs`
+- Syntax-check both QA modules.
 - `node qa/camp-kept/experiment.mjs --freeze /absolute/external/new-freeze.json`
 
-Independent preopen review and separate exact coordinator authorization are required before the unchanged guarded `--run-reviewed` command may execute any case. A new external approval must include the exact new freeze, named independent reviewer and coordinator authorization, using the existing `camp-kept-reviewed-run-v1` format and `reviewed-and-authorized` status. All results go into a new empty external directory. Stop on drift, ledger/price/restore error or coordinator request; retain partial data without automatic retry. The existing stop file is output-directory plus `.stop` and is checked every 100 fixed ticks and between cases; SIGINT/SIGTERM also request a stop.
+The unchanged guarded CLI requires a new matching external review/authorization packet before `--run-reviewed`; old approvals must fail. Results go to a fresh external empty directory. Source drift, payment/restore errors or coordinator requests stop the run without automatic retry. The existing stop file is output-directory plus `.stop`, checked every100fixed ticks and between cases; SIGINT/SIGTERM also request a stop.
 
-Only source, executable tests, plan and concise docs belong in the incremental checkpoint. Gameplay, browser pacing, aggregate checks, production identity/catalog/persistence, the future Chapter 8 prerequisite, remote CI and release all remain unperformed separate gates.
+Only source, tests, plan and concise docs belong in the incremental packet. Generated results/logs/screenshots remain external. Interactive pacing, production identity/catalog/persistence, any future prerequisite, complete aggregates, remote CI and release remain separate gates.
