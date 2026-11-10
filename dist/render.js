@@ -1376,7 +1376,7 @@ export class Renderer {
     for(const y of [-75,75]){c.fillStyle='#2a282b';c.fillRect(22,y-25,125,50);c.fillStyle='#a78e73';c.fillRect(40+pose.piston,y-18,90,36);}
     if(pose.contact){c.strokeStyle='#dcb68b';c.lineWidth=9;c.beginPath();c.arc(0,0,COLOSSUS.radius+10,Math.PI*.55,Math.PI*1.45);c.stroke();}
     const font=Math.max(18,12/(this.scale||1));c.font=`bold ${font}px sans-serif`;c.textAlign='center';c.textBaseline='bottom';c.fillStyle='#fff1ce';
-    c.fillText(emerging?'THE LAST ENGINE · EMERGING':u.x>ENCOUNTER.siegeBoundary?'THE LAST ENGINE · APPROACH':'THE LAST ENGINE · SIEGE MARCH',0,-230);
+    c.fillText(emerging?'THE LAST ENGINE · EMERGING':pose.mode==='approach'?'THE LAST ENGINE · APPROACH':'THE LAST ENGINE · SIEGE MARCH',0,-230);
     this.health(-175,-221,350,u.hp/u.maxHp,'#f2bd81',Math.max(8,4/(this.scale||1)));
     c.restore();
   }

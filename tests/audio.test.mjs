@@ -140,3 +140,6 @@ for(const interrupt of ['suspension','master-zero','sfx-zero','hidden-scene'])te
   assert.equal(a.voices.size,0);c.advance(1);assert.equal(a.voices.size,0);assert.equal(a.play('engineReveal'),false,'discarded deployment is not replayed');
  }finally{await a.destroy();}
 });
+test('gesture resume drops suspended Engine tails even before the next scene observer frame',async()=>{
+ const {a,c}=await setup({musicEnabled:false});try{a.setScene('battle');assert.equal(a.play('engineReveal'),true);assert.equal(a.voices.size,5);c.state='suspended';assert.equal(await a.unlock(),true);assert.equal(a.voices.size,0,'old delayed layers cannot play after gesture resume');c.advance(2);assert.equal(a.voices.size,0);assert.equal(a.play('engineReveal'),false,'unlock does not replay the consumed deployment');}finally{await a.destroy();}
+});
