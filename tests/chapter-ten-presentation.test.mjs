@@ -47,3 +47,19 @@ test('native art source consumes pure reduced-motion pose without camera takeove
 test('crowded native-effect batches select at most one heavy impact and consume the whole batch',()=>{
  const g=armed(),o=createLastEngineAudioObserver();o.prime(g);const boss=reveal(g);o.update(g,options);for(let i=0;i<40;i++)g._effect(boss.x,boss.y,'blast',1,.7,180);const view={...options,camera:boss.x};assert.deepEqual(o.update(g,view).map(c=>c.name),['engineImpact']);assert.deepEqual(o.update(g,view),[]);
 });
+test('boss draw-path lexical bindings resolve from actual declared imports in every phase, with inert no-op methods',async()=>{
+ const rendererURL=new URL('../dist/render.js',import.meta.url),text=readFileSync(rendererURL,'utf8'),start=text.indexOf('  drawColossus('),end=text.indexOf('  drawUnit(',start),method=text.slice(start,end).trim(),bindings={};
+ // Use exactly the declared names, not all exports of a module: an omitted
+ // ENCOUNTER import must fail even though colossus-spec happens to export it.
+ for(const [,names,relative]of text.matchAll(/^import \{([^}]+)\} from '([^']+)'/gm)){
+  if(!['./colossus-spec.js','./final-chapter-view.js'].includes(relative))continue;
+  const module=await import(new URL(relative,rendererURL));for(const entry of names.split(',')){const [original,alias]=entry.trim().split(/\s+as\s+/);bindings[alias??original]=module[original];}
+ }
+ const {runInNewContext}=await import('node:vm'),probe=scope=>runInNewContext('(function '+method+')',scope),draw=probe(bindings);
+ // This is a lexical/control-flow probe, not a canvas. No graphics object,
+ // pixel buffer, DOM canvas or audio context is created or executed.
+ const labels=[],inert=new Proxy({},{get:(_target,key)=>key==='fillText'?text=>labels.push(text):()=>{},set:()=>true}),receiver={c:inert,scale:.5,reducedMotion:false,health(){}},phase={triggeredAt:1};
+ for(const reducedMotion of [false,true])for(const [x,time]of [[2920,.5],[2200,10],[1400,30]]){receiver.reducedMotion=reducedMotion;assert.doesNotThrow(()=>draw.call(receiver,{id:1,x,y:450,hp:10000,maxHp:10000,attack:.1,hit:.1},time,phase));assert.equal(labels.at(-1),time<3?'THE LAST ENGINE · EMERGING':x>1600?'THE LAST ENGINE · APPROACH':'THE LAST ENGINE · SIEGE MARCH');}
+ const oldBug=runInNewContext('(function '+method.replace("pose.mode==='approach'","u.x>ENCOUNTER.siegeBoundary")+')',bindings),body={x:2200,y:450,hp:10000,maxHp:10000,attack:0};assert.doesNotThrow(()=>oldBug.call(receiver,body,.5,phase),'emergence short-circuits the historical missing binding');for(const x of [2200,1400])assert.throws(()=>oldBug.call(receiver,{...body,x},10,phase),/ENCOUNTER is not defined/,'approach and siege must detect the historical missing import');
+ const missing={...bindings};delete missing.COLOSSUS;assert.throws(()=>probe(missing).call(receiver,{x:2200,y:450,hp:10000,maxHp:10000,attack:0},10,phase),/COLOSSUS is not defined/,'negative control proves undeclared free constants are detected');
+});

@@ -105,7 +105,7 @@ export class GameAudio {
         this.context=this.contextFactory?this.contextFactory():new Context({latencyHint:'interactive'});
         this._createGraph();
       }
-      if(this.context.state==='suspended')await this.context.resume();
+      if(this.context.state==='suspended'){this._stopVoices('sfx',0,true);await this.context.resume();}
       if(this.context.state==='closed')return false;
       this.available=true;
       this._updateGains();
