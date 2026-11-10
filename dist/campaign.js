@@ -485,7 +485,7 @@ export const SHARED_WATCH_MISSIONS=[{
     'All eight earned buildings, automatic adjacent-road flyers and normal paid citadel choices are available. At 5:00 ordinary escalation speeds production ×1.65, multiplies troop structure damage ×1.75 and lowers citadel shot damage from 32 to 18. There is no fog or forced drain.'],
 }];
 
-export const BROKEN_LINE_CHAPTER=deepFreeze({id:'broken-line',number:9,name:'The Broken Line',subtitle:'Face the last local reserves',theme:'woodland',plannedMissions:5,description:'Chapter 9 begins here. Three missions are currently available; at least five are planned.',epilogue:'The first roads through the Broken Line are open. More of this chapter lies ahead.'});
+export const BROKEN_LINE_CHAPTER=deepFreeze({id:'broken-line',number:9,name:'The Broken Line',subtitle:'Face the last local reserves',theme:'woodland',plannedMissions:5,description:'Chapter 9 begins here. Four missions are currently available; at least five are planned.',epilogue:'The first roads through the Broken Line are open. More of this chapter lies ahead.'});
 export const WAKE_RESERVE_MISSIONS=[{
   id:'wake-the-reserve',chapterId:'broken-line',number:30,name:'Wake the Reserve',subtitle:'Choose when to face the northern reserve',
   scenarioRevision:1,mapId:'classic',mapRevision:1,rulesetId:MINOR_RESERVE_RULESET_ID,rulesetRevision:1,
@@ -1010,7 +1010,7 @@ export function getCampaignLaunchMission(id,progress) {
   const presentation=opening&&stage===3?AUTONOMOUS_AIR_CAMPAIGN_MISSIONS.find(m=>m.id===id):mission;
   return {...mission,briefing:presentation.briefing,hint:presentation.hint,scenarioRevision:revision,
     // Current navigation copy only; published scenario descriptors remain immutable.
-    ...(id==='common-ground'?{reward:'Unlocks Shared Crossing'}:id==='shared-crossing'?{reward:'Unlocks One Signal Is Enough',subtitle:'Secure the convoy route'}:id==='one-signal-is-enough'?{reward:'Unlocks Lanterns on the Water'}:id==='lanterns-on-the-water'?{reward:'Unlocks Borrowed Ground'}:id==='borrowed-ground'?{reward:'Unlocks A River Between Us'}:id==='a-river-between-us'?{reward:'Unlocks False Quiet'}:id==='false-quiet'?{reward:'Unlocks The Road We Know'}:id==='the-road-we-know'?{reward:'Unlocks Through the Reed Beds'}:id==='through-the-reed-beds'?{reward:'Unlocks The Archer’s Quay'}:id==='the-archers-quay'?{reward:'Unlocks Salt in the Stores'}:id==='salt-in-the-stores'?{reward:'Unlocks The Hammer Turns'}:id==='the-hammer-turns'?{reward:'Unlocks The Long Screen'}:id==='the-long-screen'?{reward:'Unlocks The Shared Watch'}:{}),
+    ...(id==='leave-no-road-closed'?{reward:'Unlocks Three Minutes More'}:id==='common-ground'?{reward:'Unlocks Shared Crossing'}:id==='shared-crossing'?{reward:'Unlocks One Signal Is Enough',subtitle:'Secure the convoy route'}:id==='one-signal-is-enough'?{reward:'Unlocks Lanterns on the Water'}:id==='lanterns-on-the-water'?{reward:'Unlocks Borrowed Ground'}:id==='borrowed-ground'?{reward:'Unlocks A River Between Us'}:id==='a-river-between-us'?{reward:'Unlocks False Quiet'}:id==='false-quiet'?{reward:'Unlocks The Road We Know'}:id==='the-road-we-know'?{reward:'Unlocks Through the Reed Beds'}:id==='through-the-reed-beds'?{reward:'Unlocks The Archer’s Quay'}:id==='the-archers-quay'?{reward:'Unlocks Salt in the Stores'}:id==='salt-in-the-stores'?{reward:'Unlocks The Hammer Turns'}:id==='the-hammer-turns'?{reward:'Unlocks The Long Screen'}:id==='the-long-screen'?{reward:'Unlocks The Shared Watch'}:{}),
     ...(opening?{rulesetId:CITADEL_CAMPAIGN_RULESET_IDS[stage-1]}:{})};
 }
 export function createProgressionCampaignMission(id,progress) {
@@ -1033,7 +1033,7 @@ export function getProgressionCampaignOverview(progress) {
     ...getCampaignLaunchMission(m.id,clean),record:m.record,unlocked:m.unlocked,completed:m.completed,
   }))};
   return {missions,chapters,cleared,total:missions.length,stars,maxStars:missions.length*3,
-    completed:missions.filter(m=>!roster.returning||!isOnboardingMission(m.id)).every(m=>m.completed),
+    completed:chapters.filter(c=>c.id!==ONBOARDING_CHAPTER.id).every(c=>c.completed)&&missions.filter(m=>!roster.returning||!isOnboardingMission(m.id)).every(m=>m.completed),
     nextMissionId:next?.id||null,roster,returning:roster.returning,legacyIntroduction};
 }
 export function recordCampaignResult(progress,id,game) {

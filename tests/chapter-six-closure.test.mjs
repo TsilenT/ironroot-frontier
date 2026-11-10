@@ -130,7 +130,7 @@ test('the released chapter stays five missions with the exact order, rewards and
     const overview = campaign.getProgressionCampaignOverview(progress);
     const chapter = overview.chapters.find(c => c.id === chapterId);
     assert.deepEqual(overview.missions.filter(m => m.chapterId === chapterId).map(m => m.id), ids);
-    assert.equal(overview.total, 35); assert.equal(overview.maxStars, 105);
+    assert.equal(overview.total, 36); assert.equal(overview.maxStars, 108);
     assert.equal(chapter.total, 5); assert.equal(chapter.maxStars, 15);
     assert.equal(chapter.cleared, index); assert.equal(chapter.completed, false);
     assert.equal(overview.nextMissionId, id);

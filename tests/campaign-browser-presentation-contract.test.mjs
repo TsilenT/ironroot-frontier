@@ -39,7 +39,7 @@ function authoredRows(mission) {
 test('current briefings retain exact rosters and lists; only the 19 revised historical missions have a records notice', () => {
   const progress = createCampaignProgress(), bytes = JSON.stringify(progress);
   const missions = getProgressionCampaignOverview(progress).missions;
-  assert.equal(missions.length, 35);
+  assert.equal(missions.length, 36);
   let notices = 0;
   for (const mission of missions) {
     const automatic = mission.scenarioRevision >= 3;

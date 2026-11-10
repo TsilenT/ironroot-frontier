@@ -142,7 +142,7 @@ test('campaign catalog binds exact Borrowed Ground identity and rejects Skirmish
     value=>{value.ruleset={id:'frontier-campaign-citadel-open',revision:1};},
     value=>{value.map={id:'classic',revision:1};value.ruleset={id:'frontier-campaign-citadel-open',revision:1};},
   ]){const value=identity();mutate(value);const before=structuredClone(value);assert.throws(()=>validateBattleIdentity(value));assert.deepEqual(value,before);}
-  const progress={...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==MISSION)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+  const progress={...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id !== 'three-minutes-more' && m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(m.id!==MISSION)).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
   assert.equal(campaign.getCampaignRevisionForRuleset(MISSION,RULES),1);
   const saved=encodeBattle(game,identity().scenario,{campaignProgress:progress}),restored=decodeBattle(saved,{campaignProgress:progress});
   assert.deepEqual(restored.game.serialize(),game.serialize());assert.deepEqual(campaign.createCampaignRestart(restored.game,MISSION).serialize(),game.serialize());

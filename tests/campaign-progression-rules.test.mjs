@@ -31,7 +31,7 @@ test('catalog preserves the exact legacy entry points while retaining the compac
     assert.equal(next.rulesetId,'frontier-campaign-open');assert.equal(next.scenarioRevision,2);
   }
   const overview=getProgressionCampaignOverview(createCampaignProgress());
-  assert.equal(overview.total,35);assert.equal(overview.maxStars,105);assert.equal(overview.nextMissionId,'roadside-watch');
+  assert.equal(overview.total,36);assert.equal(overview.maxStars,108);assert.equal(overview.nextMissionId,'roadside-watch');
   const signal=overview.missions.find(m=>m.id==='one-signal-is-enough');
   assert.ok(signal);assert.equal(signal.scenarioRevision,1);assert.equal(signal.rulesetId,'frontier-campaign-one-signal');
   assert.equal(signal.unlocked,false,'optional signal mission retains its prerequisite');
