@@ -3,7 +3,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
-import { createStorage, createSaveSession, createHistorySession, createPreferenceSession, readHistoryState } from '../dist/persistence.js';
+import { createStorage, createSaveSession, createHistorySession, createPreferenceSession, readHistoryState, writeBattle } from '../dist/persistence.js';
+import * as campaign from '../dist/campaign.js';
+import {identityOf,scenarioForBattle} from '../dist/battle-codec.js';
+import {getRuleset} from '../dist/engine.js';
+import {createBattleJournal} from '../dist/battle-report.js';
+import {renderBattleReport} from '../dist/report-view.js';
 import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from '../dist/profile-session.js';
 import { createBackup, parseBackup } from '../dist/backup.js';
 const H = 'ironroot.history.v1', S = 'ironroot.settings.v1';
@@ -153,6 +158,53 @@ function ui(f=fixture([[H,JSON.stringify([row(1)])],[S,'{"sound":true}']])){
   vm.runInContext(app.slice(app.indexOf("window.addEventListener('beforeunload',"),app.indexOf("window.addEventListener('storage',")),c);
   return {f,c,$};
 }
+// Configure the existing actual-finish/recovery fixture with a real finale,
+// profile, checkpoint and journal. Terminal setup below is explicitly synthetic.
+function finaleUI(){
+ const progress={...campaign.createCampaignProgress(),missions:Object.fromEntries(campaign.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='the-last-engine').map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))};
+ const f=fixture([[H,'[]'],[campaign.CAMPAIGN_STORAGE_KEY,JSON.stringify(progress)],['trials','{}']]),h=ui(f),{c}=h;
+ const game=campaign.createCampaignMission('the-last-engine'),battle=createSaveSession(f.storage,'battle');battle.claim();
+ assert.equal(writeBattle(battle,'battle',game,null,'the-last-engine',{campaignProgress:progress}),true);
+ Object.assign(c,campaign,{game,mode:'campaign',currentCampaign:'the-last-engine',CAMPAIGN_MISSIONS:campaign.CAMPAIGN_PROGRESS_MISSIONS,
+  campaignProgress:progress,getCampaignOverview:campaign.getProgressionCampaignOverview,getRuleset,identityOf,scenarioForBattle,
+  battleSession:battle,storage:f.storage,TRIALS:'trials',trialRecords:{},CHALLENGES:[],createBattleJournal,renderBattleReport,
+  endingReceipts:0,campaignEndingReward(...args){const reward=campaign.campaignEndingReward(...args);if(reward)c.endingReceipts++;return reward;},
+  renderCampaign(){},showTitle(){c.navigationResult=c.mode;},
+ });
+ // Bridge only the VM-created row into the module's realm. Production's strict
+ // plain-object and identity validation still runs unchanged on the full row.
+ c.historySession={...f.history,retain(row,options){return f.history.retain(JSON.parse(JSON.stringify(row)),options);}};
+ vm.runInContext(app.slice(app.indexOf('function beginBattleReport('),app.indexOf('function revealBattleReport(')),c);
+ vm.runInContext(app.slice(app.indexOf('function persistProgress()'),app.indexOf('function save()')),c);
+ vm.runInContext(app.slice(app.indexOf("$('playAgain').onclick ="),app.indexOf("$('replayMission').onclick =")),c);
+ c.beginBattleReport(false);return h;
+}
+test('pre-trigger finale defeat and retained history recovery never expose the boss row or award an ending',()=>{
+ const h=finaleUI(),{c,f,$}=h;c.game.state.bases[0].hp=0;c.game.update(.05);
+ assert.equal(c.game.state.colossus.phase,'armed');c.objectiveOutcome=campaign.evaluateCampaignMission(c.game,'the-last-engine');
+ f.faults.read=H;c.finish();const markup=$('resultReport').innerHTML,report=c.lastBattleReport;
+ assert.doesNotMatch(markup,/last[ -]engine|colossus/i);assert.equal(c.endingReceipts,0);assert.equal(c.campaignProgress.missions['the-last-engine'],undefined);
+ assert.equal(f.history.pendingCount(),1);c.finish();assert.equal(c.lastBattleReport,report);
+ f.faults.read=null;$('retryResultHistory').onclick();$('lastResult').onclick();
+ assert.equal(historyRows(f).length,1);assert.equal(historyRows(f)[0].won,false);assert.equal($('resultReport').innerHTML,markup);
+ assert.equal(f.history.pendingCount(),0);assert.equal(c.endingReceipts,0);
+});
+for(const fault of ['none','history','progress'])test(`first finale clear ${fault} recovery keeps report, ending receipt and label/action consistent`,()=>{
+ const h=finaleUI(),{c,f,$}=h,g=c.game;
+ g.state.bases[1].hp=600;g.update(.05);const boss=g.state.units.find(u=>u.type==='colossus');g._damage(boss,boss.hp,0);g.update(.05);
+ g.state.bases[1].hp=0;g.update(.05);c.objectiveOutcome=campaign.evaluateCampaignMission(g,'the-last-engine');assert.equal(c.objectiveOutcome.completed,true);
+ if(fault==='history')f.faults.read=H;if(fault==='progress')f.faults.write=campaign.CAMPAIGN_STORAGE_KEY;
+ c.finish();assert.match($('playAgain').innerHTML,/SKIRMISHES/);assert.equal(c.endingReceipts,1);assert.match($('resultReport').innerHTML,/The Last Engine/);
+ const report=c.lastBattleReport,markup=$('resultReport').innerHTML,before=g.serialize();c.finish();c.finish();
+ assert.equal(c.endingReceipts,1);assert.equal(c.lastBattleReport,report);assert.deepEqual(g.serialize(),before);
+ assert.equal(f.history.pendingCount(),fault==='history'?1:0);assert.equal(c.progressDirty,fault==='progress');
+ if(fault==='progress'){assert.equal($('progressSaveWarning').classList.contains('hidden'),false);assert.equal(JSON.parse(f.data.get(campaign.CAMPAIGN_STORAGE_KEY)).missions['the-last-engine'],undefined);}
+ f.faults.read=null;f.faults.write=null;$('retryResultHistory').onclick();assert.equal(c.persistProgress(),true);$('lastResult').onclick();
+ assert.equal(historyRows(f).length,1);assert.equal(historyRows(f)[0].won,true);assert.equal(f.history.pendingCount(),0);
+ assert.equal(JSON.parse(f.data.get(campaign.CAMPAIGN_STORAGE_KEY)).missions['the-last-engine'].completed,true);
+ assert.equal($('resultReport').innerHTML,markup);assert.equal(c.endingReceipts,1);
+ $('playAgain').onclick();assert.equal(c.navigationResult,'skirmish');
+});
 test('actual finish warns on a history read failure, retains result after battle removal and recovers exactly once',()=>{
   const h=ui();h.f.faults.read=H;vm.runInContext('finish()',h.c);
   assert.equal(h.c.removed,true);assert.equal(h.f.history.pendingCount(),1);assert.deepEqual(historyRows(h.f),[row(1)]);

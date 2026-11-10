@@ -4,6 +4,9 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {nextFocusIndex,spatialFocusIndex} from '../dist/controller.js';
+import {createCampaignMission,evaluateCampaignMission} from '../dist/campaign.js';
+import {createBattleJournal} from '../dist/battle-report.js';
+import {reportConcealsFinale} from '../dist/report-view.js';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
 const focusSource=app.slice(app.indexOf('function controlIsVisible('),app.indexOf('function syncDialogs()'));
 const downloadSource=app.slice(app.indexOf("$('resultReport').addEventListener('click'"),app.indexOf("$('start').onclick",app.indexOf("$('resultReport').addEventListener('click'")));
@@ -49,7 +52,7 @@ test('deferred report alignment ignores a closed, replaced or hidden result',()=
 });
 function download({protocol='http:',report={context:{id:'../unsafe/name',mode:'campaign'}},urlError=false,exportError=false,clickError=false}={}){
   const state={status:{textContent:''},created:0,clicked:0,removed:0,revoked:[],timers:[],blob:null,anchor:null};let callback;
-  const context={lastBattleReport:report,$:()=>({addEventListener:(name,cb)=>{assert.equal(name,'click');callback=cb;},querySelector:()=>state.status}),
+  const context={lastBattleReport:report,reportConcealsFinale,$:()=>({addEventListener:(name,cb)=>{assert.equal(name,'click');callback=cb;},querySelector:()=>state.status}),
     location:{protocol},exportBattleReport:()=>{if(exportError)throw Error('Export refused');return JSON.stringify(report);},
     Blob,URL:{createObjectURL(blob){if(urlError)throw Error('Object URL unavailable');state.created++;state.blob=blob;return 'blob:local-report';},revokeObjectURL:url=>state.revoked.push(url)},
     document:{body:{append(){}},createElement:tag=>{assert.equal(tag,'a');state.anchor={click(){if(clickError)throw Error('Download blocked');state.clicked++;},remove(){state.removed++;}};return state.anchor;}},
@@ -62,6 +65,15 @@ test('report download creates local JSON and claims only a started download, the
   assert.match(result.anchor.download,/^ironroot-report-[a-z0-9-]+-\d{4}-\d{2}-\d{2}\.json$/i);
   assert.equal(JSON.parse(await result.blob.text()).context.id,'../unsafe/name');
   assert.match(result.status.textContent,/download started/);assert.ok(!/saved|delivered|successful/i.test(result.status.textContent));
+});
+for(const revealed of [false,true])test(`finale ${revealed?'revealed':'concealed'} report download name follows retained reveal state`,()=>{
+ const g=createCampaignMission('the-last-engine');
+ if(revealed){g.state.bases[1].hp=600;g.update(.05);const boss=g.state.units.find(u=>u.type==='colossus');g._damage(boss,boss.hp,0);g.update(.05);}
+ const journal=createBattleJournal(g,{mode:'campaign',id:'the-last-engine',name:'The Last Fortress'});
+ g.state.bases[0].hp=0;g.update(.05);
+ const report=journal.finish(g,{objectiveOutcome:evaluateCampaignMission(g,'the-last-engine')}),result=download({report});
+ assert.equal(result.clicked,1);assert.ok(result.anchor.download.startsWith(revealed?'ironroot-report-the-last-engine-':'ironroot-report-the-last-fortress-'));
+ assert.equal(report.identity.scenario.id,'the-last-engine','exact technical identity remains unchanged');
 });
 test('report export and URL failures never claim a started download',()=>{
   for(const options of [{exportError:true},{urlError:true},{protocol:'ironroot:'}]){const result=download(options);assert.equal(result.created,0);assert.equal(result.clicked,0);assert.ok(result.status.textContent.length);assert.ok(!/download started/.test(result.status.textContent));}
