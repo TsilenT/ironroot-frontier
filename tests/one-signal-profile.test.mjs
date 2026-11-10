@@ -13,11 +13,11 @@ const id='one-signal-is-enough';
 const date='2026-11-08T00:00:00.000Z';
 const marker=version=>JSON.stringify({format:'ironroot-profile',version,epoch:'earned-profile',phase:'ready'});
 function backend(entries=[]){const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(k);data.set(k,v);},removeItem(k){writes.push(k);data.delete(k);}};}
-function progress(){return {...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'three-minutes-more' && m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};}
+function progress(){return {...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};}
 function checkpoint(lost=0){const campaign=progress(),game=createProgressionCampaignMission(id,campaign);for(const t of getCampaignTargets(game,id).slice(0,lost))game.state.buildings=game.state.buildings.filter(b=>b.id!==t.originalId);return {campaign,game,scenario:campaignScenarioForGame(game,id)};}
 
 test('current protocol fences exact released protocol13 without touching earned domain bytes',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 29);assert.equal(previous.CURRENT_PROFILE_PROTOCOL_VERSION,13);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 30);assert.equal(previous.CURRENT_PROFILE_PROTOCOL_VERSION,13);
  assert.equal(createHash('sha256').update(readFileSync(new URL('./fixtures/profile-session-v0220.js',import.meta.url))).digest('hex'),'b98558379a2ad6de0241f6ecfc060c92b21edc477a9186715d4990dec9d82d73');
  for(const prior of [1,7,12,13,14,CURRENT_PROFILE_PROTOCOL_VERSION]){
   const domains=Object.values(K).map(k=>[k,` opaque earned ${k}\n`]),raw=backend([[MARKER,marker(prior)],...domains]);

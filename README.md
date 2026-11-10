@@ -1,3 +1,11 @@
+## Cut the Bowstrings (private v0.39 source candidate)
+
+This candidate depends on reviewed, pending Three Minutes More PR50 at85e5d893. That0.38 source is not claimed as released here. Main remainsv0.37 at the first checkpoint. No merge or publication is allowed while the dependency is unresolved.
+
+Two ordinary level-1 gryphons start aloft from inherited outer aeries. Break both original North Bow and South Bow archery ranges by10:00, or the enemy citadel, with your own citadel alive;1HP earns the primary star. Replacements do not restore original-target credit. All other buildings may remain. Full-earned autonomous-air rules, paid adaptive enemy, ordinary prices/income/HP and normal5:00 escalation remain.
+
+The first paid route destroys both originals at70.90s, own core6000HP and enemy core4813.8HP. Eight successful commands reconcile exact paid ledgers. This is scripted feasibility, without human balance certification. The private integrated source uses profile30/version-cache0.39 and37missions/111optional stars. Chapter9 can complete at five; the overall campaign remains unfinished and Chapter10 unavailable. Broad compatibility and native review remain separate gates. See docs/CUT_THE_BOWSTRINGS_BUILD.md.
+
 ## Three Minutes More (v0.38 source candidate)
 
 Chapter 9’s fourth mission follows Leave No Road Closed on Twin Span’s two roads. Survive 3:00 with your citadel alive, or destroy the enemy citadel early. One HP earns the primary star. Ordinary paid defensive support, Volley and Citadel choices remain available; no original building, bridge, sale or purchase is required. The departing company is narrative context. The encounter ends before 5:00 escalation.

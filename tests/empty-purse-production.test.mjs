@@ -6,13 +6,13 @@ import {encodeBattle,decodeBattle,validateBattleIdentity} from '../dist/battle-c
 import {validateHistoryRow} from '../dist/history-codec.js';
 import {createPrototype,createPolicy,evaluatePrototype,DESIGN} from '../qa/empty-purse/prototype.mjs';
 const ID='the-empty-purse',RULE='frontier-campaign-empty-purse',fresh=()=>c.createCampaignMission(ID);
-const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='three-minutes-more'&&m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
+const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 function comparable(g){const s=g.serialize();delete s.rulesetId;delete s.rulesetRevision;return s;}
 test('immutable exact opening, ordinary whole rules, partial catalog and mine arithmetic',()=>{
  const g=fresh(),q=createPrototype(),m=c.getCampaignMission(ID);assert.deepEqual(comparable(g),comparable(q));
  const rules=structuredClone(getRuleset(RULE)),old=structuredClone(getRuleset(DESIGN.rulesetId));for(const x of [rules,old]){delete x.id;delete x.name;}assert.deepEqual(rules,old);assert.ok(Object.isFrozen(getRuleset(RULE)));
  assert.deepEqual(m.prerequisites,['wake-the-reserve']);assert.equal(m.seed,9102);assert.equal(c.getCurrentCampaignRevision(ID,progress()),1);assert.equal(Object.keys(g.buildings).length,8);assert.equal(c.getCampaignTargets(g,ID).length,0);
- const o=c.getProgressionCampaignOverview(progress());assert.equal(o.total,36);assert.equal(o.maxStars,108);const ch=o.chapters.find(x=>x.number===9);assert.equal(ch.total,4);assert.equal(ch.plannedMissions,5);assert.equal(ch.completed,false);assert.equal(o.chapters.find(x=>x.number===8).total,5);assert.equal(o.chapters.some(x=>x.number===10),false);
+ const o=c.getProgressionCampaignOverview(progress());assert.equal(o.total,37);assert.equal(o.maxStars,111);const ch=o.chapters.find(x=>x.number===9);assert.equal(ch.total,5);assert.equal(ch.plannedMissions,5);assert.equal(ch.completed,false);assert.equal(o.chapters.find(x=>x.number===8).total,5);assert.equal(o.chapters.some(x=>x.number===10),false);
  const mine=g.state.buildings.find(b=>b.side===0&&b.type==='mint'&&b.level===3);assert.equal(mine.hp,684);assert.equal(mine.invested,522);assert.equal(g.state.income[0],12.5);assert.equal(g.sell(mine.id).refund,261);g.update(.05);assert.equal(g.state.income[0],7.5);
 });
 test('real Wake prerequisite, current roster, restart and immutable replay identity',()=>{const p=progress();assert.ok(c.isMissionUnlocked(p,ID));const g=c.createProgressionCampaignMission(ID,p);assert.deepEqual(g.serialize(),fresh().serialize());g.update(.05);assert.deepEqual(c.createCampaignRestart(g,ID).serialize(),fresh().serialize());delete p.missions['wake-the-reserve'];assert.equal(c.isMissionUnlocked(p,ID),false);assert.throws(()=>c.createProgressionCampaignMission(ID,p));});
