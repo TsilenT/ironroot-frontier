@@ -1,11 +1,11 @@
-/** The Last Engine: production identity; mechanics retained from the reviewed source. */
+/** The Last Engine: production identity; bounded surprise counterpush revision. */
 import {RULESETS} from './rulesets.js';
 import {COLOSSUS_IDS,COLOSSUS,ENCOUNTER} from './colossus-spec.js';
 export {COLOSSUS_IDS,COLOSSUS,ENCOUNTER} from './colossus-spec.js';
 export const supportsColossus = rules => !!rules && RULESETS[rules.id] === rules && rules.revision === 1 && rules.id === COLOSSUS_IDS[0];
 export const isColossus = unit => unit?.type === 'colossus';
 export const bodyDistance = (a, b) => Math.max(0, Math.hypot(a.x - b.x, a.y - b.y) - (isColossus(a) || isColossus(b) ? COLOSSUS.radius : 0));
-export const createColossusState = () => ({revision: 1, phase: 'armed', triggeredAt: null, bossId: null, defeatedAt: null, coreFellAt: null, playerFellAt: null, endedAt: null});
+export const createColossusState = () => ({revision: 2, motion: null, phase: 'armed', triggeredAt: null, bossId: null, defeatedAt: null, coreFellAt: null, playerFellAt: null, endedAt: null});
 export const colossusAftermathAlive = game => supportsColossus(game?.ruleset) && game.ruleset.id === COLOSSUS_IDS[0] && game.state.winner === null && game.state.bases[0].hp > 0 && game.state.colossus.phase === 'active';
 
 /** Boss keeps marching while attacking. Ordinary stop-to-fight cannot pin it. */
@@ -27,8 +27,13 @@ export function stepColossusUnit(game, boss, dt) {
       game._effect(boss.x, boss.y, 'blast', 1, .7, 180);
     }
   }
-  // Keep the enormous body on the middle road. It never chases a distraction.
-  return {x: Math.max(ownCore.x + 55 + COLOSSUS.radius + COLOSSUS.range, boss.x - COLOSSUS.speed * dt), y: 450};
+  // Fast approach across empty enemy territory, then ordinary physical siege pace.
+  // The boundary is geographic: casualties never govern this transition.
+  const motion = phase.motion, approaching = boss.x > ENCOUNTER.siegeBoundary;
+  motion[approaching ? 'approachTicks' : 'siegeTicks']++;
+  const x = approaching ? Math.max(ENCOUNTER.siegeBoundary, boss.x - ENCOUNTER.approachSpeed * dt)
+    : Math.max(ownCore.x + 55 + COLOSSUS.radius + COLOSSUS.range, boss.x - COLOSSUS.speed * dt);
+  return {x, y: 450};
 }
 
 /** Called atomically after ordinary simultaneous damage, before victory. */
@@ -39,6 +44,7 @@ export function advanceColossus(game) {
   if (phase.phase === 'armed' && s.bases[0].hp > 0 && s.bases[1].hp <= ENCOUNTER.triggerHp) {
     const boss = {id: game.nextId++, type: 'colossus', flying: false, side: 1, x: game.map.width - 280, y: 450, lane: 1,
       hp: COLOSSUS.hp, maxHp: COLOSSUS.hp, level: 1, cooldown: 0, attack: 0};
+    phase.motion = {approachTicks: 0, siegeTicks: 0};
     phase.phase = 'active'; phase.triggeredAt = game.tick; phase.bossId = boss.id;
     s.units.push(boss);
     const core = s.bases[1];
@@ -85,19 +91,27 @@ export function settleColossusCommand(game) {
 export function validateColossusState(game, fail) {
   const {state: s, tick, nextId, map, ruleset} = game, p = s.colossus;
   if (map.id !== 'classic' || map.revision !== 1) fail('Colossus requires Classic');
-  const names = ['revision', 'phase', 'triggeredAt', 'bossId', 'defeatedAt', 'coreFellAt', 'playerFellAt', 'endedAt'];
+  const names = ['revision', 'motion', 'phase', 'triggeredAt', 'bossId', 'defeatedAt', 'coreFellAt', 'playerFellAt', 'endedAt'];
   if (!p || Object.keys(p).length !== names.length || names.some(k => !Object.hasOwn(p, k))) fail('Invalid Colossus fields');
-  if (p.revision !== 1 || !['armed', 'active', 'defeated'].includes(p.phase)) fail('Unknown Colossus phase');
+  if (p.revision !== 2 || !['armed', 'active', 'defeated'].includes(p.phase)) fail('Unknown Colossus phase');
   const nullableTick = value => value === null || (Number.isSafeInteger(value) && value > 0 && value <= tick);
   if (![p.triggeredAt, p.defeatedAt, p.coreFellAt, p.playerFellAt, p.endedAt].every(nullableTick)) fail('Invalid Colossus clock');
   if (Math.abs(s.time - tick * .05) > Math.min(.001, 1e-7 + s.time * 1e-9)) fail('Colossus fixed clock mismatch');
   const bosses = s.units.filter(isColossus);
   if (p.phase === 'armed') {
-    if (p.triggeredAt !== null || p.bossId !== null || p.defeatedAt !== null || bosses.length) fail('Armed Colossus has deployed');
+    if (p.motion !== null || p.triggeredAt !== null || p.bossId !== null || p.defeatedAt !== null || bosses.length) fail('Armed Colossus has deployed');
     if (tick > 0 && s.bases[0].hp > 0 && s.bases[1].hp <= ENCOUNTER.triggerHp) fail('Colossus trigger was skipped');
     if (p.coreFellAt !== null && p.coreFellAt !== p.playerFellAt) fail('Armed Colossus missed an earlier core fall');
   } else {
     if (p.triggeredAt === null || !Number.isSafeInteger(p.bossId) || p.bossId < 1 || p.bossId >= nextId) fail('Missing Colossus deployment');
+    const motion = p.motion;
+    if (!motion || Object.keys(motion).length !== 2 || !['approachTicks','siegeTicks'].every(k => Object.hasOwn(motion,k) && Number.isSafeInteger(motion[k]) && motion[k] >= 0)) fail('Invalid Colossus movement state');
+    const approachSteps = Math.ceil((map.width - 280 - ENCOUNTER.siegeBoundary) / (ENCOUNTER.approachSpeed * .05));
+    if (motion.approachTicks > approachSteps || motion.siegeTicks > 0 && motion.approachTicks !== approachSteps) fail('Invalid Colossus movement transition');
+    const travelSteps = Math.max(0, (p.defeatedAt ?? tick) - p.triggeredAt - ENCOUNTER.emergeTicks + 1);
+    const moved = motion.approachTicks + motion.siegeTicks;
+    // A lethal native hit can precede this unit's scheduled step in that tick.
+    if (p.phase === 'active' ? moved !== travelSteps : moved > travelSteps || moved < Math.max(0, travelSteps - 1)) fail('Colossus movement clock mismatch');
     if (p.phase === 'active') {
       if (p.defeatedAt !== null || bosses.length !== 1 || bosses[0].id !== p.bossId || bosses[0].hp <= 0) fail('Active Colossus link mismatch');
       const boss = bosses[0];
@@ -106,8 +120,8 @@ export function validateColossusState(game, fail) {
       if (tick === p.triggeredAt && (boss.x !== map.width - 280 || boss.cooldown !== 0 || boss.attack !== 0 || boss.hit !== undefined && ![0, .16].includes(boss.hit))) fail('Invalid initial Colossus body');
       if (boss.cooldown > COLOSSUS.attackTime || boss.attack > .22 || (boss.hit || 0) > .16) fail('Invalid Colossus attack timer');
       if (tick < p.triggeredAt + ENCOUNTER.emergeTicks && (Math.abs(boss.cooldown - Math.max(-1, -(tick - p.triggeredAt) * .05)) > 1e-7 || boss.attack !== 0)) fail('Invalid Colossus emergence timer');
-      const travelSteps = Math.max(0, tick - p.triggeredAt - ENCOUNTER.emergeTicks + 1);
-      const expectedX = Math.max(110 + 55 + COLOSSUS.radius + COLOSSUS.range, map.width - 280 - travelSteps * COLOSSUS.speed * .05);
+      const approachedX = Math.max(ENCOUNTER.siegeBoundary, map.width - 280 - motion.approachTicks * ENCOUNTER.approachSpeed * .05);
+      const expectedX = Math.max(110 + 55 + COLOSSUS.radius + COLOSSUS.range, approachedX - motion.siegeTicks * COLOSSUS.speed * .05);
       if (Math.abs(boss.x - expectedX) > 1e-6) fail('Colossus march position does not match its clock');
     } else if (p.defeatedAt === null || p.defeatedAt <= p.triggeredAt || bosses.length || [...s.units, ...s.buildings].some(u => u.id === p.bossId)) fail('Invalid defeated Colossus');
   }

@@ -1,5 +1,6 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import * as c from '../dist/campaign.js';import {advanceObjectiveBattle} from '../dist/objectives.js';import {encodeBattle,decodeBattle} from '../dist/battle-codec.js';import {instrumentEconomy,verifyPlayerCadence} from '../qa/salt-stores/economy.mjs';import {demolitionPolicy} from './bowstrings-policy.mjs';
-const ID='cut-the-bowstrings';const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
+const ID='cut-the-bowstrings';const progress=()=>({...c.createCampaignProgress(),missions:Object.fromEntries(c.CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 test('ordinary paid mixed air/ground route destroys both original bows before the enemy core, with exact restore and paid ledgers',()=>{
  const g=c.createCampaignMission(ID),policy=demolitionPolicy(),economy=instrumentEconomy(g),originals=c.getCampaignTargets(g,ID).map(t=>t.originalId),openingFlyers=g.state.units.map(u=>u.id),shots=[];
  const fire=g._fire;g._fire=function(attacker,target,damage,...rest){shots.push({attacker:attacker.id,type:attacker.type,target:target.id,damage});return fire.call(this,attacker,target,damage,...rest);};

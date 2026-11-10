@@ -1,0 +1,74 @@
+{
+  "releasedCommit": "d27e45c296875bc74735698a02e033e11e7ff57c",
+  "releasedEngineSha256": "c750484509dfaeb8d6e4179bd27abe0956208dc7a4c48eab24a2b6cf8515b092",
+  "changes": [
+    {
+      "released": "",
+      "addition": "import {FINAL_CHAPTER_MAPS,FINAL_CROSSING_RULESET_ID} from './final-chapter-identities.js';\nimport {supportsColossus,isColossus,bodyDistance,createColossusState,advanceColossus,stepColossusUnit,settleColossusOutcome,settleColossusCommand,validateColossusState} from './colossus.js';\n"
+    },
+    {
+      "released": "    if(supportsCampaignControl(ruleset)&&(map.id!=='classic'||map.revision!==1))throw new Error('Campaign control requires Classic');\n",
+      "addition": "    if(Object.hasOwn(FINAL_CHAPTER_MAPS,ruleset.id)&&(map.id!==FINAL_CHAPTER_MAPS[ruleset.id]||map.revision!==1))throw new Error('Final chapter rules require their exact authored battlefield');\n    if(ruleset.id===FINAL_CROSSING_RULESET_ID){if(map.id!=='twin-span'||map.revision!==1)throw Error('Final crossing requires Twin Span');}\n    else if(supportsCampaignControl(ruleset)&&(map.id!=='classic'||map.revision!==1))throw new Error('Campaign control requires Classic');\n"
+    },
+    {
+      "released": "",
+      "addition": "    if(supportsColossus(ruleset)){if(map.id!=='classic')throw Error('Colossus requires Classic');this.state.colossus=createColossusState();}\n"
+    },
+    {
+      "released": "  cast(x,y,side=0){if(minorReserveEnded(this))return {ok:false,reason:'The battle has ended.'};if(this.limitReason)return {ok:false,code:'save-safety-limit',reason:this.limitReason};const s=this.state;if(s.winner!==null||![0,1].includes(side)||!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>this.map.width||y<0||y>this.map.height)return {ok:false,reason:'Choose a point on the battlefield.'};if(supportsFog(this.ruleset)&&!isPointVisible(this,side,x,y))return {ok:false,code:'fog-hidden-aim',reason:'Volley needs a currently visible aim point.'};if(s.spellCooldown[side]>0)return {ok:false,reason:'Volley is recharging.'};if(s.gold[side]<SPELL.cost)return {ok:false,reason:`Need ${SPELL.cost} gold.`};s.gold[side]-=SPELL.cost;s.spellCooldown[side]=SPELL.cooldown;for(const u of s.units)if(u.side!==side&&Math.hypot(u.x-x,u.y-y)<SPELL.radius)this._damage(u,SPELL.damage,side);this._effect(x,y,'volley',side,1.1,SPELL.radius);if(supportsFog(this.ruleset))refreshFog(this);return {ok:true};}\n",
+      "addition": "  cast(x,y,side=0){if(minorReserveEnded(this))return {ok:false,reason:'The battle has ended.'};if(this.limitReason)return {ok:false,code:'save-safety-limit',reason:this.limitReason};const s=this.state;if(s.winner!==null||![0,1].includes(side)||!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>this.map.width||y<0||y>this.map.height)return {ok:false,reason:'Choose a point on the battlefield.'};if(supportsFog(this.ruleset)&&!isPointVisible(this,side,x,y))return {ok:false,code:'fog-hidden-aim',reason:'Volley needs a currently visible aim point.'};if(s.spellCooldown[side]>0)return {ok:false,reason:'Volley is recharging.'};if(s.gold[side]<SPELL.cost)return {ok:false,reason:`Need ${SPELL.cost} gold.`};s.gold[side]-=SPELL.cost;s.spellCooldown[side]=SPELL.cooldown;for(const u of s.units)if(u.side!==side&&(supportsColossus(this.ruleset)&&isColossus(u)?bodyDistance(u,{x,y}):Math.hypot(u.x-x,u.y-y))<SPELL.radius)this._damage(u,SPELL.damage,side);this._effect(x,y,'volley',side,1.1,SPELL.radius);if(supportsColossus(this.ruleset))settleColossusCommand(this);if(supportsFog(this.ruleset))refreshFog(this);return {ok:true};}\n"
+    },
+    {
+      "released": "  _spawn(b){const s=this.state;if(s.units.filter(u=>u.side===b.side&&u.hp>0).length>=70)return;const type=this.buildings[b.type].unit,d=this.units[type],mult=1+0.12*(b.level-1);const u={id:this.nextId++,type,flying:d.flying,side:b.side,x:b.x+(b.side?-48:48),y:this.map.lanes[b.lane]+(this.random()-0.5)*32,lane:b.lane,hp:d.hp*mult,maxHp:d.hp*mult,level:b.level,cooldown:this.random()*0.2,attack:0};if(supportsAutonomousAir(this.ruleset)&&d.flying)u.airTargetId=null;if(supportsFlightOrders(this.ruleset)&&type==='gryphon'&&b.flightPlan!=null&&b.flightPlan!==b.lane)u.airRoute={from:b.lane,to:b.flightPlan,phase:'approach',remaining:this.ruleset.movement.flightOrders.warningSeconds};s.units.push(u);this._effect(u.x,u.y,'spawn',u.side,0.45);}\n",
+      "addition": "  _spawn(b){const s=this.state;if(s.units.filter(u=>u.side===b.side&&u.hp>0).length>=(supportsColossus(this.ruleset)&&b.side===1&&s.colossus.phase==='armed'?69:70))return;const type=this.buildings[b.type].unit,d=this.units[type],mult=1+0.12*(b.level-1);const u={id:this.nextId++,type,flying:d.flying,side:b.side,x:b.x+(b.side?-48:48),y:this.map.lanes[b.lane]+(this.random()-0.5)*32,lane:b.lane,hp:d.hp*mult,maxHp:d.hp*mult,level:b.level,cooldown:this.random()*0.2,attack:0};if(supportsAutonomousAir(this.ruleset)&&d.flying)u.airTargetId=null;if(supportsFlightOrders(this.ruleset)&&type==='gryphon'&&b.flightPlan!=null&&b.flightPlan!==b.lane)u.airRoute={from:b.lane,to:b.flightPlan,phase:'approach',remaining:this.ruleset.movement.flightOrders.warningSeconds};s.units.push(u);this._effect(u.x,u.y,'spawn',u.side,0.45);}\n"
+    },
+    {
+      "released": "      if(d.range){b.cooldown=Math.max(-1,b.cooldown-dt);const enemies=s.units.filter(u=>u.side!==b.side&&u.hp>0&&canSee(b.side,u)&&Math.hypot(u.x-b.x,u.y-b.y)<d.range);enemies.sort((a,c)=>Math.hypot(a.x-b.x,a.y-b.y)-Math.hypot(c.x-b.x,c.y-b.y));if(enemies[0]&&b.cooldown<=0){const t=enemies[0];this._fire(b,t,d.damage*(1+0.3*(b.level-1))*(t.type==='warrior'?0.72:1),'tower');b.cooldown=0.85;}}\n",
+      "addition": "      if(d.range){b.cooldown=Math.max(-1,b.cooldown-dt);const enemies=s.units.filter(u=>u.side!==b.side&&u.hp>0&&canSee(b.side,u)&&bodyDistance(u,b)<d.range);enemies.sort((a,c)=>bodyDistance(a,b)-bodyDistance(c,b));if(enemies[0]&&b.cooldown<=0){const t=enemies[0];this._fire(b,t,d.damage*(1+0.3*(b.level-1))*(t.type==='warrior'?0.72:1),'tower');b.cooldown=0.85;}}\n"
+    },
+    {
+      "released": "    for(const u of (this.tick%2?s.units:[...s.units].reverse())){if(u.hp<=0)continue;const d=this.units[u.type],dir=u.side? -1:1;u.cooldown=Math.max(-1,u.cooldown-dt);u.attack=Math.max(0,u.attack-dt);u.hit=Math.max(0,(u.hit||0)-dt);\n",
+      "addition": "    for(const u of (this.tick%2?s.units:[...s.units].reverse())){if(u.hp<=0)continue;const d=this.units[u.type],dir=u.side? -1:1;if(supportsColossus(this.ruleset)&&isColossus(u)){const move=stepColossusUnit(this,u,dt);if(move)pendingMoves.push([u,move.x,move.y]);continue;}u.cooldown=Math.max(-1,u.cooldown-dt);u.attack=Math.max(0,u.attack-dt);u.hit=Math.max(0,(u.hit||0)-dt);\n"
+    },
+    {
+      "released": "        if(target)best=Math.hypot(target.x-u.x,target.y-u.y);\n",
+      "addition": "        if(target)best=isColossus(target)?bodyDistance(u,target):Math.hypot(target.x-u.x,target.y-u.y);\n"
+    },
+    {
+      "released": "      if(!autonomousFlyer)for(const e of s.units){if(e.side===u.side||e.hp<=0||!canSee(u.side,e)||(e.lane!==u.lane&&!(autoAir&&d.canAttackAir&&this.units[e.type].flying)&&!(flightOrders&&d.canAttackAir&&e.type==='gryphon'&&e.airRoute?.phase==='transit'&&[e.airRoute.from,e.airRoute.to].includes(u.lane))&&Math.abs(u.x-(u.side?110:this.map.width-110))>220)||(this.units[e.type].flying&&!d.canAttackAir)||(!this.units[e.type].flying&&!d.canAttackGround)||(autoAir&&!d.flying&&this.units[e.type].flying&&Math.abs(e.y-this.map.lanes[u.lane])>d.range&&Math.hypot(e.x-u.x,e.y-u.y)>d.range))continue;const dist=Math.hypot(e.x-u.x,e.y-u.y);if(dist<best&&dist<Math.max(d.range+80,190)){target=e;best=dist;}}\n",
+      "addition": "      if(!autonomousFlyer)for(const e of s.units){if(e.side===u.side||e.hp<=0||!canSee(u.side,e)||(e.lane!==u.lane&&!isColossus(e)&&!(autoAir&&d.canAttackAir&&this.units[e.type].flying)&&!(flightOrders&&d.canAttackAir&&e.type==='gryphon'&&e.airRoute?.phase==='transit'&&[e.airRoute.from,e.airRoute.to].includes(u.lane))&&Math.abs(u.x-(u.side?110:this.map.width-110))>220)||(this.units[e.type].flying&&!d.canAttackAir)||(!this.units[e.type].flying&&!d.canAttackGround)||(autoAir&&!d.flying&&this.units[e.type].flying&&Math.abs(e.y-this.map.lanes[u.lane])>d.range&&Math.hypot(e.x-u.x,e.y-u.y)>d.range))continue;const dist=isColossus(e)?bodyDistance(u,e):Math.hypot(e.x-u.x,e.y-u.y);if(dist<best&&dist<Math.max(d.range+80,190)){target=e;best=dist;}}\n"
+    },
+    {
+      "released": "      else {const targetY=target.type==='base'&&Math.abs(target.x-u.x)>180?this.map.lanes[u.lane]:target.y;let dx=target.x-u.x,dy=targetY-u.y;const length=Math.hypot(dx,dy)||1;pendingMoves.push([u,clamp(u.x+dx/length*d.speed*dt,75,this.map.width-75),clamp(u.y+dy/length*d.speed*dt,180,720)]);}\n",
+      "addition": "      else {const targetY=isColossus(target)||target.type==='base'&&Math.abs(target.x-u.x)>180?this.map.lanes[u.lane]:target.y;let dx=target.x-u.x,dy=targetY-u.y;const length=Math.hypot(dx,dy)||1;pendingMoves.push([u,clamp(u.x+dx/length*d.speed*dt,75,this.map.width-75),clamp(u.y+dy/length*d.speed*dt,180,720)]);}\n"
+    },
+    {
+      "released": "",
+      "addition": "      if(supportsColossus(this.ruleset)&&base.hp<=0)continue;\n"
+    },
+    {
+      "released": "      const nearby=s.units.filter(u=>u.side!==base.side&&canSee(base.side,u)&&(!supportsCitadelOptions(this.ruleset)||u.hp>0)&&Math.hypot(u.x-base.x,u.y-base.y)<310).sort((a,b)=>Math.hypot(a.x-base.x,a.y-base.y)-Math.hypot(b.x-base.x,b.y-base.y));\n",
+      "addition": "      const nearby=s.units.filter(u=>u.side!==base.side&&canSee(base.side,u)&&(!supportsCitadelOptions(this.ruleset)||u.hp>0)&&bodyDistance(u,base)<310).sort((a,b)=>bodyDistance(a,base)-bodyDistance(b,base));\n"
+    },
+    {
+      "released": "    if(s.bases[0].hp<=0||s.bases[1].hp<=0){if(s.bases[0].hp===0&&s.bases[1].hp===0)s.winner='draw';else s.winner=s.bases[0].hp<=0?1:0;if(fog)refreshFog(this);return;}\n",
+      "addition": "    if(supportsColossus(this.ruleset)){advanceColossus(this);const outcome=settleColossusOutcome(this);if(outcome!==null){s.winner=outcome;return;}}\n    else if(s.bases[0].hp<=0||s.bases[1].hp<=0){if(s.bases[0].hp===0&&s.bases[1].hp===0)s.winner='draw';else s.winner=s.bases[0].hp<=0?1:0;if(fog)refreshFog(this);return;}\n"
+    },
+    {
+      "released": "",
+      "addition": "    if(supportsColossus(this.ruleset)&&this.state.bases[side].hp<=0)return;\n"
+    },
+    {
+      "released": "    const distance=Math.hypot(target.x-u.x,target.y-u.y);\n",
+      "addition": "    const distance=isColossus(target)?bodyDistance(u,target):Math.hypot(target.x-u.x,target.y-u.y);\n"
+    },
+    {
+      "released": "",
+      "addition": "  if(supportsColossus(ruleset))validateColossusState({state:s,tick:data.tick,nextId:data.nextId,map,ruleset},fail);\n  else if(Object.hasOwn(s,'colossus'))fail('Colossus is outside this ruleset');\n"
+    },
+    {
+      "released": "  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCampaignControl(ruleset)?['campaignControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[]),...(supportsHammer(ruleset)?['hammerCommitment']:[]),...(supportsMinorReserve(ruleset)?['minorReserve']:[])],[],fail);\n",
+      "addition": "  strictFields(s,['time','gold','income','bases','buildings','units','projectiles','effects','frontline','winner','spellCooldown','overtime','stats',...(supportsBridgeControl(ruleset)?['bridgeControl']:[]),...(supportsCampaignControl(ruleset)?['campaignControl']:[]),...(supportsCitadelOptions(ruleset)?['citadelOptions']:[]),...(supportsFog(ruleset)?['fog']:[]),...(supportsHammer(ruleset)?['hammerCommitment']:[]),...(supportsColossus(ruleset)?['colossus']:[]),...(supportsMinorReserve(ruleset)?['minorReserve']:[])],[],fail);\n"
+    }
+  ]
+}

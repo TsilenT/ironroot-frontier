@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {getRuleset,ONE_SIGNAL_RULESET_ID} from '../dist/rulesets.js';
-import {createProfileSession,CURRENT_PROFILE_PROTOCOL_VERSION,PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {createProfileSession,CURRENT_PROFILE_PROTOCOL_VERSION,PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v039.js';
 import * as previous from './fixtures/profile-session-v0220.js';
 import {CAMPAIGN_PROGRESS_MISSIONS,createCampaignProgress,normalizeCampaignProgress,createProgressionCampaignMission,createCampaignRestart,getCampaignTargets,campaignScenarioForGame} from '../dist/campaign.js';
 import {encodeBattle,decodeBattle,identityOf,validateBattleIdentity} from '../dist/battle-codec.js';
@@ -13,7 +14,7 @@ const id='one-signal-is-enough';
 const date='2026-11-08T00:00:00.000Z';
 const marker=version=>JSON.stringify({format:'ironroot-profile',version,epoch:'earned-profile',phase:'ready'});
 function backend(entries=[]){const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(k);data.set(k,v);},removeItem(k){writes.push(k);data.delete(k);}};}
-function progress(){return {...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};}
+function progress(){return {...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))};}
 function checkpoint(lost=0){const campaign=progress(),game=createProgressionCampaignMission(id,campaign);for(const t of getCampaignTargets(game,id).slice(0,lost))game.state.buildings=game.state.buildings.filter(b=>b.id!==t.originalId);return {campaign,game,scenario:campaignScenarioForGame(game,id)};}
 
 test('current protocol fences exact released protocol13 without touching earned domain bytes',()=>{

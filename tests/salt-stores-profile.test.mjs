@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {Game, DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v039.js';
 import * as protocolTwentyOne from './fixtures/profile-session-v0300.js';
 import {createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {encodeBattle, decodeBattle, identityOf, validateBattleIdentity} from '../dist/battle-codec.js';
@@ -29,7 +30,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeSalt = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id !== 'the-hammer-turns' && (includeSalt || m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id !== id))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id !== 'the-hammer-turns' && (includeSalt || m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id !== id))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeSalt = true) {
@@ -134,7 +135,7 @@ test('old earned progress stays exact, unlocks Salt in the Stores and records ex
   const old = earned(false), raw = backend([[MARKER, marker(21)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 37); assert.equal(overview.maxStars, 111); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 42); assert.equal(overview.maxStars, 126); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(c => c.id === 'siege-coast').total, 5);
   assert.equal(getCampaignLaunchMission('the-archers-quay', old.campaign).reward, 'Unlocks Salt in the Stores');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);

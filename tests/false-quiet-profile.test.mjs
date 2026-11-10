@@ -1,9 +1,10 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {Game, DEFAULT_SKIRMISH_RULESET_ID} from '../dist/engine.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION, PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v039.js';
 import * as protocolSeventeen from './fixtures/profile-session-v0261.js';
 import {createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as K} from '../dist/backup.js';
 import {encodeBattle, decodeBattle, identityOf} from '../dist/battle-codec.js';
@@ -29,7 +30,7 @@ const domains = raw => [...raw.data].filter(([key]) => key !== MARKER);
 const entries = data => Object.entries(K).filter(([domain]) => data[domain] !== null).map(([domain, key]) => [key, '  ' + JSON.stringify(data[domain]) + '\n']);
 const row = (game, scenario) => ({won:true, draw:false, difficulty:game.difficulty, time:game.state.time, kills:game.state.stats.kills[0], built:game.state.stats.built[0], date, identity:identityOf(game, scenario)});
 function progress(includeFalseQuiet = true) {
-  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(includeFalseQuiet || ![id, 'the-road-we-know', 'through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
+  return {...createCampaignProgress(), missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m => m.id!=='cut-the-bowstrings'&&m.id !== 'three-minutes-more' && m.id!=='cut-the-bowstrings'&&m.id !== 'leave-no-road-closed' && m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay'&&(includeFalseQuiet || ![id, 'the-road-we-know', 'through-the-reed-beds','the-archers-quay','salt-in-the-stores'].includes(m.id)))).map((m, i) => [m.id, {completed:true, stars:i % 3 + 1, bestTime:60 + i}]))};
 }
 /** Synthetic persistence fixture, not evidence of a played or balanced match. */
 function earned(includeFalseQuiet = true) {
@@ -137,7 +138,7 @@ test('old earned progress stays exact, unlocks False Quiet and records explicit 
   const old = earned(false), raw = backend([[MARKER, marker(17)], ...entries(old)]), before = domains(raw), profile = current(raw);
   assert.deepEqual(domains(raw), before); assert.deepEqual(parseBackup(createBackup(profile.storage, {createdAt:date})).data, old);
   const overview = getProgressionCampaignOverview(old.campaign);
-  assert.equal(overview.total, 37); assert.equal(overview.maxStars, 111); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
+  assert.equal(overview.total, 42); assert.equal(overview.maxStars, 126); assert.equal(overview.nextMissionId, id); assert.equal(overview.completed, false);
   assert.equal(overview.chapters.find(c=>c.id==='unlit-roads').total, 3);
   assert.equal(getCampaignLaunchMission('a-river-between-us', old.campaign).reward, 'Unlocks False Quiet');
   assert.ok(getCampaignLaunchMission(id, old.campaign).reward);

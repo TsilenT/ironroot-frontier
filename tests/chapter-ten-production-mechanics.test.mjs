@@ -9,7 +9,7 @@ function blank(){const g=new Game({rulesetId:ID,difficulty:'hard',ai:false});g.s
 test('five exact registered mechanic identities keep ordinary roster and owned maps; QA identities are not production',()=>{
  for(const id of Object.values(FINAL_CHAPTER_RULESETS)){const rules=getRuleset(id),g=new Game({rulesetId:id,mapId:FINAL_CHAPTER_MAPS[id]});assert.equal(g.ruleset,rules);assert.equal(supportsAutonomousAir(rules),true);assert.equal(Object.keys(rules.buildings).length,8);assert.equal(rules.qaOnly,undefined);for(const mapId of ['classic','long-march','twin-span'].filter(x=>x!==g.map.id))assert.throws(()=>new Game({rulesetId:id,mapId}));}
  for(const id of ['frontier-qa-colossus-aftermath','frontier-qa-colossus-core-race','frontier-qa-ch10-crossing'])assert.throws(()=>getRuleset(id));
- assert.equal(supportsColossus({...getRuleset(ID)}),false);assert.equal(COLOSSUS.hp,10000);assert.deepEqual(ENCOUNTER,{triggerHp:600,emergeTicks:60,pulseRadius:310,coreDamage:1200});
+ assert.equal(supportsColossus({...getRuleset(ID)}),false);assert.equal(COLOSSUS.hp,10000);assert.deepEqual(ENCOUNTER,{triggerHp:600,emergeTicks:60,pulseRadius:310,coreDamage:1200,approachSpeed:78,siegeBoundary:1600});
 });
 test('lethal core trigger remains running, permits living-side paid commands and preserves exact emergence/march restore',()=>{
  const g=blank();assert.deepEqual(Game.restore(g.serialize()).serialize(),g.serialize());g.state.bases[1].hp=0;g.update(.05);assert.equal(g.state.colossus.phase,'active');assert.equal(g.state.winner,null);assert.equal(g.state.units[0].hp,10000);assert.equal(g.canBuyCitadelOption('regen',1).ok,false);assert.equal(g.buyCitadelOption('regen',0).ok,true);assert.equal(g.build('barracks',830,g.map.lanes[1],0).ok,true);

@@ -1,3 +1,4 @@
+import {beforeFinalChapter} from './historical-catalog.mjs';
 /** Source regression only: isolated synthetic units, not a natural Three Minutes More attempt. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -6,7 +7,7 @@ import {THREE_MINUTES_RULESET_ID} from '../dist/rulesets.js';
 import {createCampaignMission,createProgressionCampaignMission,createCampaignProgress,CAMPAIGN_PROGRESS_MISSIONS,campaignScenarioForGame} from '../dist/campaign.js';
 import {encodeBattle,decodeBattle} from '../dist/battle-codec.js';
 const ID='three-minutes-more';
-const progress=()=>({...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
+const progress=()=>({...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(beforeFinalChapter).filter(m=>m.id!=='cut-the-bowstrings'&&m.id!=='three-minutes-more'&&m.id!==ID).map(m=>[m.id,{completed:true,stars:1,bestTime:60}]))});
 function registered(game){
  assert.equal(game.ruleset,getRuleset(THREE_MINUTES_RULESET_ID));
  assert.equal(supportsAutonomousAir(game.ruleset),true);

@@ -1,3 +1,4 @@
+import {engineBeforeFinalChapter} from './final-chapter-engine-source.mjs';
 /** Independently pinned live predecessor, including its manual-order saves. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -40,6 +41,9 @@ test('frozen live precursor includes unchanged route helpers and all nine rule i
     ['observed structures',"      const own=s.buildings.filter(b=>b.side===side),enemy=strategyEnemies??s.buildings.filter(b=>b.side!==side);","      const own=s.buildings.filter(b=>b.side===side),enemy=s.buildings.filter(b=>b.side!==side);"]
   ];
   let aiSource=Game.prototype._ai.toString();
+  const colossusGate='    if(supportsColossus(this.ruleset)&&this.state.bases[side].hp<=0)return;\n';
+  assert.equal(aiSource.split(colossusGate).length,2,'exact final-boss AI health gate');
+  aiSource=aiSource.replace(colossusGate,'');
   for(const [label,before,after] of fogTransforms){assert.equal(aiSource.split(before).length,2,`exactly one reviewed fog ${label}`);aiSource=aiSource.replace(before,after);}
   assert.ok(Object.values(FrozenRules).every(r=>!supportsFog(r)),'the observation branches are unreachable in every frozen identity');
   assert.ok(Object.keys(FrozenRules).every(id=>!supportsFog(RULESETS[id])),'current bindings of frozen identities cannot enable fog');
@@ -51,7 +55,7 @@ test('frozen live precursor includes unchanged route helpers and all nine rule i
   assert.ok(Object.keys(FrozenRules).every(id=>!supportsHammer(RULESETS[id])),'current frozen bindings cannot enable Hammer');
   assert.equal(aiSource.replace(citadelGate,'').replace(hammerGate,''),FrozenGame.prototype._ai.toString(),'all ordinary AI source remains exact after removing only reviewed identity-gated additions');
   const fallback=FrozenGame.prototype._step.toString().split('\n').find(line=>line.includes('else {const targetY='));
-  assert.ok(Game.prototype._step.toString().includes(fallback),'fallback movement preserves exact floating-point evaluation order');
+  assert.ok(engineBeforeFinalChapter().includes(fallback),'fallback movement preserves exact floating-point evaluation order');
 });
 
 test('all nine prior identities × five maps × three difficulties preserve exact actions, AI, movement, RNG and cross-restores',()=>{
