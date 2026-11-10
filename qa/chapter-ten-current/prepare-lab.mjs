@@ -24,12 +24,15 @@ export async function prepareLab(destination) {
     await writeFile(path.join(output, 'dist', target), text);
   }
   let rules = await readFile(path.join(output, 'dist/rulesets.js'), 'utf8');
-  rules = "import {COLOSSUS,COLOSSUS_IDS} from './colossus.js';\n" + rules;
+  rules = rules.includes("import {COLOSSUS} from './colossus-spec.js';")
+    ? rules.replace("import {COLOSSUS} from './colossus-spec.js';","import {COLOSSUS,COLOSSUS_IDS} from './colossus.js';")
+    : "import {COLOSSUS,COLOSSUS_IDS} from './colossus.js';\n" + rules;
   rules = patch(rules, 'export const RULESETS=deepFreeze({', `export const RULESETS=deepFreeze({
   ...Object.fromEntries(COLOSSUS_IDS.map(id=>[id,deepFreeze({...autonomousAirEntry(id,'QA only · The Last Engine',false,true),units:{...rootwardenUnits,colossus:COLOSSUS},citadel:CITADEL_OPTIONS,qaOnly:true})])),`, 'QA-only whole-rule identities');
   await writeFile(path.join(output, 'dist/rulesets.js'), rules);
 
   let engine = await readFile(path.join(output, 'dist/engine.js'), 'utf8');
+  if(!engine.includes("from './colossus.js'")){
   engine = "import {supportsColossus,isColossus,bodyDistance,createColossusState,advanceColossus,stepColossusUnit,settleColossusOutcome,settleColossusCommand,validateColossusState} from './colossus.js';\n" + engine;
   const edit = (before, after, label) => { engine = patch(engine, before, after, label); };
   edit("if(supportsHammer(ruleset))this.state.hammerCommitment=createHammerState();", "if(supportsHammer(ruleset))this.state.hammerCommitment=createHammerState();\n    if(supportsColossus(ruleset)){if(map.id!=='classic')throw Error('Colossus requires Classic');this.state.colossus=createColossusState();}", 'constructor phase');
@@ -52,20 +55,25 @@ export async function prepareLab(destination) {
   edit("if(![0,1].includes(side)||this.state.winner!==null||this.limitReason)return;", "if(![0,1].includes(side)||this.state.winner!==null||this.limitReason)return;\n    if(supportsColossus(this.ruleset)&&this.state.bases[side].hp<=0)return;", 'destroyed enemy core stops new AI purchases');
   edit("...(supportsHammer(ruleset)?['hammerCommitment']:[])", "...(supportsHammer(ruleset)?['hammerCommitment']:[]),...(supportsColossus(ruleset)?['colossus']:[])", 'strict QA state admission');
   edit("if(s.winner==='draw'&&s.bases.some(b=>b.hp>0))", "if(supportsColossus(ruleset))validateColossusState({state:s,tick:data.tick,nextId:data.nextId,map,ruleset},fail);\n  else if(Object.hasOwn(s,'colossus'))fail('Colossus is outside this ruleset');\n  if(s.winner==='draw'&&s.bases.some(b=>b.hp>0))", 'strict phase/entity/terminal cross-checks');
+  }
   await writeFile(path.join(output, 'dist/engine.js'), engine);
 
   let air = await readFile(path.join(output, 'dist/autonomous-air.js'), 'utf8');
+  if(!air.includes("from './colossus.js'")){
   air = "import {isColossus,bodyDistance} from './colossus.js';\n" + air;
   air = patch(air, 'Math.hypot(a.x - b.x, a.y - b.y)', 'isColossus(b) ? bodyDistance(a,b) : Math.hypot(a.x - b.x, a.y - b.y)', 'air perception and retention use body');
   air = patch(air, 'return Math.abs(nearestRoad', 'return isColossus(enemy) || Math.abs(nearestRoad', 'all-lane air eligibility');
+  }
   await writeFile(path.join(output, 'dist/autonomous-air.js'), air);
 
   let citadel = await readFile(path.join(output, 'dist/citadel-options.js'), 'utf8');
+  if(!citadel.includes("from './colossus.js'")){
   citadel = "import {colossusAftermathAlive} from './colossus.js';\n" + citadel;
   citadel = patch(citadel, "if(game.state.winner!==null||game.state.bases.some(b=>b.hp<=0))return no('battle-ended'", "if(game.state.winner!==null||game.state.bases[side].hp<=0||!colossusAftermathAlive(game)&&game.state.bases.some(b=>b.hp<=0))return no('battle-ended'", 'living aftermath citadel can buy');
   citadel = patch(citadel, "ended=game?.state?.winner!==null||!base||game.state.bases.some(b=>b.hp<=0);", "ended=game?.state?.winner!==null||!base||base.hp<=0||!colossusAftermathAlive(game)&&game.state.bases.some(b=>b.hp<=0);", 'living aftermath citadel status');
   citadel = patch(citadel, "game.state.bases.some(b=>b.hp<=0)||(game.ruleset.endgame.forcedDecay", "!colossusAftermathAlive(game)&&game.state.bases.some(b=>b.hp<=0)||(game.ruleset.endgame.forcedDecay", 'aftermath regeneration continues');
   citadel = patch(citadel, "if(record.choice!=='regen')continue;", "if(base.hp<=0||record.choice!=='regen')continue;", 'dead citadel cannot regenerate');
+  }
   await writeFile(path.join(output, 'dist/citadel-options.js'), citadel);
 
   return output;
