@@ -2503,7 +2503,7 @@ function updateHUD() {
       currentCampaign && !outcome.completed && !outcome.failed
         ? outcome.objectives
             .map((o) =>
-              o.type === 'control'
+              o.type === 'last-engine' ? o.text : o.type === 'control'
                 ? controlProgressLabel(crossing)
                 : o.type === 'destroy-any'
                   ? `${o.value}/${o.target} original positions · need ${o.required}`

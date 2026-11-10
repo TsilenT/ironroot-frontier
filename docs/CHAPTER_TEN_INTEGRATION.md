@@ -94,3 +94,18 @@ routes, reveal/movement saves, profile31 and publication guard mocks. The separa
 profile compatibility set has 440 passing checks and the initial historical
 mechanics set has 194. Source syntax and the67-file cache/runtime guard pass.
 Broad aggregate compatibility remains pending; these counts do not replace it.
+
+Checkpoint004 closes compatibility classification without relaxing the game or
+save guards. Historical renderer checks reverse five exact boss-only additions
+to the literal released v0.39 renderer, then retain their earlier reserve oracle.
+The remaining test expectations now distinguish current protocol31/version0.40
+and the five new missions from their explicit historical fixture boundaries.
+New source-derived app handler tests exercise advancement, input, save and citadel
+choices during core-first aftermath without a browser, canvas or renderer call.
+They exposed and corrected the pre-reveal fallback HUD label. Native boundary
+checks cover first-four deadlines, one-HP clears, loss/draw priority, original
+mine replacement, Crossing partial credit/flyer denial and the literal latest
+released Bowstrings opening. Final paid-route attribution tags damage at enqueue
+and follows the native FIFO flush, so ordinary enemy kills cannot masquerade as
+Engine building kills. These observations never become a victory requirement.
+Full final-head aggregate, syntax and runtime guards follow this checkpoint.
