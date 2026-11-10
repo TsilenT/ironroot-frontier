@@ -1,0 +1,74 @@
+{
+  "format": "minor-reserve-comparison-plan-v1",
+  "status": "prepared-awaiting-independent-review-and-authorization",
+  "proposalSha256": "7f1ff327af007ef6f0ba1305c481f1c3a3777c891a490aab068e16971cdca16e",
+  "parentCommit": "7571bb9c5dfa80ccf517e9a2d0d7fed142e320e5",
+  "parentTree": "a3a24f8d8f18f04d2bbd3fc083a83ecbb1f6427d",
+  "parentInventorySha256": "093bfe19a2514912e4f3f2d7c7a39e50a09acf0e8f940d122666da413e76c589",
+  "baselineAuditSha256": "fbb0f8b951cb90fe017e6120fc200f9a5f7f883c4d8df8afb87abddb3f8efde8",
+  "caseOrder": [
+    {
+      "label": "north-disabled",
+      "policy": "north-supported",
+      "reserveEnabled": false
+    },
+    {
+      "label": "north-enabled",
+      "policy": "north-supported",
+      "reserveEnabled": true
+    },
+    {
+      "label": "south-disabled",
+      "policy": "south-bypass",
+      "reserveEnabled": false
+    },
+    {
+      "label": "south-enabled",
+      "policy": "south-bypass",
+      "reserveEnabled": true
+    }
+  ],
+  "seed": 9104,
+  "maximumCases": 4,
+  "timeLimit": 600,
+  "cadenceTicks": 100,
+  "frozenFiles": "All old parent files including the complete minor-reserve mechanism, policies, baseline PLAN and runner remain byte-exact. Only the existing enabled Boolean differs within each pair.",
+  "labels": {
+    "north-supported": "Northern focus; original frozen policy ID retained",
+    "south-bypass": "Southern focus; original frozen policy ID retained. Both observed baselines destroyed the northern post, so this is not a demonstrated untriggered bypass."
+  },
+  "observations": [
+    "Record the original post death, trigger tick, warning due tick, pending queue, each actual release ID/type/tick and any cap deferral. Distinguish authored release IDs from real paid/initial factory births by joining release records after the step; no treasury grant or phantom factory.",
+    "At trigger, warning expiry, first actual release, queue completion, first reserve interaction and first reserve death, retain actual living unit/building positions, lanes, levels and health. Also keep one-second whole-field context from trigger to termination so the local fight is not inferred from spawn count.",
+    "For each reserve unit, record actual march positions, acquired targets, attacker/target positions and lanes, requested and effective primary damage, incoming effective damage, deaths and terminal survivors. Keep ordinary geometry; add no all-road boss footprint.",
+    "Separate first reserve outgoing hit, first opposing hit on a reserve unit and first positive interaction involving either. Retain targets and surrounding forces even if the contingent dies quickly, is bypassed or the battle ends first.",
+    "Report original/local unit and structure losses, core hit timing, paid spending/command rejections, final outcome and the actual time available after release. No arbitrary damage threshold or required winner reversal."
+  ],
+  "continuation": {
+    "existing": "Retain initial/final and reached 30/90-second/original-loss JSON roundtrips and ten actual continuation ticks.",
+    "enabledEventBoundaries": [
+      "Immediately after natural trigger/warning begins",
+      "Last warning tick before due",
+      "Warning due tick, even if cap defers all arrivals",
+      "Immediately after first actual release",
+      "Immediately after queue completes, if distinct",
+      "Any naturally reached partial-cap release boundary"
+    ],
+    "contract": "Use independent restored engine+policy shadows for ten actual subsequent ticks, including scheduled paid commands and exact reserve state. Merge coincident probes; never run past terminal state to complete a tail. Report naturally unreached boundaries as unreached, not failures or reasons to force state."
+  },
+  "comparisonIntegrity": [
+    "The new disabled cases are part of these four cases, not extra instrumentation runs. Their engine states, policy commands and outcomes must reproduce the existing disabled baselines; any mismatch stops rather than being explained away.",
+    "Compare engine and policy tick digests and command receipts through the tick before the first actual authored release. Warning bookkeeping alone must not steer the engine, consume RNG or alter ordinary spending.",
+    "After release, ordinary RNG draws, targeting, kills, income and adaptive AI may legitimately diverge. Retain first command/affordability divergence and do not claim that later outcome differences prove a necessary purchase or isolate one damage source.",
+    "Keep all baseline accounting, rejected commands, actual producer provenance, initial/final roundtrips and natural 30/90-second/original-loss continuation checks."
+  ],
+  "interpretation": [
+    "The one-seed baseline shows supported paid wins and an idle loss, not human balance. Both paid baselines finish with full player core health.",
+    "North post88.55s implies earliest enabled release94.55s with19.10s left in its disabled outcome. South post93.35s implies earliest release99.35s with15.15s left. These are descriptive opportunities, not measured enabled contact.",
+    "An actual contested arrival can be useful without changing the final winner. Do not require the reserve to be harmless, mandatory to counter, or to make every alternative lose.",
+    "If the reserve never reaches an opponent or contested position, report the limit and request a separately scoped redesign before further cases. Do not silently move arrivals, change warning/composition, add health or retune policies.",
+    "This stage cannot establish an untriggered bypass unless one naturally occurs. Do not rename the frozen southern policy or pretend its existing post destruction did not happen."
+  ],
+  "guard": "New exact source/environment/approval/invocation binding, fresh external output only. Four fixed cases, no seed or policy override, no retries. Error, source mismatch, replay mismatch or interruption stops and retains records.",
+  "authority": "Synthetic/unit checks and freeze preparation only until separate exact preopen review and coordinator execution authorization. No enabled natural case, remote write, version or admission."
+}

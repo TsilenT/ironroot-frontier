@@ -15,7 +15,7 @@ const ids=['frontier-citadel-open','frontier-citadel-timed','frontier-citadel-br
 const marker=(version,phase='ready')=>JSON.stringify({format:'ironroot-profile',version,epoch:'retained-profile',phase});
 function raw(entries=[]){const data=new Map(entries),writes=[];return {data,writes,getItem:k=>data.get(k)??null,setItem(k,v){writes.push(k);data.set(k,v);},removeItem(k){writes.push(k);data.delete(k);}};}
 function earned(){return {
- campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
+ campaign:{...createCampaignProgress(),missions:Object.fromEntries(CAMPAIGN_PROGRESS_MISSIONS.filter(m => m.id !== 'the-empty-purse' && m.id !== 'wake-the-reserve' && m.id !== 'the-shared-watch' && (m.id!=='the-long-screen'&&m.id!=='the-hammer-turns'&&m.id!=='salt-in-the-stores'&&m.id!=='the-archers-quay')).map((m,i)=>[m.id,{completed:true,stars:i%3+1,bestTime:60+i}]))},
  trials:Object.fromEntries(CURRENT_CHALLENGES.map((c,i)=>[c.id,{completed:true,bestTime:70+i}])),
  settings:{sound:false,music:false,sfx:true,volume:.3,reducedMotion:true,quality:'low',keyboard:{version:1,bindings:{build1:'KeyQ',volley:null}},skirmishBridgeIncome:true},
  history:[{won:true,draw:false,challengeId:'shieldbreaker',campaignId:null,difficulty:'normal',time:75,kills:12,built:5,date}],battle:null
@@ -34,7 +34,7 @@ function purchased(rulesetId,kind){
 }
 
 test('current protocol upgrades only marker bytes, fences exact live v0.19 writers and preserves earned domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 25);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 27);assert.equal(protocolNine.CURRENT_PROFILE_PROTOCOL_VERSION,9);
  assert.equal(createHash('sha256').update(protocolNineSource).digest('hex'),protocolNineHash);
  const value=earned();
  const domains=entries(value),r=raw([[MARKER,marker(9)],...domains]),stale=old(r);assert.ok(stale.status().canWrite);
