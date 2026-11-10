@@ -55,6 +55,28 @@ test('private0.40 protocol31/catalog42 and all64 unmodified runtime files retain
  // This literal aggregate was read from d0327c6 Git blobs, not generated from
  // the candidate. Existing runtime-catalog preserves the separate released
  // path oracle and exactly six private additions. The three permitted control
- // files are reviewed as source hunks; every other runtime byte stays fixed.
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path));assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+ // files are reviewed as source hunks. One later report exception reverses only
+ // these two exact reveal-guard hunks to the actual27d243 parent blob, which
+ // also matches d0327c6; the original64-file aggregate below stays literal.
+ const reportParent='0d0c6d9bc4c67d82ac7c8e593d787e7687712035a786f17c309dcf0b76b56f37';
+ let report=read('../dist/battle-report.js');
+ const additions=[
+  ["import { supportsColossus } from './colossus.js';\n",''],
+  ["  // Reveal state survives boss death/restore; current live counts do not.\n  const unitTypes = Object.keys(UNITS).filter(type => type !== 'colossus' || !supportsColossus(game.ruleset) || game.state.colossus.phase !== 'armed'), buildingTypes = Object.keys(BUILDINGS);","  const unitTypes = Object.keys(UNITS), buildingTypes = Object.keys(BUILDINGS);"]
+ ];
+ for(const [addition,parent] of additions){assert.equal(report.split(addition).length-1,1,'exact report reveal addition');report=report.replace(addition,parent);}
+ assert.equal(createHash('sha256').update(report).digest('hex'),reportParent,'all other actual27d243 report bytes');
+ // The shared visible-copy/download projection is the second declared report
+ // exception. Reverse its exact additions to its independently read parent.
+ const viewParent='bb532faa5c0b4a5ea4072832e661fac5e1e01452b854581c00f778a95e6cd84f';
+ let view=read('../dist/report-view.js');
+ const viewAdditions=[
+  ["/** The registered finale's observer omits the boss row until actual reveal.\n * Row presence, including zero after death, is the retained visibility fact. */\nexport function reportConcealsFinale(report) {\n  const identity = report?.identity;\n  return report?.version === 2 && identity?.ruleset.id === 'frontier-campaign-last-engine-r2' && identity.ruleset.revision === 1 &&\n    identity.scenario.kind === 'campaign' && identity.scenario.id === 'the-last-engine' && identity.scenario.revision === 1 &&\n    report.final.sides.every(side => !side.unitComposition.some(unit => unit.type === 'colossus'));\n}\n",''],
+  ["  const concealed = reportConcealsFinale(report);\n  const ruleName = concealed ? 'Campaign · The Last Fortress' : rules.name;\n  const ruleId = concealed ? 'Final fortress rules' : identity.ruleset.id;\n  const scenarioId = concealed ? 'The Last Fortress' : identity.scenario.id;\n",''],
+  ['escape(ruleName)','escape(rules.name)'],['escape(ruleId)','escape(identity.ruleset.id)'],['escape(scenarioId)','escape(identity.scenario.id)'],
+  ["${reportConcealsFinale(report) ? '<p class=\"report-note\">JSON includes exact technical encounter identifiers and may reveal encounter details.</p>' : ''}",''],
+ ];
+ for(const [addition,parent] of viewAdditions){assert.equal(view.split(addition).length-1,1,'exact report presentation addition');view=view.replace(addition,parent);}
+ assert.equal(createHash('sha256').update(view).digest('hex'),viewParent,'all other actual27d243 report presentation bytes');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path)).map(([path,hash])=>[path,path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:hash]);assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });

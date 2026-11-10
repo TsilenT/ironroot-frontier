@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Game, MAPS, UNITS } from '../dist/engine.js';
 import { createBattleJournal, exportBattleReport } from '../dist/battle-report.js';
-import { renderBattleReport } from '../dist/report-view.js';
-import { CAMPAIGN_MISSIONS, createCampaignMission, evaluateCampaignMission, getCampaignTargets } from '../dist/campaign.js';
+import { renderBattleReport, reportConcealsFinale } from '../dist/report-view.js';
+import { CAMPAIGN_MISSIONS, createCampaignMission, evaluateCampaignMission, getCampaignTargets, getCampaignMission } from '../dist/campaign.js';
 import { CHALLENGES, createChallenge, evaluateChallenge, getChallengeTargets } from '../dist/challenges.js';
 
 const clone = value => structuredClone(value);
@@ -23,6 +23,39 @@ function completed({ mapId = 'classic', resumed = false, initialTime = 0, finalT
   return { game, journal, report: journal.finish(game) };
 }
 const count = (source, pattern) => (source.match(pattern) || []).length;
+
+// Synthetic report contracts, not played wins or rendered-browser evidence.
+for(const phase of ['armed','active','defeated','restored-defeated'])test(`finale ${phase} report uses actual reveal state and retains ordinary zero rows`,()=>{
+ let game=createCampaignMission('the-last-engine');
+ if(phase!=='armed'){
+  game.state.bases[1].hp=600;game.update(.05);
+  if(phase!=='active'){const boss=game.state.units.find(u=>u.type==='colossus');game._damage(boss,boss.hp,0);game.update(.05);assert.equal(game.state.colossus.phase,'defeated');}
+ }
+ if(phase==='restored-defeated')game=Game.restore(game.serialize());
+ const journal=createBattleJournal(game,{mode:'campaign',id:'the-last-engine',name:getCampaignMission('the-last-engine').name,resumed:phase==='restored-defeated'});
+ game.state.bases[0].hp=0;game.update(.05);const before=game.serialize();
+ const report=journal.finish(game,{objectiveOutcome:evaluateCampaignMission(game,'the-last-engine')}),html=renderBattleReport(report);
+ assert.deepEqual(game.serialize(),before);assert.equal(report.version,2);
+ for(const side of report.final.sides){
+  assert.ok(side.unitComposition.some(u=>u.type==='gryphon'&&u.count===0),'ordinary zero rows remain');
+  const boss=side.unitComposition.find(u=>u.type==='colossus');
+  assert.equal(!!boss,phase!=='armed');if(boss&&phase!=='active')assert.equal(boss.count,0);
+ }
+ assert.equal(reportConcealsFinale(report),phase==='armed');
+ assert.match(html,/Siege ram/,'ordinary siege wording and zero rows remain visible');
+ if(phase==='armed'){
+  assert.doesNotMatch(html,/last[ -]engine|colossus/i,'no boss name or technical finale ID in visible report copy');
+  assert.match(html,/JSON includes exact technical encounter identifiers/);
+ }else{assert.match(html,/The Last Engine/);assert.match(html,/frontier-campaign-last-engine-r2/);}
+ assert.equal(JSON.parse(exportBattleReport(report)).identity.ruleset.id,'frontier-campaign-last-engine-r2','technical JSON identity is preserved');
+ for(const foreign of [
+  {...report,version:1},
+  {...report,identity:{...report.identity,ruleset:{...report.identity.ruleset,revision:2}}},
+  {...report,identity:{...report.identity,scenario:{...report.identity.scenario,id:'ordinary-mission'}}},
+ ])assert.equal(reportConcealsFinale(foreign),false,'projection is limited to the exact current finale');
+ const retained=exportBattleReport(report);assert.equal(journal.finish(game),report);
+ assert.equal(exportBattleReport(report),retained);assert.equal(renderBattleReport(report),html);
+});
 
 // Real module outputs, rather than a guessed view-only model, are the fixtures.
 test('all battlefields render the correct name, both sides, four histories and final roster', () => {

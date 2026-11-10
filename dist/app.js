@@ -40,7 +40,7 @@ import {
 import { Renderer, iconSVG, drawUnitPortrait } from './render.js';
 import { renderMissionScouting } from './scouting.js';
 import { createBattleJournal, exportBattleReport } from './battle-report.js';
-import { renderBattleReport } from './report-view.js';
+import { renderBattleReport, reportConcealsFinale } from './report-view.js';
 import {
   createCodex,
   UNIT_CODEX,
@@ -1667,7 +1667,8 @@ $('resultReport').addEventListener('click', (event) => {
     url = URL.createObjectURL(new Blob([text], {type:'application/json'}));
     anchor = document.createElement('a');
     anchor.href = url;
-    const name = (lastBattleReport.context.id || lastBattleReport.context.mode).replace(/[^a-z0-9-]/gi,'-').slice(0,40);
+    const concealedFinale = reportConcealsFinale(lastBattleReport);
+    const name = (concealedFinale ? 'the-last-fortress' : lastBattleReport.context.id || lastBattleReport.context.mode).replace(/[^a-z0-9-]/gi,'-').slice(0,40);
     anchor.download = `ironroot-report-${name}-${new Date().toISOString().slice(0,10)}.json`;
     document.body.append(anchor);
     anchor.click();
@@ -2024,11 +2025,6 @@ function finish() {
     }
   }
   const finalMission = !!mission && currentCampaign === getCampaignOverview(campaignProgress).missions.at(-1).id;
-  $('playAgain').innerHTML = mission
-    ? (won ? finalMission ? getCampaignOverview(campaignProgress).completed ? 'SKIRMISHES' : 'CAMPAIGN MISSIONS' : 'CONTINUE CAMPAIGN' : 'RETRY MISSION') + ' <span>→</span>'
-    : trial
-      ? (won ? 'MORE FIELD TRIALS' : 'RETRY FIELD TRIAL') + ' <span>→</span>'
-      : 'NEW SKIRMISH <span>→</span>';
   $('replayMission').classList.toggle('hidden', !mission || !won || (!finalMission && objectiveOutcome.stars >= 3));
   $('replayMission').textContent = finalMission ? 'Replay mission' : 'Replay for more stars';
   $('resultMenu').textContent = mission ? 'Campaign missions' : 'Return to title';
@@ -2079,6 +2075,12 @@ function finish() {
     persistProgress();
     renderCampaign();
   }
+  // Match the action's overview after the earned record and persistence merge.
+  $('playAgain').innerHTML = mission
+    ? (won ? finalMission ? getCampaignOverview(campaignProgress).completed ? 'SKIRMISHES' : 'CAMPAIGN MISSIONS' : 'CONTINUE CAMPAIGN' : 'RETRY MISSION') + ' <span>→</span>'
+    : trial
+      ? (won ? 'MORE FIELD TRIALS' : 'RETRY FIELD TRIAL') + ' <span>→</span>'
+      : 'NEW SKIRMISH <span>→</span>';
   $('progressSaveWarning').classList.toggle('hidden', !progressDirty);
   syncDialogs();
   requestAnimationFrame(keepDialogFocus);
