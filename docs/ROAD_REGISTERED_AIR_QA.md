@@ -11,6 +11,11 @@ their particular known-input trajectories. They do not establish equivalence of
 every identity-gated feature. The old native manual control result used the QA
 clone and is not full registered-production autonomous-air evidence. This says
 nothing about a live defect or whether the production control route is possible.
+The single unchanged registered-production manual control attempt ended in a loss
+and leaves that control route unvalidated. No flyers were observed and command
+timing differed from the historical QA run, so that result cannot be attributed
+to autonomous air and does not prove the control objective impossible.
+Registered-production scripted core wins remain valid separate evidence.
 
 `tests/leave-roads-registered-air.test.mjs` checks both actual Road factories
 against the registered rules object. Its explicitly synthetic, isolated unit
