@@ -8,8 +8,8 @@
   "scripts": {
     "stage": "node scripts/stage.mjs",
     "start": "npm run stage && electron .",
-    "test": "node --test ../tests/desktop.test.mjs",
-    "check": "node --check main.cjs && node --check security.cjs && node --check scripts/stage.mjs",
+    "test": "node --test ../tests/desktop.test.mjs ../tests/desktop-training.test.mjs ../tests/desktop-staging.test.mjs",
+    "check": "node --check main.cjs && node --check security.cjs && node --check scripts/stage.mjs && node --check scripts/stage-policy.mjs",
     "pack": "npm run stage && electron-builder --dir --publish never",
     "package:win": "npm run stage && electron-builder --win zip --publish never",
     "package:mac": "npm run stage && electron-builder --mac zip --publish never",
