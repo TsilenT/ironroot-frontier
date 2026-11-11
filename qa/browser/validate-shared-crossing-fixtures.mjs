@@ -9,7 +9,7 @@ import { advanceObjectiveBattle } from '../../dist/objectives.js';
 import { CURRENT_PROFILE_PROTOCOL_VERSION } from '../../dist/profile-session.js';
 import { ID, MISSION, priorProfile, sharedCrossingFixtures } from './shared-crossing-fixtures.mjs';
 
-assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 31);
+assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 32);
 const overview = getProgressionCampaignOverview(createCampaignProgress());
 assert.equal(overview.total, 42); assert.equal(overview.maxStars, 126); assert.equal(overview.chapters.length, 11);
 assert.deepEqual(overview.missions.filter(m=>m.chapterId==='river-compact').map(m=>m.id), [ID,'one-signal-is-enough','lanterns-on-the-water','borrowed-ground','a-river-between-us']);
