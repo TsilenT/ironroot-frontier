@@ -3569,6 +3569,10 @@ window.addEventListener('blur', () => {
   cancelKeyboardCapture();
   inputScope.interrupt();
   resetBattleGesture();
+  // A window can lose focus without becoming hidden (for example Alt-Tab
+  // with both windows visible). Save and wait for an explicit Resume here too.
+  if (started && !paused && game.state.winner === null && !objectiveOutcome)
+    pause(true);
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
