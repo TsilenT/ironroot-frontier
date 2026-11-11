@@ -243,7 +243,7 @@ test.describe('Battle keyboard controls on desktop', () => {
     await page.locator('#masterVolume').focus();
     const volume = Number(await page.locator('#masterVolume').inputValue());
     await page.keyboard.press('ArrowRight');
-    await expect(page.locator('#masterVolume')).toHaveValue(String(volume + 5));
+    await expect(page.locator('#masterVolume')).toHaveValue(String(volume + 1));
     await page.locator('#settingsFullscreen').focus();
     await page.keyboard.press('Enter');
     await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(true);
