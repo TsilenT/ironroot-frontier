@@ -2,6 +2,24 @@
 
 Base: rewritten public main `238a22c73d36d8ee0f24b3e564272fe15a96ebab` (runtime v0.40.7). Candidate identity: v0.40.8. This is a reviewable visual prototype, not a deployment claim. It starts from the rewritten history; no old branch ancestry is merged.
 
+**Review disposition: keep current main visuals. Do not integrate this draft as the default.** Review found the contact-only approach loses flight identity and the source-linked revision resembles targeting overlays in crowded fights. Both remain preserved for reference. The third-option experiments below are QA-only and change no shipped code.
+
+## Third option: preserved flight with immediate contact
+
+`qa/projectile-contact/variants.mjs` creates two isolated renderer variants from the literal public-main renderer, checked against its complete source hash. Neither is imported or precached by the game. `tests/impact-flight-variants.test.mjs` exercises them. The experiments do not replace this branch's earlier renderer prototype or any released renderer.
+
+- **Full flight plus immediate accent:** preserve the existing arrow/orb flight, glyphs and 55-world-unit siege arc. Add a small, screen-sized contact spark above the victim on the first damage frame. Hold its opacity for the initial 56 ms, then fade it out by 140 ms. Once that accent expires, normal-motion drawing is command-exact with current main. Low effects keeps the immediate accent because it conveys the hit rather than decorative spectacle.
+- **Fade before arrival:** use the same immediate accent and original trajectory, but fade the cosmetic to zero before 85% of its existing lifetime. This prevents a visible later landing without accelerating, predicting or retiming any combat. It also makes arrows/orbs/stones disappear before reaching the victim.
+- **Reduced motion:** both experiments replace travelling art with the same fixed-size, fixed-opacity contact spark for the remaining cosmetic lifetime. No full-length link or moving dash is drawn. This removes flight motion but provides less source attribution than normal mode, and round/neutral sparks do not identify the attacker's role alone.
+
+The retained-flight variant makes immediate damage more visible, but does **not** resolve the apparent late projectile arrival. The fading variant trades that arrival for an unfinished flight/landing. In the 140-actor/32-shot stress scene, simultaneous sparks can still overlap and obscure actors. Static captures and pixel checks cannot establish satisfying motion feel. Neither alternative cleanly reconciles instant damage with a physical-looking projectile that takes time to reach its victim.
+
+Recommendation: retain current main's visuals and leave PR #69 as research-only draft. A stronger immediate hit accent could be evaluated separately as a readability change; it should not be described as fixing projectile contact timing. A complete physical timing solution needs a separately designed combat or anticipatory animation model. Delaying displayed HP/death, guessing future targets from cooldown, or silently changing attack timing would undermine this task's constraints and was not attempted.
+
+Third-option evidence uses native Canvas at a 320px phone viewport, with 296 × 240px battlefields shown at original CSS size. It includes an actual paid hit (138 → 128.65 HP at launch), five-role frozen poses, and a declared synthetic same-road/in-range 140-actor/32-shot stress fixture. Six scene/motion panels were recorded for 19 frames each. The full-flight variant was pixel-exact with main after the accent expired in the isolated five-role scene; reduced-mode output was pixel-stable before expiry, and repeated paused draws were stable. The QA renderer sources used in captures are byte-identical to the checked-in generator output.
+
+Five focused QA tests passed, including 800 exact paired continuation ticks, actual paid damage birth, normal-flight command equality, restored late tails, static reduced motion and zero-life stored cosmetics. The complete branch suite passed 3,643 tests with zero failures and one optional tooling skip; the runtime inventory remains 71 files. No screenshots, videos, recordings, frame JSON or generated comparison HTML are committed. Local receipts, recordings, proof scripts, native comparison and self-contained replay remain outside the repository at `/tmp/ironroot-impact-review/third/` for review.
+
 ## What changes
 
 The engine resolves ranged HP, hit reaction, splash and lethal removal in the same fixed step that launches the cosmetic projectile. Its old arrow/orb/stone then travelled for 0.28 simulation seconds, suggesting contact after the actual damage.
