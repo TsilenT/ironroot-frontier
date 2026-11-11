@@ -4003,12 +4003,18 @@ body.gamepad-active a:focus {
 .selection-panel { max-height: calc(100% - 96px); overflow-y: auto; overscroll-behavior: contain; scroll-padding-block: 8px; }
 .protected-mobile .command-deck .selection-panel { max-height: none; overflow: visible; }
 .protected-mobile .command-deck:has(.selection-panel:not(.hidden)) { scroll-padding-block: 8px; }
-/* Keep primary pause actions readable in short portrait views. */
-@media (max-width: 400px) and (max-height: 600px) and (orientation: portrait) {
-  .pause-menu { padding: 16px 18px; }
-  .pause-menu .pause-briefing { margin: 10px 0; padding: 10px 0; }
+/* Leave room for the capacity disclosure and every action on portrait phones. */
+@media (max-width: 700px) and (max-height: 700px) and (orientation: portrait) {
+  .pause-menu { padding: 14px 18px; }
+  .pause-menu .menu-heading h2 { font-size: 32px; margin: 4px 0; }
+  .pause-menu .pause-briefing { margin: 8px 0; padding: 8px 0; }
+  .pause-menu .bridge-details { margin-top: 4px; }
   .pause-menu .pause-utilities { margin: 8px 0; }
   .pause-menu .menu-status { margin: 8px 0; }
+  .pause-menu .pause-exit-actions { gap: 4px; }
+}
+@media (max-width: 400px) and (max-height: 600px) and (orientation: portrait) {
+  .pause-menu .pause-utilities small { display: none; }
 }
 .flight-guide { padding: 12px; margin: 14px 0; border: 1px solid #65745b; font-size: 14px; line-height: 1.5; }
 .flight-guide h3 { margin-top: 0; }
