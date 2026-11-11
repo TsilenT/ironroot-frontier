@@ -385,7 +385,7 @@ for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start 
     layer.querySelector=()=>({setAttribute:(key,value)=>layer.aria[key]=value});
   }
   $('welcome').classList.remove('hidden');$('battle').focus=()=>{};
-  const appNode={inert:false};c.document.querySelector=selector=>{assert.equal(selector,'.app');return appNode;};c.document.activeElement=null;c.dialogDefaultFocus=()=>null;
+  const appNode={inert:false};c.document.querySelector=selector=>{assert.ok(['.app','.result'].includes(selector));return selector==='.app'?appNode:$('result');};c.document.activeElement=null;c.dialogDefaultFocus=()=>null;
   for(const [from,to]of [['function updateResume()','\nupdateResume();'],['function start(','function beginProtectedObjectives()'],['function showSettings()','function hideSettings()'],['function syncDialogs()','function keepDialogFocus()']])vm.runInContext(app.slice(app.indexOf(from),app.indexOf(to,app.indexOf(from))),c);
   c.updateResume();assert.ok(c.resumeProblem);assert.equal($('resumeSaved').classList.contains('hidden'),true);
   const before=[...r.data],game=c.game;
