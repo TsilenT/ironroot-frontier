@@ -40,6 +40,7 @@ const FILES = [
   './battle-report.js',
   './report-view.js',
   './report-view.css',
+  './reward-feedback.css',
   './training.html',
   './training-app.js',
   './training.css',
