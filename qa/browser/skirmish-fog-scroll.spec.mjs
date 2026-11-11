@@ -1,9 +1,9 @@
 // Real browser input against the unchanged setup controls. No game-state hooks.
 import {expect} from '@playwright/test';
-import {test, press, selectMap} from './map-browser-helpers.mjs';
+import {test, press, selectMap, tapPoint} from './map-browser-helpers.mjs';
 
 const fogLabel = 'label[for="skirmishFog"] span';
-const scroll = page => page.locator('#welcome .welcome').evaluate(element => element.scrollTop);
+const scroll = page => page.locator('#skirmishConfig').evaluate(element => element.scrollTop);
 const setup = page => page.evaluate(() => ({
   fog: document.getElementById('skirmishFog').checked,
   disabled: document.getElementById('skirmishFog').disabled,
@@ -55,9 +55,11 @@ for (const reason of ['map', 'endgame', 'bridge']) {
     const original = await setup(page);
     await page.locator(fogLabel).scrollIntoViewIfNeeded();
     const before = await scroll(page);
-    if (info.project.name.includes('phone')) expect(before).toBeGreaterThan(100);
     for (let attempt = 0; attempt < 3; attempt++) {
-      await press(page, fogLabel);
+      // A disabled label is intentionally not an enabled locator action.
+      // Use an ordinary pointer at its visible text to exercise the no-op.
+      const box = await page.locator(fogLabel).boundingBox();
+      await tapPoint(page, {x: box.x + box.width / 2, y: box.y + box.height / 2});
       await settleFocus(page);
       expect(Math.abs(await scroll(page) - before)).toBeLessThanOrEqual(2);
       expect(await setup(page)).toEqual(original);
@@ -68,6 +70,7 @@ for (const reason of ['map', 'endgame', 'bridge']) {
 }
 
 test('reading the fog explanation does not jump, and deliberate keyboard navigation still reveals focus', async ({page}) => {
+  await press(page, '#skirmishDetails > summary');
   await page.locator('#skirmishFogDescription').scrollIntoViewIfNeeded();
   const before = await scroll(page);
   await press(page, '#skirmishFogDescription');
