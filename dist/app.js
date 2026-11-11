@@ -316,6 +316,8 @@ const preferences = {
   music: true,
   sfx: true,
   volume: 0.5,
+  musicVolume: 0.7,
+  sfxVolume: 0.85,
   reducedMotion: renderer.reducedMotion,
   quality: 'high',
   skirmishBridgeIncome: false,
@@ -326,8 +328,9 @@ try {
   if (saved && typeof saved === 'object') {
     for (const key of ['sound', 'music', 'sfx', 'reducedMotion', 'skirmishBridgeIncome'])
       if (typeof saved[key] === 'boolean') preferences[key] = saved[key];
-    if (Number.isFinite(saved.volume))
-      preferences.volume = Math.max(0, Math.min(1, saved.volume));
+    for (const key of ['volume', 'musicVolume', 'sfxVolume'])
+      if (Number.isFinite(saved[key]))
+        preferences[key] = Math.max(0, Math.min(1, saved[key]));
     if (['high', 'low'].includes(saved.quality))
       preferences.quality = saved.quality;
     if (Object.hasOwn(saved, 'keyboard')) {
@@ -340,6 +343,8 @@ let soundOn = preferences.sound;
 const audio = new GameAudio({
   muted: !soundOn,
   volume: preferences.volume,
+  musicVolume: preferences.musicVolume,
+  sfxVolume: preferences.sfxVolume,
   musicEnabled: preferences.music,
   sfxEnabled: preferences.sfx,
 });
@@ -3333,8 +3338,7 @@ function syncSettings() {
   $('audioEnabled').checked = soundOn;
   $('musicEnabled').checked = preferences.music;
   $('sfxEnabled').checked = preferences.sfx;
-  $('masterVolume').value = Math.round(preferences.volume * 100);
-  $('volumeValue').textContent = Math.round(preferences.volume * 100) + '%';
+  for (const [key, id, valueId] of audioVolumeControls) syncAudioVolume(key, id, valueId);
   $('reduceMotion').checked = preferences.reducedMotion;
   $('effectQuality').value = preferences.quality;
   updatePreferenceSaveStatus();
@@ -3483,12 +3487,25 @@ $('sfxEnabled').onchange = () => {
   }
   savePreferences();
 };
-$('masterVolume').oninput = () => {
-  preferences.volume = Number($('masterVolume').value) / 100;
-  audio.setVolume(preferences.volume);
-  $('volumeValue').textContent = Math.round(preferences.volume * 100) + '%';
-  savePreferences();
-};
+const audioVolumeControls = [
+  ['volume', 'masterVolume', 'volumeValue', 'setVolume'],
+  ['musicVolume', 'musicVolume', 'musicVolumeValue', 'setMusicVolume'],
+  ['sfxVolume', 'sfxVolume', 'sfxVolumeValue', 'setSfxVolume'],
+];
+function syncAudioVolume(key, id, valueId) {
+  const percent = Math.round(preferences[key] * 100);
+  $(id).value = percent;
+  $(id).setAttribute('aria-valuetext', percent + '%');
+  $(valueId).textContent = percent + '%';
+}
+for (const [key, id, valueId, setter] of audioVolumeControls) {
+  $(id).oninput = () => {
+    preferences[key] = Number($(id).value) / 100;
+    audio[setter](preferences[key]);
+    syncAudioVolume(key, id, valueId);
+    savePreferences();
+  };
+}
 $('reduceMotion').onchange = () => {
   preferences.reducedMotion = $('reduceMotion').checked;
   renderer.reducedMotion = preferences.reducedMotion;

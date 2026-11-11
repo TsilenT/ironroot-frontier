@@ -411,7 +411,7 @@
         </button>
         <p class="save-status hidden" id="saveStatus" role="status"></p>
         <button id="exportUnreadableBattle" class="text-button hidden">Download original save</button>
-        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.40.1</p>
+        <p class="welcome-foot">Campaign · Skirmish · Field trials · v0.40.2</p>
         <div class="welcome-links">
           <a class="text-button training-link" id="welcomeTraining" href="./training.html" aria-label="Optional guided practice. Learn without changing your saved battle">Guided practice (optional) →</a>
           <button class="text-button" id="welcomeFullscreen" type="button" data-fullscreen aria-pressed="false" aria-describedby="welcomeFullscreenStatus">Enter fullscreen</button>
@@ -576,6 +576,24 @@
               max="100"
               step="5"
               aria-label="Master volume" /></label
+          ><label class="setting-row volume-row"
+            ><span>Music volume <b id="musicVolumeValue">70%</b></span
+            ><input
+              id="musicVolume"
+              type="range"
+              min="0"
+              max="100"
+              step="5"
+              aria-label="Music volume" /></label
+          ><label class="setting-row volume-row"
+            ><span>Effects volume <b id="sfxVolumeValue">85%</b></span
+            ><input
+              id="sfxVolume"
+              type="range"
+              min="0"
+              max="100"
+              step="5"
+              aria-label="Effects volume" /></label
           ><label class="setting-row"
             ><span>Reduced motion<small>Disable screen shake and flying debris</small></span
             ><input id="reduceMotion" type="checkbox" /></label
