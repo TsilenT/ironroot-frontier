@@ -28,13 +28,15 @@ test('pause dialog traps focus, isolates gameplay and resumes by keyboard',async
   await start(page);await pause(page);await expect(page.getByRole('dialog',{name:'Paused',exact:true})).toBeVisible();
   expect(await page.locator('#pauseVeil').evaluate(el=>el.parentElement===document.body)).toBe(true);
   await expect(page.locator('#app')).toHaveJSProperty('inert',true);
-  for(const selector of ['.pause-menu','#resume','#pauseSettings','#help','#saveExit','#restartBattle']){
+  for(const selector of ['.pause-menu','#pauseArmySummary','#resume','#pauseSettings','#help','#saveExit','#restartBattle']){
     await fits(page,selector);if(selector!=='.pause-menu')expect((await page.locator(selector).boundingBox()).height).toBeGreaterThanOrEqual(44);
   }
-  // The current skirmish exposes Citadel upgrades before the default Resume
-  // focus. Visit it, then verify wrapping at both ends of the actual menu.
+  // Capacity and Citadel upgrades precede the default Resume focus. Visit
+  // both, then verify wrapping at the ends of the actual menu.
   await page.keyboard.press('Shift+Tab');await expect(page.locator('#pauseCitadel')).toBeFocused();
+  await page.keyboard.press('Shift+Tab');await expect(page.locator('#pauseArmySummary')).toBeFocused();
   await page.keyboard.press('Shift+Tab');await expect(page.locator('#restartBattle')).toBeFocused();
+  await page.keyboard.press('Tab');await expect(page.locator('#pauseArmySummary')).toBeFocused();
   await page.keyboard.press('Tab');await expect(page.locator('#pauseCitadel')).toBeFocused();
   await page.keyboard.press('Tab');await expect(page.locator('#resume')).toBeFocused();const before=await raw(page);
   await page.keyboard.press('Digit2');await page.keyboard.press('KeyR');await page.keyboard.press('ArrowRight');
