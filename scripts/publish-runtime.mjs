@@ -140,6 +140,12 @@ function verifyRepository(repo, expected, privateRepo) {
     repo.visibility === (privateRepo ? 'private' : 'public') && repo.default_branch === 'main' &&
     repo.archived === false && repo.disabled === false, 'Repository identity, visibility, or availability changed.');
 }
+function verifySourceRepository(repo) {
+  // Permit the source's private-to-public transition, with consistent API
+  // visibility fields. Destination checks still require a public repository.
+  requireThat(repo.visibility === 'private' || repo.visibility === 'public', 'Unsupported source repository visibility.');
+  verifyRepository(repo, SOURCE, repo.visibility === 'private');
+}
 async function head(api) {
   const ref = await api('GET', '/git/ref/heads/main');
   requireThat(ref.ref === 'refs/heads/main' && ref.object?.type === 'commit', 'Unexpected main reference.');
@@ -171,7 +177,7 @@ async function readBlob(api, sha, maxBytes) {
 
 export async function publishRuntime({snapshot, sourceSha, sourceApi, targetApi}) {
   validSha(sourceSha);
-  verifyRepository(await sourceApi('GET'), SOURCE, true);
+  verifySourceRepository(await sourceApi('GET'));
   verifyRepository(await targetApi('GET'), TARGET, false);
   // Concurrency is not FIFO. An older queued run becomes a harmless no-op.
   if (await head(sourceApi) !== sourceSha) return {status: 'superseded'};
@@ -206,7 +212,7 @@ export async function publishRuntime({snapshot, sourceSha, sourceApi, targetApi}
   requireThat(previousCache !== snapshot.cache, 'Runtime changed without a service-worker cache version bump.');
 
   // Validate again before uploading any bytes to the public repository.
-  verifyRepository(await sourceApi('GET'), SOURCE, true);
+  verifySourceRepository(await sourceApi('GET'));
   verifyRepository(await targetApi('GET'), TARGET, false);
   if (await head(sourceApi) !== sourceSha) return {status: 'superseded'};
   requireThat(await head(targetApi) === targetHead, 'Public main changed; no files were uploaded. Rerun after review.');
@@ -226,7 +232,7 @@ export async function publishRuntime({snapshot, sourceSha, sourceApi, targetApi}
     committer: {name: 'github-actions[bot]', email: '41898282+github-actions[bot]@users.noreply.github.com'},
   });
   const commitSha = validSha(commit.sha);
-  verifyRepository(await sourceApi('GET'), SOURCE, true);
+  verifySourceRepository(await sourceApi('GET'));
   verifyRepository(await targetApi('GET'), TARGET, false);
   if (await head(sourceApi) !== sourceSha) return {status: 'superseded'};
   requireThat(await head(targetApi) === targetHead, 'Public main changed; prepared objects were not published. Rerun after review.');
