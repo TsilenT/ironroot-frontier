@@ -1,6 +1,6 @@
 # Movement feedback and projectile timing
 
-Reviewed against main `e719cff14f29f225c4c71e77af10c8ca31bdc11f`, released v0.40.2. This v0.40.3 source candidate changes presentation; it does not publish a build. Volley and spells are outside this pass.
+Reviewed against main `e719cff14f29f225c4c71e77af10c8ca31bdc11f`, released v0.40.2. The v0.40.5 release candidate is integrated on v0.40.4 main `996babc3df62195e891e3399a6c29cfc4bfad7f5`. This document records source and validation scope; deployment status is tracked separately. Volley and spells are outside this pass.
 
 ## Findings
 
@@ -30,8 +30,8 @@ This pass implements the safe movement repair. A later projectile pass should ex
 
 The new Node checks use actual paid commands and native fixed steps, compare complete serialized engine state with and without rendering, inspect emitted canvas commands during positive-cooldown movement, and cover stationary/redraw/reduced-motion behavior, reset/rewind and fog facades. A native Chromium test imports the literal v0.40.2 renderer through a test-only intercepted URL for a paired before/after canvas comparison. It also confirms repeat paused draws stay pixel-stable and a control simulation stays exact. UI startup/pause/resume and existing fog input checks run separately.
 
-The full Node run passed 3,525 tests with zero failures and one optional tooling skip. All 46 focused renderer/fog/source checks passed, including the strengthened combat-recovery case. All eight new Chromium cases passed across desktop, portrait, narrow portrait and landscape. JavaScript parsing, complete browser static/fixture validation, runtime/offline inventory and whitespace checks passed. Engine, rulesets, battle codec, profile protocol and audio source have no changes.
+The full v0.40.5 integration run passed 3,530 Node tests with zero failures and one optional tooling skip. The 46 previously focused renderer/fog/source checks are included, covering the strengthened combat-recovery case. All 36 Chromium integration cases passed across desktop, portrait, narrow portrait and landscape: eight movement cases and 28 army-cap/defeat-feedback cases. JavaScript parsing, complete browser static/fixture validation, the 70-file runtime/offline inventory and whitespace checks passed. Engine, rulesets, battle codec, profile protocol and audio source have no changes.
 
 An additional existing `skirmish-fog-scroll.spec.mjs` run passed eight cases and timed out in twelve disabled-label cases (three incompatibility reasons across four viewports). Playwright's locator waits for the disabled control label to become enabled before delivering the click/tap. The incompatible-map phone case also times out on an untouched v0.40.2 runtime at the same main commit, served from an isolated baseline checkout. Those existing cases remain unchanged; they are a recorded limitation of this browser run, not successful gesture evidence.
 
-Generated receipts, test logs, traces, result JSON and paired screenshots belong outside the repository at `/tmp/ironroot-movement-review/`. Browser fixture evidence does not establish physical-device performance, controller comfort, or human readability.
+Generated receipts, test logs, traces, result JSON and paired screenshots remain outside the repository: original evidence at `/tmp/ironroot-movement-review/`, with v0.40.5 integration evidence at `/tmp/ironroot-movement-v0405/`. Browser fixture evidence does not establish physical-device performance, controller comfort, or human readability.
