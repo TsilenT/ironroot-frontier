@@ -106,7 +106,7 @@ test('current real browser runtime passes the conservative publish snapshot guar
   assert.match(snapshot.cache, /^ironroot-v[0-9]+\.[0-9]+\.[0-9]+$/);
 });
 
-test('only main push or workflow_dispatch in the exact private repository is allowed', () => {
+test('only main push or workflow_dispatch in the exact source repository is allowed', () => {
   assert.equal(validateContext(environment()), SOURCE_SHA);
   assert.equal(validateContext({...environment(), GITHUB_EVENT_NAME: 'workflow_dispatch'}), SOURCE_SHA);
   for (const changes of [
@@ -166,14 +166,18 @@ test('file-count and total-byte limits reject before manifest reads', async t =>
   });
 });
 
-test('identical public runtime is a true no-op with zero object or ref writes', async t => {
-  const f = fixture(t), m = mock(f.snapshot(), {unchanged: true});
+for (const sourcePrivate of [true, false]) test(`identical runtime from ${sourcePrivate ? 'private' : 'public'} source is a true no-op with zero object or ref writes`, async t => {
+  const f = fixture(t), m = mock(f.snapshot(), {unchanged: true, sourceRepo: () => repo(SOURCE, sourcePrivate)});
   assert.deepEqual(await m.run(), {status: 'unchanged', commit: ORIGINAL_HEAD});
   assert.equal(m.writes().length, 0);
 });
 
-test('publish is runtime-only, preserves public metadata, removes obsolete files, and never forces', async t => {
-  const f = fixture(t), snapshot = f.snapshot(), m = mock(snapshot);
+for (const sourcePrivate of [true, false]) test(`publish from ${sourcePrivate ? 'private' : 'public'} source is runtime-only, preserves public metadata, removes obsolete files, and never forces`, async t => {
+  const f = fixture(t), snapshot = f.snapshot(), m = mock(snapshot, {sourceRepo: () => repo(SOURCE, sourcePrivate)});
+  m.sourceTrees.get(hash('source root tree')).tree.push(
+    m.entry('private-notes.md', 'Source-root material is not browser runtime.'),
+    {path: '.github', mode: '040000', type: 'tree', sha: hash('workflow tree')},
+  );
   const result = await m.run(); assert.equal(result.status, 'published');
   const tree = m.writes().find(c => c.endpoint === '/git/trees').body;
   assert.deepEqual(Object.keys(tree), ['tree']);
@@ -191,6 +195,41 @@ test('publish is runtime-only, preserves public metadata, removes obsolete files
   assert.ok(!JSON.stringify(commit).includes(SOURCE_SHA));
   assert.deepEqual(m.writes().at(-1).body, {sha: result.commit, force: false});
   assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
+  assert.ok(m.calls.filter(c => c.side === 'source').every(c => c.method === 'GET'));
+});
+
+test('the exact source can become public at either later metadata checkpoint', async t => {
+  for (const publicAt of [2, 3]) await t.test(`checkpoint ${publicAt}`, async st => {
+    const m = mock(fixture(st).snapshot(), {sourceRepo: n => repo(SOURCE, n < publicAt)});
+    assert.equal((await m.run()).status, 'published');
+    assert.equal(m.calls.filter(c => c.side === 'source' && c.endpoint === '').length, 3);
+    assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 1);
+  });
+});
+
+test('source identity and availability remain pinned in both visibility states at every checkpoint', async t => {
+  for (const sourcePrivate of [true, false]) for (const change of [
+    {id: 7}, {id: String(SOURCE.id)}, {full_name: 'someone/ironroot-frontier'},
+    {default_branch: 'release'}, {archived: true}, {disabled: true},
+  ]) for (const checkpoint of [1, 2, 3]) await t.test(`${sourcePrivate ? 'private' : 'public'} ${JSON.stringify(change)} checkpoint ${checkpoint}`, async st => {
+    const m = mock(fixture(st).snapshot(), {sourceRepo: n => ({...repo(SOURCE, sourcePrivate), ...(n >= checkpoint ? change : {})})});
+    await assert.rejects(m.run, /identity, visibility, or availability/);
+    assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 0);
+    if (checkpoint < 3) assert.equal(m.writes().length, 0);
+  });
+});
+
+test('unknown or inconsistent source visibility fails at every checkpoint', async t => {
+  for (const change of [
+    {private: false, visibility: 'private'}, {private: true, visibility: 'public'},
+    {private: true, visibility: 'internal'}, {private: false, visibility: 'internal'},
+    {visibility: undefined}, {visibility: null}, {visibility: ''}, {private: undefined}, {private: 'true'},
+  ]) for (const checkpoint of [1, 2, 3]) await t.test(`${JSON.stringify(change)} checkpoint ${checkpoint}`, async st => {
+    const m = mock(fixture(st).snapshot(), {sourceRepo: n => ({...repo(SOURCE, true), ...(n >= checkpoint ? change : {})})});
+    await assert.rejects(m.run, /visibility/);
+    assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 0);
+    if (checkpoint < 3) assert.equal(m.writes().length, 0);
+  });
 });
 
 test('post-PATCH read of pre-write head gets one confirmation without any write retry', async t => {
@@ -275,14 +314,21 @@ test('wrong repository identity, visibility, default branch, or availability rej
     await assert.rejects(m.run, /identity, visibility, or availability/);
     assert.equal(m.writes().length, 0);
   });
-  await t.test('source must remain the expected private repository', async st => {
-    const m = mock(fixture(st).snapshot(), {sourceRepo: () => repo(SOURCE, false)});
-    await assert.rejects(m.run, /identity, visibility, or availability/); assert.equal(m.writes().length, 0);
-  });
   await t.test('visibility change immediately before upload', async st => {
     const m = mock(fixture(st).snapshot(), {targetRepo: n => repo(TARGET, n >= 2)});
     await assert.rejects(m.run, /identity, visibility, or availability/); assert.equal(m.writes().length, 0);
   });
+});
+
+test('destination must stay public at every checkpoint for either source visibility', async t => {
+  for (const sourcePrivate of [true, false]) for (const checkpoint of [1, 2, 3]) {
+    await t.test(`${sourcePrivate ? 'private' : 'public'} source, destination checkpoint ${checkpoint}`, async st => {
+      const m = mock(fixture(st).snapshot(), {sourceRepo: () => repo(SOURCE, sourcePrivate), targetRepo: n => repo(TARGET, n >= checkpoint)});
+      await assert.rejects(m.run, /identity, visibility, or availability/);
+      assert.equal(m.writes().filter(c => c.method === 'PATCH').length, 0);
+      if (checkpoint < 3) assert.equal(m.writes().length, 0);
+    });
+  }
 });
 
 test('local runtime must exactly match regular files at the tested source commit', async t => {
