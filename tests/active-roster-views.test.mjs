@@ -96,15 +96,15 @@ test('Rootwarden movement comes from observed positions, is bounded, and resets 
   game._spawn({ type: 'wardenLodge', side: 0, x: 1200, y: 450, lane: 1, level: 1 });
   const unit = game.state.units[0]; unit.cooldown = -1;
   const draw = () => { const before = JSON.stringify(game.serialize()); renderer.draw(game, { paused: true }, 0); assert.equal(JSON.stringify(game.serialize()), before); };
-  draw(); assert.equal(renderer.rootwardenMotion.get(unit.id).moving, false, 'ready cooldown is not evidence of walking');
-  unit.x += 3; game.state.time += .05; draw(); assert.equal(renderer.rootwardenMotion.get(unit.id).moving, true);
-  draw(); assert.equal(renderer.rootwardenMotion.get(unit.id).moving, true, 'same observed simulation instant retains the pose');
-  game.state.time += .05; draw(); assert.equal(renderer.rootwardenMotion.get(unit.id).moving, false);
-  game.state.units = []; draw(); assert.equal(renderer.rootwardenMotion.size, 0);
+  draw(); assert.equal(renderer.unitMotion.get(unit.id).moving, false, 'ready cooldown is not evidence of walking');
+  unit.x += 3; game.state.time += .05; draw(); assert.equal(renderer.unitMotion.get(unit.id).moving, true);
+  draw(); assert.equal(renderer.unitMotion.get(unit.id).moving, true, 'same observed simulation instant retains the pose');
+  game.state.time += .05; draw(); assert.equal(renderer.unitMotion.get(unit.id).moving, false);
+  game.state.units = []; draw(); assert.equal(renderer.unitMotion.size, 0);
   const other = rootGame(); other._spawn({ type: 'wardenLodge', side: 0, x: 1400, y: 450, lane: 1, level: 1 });
-  renderer.draw(other, { paused: true }, 0); assert.equal(renderer.rootwardenMotion.get(other.state.units[0].id).moving, false);
+  renderer.draw(other, { paused: true }, 0); assert.equal(renderer.unitMotion.get(other.state.units[0].id).moving, false);
   renderer.draw(new Game({ ai: false }), { paused: true, build: 'wardenLodge', pointer: { x: 690, y: 450 } }, 0);
-  assert.equal(renderer.rootwardenMotion.size, 0);
+  assert.equal(renderer.unitMotion.size, 0);
   assert.equal(renderer.buildings, BUILDINGS);
 });
 
