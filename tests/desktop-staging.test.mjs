@@ -28,6 +28,18 @@ async function unchanged(dir) {
   assert.equal(await readFile(path.join(dir,'desktop/game/previous.marker'),'utf8'),'previous generated stage');
   assert.equal((await readdir(path.join(dir,'desktop'))).some(name=>name.startsWith('.game-stage-')),false);
 }
+async function failRenames(dir,steps) {
+  const hook=path.join(dir,'rename-fault.cjs');
+  await writeFile(hook,`const fs=require('node:fs/promises'),path=require('node:path');
+const original=fs.rename,failures=${JSON.stringify(steps)};
+fs.rename=async(from,to)=>{
+  const step=path.basename(to)==='previous'?'backup':path.basename(from)==='new'?'promotion':path.basename(from)==='previous'?'rollback':'other';
+  if(failures.includes(step))throw Error('injected '+step+' rename failure');
+  return original(from,to);
+};
+require('node:module').syncBuiltinESMExports();`);
+  return stage(dir,['--require',hook]);
+}
 
 test('desktop staging copies the exact validated runtime, replaces stale files and leaves source unchanged',async t=>{
   const dir=await fixture(t),before=inspectRuntime(path.join(dir,'dist'));
@@ -36,6 +48,27 @@ test('desktop staging copies the exact validated runtime, replaces stale files a
   assert.deepEqual(inspectRuntime(path.join(dir,'desktop/game')).files,before.files);
   assert.deepEqual(inspectRuntime(path.join(dir,'dist')).files,before.files);
   assert.equal((await readdir(path.join(dir,'desktop'))).some(name=>name.startsWith('.game-stage-')),false);
+});
+test('first-time staging succeeds without a previous generated bundle',async t=>{
+  const dir=await fixture(t);await rm(path.join(dir,'desktop/game'),{recursive:true});
+  const result=stage(dir);assert.equal(result.status,0,result.stderr);
+  assert.deepEqual(inspectRuntime(path.join(dir,'desktop/game')).files,inspectRuntime(path.join(dir,'dist')).files);
+  assert.equal((await readdir(path.join(dir,'desktop'))).some(name=>name.startsWith('.game-stage-')),false);
+});
+for(const step of ['backup','promotion'])test(`a failed ${step} rename leaves the previous stage usable`,async t=>{
+  const dir=await fixture(t),result=await failRenames(dir,[step]);
+  assert.notEqual(result.status,0);assert.match(result.stderr,new RegExp('injected '+step+' rename failure'));
+  assert.doesNotMatch(result.stdout,/Staged .*verified game assets/);await unchanged(dir);
+});
+test('failed promotion and rollback retain the old stage and report its recovery location',async t=>{
+  const dir=await fixture(t),result=await failRenames(dir,['promotion','rollback']);
+  assert.notEqual(result.status,0);assert.match(result.stderr,/Previous stage retained in desktop\//);
+  assert.doesNotMatch(result.stdout,/Staged .*verified game assets/);
+  const workspaces=(await readdir(path.join(dir,'desktop'))).filter(name=>name.startsWith('.game-stage-'));
+  assert.equal(workspaces.length,1);assert.ok(result.stderr.includes(workspaces[0]+'/previous'));
+  const workspace=path.join(dir,'desktop',workspaces[0]);
+  assert.equal(await readFile(path.join(workspace,'previous/previous.marker'),'utf8'),'previous generated stage');
+  assert.deepEqual(inspectRuntime(path.join(workspace,'new')).files,inspectRuntime(path.join(dir,'dist')).files);
 });
 test('an unlisted local JSON file cannot enter the package or replace the previous stage',async t=>{
   const dir=await fixture(t);await writeFile(path.join(dir,'dist/local-profile.json'),'synthetic non-runtime data');

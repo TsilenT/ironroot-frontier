@@ -1,4 +1,4 @@
-import { readdir, mkdtemp, rm, rename, copyFile, readFile, lstat } from 'node:fs/promises';
+import { readdir, mkdir, mkdtemp, rm, rename, copyFile, readFile, lstat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inspectRuntime } from '../../scripts/verify-runtime.mjs';
@@ -32,15 +32,41 @@ if (typeof version !== 'string' || !version || desktopPackage.version !== versio
 
 // Prepare and verify the complete copy before touching a previous stage.
 // Failure is a build failure; none of this accesses player-profile storage.
-const prepared = await mkdtemp(path.join(desktop, '.game-stage-'));
+const workspace = await mkdtemp(path.join(desktop, '.game-stage-'));
+const prepared = path.join(workspace, 'new');
+const previous = path.join(workspace, 'previous');
+let retainWorkspace = false;
 try {
+  await mkdir(prepared);
   for (const name of files) await copyFile(path.join(source, name), path.join(prepared, name));
   const staged = inspectRuntime(prepared);
   if (staged.runtimeFiles !== runtime.runtimeFiles || files.some(name => staged.files[name] !== runtime.files[name]))
     throw new Error('Runtime changed while staging; retry from a stable source checkout');
-  await rm(target, { recursive: true, force: true });
-  await rename(prepared, target);
+  const existing = await lstat(target).catch(error => {
+    if (error.code === 'ENOENT') return null;
+    throw error;
+  });
+  if (existing) {
+    if (!existing.isDirectory() || existing.isSymbolicLink()) throw new Error('The previous game stage must be a regular directory');
+    await rename(target, previous);
+  }
+  // Recover from a reported promotion error without deleting the old stage.
+  // These renames are not a crash-atomic or power-loss-safe directory exchange.
+  try {
+    await rename(prepared, target);
+  } catch (promotionError) {
+    if (existing) {
+      try { await rename(previous, target); }
+      catch (rollbackError) {
+        retainWorkspace = true;
+        throw new AggregateError([promotionError, rollbackError],
+          `Staging and rollback failed. Previous stage retained in desktop/${path.basename(workspace)}/previous`);
+      }
+    }
+    throw promotionError;
+  }
 } finally {
-  await rm(prepared, { recursive: true, force: true });
+  // A failed rollback retains both the old stage and the verified candidate.
+  if (!retainWorkspace) await rm(workspace, { recursive: true, force: true });
 }
 console.log(`Staged ${files.length} verified game assets for ${version}. Original dist remains unchanged.`);
