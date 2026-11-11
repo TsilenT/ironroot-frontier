@@ -7,6 +7,7 @@ import {runInNewContext} from 'node:vm';
 import {readFileSync} from 'node:fs';
 import {airBuildingDescription} from '../dist/flight-orders-view.js';
 import {buildingUpgradeView} from '../dist/building-upgrade-view.js';
+import {armyCapacityView} from '../dist/strategy-feedback-view.js';
 import {BUILDINGS,UNITS,upgradeCost} from '../dist/engine.js';
 import {CAMPAIGN_MISSIONS,createCampaignMission,getCampaignMission,campaignScenarioForGame} from '../dist/campaign.js';
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
@@ -19,7 +20,7 @@ test('actual building details round both HP values without changing upgraded cam
     for(const b of game.state.buildings.filter(b=>b.side===0&&b.level>1)){
       const elements=new Map();
       const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,classList:{toggle(){},contains(){return false;}}});return elements.get(id);};
-      runInNewContext(selection+'\nupdateSelection();',{$,game,currentCampaign:mission.id,isProtectedCampaignBuilding,currentSignalProtection:()=>signalProtectionSummary(getCampaignMission(mission.id,campaignScenarioForGame(game,mission.id).revision),createProtectedObjectiveMonitor(game,mission.id).read(),game.state.time),battleView:()=>game,airBuildingDescription,buildingUpgradeView,ui:{selected:b.id,protectedTargets:[]},BUILDINGS,UNITS,upgradeCost,paused:false,iconSVG:()=>''});
+      runInNewContext(selection+'\nupdateSelection();',{$,game,currentCampaign:mission.id,isProtectedCampaignBuilding,currentSignalProtection:()=>signalProtectionSummary(getCampaignMission(mission.id,campaignScenarioForGame(game,mission.id).revision),createProtectedObjectiveMonitor(game,mission.id).read(),game.state.time),battleView:()=>game,airBuildingDescription,buildingUpgradeView,armyCapacityView,ui:{selected:b.id,protectedTargets:[]},BUILDINGS,UNITS,upgradeCost,paused:false,iconSVG:()=>''});
       assert.ok($('selectionStats').innerHTML.startsWith(`<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span>`),mission.id+'/'+b.type);
       assert.ok(!/\d\.\d{5,}/.test($('selectionStats').innerHTML));
       checked++;
