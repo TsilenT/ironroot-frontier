@@ -1,14 +1,15 @@
 import {expect} from '@playwright/test';
-import {parseBackup} from '../../dist/backup.js';
-import {test, press, downloadBackup} from './map-browser-helpers.mjs';
+import {createBackup, parseBackup} from '../../dist/backup.js';
+import {test, press, downloadBackup, chooseBackup} from './map-browser-helpers.mjs';
 
 const SETTINGS = 'ironroot.settings.v1';
 const values = page => page.evaluate(key => JSON.parse(localStorage.getItem(key) || '{}'), SETTINGS);
 async function open(page) { await press(page, '#welcomeSettings'); await expect(page.locator('#settingsModal')).toBeVisible(); }
 async function level(page, name, percent) {
   const slider = page.getByRole('slider', {name, exact:true});
-  await slider.focus(); await slider.press('Home');
-  for (let i = 0; i < percent / 5; i++) await slider.press('ArrowRight');
+  await slider.focus(); await slider.press(percent > 50 ? 'End' : 'Home');
+  for (let i = 0; i < Math.min(percent, 100 - percent); i++)
+    await slider.press(percent > 50 ? 'ArrowLeft' : 'ArrowRight');
   await expect(slider).toHaveValue(String(percent));
   await expect(slider).toHaveAttribute('aria-valuetext', percent + '%');
 }
@@ -47,6 +48,29 @@ test('legacy settings retain the current mix; independent levels persist and exp
   await expect(page.locator('#sfxVolume')).toHaveValue('90');
   await press(page, '.backup-details > summary');
   expect(parseBackup(await downloadBackup(page)).data.settings).toMatchObject({volume:.5,musicVolume:.3,sfxVolume:.9});
+});
+
+test('imported non-five-percent levels agree across native sliders, labels, persistence and export', async ({page}) => {
+  const imported = {volume:.37, musicVolume:.23, sfxVolume:.64};
+  const backup = createBackup({getItem:key => key === SETTINGS ? JSON.stringify(imported) : null});
+  await page.goto('/'); await open(page);
+  await press(page, '.backup-details > summary');
+  await chooseBackup(page, backup);
+  await expect(page.locator('#backupModal')).toBeVisible();
+  await press(page, '#confirmImport');
+  await expect(page.locator('#welcome')).toBeVisible(); await open(page);
+  for (const [id, label, percent] of [['masterVolume','volumeValue',37], ['musicVolume','musicVolumeValue',23], ['sfxVolume','sfxVolumeValue',64]]) {
+    await expect(page.locator('#'+id)).toHaveValue(String(percent));
+    await expect(page.locator('#'+id)).toHaveAttribute('aria-valuetext', percent+'%');
+    await expect(page.locator('#'+label)).toHaveText(percent+'%');
+  }
+  expect(await values(page)).toMatchObject(imported);
+  await press(page, '.backup-details > summary');
+  expect(parseBackup(await downloadBackup(page)).data.settings).toMatchObject(imported);
+  await page.locator('#musicVolume').focus(); await page.locator('#musicVolume').press('ArrowRight');
+  await expect(page.locator('#musicVolume')).toHaveValue('24');
+  await expect(page.locator('#musicVolumeValue')).toHaveText('24%');
+  expect(await values(page)).toMatchObject({...imported,musicVolume:.24});
 });
 
 test('native Web Audio channels change independently and mute toggles retain the mix', async ({page}) => {

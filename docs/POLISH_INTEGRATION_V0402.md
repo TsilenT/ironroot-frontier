@@ -17,6 +17,7 @@ This branch combines four unmerged drafts against main `6544938e8b749ec42621fb03
 - Browser harness checks register audio, upgrade, focus-loss and reward-feedback specs. Current-profile fixture expectations use protocol 32, while historical fixture data and literal source hashes remain unchanged.
 - Historical runtime checks reverse only declared profile/backup/cache/art changes, exclude exactly the two new presentation assets and retain the original 64-file SHA-256 oracle. `profile-session-v0401.js` remains byte-identical to #59's pinned fixture.
 - Review follow-up retires reward motion whenever the result dialog closes, covering ordinary dismissal, Inspect and Back/Forward. Last Result does not replay the celebration. Direct browser checks retain earned progress, immediate controls and reduced-motion behavior.
+- Audio review follow-up uses 1% steps for all three native volume sliders, so imported values such as 37% match their labels and accessible values. A real backup-import/export regression preserves the stored levels and verifies the next keyboard adjustment is 1%.
 
 Combat simulation, economy, campaign content, procedural audio synthesis, Volley and spells are unchanged. Source commits and their review documents remain visible in the integration history. Generated evidence belongs outside the repository.
 
@@ -24,4 +25,6 @@ Combat simulation, economy, campaign content, procedural audio synthesis, Volley
 
 The combined Node suite passed 3,519 tests with zero failures and one optional desktop-tooling skip. Game syntax, runtime validation, complete browser-harness checks, 27 focused source checks and 106 navigation/recovery checks passed. Chromium passed 60 combined feature cases across four viewport profiles, 54 desktop mouse/keyboard/pause/reward cases with one touch-only skip, and 18 mobile reward/lifecycle cases. Phone upgrade/reward screenshots were visually inspected. Logs, traces and screenshots remain under `/tmp`, outside source control.
 
-Combined source and browser verification is recorded in the integration PR. Independent source review reported no blockers for #57/#58 and #60, with the #60 dismissal follow-up above. Audio review remains a separate gate until its result is received. Local Chromium checks do not establish native OS focus behavior, physical touch/controller/Deck compatibility or Steam certification. Merge and deployment remain explicitly withheld.
+After the 1% slider follow-up, all 20 audio Chromium cases passed across the four viewport profiles, including real backup import/export with 37%/23%/64% levels. The native range-keyboard regression also passed; syntax, runtime and complete static browser-harness checks were repeated successfully.
+
+Combined source and browser verification is recorded in the integration PR. Independent source reviews reported no blockers across #57–#60; the two small review follow-ups are recorded above. Independent browser reruns were blocked by socket permissions, so browser evidence comes from the author/integration runs. Local Chromium checks do not establish native OS focus behavior, physical touch/controller/Deck compatibility or Steam certification.
