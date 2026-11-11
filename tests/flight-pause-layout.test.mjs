@@ -21,13 +21,13 @@ test('strict geometry rejects the recorded fractional North clip and initial Res
 });
 
 test('read-only aerie description insets belong to the real desktop and mobile scrollports',()=>{
-  const desktop=rule('.selection-panel.air-inspector');
-  const mobile=rule('.protected-mobile .command-deck:has(.air-inspector:not(.hidden))');
+  const desktop=rule('.selection-panel');
+  const mobile=rule('.protected-mobile .command-deck:has(.selection-panel:not(.hidden))');
   assert.match(desktop,/overflow-y: auto;/);
   assert.match(desktop,/scroll-padding-block: 8px;/);
   assert.match(mobile,/scroll-padding-block: 8px;/);
   assert.match(rule('.protected-mobile .command-deck'),/overflow-y: auto;/);
-  assert.match(rule('.protected-mobile .command-deck .selection-panel.air-inspector'),/overflow: visible;/);
+  assert.match(rule('.protected-mobile .command-deck .selection-panel'),/overflow: visible;/);
   assert.doesNotMatch(css,/flight-order-buttons|flight-orders/);
   assert.match(rule('.protected-mobile .selection-actions button, .protected-mobile #closeSelection'),/min-width: 44px; min-height: 44px;/);
 });

@@ -2,6 +2,7 @@ import {signalProtectionSummary} from '../dist/campaign-presentation.js';
 import {minorReserveView} from '../dist/minor-reserve-view.js';
 import {campaignEndingReward} from '../dist/campaign.js';
 import {lastEngineView,createLastEngineAudioObserver} from '../dist/final-chapter-view.js';
+import {buildingUpgradeView} from '../dist/building-upgrade-view.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createContext,runInContext} from 'node:vm';
@@ -84,7 +85,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   Game,BUILDINGS,SPELL,UNITS,upgradeCost,CAMPAIGN_MISSIONS,CAMPAIGN_CHAPTERS,CHALLENGES,createChallenge,createCurrentChallenge,restartChallenge,getChallengeForGame,getChallengeTargets,evaluateChallenge,createCampaignMission,createCampaignRestart,createProgressionCampaignMission,getCampaignLaunchMission,getCampaignMission,getCampaignTargets,campaignScenarioForGame,isIntroMission,evaluateCampaignMission,isMissionUnlocked,createProtectedObjectiveMonitor,protectedLossDetails,isProtectedCampaignBuilding,createObjectiveAlertPolicy,
   createViewportPause,visibleViewportRect,fitMobileViewport,insetViewportRect,inspectMobileGeometry:g=>{log.measures.push(g.controls.map(r=>({...r})));return inspectMobileGeometry(g);},
   viewportPause:createViewportPause(),mobileLayout:'ordinary',signalProtectionSummary,minorReserveView,performance:{now:()=>0},protectedAnnouncementUntil:0,protectedMonitor:null,protectedAlerts:null,protectedControls:new Map(),armedProtectedControl:null,armedReserveControl:null,lastReservePhase:null,
-  game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
+  buildingUpgradeView,game:new Game(),started:false,paused:false,mode:'campaign',selectedCampaign:'winter-stores',selectedChallenge:CHALLENGES[0].id,selectedMap:'classic',selectedChapter:null,difficulty:'easy',currentCampaign:null,currentChallenge:null,
   campaignProgress:fixture.progress,objectiveOutcome:null,recoveryHold:null,profileGate:null,speed:1,resultShown:false,follow:false,
   ui:{build:null,spell:false,selected:null,pointer:null},padHud:false,padPoint:null,heardEffects:null,heardProjectiles:null,
   ...keyboard,preferences:{},keyboardCapture:null,cancelKeyboardCapture(){},syncKeyboardSettings(){},keyboardTitle:label=>label,
