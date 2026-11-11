@@ -32,15 +32,18 @@ test('read-only aerie description insets belong to the real desktop and mobile s
   assert.match(rule('.protected-mobile .selection-actions button, .protected-mobile #closeSelection'),/min-width: 44px; min-height: 44px;/);
 });
 
-test('short portrait pause reclaims only whitespace and retains readable actions',()=>{
-  const compact=css.split('@media (max-width: 400px) and (max-height: 600px) and (orientation: portrait) {')[1]?.split('\n}')[0];
+test('short portrait pause retains readable capacity and actions in its compact layout',()=>{
+  const compact=css.split('@media (max-width: 700px) and (max-height: 700px) and (orientation: portrait) {')[1]?.split('\n}')[0];
   assert.ok(compact);
-  assert.match(compact,/\.pause-menu \{ padding: 16px 18px; \}/);
-  assert.match(compact,/\.pause-menu \.pause-briefing \{ margin: 10px 0; padding: 10px 0; \}/);
-  assert.match(compact,/\.pause-menu \.pause-utilities \{ margin: 8px 0; \}/);
-  assert.match(compact,/\.pause-menu \.menu-status \{ margin: 8px 0; \}/);
-  assert.doesNotMatch(compact,/font-size|line-height|display: none|overflow: hidden|transform|zoom/);
+  const headingSize=Number(compact.match(/\.menu-heading h2 \{ font-size: (\d+)px;/)?.[1]);
+  assert.ok(headingSize>=28,'the compact heading remains readable');
+  assert.doesNotMatch(compact,/display: none|overflow: hidden|transform|zoom/);
+  const narrow=css.split('@media (max-width: 400px) and (max-height: 600px) and (orientation: portrait) {')[1]?.split('\n}')[0];
+  // Only secondary captions disappear; action labels and the capacity control
+  // remain present. Real four-viewport containment is checked in the browser.
+  assert.match(narrow,/^\s*\.pause-menu \.pause-utilities small \{ display: none; \}\s*$/);
   assert.match(rule('.pause-veil .pause-menu button, .menu-confirm button'),/min-height: 44px;/);
+  assert.match(rule('.bridge-details summary'),/min-height: 44px;/);
   assert.match(rule('.modal'),/overflow: auto;/);
   assert.doesNotMatch(html,/pauseFlights|pauseFlightList|flightNorth|flightHold|flightSouth/);
 });
