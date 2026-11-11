@@ -1383,7 +1383,8 @@ export class Renderer {
       beam([-170,outer,2],[170,outer,2],'#a28c69',4);
     };
     track(false);
-    box(-150,150,-112,112,40,104,u.hit>0?'#c38c64':'#b47c51','#71503d','#8d5d40');
+    const hullBottom=40,hullTop=104;
+    box(-150,150,-112,112,hullBottom,hullTop,u.hit>0?'#c38c64':'#b47c51','#71503d','#8d5d40');
     // Beveled armor, a raised boiler and a shaded near wall share the ordinary siege-unit camera.
     face([[-150,-112,104],[-130,-94,116],[132,-94,116],[150,-112,104]],'#d2aa71');
     for(const x of [-124,-78,-32,14,60,106,138]){
@@ -1404,8 +1405,10 @@ export class Renderer {
       beam([-110+pose.piston,d,119],[43+pose.piston,d,119],'#ead2a4',10);
       beam([-110+pose.piston,d,119],[-78+pose.piston,d,119],'#735338',15);
     }
-    box(-192+pose.brace,-120,-45,45,34,75,'#d3aa72','#826043','#ad7d4f');
-    for(const d of [-30,-10,10,30])beam([-193+pose.brace,d,42],[-193+pose.brace,d,67],'#42362f',5);
+    // Center the ram on the projected front face, including the hull's height.
+    const ramLift=(hullBottom+hullTop-34-75)/2;
+    box(-192+pose.brace,-120,-45,45,34+ramLift,75+ramLift,'#d3aa72','#826043','#ad7d4f');
+    for(const d of [-30,-10,10,30])beam([-193+pose.brace,d,42+ramLift],[-193+pose.brace,d,67+ramLift],'#42362f',5);
     track(true);
     if(pose.contact){c.strokeStyle='#dcb68b';c.lineWidth=9;c.beginPath();c.arc(0,0,COLOSSUS.radius+10,Math.PI*.55,Math.PI*1.45);c.stroke();}
     const font=Math.max(18,12/(this.scale||1));c.font=`bold ${font}px sans-serif`;c.textAlign='center';c.textBaseline='bottom';c.fillStyle='#fff1ce';
