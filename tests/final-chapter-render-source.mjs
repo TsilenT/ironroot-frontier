@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {rendererBeforeLocomotion} from './locomotion-render-source.mjs';
 
 const fixture=JSON.parse(readFileSync(new URL('./fixtures/final-chapter-render-additions.json',import.meta.url)));
 // Keep old render-source oracles literal by reversing only the exact boss
@@ -8,7 +9,7 @@ const fixture=JSON.parse(readFileSync(new URL('./fixtures/final-chapter-render-a
 export function rendererBeforeObliqueArt(){
   const art=JSON.parse(readFileSync(new URL('./fixtures/colossus-oblique-art.json',import.meta.url)));
   assert.equal(art.parentCommit,'7fd109477e882bec3fd81f164779c470968ac3c0');
-  let source=readFileSync(new URL('../dist/render.js',import.meta.url),'utf8');
+  let source=rendererBeforeLocomotion();
   assert.equal(source.split(art.addition).length-1,1,'exact declared oblique-art method');
   const hunk=fixture.changes.find(c=>c.addition.includes('  drawColossus(')).addition;
   const old=hunk.slice(hunk.indexOf('  drawColossus('),hunk.indexOf('  drawUnit('));

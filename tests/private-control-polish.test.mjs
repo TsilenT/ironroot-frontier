@@ -1,4 +1,5 @@
 import {rendererBeforeObliqueArt} from './final-chapter-render-source.mjs';
+import {fogViewBeforeLocomotion} from './locomotion-render-source.mjs';
 import {currentRuntimeFiles} from './runtime-catalog.mjs';
 /** Private current-source DOM stubs and source calculations; no browser or graphics run. */
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {runInContext} from 'node:vm';
@@ -52,7 +53,7 @@ test('only the three incorrect navigation instructions are changed to the visibl
  assert.match(source,/Preferences apply to this page only\. Open Options to retry saving\./);assert.match(source,/Download the original save, then open Options to restore a compatible backup\./);assert.match(html,/Fullscreen is in Options, available from the title screen or pause menu\./);assert.doesNotMatch(source,/Preferences apply to this page only\. Open Preferences|original save, then open Preferences/);assert.doesNotMatch(html,/Fullscreen is in Preferences/);
 });
 test('current0.40 protocol32/catalog42 and declared art/cache exceptions and original64-file oracle retain exact d0327c6 source',()=>{
- const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.4');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.4';/);assert.match(html,/v0\.40\.4/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
+ const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.5');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.5';/);assert.match(html,/v0\.40\.5/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
  // This literal aggregate was read from d0327c6 Git blobs, not generated from
  // the candidate. Existing runtime-catalog preserves the separate released
  // path oracle and exactly six private additions. The three permitted control
@@ -96,7 +97,8 @@ test('current0.40 protocol32/catalog42 and declared art/cache exceptions and ori
  const backupParent='2b9d5a3b34a9daae2b2d9a43c365f7bd20a0091944c90020ecb7d486830b1d06';
  assert.equal(createHash('sha256').update(backup).digest('hex'),backupParent);
  const renderParent=createHash('sha256').update(rendererBeforeObliqueArt()).digest('hex');
- let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.4').length-1,1);sw=sw.replace('ironroot-v0.40.4','ironroot-v0.40.0');
+ const fogParent=createHash('sha256').update(fogViewBeforeLocomotion()).digest('hex');
+ let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.5').length-1,1);sw=sw.replace('ironroot-v0.40.5','ironroot-v0.40.0');
  const upgradeAsset="  './building-upgrade-view.js',\n";
  assert.equal(sw.split(upgradeAsset).length-1,1);sw=sw.replace(upgradeAsset,'');
  const rewardAsset="  './reward-feedback.css',\n";
@@ -104,5 +106,5 @@ test('current0.40 protocol32/catalog42 and declared art/cache exceptions and ori
  const strategyAsset="  './strategy-feedback-view.js',\n";
  assert.equal(sw.split(strategyAsset).length-1,1);sw=sw.replace(strategyAsset,'');
  const swParent='2d81977dc8cfcd71a365091bc449f0fd8ee7bd0b1464af69ce471db60918be12';assert.equal(createHash('sha256').update(sw).digest('hex'),swParent);
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','building-upgrade-view.js','reward-feedback.css','strategy-feedback-view.js'].includes(path)).map(([path,hash])=>[path,path==='profile-session.js'?profileParent:path==='backup.js'?backupParent:path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,70);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','building-upgrade-view.js','reward-feedback.css','strategy-feedback-view.js'].includes(path)).map(([path,hash])=>[path,path==='fog-view.js'?fogParent:path==='profile-session.js'?profileParent:path==='backup.js'?backupParent:path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,70);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });
