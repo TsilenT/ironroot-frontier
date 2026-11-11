@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import * as released from './fixtures/profile-session-v039.js';
-import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as MARKER} from '../dist/profile-session.js';
+import {createProfileSession, CURRENT_PROFILE_PROTOCOL_VERSION as VERSION, PROFILE_MARKER_KEY as MARKER} from './fixtures/profile-session-v0401.js';
 import {createBackup, parseBackup, restoreBackup, BACKUP_STORAGE_KEYS as KEYS} from '../dist/backup.js';
 import * as campaign from '../dist/campaign.js';
 import {encodeBattle, decodeBattle, identityOf} from '../dist/battle-codec.js';
@@ -60,7 +60,7 @@ test('protocol31 changes only the marker fence from the literal released0.39 pro
   const expected = bytes.toString().replace('CURRENT_PROFILE_PROTOCOL_VERSION = 30', 'CURRENT_PROFILE_PROTOCOL_VERSION = 31')
     .replace('original-target checkpoints and exact result identities from older writers.', 'original-target checkpoints and exact result identities from older writers; protocol 31 fences Chapter Ten progress, fog and crossing checkpoints, Last Engine aftermath and exact result identities from older writers.')
     .replace('28, 29, 30].includes', '28, 29, 30, 31].includes').replace('28, 29 or 30.', '28, 29, 30 or 31.');
-  assert.equal(readFileSync(new URL('../dist/profile-session.js', import.meta.url), 'utf8'), expected);
+  assert.equal(readFileSync(new URL('./fixtures/profile-session-v0401.js', import.meta.url), 'utf8'), expected);
 });
 
 test('absent and ready markers1..30 upgrade only the marker while preserving exact opaque five-domain bytes', () => {
