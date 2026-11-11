@@ -109,7 +109,10 @@ function harness(mode = 'challenges') {
   runInContext('downloadBackup = text => { exportedText = text; };', c);
   c.setMode(mode); c.syncDialogs();
   browser.listen(event => emit(windows, 'popstate', event));
-  runInContext(source.slice(source.indexOf('menuHistory = createMenuHistory({')), c);
+  // Runtime update wiring has its own lifecycle tests; this harness owns the
+  // existing profile/menu handlers. Retain the historical-source override.
+  const updates = source.indexOf('// Discovery never reloads or pauses a battle.');
+  runInContext(source.slice(source.indexOf('menuHistory = createMenuHistory({'), updates < 0 ? source.length : updates), c);
   function flush() {
     for (let count = 0; ; count++) {
       if (count > 100) throw Error('microtask loop');

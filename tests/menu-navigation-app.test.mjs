@@ -190,7 +190,9 @@ test('real pagehide/pageshow hooks retain a paused battle without adding history
   const h=harness();h.start();h.c.game.update(.5);const listeners={};
   h.c.window.addEventListener=(type,handler)=>{listeners[type]=handler;};
   h.c.menuHistory=h.nav;h.c.navigationAway=false;
-  runInContext(h.source.slice(h.source.lastIndexOf("window.addEventListener('pagehide',")),h.c);
+  const start=h.source.indexOf('// A cached document can return'),end=h.source.indexOf('// Discovery never reloads or pauses a battle.',start);
+  assert.ok(start>=0&&end>start);
+  runInContext(h.source.slice(start,end),h.c);
   const game=h.c.game,pushes=h.browser.writes.filter(w=>w.method==='push').length;
   listeners.pagehide({persisted:true});assert.equal(h.c.navigationAway,true);assert.equal(h.c.paused,true);
   const bytes=h.data.get(SAVE);listeners.pageshow({persisted:true});
