@@ -152,6 +152,7 @@ test('actual Resume, history and backup preview labels derive Fog from identity 
   historySession:{read:()=>({ok:true,rows:[{identity:identityOf(g),won:true,time:12}]}),view:rows=>rows},
  });c.preferences.volume=.5;
  runInContext(section('function updateResume()','\nupdateResume();'),c);c.updateResume();assert.match($('resumeSaved').textContent,/FOG/);
+ runInContext(section('const audioVolumeControls =','for (const [key, id, valueId, setter]'),c);
  runInContext(section('function syncSettings()',"$('settings').onclick"),c);c.syncSettings();assert.match($('battleHistory').textContent,/Fog/);
  const domains={campaign:createCampaignProgress(),trials:{},settings:{},history:[],battle:envelope};
  const raw=createBackup({getItem:key=>{const domain=Object.keys(BACKUP_STORAGE_KEYS).find(d=>BACKUP_STORAGE_KEYS[d]===key);return domain?JSON.stringify(domains[domain]):null;}},{createdAt:'2026-11-08T00:00:00.000Z'});

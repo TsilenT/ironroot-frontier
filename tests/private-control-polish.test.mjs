@@ -51,8 +51,8 @@ test('mode-count typography is10px ink in every declared span rule; contrast cal
 test('only the three incorrect navigation instructions are changed to the visible Options entry',()=>{
  assert.match(source,/Preferences apply to this page only\. Open Options to retry saving\./);assert.match(source,/Download the original save, then open Options to restore a compatible backup\./);assert.match(html,/Fullscreen is in Options, available from the title screen or pause menu\./);assert.doesNotMatch(source,/Preferences apply to this page only\. Open Preferences|original save, then open Preferences/);assert.doesNotMatch(html,/Fullscreen is in Preferences/);
 });
-test('private0.40 protocol31/catalog42 and declared art/cache exceptions and original64-file oracle retain exact d0327c6 source',()=>{
- const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.1');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.1';/);assert.match(html,/v0\.40\.1/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,31);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
+test('current0.40 protocol32/catalog42 and declared art/cache exceptions and original64-file oracle retain exact d0327c6 source',()=>{
+ const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.2');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.2';/);assert.match(html,/v0\.40\.2/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
  // This literal aggregate was read from d0327c6 Git blobs, not generated from
  // the candidate. Existing runtime-catalog preserves the separate released
  // path oracle and exactly six private additions. The three permitted control
@@ -85,9 +85,22 @@ test('private0.40 protocol31/catalog42 and declared art/cache exceptions and ori
  let engineView=read('../dist/final-chapter-view.js');assert.equal(engineView.split(cue).length-1,1);
  engineView=engineView.replace(cue,'The Last Engine is emerging and can take damage.');
  assert.equal(createHash('sha256').update(engineView).digest('hex'),cueParent,'all other actual30b0b57 reveal/presentation bytes');
- // Art-only0.40.1 exceptions reverse the exact method and cache token to7fd1094.
+ // Art and audio settings exceptions preserve the original runtime oracle.
+ // The frozen profile is independently checked against protocol32 by audio-preferences.
+ const profileParent = createHash('sha256').update(read('./fixtures/profile-session-v0401.js')).digest('hex');
+ let backup = read('../dist/backup.js');
+ for (const [addition,parent] of [
+  ["'volume', 'musicVolume', 'sfxVolume', 'reducedMotion'", "'volume', 'reducedMotion'"],
+  ["if (['volume', 'musicVolume', 'sfxVolume'].includes(key))", "if (key === 'volume')"],
+ ]) { assert.equal(backup.split(addition).length-1,1); backup=backup.replace(addition,parent); }
+ const backupParent='2b9d5a3b34a9daae2b2d9a43c365f7bd20a0091944c90020ecb7d486830b1d06';
+ assert.equal(createHash('sha256').update(backup).digest('hex'),backupParent);
  const renderParent=createHash('sha256').update(rendererBeforeObliqueArt()).digest('hex');
- let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.1').length-1,1);sw=sw.replace('ironroot-v0.40.1','ironroot-v0.40.0');
+ let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.2').length-1,1);sw=sw.replace('ironroot-v0.40.2','ironroot-v0.40.0');
+ const upgradeAsset="  './building-upgrade-view.js',\n";
+ assert.equal(sw.split(upgradeAsset).length-1,1);sw=sw.replace(upgradeAsset,'');
+ const rewardAsset="  './reward-feedback.css',\n";
+ assert.equal(sw.split(rewardAsset).length-1,1);sw=sw.replace(rewardAsset,'');
  const swParent='2d81977dc8cfcd71a365091bc449f0fd8ee7bd0b1464af69ce471db60918be12';assert.equal(createHash('sha256').update(sw).digest('hex'),swParent);
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path)).map(([path,hash])=>[path,path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','building-upgrade-view.js','reward-feedback.css'].includes(path)).map(([path,hash])=>[path,path==='profile-session.js'?profileParent:path==='backup.js'?backupParent:path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,69);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });

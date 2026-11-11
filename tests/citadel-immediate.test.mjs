@@ -74,7 +74,7 @@ const current=r=>createProfileSession(()=>r,{requiredProtocolVersion:CURRENT_PRO
 const old=r=>protocolTen.createProfileSession(()=>r,{requiredProtocolVersion:10});
 
 test('current protocol marker-only upgrade fences actual released protocol-10 stale and reopened writers across all five domains',()=>{
- assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,31);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
+ assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);assert.equal(protocolTen.CURRENT_PROFILE_PROTOCOL_VERSION,10);assert.equal(createHash('sha256').update(protocolTenSource).digest('hex'),protocolTenHash);
  const domains=domainBytes(),r=storage([[MARKER,marker(10)],...domains,['unrelated','untouched']]),stale=old(r);assert.ok(stale.status().canWrite);
  assert.ok(current(r).status().canWrite);assert.deepEqual(r.writes,[['set',MARKER]]);assert.deepEqual(JSON.parse(r.data.get(MARKER)),JSON.parse(marker(CURRENT_PROFILE_PROTOCOL_VERSION)));
  for(const [k,v] of domains)assert.equal(r.data.get(k),v);const before=[...r.data];r.writes.length=0;

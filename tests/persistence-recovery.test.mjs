@@ -144,7 +144,7 @@ test('preferences throw-after-write and transient readback denial verify without
 // Execute actual production finish, retry, reopen and unloading functions. The
 // tiny DOM is deliberately not described as browser/focus/rendering coverage.
 const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
-function element(){const classes=new Set(['hidden']);return{textContent:'',innerHTML:'',children:[],classList:{toggle(k,on){if(on)classes.add(k);else classes.delete(k);},add:k=>classes.add(k),remove:k=>classes.delete(k),contains:k=>classes.has(k)},append(child){this.children.push(child);},querySelector:()=>null};}
+function element(){const classes=new Set(['hidden']);return{textContent:'',innerHTML:'',children:[],attributes:{},setAttribute(key,value){this.attributes[key]=value;},classList:{toggle(k,on){if(on)classes.add(k);else classes.delete(k);},add:k=>classes.add(k),remove:k=>classes.delete(k),contains:k=>classes.has(k)},append(child){this.children.push(child);},querySelector:()=>null};}
 function ui(f=fixture([[H,JSON.stringify([row(1)])],[S,'{"sound":true}']])){
   const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
   const c={supportsFog,keyboardLoadWarning:'',keyboardSavePending:false,$,historySession:f.history,preferenceSession:f.prefs,knownHistory:f.history.snapshot().rows,knownHistoryAvailable:true,toast:message=>c.toasts.push(message),toasts:[],preferences:{sound:true,music:true,sfx:true,volume:.5,reducedMotion:false,quality:'high'},soundOn:false,
