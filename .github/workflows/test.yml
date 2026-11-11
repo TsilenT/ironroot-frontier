@@ -2,6 +2,8 @@ name: Validate and publish Ironroot
 
 on:
   push:
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
