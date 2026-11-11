@@ -1,4 +1,5 @@
 import {lastEngineView,createLastEngineAudioObserver} from './final-chapter-view.js';
+import { buildingUpgradeView } from './building-upgrade-view.js';
 import { createViewportPause, inspectMobileGeometry, visibleViewportRect, insetViewportRect, fitMobileViewport, protectedToastTop } from './mobile-battlefield.js';
 import { createProfileSession, PROFILE_MARKER_KEY, CURRENT_PROFILE_PROTOCOL_VERSION } from './profile-session.js';
 import { createInputScopeGuard } from './input-scope.js';
@@ -780,6 +781,11 @@ function updateSelection() {
   $('selectionStats').innerHTML =
     `<span>♥ ${Math.ceil(b.hp)} / ${Math.ceil(b.maxHp)}</span><span>${d.unit ? `${(d.spawnTime / (1 + 0.22 * (b.level - 1)) / (game.state.overtime ? 1.65 : 1)).toFixed(1)}s / wave` : d.range ? `Range ${d.range}` : `+${(2.5 * (1 + 0.5 * (b.level - 1))).toFixed(1)} gold /s`}</span>`;
   $('selectionDescription').textContent = airBuildingDescription(game, b.type);
+  const preview = buildingUpgradeView(game, b);
+  // Preview copy is fixed text and formatted numbers, never saved/user markup.
+  $('upgradePreview').innerHTML = `<h4>${preview.title}</h4>` +
+    (preview.rows.length ? `<dl>${preview.rows.map(row => `<div><dt>${row.label}</dt><dd>${row.before} → ${row.after}</dd></div>`).join('')}</dl>` : '') +
+    (preview.note ? `<p>${preview.note}</p>` : '');
   const cost = game.upgradeCost ? game.upgradeCost(b) : upgradeCost(b);
   $('upgrade').textContent = b.level < 3 ? `Upgrade · ◆ ${cost}` : 'Max level';
   $('upgrade').disabled =
