@@ -37,6 +37,22 @@ async function readyBattle(page, fixture) {
   return game;
 }
 
+test('skirmish keeps launch and Resume visible while a ready update remains reachable',async({page,request},info)=>{
+  test.setTimeout(180000);const f=await session(page,request);
+  try {
+    await readyBattle(page,f);await press(page,'#pause');await press(page,'#saveExit');
+    await press(page,'[data-mode="skirmish"]');const before=await domains(page);
+    await advance(page,request,f);
+    for(const id of ['start','resumeSaved'])await expect(page.locator('#'+id)).toBeInViewport({ratio:1});
+    const setup=await page.locator('#skirmishConfig').boundingBox();expect(setup.height).toBeGreaterThanOrEqual(80);
+    await page.locator('#welcome [data-runtime-update-action]').scrollIntoViewIfNeeded();
+    for(const id of ['start','resumeSaved'])await expect(page.locator('#'+id)).toBeInViewport({ratio:1});
+    await page.screenshot({path:info.outputPath('skirmish-update-ready.png')});
+    expect(await domains(page)).toEqual(before);await press(page,'#welcome [data-runtime-update-action]');
+    await expect.poll(()=>footer(page)).toContain('v'+f.to);expect(await domains(page)).toEqual(before);
+  } finally {await request.delete(f.basePath);}
+});
+
 test('returning title discovers the active release and updates explicitly without changing saved domains',async({page,request},info)=>{
   test.setTimeout(180000); const f=await session(page,request);
   try {
