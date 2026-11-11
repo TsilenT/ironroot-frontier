@@ -324,10 +324,10 @@ test('UI: beforeunload during recovery warns without saving old in-memory data',
 });
 
 
-test('UI: actual application startup protects the current profile with protocol 31 before ordinary storage', () => {
+test('UI: actual application startup protects the current profile with protocol 32 before ordinary storage', () => {
   const r=uiRaw(),boot=app.slice(app.indexOf('const profileSession = '),app.indexOf('let recoveryHold = '));
   const context={localStorage:r,createProfileSession,createStorage,CURRENT_PROFILE_PROTOCOL_VERSION}; vm.createContext(context);vm.runInContext(boot,context);
-  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 31);
+  assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION, 32);
   assert.equal(JSON.parse(r.data.get(KEY)).version,CURRENT_PROFILE_PROTOCOL_VERSION);
   assert.equal(vm.runInContext('profileSession.status().canWrite',context),true);
 });
@@ -385,7 +385,7 @@ for(const {name,envelope} of corruptMaps)test('UI: '+name+' refuses fresh Start 
     layer.querySelector=()=>({setAttribute:(key,value)=>layer.aria[key]=value});
   }
   $('welcome').classList.remove('hidden');$('battle').focus=()=>{};
-  const appNode={inert:false};c.document.querySelector=selector=>{assert.equal(selector,'.app');return appNode;};c.document.activeElement=null;c.dialogDefaultFocus=()=>null;
+  const appNode={inert:false};c.document.querySelector=selector=>{assert.ok(['.app','.result'].includes(selector));return selector==='.app'?appNode:$('result');};c.document.activeElement=null;c.dialogDefaultFocus=()=>null;
   for(const [from,to]of [['function updateResume()','\nupdateResume();'],['function start(','function beginProtectedObjectives()'],['function showSettings()','function hideSettings()'],['function syncDialogs()','function keepDialogFocus()']])vm.runInContext(app.slice(app.indexOf(from),app.indexOf(to,app.indexOf(from))),c);
   c.updateResume();assert.ok(c.resumeProblem);assert.equal($('resumeSaved').classList.contains('hidden'),true);
   const before=[...r.data],game=c.game;

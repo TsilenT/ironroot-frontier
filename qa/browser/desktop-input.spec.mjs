@@ -148,7 +148,7 @@ test.describe('desktop mouse controls', () => {
     else await page.keyboard.press('Space');
     await expect(page.locator('#battle')).not.toHaveClass(/dragging/);
     await page.mouse.up({button:'middle'});
-    if(interruption==='pause') await press(page,'#resume');
+    if(interruption==='pause'||interruption==='blur') await press(page,'#resume');
     const slot=await homePoint(page,map,270,450);
     await page.mouse.click(slot.x,slot.y);
     await expect(page.locator('#toast')).toContainText('Archery range raised');
