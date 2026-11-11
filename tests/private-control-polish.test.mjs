@@ -88,6 +88,10 @@ test('private0.40 protocol31/catalog42 and declared art/cache exceptions and ori
  // Art-only0.40.1 exceptions reverse the exact method and cache token to7fd1094.
  const renderParent=createHash('sha256').update(rendererBeforeObliqueArt()).digest('hex');
  let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.1').length-1,1);sw=sw.replace('ironroot-v0.40.1','ironroot-v0.40.0');
+ // The reward pass adds exactly one cached presentation stylesheet. Reverse
+ // only that declared entry; preserve the original64-file oracle below.
+ const rewardCacheEntry="  './reward-feedback.css',\n";
+ assert.equal(sw.split(rewardCacheEntry).length-1,1);sw=sw.replace(rewardCacheEntry,'');
  const swParent='2d81977dc8cfcd71a365091bc449f0fd8ee7bd0b1464af69ce471db60918be12';assert.equal(createHash('sha256').update(sw).digest('hex'),swParent);
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css'].includes(path)).map(([path,hash])=>[path,path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,67);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','reward-feedback.css'].includes(path)).map(([path,hash])=>[path,path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,68);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });

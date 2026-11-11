@@ -1813,6 +1813,7 @@ $('replayMission').onclick = () => {
 };
 $('resultMenu').onclick = () => showTitle({ focusStart: true });
 $('inspectBattle').onclick = () => {
+  document.querySelector('.result').classList.remove('reward-motion');
   $('resultModal').classList.add('hidden');
   toast('Battle ended. Open the field guide or return to title.');
   pauseControl('menu');
@@ -1979,6 +1980,7 @@ function finish() {
   document
     .querySelector('.result')
     .classList.toggle('campaign-result', !!mission);
+  document.querySelector('.result').classList.toggle('reward-motion', !!won && !preferences.reducedMotion);
   $('resultSigil').textContent = won ? '⚑' : '♜';
   $('resultCopy').textContent = mission
     ? won
@@ -2014,9 +2016,16 @@ function finish() {
   if (mission) {
     const stars = document.createElement('div');
     stars.className = 'result-stars';
-    stars.textContent =
-      '★'.repeat(objectiveOutcome.stars) +
-      '☆'.repeat(3 - objectiveOutcome.stars);
+    stars.setAttribute('role', 'img');
+    stars.setAttribute('aria-label', `${objectiveOutcome.stars} of 3 mission stars`);
+    for (let index = 0; index < 3; index++) {
+      const star = document.createElement('span');
+      const earned = index < objectiveOutcome.stars;
+      star.className = earned ? 'reward-star earned' : 'reward-star';
+      star.textContent = earned ? '★' : '☆';
+      star.setAttribute('aria-hidden', 'true');
+      stars.append(star);
+    }
     $('resultObjectives').append(stars);
     for (const medal of objectiveOutcome.medals) {
       const p = document.createElement('p');
@@ -3491,6 +3500,7 @@ $('masterVolume').oninput = () => {
 };
 $('reduceMotion').onchange = () => {
   preferences.reducedMotion = $('reduceMotion').checked;
+  if (preferences.reducedMotion) document.querySelector('.result').classList.remove('reward-motion');
   renderer.reducedMotion = preferences.reducedMotion;
   renderer.vfx?.setPreferences({
     reducedMotion: preferences.reducedMotion,
