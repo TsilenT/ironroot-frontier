@@ -6,13 +6,13 @@ import {Renderer} from '../dist/render.js';
 import {observe,FOG_RULESET_ID} from '../dist/fog.js';
 import {installCanvas,makeRenderer,mockCanvas} from './renderer-canvas.mjs';
 import {gameFixture,viewports} from './renderer-scenarios.mjs';
-import {loadRendererBeforeImpact,rendererBeforeImpact} from './impact-render-source.mjs';
-import {paidImpactScene,projectile} from './impact-feedback-fixture.mjs';
+import {loadRendererBeforeImpact,rendererBeforeImpact,rendererFirstImpact} from './impact-render-source.mjs';
+import {paidImpactScene,projectile,impactReadabilityScene} from './impact-feedback-fixture.mjs';
 
 const {Renderer: BeforeImpact} = await loadRendererBeforeImpact();
-function mark(p, {reducedMotion = false, quality = 'high'} = {}) {
+function mark(p, {reducedMotion = false, quality = 'high', scale = 1} = {}) {
   const canvas = mockCanvas(), renderer = Object.create(Renderer.prototype);
-  Object.assign(renderer,{c:canvas.c,reducedMotion,vfx:{quality}});
+  Object.assign(renderer,{c:canvas.c,reducedMotion,vfx:{quality},scale});
   const before = structuredClone(p); renderer.drawProjectile(Object.freeze(p));
   assert.deepEqual(p,before); assert.equal(canvas.depth(),0);
   return canvas.calls;
@@ -22,6 +22,7 @@ const alpha = calls => calls.filter(call => call[0] === 'set' && call[1] === 'gl
 
 test('the only renderer changes are the declared impact projection, fade and extracted method', () => {
   assert.match(rendererBeforeImpact(), /const arc = p.type === 'siege'/);
+  assert.match(rendererFirstImpact(), /strength > .6 && distance > 0/);
   assert.equal(readFileSync(new URL('../dist/engine.js',import.meta.url),'utf8').includes('drawProjectile'),false);
 });
 
@@ -35,7 +36,7 @@ test('all ranged roles contact the recorded endpoint at launch and keep that anc
         assert.deepEqual(anchor(calls),['translate',p.tx,p.ty-17-(targetAir?17:0)]);
         assert.ok(alpha(calls) <= previous); previous = alpha(calls);
       }
-      assert.ok(previous < .11);
+      assert.ok(previous >= .65 && previous < .7, 'late contact remains readable');
     }
 });
 
@@ -56,17 +57,36 @@ test('arrow tips meet the endpoint; zero-distance and air/ground directions stay
   }
 });
 
-test('reduced motion holds a static mark; low detail omits the streak and extra arrows retain their chevron', () => {
+test('all effects modes retain the static source link; reduced motion holds the complete mark', () => {
   const p = projectile('tower',{citadelExtra:true});
   const reduced = mark(p,{reducedMotion:true});
   assert.deepEqual(mark({...p,life:.03,x:1090},{reducedMotion:true}),reduced);
   const low = mark(p,{quality:'low'}), high = mark(p);
   const strokes = calls => calls.filter(call => call[0] === 'stroke').length;
-  assert.equal(strokes(low),2,'shaft and existing second chevron');
-  assert.equal(strokes(reduced),2);
-  assert.equal(strokes(high),3,'one bounded early streak');
-  assert.equal(strokes(mark({...p,life:.13})),2,'no later arrival cue');
+  assert.equal(strokes(low),5,'outlined link, source ring, shaft and existing second chevron');
+  assert.equal(strokes(reduced),5);
+  assert.equal(strokes(high),5);
+  assert.equal(strokes(mark({...p,life:.03})),5,'source link survives the late tail');
   assert.ok(low.some(call => call[0] === 'set' && call[2] === '#a7e8f3'));
+});
+
+test('source links use recorded air/ground endpoints and static screen-sized dashes in every effects mode', () => {
+  for (const type of ['archer','tower','wizard','siege','gryphon'])
+    for (const reducedMotion of [false,true]) for (const quality of ['low','high'])
+      for (const scale of [.32,.48,1,1.5]) {
+        const p = projectile(type,{sourceAir:type === 'gryphon',targetAir:true});
+        const options = {reducedMotion,quality,scale}, first = mark(p,options), last = mark({...p,life:.03},options);
+        for (const calls of [first,last]) {
+          const dx = p.tx-p.sx, dy = (p.ty-34)-(p.sy-17-(p.sourceAir?17:0));
+          assert.ok(calls.some(call => call[0] === 'moveTo' && call[1] === -dx && call[2] === -dy));
+          assert.ok(calls.some(call => call[0] === 'lineTo' && call[1] === 0 && call[2] === 0));
+          assert.deepEqual(calls.filter(call => call[0] === 'setLineDash'),[['setLineDash',[3/scale,5/scale]],['setLineDash',[]]]);
+          const size = calls.find(call => call[0] === 'scale')[1];
+          assert.ok(size*scale >= .65,'minimum contact size in CSS pixels');
+          assert.ok(calls.filter(call => call[0] === 'set' && call[1] === 'lineWidth').slice(0,3).every(call => call[2]*scale >= .9));
+        }
+        if (reducedMotion) assert.deepEqual(first,last,'no opacity, dash offset, size or endpoint animation');
+      }
 });
 
 test('paid damage and lethal removal are already resolved when the first marker is drawn', () => {
@@ -127,5 +147,27 @@ test('terrain, actors, overlays and minimap remain byte-exact when no projectile
     }
     assert.deepEqual(current.canvas.calls,prior.canvas.calls);
     assert.deepEqual(current.mini.calls,prior.mini.calls);
+  }
+});
+
+
+test('synthetic readability scenes remain restoreable and freeze a declared five-role or 32-shot stress view', () => {
+  for (const dense of [false,true]) {
+    const snapshot = impactReadabilityScene(dense), game = Game.restore(snapshot);
+    assert.deepEqual(game.serialize(),snapshot);
+    assert.equal(game.state.projectiles.length,dense?32:5);
+    for (const p of game.state.projectiles) assert.ok(Math.hypot(p.tx-p.sx,p.ty-p.sy) <= (p.type === 'tower'?game.buildings.watchtower.range:game.units[p.type].range));
+    if (!dense) assert.deepEqual(new Set(game.state.projectiles.map(p => p.type)),new Set(['archer','wizard','siege','gryphon','tower']));
+    else {
+      assert.equal(game.state.units.length,140);
+      for (const p of game.state.projectiles) {
+        const source = game.state.units.find(u => u.type === p.type && u.side === p.side && u.x === p.sx && u.y === p.sy);
+        const target = game.state.units.find(u => u.side !== p.side && u.x === p.tx && u.y === p.ty && u.flying === p.targetAir);
+        assert.ok(source && target);
+        assert.equal(source.lane,target.lane,'same-road stress inputs');
+        assert.ok(Math.hypot(p.tx-p.sx,p.ty-p.sy) <= game.units[p.type].range);
+        assert.ok(!target.flying || game.units[p.type].canAttackAir);
+      }
+    }
   }
 });

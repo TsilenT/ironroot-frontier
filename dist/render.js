@@ -1733,22 +1733,36 @@ export class Renderer {
   drawProjectile(p) {
     const c = this.c,
       strength = Math.max(0, Math.min(1, p.life / p.maxLife)),
+      scale = Number.isFinite(this.scale) && this.scale > 0 ? this.scale : 1,
       targetY = p.ty - 17 - (p.targetAir ? 17 : 0),
       sourceY = p.sy - 17 - (p.sourceAir ? 17 : 0),
       dx = p.tx - p.sx, dy = targetY - sourceY,
       distance = Math.hypot(dx, dy), angle = Math.atan2(dy, dx),
       color = p.type === 'wizard' ? '#c4a4ed' : p.type === 'siege' ? '#e8ad69'
-        : p.type === 'gryphon' ? '#f4dcaa' : p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6';
+        : p.type === 'gryphon' ? '#f4dcaa' : p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6',
+      opacity = this.reducedMotion ? 1 : .65 + .35 * strength;
     if (strength <= 0) return;
     c.save();
     c.translate(p.tx, targetY);
-    // A short directional after-image communicates the shot without a later arrival.
-    if (!this.reducedMotion && this.vfx?.quality !== 'low' && strength > .6 && distance > 0) {
-      const length = Math.min(40, distance);
-      c.globalAlpha = strength * .35;
-      line(c, [[-dx / distance * length, -dy / distance * length], [0, 0]], color, 1.5);
+    // A static source-to-contact link appears all at once, including low/reduced effects.
+    if (distance > 0) {
+      const width = Math.max(1.25, .9 / scale);
+      c.setLineDash([3 / scale, 5 / scale]);
+      c.globalAlpha = opacity * .5;
+      line(c, [[-dx, -dy], [0, 0]], '#142720', width + 1 / scale);
+      c.globalAlpha = opacity * .65;
+      line(c, [[-dx, -dy], [0, 0]], color, width);
+      c.setLineDash([]);
+      c.beginPath();
+      c.arc(-dx, -dy, Math.max(3, 1.75 / scale), 0, Math.PI * 2);
+      c.strokeStyle = color;
+      c.lineWidth = width;
+      c.stroke();
     }
-    c.globalAlpha = this.reducedMotion ? 1 : strength;
+    c.globalAlpha = opacity;
+    // Retain a legible contact glyph at the smallest battlefield scale.
+    const contactScale = Math.max(1, .65 / scale);
+    c.scale(contactScale, contactScale);
     if (p.type === 'wizard') {
       ellipse(c, 0, 0, 7, 7, '#bfa0ed66');
       ellipse(c, 0, 0, 4, 4, '#e6cbff');

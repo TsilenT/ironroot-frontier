@@ -5,6 +5,53 @@ import {createHash} from 'node:crypto';
 
 const prelude = `    const c = this.c,
       strength = Math.max(0, Math.min(1, p.life / p.maxLife)),
+      scale = Number.isFinite(this.scale) && this.scale > 0 ? this.scale : 1,
+      targetY = p.ty - 17 - (p.targetAir ? 17 : 0),
+      sourceY = p.sy - 17 - (p.sourceAir ? 17 : 0),
+      dx = p.tx - p.sx, dy = targetY - sourceY,
+      distance = Math.hypot(dx, dy), angle = Math.atan2(dy, dx),
+      color = p.type === 'wizard' ? '#c4a4ed' : p.type === 'siege' ? '#e8ad69'
+        : p.type === 'gryphon' ? '#f4dcaa' : p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6',
+      opacity = this.reducedMotion ? 1 : .65 + .35 * strength;
+    if (strength <= 0) return;
+    c.save();
+    c.translate(p.tx, targetY);
+    // A static source-to-contact link appears all at once, including low/reduced effects.
+    if (distance > 0) {
+      const width = Math.max(1.25, .9 / scale);
+      c.setLineDash([3 / scale, 5 / scale]);
+      c.globalAlpha = opacity * .5;
+      line(c, [[-dx, -dy], [0, 0]], '#142720', width + 1 / scale);
+      c.globalAlpha = opacity * .65;
+      line(c, [[-dx, -dy], [0, 0]], color, width);
+      c.setLineDash([]);
+      c.beginPath();
+      c.arc(-dx, -dy, Math.max(3, 1.75 / scale), 0, Math.PI * 2);
+      c.strokeStyle = color;
+      c.lineWidth = width;
+      c.stroke();
+    }
+    c.globalAlpha = opacity;
+    // Retain a legible contact glyph at the smallest battlefield scale.
+    const contactScale = Math.max(1, .65 / scale);
+    c.scale(contactScale, contactScale);
+`;
+const priorPrelude = `    const t = 1 - p.life / p.maxLife;
+    const arc = p.type === 'siege' ? Math.sin(t * Math.PI) * 55 : 0;
+    c.save();
+    c.translate(
+      p.x,
+      p.y -
+        arc -
+        17 -
+        (p.sourceAir ? 17 * (1 - t) : 0) -
+        (p.targetAir ? 17 * t : 0),
+    );
+`;
+
+// Literal first-draft projection, retained only for native visual comparisons.
+const firstPrelude = `    const c = this.c,
+      strength = Math.max(0, Math.min(1, p.life / p.maxLife)),
       targetY = p.ty - 17 - (p.targetAir ? 17 : 0),
       sourceY = p.sy - 17 - (p.sourceAir ? 17 : 0),
       dx = p.tx - p.sx, dy = targetY - sourceY,
@@ -22,18 +69,14 @@ const prelude = `    const c = this.c,
     }
     c.globalAlpha = this.reducedMotion ? 1 : strength;
 `;
-const priorPrelude = `    const t = 1 - p.life / p.maxLife;
-    const arc = p.type === 'siege' ? Math.sin(t * Math.PI) * 55 : 0;
-    c.save();
-    c.translate(
-      p.x,
-      p.y -
-        arc -
-        17 -
-        (p.sourceAir ? 17 * (1 - t) : 0) -
-        (p.targetAir ? 17 * t : 0),
-    );
-`;
+
+export function rendererFirstImpact() {
+  const source = readFileSync(new URL('../dist/render.js', import.meta.url), 'utf8');
+  assert.equal(source.split(prelude).length - 1, 1, 'declared revision projection');
+  const first = source.replace(prelude, firstPrelude);
+  assert.equal(createHash('sha256').update(first).digest('hex'), 'f2101f2911ea7af745c9be9c063a1067432f575bcaa49d226b45573d7c204b6a', 'literal first-draft renderer from ed197b7');
+  return first;
+}
 
 export function rendererBeforeImpact() {
   let source = readFileSync(new URL('../dist/render.js', import.meta.url), 'utf8');
