@@ -9,6 +9,6 @@ export const currentRuntimeFiles=()=>{
   assert.equal(released.tree,'cc06854d38b1fad083ef7aed4f514db31d9c8820');
   assert.equal(released.files.length,61);
   const current=inspectRuntime(new URL('../dist/',import.meta.url).pathname);
-  assert.deepEqual(Object.keys(current.files),[...released.files,...additions].sort(),'released runtime paths plus six final-chapter modules and the read-only building upgrade view');
+  assert.deepEqual(Object.keys(current.files),[...released.files,...additions].sort(),'released runtime paths plus six final-chapter modules, the building upgrade view and reward stylesheet');
   return current;
 };

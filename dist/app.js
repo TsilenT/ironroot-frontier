@@ -3641,6 +3641,9 @@ function dialogDefaultFocus(layer) {
 }
 function syncDialogs() {
   syncInputScope();
+  // A reward belongs to its fresh result, not later Last Result/history visits.
+  if ($('resultModal').classList.contains('hidden'))
+    document.querySelector('.result').classList.remove('reward-motion');
   globalThis.queueMicrotask?.(syncMenuHistory);
   // A safety/recovery interruption takes precedence over a destructive prompt.
   if (!$('restartModal').classList.contains('hidden') &&
