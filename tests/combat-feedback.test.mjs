@@ -10,6 +10,8 @@ import { RecordingContext } from './rootwarden-canvas.mjs';
 import { installCanvas, makeRenderer, mockCanvas, digest } from './renderer-canvas.mjs';
 import { classicSnapshot } from './renderer-scenarios.mjs';
 import { units, poses, unit, recordUnit, combatSnapshots } from './combat-feedback-fixture.mjs';
+import {loadRendererBeforeImpact} from './impact-render-source.mjs';
+const {Renderer: BeforeImpact, drawUnitPortrait: beforeImpactPortrait} = await loadRendererBeforeImpact();
 const read = path => readFileSync(new URL(path, import.meta.url));
 const hash = path => createHash('sha256').update(read(path)).digest('hex');
 
@@ -117,9 +119,15 @@ test('historical source still produces unchanged readability hashes; portraits a
   assert.equal(hash('./fixtures/renderer-readability-lab.json'), '18929dc571b01f831a43cae59dbcf374ea61c766d12f0a37c6d77b0aedc4bc11');
   assert.equal(hash('../dist/rootwarden-art.js'), '70430d5e6a05963ecb245e3181d8ee43c2a21165a31260e75fc0403ba59bafda');
   const current = classicSnapshot(Renderer, drawUnitPortrait);
+  const beforeImpact = classicSnapshot(BeforeImpact, beforeImpactPortrait);
   assert.deepEqual(current.portraits, historical.portraits);
   assert.deepEqual(current.themes, historical.themes);
-  assert.deepEqual(current.frames, JSON.parse(read('./fixtures/renderer-combat-feedback.json')).frames);
+  assert.deepEqual(beforeImpact.frames, JSON.parse(read('./fixtures/renderer-combat-feedback.json')).frames);
+  for (const [viewport, frame] of Object.entries(current.frames)) {
+    const {main: _, ...geometry} = frame;
+    const {main: __, ...priorGeometry} = beforeImpact.frames[viewport];
+    assert.deepEqual(geometry, priorGeometry);
+  }
   for (const type of Object.keys(units)) for (const side of [0, 1]) {
     const canvas = mockCanvas(); drawUnitPortrait(canvas, type, side, { units });
     assert.equal(canvas.depth(), 0);

@@ -5,6 +5,8 @@ import { Renderer, drawUnitPortrait } from '../dist/render.js';
 import { MAPS, WORLD, LANES, Game, buildSites } from '../dist/engine.js';
 import { installCanvas, makeRenderer, styledCalls } from './renderer-canvas.mjs';
 import { classicSnapshot, gameFixture, viewports } from './renderer-scenarios.mjs';
+import {loadRendererBeforeImpact} from './impact-render-source.mjs';
+const {Renderer: BeforeImpact, drawUnitPortrait: beforeImpactPortrait} = await loadRendererBeforeImpact();
 
 const close = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} != ${b}`);
 const terrainRects = (renderer, color) => styledCalls(renderer.baseTerrain, 'fillRect').filter(call => call.style === color).map(call => call.args);
@@ -23,7 +25,8 @@ test('Classic retains frozen terrain, camera geometry, minimaps and portraits; c
     assert.notEqual(after, before, 'intentional renderer increment, not a rewritten historical baseline');
   }
   const visual = JSON.parse(readFileSync(new URL('./fixtures/renderer-combat-feedback.json', import.meta.url), 'utf8'));
-  assert.deepEqual(actual.frames, visual.frames);
+  assert.deepEqual(classicSnapshot(BeforeImpact, beforeImpactPortrait).frames, visual.frames, 'historical whole-frame oracle remains unchanged');
+  assert.notDeepEqual(actual.frames,visual.frames,'the new impact frames are an intentional separate change');
 });
 
 test('setMap accepts registered IDs/descriptors, rejects foreign geometry, and preserves theme', () => {

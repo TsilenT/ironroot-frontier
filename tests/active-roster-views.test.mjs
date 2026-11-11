@@ -80,6 +80,7 @@ test('accepted historical frames remain pinned; calm renderer commands, geometry
   // Inactive units still use the accepted draw commands, not just similar art.
   for (const mapId of Object.keys(MAPS)) for (const [width, height] of viewports) {
     const game = gameFixture(mapId), a = makeRenderer(Renderer, width, height), b = makeRenderer(AcceptedRenderer, width, height);
+    game.state.projectiles = []; // Isolate unchanged troop art; impact presentation has separate checks.
     for (const unit of game.state.units) { unit.attack = 0; unit.hit = 0; }
     for (const renderer of [a, b]) {
       renderer.setMap(mapId); renderer.camera = game.map.width / 2;

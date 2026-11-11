@@ -2,9 +2,10 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {rendererBeforeImpact} from './impact-render-source.mjs';
 
 export function rendererBeforeLocomotion() {
-  let source = readFileSync(new URL('../dist/render.js', import.meta.url), 'utf8');
+  let source = rendererBeforeImpact();
   assert.equal(source.split('unitMotion').length - 1, 8);
   source = source.replaceAll('unitMotion', 'rootwardenMotion');
   const changes = [

@@ -568,68 +568,7 @@ export class Renderer {
       if (Object.hasOwn(this.buildings, e.type)) this.drawBuilding(e);
       else this.drawUnit(e, s.time, s.colossus);
     }
-    for (const p of s.projectiles) {
-      const t = 1 - p.life / p.maxLife;
-      const arc = p.type === 'siege' ? Math.sin(t * Math.PI) * 55 : 0;
-      c.save();
-      c.translate(
-        p.x,
-        p.y -
-          arc -
-          17 -
-          (p.sourceAir ? 17 * (1 - t) : 0) -
-          (p.targetAir ? 17 * t : 0),
-      );
-      if (p.type === 'wizard') {
-        ellipse(c, 0, 0, 7, 7, '#bfa0ed66');
-        ellipse(c, 0, 0, 4, 4, '#e6cbff');
-      } else if (p.type === 'gryphon') {
-        line(
-          c,
-          [
-            [-7, -4],
-            [5, 1],
-          ],
-          '#f4dcaa',
-          2,
-        );
-        line(
-          c,
-          [
-            [-7, 1],
-            [5, 6],
-          ],
-          '#f4dcaa',
-          2,
-        );
-      } else if (p.type === 'siege') {
-        ellipse(c, 0, 0, 5, 5, '#e8ad69');
-        ellipse(c, -2, -2, 2, 2, '#fff0b2');
-      } else {
-        c.rotate(Math.atan2(p.ty - p.sy, p.tx - p.sx));
-        line(
-          c,
-          [
-            [-11, 0],
-            [7, 0],
-          ],
-          p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6',
-          2,
-        );
-        poly(
-          c,
-          [
-            [8, 0],
-            [2, -3],
-            [2, 3],
-          ],
-          p.citadelExtra ? '#a7e8f3' : '#f3e4b5',
-        );
-        // A second chevron identifies the extra arrow without relying on colour.
-        if (p.citadelExtra) line(c, [[-7,-4],[-2,0],[-7,4]], '#a7e8f3', 2);
-      }
-      c.restore();
-    }
+    for (const p of s.projectiles) this.drawProjectile(p);
     // Paths stay below actors; complete route labels clear building pennants.
     drawFlightLabels(this, flightLabels);
     // Control labels stay readable above troops and projectiles; zone fills remain below them.
@@ -1789,6 +1728,77 @@ export class Renderer {
     c.fillRect(x - border, y - border, w + border * 2, h + border * 2);
     c.fillStyle = color;
     c.fillRect(x, y, w * Math.max(0, Math.min(1, p)), h);
+  }
+  /** Damage already resolved at launch; this is a fading contact mark. */
+  drawProjectile(p) {
+    const c = this.c,
+      strength = Math.max(0, Math.min(1, p.life / p.maxLife)),
+      targetY = p.ty - 17 - (p.targetAir ? 17 : 0),
+      sourceY = p.sy - 17 - (p.sourceAir ? 17 : 0),
+      dx = p.tx - p.sx, dy = targetY - sourceY,
+      distance = Math.hypot(dx, dy), angle = Math.atan2(dy, dx),
+      color = p.type === 'wizard' ? '#c4a4ed' : p.type === 'siege' ? '#e8ad69'
+        : p.type === 'gryphon' ? '#f4dcaa' : p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6';
+    if (strength <= 0) return;
+    c.save();
+    c.translate(p.tx, targetY);
+    // A short directional after-image communicates the shot without a later arrival.
+    if (!this.reducedMotion && this.vfx?.quality !== 'low' && strength > .6 && distance > 0) {
+      const length = Math.min(40, distance);
+      c.globalAlpha = strength * .35;
+      line(c, [[-dx / distance * length, -dy / distance * length], [0, 0]], color, 1.5);
+    }
+    c.globalAlpha = this.reducedMotion ? 1 : strength;
+    if (p.type === 'wizard') {
+      ellipse(c, 0, 0, 7, 7, '#bfa0ed66');
+      ellipse(c, 0, 0, 4, 4, '#e6cbff');
+    } else if (p.type === 'gryphon') {
+      line(
+        c,
+        [
+          [-7, -4],
+          [5, 1],
+        ],
+        '#f4dcaa',
+        2,
+      );
+      line(
+        c,
+        [
+          [-7, 1],
+          [5, 6],
+        ],
+        '#f4dcaa',
+        2,
+      );
+    } else if (p.type === 'siege') {
+      ellipse(c, 0, 0, 5, 5, '#e8ad69');
+      ellipse(c, -2, -2, 2, 2, '#fff0b2');
+    } else {
+      c.rotate(angle);
+      c.translate(-8, 0);
+      line(
+        c,
+        [
+          [-11, 0],
+          [7, 0],
+        ],
+        p.citadelExtra ? '#a7e8f3' : p.side ? '#ebbc8a' : '#dae7b6',
+        2,
+      );
+      poly(
+        c,
+        [
+          [8, 0],
+          [2, -3],
+          [2, 3],
+        ],
+        p.citadelExtra ? '#a7e8f3' : '#f3e4b5',
+      );
+      // A second chevron identifies the extra arrow without relying on colour.
+      if (p.citadelExtra) line(c, [[-7,-4],[-2,0],[-7,4]], '#a7e8f3', 2);
+    }
+    c.restore();
   }
   drawEffect(e) {
     const c = this.c,
