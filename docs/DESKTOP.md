@@ -13,7 +13,9 @@ npm test
 npm start
 ```
 
-`stage` copies the current `../dist/` into ignored `desktop/game/`. It does not modify the browser files. Restage after browser changes. Keep `package-lock.json` committed for repeatable installs; keep `node_modules/`, `game/` and `release/` out of source control. Staging currently requires a flat dist containing regular files, rejecting links or nested folders until deliberately supported.
+`stage` validates `../dist/` with the browser publication preflight, checks browser/desktop/document/cache release identities, and copies only that runtime inventory. It requires flat regular files under a conservative ASCII filename policy, rejecting links, nested folders, Windows device names and case collisions. A temporary copy is verified against the source hashes before replacing generated `desktop/game/`; validation or copy failures preserve the previous stage.
+
+During replacement the old stage is renamed into the ignored staging workspace as `previous`, then the verified `new` directory is promoted to `game`. A reported promotion error triggers rollback. If rollback also fails, both directories are retained and the error prints the recovery location; the script never removes a competing destination to force rollback. Cleanup removes the backup only after promotion succeeds or rollback restores the old stage. This covers reported filesystem errors, not crash atomicity or power-loss durability. Browser files and player-profile storage are untouched. Restage after browser changes. Keep `package-lock.json` committed for repeatable installs; keep `node_modules/`, `game/`, `.game-stage-*/` and `release/` out of source control.
 
 ## Private build artifacts
 
@@ -52,7 +54,7 @@ Both `npm audit` and `npm audit --omit=dev` reported **zero findings** after a c
 - Asset resolution checks extensions, path containment and real paths, rejecting traversal and symlink escape. The packaged build serves only its staged game directory.
 - CSP blocks remote scripts, connections, workers, frames and objects. Inline styles remain allowed because the existing game uses dynamic style attributes. Inline scripts and eval remain blocked.
 - Service-worker privilege is never granted, worker sources are blocked, and requests for `service-worker.js` are rejected. The browser build's attempted registration may log an expected rejection; no service worker can control the desktop game.
-- External Google Fonts are intentionally blocked. The game's existing local system-font fallbacks are used; there is no silent font download.
+- Bundled fonts and their notices are included in the runtime inventory. External font requests remain blocked; there is no silent font download.
 - Developer tools are disabled in packaged builds. There is no telemetry or auto-update integration in the wrapper.
 
 Keep Electron and tooling patched and audit dependencies before shipping. Passing source-contract tests is not a penetration test or a guarantee of runtime isolation.
@@ -69,7 +71,7 @@ Do not rename the app, partition or origin without a save migration. Browser-sit
 
 The wrapper provides a single-instance window, restoration/focus on a second launch, native fullscreen and zoom menu actions, minimum 800×600 window size, macOS reactivation, and an explicit crash/load failure dialog. It does not invent a second pause handler; the game's visibility handling remains responsible for hidden-window pause behavior.
 
-### Portable backup gap in desktop 0.8.0
+### Portable backup gap
 
 **Desktop JSON export is not implemented.** Both normal backup export and retained-session export call the same application helper. When running at `ironroot:`, that helper throws the explicit message “File export is not yet enabled in the desktop shell. Use the browser edition for portable backups.” It stops before creating a Blob, clicking a download link or reporting that a download started. The wrapper separately denies every download, including a correctly named, small JSON Blob from the local game origin. There is no native Save dialog or download exception.
 
@@ -104,4 +106,16 @@ Still absent: Steamworks integration and SDK/license review, achievements and cl
 
 This managed workspace has a read-only home cache. Build tooling can instead use writable cache locations, for example `npm_config_cache=/tmp/ironroot-npm-cache XDG_CACHE_HOME=/tmp/ironroot-desktop-cache ELECTRON_BUILDER_CACHE=/tmp/ironroot-builder-cache npm run package:linux`. Use the same npm/cache environment for `npm ci` when needed. Writable download caches do not resolve the separate runtime sandbox, socket or display requirements.
 
-Current isolated browser and desktop source metadata are aligned at 0.10.0. The previously verified 0.7.0 Linux archive is historical, not an artifact of the current source. Restage and rebuild before distributing a new package. The desktop runtime gate remains open.
+Browser and desktop metadata must match the current root package version. The older archive checks above are historical; restage and rebuild before distributing a new package. The desktop runtime gate remains open.
+
+### Current public-source assessment
+
+This staging improvement starts from rewritten public main `238a22c`, with browser/desktop version 0.40.7. It changes build preparation, not game saves, renderer privileges or portable export. Fourteen staging tests exercise exact inventory copying, first-time staging, stray JSON and missing-asset rejection, failed/interrupted copies, changed copied bytes, release-identity mismatches and Windows filename portability. Rename fault injection verifies backup failure, promotion failure with successful rollback, and retention of the recovery directory when promotion and rollback both fail. These are handled-error checks, not abrupt-termination or native Windows file-lock tests. Existing export/download denial remains in place.
+
+A Linux-hosted Windows x64 ZIP build succeeded with pinned Electron 45.2.3 and electron-builder 26.18.1. The ASAR contained exactly 74 regular files: 71 verified game assets, the main/security modules and package metadata. All non-metadata bytes matched their staged sources; the packaged version matched; development dependencies were absent. ZIP CRCs and its embedded ASAR matched, and the executable's PE header identified x86-64. These are archive/content checks, **not Windows execution evidence**. Executable resource editing and signing remain disabled by the existing configuration. The archive and all generated evidence stayed outside the repository.
+
+An actual Linux Electron launch exited 133 before opening a game window: its SUID sandbox helper was not configured with the ownership/mode Electron requires. This host also has no configured display or Xvfb, and no Windows/Wine runtime. No sandbox setting or helper permission was changed. Windows launch, native Save/Open dialogs, native save/quit/restart/upgrade behavior and Steam-client launch remain unverified. Electron's [headless-testing guidance](https://www.electronjs.org/docs/latest/tutorial/testing-on-headless-ci) requires a display driver; a successful [cross-platform build](https://www.electron.build/docs/features/multi-platform-build/) does not establish native runtime behavior.
+
+The most important functional gap remains desktop portable backup/export: the browser edition cannot read the desktop profile, and the existing source/mocked checks do not establish native import behavior. Complete the coordinated bounded-transfer/native-dialog implementation and the per-OS cases above before enabling export. Steam Cloud is also unconfigured: Valve requires [explicit file-path configuration or Cloud API integration](https://partner.steamgames.com/doc/features/cloud), rather than automatically discovering this Electron profile. Achievements and Cloud are optional product features; do not advertise them as implemented.
+
+Before calling a Windows release ready, exercise the packaged app on Windows offline, verify the native save and recovery paths, then test its executable/depot configuration through the Steam client using Valve's [upload and launch guidance](https://partner.steamgames.com/doc/sdk/uploading). No Steam account, upload, paid runner, signing service or publication was used for this assessment.
