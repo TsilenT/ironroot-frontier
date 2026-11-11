@@ -110,6 +110,8 @@ export function githubApi(repository, token, fetchImpl = fetch) {
           'Content-Type': 'application/json',
           'X-GitHub-Api-Version': '2022-11-28',
           'User-Agent': 'ironroot-runtime-publisher',
+          // Ask HTTP caches to revalidate mutable refs; immutable reads stay as before.
+          ...(method === 'GET' && endpoint === '/git/ref/heads/main' ? {'Cache-Control': 'no-cache'} : {}),
         },
         ...(body === undefined ? {} : {body: JSON.stringify(body)}),
       });
@@ -231,7 +233,13 @@ export async function publishRuntime({snapshot, sourceSha, sourceApi, targetApi}
   // force:false also rejects a racing non-fast-forward change after the preceding read.
   const updated = await targetApi('PATCH', '/git/refs/heads/main', {sha: commitSha, force: false});
   requireThat(updated.ref === 'refs/heads/main' && updated.object?.sha === commitSha && updated.object.type === 'commit', 'Publication result is uncertain; inspect public main before rerunning.');
-  requireThat(await head(targetApi) === commitSha, 'Public main moved after publication; inspect its current state.');
+  let verifiedHead = await head(targetApi);
+  // Only the known pre-write head merits one read-only confirmation. A distinct
+  // head is a possible concurrent move: reject it immediately, even if another
+  // read might return our commit. Never repeat PATCH or accept tree equivalence.
+  if (verifiedHead === targetHead) verifiedHead = await head(targetApi);
+  requireThat(verifiedHead === commitSha,
+    `Public main did not verify after publication; inspect its current state. Expected ${commitSha}, observed ${verifiedHead}. No writes were retried.`);
   return {status: 'published', commit: commitSha};
 }
 
