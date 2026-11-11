@@ -109,3 +109,38 @@ test('pending preferences prevent an update until their exact levels are saved',
     expect(JSON.parse((await domains(page))[K.settings]).musicVolume).toBe(0);
   } finally {await request.delete(f.basePath);}
 });
+
+test('an installed update reloads fully offline while preserving the exact paused checkpoint',async({page,context,request},info)=>{
+  test.skip(info.project.name!=='desktop','Worker/cache behavior uses the same Chromium path on all profiles.');
+  test.setTimeout(180000);const f=await session(page,request);
+  try {
+    await readyBattle(page,f);await press(page,'#pause');await advance(page,request,f);
+    const before=await domains(page),checkpoint=await saved(page),navigations=[];
+    page.on('response',response=>{if(response.request().isNavigationRequest())navigations.push(response.fromServiceWorker());});
+    await context.setOffline(true);await press(page,'#pauseVeil [data-runtime-update-action]');
+    await expect.poll(()=>footer(page)).toContain('v'+f.to);
+    expect(navigations).toContain(true);expect(await domains(page)).toEqual(before);
+    expect(await saved(page)).toEqual(checkpoint);await expect(page.locator('#resumeSaved')).toBeVisible();
+    await expect(page.locator('#welcome [data-runtime-update]')).toBeHidden();
+  } finally {await context.setOffline(false);await request.delete(f.basePath);}
+});
+
+test('a stale tab cannot update over another tab’s checkpoint and can update safely after returning to title',async({page,context,request},info)=>{
+  test.skip(info.project.name!=='desktop','Cross-tab ownership uses the same storage path on all profiles.');
+  test.setTimeout(180000);const f=await session(page,request);let other;
+  try {
+    await readyBattle(page,f);await press(page,'#pause');const earlier=await domains(page);
+    await advance(page,request,f);other=await context.newPage();await other.goto(f.basePath);
+    await press(other,'#resumeSaved');await other.waitForTimeout(250);await press(other,'#pause');
+    const latest=await domains(other);expect(latest[K.battle]).not.toBe(earlier[K.battle]);
+    await page.bringToFront();await press(page,'#pauseVeil [data-runtime-update-action]');
+    await expect(page.locator('#pauseUpdateStatus')).toContainText('battle cannot be safely saved');
+    await expect(page.locator('#pauseVeil')).toBeVisible();expect(await footer(page)).toContain('v'+f.from);
+    expect(await domains(page)).toEqual(latest);expect(await domains(other)).toEqual(latest);
+    await press(page,'#saveExit');await expect(page.locator('#welcome')).toBeVisible();
+    await press(page,'#welcome [data-runtime-update-action]');
+    await expect.poll(()=>footer(page)).toContain('v'+f.to);
+    expect(await domains(page)).toEqual(latest);expect(await domains(other)).toEqual(latest);
+    await expect(page.locator('#resumeSaved')).toBeVisible();
+  } finally {await other?.close();await request.delete(f.basePath);}
+});
