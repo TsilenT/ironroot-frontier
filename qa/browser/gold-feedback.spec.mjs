@@ -2,6 +2,8 @@ import {expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
 import {encodeBattle} from '../../dist/battle-codec.js';
 import {BACKUP_STORAGE_KEYS} from '../../dist/backup.js';
+import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
+import {campaignFixture} from './campaign-fixtures.mjs';
 import {test,press,seedOnce,homePoint,tapPoint} from './map-browser-helpers.mjs';
 
 async function battle(page) {
@@ -18,8 +20,9 @@ async function fits(page) {
   expect(label.y).toBeGreaterThanOrEqual(0); expect(label.y+label.height).toBeLessThanOrEqual(viewport.height);
   const header=await page.locator('#topbar').boundingBox();
   expect(label.y,'cue clears both citadel readouts, even below a portrait resource row').toBeGreaterThanOrEqual(header.y+header.height);
-  for (const id of ['gold','income','army','time']) {
+  for (const id of ['gold','income','army','time','objectiveIdentity','objectiveProgress','objectiveTime','protectedTargets','protectedNavigation','campaignTeaching']) {
     const box=await page.locator('#'+id).boundingBox();
+    if (!box) continue;
     const overlap=Math.max(0,Math.min(label.x+label.width,box.x+box.width)-Math.max(label.x,box.x))
       *Math.max(0,Math.min(label.y+label.height,box.y+box.height)-Math.max(label.y,box.y));
     expect(overlap,'cue does not cover '+id).toBe(0);
@@ -46,6 +49,56 @@ test('paid construction shows one stationary amount; income and reload do not re
   await press(page,'#pause'); await press(page,'#saveExit');
   await page.reload(); await press(page,'#resumeSaved');
   await expect(page.locator('#goldChange')).toBeHidden();
+});
+
+test('short landscape keeps purchase and refund cues clear of the objective sidebar',async({page},info)=>{
+  await page.setViewportSize({width:740,height:320});
+  await page.clock.install({time:new Date('2026-01-01T00:00:00Z')});
+  const game=await battle(page),building=game.state.buildings.find(b=>b.side===0);
+  await expect(page.locator('#app')).toHaveClass(/protected-sidebar/);
+  await tapPoint(page,await homePoint(page,game.map,building.x,building.y));
+  await expect(page.locator('#upgrade')).toBeVisible();
+  await page.clock.pauseAt(new Date('2026-01-01T01:00:00Z'));
+  await page.locator('#upgrade').evaluate(button=>button.click());
+  await expect(page.locator('#goldChange')).toHaveText('−'+game.upgradeCost(building));
+  await fits(page);
+  await page.screenshot({path:info.outputPath('gold-sidebar-purchase.png')});
+  game.upgrade(building.id);
+  await page.locator('#sell').evaluate(button=>button.click());
+  await expect(page.locator('#goldChange')).toHaveText('+'+game.sell(building.id).refund);
+  await fits(page);
+  await page.screenshot({path:info.outputPath('gold-sidebar-refund.png')});
+});
+
+test('protected sidebar clears controls and omits the optional cue when it cannot fit',async({page},info)=>{
+  await page.setViewportSize({width:667,height:320});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  const fixture=campaignFixture('protected'),game=Game.restore(fixture.envelope.game);
+  const building=game.state.buildings.find(b=>b.side===0&&b.type==='barracks');
+  await seedOnce(page,{
+    [BACKUP_STORAGE_KEYS.battle]:JSON.stringify(fixture.envelope),
+    [CAMPAIGN_STORAGE_KEY]:JSON.stringify(fixture.progress),
+  });
+  await press(page,'#resumeSaved');
+  await expect(page.locator('#app')).toHaveClass(/protected-sidebar/);
+  await expect(page.locator('[data-protected-id]')).toHaveCount(2);
+  await tapPoint(page,await homePoint(page,game.map,building.x,building.y));
+  await expect(page.locator('#upgrade')).toBeVisible();
+  await press(page,'#upgrade');
+  await expect(page.locator('#goldChange')).toHaveText('−'+game.upgradeCost(building));
+  await fits(page);
+  expect(await page.locator('#goldChange').evaluate(el=>el.getAnimations().length)).toBe(0);
+  await page.screenshot({path:info.outputPath('gold-sidebar-protected.png')});
+  await page.setViewportSize({width:667,height:280});
+  await expect(page.locator('#viewportModal')).toBeHidden();
+  await tapPoint(page,await homePoint(page,game.map,building.x,building.y));
+  await expect(page.locator('#upgrade')).toBeVisible();
+  await press(page,'#upgrade');
+  await expect(page.locator('#selectionTitle')).toHaveText(game.buildings.barracks.name);
+  await expect(page.locator('#selectionDetail')).toContainText('Level 3');
+  await expect(page.locator('#goldChange')).toBeHidden();
+  await expect(page.locator('#toast')).toContainText('Upgraded:');
+  await page.screenshot({path:info.outputPath('gold-sidebar-no-space.png')});
 });
 
 test('upgrade and salvage use actual amounts and the newest cue owns its full lifetime',async({page},info)=>{

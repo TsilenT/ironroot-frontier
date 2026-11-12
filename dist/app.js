@@ -485,10 +485,18 @@ function showGoldFeedback(identity, before) {
   label.textContent = view.text;
   label.dataset.kind = view.kind;
   label.title = `${view.kind === 'spent' ? 'Spent' : 'Refunded'} ${view.amount} gold`;
-  // Portrait headers put citadel health below the resource row. Keep the cue
-  // below that entire header, rather than covering a health label or bar.
-  label.style.top = `${$('topbar').getBoundingClientRect().bottom + 4 - label.parentElement.getBoundingClientRect().top}px`;
+  // Portrait headers include citadel health. Short landscape also puts the
+  // objectives in this column, immediately below the header. Clear both.
+  const sidebar = $('app').classList.contains('protected-sidebar');
+  const anchor = sidebar ? $('objectiveHUD') : $('topbar');
+  label.style.top = `${anchor.getBoundingClientRect().bottom + 4 - label.parentElement.getBoundingClientRect().top}px`;
   label.classList.remove('hidden');
+  // This extra receipt is optional: a very short protected sidebar may have no
+  // free band between targets and navigation. Preserve those controls instead.
+  if (sidebar && label.getBoundingClientRect().bottom + 4 > $('protectedNavigation').getBoundingClientRect().top) {
+    clearGoldFeedback();
+    return;
+  }
   goldFeedbackTimeout = setTimeout(clearGoldFeedback, 2000);
 }
 function setSound() {
