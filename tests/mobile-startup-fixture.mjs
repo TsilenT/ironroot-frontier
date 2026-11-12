@@ -93,7 +93,7 @@ export function startupHarness({width=320,height=480,source=app,insets={}}={}) {
   inputScope:createInputScopeGuard('welcome'),controller:{reset(){}},resetBattleGesture(){log.interruptions++;},closeSelectionArmed:false,
   renderer:{width:width,height:height,camera:450,zoom:1,scale:1,resize(){log.resizes++;},setMap(){},setTheme(){},clampCamera(){},vfx:{reset(){},setPreferences(){}}},
   populateFieldGuide(){},populateBuildCards(){},renderMapSelection(){},syncProfileSafety(){},showRecoverySettings(){throw Error('unexpected recovery');},beginBattleReport(){},
-  battleSession:{claim(){log.claims++;},status:()=> 'current',remove:()=>true},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},
+  battleSession:{claim(){log.claims++;},status:()=> 'current',remove:()=>true},save(){log.saves++;return true;},initAudio(){},sound(){},toast(){},positionToast(){},clearGoldFeedback(){},resetGoldFeedback(){},showGoldFeedback(){},
   getComputedStyle:()=>({visibility:'visible',overflowX:'visible',overflowY:'visible',...Object.fromEntries(['Top','Right','Bottom','Left'].map(side=>['padding'+side,`${insets[side.toLowerCase()]||0}px`]))}),
   iconSVG:()=>'',timeText:t=>String(t),setTimeout,requestAnimationFrame(){},pauseControl(){},
  };

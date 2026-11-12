@@ -45,7 +45,7 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
     getComputedStyle:()=>({paddingTop:'0px',paddingRight:'0px',paddingBottom:'0px',paddingLeft:'0px'}),
     $,mobileLayout:'ordinary',interruptMobileInput(){},syncViewportSafety(){},ui:state.ui,game:createCampaignMission(mission),currentCampaign:mission,currentChallenge:null,createProtectedObjectiveMonitor,protectedLossDetails,
     protectedMonitor:null,protectedAlerts:null,createObjectiveAlertPolicy,started:true,objectiveOutcome:null,battleSession:{status:()=>state.stale?'stale':'owned'},sound:(name,options)=>{(state.sounds??=[]).push({name,options});},protectedControls:new Map(),armedProtectedControl:null,follow:true,dialogLayers,
-    canInteract:()=>state.canInteract,citadelDialogSafe:()=>false,updateSelection(){},
+    canInteract:()=>state.canInteract,citadelDialogSafe:()=>false,updateSelection(){},clearGoldFeedback(){},
     cancel:()=>{state.cancelled++;state.ui={build:null,spell:false,selected:null};context.ui=state.ui;},
     syncInputScope:()=>state.scopeUpdates++,resetBattleGesture:()=>state.reset++, renderer:{camera:123,resize(){},clampCamera:()=>state.clamped++},
     toast:text=>state.toasts.push(text),positionToast:()=>state.layoutUpdates++,
