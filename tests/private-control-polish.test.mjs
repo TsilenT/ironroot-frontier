@@ -53,7 +53,7 @@ test('only the three incorrect navigation instructions are changed to the visibl
  assert.match(source,/Preferences apply to this page only\. Open Options to retry saving\./);assert.match(source,/Download the original save, then open Options to restore a compatible backup\./);assert.match(html,/Fullscreen is in Options, available from the title screen or pause menu\./);assert.doesNotMatch(source,/Preferences apply to this page only\. Open Preferences|original save, then open Preferences/);assert.doesNotMatch(html,/Fullscreen is in Preferences/);
 });
 test('current0.40 protocol32/catalog42 and declared art/cache exceptions and original64-file oracle retain exact d0327c6 source',()=>{
- const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.7');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.7';/);assert.match(html,/v0\.40\.7/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
+ const pkg=JSON.parse(read('../package.json')),desktop=JSON.parse(read('../desktop/package.json')),lock=JSON.parse(read('../desktop/package-lock.json'));assert.equal(pkg.version,'0.40.8');assert.equal(desktop.version,pkg.version);assert.equal(lock.version,pkg.version);assert.equal(lock.packages[''].version,pkg.version);assert.match(read('../dist/service-worker.js'),/const VERSION = 'ironroot-v0\.40\.8';/);assert.match(html,/v0\.40\.8/);assert.equal(CURRENT_PROFILE_PROTOCOL_VERSION,32);const overview=campaign.getProgressionCampaignOverview(campaign.createCampaignProgress());assert.equal(overview.total,42);assert.equal(overview.maxStars,126);const chapter=overview.chapters.find(c=>c.number===10);assert.equal(chapter.total,5);assert.equal(chapter.completed,false);
  // This literal aggregate was read from d0327c6 Git blobs, not generated from
  // the candidate. Existing runtime-catalog preserves the separate released
  // path oracle and exactly six private additions. The three permitted control
@@ -98,7 +98,7 @@ test('current0.40 protocol32/catalog42 and declared art/cache exceptions and ori
  assert.equal(createHash('sha256').update(backup).digest('hex'),backupParent);
  const renderParent=createHash('sha256').update(rendererBeforeObliqueArt()).digest('hex');
  const fogParent=createHash('sha256').update(fogViewBeforeLocomotion()).digest('hex');
- let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.7').length-1,1);sw=sw.replace('ironroot-v0.40.7','ironroot-v0.40.0');
+ let sw=read('../dist/service-worker.js');assert.equal(sw.split('ironroot-v0.40.8').length-1,1);sw=sw.replace('ironroot-v0.40.8','ironroot-v0.40.0');
  const upgradeAsset="  './building-upgrade-view.js',\n";
  assert.equal(sw.split(upgradeAsset).length-1,1);sw=sw.replace(upgradeAsset,'');
  const rewardAsset="  './reward-feedback.css',\n";
@@ -110,5 +110,35 @@ test('current0.40 protocol32/catalog42 and declared art/cache exceptions and ori
  const updateMessage="\n// Reply only over the request's private port; discovery never navigates clients.\nself.addEventListener('message', (event) => {\n  if (event.data?.type === 'IRONROOT_RUNTIME_VERSION')\n    event.ports?.[0]?.postMessage({type: 'IRONROOT_RUNTIME_VERSION', version: VERSION});\n});\n";
  assert.equal(sw.split(updateMessage).length-1,1);sw=sw.replace(updateMessage,'');
  const swParent='2d81977dc8cfcd71a365091bc449f0fd8ee7bd0b1464af69ce471db60918be12';assert.equal(createHash('sha256').update(sw).digest('hex'),swParent);
- const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','building-upgrade-view.js','reward-feedback.css','strategy-feedback-view.js','runtime-update.js'].includes(path)).map(([path,hash])=>[path,path==='fog-view.js'?fogParent:path==='profile-session.js'?profileParent:path==='backup.js'?backupParent:path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,71);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
+
+ // Keyboard focus is a declared presentation-only exception. Reverse only
+ // these exact reviewed hunks to the independently read b99d9c4 parent;
+ // keep the original d0327c6 64-file aggregate unchanged.
+ const trainingParent="bcb5081f8aeff6773f777885912259630305b7ed598d82a44242d011aa23532f";
+ let training=read('../dist/training-app.js');
+ const trainingFocusAdditions=[
+  [
+    "  let miniPointer = null, visualGame = null, keyboardFocus = false;",
+    "  let miniPointer = null, visualGame = null;"
+  ],
+  [
+    "  function refresh() {\n    const previousFocus = doc.activeElement;\n    const coachKeyboardFocus = keyboardFocus && previousFocus?.closest('.coach');",
+    "  function refresh() {"
+  ],
+  [
+    "    // Disabling/removing the active action drops native focus onto the page,\n    // whose sequential Tab position can skip the newly revealed Continue.\n    // Repair only keyboard focus that this refresh made unusable. Pointer\n    // activations retain their native focus/scroll behavior; valid controls\n    // (including Pause, Restart and disclosures) keep focus during observation.\n    if (coachKeyboardFocus && (!previousFocus.isConnected || previousFocus.disabled || previousFocus.closest('[hidden]')) &&\n        (doc.activeElement === previousFocus || doc.activeElement === doc.body)) {\n      const next = $('continueLesson');\n      if (!next.hidden && !next.disabled) { next.focus({ preventScroll:true }); revealCoachControl(next); }\n      else focusStep();\n    }\n",
+    ""
+  ],
+  [
+    "  doc.addEventListener('pointerdown', (event) => { keyboardFocus = false; coachAlignment.beginPointer(event); inputScope.pointerDown(event); }, { capture:true });",
+    "  doc.addEventListener('pointerdown', (event) => { coachAlignment.beginPointer(event); inputScope.pointerDown(event); }, { capture:true });"
+  ],
+  [
+    "  doc.addEventListener('keydown', (event) => { keyboardFocus = true; coachAlignment.keyboard(); if (inputScope.keyDown(event)) stop(event); }, { capture:true });",
+    "  doc.addEventListener('keydown', (event) => { coachAlignment.keyboard(); if (inputScope.keyDown(event)) stop(event); }, { capture:true });"
+  ]
+];
+ for(const [addition,parent] of trainingFocusAdditions){assert.equal(training.split(addition).length-1,1,'exact keyboard-focus addition');training=training.replace(addition,parent);}
+ assert.equal(createHash('sha256').update(training).digest('hex'),trainingParent,'all other b99d9c4 practice bytes');
+ const files=currentRuntimeFiles(),stable=Object.entries(files.files).filter(([path])=>!['app.js','index.html','styles.css','building-upgrade-view.js','reward-feedback.css','strategy-feedback-view.js','runtime-update.js'].includes(path)).map(([path,hash])=>[path,path==='training-app.js'?trainingParent:path==='fog-view.js'?fogParent:path==='profile-session.js'?profileParent:path==='backup.js'?backupParent:path==='render.js'?renderParent:path==='service-worker.js'?swParent:path==='battle-report.js'?reportParent:path==='report-view.js'?viewParent:path==='final-chapter-view.js'?cueParent:hash]);assert.equal(files.runtimeFiles,71);assert.equal(stable.length,64);assert.equal(createHash('sha256').update(JSON.stringify(stable)).digest('hex'),'7ac3de73da8a0b93408dde4d5229b22a47eda6edf1273e1c9a769814ce536af1');
 });

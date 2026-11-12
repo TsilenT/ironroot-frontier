@@ -311,9 +311,9 @@ test('keyboard can choose place pause navigate and reach every practice control 
   await expect(page.locator('[data-build="barracks"]')).toHaveAttribute('aria-pressed','true');
   const before=await gold(page);await page.locator('[data-site-index="0"]').focus();await page.keyboard.press('Space');
   expect(await gold(page)).toBe(before-BUILDINGS.barracks.cost);await expect(page.locator('#continueLesson')).toHaveText('Continue');
-  await page.locator('#continueLesson').focus();await page.keyboard.press('Enter');
+  await expect(page.locator('#continueLesson')).toBeFocused();await page.keyboard.press('Enter');
   await expect(page.locator('#stepTitle')).toBeFocused();await expect(page.locator('#continueLesson')).toHaveText('Start observation');
-  await page.locator('#continueLesson').focus();await page.keyboard.press('Space');await expect(page.locator('#stepTitle')).toBeFocused();
+  await page.keyboard.press('Tab');await expect(page.locator('#continueLesson')).toBeFocused();await page.keyboard.press('Space');await expect(page.locator('#stepTitle')).toBeFocused();
   await expect(page.locator('#fieldState')).toContainText('TIME RUNNING');
   await page.keyboard.press('Space');await expect(page.locator('#pauseLesson')).toHaveText('Resume observation');await expectObservationFeedback(page,true);
   await page.keyboard.press('Space');await expectObservationFeedback(page,false);await completedObservation(page,{timeout:10000});
