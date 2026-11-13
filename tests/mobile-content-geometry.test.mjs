@@ -81,7 +81,7 @@ test('mobile shell padding is read on the first desktop-to-phone transition, not
 });
 
 test('negative outer-height selection reproduces the inset startup classification defect',()=>{
- const old=app.replace('portrait && insetViewportRect(viewport, padding).height < 560','portrait && viewport.height < 560');
+ const old=app.replace('portrait && content.height < 560','portrait && viewport.height < 560');
  assert.notEqual(old,app);
  assert.throws(()=>contentHarness({source:old,insets:{top:12,bottom:21,left:8,right:8}}).start(true),/effective content/);
 });
