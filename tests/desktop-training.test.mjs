@@ -43,7 +43,7 @@ const deniedURLs = [
 
 test('desktop page navigation permits only canonical entry/training URLs and fragments', () => {
   for (const page of pages) {
-    for (const hash of ['', '#', '#practice', '#lesson%202', '#?next=https://example.com/path', '#one#two']) {
+    for (const hash of ['', '#', '#practice', '#motion=reduce&detail=low', '#motion=full&detail=high', '#lesson%202', '#?next=https://example.com/path', '#one#two']) {
       assert.equal(isGameNavigation(`${page}${hash}`), true, `${page}${hash}`);
     }
   }

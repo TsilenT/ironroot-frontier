@@ -120,10 +120,10 @@ for(const width of [320,390])test('first native bottom-edge taps preserve traini
 // synthetic origin is not evidence of a played match or a completed lesson.
 test('title entry and return preserve all five exact profile domains including active battle',async({page})=>{
   const fixture=await seedTrainingProfile(page),before=await storageBytes(page),operations=await observeTrainingStorage(page);
-  await expect(page.locator('#welcomeTraining')).toHaveAttribute('href','./training.html');
+  await expect(page.locator('#welcomeTraining')).toHaveAttribute('href','./training.html#motion=reduce&detail=low');
   await expect(page.locator('#welcomeTraining')).toContainText('Guided practice');
   await press(page,'#welcomeTraining');await trainingReady(page);
-  await expect(page).toHaveURL(/\/training\.html$/);await expect(page.locator('#start')).toHaveCount(0);
+  await expect(page).toHaveURL(/\/training\.html#motion=reduce&detail=low$/);await expect(page.locator('#start')).toHaveCount(0);
   expect(await profileBytes(page)).toEqual(fixture.values);
   await expectNoTrainingWrites(page,operations);
   await press(page,'#returnGame');await expect(page.locator('#welcome')).toBeVisible();
