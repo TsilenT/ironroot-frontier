@@ -3,7 +3,7 @@ import{test,press,seedOnce,canvasFrame,observeCanvas}from'./map-browser-helpers.
 import{createCampaignProgress,getProgressionCampaignOverview,getCampaignLaunchMission}from'../../dist/campaign.js';
 import{campaignFixture}from'./campaign-fixtures.mjs';
 import{inspectPhoneText,settlePhoneViewport}from'./phone-text-evidence.mjs';
-import{objectiveRegionGeometry,readObjectiveText}from'./objective-region-evidence.mjs';
+import{objectiveRegionGeometry,readObjectiveText,settleObjectiveScroll}from'./objective-region-evidence.mjs';
 import{heldPointer}from'./training-browser-helpers.mjs';
 import{installPad,padButton}from'./synthetic-gamepad-helpers.mjs';
 async function launch(page,id='below-the-ramparts'){
@@ -45,10 +45,10 @@ for(const size of[{width:320,height:430},{width:844,height:390}])test(`long prog
 test('scrolling owns keys, preserves reading position and keeps native target activation fresh',async({page,context})=>{
  test.setTimeout(45000);await page.setViewportSize({width:320,height:430});await observeCanvas(page);await launch(page);await stress(page);await page.waitForTimeout(80);
  const camera=await page.evaluate(()=>window.__qaCanvas.mini.viewport),port=page.locator('#objectiveContent');await port.focus();await page.keyboard.press('End');await expect.poll(()=>port.evaluate(e=>e.scrollTop)).toBeGreaterThan(100);
- await expect.poll(()=>port.evaluate(async e=>{const start=e.scrollTop;await new Promise(r=>setTimeout(r,100));return e.scrollTop===start;})).toBe(true);
+ await settleObjectiveScroll(page);
  const position=await port.evaluate(e=>e.scrollTop);await page.waitForTimeout(350);expect(await port.evaluate(e=>e.scrollTop)).toBe(position);
- await page.keyboard.press('Home');await page.waitForTimeout(150);await page.keyboard.press('Space');await expect.poll(()=>port.evaluate(e=>e.scrollTop)).toBeGreaterThan(0);await page.keyboard.press('ArrowRight');await expect(page.locator('#pauseVeil')).toBeHidden();expect(await page.evaluate(()=>window.__qaCanvas.mini.viewport)).toEqual(camera);
- await port.focus();await page.keyboard.press('Home');await page.waitForTimeout(150);
+ await page.keyboard.press('Home');await settleObjectiveScroll(page,0);await page.keyboard.press('Space');await expect.poll(()=>port.evaluate(e=>e.scrollTop)).toBeGreaterThan(0);await page.keyboard.press('ArrowRight');await expect(page.locator('#pauseVeil')).toBeHidden();expect(await page.evaluate(()=>window.__qaCanvas.mini.viewport)).toEqual(camera);
+ await port.focus();await page.keyboard.press('Home');await settleObjectiveScroll(page,0);
  const point=await firstTargetPoint(page),held=await heldPointer(page,context,point);
  try{await page.locator('[data-protected-id] .protected-name').first().evaluate(e=>e.textContent='Changed '+e.textContent);await held.release();}finally{await held.dispose();}
  await expect(page.locator('#toast')).not.toContainText('Showing');

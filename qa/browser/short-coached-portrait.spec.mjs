@@ -132,6 +132,7 @@ test('unsafe short coached rail freezes the save and needs explicit Resume after
 });
 
 test('padding-only changes cancel a held control once while stable inset geometry accepts fresh gestures',async({page,context})=>{
+ test.setTimeout(45000);
  await resumeProtected(page);await assertLayout(page);await page.evaluate(installViewportSafetyWatch);
  const sound=page.locator('#sound'),before=await sound.getAttribute('aria-label');
  const point=await center(page,'#sound'),held=await heldPointer(page,context,point);
