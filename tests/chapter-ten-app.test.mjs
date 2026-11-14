@@ -72,3 +72,22 @@ test('boss-first running restore announces the remaining fortress goal once',()=
  const {c:app,g,announcements}=revealedFixture('emerging'),boss=g.state.units.find(u=>u.type==='colossus');g._damage(boss,boss.hp,0);g.update(.05);assert.equal(g.state.winner,null);const ref=campaign.campaignScenarioForGame(g,'the-last-engine'),packet=encodeBattle(g,ref,{campaignProgress:app.campaignProgress}),restored=decodeBattle(packet,{campaignProgress:app.campaignProgress}).game;
  announcements.length=0;app.start(restored,null,'the-last-engine');app.updateHUD();app.updateHUD();const messages=announcements.filter(Boolean);assert.equal(messages.length,1);assert.match(messages[0],/Engine is defeated\. Destroy the enemy citadel/);assert.doesNotMatch(messages[0],/Mission complete|Defeat the Engine/);assert.deepEqual(restored.serialize(),g.serialize());
 });
+
+for(const [width,height,mobile]of [[320,430,true],[390,650,true],[844,390,true],[1180,850,false]])test(`finale ${width}x${height}: compact mobile goals retain full accessible facts and exact simulation`,()=>{
+ for(const coreFirst of [false,true]){
+  const {c:app,$}=startupHarness({width,height});app.campaignProgress=earned();
+  const g=campaign.createProgressionCampaignMission('the-last-engine',app.campaignProgress);
+  g.state.buildings=[];g.state.units=[];g.state.bases[1].hp=600;g.update(.05);app.start(g,null,'the-last-engine');
+  const check=()=>{const view=app.lastEngineView(g),before=g.serialize();app.updateHUD();
+   assert.equal($('objectiveProgress').textContent,mobile?view.mobileHudLabel:view.hudLabel);
+   assert.equal($('objectiveProgress').attributes['aria-label'],view.accessibleLabel);
+   assert.equal($('objectiveTime').textContent,view.phaseCue+' · No deadline');assert.deepEqual(g.serialize(),before);
+   return view;
+  };
+  let view=check();assert.equal(view.mobileHudLabel,'Destroy Engine + citadel · 10000/10000 HP');assert.match(view.accessibleLabel,/keep your citadel standing/);
+  if(coreFirst){g.state.bases[1].hp=0;g.update(.05);view=check();assert.equal(view.mobileHudLabel,'Citadel down · Engine 10000/10000 HP');assert.match(view.accessibleLabel,/Enemy citadel destroyed\. Defeat the Last Engine/);}
+  const boss=g.state.units.find(u=>u.type==='colossus');g._damage(boss,boss.hp,0);g.update(.05);view=check();
+  if(!coreFirst){assert.equal(view.mobileHudLabel,'Engine down · destroy citadel');assert.match(view.accessibleLabel,/Destroy the enemy citadel/);g.state.bases[1].hp=0;g.update(.05);view=check();}
+  assert.equal(view.mobileHudLabel,'Engine + enemy citadel destroyed');assert.match(view.accessibleLabel,/Mission complete/);
+ }
+});

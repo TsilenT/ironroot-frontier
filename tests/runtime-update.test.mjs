@@ -6,7 +6,7 @@ import {newerRuntime, readWorkerVersion, createRuntimeUpdate} from '../dist/runt
 import {Game} from '../dist/engine.js';
 import {createSaveSession, createStorage, writeBattle} from '../dist/persistence.js';
 
-const current='ironroot-v0.40.11', next='ironroot-v0.40.12';
+const current='ironroot-v0.40.12', next='ironroot-v0.40.13';
 const turn=()=>new Promise(resolve=>setImmediate(resolve));
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
 function harness(options={}) {
@@ -19,8 +19,8 @@ function harness(options={}) {
     async change(version=next){serviceWorker.controller={version};serviceWorker.dispatchEvent(new Event('controllerchange'));await turn();}};
 }
 test('release comparison is numeric and rejects malformed, old or unsafe identities',()=>{
-  for(const value of [next,'ironroot-v0.40.13','ironroot-v0.41.0','ironroot-v1.0.0'])assert.equal(newerRuntime(value,current),true);
-  for(const value of [current,'ironroot-v0.40.10','ironroot-v0.40.2','ironroot-v0.39.99','future',null,'ironroot-v999999999999999999999.0.0'])assert.equal(newerRuntime(value,current),false);
+  for(const value of [next,'ironroot-v0.40.14','ironroot-v0.41.0','ironroot-v1.0.0'])assert.equal(newerRuntime(value,current),true);
+  for(const value of [current,'ironroot-v0.40.11','ironroot-v0.40.2','ironroot-v0.39.99','future',null,'ironroot-v999999999999999999999.0.0'])assert.equal(newerRuntime(value,current),false);
 });
 test('private-port worker discovery is bounded, including legacy workers and invalid replies',async()=>{
   assert.equal(await readWorkerVersion({postMessage(message,[port]){assert.equal(message.type,'IRONROOT_RUNTIME_VERSION');port.postMessage({type:message.type,version:next});}}),next);
