@@ -1,6 +1,7 @@
 // Native mission launch with earned prerequisite progress. Chromium viewport,
 // touch and explicit safe-area emulation are not physical-device certification.
 import {expect} from '@playwright/test';
+import {dynamicCampaignCheckpoint} from './campaign-objective-fixtures.mjs';
 import {CAMPAIGN_STORAGE_KEY,createCampaignProgress,getProgressionCampaignOverview,getCampaignLaunchMission,normalizeCampaignProgress} from '../../dist/campaign.js';
 import {test,press,seedOnce,saved} from './map-browser-helpers.mjs';
 import {inspectPhoneText,settlePhoneViewport} from './phone-text-evidence.mjs';
@@ -93,3 +94,36 @@ test('a genuinely undersized Reed Beds viewport still pauses and needs explicit 
  expect(await saved(page)).toEqual(checkpoint);await press(page,'#viewportResume');
  await page.evaluate(installViewportSafetyWatch);await assertSafe(page);
 });
+
+for(const size of [{width:320,height:430},{width:390,height:650},{width:402,height:568},{width:403,height:416}]){
+ test(`Ramparts full names fit ${size.width}x${size.height} with the correct wrap boundary`,async({page})=>{
+  await page.setViewportSize(size);await startMission(page,'below-the-ramparts');const g=await assertSafe(page);
+  await expect(page.locator('[data-protected-id] .protected-name')).toHaveText(['North Breach Post','Middle Breach Post','South Breach Post']);
+  if(size.width<403)await expect(page.locator('#app')).toHaveClass(/narrow-targets/);
+  else{await expect(page.locator('#app')).not.toHaveClass(/narrow-targets/);expect(g.world.height).toBeCloseTo(212,1);}
+  await page.locator('[data-protected-id]').nth(1).tap();await expect(page.locator('#toast')).toContainText('Showing Middle Breach Post');
+ });
+}
+for(const id of ['the-last-granary','cut-the-bowstrings']){
+ test(`${id} uses two full-width cards without reducing the short battlefield`,async({page})=>{
+  await page.setViewportSize({width:320,height:416});await startMission(page,id);const g=await assertSafe(page);
+  expect(g.world.height).toBeCloseTo(212,1);await expect(page.locator('[data-protected-id]')).toHaveCount(2);
+  for(const target of await page.locator('[data-protected-id]').all()){
+   expect((await target.boundingBox()).width).toBeGreaterThan(140);await target.tap();await expect(page.locator('#toast')).toContainText('Showing');
+  }
+  await page.setViewportSize({width:568,height:320});await assertSafe(page);
+  await page.setViewportSize({width:320,height:416});await assertSafe(page);
+ });
+}
+
+for(const id of ['through-the-reed-beds','below-the-ramparts','the-last-granary','cut-the-bowstrings']){
+ test(`${id} retains full names and controls after one original position falls`,async({page})=>{
+  const fixture=await dynamicCampaignCheckpoint(new URL('../../dist/',import.meta.url),id,'cleared-first');
+  await page.setViewportSize({width:320,height:430});await seedOnce(page,fixture.values);
+  await page.evaluate(installViewportSafetyWatch);await press(page,'#resumeSaved');
+  await expect(page.locator('[data-protected-id]').first()).toBeDisabled();
+  await expect(page.locator('[data-protected-id] .protected-health').first()).toHaveText('Destroyed');
+  await assertSafe(page);await page.setViewportSize({width:568,height:320});await assertSafe(page);
+  await page.locator('[data-protected-id]').nth(1).tap();await expect(page.locator('#toast')).toContainText('Showing');
+ });
+}
