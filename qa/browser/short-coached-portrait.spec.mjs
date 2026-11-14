@@ -1,5 +1,6 @@
 // Companion to the unchanged phone-viewport suite. Fixtures only seed a valid
 // saved mission; layout, input, hit testing, time and pause state are real DOM.
+import {readObjectiveText} from './objective-region-evidence.mjs';
 import {expect} from '@playwright/test';
 import {CAMPAIGN_STORAGE_KEY} from '../../dist/campaign.js';
 import {campaignFixture} from './campaign-fixtures.mjs';
@@ -22,13 +23,13 @@ async function assertLayout(page){
  const g=await page.evaluate(inspectMobileBattlefield);
  const topbar=g.regions.find(r=>r.id==='topbar');expect(topbar.left).toBeCloseTo(g.safe.left,1);expect(topbar.right).toBeCloseTo(g.safe.right,1);
  expect(g.world.height).toBeGreaterThanOrEqual(211.5);expect(g.world.width).toBeGreaterThanOrEqual(128);
- expect(g.controls.length).toBeGreaterThanOrEqual(11);expect(g.collisions).toEqual([]);expect(g.covered).toBe(false);
+ expect(g.controls).toHaveLength(9+Number(await page.locator('#coachResume').isVisible())+Number(await page.locator('#toggleCoach').isVisible()));await expect(page.locator('[data-protected-id]')).toHaveCount(2);expect(g.collisions).toEqual([]);expect(g.covered).toBe(false);
  for(const b of [g.world,...g.controls,...g.regions]){
   expect(b.left).toBeGreaterThanOrEqual(g.safe.left-.5);expect(b.right).toBeLessThanOrEqual(g.safe.right+.5);
   expect(b.top).toBeGreaterThanOrEqual(g.safe.top-.5);expect(b.bottom).toBeLessThanOrEqual(g.safe.bottom+.5);
  }
  for(const c of g.controls){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id).toBe(true);}
- for(const label of await page.evaluate(inspectPhoneText,{selector:'[data-protected-id] .protected-name,[data-protected-id] .protected-health,#gold,#time,#objectiveProgress,#objectiveTime'})){
+ for(const label of [...await page.evaluate(inspectPhoneText,{selector:'#gold,#time'}),...await readObjectiveText(page,inspectPhoneText,'[data-protected-id] .protected-name,[data-protected-id] .protected-health,#objectiveProgress,#objectiveTime')]){
   expect(label.complete,JSON.stringify(label)).toBe(true);expect(label.overflow,label.text).toBe(false);
  }
  await expect(page.locator('#campaignTeaching')).toBeVisible();await expect(page.locator('#campaignCoach')).toBeVisible();
@@ -89,6 +90,7 @@ test('coached portrait can resize tall, short and tall without stale side-rail g
 
 
 test('unsafe short coached rail freezes the save and needs explicit Resume after safe recovery',async({page})=>{
+ test.setTimeout(45000); // Includes deliberate frozen-save waits and local text reading.
  await resumeProtected(page);await assertLayout(page);
  const initialClock=await page.locator('#time').textContent();
  await expect(page.locator('#time')).not.toHaveText(initialClock,{timeout:6000});
@@ -130,6 +132,7 @@ test('unsafe short coached rail freezes the save and needs explicit Resume after
 });
 
 test('padding-only changes cancel a held control once while stable inset geometry accepts fresh gestures',async({page,context})=>{
+ test.setTimeout(45000);
  await resumeProtected(page);await assertLayout(page);await page.evaluate(installViewportSafetyWatch);
  const sound=page.locator('#sound'),before=await sound.getAttribute('aria-label');
  const point=await center(page,'#sound'),held=await heldPointer(page,context,point);

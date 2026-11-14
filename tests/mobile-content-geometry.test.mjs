@@ -32,7 +32,7 @@ function contentHarness({width=320,height=568,insets={},source=app,styleSource=c
   const g=layout(w,ht,{root:content,viewport:content,protect:!root.classList.contains('mobile-ordinary'),teaching:root.classList.contains('mobile-coaching'),collapsed:root.classList.contains('coach-collapsed'),hold:!h.$('coachResume').classList.contains('hidden')});
   // Reproduce the confirmed auto-placement defect when the explicit CSS cell
   // is removed: hidden hint text leaves actions in the first grid column.
-  if(h.$('campaignCoach').classList.contains('hidden') && h.$('coachActions').parentNode===h.$('campaignTeaching') && !pinnedActions){
+  if(g.nodes.toggleCoach&&h.$('campaignCoach').classList.contains('hidden') && h.$('coachActions').parentNode===h.$('campaignTeaching') && !pinnedActions){
    const delta=g.nodes.toggleCoach.left-(g.nodes.campaignTeaching.left+6);
    for(const id of ['coachResume','toggleCoach']){g.nodes[id].left-=delta;g.nodes[id].right-=delta;}
   }
@@ -47,7 +47,7 @@ function contentHarness({width=320,height=568,insets={},source=app,styleSource=c
   };
   return element;
  };
- for(const id of ['battle','topbar','protectedDock','protectedNavigation','campaignTeaching','campaignCoach','coachResume','toggleCoach','pause','speed','sound','settings','home','front','minimap','compactBuild'])install(h.$(id));
+ for(const id of ['objectiveContent','battle','topbar','protectedDock','protectedNavigation','campaignTeaching','campaignCoach','coachResume','toggleCoach','pause','speed','sound','settings','home','front','minimap','compactBuild'])install(h.$(id));
  const create=h.c.document.createElement;h.c.document.createElement=tag=>install(create(tag));
  const inspect=h.c.inspectMobileGeometry;
  h.c.inspectMobileGeometry=g=>{

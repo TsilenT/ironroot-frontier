@@ -36,7 +36,7 @@ test('removing synchronous HUD initialization reproduces hidden-control false ho
   const h=startupHarness({width,height,source:before});h.start(restored);
   assert.equal(h.$('objectiveHUD').classList.contains('hidden'),true);
   assert.equal(h.c.paused,true);assert.equal(h.c.viewportPause.active,true);
-  assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,width>height&&height>=360?3:2);
+  assert.equal(h.log.measures[0].filter(r=>!r.width||!r.height).length,width>height&&height>=360?2:1);
  }
 });
 test('coached protected launch and restore fit 320×430 and 320×400 without hiding any controls',()=>{

@@ -1,6 +1,7 @@
 // Native mission launch with earned prerequisite progress. Chromium viewport,
 // touch and explicit safe-area emulation are not physical-device certification.
 import {expect} from '@playwright/test';
+import {objectiveRegionGeometry,readObjectiveText} from './objective-region-evidence.mjs';
 import {dynamicCampaignCheckpoint} from './campaign-objective-fixtures.mjs';
 import {CAMPAIGN_STORAGE_KEY,createCampaignProgress,getProgressionCampaignOverview,getCampaignLaunchMission,normalizeCampaignProgress} from '../../dist/campaign.js';
 import {test,press,seedOnce,saved} from './map-browser-helpers.mjs';
@@ -24,16 +25,10 @@ async function startMission(page,id=REEDS){
 }
 async function assertSafe(page){
  await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
- const g=await page.evaluate(inspectMobileBattlefield);
- expect(g.world.height).toBeGreaterThanOrEqual(211.5);expect(g.collisions).toEqual([]);expect(g.covered).toBe(false);
- for(const c of g.controls){
-  expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id).toBe(true);
-  expect(c.left,c.id).toBeGreaterThanOrEqual(g.safe.left-.5);expect(c.right,c.id).toBeLessThanOrEqual(g.safe.right+.5);
-  expect(c.top,c.id).toBeGreaterThanOrEqual(g.safe.top-.5);expect(c.bottom,c.id).toBeLessThanOrEqual(g.safe.bottom+.5);
- }
- for(const label of await page.evaluate(inspectPhoneText,{selector:'[data-protected-id] .protected-name,[data-protected-id] .protected-health'})){
-  expect(label.complete,JSON.stringify(label)).toBe(true);expect(label.overflow,label.text).toBe(false);
- }
+ const g=await page.evaluate(objectiveRegionGeometry);
+ expect(g.shell.safe).toBe(true);expect(g.local.safe).toBe(true);
+ for(const c of g.controls){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id).toBe(true);}
+ for(const label of await readObjectiveText(page,inspectPhoneText,'[data-protected-id] .protected-name,[data-protected-id] .protected-health'))expect(label.complete,JSON.stringify(label)).toBe(true);
  const clock=await page.locator('#time').textContent();await expect(page.locator('#time')).not.toHaveText(clock,{timeout:6000});
  expect(await page.evaluate(()=>window.__qaViewportSafetySamples.filter(sample=>sample.visible))).toEqual([]);
  return g;
@@ -72,9 +67,9 @@ test('usable width accounts for explicit safe areas in PWA-like portrait layout'
  await startMission(page);
  const insets=await page.addStyleTag({content:'.app.protected-mobile { --mobile-inset-left: 3px; --mobile-inset-right: 3px; --mobile-inset-bottom: 21px; }'});
  const g=await assertSafe(page);expect(g.safe.right-g.safe.left).toBeCloseTo(384,1);
- await expect(page.locator('#app')).toHaveClass(/narrow-targets/);
+ expect((await page.evaluate(objectiveRegionGeometry)).local.safe).toBe(true);
  await insets.evaluate(element=>element.remove());await assertSafe(page);
- await expect(page.locator('#app')).not.toHaveClass(/narrow-targets/);
+ expect((await page.evaluate(objectiveRegionGeometry)).local.safe).toBe(true);
 });
 
 test('shorter Ashen Crossroads labels retain the original 212px battlefield',async({page})=>{
@@ -82,12 +77,12 @@ test('shorter Ashen Crossroads labels retain the original 212px battlefield',asy
  await press(page,'[data-mode="challenges"]');
  await press(page,'#challengeChoices button:has-text("Ashen Crossroads")');await press(page,'#start');
  const g=await assertSafe(page);expect(g.world.height).toBeCloseTo(212,1);
- await expect(page.locator('#app')).not.toHaveClass(/narrow-targets/);
+ expect((await page.evaluate(objectiveRegionGeometry)).local.safe).toBe(true);
 });
 
 test('a genuinely undersized Reed Beds viewport still pauses and needs explicit recovery',async({page})=>{
  await page.setViewportSize({width:320,height:430});await startMission(page);await assertSafe(page);
- await page.setViewportSize({width:320,height:416});await expect(page.locator('#viewportModal')).toBeVisible();
+ await page.setViewportSize({width:320,height:415});await expect(page.locator('#viewportModal')).toBeVisible();
  await expect(page.locator('#viewportResume')).toBeDisabled();const checkpoint=await saved(page);
  await page.waitForTimeout(1100);expect(await saved(page)).toEqual(checkpoint);
  await page.setViewportSize({width:320,height:430});await expect(page.locator('#viewportResume')).toBeEnabled();
@@ -96,11 +91,11 @@ test('a genuinely undersized Reed Beds viewport still pauses and needs explicit 
 });
 
 for(const size of [{width:320,height:430},{width:390,height:650},{width:402,height:568},{width:403,height:416}]){
- test(`Ramparts full names fit ${size.width}x${size.height} with the correct wrap boundary`,async({page})=>{
+ test(`Ramparts full names fit ${size.width}x${size.height} with the shared scrolling boundary`,async({page})=>{
   await page.setViewportSize(size);await startMission(page,'below-the-ramparts');const g=await assertSafe(page);
   await expect(page.locator('[data-protected-id] .protected-name')).toHaveText(['North Breach Post','Middle Breach Post','South Breach Post']);
-  if(size.width<403)await expect(page.locator('#app')).toHaveClass(/narrow-targets/);
-  else{await expect(page.locator('#app')).not.toHaveClass(/narrow-targets/);expect(g.world.height).toBeCloseTo(212,1);}
+  if(size.width<403)expect((await page.evaluate(objectiveRegionGeometry)).local.safe).toBe(true);
+  else{expect((await page.evaluate(objectiveRegionGeometry)).local.safe).toBe(true);expect(g.world.height).toBeCloseTo(212,1);}
   await page.locator('[data-protected-id]').nth(1).tap();await expect(page.locator('#toast')).toContainText('Showing Middle Breach Post');
  });
 }

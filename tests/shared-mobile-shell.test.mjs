@@ -27,7 +27,7 @@ for(const scenario of cases)for(const restored of [false,true])test(`${scenario.
   assert.equal(h.$('objectiveHUD').parentNode,h.$('protectedDock'));
   assert.equal(h.$('objectiveIdentity').textContent,scenario.identity);
   assert.equal(h.c.protectedControls.size,0);assert.equal(h.$('protectedTargets').classList.contains('hidden'),true);
-  assert.equal(h.log.measures[0].length,8,'no fake protected controls enter geometry');
+  assert.equal(h.log.measures[0].length,9,'fixed navigation and the objective port are measured without fake protected controls');
   assert.ok(h.log.measures[0].every(r=>r.width>=44&&r.height>=44));
   h.$('compactBuild').onclick();assert.equal(h.$('app').classList.contains('compact-build-open'),true);
   h.$('compactBuild').onclick();assert.equal(h.$('app').classList.contains('compact-build-open'),false);
