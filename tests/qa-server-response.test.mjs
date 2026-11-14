@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {readFile} from 'node:fs/promises';
-import {resolve,extname} from 'node:path';
+import {basename,extname,isAbsolute,relative,resolve,sep,win32} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {runInNewContext} from 'node:vm';
 
@@ -11,12 +11,14 @@ const marker='createServer(async (req, res) => {';
 const start=source.indexOf(marker),end=source.lastIndexOf("}).listen(4187, '127.0.0.1');");
 assert.ok(start>=0&&end>start,'extract the actual QA request handler, not a second implementation');
 const root=fileURLToPath(new URL('../dist',import.meta.url));
-function handler(read=readFile){
+const updateSessionId='01234567-89ab-cdef-0123-456789abcdef';
+function handler(read=readFile, paths={basename,extname,isAbsolute,relative,resolve,sep}, webRoot=root){
   // Execute the source handler without starting a listener or browser. The
   // ordinary-file requests below do not enter the immutable fixture routes.
   return runInNewContext('(async (req, res) => {'+source.slice(start+marker.length,end)+'})',{
-    URL,resolve,extname,root,readFile:read,
+    Buffer,URL,...paths,root:webRoot,readFile:read,
     LEGACY_QA_PATH:'/__fixture_legacy/',REPORT_LEGACY_PATH:'/__fixture_report/',PRODUCTION_V012_PATH:'/__fixture_production/',
+    runtimeUpdates:new Map([[updateSessionId,true]]),runtimeVersion:'1.2.3',nextRuntimeVersion:'1.2.4',
     mime:{'.html':'text/html','.css':'text/css'},
   });
 }
@@ -50,4 +52,20 @@ test('QA file response sends no success headers while its read is pending or rej
   rejectRead(Object.assign(new Error('missing'),{code:'ENOENT'}));
   await pending;
   assert.equal(res.status,404);assert.equal(res.ended,true);
+});
+
+test('QA serves Win32 paths and rewrites synthetic update files',async()=>{
+  const webRoot=win32.resolve('C:/project/dist');
+  const requestHandler=handler(async path=>{
+    assert.equal(path,win32.join(webRoot,'index.html'));
+    return Buffer.from('ironroot-v1.2.3');
+  }, win32, webRoot);
+  const res=response();
+  await requestHandler({url:'/',method:'GET'},res);
+  assert.equal(res.status,200);
+  assert.equal(res.body.toString(),'ironroot-v1.2.3');
+  const updated=response();
+  await requestHandler({url:`/__qa_runtime_update/${updateSessionId}/`,method:'GET'},updated);
+  assert.equal(updated.status,200);
+  assert.equal(updated.body.toString(),'ironroot-v1.2.4');
 });

@@ -1,4 +1,4 @@
-# Desktop packaging (0.9.0 source)
+# Desktop packaging
 
 This is an optional, offline Electron shell, not a Steam-ready release. The original `dist/` remains a standalone browser build. Desktop-only sources, tools and generated files live under `desktop/`.
 
@@ -30,13 +30,13 @@ npm run package:linux  # Linux tar.gz
 
 Outputs go to `desktop/release/`. Every command explicitly disables publication. The default build uses the host architecture. For another native architecture, use the appropriate runner and/or an explicit electron-builder `--arm64` or `--x64` flag after staging. Apple Silicon, Intel macOS, Windows ARM and Linux ARM require separate device checks.
 
-These are unsigned development archives with default Electron icons, not installers. Windows executable signing/resource editing is disabled; macOS signing is explicitly disabled. Gatekeeper/SmartScreen may reject unsigned apps. Do not instruct players to bypass warnings as a release strategy. Obtain signing identities and notarize/sign through an authorized release process before public distribution. No credentials, storefronts, auto-updaters, external publishing or uploads are configured.
+The development archives contain unpacked application files. Windows packaging applies the bundled game icon and product metadata to `Ironroot Frontier.exe`. The executable is unsigned, and the macOS package has signing disabled. Test the distribution path and any OS warnings on each platform selected for release. The [Steam readiness audit](STEAM_READINESS.md) tracks current packaging and Steam-client evidence.
 
 Suggested private CI, not installed by this work: use a manually triggered OS matrix of Ubuntu, Windows and macOS runners, checkout the reviewed commit, configure Node >=22.12.0, run `npm ci` from `desktop/`, run desktop checks/tests plus the root game tests, then run the matching package command above. Keep resulting artifacts private with short retention only after repository-owner approval for artifact uploads. Prefer a separate manual signing/release job; never grant release tokens to an untrusted pull-request build. Lock action versions to reviewed commit hashes if implementing this workflow.
 
 ## Build dependency maintenance
 
-Electron remains pinned to 45.2.3. Electron-builder is pinned to the maintained v26 patch 26.18.1. Desktop and browser package versions, lockfile metadata and the Node minimum are checked together by the desktop contract tests.
+Electron is pinned to 45.3.2 and electron-builder to 26.18.1. Desktop and browser package versions, lockfile metadata and the Node minimum are checked together by the desktop contract tests.
 
 The original lockfile reported **six moderate development-tool findings** and zero production findings. All six were propagation of [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249), a denial-of-service issue in minimatch, through the builder chain. Electron-builder 26.18.1 alone does not fix this: app-builder-lib still requests minimatch ^10.2.5, and @electron/universal 2.0.3 requests ^9.0.3.
 
@@ -108,7 +108,7 @@ This managed workspace has a read-only home cache. Build tooling can instead use
 
 Browser and desktop metadata must match the current root package version. The older archive checks above are historical; restage and rebuild before distributing a new package. The desktop runtime gate remains open.
 
-### Current public-source assessment
+### Historical v0.40.7 packaging assessment
 
 This staging improvement starts from rewritten public main `238a22c`, with browser/desktop version 0.40.7. It changes build preparation, not game saves, renderer privileges or portable export. Fourteen staging tests exercise exact inventory copying, first-time staging, stray JSON and missing-asset rejection, failed/interrupted copies, changed copied bytes, release-identity mismatches and Windows filename portability. Rename fault injection verifies backup failure, promotion failure with successful rollback, and retention of the recovery directory when promotion and rollback both fail. These are handled-error checks, not abrupt-termination or native Windows file-lock tests. Existing export/download denial remains in place.
 

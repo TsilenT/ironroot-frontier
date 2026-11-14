@@ -1,0 +1,5 @@
+# Runtime and historical fixture hashes must agree across checkout platforms.
+* text=auto eol=lf
+
+# These bundled notices retain the mixed endings of the upstream license text.
+FONTS-NOTICES.txt -text !eol

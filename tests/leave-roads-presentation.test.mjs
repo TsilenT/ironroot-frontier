@@ -8,15 +8,16 @@ test('Road briefing and Scout disclose exact three-road alternative, deadline an
  const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');assert.match(app,/game.ruleset.id === 'frontier-campaign-leave-roads' \? 'Secure all three bridges for 30 cumulative seconds/);
 });
 
-// Bind the visible chapter count to actual content, not only the global catalog.
-test('Chapter 9 copy matches five available missions and completes at minimum five',()=>{
+test('Chapter 9 completes with five wins and opens the Last Ascent',()=>{
  const progress=createCampaignProgress(),overview=getProgressionCampaignOverview(progress);
  const chapter=overview.chapters.find(c=>c.id==='broken-line');
  assert.equal(chapter.total,5);assert.equal(chapter.plannedMissions,5);
- const words={5:'Five'};
- assert.ok(chapter.description.includes(`${words[chapter.total]} missions are currently available; at least ${'five'} are planned.`));
+ assert.match(chapter.description,/reserves.*routes inland/);
  const missions=overview.missions.filter(m=>m.chapterId===chapter.id);assert.equal(missions.length,chapter.total);
- for(const m of overview.missions)progress.missions[m.id]={completed:true,stars:1,bestTime:60};
- const cleared=getProgressionCampaignOverview(progress).chapters.find(c=>c.id===chapter.id);
+ for(const m of overview.missions.filter(m=>m.chapterId!=='last-ascent'))progress.missions[m.id]={completed:true,stars:1,bestTime:60};
+ const clearedOverview=getProgressionCampaignOverview(progress);
+ const cleared=clearedOverview.chapters.find(c=>c.id===chapter.id);
  assert.equal(cleared.cleared,5);assert.equal(cleared.completed,true);assert.equal(cleared.description,chapter.description);
+ assert.match(cleared.epilogue,/Last Ascent/);
+ assert.equal(clearedOverview.nextMissionId,'below-the-ramparts');
 });

@@ -64,6 +64,9 @@ test('desktop isolation and package safety contracts remain explicit', async () 
   assert.deepEqual(lock.packages[''].devDependencies, pkg.devDependencies);
   for (const key of ['pack', 'package:win', 'package:mac', 'package:linux']) assert.match(pkg.scripts[key], /--publish never/);
   assert.deepEqual(pkg.build.files, ['main.cjs', 'security.cjs', 'game/**/*', 'package.json']);
+  assert.equal(pkg.build.icon, 'game/icon.svg');
+  assert.equal(pkg.build.win.signExecutable, false);
+  assert.notEqual(pkg.build.win.signAndEditExecutable, false);
 });
 test('installed desktop tooling preserves the scoped minimatch compatibility contracts', async t => {
   const desktopRequire = createRequire(new URL('../desktop/package.json', import.meta.url));

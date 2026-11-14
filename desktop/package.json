@@ -1,7 +1,7 @@
 {
   "name": "ironroot-frontier-desktop",
   "productName": "Ironroot Frontier",
-  "version": "0.40.13",
+  "version": "0.40.14",
   "private": true,
   "description": "Offline desktop shell for Ironroot Frontier",
   "main": "main.cjs",
@@ -16,7 +16,7 @@
     "package:linux": "npm run stage && electron-builder --linux tar.gz --publish never"
   },
   "devDependencies": {
-    "electron": "45.2.3",
+    "electron": "45.3.2",
     "electron-builder": "26.18.1"
   },
   "engines": {
@@ -33,6 +33,7 @@
   "build": {
     "appId": "games.ironroot.frontier",
     "productName": "Ironroot Frontier",
+    "icon": "game/icon.svg",
     "asar": true,
     "directories": {
       "output": "release"
@@ -48,7 +49,7 @@
       "target": [
         "zip"
       ],
-      "signAndEditExecutable": false
+      "signExecutable": false
     },
     "mac": {
       "target": [

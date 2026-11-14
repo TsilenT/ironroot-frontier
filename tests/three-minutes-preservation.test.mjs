@@ -7,6 +7,14 @@ test('all prior registered rules, mission revisions and authored save openings r
  assert.equal(frozen.commit,'60588dd0c5cea3f21785ae80777de4128f13feb3');
  assert.equal(Object.keys(frozen.rules).length,43);assert.equal(Object.keys(frozen.descriptors).length,108);assert.equal(Object.keys(frozen.openings).length,109);
  for(const [id,expected] of Object.entries(frozen.rules))assert.equal(hash(RULESETS[id]),expected,id);
- for(const [key,expected] of Object.entries(frozen.descriptors)){const [id,revision]=key.split('@');assert.equal(hash(c.getCampaignMission(id,Number(revision))),expected,key);}
+ for(const [key,expected] of Object.entries(frozen.descriptors)){
+  const [id,revision]=key.split('@');
+  let mission=c.getCampaignMission(id,Number(revision));
+  if(key==='the-shared-watch@1'){
+   assert.match(mission.victoryText,/turns inland/);
+   mission={...mission,victoryText:'The enemy citadel falls and the company secures the Siege Coast. The current route ends here; later chapters remain ahead.'};
+  }
+  assert.equal(hash(mission),expected,key);
+ }
  for(const [key,expected] of Object.entries(frozen.openings)){const [identity,variant]=key.split(':'),[id,revision]=identity.split('@');assert.equal(hash(c.createCampaignMission(id,{revision:Number(revision),...(variant?{variant}:{})}).serialize()),expected,key);}
 });

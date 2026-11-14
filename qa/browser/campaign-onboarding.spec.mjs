@@ -56,7 +56,7 @@ test('campaign is the entry screen and skirmish is an explicit optional route', 
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(8);
   await expect(page.locator('#campaignCoach')).toBeHidden();
-  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-air-local-open'}});
+  expect(await readSave(page)).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-citadel-open'}});
 });
 
 test('opening guidance uses real build cards, normal gold costs, and real battlefield construction', async ({ page }) => {
@@ -81,7 +81,7 @@ test('opening guidance uses real build cards, normal gold costs, and real battle
   await expect(page.locator('#front')).toHaveClass(/coach-highlight/);
   await press(page, '#pause');
   const saved = await readSave(page);
-  expect(saved).toMatchObject({ version: 3, scenario: {kind:'campaign',id:'roadside-watch',revision:1}, game:{rulesetId:'frontier-campaign-watch',mapId:'intro-one-road'} });
+  expect(saved).toMatchObject({ version: 3, scenario: {kind:'campaign',id:'roadside-watch',revision:5}, game:{rulesetId:'frontier-campaign-citadel-watch',mapId:'intro-one-road'} });
   expect(saved.game.state.buildings.filter(b => b.side === 0 && b.type === 'archery')).toHaveLength(1);
   expect(saved.game.state.buildings.filter(b => b.side === 0)).toHaveLength(2);
   expect(saved.game.state.gold[0]).toBeCloseTo(420 - 140 - 175 + 5 * saved.game.state.time, 1);
@@ -93,7 +93,7 @@ test('optional introductory All buildings and hint controls remain reversible wi
   const game = createCampaignMission('first-watch');
   await seed(page, { format: 'ironroot-save', version: 3, scenario: { kind: 'campaign', id: 'first-watch', revision: 1 }, game: game.serialize() });
   await press(page, '#pause'); await press(page, '#saveExit'); await startRunning(page);
-  expect(await readSave(page)).toMatchObject({scenario:{kind:'campaign',id:'first-watch',revision:4},game:{rulesetId:'frontier-authored-air-local'}});
+  expect(await readSave(page)).toMatchObject({scenario:{kind:'campaign',id:'first-watch',revision:5},game:{rulesetId:'frontier-authored-citadel'}});
   await press(page, '#allBuildings');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(7);
@@ -133,6 +133,7 @@ test('an existing campaign save keeps its full roster and construction without m
 
 test('save and exit focuses the saved mission and resumes that same battle', async ({ page }) => {
   await page.goto('/'); await startRunning(page); await press(page, '#pause');
+  const checkpoint = await readSave(page);
   await press(page, '#saveExit');
   await expect(page.locator('#campaignConfig')).toBeVisible();
   await expect(page.locator('#resumeSaved')).toBeFocused();
@@ -140,7 +141,9 @@ test('save and exit focuses the saved mission and resumes that same battle', asy
   await expect(page.locator('#opponentLabel')).toHaveText('ROADSIDE WATCH');
   await openBuildControls(page);
   await expect(page.locator('.build-card:visible')).toHaveCount(2);
-  expect((await readSave(page)).game.rulesetId).toBe('frontier-campaign-watch');
+  const resumed = await readSave(page);
+  expect(resumed.scenario).toEqual(checkpoint.scenario);
+  expect(resumed.game.rulesetId).toBe(checkpoint.game.rulesetId);
 });
 
 test('a worse replay attempt keeps the existing best stars and best time', async ({ page }) => {

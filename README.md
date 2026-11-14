@@ -1,4 +1,17 @@
-## Cut the Bowstrings (private v0.39 source candidate)
+# Ironroot Frontier
+
+Ironroot Frontier is a single-player fantasy lane strategy game. Build an economy, choose what to deploy, and shift your spending between roads while your troops march and fight on their own.
+
+- **Campaign** has 42 missions across ten numbered chapters and a three-mission opening. A victory advances the story. Bonus stars are optional.
+- **Skirmish** offers three maps and three difficulties. Six **Field Trials** offer short standalone challenges. Five optional **Guided Practice** lessons teach individual mechanics.
+- [Play the browser edition](https://ironroot.stevets.ai/). The live build checked on November 14, 2026 was v0.40.13. This checkout includes the local v0.40.14 polish candidate.
+- [Run and check](#run-and-check), [desktop packaging](docs/DESKTOP.md), and [Steam readiness audit](docs/STEAM_READINESS.md).
+
+## Development history
+
+The following entries preserve the scope and checks recorded for earlier builds.
+
+### Cut the Bowstrings (private v0.39 source candidate)
 
 This candidate depends on reviewed, pending Three Minutes More PR50 at85e5d893. That0.38 source is not claimed as released here. Main remainsv0.37 at the first checkpoint. No merge or publication is allowed while the dependency is unresolved.
 
@@ -94,13 +107,9 @@ Chapter 7, The Unlit Roads, begins with False Quiet. Two authored starting garri
 
 Validation and limits: [False Quiet prototype](docs/FALSE_QUIET_PROTOTYPE.md), [persistence](docs/FALSE_QUIET_PERSISTENCE.md), and [UI review](docs/FALSE_QUIET_UI_REVIEW.md). This is the first Chapter 7 slice, not the end of the planned Chapter 7–10 work.
 
-# Ironroot Frontier
+## Historical v0.26.0 and Chapter 6 closure polish
 
-A single-player real-time strategy tug-of-war for desktop and mobile browsers. Build an army, defend your economy and push along the battlefield lanes.
-
-## Live v0.26.0 and Chapter 6 closure polish
-
-The verified release is **v0.26.0** at https://ironroot.stevets.ai/, from private main `62e57ef294a4ed4b6936db6095704d7f3cc9e2e0`, tree `0b4ac190809971e86e82a34b14b46661e62cb0fe`. The automatic publisher produced public commit `86176b907701abdfaac73fa11e8e106e3fee19b1` with 58 runtime files. Exact-head and merged CI passed 1,935 checks, with one optional skip. Live desktop smoke preserved the old save, settings and progression and checked A River Between Us's gated briefing. No live-earned mission win, physical-phone/PWA or full browser-matrix claim is made.
+The browser release **v0.26.0** used source commit `62e57ef294a4ed4b6936db6095704d7f3cc9e2e0`, tree `0b4ac190809971e86e82a34b14b46661e62cb0fe`. The automatic publisher produced public commit `86176b907701abdfaac73fa11e8e106e3fee19b1` with 58 runtime files. Exact-head and merged CI passed 1,935 checks, with one optional skip. Live desktop smoke preserved the old save, settings and progression and checked A River Between Us's gated briefing. No live-earned mission win, physical-phone/PWA or full browser-matrix claim is made.
 
 This local **v0.26.1** candidate closes Chapter 6's presentation rather than adding a redundant sixth encounter: truthful capstone victory copy, current next-mission rewards on Restart/Replay, and removal of the obsolete preview label. Combat, mission identities, earned progress and profile protocol 17 are unchanged. Publication is a separate gate.
 
@@ -144,7 +153,7 @@ Select the home citadel or its visible badge to open Citadel upgrades directly; 
 
 ## Game features
 
-- **Campaign opens first:** three authored one-, two-, then three-road battles introduce the company before the sixteen established continuation missions; Shared Crossing, One Signal, Lanterns and Borrowed Ground are Chapter 6’s released encounters. Any victory advances; stars are optional. A one- or two-star win offers replay without reducing the best record.
+- **Campaign opens first:** three authored one-, two-, then three-road battles introduce the company before the ten numbered chapters. Any victory advances. A one- or two-star win offers replay without reducing the best record.
 - **Real roster progression:** the opening has barracks and archery ranges. Winning it adds Warden lodges, mines and towers. Winning the second battle makes all eight buildings available before the third starts. The Rootwarden is a high-HP, low-damage screen, not a mandatory winning strategy.
 - **One game interface:** construction and upgrades use normal gold and the real build bar. Optional coaching marks useful tools and legal sites. The first fresh Roadside Watch opens directly on the battlefield: time, income and spawning stay stopped until its first paid barracks is placed, then combat starts automatically. Other spending is temporarily blocked for that first step so the opening cannot run out of gold. Later lessons retain their explicit planning choices; hiding hints never starts them. Hide removes the whole hint banner and returns its space to the field, leaving a compact Show control and any necessary teaching Resume action. Restored attempts and completed replays do not automatically stop for teaching.
 - **Readable mission navigation:** the current briefing opens first. Story and Chapter links expose the broader route. Flavor and plain goals remain prominent; exact rules, scouting and bonus stars expand on request. Required protection, hold, income and health conditions stay visible.
@@ -152,7 +161,7 @@ Select the home citadel or its visible badge to open Citadel upgrades directly; 
 - **Automatic flyers:** gryphons notice nearby troops on their current or an adjacent road and fly into attack range without commands. After losing a target they find another nearby enemy or advance along the nearest road, so successive fights can carry them across roads. Detours can expose enemies or pull flyers away from their own army. Archers remain on their roads but can hit nearby flyers between roads; towers can intercept them too. There are no route buttons, gateways, crossing countdowns or forced returns.
 - **Small screens:** Income remains visible beside gold in portrait, including short layouts. Build opens a shared drawer. Named protected-objective controls focus the actual structures. The released visible-viewport repair supports short portrait and landscape layouts; truly insufficient space pauses combat until it fits and the player explicitly resumes.
 
-Campaign stars, unlocks, settings, trial records and result history remain persistent. Fresh attempts of the existing Campaign missions use revision 5 while preserving earned 2/5/8-building stages; Shared Crossing, One Signal, Lanterns, Borrowed Ground and A River Between Us each use their own revision 1. Fresh Field Trials use revision 3 with their seven-building roster. Guided Practice retains its existing rules. The released v0.26.0 build uses profile protocol 17. This presentation-only candidate keeps it unchanged; historical protocol fixtures retain their original scope. Older clients cannot overwrite the newer profile. The session-only setup checkbox is not a saved preference, while a resumed fog battle retains its bound identity and validated memory. Existing bought checkpoints retain their exact choice and state; unbought citadel-enabled checkpoints gain immediate availability. Older non-citadel battles keep their bound rules. Close old game tabs before importing a backup. No in-progress battle migration is added.
+Campaign stars, unlocks, settings, trial records and result history persist locally. Profile protocol 32 protects the current profile from older clients. Resumed battles keep their validated rules and map identity. Close old game tabs before importing a backup.
 
 ## Run and check
 
@@ -180,7 +189,7 @@ Open http://localhost:8000. The separate browser project is in `qa/browser/`; it
 - Options → Battle keyboard controls can change, clear or restore twelve shortcuts. Defaults are 1–8 for visible build slots, R for Arrow volley, Space for pause, and Left/Right arrows for camera pan. Slots follow the active roster and earned unlocks, so the same slot can name a different building in another roster. Bindings use physical key positions (`KeyboardEvent.code`), which may differ from printed characters on another keyboard layout. Escape remains cancel/menu; Tab and native Enter/Space activation stay available. Optional guided practice retains its default shortcuts and has no profile access; shared campaign coaching uses the configured bindings.
 - Battles autosave every five seconds and on pause. One active battle slot is shared across modes. A failed Save & return keeps the battle on the page.
 - Browser Back closes nested menus, pauses running combat, then uses Save & return. Teaching stays frozen when its reading dialog is dismissed. Forward never starts or resumes a battle. Top-level Back can leave normally; platform limits and validation are in `docs/BACK_NAVIGATION.md`.
-- Stars, records, preferences and history stay on that browser/device. Options → Save backups exports or imports a local JSON file. Import previews the replacement and asks for confirmation.
+- Stars, records, preferences and history stay on the device. The browser edition supports portable JSON import and export in Options → Save backups. See the [desktop backup limitations](docs/DESKTOP.md#portable-backup-gap) for the native package.
 - Reports describe the current battle, including sampled timelines. They are not playable replays, are not part of backups, and disappear on a new battle or reload unless exported.
 - Sound begins after a user gesture. Options include music, effects, volume, reduced motion and visual quality.
 
@@ -205,6 +214,6 @@ Fonts are bundled under OFL 1.1 with notices in `dist/FONTS-NOTICES.txt`. No ext
 
 ## Release boundaries
 
-The private source repository contains development records. Only `dist/` belongs in the public browser build. Browser assets are downloadable; never put secrets or private reports there. Live v0.26.0 uses `ironroot-v0.26.0`; this local closure candidate uses `ironroot-v0.26.1`. The [v0.20.2 tutorial-guard manifest](qa/tutorial-spell-guard/runtime-inventory.json), [v0.20 runtime evidence](qa/citadel-playtest/runtime-final.json) and [v0.20.3 audio integration report](docs/AUDIO_INTEGRATION_0_20_3.md) retain their original historical scopes and do not certify the closure candidate. PR #14 remains held with unresolved history failures and Ward remains unshipped. All five planned Chapter 6 encounters and experimental Skirmish fog are live in v0.26.0. Last Ascent is a developer-only experiment with no campaign entry. Chapters 7–10 remain design proposals. More Chapter 6 content is possible if a distinct scenario earns its place, not to satisfy a mission quota. The current candidate has not been published; release status must be verified separately. Never publish changed assets under an old cache identity.
+The browser publisher deploys the verified `dist/` inventory to the separate play repository. Keep browser and desktop package versions, the document version and the service-worker cache identity aligned. Give changed browser assets a fresh cache identity. Historical validation records refer to their original builds.
 
 There is no network PvP, account service or authoritative server. Physical mobile/controller testing, full nonvisual battlefield access and desktop/store certification remain separate work. Automated balance simulations do not establish human difficulty or mobile performance. See `docs/DESKTOP.md` for the optional desktop shell.

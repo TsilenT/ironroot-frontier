@@ -1,6 +1,6 @@
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
-import {resolve, extname} from 'node:path';
+import {basename, extname, isAbsolute, relative, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {randomUUID} from 'node:crypto';
 import {UPDATE_BUILDS} from './update-fixtures.mjs';
@@ -73,10 +73,13 @@ createServer(async (req, res) => {
     pathname='/'+pathname.slice(PRODUCTION_V012_PATH.length);
   }
   const path = resolve(selectedRoot, '.' + pathname.replace(/\/$/, '/index.html'));
-  if (!path.startsWith(selectedRoot + '/')) {res.writeHead(403).end(); return;}
+  const relativePath = relative(selectedRoot, path);
+  if (!relativePath || relativePath === '..' || relativePath.startsWith('..' + sep) || isAbsolute(relativePath)) {
+    res.writeHead(403).end(); return;
+  }
   try {
     let body = await readFile(path);
-    if (runtimeAdvanced && ['service-worker.js','index.html'].some(file => path.endsWith('/'+file)))
+    if (runtimeAdvanced && ['service-worker.js','index.html'].includes(basename(path)))
       body = Buffer.from(body.toString('utf8').replaceAll('v'+runtimeVersion,'v'+nextRuntimeVersion));
     res.writeHead(200, {'Content-Type': mime[extname(path)] || 'application/octet-stream', 'Cache-Control': runtimeAdvanced === null ? 'no-store' : 'max-age=600'}); res.end(body);
   }
