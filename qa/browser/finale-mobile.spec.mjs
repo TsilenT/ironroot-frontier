@@ -1,5 +1,6 @@
 // Codec-admitted synthetic production checkpoints. Native Resume, drawing and
 // touch only after launch; this is emulation, not a paid campaign playthrough.
+import {objectiveRegionGeometry,readObjectiveText} from './objective-region-evidence.mjs';
 import {expect} from '@playwright/test';
 import {test,press,seedOnce,saved} from './map-browser-helpers.mjs';
 import {dynamicCampaignCheckpoint} from './campaign-objective-fixtures.mjs';
@@ -12,9 +13,9 @@ for(const state of ['both','core-first','boss-first','approach','siege'])for(con
   const fixture=await dynamicCampaignCheckpoint(dist,'the-last-engine',state);
   await page.setViewportSize(size);await seedOnce(page,fixture.values);await page.evaluate(installViewportSafetyWatch);
   await press(page,'#resumeSaved');await settlePhoneViewport(page);await expect(page.locator('#viewportModal')).toBeHidden();
-  const g=await page.evaluate(inspectMobileBattlefield);expect(g.world.height).toBeGreaterThanOrEqual(211.5);
-  expect(g.collisions).toEqual([]);expect(g.covered).toBe(false);for(const c of g.controls)expect(c.hit,c.id).toBe(true);
-  for(const text of await page.evaluate(inspectPhoneText,{selector:'#objectiveProgress,#objectiveTime'})){
+  const g=await page.evaluate(objectiveRegionGeometry);expect(g.world.height).toBeGreaterThanOrEqual(211.5);
+  expect(g.shell.safe).toBe(true);expect(g.local.safe).toBe(true);for(const c of g.controls)expect(c.hit,c.id).toBe(true);
+  for(const text of await readObjectiveText(page,inspectPhoneText,'#objectiveProgress,#objectiveTime')){
    expect(text.complete,JSON.stringify(text)).toBe(true);expect(text.overflow,text.text).toBe(false);
   }
   // Full instructions remain available to assistive technology and Pause while

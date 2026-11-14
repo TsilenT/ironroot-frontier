@@ -165,7 +165,8 @@ test('runtime presentation has no QA imports, reserve state writes or UI-owned t
   const pure = readFileSync(new URL('../dist/minor-reserve-view.js', import.meta.url), 'utf8');
   const focus = app.slice(app.indexOf("$('focusMinorReserve').onclick"), app.indexOf('function updateProtectedObjectives()'));
   assert.match(focus, /!canFocusProtectedObjective\(\)/);
-  assert.match(focus, /armedReserveControl\.pointerId !== event\.pointerId/);
+  assert.match(focus, /objectivePressValid\(armedReserveControl, event\)/);
+  assert.match(app.slice(app.indexOf('function objectivePressValid('),app.indexOf("document.addEventListener('pointerdown', event => {",app.indexOf('function objectivePressValid('))), /press\.pointerId !== event\.pointerId/);
   assert.match(focus, /reserve\.phase !== lastReservePhase/);
   assert.doesNotMatch(pure + focus, /from ['"][^'"]*qa\/|setInterval|setTimeout|triggerTick\s*=|releases\.push|advanceMinorReserve/);
   assert.match(app.slice(app.indexOf('function interruptMobileInput()')), /armedReserveControl = null/);

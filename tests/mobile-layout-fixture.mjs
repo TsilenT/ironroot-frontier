@@ -34,7 +34,7 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     navigation=isPortrait&&!shortCoaching?box(x,canvas.bottom+teachHeight+dock,usableWidth,nav):box(canvas.right,canvas.top,rail,worldHeight);
     teachingBox=box(x,canvas.bottom,usableWidth,teachHeight);objective=box(x,canvas.bottom+teachHeight,usableWidth,dock);headerBox=box(x,y,usableWidth,header);
   }
-  const nodes={app:root,battle:canvas,topbar:headerBox,protectedDock:objective,protectedNavigation:navigation};
+  const nodes={app:root,battle:canvas,topbar:headerBox,protectedDock:objective,protectedNavigation:navigation,objectiveContent:(isPortrait||isSidebar)?objective:box(objective.left,objective.top,objective.width-64,objective.height)};
   if(teaching){
     nodes.campaignTeaching=teachingBox;
     nodes.coachResume=box(teachingBox.right-110,teachingBox.top+(teachHeight-44)/2,56,44);
@@ -65,10 +65,10 @@ export function layout(width,height,{bottom=0,top=0,left=0,right=0,protect=true,
     for(const[i,id]of ['pause','speed','sound','settings'].entries())nodes[id]=box(navigation.left+30+(i%2)*48,navigation.top+8+Math.floor(i/2)*48,44,44);
     const ny=navigation.bottom-100;
     nodes.home=box(navigation.left+19,ny,44,44);nodes.front=box(navigation.left+89,ny,44,44);nodes.minimap=box(navigation.left+8,ny+48,136,44);
-    // CSS minmax(168px,1fr),52px,minmax(0,2fr),12px padding/12px gaps.
-    const first=Math.max(168,(usableWidth-76)/3),last=usableWidth-76-first;
-    nodes.compactBuild=protect?box(x+12+first,objective.top+8,52,44):box(x+usableWidth-58,objective.top+8,52,44);
-    for(let i=0;i<targetCount;i++)nodes[`target${i}`]=box(x+70+first+i*((last-6*(targetCount-1))/targetCount+6),objective.top+7,(last-6*(targetCount-1))/targetCount,47);
+    // Fixed Build is a sibling of the bounded content port, never its child.
+    const port=nodes.objectiveContent,first=Math.max(120,(port.width-18)/3),last=port.width-18-first;
+    nodes.compactBuild=box(objective.right-58,objective.top+8,52,44);
+    for(let i=0;i<targetCount;i++)nodes[`target${i}`]=box(port.left+12+first+i*((last-6*(targetCount-1))/targetCount+6),objective.top+7,(last-6*(targetCount-1))/targetCount,47);
   }
   if(teaching&&collapsed){
     const nx=navigation.left,ny=navigation.top,nw=navigation.width;

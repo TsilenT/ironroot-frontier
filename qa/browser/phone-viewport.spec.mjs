@@ -2,6 +2,7 @@
 // actual Chromium DOM layout and ordinary trusted mouse/touch actions. Viewport
 // presets, explicit safe-area variables, and visualViewport replacement below
 // are synthetic fixtures, not physical-phone, browser-chrome or iOS/PWA proof.
+import {readObjectiveText} from './objective-region-evidence.mjs';
 import {expect} from '@playwright/test';
 import {Game} from '../../dist/engine.js';
 import {CAMPAIGN_STORAGE_KEY,createCampaignMission,getCampaignTargets} from '../../dist/campaign.js';
@@ -22,7 +23,7 @@ async function geometry(page){
   const contains=(outer,r)=>r.left>=outer.left-.5&&r.top>=outer.top-.5&&r.right<=outer.right+.5&&r.bottom<=outer.bottom+.5;
   const overlaps=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
   const world=rect(document.getElementById('battle'));
-  const elements=[...['pause','speed','sound','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)),...document.querySelectorAll('[data-protected-id]')];
+  const elements=[...['pause','speed','sound','settings','home','front','minimap','compactBuild'].map(id=>document.getElementById(id)),document.getElementById('objectiveContent')];
   const controls=elements.map(e=>({id:e.id||e.dataset.protectedId,...rect(e),hit:e.contains(document.elementFromPoint(...[rect(e).left+rect(e).width/2,rect(e).top+rect(e).height/2]))}));
   const root=rect(document.getElementById('app'));
   const objectiveOverlap=overlaps(rect(document.getElementById('objectiveProgress')),rect(document.getElementById('objectiveTime')));
@@ -30,7 +31,7 @@ async function geometry(page){
    allInside:controls.every(r=>contains(viewport,r))&&contains(viewport,world),outsideWorld:controls.every(r=>!overlaps(r,world)),
    collisions:controls.flatMap((a,i)=>controls.slice(i+1).filter(b=>overlaps(a,b)).map(b=>[a.id,b.id]))};
  });
- geometry.text=await page.evaluate(inspectPhoneText,{selector:'[data-protected-id] .protected-name,[data-protected-id] .protected-health,#gold,#time,#objectiveProgress,#objectiveTime'});
+ geometry.text=[...await page.evaluate(inspectPhoneText,{selector:'#gold,#time'}),...await readObjectiveText(page,inspectPhoneText,'[data-protected-id] .protected-name,[data-protected-id] .protected-health,#objectiveProgress,#objectiveTime')];
  return geometry;
 }
 async function expectGeometry(page,{protectedCount=0}={}){
@@ -39,7 +40,7 @@ async function expectGeometry(page,{protectedCount=0}={}){
  expect(g.root.left).toBeCloseTo(g.viewport.left,1);expect(g.root.top).toBeCloseTo(g.viewport.top,1);
  expect(g.root.right).toBeCloseTo(g.viewport.right,1);expect(g.root.bottom).toBeCloseTo(g.viewport.bottom,1);
  expect(g.world.height).toBeGreaterThanOrEqual(211.5);expect(g.world.width).toBeGreaterThanOrEqual(128);
- expect(g.controls).toHaveLength(8+protectedCount);expect(g.allInside).toBe(true);expect(g.outsideWorld).toBe(true);expect(g.collisions).toEqual([]);
+ expect(g.controls).toHaveLength(9);expect(g.allInside).toBe(true);expect(g.outsideWorld).toBe(true);expect(g.collisions).toEqual([]);
  for(const r of g.regions){expect(r.left).toBeGreaterThanOrEqual(g.viewport.left-.5);expect(r.top).toBeGreaterThanOrEqual(g.viewport.top-.5);expect(r.right).toBeLessThanOrEqual(g.viewport.right+.5);expect(r.bottom).toBeLessThanOrEqual(g.viewport.bottom+.5);}
  for(const c of g.controls){expect(c.width,c.id).toBeGreaterThanOrEqual(43.5);expect(c.height,c.id).toBeGreaterThanOrEqual(43.5);expect(c.hit,c.id+' actual center hit').toBe(true);}
  expect(g.objectiveOverlap,'objective progress and time must occupy separate cells').toBe(false);
@@ -63,7 +64,7 @@ for(const size of sizes)test(`phone ${size.width}x${size.height}: clock, paid bu
  const state=await pause(page);
  expect(state.game.state.time).toBeGreaterThan(0);expect(state.game.state.buildings.filter(b=>b.side===0&&b.type==='wardenLodge')).toHaveLength(1);
  expect(state.game.state.gold[0]).toBeCloseTo(420-210+5*state.game.state.time,1);
- expect(state).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-air-local-open'}});
+ expect(state).toMatchObject({version:3,scenario:{kind:'skirmish',id:'standard',revision:1},game:{rulesetId:'frontier-citadel-open'}});
  const stopped=savedClockText(state);await expect(page.locator('#time')).toHaveText(stopped);await page.waitForTimeout(1100);expect(await saved(page)).toEqual(state);await expect(page.locator('#time')).toHaveText(stopped);
  await press(page,'#saveExit');await page.reload();expect(await saved(page)).toEqual(state);
  await press(page,'#resumeSaved');await expectGeometry(page);await waitForClock(page,stopped);const resumed=await pause(page);

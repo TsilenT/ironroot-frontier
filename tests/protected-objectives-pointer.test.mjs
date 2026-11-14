@@ -73,13 +73,14 @@ function hitEligible(node,styles){
   return property(node,'pointer-events',styles)!=='none';
 }
 
-test('actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, but not HUD labels',()=>{
+test('actual HTML ancestry and CSS inheritance expose Build Close Cancel and both originals, and scrolling HUD labels',()=>{
   for(const [width,height] of [[568,320],[640,360],[320,480],[390,500]]){
     const {ids,targets}=tree(width,height),styles=rules(css,width,height),button=ids.get('compactBuild');
     assert.equal(button.parent.id,width>height&&height>=360?'objectiveHUD':'protectedNavigation');assert.equal(property(ids.get('objectiveHUD'),'pointer-events',styles),'none');
     for(const label of ['Build','Close','Cancel']){button.textContent=label;assert.equal(property(button,'pointer-events',styles),'auto');assert.equal(hitEligible(button,styles),true,label);}
     for(const target of targets){assert.equal(property(target,'pointer-events',styles),'auto');assert.equal(hitEligible(target,styles),true);}
-    assert.equal(hitEligible(ids.get('objectiveProgress'),styles),false);
+    assert.equal(hitEligible(ids.get('objectiveProgress'),styles),true,'text accepts native scrolling inside its own bounded port');
+    assert.equal(ids.get('objectiveProgress').parent.id,'objectiveContent');assert.notEqual(button.parent.id,'objectiveContent');
     button.disabled=true;assert.equal(hitEligible(button,styles),false);button.disabled=false;
     ids.get('app').inert=true;assert.equal(hitEligible(button,styles),false);
   }

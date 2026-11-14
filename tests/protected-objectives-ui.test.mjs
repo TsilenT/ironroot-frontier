@@ -26,6 +26,8 @@ class Element {
   set textContent(value) { this.text = value; this.children = []; }
   get textContent() { return this.text; }
   setAttribute(name,value) { this.attributes[name] = value; }
+  getAttribute(name) { return this.attributes[name]??null; }
+  getBoundingClientRect() { return this.rect||{left:0,top:0,right:100,bottom:44,width:100,height:44}; }
   append(...children) { for(const child of children) {if(child.parentNode)child.parentNode.children=child.parentNode.children.filter(item=>item!==child);this.children.push(child);child.parentNode=this;} }
   insertBefore(child,next) { if(child.parentNode)child.parentNode.children=child.parentNode.children.filter(x=>x!==child);const index=this.children.indexOf(next);this.children.splice(index<0?this.children.length:index,0,child);child.parentNode=this; }
   get nextSibling() { const items=this.parentNode?.children||[];return items[items.indexOf(this)+1]||null; }
@@ -49,14 +51,14 @@ function harness({mission='common-ground',landscape=false,compact=false,portrait
     cancel:()=>{state.cancelled++;state.ui={build:null,spell:false,selected:null};context.ui=state.ui;},
     syncInputScope:()=>state.scopeUpdates++,resetBattleGesture:()=>state.reset++, renderer:{camera:123,resize(){},clampCamera:()=>state.clamped++},
     toast:text=>state.toasts.push(text),positionToast:()=>state.layoutUpdates++,
-    document:{createElement:tag=>new Element(tag),addEventListener:(name,callback,capture)=>{assert.equal(capture,true);documentListeners[name]=callback;}},
+    document:{elementFromPoint:()=>state.hitTarget,createElement:tag=>new Element(tag),addEventListener:(name,callback,capture)=>{assert.equal(capture,true);documentListeners[name]=callback;}},
     window:{get innerWidth(){return state.portrait?320:state.landscape?844:1280;},get innerHeight(){return state.portrait?568:state.landscape?390:900;},addEventListener:(name,callback)=>windowListeners[name]=callback,matchMedia:query=>({matches:query.includes('orientation: portrait')?state.portrait:state.landscape})},
   };
   const api = runInNewContext(source+'\n({beginProtectedObjectives,updateProtectedObjectives,focusProtectedObjective,finishProtectedObjectives,flushProtectedWarnings,syncProtectedLayout,setCompactBuildOpen,updateCompactBuildControl})',context);
   api.beginProtectedObjectives();api.updateProtectedObjectives();
   const buttons=()=>[...context.protectedControls.values()].map(control=>control.button);
-  const click=(button,event={})=>button.listeners.click({detail:0,...event});
-  const pointerdown=(target,pointerId=7)=>documentListeners.pointerdown({target,pointerId,pointerType:'touch',button:0});
+  const click=(button,event={})=>button.listeners.click({detail:0,currentTarget:button,clientX:50,clientY:22,...event});
+  const pointerdown=(target,pointerId=7)=>{state.hitTarget=target;documentListeners.pointerdown({target,pointerId,pointerType:'touch',button:0});};
   return {context,api,$,state,buttons,click,pointerdown,documentListeners,windowListeners};
 }
 
