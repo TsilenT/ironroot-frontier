@@ -4307,7 +4307,7 @@ body.gamepad-active a:focus {
   gap: 0; overflow: hidden; position: relative;
 }
 .app.protected-mobile .objective-content {
-  display: grid; grid-column: 1; grid-row: 1; grid-template-columns: minmax(0,1fr) auto;
+  display: grid; grid-column: 1; grid-row: 1; grid-template-columns: minmax(0,3fr) minmax(0,2fr);
   grid-template-rows: max-content; grid-auto-rows: max-content; align-content: start;
   gap: 2px 6px; padding: 3px 14px 4px 6px; height: 100%; min-height: 0; min-width: 0;
   overflow-y: auto; overflow-x: hidden; contain: layout paint; pointer-events: auto;

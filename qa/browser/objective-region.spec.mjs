@@ -29,6 +29,19 @@ for(const size of[{width:320,height:430},{width:320,height:568},{width:568,heigh
  const text=await readObjectiveText(page,inspectPhoneText,'#objectiveIdentity,[data-protected-id] .protected-name,#adversarialObjective');expect(text.every(x=>x.complete)).toBe(true);expect(shape(await safe(page))).toEqual(before);
  const clock=await page.locator('#time').textContent();await expect(page.locator('#time')).not.toHaveText(clock,{timeout:6000});
 });
+for(const size of[{width:320,height:430},{width:844,height:390}])test(`long progress and deadline both retain readable tracks at ${size.width}x${size.height}`,async({page})=>{
+ test.setTimeout(60000);await page.setViewportSize(size);await launch(page);const before=shape(await safe(page));
+ await page.evaluate(()=>{
+  const values={objectiveProgress:'Goal '+('W'.repeat(100))+' · 北方 طريق',objectiveTime:'Deadline '+('M'.repeat(80))+' 🏰 remaining'};
+  // Presentation-only fixture: keep real DOM text stable while the running
+  // HUD assigns its normal short copy. An observer would force a short
+  // intermediate layout and clamp scrolling before restoring this long copy.
+  const native=Object.getOwnPropertyDescriptor(Node.prototype,'textContent');
+  for(const[id,text]of Object.entries(values)){const e=document.getElementById(id);native.set.call(e,text);Object.defineProperty(e,'textContent',{get(){return native.get.call(this);},set(){},configurable:true});}
+ });await safe(page);
+ for(const id of ['objectiveProgress','objectiveTime'])expect(await page.locator('#'+id).evaluate(e=>e.getBoundingClientRect().width)).toBeGreaterThan(80);
+ const text=await readObjectiveText(page,inspectPhoneText,'#objectiveProgress,#objectiveTime');expect(text).toHaveLength(2);expect(text.every(x=>x.complete)).toBe(true);expect(shape(await safe(page))).toEqual(before);
+});
 test('scrolling owns keys, preserves reading position and keeps native target activation fresh',async({page,context})=>{
  test.setTimeout(45000);await page.setViewportSize({width:320,height:430});await observeCanvas(page);await launch(page);await stress(page);await page.waitForTimeout(80);
  const camera=await page.evaluate(()=>window.__qaCanvas.mini.viewport),port=page.locator('#objectiveContent');await port.focus();await page.keyboard.press('End');await expect.poll(()=>port.evaluate(e=>e.scrollTop)).toBeGreaterThan(100);

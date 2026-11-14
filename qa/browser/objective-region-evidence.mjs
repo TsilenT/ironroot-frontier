@@ -18,8 +18,17 @@ export async function objectiveRegionGeometry(){
 // character must be visible in at least one observed scroll position. A label
 // larger than the port need not fit in a single frame.
 export async function readObjectiveText(page,inspectPhoneText,selector,{limit=240,minimumFont=11}={}){
- const port=page.locator('#objectiveContent');await port.focus();await page.keyboard.press('Home');
- await page.waitForTimeout(80);const seen=new Map(),complete=new Map();
+ const port=page.locator('#objectiveContent');
+ const settled=async(top=null)=>port.evaluate(async(e,target)=>{
+  const start=performance.now();let position=e.scrollTop,stable=start;
+  while(performance.now()-start<3000){
+   await new Promise(r=>setTimeout(r,16));const now=performance.now();
+   if(e.scrollTop!==position){position=e.scrollTop;stable=now;}
+   if(now-start>=140&&now-stable>=80&&(target===null||Math.abs(position-target)<.5))return;
+  }
+  throw Error('Native objective scroll did not settle at '+target);
+ },top);
+ await port.focus();await page.keyboard.press('Home');await settled(0);const seen=new Map(),complete=new Map();
  for(let step=0;step<limit;step++){
   const samples=await page.evaluate(inspectPhoneText,{selector,ownerSelector:'[data-protected-id],#objectiveContent',minimumFont});
   for(let i=0;i<samples.length;i++){
@@ -35,7 +44,7 @@ export async function readObjectiveText(page,inspectPhoneText,selector,{limit=24
   if(metrics.top>=metrics.total-metrics.height-1)throw Error('Unreachable objective text: '+JSON.stringify(samples.map((s,i)=>({text:s.text.slice(0,80),seen:seen.get(i+':'+s.expectedText)?.visible.size,total:s.characters.length}))));
   const glyphHeight=Math.max(0,...samples.flatMap(s=>s.rects.map(r=>r.height)));
   const stepSize=Math.min(metrics.height*.5,Math.max(4,metrics.height-glyphHeight-4));
-  await port.hover();await page.mouse.wheel(0,stepSize);await page.waitForTimeout(55);
+  await port.hover();await page.mouse.wheel(0,stepSize);await settled();
  }
  throw Error('Objective read exceeded declared finite fixture scan budget');
 }
